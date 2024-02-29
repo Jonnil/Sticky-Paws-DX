@@ -14,7 +14,7 @@ if (global.go_to_menu_when_going_back_to_title == "upload_yes_character")
 	{
 		global.sprite_select_player[fixed_player] = spr_noone;
 		scr_set_character_folder(fixed_player, global.skin_for_player[fixed_player]);
-		show_message("Bruh 28");ini_open(string(character_folder) + "/data/sprite_origin_point.ini");
+		ini_open(string(character_folder) + "/data/sprite_origin_point.ini");
 		global.sprite_select_player[fixed_player] = scr_initialize_character_sprite("stand", global.sprite_select_player[fixed_player]);
 		global.sprite_select_player[fixed_player] = scr_initialize_character_sprite("character_select_portrait", global.sprite_select_player[fixed_player]);
 		ini_close(); switch_save_data_commit(); /* Remember to commit the save data! */

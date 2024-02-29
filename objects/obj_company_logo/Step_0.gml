@@ -388,7 +388,7 @@ if (!can_navigate)
 			}
 			else
 			{
-				show_message("Bruh 27");if (file_exists(game_save_id + "custom_resource_pack/" + file_found + "/data/sprite_origin_point.ini")) {
+				if (file_exists(game_save_id + "custom_resource_pack/" + file_found + "/data/sprite_origin_point.ini")) {
 					ds_list_add(global.all_loaded_resource_pack, file_found);
 				}
 				

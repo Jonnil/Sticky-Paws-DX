@@ -13,24 +13,6 @@ function scr_draw_upload_level_menu() {
 	var upload_level_path = game_save_id + "custom_levels/" + global.level_name; /* Path will be used many times, and I don't want it to come up too many times in search, it will only check in working directory */
 	var fixed_player = 1;
 	
-	#region /* How many tags */
-	var how_may_tags = 0;
-	if (tag_art){var tag_art_text = "Art" + " ";how_may_tags ++;}else{var tag_art_text = "";};
-	if (tag_boss_battle){var tag_boss_battle_text = "Boss Battle" + " ";how_may_tags ++;}else{var tag_boss_battle_text = "";};
-	if (tag_dont_move){var tag_dont_move_text = "Don't Move" + " ";how_may_tags ++;}else{var tag_dont_move_text = "";};
-	if (tag_kaizo){var tag_kaizo_text = "Kaizo" + " ";how_may_tags ++;}else{var tag_kaizo_text = "";};
-	if (tag_multiplayer){var tag_multiplayer_text = "Multiplayer Only" + " ";how_may_tags ++;}else{var tag_multiplayer_text = "";};
-	if (tag_music){var tag_music_text = "Music" + " ";how_may_tags ++;}else{var tag_music_text = "";};
-	if (tag_puzzle_solving){var tag_puzzle_solving_text = "Puzzle-solving" + " ";how_may_tags ++;}else{var tag_puzzle_solving_text = "";};
-	if (tag_short_and_sweet){var tag_short_and_sweet_text = "Short and Sweet" + " ";how_may_tags ++;}else{var tag_short_and_sweet_text = "";};
-	if (tag_singleplayer){var tag_singleplayer_text = "Singleplayer Only" + " ";how_may_tags ++;}else{var tag_singleplayer_text = "";};
-	if (tag_speedrun){var tag_speedrun_text = "Speedrun" + " ";how_may_tags ++;}else{var tag_speedrun_text = "";};
-	if (tag_standard){var tag_standard_text = "Standard" + " ";how_may_tags ++;}else{var tag_standard_text = "";};
-	if (tag_technical){var tag_technical_text = "Technical" + " ";how_may_tags ++;}else{var tag_technical_text = "";};
-	if (tag_themed){var tag_themed_text = "Themed" + " ";how_may_tags ++;}else{var tag_themed_text = "";};
-	if (tag_glitch_showcase){var tag_glitch_showcase_text = "Glitch Showcase" + " ";how_may_tags ++;}else{var tag_glitch_showcase_text = "";};
-	#endregion /* How many tags END */
-	
 	if (menu == "level_editor_upload_pressed")
 	|| (menu == "clear_check_no")
 	|| (menu == "clear_check_yes")
@@ -155,26 +137,8 @@ function scr_draw_upload_level_menu() {
 					if (ini_read_real("info", "clear_check", false) && !skip_clear_check) || (skip_clear_check) {
 						if (global.username != "") { /* Check if there is an username or not */
 							if (os_is_network_connected()) { /* Check if you're even connected to the internet */
-									
-								#region /* loads tags from level_information.ini */
-								ini_open(upload_level_path + "/data/level_information.ini");
-								tag_art = ini_read_real("tags", "tag_art", false);
-								tag_boss_battle = ini_read_real("tags", "tag_boss_battle", false);
-								tag_dont_move = ini_read_real("tags", "tag_dont_move", false);
-								tag_kaizo = ini_read_real("tags", "tag_kaizo", false);
-								tag_multiplayer = ini_read_real("tags", "tag_multiplayer", false);
-								tag_music = ini_read_real("tags", "tag_music", false);
-								tag_puzzle_solving = ini_read_real("tags", "tag_puzzle_solving", false);
-								tag_short_and_sweet = ini_read_real("tags", "tag_short_and_sweet", false);
-								tag_singleplayer = ini_read_real("tags", "tag_singleplayer", false);
-								tag_speedrun = ini_read_real("tags", "tag_speedrun", false);
-								tag_standard = ini_read_real("tags", "tag_standard", false);
-								tag_technical = ini_read_real("tags", "tag_technical", false);
-								tag_themed = ini_read_real("tags", "tag_themed", false);
-								tag_glitch_showcase = ini_read_real("tags", "glitch_showcase", false);
-								intended_level_difficulty = ini_read_real("info", "intended_level_difficulty", 1);
-								ini_close(); switch_save_data_commit(); /* Remember to commit the save data! */
-								#endregion /* loads tags from level_information.ini END */
+								
+								scr_load_level_tags(upload_level_path);
 									
 								menu_delay = 3;
 								menu = "upload_edit_name"; /* Go to the menu where you can edit things about the custom level before uploading it*/
@@ -515,44 +479,7 @@ function scr_draw_upload_level_menu() {
 		}
 		#endregion /* Draw Level Description END */
 		
-		#region /* Draw Level Tags */
-		draw_set_halign(fa_center);
-		if (tag_art_text == "")
-		&& (tag_boss_battle_text == "")
-		&& (tag_dont_move_text == "")
-		&& (tag_kaizo_text == "")
-		&& (tag_multiplayer_text == "")
-		&& (tag_music_text == "")
-		&& (tag_puzzle_solving_text == "")
-		&& (tag_short_and_sweet_text == "")
-		&& (tag_singleplayer_text == "")
-		&& (tag_speedrun_text == "")
-		&& (tag_standard_text == "")
-		&& (tag_technical_text == "")
-		&& (tag_themed_text == "")
-		&& (tag_glitch_showcase_text == "") {
-			scr_draw_text_outlined(display_get_gui_width() * 0.5, draw_tags_y, l10n_text("Tags") + ": " + l10n_text("None"), global.default_text_size, c_black, c_white, 1);
-			scr_draw_text_outlined(display_get_gui_width() * 0.5, draw_tags_y, l10n_text("Tags") + ": " + l10n_text("None"), global.default_text_size, c_black, c_red, scr_wave(0, 1, 1, 0));
-		}
-		else {
-			scr_draw_text_outlined(display_get_gui_width() * 0.5, draw_tags_y, l10n_text("Tags") + ": " +
-			string(tag_art_text) +
-			string(tag_boss_battle_text) +
-			string(tag_dont_move_text) +
-			string(tag_kaizo_text) +
-			string(tag_multiplayer_text) +
-			string(tag_music_text) +
-			string(tag_puzzle_solving_text) +
-			string(tag_short_and_sweet_text) +
-			string(tag_singleplayer_text) +
-			string(tag_speedrun_text) +
-			string(tag_standard_text) +
-			string(tag_technical_text) +
-			string(tag_themed_text) + 
-			string(tag_glitch_showcase_text)
-			, global.default_text_size, c_black, c_white, 1);
-		}
-		#endregion /* Draw Level Tags END */
+		scr_draw_level_tags(, draw_tags_y);
 		
 		#region /* Draw who made the level */
 		draw_set_halign(fa_right);
@@ -989,55 +916,10 @@ function scr_draw_upload_level_menu() {
 		tag_glitch_showcase = draw_menu_checkmark(display_get_gui_width() * 0.5 - 185, (45 * 16) + menu_y_offset, "Glitch Showcase", "tag_glitch_showcase", tag_glitch_showcase);
 		draw_menu_dropdown(display_get_gui_width() * 0.5 - 185, (45 * 17) + 8 + menu_y_offset, "Intended Difficulty", "intended_level_difficulty", intended_level_difficulty, "Easy", "Normal", "Hard", "Super Hard")
 		
-		#region /* Tell player what tags are selected at top of tags */
-		draw_set_halign(fa_center);
-		
-		if (tag_art_text == "")
-		&& (tag_boss_battle_text == "")
-		&& (tag_dont_move_text == "")
-		&& (tag_kaizo_text == "")
-		&& (tag_multiplayer_text == "")
-		&& (tag_music_text == "")
-		&& (tag_puzzle_solving_text == "")
-		&& (tag_short_and_sweet_text == "")
-		&& (tag_singleplayer_text == "")
-		&& (tag_speedrun_text == "")
-		&& (tag_standard_text == "")
-		&& (tag_technical_text == "")
-		&& (tag_themed_text == "")
-		&& (tag_glitch_showcase_text == "") {
-			scr_draw_text_outlined(display_get_gui_width() * 0.5, 42, l10n_text("Tags") + ": " + l10n_text("None"), global.default_text_size, c_black, c_white, 1);
-			scr_draw_text_outlined(display_get_gui_width() * 0.5, 42, l10n_text("Tags") + ": " + l10n_text("None"), global.default_text_size, c_black, c_red, scr_wave(0, 1, 1, 0));
-		}
-		else
-		if (how_may_tags <= 3) {
-			scr_draw_text_outlined(display_get_gui_width() * 0.5, 42, l10n_text("Tags") + ": " +
-			string(tag_art_text) +
-			string(tag_boss_battle_text) +
-			string(tag_dont_move_text) +
-			string(tag_kaizo_text) +
-			string(tag_multiplayer_text) +
-			string(tag_music_text) +
-			string(tag_puzzle_solving_text) +
-			string(tag_short_and_sweet_text) +
-			string(tag_singleplayer_text) +
-			string(tag_speedrun_text) +
-			string(tag_standard_text) +
-			string(tag_technical_text) +
-			string(tag_themed_text) + 
-			string(tag_glitch_showcase_text)
-			, global.default_text_size, c_black, c_white, 1);
-		}
-		else
-		if (how_may_tags > 3) {
-			/* If you have more than 3 tags, show message that you can only have 3 tags max */
-			scr_draw_text_outlined(display_get_gui_width() * 0.5, 42, string("A level can only have three tags!"), global.default_text_size, c_black, c_white, 1);
-			scr_draw_text_outlined(display_get_gui_width() * 0.5, 42, string("A level can only have three tags!"), global.default_text_size, c_black, c_red, scr_wave(0, 1, 1, 0));
-		}
-		#endregion /* Tell player what tags are selected at top of tags END */
+		scr_draw_level_tags(, 42); /* Tell player what tags are selected at top of tags */
 		
 		#region /* Draw back button at top of screen if you have 3 or less tags */
-		if (how_may_tags <= 3) {
+		if (how_many_tags <= 3) {
 			draw_menu_button(0, 0, l10n_text("Back"), "upload_edit_tags_ok", "upload_edit_tags_ok");
 		}
 		#endregion /* Draw back button at top of screen if you have 3 or less tags END*/
@@ -1048,7 +930,7 @@ function scr_draw_upload_level_menu() {
 		|| (key_a_pressed)
 		&& (menu == "upload_edit_tags_ok")
 		|| (key_b_pressed) {
-			if (how_may_tags <= 3) /* Don't save and back out if there are more than 3 tags */
+			if (how_many_tags <= 3) /* Don't save and back out if there are more than 3 tags */
 			&& (menu_delay == 0 && menu_joystick_delay == 0)
 			&& (!open_dropdown) {
 				/* Save tags to level_information.ini */
@@ -1097,7 +979,7 @@ function scr_draw_upload_level_menu() {
 		&& (!open_dropdown) {
 			menu_delay = 3;
 			if (menu == "upload_edit_tags_ok"){menu = "intended_level_difficulty";}else
-			if (menu == "tag_art"){if (how_may_tags <= 3){menu = "upload_edit_tags_ok";}else{menu = "intended_level_difficulty";}}else
+			if (menu == "tag_art"){if (how_many_tags <= 3){menu = "upload_edit_tags_ok";}else{menu = "intended_level_difficulty";}}else
 			if (menu == "tag_boss_battle"){menu = "tag_art";}else
 			if (menu == "tag_dont_move"){menu = "tag_boss_battle";}else
 			if (menu == "tag_kaizo"){menu = "tag_dont_move";}else
@@ -1133,7 +1015,7 @@ function scr_draw_upload_level_menu() {
 			if (menu == "tag_technical"){menu = "tag_themed";}else
 			if (menu == "tag_themed"){menu = "tag_glitch_showcase";}else
 			if (menu == "tag_glitch_showcase"){menu = "intended_level_difficulty";}else
-			if (menu == "intended_level_difficulty")&& (!open_dropdown){if (how_may_tags <= 3){menu = "upload_edit_tags_ok";}else{menu = "tag_art";}}
+			if (menu == "intended_level_difficulty")&& (!open_dropdown){if (how_many_tags <= 3){menu = "upload_edit_tags_ok";}else{menu = "tag_art";}}
 		}
 		
 		if (menu == "intended_level_difficulty") {
@@ -1436,7 +1318,9 @@ function scr_draw_upload_level_menu() {
 					if (os_is_network_connected()) {
 						/* Update a list of downloaded levels that you have finished. The level you are uploading have already been finished */
 						ini_open(game_save_id + "save_file/custom_level_save.ini");
-						ini_write_real("finished_downloaded_level", string(level_id), 2); /* Played and finished */
+						if (ini_read_real("finished_downloaded_level", string(level_id), 0) < 2) {
+							ini_write_real("finished_downloaded_level", string(level_id), 2); /* Played and finished when uploading own level */
+						}
 						ini_close(); switch_save_data_commit(); /* Remember to commit the save data! */
 						
 						search_for_id_still = false;

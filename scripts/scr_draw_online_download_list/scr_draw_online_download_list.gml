@@ -319,6 +319,11 @@ function scr_draw_online_download_list()
 								var played_level_icon = spr_icon_finished;
 								var played_level_color = c_lime;
 							}
+							else if (finished_level[i] == 3) { /* Finished and collected every big collectible */
+								var played_level_text = "Completed";
+								var played_level_icon = spr_icon_finished;
+								var played_level_color = c_lime;
+							}
 							else { /* Not played */
 								var played_level_text = "Unplayed";
 								var played_level_icon = spr_icon_unplayed;

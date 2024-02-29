@@ -64,7 +64,7 @@ ini_close(); switch_save_data_commit(); /* Remember to commit the save data! */
 #region /* Play as Custom character */
 
 #region /* Climb under y offset origin points */
-show_message("Bruh 25");ini_open(string(character_folder) + "/data/sprite_origin_point.ini");
+ini_open(string(character_folder) + "/data/sprite_origin_point.ini");
 if (ini_key_exists("sprite origin points", "climb_under_y_offset")) {
 	climb_under_y_offset = ini_read_real("sprite origin points", "climb_under_y_offset", 10);
 }
@@ -78,7 +78,7 @@ ini_close(); switch_save_data_commit(); /* Remember to commit the save data! */
 #endregion /* Climb under y offset origin points END */
 
 #region /* Sprite variables */
-show_message("Bruh 26");ini_open(string(character_folder) + "/data/sprite_origin_point.ini");
+ini_open(string(character_folder) + "/data/sprite_origin_point.ini");
 sprite_idle = scr_initialize_character_sprite("idle", sprite_idle); /* If sprites aren't found, it will usually default to idle sprite */
 
 sprite_against_wall = scr_initialize_character_sprite("against_wall", sprite_against_wall);
@@ -222,56 +222,56 @@ voice_wall_jump_19 = scr_get_voice("walljump19.ogg");
 voice_wall_jump_20 = scr_get_voice("walljump20.ogg");
 #endregion /* Get voices for wall jumps 1 through 20 END */
 
-#region /* Get voices for start running 1 through 10 */
-voice_start_running_1 = scr_get_voice("start_running.ogg");
-voice_start_running_2 = scr_get_voice("start_running2.ogg");
-voice_start_running_3 = scr_get_voice("start_running3.ogg");
-voice_start_running_4 = scr_get_voice("start_running4.ogg");
-voice_start_running_5 = scr_get_voice("start_running5.ogg");
-voice_start_running_6 = scr_get_voice("start_running6.ogg");
-voice_start_running_7 = scr_get_voice("start_running7.ogg");
-voice_start_running_8 = scr_get_voice("start_running8.ogg");
-voice_start_running_9 = scr_get_voice("start_running9.ogg");
-voice_start_running_10 = scr_get_voice("start_running10.ogg");
-#endregion /* Get voices for start running 1 through 10 END */
+#region /* Get voices for start dash 1 through 10 (This plays when you go from walking speed to start running speed) */
+voice_start_running_1 = scr_get_voice("startdash.ogg");
+voice_start_running_2 = scr_get_voice("startdash2.ogg");
+voice_start_running_3 = scr_get_voice("startdash3.ogg");
+voice_start_running_4 = scr_get_voice("startdash4.ogg");
+voice_start_running_5 = scr_get_voice("startdash5.ogg");
+voice_start_running_6 = scr_get_voice("startdash6.ogg");
+voice_start_running_7 = scr_get_voice("startdash7.ogg");
+voice_start_running_8 = scr_get_voice("startdash8.ogg");
+voice_start_running_9 = scr_get_voice("startdash9.ogg");
+voice_start_running_10 = scr_get_voice("startdash10.ogg");
+#endregion /* Get voices for start dash 1 through 10 END */
 
 #region /* Get voices for rope catch 1 through 10 */
-voice_rope_catch_1 = scr_get_voice("rope_catch.ogg");
-voice_rope_catch_2 = scr_get_voice("rope_catch2.ogg");
-voice_rope_catch_3 = scr_get_voice("rope_catch3.ogg");
-voice_rope_catch_4 = scr_get_voice("rope_catch4.ogg");
-voice_rope_catch_5 = scr_get_voice("rope_catch5.ogg");
-voice_rope_catch_6 = scr_get_voice("rope_catch6.ogg");
-voice_rope_catch_7 = scr_get_voice("rope_catch7.ogg");
-voice_rope_catch_8 = scr_get_voice("rope_catch8.ogg");
-voice_rope_catch_9 = scr_get_voice("rope_catch9.ogg");
-voice_rope_catch_10 = scr_get_voice("rope_catch10.ogg");
+voice_rope_catch_1 = scr_get_voice("ropecatch.ogg");
+voice_rope_catch_2 = scr_get_voice("ropecatch2.ogg");
+voice_rope_catch_3 = scr_get_voice("ropecatch3.ogg");
+voice_rope_catch_4 = scr_get_voice("ropecatch4.ogg");
+voice_rope_catch_5 = scr_get_voice("ropecatch5.ogg");
+voice_rope_catch_6 = scr_get_voice("ropecatch6.ogg");
+voice_rope_catch_7 = scr_get_voice("ropecatch7.ogg");
+voice_rope_catch_8 = scr_get_voice("ropecatch8.ogg");
+voice_rope_catch_9 = scr_get_voice("ropecatch9.ogg");
+voice_rope_catch_10 = scr_get_voice("ropecatch10.ogg");
 #endregion /* Get voices for rope catch 1 through 10 END */
 
 #region /* Get voices for jump spring 1 through 10 */
-voice_jump_spring_1 = scr_get_voice("jump_spring.ogg");
-voice_jump_spring_2 = scr_get_voice("jump_spring2.ogg");
-voice_jump_spring_3 = scr_get_voice("jump_spring3.ogg");
-voice_jump_spring_4 = scr_get_voice("jump_spring4.ogg");
-voice_jump_spring_5 = scr_get_voice("jump_spring5.ogg");
-voice_jump_spring_6 = scr_get_voice("jump_spring6.ogg");
-voice_jump_spring_7 = scr_get_voice("jump_spring7.ogg");
-voice_jump_spring_8 = scr_get_voice("jump_spring8.ogg");
-voice_jump_spring_9 = scr_get_voice("jump_spring9.ogg");
-voice_jump_spring_10 = scr_get_voice("jump_spring10.ogg");
+voice_jump_spring_1 = scr_get_voice("jumpspring.ogg");
+voice_jump_spring_2 = scr_get_voice("jumpspring2.ogg");
+voice_jump_spring_3 = scr_get_voice("jumpspring3.ogg");
+voice_jump_spring_4 = scr_get_voice("jumpspring4.ogg");
+voice_jump_spring_5 = scr_get_voice("jumpspring5.ogg");
+voice_jump_spring_6 = scr_get_voice("jumpspring6.ogg");
+voice_jump_spring_7 = scr_get_voice("jumpspring7.ogg");
+voice_jump_spring_8 = scr_get_voice("jumpspring8.ogg");
+voice_jump_spring_9 = scr_get_voice("jumpspring9.ogg");
+voice_jump_spring_10 = scr_get_voice("jumpspring10.ogg");
 #endregion /* Get voices for jump spring 1 through 10 END */
 
 #region /* Get voices for jump rope 1 through 10 */
-voice_jump_rope_1 = scr_get_voice("jump_rope.ogg");
-voice_jump_rope_2 = scr_get_voice("jump_rope2.ogg");
-voice_jump_rope_3 = scr_get_voice("jump_rope3.ogg");
-voice_jump_rope_4 = scr_get_voice("jump_rope4.ogg");
-voice_jump_rope_5 = scr_get_voice("jump_rope5.ogg");
-voice_jump_rope_6 = scr_get_voice("jump_rope6.ogg");
-voice_jump_rope_7 = scr_get_voice("jump_rope7.ogg");
-voice_jump_rope_8 = scr_get_voice("jump_rope8.ogg");
-voice_jump_rope_9 = scr_get_voice("jump_rope9.ogg");
-voice_jump_rope_10 = scr_get_voice("jump_rope10.ogg");
+voice_jump_rope_1 = scr_get_voice("jumprope.ogg");
+voice_jump_rope_2 = scr_get_voice("jumprope2.ogg");
+voice_jump_rope_3 = scr_get_voice("jumprope3.ogg");
+voice_jump_rope_4 = scr_get_voice("jumprope4.ogg");
+voice_jump_rope_5 = scr_get_voice("jumprope5.ogg");
+voice_jump_rope_6 = scr_get_voice("jumprope6.ogg");
+voice_jump_rope_7 = scr_get_voice("jumprope7.ogg");
+voice_jump_rope_8 = scr_get_voice("jumprope8.ogg");
+voice_jump_rope_9 = scr_get_voice("jumprope9.ogg");
+voice_jump_rope_10 = scr_get_voice("jumprope10.ogg");
 #endregion /* Get voices for jump rope 1 through 10 END */
 
 #region /* Get voices for jump 1 through 10 */
@@ -314,29 +314,29 @@ voice_jump_3rd_10 = scr_get_voice("jump3rd10.ogg");
 #endregion /* Get voices for jump 3rd 1 through 10 END */
 
 #region /* Get voices for get incincibility 1 through 10 */
-voice_get_invincibility_1 = scr_get_voice("get_invincibility.ogg");
-voice_get_invincibility_2 = scr_get_voice("get_invincibility2.ogg");
-voice_get_invincibility_3 = scr_get_voice("get_invincibility3.ogg");
-voice_get_invincibility_4 = scr_get_voice("get_invincibility4.ogg");
-voice_get_invincibility_5 = scr_get_voice("get_invincibility5.ogg");
-voice_get_invincibility_6 = scr_get_voice("get_invincibility6.ogg");
-voice_get_invincibility_7 = scr_get_voice("get_invincibility7.ogg");
-voice_get_invincibility_8 = scr_get_voice("get_invincibility8.ogg");
-voice_get_invincibility_9 = scr_get_voice("get_invincibility9.ogg");
-voice_get_invincibility_10 = scr_get_voice("get_invincibility10.ogg");
+voice_get_invincibility_1 = scr_get_voice("getinvincibility.ogg");
+voice_get_invincibility_2 = scr_get_voice("getinvincibility2.ogg");
+voice_get_invincibility_3 = scr_get_voice("getinvincibility3.ogg");
+voice_get_invincibility_4 = scr_get_voice("getinvincibility4.ogg");
+voice_get_invincibility_5 = scr_get_voice("getinvincibility5.ogg");
+voice_get_invincibility_6 = scr_get_voice("getinvincibility6.ogg");
+voice_get_invincibility_7 = scr_get_voice("getinvincibility7.ogg");
+voice_get_invincibility_8 = scr_get_voice("getinvincibility8.ogg");
+voice_get_invincibility_9 = scr_get_voice("getinvincibility9.ogg");
+voice_get_invincibility_10 = scr_get_voice("getinvincibility10.ogg");
 #endregion /* Get voices for get invincibility 1 through 10 END */
 
 #region /* Get voices for enter goal 1 through 10 */
-voice_enter_goal_1 = scr_get_voice("enter_goal.ogg");
-voice_enter_goal_2 = scr_get_voice("enter_goal2.ogg");
-voice_enter_goal_3 = scr_get_voice("enter_goal3.ogg");
-voice_enter_goal_4 = scr_get_voice("enter_goal4.ogg");
-voice_enter_goal_5 = scr_get_voice("enter_goal5.ogg");
-voice_enter_goal_6 = scr_get_voice("enter_goal6.ogg");
-voice_enter_goal_7 = scr_get_voice("enter_goal7.ogg");
-voice_enter_goal_8 = scr_get_voice("enter_goal8.ogg");
-voice_enter_goal_9 = scr_get_voice("enter_goal9.ogg");
-voice_enter_goal_10 = scr_get_voice("enter_goal10.ogg");
+voice_enter_goal_1 = scr_get_voice("entergoal.ogg");
+voice_enter_goal_2 = scr_get_voice("entergoal2.ogg");
+voice_enter_goal_3 = scr_get_voice("entergoal3.ogg");
+voice_enter_goal_4 = scr_get_voice("entergoal4.ogg");
+voice_enter_goal_5 = scr_get_voice("entergoal5.ogg");
+voice_enter_goal_6 = scr_get_voice("entergoal6.ogg");
+voice_enter_goal_7 = scr_get_voice("entergoal7.ogg");
+voice_enter_goal_8 = scr_get_voice("entergoal8.ogg");
+voice_enter_goal_9 = scr_get_voice("entergoal9.ogg");
+voice_enter_goal_10 = scr_get_voice("entergoal10.ogg");
 #endregion /* Get voices for enter goal 1 through 10 END */
 
 #region /* Get voices for dive 1 through 20 */
@@ -376,16 +376,16 @@ voice_damage_10 = scr_get_voice("ow10.ogg");
 #endregion /* Get voices for damage 1 through 10 END */
 
 #region /* Get voices for burned running 1 through 10 */
-voice_burned_running_1 = scr_get_voice("burned_running.ogg");
-voice_burned_running_2 = scr_get_voice("burned_running2.ogg");
-voice_burned_running_3 = scr_get_voice("burned_running3.ogg");
-voice_burned_running_4 = scr_get_voice("burned_running4.ogg");
-voice_burned_running_5 = scr_get_voice("burned_running5.ogg");
-voice_burned_running_6 = scr_get_voice("burned_running6.ogg");
-voice_burned_running_7 = scr_get_voice("burned_running7.ogg");
-voice_burned_running_8 = scr_get_voice("burned_running8.ogg");
-voice_burned_running_9 = scr_get_voice("burned_running9.ogg");
-voice_burned_running_10 = scr_get_voice("burned_running10.ogg");
+voice_burned_running_1 = scr_get_voice("burnedrunning.ogg");
+voice_burned_running_2 = scr_get_voice("burnedrunning2.ogg");
+voice_burned_running_3 = scr_get_voice("burnedrunning3.ogg");
+voice_burned_running_4 = scr_get_voice("burnedrunning4.ogg");
+voice_burned_running_5 = scr_get_voice("burnedrunning5.ogg");
+voice_burned_running_6 = scr_get_voice("burnedrunning6.ogg");
+voice_burned_running_7 = scr_get_voice("burnedrunning7.ogg");
+voice_burned_running_8 = scr_get_voice("burnedrunning8.ogg");
+voice_burned_running_9 = scr_get_voice("burnedrunning9.ogg");
+voice_burned_running_10 = scr_get_voice("burnedrunning10.ogg");
 #endregion /* Get voices for burned running 1 through 10 END */
 
 #region /* Get voices for burned 1 through 10 */
@@ -402,16 +402,16 @@ voice_burned_10 = scr_get_voice("burned10.ogg");
 #endregion /* Get voices for burned 1 through 10 END */
 
 #region /* Get voices for burned die 1 through 10 */
-voice_burned_die_1 = scr_get_voice("burned_die.ogg");
-voice_burned_die_2 = scr_get_voice("burned_die2.ogg");
-voice_burned_die_3 = scr_get_voice("burned_die3.ogg");
-voice_burned_die_4 = scr_get_voice("burned_die4.ogg");
-voice_burned_die_5 = scr_get_voice("burned_die5.ogg");
-voice_burned_die_6 = scr_get_voice("burned_die6.ogg");
-voice_burned_die_7 = scr_get_voice("burned_die7.ogg");
-voice_burned_die_8 = scr_get_voice("burned_die8.ogg");
-voice_burned_die_9 = scr_get_voice("burned_die9.ogg");
-voice_burned_die_10 = scr_get_voice("burned_die10.ogg");
+voice_burned_die_1 = scr_get_voice("burneddie.ogg");
+voice_burned_die_2 = scr_get_voice("burneddie2.ogg");
+voice_burned_die_3 = scr_get_voice("burneddie3.ogg");
+voice_burned_die_4 = scr_get_voice("burneddie4.ogg");
+voice_burned_die_5 = scr_get_voice("burneddie5.ogg");
+voice_burned_die_6 = scr_get_voice("burneddie6.ogg");
+voice_burned_die_7 = scr_get_voice("burneddie7.ogg");
+voice_burned_die_8 = scr_get_voice("burneddie8.ogg");
+voice_burned_die_9 = scr_get_voice("burneddie9.ogg");
+voice_burned_die_10 = scr_get_voice("burneddie10.ogg");
 #endregion /* Get voices for burned die 1 through 10 END */
 
 voice_open_mouth = scr_get_voice("open_mouth.ogg");

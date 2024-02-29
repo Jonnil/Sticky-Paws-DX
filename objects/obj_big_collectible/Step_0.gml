@@ -1,3 +1,9 @@
+/* Indicate when you have already collected this big collectible */
+if (global.big_collectible[big_collectible]) {
+	image_alpha = 0.5;
+	image_blend = c_gray;
+}
+
 image_index = global.collectible_image_index;
 
 if (follow_player)

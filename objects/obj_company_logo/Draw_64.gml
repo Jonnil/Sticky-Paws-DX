@@ -82,6 +82,6 @@ if (show_skip_button)
 	}
 }
 
-scr_debug_screen();
 scr_draw_darken_screen_when_window_is_unfocused();
+scr_debug_screen();
 scr_draw_cursor_mouse();

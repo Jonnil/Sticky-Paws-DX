@@ -127,6 +127,17 @@ if (!hide_menu_for_clean_screenshots)
 		{
 			draw_sprite_ext(global.title_logo_index, 0, 160, scr_wave(70, 80, 4.5, 0), (402 / sprite_get_height(global.title_logo_index)) * 0.3, (402 / sprite_get_height(global.title_logo_index)) * 0.3, 0, c_white, 1 * fade_in_pause_alpha);
 		}
+		
+		#region /* Display level information */
+		draw_set_halign(fa_left);
+		scr_draw_text_outlined(32, 320,
+		string(display_level_name) + "\n" +
+		string(display_level_author) + "\n" +
+		string(display_level_id) + "\n"
+		, global.default_text_size * 0.75, c_black, c_white, 1 * fade_in_pause_alpha);
+		scr_draw_level_tags(32, 420, false, fa_left, false, global.default_text_size * 0.75, 1 * fade_in_pause_alpha);
+		#endregion /* Display level information END */
+		
 	}
 	#endregion /* Games Logo in top left corner END */
 	
@@ -356,8 +367,8 @@ if (!hide_menu_for_clean_screenshots)
 	scr_character_select_menu_draw();
 	
 	scr_quit_to_desktop_menu("quit_to_desktop");
-	scr_debug_screen();
 	scr_draw_darken_screen_when_window_is_unfocused();
+	scr_debug_screen();
 	scr_draw_cursor_mouse();
 	
 }

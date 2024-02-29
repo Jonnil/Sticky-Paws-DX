@@ -657,8 +657,6 @@ if (menu == "upload_rules_back")
 	scr_draw_upload_rules();
 }
 
-scr_debug_screen();
-
 scr_draw_darken_screen_when_window_is_unfocused();
 
 if (pause)
@@ -666,3 +664,5 @@ if (pause)
 {
 	scr_draw_cursor_mouse();
 }
+
+scr_debug_screen();

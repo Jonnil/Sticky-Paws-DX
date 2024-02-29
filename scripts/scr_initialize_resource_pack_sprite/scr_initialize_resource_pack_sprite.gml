@@ -60,14 +60,14 @@ function scr_initialize_resource_pack_sprite(sprite_name, sprite_variable = spr_
 	if (sprite_variable != noone)
 	&& (saved_file_exists)
 	{
-		show_message("Bruh 11");if (file_exists("resource_pack/" + string(ds_list_find_value(global.all_loaded_resource_pack, global.selected_resource_pack)) + "/data/sprite_origin_point.ini"))
+		if (file_exists("resource_pack/" + string(ds_list_find_value(global.all_loaded_resource_pack, global.selected_resource_pack)) + "/data/sprite_origin_point.ini"))
 		{
-			show_message("Bruh 12");ini_open("resource_pack/" + string(ds_list_find_value(global.all_loaded_resource_pack, global.selected_resource_pack)) + "/data/sprite_origin_point.ini");
+			ini_open("resource_pack/" + string(ds_list_find_value(global.all_loaded_resource_pack, global.selected_resource_pack)) + "/data/sprite_origin_point.ini");
 			var can_save_to_config = false; /* You can't save values to included files */
 		}
 		else
 		{
-			show_message("Bruh 13");ini_open(game_save_id + "custom_resource_pack/" + string(ds_list_find_value(global.all_loaded_resource_pack, global.selected_resource_pack)) + "/data/sprite_origin_point.ini");
+			ini_open(game_save_id + "custom_resource_pack/" + string(ds_list_find_value(global.all_loaded_resource_pack, global.selected_resource_pack)) + "/data/sprite_origin_point.ini");
 			var can_save_to_config = true; /* You can save values to local appdata */
 		}
 		

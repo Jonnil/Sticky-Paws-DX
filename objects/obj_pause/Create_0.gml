@@ -225,7 +225,7 @@ audio_pause_all(); /* Pause sound effects and music */
 if (room == rm_leveleditor)
 && (global.character_select_in_this_menu == "main_game")
 {
-	var level_name = string(ds_list_find_value(global.all_loaded_main_levels, global.select_level_index));
+	var level_name = global.level_name;
 	
 	ini_open(game_save_id + "save_file/file" + string(global.file) + ".ini");
 	
@@ -258,3 +258,19 @@ if (room == rm_leveleditor)
 #endregion /* Save Level Editor Checkpoint END */
 
 set_controller_sprites_to_use();
+
+#region /* Load level information that can be displayed in pause menu */
+if (global.character_select_in_this_menu == "main_game") {
+	var level_path = "levels/" + string(ds_list_find_value(global.all_loaded_main_levels, global.select_level_index));
+}
+else if (global.character_select_in_this_menu == "level_editor")
+{
+	var level_path = global.use_cache_or_working + "custom_levels/" + global.level_name;
+}
+ini_open(level_path + "/data/level_information.ini");
+display_level_name = ini_read_string("info", "level_name", global.level_name);
+display_level_author = ini_read_string("info", "username", "");
+display_level_id = ini_read_string("info", "level_id", "");
+ini_close();
+scr_load_level_tags(level_path);
+#endregion /* Load level information that can be displayed in pause menu END */
