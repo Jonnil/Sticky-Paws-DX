@@ -72,7 +72,7 @@ function scr_draw_caution_online()
 			|| (global.playergame <= 0) {
 				global.player_can_play[fixed_player] = true;
 			}
-			information_menu_open = 0;
+			information_menu_open = "";
 			
 			if (!upload_rules_do_not_show_level) /* If you have not yet agreed to the upload rules for uploading levels */
 			&& (caution_online_takes_you_to == "level_editor_upload_pressed") /* And you're supposed to go to the upload edit menu */
@@ -101,7 +101,7 @@ function scr_draw_caution_online()
 				show_level_editor_corner_menu = true;
 			}
 			if (caution_online_takes_you_back_to == "about_online_level_list") {
-				information_menu_open = 1; /* Go back to the about page on information menu when going back from online caution menu */
+				information_menu_open = "about"; /* Go back to the about page on information menu when going back from online caution menu */
 			}
 			menu_delay = 3;
 			menu = caution_online_takes_you_back_to;

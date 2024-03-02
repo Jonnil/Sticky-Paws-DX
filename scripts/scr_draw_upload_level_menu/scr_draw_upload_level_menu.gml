@@ -214,6 +214,10 @@ function scr_draw_upload_level_menu() {
 		draw_set_alpha(1);
 		scr_draw_text_outlined(get_window_width * 0.5, do_a_clear_check_y, l10n_text("Do a clear check?"), global.default_text_size * 1.9, c_black, c_white, 1);
 		
+		/* Tell the player that they must use the first official character when doing a clear check */
+		var first_official_character_name = string(ds_list_find_value(global.all_loaded_characters, 0));
+		scr_draw_text_outlined(get_window_width * 0.5, do_a_clear_check_y + 40, l10n_text("You must use " + first_official_character_name + " when doing a clear check"), global.default_text_size, c_black, c_white, 1);
+		
 		#region /* Clear Check No */
 		if (point_in_rectangle(mouse_get_x, mouse_get_y, get_window_width * 0.5 - 370, do_a_clear_check_no_y - 42, get_window_width * 0.5 + 370, do_a_clear_check_no_y + 42) && global.controls_used_for_navigation == "mouse") {
 			if (menu_delay == 0 && menu_joystick_delay == 0) {
@@ -308,6 +312,13 @@ function scr_draw_upload_level_menu() {
 					}
 				}
 				#endregion /* Set clear_check to false whenever you agree to do a clear check for the first time, just in case it's already not END */
+				
+				/* Levels must be able to be cleared with the default official character, so you can't clear the level with a character that can cheat */
+				for(var i = 1; i <= global.max_players; i += 1) {
+					if (global.player_can_play[i]) {
+						global.character_index[i - 1] = 0; /* 0 = first official character */
+					}
+				}
 				
 				global.checkpoint_x = 0;
 				global.checkpoint_y = 0;

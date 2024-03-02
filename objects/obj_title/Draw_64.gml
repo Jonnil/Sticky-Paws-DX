@@ -116,13 +116,6 @@ if (menu == "main_game")
 || (menu == "options")
 || (menu == "quit")
 || (menu == "information")
-|| (menu == "link_discord")
-|| (menu == "link_youtube")
-|| (menu == "link_gamebanana")
-|| (menu == "link_instagram")
-|| (menu == "link_reddit")
-|| (menu == "link_twitter")
-|| (menu == "link_wiki")
 || (menu == "fullscreen_mode_title")
 {
 	if (!in_settings)
@@ -186,13 +179,6 @@ if (!in_settings)
 		menu == "options" ||
         menu == "quit" ||
 		menu == "information" ||
-		menu == "link_discord" ||
-		menu == "link_youtube" ||
-		menu == "link_gamebanana" ||
-        menu == "link_instagram" ||
-		menu == "link_reddit" ||
-		menu == "link_twitter" ||
-		menu == "link_wiki" ||
 		menu == "fullscreen_mode_title")
     {
 		
@@ -383,46 +369,8 @@ if (!in_settings)
 			&& (mouse_check_button_released(mb_left))
 			&& (menu_delay == 0 && menu_joystick_delay == 0)
 			{
-				information_menu_open = true;
+				information_menu_open = "about";
 				menu = "about";
-				menu_delay = 3;
-			}
-		}
-		
-		/* Discord button */
-		draw_menu_button_sprite(global.resource_pack_sprite_logo_discord, display_get_gui_width() - (32 * 2), display_get_gui_height() - 35, 16, 0, 0.25, 0.25, 32, 32, "", "link_discord", "link_discord", false);
-		if (menu == "link_discord")
-		{
-			draw_set_halign(fa_right);
-			scr_draw_text_outlined(display_get_gui_width() - 8, display_get_gui_height() - 64 - 32, l10n_text("Join our Discord!"), global.default_text_size, c_black, c_white, 1);
-			scr_draw_text_outlined(display_get_gui_width() - 8, display_get_gui_height() - 64, string(global.link_to_discord), global.default_text_size, c_black, c_white, 1);
-			
-			if (key_a_pressed)
-			&& (menu_delay == 0 && menu_joystick_delay == 0)
-			|| (point_in_rectangle(mouse_get_x, mouse_get_y, display_get_gui_width() - (32 * 2), display_get_gui_height() - 35, display_get_gui_width() - (32 * 2) + 32, display_get_gui_height()))
-			&& (mouse_check_button_released(mb_left))
-			&& (menu_delay == 0 && menu_joystick_delay == 0)
-			{
-				url_open(string(global.link_to_discord));
-				menu_delay = 3;
-			}
-		}
-		
-		/* YouTube button */
-		draw_menu_button_sprite(global.resource_pack_sprite_logo_youtube, display_get_gui_width() - (32 * 3), display_get_gui_height() - 35, 16, 0, 0.25, 0.25, 32, 32, "", "link_youtube", "link_youtube", false);
-		if (menu == "link_youtube")
-		{
-			draw_set_halign(fa_right);
-			scr_draw_text_outlined(display_get_gui_width() - 8, display_get_gui_height() - 64 - 32, l10n_text("Subscribe to our YouTube Channel!"), global.default_text_size, c_black, c_white, 1);
-			scr_draw_text_outlined(display_get_gui_width() - 8, display_get_gui_height() - 64, string(global.link_to_youtube), global.default_text_size, c_black, c_white, 1);
-			
-			if (key_a_pressed)
-			&& (menu_delay == 0 && menu_joystick_delay == 0)
-			|| (point_in_rectangle(mouse_get_x, mouse_get_y, display_get_gui_width() - (32 * 3), display_get_gui_height() - 35, display_get_gui_width() - (32 * 3) + 32, display_get_gui_height()))
-			&& (mouse_check_button_released(mb_left))
-			&& (menu_delay == 0 && menu_joystick_delay == 0)
-			{
-				url_open(string(global.link_to_youtube));
 				menu_delay = 3;
 			}
 		}
@@ -636,126 +584,11 @@ if (!input_key)
 			menu = "main_game";
 		}
 		else
-		if (key_left)
+		if (can_toggle_fullscreen)
+		&& (key_left || key_right)
 		{
 			menu_delay = 3;
-			if (global.link_to_discord != "")
-			{
-				menu = "link_discord";
-			}
-			else
-			if (global.link_to_youtube != "")
-			{
-				menu = "link_youtube";
-			}
-		}
-		else
-		if (key_right)
-		{
-			menu_delay = 3;
-			if (can_toggle_fullscreen)
-			{
-				menu = "fullscreen_mode_title"
-			}
-			else
-			if (global.link_to_youtube != "")
-			{
-				menu = "link_youtube";
-			}
-			else
-			if (global.link_to_discord != "")
-			{
-				menu = "link_discord";
-			}
-		}
-	}
-	else
-	if (menu == "link_discord")
-	{
-		if (key_up)
-		{
-			menu_delay = 3;
-			if (global.enable_option_for_pc)
-			{
-				menu = "quit";
-			}
-			else
-			{
-				menu = "options";
-			}
-		}
-		else
-		if (key_down)
-		{
-			menu_delay = 3;
-			menu = "main_game";
-		}
-		else
-		if (key_left)
-		{
-			menu_delay = 3;
-			if (global.link_to_youtube != "")
-			{
-				menu = "link_youtube";
-			}
-			else
-			{
-				menu = "information";
-			}
-		}
-		else
-		if (key_right)
-		{
-			menu_delay = 3;
-			menu = "information";
-		}
-	}
-	else
-	if (menu == "link_youtube")
-	{
-		if (key_up)
-		{
-			menu_delay = 3;
-			if (global.enable_option_for_pc)
-			{
-				menu = "quit";
-			}
-			else
-			{
-				menu = "options";
-			}
-		}
-		else
-		if (key_down)
-		{
-			menu_delay = 3;
-			menu = "main_game";
-		}
-		else
-		if (key_left)
-		{
-			menu_delay = 3;
-			if (can_toggle_fullscreen)
-			{
-				menu = "fullscreen_mode_title"
-			}
-			else
-			{
-				menu = "information";
-			}
-		}
-		else
-		if (key_right)
-		{
-			menu_delay = 3;
-			if (global.link_to_discord != "")
-			{
-				menu = "link_discord";
-			}
-			else
-			{
-				menu = "information";
-			}
+			menu = "fullscreen_mode_title"
 		}
 	}
 	else
@@ -773,28 +606,10 @@ if (!input_key)
 			menu = "main_game";
 		}
 		else
-		if (key_left)
+		if (key_left || key_right)
 		{
 			menu_delay = 3;
 			menu = "information";
-		}
-		else
-		if (key_right)
-		{
-			menu_delay = 3;
-			if (global.link_to_youtube != "")
-			{
-				menu = "link_youtube";
-			}
-			else
-			if (global.link_to_discord != "")
-			{
-				menu = "link_discord";
-			}
-			else
-			{
-				menu = "information";
-			}
 		}
 	}
 	#endregion /* Navigate Main Menu END */

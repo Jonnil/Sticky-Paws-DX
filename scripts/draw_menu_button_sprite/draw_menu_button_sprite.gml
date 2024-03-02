@@ -6,7 +6,7 @@ function draw_menu_button_sprite(spr_index, x_position, y_position, x_origin_off
 	var var_text_size = 1;
 	if (string_width(string(string_text)) > (spr_width + 173))
 	{
-		var var_text_size = 0.6;
+		var var_text_size = 0.7;
 	}
 	
 	#region /* Button */

@@ -8,19 +8,21 @@ var character_for_player1 = "sticky"; /* Player 1 Select Character 1 */
 var character_for_player2 = "catlyn"; /* Player 2 Select Character 2 */
 var character_for_player3 = "sticky"; /* Player 3 Select Character 3 */
 var character_for_player4 = "catlyn"; /* Player 4 Select Character 4 */
-global.link_to_steam_page = "https://store.steampowered.com/app/1129090/Sticky_Paws";
-global.link_to_discord = "https://discord.com/invite/fGCy36x";
-global.link_to_youtube = "https://www.youtube.com/Jonnilescom";
+
+/* Links to websites */
+global.link_to_bug_report_form = "https://www.jonnil.games/sticky-paws-bug-report";
+global.link_to_changelog_history = "https://www.jonnil.games/sticky-paws-changelog"
+global.link_to_discord = "https://www.jonnil.games/discord";
 global.link_to_gamebanana = "https://gamebanana.com/games/7722";
 global.link_to_instagram = "https://www.instagram.com/jonnilll";
 global.link_to_reddit = "https://www.reddit.com/r/Jonnil";
+global.link_to_steam_page = "https://store.steampowered.com/app/1129090/Sticky_Paws";
 global.link_to_twitter = "https://twitter.com/jonnilll";
-global.link_to_wiki = ""; //"https://stickypedia.miraheze.org/wiki/Main_Page";
-global.link_to_bug_report_form = "https://forms.gle/h1KopsAAZb1fx2Hk7";
+global.link_to_update_schedule = "https://www.jonnil.games/sticky-paws-update-schedule";
 global.link_to_website = "https://www.jonnil.games/";
 global.link_to_website_guide = "https://www.jonnil.games/sticky-paws-guide";
-global.link_to_changelog_history = "https://www.jonnil.games/sticky-paws-changelog"
-global.link_to_update_schedule = "https://www.jonnil.games/sticky-paws-update-schedule";
+global.link_to_wiki = ""; //"https://stickypedia.miraheze.org/wiki/Main_Page";
+global.link_to_youtube = "https://www.youtube.com/Jonnilescom";
 
 /* Update this text explaining what is new in each update */ global.whats_new = "Biggest Sticky Paws update yet! \n Thank you everyone for supporting my game! \n I've been working very hard on porting this game to Nintendo Switch. \n Been focusing a lot on making the level editor better, \n and there is now a level sharing feature in-game. \n Please support this game by sharing the game with friends. \n I would greatly appreciate it. \n Have a great time making and playing shared levels! \n \n -Jonnil";
 

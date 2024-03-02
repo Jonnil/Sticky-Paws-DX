@@ -60,7 +60,7 @@ finished_level = undefined; /* This needs to be set to undefined by default */
 liked_content = undefined;
 i = 0;
 
-information_menu_open = false; /* If the information menu is opened or not */
+information_menu_open = ""; /* If the information menu is opened or not */
 
 menu = "";
 

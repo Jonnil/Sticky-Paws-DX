@@ -2,7 +2,6 @@ function scr_draw_upload_character_menu()
 {
 	var fixed_player = 1;
 	var destroy_zip_after_uploading = true; /* Game should destroy the zip file once it's been uploaded to the server as a zip file. By default set this to true */
-	var character_name = string(ds_list_find_value(global.all_loaded_characters, global.character_index[fixed_player - 1]));
 	var message_x_offset = 400;
 	
 	var get_window_height = display_get_gui_height();
@@ -16,6 +15,8 @@ function scr_draw_upload_character_menu()
 	|| (menu == "upload_clear_check_character_again")
 	|| (menu == "upload_clear_check_character_open_character_folder")
 	{
+		var character_name = string(ds_list_find_value(global.all_loaded_characters, global.character_index[fixed_player - 1]));
+		
 		var upload_name_question_y = window_get_height() * 0.5;
 		var upload_character_no_y = (window_get_height() * 0.5) + 100;
 		var upload_character_yes_y = (window_get_height() * 0.5) + 184;
@@ -376,6 +377,8 @@ function scr_draw_upload_character_menu()
 	if (menu == "clear_check_character_no")
 	|| (menu == "clear_check_character_yes")
 	{
+		var character_name = string(ds_list_find_value(global.all_loaded_characters, global.character_index[fixed_player - 1]));
+		
 		var do_a_clear_check_character_y = 432;
 		var do_a_clear_check_character_no_y = 532;
 		var do_a_clear_check_character_yes_y = 532;
@@ -662,6 +665,8 @@ function scr_draw_upload_character_menu()
 	#region /* Uploading Character */
 	if (menu == "uploading_character")
 	{
+		var character_name = string(ds_list_find_value(global.all_loaded_characters, global.character_index[fixed_player - 1]));
+		
 		content_type = "character"; /* Set "content type" to be correct for what kind of files you're uploading, before uploading the files to the server */
 		var uploading_character_message_y = 532;
 		
@@ -879,6 +884,8 @@ function scr_draw_upload_character_menu()
 	#region /* Character Uploaded */
 	if (menu == "character_uploaded")
 	{
+		var character_name = string(ds_list_find_value(global.all_loaded_characters, global.character_index[fixed_player - 1]));
+		
 		var uploaded_character_message_y = 432;
 		var ok_y = uploaded_character_message_y + 168;
 		

@@ -5,11 +5,8 @@ function scr_draw_information_menu()
 	var fixed_player = 1;
 	
 	#region /* Information menu */
-	if (information_menu_open > 0)
-	{
-		if (information_menu_open != 4)
-		&& (instance_exists(obj_credits))
-		{
+	if (information_menu_open != "") {
+		if (information_menu_open != "credits" && instance_exists(obj_credits)) {
 			instance_destroy(obj_credits);
 		}
 		
@@ -27,29 +24,36 @@ function scr_draw_information_menu()
 			if (menu == "about")
 			{
 				menu_delay = 3;
-				menu = "credits";
-				information_menu_open = 4;
+				menu = "links";
+				information_menu_open = "links";
 			}
 			else
 			if (menu == "whats_new")
 			{
 				menu_delay = 3;
 				menu = "about";
-				information_menu_open = 1;
+				information_menu_open = "about";
 			}
 			else
 			if (menu == "backups")
 			{
 				menu_delay = 3;
 				menu = "whats_new";
-				information_menu_open = 2;
+				information_menu_open = "whats_new";
 			}
 			else
 			if (menu == "credits")
 			{
 				menu_delay = 3;
 				menu = "backups";
-				information_menu_open = 3;
+				information_menu_open = "backups";
+			}
+			else
+			if (menu == "links")
+			{
+				menu_delay = 3;
+				menu = "credits";
+				information_menu_open = "credits";
 			}
 		}
 		if (key_right)
@@ -57,31 +61,34 @@ function scr_draw_information_menu()
 		{
 			if (menu == "about")
 			{
-				menu_delay = 3;
 				menu = "whats_new";
-				information_menu_open = 2;
+				information_menu_open = "whats_new";
 			}
 			else
 			if (menu == "whats_new")
 			{
-				menu_delay = 3;
 				menu = "backups";
-				information_menu_open = 3;
+				information_menu_open = "backups";
 			}
 			else
 			if (menu == "backups")
 			{
-				menu_delay = 3;
 				menu = "credits";
-				information_menu_open = 4;
+				information_menu_open = "credits";
 			}
 			else
 			if (menu == "credits")
 			{
-				menu_delay = 3;
-				menu = "about";
-				information_menu_open = 1;
+				menu = "links";
+				information_menu_open = "links";
 			}
+			else
+			if (menu == "links")
+			{
+				menu = "about";
+				information_menu_open = "about";
+			}
+			menu_delay = 3;
 		}
 		if (key_up)
 		&& (menu_delay == 0 && menu_joystick_delay == 0)
@@ -120,14 +127,14 @@ function scr_draw_information_menu()
 			}
 			else
 			if (menu == "information_back")
-			&& (information_menu_open == 1)
+			&& (information_menu_open == "about")
 			{
 				menu_delay = 3;
 				menu = "about_link_to_update_schedule";
 			}
 			else
 			if (menu == "information_back")
-			&& (information_menu_open == 2)
+			&& (information_menu_open == "whats_new")
 			{
 				menu_delay = 3;
 				menu = "changelog_history";
@@ -140,7 +147,7 @@ function scr_draw_information_menu()
 			}
 			else
 			if (menu == "information_back")
-			&& (information_menu_open == 3)
+			&& (information_menu_open == "backups")
 			{
 				menu_delay = 3;
 				if (global.enable_option_for_pc)
@@ -178,24 +185,29 @@ function scr_draw_information_menu()
 			if (menu == "information_back")
 			{
 				menu_delay = 3;
-				if (information_menu_open == 1)
+				if (information_menu_open == "about")
 				{
 					menu = "about";
 				}
 				else
-				if (information_menu_open == 2)
+				if (information_menu_open == "whats_new")
 				{
 					menu = "whats_new";
 				}
 				else
-				if (information_menu_open == 3)
+				if (information_menu_open == "backups")
 				{
 					menu = "backups";
 				}
 				else
-				if (information_menu_open == 4)
+				if (information_menu_open == "credits")
 				{
 					menu = "credits";
+				}
+				else
+				if (information_menu_open == "links")
+				{
+					menu = "links";
 				}
 			}
 			else
@@ -285,7 +297,7 @@ function scr_draw_information_menu()
 		&& (key_a_pressed)
 		&& (menu_delay == 0 && menu_joystick_delay == 0)
 		{
-			information_menu_open = 1;
+			information_menu_open = "about";
 			menu_delay = 3;
 		}
 		
@@ -306,7 +318,7 @@ function scr_draw_information_menu()
 		&& (key_a_pressed)
 		&& (menu_delay == 0 && menu_joystick_delay == 0)
 		{
-			information_menu_open = 2;
+			information_menu_open = "whats_new";
 			menu_delay = 3;
 		}
 		
@@ -319,7 +331,7 @@ function scr_draw_information_menu()
 		&& (key_a_pressed)
 		&& (menu_delay == 0 && menu_joystick_delay == 0)
 		{
-			information_menu_open = 3;
+			information_menu_open = "backups";
 			menu_delay = 3;
 		}
 		
@@ -332,7 +344,20 @@ function scr_draw_information_menu()
 		&& (key_a_pressed)
 		&& (menu_delay == 0 && menu_joystick_delay == 0)
 		{
-			information_menu_open = 4;
+			information_menu_open = "credits";
+			menu_delay = 3;
+		}
+		
+		/* Links tab button */
+		draw_menu_button_sprite(spr_menu_button, 185 * 4, 0, 0, 0, 0.5, 1, 185, 42, l10n_text("Links"), "links", "links", false);
+		if (point_in_rectangle(mouse_get_x, mouse_get_y, 185 * 4, 0, 185 * 5, 42))
+		&& (mouse_check_button_released(mb_left))
+		&& (menu_delay == 0 && menu_joystick_delay == 0)
+		|| (menu == "links")
+		&& (key_a_pressed)
+		&& (menu_delay == 0 && menu_joystick_delay == 0)
+		{
+			information_menu_open = "links";
 			menu_delay = 3;
 		}
 		
@@ -352,14 +377,14 @@ function scr_draw_information_menu()
 			{
 				instance_destroy(obj_credits);
 			}
-			information_menu_open = false;
+			information_menu_open = "";
 			menu = "information";
 			menu_delay = 3;
 		}
 		
 		#endregion /* About, What's New, Backups, Credits, and Back tabs */
 		
-		if (information_menu_open == 1) /* About tab */
+		if (information_menu_open == "about") /* About tab */
 		{
 			var welcome_to_game_y = 32 * 2;
 			var this_is_a_game_y = 32 * 3;
@@ -395,7 +420,7 @@ function scr_draw_information_menu()
 					content_type = "level"; /* Need to set the "content type" to "level", so Async - HTTP Event is running correctly */
 					global.selected_online_download_index = 1;
 					menu = "online_download_list_load";
-					information_menu_open = 0;
+					information_menu_open = "";
 					var any_player_can_play = false;
 					for(var i = 1; i <= global.max_players; i += 1) {
 						if (global.player_can_play[i]) { /* Check if any player can play */
@@ -409,7 +434,7 @@ function scr_draw_information_menu()
 				}
 				else
 				{
-					information_menu_open = 0; /* Disable information menu so you can't accidentally navigate information menu when navigating online caution menu */
+					information_menu_open = ""; /* Disable information menu so you can't accidentally navigate information menu when navigating online caution menu */
 					content_type = "level"; /* Need to set the "content type" to "level", so Async - HTTP Event is running correctly */
 					caution_online_takes_you_to = "online_download_list_load";
 					caution_online_takes_you_back_to = "about_online_level_list";
@@ -478,7 +503,7 @@ function scr_draw_information_menu()
 			scr_draw_text_outlined(32, display_get_gui_height() - 32, l10n_text("Check out credits for more info"), global.default_text_size, c_black, c_white, 1);
 		}
 		else
-		if (information_menu_open == 2) /* What's New tab */
+		if (information_menu_open == "whats_new") /* What's New tab */
 		{
 			
 			/* Update config file so the game knows that you've read the latest what's new tab */
@@ -531,7 +556,7 @@ function scr_draw_information_menu()
 			draw_set_valign(fa_middle);
 		}
 		else
-		if (information_menu_open == 3) /* Backups tab */
+		if (information_menu_open == "backups") /* Backups tab */
 		{
 			draw_set_halign(fa_center);
 			scr_draw_text_outlined(display_get_gui_width() * 0.5, 32 * 2, l10n_text("Keep your levels safe!"), global.default_text_size, c_black, c_white, 1);
@@ -582,7 +607,7 @@ function scr_draw_information_menu()
 			}
 		}
 		else
-		if (information_menu_open == 4) /* Credits tab */ 
+		if (information_menu_open == "credits") /* Credits tab */ 
 		{
 			
 			#region /* Play Credits */
@@ -592,6 +617,9 @@ function scr_draw_information_menu()
 			}
 			#endregion /* Play Credits END */
 			
+		}
+		else if (information_menu_open == "links") { /* Links tab */ 
+			scr_draw_links_menu();
 		}
 	}
 	#endregion /* Information menu END */

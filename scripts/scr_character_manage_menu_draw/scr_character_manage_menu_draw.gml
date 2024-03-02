@@ -20,8 +20,6 @@ function scr_character_manage_menu_draw()
 		var enable_upload_character = true;
 	}
 	
-	var character_name = string(ds_list_find_value(global.all_loaded_characters, global.character_index[0]));
-	
 	var get_window_height = display_get_gui_height();
 	var get_window_width = display_get_gui_width();
 	var mouse_get_x = device_mouse_x_to_gui(0);
@@ -133,22 +131,22 @@ function scr_character_manage_menu_draw()
 			var selecting_official_character = false;
 		}
 		
-		var character_name_y, copy_character_y, delete_character_y, upload_character_y, open_character_folder_y;
+		var char_name_y, copy_character_y, delete_character_y, upload_character_y, open_character_folder_y;
 
 		if (global.enable_open_custom_folder) {
 		    if (global.free_communication_available) {
-				character_name_y = get_window_height - (42 * 5);
+				char_name_y = get_window_height - (42 * 5);
 			}
 			else {
-				character_name_y = get_window_height - (42 * 4);
+				char_name_y = get_window_height - (42 * 4);
 			}
 		    open_character_folder_y = get_window_height - 42;
 		} else {
 			if (global.free_communication_available) {
-				character_name_y = get_window_height - (42 * 4);
+				char_name_y = get_window_height - (42 * 4);
 			}
 			else {
-				character_name_y = get_window_height - (42 * 3);
+				char_name_y = get_window_height - (42 * 3);
 			}
 		    open_character_folder_y = -9999;
 		}
@@ -171,14 +169,15 @@ function scr_character_manage_menu_draw()
 		
 		draw_set_halign(fa_center);
 		draw_set_valign(fa_middle);
+		var character_name = string(ds_list_find_value(global.all_loaded_characters, global.character_index[0]));
 		if (string_ends_with(string(character_name), " - Copy"))
 		{
 			/* Show that the character is a copy */
-			scr_draw_text_outlined(get_window_width * 0.5 + player_display_x[fixed_player], character_name_y + scr_wave(0, 2, 0.5, 0), string(character_name), global.default_text_size, c_menu_outline, c_lime, 1);
+			scr_draw_text_outlined(get_window_width * 0.5 + player_display_x[fixed_player], char_name_y + scr_wave(0, 2, 0.5, 0), string(character_name), global.default_text_size, c_menu_outline, c_lime, 1);
 		}
 		else
 		{
-			scr_draw_text_outlined(get_window_width * 0.5 + player_display_x[fixed_player], character_name_y, string(character_name), global.default_text_size, c_menu_outline, c_menu_fill, 1);
+			scr_draw_text_outlined(get_window_width * 0.5 + player_display_x[fixed_player], char_name_y, string(character_name), global.default_text_size, c_menu_outline, c_menu_fill, 1);
 		}
 		
 		if (can_navigate)
