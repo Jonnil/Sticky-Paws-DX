@@ -181,18 +181,6 @@ if (instance_exists(obj_enemy_bowlingball))
 			}
 			scr_audio_play(snd_bump, volume_source.sound);
 			
-			#region /* Change direction */
-			if (instance_nearest(x, y, obj_enemy_bowlingball).sliding_along_ground < 0)
-			{
-				instance_nearest(x, y, obj_enemy_bowlingball).sliding_along_ground = +1;
-			}
-			else
-			if (instance_nearest(x, y, obj_enemy_bowlingball).sliding_along_ground > 0)
-			{
-				instance_nearest(x, y, obj_enemy_bowlingball).sliding_along_ground = -1;
-			}
-			#endregion /* Change direction END */
-			
 			if (instance_nearest(x, y, obj_enemy_bowlingball).vspeed <= 0)
 			{
 				instance_nearest(x, y, obj_enemy_bowlingball).vspeed = 0;

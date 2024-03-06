@@ -5,6 +5,7 @@ if (!die_volting)
 	&& (flat)
 	&& (position_meeting(bbox_left - 1, y, obj_wall))
 	{
+		image_blend = c_aqua;
 		stomped_delay = 0;
 		sliding_along_ground = +1;
 		scr_audio_play(snd_bump, volume_source.sound, 0.1);
@@ -14,14 +15,15 @@ if (!die_volting)
 	&& (flat)
 	&& (position_meeting(bbox_right + 1, y, obj_wall))
 	{
+		image_blend = c_red;
 		stomped_delay = 0;
 		sliding_along_ground = -1;
 		scr_audio_play(snd_bump, volume_source.sound, 0.1);
 	}
 	
-	if (position_meeting(x, bbox_top - 1, obj_wall))
-	&& (!die)
+	if (!die)
 	&& (vspeed < 0)
+	&& (place_meeting(x, y - 1, obj_wall))
 	{
 		vspeed = 0;
 		scr_audio_play(snd_bump, volume_source.sound, 0.1);
@@ -40,8 +42,8 @@ if (!die_volting)
 	#endregion /* Push out of the solid object END */
 	
 	#region /* Landing on solid object */
-	if (position_meeting(x, bbox_bottom + 1, other))
-	&& (vspeed >= 0)
+	if (vspeed >= 0)
+	&& (place_meeting(x, y + 1, other))
 	{
 		if (instance_exists(obj_foreground_secret))
 		&& (place_meeting(x, y, obj_foreground_secret))

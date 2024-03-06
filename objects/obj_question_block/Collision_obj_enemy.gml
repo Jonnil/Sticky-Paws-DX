@@ -1,4 +1,3 @@
-#region /* Collision Event with enemy */
 if (!bounce_up)
 && (!other.die)
 {
@@ -15,7 +14,6 @@ if (!bounce_up)
 			{
 				image_yscale = 0.1;
 				can_break_other_blocks = true;
-
 			}
 		}
 		if (!empty)
@@ -35,4 +33,3 @@ if (!bounce_up)
 		}
 	}
 }
-#endregion /* Collision Event with enemy END */

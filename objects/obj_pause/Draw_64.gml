@@ -129,13 +129,15 @@ if (!hide_menu_for_clean_screenshots)
 		}
 		
 		#region /* Display level information */
-		draw_set_halign(fa_left);
-		scr_draw_text_outlined(32, 320,
-		string(display_level_name) + "\n" +
-		string(display_level_author) + "\n" +
-		string(display_level_id) + "\n"
-		, global.default_text_size * 0.75, c_black, c_white, 1 * fade_in_pause_alpha);
-		scr_draw_level_tags(32, 420, false, fa_left, false, global.default_text_size * 0.75, 1 * fade_in_pause_alpha);
+		if (global.pause_room == rm_leveleditor) {
+			draw_set_halign(fa_left);
+			scr_draw_text_outlined(32, 320,
+			string(display_level_name) + "\n" +
+			string(display_level_author) + "\n" +
+			string(display_level_id) + "\n"
+			, global.default_text_size * 0.75, c_black, c_white, 1 * fade_in_pause_alpha);
+			scr_draw_level_tags(32, 420, false, fa_left, false, global.default_text_size * 0.75, 1 * fade_in_pause_alpha);
+		}
 		#endregion /* Display level information END */
 		
 	}

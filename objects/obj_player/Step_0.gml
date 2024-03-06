@@ -290,6 +290,8 @@ if (collision_rectangle(bbox_left - 1, bbox_top - 1, bbox_right + 1, bbox_bottom
 
 #region /* ________________________________MORE MOVES________________________________ */
 
+scr_player_move_crouch();
+
 scr_player_move_tongue();
 
 scr_player_move_roll_when_landing();
@@ -575,21 +577,12 @@ scr_player_move_spring();
 
 #region /* Heart above head */
 if (have_heart_balloon) {
+	var heart_y_offset = -64;
 	if (horizontal_rope_climb && key_up && !key_down) {
-		xx_heart = lerp(xx_heart, x, 0.1);
-		yy_heart = lerp(yy_heart, y + 32, 0.1);
+		var heart_y_offset = +32;
 	}
-}
-
-if (!have_heart_balloon) {
-	if (instance_exists(obj_heart_balloon)) {
-		xx_heart = instance_nearest(x, y, obj_heart_balloon).x;
-		yy_heart = instance_nearest(x, y, obj_heart_balloon).y;
-	}
-}
-else {
 	xx_heart = lerp(xx_heart, x, 0.1);
-	yy_heart = lerp(yy_heart, y - 64, 0.1);
+	yy_heart = lerp(yy_heart, y + heart_y_offset, 0.1);
 }
 #endregion /* Heart above head END */
 
@@ -915,59 +908,6 @@ if (in_water && !climb)
 	can_ground_pound = false;
 	chain_reaction = 0;
 	
-	#region /* Crouch Underwater */
-	if (key_crouch_hold) /* Holding the crouch button */
-	&& (allow_crouch) /* Can crouch */
-	&& (!crouch) /* Not currently crouching */
-	&& (can_move)
-	&& (!ground_pound)
-	&& (!dive)
-	&& (on_ground)
-	{
-		crouch = true;
-		stick_to_wall = false;
-		y += 16;
-		if (sprite_crouch > noone){sprite_index = sprite_crouch;}else
-		if (sprite_idle > noone) && (typeof(sprite_idle) != "undefined"){sprite_index = sprite_idle;}else
-		if (sprite_walk > noone){sprite_index = sprite_walk;}
-		if (sprite_mask_crouch >= 0)
-		{
-			mask_index = sprite_mask_crouch;
-		}
-		else
-		{
-			mask_index = spr_player_stand;
-		}
-		scr_audio_play(snd_squat, volume_source.sound);
-	}
-	#endregion /* Crouch Underwater END */
-	
-	else
-	
-	#region /* Don't Crouch Underwater */
-	if (!key_crouch_hold)
-	&& (!place_meeting(x, y - 8, obj_wall))
-	&& (crouch)
-	{
-		if (vspeed >= 0)
-		{
-			crouch = false;
-			y -= 16;
-			draw_xscale = 0.75;
-			draw_yscale = 1.25;
-			if (sprite_mask >= 0)
-			{
-				mask_index = sprite_mask;
-			}
-			else
-			{
-				mask_index = spr_player_stand;
-			}
-			scr_audio_play(snd_rise, volume_source.sound);
-		}
-	}
-	#endregion /* Don't Crouch Underwater END */
-	
 	if (crouch)
 	{
 		stick_to_wall = false;
@@ -1243,151 +1183,66 @@ if (in_water && !climb)
 
 else
 {
-	
-	#region /* Crouch */
-	if (key_crouch_hold) /* Holding the crouch button */
-	&& (allow_crouch) /* Can crouch */
-	&& (!crouch) /* Not currently crouching */
-	&& (can_move)
-	&& (!ground_pound)
-	&& (!dive)
-	&& (on_ground)
-	{
-		crouch = true;
-		draw_xscale = 1.5;
-		draw_yscale = 0.5;
-		if (sprite_crouch > noone){sprite_index = sprite_crouch;}else
-		if (sprite_idle > noone) && (typeof(sprite_idle) != "undefined"){sprite_index = sprite_idle;}else
-		if (sprite_walk > noone){sprite_index = sprite_walk;}
-	
-		if (sprite_mask_crouch >= 0)
-		{
-			mask_index = sprite_mask_crouch;
-		}
-		else
-		{
-			mask_index = spr_player_stand;
-		}
-		if (!place_meeting(x, y + 16, obj_wall))
-		|| (!collision_rectangle(bbox_left, bbox_bottom + 1, bbox_right, bbox_bottom + 1, obj_semisolid_platform, false, true))
-		{
-			y += 32;
-		}
-		scr_audio_play(snd_squat, volume_source.sound);
-	}
-	#endregion /* Crouch END */
-	
-	else
-	
-	#region /* Don't crouch */
-	if (!key_crouch_hold)
-	&& (!place_meeting(x, y - 8, obj_wall))
-	&& (crouch)
-	&& (vspeed >= 0)
-	{
-		crouch = false;
-		y -= 16;
-		draw_xscale = 0.75;
-		draw_yscale = 1.25;
-		if (sprite_mask >= 0)
-		{
-			mask_index = sprite_mask;
-		}
-		else
-		{
-			mask_index = spr_player_stand;
-		}
-		scr_audio_play(snd_rise, volume_source.sound);
-	}
-	#endregion /* Don't crouch END */
-	
-	/* Roll moveset removed for now, until properly implemented */
-	
-	if (crouch)
-	{
-	
+	if (crouch) {
+		
 		#region /* Destroy blocks above you when you jump while crouching */
-		if (key_jump)
-		{
-			with (instance_create_depth(x, bbox_top, 0, obj_block_break))
-			{
+		if (key_jump) {
+			with (instance_create_depth(x, bbox_top, 0, obj_block_break)) {
 				can_break_other_blocks = true;
 				image_xscale = 0.75;
 				image_yscale = 0.75;
 			}
 		}
 		#endregion /* Destroy blocks above you when you jump while crouching END */
-	
-		if (on_ground)
-		{
-			if (abs(hspeed) > 3)
-			{
-				if (!audio_is_playing(snd_skidding))
-				{
+		
+		if (on_ground) {
+			if (abs(hspeed) > 3) {
+				if (!audio_is_playing(snd_skidding)) {
 					scr_audio_play(snd_skidding, volume_source.sound);
 				}
 				effect_create_above(ef_smoke, x, bbox_bottom, 0, c_white);
 				scr_gamepad_vibration(player, 0.1, 10);
-			}
-			else
-			if (audio_is_playing(snd_skidding))
-			{
+			} else if (audio_is_playing(snd_skidding)) {
 				audio_stop_sound(snd_skidding);
 			}
 		}
-		if (abs(hspeed) >= 2.5)
-		&& (on_ground)
-		{
-			if (sprite_mask_crouch >= 0)
-			{
+		if (on_ground && abs(hspeed) >= 2.5) {
+			if (sprite_mask_crouch >= 0) {
 				mask_index = sprite_mask_crouch;
 			}
-			else
-			{
+			else {
 				mask_index = spr_player_stand;
 			}
 			if (sprite_crouch_crawl > noone){sprite_index = sprite_crouch_crawl;}else
 			if (sprite_crouch > noone){sprite_index = sprite_crouch;}else
 			if (sprite_idle > noone) && (typeof(sprite_idle) != "undefined"){sprite_index = sprite_idle;}else
 			if (sprite_walk > noone){sprite_index = sprite_walk;}
-			if (image_index > image_number - 1)
-			{
+			if (image_index > image_number - 1) {
 				image_speed = 0;
-			}
-			else
-			{
+			} else {
 				image_speed = 0.5;
 			}
-		}
-		else
-		if (on_ground)
-		{
-		
+		} else if (on_ground) {
+			
 			#region /* Crouch Still */
 			if (speed == 0)
 			&& (!key_left_hold)
-			&& (!key_right_hold)
-			{
+			&& (!key_right_hold) {
 				if (sprite_crouch > noone){sprite_index = sprite_crouch;}else
 				if (sprite_idle > noone) && (typeof(sprite_idle) != "undefined"){sprite_index = sprite_idle;}else
 				if (sprite_walk > noone){sprite_index = sprite_walk;}
-				if (image_index > image_number - 1)
-				{
+				if (image_index > image_number - 1) {
 					image_speed = 0;
-				}
-				else
-				{
+				} else {
 					image_speed = 0.5;
 				}
 			}
 			#endregion /* Crouch Still END */
-		
+			
 			else
-		
+			
 			#region /* Crouch Crawl */
-			if (key_left_hold)
-			|| (key_right_hold)
-			{
+			if (key_left_hold || key_right_hold) {
 				if (sprite_crouch_crawl > noone){sprite_index = sprite_crouch_crawl;}else
 				if (sprite_crouch > noone){sprite_index = sprite_crouch;}else
 				if (sprite_idle > noone) && (typeof(sprite_idle) != "undefined"){sprite_index = sprite_idle;}else
@@ -1395,16 +1250,11 @@ else
 				image_speed = 0.5;
 			}
 			#endregion /* Crouch Crawl END */
-		
-		}
-
-		else
-		if (!on_ground)
-		{
-		
+			
+		} else if (!on_ground) {
+			
 			#region /* Crouch Jump */
-			if (vspeed < 0)
-			{
+			if (vspeed < 0) {
 				jump_transition_to_fall_animation = 0;
 				if (sprite_crouch_jump > noone){sprite_index = sprite_crouch_jump;}else
 				if (sprite_crouch_fall > noone){sprite_index = sprite_crouch_fall;}else
@@ -1416,47 +1266,34 @@ else
 				if (sprite_fall > noone){sprite_index = sprite_fall; image_speed = 0.5;}else
 				if (sprite_idle > noone) && (typeof(sprite_idle) != "undefined"){sprite_index = sprite_idle;}else
 				if (sprite_walk > noone){sprite_index = sprite_walk;}
-				if (image_index > image_number - 1)
-				{
+				if (image_index > image_number - 1) {
 					image_speed = 0;
-				}
-				else
-				{
+				} else {
 					image_speed = 0.5;
 				}
 			}
 			#endregion /* Crouch Jump END */
-		
-			else
-			if (vspeed > 0)
-			&& (!stick_to_wall)
-			{
 			
+			else if (!stick_to_wall && vspeed > 0) {
+				
 				#region /* Crouch Fall sprites */
-				if (jump_transition_to_fall_animation == 0)
-				{
+				if (jump_transition_to_fall_animation == 0) {
 					image_index = 0;
 					jump_transition_to_fall_animation = 1;
 				}
-				if (jump_transition_to_fall_animation == 1)
-				{
+				if (jump_transition_to_fall_animation == 1) {
 					image_speed = 0.5;
-					if (sprite_crouch_jump_transition_to_fall > noone)
-					{
+					if (sprite_crouch_jump_transition_to_fall > noone) {
 						sprite_index = sprite_crouch_jump_transition_to_fall;
-					}
-					else
-					{
+					} else {
 						jump_transition_to_fall_animation = 2;
 					}
-					if (image_index > image_number - 1)
-					{
+					if (image_index > image_number - 1) {
 						image_index = 0;
 						jump_transition_to_fall_animation = 2;
 					}
 				}
-				if (jump_transition_to_fall_animation == 2)
-				{
+				if (jump_transition_to_fall_animation == 2) {
 					if (sprite_crouch_fall > noone){sprite_index = sprite_crouch_fall;}else
 					if (sprite_crouch_jump_transition_to_fall > noone){sprite_index = sprite_crouch_jump_transition_to_fall; image_index = image_number - 1;}else
 					if (sprite_crouch_jump > noone){sprite_index = sprite_crouch_jump;}else
@@ -1468,26 +1305,20 @@ else
 					if (sprite_fall > noone){sprite_index = sprite_fall; image_speed = 0.5;}else
 					if (sprite_idle > noone) && (typeof(sprite_idle) != "undefined"){sprite_index = sprite_idle;}else
 					if (sprite_walk > noone){sprite_index = sprite_walk;}
-					if (image_index > image_number - 1)
-					{
+					if (image_index > image_number - 1) {
 						image_speed = 0;
-					}
-					else
-					{
+					} else {
 						image_speed = 0.5;
 					}
 				}
 				#endregion /* Crouch Fall sprites END */
-			
+				
 			}
 		}
 		jump = 0;
-		if (sprite_mask_crouch >= 0)
-		{
+		if (sprite_mask_crouch >= 0) {
 			mask_index = sprite_mask_crouch;
-		}
-		else
-		{
+		} else {
 			mask_index = spr_player_stand;
 		}
 	}

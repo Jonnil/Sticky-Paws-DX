@@ -19,7 +19,7 @@ if (!die_volting)
 		scr_audio_play(snd_bump, volume_source.sound, 0.1);
 	}
 	
-	if (position_meeting(x, bbox_top - 1, obj_wall))
+	if (place_meeting(x, bbox_top - 1, obj_wall))
 	&& (!die)
 	&& (vspeed < 0)
 	{
@@ -40,7 +40,7 @@ if (!die_volting)
 	#endregion /* Push out of the solid object END */
 	
 	#region /* Landing on solid object */
-	if (position_meeting(x, bbox_bottom + 1, other))
+	if (place_meeting(x, bbox_bottom + 1, other))
 	&& (vspeed >= 0)
 	{
 		if (instance_exists(obj_foreground_secret))

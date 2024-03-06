@@ -1,7 +1,5 @@
-/* Collision Event with player object */
 if (!die)
 && (!die_volting)
-&& (vspeed >= 0)
 && (stomped_delay == 0)
 {
 	flat = true;
