@@ -119,7 +119,7 @@ if (image_index > image_number - 2)
 	&& (!gamepad_is_connected(global.player_slot[3]))
 	&& (!gamepad_is_connected(global.player_slot[4]))
 	{
-		if (global.resource_pack_sprite_splash_controller >= 0) /* Check if the controller splash sprite exists before trying to switch sprite to it */
+		if (global.resource_pack_sprite_splash_controller >= 0) /* Check if the controller splash sprite exists before trying to change sprite to it */
 		{
 			time = 0;
 			sprite_index = global.resource_pack_sprite_splash_controller;

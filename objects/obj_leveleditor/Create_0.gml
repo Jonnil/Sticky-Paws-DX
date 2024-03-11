@@ -139,7 +139,6 @@ if (!global.actually_play_edited_level)
 	
 	current_object_name = "";
 	placed_objects_list = ds_list_create(); /* Only create a DS list if the file exists */
-	current_object_category = "terrain"; /* Seperate objects into different categories, to make objects easier to find */
 	
 	scr_initialize_level_information_ini();
 	
@@ -606,7 +605,6 @@ if (!global.actually_play_edited_level)
 	difficulty_layer = 0; /* 0 = All, 1 = Easy, 2 = Normal, 3 = Hard */
 	level_editor_edit_name = false;
 	set_difficulty_mode = false; /* Toggle so you get a pen that can select what object appear in what difficulty */
-	place_object = 1;
 	placing_object = 0; /* If you are currently placing any object or not. This check is used for when modifying other objects, it shouldn't happen when currently placing any object */
 	show_icon_at_bottom = false;
 	show_icon_at_top = false;
@@ -763,9 +761,7 @@ if (!global.actually_play_edited_level)
 	background_x_offset[7] = 0;background_x[7] = 0;background_y_offset[7] = 0;background_y[7] = 0;
 	#endregion /* Initialize Background END */
 	
-	selected_object = 0;
 	selected_object_menu_x = 0;
-	selected_object_menu_actual_x = 0;
 	sprite_index = spr_wall;
 	mask_index = spr_wall;
 	alarm[1] = 2;
@@ -805,5 +801,13 @@ if (!global.actually_play_edited_level)
 	
 }
 #endregion /* If you're actually playing a level, then you don't need to run a lot of the code only relevant when making a level END */
+
+ini_open(game_save_id + "save_file/custom_level_save.ini");
+place_object = ini_read_real("info", "place_object", 1);
+selected_object = ini_read_real("info", "selected_object", 0);
+selected_object_menu_actual_x = ini_read_real("info", "selected_object_menu_actual_x", 0);
+current_object_category = ini_read_string("info", "current_object_category", "terrain"); /* Seperate objects into different categories, to make objects easier to find */
+sprite_index = ini_read_real("info", "selected_object_sprite", sprite_index);
+ini_close();
 
 set_controller_sprites_to_use();

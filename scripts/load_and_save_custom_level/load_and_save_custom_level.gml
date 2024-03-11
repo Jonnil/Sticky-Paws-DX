@@ -298,6 +298,11 @@ function scr_save_level_information() {
 		
 		/* Update custom level save data */
 		ini_open(game_save_id + "save_file/custom_level_save.ini");
+		ini_write_real("info", "place_object", place_object);
+		ini_write_real("info", "selected_object", selected_object);
+		ini_write_real("info", "selected_object_menu_actual_x", selected_object_menu_actual_x);
+		ini_write_string("info", "current_object_category", current_object_category); /* Seperate objects into different categories, to make objects easier to find */
+		ini_write_real("info", "selected_object_sprite", sprite_index);
 		ini_key_delete(global.level_name, "checkpoint_x");
 		ini_key_delete(global.level_name, "checkpoint_y");
 		ini_key_delete(global.level_name, "checkpoint_millisecond");

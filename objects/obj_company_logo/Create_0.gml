@@ -198,7 +198,7 @@ if (os_type == os_switch)
 	switch_controller_set_supported_styles(switch_controller_style);
 	switch_controller_support_set_singleplayer_only(false);
 	switch_controller_support_set_player_min(1);
-	switch_controller_support_set_player_max(4);
+	switch_controller_support_set_player_max(global.max_players);
 }
 
 global.saveid = noone;
