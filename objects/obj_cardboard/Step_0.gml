@@ -1,21 +1,20 @@
-if (distance_to_object(obj_player) < 32)
+if (instance_exists(obj_player))
+&& (distance_to_object(obj_player) < 20)
 {
 	var player_nearest = instance_nearest(x, y, obj_player);
 	
-	if (place_meeting(x, y + 8, obj_player) &&
-		player_nearest.vspeed < 0 ||
-		place_meeting(x, y - 32, obj_player) && player_nearest.vspeed > 0 && player_nearest.ground_pound ||
-		player_nearest.dive ||
-		player_nearest.wall_jump > 0 ||
-		player_nearest.move_towards_spring_endpoint ||
-		player_nearest.speed > 30)
+	if (place_meeting(x, y + 7, obj_player) &&
+	player_nearest.vspeed < 0 ||
+	place_meeting(x, y - 32, obj_player) && player_nearest.vspeed > 0 && player_nearest.ground_pound ||
+	player_nearest.dive ||
+	player_nearest.wall_jump > 0 ||
+	player_nearest.move_towards_spring_endpoint ||
+	player_nearest.speed > 30)
+	&& (!player_nearest.die)
 	{
 		alarm[1] = 1; /* Break cardboard */
-		if (instance_exists(obj_player))
-		{
-			break_cardboard_source_x = player_nearest.x;
-			break_cardboard_source_speed = player_nearest.speed;
-		}
+		break_cardboard_source_x = player_nearest.x;
+		break_cardboard_source_speed = player_nearest.speed;
 	}
 }
 
@@ -23,6 +22,7 @@ if (distance_to_object(obj_enemy_bowlingball) < 32)
 {
 	var enemy_bowlingball_nearest = instance_nearest(x, y, obj_enemy_bowlingball);
 	if (enemy_bowlingball_nearest.sliding_along_ground != 0 || place_meeting(x, y + 1, obj_enemy_bowlingball) && enemy_bowlingball_nearest.vspeed < 0)
+	&& (!enemy_bowlingball_nearest.die)
 	{
 		alarm[1] = 1; /* Break cardboard */
 		if (instance_exists(obj_enemy_bowlingball))

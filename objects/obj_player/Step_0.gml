@@ -1458,6 +1458,7 @@ else
 		if (hspeed == 0)
 		&& (key_up)
 		&& (!key_down)
+		&& (intro_animation == "")
 		{
 			if (look_up_start_animation)
 			{

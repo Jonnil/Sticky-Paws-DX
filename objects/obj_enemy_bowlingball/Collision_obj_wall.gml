@@ -5,7 +5,6 @@ if (!die_volting)
 	&& (flat)
 	&& (position_meeting(bbox_left - 1, y, obj_wall))
 	{
-		image_blend = c_aqua;
 		stomped_delay = 0;
 		sliding_along_ground = +1;
 		scr_audio_play(snd_bump, volume_source.sound, 0.1);
@@ -15,7 +14,6 @@ if (!die_volting)
 	&& (flat)
 	&& (position_meeting(bbox_right + 1, y, obj_wall))
 	{
-		image_blend = c_red;
 		stomped_delay = 0;
 		sliding_along_ground = -1;
 		scr_audio_play(snd_bump, volume_source.sound, 0.1);

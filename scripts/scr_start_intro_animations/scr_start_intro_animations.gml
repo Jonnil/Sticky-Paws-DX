@@ -69,7 +69,6 @@ function intro_animation_ending() {
 		with(obj_goal) {
 			instance_destroy();
 		}
-        instance_create_depth(-16, y, 0, obj_cake);
         with (instance_create_depth(-16, y, 0, obj_cake_stealing_enemy)) {
 			time = 60 * 2;
 		}
