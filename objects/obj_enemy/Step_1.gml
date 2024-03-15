@@ -51,7 +51,7 @@ if (!die)
 		speed = 0;
 		gravity = 0;
 		friction = 500;
-		sliding_along_ground = 0;
+		/* Stop enemy from moving, but don't reset the "sliding along ground" variable */
 	}
 	else
 	{

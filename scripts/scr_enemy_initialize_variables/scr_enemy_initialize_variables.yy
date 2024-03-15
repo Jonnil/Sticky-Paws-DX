@@ -1,0 +1,13 @@
+{
+  "$GMScript":"",
+  "%Name":"scr_enemy_initialize_variables",
+  "isCompatibility":false,
+  "isDnD":false,
+  "name":"scr_enemy_initialize_variables",
+  "parent":{
+    "name":"Other",
+    "path":"folders/Scripts/Other.yy",
+  },
+  "resourceType":"GMScript",
+  "resourceVersion":"2.0",
+}

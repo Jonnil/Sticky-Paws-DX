@@ -77,7 +77,6 @@ else
 		sprite_index = global.resource_pack_sprite_big_stationary_enemy;
 	}
 }
-mask_index = mask;
 
 #region /* Coil spring bouncing code */
 if (coil_spring)

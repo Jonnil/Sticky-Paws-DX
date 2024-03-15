@@ -96,7 +96,9 @@ function scr_player_move_spring()
 		
 		#region /* Make the cahracter face wherever you're going */
 		if (spring_twist_sprite) {
-			angle = direction - 90;
+			if (hold_item_in_hands == "") {
+				angle = direction - 90;
+			}
 			if (speed < 6 || direction >= 90 - 10 && direction <= 90 + 10) {
 				spring_twist_sprite = false;
 			}
