@@ -9,7 +9,7 @@
   "bitRate":128,
   "compression":0,
   "conversionMode":0,
-  "duration":0.244773,
+  "duration":0.239773,
   "name":"snd_swing",
   "parent":{
     "name":"Sounds",

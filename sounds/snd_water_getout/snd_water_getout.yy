@@ -9,7 +9,7 @@
   "bitRate":128,
   "compression":0,
   "conversionMode":0,
-  "duration":0.497018,
+  "duration":0.492018,
   "name":"snd_water_getout",
   "parent":{
     "name":"Sounds",

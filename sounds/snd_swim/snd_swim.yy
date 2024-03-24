@@ -9,7 +9,7 @@
   "bitRate":128,
   "compression":0,
   "conversionMode":0,
-  "duration":0.155938,
+  "duration":0.150938,
   "name":"snd_swim",
   "parent":{
     "name":"Sounds",

@@ -804,15 +804,7 @@ function scr_draw_upload_level_menu() {
 		&& (menu_delay == 0 && menu_joystick_delay == 0)
 		&& (keyboard_string != "")
 		&& (global.level_description != undefined) {
-			if (keyboard_check_pressed(vk_enter))
-			&& (menu != "upload_enter_description_ok")
-			&& (menu != "upload_enter_description_cancel")
-			|| (keyboard_check_pressed(vk_enter))
-			&& (menu == "upload_enter_description_ok")
-			|| (point_in_rectangle(mouse_get_x, mouse_get_y, get_window_width * 0.5 - 185, draw_description_y + 54, get_window_width * 0.5 - 185 + 370, draw_description_y + 54 + 42))
-			&& (mouse_check_button_released(mb_left))
-			|| (gamepad_button_check_pressed(global.player_slot[fixed_player], global.player_[inp.gp][fixed_player][1][action.accept]))
-			|| (gamepad_button_check_pressed(global.player_slot[fixed_player], global.player_[inp.gp][fixed_player][2][action.accept])) {
+			if (global.clicking_ok_input_screen) {
 				if (level_editor_edit_name)
 				&& (global.level_description != old_level_description) {
 					can_navigate = true;
@@ -857,14 +849,7 @@ function scr_draw_upload_level_menu() {
 		
 		#region /* Press Escape to back out from description input menu */
 		if (can_input_level_name && menu_delay == 0 && menu_joystick_delay == 0) {
-			if (keyboard_check_pressed(vk_enter))
-			&& (menu == "upload_enter_description_cancel")
-			|| (keyboard_check_pressed(vk_escape))
-			|| (point_in_rectangle(mouse_get_x, mouse_get_y, get_window_width * 0.5 - 185, draw_description_y + 54 + 42, get_window_width * 0.5 - 185 + 370, draw_description_y + 54 + 42 + 42))
-			&& (mouse_check_button_released(mb_left))
-			|| (mouse_check_button_released(mb_right))
-			|| (gamepad_button_check_pressed(global.player_slot[fixed_player], global.player_[inp.gp][fixed_player][1][action.back]))
-			|| (gamepad_button_check_pressed(global.player_slot[fixed_player], global.player_[inp.gp][fixed_player][2][action.back])) {
+			if (global.clicking_cancel_input_screen) {
 				menu_delay = 3;
 				if (instance_exists(obj_camera)) {
 					obj_camera.iris_zoom = 0;

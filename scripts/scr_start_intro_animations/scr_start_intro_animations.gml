@@ -6,7 +6,11 @@ function scr_start_intro_animations() {
 	    if ((intro_animation == "cake_stolen" || intro_animation == "ending")) {
 	        can_move = false;
 	        crouch = false;
-	        cutscene_time++;
+	        cutscene_time++; /* Increase cutscene time only here */
+			
+			if (cutscene_time == 1) {
+				image_index = 1;
+			}
 			
 	        /* Handle different intro animations */
 	        switch (intro_animation) {
@@ -93,7 +97,6 @@ function intro_animation_ending_chair() {
     image_xscale = +1;
     can_move = false;
     crouch = false;
-    cutscene_time++;
 	image_speed = 0.25;
     if (instance_exists(obj_chair_and_table)) {
         with (instance_nearest(x, y, obj_cake)) {
