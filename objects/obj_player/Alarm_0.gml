@@ -193,7 +193,7 @@ ini_close(); switch_save_data_commit(); /* Remember to commit the save data! */
 #region /* Voices */
 /* Set Sound folder */
 if (file_exists(string(character_folder) + "/sound/voicepack" + string(selected_voicepack) + "/jump.ogg")) {
-	voicepack_folder = "/voicepack" + string(selected_voicepack) + "/";
+	voicepack_folder = "/sound/voicepack" + string(selected_voicepack) + "/";
 }
 else {
 	voicepack_folder = "/";

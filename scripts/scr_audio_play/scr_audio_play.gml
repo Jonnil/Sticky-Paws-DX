@@ -3,8 +3,8 @@ function scr_audio_play(sound_id, what_volume_source = volume_source.sound, volu
 	if (sound_id >= 0) /* Check if the sound even exists, otherwise the game can crash */
 	{
 		audio_falloff_set_model(audio_falloff_exponent_distance_scaled);
-		var falloff_ref_dist = 100; /*100*/
-		var fallof_max_dist = 1100; /*300*/
+		var falloff_ref_dist = 100;
+		var fallof_max_dist = 1100;
 		var fallof_factor = 1;
 		
 		#region /* Different audio sources play differently */
@@ -59,7 +59,7 @@ function scr_audio_play(sound_id, what_volume_source = volume_source.sound, volu
 		{
 			if (object_index == obj_player)
 			{
-				scr_player_move_choose_voice_clips(); /* If "obj player" is running this "scr audio play" script, then choose random voice clip */
+				scr_player_move_choose_voice_clips(); /* If "obj player" is running this "scr audio play" script, then choose random voice clip with this custom script */
 			}
 			audio_sound_gain(sound_id, global.volume_voice * volume_modifier * global.volume_main, 0);
 			audio_stop_sound(sound_id); /* Stop same sound effects from playing before playing another of the same sound effect */
