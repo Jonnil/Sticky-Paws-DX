@@ -43,8 +43,6 @@ draw_set_alpha(fade_in_pause_alpha);
 draw_set_halign(fa_center);
 draw_set_valign(fa_middle);
 
-hud_show_big_collectibles_y = lerp(hud_show_big_collectibles_y, 160, 0.1);
-
 #region /* Big Collectibles */
 if (global.pause_room == rm_leveleditor)
 && (!hide_menu_for_clean_screenshots)
@@ -131,15 +129,24 @@ if (!hide_menu_for_clean_screenshots)
 		#region /* Display level information */
 		if (global.pause_room == rm_leveleditor) {
 			draw_set_halign(fa_left);
+			draw_set_valign(fa_center);
 			scr_draw_text_outlined(32, 320,
 			string(display_level_name) + "\n" +
 			string(display_level_author) + "\n" +
 			string(display_level_id) + "\n"
 			, global.default_text_size * 0.75, c_black, c_white, 1 * fade_in_pause_alpha);
 			scr_draw_level_tags(32, 420, false, fa_left, false, global.default_text_size * 0.75, 1 * fade_in_pause_alpha);
+			
+			if (display_level_author != "") {
+				draw_sprite_ext(spr_icon_person, 0, 16, 320, 1, 1, 0, c_white, 1);
+			}
+			
+			hud_show_big_collectibles_y = lerp(hud_show_big_collectibles_y, 160, 0.1);
 		}
 		#endregion /* Display level information END */
 		
+	} else {
+		hud_show_big_collectibles_y = lerp(hud_show_big_collectibles_y, 0, 0.1);
 	}
 	#endregion /* Games Logo in top left corner END */
 	

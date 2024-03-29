@@ -9,8 +9,6 @@ function scr_get_voice(sound_names)
 		voice = audio_create_stream(file_path);
 	}
 	
-	show_message("file_path: " + string(file_path) + "\nvoice: " + string(voice));
-	
 	return voice;
 	#endregion /* Define a get voice function to reduce code duplication END */
 	

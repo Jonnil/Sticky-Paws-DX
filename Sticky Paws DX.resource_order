@@ -516,6 +516,7 @@
     {"name":"spr_icon_finished","order":34,"path":"sprites/spr_icon_finished/spr_icon_finished.yy",},
     {"name":"spr_icon_folder","order":22,"path":"sprites/spr_icon_folder/spr_icon_folder.yy",},
     {"name":"spr_icon_pen","order":19,"path":"sprites/spr_icon_pen/spr_icon_pen.yy",},
+    {"name":"spr_icon_person","order":44,"path":"sprites/spr_icon_person/spr_icon_person.yy",},
     {"name":"spr_icon_played","order":32,"path":"sprites/spr_icon_played/spr_icon_played.yy",},
     {"name":"spr_icon_report","order":25,"path":"sprites/spr_icon_report/spr_icon_report.yy",},
     {"name":"spr_icon_unfinished","order":33,"path":"sprites/spr_icon_unfinished/spr_icon_unfinished.yy",},

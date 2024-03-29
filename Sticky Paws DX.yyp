@@ -2589,7 +2589,7 @@
   "isEcma":false,
   "LibraryEmitters":[],
   "MetaData":{
-    "IDEVersion":"2024.400.0.516",
+    "IDEVersion":"2024.400.0.526",
   },
   "name":"Sticky Paws DX",
   "resources":[
@@ -3096,6 +3096,7 @@
     {"id":{"name":"spr_icon_finished","path":"sprites/spr_icon_finished/spr_icon_finished.yy",},},
     {"id":{"name":"spr_icon_folder","path":"sprites/spr_icon_folder/spr_icon_folder.yy",},},
     {"id":{"name":"spr_icon_pen","path":"sprites/spr_icon_pen/spr_icon_pen.yy",},},
+    {"id":{"name":"spr_icon_person","path":"sprites/spr_icon_person/spr_icon_person.yy",},},
     {"id":{"name":"spr_icon_played","path":"sprites/spr_icon_played/spr_icon_played.yy",},},
     {"id":{"name":"spr_icon_report","path":"sprites/spr_icon_report/spr_icon_report.yy",},},
     {"id":{"name":"spr_icon_unfinished","path":"sprites/spr_icon_unfinished/spr_icon_unfinished.yy",},},
