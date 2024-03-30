@@ -438,7 +438,7 @@ else {
 #region /* Health Handeling */
 if (taken_damage > 0) {
 	global.zero_hits = false;
-	taken_damage -= 1;
+	taken_damage --;
 }
 
 #region /* Make the player die if you have 0 HP */

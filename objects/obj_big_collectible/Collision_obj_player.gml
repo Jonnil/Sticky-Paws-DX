@@ -4,3 +4,10 @@ if (!bounce_up) {
 		follow_player = true;
 	}
 }
+
+if (follow_player)
+&& (other.horizontal_rope_climb
+|| other.climb
+|| other.midair_jumps_left >= other.number_of_jumps) {
+	collect_big_collectible = true; /* Collect big collectible when player is in certain states */
+}

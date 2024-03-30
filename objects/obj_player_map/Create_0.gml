@@ -179,12 +179,22 @@ else
 }
 #endregion /* Load Game END */
 
+#region /* Make absolutely sure that the big collectibles counter is correct */
+scr_get_each_big_collectible_from_main_game();
+if (total_big_collectibles < total_big_collectibles_add) {
+	total_big_collectibles = total_big_collectibles_add;
+	ini_open(game_save_id + "save_file/file" + string(global.file) + ".ini");
+	ini_write_real("Player", "total_big_collectibles", total_big_collectibles_add);
+	ini_close();
+	scr_set_stat_achievement("TOTAL_BIG_COLLECTIBLE", total_big_collectibles_add);
+}
+#endregion /* Make absolutely sure that the big collectibles counter is correct END */
+
 xx = x;
 yy = y;
 
 /* Create the camera map after setting x and y positions */
-if (!instance_exists(obj_camera_map))
-{
+if (!instance_exists(obj_camera_map)) {
 	instance_create_depth(x, y, 0, obj_camera_map);
 }
 

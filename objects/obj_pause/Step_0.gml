@@ -132,11 +132,11 @@ if (show_loading_icon)
 	
 	if (menu == "reset_from_checkpoint" && global.loading_spinning_angle < -20) {
 		
-		#region /* Restart Level */
+		#region /* Restart Level from Checkpoint */
 		global.restart_level = true;
 		audio_stop_all();
 		global.pause = false;
-		#endregion /* Restart Level END */
+		#endregion /* Restart Level from Checkpoint END */
 		
 	}
 	else
@@ -149,7 +149,13 @@ if (show_loading_icon)
 	&& (gamepad_button_check_pressed(global.pause_player, gp_select))
 	{
 		
-		#region /* Restart Level */
+		#region /* Restart Level from Start */
+		
+		/* Reset the "big collectible already collected" variables when restarting from start */
+		for(var i = 1; i <= global.max_big_collectible; i += 1) {
+			global.big_collectible_already_collected[i] = false;
+		}
+		global.how_many_big_collectible_collected = 0;
 		
 		#region /* Reset timer back to zero */
 		global.timeattack_realmillisecond = 0;
@@ -175,7 +181,7 @@ if (show_loading_icon)
 		global.restart_level = true;
 		audio_stop_all();
 		global.pause = false;
-		#endregion /* Restart Level END */
+		#endregion /* Restart Level from Start END */
 		
 	}
 }

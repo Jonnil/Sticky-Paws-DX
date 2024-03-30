@@ -4,7 +4,7 @@ if (instance_exists(obj_player_map))
 && (move_speed == 4)
 {
 	sprite_index = global.resource_pack_sprite_basic_enemy_angry;
-	move_speed = 9; /* Move faster than player if the player is chasing */
+	move_speed = 8; /* Move faster than player if the player is chasing */
 	speed = move_speed;
 }
 if (hspeed < -1)
@@ -22,24 +22,21 @@ if (enter_level_delay >= 1)
 }
 if (move_speed == 4)
 && (enter_level_delay >= 30)
-|| (move_speed == 9)
-&& (enter_level_delay >= 2)
+|| (enter_level_delay >= 2)
 {
 	gravity_direction = 270;
 	gravity = 0.8;
 }
 if (move_speed == 4)
 && (enter_level_delay == 30)
-|| (move_speed == 9)
-&& (enter_level_delay == 2)
+|| (enter_level_delay == 2)
 {
 	scr_audio_play(snd_jump);
 	vspeed -= 10;
 }
 if (move_speed == 4)
 && (enter_level_delay > 50)
-|| (move_speed == 9)
-&& (enter_level_delay > 22)
+|| (enter_level_delay > 22)
 {
 	if (yy > enter_level_y)
 	{

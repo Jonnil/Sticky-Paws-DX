@@ -20,3 +20,7 @@ else
 	xx = x;
 	yy = y;
 }
+
+for (var i = 1; i <= global.max_big_collectible; i++) {
+	hud_show_big_collectible_blink[i] = 0;
+}

@@ -209,9 +209,17 @@ function scr_save_level()
 		
 	}
 	
-	for(var i = 1; i <= global.max_big_collectible; i += 1) {
-		global.big_collectible_already_collected[i] = false;
+	/* Only reset the "big collectible already collected" variables in certain cases */
+	if (global.level_clear_rate == "clear")
+	|| (global.quit_level)
+	|| (global.restart_level && global.checkpoint_x = 0 && global.checkpoint_y = 0)
+	{
+		for(var i = 1; i <= global.max_big_collectible; i += 1) {
+			global.big_collectible_already_collected[i] = false;
+		}
+		global.how_many_big_collectible_collected = 0;
 	}
+	
 	global.timeattack_realmillisecond = 0;
 	global.timeattack_millisecond = 0;
 	global.timeattack_second = 0;

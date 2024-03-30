@@ -403,6 +403,7 @@ global.basic_collectibles = 0;
 global.level_clear_rate = noone;
 global.current_level_clear_rate = "";
 global.increase_number_of_levels_cleared = true; /* Some levels shouldn't increase the number of levels cleared, so switch this true or false for certain levels */
+global.how_many_big_collectible_collected = 0;
 global.max_big_collectible = 5;
 for(var i = 1; i <= 99; i += 1)
 {

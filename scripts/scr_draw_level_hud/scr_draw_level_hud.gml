@@ -48,7 +48,13 @@ function scr_draw_level_hud() {
 	        draw_set_halign(fa_left);
 	        draw_set_valign(fa_middle);
 	        for (var i = 1; i <= global.max_big_collectible; i++) {
-	            collectible_alpha = (global.big_collectible[i] && !global.big_collectible_already_collected[i]) ? 0.5 : 1;
+				if (hud_show_big_collectible_blink[i] >= 1) {
+					hud_show_big_collectible_blink[i] -= 1;
+					collectible_alpha = scr_wave(0, 1, 0.5);
+				}
+				else {
+					collectible_alpha = (global.big_collectible[i] && !global.big_collectible_already_collected[i]) ? 0.5 : 1;
+				}
 	            draw_sprite_ext((global.big_collectible[i] ? collectible_sprite : collectible_outline_sprite), 0, 32 * i, hud_show_big_collectibles_y, 0.5, 0.5, 0, c_white, collectible_alpha);
 	        }
 	    }
