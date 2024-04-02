@@ -9,7 +9,7 @@
   "bitRate":128,
   "compression":0,
   "conversionMode":0,
-  "duration":0.209,
+  "duration":0.835918,
   "name":"snd_big_collectible",
   "parent":{
     "name":"Sounds",

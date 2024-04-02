@@ -151,6 +151,7 @@ function scr_player_move_jumping()
 				else
 				{
 					scr_audio_play(voice_jump, volume_source.voice);
+					show_debug_message("voice_jump variable: " + string(voice_jump));
 				}
 				#endregion /* Jump sound effect END */
 				draw_xscale = 0.75;

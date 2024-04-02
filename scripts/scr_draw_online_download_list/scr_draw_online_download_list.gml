@@ -204,7 +204,10 @@ function scr_draw_online_download_list()
 					&& (is_array(data))
 					&& (array_length(data) > 0)
 					{
-						menu = "download_online_" + string(online_download_index);
+						if (menu != "download_online_" + string(online_download_index)) {
+							scr_delete_sprite_properly(spr_download_list_thumbnail);spr_download_list_thumbnail = noone; /* Delete the previous thumbnail sprite so you can load in a new one */
+							menu = "download_online_" + string(online_download_index);
+						}
 					}
 					
 					/* Fetch the "name" and "time_created" properties from the JSON object */
@@ -464,8 +467,6 @@ function scr_draw_online_download_list()
 					}
 				}
 				
-				/* CRASH STARTS HERE */
-				
 				/* Check if it's an array */
 				if (is_array(info_data)) {
 					/* Get the number of items in the JSON array */
@@ -493,7 +494,6 @@ function scr_draw_online_download_list()
 					}
 				}
 			}
-			/* CRASH ENDS HERE */
 			
 			if (is_array(data) && array_length(data) > 0 && info_data == undefined)
 			{
@@ -506,8 +506,8 @@ function scr_draw_online_download_list()
 				scr_draw_text_outlined(display_get_gui_width() * 0.5, display_get_gui_height() * 0.5, l10n_text("There is nothing uploaded yet!"), global.default_text_size * 2, c_menu_outline, c_menu_fill, 1);
 			}
 			
-			/* Draw the thumbnail */ if (sprite_exists(spr_download_list_thumbnail) && data != undefined && info_data != undefined)
-			{
+			/* Draw the thumbnail */
+			if (sprite_exists(spr_download_list_thumbnail) && data != undefined && info_data != undefined) {
 				draw_sprite_ext(spr_download_list_thumbnail, 0, download_online_x + 100, top_left_of_thumbnail_y + menu_y_offset + 4, 384 / sprite_get_width(spr_download_list_thumbnail), 216 / sprite_get_height(spr_download_list_thumbnail), 0, c_white, 1);
 			}
 			
@@ -557,6 +557,7 @@ function scr_draw_online_download_list()
 					menu_delay = 3;
 					if (num_items >= 2)
 					{
+						scr_delete_sprite_properly(spr_download_list_thumbnail);spr_download_list_thumbnail = noone; /* Delete the previous thumbnail sprite so you can load in a new one */
 						menu = "download_online_2";
 					}
 					else
@@ -577,6 +578,7 @@ function scr_draw_online_download_list()
 				&& (menu_delay == 0 && menu_joystick_delay == 0)
 				{
 					menu_delay = 3;
+					scr_delete_sprite_properly(spr_download_list_thumbnail);spr_download_list_thumbnail = noone; /* Delete the previous thumbnail sprite so you can load in a new one */
 					menu = "download_online_" + string(global.selected_online_download_index - 1);
 				}
 				else
@@ -585,6 +587,7 @@ function scr_draw_online_download_list()
 				&& (global.selected_online_download_index < num_items)
 				{
 					menu_delay = 3;
+					scr_delete_sprite_properly(spr_download_list_thumbnail);spr_download_list_thumbnail = noone; /* Delete the previous thumbnail sprite so you can load in a new one */
 					menu = "download_online_" + string(global.selected_online_download_index + 1);
 				}
 				else
@@ -778,6 +781,7 @@ function scr_draw_online_download_list()
 			if (is_array(data))
 			&& (array_length(data) > 0)
 			{
+				scr_delete_sprite_properly(spr_download_list_thumbnail);spr_download_list_thumbnail = noone; /* Delete the previous thumbnail sprite so you can load in a new one */
 				menu = "download_online_" + string(num_items);
 			}
 		}
@@ -814,6 +818,7 @@ function scr_draw_online_download_list()
 			if (is_array(data))
 			&& (array_length(data) > 0)
 			{
+				scr_delete_sprite_properly(spr_download_list_thumbnail);spr_download_list_thumbnail = noone; /* Delete the previous thumbnail sprite so you can load in a new one */
 				menu = "download_online_1";
 			}
 		}
@@ -837,6 +842,7 @@ function scr_draw_online_download_list()
 			if (is_array(data))
 			&& (array_length(data) > 0)
 			{
+				scr_delete_sprite_properly(spr_download_list_thumbnail);spr_download_list_thumbnail = noone; /* Delete the previous thumbnail sprite so you can load in a new one */
 				menu = "download_online_" + string(num_items);
 			}
 		}
@@ -848,6 +854,7 @@ function scr_draw_online_download_list()
 			if (is_array(data))
 			&& (array_length(data) > 0)
 			{
+				scr_delete_sprite_properly(spr_download_list_thumbnail);spr_download_list_thumbnail = noone; /* Delete the previous thumbnail sprite so you can load in a new one */
 				menu = "download_online_1";
 			}
 		}
