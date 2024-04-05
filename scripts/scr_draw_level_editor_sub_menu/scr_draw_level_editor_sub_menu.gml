@@ -3,6 +3,10 @@ function scr_draw_level_editor_sub_menu(xx = 394 * (global.select_level_index - 
 	var get_window_height = display_get_gui_height();
 	var mouse_get_x = device_mouse_x_to_gui(0);
 	var mouse_get_y = device_mouse_y_to_gui(0);
+	var daily_build_enabled = true;
+	
+	var back_y = 226 * (column - scroll) + 569 - 3;
+	var daily_build_y = 226 * (column - scroll) + 569 - 3;
 	
 	#region /* Draw sub menu (code must be here to be above everything else) */
 	if (open_sub_menu)
@@ -74,9 +78,18 @@ function scr_draw_level_editor_sub_menu(xx = 394 * (global.select_level_index - 
 				menu = "level_editor_create_from_scratch";
 			}
 			else
-			if (menu == "level_editor_create_from_back")
+			if (menu == "level_editor_create_daily_build")
 			{
 				menu = "level_editor_create_from_template";
+			}
+			else
+			if (menu == "level_editor_create_from_back")
+			{
+				if (daily_build_enabled) {
+					menu = "level_editor_create_daily_build";
+				} else {
+					menu = "level_editor_create_from_template";
+				}
 			}
 			else
 			if (menu == "level_editor_delete")
@@ -150,6 +163,15 @@ function scr_draw_level_editor_sub_menu(xx = 394 * (global.select_level_index - 
 			}
 			else
 			if (menu == "level_editor_create_from_template")
+			{
+				if (daily_build_enabled) {
+					menu = "level_editor_create_daily_build";
+				} else {
+					menu = "level_editor_create_from_back";
+				}
+			}
+			else
+			if (menu == "level_editor_create_daily_build")
 			{
 				menu = "level_editor_create_from_back";
 			}
@@ -241,13 +263,22 @@ function scr_draw_level_editor_sub_menu(xx = 394 * (global.select_level_index - 
 			else
 			if (global.select_level_index == 0) /* Create from Scratch and Create from Template menu */
 			{
+				var back_y = 226 * (column - scroll) + 569 - 3;
+				var daily_build_y = 226 * (column - scroll) + 569 - 3;
+				if (daily_build_enabled) {
+					back_y += 47;
+				}
+				
 				scroll_to = floor(global.select_level_index / row) + 0.1; /* Scroll the view to fit all the buttons */
-				draw_roundrect_color_ext(xx - 3, 226 * (column - scroll) + 455 - 3 + 10 - 3, xx + 384 + 3, 226 * (column - scroll) + 408 + 216 + 3 + 3, 50, 50, c_black, c_black, false);
-				draw_roundrect_color_ext(xx, 226 * (column - scroll) + 455 - 3 + 10, xx + 384, 226 * (column - scroll) + 408 + 216 + 3, 50, 50, c_white, c_white, false);
+				draw_roundrect_color_ext(xx - 3, 226 * (column - scroll) + 455 - 3 + 10 - 3, xx + 384 + 3, back_y + 47 + 3, 50, 50, c_black, c_black, false);
+				draw_roundrect_color_ext(xx, 226 * (column - scroll) + 455 - 3 + 10, xx + 384, back_y + 47, 50, 50, c_white, c_white, false);
 				draw_menu_button(xx + 8, 226 * (column - scroll) + 475 - 3, l10n_text("Create from Scratch"), "level_editor_create_from_scratch", "level_editor_create_from_scratch");
 				draw_menu_button(xx + 8, 226 * (column - scroll) + 522 - 3, l10n_text("Create from Template"), "level_editor_create_from_template", "level_editor_create_from_template"); /* + 47 on y */
-				draw_menu_button(xx + 8, 226 * (column - scroll) + 569 - 3, l10n_text("Back"), "level_editor_create_from_back", "level_editor_create_from_back");
-				draw_sprite_ext(spr_icon_back, 0, xx + 8 + 20, 226 * (column - scroll) + 569 - 3 + 21, 1, 1, 0, c_white, 1);
+				if (daily_build_enabled) {
+					draw_menu_button(xx + 8, daily_build_y, l10n_text("Create Daily Build"), "level_editor_create_daily_build", "level_editor_create_daily_build"); /* + 47 on y */
+				}
+				draw_menu_button(xx + 8, back_y, l10n_text("Back"), "level_editor_create_from_back", "level_editor_create_from_back");
+				draw_sprite_ext(spr_icon_back, 0, xx + 8 + 20, back_y + 21, 1, 1, 0, c_white, 1);
 			}
 			else /* Regular sub menu */
 			{
@@ -299,6 +330,7 @@ function scr_draw_level_editor_sub_menu(xx = 394 * (global.select_level_index - 
 				scr_switch_expand_save_data(); /* Expand the save data before editing level name */
 				if (global.save_data_size_is_sufficient)
 				{
+					creating_daily_build = false; /* Disable Daily Build */
 					menu = "level_editor_enter_name_ok";
 					menu_delay = 3;
 					keyboard_string = "";
@@ -321,7 +353,7 @@ function scr_draw_level_editor_sub_menu(xx = 394 * (global.select_level_index - 
 		{
 			show_level_editor_corner_menu = true;
 			if (!hovering_over_level_editor_corner_menu)
-			&& (point_in_rectangle(mouse_get_x, mouse_get_y, xx + 8, 226 * (column - scroll) + 569 - 3, xx + 8 + 370, 226 * (column - scroll) + 569 - 3 + 42))
+			&& (point_in_rectangle(mouse_get_x, mouse_get_y, xx + 8, back_y, xx + 8 + 370, back_y + 42))
 			&& (mouse_check_button_released(mb_left))
 			&& (global.controls_used_for_navigation == "mouse")
 			|| (key_a_pressed)
@@ -558,6 +590,7 @@ function scr_draw_level_editor_sub_menu(xx = 394 * (global.select_level_index - 
 				scr_switch_expand_save_data(); /* Expand the save data before editing level name */
 				if (global.save_data_size_is_sufficient)
 				{
+					creating_daily_build = false; /* Disable Daily Build */
 					file_found = "";
 					file_load_timer = 0;
 					level_find_pos = 0;
@@ -574,6 +607,40 @@ function scr_draw_level_editor_sub_menu(xx = 394 * (global.select_level_index - 
 			}
 		}
 		#endregion /* Pressing the Create from Template button END */
+		
+		#region /* Pressing the Create Daily Build button */
+		if (daily_build_enabled)
+		&& (key_a_pressed)
+		&& (!can_input_level_name)
+		&& (menu_delay == 0 && menu_joystick_delay == 0)
+		|| (daily_build_enabled)
+		&& (!hovering_over_level_editor_corner_menu)
+		&& (point_in_rectangle(mouse_get_x, mouse_get_y, xx + 8, daily_build_y, xx + 8 + 320, daily_build_y + 42))
+		&& (mouse_check_button_released(mb_left))
+		&& (global.controls_used_for_navigation == "mouse")
+		&& (!can_input_level_name)
+		&& (menu_delay == 0 && menu_joystick_delay == 0)
+		{
+			if (menu == "level_editor_create_daily_build")
+			{
+				scr_switch_expand_save_data(); /* Expand the save data before editing level name */
+				if (global.save_data_size_is_sufficient)
+				{
+					creating_daily_build = true; /* Enable Daily Build */
+					menu = "level_editor_enter_name_ok";
+					menu_delay = 3;
+					keyboard_string = "";
+					can_input_level_name = true;
+				}
+				else
+				{
+					menu_delay = 3;
+					can_input_level_name = false;
+					global.clicking_ok_input_screen = false;
+				}
+			}
+		}
+		#endregion /* Pressing the Create Daily Build button END */
 		
 		#region /* Pressing the Yes Delete button */
 		if (key_a_pressed)

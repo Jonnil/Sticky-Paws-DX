@@ -578,8 +578,8 @@ scr_player_move_spring();
 #region /* Heart above head */
 if (have_heart_balloon) {
 	var heart_y_offset = -64;
-	if (horizontal_rope_climb && key_up && !key_down) {
-		var heart_y_offset = +32;
+	if (horizontal_rope_climb && key_up && !key_down && (!collision_rectangle(bbox_left, bbox_top - 64, bbox_right, bbox_bottom, obj_wall, false, true))) {
+		var heart_y_offset = -1;
 	}
 	xx_heart = lerp(xx_heart, x, 0.1);
 	yy_heart = lerp(yy_heart, y + heart_y_offset, 0.1);

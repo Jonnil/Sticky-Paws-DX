@@ -638,6 +638,10 @@ function scr_select_custom_level_menu()
 		if (can_input_level_name)
 		{
 			global.level_name = scr_draw_name_input_screen(global.level_name, 32, c_black, 1, false, 394 * (global.select_level_index - column * row) + 300 + thumbnail_x_offset, draw_name_input_screen_y, "level_editor_enter_name_ok", "level_editor_enter_name_cancel", false, true, false);
+			if (creating_daily_build) {
+				scr_draw_text_outlined(display_get_gui_width() * 0.5, 64, l10n_text("Daily Build"), global.default_text_size * 2, c_black, c_white, 1);
+				scr_draw_text_outlined(display_get_gui_width() * 0.5, 128, l10n_text("The Daily Build features different items every day"), global.default_text_size, c_black, c_white, 1);
+			}
 		}
 		
 		#region /* Press Enter to edit level */
@@ -668,6 +672,9 @@ function scr_select_custom_level_menu()
 							ini_open(game_save_id + "custom_levels/" + folder_name + "/data/level_information.ini");
 							ini_write_string("info", "level_name", global.level_name);
 							ini_write_string("info", "level_description", ""); /* Save a blank level description */
+							if (creating_daily_build) {
+								ini_write_real("info", "if_daily_build", true);
+							}
 							ini_close(); switch_save_data_commit(); /* Remember to commit the save data! */
 							thumbnail_level_name[global.select_level_index] = global.level_name;
 						}
@@ -689,6 +696,9 @@ function scr_select_custom_level_menu()
 							ini_open(game_save_id + "custom_levels/" + folder_name + "/data/level_information.ini");
 							ini_write_string("info", "level_name", global.level_name);
 							ini_write_string("info", "level_description", ""); /* Save a blank level description */
+							if (creating_daily_build) {
+								ini_write_real("info", "if_daily_build", true);
+							}
 							ini_close(); switch_save_data_commit(); /* Remember to commit the save data! */
 						}
 						

@@ -27,12 +27,9 @@ for(var p = 1; p <= global.max_players; p += 1) {
 	character_portrait_for_player_dir_exists_4[p] = false;
 }
 
-if (os_type == os_switch)
-{
+if (os_type == os_switch) {
 	global.free_communication_available = switch_free_communication_available(); /* If free communication is disabled, you shouldn't be able to upload or download custom content. Set this to global.free_communication_available = switch_free_communication_available when done debugging */
-}
-else
-{
+} else {
 	global.free_communication_available = true; /* If free communication is disabled, you shouldn't be able to upload or download custom content. Set this to global.free_communication_available = true when done debugging */
 }
 
@@ -59,6 +56,7 @@ scrolling_menu_with_mousewheel = false;
 finished_level = undefined; /* This needs to be set to undefined by default */
 liked_content = undefined;
 i = 0;
+creating_daily_build = false; /* If you are going to create a daily build or not */
 
 information_menu_open = ""; /* If the information menu is opened or not */
 

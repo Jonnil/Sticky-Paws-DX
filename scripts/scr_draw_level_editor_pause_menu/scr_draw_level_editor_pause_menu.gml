@@ -78,10 +78,20 @@ function scr_draw_level_editor_pause_menu()
 			{
 				draw_set_halign(fa_left);
 				draw_set_valign(fa_middle);
-				scr_draw_text_outlined(64, 32, l10n_text("Clear Checked"), global.default_text_size * scr_wave(1, 1.1, 1, 0), c_white, c_black, 1);
+				scr_draw_text_outlined(64, 32, l10n_text("Clear Checked"), global.default_text_size * scr_wave(1, 1.1, 1, 0), c_black, c_white, 1);
 				draw_sprite_ext(spr_icon_finished, 1, 32, 32, scr_wave(0.9, 1, 1, 0), scr_wave(0.9, 1, 1, 0), 0, c_white, 1);
 			}
 			#endregion /* Draw if level have been Clear Checked on top of screen END */
+			
+			#region /* Draw if level is created in Daily Build on top of screen */
+			if (if_daily_build)
+			{
+				draw_set_halign(fa_left);
+				draw_set_valign(fa_middle);
+				scr_draw_text_outlined(64, 64, l10n_text("Daily Build"), global.default_text_size * scr_wave(1, 1.1, 1, 0), c_black, c_white, 1);
+				draw_sprite_ext(spr_icon_finished, 1, 32, 64, scr_wave(0.9, 1, 1, 0), scr_wave(0.9, 1, 1, 0), 0, c_white, 1);
+			}
+			#endregion /* Draw if level is created in Daily Build on top of screen END */
 			
 			#region /* Show text in bottom right of screen what the current custom level name is. This will make it less confusing what level you are editing */
 			draw_set_halign(fa_right);
