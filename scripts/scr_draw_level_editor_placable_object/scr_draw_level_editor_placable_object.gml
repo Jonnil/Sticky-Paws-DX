@@ -38,6 +38,11 @@ function scr_draw_level_editor_placable_object(var_selected_object, var_place_ob
 			if (unlocked_object[var_place_object_id] == 1 && global.show_new_items_notification) {
 				draw_circle_color(half_gui_width + menu_x_offset + 16, y_offset - 16, 3 + scr_wave(0, 3, 1, 0), c_red, c_red, false);
 			}
+			
+			/* If the object is a featured object in Daily Build, indicate that to the player */
+			if (unlocked_object[var_place_object_id] == 3 && global.show_new_items_notification) {
+				draw_circle_color(half_gui_width + menu_x_offset + 16, y_offset - 16, 3 + scr_wave(0, 3, 1, 0), c_aqua, c_aqua, false);
+			}
 		}
 		order_index += add_order_index;
 	}

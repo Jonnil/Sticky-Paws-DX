@@ -2915,6 +2915,7 @@
     {"id":{"name":"scr_sync_saving_create","path":"scripts/scr_sync_saving_create/scr_sync_saving_create.yy",},},
     {"id":{"name":"scr_toggle_fullscreen","path":"scripts/scr_toggle_fullscreen/scr_toggle_fullscreen.yy",},},
     {"id":{"name":"scr_translation","path":"scripts/scr_translation/scr_translation.yy",},},
+    {"id":{"name":"scr_unlock_placable_level_objects","path":"scripts/scr_unlock_placable_level_objects/scr_unlock_placable_level_objects.yy",},},
     {"id":{"name":"scr_unlock_placable_objects","path":"scripts/scr_unlock_placable_objects/scr_unlock_placable_objects.yy",},},
     {"id":{"name":"scr_unzip_all","path":"scripts/scr_unzip_all/scr_unzip_all.yy",},},
     {"id":{"name":"scr_update_all_backgrounds","path":"scripts/scr_update_all_backgrounds/scr_update_all_backgrounds.yy",},},

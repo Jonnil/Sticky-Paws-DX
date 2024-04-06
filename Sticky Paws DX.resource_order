@@ -340,6 +340,7 @@
     {"name":"scr_sync_saving_create","order":69,"path":"scripts/scr_sync_saving_create/scr_sync_saving_create.yy",},
     {"name":"scr_toggle_fullscreen","order":35,"path":"scripts/scr_toggle_fullscreen/scr_toggle_fullscreen.yy",},
     {"name":"scr_translation","order":36,"path":"scripts/scr_translation/scr_translation.yy",},
+    {"name":"scr_unlock_placable_level_objects","order":25,"path":"scripts/scr_unlock_placable_level_objects/scr_unlock_placable_level_objects.yy",},
     {"name":"scr_unlock_placable_objects","order":18,"path":"scripts/scr_unlock_placable_objects/scr_unlock_placable_objects.yy",},
     {"name":"scr_unzip_all","order":37,"path":"scripts/scr_unzip_all/scr_unzip_all.yy",},
     {"name":"scr_update_all_backgrounds","order":38,"path":"scripts/scr_update_all_backgrounds/scr_update_all_backgrounds.yy",},
