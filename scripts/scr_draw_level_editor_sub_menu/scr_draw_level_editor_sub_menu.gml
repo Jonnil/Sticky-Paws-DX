@@ -276,6 +276,7 @@ function scr_draw_level_editor_sub_menu(xx = 394 * (global.select_level_index - 
 				draw_menu_button(xx + 8, 226 * (column - scroll) + 522 - 3, l10n_text("Create from Template"), "level_editor_create_from_template", "level_editor_create_from_template"); /* + 47 on y */
 				if (daily_build_enabled) {
 					draw_menu_button(xx + 8, daily_build_y, l10n_text("Create Daily Build"), "level_editor_create_daily_build", "level_editor_create_daily_build"); /* + 47 on y */
+					draw_sprite_ext(spr_icon_daily_build, 0, xx + 8 + 20, daily_build_y + 21, 1, 1, 0, c_white, 1);
 				}
 				draw_menu_button(xx + 8, back_y, l10n_text("Back"), "level_editor_create_from_back", "level_editor_create_from_back");
 				draw_sprite_ext(spr_icon_back, 0, xx + 8 + 20, back_y + 21, 1, 1, 0, c_white, 1);

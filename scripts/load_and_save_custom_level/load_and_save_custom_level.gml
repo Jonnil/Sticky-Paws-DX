@@ -201,9 +201,40 @@ function scr_save_level_information() {
 	&& (!global.create_level_from_template) { /* Don't save when you are creating a level from template, as it will incorrectly create a "levels" folder in Local AppData */
 		show_debug_message("SAVE LEVEL INFORMATION");
 		ini_open(game_save_id + "custom_levels/" + global.level_name + "/data/level_information.ini");
+		
+		#region /* Save what selected object you were using most recent in the specific level */
+		ini_write_real("info", "place_object", place_object);
+		ini_write_real("info", "selected_object", selected_object);
+		ini_write_real("info", "selected_object_menu_actual_x", selected_object_menu_actual_x);
+		ini_write_string("info", "current_object_category", current_object_category); /* Seperate objects into different categories, to make objects easier to find */
+		ini_write_real("info", "selected_object_sprite", sprite_index);
+		#endregion /* Save what selected object you were using most recent in the specific level END */
+		
 		if (!ini_key_exists("info", "first_created_on_version")) {
 			ini_write_string("info", "first_created_on_version", "v" + scr_get_build_date());
 		}
+		
+		#region /* Save what date this level was first created in */
+		if (!ini_key_exists("info", "first_created_on_date_year")) { /* Save what year this level was first created in */
+			ini_write_real("info", "first_created_on_date_year", date_get_year(date_current_datetime()));
+		}
+		if (!ini_key_exists("info", "first_created_on_date_month")) { /* Save what month this level was first created in */
+			ini_write_real("info", "first_created_on_date_month", date_get_month(date_current_datetime()));
+		}
+		if (!ini_key_exists("info", "first_created_on_date_day")) { /* Save what day this level was first created in */
+			ini_write_real("info", "first_created_on_date_day", date_get_day(date_current_datetime()));
+		}
+		if (!ini_key_exists("info", "first_created_on_date_hour")) { /* Save what hour this level was first created in */
+			ini_write_real("info", "first_created_on_date_hour", date_get_hour(date_current_datetime()));
+		}
+		if (!ini_key_exists("info", "first_created_on_date_minute")) { /* Save what minute this level was first created in */
+			ini_write_real("info", "first_created_on_date_minute", date_get_minute(date_current_datetime()));
+		}
+		if (!ini_key_exists("info", "first_created_on_date_second")) { /* Save what second this level was first created in */
+			ini_write_real("info", "first_created_on_date_second", date_get_second(date_current_datetime()));
+		}
+		#endregion /* Save what date this level was first created in END */
+		
 		ini_write_string("info", "level_name", global.level_name);
 		ini_write_string("info", "username", string(global.username));
 		ini_write_real("info", "clear_check", false);
@@ -298,11 +329,6 @@ function scr_save_level_information() {
 		
 		/* Update custom level save data */
 		ini_open(game_save_id + "save_file/custom_level_save.ini");
-		ini_write_real("info", "place_object", place_object);
-		ini_write_real("info", "selected_object", selected_object);
-		ini_write_real("info", "selected_object_menu_actual_x", selected_object_menu_actual_x);
-		ini_write_string("info", "current_object_category", current_object_category); /* Seperate objects into different categories, to make objects easier to find */
-		ini_write_real("info", "selected_object_sprite", sprite_index);
 		ini_key_delete(global.level_name, "checkpoint_x");
 		ini_key_delete(global.level_name, "checkpoint_y");
 		ini_key_delete(global.level_name, "checkpoint_millisecond");

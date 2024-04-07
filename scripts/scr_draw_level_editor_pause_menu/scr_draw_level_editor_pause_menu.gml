@@ -89,7 +89,7 @@ function scr_draw_level_editor_pause_menu()
 				draw_set_halign(fa_left);
 				draw_set_valign(fa_middle);
 				scr_draw_text_outlined(64, 64, l10n_text("Daily Build"), global.default_text_size * scr_wave(1, 1.1, 1, 0), c_black, c_white, 1);
-				draw_sprite_ext(spr_icon_finished, 1, 32, 64, scr_wave(0.9, 1, 1, 0), scr_wave(0.9, 1, 1, 0), 0, c_white, 1);
+				draw_sprite_ext(spr_icon_daily_build, 1, 32, 64, scr_wave(0.9, 1, 1, 0), scr_wave(0.9, 1, 1, 0), 0, c_white, 1);
 			}
 			#endregion /* Draw if level is created in Daily Build on top of screen END */
 			

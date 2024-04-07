@@ -29,7 +29,7 @@ function scr_draw_level_editor_thumbnail(load_what_levels = global.all_loaded_cu
 	#endregion /* Red rectangle behind the level thumbnail to indicate what level you are selecting END */
 	
 	#region /* Draw Thumbnail */
-	for(i = 0; i < ds_list_size(global.thumbnail_sprite); i += 1)
+	for(var i = 0; i < ds_list_size(global.thumbnail_sprite); i += 1)
 	{
 		column = floor(i / row);
 		if (ds_list_find_value(global.thumbnail_sprite, i) > 0)
@@ -98,6 +98,7 @@ function scr_draw_level_editor_thumbnail(load_what_levels = global.all_loaded_cu
 			}
 			
 			#region /* Draw if level have been Clear Checked on top of level thumbnail */
+			clear_check = false;
 			if (room == rm_title)
 			{
 				if (variable_instance_exists(self, "thumbnail_clear_check"))
@@ -147,17 +148,47 @@ function scr_draw_level_editor_thumbnail(load_what_levels = global.all_loaded_cu
 					if (clear_check)
 					{
 						var draw_x = 394 * (i - column * row) + 140 + thumbnail_x_offset;
-						var draw_y = 226 * (column - scroll) + 274;
+						var clear_check_draw_y = 226 * (column - scroll) + 274;
 						var text_size = global.default_text_size * scr_wave(1, 1.1, 1, 0);
-					
+						
 						draw_set_halign(fa_left);
 						draw_set_valign(fa_middle);
-						scr_draw_text_outlined(draw_x, draw_y, current_text, text_size, c_white, c_black, 1);
-						draw_sprite_ext(current_icon, 1, draw_x - 20, draw_y, icon_scale, icon_scale, 0, c_white, 1);
+						scr_draw_text_outlined(draw_x, clear_check_draw_y, current_text, text_size, c_white, c_black, 1);
+						draw_sprite_ext(current_icon, 1, draw_x - 20, clear_check_draw_y, icon_scale, icon_scale, 0, c_white, 1);
 					}
 				}
 			}
 			#endregion /* Draw if level have been Clear Checked on top of level thumbnail END */
+			
+			#region /* Draw if level have been created in Daily Build mode on top of level thumbnail */
+			if (room == rm_title)
+			{
+				if (variable_instance_exists(self, "thumbnail_daily_build"))
+				&& (is_array(thumbnail_daily_build))
+				&& (array_length(thumbnail_daily_build) > 0)
+				&& (!level_editor_template_select && i >= 1)
+				&& (i < array_length(thumbnail_daily_build))
+				{
+					if (thumbnail_daily_build[i])
+					{
+						var icon_scale = scr_wave(0.9, 1, 1, 0);
+						var draw_x = 394 * (i - column * row) + 140 + thumbnail_x_offset;
+						if (clear_check) {
+							var daily_build_draw_y = 226 * (column - scroll) + 274 + 32;
+						} else {
+							var daily_build_draw_y = 226 * (column - scroll) + 274;
+						}
+						if (global.select_level_index == i)
+						{
+							draw_set_halign(fa_left);
+							draw_set_valign(fa_middle);
+							scr_draw_text_outlined(draw_x, daily_build_draw_y, l10n_text("Daily Build"), global.default_text_size * scr_wave(1, 1.1, 1, 0), c_white, c_black, 1);
+						}
+						draw_sprite_ext(spr_icon_daily_build, 1, draw_x - 20, daily_build_draw_y, icon_scale, icon_scale, 0, c_white, 1);
+					}
+				}
+			}
+			#endregion /* Draw if level have been created in Daily Build mode on top of level thumbnail END */
 			
 		}
 		

@@ -15,6 +15,8 @@ layer_background_sprite(layer_background_get_id(layer_get_id("Background_4")), g
 scr_make_background_visible();
 
 #region /* Essential variables */
+if_clear_checked = false;
+if_daily_build = false;
 cam_x = camera_get_view_x(view_camera[view_current]);
 cam_y = camera_get_view_y(view_camera[view_current]);
 cam_width = camera_get_view_width(view_camera[view_current]);
@@ -97,11 +99,35 @@ if (global.actually_play_edited_level)
 if (!global.actually_play_edited_level)
 {
 	
+	#region /* Save what date this level was first created in */
+	ini_open(game_save_id + "custom_levels/" + global.level_name + "/data/level_information.ini");
+	if (!ini_key_exists("info", "first_created_on_version")) {
+		ini_write_string("info", "first_created_on_version", "v" + scr_get_build_date());
+	}
+	if (!ini_key_exists("info", "first_created_on_date_year")) { /* Save what year this level was first created in */
+		ini_write_real("info", "first_created_on_date_year", date_get_year(date_current_datetime()));
+	}
+	if (!ini_key_exists("info", "first_created_on_date_month")) { /* Save what month this level was first created in */
+		ini_write_real("info", "first_created_on_date_month", date_get_month(date_current_datetime()));
+	}
+	if (!ini_key_exists("info", "first_created_on_date_day")) { /* Save what day this level was first created in */
+		ini_write_real("info", "first_created_on_date_day", date_get_day(date_current_datetime()));
+	}
+	if (!ini_key_exists("info", "first_created_on_date_hour")) { /* Save what hour this level was first created in */
+		ini_write_real("info", "first_created_on_date_hour", date_get_hour(date_current_datetime()));
+	}
+	if (!ini_key_exists("info", "first_created_on_date_minute")) { /* Save what minute this level was first created in */
+		ini_write_real("info", "first_created_on_date_minute", date_get_minute(date_current_datetime()));
+	}
+	if (!ini_key_exists("info", "first_created_on_date_second")) { /* Save what second this level was first created in */
+		ini_write_real("info", "first_created_on_date_second", date_get_second(date_current_datetime()));
+	}
+	ini_close();
+	#endregion /* Save what date this level was first created in END */
+	
 	#region /* Show what version of the game the level was first created in */
 	/* This should make it easier to port old levels to new game versions */
 	/* Showing the original version number makes it easier to pinpoint what changes happened from one version to another */
-	if_clear_checked = false;
-	if_daily_build = false;
 	level_made_in_what_version_text = "";
 	first_created_on_version = "";
 	var level_information_ini_path = game_save_id + "custom_levels/" + global.level_name + "/data/level_information.ini";
@@ -719,12 +745,23 @@ if (!global.actually_play_edited_level)
 }
 #endregion /* If you're actually playing a level, then you don't need to run a lot of the code only relevant when making a level END */
 
-ini_open(game_save_id + "save_file/custom_level_save.ini");
+#region /* Load what selected object you were using most recent in the specific level */
+ini_open(game_save_id + "custom_levels/" + global.level_name + "/data/level_information.ini");
 place_object = ini_read_real("info", "place_object", 1);
 selected_object = ini_read_real("info", "selected_object", 0);
 selected_object_menu_actual_x = ini_read_real("info", "selected_object_menu_actual_x", 0);
-current_object_category = ini_read_string("info", "current_object_category", "terrain"); /* Seperate objects into different categories, to make objects easier to find */
+if (!if_daily_build) {
+	var default_category = "terrain";
+}
+else
+if (if_daily_build) {
+	var default_category = "daily_build_standard";
+}
+current_object_category = ini_read_string("info", "current_object_category", default_category); /* Seperate objects into different categories, to make objects easier to find */
 sprite_index = ini_read_real("info", "selected_object_sprite", sprite_index);
 ini_close();
+#endregion /* Load what selected object you were using most recent in the specific level END */
+
+initialize_recent_object_selected = true;
 
 set_controller_sprites_to_use();

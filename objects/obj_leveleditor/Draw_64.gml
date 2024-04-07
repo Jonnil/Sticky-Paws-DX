@@ -110,60 +110,96 @@ if (!global.actually_play_edited_level)
 		var icon_object_category_enemy_x = display_get_gui_width() * 0.5 + 64;
 		var icon_object_category_gizmo_x = display_get_gui_width() * 0.5 + 64 + 64;
 		
-		if (current_object_category == "terrain")
-		{
-			draw_sprite_ext(spr_leveleditor_icon_empty, 0, icon_object_category_terrain_x, 32 + icon_at_top_y, 1, 1, 0, c_white, 1);
-			draw_sprite_ext(global.resource_pack_sprite_tileset_default, 0, icon_object_category_terrain_x, 32 + icon_at_top_y, 1, 1, 0, c_white, 1);
-			var category_title = l10n_text("Terrain");
+		var icon_object_category_daily_build_standard_x = display_get_gui_width() * 0.5 - 32;
+		var icon_object_category_daily_build_featured_x = display_get_gui_width() * 0.5 + 32;
+		
+		var category_title = "";
+		
+		if (!if_daily_build) {
+			if (current_object_category == "terrain")
+			{
+				draw_sprite_ext(spr_leveleditor_icon_empty, 0, icon_object_category_terrain_x, 32 + icon_at_top_y, 1, 1, 0, c_white, 1);
+				draw_sprite_ext(global.resource_pack_sprite_tileset_default, 0, icon_object_category_terrain_x, 32 + icon_at_top_y, 1, 1, 0, c_white, 1);
+				var category_title = l10n_text("Terrain");
+			}
+			else
+			{
+				draw_sprite_ext(spr_leveleditor_icon_empty, 0, icon_object_category_terrain_x, 32 + icon_at_top_y, 1, 1, 0, c_gray, 1);
+				draw_sprite_ext(global.resource_pack_sprite_tileset_default, 0, icon_object_category_terrain_x, 32 + icon_at_top_y, 1, 1, 0, c_gray, 1);
+			}
+			if (current_object_category == "decoration")
+			{
+				draw_sprite_ext(spr_leveleditor_icon_empty, 0, icon_object_category_decoration_x, 32 + icon_at_top_y, 1, 1, 0, c_white, 1);
+				draw_sprite_ext(spr_arrow_sign, 0, icon_object_category_decoration_x, 32 + icon_at_top_y, 1, 1, 0, c_white, 1);
+				var category_title = l10n_text("Decoration");
+			}
+			else
+			{
+				draw_sprite_ext(spr_leveleditor_icon_empty, 0, icon_object_category_decoration_x, 32 + icon_at_top_y, 1, 1, 0, c_gray, 1);
+				draw_sprite_ext(spr_arrow_sign, 0, icon_object_category_decoration_x, 32 + icon_at_top_y, 1, 1, 0, c_gray, 1);
+			}
+			if (current_object_category == "item")
+			{
+				draw_sprite_ext(spr_leveleditor_icon_empty, 1, icon_object_category_item_x, 32 + icon_at_top_y, 1, 1, 0, c_white, 1);
+				draw_sprite_ext(global.resource_pack_sprite_basic_collectible, 1, icon_object_category_item_x, 32 + icon_at_top_y, 1, 1, 0, c_white, 1);
+				var category_title = l10n_text("Item");
+			}
+			else
+			{
+				draw_sprite_ext(spr_leveleditor_icon_empty, 1, icon_object_category_item_x, 32 + icon_at_top_y, 1, 1, 0, c_gray, 1);
+				draw_sprite_ext(global.resource_pack_sprite_basic_collectible, 1, icon_object_category_item_x, 32 + icon_at_top_y, 1, 1, 0, c_gray, 1);
+			}
+			if (current_object_category == "enemy")
+			{
+				draw_sprite_ext(spr_leveleditor_icon_empty, 2, icon_object_category_enemy_x, 32 + icon_at_top_y, 1, 1, 0, c_white, 1);
+				draw_sprite_ext(global.resource_pack_sprite_basic_enemy, 2, icon_object_category_enemy_x, 32 + icon_at_top_y, 1, 1, 0, c_white, 1);
+				var category_title = l10n_text("Enemy");
+			}
+			else
+			{
+				draw_sprite_ext(spr_leveleditor_icon_empty, 2, icon_object_category_enemy_x, 32 + icon_at_top_y, 1, 1, 0, c_gray, 1);
+				draw_sprite_ext(global.resource_pack_sprite_basic_enemy, 2, icon_object_category_enemy_x, 32 + icon_at_top_y, 1, 1, 0, c_gray, 1);
+			}
+			if (current_object_category == "gizmo")
+			{
+				draw_sprite_ext(spr_leveleditor_icon_empty, 3, icon_object_category_gizmo_x, 32 + icon_at_top_y, 1, 1, 0, c_white, 1);
+				draw_sprite_ext(spr_spring, 3, icon_object_category_gizmo_x, 32 + icon_at_top_y, 1, 1, 0, c_white, 1);
+				var category_title = l10n_text("Gizmo");
+			}
+			else
+			{
+				draw_sprite_ext(spr_leveleditor_icon_empty, 3, icon_object_category_gizmo_x, 32 + icon_at_top_y, 1, 1, 0, c_gray, 1);
+				draw_sprite_ext(spr_spring, 3, icon_object_category_gizmo_x, 32 + icon_at_top_y, 1, 1, 0, c_gray, 1);
+			}
 		}
-		else
-		{
-			draw_sprite_ext(spr_leveleditor_icon_empty, 0, icon_object_category_terrain_x, 32 + icon_at_top_y, 1, 1, 0, c_gray, 1);
-			draw_sprite_ext(global.resource_pack_sprite_tileset_default, 0, icon_object_category_terrain_x, 32 + icon_at_top_y, 1, 1, 0, c_gray, 1);
-		}
-		if (current_object_category == "decoration")
-		{
-			draw_sprite_ext(spr_leveleditor_icon_empty, 0, icon_object_category_decoration_x, 32 + icon_at_top_y, 1, 1, 0, c_white, 1);
-			draw_sprite_ext(spr_arrow_sign, 0, icon_object_category_decoration_x, 32 + icon_at_top_y, 1, 1, 0, c_white, 1);
-			var category_title = l10n_text("Decoration");
-		}
-		else
-		{
-			draw_sprite_ext(spr_leveleditor_icon_empty, 0, icon_object_category_decoration_x, 32 + icon_at_top_y, 1, 1, 0, c_gray, 1);
-			draw_sprite_ext(spr_arrow_sign, 0, icon_object_category_decoration_x, 32 + icon_at_top_y, 1, 1, 0, c_gray, 1);
-		}
-		if (current_object_category == "item")
-		{
-			draw_sprite_ext(spr_leveleditor_icon_empty, 1, icon_object_category_item_x, 32 + icon_at_top_y, 1, 1, 0, c_white, 1);
-			draw_sprite_ext(global.resource_pack_sprite_basic_collectible, 1, icon_object_category_item_x, 32 + icon_at_top_y, 1, 1, 0, c_white, 1);
-			var category_title = l10n_text("Item");
-		}
-		else
-		{
-			draw_sprite_ext(spr_leveleditor_icon_empty, 1, icon_object_category_item_x, 32 + icon_at_top_y, 1, 1, 0, c_gray, 1);
-			draw_sprite_ext(global.resource_pack_sprite_basic_collectible, 1, icon_object_category_item_x, 32 + icon_at_top_y, 1, 1, 0, c_gray, 1);
-		}
-		if (current_object_category == "enemy")
-		{
-			draw_sprite_ext(spr_leveleditor_icon_empty, 2, icon_object_category_enemy_x, 32 + icon_at_top_y, 1, 1, 0, c_white, 1);
-			draw_sprite_ext(global.resource_pack_sprite_basic_enemy, 2, icon_object_category_enemy_x, 32 + icon_at_top_y, 1, 1, 0, c_white, 1);
-			var category_title = l10n_text("Enemy");
-		}
-		else
-		{
-			draw_sprite_ext(spr_leveleditor_icon_empty, 2, icon_object_category_enemy_x, 32 + icon_at_top_y, 1, 1, 0, c_gray, 1);
-			draw_sprite_ext(global.resource_pack_sprite_basic_enemy, 2, icon_object_category_enemy_x, 32 + icon_at_top_y, 1, 1, 0, c_gray, 1);
-		}
-		if (current_object_category == "gizmo")
-		{
-			draw_sprite_ext(spr_leveleditor_icon_empty, 3, icon_object_category_gizmo_x, 32 + icon_at_top_y, 1, 1, 0, c_white, 1);
-			draw_sprite_ext(spr_spring, 3, icon_object_category_gizmo_x, 32 + icon_at_top_y, 1, 1, 0, c_white, 1);
-			var category_title = l10n_text("Gizmo");
-		}
-		else
-		{
-			draw_sprite_ext(spr_leveleditor_icon_empty, 3, icon_object_category_gizmo_x, 32 + icon_at_top_y, 1, 1, 0, c_gray, 1);
-			draw_sprite_ext(spr_spring, 3, icon_object_category_gizmo_x, 32 + icon_at_top_y, 1, 1, 0, c_gray, 1);
+		
+		if (if_daily_build) {
+			if (current_object_category == "daily_build_standard")
+			{
+				draw_sprite_ext(spr_leveleditor_icon_empty, 3, icon_object_category_daily_build_standard_x, 32 + icon_at_top_y, 1, 1, 0, c_white, 1);
+				draw_sprite_ext(global.resource_pack_sprite_tileset_default, 0, icon_object_category_daily_build_standard_x, 32 + icon_at_top_y, 1, 1, 0, c_white, 1);
+				var category_title = l10n_text("Standard");
+				draw_set_halign(fa_left);
+				scr_draw_text_outlined(10, 10, l10n_text("These items are always unlocked"), global.default_text_size * 0.7, c_black, c_white, selected_menu_alpha);
+			}
+			else
+			{
+				draw_sprite_ext(spr_leveleditor_icon_empty, 3, icon_object_category_daily_build_standard_x, 32 + icon_at_top_y, 1, 1, 0, c_gray, 1);
+				draw_sprite_ext(global.resource_pack_sprite_tileset_default, 0, icon_object_category_daily_build_standard_x, 32 + icon_at_top_y, 1, 1, 0, c_gray, 1);
+			}
+			if (current_object_category == "daily_build_featured")
+			{
+				draw_sprite_ext(spr_leveleditor_icon_empty, 3, icon_object_category_daily_build_featured_x, 32 + icon_at_top_y, 1, 1, 0, c_white, 1);
+				draw_sprite_ext(spr_icon_featured, 0, icon_object_category_daily_build_featured_x, 32 + icon_at_top_y, 0.75, 0.75, 0, c_white, 1);
+				var category_title = l10n_text("Featured");
+				draw_set_halign(fa_left);
+				scr_draw_text_outlined(10, 10, l10n_text("These are the featured items for today"), global.default_text_size * 0.7, c_black, c_white, selected_menu_alpha);
+			}
+			else
+			{
+				draw_sprite_ext(spr_leveleditor_icon_empty, 3, icon_object_category_daily_build_featured_x, 32 + icon_at_top_y, 1, 1, 0, c_gray, 1);
+				draw_sprite_ext(spr_icon_featured, 0, icon_object_category_daily_build_featured_x, 32 + icon_at_top_y, 0.75, 0.75, 0, c_gray, 1);
+			}
 		}
 		
 		if (selected_menu_alpha > 0)
@@ -173,113 +209,161 @@ if (!global.actually_play_edited_level)
 		}
 		
 		#region /* Navigate Category Icons */
-		if (global.controls_used_for_navigation == "mouse")
-		&& (point_in_rectangle(cursor_x, cursor_y, icon_object_category_terrain_x - 32 + 1, icon_at_top_y, icon_object_category_terrain_x + 32, + 64 + icon_at_top_y))
-		|| (level_editor_menu == "category_terrain")
-		{
-			if (!show_selected_menu)
-			{
-				draw_sprite_ext(spr_menu_cursor, menu_cursor_index, icon_object_category_terrain_x, icon_at_top_y + 80, 1, 1, 90, c_white, 1);
-			}
-			draw_set_alpha(0.5);
-			draw_rectangle_color(icon_object_category_terrain_x - 32, icon_at_top_y, icon_object_category_terrain_x + 32, 64 + icon_at_top_y, c_white, c_white, c_white, c_white, false);
-			draw_set_alpha(1);
+		if (!if_daily_build) {
 			if (global.controls_used_for_navigation == "mouse")
-			&& (mouse_check_button_pressed(mb_left))
+			&& (point_in_rectangle(cursor_x, cursor_y, icon_object_category_terrain_x - 32 + 1, icon_at_top_y, icon_object_category_terrain_x + 32, + 64 + icon_at_top_y))
 			|| (level_editor_menu == "category_terrain")
-			&& (key_a_pressed)
 			{
-				menu_delay = 3;
-				show_selected_menu = true;
-				current_object_category = "terrain";
+				if (!show_selected_menu)
+				{
+					draw_sprite_ext(spr_menu_cursor, menu_cursor_index, icon_object_category_terrain_x, icon_at_top_y + 80, 1, 1, 90, c_white, 1);
+				}
+				draw_set_alpha(0.5);
+				draw_rectangle_color(icon_object_category_terrain_x - 32, icon_at_top_y, icon_object_category_terrain_x + 32, 64 + icon_at_top_y, c_white, c_white, c_white, c_white, false);
+				draw_set_alpha(1);
+				if (global.controls_used_for_navigation == "mouse")
+				&& (mouse_check_button_pressed(mb_left))
+				|| (level_editor_menu == "category_terrain")
+				&& (key_a_pressed)
+				{
+					menu_delay = 3;
+					show_selected_menu = true;
+					current_object_category = "terrain";
+				}
 			}
-		}
-		else
-		if (global.controls_used_for_navigation == "mouse")
-		&& (point_in_rectangle(cursor_x, cursor_y, icon_object_category_decoration_x - 32 + 1, icon_at_top_y, icon_object_category_decoration_x + 32, + 64 + icon_at_top_y))
-		|| (level_editor_menu == "category_decoration")
-		{
-			if (!show_selected_menu)
-			{
-				draw_sprite_ext(spr_menu_cursor, menu_cursor_index, icon_object_category_decoration_x, icon_at_top_y + 80, 1, 1, 90, c_white, 1);
-			}
-			draw_set_alpha(0.5);
-			draw_rectangle_color(icon_object_category_decoration_x - 32, icon_at_top_y, icon_object_category_decoration_x + 32, 64 + icon_at_top_y, c_white, c_white, c_white, c_white, false);
-			draw_set_alpha(1);
+			else
 			if (global.controls_used_for_navigation == "mouse")
-			&& (mouse_check_button_pressed(mb_left))
+			&& (point_in_rectangle(cursor_x, cursor_y, icon_object_category_decoration_x - 32 + 1, icon_at_top_y, icon_object_category_decoration_x + 32, + 64 + icon_at_top_y))
 			|| (level_editor_menu == "category_decoration")
-			&& (key_a_pressed)
 			{
-				menu_delay = 3;
-				show_selected_menu = true;
-				current_object_category = "decoration";
+				if (!show_selected_menu)
+				{
+					draw_sprite_ext(spr_menu_cursor, menu_cursor_index, icon_object_category_decoration_x, icon_at_top_y + 80, 1, 1, 90, c_white, 1);
+				}
+				draw_set_alpha(0.5);
+				draw_rectangle_color(icon_object_category_decoration_x - 32, icon_at_top_y, icon_object_category_decoration_x + 32, 64 + icon_at_top_y, c_white, c_white, c_white, c_white, false);
+				draw_set_alpha(1);
+				if (global.controls_used_for_navigation == "mouse")
+				&& (mouse_check_button_pressed(mb_left))
+				|| (level_editor_menu == "category_decoration")
+				&& (key_a_pressed)
+				{
+					menu_delay = 3;
+					show_selected_menu = true;
+					current_object_category = "decoration";
+				}
 			}
-		}
-		else
-		if (global.controls_used_for_navigation == "mouse")
-		&& (point_in_rectangle(cursor_x, cursor_y, icon_object_category_item_x - 32 + 1, icon_at_top_y, icon_object_category_item_x + 32, + 64 + icon_at_top_y))
-		|| (level_editor_menu == "category_item")
-		{
-			if (!show_selected_menu)
-			{
-				draw_sprite_ext(spr_menu_cursor, menu_cursor_index, icon_object_category_item_x, icon_at_top_y + 80, 1, 1, 90, c_white, 1);
-			}
-			draw_set_alpha(0.5);
-			draw_rectangle_color(icon_object_category_item_x - 32, icon_at_top_y, icon_object_category_item_x + 32, 64 + icon_at_top_y, c_white, c_white, c_white, c_white, false);
-			draw_set_alpha(1);
+			else
 			if (global.controls_used_for_navigation == "mouse")
-			&& (mouse_check_button_pressed(mb_left))
+			&& (point_in_rectangle(cursor_x, cursor_y, icon_object_category_item_x - 32 + 1, icon_at_top_y, icon_object_category_item_x + 32, + 64 + icon_at_top_y))
 			|| (level_editor_menu == "category_item")
-			&& (key_a_pressed)
 			{
-				menu_delay = 3;
-				show_selected_menu = true;
-				current_object_category = "item";
+				if (!show_selected_menu)
+				{
+					draw_sprite_ext(spr_menu_cursor, menu_cursor_index, icon_object_category_item_x, icon_at_top_y + 80, 1, 1, 90, c_white, 1);
+				}
+				draw_set_alpha(0.5);
+				draw_rectangle_color(icon_object_category_item_x - 32, icon_at_top_y, icon_object_category_item_x + 32, 64 + icon_at_top_y, c_white, c_white, c_white, c_white, false);
+				draw_set_alpha(1);
+				if (global.controls_used_for_navigation == "mouse")
+				&& (mouse_check_button_pressed(mb_left))
+				|| (level_editor_menu == "category_item")
+				&& (key_a_pressed)
+				{
+					menu_delay = 3;
+					show_selected_menu = true;
+					current_object_category = "item";
+				}
 			}
-		}
-		else
-		if (global.controls_used_for_navigation == "mouse")
-		&& (point_in_rectangle(cursor_x, cursor_y, icon_object_category_enemy_x - 32 + 1, icon_at_top_y, icon_object_category_enemy_x + 32, + 64 + icon_at_top_y))
-		|| (level_editor_menu == "category_enemy")
-		{
-			if (!show_selected_menu)
-			{
-				draw_sprite_ext(spr_menu_cursor, menu_cursor_index, icon_object_category_enemy_x, icon_at_top_y + 80, 1, 1, 90, c_white, 1);
-			}
-			draw_set_alpha(0.5);
-			draw_rectangle_color(icon_object_category_enemy_x - 32, icon_at_top_y, icon_object_category_enemy_x + 32, 64 + icon_at_top_y, c_white, c_white, c_white, c_white, false);
-			draw_set_alpha(1);
+			else
 			if (global.controls_used_for_navigation == "mouse")
-			&& (mouse_check_button_pressed(mb_left))
+			&& (point_in_rectangle(cursor_x, cursor_y, icon_object_category_enemy_x - 32 + 1, icon_at_top_y, icon_object_category_enemy_x + 32, + 64 + icon_at_top_y))
 			|| (level_editor_menu == "category_enemy")
-			&& (key_a_pressed)
 			{
-				menu_delay = 3;
-				show_selected_menu = true;
-				current_object_category = "enemy";
+				if (!show_selected_menu)
+				{
+					draw_sprite_ext(spr_menu_cursor, menu_cursor_index, icon_object_category_enemy_x, icon_at_top_y + 80, 1, 1, 90, c_white, 1);
+				}
+				draw_set_alpha(0.5);
+				draw_rectangle_color(icon_object_category_enemy_x - 32, icon_at_top_y, icon_object_category_enemy_x + 32, 64 + icon_at_top_y, c_white, c_white, c_white, c_white, false);
+				draw_set_alpha(1);
+				if (global.controls_used_for_navigation == "mouse")
+				&& (mouse_check_button_pressed(mb_left))
+				|| (level_editor_menu == "category_enemy")
+				&& (key_a_pressed)
+				{
+					menu_delay = 3;
+					show_selected_menu = true;
+					current_object_category = "enemy";
+				}
+			}
+			else
+			if (global.controls_used_for_navigation == "mouse")
+			&& (point_in_rectangle(cursor_x, cursor_y, icon_object_category_gizmo_x - 32 + 1, icon_at_top_y, icon_object_category_gizmo_x + 32, + 64 + icon_at_top_y))
+			|| (level_editor_menu == "category_gizmo")
+			{
+				if (!show_selected_menu)
+				{
+					draw_sprite_ext(spr_menu_cursor, menu_cursor_index, icon_object_category_gizmo_x, icon_at_top_y + 80, 1, 1, 90, c_white, 1);
+				}
+				draw_set_alpha(0.5);
+				draw_rectangle_color(icon_object_category_gizmo_x - 32, icon_at_top_y, icon_object_category_gizmo_x + 32, 64 + icon_at_top_y, c_white, c_white, c_white, c_white, false);
+				draw_set_alpha(1);
+				if (global.controls_used_for_navigation == "mouse")
+				&& (mouse_check_button_pressed(mb_left))
+				|| (level_editor_menu == "category_gizmo")
+				&& (key_a_pressed)
+				{
+					menu_delay = 3;
+					show_selected_menu = true;
+					current_object_category = "gizmo";
+				}
 			}
 		}
 		else
-		if (global.controls_used_for_navigation == "mouse")
-		&& (point_in_rectangle(cursor_x, cursor_y, icon_object_category_gizmo_x - 32 + 1, icon_at_top_y, icon_object_category_gizmo_x + 32, + 64 + icon_at_top_y))
-		|| (level_editor_menu == "category_gizmo")
-		{
-			if (!show_selected_menu)
-			{
-				draw_sprite_ext(spr_menu_cursor, menu_cursor_index, icon_object_category_gizmo_x, icon_at_top_y + 80, 1, 1, 90, c_white, 1);
-			}
-			draw_set_alpha(0.5);
-			draw_rectangle_color(icon_object_category_gizmo_x - 32, icon_at_top_y, icon_object_category_gizmo_x + 32, 64 + icon_at_top_y, c_white, c_white, c_white, c_white, false);
-			draw_set_alpha(1);
+		if (if_daily_build) {
 			if (global.controls_used_for_navigation == "mouse")
-			&& (mouse_check_button_pressed(mb_left))
-			|| (level_editor_menu == "category_gizmo")
-			&& (key_a_pressed)
+			&& (point_in_rectangle(cursor_x, cursor_y, icon_object_category_daily_build_standard_x - 32 + 1, icon_at_top_y, icon_object_category_daily_build_standard_x + 32, + 64 + icon_at_top_y))
+			|| (level_editor_menu == "daily_build_standard")
 			{
-				menu_delay = 3;
-				show_selected_menu = true;
-				current_object_category = "gizmo";
+				if (!show_selected_menu)
+				{
+					draw_sprite_ext(spr_menu_cursor, menu_cursor_index, icon_object_category_daily_build_standard_x, icon_at_top_y + 80, 1, 1, 90, c_white, 1);
+				}
+				draw_set_alpha(0.5);
+				draw_rectangle_color(icon_object_category_daily_build_standard_x - 32, icon_at_top_y, icon_object_category_daily_build_standard_x + 32, 64 + icon_at_top_y, c_white, c_white, c_white, c_white, false);
+				draw_set_alpha(1);
+				if (global.controls_used_for_navigation == "mouse")
+				&& (mouse_check_button_pressed(mb_left))
+				|| (level_editor_menu == "daily_build_standard")
+				&& (key_a_pressed)
+				{
+					menu_delay = 3;
+					show_selected_menu = true;
+					current_object_category = "daily_build_standard";
+				}
+			}
+			else
+			if (global.controls_used_for_navigation == "mouse")
+			&& (point_in_rectangle(cursor_x, cursor_y, icon_object_category_daily_build_featured_x - 32 + 1, icon_at_top_y, icon_object_category_daily_build_featured_x + 32, + 64 + icon_at_top_y))
+			|| (level_editor_menu == "daily_build_featured")
+			{
+				if (!show_selected_menu)
+				{
+					draw_sprite_ext(spr_menu_cursor, menu_cursor_index, icon_object_category_daily_build_featured_x, icon_at_top_y + 80, 1, 1, 90, c_white, 1);
+				}
+				draw_set_alpha(0.5);
+				draw_rectangle_color(icon_object_category_daily_build_featured_x - 32, icon_at_top_y, icon_object_category_daily_build_featured_x + 32, 64 + icon_at_top_y, c_white, c_white, c_white, c_white, false);
+				draw_set_alpha(1);
+				if (global.controls_used_for_navigation == "mouse")
+				&& (mouse_check_button_pressed(mb_left))
+				|| (level_editor_menu == "daily_build_featured")
+				&& (key_a_pressed)
+				{
+					menu_delay = 3;
+					show_selected_menu = true;
+					current_object_category = "daily_build_featured";
+				}
 			}
 		}
 		#endregion /* Navigate Category Icons END */

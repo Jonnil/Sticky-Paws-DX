@@ -43,6 +43,7 @@ scr_delete_sprite_properly(global.custom_foreground2);
 scr_delete_sprite_properly(global.custom_foreground_secret);
 loading_assets = false;
 allowed_to_load_template_level = false;
+downloaded_level_is_daily_build = false;
 masked_username = "";
 masked_character_name = "";
 masked_level_name = "";
@@ -70,6 +71,7 @@ key_left = noone;
 key_right = noone;
 
 thumbnail_clear_check[0] = noone;
+thumbnail_daily_build[0] = noone;
 thumbnail_level_id[0] = "";
 thumbnail_level_name[0] = "";
 thumbnail_level_description[0] = "";

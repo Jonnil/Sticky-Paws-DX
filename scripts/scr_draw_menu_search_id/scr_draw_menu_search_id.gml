@@ -201,15 +201,21 @@ function scr_draw_menu_search_id(what_kind_of_id = "level")
 	{
 		
 		#region /* Download file */
-		if (file_exists(download_temp_path + "downloaded_" + string(what_kind_of_id) + "/" + string_upper(search_id) + ".zip")) /* Find if a new .zip file has been downloaded */
+		if (file_exists(download_temp_path + "downloaded_" + string(what_kind_of_id) + "/" + string_upper(search_id) + ".zip")) /* Find if a new "zip" file has been downloaded */
 		{
 			scr_switch_expand_save_data(); /* Expand the save data before unzipping file */
 			if (global.save_data_size_is_sufficient)
 			{
+				/* First, unzip the downloaded file */
 				zip_unzip(download_temp_path + "downloaded_" + string(what_kind_of_id) + "/" + string_upper(search_id) + ".zip", download_temp_path + "downloaded_" + string(what_kind_of_id) + "/"); /* Unzip the downloaded file when the game finds it */
-				/* Must delete downloaded .zip file first, before game can properly recognize the unzipped folder */
+				show_debug_message("zip_unzip(" + download_temp_path + "downloaded_" + string(what_kind_of_id) + "/" + string_upper(search_id) + ".zip" + "," + download_temp_path + "downloaded_" + string(what_kind_of_id) + "/" + ");");
+				
+				/* Must delete downloaded "zip" file after unzipping the downloaded zip file, before game can properly recognize the unzipped folder */
 				file_delete(download_temp_path + "downloaded_" + string(what_kind_of_id) + "/" + string_upper(search_id) + ".zip"); /* When the downloaded zip file is unzipped, immediately delete the zip file that is left */
+				
+				/* Important that you retrieve the correct level name, one time it retrieved "undefined.zip" by mistake */
 				var downloaded_file_name = string(file_find_first(download_temp_path + "downloaded_" + string(what_kind_of_id) + "/*", fa_directory)); /* After deleting the zip file left after unzipping, get the name of the directory that is left in the download folder */
+				show_debug_message("downloaded_file_name" + string(downloaded_file_name));
 				
 				/* Copy the downloaded file lastly */
 				if (what_kind_of_id == "level")
@@ -257,6 +263,7 @@ function scr_draw_menu_search_id(what_kind_of_id = "level")
 					if (file_exists(game_save_id + "custom_levels/" + global.level_name + "/data/level_information.ini"))
 					{
 						ini_open(game_save_id + "custom_levels/" + global.level_name + "/data/level_information.ini");
+						downloaded_level_is_daily_build = ini_read_real("info", "if_daily_build", false);
 						global.level_description = ini_read_string("info", "level_description", "");
 						masked_username = ini_read_string("info", "username", "");
 						ini_close(); switch_save_data_commit(); /* Remember to commit the save data! */
@@ -519,6 +526,7 @@ function scr_draw_menu_search_id(what_kind_of_id = "level")
 			
 			draw_set_halign(fa_center);
 			draw_set_valign(fa_middle);
+			/* Draw if level was made with Daily Build */ if (downloaded_level_is_daily_build){draw_sprite_ext(spr_icon_daily_build, 0, display_get_gui_width() * 0.5 - 216, draw_id_y, 1, 1, 0, c_white, 1);}
 			/* Draw ID */ scr_draw_text_outlined(display_get_gui_width() * 0.5, draw_id_y, l10n_text(string(what_kind_of_id)) + " " + l10n_text("ID") + ": " + string_upper(search_id), global.default_text_size * 1.25, c_black, c_white, 1);
 			/* Draw who made the level */ if (masked_username != ""){scr_draw_text_outlined(display_get_gui_width() * 0.5, draw_author_name_y, l10n_text("By") + ": " + string(masked_username), global.default_text_size, c_black, c_white, 1);}
 			/* Draw Description */ scr_draw_text_outlined(display_get_gui_width() * 0.5, draw_description_y, string(global.level_description), global.default_text_size, c_black, c_white, 1);
@@ -962,14 +970,14 @@ function scr_draw_menu_search_id(what_kind_of_id = "level")
 		{
 			if (what_kind_of_id == "level")
 			{
-				scr_draw_text_outlined(display_get_gui_width() * 0.5, display_get_gui_height() * 0.5 - 128, global.level_name, global.default_text_size, c_black, c_white, 1)
+				scr_draw_text_outlined(display_get_gui_width() * 0.5, display_get_gui_height() * 0.5 - 128, l10n_text("Level name") + ": " + global.level_name, global.default_text_size, c_black, c_white, 1)
 				scr_draw_text_outlined(display_get_gui_width() * 0.5, display_get_gui_height() * 0.5 - 64, l10n_text("Level was not correctly uploaded"), global.default_text_size * 2, c_black, c_white, 1)
 				scr_draw_text_outlined(display_get_gui_width() * 0.5, display_get_gui_height() * 0.5, l10n_text("Uploaded level was missing level_information.ini"), global.default_text_size, c_black, c_white, 1)
 			}
 			else
 			if (what_kind_of_id == "character")
 			{
-				scr_draw_text_outlined(display_get_gui_width() * 0.5, display_get_gui_height() * 0.5 - 128, string(downloaded_character_name), global.default_text_size, c_black, c_white, 1)
+				scr_draw_text_outlined(display_get_gui_width() * 0.5, display_get_gui_height() * 0.5 - 128, l10n_text("Character name") + ": " + string(downloaded_character_name), global.default_text_size, c_black, c_white, 1)
 				scr_draw_text_outlined(display_get_gui_width() * 0.5, display_get_gui_height() * 0.5 - 64, l10n_text("Character was not correctly uploaded"), global.default_text_size * 2, c_black, c_white, 1)
 				scr_draw_text_outlined(display_get_gui_width() * 0.5, display_get_gui_height() * 0.5, l10n_text("Uploaded character was missing character_config.ini"), global.default_text_size, c_black, c_white, 1)
 			}

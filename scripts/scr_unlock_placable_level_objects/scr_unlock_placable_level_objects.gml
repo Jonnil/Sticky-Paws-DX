@@ -3,9 +3,16 @@ function scr_unlock_placable_level_objects() {
 	var default_unlock = false; /* Change to true to unlock every object for debugging, otherwise set this to false */
 	var always_unlock = true; /* Some objects should always be unlocked from the start */
 	
-	ini_open(game_save_id + "save_file/file" + string(global.file) + ".ini");
+	#region /* Load what date this level was first created in */
+	ini_open(game_save_id + "custom_levels/" + global.level_name + "/data/level_information.ini");
+	var year = ini_read_real("info", "first_created_on_date_year", date_get_year(date_current_datetime()));
+	var month = ini_write_real("info", "first_created_on_date_month", date_get_month(date_current_datetime()));
+	var day = ini_write_real("info", "first_created_on_date_day", date_get_day(date_current_datetime()));
+	ini_close();
+	#endregion /* Load what date this level was first created in END */
 	
 	#region /* All the objects that should be always unlocked in Level Editor */
+	ini_open(game_save_id + "save_file/file" + string(global.file) + ".ini");
 	unlocked_object[LEVEL_OBJECT_ID.ID_WALL_GRASS] = ini_read_real("Unlock Placable Objects", LEVEL_OBJECT_ID.ID_WALL_GRASS, always_unlock); /* Always Unlocked */
 	unlocked_object[LEVEL_OBJECT_ID.ID_WALL_STONE] = ini_read_real("Unlock Placable Objects", LEVEL_OBJECT_ID.ID_WALL_STONE, always_unlock); /* Always Unlocked */
 	unlocked_object[LEVEL_OBJECT_ID.ID_BRICK_BLOCK] = ini_read_real("Unlock Placable Objects", LEVEL_OBJECT_ID.ID_BRICK_BLOCK, always_unlock); /* Always Unlocked */
@@ -159,9 +166,6 @@ function scr_unlock_placable_level_objects() {
 		#region /* All the objects that should be randomly unlocked in Daily Build */
 		
 		/* First, run code for setting a seed for each day */
-		var year = date_get_year(date_current_datetime());
-		var month = date_get_month(date_current_datetime());
-		var day = date_get_day(date_current_datetime());
 		var seed = string(year) + string(month) + string(day);
 		random_set_seed(seed);
 		
@@ -246,7 +250,7 @@ function scr_unlock_placable_level_objects() {
 		/* Unlock the selected items */
 		for (var j = 0; j < ds_list_size(unlocked_items); j++) {
 		    var item_to_unlock = ds_list_find_value(unlocked_items, j);
-		    unlocked_object[item_to_unlock] = 3; /* Assuming unlocked_object is a map or array to store unlocked items */
+		    unlocked_object[item_to_unlock] = max(ini_read_real("Unlock Placable Objects", item_to_unlock, 1), 1); /* Assuming unlocked_object is a map or array to store unlocked items */
 		}
 		
 		ds_list_destroy(unlocked_items); /* Clean up */

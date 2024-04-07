@@ -114,6 +114,7 @@ if (menu == "load_custom_level")
 		if (variable_instance_exists(self, "thumbnail_level_name"))
 		&& (variable_instance_exists(self, "thumbnail_level_description"))
 		&& (variable_instance_exists(self, "thumbnail_clear_check"))
+		&& (variable_instance_exists(self, "thumbnail_daily_build"))
 		&& (variable_instance_exists(self, "thumbnail_level_id"))
 		&& (is_array(thumbnail_level_name))
 		&& (array_length(thumbnail_level_name) > 0)
@@ -121,18 +122,22 @@ if (menu == "load_custom_level")
 		&& (array_length(thumbnail_level_description) > 0)
 		&& (is_array(thumbnail_clear_check))
 		&& (array_length(thumbnail_clear_check) > 0)
+		&& (is_array(thumbnail_daily_build))
+		&& (array_length(thumbnail_daily_build) > 0)
 		&& (is_array(thumbnail_level_id))
 		&& (array_length(thumbnail_level_id) > 0)
 		&& (i >= 0)
 		&& (i < array_length(thumbnail_level_name))
 		&& (i < array_length(thumbnail_level_description))
 		&& (i < array_length(thumbnail_clear_check))
+		&& (i < array_length(thumbnail_daily_build))
 		&& (i < array_length(thumbnail_level_id))
 		{
 			for(i = 1; i < ds_list_size(global.thumbnail_sprite); i += 1)
 			{
 				ini_open(game_save_id + "custom_levels/" + string(ds_list_find_value(global.all_loaded_custom_levels, i)) + "/data/level_information.ini");
 				thumbnail_clear_check[i] = ini_read_string("info", "clear_check", false);
+				thumbnail_daily_build[i] = ini_read_string("info", "if_daily_build", false);
 				thumbnail_level_id[i] = string(ini_read_string("info", "level_id", ""));
 				if (switch_check_profanity(string(ini_read_string("info", "level_name", ""))))
 				{
