@@ -68,9 +68,17 @@ function scr_initialize_level_information_ini()
 		
 		if (object_index == obj_leveleditor && !global.actually_play_edited_level)
 		{
-			camera_set_view_pos(view_camera[view_current], ini_read_real("info", "view_xview", 0), ini_read_real("info", "view_yview", 0)); /* Set camera position on the last positions you had the camera when doing level editing */
-			x = ini_read_real("info", "view_xview", 0);
-			y = ini_read_real("info", "view_yview", 0);
+			var default_camera_x = -128;
+			if (instance_exists(obj_level_height)) {
+				var default_camera_y = obj_level_height.y - window_get_height() + 128;
+			}
+			else
+			{
+				var default_camera_y = 0;
+			}
+			camera_set_view_pos(view_camera[view_current], ini_read_real("info", "view_xview", default_camera_x), ini_read_real("info", "view_yview", default_camera_y)); /* Set camera position on the last positions you had the camera when doing level editing */
+			x = ini_read_real("info", "view_xview", default_camera_x);
+			y = ini_read_real("info", "view_yview", default_camera_y);
 		}
 		ini_close(); switch_save_data_commit(); /* Remember to commit the save data! */
 	}

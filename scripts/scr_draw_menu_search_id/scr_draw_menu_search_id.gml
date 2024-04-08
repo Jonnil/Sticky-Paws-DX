@@ -164,6 +164,7 @@ function scr_draw_menu_search_id(what_kind_of_id = "level")
 					automatically_search_for_id = false;
 					in_online_download_list_menu = false;
 					global.online_download_list = ""; /* Reset "global online download list" so you can reload online download list next time you go to this menu */
+					global.level_description = ""; /* Reset the description to be empty */
 					data = undefined; /* Reset "data" so you can reload online level list next time you go to this menu */
 					info_data = undefined; /* Don't forget to reset info data too */
 					spr_download_list_thumbnail = noone; /* Don't forget to reset download list thumbnail too */
@@ -199,19 +200,20 @@ function scr_draw_menu_search_id(what_kind_of_id = "level")
 	#region /* Searching for ID menu */
 	if (menu == "searching_for_id")
 	{
+		var downloaded_zip_file_path = download_temp_path + "downloaded_" + string(what_kind_of_id) + "/" + string_upper(search_id) + ".zip";
 		
 		#region /* Download file */
-		if (file_exists(download_temp_path + "downloaded_" + string(what_kind_of_id) + "/" + string_upper(search_id) + ".zip")) /* Find if a new "zip" file has been downloaded */
+		if (file_exists(downloaded_zip_file_path)) /* Find if a new "zip" file has been downloaded */
 		{
 			scr_switch_expand_save_data(); /* Expand the save data before unzipping file */
 			if (global.save_data_size_is_sufficient)
 			{
 				/* First, unzip the downloaded file */
-				zip_unzip(download_temp_path + "downloaded_" + string(what_kind_of_id) + "/" + string_upper(search_id) + ".zip", download_temp_path + "downloaded_" + string(what_kind_of_id) + "/"); /* Unzip the downloaded file when the game finds it */
-				show_debug_message("zip_unzip(" + download_temp_path + "downloaded_" + string(what_kind_of_id) + "/" + string_upper(search_id) + ".zip" + "," + download_temp_path + "downloaded_" + string(what_kind_of_id) + "/" + ");");
+				zip_unzip(downloaded_zip_file_path, download_temp_path + "downloaded_" + string(what_kind_of_id) + "/"); /* Unzip the downloaded file when the game finds it */
+				show_debug_message("zip_unzip(" + downloaded_zip_file_path + "," + download_temp_path + "downloaded_" + string(what_kind_of_id) + "/" + ");");
 				
 				/* Must delete downloaded "zip" file after unzipping the downloaded zip file, before game can properly recognize the unzipped folder */
-				file_delete(download_temp_path + "downloaded_" + string(what_kind_of_id) + "/" + string_upper(search_id) + ".zip"); /* When the downloaded zip file is unzipped, immediately delete the zip file that is left */
+				file_delete(downloaded_zip_file_path); /* When the downloaded zip file is unzipped, immediately delete the zip file that is left */
 				
 				/* Important that you retrieve the correct level name, one time it retrieved "undefined.zip" by mistake */
 				var downloaded_file_name = string(file_find_first(download_temp_path + "downloaded_" + string(what_kind_of_id) + "/*", fa_directory)); /* After deleting the zip file left after unzipping, get the name of the directory that is left in the download folder */

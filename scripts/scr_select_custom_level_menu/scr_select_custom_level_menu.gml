@@ -602,7 +602,7 @@ function scr_select_custom_level_menu()
 		&& (global.select_level_index < array_length(thumbnail_level_description))
 		{
 			draw_set_halign(fa_center);
-			scr_draw_text_outlined(get_window_width * 0.5, get_window_height - 74, string(thumbnail_level_description[global.select_level_index]), global.default_text_size * 1.25, c_black, c_white, 1);
+			scr_draw_text_outlined(get_window_width * 0.5, get_window_height - 42, string(thumbnail_level_description[global.select_level_index]), global.default_text_size, c_black, c_white, 1);
 		}
 		draw_set_halign(fa_right);
 		if (is_array(thumbnail_level_username))

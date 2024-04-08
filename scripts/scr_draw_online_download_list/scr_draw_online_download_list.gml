@@ -781,7 +781,6 @@ function scr_draw_online_download_list()
 			if (is_array(data))
 			&& (array_length(data) > 0)
 			{
-				scr_delete_sprite_properly(spr_download_list_thumbnail);spr_download_list_thumbnail = noone; /* Delete the previous thumbnail sprite so you can load in a new one */
 				menu = "download_online_" + string(num_items);
 			}
 		}
@@ -818,7 +817,6 @@ function scr_draw_online_download_list()
 			if (is_array(data))
 			&& (array_length(data) > 0)
 			{
-				scr_delete_sprite_properly(spr_download_list_thumbnail);spr_download_list_thumbnail = noone; /* Delete the previous thumbnail sprite so you can load in a new one */
 				menu = "download_online_1";
 			}
 		}
@@ -842,7 +840,6 @@ function scr_draw_online_download_list()
 			if (is_array(data))
 			&& (array_length(data) > 0)
 			{
-				scr_delete_sprite_properly(spr_download_list_thumbnail);spr_download_list_thumbnail = noone; /* Delete the previous thumbnail sprite so you can load in a new one */
 				menu = "download_online_" + string(num_items);
 			}
 		}
@@ -854,7 +851,6 @@ function scr_draw_online_download_list()
 			if (is_array(data))
 			&& (array_length(data) > 0)
 			{
-				scr_delete_sprite_properly(spr_download_list_thumbnail);spr_download_list_thumbnail = noone; /* Delete the previous thumbnail sprite so you can load in a new one */
 				menu = "download_online_1";
 			}
 		}

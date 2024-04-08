@@ -286,7 +286,7 @@ function scr_draw_upload_character_menu()
 						{
 							keyboard_string = "";
 							menu_delay = 3;
-							menu = "upload_character_edit_username_ok"; /* If there isn't an username, have the player make an username */
+							menu = "question_upload_character_edit_username_ok"; /* If there isn't an username, have the player make an username */
 						}
 					}
 					else
@@ -561,110 +561,19 @@ function scr_draw_upload_character_menu()
 	#endregion /* Draw clear check character menu END */
 	
 	else
-	
-	#region /* Draw enter username screen */
-	if (menu == "upload_character_edit_username_ok")
-	|| (menu == "upload_character_edit_username_cancel")
 	{
-		draw_set_alpha(0.9);
-		draw_rectangle_color(0, 0, get_window_width, get_window_height, c_black, c_black, c_black, c_black, false);
-		draw_set_alpha(1);
-		
-		draw_set_halign(fa_center);
-		draw_set_valign(fa_middle);
-		var change_username_x = get_window_width * 0.5;
-		var change_username_y = 20 + (40 * 5);
-		
-		#region /* Change username */
-		if (menu == "upload_character_edit_username_ok")
-		|| (menu == "upload_character_edit_username_cancel")
-		{
-			global.username = scr_draw_name_input_screen(global.username, 32, c_white, 0.9, false, change_username_x - 185 + 185, change_username_y + 21, "upload_character_edit_username_ok", "upload_character_edit_username_cancel", false, true, false);
-			
-			#region /* Pressing Change Username OK */
-			if (key_a_pressed)
-			&& (menu = "upload_character_edit_username_ok")
-			&& (global.username != "")
-			|| (point_in_rectangle(mouse_get_x, mouse_get_y, change_username_x - 185, change_username_y + 22 + 52, change_username_x - 185 + 370, change_username_y + 22 + 52 + 42))
-			&& (global.username != "")
-			&& (global.controls_used_for_navigation == "mouse")
-			&& (mouse_check_button_released(mb_left))
-			{
-				if (!keyboard_check_pressed(ord("Z")))
-				&& (!keyboard_check_pressed(ord("X")))
-				&& (!keyboard_check_pressed(vk_backspace))
-				&& (!keyboard_check_pressed(vk_space))
-				&& (menu_delay == 0 && menu_joystick_delay == 0)
-				{
-					/* Save username to config file */
-					ini_open(game_save_id + "save_file/config.ini");
-					ini_write_string("config", "username", string(global.username));
-					ini_close(); switch_save_data_commit(); /* Remember to commit the save data! */
-					
-					menu_delay = 3;
-					input_key = false;
-					if (os_is_network_connected())
-					{
-						menu = "uploading_character"; /* Go to uploading character loading screen */
-					}
-					else
-					{
-						menu = "no_internet_character";
-					}
-				}
-			}
-			#endregion /* Pressing Change Username OK END */
-			
-			else
-			
-			#region /* Pressing Change Username Cancel */
-			if (key_a_pressed)
-			&& (menu = "upload_character_edit_username_cancel")
-			|| (key_b_pressed)
-			|| (point_in_rectangle(mouse_get_x, mouse_get_y, change_username_x - 185, change_username_y + 22 + 52 + 42, change_username_x - 185 + 370, change_username_y + 22 + 52 + 42 + 42))
-			&& (global.controls_used_for_navigation == "mouse")
-			&& (mouse_check_button_released(mb_left))
-			{
-				if (!keyboard_check_pressed(ord("Z")))
-				&& (!keyboard_check_pressed(ord("X")))
-				&& (!keyboard_check_pressed(vk_backspace))
-				&& (!keyboard_check_pressed(vk_space))
-				&& (menu_delay == 0 && menu_joystick_delay == 0)
-				{
-					/* Save username as blank to config file, then go back */
-					ini_open(game_save_id + "save_file/config.ini");
-					ini_write_string("config", "username", "");
-					ini_close(); switch_save_data_commit(); /* Remember to commit the save data! */
-					global.username = "";
-					keyboard_string = "";
-					menu_delay = 3;
-					input_key = false;
-					menu = "click_upload_character"; /* Go back to the upload character button */
-				}
-			}
-			#endregion /* Pressing Change Username Cancel END */
-			
-		}
-		#region /* Draw the username text above everything */
-		if (global.username != "")
-		{
-			scr_draw_text_outlined(change_username_x, 20 + (40 * 4), l10n_text("Account name") + ": " + string(global.username), global.default_text_size, c_menu_outline, c_menu_fill, 1);
-		}
-		else
-		{
-			scr_draw_text_outlined(change_username_x, 20 + (40 * 4), l10n_text("No username!"), global.default_text_size, c_menu_outline, c_menu_fill, 1);
-			scr_draw_text_outlined(change_username_x, 20 + (40 * 4), l10n_text("No username!"), global.default_text_size, c_menu_outline, c_red, scr_wave(0, 1, 1, 0));
-		}
-		#endregion /* Draw the username text above everything END */
-		
-		#endregion /* Change username END */
-		
+		scr_draw_upload_account_name("character");
 	}
-	#endregion /* Draw enter username screen END */
 	
 	#region /* Uploading Character */
 	if (menu == "uploading_character")
 	{
+		if (global.username == "") {
+			keyboard_string = "";
+			menu_delay = 3;
+			menu = "question_upload_character_edit_username_ok"; /* If there isn't an username, have the player make an username */
+		}
+		
 		var character_name = string(ds_list_find_value(global.all_loaded_characters, global.character_index[fixed_player - 1]));
 		
 		content_type = "character"; /* Set "content type" to be correct for what kind of files you're uploading, before uploading the files to the server */

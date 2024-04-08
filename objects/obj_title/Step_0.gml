@@ -104,7 +104,7 @@ if (menu == "load_characters")
 if (menu == "load_custom_level")
 {
 	/* Load custom level data */
-	file_found = file_find_next()
+	file_found = file_find_next();
 	
 	if (file_found == "")
 	{
@@ -170,7 +170,10 @@ if (menu == "load_custom_level")
 		{
 			show_level_editor_corner_menu = true;
 			select_custom_level_menu_open = false;
+			i = 0;
+			file_found = "";
 			menu = "load_custom_level"; /* If all custom levels are not loaded, then reload all custom levels before going to the level select menu */
+			menu_delay = 3;
 		}
 		#endregion /* Get clear check and level ID information END */
 		
@@ -189,10 +192,13 @@ if (menu == "load_custom_level")
 			global.go_to_menu_when_going_back_to_title = "";
 		}
 		else
+		if (menu_delay == 0)
 		{
 			/* Go to the custom level select menu */
 			can_navigate = true;
 			file_load_timer = 0;
+			i = 0;
+			file_found = "";
 			menu = "level_editor_play";
 			menu_delay = 3;
 		}
@@ -201,7 +207,7 @@ if (menu == "load_custom_level")
 	{
 		if (file_exists(game_save_id + "custom_levels/" + file_found + "/data/level_information.ini"))
 		{
-			ds_list_add(global.all_loaded_custom_levels, file_found)
+			ds_list_add(global.all_loaded_custom_levels, file_found);
 			
 			#region /* Update Thumbnail */
 			/* PNG Custom Thumbnail */if (file_exists(game_save_id + "custom_levels/" + file_found + "/thumbnail.png"))
@@ -216,7 +222,7 @@ if (menu == "load_custom_level")
 			}
 			else
 			{
-				ds_list_add(global.thumbnail_sprite, spr_thumbnail_missing)
+				ds_list_add(global.thumbnail_sprite, spr_thumbnail_missing);
 			}
 			#endregion /* Update Thumbnail END */
 			
@@ -226,6 +232,8 @@ if (menu == "load_custom_level")
 	}
 }
 #endregion /* Load Custom Level END */
+
+else
 
 #region /* Load Official Level Template */
 if (menu == "load_official_level_template")

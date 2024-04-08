@@ -229,6 +229,7 @@
     {"name":"scr_draw_show_controls_map","order":86,"path":"scripts/scr_draw_show_controls_map/scr_draw_show_controls_map.yy",},
     {"name":"scr_draw_show_controls","order":10,"path":"scripts/scr_draw_show_controls/scr_draw_show_controls.yy",},
     {"name":"scr_draw_text_outlined","order":10,"path":"scripts/scr_draw_text_outlined/scr_draw_text_outlined.yy",},
+    {"name":"scr_draw_upload_account_name","order":10,"path":"scripts/scr_draw_upload_account_name/scr_draw_upload_account_name.yy",},
     {"name":"scr_draw_upload_character_menu","order":8,"path":"scripts/scr_draw_upload_character_menu/scr_draw_upload_character_menu.yy",},
     {"name":"scr_draw_upload_level_menu","order":4,"path":"scripts/scr_draw_upload_level_menu/scr_draw_upload_level_menu.yy",},
     {"name":"scr_draw_upload_rules","order":9,"path":"scripts/scr_draw_upload_rules/scr_draw_upload_rules.yy",},

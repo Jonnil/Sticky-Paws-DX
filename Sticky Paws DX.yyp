@@ -2803,6 +2803,7 @@
     {"id":{"name":"scr_draw_show_controls_map","path":"scripts/scr_draw_show_controls_map/scr_draw_show_controls_map.yy",},},
     {"id":{"name":"scr_draw_show_controls","path":"scripts/scr_draw_show_controls/scr_draw_show_controls.yy",},},
     {"id":{"name":"scr_draw_text_outlined","path":"scripts/scr_draw_text_outlined/scr_draw_text_outlined.yy",},},
+    {"id":{"name":"scr_draw_upload_account_name","path":"scripts/scr_draw_upload_account_name/scr_draw_upload_account_name.yy",},},
     {"id":{"name":"scr_draw_upload_character_menu","path":"scripts/scr_draw_upload_character_menu/scr_draw_upload_character_menu.yy",},},
     {"id":{"name":"scr_draw_upload_level_menu","path":"scripts/scr_draw_upload_level_menu/scr_draw_upload_level_menu.yy",},},
     {"id":{"name":"scr_draw_upload_rules","path":"scripts/scr_draw_upload_rules/scr_draw_upload_rules.yy",},},
