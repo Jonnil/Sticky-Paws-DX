@@ -674,13 +674,14 @@ function scr_draw_level_editor_sub_menu(xx = 394 * (global.select_level_index - 
 					player_accept_selection[i] = false;
 				}
 				
+				global.go_to_menu_when_going_back_to_title = "level_editor_delete";
 				can_navigate = true;
 				menu_delay = 3;
 				open_sub_menu = false;
 				show_level_editor_corner_menu = true;
 				scroll_to = floor(global.select_level_index / row); /* Scroll the view back to show the thumbnails */
 				file_found = "";
-				menu = "load_custom_level";
+				menu = "load_custom_level"; /* After deleting, go to load custom level menu */
 			}
 		}
 		#endregion /* Pressing the Yes Delete button END */

@@ -644,59 +644,44 @@ function scr_select_custom_level_menu()
 			}
 		}
 		
-		#region /* Press Enter to edit level */
+		#region /* Press Enter to confirm a new level name */
 		if (can_input_level_name)
 		&& (menu_delay == 0 && menu_joystick_delay == 0)
 		&& (keyboard_string != "")
 		&& (global.level_name != undefined)
-		&& (menu == "level_editor_enter_name_ok") {
-			if (global.clicking_ok_input_screen) {
+		&& (menu == "level_editor_enter_name_ok")
+		{
+			if (global.clicking_ok_input_screen)
+			{
 				scr_switch_expand_save_data(); /* Expand the save data before editing level name */
-				if (global.save_data_size_is_sufficient) {
-					if (level_editor_edit_name && global.level_name != old_level_name) {
-						/* For actual folder name, replace illegal characters with underscore only for naming folder */
-						var folder_name = global.level_name;
-						folder_name = scr_replace_illegal_characters(folder_name);
-						
-						can_navigate = true;
-						menu_delay = 3;
-						ini_open(game_save_id + "save_file/custom_level_save.ini");
-						ini_section_delete(string(ds_list_find_value(global.all_loaded_custom_levels, global.select_level_index)));
-						ini_close(); switch_save_data_commit(); /* Remember to commit the save data! */
-						scr_copy_move_files(game_save_id + "custom_levels/" + string(ds_list_find_value(global.all_loaded_custom_levels, global.select_level_index)),
-						game_save_id + "custom_levels/" + folder_name, true);
-						scr_load_custom_level_initializing();
-						menu = "load_custom_level";
-						level_editor_edit_name = false;
-						if (global.level_name != "") {
-							ini_open(game_save_id + "custom_levels/" + folder_name + "/data/level_information.ini");
-							ini_write_string("info", "level_name", global.level_name);
-							ini_write_string("info", "level_description", ""); /* Save a blank level description */
-							if (creating_daily_build) {
-								ini_write_real("info", "if_daily_build", true);
-							}
-							ini_close(); switch_save_data_commit(); /* Remember to commit the save data! */
-							thumbnail_level_name[global.select_level_index] = global.level_name;
-						}
-						global.select_level_index = ds_list_find_index(global.all_loaded_custom_levels, folder_name); /* After renaming a level, make sure "select level index" is updated */
-						
-						global.level_name = folder_name; /* Set the global level name to the filtered level name, because it will be reading filtered folder names */
+				if (global.save_data_size_is_sufficient)
+				{
+					if (level_editor_edit_name && global.level_name != old_level_name)
+					{
+						global.go_to_menu_when_going_back_to_title = "level_editor_edit_name";
+						scr_rename_custom_level_name();
 					}
-					else if (level_editor_edit_name && global.level_name == old_level_name) {
+					else
+					if (level_editor_edit_name && global.level_name == old_level_name)
+					{
 						menu = "level_editor_edit_name";
 						level_editor_edit_name = false;
 					}
-					else if (!level_editor_edit_name) {
+					else
+					if (!level_editor_edit_name)
+					{
 						
 						#region /* When creating a level from scratch, not editing level name of already existing level, run this code */
 						var folder_name = global.level_name;
 						folder_name = scr_replace_illegal_characters(folder_name);
 						
-						if (global.level_name != "") {
+						if (global.level_name != "")
+						{
 							ini_open(game_save_id + "custom_levels/" + folder_name + "/data/level_information.ini");
 							ini_write_string("info", "level_name", global.level_name);
 							ini_write_string("info", "level_description", ""); /* Save a blank level description */
-							if (creating_daily_build) {
+							if (creating_daily_build)
+							{
 								ini_write_real("info", "if_daily_build", true);
 							}
 							ini_close(); switch_save_data_commit(); /* Remember to commit the save data! */
@@ -706,7 +691,8 @@ function scr_select_custom_level_menu()
 						
 						can_navigate = false;
 						menu_delay = 9999;
-						if (instance_exists(obj_camera)) {
+						if (instance_exists(obj_camera))
+						{
 							obj_camera.iris_zoom = 0;
 						}
 						#endregion /* When creating a level from scratch, not editing level name of already existing level, run this code END */
@@ -717,16 +703,17 @@ function scr_select_custom_level_menu()
 					global.play_edited_level = false;
 					can_input_level_name = false;
 				}
-				else {
+				else
+				{
 					menu_delay = 3;
 					can_input_level_name = false;
 					global.clicking_ok_input_screen = false;
 				}
 			}
 		}
-		#endregion /* Press Enter to make new level from scratch END */
+		#endregion /* Press Enter to confirm a new level name END */
 		
-		#region /* Press Escape to back out from level from scratch menu */
+		#region /* Press Escape to cancel a new level name */
 		if (can_input_level_name)
 		&& (menu_delay == 0 && menu_joystick_delay == 0)
 		&& (global.clicking_cancel_input_screen)
@@ -747,7 +734,7 @@ function scr_select_custom_level_menu()
 				menu = "level_editor_create_from_scratch";
 			}
 		}
-		#endregion /* Press Escape to back out from level from scratch menu END */
+		#endregion /* Press Escape to cancel a new level name END */
 		
 	}
 	#endregion /* Input Level Name END */

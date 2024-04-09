@@ -648,29 +648,9 @@ function scr_draw_upload_level_menu() {
 					scr_switch_expand_save_data(); /* Expand the save data before editing level name */
 					if (global.save_data_size_is_sufficient) {
 						
-						ini_open(game_save_id + "save_file/custom_level_save.ini");
-						ini_section_delete(string(ds_list_find_value(global.all_loaded_custom_levels, global.select_level_index)));
-						ini_close(); switch_save_data_commit(); /* Remember to commit the save data! */
-						
-						/* For actual folder name, replace illegal characters with underscore only for naming folder */
-						var folder_name = global.level_name;
-						folder_name = scr_replace_illegal_characters(folder_name);
-						
-						/* To rename the level, need to copy level files into new named folder */
-						scr_copy_move_files(
-						game_save_id + "custom_levels/" + string(ds_list_find_value(global.all_loaded_custom_levels, global.select_level_index)),
-						game_save_id + "custom_levels/" + string(folder_name), true); /* Need to write the entire path here instead of using variable, because the level name changes mid-code */
-						
-						ini_open(game_save_id + "custom_levels/" + string(folder_name) + "/data/level_information.ini");
-						ini_write_string("info", "level_name", global.level_name); /* Write the actual unfiltered level name you typed */
-						ini_close(); switch_save_data_commit(); /* Remember to commit the save data! */
-						
-						global.level_name = folder_name; /* Set the global level name to the filtered level name, because it will be reading filtered folder names */
-						
 						global.go_to_menu_when_going_back_to_title = "upload_edit_name";
-						menu = "load_custom_level";
-						scr_load_custom_level_initializing();
-						can_navigate = true;
+						scr_rename_custom_level_name();
+						
 					}
 				}
 				else

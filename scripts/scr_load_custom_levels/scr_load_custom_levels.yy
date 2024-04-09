@@ -1,0 +1,13 @@
+{
+  "$GMScript":"",
+  "%Name":"scr_load_custom_levels",
+  "isCompatibility":false,
+  "isDnD":false,
+  "name":"scr_load_custom_levels",
+  "parent":{
+    "name":"Menus",
+    "path":"folders/Scripts/Menus.yy",
+  },
+  "resourceType":"GMScript",
+  "resourceVersion":"2.0",
+}

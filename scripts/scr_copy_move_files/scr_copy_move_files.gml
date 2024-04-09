@@ -4,6 +4,8 @@ function scr_copy_move_files(source, target, delete_original_folder = false)
 	
 	if (directory_exists(source)) /* Only perform operations if source directory exists */
 	{
+		show_debug_message("scr_copy_move_files directory_exists(" + string(source) + ") OK");
+		
 		/* Manually specify directories and copy files */
 		if (content_type == "level")
 		{
@@ -26,5 +28,9 @@ function scr_copy_move_files(source, target, delete_original_folder = false)
 		{
 			directory_destroy(source);
 		}
+	}
+	else
+	{
+		show_debug_message("scr_copy_move_files directory_exists(" + string(source) + ") FAILED");
 	}
 }
