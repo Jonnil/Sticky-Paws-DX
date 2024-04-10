@@ -43,13 +43,13 @@ function scr_option_graphics()
 		}
 		
 		#region /* Background Brightness Bars */
-		draw_menu_slider(420, background_brightness_gameplay_y + menu_y_offset, l10n_text("Background Brightness in Gameplay"), "background_brightness_gameplay", global.background_brightness_gameplay, c_gray);
-		draw_menu_slider(420, background_brightness_menu_y + menu_y_offset, l10n_text("Background Brightness in Menus"), "background_brightness_menu", global.background_brightness_menu, c_gray);
+		draw_menu_slider(420, background_brightness_gameplay_y, l10n_text("Background Brightness in Gameplay"), "background_brightness_gameplay", global.background_brightness_gameplay, c_gray);
+		draw_menu_slider(420, background_brightness_menu_y, l10n_text("Background Brightness in Menus"), "background_brightness_menu", global.background_brightness_menu, c_gray);
 		
 		#region /* Draw a little arrow indicating what the default value is */
 		draw_set_color(c_menu_fill);
-		draw_arrow(420 + 160, background_brightness_gameplay_y + menu_y_offset - 20, 420 + 160, background_brightness_gameplay_y + menu_y_offset - 10, 25);
-		draw_arrow(420 + 160, background_brightness_menu_y + menu_y_offset - 20, 420 + 160, background_brightness_menu_y + menu_y_offset - 10, 25);
+		draw_arrow(420 + 160, background_brightness_gameplay_y - 20, 420 + 160, background_brightness_gameplay_y - 10, 25);
+		draw_arrow(420 + 160, background_brightness_menu_y - 20, 420 + 160, background_brightness_menu_y - 10, 25);
 		#endregion /* Draw a little arrow indicating what the default value is END */
 		
 		#endregion /* Background Brightness Bars END */
@@ -59,13 +59,13 @@ function scr_option_graphics()
 		&& (os_type != os_android)
 		&& (global.enable_option_for_pc)
 		{
-			scr_draw_fullscreen_button(386, fullscreen_mode_y + menu_y_offset, "fullscreen_mode");
+			scr_draw_fullscreen_button(386, fullscreen_mode_y, "fullscreen_mode");
 		}
 		#endregion /* Fullscreen toggle END */
 		
-		draw_menu_button(420, advanced_video_option_y + menu_y_offset, l10n_text("Advanced Video Options"), "advanced_video_options", "advanced_video_option_back");
+		draw_menu_button(420, advanced_video_option_y, l10n_text("Advanced Video Options"), "advanced_video_options", "advanced_video_option_back");
 		
-		draw_menu_dropdown(400, gui_scale_modifier_y + menu_y_offset, l10n_text("GUI Scale Modifier"), "gui_scale_modifier", global.gui_scale_modifier, l10n_text("Auto"), "5", "4", "3", "2", "1", "-1", "-2", "-3", "-4", "-5");
+		draw_menu_dropdown(400, gui_scale_modifier_y, l10n_text("GUI Scale Modifier"), "gui_scale_modifier", global.gui_scale_modifier, l10n_text("Auto"), "5", "4", "3", "2", "1", "-1", "-2", "-3", "-4", "-5");
 		
 		if (menu == "resolution_setting")
 		&& (!window_get_fullscreen())
@@ -94,7 +94,7 @@ function scr_option_graphics()
 		}
 		if (!window_get_fullscreen())
 		{
-			draw_menu_dropdown(400, resolution_setting_y + menu_y_offset, l10n_text("Resolution"), "resolution_setting", global.resolution_setting,
+			draw_menu_dropdown(400, resolution_setting_y, l10n_text("Resolution"), "resolution_setting", global.resolution_setting,
 			l10n_text("Current") + " " + string(window_get_width()) + " x " + string(window_get_height()),
 			"1920 x 1080",
 			"1600 x 900",
@@ -107,7 +107,7 @@ function scr_option_graphics()
 		{
 			draw_set_halign(fa_left);
 			draw_set_valign(fa_middle);
-			scr_draw_text_outlined(500, resolution_setting_y + menu_y_offset + 20, l10n_text("Fullscreen Resolution") + ": " + string(window_get_width()) + "x" + string(window_get_height()), global.default_text_size, c_menu_outline, c_menu_fill, 1);
+			scr_draw_text_outlined(500, resolution_setting_y + 20, l10n_text("Fullscreen Resolution") + ": " + string(window_get_width()) + "x" + string(window_get_height()), global.default_text_size, c_menu_outline, c_menu_fill, 1);
 		}
 		
 		#region /* Navigate */

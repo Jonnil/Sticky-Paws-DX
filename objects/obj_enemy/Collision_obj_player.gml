@@ -68,7 +68,10 @@ if (!die)
 	if (!die_volting)
 	&& (stomped_delay <= 0)
 	{
-		if (other.vspeed > 0)
+		if (!other.on_ground) /* When player is in the air, it counts as you jumping at the enemy */
+		&& (!other.climb)
+		&& (other.stick_to_wall == 0)
+		|| (other.vspeed > 0)
 		|| (!other.climb)
 		&& (other.vspeed < 0)
 		|| (other.bbox_bottom < y)
