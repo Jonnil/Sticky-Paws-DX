@@ -2,6 +2,8 @@ player = 1;
 selected_skin = 0;
 selected_voicepack = 0;
 for(var p = 1; p <= global.max_players; p += 1) {
+	gamepad_set_vibration(p - 1, 0, 0);
+	
 	player_accept_selection[p] = -1;
 	player_automatically_join[p] = false;
 	player_menu[p] = "select_character";

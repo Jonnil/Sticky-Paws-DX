@@ -4,7 +4,7 @@ if (instance_exists(obj_player_map))
 && (move_speed == 4)
 {
 	sprite_index = global.resource_pack_sprite_basic_enemy_angry;
-	move_speed = 8; /* Move faster than player if the player is chasing */
+	move_speed = 7; /* Move faster than player if the player is chasing */
 	speed = move_speed;
 }
 if (hspeed < -1)
@@ -56,8 +56,8 @@ xx = lerp(xx, x, 0.2);
 yy = lerp(yy, y, 0.2);
 
 if (move_speed == 4) {
-	delay_amount = 10;
+	delay_amount = 9;
 }
 else {
-	delay_amount = 5;
+	delay_amount = 4;
 }
