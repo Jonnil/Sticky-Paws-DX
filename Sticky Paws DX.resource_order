@@ -180,6 +180,7 @@
     {"name":"scr_brush_size_place_object","order":3,"path":"scripts/scr_brush_size_place_object/scr_brush_size_place_object.yy",},
     {"name":"scr_buffer_async_load","order":64,"path":"scripts/scr_buffer_async_load/scr_buffer_async_load.yy",},
     {"name":"scr_calculate_translation_completion","order":1,"path":"scripts/scr_calculate_translation_completion/scr_calculate_translation_completion.yy",},
+    {"name":"scr_camera_logic","order":95,"path":"scripts/scr_camera_logic/scr_camera_logic.yy",},
     {"name":"scr_change_character_portrait","order":32,"path":"scripts/scr_change_character_portrait/scr_change_character_portrait.yy",},
     {"name":"scr_character_manage_copy","order":25,"path":"scripts/scr_character_manage_copy/scr_character_manage_copy.yy",},
     {"name":"scr_character_manage_menu_draw","order":20,"path":"scripts/scr_character_manage_menu_draw/scr_character_manage_menu_draw.yy",},

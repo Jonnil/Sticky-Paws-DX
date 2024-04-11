@@ -41,7 +41,7 @@ function scr_draw_online_download_list()
 		in_online_download_list_menu = true;
 		menu_delay = 3;
 		
-		scr_draw_loading(1); /* Draw loading screen when loading download list END */
+		scr_draw_loading(1,,,"Loading from server"); /* Draw loading screen when loading download list END */
 		
 		if (!os_is_network_connected())
 		{

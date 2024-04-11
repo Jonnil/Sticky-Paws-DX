@@ -6,8 +6,8 @@ function scr_unlock_placable_level_objects() {
 	#region /* Load what date this level was first created in */
 	ini_open(game_save_id + "custom_levels/" + global.level_name + "/data/level_information.ini");
 	var year = ini_read_real("info", "first_created_on_date_year", date_get_year(date_current_datetime()));
-	var month = ini_write_real("info", "first_created_on_date_month", date_get_month(date_current_datetime()));
-	var day = ini_write_real("info", "first_created_on_date_day", date_get_day(date_current_datetime()));
+	var month = ini_read_real("info", "first_created_on_date_month", date_get_month(date_current_datetime()));
+	var day = ini_read_real("info", "first_created_on_date_day", date_get_day(date_current_datetime()));
 	ini_close();
 	#endregion /* Load what date this level was first created in END */
 	
@@ -168,6 +168,7 @@ function scr_unlock_placable_level_objects() {
 		/* First, run code for setting a seed for each day */
 		var seed = string(year) + string(month) + string(day);
 		random_set_seed(seed);
+		show_message(seed);
 		
 		/* Determine the number of items to unlock (random between min_items and max_items) */
 		var min_items = 5;
@@ -252,6 +253,15 @@ function scr_unlock_placable_level_objects() {
 		    var item_to_unlock = ds_list_find_value(unlocked_items, j);
 		    unlocked_object[item_to_unlock] = max(ini_read_real("Unlock Placable Objects", item_to_unlock, 1), 1); /* Assuming unlocked_object is a map or array to store unlocked items */
 		}
+		
+		#region /* Some objects work in pairs, so if one of the objects are unlocked that has a pair, then unlock the other one as well */
+		if (unlocked_object[LEVEL_OBJECT_ID.ID_CLIPPED_SHIRT] >= 1)
+		|| (unlocked_object[LEVEL_OBJECT_ID.ID_BUCKET] >= 1)
+		{
+			unlocked_object[LEVEL_OBJECT_ID.ID_CLIPPED_SHIRT] = max(ini_read_real("Unlock Placable Objects", LEVEL_OBJECT_ID.ID_CLIPPED_SHIRT, 1), 1);
+			unlocked_object[LEVEL_OBJECT_ID.ID_BUCKET] = max(ini_read_real("Unlock Placable Objects", LEVEL_OBJECT_ID.ID_BUCKET, 1), 1);
+		}
+		#endregion /* Some objects work in pairs, so if one of the objects are unlocked that has a pair, then unlock the other one as well END */
 		
 		ds_list_destroy(unlocked_items); /* Clean up */
 		
