@@ -130,7 +130,8 @@ function scr_save_level()
 					}
 				}
 				
-				if (all_collected || global.max_big_collectible == 0 /* If the level have no big collectibles, then always set to "Completed" */)
+				if (all_collected
+				|| global.max_big_collectible == 0 /* If the level have no big collectibles, then always set to "Completed" */)
 				&& (read_finished_downloaded_level < 3) { /* If you have collected all big collectibles */
 					ini_write_real("finished_downloaded_level", string(level_id), 3); /* Finished and collected every big collectible */
 				}
