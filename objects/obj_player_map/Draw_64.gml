@@ -39,11 +39,19 @@ if (global.debug_screen && common_conditions_met && nearest_level.clear_rate == 
 }
 
 #region /* Show Level Info */
+/* HUD that should always show */
+if (iris_xscale > 9)
+{
+	draw_sprite_ext(global.resource_pack_sprite_big_collectible, 0, 32, 32, 0.5, 0.5, 0, c_white, 1);
+	draw_set_halign(fa_left);
+	scr_draw_text_outlined(64, 32, string(total_big_collectibles) + "/" + string(max_total_big_collectibles), global.default_text_size, c_black, c_white, 1);
+}
+
 /* Check if conditions are met to show level info */
 if (nearest_level != noone && iris_xscale > 9 && move_delay > 10 && distance_to_level < 4 && nearest_level.level_number != 0) {
     if (nearest_level.clear_rate == "enter" || nearest_level.clear_rate == "clear") {
         var show_level_info_x = 180;
-        var show_level_info_y = 200;
+        var show_level_info_y = 232;
         var show_big_collectibles_y = -160;
         var total_defeats_y = global.show_defeats_counter && nearest_level.number_of_defeats > 0 ? -32 : -64;
 		
@@ -57,7 +65,7 @@ if (nearest_level != noone && iris_xscale > 9 && move_delay > 10 && distance_to_
             draw_set_halign(fa_center);
             draw_set_valign(fa_top);
             draw_set_alpha(0.9);
-            draw_roundrect_color_ext(show_level_info_x - 160, show_level_info_y - abs(show_big_collectibles_y) - 16, show_level_info_x + 160, show_level_info_y + total_defeats_y + 48, 50, 50, c_black, c_black, false);
+            draw_roundrect_color_ext(show_level_info_x - 160, show_level_info_y - abs(show_big_collectibles_y) - 16, show_level_info_x + 160, show_level_info_y + total_defeats_y + 24, 50, 50, c_black, c_black, false);
             draw_set_alpha(1);
 			
             /* Draw level info */
@@ -69,8 +77,7 @@ if (nearest_level != noone && iris_xscale > 9 && move_delay > 10 && distance_to_
 			best_time_text + "\n" +
 			l10n_text("Best Score") + ": " + string(nearest_level.level_score) + "\n" +
 			l10n_text("Times Passed") + ": " + string(nearest_level.number_of_clears) + "\n" +
-			total_defeats_text +
-			l10n_text("Total Big Fish") + ": " + string(total_big_collectibles) + "/" + string(max_total_big_collectibles),
+			total_defeats_text,
 			global.default_text_size, c_black, c_white, 1);
             
 			for (var i = 1; i <= global.max_big_collectible; i++) {
