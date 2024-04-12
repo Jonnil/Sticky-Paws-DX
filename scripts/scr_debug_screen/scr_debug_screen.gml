@@ -255,6 +255,13 @@ function scr_debug_screen()
 			scr_draw_text_outlined(32, debug_text_y, "menu_y_offset_real: " + string(menu_y_offset_real), global.default_text_size, c_black, c_white);
 			debug_text_y += 20;
 		}
+		
+		
+		if (variable_instance_exists(self, "menu_cursor_y_position")) {
+			scr_draw_text_outlined(32, debug_text_y, "menu_cursor_y_position: " + string(menu_cursor_y_position), global.default_text_size, c_black, c_white);
+			debug_text_y += 20;
+		}
+		
 		if (variable_instance_exists(self, "player_menu")) {
 			scr_draw_text_outlined(32, debug_text_y, "player_menu[1]: " + string(player_menu[1]), global.default_text_size, c_black, c_white);
 			debug_text_y += 20;
