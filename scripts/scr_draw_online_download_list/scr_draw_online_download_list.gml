@@ -33,9 +33,9 @@ function scr_draw_online_download_list()
 		menu = "download_online_" + string(global.selected_online_download_index);
 		
 		/* Put the scroll position on the selected thumbnail immediately */
-		menu_cursor_y_position = 64 + 80 - (300 * global.selected_online_download_index);
-		menu_y_offset = - 80 - (300 * global.selected_online_download_index);
-		menu_y_offset_real = - 80 - (300 * global.selected_online_download_index);
+		menu_cursor_y_position = 64 + 80 + (300 * global.selected_online_download_index);
+		menu_y_offset_real = 64 + 80 - (300 * global.selected_online_download_index);
+		menu_y_offset = menu_y_offset_real;
 		
 		automatically_search_for_id = false;
 		in_online_download_list_menu = true;
@@ -204,8 +204,14 @@ function scr_draw_online_download_list()
 					&& (is_array(data))
 					&& (array_length(data) > 0)
 					{
-						if (menu != "download_online_" + string(online_download_index)) {
-							scr_delete_sprite_properly(spr_download_list_thumbnail);spr_download_list_thumbnail = noone; /* Delete the previous thumbnail sprite so you can load in a new one */
+						if (menu != "download_online_" + string(online_download_index))
+						{
+							if (menu != "download_online_back"
+							&& menu != "download_online_search_id"
+							&& menu != "online_list_can_load_custom_level_assets")
+							{
+								scr_delete_sprite_properly(spr_download_list_thumbnail);spr_download_list_thumbnail = noone; /* Delete the previous thumbnail sprite so you can load in a new one */
+							}
 							menu = "download_online_" + string(online_download_index);
 						}
 					}
@@ -781,7 +787,12 @@ function scr_draw_online_download_list()
 			if (is_array(data))
 			&& (array_length(data) > 0)
 			{
+				if (global.selected_online_download_index != num_items)
+				{
+					scr_delete_sprite_properly(spr_download_list_thumbnail);spr_download_list_thumbnail = noone; /* Delete the previous thumbnail sprite so you can load in a new one */
+				}
 				menu = "download_online_" + string(num_items);
+				menu_y_offset_real = 80 - (300 * global.selected_online_download_index);
 			}
 		}
 		else
@@ -817,7 +828,13 @@ function scr_draw_online_download_list()
 			if (is_array(data))
 			&& (array_length(data) > 0)
 			{
+				if (global.selected_online_download_index != 1)
+				{
+					scr_delete_sprite_properly(spr_download_list_thumbnail);spr_download_list_thumbnail = noone; /* Delete the previous thumbnail sprite so you can load in a new one */
+				}
 				menu = "download_online_1";
+				menu_y_offset_real = 0;
+				menu_cursor_y_position = 0;
 			}
 		}
 		if (key_right)
@@ -840,7 +857,12 @@ function scr_draw_online_download_list()
 			if (is_array(data))
 			&& (array_length(data) > 0)
 			{
+				if (global.selected_online_download_index != num_items)
+				{
+					scr_delete_sprite_properly(spr_download_list_thumbnail);spr_download_list_thumbnail = noone; /* Delete the previous thumbnail sprite so you can load in a new one */
+				}
 				menu = "download_online_" + string(num_items);
+				menu_y_offset_real = 80 - (300 * global.selected_online_download_index);
 			}
 		}
 		else
@@ -851,7 +873,13 @@ function scr_draw_online_download_list()
 			if (is_array(data))
 			&& (array_length(data) > 0)
 			{
+				if (global.selected_online_download_index != 1)
+				{
+					scr_delete_sprite_properly(spr_download_list_thumbnail);spr_download_list_thumbnail = noone; /* Delete the previous thumbnail sprite so you can load in a new one */
+				}
 				menu = "download_online_1";
+				menu_y_offset_real = 0;
+				menu_cursor_y_position = 0;
 			}
 		}
 		else

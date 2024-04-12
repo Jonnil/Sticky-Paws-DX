@@ -20,11 +20,11 @@ function scr_scroll_menu(offset_display_height = 300, clamp_menu_y_offset_real =
 		}
 		if (abs(menu_y_offset_real) + display_get_gui_height() + offset_display_height < menu_cursor_y_position)
 		{
-			menu_y_offset_real -= 100;
+			menu_y_offset_real -= 300;
 		}
 		if (abs(menu_y_offset_real) - 300 > menu_cursor_y_position)
 		{
-			menu_y_offset_real += 100;
+			menu_y_offset_real += 300;
 		}
 	}
 	#endregion /* Scroll menu END */

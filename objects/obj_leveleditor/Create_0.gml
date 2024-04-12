@@ -4,6 +4,7 @@ scr_gamepad_vibration(1, 0, 0);
 scr_gamepad_vibration(2, 0, 0);
 scr_gamepad_vibration(3, 0, 0);
 scr_gamepad_vibration(4, 0, 0);
+global.max_big_collectible = 0; /* Set this to 0 when initializing the room, in case there are 0 big collectibles in this level */
 
 #region /* Set Backgrounds */
 layer_background_sprite(layer_background_get_id(layer_get_id("Background_1")), global.custom_background1);

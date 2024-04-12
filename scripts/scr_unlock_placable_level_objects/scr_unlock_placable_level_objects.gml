@@ -168,7 +168,6 @@ function scr_unlock_placable_level_objects() {
 		/* First, run code for setting a seed for each day */
 		var seed = string(year) + string(month) + string(day);
 		random_set_seed(seed);
-		show_message(seed);
 		
 		/* Determine the number of items to unlock (random between min_items and max_items) */
 		var min_items = 5;

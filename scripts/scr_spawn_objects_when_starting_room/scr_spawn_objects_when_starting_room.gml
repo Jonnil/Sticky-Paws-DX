@@ -1,5 +1,6 @@
 function scr_spawn_objects_when_starting_room()
 {
+	
 	#region /* Spawn objects when starting room */
 	if (!global.world_editor)
 	{
