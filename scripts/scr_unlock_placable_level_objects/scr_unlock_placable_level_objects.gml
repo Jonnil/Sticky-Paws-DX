@@ -256,11 +256,15 @@ function scr_unlock_placable_level_objects() {
 		}
 		
 		#region /* Some objects work in pairs, so if one of the objects are unlocked that has a pair, then unlock the other one as well */
-		if (unlocked_object[LEVEL_OBJECT_ID.ID_CLIPPED_SHIRT] >= 1)
-		|| (unlocked_object[LEVEL_OBJECT_ID.ID_BUCKET] >= 1)
+		if (unlocked_object[LEVEL_OBJECT_ID.ID_CLIPPED_SHIRT] != 0)
+		|| (unlocked_object[LEVEL_OBJECT_ID.ID_BUCKET] != 0)
 		{
 			unlocked_object[LEVEL_OBJECT_ID.ID_CLIPPED_SHIRT] = max(ini_read_real("Unlock Placable Objects", LEVEL_OBJECT_ID.ID_CLIPPED_SHIRT, 1), 1);
 			unlocked_object[LEVEL_OBJECT_ID.ID_BUCKET] = max(ini_read_real("Unlock Placable Objects", LEVEL_OBJECT_ID.ID_BUCKET, 1), 1);
+		}
+		if (unlocked_object[LEVEL_OBJECT_ID.ID_BOSS_BARRIER] != 0)
+		{
+			unlocked_object[LEVEL_OBJECT_ID.ID_BOSS] = max(ini_read_real("Unlock Placable Objects", LEVEL_OBJECT_ID.ID_BOSS, 1), 1);
 		}
 		#endregion /* Some objects work in pairs, so if one of the objects are unlocked that has a pair, then unlock the other one as well END */
 		

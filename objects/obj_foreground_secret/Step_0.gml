@@ -23,4 +23,8 @@ if (global.custom_foreground_secret > noone)
 {
 	visible = true;
 }
+else
+{
+	visible = false;
+}
 #endregion /* When Foreground secret should be visible END */

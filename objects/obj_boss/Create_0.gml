@@ -3,6 +3,7 @@ scr_enemy_initialize_variables();
 depth = +10;
 gravity_direction = 270; /* Direction of the gravity */
 image_xscale = -1;
+mask_index = spr_boss_stand;
 
 angle = 0;
 arrow_xscale = 0;
