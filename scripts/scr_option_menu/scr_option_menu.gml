@@ -3282,18 +3282,16 @@ function scr_option_menu()
 				if (key_down)
 				&& (open_dropdown)
 				&& (menu_delay == 0 && menu_joystick_delay == 0)
+				&& (can_select_font)
 				{
-					if (can_select_font)
+					if (global.language_localization == 2) /* If you have selected Japanese language, you can't use Open Dyslexic, as it isn't supported */
+					&& (global.selected_font < 1) /* If "Global Selected Font" checks for less than 1 here, then you can only select Game font and Normal font */
+					|| (global.language_localization != 2)
+					&& (global.selected_font < 2)
 					{
-						if (global.language_localization == 2) /* If you have selected Japanese language, you can't use Open Dyslexic, as it isn't supported */
-						&& (global.selected_font < 1) /* If "Global Selected Font" checks for less than 1 here, then you can only select Game font and Normal font */
-						|| (global.language_localization != 2)
-						&& (global.selected_font < 2)
-						{
-							menu_delay = 3;
-							global.selected_font ++;
-							scr_set_font();
-						}
+						menu_delay = 3;
+						global.selected_font ++;
+						scr_set_font();
 					}
 				}
 				else

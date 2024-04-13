@@ -33,8 +33,8 @@ function scr_draw_online_download_list()
 		menu = "download_online_" + string(global.selected_online_download_index);
 		
 		/* Put the scroll position on the selected thumbnail immediately */
-		menu_cursor_y_position = 64 + 80 + (300 * global.selected_online_download_index);
-		menu_y_offset_real = 64 + 80 - (300 * global.selected_online_download_index);
+		menu_cursor_y_position = 114 + (300 * (global.selected_online_download_index - 1));
+		menu_y_offset_real = - 64 - (300 * global.selected_online_download_index);
 		menu_y_offset = menu_y_offset_real;
 		
 		automatically_search_for_id = false;

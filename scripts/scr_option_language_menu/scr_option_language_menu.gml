@@ -91,18 +91,7 @@ function scr_option_language_menu()
 				menu_delay = 3;
 				global.language_localization = language_index - 1;
 				calculate_translation_completion();
-				if (global.language_localization == 2) /* If you have selected Japanese language, you can't use Open Dyslexic, as it isn't supported */
-				&& (global.selected_font == 2) /* Open Dyslexic font didn't work with Japanese language */
-				{
-					global.selected_font = 1; /* The next best font if you can't use open dyslexic is "Normal font", as it could be more readable than the "Game font" */
-					scr_set_font();
-				}
-				if (global.language_localization == 2) /* If you have selected Japanese language, and Game font isn't finished */
-				&& (global.selected_font == 0) /* Game font isn't finsihed with Japanese language */
-				{
-					global.selected_font = 1; /* The next best font if you can't use open dyslexic is "Normal font", as it could be more readable than the "Game font" */
-					scr_set_font();
-				}
+				scr_set_font();
 			}
 		}
 		else

@@ -1,8 +1,11 @@
-function scr_set_font()
+function scr_set_font(selected_font_index = global.selected_font)
 {
+	if (global.language_localization == 2) /* If you have selected Japanese language, you can't use certain fonts, as it isn't supported */
+	{
+		selected_font_index = 1; /* The font you can use is "Normal font" */
+	}
 	var font_files = ["game_font.ttf", "normal_font.ttc", "open_dyslexic_font.otf"];
 	var font_sizes = [34, 24, 24];
-	var selected_font_index = global.selected_font;
 	var fonts = array_create(array_length_1d(font_files), noone);
 	
 	if (file_exists(font_files[selected_font_index]))
