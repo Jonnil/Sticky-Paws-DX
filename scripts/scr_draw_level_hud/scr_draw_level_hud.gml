@@ -43,21 +43,26 @@ function scr_draw_level_hud() {
 		    scr_draw_text_outlined(64, hud_show_lives_y, string(lives), global.default_text_size, c_black, c_white, 1);
 		}
 		
-	    /* Big Collectibles */
-	    if (hud_show_big_collectibles_y != -64) {
+	    #region /* Big Collectibles */
+	    if (hud_show_big_collectibles_y != -64)
+		{
 	        draw_set_halign(fa_left);
 	        draw_set_valign(fa_middle);
-	        for (var i = 1; i <= global.max_big_collectible; i++) {
-				if (hud_show_big_collectible_blink[i] >= 1) {
+	        for (var i = 1; i <= global.max_big_collectible; i++)
+			{
+				if (hud_show_big_collectible_blink[i] >= 1)
+				{
 					hud_show_big_collectible_blink[i] -= 1;
 					collectible_alpha = scr_wave(0, 1, 0.5);
 				}
-				else {
+				else
+				{
 					collectible_alpha = (global.big_collectible[i] && !global.big_collectible_already_collected[i]) ? 0.5 : 1;
 				}
 	            draw_sprite_ext((global.big_collectible[i] ? collectible_sprite : collectible_outline_sprite), 0, 32 * i, hud_show_big_collectibles_y, 0.5, 0.5, 0, c_white, collectible_alpha);
 	        }
 	    }
+		#endregion /* Big Collectibles END */
 		
 	    /* Basic Collectible */
 	    if (hud_show_basic_collectibles_y != -64) {

@@ -213,59 +213,52 @@ image_index = tile; /* Set image index to be the tile variable after all "set ti
 #endregion /* Set Tile END */
 
 #region /* Set Sprite */
-if (global.custom_tileset > 0)
+if (global.actually_play_edited_level)
 {
-	sprite_index = global.custom_tileset;
-}
-else
-if (global.resource_pack_sprite_tileset_default >= 0)
-&& (ground_surface == 0)
-|| (global.make_every_tileset_into_default_tileset)
-&& (global.resource_pack_sprite_tileset_default >= 0)
-{
-	sprite_index = global.resource_pack_sprite_tileset_default;
-}
-else
-if (global.resource_pack_sprite_tileset_dirt >= 0)
-&& (ground_surface == 1)
-{
-	sprite_index = global.resource_pack_sprite_tileset_dirt;
-}
-else
-if (global.resource_pack_sprite_tileset_glass >= 0)
-&& (ground_surface = 2)
-{
-	sprite_index = global.resource_pack_sprite_tileset_glass;
-}
-else
-if (global.resource_pack_sprite_tileset_grass >= 0)
-&& (ground_surface = 3)
-{
-	sprite_index = global.resource_pack_sprite_tileset_grass;
-}
-else
-if (global.resource_pack_sprite_tileset_gravel >= 0)
-&& (ground_surface = 4)
-{
-	sprite_index = global.resource_pack_sprite_tileset_gravel;
-}
-else
-if (global.resource_pack_sprite_tileset_metal >= 0)
-&& (ground_surface == 5)
-{
-	sprite_index = global.resource_pack_sprite_tileset_metal;
-}
-else
-if (global.resource_pack_sprite_tileset_stone >= 0)
-&& (ground_surface == 6)
-{
-	sprite_index = global.resource_pack_sprite_tileset_stone;
-}
-else
-if (global.resource_pack_sprite_tileset_wood >= 0)
-&& (ground_surface == 7)
-{
-	sprite_index = global.resource_pack_sprite_tileset_wood;
+	if (global.custom_tileset > 0)
+	{
+		sprite_index = global.custom_tileset;
+	}
+	else
+	if (global.make_every_tileset_into_default_tileset)
+	{
+		sprite_index = global.resource_pack_sprite_tileset_default;
+	}
+	else
+	if (sprite_index = spr_wall_dirt)
+	{
+		sprite_index = global.resource_pack_sprite_tileset_dirt;
+	}
+	else
+	if (sprite_index = spr_wall_glass)
+	{
+		sprite_index = global.resource_pack_sprite_tileset_glass;
+	}
+	else
+	if (sprite_index = spr_wall_grass)
+	{
+		sprite_index = global.resource_pack_sprite_tileset_grass;
+	}
+	else
+	if (sprite_index = spr_wall_gravel)
+	{
+		sprite_index = global.resource_pack_sprite_tileset_gravel;
+	}
+	else
+	if (sprite_index = spr_wall_metal)
+	{
+		sprite_index = global.resource_pack_sprite_tileset_metal;
+	}
+	else
+	if (sprite_index = spr_wall_stone)
+	{
+		sprite_index = global.resource_pack_sprite_tileset_stone;
+	}
+	else
+	if (sprite_index = spr_wall_wood)
+	{
+		sprite_index = global.resource_pack_sprite_tileset_wood;
+	}
 }
 #endregion /* Set Sprite END */
 

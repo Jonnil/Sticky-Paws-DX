@@ -35,7 +35,7 @@ function scr_unlock_placable_level_objects() {
 	#endregion /* All the objects that should be always unlocked in Level Editor END */
 	
 	#region /* Set all the "unlcoked object" variables to be false by default, so that they are all initialized before doing anything */
-	unlocked_object[LEVEL_OBJECT_ID.ID_WALL] = false;
+	//unlocked_object[LEVEL_OBJECT_ID.ID_WALL] = false;
 	unlocked_object[LEVEL_OBJECT_ID.ID_WALL_DIRT] = false;
 	unlocked_object[LEVEL_OBJECT_ID.ID_WALL_GLASS] = false;
 	unlocked_object[LEVEL_OBJECT_ID.ID_WALL_GRAVEL] = false;
@@ -99,7 +99,7 @@ function scr_unlock_placable_level_objects() {
 	if (!if_daily_build) {
 		
 		#region /* Read all the objects that should be unlocked */
-		unlocked_object[LEVEL_OBJECT_ID.ID_WALL] = ini_read_real("Unlock Placable Objects", LEVEL_OBJECT_ID.ID_WALL, default_unlock);
+		//unlocked_object[LEVEL_OBJECT_ID.ID_WALL] = ini_read_real("Unlock Placable Objects", LEVEL_OBJECT_ID.ID_WALL, default_unlock);
 		unlocked_object[LEVEL_OBJECT_ID.ID_WALL_DIRT] = ini_read_real("Unlock Placable Objects", LEVEL_OBJECT_ID.ID_WALL_DIRT, default_unlock);
 		unlocked_object[LEVEL_OBJECT_ID.ID_WALL_GLASS] = ini_read_real("Unlock Placable Objects", LEVEL_OBJECT_ID.ID_WALL_GLASS, default_unlock);
 		unlocked_object[LEVEL_OBJECT_ID.ID_WALL_GRAVEL] = ini_read_real("Unlock Placable Objects", LEVEL_OBJECT_ID.ID_WALL_GRAVEL, default_unlock);
@@ -169,16 +169,17 @@ function scr_unlock_placable_level_objects() {
 		var seed = string(year) + string(month) + string(day);
 		random_set_seed(seed);
 		
-		/* Determine the number of items to unlock (random between min_items and max_items) */
+		/* Determine the number of items to unlock (random between "min items" and "max items") */
 		var min_items = 5;
 		var max_items = 9;
 		var num_items_to_unlock = irandom_range(min_items, max_items);
+		show_message("num_items_to_unlock: " + string(num_items_to_unlock));
 		
 		/* Create a list of all items */
 		var all_items = ds_list_create();
 		var all_items = [
 		    /* Add all other items here... */
-			LEVEL_OBJECT_ID.ID_WALL,
+			//LEVEL_OBJECT_ID.ID_WALL,
 			LEVEL_OBJECT_ID.ID_WALL_DIRT,
 			LEVEL_OBJECT_ID.ID_WALL_GLASS,
 		    LEVEL_OBJECT_ID.ID_WALL_GRAVEL,
@@ -241,16 +242,17 @@ function scr_unlock_placable_level_objects() {
 		/* Select random items */
 		var unlocked_items = ds_list_create(); /* Create a list to store unlocked items */
 		for (var i = 0; i < num_items_to_unlock; i++) {
-		    var random_index = irandom(array_length(all_items) - 1);
-		    var selected_item = all_items[random_index];
-		    ds_list_add(unlocked_items, selected_item);
+			var random_index = irandom(array_length(all_items) - 1);
+			var selected_item = all_items[random_index];
+			ds_list_add(unlocked_items, selected_item);
+			show_message("ds_list_add(unlocked_items: " + string(unlocked_items) + ", selected_item: " + string(selected_item) + ");");
 			array_delete(all_items, random_index, 1); /* Remove the selected item from the list to avoid duplicates */
 		}
 		
 		/* Unlock the selected items */
 		for (var j = 0; j < ds_list_size(unlocked_items); j++) {
-		    var item_to_unlock = ds_list_find_value(unlocked_items, j);
-		    unlocked_object[item_to_unlock] = max(ini_read_real("Unlock Placable Objects", item_to_unlock, 1), 1); /* Assuming unlocked_object is a map or array to store unlocked items */
+			var item_to_unlock = ds_list_find_value(unlocked_items, j);
+			unlocked_object[item_to_unlock] = max(ini_read_real("Unlock Placable Objects", item_to_unlock, 1), 1); /* Assuming unlocked_object is a map or array to store unlocked items */
 		}
 		
 		#region /* Some objects work in pairs, so if one of the objects are unlocked that has a pair, then unlock the other one as well */

@@ -44,11 +44,6 @@ function scr_modify_objects_in_level_editor()
 					modify_object_menu = true;
 					
 					#region /* Change wall into it's different forms */
-					if (object == LEVEL_OBJECT_ID.ID_WALL)
-					{
-						object = LEVEL_OBJECT_ID.ID_WALL_DIRT;
-					}
-					else
 					if (object == LEVEL_OBJECT_ID.ID_WALL_DIRT)
 					{
 						object = LEVEL_OBJECT_ID.ID_WALL_GLASS;
@@ -81,7 +76,7 @@ function scr_modify_objects_in_level_editor()
 					else
 					if (object == LEVEL_OBJECT_ID.ID_WALL_WOOD)
 					{
-						object = LEVEL_OBJECT_ID.ID_WALL;
+						object = LEVEL_OBJECT_ID.ID_WALL_DIRT;
 					}
 					#endregion /* Change wall into it's different forms END */
 					

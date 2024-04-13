@@ -16,28 +16,28 @@ function scr_spawn_objects_when_starting_room()
 			switch (object)
 			{
 			    case LEVEL_OBJECT_ID.ID_WALL:
-			        instance_create_depth(x, y, 0, obj_ground);
+			        with(instance_create_depth(x, y, 0, obj_ground)){sprite_index = spr_wall_stone;ground_surface = 6;}
 			        break;
 			    case LEVEL_OBJECT_ID.ID_WALL_DIRT:
-			        with(instance_create_depth(x, y, 0, obj_ground)) ground_surface = 1;
+			        with(instance_create_depth(x, y, 0, obj_ground)){sprite_index = spr_wall_dirt;ground_surface = 1;}
 			        break;
 			    case LEVEL_OBJECT_ID.ID_WALL_GLASS:
-			        with(instance_create_depth(x, y, 0, obj_ground)) ground_surface = 2;
+			        with(instance_create_depth(x, y, 0, obj_ground)){sprite_index = spr_wall_glass;ground_surface = 2;}
 			        break;
 			    case LEVEL_OBJECT_ID.ID_WALL_GRASS:
-			        with(instance_create_depth(x, y, 0, obj_ground)) ground_surface = 3;
+			        with(instance_create_depth(x, y, 0, obj_ground)){sprite_index = spr_wall_grass;ground_surface = 3;}
 			        break;
 			    case LEVEL_OBJECT_ID.ID_WALL_GRAVEL:
-			        with(instance_create_depth(x, y, 0, obj_ground)) ground_surface = 4;
+			        with(instance_create_depth(x, y, 0, obj_ground)){sprite_index = spr_wall_gravel;ground_surface = 4;}
 			        break;
 			    case LEVEL_OBJECT_ID.ID_WALL_METAL:
-			        with(instance_create_depth(x, y, 0, obj_ground)) ground_surface = 5;
+			        with(instance_create_depth(x, y, 0, obj_ground)){sprite_index = spr_wall_metal;ground_surface = 5;}
 			        break;
 			    case LEVEL_OBJECT_ID.ID_WALL_STONE:
-			        with(instance_create_depth(x, y, 0, obj_ground)) ground_surface = 6;
+			        with(instance_create_depth(x, y, 0, obj_ground)){sprite_index = spr_wall_stone;ground_surface = 6;}
 			        break;
 			    case LEVEL_OBJECT_ID.ID_WALL_WOOD:
-			        with(instance_create_depth(x, y, 0, obj_ground)) ground_surface = 7;
+			        with(instance_create_depth(x, y, 0, obj_ground)){sprite_index = spr_wall_wood;ground_surface = 7;}
 			        break;
 			    case LEVEL_OBJECT_ID.ID_WALL_JUMP_PANEL:
 			        instance_create_depth(x, y, 0, obj_wall_jump_panel);
