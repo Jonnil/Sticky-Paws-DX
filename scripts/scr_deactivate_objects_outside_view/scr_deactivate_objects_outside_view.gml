@@ -33,6 +33,8 @@ function scr_deactivate_objects_outside_view()
 				instance_activate_object(obj_foreground2);
 				instance_activate_object(obj_foreground_secret);
 				instance_activate_object(obj_water_level);
+				instance_activate_object(obj_level_height);
+				instance_activate_object(obj_level_width);
 			}
 			else
 			if (room == rm_world_map)
