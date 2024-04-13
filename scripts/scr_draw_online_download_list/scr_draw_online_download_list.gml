@@ -1,6 +1,8 @@
 function scr_draw_online_download_list()
 {
 	var download_online_x = display_get_gui_width() * 0.5 - 300;
+	var menu_cursor_y_position_start = 114 + (300 * (global.selected_online_download_index - 1));
+	var menu_y_offset_real_start = -(170 * (global.selected_online_download_index - 1));
 	
 	if (menu == "online_download_list_load")
 	{
@@ -33,9 +35,9 @@ function scr_draw_online_download_list()
 		menu = "download_online_" + string(global.selected_online_download_index);
 		
 		/* Put the scroll position on the selected thumbnail immediately */
-		menu_cursor_y_position = 114 + (300 * (global.selected_online_download_index - 1));
-		menu_y_offset_real = - 64 - (300 * global.selected_online_download_index);
-		menu_y_offset = menu_y_offset_real;
+		menu_cursor_y_position = menu_cursor_y_position_start;
+		menu_y_offset_real = menu_y_offset_real_start;
+		menu_y_offset = menu_y_offset_real_start;
 		
 		automatically_search_for_id = false;
 		in_online_download_list_menu = true;
@@ -732,6 +734,7 @@ function scr_draw_online_download_list()
 			{
 				global.can_load_custom_level_assets = !global.can_load_custom_level_assets;
 			}
+			scr_draw_option_description();
 		}
 		#endregion /* Draw the Load Custom Level Assets END */
 		
@@ -792,7 +795,8 @@ function scr_draw_online_download_list()
 					scr_delete_sprite_properly(spr_download_list_thumbnail);spr_download_list_thumbnail = noone; /* Delete the previous thumbnail sprite so you can load in a new one */
 				}
 				menu = "download_online_" + string(num_items);
-				menu_y_offset_real = 80 - (300 * global.selected_online_download_index);
+				menu_cursor_y_position = menu_cursor_y_position_start;
+				menu_y_offset_real = menu_y_offset_real_start;
 			}
 		}
 		else
@@ -862,7 +866,8 @@ function scr_draw_online_download_list()
 					scr_delete_sprite_properly(spr_download_list_thumbnail);spr_download_list_thumbnail = noone; /* Delete the previous thumbnail sprite so you can load in a new one */
 				}
 				menu = "download_online_" + string(num_items);
-				menu_y_offset_real = 80 - (300 * global.selected_online_download_index);
+				menu_cursor_y_position = menu_cursor_y_position_start;
+				menu_y_offset_real = menu_y_offset_real_start;
 			}
 		}
 		else
@@ -903,9 +908,6 @@ function scr_draw_online_download_list()
 	#endregion /* Online download list menu navigation even when there isn't any data END */
 	
 	//draw_set_halign(fa_left);
-	//scr_draw_text_outlined(32, 320 + (32), "menu_cursor_y_position: " + string(menu_cursor_y_position));
-	//scr_draw_text_outlined(32, 320 + (32 * 2), "menu_y_offset: " + string(menu_y_offset));
-	//scr_draw_text_outlined(32, 320 + (32 * 3), "menu_y_offset_real: " + string(menu_y_offset_real));
 	//scr_draw_text_outlined(32, 320 + (32 * 4), "scrolling_menu_with_mousewheel: " + string(scrolling_menu_with_mousewheel));
 	//scr_draw_text_outlined(32, 320 + (32 * 5), "debug online download list info");
 	//scr_draw_text_outlined(32, 320 + (32 * 6), "data: " + string(data));
