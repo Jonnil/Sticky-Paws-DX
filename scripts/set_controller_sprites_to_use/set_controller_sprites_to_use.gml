@@ -21,17 +21,20 @@ function set_controller_sprites_to_use() {
 			if (os_type == os_switch)
 			{
 				/* Put code here to detect when using Joy-Cons on the side */
-				show_message(switch_controller_get_supported_styles());
-				
+				if (gamepad_button_check_pressed(global.player_slot[i], gp_face4))
 				{
-					/* If you're using Nintendo Switch with Joy-Cons on the side, use horizontal button prompts */
-					global.what_controller_sprites_to_use[i] = global.resource_pack_sprite_buttons_nintendoswitch_horizontal;
+					show_message(switch_controller_get_supported_styles());
 				}
-				else
-				{
+				
+				//{
+				//	/* If you're using Nintendo Switch with Joy-Cons on the side, use horizontal button prompts */
+				//	global.what_controller_sprites_to_use[i] = global.resource_pack_sprite_buttons_nintendoswitch_horizontal;
+				//}
+				//else
+				//{
 					/* If you're using other Nintendo Switch controllers, use vertical button prompts */
 					global.what_controller_sprites_to_use[i] = global.resource_pack_sprite_buttons_nintendoswitch_vertical;
-				}
+				//}
 			}
 			else
 			{

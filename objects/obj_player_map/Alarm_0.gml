@@ -17,6 +17,7 @@ sprite_map = scr_initialize_character_sprite("map", sprite_map);
 sprite_map_enter_level = scr_initialize_character_sprite("map_enter_level", sprite_map_enter_level);
 sprite_map_enter_level = scr_initialize_character_sprite("map_enter", sprite_map_enter_level);
 sprite_idle = scr_initialize_character_sprite("idle", sprite_idle);
+sprite_idle = scr_initialize_character_sprite("stand", sprite_idle);
 sprite_walk = scr_initialize_character_sprite("walk", sprite_walk);
 ini_close(); switch_save_data_commit(); /* Remember to commit the save data! */
 #endregion /* Sprite variables END */

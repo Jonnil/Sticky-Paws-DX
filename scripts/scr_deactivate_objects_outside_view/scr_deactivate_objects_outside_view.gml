@@ -7,21 +7,25 @@ function scr_deactivate_objects_outside_view()
 	{
 		/* Deactivating from view center makes it more consistend, where players with any view zoom will experience the same things */
 		/* It might deactivate less things on more zoomed in, but we have to find other things to optimize */
-		var view_x_center = camera_get_view_x(view_camera[view_current]) + (camera_get_view_width(view_camera[view_current]) * 0.5);
-		var view_y_center = camera_get_view_y(view_camera[view_current]) + (camera_get_view_height(view_camera[view_current]) * 0.5);
+		var view_camera_current = view_camera[view_current];
+		var view_x_center = camera_get_view_x(view_camera_current) + (camera_get_view_width(view_camera_current) * 0.5);
+		var view_y_center = camera_get_view_y(view_camera_current) + (camera_get_view_height(view_camera_current) * 0.5);
 		var view_distance_from_center = 1074; /* How many pixels from view center objects should deactivate. Needs to be enought to not cause problems */
 		
 		/* Using the "min" and "max" function, it will either read the distance from center if that's the bigger number, or if the actual view is bigger it will read that number instead */
-		var view_left = min(view_x_center - view_distance_from_center, camera_get_view_x(view_camera[view_current]) - 64);
-		var view_top = min(view_y_center - view_distance_from_center, camera_get_view_y(view_camera[view_current]) - 64);
-		var view_width = max(view_distance_from_center * 2, camera_get_view_width(view_camera[view_current]) + 64);
-		var view_height = max(view_distance_from_center * 2, camera_get_view_height(view_camera[view_current]) + 64);
+		var view_left = min(view_x_center - view_distance_from_center, camera_get_view_x(view_camera_current) - 64);
+		var view_top = min(view_y_center - view_distance_from_center, camera_get_view_y(view_camera_current) - 64);
+		var view_width = max(view_distance_from_center * 2, camera_get_view_width(view_camera_current) + 64);
+		var view_height = max(view_distance_from_center * 2, camera_get_view_height(view_camera_current) + 64);
 		
-		global.deactivate_timer++;
+		global.deactivate_timer ++;
 		
 		if (global.deactivate_timer > 100)
 		{
-			instance_deactivate_region(view_left, view_top, view_width, view_height, false, true); /* Deactivate instances outside view first */
+			if (global.deactivate_timer < 990) /* When you are forcing the deactivate timer, you only want to update "instance activate region" */
+			{
+				instance_deactivate_region(view_left, view_top, view_width, view_height, false, true); /* Deactivate instances outside view first */
+			}
 			
 			/* Activate objects that always should be active */
 			if (room == rm_leveleditor)
@@ -35,6 +39,7 @@ function scr_deactivate_objects_outside_view()
 				instance_activate_object(obj_water_level);
 				instance_activate_object(obj_level_height);
 				instance_activate_object(obj_level_width);
+				instance_activate_object(obj_goal);
 			}
 			else
 			if (room == rm_world_map)
@@ -47,9 +52,11 @@ function scr_deactivate_objects_outside_view()
 				instance_activate_object(obj_map_exit);
 			}
 			
+			instance_activate_region(view_left, view_top, view_width, view_height, true); /* Always activate within view before reseting deactivate timer */
 			global.deactivate_timer = 0; /* Reset the deactivate timer */
 		}
 		if (global.deactivate_timer % 7 == 0)
+		|| (global.deactivate_timer > 100)
 		{
 			instance_activate_region(view_left, view_top, view_width, view_height, true); /* Always activate within view */
 		}

@@ -5,7 +5,7 @@ function scr_choose_sound_variation(variations)
     var valid_variations = [];
     
     /* Loop through each element in the variations array */
-    for(var i = 0; i < array_length_1d(variations); i++) 
+    for(var i = 0; i < array_length(variations); i++) 
     {
         /* Check if the variation at index i is not equal to "noone" (indicating it exists) */
         if (variations[i] > noone) 
@@ -16,10 +16,10 @@ function scr_choose_sound_variation(variations)
     }
     
     /* Check if there are any valid variations in the list */
-    if (array_length_1d(valid_variations) > 0)
+    if (array_length(valid_variations) > 0)
     {
         /* If there are valid variations, select a random index within the valid variations array */
-        var random_index = irandom(array_length_1d(valid_variations) - 1);
+        var random_index = irandom(array_length(valid_variations) - 1);
         /* Retrieve the chosen sound variation based on the random index */
         var sound_variable_that_will_choose = valid_variations[random_index];
     }

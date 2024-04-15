@@ -260,3 +260,4 @@ if (menu_delay > 0) {
 }
 
 scr_deactivate_objects_outside_view(); /* This function needs to be at the very end of the step event */
+global.deactivate_timer ++;
