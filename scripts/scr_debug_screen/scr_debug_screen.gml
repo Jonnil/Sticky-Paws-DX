@@ -89,6 +89,35 @@ function scr_debug_screen()
 	}
 	#endregion /* Controller ports END */
 	
+	#region /* Detect when controllers are disconnected */
+	for (var i = 0; i < gamepad_get_device_count(); i++)
+	{
+		var connected = gamepad_is_connected(i);
+		if (!global.initial_gamepad_status[i] && connected)
+		{
+			show_debug_message("Gamepad " + string(i) + " connected!");
+			global.initial_gamepad_status[i] = true; /* Update initial status */
+		}
+		else
+		if (global.initial_gamepad_status[i] && !connected)
+		{
+			show_debug_message("Gamepad " + string(i) + " disconnected!");
+			/* Handle the disconnection here, such as resetting controls or pausing the game */
+			global.initial_gamepad_status[i] = false; /* Update initial status */
+			if (os_type == os_switch)
+			{
+				switch_controller_support_show(); /* If controllers are disconnected, show the player the screen to connect controllers again */
+			}
+			var time_source = time_source_create(time_source_game, 2, time_source_units_frames, function()
+			{
+				set_controller_sprites_to_use();
+			}
+			, [], 1);
+			time_source_start(time_source);
+		}
+	}
+	#endregion /* Detect when controllers are disconnected END */
+	
 	if (global.debug_screen) {
 		
 		if (variable_instance_exists(self, "player_show_controls_alpha")) {
@@ -223,6 +252,8 @@ function scr_debug_screen()
 			scr_draw_text_outlined(32, debug_text_y, "player_can_play[" + string(i) + "]: " + string(global.player_can_play[i]), global.default_text_size, c_black, c_white);
 			debug_text_y += 20;
 		}
+		
+		/* Get Gamepad Description */
 		if (gamepad_get_description(0) != "") {
 			scr_draw_text_outlined(32, debug_text_y, "gamepad(0): " + string(gamepad_get_description(0)), global.default_text_size, c_black, c_white);
 			debug_text_y += 20;
@@ -243,6 +274,9 @@ function scr_debug_screen()
 			scr_draw_text_outlined(32, debug_text_y, "gamepad(4): " + string(gamepad_get_description(4)), global.default_text_size, c_black, c_white);
 			debug_text_y += 20;
 		}
+		
+		debug_text_y += 20;
+		
 		if (variable_instance_exists(self, "menu")) {
 			scr_draw_text_outlined(32, debug_text_y, "menu: " + string(menu), global.default_text_size, c_black, c_white);
 			debug_text_y += 20;
@@ -262,8 +296,6 @@ function scr_debug_screen()
 			scr_draw_text_outlined(32, debug_text_y, "menu_cursor_y_position: " + string(menu_cursor_y_position), global.default_text_size, c_black, c_white);
 			debug_text_y += 20;
 		}
-		scr_draw_text_outlined(32, debug_text_y, "selected_online_download_index: " + string(global.selected_online_download_index), global.default_text_size, c_black, c_white);
-		debug_text_y += 20;
 		
 		debug_text_y += 20;
 		

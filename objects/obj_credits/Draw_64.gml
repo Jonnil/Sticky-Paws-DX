@@ -34,7 +34,7 @@ if (skip > 0) {
 
 /* Legal text in bottom left corner of screen */
 draw_set_halign(fa_left);
-scr_draw_text_outlined(10, display_get_gui_height() - 10, l10n_text(
+scr_draw_text_outlined(10, display_get_gui_height() - 20, l10n_text(
 "The " + string(global.game_name) + " IP and all of its properties belong to " + string(global.company_name)
 ), global.default_text_size * 0.5, c_black, c_white, black_background_alpha);
 

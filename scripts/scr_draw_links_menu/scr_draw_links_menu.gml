@@ -3,24 +3,46 @@ function scr_draw_links_menu() {
 	var mouse_get_y = device_mouse_y_to_gui(0);
 	
 	/* Define an array of button information */
-	var buttons = [
-		/* Social Media Links */
-		{text: "Discord", link: global.link_to_discord, menu_string: "link_to_discord", icon: global.resource_pack_sprite_logo_discord}
-		,{text: "Gamebanana", link: global.link_to_gamebanana, menu_string: "link_to_gamebanana", icon: global.resource_pack_sprite_logo_gamebanana}
-		,{text: "Instagram", link: global.link_to_instagram, menu_string: "link_to_instagram", icon: global.resource_pack_sprite_logo_instagram}
-		,{text: "Reddit", link: global.link_to_reddit, menu_string: "link_to_reddit", icon: global.resource_pack_sprite_logo_reddit}
-		,{text: "Twitter", link: global.link_to_twitter, menu_string: "link_to_twitter", icon: global.resource_pack_sprite_logo_twitter}
-		,{text: "YouTube", link: global.link_to_youtube, menu_string: "link_to_youtube", icon: global.resource_pack_sprite_logo_youtube}
-		/* Other Links */
-		,{text: "Bug Report Form", link: global.link_to_bug_report_form, menu_string: "link_to_bug_report_form", icon: noone}
-		,{text: "Changelog History", link: global.link_to_changelog_history, menu_string: "link_to_changelog_history", icon: noone}
-		,{text: "Guide", link: global.link_to_website_guide, menu_string: "link_to_website_guide", icon: noone}
-		,{text: "Steam Page", link: global.link_to_steam_page, menu_string: "link_to_steam_page", icon: noone}
-		,{text: "Update Schedule", link: global.link_to_update_schedule, menu_string: "link_to_update_schedule", icon: noone}
-		,{text: "Website", link: global.link_to_website, menu_string: "link_to_website", icon: noone}
-		//,{text: "Wiki", link: global.link_to_wiki, menu_string: "link_to_wiki", icon: global.resource_pack_sprite_logo_wiki}
-		/* Add more buttons here with their respective text, link, menu string, and icon */
-	];
+	if (os_type != os_switch)
+	{
+		var buttons = [
+			/* Social Media Links */
+			{text: "Discord", link: global.link_to_discord, menu_string: "link_to_discord", icon: global.resource_pack_sprite_logo_discord}
+			,{text: "Gamebanana", link: global.link_to_gamebanana, menu_string: "link_to_gamebanana", icon: global.resource_pack_sprite_logo_gamebanana}
+			,{text: "Instagram", link: global.link_to_instagram, menu_string: "link_to_instagram", icon: global.resource_pack_sprite_logo_instagram}
+			,{text: "Reddit", link: global.link_to_reddit, menu_string: "link_to_reddit", icon: global.resource_pack_sprite_logo_reddit}
+			,{text: "Twitter", link: global.link_to_twitter, menu_string: "link_to_twitter", icon: global.resource_pack_sprite_logo_twitter}
+			,{text: "YouTube", link: global.link_to_youtube, menu_string: "link_to_youtube", icon: global.resource_pack_sprite_logo_youtube}
+			/* Other Links */
+			,{text: "Bug Report Form", link: global.link_to_bug_report_form, menu_string: "link_to_bug_report_form", icon: noone}
+			,{text: "Changelog History", link: global.link_to_changelog_history, menu_string: "link_to_changelog_history", icon: noone}
+			,{text: "Guide", link: global.link_to_website_guide, menu_string: "link_to_website_guide", icon: noone}
+			,{text: "Steam Page", link: global.link_to_steam_page, menu_string: "link_to_steam_page", icon: noone}
+			,{text: "Update Schedule", link: global.link_to_update_schedule, menu_string: "link_to_update_schedule", icon: noone}
+			,{text: "Website", link: global.link_to_website, menu_string: "link_to_website", icon: noone}
+			//,{text: "Wiki", link: global.link_to_wiki, menu_string: "link_to_wiki", icon: global.resource_pack_sprite_logo_wiki}
+			/* Add more buttons here with their respective text, link, menu string, and icon */
+		];
+	}
+	else
+	{
+		var buttons = [
+			/* Social Media Links */
+			{text: "Discord", link: global.link_to_discord, menu_string: "link_to_discord", icon: global.resource_pack_sprite_logo_discord}
+			,{text: "Instagram", link: global.link_to_instagram, menu_string: "link_to_instagram", icon: global.resource_pack_sprite_logo_instagram}
+			,{text: "Reddit", link: global.link_to_reddit, menu_string: "link_to_reddit", icon: global.resource_pack_sprite_logo_reddit}
+			,{text: "Twitter", link: global.link_to_twitter, menu_string: "link_to_twitter", icon: global.resource_pack_sprite_logo_twitter}
+			,{text: "YouTube", link: global.link_to_youtube, menu_string: "link_to_youtube", icon: global.resource_pack_sprite_logo_youtube}
+			/* Other Links */
+			,{text: "Bug Report Form", link: global.link_to_bug_report_form, menu_string: "link_to_bug_report_form", icon: noone}
+			,{text: "Changelog History", link: global.link_to_changelog_history, menu_string: "link_to_changelog_history", icon: noone}
+			,{text: "Guide", link: global.link_to_website_guide, menu_string: "link_to_website_guide", icon: noone}
+			,{text: "Update Schedule", link: global.link_to_update_schedule, menu_string: "link_to_update_schedule", icon: noone}
+			,{text: "Website", link: global.link_to_website, menu_string: "link_to_website", icon: noone}
+			//,{text: "Wiki", link: global.link_to_wiki, menu_string: "link_to_wiki", icon: global.resource_pack_sprite_logo_wiki}
+			/* Add more buttons here with their respective text, link, menu string, and icon */
+		];
+	}
 	
 	var valid_link_count = 0; /* Initialize the count of valid links */
 	

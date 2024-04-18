@@ -21,7 +21,7 @@ function scr_draw_menu_search_id(what_kind_of_id = "level")
 		if (keyboard_virtual_status())
 		&& (keyboard_virtual_height() != 0)
 		{
-			var draw_name_input_screen_y = display_get_gui_height() - keyboard_virtual_height() - 160;
+			var draw_name_input_screen_y = min(display_get_gui_height() * 0.5, display_get_gui_height() - keyboard_virtual_height() - 160);
 		}
 		else
 		{

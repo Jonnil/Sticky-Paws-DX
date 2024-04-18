@@ -1,4 +1,5 @@
-function scr_player_move_pause() {
+function scr_player_move_pause()
+{
 	var pause_condition =
 		(controller_connected && (!gamepad_is_connected(global.player_slot[player]) || gamepad_button_check_pressed(global.player_slot[player], gp_start))) ||
 		(global.automatically_pause_when_window_is_unfocused && !window_has_focus()) ||
@@ -6,10 +7,8 @@ function scr_player_move_pause() {
 		(keyboard_check(vk_tab) && keyboard_check(vk_lshift)) ||
 		(global.controls_used_for_navigation == "mouse" && mouse_check_button_released(mb_left) && point_in_rectangle(device_mouse_x_to_gui(0), device_mouse_y_to_gui(0), display_get_gui_width() - 185, 0, display_get_gui_width(), 42)); /* Pause button appears in top right corner of screen when using mouse */
 	
-	if (pause_condition) {
-		if (controller_connected && !gamepad_is_connected(global.player_slot[player])) {
-			switch_controller_support_show();
-		}
+	if (pause_condition)
+	{
 		
 		/* Show HUD elements */
 		obj_camera.hud_show_lives_timer = global.hud_hide_time * 60;
@@ -20,7 +19,8 @@ function scr_player_move_pause() {
 		
 		controller_connected = false;
 		
-		if (global.character_select_in_this_menu == "level_editor" && !global.actually_play_edited_level && global.play_edited_level) {
+		if (global.character_select_in_this_menu == "level_editor" && !global.actually_play_edited_level && global.play_edited_level)
+		{
 			/* Handle level editor pause logic */
 			obj_camera.pause_playtest = true;
 			obj_camera.black_screen_gui_alpha = 1;
@@ -39,7 +39,9 @@ function scr_player_move_pause() {
 			#endregion /* Save Level Information when in level editor END */
 			
 			room_restart();
-		} else {
+		}
+		else
+		{
 			/* Handle normal pause logic */
 			global.pause = true;
 			
@@ -54,7 +56,7 @@ function scr_player_move_pause() {
 				for(var i = 1; i <= global.max_players; i += 1)
 				{
 				    if (global.player_can_play[i])
-				    {
+					{
 				        global.pause_player = i - 1;
 				        break; /* exit the loop if a player can play */
 				    }
@@ -68,7 +70,9 @@ function scr_player_move_pause() {
 			audio_pause_all();
 			room_goto(rm_pause);
 		}
-	} else {
+	}
+	else
+	{
 		room_persistent = false; /* Turn OFF Room Persistency */
 	}
 }

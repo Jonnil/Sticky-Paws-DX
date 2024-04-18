@@ -240,6 +240,7 @@ global.default_ambience_underwater = "";
 global.default_clear_melody = "";
 #endregion /* Set default backgrounds and music END */
 
+global.initial_gamepad_status = array_create(max(global.max_players, gamepad_get_device_count()) + 1, false); /* Create an array to store initial status for all gamepads */
 global.can_load_custom_level_assets = true; /* Should be able to turn off loading custom assets */
 global.playtest_invincibility = false;
 global.playtest_moonjump = false;
