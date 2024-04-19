@@ -145,7 +145,9 @@ if (!hide_menu_for_clean_screenshots)
 		}
 		#endregion /* Display level information END */
 		
-	} else {
+	}
+	else
+	{
 		hud_show_big_collectibles_y = lerp(hud_show_big_collectibles_y, 0, 0.1);
 	}
 	#endregion /* Games Logo in top left corner END */

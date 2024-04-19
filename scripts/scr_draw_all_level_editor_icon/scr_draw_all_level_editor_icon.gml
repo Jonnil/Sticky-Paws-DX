@@ -116,11 +116,14 @@ function scr_draw_all_level_editor_icon()
 			if (erase_mode || fill_mode) {
 			    erase_mode = false;
 			    fill_mode = false;
-			} else {
+			}
+			else
+			{
 			    place_size += 1;
 			    erase_size = place_size;
 				
-			    if (place_size > 5) {
+			    if (place_size > 5)
+				{
 			        place_size = 0;
 			        erase_size = 0;
 			    }
@@ -186,14 +189,18 @@ function scr_draw_all_level_editor_icon()
 		|| (level_editor_menu == "erase")
 		&& (key_a_pressed)
 		{
-			if (!erase_mode) {
+			if (!erase_mode)
+			{
 			    erase_mode = true;
 			    fill_mode = false;
-			} else {
+			}
+			else
+			{
 			    erase_size += 1;
 			    place_size = erase_size;
 				
-			    if (erase_size > 5) {
+			    if (erase_size > 5)
+				{
 			        erase_size = 0;
 			        place_size = 0;
 			    }

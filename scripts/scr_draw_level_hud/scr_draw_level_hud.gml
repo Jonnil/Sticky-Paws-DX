@@ -126,7 +126,9 @@ function scr_draw_level_hud() {
 	        }
 	        if (global.timeattack_minute <= 0 && global.timeattack_second <= 9) {
 	            scr_draw_text_outlined(window_width - 65, time_countup_y, string(global.timeattack_second), global.default_text_size, c_black, c_white, 1);
-	        } else {
+	        }
+			else
+			{
 	            scr_draw_text_outlined(window_width - 65, time_countup_y, string_replace_all(string_format(global.timeattack_second, 2, 0), " ", "0"), global.default_text_size, c_black, c_white, 1);
 	        }
 	        scr_draw_text_outlined(window_width - 30, time_countup_y + 2, "." + string(string_replace_all(string_format(global.timeattack_millisecond, 2, 0), " ", "0")), global.default_text_size * 0.75, c_black, c_white, 1);

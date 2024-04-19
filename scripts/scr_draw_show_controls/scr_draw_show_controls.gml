@@ -8,7 +8,9 @@ function scr_draw_show_controls_key(show_controls_name = "", gp_button = noone, 
 	if (show_controls_button != noone) && (global.controls_used_for_navigation == "gamepad" && gp_is_connected || global.always_show_gamepad_buttons) {
 		draw_text_show_controls = true;
 		scr_draw_gamepad_buttons(show_controls_button, player_show_key_x, get_window_height - yy, 0.5, c_white, alpha, 1, 1, what_player);
-	} else if (show_controls_key != noone) {
+	}
+	else
+	if (show_controls_key != noone) {
 		draw_text_show_controls = true;
 		draw_sprite_ext(spr_keyboard_keys, show_controls_key, player_show_key_x, get_window_height - yy, 0.5, 0.5, 0, c_white, alpha);
 	}

@@ -1202,7 +1202,9 @@ else
 				}
 				effect_create_above(ef_smoke, x, bbox_bottom, 0, c_white);
 				scr_gamepad_vibration(player, 0.1, 10);
-			} else if (audio_is_playing(snd_skidding)) {
+			}
+			else
+			if (audio_is_playing(snd_skidding)) {
 				audio_stop_sound(snd_skidding);
 			}
 		}
@@ -1210,7 +1212,8 @@ else
 			if (sprite_mask_crouch >= 0) {
 				mask_index = sprite_mask_crouch;
 			}
-			else {
+			else
+			{
 				mask_index = spr_player_stand;
 			}
 			if (sprite_crouch_crawl > noone){sprite_index = sprite_crouch_crawl;}else
@@ -1219,10 +1222,14 @@ else
 			if (sprite_walk > noone){sprite_index = sprite_walk;}
 			if (image_index > image_number - 1) {
 				image_speed = 0;
-			} else {
+			}
+			else
+			{
 				image_speed = 0.5;
 			}
-		} else if (on_ground) {
+		}
+		else
+		if (on_ground) {
 			
 			#region /* Crouch Still */
 			if (speed == 0)
@@ -1233,7 +1240,9 @@ else
 				if (sprite_walk > noone){sprite_index = sprite_walk;}
 				if (image_index > image_number - 1) {
 					image_speed = 0;
-				} else {
+				}
+				else
+				{
 					image_speed = 0.5;
 				}
 			}
@@ -1251,7 +1260,9 @@ else
 			}
 			#endregion /* Crouch Crawl END */
 			
-		} else if (!on_ground) {
+		}
+		else
+		if (!on_ground) {
 			
 			#region /* Crouch Jump */
 			if (vspeed < 0) {
@@ -1268,13 +1279,16 @@ else
 				if (sprite_walk > noone){sprite_index = sprite_walk;}
 				if (image_index > image_number - 1) {
 					image_speed = 0;
-				} else {
+				}
+				else
+				{
 					image_speed = 0.5;
 				}
 			}
 			#endregion /* Crouch Jump END */
 			
-			else if (!stick_to_wall && vspeed > 0) {
+			else
+			if (!stick_to_wall && vspeed > 0) {
 				
 				#region /* Crouch Fall sprites */
 				if (jump_transition_to_fall_animation == 0) {
@@ -1285,7 +1299,9 @@ else
 					image_speed = 0.5;
 					if (sprite_crouch_jump_transition_to_fall > noone) {
 						sprite_index = sprite_crouch_jump_transition_to_fall;
-					} else {
+					}
+					else
+					{
 						jump_transition_to_fall_animation = 2;
 					}
 					if (image_index > image_number - 1) {
@@ -1307,7 +1323,9 @@ else
 					if (sprite_walk > noone){sprite_index = sprite_walk;}
 					if (image_index > image_number - 1) {
 						image_speed = 0;
-					} else {
+					}
+					else
+					{
 						image_speed = 0.5;
 					}
 				}
@@ -1318,7 +1336,9 @@ else
 		jump = 0;
 		if (sprite_mask_crouch >= 0) {
 			mask_index = sprite_mask_crouch;
-		} else {
+		}
+		else
+		{
 			mask_index = spr_player_stand;
 		}
 	}

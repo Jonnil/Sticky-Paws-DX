@@ -27,12 +27,14 @@ moonjump_key = ord("M");
 moonjump_button = gp_shoulderlb;
 show_playtest_buttons = false;
 
-if (global.character_select_in_this_menu == "level_editor") {
+if (global.character_select_in_this_menu == "level_editor")
+{
 	pause_x = 32;
 	playtest_invincibility_x = 96;
 	playtest_moonjump_x = 160;
 }
-else {
+else
+{
 	pause_x = -999;
 	playtest_invincibility_x = 32;
 	playtest_moonjump_x = 96;
@@ -170,7 +172,8 @@ hud_show_score_timer = 0;
 time_countup_y = 32; /* What y position the countup timer should be at */
 hurry_up_message_timer = 0; /* How long the hurry up message should stay on screen */
 set_all_big_collectible = 0;
-for (var i = 1; i <= 99; i++) {
+for (var i = 1; i <= 99; i++)
+{
 	hud_show_big_collectible_blink[i] = 0;
 }
 #endregion /* Hud Variables END */
@@ -209,42 +212,55 @@ else
 scr_initialize_level_information_ini();
 
 #region /* Spawn Players */
-if (can_spawn_players) {
-	for(var i = 1; i <= global.max_players; i += 1) {
-		if (global.player_can_play[i]) {
-			if (i == 1) {
+if (can_spawn_players)
+{
+	for(var i = 1; i <= global.max_players; i += 1)
+	{
+		if (global.player_can_play[i])
+		{
+			if (i == 1)
+			{
 				var object_level_start = obj_level_player1_start;
 			}
 			else
-			if (i == 2) {
+			if (i == 2)
+			{
 				var object_level_start = obj_level_player2_start;
 			}
 			else
-			if (i == 3) {
+			if (i == 3)
+			{
 				var object_level_start = obj_level_player3_start;
 			}
 			else
-			if (i == 4) {
+			if (i == 4)
+			{
 				var object_level_start = obj_level_player4_start;
 			}
-			else {
+			else
+			{
 				var object_level_start = obj_level_player1_start;
 			}
 			var start_x, start_y;
-			if (global.checkpoint_x > 0 && global.checkpoint_y > 0 && global.actually_play_edited_level) {
+			if (global.checkpoint_x > 0 && global.checkpoint_y > 0 && global.actually_play_edited_level)
+			{
 				start_x = global.checkpoint_x;
 				start_y = global.checkpoint_y;
 			}
-			else if (global.actually_play_edited_level && instance_exists(object_level_start)) {
+			else
+			if (global.actually_play_edited_level && instance_exists(object_level_start))
+			{
 				start_x = object_level_start.x;
 				start_y = object_level_start.y;
 			}
-			else {
+			else
+			{
 				start_x = x; /* Default start position if no specific conditions are met */
 				start_y = y;
 			}
 			player[i] = instance_create_depth(start_x, start_y, 0, obj_player);
-			with (player[i]) {
+			with (player[i])
+			{
 				custom_character = global.character_for_player[i];
 				selected_voicepack = global.voicepack_for_player[i];
 				selected_skin = global.skin_for_player[i];
@@ -252,20 +268,25 @@ if (can_spawn_players) {
 				player = i;
 			}
 		}
-		else {
+		else
+		{
 			player[i] = noone;
 		}
 	}
 	if (room == rm_leveleditor)
-	&& (global.actually_play_edited_level) {
+	&& (global.actually_play_edited_level)
+	{
 		player_has_spawned = true;
 	}
-	else {
+	else
+	{
 		player_has_spawned = false;
 	}
 }
-else {
-	for(var i = 1; i <= global.max_players; i += 1) {
+else
+{
+	for(var i = 1; i <= global.max_players; i += 1)
+	{
 		player[i] = noone;
 	}
 	player_has_spawned = false;
@@ -273,7 +294,8 @@ else {
 #endregion /* Spawn Players END */
 
 #region /* HUD Show Controls keys that have been pressed */
-for(var i = 1; i <= global.max_players; i += 1) {
+for(var i = 1; i <= global.max_players; i += 1)
+{
 	can_spawn_player[i] = true;
 	show_player_controls_y[i] = +32;
 	key_player_run_toggle_pressed[i] = noone;

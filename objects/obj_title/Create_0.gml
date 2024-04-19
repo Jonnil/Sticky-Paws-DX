@@ -29,9 +29,12 @@ for(var p = 1; p <= global.max_players; p += 1) {
 	character_portrait_for_player_dir_exists_4[p] = false;
 }
 
-if (os_type == os_switch) {
+if (os_type == os_switch)
+{
 	global.free_communication_available = switch_free_communication_available(); /* If free communication is disabled, you shouldn't be able to upload or download custom content. Set this to global.free_communication_available = switch_free_communication_available when done debugging */
-} else {
+}
+else
+{
 	global.free_communication_available = true; /* If free communication is disabled, you shouldn't be able to upload or download custom content. Set this to global.free_communication_available = true when done debugging */
 }
 

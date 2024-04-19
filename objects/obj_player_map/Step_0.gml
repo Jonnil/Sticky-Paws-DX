@@ -32,7 +32,9 @@ if (stop_at_level && nearest_level == noone) { /* Only get info from levels when
 		var time_millisecond = string_replace_all(string_format(nearest_level.timeattack_millisecond, 2, 0), " ", "0");
 		best_time_text = l10n_text("Best Time") + ": " + string(time_minute) + ":" + time_second + "." + time_millisecond;
 		
-	} else {
+	}
+	else
+	{
 	    at_least_one_big_collectible = false;
 	}
 }
@@ -124,7 +126,9 @@ if (entering_level) {
     else if (sprite_map > noone) sprite_index = sprite_map;
     else if (sprite_idle > noone) sprite_index = sprite_idle;
     else if (sprite_walk > noone) sprite_index = sprite_walk;
-} else {
+}
+else
+{
     if (sprite_map > noone) sprite_index = sprite_map;
     else if (sprite_walk > noone && speed > 0) sprite_index = sprite_walk;
     else if (sprite_idle > noone) sprite_index = sprite_idle;
@@ -204,40 +208,54 @@ if (can_move && !global.quit_level) {
                 vspeed -= move_speed;
                 move_delay = 0;
                 transfer_data = false;
-            } else if (!audio_is_playing(snd_bump)) {
+            }
+			else
+			if (!audio_is_playing(snd_bump)) {
                 draw_xscale = 1.5;
                 draw_yscale = 0.5;
                 yy -= 32;
                 scr_audio_play(snd_bump, volume_source.sound);
             }
-        } else if (key_left || mouse_check_button_released(mb_left) && mouse_dir > 135 && mouse_dir < 225 && mouse_dist > 16 && mouse_dist < 100 && mouse_not_on_pause_button) {
+        }
+		else
+		if (key_left || mouse_check_button_released(mb_left) && mouse_dir > 135 && mouse_dir < 225 && mouse_dist > 16 && mouse_dist < 100 && mouse_not_on_pause_button) {
             if (!position_meeting(x - 32, y, obj_wall)) {
                 hspeed -= move_speed;
                 move_delay = 0;
                 transfer_data = false;
-            } else if (!audio_is_playing(snd_bump)) {
+            }
+			else
+			if (!audio_is_playing(snd_bump)) {
                 draw_xscale = 0.5;
                 draw_yscale = 1.5;
                 xx -= 32;
                 scr_audio_play(snd_bump, volume_source.sound);
             }
-        } else if (key_right || mouse_check_button_released(mb_left) && (mouse_dir > 0 && mouse_dir < 45 || mouse_dir > 315 && mouse_dir < 361) && mouse_dist > 16 && mouse_dist < 100 && mouse_not_on_pause_button) {
+        }
+		else
+		if (key_right || mouse_check_button_released(mb_left) && (mouse_dir > 0 && mouse_dir < 45 || mouse_dir > 315 && mouse_dir < 361) && mouse_dist > 16 && mouse_dist < 100 && mouse_not_on_pause_button) {
             if (!position_meeting(x + 32, y, obj_wall)) {
                 hspeed += move_speed;
                 move_delay = 0;
                 transfer_data = false;
-            } else if (!audio_is_playing(snd_bump)) {
+            }
+			else
+			if (!audio_is_playing(snd_bump)) {
                 draw_xscale = 0.5;
                 draw_yscale = 1.5;
                 xx += 32;
                 scr_audio_play(snd_bump, volume_source.sound);
             }
-        } else if (key_down || mouse_check_button_released(mb_left) && mouse_dir > 225 && mouse_dir < 315 && mouse_dist > 16 && mouse_dist < 100 && mouse_not_on_pause_button) {
+        }
+		else
+		if (key_down || mouse_check_button_released(mb_left) && mouse_dir > 225 && mouse_dir < 315 && mouse_dist > 16 && mouse_dist < 100 && mouse_not_on_pause_button) {
             if (!position_meeting(x, y + 32, obj_wall)) {
                 vspeed += move_speed;
                 move_delay = 0;
                 transfer_data = false;
-            } else if (!audio_is_playing(snd_bump)) {
+            }
+			else
+			if (!audio_is_playing(snd_bump)) {
                 draw_xscale = 1.5;
                 draw_yscale = 0.5;
                 yy += 32;

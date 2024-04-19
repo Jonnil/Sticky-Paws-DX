@@ -14,7 +14,9 @@ if (common_conditions_met && nearest_level.clear_rate != "closed") {
 
     if ((global.controls_used_for_navigation == "gamepad" && gamepad_is_connected(global.player_slot[player])) || global.always_show_gamepad_buttons) {
         scr_draw_gamepad_buttons(global.player_[inp.gp][player][1][action.accept], 32, window_height - 20, 0.5, c_white, 1, 1, 1, player);
-    } else if (global.player_can_play[player]) {
+    }
+	else
+	if (global.player_can_play[player]) {
         var key_accept = (global.player_[inp.key][player][1][action.accept] > noone) ? global.player_[inp.key][player][1][action.accept] : global.player_[inp.key][player][2][action.accept];
         if (key_accept > noone) {
             draw_sprite_ext(spr_keyboard_keys, key_accept, 32, window_height - 20, 0.5, 0.5, 0, c_white, 1);
@@ -30,7 +32,9 @@ if (global.debug_screen && common_conditions_met && nearest_level.clear_rate == 
 
     if (gamepad_is_connected(global.player_slot[player]) && global.controls_used_for_navigation == "gamepad") {
         scr_draw_gamepad_buttons(global.player_[inp.gp][player][1][action.back], clear_prompt_x, window_height - 20, 0.5, c_white, 1, 1, 1, player);
-    } else if (global.player_can_play[player]) {
+    }
+	else
+	if (global.player_can_play[player]) {
         var key_back = (global.player_[inp.key][player][1][action.back] > noone) ? global.player_[inp.key][player][1][action.back] : global.player_[inp.key][player][2][action.back];
         if (key_back > noone) {
             draw_sprite_ext(spr_keyboard_keys, key_back, clear_prompt_x, window_height - 20, 0.5, 0.5, 0, c_white, 1);

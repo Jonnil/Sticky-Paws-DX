@@ -175,7 +175,9 @@ function scr_draw_level_editor_thumbnail(load_what_levels = global.all_loaded_cu
 						var draw_x = 394 * (i - column * row) + 140 + thumbnail_x_offset;
 						if (clear_check) {
 							var daily_build_draw_y = 226 * (column - scroll) + 274 + 32;
-						} else {
+						}
+						else
+						{
 							var daily_build_draw_y = 226 * (column - scroll) + 274;
 						}
 						if (global.select_level_index == i)

@@ -87,7 +87,9 @@ function scr_draw_level_editor_sub_menu(xx = 394 * (global.select_level_index - 
 			{
 				if (daily_build_enabled) {
 					menu = "level_editor_create_daily_build";
-				} else {
+				}
+				else
+				{
 					menu = "level_editor_create_from_template";
 				}
 			}
@@ -166,7 +168,9 @@ function scr_draw_level_editor_sub_menu(xx = 394 * (global.select_level_index - 
 			{
 				if (daily_build_enabled) {
 					menu = "level_editor_create_daily_build";
-				} else {
+				}
+				else
+				{
 					menu = "level_editor_create_from_back";
 				}
 			}
