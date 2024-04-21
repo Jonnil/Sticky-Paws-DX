@@ -32,6 +32,8 @@ if (gamepad_button_check_pressed(global.player_slot[1], gp_face1))
 	if (can_navigate)
 	&& (!show_skip_button)
 	{
+		set_controller_sprites_to_use();
+		
 		if (gamepad_button_check_pressed(global.player_slot[1], gp_face1))
 		|| (gamepad_button_check_pressed(global.player_slot[2], gp_face1))
 		|| (gamepad_button_check_pressed(global.player_slot[3], gp_face1))
@@ -388,7 +390,8 @@ if (!can_navigate)
 			}
 			else
 			{
-				if (file_exists(game_save_id + "custom_resource_pack/" + file_found + "/data/sprite_origin_point.ini")) {
+				if (file_exists(game_save_id + "custom_resource_pack/" + file_found + "/data/sprite_origin_point.ini"))
+				{
 					ds_list_add(global.all_loaded_resource_pack, file_found);
 				}
 				
