@@ -48,15 +48,26 @@ default_yscale = scr_initialize_character_abilities(player - 1, "default_yscale"
 acceleration_on_ground = scr_initialize_character_abilities(player - 1, "acceleration_on_ground", 30, "values"); /* Acceleration on ground */
 acceleration_in_air = scr_initialize_character_abilities(player - 1, "acceleration_in_air", 30, "values"); /* Acceleration in air */
 acceleration_on_ice = scr_initialize_character_abilities(player - 1, "acceleration_on_ice", 5, "values"); /* Acceleration on ice */
-can_attack_after_dive_on_ground_max_value = scr_initialize_character_abilities(player - 1, "can_attack_after_dive_on_ground_max_value", 20, "values"); /* Can Attack After Dive On Ground Max Value */
+can_attack_after_dive_on_ground_max_value = scr_initialize_character_abilities(player - 1, "can_attack_after_dive_on_ground_max_value", 30, "values"); /* Can Attack After Dive On Ground Max Value */
 number_of_jumps = scr_initialize_character_abilities(player - 1, "number_of_jumps", 1, "values"); /* Number of jumps */
 midair_jumps_left = scr_initialize_character_abilities(player - 1, "midair_jumps_left", 1, "values"); /* Mid-air jumps left */
 midair_jump_flip_animation = scr_initialize_character_abilities(player - 1, "midair_jump_flip_animation", 2, "values"); /* Mid-air Flip Animation counter */
 max_hp = scr_initialize_character_abilities(player - 1, "max_hp", 1, "values"); /* Starting HP and Max HP */
 hp = scr_initialize_character_abilities(player - 1, "hp", 1, "values");
-if (acceleration_on_ground >= 1) {acceleration_on_ground = acceleration_on_ground * 0.01;} /* On Linux version, you can't read decimal numbers for some reason, but this code will try and make it possible for you to write in decimal too */
-if (acceleration_in_air >= 1) {acceleration_in_air = acceleration_in_air * 0.01;}
-if (acceleration_on_ice >= 1) {acceleration_on_ice = acceleration_on_ice * 0.01;}
+
+/* On Linux version, you can't read decimal numbers for some reason, but this code will try and make it possible for you to write in decimal too */
+if (acceleration_on_ground >= 1)
+{
+	acceleration_on_ground = acceleration_on_ground * 0.01;
+}
+if (acceleration_in_air >= 1)
+{
+	acceleration_in_air = acceleration_in_air * 0.01;
+}
+if (acceleration_on_ice >= 1)
+{
+	acceleration_on_ice = acceleration_on_ice * 0.01;
+}
 #endregion /* Character Values Handeling END */
 
 ini_close(); switch_save_data_commit(); /* Remember to commit the save data! */
@@ -65,11 +76,14 @@ ini_close(); switch_save_data_commit(); /* Remember to commit the save data! */
 
 #region /* Climb under y offset origin points */
 ini_open(string(character_folder) + "/data/sprite_origin_point.ini");
-if (ini_key_exists("sprite origin points", "climb_under_y_offset")) {
+if (ini_key_exists("sprite origin points", "climb_under_y_offset"))
+{
 	climb_under_y_offset = ini_read_real("sprite origin points", "climb_under_y_offset", 10);
 }
-else {
-	if (can_save_to_character_config && ds_list_find_value(global.all_loaded_characters, global.character_index[player - 1]) != undefined) {
+else
+{
+	if (can_save_to_character_config && ds_list_find_value(global.all_loaded_characters, global.character_index[player - 1]) != undefined)
+	{
 		ini_write_real("sprite origin points", "climb_under_y_offset", 10);
 	}
 	climb_under_y_offset = 10;
@@ -462,19 +476,22 @@ scr_player_move_choose_voice_clips(); /* Run this code in obj player alarm 0 eve
 
 #endregion /* Play as Custom character END */
 
-if (global.assist_enable) {
+if (global.assist_enable)
+{
 	max_hp += global.assist_extra_hp; /* Starting Max HP with assist extra hp */
 	hp += global.assist_extra_hp; /* Starting HP with assist extra hp */
 }
 
 #region /* Have Heart Balloon */
 /* Check if the save file exists and read the value for the corresponding player */
-if (global.character_select_in_this_menu == "main_game" && !global.doing_clear_check_level && !global.doing_clear_check_character) {
+if (global.character_select_in_this_menu == "main_game" && !global.doing_clear_check_level && !global.doing_clear_check_character)
+{
 	ini_open(game_save_id + "save_file/file" + string(global.file) + ".ini");
 	have_heart_balloon = ini_read_real("Player", "player" + string(player) + "_have_heart_balloon", false);
 	ini_close(); switch_save_data_commit(); /* Remember to commit the save data! */
 }
-else {
+else
+{
 	have_heart_balloon = false;
 }
 #endregion /* Have Heart Balloon END */

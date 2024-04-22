@@ -162,6 +162,7 @@ function scr_draw_level_editor_pause_menu()
 				can_navigate_settings_sidebar = true;
 				menu = noone;
 				menu_delay = 3;
+				scr_load_storage_variables();
 			}
 			
 			if (menu == "options")
@@ -193,6 +194,7 @@ function scr_draw_level_editor_pause_menu()
 						can_navigate_settings_sidebar = true;
 						menu = noone;
 						menu_delay = 3;
+						scr_load_storage_variables();
 					}
 				}
 				if (key_b_pressed)

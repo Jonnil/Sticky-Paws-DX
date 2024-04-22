@@ -241,7 +241,6 @@ if (!global.actually_play_edited_level)
 	
 	#region /* Grid Initialization */
 	global.object_grid = ds_grid_create(12, 0);
-	//add_object(LEVEL_OBJECT_ID.ID_WALL, spr_wall, 0, spr_wall, 1, 0, c_white, 1, "", noone, true, 0);
 	add_object(LEVEL_OBJECT_ID.ID_WALL_DIRT, spr_wall_dirt, 0, spr_wall, 1, 0, c_white, 1, "", noone, true, 0);
 	add_object(LEVEL_OBJECT_ID.ID_WALL_GLASS, spr_wall_glass, 0, spr_wall, 1, 0, c_white, 1, "", noone, true, 0);
 	add_object(LEVEL_OBJECT_ID.ID_WALL_GRASS, spr_wall_grass, 0, spr_wall, 1, 0, c_white, 1, "", noone, true, 0);

@@ -388,6 +388,7 @@ if (!hide_menu_for_clean_screenshots)
 				menu = noone;
 				can_navigate_settings_sidebar = true;
 				in_settings = true;
+				scr_load_storage_variables();
 			}
 			#endregion /* Select Options END */
 			

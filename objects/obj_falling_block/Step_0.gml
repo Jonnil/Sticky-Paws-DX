@@ -10,6 +10,7 @@ else
 
 if (fall < fall_max) {
 	if (place_meeting(x, y - 1, obj_player))
+	&& (instance_nearest(x, y - 1, obj_player).on_ground)
 	|| (image_index == 1)
 	&& (fall >= 1)
 	|| (image_index == 3)

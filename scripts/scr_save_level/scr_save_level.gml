@@ -5,7 +5,8 @@ function scr_save_level()
 	var level_name = global.level_name;
 	
 	#region /* If doing a character clear check, and winning the level, then add in character config that you have done a clear check */
-	if (global.level_clear_rate == "clear" && global.doing_clear_check_character) {
+	if (global.level_clear_rate == "clear" && global.doing_clear_check_character)
+	{
 		ini_open(game_save_id + "custom_characters/" + string(ds_list_find_value(global.all_loaded_characters, global.character_index[0])) + "/data/character_config.ini");
 		ini_write_real("info", "clear_check_character", true);
 		ini_close(); switch_save_data_commit(); /* Remember to commit the save data! */
@@ -13,16 +14,20 @@ function scr_save_level()
 	}
 	#endregion /* If doing a character clear check, and winning the level, then add in charcter config that you have done a clear check END */
 	
-	if (global.character_select_in_this_menu == "main_game" && global.actually_play_edited_level) {
+	if (global.character_select_in_this_menu == "main_game" && global.actually_play_edited_level)
+	{
 		ini_open(game_save_id + "save_file/file" + string(global.file) + ".ini");
 		
-		if (global.level_clear_rate == "clear" && !global.doing_clear_check_character) {
+		if (global.level_clear_rate == "clear" && !global.doing_clear_check_character)
+		{
 			ini_write_real(level_name, "number_of_clears", ini_read_real(level_name, "number_of_clears", 0) + 1); /* Increase how many times you've played this specific level */
-			if (global.increase_number_of_levels_cleared && ini_key_exists(level_name, "clear_rate") && ini_read_string(level_name, "clear_rate", "closed") != "clear") {
+			if (global.increase_number_of_levels_cleared && ini_key_exists(level_name, "clear_rate") && ini_read_string(level_name, "clear_rate", "closed") != "clear")
+			{
 				ini_write_real("Player", "number_of_levels_cleared", ini_read_real("Player", "number_of_levels_cleared", 1) + 1); /* Increase how many levels in total you have cleared */
 			}
 			ini_write_string(level_name, "clear_rate", "clear"); /* Make the level clear after checking number of levels cleared */
 		}
+		ini_write_string("Player", "last_played_level_name", global.level_name);
 		ini_write_real("Player", "current_month", current_month);
 		ini_write_real("Player", "current_day", current_day);
 		ini_write_real("Player", "current_year", current_year);

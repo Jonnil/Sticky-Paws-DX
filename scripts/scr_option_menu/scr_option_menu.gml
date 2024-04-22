@@ -1171,6 +1171,7 @@ function scr_option_menu()
 				input_key = false;
 				can_navigate_settings_sidebar = false;
 				menu = "file_select";
+				scr_load_storage_variables();
 			}
 			#endregion /* Click Storage END */
 			
@@ -1183,6 +1184,7 @@ function scr_option_menu()
 				global.settings_sidebar_menu = "storage_settings";
 				input_key = false;
 				can_navigate_settings_sidebar = true;
+				scr_load_storage_variables();
 			}
 			#endregion /* Storage END */
 			
@@ -1729,6 +1731,7 @@ function scr_option_menu()
 					if (global.enable_storage_settings)
 					{
 						global.settings_sidebar_menu = "storage_settings";
+						scr_load_storage_variables();
 					}
 					else
 					if (global.enable_language_settings)
@@ -1779,6 +1782,7 @@ function scr_option_menu()
 						if (global.enable_storage_settings)
 						{
 							global.settings_sidebar_menu = "storage_settings";
+							scr_load_storage_variables();
 						}
 						else
 						if (global.enable_language_settings)
@@ -1873,6 +1877,7 @@ function scr_option_menu()
 					&& (menu_delay == 0 && menu_joystick_delay == 0)
 					{
 						global.settings_sidebar_menu = "storage_settings";
+						scr_load_storage_variables();
 						menu_delay = 3;
 					}
 					else
@@ -1996,6 +2001,7 @@ function scr_option_menu()
 					if (global.enable_storage_settings)
 					{
 						global.settings_sidebar_menu = "storage_settings";
+						scr_load_storage_variables();
 					}
 					else
 					if (global.enable_custom_resources_settings)
@@ -2646,368 +2652,28 @@ function scr_option_menu()
 		}
 		#endregion /* Audio Settings END */
 		
-		#region /* Language Options */
-		if (global.settings_sidebar_menu == "language_settings")
-		{
-			scr_option_language_menu();
-		}
-		#endregion /* Language Options END */
-	
-		#region /* Custom Resources Settings */
-		scr_option_custom_resources();
-		#endregion /* Custom Resources Settings END */
-	
-		#region /* Storage Settings */
-		if (global.settings_sidebar_menu == "storage_settings")
-		{
-			var file_select_x = 450;
-			var file_select_right_arrow_x = 400;
-			var file_y = 20 + (40 * 4);
-			var delete_file_y = 20 + (40 * 5);
-			var open_save_file_folder_y = 20 + (40 * 6);
-			var file_path_y = 20 + (40 * 8);
-			var date_modified_y = 20 + (40 * 9);
-			var last_played_today_y = 20 + (40 * 10);
-			var number_of_levels_passed_y = 20 + (40 * 12);
-			
-			draw_set_halign(fa_left);
-			draw_set_valign(fa_middle);
-			if (global.how_many_files > 1)
-			|| (global.how_many_files == -1)
-			{
-				scr_draw_text_outlined(file_select_x, file_y, l10n_text("File") + ": " + string(global.file), global.default_text_size * 1.1, c_menu_outline, c_menu_fill, 1);
-			}
-			else
-			{
-				scr_draw_text_outlined(file_select_x, file_y, l10n_text("Save File"), global.default_text_size * 1.1, c_menu_outline, c_menu_fill, 1);
-			}
-			
-			draw_set_halign(fa_left);
-			draw_set_valign(fa_middle);
-			if (global.enable_option_for_pc)
-			{
-				var file_path_text = string_replace_all(string_replace_all(game_save_id, environment_get_variable("USERNAME"), "*") + "save_file\\file" + string(global.file) + ".ini", "\\", "/")
-				scr_draw_text_outlined(450, file_path_y, string(file_path_text), global.default_text_size, c_menu_outline, c_dkgray, 1);
-			}
-			
-			#region /* Display save file data */
-			if (file_exists(game_save_id + "save_file/file" + string(global.file) + ".ini"))
-			{
-				ini_open(game_save_id + "save_file/file" + string(global.file) + ".ini");
-				
-				if (ini_key_exists("Player", "current_year"))
-				&& (ini_key_exists("Player", "current_month"))
-				&& (ini_key_exists("Player", "current_day"))
-				&& (ini_key_exists("Player", "current_hour"))
-				&& (ini_key_exists("Player", "current_minute"))
-				&& (ini_key_exists("Player", "current_second"))
-				{
-					scr_draw_text_outlined(file_select_x, date_modified_y,
-					l10n_text("Date modified") + ": " +
-					string(ini_read_real("Player", "current_year", 0)) + "-" +
-					string(ini_read_real("Player", "current_month", 0)) + "-" +
-					string(ini_read_real("Player", "current_day", 0)) + " " +
-					string(string_replace_all(string_format(ini_read_real("Player", "current_hour", 0), 2, 0), " ", "0")) + ":" +
-					string(string_replace_all(string_format(ini_read_real("Player", "current_minute", 0), 2, 0), " ", "0")) + ":" +
-					string(string_replace_all(string_format(ini_read_real("Player", "current_second", 0), 2, 0), " ", "0"))
-					,global.default_text_size * 1.1, c_menu_outline, c_menu_fill, 1);
-					
-					if (ini_read_real("Player", "current_month", 0) = current_month)
-					&& (ini_read_real("Player", "current_day", 0) = current_day)
-					&& (ini_read_real("Player", "current_year", 0) = current_year)
-					{
-						scr_draw_text_outlined(file_select_x, last_played_today_y, l10n_text("Last played today!"), global.default_text_size * 1.05, c_menu_outline, c_menu_fill, 1);
-					}
-					
-				}
-				
-				if (ini_key_exists("Player", "number_of_levels_cleared"))
-				{
-					scr_draw_text_outlined(file_select_x, number_of_levels_passed_y, l10n_text("Number of levels passed") + ": " + string(ini_read_real("Player", "number_of_levels_cleared", false)), global.default_text_size * 1.1, c_menu_outline, c_menu_fill, 1);
-				}
-			
-				ini_close(); switch_save_data_commit(); /* Remember to commit the save data! */
-			}
-			#endregion /* Display save file data END */
+		scr_option_language_menu(); /* Language Options */
 		
-			if (menu != "file_delete_yes")
-			&& (menu != "file_delete_no")
-			{
-				if (file_exists(game_save_id + "save_file/file" + string(global.file) + ".ini"))
-				{
-					draw_menu_button(450, delete_file_y, l10n_text("Delete File"), "file_delete", "file_delete_no", c_red);
-					draw_sprite_ext(spr_icon_delete, 0, 450 + 16, delete_file_y + 21, 1, 1, 0, c_white, 1);
-				}
-			
-				if (global.enable_open_custom_folder)
-				{
-					draw_menu_button(450, open_save_file_folder_y, l10n_text("Open Save File Folder"), "open_save_file_folder", "open_save_file_folder");
-					draw_sprite_ext(spr_icon_folder, 0, 450 + 16, open_save_file_folder_y + 21, 1, 1, 0, c_white, 1);
-				}
-			
-				if (point_in_rectangle(mouse_get_x, mouse_get_y, 450, open_save_file_folder_y + 2, 450 + 371, open_save_file_folder_y + 41))
-				&& (global.controls_used_for_navigation == "mouse")
-				&& (mouse_check_button_released(mb_left))
-				&& (menu_delay == 0 && menu_joystick_delay == 0)
-				|| (menu == "open_save_file_folder")
-				&& (key_a_pressed)
-				&& (menu_delay == 0 && menu_joystick_delay == 0)
-				{
-					scr_open_folder(game_save_id + "save_file");
-				}
-			}
-			else
-			if (menu == "file_delete_yes")
-			|| (menu == "file_delete_no")
-			{
-				can_navigate_settings_sidebar = false;
-				draw_set_alpha(0.9);
-				draw_rectangle_color(0, 0, get_window_width, get_window_height, c_black, c_black, c_black, c_black, false);
-				draw_set_alpha(0.1);
-				draw_set_halign(fa_center);
-				draw_set_valign(fa_middle);
-				scr_draw_text_outlined(get_window_width * 0.5, get_window_height * 0.5 - 100, l10n_text("Are you sure you want to delete file") + " " + string(global.file) + "?", global.default_text_size, c_black, c_red, 1);
-				draw_menu_button(get_window_width * 0.5 - 370 - 32, get_window_height * 0.5, l10n_text("Yes"), "file_delete_yes", "file_delete_yes", c_red);
-				draw_sprite_ext(spr_icon_delete, 0, get_window_width * 0.5 - 370 - 32 + 16, get_window_height * 0.5 + 21, 1, 1, 0, c_white, 1);
-				draw_menu_button(get_window_width * 0.5 + 32, get_window_height * 0.5, l10n_text("No"), "file_delete_no", "file_delete");
-				draw_sprite_ext(spr_icon_back, 0, get_window_width * 0.5 + 32 + 16, get_window_height * 0.5 + 21, 1, 1, 0, c_white, 1);
-				
-				if (key_left)
-				&& (menu_delay == 0 && menu_joystick_delay == 0)
-				|| (key_right)
-				&& (menu_delay == 0 && menu_joystick_delay == 0)
-				{
-					menu_delay = 3;
-					if (menu == "file_delete_no")
-					{
-						menu = "file_delete_yes";
-					}
-					else
-					if (menu == "file_delete_yes")
-					{
-						menu = "file_delete_no";
-					}
-				}
-			}
-			
-			if (global.file < 1)
-			{
-				global.file = 1; /* Don't let file go less than 1 */
-			}
-			
-			if (global.file > 1)
-			&& (menu != "file_delete_no")
-			&& (menu != "file_delete_yes")
-			{
-				draw_sprite_ext(spr_keyboard_keys, vk_left, file_select_x - 32, file_y, 0.5, 0.5, 0, c_white, 1);
-				if (point_in_rectangle(mouse_get_x, mouse_get_y, file_select_x - 32 - 16, file_y - 16, file_select_x - 32 + 16, file_y + 16))
-				&& (global.controls_used_for_navigation == "mouse")
-				{
-					menu = "file_delete";
-					draw_set_alpha(0.5);
-					draw_rectangle_color(file_select_x - 32 - 16, file_y - 16, file_select_x - 32 + 16, file_y + 16, c_white, c_white, c_white, c_white, false);
-					draw_set_alpha(1);
-				}
-			}
-			if (global.how_many_files > global.file)
-			|| (global.how_many_files == -1)
-			{
-				if (menu != "file_delete_no")
-				&& (menu != "file_delete_yes")
-				&& (file_exists(game_save_id + "save_file/file" + string(global.file) + ".ini"))
-				{
-					draw_sprite_ext(spr_keyboard_keys, vk_right, file_select_x + file_select_right_arrow_x, file_y, 0.5, 0.5, 0, c_white, 1);
-					if (point_in_rectangle(mouse_get_x, mouse_get_y, file_select_x + file_select_right_arrow_x - 16, file_y - 16, file_select_x + file_select_right_arrow_x + 16, file_y + 16))
-					&& (global.controls_used_for_navigation == "mouse")
-					{
-						menu = "file_delete";
-						draw_set_alpha(0.5);
-						draw_rectangle_color(file_select_x + file_select_right_arrow_x - 16, file_y - 16, file_select_x + file_select_right_arrow_x + 16, file_y + 16, c_white, c_white, c_white, c_white, false);
-						draw_set_alpha(1);
-					}
-				}
-			}
+		scr_option_custom_resources(); /* Custom Resources Settings */
 		
-			if (menu == "file_delete")
-			&& (key_a_pressed)
-			&& (menu_delay == 0 && menu_joystick_delay == 0)
-			{
-				can_navigate_settings_sidebar = false;
-				menu = "file_delete_no";
-				menu_delay = 3;
-			}
+		scr_option_storage(); /* Storage Settings */
 		
-			if (menu == "file_delete_no")
-			&& (key_a_pressed)
-			&& (menu_delay == 0 && menu_joystick_delay == 0)
-			|| (menu == "file_delete_no")
-			&& (key_b_pressed)
-			&& (menu_delay == 0 && menu_joystick_delay == 0)
-			|| (menu == "file_delete_yes")
-			&& (key_b_pressed)
-			&& (menu_delay == 0 && menu_joystick_delay == 0)
-			{
-				can_navigate_settings_sidebar = false;
-				menu = "file_delete";
-				menu_delay = 3;
-			
-			}
-		
-			if (menu == "file_delete_yes")
-			&& (key_a_pressed)
-			&& (menu_delay == 0 && menu_joystick_delay == 0)
-			|| (menu == "file_delete_yes")
-			&& (point_in_rectangle(mouse_get_x, mouse_get_y, get_window_width * 0.5 - 370 - 32, get_window_height * 0.5 - 21, get_window_width * 0.5 - 370 - 32 + 370, get_window_height * 0.5 + 42))
-			&& (global.controls_used_for_navigation == "mouse")
-			&& (mouse_check_button_released(mb_left))
-			&& (menu_delay == 0 && menu_joystick_delay == 0)
-			{
-				can_navigate_settings_sidebar = false;
-				menu = "file_select";
-				file_delete(game_save_id + "save_file/file" + string(global.file) + ".ini");
-				menu_delay = 3;
-			}
-		
-			if (key_up)
-			&& (menu != "file_delete_yes")
-			&& (menu != "file_delete_no")
-			&& (!can_navigate_settings_sidebar)
-			&& (menu_delay == 0 && menu_joystick_delay == 0)
-			{
-				menu_delay = 3;
-				if (menu == "file_select")
-				{
-					if (global.enable_open_custom_folder)
-					{
-						menu = "open_save_file_folder";
-					}
-					else
-					{
-						menu = "file_delete";
-					}
-				}
-				else
-				if (menu == "file_delete")
-				{
-					menu = "file_select";
-				}
-				else
-				if (menu == "open_save_file_folder")
-				{
-					if (file_exists(game_save_id + "save_file/file" + string(global.file) + ".ini"))
-					{
-						menu = "file_delete";
-					}
-					else
-					{
-						menu = "file_select";
-					}
-				}
-			}
-			else
-			if (key_down)
-			&& (menu != "file_delete_yes")
-			&& (menu != "file_delete_no")
-			&& (!can_navigate_settings_sidebar)
-			&& (menu_delay == 0 && menu_joystick_delay == 0)
-			{
-				menu_delay = 3;
-				if (menu == "file_select")
-				{
-					if (file_exists(game_save_id + "save_file/file" + string(global.file) + ".ini"))
-					{
-						menu = "file_delete";
-					}
-					else
-					{
-						if (global.enable_open_custom_folder)
-						{
-							menu = "open_save_file_folder";
-						}
-						else
-						{
-							menu = "file_select";
-						}
-					}
-				}
-				else
-				if (menu == "file_delete")
-				{
-					if (global.enable_open_custom_folder)
-					{
-						menu = "open_save_file_folder";
-					}
-					else
-					{
-						menu = "file_select";
-					}
-				}
-				else
-				if (menu == "open_save_file_folder")
-				{
-					menu = "file_select";
-				}
-			}
-		
-			if (menu == "file_select")
-			{
-				draw_sprite(spr_menu_cursor, menu_cursor_index, file_select_x - 32 - 32, file_y);
-			}
-		
-			if (key_left)
-			&& (menu == "file_select")
-			&& (!can_navigate_settings_sidebar)
-			|| (mouse_check_button_released(mb_left))
-			&& (point_in_rectangle(mouse_get_x, mouse_get_y, file_select_x - 32 - 16, file_y - 16, file_select_x - 32 + 16, file_y + 16))
-			&& (global.controls_used_for_navigation == "mouse")
-			&& (menu != "file_delete_no")
-			&& (menu != "file_delete_yes")
-			{
-				can_navigate_settings_sidebar = false;
-				menu = "file_select";
-				if (menu_delay == 0 && menu_joystick_delay == 0)
-				&& (global.file > 1)
-				{
-					global.file --;
-					menu_delay = 3;
-				}
-			}
-			else
-			if (key_right)
-			&& (menu == "file_select")
-			&& (!can_navigate_settings_sidebar)
-			|| (mouse_check_button_released(mb_left))
-			&& (point_in_rectangle(mouse_get_x, mouse_get_y, file_select_x + file_select_right_arrow_x - 16, file_y - 16, file_select_x + file_select_right_arrow_x + 16, file_y + 16))
-			&& (global.controls_used_for_navigation == "mouse")
-			&& (menu != "file_delete_no")
-			&& (menu != "file_delete_yes")
-			{
-				if (file_exists(game_save_id + "save_file/file" + string(global.file) + ".ini"))
-				{
-					can_navigate_settings_sidebar = false;
-					menu = "file_select";
-					if (menu_delay == 0 && menu_joystick_delay == 0)
-					{
-						if (global.how_many_files > global.file)
-						|| (global.how_many_files == -1)
-						{
-							global.file ++;
-							menu_delay = 3;
-						}
-					}
-				}
-			}
-		}
-		#endregion /* Storage Settings END */
-	
 		#region /* Broadcast Settings */
 		if (global.settings_sidebar_menu == "broadcast_settings")
-		{draw_set_halign(fa_left);draw_set_valign(fa_middle);scr_draw_text_outlined(410, 20 + (40 * 3), "Connect your Twitch account \n and earn in-game rewards \n as you stream the game :)", global.default_text_size * 1.1, c_menu_outline, c_menu_fill, 1);}
+		{
+			draw_set_halign(fa_left);
+			draw_set_valign(fa_middle);
+			scr_draw_text_outlined(410, 20 + (40 * 3), "Connect your Twitch account \n and earn in-game rewards \n as you stream the game :)", global.default_text_size * 1.1, c_menu_outline, c_menu_fill, 1);
+		}
 		#endregion /* Broadcast Settings END */
-	
+		
 		#region /* How to Play */
 		if (global.settings_sidebar_menu == "how_to_play")
-		{draw_set_halign(fa_left);draw_set_valign(fa_middle);scr_draw_text_outlined(410, 20 + (40 * 3), "Control frog. \n Frog jump. \n Frog tongue. \n Frog happy.", global.default_text_size * 1.1, c_menu_outline, c_menu_fill, 1);}
+		{
+			draw_set_halign(fa_left);
+			draw_set_valign(fa_middle);
+			scr_draw_text_outlined(410, 20 + (40 * 3), "Control frog. \n Frog jump. \n Frog tongue. \n Frog happy.", global.default_text_size * 1.1, c_menu_outline, c_menu_fill, 1);
+		}
 		#endregion /* How to Play END */
 	
 		#endregion /* General Settings END */

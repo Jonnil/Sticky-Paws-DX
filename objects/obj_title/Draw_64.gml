@@ -294,6 +294,7 @@ if (!in_settings)
 			can_navigate_settings_sidebar = true;
 			menu = noone;
 			menu_delay = 3;
+			scr_load_storage_variables();
 		}
 		#endregion /* Click Options END */
 		

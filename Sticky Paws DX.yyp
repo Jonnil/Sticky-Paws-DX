@@ -2853,6 +2853,7 @@
     {"id":{"name":"scr_option_level_editor","path":"scripts/scr_option_level_editor/scr_option_level_editor.yy",},},
     {"id":{"name":"scr_option_menu","path":"scripts/scr_option_menu/scr_option_menu.yy",},},
     {"id":{"name":"scr_option_reset_controls_to_default_settings","path":"scripts/scr_option_reset_controls_to_default_settings/scr_option_reset_controls_to_default_settings.yy",},},
+    {"id":{"name":"scr_option_storage","path":"scripts/scr_option_storage/scr_option_storage.yy",},},
     {"id":{"name":"scr_parallax_scrolling_background","path":"scripts/scr_parallax_scrolling_background/scr_parallax_scrolling_background.yy",},},
     {"id":{"name":"scr_player_initialize_custom_character","path":"scripts/scr_player_initialize_custom_character/scr_player_initialize_custom_character.yy",},},
     {"id":{"name":"scr_player_move_choose_voice_clips","path":"scripts/scr_player_move_choose_voice_clips/scr_player_move_choose_voice_clips.yy",},},

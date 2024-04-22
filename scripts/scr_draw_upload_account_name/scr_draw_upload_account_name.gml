@@ -90,6 +90,7 @@ function scr_draw_upload_account_name(what_kind_of_file = "level")
 			global.settings_sidebar_menu = "account_settings";
 			menu = "change_username";
 			menu_delay = 3;
+			scr_load_storage_variables();
 		}
 		#endregion /* Press Account Options END */
 		

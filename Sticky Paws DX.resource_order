@@ -279,6 +279,7 @@
     {"name":"scr_option_level_editor","order":11,"path":"scripts/scr_option_level_editor/scr_option_level_editor.yy",},
     {"name":"scr_option_menu","order":2,"path":"scripts/scr_option_menu/scr_option_menu.yy",},
     {"name":"scr_option_reset_controls_to_default_settings","order":12,"path":"scripts/scr_option_reset_controls_to_default_settings/scr_option_reset_controls_to_default_settings.yy",},
+    {"name":"scr_option_storage","order":35,"path":"scripts/scr_option_storage/scr_option_storage.yy",},
     {"name":"scr_parallax_scrolling_background","order":24,"path":"scripts/scr_parallax_scrolling_background/scr_parallax_scrolling_background.yy",},
     {"name":"scr_player_initialize_custom_character","order":28,"path":"scripts/scr_player_initialize_custom_character/scr_player_initialize_custom_character.yy",},
     {"name":"scr_player_move_choose_voice_clips","order":11,"path":"scripts/scr_player_move_choose_voice_clips/scr_player_move_choose_voice_clips.yy",},

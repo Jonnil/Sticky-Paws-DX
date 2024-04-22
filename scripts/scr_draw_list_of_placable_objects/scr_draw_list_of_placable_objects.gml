@@ -22,7 +22,6 @@ function scr_draw_list_of_placable_objects()
 				#region /* Terrain Objects */
 				if (current_object_category == "terrain")
 				{
-					//scr_draw_level_editor_placable_object(order_index, LEVEL_OBJECT_ID.ID_WALL, true, spr_wall, spr_wall, 0, 1, 0, c_white,,,,,"Default Wall");
 					scr_draw_level_editor_placable_object(order_index, LEVEL_OBJECT_ID.ID_WALL_DIRT, true, spr_wall_dirt, spr_wall, + 100, 1, 0, c_white,,,,,"Dirt");
 					scr_draw_level_editor_placable_object(order_index, LEVEL_OBJECT_ID.ID_WALL_GLASS, true, spr_wall_glass, spr_wall, + 100, 1, 0, c_white,,,,,"Glass");
 					scr_draw_level_editor_placable_object(order_index, LEVEL_OBJECT_ID.ID_WALL_GRASS, true, spr_wall_grass, spr_wall, + 100, 1, 0, c_white,,,,,"Grass");
@@ -158,7 +157,6 @@ function scr_draw_list_of_placable_objects()
 				#region /* Daily Build Featured Objects */
 				if (current_object_category == "daily_build_featured")
 				{
-					//scr_draw_level_editor_placable_object(order_index, LEVEL_OBJECT_ID.ID_WALL, true, spr_wall, spr_wall, 0, 1, 0, c_white,,,,,"Default Wall");
 					scr_draw_level_editor_placable_object(order_index, LEVEL_OBJECT_ID.ID_WALL_DIRT, true, spr_wall_dirt, spr_wall, + 100, 1, 0, c_white,,,,,"Dirt");
 					scr_draw_level_editor_placable_object(order_index, LEVEL_OBJECT_ID.ID_WALL_GLASS, true, spr_wall_glass, spr_wall, + 100, 1, 0, c_white,,,,,"Glass");
 					//scr_draw_level_editor_placable_object(order_index, LEVEL_OBJECT_ID.ID_WALL_GRASS, true, spr_wall_grass, spr_wall, + 100, 1, 0, c_white,,,,,"Grass");
