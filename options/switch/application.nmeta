@@ -95,8 +95,6 @@
     <PlayLogPolicy>Open</PlayLogPolicy>
     <UserAccountSaveDataSizeMax>0x0000000010000000</UserAccountSaveDataSizeMax>
     <UserAccountSaveDataJournalSizeMax>0x0000000002000000</UserAccountSaveDataJournalSizeMax>
-    <TemporaryStorageSize>0x0000000001000000</TemporaryStorageSize>
-    <CacheStorageSize>0x0000000000200000</CacheStorageSize>
-    <CacheStorageJournalSize>0x0000000000200000</CacheStorageJournalSize>
+    <TemporaryStorageSize>0x000000001ff00000</TemporaryStorageSize>
   </Application>
 </NintendoSdkMeta>

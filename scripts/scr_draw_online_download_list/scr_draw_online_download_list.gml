@@ -249,7 +249,7 @@ function scr_draw_online_download_list()
 								
 								#region /* Go to download menu */
 								global.automatically_play_downloaded_level = false; /* You will be taken to a menu showing you different options what you want to do with the downloaded file */
-								global.use_cache_or_working = game_save_id; /* When downloading levels from online and temporarily playing the level, you have to use the "cache directory", but normally you need to use the "working directory" */
+								global.use_temp_or_working = game_save_id; /* When downloading levels from online and temporarily playing the level, you have to use the "temp directory", but normally you need to use the "working directory" */
 								global.search_id = string_upper(draw_download_id);
 								keyboard_string = string_upper(draw_download_id);
 								search_id = string_upper(draw_download_id); /* Then need to set search ID */
@@ -494,7 +494,7 @@ function scr_draw_online_download_list()
 						}
 						
 						if (spr_download_list_thumbnail == noone) { /* Get the thumbnail data */
-							var downloaded_thumbnail_path = cache_directory + "thumbnail.png"; /* On Nintendo Switch if you don't enable "Cache storage data save area size" in AuthoringEditor, you can't use "cache directory" without crashing the game */
+							var downloaded_thumbnail_path = temp_directory + "thumbnail.png";
 							var buffer = buffer_base64_decode(item.thumbnail);
 							buffer_save(buffer, downloaded_thumbnail_path);
 							spr_download_list_thumbnail = sprite_add(downloaded_thumbnail_path, 0, false, true, 0, 0);
@@ -683,7 +683,7 @@ function scr_draw_online_download_list()
 					menu = "online_character_list";
 				}
 				global.automatically_play_downloaded_level = false;
-				global.use_cache_or_working = game_save_id; /* When downloading levels from online and temporarily playing the level, you have to use the "cache directory", but normally you need to use the "working directory" */
+				global.use_temp_or_working = game_save_id; /* When downloading levels from online and temporarily playing the level, you have to use the "temp directory", but normally you need to use the "working directory" */
 				global.online_download_list = ""; /* Reset "global online download list" so you can reload online download list next time you go to this menu */
 				data = undefined; /* Reset "data" so you can reload online download list next time you go to this menu */
 				info_data = undefined; /* Don't forget to reset info data too */

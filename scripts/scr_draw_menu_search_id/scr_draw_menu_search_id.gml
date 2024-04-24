@@ -10,7 +10,7 @@ function scr_draw_menu_search_id(what_kind_of_id = "level")
 	var back_to_list_y = 0;
 	var fixed_player = 1;
 	
-	var download_temp_path = cache_directory; /* On Nintendo Switch if you don't enable "Cache storage data save area size" in AuthoringEditor, you can't use "cache directory" without crashing the game */
+	var download_temp_path = temp_directory;
 	
 	#region /* Search ID menu */
 	if (menu == "search_id_ok")
@@ -284,7 +284,7 @@ function scr_draw_menu_search_id(what_kind_of_id = "level")
 					}
 					else
 					{
-						menu = "play_from_cache"; /* Go to the screen where you get so choose if you want to play from cache directory, or download to working directory */
+						menu = "play_from_temp"; /* Go to the screen where you get so choose if you want to play from temp directory, or download to working directory */
 					}
 				}
 				#endregion /* Get downloaded level info END */
@@ -407,7 +407,7 @@ function scr_draw_menu_search_id(what_kind_of_id = "level")
 	else
 	
 	#region /* Searched file downloaded menu */
-	if (menu == "play_from_cache") /* Play from cache directory */
+	if (menu == "play_from_temp") /* Play from temp directory */
 	|| (menu == "download_to_working") /* Or Download to working directory */
 	|| (menu == "searched_file_downloaded_play")
 	|| (menu == "searched_file_downloaded_make")
@@ -503,11 +503,11 @@ function scr_draw_menu_search_id(what_kind_of_id = "level")
 				
 				else
 				
-				/* Level is only downloaded to cache directory, now you get to choose if you want to play from cache directory or if you want to download to working directory */
+				/* Level is only downloaded to temp directory, now you get to choose if you want to play from temp directory or if you want to download to working directory */
 				if (file_exists(download_temp_path + "custom_levels/" + global.level_name + "/data/level_information.ini"))
 				&& (!inform_about_report_feature)
 				{
-					draw_menu_button(display_get_gui_width() * 0.5 - 185, searched_file_play_y, l10n_text("Play"), "play_from_cache", "play_from_cache");
+					draw_menu_button(display_get_gui_width() * 0.5 - 185, searched_file_play_y, l10n_text("Play"), "play_from_temp", "play_from_temp");
 					if (ds_list_size(global.all_loaded_custom_levels) - 1 < global.max_custom_levels) /* Don't let player download levels if they have reached the max amount of levels stored */
 					{
 						draw_menu_button(display_get_gui_width() * 0.5 - 185, searched_file_make_y, l10n_text("Download to Level Select"), "download_to_working", "download_to_working");
@@ -619,7 +619,7 @@ function scr_draw_menu_search_id(what_kind_of_id = "level")
 						}
 						else
 						{
-							menu = "play_from_cache"; /* Go to the screen where you get so choose if you want to play from cache directory, or download to working directory */
+							menu = "play_from_temp"; /* Go to the screen where you get so choose if you want to play from temp directory, or download to working directory */
 						}
 					}
 					else
@@ -647,7 +647,7 @@ function scr_draw_menu_search_id(what_kind_of_id = "level")
 				&& (mouse_check_button_released(mb_left))
 				|| (menu == "searched_file_downloaded_play")
 				&& (key_a_pressed)
-				|| (menu == "play_from_cache")
+				|| (menu == "play_from_temp")
 				&& (key_a_pressed)
 				{
 					/* Play the level */
@@ -659,11 +659,11 @@ function scr_draw_menu_search_id(what_kind_of_id = "level")
 					menu_delay = 9999;
 					if (file_exists(game_save_id + "custom_levels/" + global.level_name + "/data/level_information.ini"))
 					{
-						global.use_cache_or_working = game_save_id; /* If the level is saved to working directory, then play from working directory */
+						global.use_temp_or_working = game_save_id; /* If the level is saved to working directory, then play from working directory */
 					}
 					else
 					{
-						global.use_cache_or_working = download_temp_path; /* If the level is saved to cache directory, then play from cache directory */
+						global.use_temp_or_working = download_temp_path; /* If the level is saved to temp directory, then play from temp directory */
 					}
 				}
 			}
@@ -686,7 +686,7 @@ function scr_draw_menu_search_id(what_kind_of_id = "level")
 						/* Download the level to working directory */
 						have_downloaded_from_server = true;
 						menu_delay = 3;
-						global.use_cache_or_working = game_save_id;
+						global.use_temp_or_working = game_save_id;
 						scr_copy_move_files(download_temp_path + "custom_" + string(what_kind_of_id) + "s/" + global.level_name, game_save_id + "custom_" + string(what_kind_of_id) + "s/" + global.level_name, true);
 						menu = "searched_file_downloaded_play";
 					}
@@ -710,7 +710,7 @@ function scr_draw_menu_search_id(what_kind_of_id = "level")
 					global.doing_clear_check_level = false;
 					global.actually_play_edited_level = false;
 					global.play_edited_level = false;
-					global.use_cache_or_working = game_save_id;
+					global.use_temp_or_working = game_save_id;
 					can_navigate = false;
 					menu_delay = 9999;
 				}
@@ -782,7 +782,7 @@ function scr_draw_menu_search_id(what_kind_of_id = "level")
 			&& (menu_delay == 0 && menu_joystick_delay == 0)
 			&& (!inform_about_report_feature)
 			{
-				global.use_cache_or_working = game_save_id;
+				global.use_temp_or_working = game_save_id;
 				select_custom_level_menu_open = false;
 				/* Don't set the "select level index" or "level name" here, because we want it saved still */
 				menu = "online_download_list_load"; /* Go back to online level list */
@@ -821,7 +821,7 @@ function scr_draw_menu_search_id(what_kind_of_id = "level")
 					}
 					else
 					{
-						menu = "play_from_cache";
+						menu = "play_from_temp";
 					}
 				}
 				else
@@ -845,7 +845,7 @@ function scr_draw_menu_search_id(what_kind_of_id = "level")
 					menu = "searched_file_downloaded_back_to_list";
 				}
 				else
-				if (menu == "play_from_cache")
+				if (menu == "play_from_temp")
 				{
 					if (ds_list_size(global.all_loaded_custom_levels) - 1 < global.max_custom_levels) /* Don't let player download levels if they have reached the max amount of levels stored */
 					{
@@ -902,18 +902,18 @@ function scr_draw_menu_search_id(what_kind_of_id = "level")
 					}
 					else
 					{
-						menu = "play_from_cache";
+						menu = "play_from_temp";
 					}
 				}
 				else
-				if (menu == "play_from_cache")
+				if (menu == "play_from_temp")
 				{
 					menu = "searched_file_downloaded_back_to_list";
 				}
 				else
 				if (menu == "download_to_working")
 				{
-					menu = "play_from_cache";
+					menu = "play_from_temp";
 				}
 			}
 			else

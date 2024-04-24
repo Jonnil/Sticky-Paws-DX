@@ -332,9 +332,8 @@ if (!hide_menu_for_clean_screenshots)
 					{
 						/* Download the level to working directory */
 						menu_delay = 3;
-						global.use_cache_or_working = game_save_id;
-						/* On Nintendo Switch if you don't enable "Cache storage data save area size" in AuthoringEditor, you can't use "cache directory" without crashing the game */
-						scr_copy_move_files(cache_directory + "custom_levels/" + global.level_name, game_save_id + "custom_levels/" + global.level_name, true);
+						global.use_temp_or_working = game_save_id;
+						scr_copy_move_files(temp_directory + "custom_levels/" + global.level_name, game_save_id + "custom_levels/" + global.level_name, true);
 					}
 				}
 				else
@@ -345,7 +344,7 @@ if (!hide_menu_for_clean_screenshots)
 					global.doing_clear_check_character = false;
 					global.actually_play_edited_level = false;
 					global.play_edited_level = false;
-					global.use_cache_or_working = game_save_id;
+					global.use_temp_or_working = game_save_id;
 					can_navigate = false;
 					menu_delay = 9999;
 					global.restart_level = true;

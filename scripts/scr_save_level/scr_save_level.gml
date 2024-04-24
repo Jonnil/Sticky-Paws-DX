@@ -91,7 +91,7 @@ function scr_save_level()
 	if (global.character_select_in_this_menu == "level_editor" && global.actually_play_edited_level) {
 		
 		#region /* Update ranking highscore to actual custom level */
-		ini_open(global.use_cache_or_working + "custom_levels/" + string(level_name) + "/data/level_information.ini");
+		ini_open(global.use_temp_or_working + "custom_levels/" + string(level_name) + "/data/level_information.ini");
 		
 		var level_id = ini_read_string("info", "level_id", "");
 		

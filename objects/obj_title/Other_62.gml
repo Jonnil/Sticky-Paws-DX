@@ -15,7 +15,7 @@ if (async_load[? "id"] == global.http_request_id)
 		
 		/* Save the decoded data to a local file (with the .zip extension) */
 		var buffer = buffer_base64_decode(file_data_base64);
-		var download_temp_path = cache_directory; /* On Nintendo Switch if you don't enable "Cache storage data save area size" in AuthoringEditor, you can't use "cache directory" without crashing the game */
+		var download_temp_path = temp_directory;
 		
 		switch (content_type)
 		{

@@ -9,7 +9,7 @@ function scr_load_object_placement_json() {
 		if (global.level_name != "") {
 			var directories = ["background", "data", "sound", "tilesets"];
 			for(var i = 0; i < array_length_1d(directories); i++) {
-				var dir_path = global.use_cache_or_working + "custom_levels/" + global.level_name + "/" + directories[i];
+				var dir_path = global.use_temp_or_working + "custom_levels/" + global.level_name + "/" + directories[i];
 				if (!directory_exists(dir_path))
 					directory_create(dir_path);
 			}
@@ -22,7 +22,7 @@ function scr_load_object_placement_json() {
 	}
 	else
 	if (global.level_name != "") {
-		file_path = global.use_cache_or_working + "custom_levels/" + global.level_name + "/data/object_placement_all.json";
+		file_path = global.use_temp_or_working + "custom_levels/" + global.level_name + "/data/object_placement_all.json";
 	}
 	
 	if (file_exists(file_path)) {
