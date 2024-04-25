@@ -20,8 +20,8 @@ function scr_draw_list_of_placable_objects()
 			/* Daily Build Featured Objects use this category: "daily_build_featured" */
 			
 			var objects = [
-				{ o_id: LEVEL_OBJECT_ID.ID_WALL_DIRT, o_sprite: spr_wall_dirt, o_mask: spr_wall, o_category: "terrain", o_daily_build_category: "terrain", o_name: "Dirt", o_description: "", o_can_make_place_size_bigger: true, o_scroll_x: +100, o_scale: 1, o_rotation: 0, o_color: c_white, o_scroll_y: 0, o_x_offset: 0, o_alpha: 1, o_add_order_index: 1, o_image_index: 0},
-				{ o_id: LEVEL_OBJECT_ID.ID_WALL_GLASS, o_sprite: spr_wall_glass, o_mask: spr_wall, o_category: "terrain", o_daily_build_category: "terrain", o_name: "Glass", o_description: "", o_can_make_place_size_bigger: true, o_scroll_x: +100, o_scale: 1, o_rotation: 0, o_color: c_white, o_scroll_y: 0, o_x_offset: 0, o_alpha: 1, o_add_order_index: 1, o_image_index: 0},
+				{ o_id: LEVEL_OBJECT_ID.ID_WALL_DIRT, o_sprite: spr_wall_dirt, o_mask: spr_wall, o_category: "terrain", o_daily_build_category: "daily_build_featured", o_name: "Dirt", o_description: "", o_can_make_place_size_bigger: true, o_scroll_x: +100, o_scale: 1, o_rotation: 0, o_color: c_white, o_scroll_y: 0, o_x_offset: 0, o_alpha: 1, o_add_order_index: 1, o_image_index: 0},
+				{ o_id: LEVEL_OBJECT_ID.ID_WALL_GLASS, o_sprite: spr_wall_glass, o_mask: spr_wall, o_category: "terrain", o_daily_build_category: "daily_build_featured", o_name: "Glass", o_description: "", o_can_make_place_size_bigger: true, o_scroll_x: +100, o_scale: 1, o_rotation: 0, o_color: c_white, o_scroll_y: 0, o_x_offset: 0, o_alpha: 1, o_add_order_index: 1, o_image_index: 0},
 				/* Add more objects here... */
 			];
 			

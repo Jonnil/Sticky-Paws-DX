@@ -24,10 +24,11 @@ global.link_to_website_guide = "https://www.jonnil.games/sticky-paws-guide";
 global.link_to_wiki = ""; //"https://stickypedia.miraheze.org/wiki/Main_Page";
 global.link_to_youtube = "https://www.youtube.com/Jonnilescom";
 
-/* Update this text explaining what is new in each update */ global.whats_new = "Biggest Sticky Paws update yet! \n Thank you everyone for supporting my game! \n I've been working very hard on porting this game to Nintendo Switch. \n Been focusing a lot on making the level editor better, \n and there is now a level sharing feature in-game. \n Please support this game by sharing the game with friends. \n I would greatly appreciate it. \n Have a great time making and playing shared levels! \n \n -Jonnil";
+/* Update this text explaining what is new in each update */
+global.whats_new = "Biggest Sticky Paws update yet! \n Thank you everyone for supporting my game! \n I've been working very hard on porting this game to Nintendo Switch. \n Been focusing a lot on making the level editor better, \n and there is now a level sharing feature in-game. \n Please support this game by sharing the game with friends. \n I would greatly appreciate it. \n Have a great time making and playing shared levels! \n \n -Jonnil";
 
 /* There needs to be limits to the custom characters and levels. Upload and download limits are important */
-global.max_file_upload_megabytes = 16; /* There needs to be a max file upload size (in megabytes), otherwise people can download files that are too big for their system to handle */
+global.max_file_upload_megabytes = 16; /* There needs to be a max file upload size (in megabytes), otherwise people can download files that are too big for their system to handle. Default is 16 MB */
 global.max_custom_characters = 100; /* You should be able to only store a certain amount of custom characters, these are both characters you have made, and characters you have downloaded */
 global.max_custom_levels = 100; /* You should be able to only store a certain amount of custom levels, these are both levels you have made, and levels you have downloaded */
 
@@ -269,7 +270,7 @@ global.all_loaded_title_backgrounds = ds_list_create();
 global.all_loaded_title_logo = ds_list_create();
 global.automatically_pause_when_window_is_unfocused = true; /* Whenever you unfocus the window by clicking off the window, the game pauses by itself */
 global.automatically_play_downloaded_level = false; /* If the player wants to immediately play the downloaded level, then set this variable to true */
-global.use_temp_or_working = game_save_id; /* When downloading levels from online and temporarily playing the level, you have to use the "temp directory", but normally you need to use the "game save id" or "working directory". On Nintendo Switch if you don't enable "Cache storage data save area size" in AuthoringEditor, you can't use "temp directory" without crashing the game */
+global.use_temp_or_working = game_save_id; /* When downloading levels from online and temporarily playing the level, you have to use the "temp directory", but normally you need to use the "game save id" or "working directory". On Nintendo Switch if you don't enable "Cache storage data save area size" in AuthoringEditor, you can't use "cache directory" without crashing the game */
 global.character_select_in_this_menu = "main_game"; /* In what menu character select is going to appear in */
 global.controls_used_for_navigation = "keyboard"; /* keyboard, mouse, or controller */
 global.create_level_from_template = false; /* If you're currently creating a level from template or not */
