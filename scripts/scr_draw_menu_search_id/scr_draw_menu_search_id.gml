@@ -262,13 +262,18 @@ function scr_draw_menu_search_id(what_kind_of_id = "level")
 					{
 						sprite_set_offset(downloaded_thumbnail_sprite, sprite_get_width(downloaded_thumbnail_sprite) * 0.5, 0);
 					}
-					if (file_exists(game_save_id + "custom_levels/" + global.level_name + "/data/level_information.ini"))
+					
+					thumbnail_uses_photographic_image = false;
+					
+					if (file_exists(download_temp_path + "custom_levels/" + global.level_name + "/data/level_information.ini"))
 					{
-						ini_open(game_save_id + "custom_levels/" + global.level_name + "/data/level_information.ini");
+						ini_open(download_temp_path + "custom_levels/" + global.level_name + "/data/level_information.ini");
 						downloaded_level_is_daily_build = ini_read_real("info", "if_daily_build", false);
 						global.level_description = ini_read_string("info", "level_description", "");
 						masked_username = ini_read_string("info", "username", "");
-						ini_close(); switch_save_data_commit(); /* Remember to commit the save data! */
+						thumbnail_uses_photographic_image = ini_read_real("Custom Backgrounds", "thumbnail_uses_photographic_image", false);
+						ini_close();
+						
 						if (switch_check_profanity(global.level_description))
 						{
 							global.level_description = string(switch_mask_profanity(global.level_description));
@@ -320,6 +325,7 @@ function scr_draw_menu_search_id(what_kind_of_id = "level")
 						global.level_description = ini_read_string("info", "character_description", "");
 						masked_username = ini_read_string("info", "username", "");
 						ini_close(); switch_save_data_commit(); /* Remember to commit the save data! */
+						
 						if (switch_check_profanity(global.level_description))
 						{
 							global.level_description = string(switch_mask_profanity(global.level_description));
@@ -436,25 +442,21 @@ function scr_draw_menu_search_id(what_kind_of_id = "level")
 				#region /* Draw Level Thumbnail */
 				if (display_get_gui_height() <= 720)
 				{
-					if (downloaded_thumbnail_sprite > 0)
-					{
-						draw_sprite_ext(downloaded_thumbnail_sprite, 0, display_get_gui_width() * 0.5, 64, 384 / sprite_get_width(downloaded_thumbnail_sprite) * 1.1, 216 / sprite_get_height(downloaded_thumbnail_sprite) * 1.1, 0, c_white, 1);
-					}
-					else
-					{
-						draw_sprite_ext(spr_thumbnail_missing, 0, display_get_gui_width() * 0.5 - 192, display_get_gui_height() * 0.5 - 84, 1, 1, 0, c_white, 1);
-					}
+					var thumbnail_scale = 1.1;
 				}
 				else
 				{
-					if (downloaded_thumbnail_sprite > 0)
-					{
-						draw_sprite_ext(downloaded_thumbnail_sprite, 0, display_get_gui_width() * 0.5, 64, 384 / sprite_get_width(downloaded_thumbnail_sprite) * 2, 216 / sprite_get_height(downloaded_thumbnail_sprite) * 2, 0, c_white, 1);
-					}
-					else
-					{
-						draw_sprite_ext(spr_thumbnail_missing, 0, display_get_gui_width() * 0.5 - 192, display_get_gui_height() * 0.5 - 84, 1, 1, 0, c_white, 1);
-					}
+					var thumbnail_scale = 2;
+				}
+				if (downloaded_thumbnail_sprite > 0)
+				&& (global.can_load_photographic_images
+				|| !global.can_load_photographic_images && !thumbnail_uses_photographic_image)
+				{
+					draw_sprite_ext(downloaded_thumbnail_sprite, 0, display_get_gui_width() * 0.5, 64, 384 / sprite_get_width(downloaded_thumbnail_sprite) * thumbnail_scale, 216 / sprite_get_height(downloaded_thumbnail_sprite) * thumbnail_scale, 0, c_white, 1);
+				}
+				else
+				{
+					draw_sprite_ext(spr_thumbnail_missing, 0, display_get_gui_width() * 0.5 - 192, 64, 1, 1, 0, c_white, 1);
 				}
 				#endregion /* Draw Level Thumbnail END */
 				
@@ -471,7 +473,7 @@ function scr_draw_menu_search_id(what_kind_of_id = "level")
 				}
 				else
 				{
-					draw_sprite_ext(spr_thumbnail_missing, 0, display_get_gui_width() * 0.5 - 192, display_get_gui_height() * 0.5 - 108, 1, 1, 0, c_white, 1);
+					draw_sprite_ext(spr_thumbnail_missing, 0, display_get_gui_width() * 0.5 - 192, 64, 1, 1, 0, c_white, 1);
 				}
 				#endregion /* Draw Character Thumbnail END */
 				
@@ -607,9 +609,11 @@ function scr_draw_menu_search_id(what_kind_of_id = "level")
 				&& (key_a_pressed)
 				{
 					menu_delay = 3;
+					
 					ini_open(game_save_id + "save_file/config.ini");
 					ini_write_real("config", "inform_about_report_feature", false);
 					ini_close(); switch_save_data_commit(); /* Remember to commit the save data! */
+					
 					inform_about_report_feature = false;
 					if (what_kind_of_id == "level")
 					{
@@ -735,9 +739,11 @@ function scr_draw_menu_search_id(what_kind_of_id = "level")
 					{
 						directory_destroy(game_save_id + "custom_levels/" + global.level_name);
 					}
+					
 					ini_open(game_save_id + "save_file/custom_level_save.ini");
 					ini_section_delete(global.level_name);
 					ini_close(); switch_save_data_commit(); /* Remember to commit the save data! */
+					
 					global.select_level_index = 0;
 					global.level_name = "";
 				}

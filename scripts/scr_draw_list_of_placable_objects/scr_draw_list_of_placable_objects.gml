@@ -19,13 +19,117 @@ function scr_draw_list_of_placable_objects()
 			/* Daily Build Standard Objects use this category: "daily_build_standard" */
 			/* Daily Build Featured Objects use this category: "daily_build_featured" */
 			
+			/*
+			o_id							=	The ID of the object
+			o_can_make_bigger				=	If you can place objects with bigger brush tool or not
+			sprite							=	Sprite the object uses
+			mask							=	Mask the object uses
+			scroll_x						=	Scroll X
+			o_scale							=	Scale of the object sprite
+			o_rotation						=	Rotation of the object sprite
+			o_color							=	Color of the object sprite
+			o_scroll_y						=	Y offset the sprite
+			o_x_offset						=	X offset the sprite
+			o_alpha							=	Alpha of the object sprite
+			o_add_order_index				=	Add order index
+			o_name							=	Name of the object
+			o_description					=	Description of the object
+			o_image_index					=	Image index of the object sprite
+			o_category						=	What category this object shows up in level editor
+			o_daily_build_category			=	What category this object shows up in Daily Build
+			*/
+			
+			#region /* Object Array */
 			var objects = [
-				{ o_id: LEVEL_OBJECT_ID.ID_WALL_DIRT, o_sprite: spr_wall_dirt, o_mask: spr_wall, o_category: "terrain", o_daily_build_category: "daily_build_featured", o_name: "Dirt", o_description: "", o_can_make_place_size_bigger: true, o_scroll_x: +100, o_scale: 1, o_rotation: 0, o_color: c_white, o_scroll_y: 0, o_x_offset: 0, o_alpha: 1, o_add_order_index: 1, o_image_index: 0},
-				{ o_id: LEVEL_OBJECT_ID.ID_WALL_GLASS, o_sprite: spr_wall_glass, o_mask: spr_wall, o_category: "terrain", o_daily_build_category: "daily_build_featured", o_name: "Glass", o_description: "", o_can_make_place_size_bigger: true, o_scroll_x: +100, o_scale: 1, o_rotation: 0, o_color: c_white, o_scroll_y: 0, o_x_offset: 0, o_alpha: 1, o_add_order_index: 1, o_image_index: 0},
+				/* Defaults for each variable: o_id = 0, o_can_make_bigger: true, o_sprite: spr_wall, o_mask: spr_wall, scroll_x = +100, o_scale: 1, o_rotation: 0, o_color: c_white, o_scroll_y: 0, o_x_offset: 0, o_alpha: 1, o_add_order_index: 1, o_name: "", o_description: "", o_image_index: 0, o_category: "", o_daily_build_category: "" */
+				
+				/* Category: Terrain */
+				{ o_id: LEVEL_OBJECT_ID.ID_WALL_DIRT, o_can_make_bigger: true, o_sprite: spr_wall_dirt, o_mask: spr_wall, o_scroll_x: +100, o_scale: 1, o_rotation: 0, o_color: c_white, o_scroll_y: 0, o_x_offset: 0, o_alpha: 1, o_add_order_index: 1, o_name: "Dirt", o_description: "", o_image_index: 0, o_category: "terrain", o_daily_build_category: "daily_build_featured" },
+			    { o_id: LEVEL_OBJECT_ID.ID_WALL_GLASS, o_can_make_bigger: true, o_sprite: spr_wall_glass, o_mask: spr_wall, o_scroll_x: +100, o_scale: 1, o_rotation: 0, o_color: c_white, o_scroll_y: 0, o_x_offset: 0, o_alpha: 1, o_add_order_index: 1, o_name: "Glass", o_description: "", o_image_index: 0, o_category: "terrain", o_daily_build_category: "daily_build_featured" },
+			    { o_id: LEVEL_OBJECT_ID.ID_WALL_GRASS, o_can_make_bigger: true, o_sprite: spr_wall_grass, o_mask: spr_wall, o_scroll_x: +100, o_scale: 1, o_rotation: 0, o_color: c_white, o_scroll_y: 0, o_x_offset: 0, o_alpha: 1, o_add_order_index: 1, o_name: "Grass", o_description: "", o_image_index: 0, o_category: "terrain", o_daily_build_category: "daily_build_standard" },
+			    { o_id: LEVEL_OBJECT_ID.ID_WALL_GRAVEL, o_can_make_bigger: true, o_sprite: spr_wall_gravel, o_mask: spr_wall, o_scroll_x: +100, o_scale: 1, o_rotation: 0, o_color: c_white, o_scroll_y: 0, o_x_offset: 0, o_alpha: 1, o_add_order_index: 1, o_name: "Gravel", o_description: "", o_image_index: 0, o_category: "terrain", o_daily_build_category: "daily_build_featured" },
+			    { o_id: LEVEL_OBJECT_ID.ID_WALL_METAL, o_can_make_bigger: true, o_sprite: spr_wall_metal, o_mask: spr_wall, o_scroll_x: +100, o_scale: 1, o_rotation: 0, o_color: c_white, o_scroll_y: 0, o_x_offset: 0, o_alpha: 1, o_add_order_index: 1, o_name: "Metal", o_description: "", o_image_index: 0, o_category: "terrain", o_daily_build_category: "daily_build_featured" },
+			    { o_id: LEVEL_OBJECT_ID.ID_WALL_STONE, o_can_make_bigger: true, o_sprite: spr_wall_stone, o_mask: spr_wall, o_scroll_x: +100, o_scale: 1, o_rotation: 0, o_color: c_white, o_scroll_y: 0, o_x_offset: 0, o_alpha: 1, o_add_order_index: 1, o_name: "Stone", o_description: "", o_image_index: 0, o_category: "terrain", o_daily_build_category: "daily_build_standard" },
+			    { o_id: LEVEL_OBJECT_ID.ID_WALL_WOOD, o_can_make_bigger: true, o_sprite: spr_wall_wood, o_mask: spr_wall, o_scroll_x: +100, o_scale: 1, o_rotation: 0, o_color: c_white, o_scroll_y: 0, o_x_offset: 0, o_alpha: 1, o_add_order_index: 1, o_name: "Wood", o_description: "", o_image_index: 0, o_category: "terrain", o_daily_build_category: "daily_build_featured" },
+			    { o_id: LEVEL_OBJECT_ID.ID_BLACK_WALL, o_can_make_bigger: true, o_sprite: spr_black_wall, o_mask: spr_wall, o_scroll_x: +100, o_scale: 1, o_rotation: 0, o_color: c_white, o_scroll_y: 0, o_x_offset: 0, o_alpha: 1, o_add_order_index: 1, o_name: "Black Wall", o_description: "", o_image_index: 0, o_category: "terrain", o_daily_build_category: "daily_build_featured" },
+			    { o_id: LEVEL_OBJECT_ID.ID_SPIKES, o_can_make_bigger: true, o_sprite: spr_spikes, o_mask: spr_wall, o_scroll_x: +100, o_scale: 1, o_rotation: 0, o_color: c_white, o_scroll_y: 0, o_x_offset: 0, o_alpha: 1, o_add_order_index: 1, o_name: "Spikes", o_description: "", o_image_index: 0, o_category: "terrain", o_daily_build_category: "daily_build_featured" },
+			    { o_id: LEVEL_OBJECT_ID.ID_SEMISOLID_PLATFORM, o_can_make_bigger: true, o_sprite: spr_semisolid_platform, o_mask: spr_wall, o_scroll_x: +100, o_scale: 1, o_rotation: 0, o_color: c_white, o_scroll_y: 0, o_x_offset: 0, o_alpha: 1, o_add_order_index: 1, o_name: "Semisolid Platform", o_description: "" , o_image_index: 0, o_category: "terrain", o_daily_build_category: "daily_build_featured" },
+			    { o_id: LEVEL_OBJECT_ID.ID_BRICK_BLOCK, o_can_make_bigger: true, o_sprite: spr_brick_block, o_mask: spr_wall, o_scroll_x: +100, o_scale: 1, o_rotation: 0, o_color: c_white, o_scroll_y: 0, o_x_offset: 0, o_alpha: 1, o_add_order_index: 1, o_name: "Lamp Block", o_description: "Can be destroyed by player jumping underneath them if there is no items inside\nClick on a placed Lamp Block to set its item!", o_image_index: 0, o_category: "terrain", o_daily_build_category: "daily_build_standard" },
+				{ o_id: LEVEL_OBJECT_ID.ID_QUESTION_BLOCK, o_can_make_bigger: true, o_sprite: spr_question_block, o_mask: spr_wall, o_scroll_x: +100, o_scale: 1, o_rotation: 0, o_color: c_white, o_scroll_y: 0, o_x_offset: 0, o_alpha: 1, o_add_order_index: 1, o_name: "? Block", o_description: "Can't be destroyed by player jumping underneath them\nClick on a placed ? Block to set its item!", o_image_index: 0, o_category: "terrain", o_daily_build_category: "daily_build_standard" },
+				{ o_id: LEVEL_OBJECT_ID.ID_HARD_BLOCK, o_can_make_bigger: true, o_sprite: spr_hard_block, o_mask: spr_wall, o_scroll_x: +100, o_scale: 1, o_rotation: 0, o_color: c_white, o_scroll_y: 0, o_x_offset: 0, o_alpha: 1, o_add_order_index: 1, o_name: "Hard Block", o_description: "", o_image_index: 0, o_category: "terrain", o_daily_build_category: "daily_build_featured" },
+				{ o_id: LEVEL_OBJECT_ID.ID_FALLING_BLOCK, o_can_make_bigger: true, o_sprite: spr_falling_block, o_mask: spr_wall, o_scroll_x: +100, o_scale: 1, o_rotation: 0, o_color: c_white, o_scroll_y: 0, o_x_offset: 0, o_alpha: 1, o_add_order_index: 1, o_name: "Falling Block", o_description: "Falls shortly after you stand on them for too long", o_image_index: 0, o_category: "terrain", o_daily_build_category: "daily_build_featured" },
+				{ o_id: LEVEL_OBJECT_ID.ID_FALLING_BLOCK_LONG, o_can_make_bigger: true, o_sprite: spr_falling_block_long, o_mask: spr_cardboard, o_scroll_x: +100, o_scale: 1, o_rotation: 0, o_color: c_white, o_scroll_y: 0, o_x_offset: 0, o_alpha: 1, o_add_order_index: 1, o_name: "Falling Block Long", o_description: "Falls shortly after you stand on them for too long", o_image_index: 0, o_category: "terrain", o_daily_build_category: "daily_build_featured" },
+				{ o_id: LEVEL_OBJECT_ID.ID_INSTANT_FALLING_BLOCK, o_can_make_bigger: true, o_sprite: spr_falling_block, o_mask: spr_wall, o_scroll_x: +100, o_scale: 1, o_rotation: 0, o_color: c_white, o_scroll_y: 0, o_x_offset: 0, o_alpha: 1, o_add_order_index: 1, o_name: "Instant Falling Block", o_description: "Falls shortly after you stand on them for too long", o_image_index: 0, o_category: "terrain", o_daily_build_category: "daily_build_featured" },
+				{ o_id: LEVEL_OBJECT_ID.ID_INSTANT_FALLING_BLOCK_LONG, o_can_make_bigger: true, o_sprite: spr_falling_block_long, o_mask: spr_cardboard, o_scroll_x: +100, o_scale: 1, o_rotation: 0, o_color: c_white, o_scroll_y: 0, o_x_offset: 0, o_alpha: 1, o_add_order_index: 1, o_name: "Instant Falling Block Long", o_description: "Falls shortly after you stand on them for too long", o_image_index: 0, o_category: "terrain", o_daily_build_category: "daily_build_featured" },
+				{ o_id: LEVEL_OBJECT_ID.ID_WOOD_FALLING_BLOCK, o_can_make_bigger: true, o_sprite: spr_falling_block, o_mask: spr_wall, o_scroll_x: +100, o_scale: 1, o_rotation: 0, o_color: c_white, o_scroll_y: 0, o_x_offset: 0, o_alpha: 1, o_add_order_index: 1, o_name: "Wood Falling Block", o_description: "Falls shortly after you stand on them for too long", o_image_index: 0, o_category: "terrain", o_daily_build_category: "daily_build_featured" },
+				{ o_id: LEVEL_OBJECT_ID.ID_WOOD_FALLING_BLOCK_LONG, o_can_make_bigger: true, o_sprite: spr_falling_block_long, o_mask: spr_cardboard, o_scroll_x: +100, o_scale: 1, o_rotation: 0, o_color: c_white, o_scroll_y: 0, o_x_offset: 0, o_alpha: 1, o_add_order_index: 1, o_name: "Wood Falling Block Long", o_description: "Falls shortly after you stand on them for too long", o_image_index: 0, o_category: "terrain", o_daily_build_category: "daily_build_featured" },
+				{ o_id: LEVEL_OBJECT_ID.ID_STONE_FALLING_BLOCK, o_can_make_bigger: true, o_sprite: spr_falling_block, o_mask: spr_wall, o_scroll_x: +100, o_scale: 1, o_rotation: 0, o_color: c_white, o_scroll_y: 0, o_x_offset: 0, o_alpha: 1, o_add_order_index: 1, o_name: "Stone Falling Block", o_description: "Falls shortly after you stand on them for too long", o_image_index: 0, o_category: "terrain", o_daily_build_category: "daily_build_featured" },
+				{ o_id: LEVEL_OBJECT_ID.ID_STONE_FALLING_BLOCK_LONG, o_can_make_bigger: true, o_sprite: spr_falling_block_long, o_mask: spr_cardboard, o_scroll_x: +100, o_scale: 1, o_rotation: 0, o_color: c_white, o_scroll_y: 0, o_x_offset: 0, o_alpha: 1, o_add_order_index: 1, o_name: "Stone Falling Block Long", o_description: "Falls shortly after you stand on them for too long", o_image_index: 0, o_category: "terrain", o_daily_build_category: "daily_build_featured" },
+				{ o_id: LEVEL_OBJECT_ID.ID_CLOUD_BLOCK, o_can_make_bigger: true, o_sprite: spr_cloud_block, o_mask: spr_wall, o_scroll_x: +100, o_scale: 1, o_rotation: 0, o_color: c_white, o_scroll_y: 0, o_x_offset: 0, o_alpha: 1, o_add_order_index: 1, o_name: "Cloud Block", o_description: "", o_image_index: 0, o_category: "terrain", o_daily_build_category: "daily_build_standard" },
+				{ o_id: LEVEL_OBJECT_ID.ID_ICE_BLOCK, o_can_make_bigger: true, o_sprite: spr_ice_block, o_mask: spr_wall, o_scroll_x: +100, o_scale: 1, o_rotation: 0, o_color: c_white, o_scroll_y: 0, o_x_offset: 0, o_alpha: 1, o_add_order_index: 1, o_name: "Ice Block", o_description: "", o_image_index: 0, o_category: "terrain", o_daily_build_category: "daily_build_featured" },
+				{ o_id: LEVEL_OBJECT_ID.ID_ENEMY_ONLY_WALL, o_can_make_bigger: true, o_sprite: spr_enemy_only_wall, o_mask: spr_wall, o_scroll_x: +100, o_scale: 1, o_rotation: 0, o_color: c_white, o_scroll_y: 0, o_x_offset: 0, o_alpha: 1, o_add_order_index: 1, o_name: "Enemy Only Wall", o_description: "Only enemies can collide with this wall. Player will pass through", o_image_index: 0, o_category: "terrain", o_daily_build_category: "daily_build_featured" },
+				{ o_id: LEVEL_OBJECT_ID.ID_CARDBOARD_BLOCK, o_can_make_bigger: true, o_sprite: spr_cardboard_block, o_mask: spr_wall, o_scroll_x: +100, o_scale: 1, o_rotation: 0, o_color: c_white, o_scroll_y: 0, o_x_offset: 0, o_alpha: 1, o_add_order_index: 1, o_name: "Cardboard Block", o_description: "", o_image_index: 0, o_category: "terrain", o_daily_build_category: "daily_build_featured" },
+				{ o_id: LEVEL_OBJECT_ID.ID_CARDBOARD, o_can_make_bigger: true, o_sprite: spr_cardboard, o_mask: spr_cardboard, o_scroll_x: +100, o_scale: 0.75, o_rotation: 0, o_color: c_white, o_scroll_y: 0, o_x_offset: 0, o_alpha: 1, o_add_order_index: 1, o_name: "Cardboard", o_description: "", o_image_index: 0, o_category: "terrain", o_daily_build_category: "daily_build_standard" },
+				{ o_id: LEVEL_OBJECT_ID.ID_CARDBOARD_LONG, o_can_make_bigger: true, o_sprite: spr_cardboard_long, o_mask: spr_cardboard_long, o_scroll_x: +100, o_scale: 0.5, o_rotation: 0, o_color: c_white, o_scroll_y: 0, o_x_offset: 0, o_alpha: 1, o_add_order_index: 1, o_name: "Long Cardboard", o_description: "", o_image_index: 0, o_category: "terrain", o_daily_build_category: "daily_build_standard" },
+				{ o_id: LEVEL_OBJECT_ID.ID_MELON_BLOCK, o_can_make_bigger: true, o_sprite: spr_melon_block, o_mask: spr_wall, o_scroll_x: +100, o_scale: 1, o_rotation: 0, o_color: c_white, o_scroll_y: 0, o_x_offset: 0, o_alpha: 1, o_add_order_index: 1, o_name: "Melon Block", o_description: "Can only be destroyed with a ground-pound", o_image_index: 0, o_category: "terrain", o_daily_build_category: "daily_build_featured" },
+				{ o_id: LEVEL_OBJECT_ID.ID_BOSS_BARRIER, o_can_make_bigger: true, o_sprite: spr_boss_barrier, o_mask: spr_wall, o_scroll_x: +100, o_scale: 1, o_rotation: 0, o_color: c_white, o_scroll_y: 0, o_x_offset: 0, o_alpha: 1, o_add_order_index: 1, o_name: "Boss Barrier", o_description: "This block disappears when Mousette is defeated", o_image_index: 0, o_category: "terrain", o_daily_build_category: "daily_build_featured" },
+				{ o_id: LEVEL_OBJECT_ID.ID_EYE_BLOCK, o_can_make_bigger: true, o_sprite: global.resource_pack_sprite_eye_block, o_mask: spr_wall, o_scroll_x: +100, o_scale: 1, o_rotation: 0, o_color: c_white, o_scroll_y: 0, o_x_offset: 0, o_alpha: 1, o_add_order_index: 1, o_name: "Eye Block", o_description: "This block is only solid when it can see its prey", o_image_index: 0, o_category: "terrain", o_daily_build_category: "daily_build_featured" },
+				{ o_id: LEVEL_OBJECT_ID.ID_APPEAR_BLOCK_1, o_can_make_bigger: true, o_sprite: spr_appear_block, o_mask: spr_wall, o_scroll_x: +100, o_scale: 1, o_rotation: 0, o_color: c_yellow, o_scroll_y: 0, o_x_offset: 0, o_alpha: 1, o_add_order_index: 1, o_name: "Appear Block 1", o_description: "This block appears and disappears in cycles", o_image_index: 0, o_category: "terrain", o_daily_build_category: "daily_build_featured" },
+				{ o_id: LEVEL_OBJECT_ID.ID_APPEAR_BLOCK_2, o_can_make_bigger: true, o_sprite: spr_appear_block, o_mask: spr_wall, o_scroll_x: +100, o_scale: 1, o_rotation: 0, o_color: c_aqua, o_scroll_y: 0, o_x_offset: 0, o_alpha: 1, o_add_order_index: 1, o_name: "Appear Block 2", o_description: "This block appears and disappears in cycles", o_image_index: 0, o_category: "terrain", o_daily_build_category: "daily_build_featured" },
+				{ o_id: LEVEL_OBJECT_ID.ID_APPEAR_BLOCK_3, o_can_make_bigger: true, o_sprite: spr_appear_block, o_mask: spr_wall, o_scroll_x: +100, o_scale: 1, o_rotation: 0, o_color: c_red, o_scroll_y: 0, o_x_offset: 0, o_alpha: 1, o_add_order_index: 1, o_name: "Appear Block 3", o_description: "This block appears and disappears in cycles", o_image_index: 0, o_category: "terrain", o_daily_build_category: "daily_build_featured" },
+				{ o_id: LEVEL_OBJECT_ID.ID_APPEAR_BLOCK_4, o_can_make_bigger: true, o_sprite: spr_appear_block, o_mask: spr_wall, o_scroll_x: +100, o_scale: 1, o_rotation: 0, o_color: c_purple, o_scroll_y: 0, o_x_offset: 0, o_alpha: 1, o_add_order_index: 1, o_name: "Appear Block 4", o_description: "This block appears and disappears in cycles", o_image_index: 0, o_category: "terrain", o_daily_build_category: "daily_build_featured" },
+				{ o_id: LEVEL_OBJECT_ID.ID_APPEAR_BLOCK_5, o_can_make_bigger: true, o_sprite: spr_appear_block, o_mask: spr_wall, o_scroll_x: +100, o_scale: 1, o_rotation: 0, o_color: c_lime, o_scroll_y: 0, o_x_offset: 0, o_alpha: 1, o_add_order_index: 1, o_name: "Appear Block 5", o_description: "This block appears and disappears in cycles", o_image_index: 0, o_category: "terrain", o_daily_build_category: "daily_build_featured" },
+				
+				/* Category: Decoration */
+				{ o_id: LEVEL_OBJECT_ID.ID_ARROW_SIGN, o_can_make_bigger: false, o_sprite: spr_arrow_sign, o_mask: spr_wall, o_scroll_x: +100, o_scale: 1, o_rotation: 0, o_color: c_white, o_scroll_y: 0, o_x_offset: 0, o_alpha: 1, o_add_order_index: 1, o_name: "Arrow Sign", o_description: "", o_image_index: 0, o_category: "decoration", o_daily_build_category: "daily_build_featured" },
+				{ o_id: LEVEL_OBJECT_ID.ID_SIGN_READABLE, o_can_make_bigger: false, o_sprite: spr_sign_readable, o_mask: spr_wall, o_scroll_x: +100, o_scale: 1, o_rotation: 0, o_color: c_white, o_scroll_y: 0, o_x_offset: 0, o_alpha: 1, o_add_order_index: 1, o_name: "Readable Sign", o_description: "Click on the placed sign in the editor to edit what it should say!", o_image_index: 0, o_category: "decoration", o_daily_build_category: "daily_build_featured" },
+				{ o_id: LEVEL_OBJECT_ID.ID_BIRD, o_can_make_bigger: true, o_sprite: spr_bird, o_mask: spr_wall, o_scroll_x: +100, o_scale: 1, o_rotation: 0, o_color: c_white, o_scroll_y: 0, o_x_offset: 0, o_alpha: 1, o_add_order_index: 1, o_name: "Bird", o_description: "", o_image_index: 0, o_category: "decoration", o_daily_build_category: "daily_build_standard" },
+				{ o_id: LEVEL_OBJECT_ID.ID_BUSH, o_can_make_bigger: true, o_sprite: spr_bush, o_mask: spr_wall, o_scroll_x: +100, o_scale: 1, o_rotation: 0, o_color: c_white, o_scroll_y: 0, o_x_offset: 0, o_alpha: 1, o_add_order_index: 1, o_name: "Bush", o_description: "", o_image_index: 0, o_category: "decoration", o_daily_build_category: "daily_build_featured" },
+				{ o_id: LEVEL_OBJECT_ID.ID_SIGN_CROUCH, o_can_make_bigger: true, o_sprite: spr_sign_crouch, o_mask: spr_wall, o_scroll_x: +100, o_scale: 0.5, o_rotation: 0, o_color: c_white, o_scroll_y: 0, o_x_offset: 0, o_alpha: 1, o_add_order_index: 1, o_name: "Tutorial Signs", o_description: "Teach the player what abilities they have", o_image_index: 0, o_category: "decoration", o_daily_build_category: "daily_build_standard" },
+				{ o_id: LEVEL_OBJECT_ID.ID_CAKE_STEALING_ENEMY, o_can_make_bigger: false, o_sprite: global.resource_pack_sprite_cake, o_mask: spr_wall, o_scroll_x: +100, o_scale: 1, o_rotation: 0, o_color: c_white, o_scroll_y: 0, o_x_offset: 0, o_alpha: 1, o_add_order_index: 1, o_name: "Cake Rat", o_description: "This rat stole your cake! Let the player try to catch them before the end of the level\nThe player will chase this rat until the very end of the game", o_image_index: 0, o_category: "decoration", o_daily_build_category: "daily_build_standard" },
+				
+				/* Category: Item */
+				{ o_id: LEVEL_OBJECT_ID.ID_BASIC_COLLECTIBLE, o_can_make_bigger: true, o_sprite: global.resource_pack_sprite_basic_collectible, o_mask: spr_wall, o_scroll_x: +100, o_scale: 1, o_rotation: 0, o_color: c_white, o_scroll_y: 0, o_x_offset: 0, o_alpha: 1, o_add_order_index: 1, o_name: "Fish", o_description: "One of the most fundemental objects to include in a level!\nFish usually come in small groups and can also be used to indicate a path", o_image_index: 0, o_category: "item", o_daily_build_category: "daily_build_standard" },
+				{ o_id: LEVEL_OBJECT_ID.ID_BIG_COLLECTIBLE, o_can_make_bigger: false, o_sprite: global.resource_pack_sprite_big_collectible, o_mask: spr_wall, o_scroll_x: +100, o_scale: 1, o_rotation: 0, o_color: c_white, o_scroll_y: 0, o_x_offset: 0, o_alpha: 1, o_add_order_index: 1, o_name: "Big Fish", o_description: "A collectible that can be a good way to make your level more fun", o_image_index: 0, o_category: "item", o_daily_build_category: "daily_build_standard" },
+				{ o_id: LEVEL_OBJECT_ID.ID_HEART, o_can_make_bigger: true, o_sprite: spr_heart, o_mask: spr_wall, o_scroll_x: +100, o_scale: 1, o_rotation: 0, o_color: c_white, o_scroll_y: 0, o_x_offset: 0, o_alpha: 1, o_add_order_index: 1, o_name: "Heart Balloon", o_description: "Gives you one extra hit", o_image_index: 0, o_category: "item", o_daily_build_category: "daily_build_featured" },
+				{ o_id: LEVEL_OBJECT_ID.ID_INVINCIBILITY_POWERUP, o_can_make_bigger: true, o_sprite: global.resource_pack_sprite_invincibility_powerup, o_mask: spr_wall, o_scroll_x: +100, o_scale: 1, o_rotation: 0, o_color: c_white, o_scroll_y: 0, o_x_offset: 0, o_alpha: 1, o_add_order_index: 1, o_name: "Invincibility", o_description: "Temporarily turns you invincible.\nDuring the power-up's duration you become invulnerable to enemy attacks\nand will defeat almost any enemy you collide with!", o_image_index: 0, o_category: "item", o_daily_build_category: "daily_build_featured" },
+				{ o_id: LEVEL_OBJECT_ID.ID_ONE_UP, o_can_make_bigger: true, o_sprite: sprite_lives_icon, o_mask: spr_wall, o_scroll_x: +100, o_scale: 1, o_rotation: 0, o_color: c_white, o_scroll_y: 0, o_x_offset: 0, o_alpha: 1, o_add_order_index: 1, o_name: "Extra Life", o_description: "Adds 1 extra life to the life counter", o_image_index: 0, o_category: "item", o_daily_build_category: "daily_build_featured" },
+				
+				/* Category: Enemy */
+				{ o_id: LEVEL_OBJECT_ID.ID_BASIC_ENEMY, o_can_make_bigger: true, o_sprite: sprite_basic_enemy, o_mask: spr_wall, o_scroll_x: +100, o_scale: 1, o_rotation: 0, o_color: c_white, o_scroll_y: 0, o_x_offset: 0, o_alpha: 1, o_add_order_index: 1, o_name: "Rat", o_description: "", o_image_index: 0, o_category: "enemy", o_daily_build_category: "daily_build_standard" },
+				{ o_id: LEVEL_OBJECT_ID.ID_ENEMY_BOWLINGBALL, o_can_make_bigger: true, o_sprite: sprite_enemy_bowlingball, o_mask: spr_wall, o_scroll_x: +100, o_scale: 1, o_rotation: 0, o_color: c_white, o_scroll_y: 0, o_x_offset: 0, o_alpha: 1, o_add_order_index: 1, o_name: "Bowlingball Rat", o_description: "", o_image_index: 0, o_category: "enemy", o_daily_build_category: "daily_build_featured" },
+				{ o_id: LEVEL_OBJECT_ID.ID_BIG_STATIONARY_ENEMY, o_can_make_bigger: true, o_sprite: sprite_big_stationary_enemy, o_mask: spr_wall, o_scroll_x: +100, o_scale: 1, o_rotation: 0, o_color: c_white, o_scroll_y: 0, o_x_offset: 0, o_alpha: 1, o_add_order_index: 1, o_name: "Big Rat", o_description: "", o_image_index: 0, o_category: "enemy", o_daily_build_category: "daily_build_featured" },
+				{ o_id: LEVEL_OBJECT_ID.ID_BOSS, o_can_make_bigger: false, o_sprite: spr_boss_stand, o_mask: spr_wall, o_scroll_x: +100, o_scale: 0.5, o_rotation: 0, o_color: c_white, o_scroll_y: 0, o_x_offset: 0, o_alpha: 1, o_add_order_index: 1, o_name: "Mousette", o_description: "", o_image_index: 0, o_category: "enemy", o_daily_build_category: "daily_build_featured" },
+				
+				/* Category: Gizmo */
+				{ o_id: LEVEL_OBJECT_ID.ID_BLASTER, o_can_make_bigger: true, o_sprite: global.resource_pack_sprite_blaster, o_mask: spr_wall, o_scroll_x: +100, o_scale: 1, o_rotation: 0, o_color: c_white, o_scroll_y: 0, o_x_offset: -16, o_alpha: 1, o_add_order_index: 1, o_name: "Rat Blaster", o_description: "", o_image_index: 0, o_category: "gizmo", o_daily_build_category: "daily_build_featured" },
+				{ o_id: LEVEL_OBJECT_ID.ID_DOOR, o_can_make_bigger: false, o_sprite: spr_door, o_mask: spr_wall, o_scroll_x: +100, o_scale: 1, o_rotation: 0, o_color: c_white, o_scroll_y: 0, o_x_offset: -16, o_alpha: 1, o_add_order_index: 1, o_name: "Door", o_description: "Teleports you to another area when player enters door", o_image_index: 0, o_category: "gizmo", o_daily_build_category: "daily_build_featured" },
+				{ o_id: LEVEL_OBJECT_ID.ID_WARP_BOX, o_can_make_bigger: false, o_sprite: spr_warp_box, o_mask: spr_wall, o_scroll_x: +100, o_scale: 1, o_rotation: 0, o_color: c_white, o_scroll_y: 0, o_x_offset: 0, o_alpha: 1, o_add_order_index: 1, o_name: "Warp Box", o_description: "Instantly teleports you to another area\nRegular Warp Boxes can be used many times\nBroken Warp Boxes disappears after one use", o_image_index: 0, o_category: "gizmo", o_daily_build_category: "daily_build_featured" },
+				{ o_id: LEVEL_OBJECT_ID.ID_SPRING, o_can_make_bigger: false, o_sprite: spr_spring, o_mask: spr_wall, o_scroll_x: +100, o_scale: 1, o_rotation: 0, o_color: c_white, o_scroll_y: 0, o_x_offset: 0, o_alpha: 1, o_add_order_index: 1, o_name: "Spring", o_description: "", o_image_index: 0, o_category: "gizmo", o_daily_build_category: "daily_build_featured" },
+				{ o_id: LEVEL_OBJECT_ID.ID_LADDER, o_can_make_bigger: true, o_sprite: spr_ladder, o_mask: spr_wall, o_scroll_x: +100, o_scale: 1, o_rotation: 0, o_color: c_white, o_scroll_y: 0, o_x_offset: 0, o_alpha: 1, o_add_order_index: 1, o_name: "Ladder", o_description: "", o_image_index: 0, o_category: "gizmo", o_daily_build_category: "daily_build_standard" },
+				{ o_id: LEVEL_OBJECT_ID.ID_CHECKPOINT, o_can_make_bigger: false, o_sprite: spr_checkpoint_activated, o_mask: spr_wall, o_scroll_x: +100, o_scale: 1, o_rotation: 0, o_color: c_white, o_scroll_y: 0, o_x_offset: -16, o_alpha: 1, o_add_order_index: 1, o_name: "Checkpoint", o_description: "", o_image_index: 0, o_category: "gizmo", o_daily_build_category: "daily_build_standard" },
+				{ o_id: LEVEL_OBJECT_ID.ID_SPIKES_EMERGE_BLOCK, o_can_make_bigger: true, o_sprite: spr_spikes_emerge_block, o_mask: spr_wall, o_scroll_x: +100, o_scale: 1, o_rotation: 0, o_color: c_white, o_scroll_y: 0, o_x_offset: 0, o_alpha: 1, o_add_order_index: 1, o_name: "Emerging Spikes", o_description: "", o_image_index: 0, o_category: "gizmo", o_daily_build_category: "daily_build_featured" },
+				{ o_id: LEVEL_OBJECT_ID.ID_ONEWAY, o_can_make_bigger: false, o_sprite: spr_oneway, o_mask: spr_wall, o_scroll_x: +100, o_scale: 1, o_rotation: 0, o_color: c_white, o_scroll_y: 0, o_x_offset: -16, o_alpha: 1, o_add_order_index: 1, o_name: "One-Way Wall", o_description: "", o_image_index: 0, o_category: "gizmo", o_daily_build_category: "daily_build_featured" },
+				{ o_id: LEVEL_OBJECT_ID.ID_BUMP_IN_GROUND, o_can_make_bigger: true, o_sprite: spr_bump_in_ground, o_mask: spr_wall, o_scroll_x: +100, o_scale: 1, o_rotation: 0, o_color: c_white, o_scroll_y: 0, o_x_offset: -16, o_alpha: 1, o_add_order_index: 1, o_name: "Bump in Ground", o_description: "", o_image_index: 0, o_category: "gizmo", o_daily_build_category: "daily_build_standard" },
+				{ o_id: LEVEL_OBJECT_ID.ID_WALL_JUMP_PANEL, o_can_make_bigger: true, o_sprite: spr_wall_jump_panel, o_mask: spr_wall, o_scroll_x: +100, o_scale: 1.5, o_rotation: 0, o_color: c_white, o_scroll_y: 0, o_x_offset: +16, o_alpha: 1, o_add_order_index: 1, o_name: "Wall Jump Panel", o_description: "When a character doesn't have the wall jump ability lets even these characters wall jump", o_image_index: 0, o_category: "gizmo", o_daily_build_category: "daily_build_standard" },
+				{ o_id: LEVEL_OBJECT_ID.ID_WALL_CLIMB_PANEL, o_can_make_bigger: true, o_sprite: spr_wall_climb_panel, o_mask: spr_wall, o_scroll_x: +100, o_scale: 1.5, o_rotation: 0, o_color: c_white, o_scroll_y: 0, o_x_offset: +16, o_alpha: 1, o_add_order_index: 1, o_name: "Wall Climb Panel", o_description: "When a character doesn't have the wall climb ability lets even these characters wall climb", o_image_index: 0, o_category: "gizmo", o_daily_build_category: "daily_build_featured" },
+				{ o_id: LEVEL_OBJECT_ID.ID_HORIZONTAL_ROPE, o_can_make_bigger: true, o_sprite: spr_horizontal_rope, o_mask: spr_wall, o_scroll_x: +100, o_scale: 1, o_rotation: 0, o_color: c_white, o_scroll_y: 0, o_x_offset: 0, o_alpha: 1, o_add_order_index: 1, o_name: "Horizontal Rope", o_description: "", o_image_index: 0, o_category: "gizmo", o_daily_build_category: "daily_build_standard" },
+				{ o_id: LEVEL_OBJECT_ID.ID_WATER, o_can_make_bigger: false, o_sprite: spr_water_surface, o_mask: spr_wall, o_scroll_x: +100, o_scale: 1, o_rotation: 0, o_color: c_white, o_scroll_y: 0, o_x_offset: 0, o_alpha: 1, o_add_order_index: 1, o_name: "Water", o_description: "", o_image_index: 0, o_category: "gizmo", o_daily_build_category: "daily_build_featured" },
+				{ o_id: LEVEL_OBJECT_ID.ID_LAVA, o_can_make_bigger: false, o_sprite: spr_lava_surface, o_mask: spr_wall, o_scroll_x: +100, o_scale: 1, o_rotation: 0, o_color: c_white, o_scroll_y: 0, o_x_offset: 0, o_alpha: 1, o_add_order_index: 1, o_name: "Lava", o_description: "", o_image_index: 0, o_category: "gizmo", o_daily_build_category: "daily_build_featured" },
+				{ o_id: LEVEL_OBJECT_ID.ID_AIR_BUBBLES_SPAWNER, o_can_make_bigger: true, o_sprite: spr_air_bubbles_spawner, o_mask: spr_wall, o_scroll_x: +100, o_scale: 1, o_rotation: 0, o_color: c_white, o_scroll_y: 0, o_x_offset: 0, o_alpha: 1, o_add_order_index: 1, o_name: "Air Bubbles", o_description: "Some characters needs air when swimming underwater", o_image_index: 0, o_category: "gizmo", o_daily_build_category: "daily_build_featured" },
+				{ o_id: LEVEL_OBJECT_ID.ID_WATER_LEVEL_CHANGE_SLOW, o_can_make_bigger: false, o_sprite: spr_water_level_change_slow, o_mask: spr_wall, o_scroll_x: +100, o_scale: 1, o_rotation: 0, o_color: c_white, o_scroll_y: 0, o_x_offset: 0, o_alpha: 1, o_add_order_index: 1, o_name: "Change Water Level Slow", o_description: "", o_image_index: 0, o_category: "gizmo", o_daily_build_category: "daily_build_featured" },
+				{ o_id: LEVEL_OBJECT_ID.ID_WATER_LEVEL_CHANGE_FAST, o_can_make_bigger: false, o_sprite: spr_water_level_change_fast, o_mask: spr_wall, o_scroll_x: +100, o_scale: 1, o_rotation: 0, o_color: c_white, o_scroll_y: 0, o_x_offset: 0, o_alpha: 1, o_add_order_index: 1, o_name: "Change Water Level Fast", o_description: "", o_image_index: 0, o_category: "gizmo", o_daily_build_category: "daily_build_featured" },
+				{ o_id: LEVEL_OBJECT_ID.ID_WATER_LEVEL_CHANGE_FASTER, o_can_make_bigger: false, o_sprite: spr_water_level_change_faster, o_mask: spr_wall, o_scroll_x: +100, o_scale: 1, o_rotation: 0, o_color: c_white, o_scroll_y: 0, o_x_offset: 0, o_alpha: 1, o_add_order_index: 1, o_name: "Change Water Level Faster", o_description: "", o_image_index: 0, o_category: "gizmo", o_daily_build_category: "daily_build_featured" },
+				{ o_id: LEVEL_OBJECT_ID.ID_CLIPPED_SHIRT, o_can_make_bigger: true, o_sprite: spr_clipped_shirt, o_mask: spr_wall, o_scroll_x: +100, o_scale: 1, o_rotation: 0, o_color: c_white, o_scroll_y: 0, o_x_offset: 0, o_alpha: 1, o_add_order_index: 1, o_name: "Clipped Clothes", o_description: "", o_image_index: 0, o_category: "gizmo", o_daily_build_category: "daily_build_featured" },
+				{ o_id: LEVEL_OBJECT_ID.ID_BUCKET, o_can_make_bigger: true, o_sprite: spr_bucket, o_mask: spr_wall, o_scroll_x: +100, o_scale: 1, o_rotation: 0, o_color: c_white, o_scroll_y: 0, o_x_offset: 0, o_alpha: 1, o_add_order_index: 1, o_name: "Bucket", o_description: "Let clothes drop into the bucket to get rewards", o_image_index: 0, o_category: "gizmo", o_daily_build_category: "daily_build_featured" },
+				{ o_id: LEVEL_OBJECT_ID.ID_ARTWORK_COLLECTION, o_can_make_bigger: false, o_sprite: spr_artwork_collection, o_mask: spr_wall, o_scroll_x: +100, o_scale: 1, o_rotation: 0, o_color: c_white, o_scroll_y: 0, o_x_offset: 0, o_alpha: 1, o_add_order_index: 1, o_name: "Artwork Collection", o_description: "", o_image_index: 0, o_category: "gizmo", o_daily_build_category: "daily_build_standard" },
+				{ o_id: LEVEL_OBJECT_ID.ID_RING, o_can_make_bigger: false, o_sprite: spr_ring, o_mask: spr_wall, o_scroll_x: +100, o_scale: 1, o_rotation: 0, o_color: c_white, o_scroll_y: 0, o_x_offset: 0, o_alpha: 1, o_add_order_index: 1, o_name: "Ring", o_description: "Swing with long tongue on this ring", o_image_index: 0, o_category: "gizmo", o_daily_build_category: "daily_build_featured" }
+				
 				/* Add more objects here... */
 			];
+			#endregion /* Object Array END */
 			
-			for (var i = 0; i < objects.length; i++)
+			for (var i = 0; i < array_length(objects); i++)
 			{
 				var obj = objects[i];
 				if (!if_daily_build /* If you are in the regular level editor, then use the regular object categories */
@@ -33,214 +137,9 @@ function scr_draw_list_of_placable_objects()
 				|| (if_daily_build /* If you are in the Daily Build mode in level editor, then use the Daily Build object categories */
 				&& obj.o_daily_build_category == current_object_category)
 				{
-					scr_draw_level_editor_placable_object(order_index, obj.o_id, obj.o_can_make_place_size_bigger, obj.o_sprite, obj.o_mask, obj.o_scroll_x, obj.o_scale, obj.o_rotation, obj.o_color, obj.o_scroll_y, obj.o_x_offset, obj.o_alpha, obj.o_add_order_index, obj.o_name, obj.o_description, obj.o_image_index);
+					scr_draw_level_editor_placable_object(order_index, obj.o_id, obj.o_can_make_bigger, obj.o_sprite, obj.o_mask, obj.o_scroll_x, obj.o_scale, obj.o_rotation, obj.o_color, obj.o_scroll_y, obj.o_x_offset, obj.o_alpha, obj.o_add_order_index, obj.o_name, obj.o_description, obj.o_image_index);
 				}
 			}
-			
-			#region /* If you are in the regular level editor, then use the regular object categories */
-			if (!if_daily_build)
-			{
-				
-				#region /* Terrain Objects */
-				if (current_object_category == "terrain")
-				{
-					scr_draw_level_editor_placable_object(order_index, LEVEL_OBJECT_ID.ID_WALL_DIRT, true, spr_wall_dirt, spr_wall, + 100, 1, 0, c_white,,,,,"Dirt");
-					scr_draw_level_editor_placable_object(order_index, LEVEL_OBJECT_ID.ID_WALL_GLASS, true, spr_wall_glass, spr_wall, + 100, 1, 0, c_white,,,,,"Glass");
-					scr_draw_level_editor_placable_object(order_index, LEVEL_OBJECT_ID.ID_WALL_GRASS, true, spr_wall_grass, spr_wall, + 100, 1, 0, c_white,,,,,"Grass");
-					scr_draw_level_editor_placable_object(order_index, LEVEL_OBJECT_ID.ID_WALL_GRAVEL, true, spr_wall_gravel, spr_wall, + 100, 1, 0, c_white,,,,,"Gravel");
-					scr_draw_level_editor_placable_object(order_index, LEVEL_OBJECT_ID.ID_WALL_METAL, true, spr_wall_metal, spr_wall, + 100, 1, 0, c_white,,,,,"Metal");
-					scr_draw_level_editor_placable_object(order_index, LEVEL_OBJECT_ID.ID_WALL_STONE, true, spr_wall_stone, spr_wall, + 100, 1, 0, c_white,,,,,"Stone");
-					scr_draw_level_editor_placable_object(order_index, LEVEL_OBJECT_ID.ID_WALL_WOOD, true, spr_wall_wood, spr_wall, + 100, 1, 0, c_white,,,,,"Wood");
-					scr_draw_level_editor_placable_object(order_index, LEVEL_OBJECT_ID.ID_BLACK_WALL, true, spr_black_wall, spr_wall, + 100, 1, 0, c_white,,,,,"Black Wall");
-					scr_draw_level_editor_placable_object(order_index, LEVEL_OBJECT_ID.ID_SPIKES, true, spr_spikes, spr_wall, + 100, 1, 0, c_white,,,,,"Spikes");
-					scr_draw_level_editor_placable_object(order_index, LEVEL_OBJECT_ID.ID_SEMISOLID_PLATFORM, true, spr_semisolid_platform, spr_wall, + 100, 1, 0, c_white,,,,,"Semisolid Platform");
-					scr_draw_level_editor_placable_object(order_index, LEVEL_OBJECT_ID.ID_BRICK_BLOCK, true, spr_brick_block, spr_wall, + 100, 1, 0, c_white,,,,,"Lamp Block", "Can be destroyed by player jumping underneath them if there is no items inside\nClick on a placed Lamp Block to set its item!");
-					scr_draw_level_editor_placable_object(order_index, LEVEL_OBJECT_ID.ID_QUESTION_BLOCK, true, spr_question_block, spr_wall, + 100, 1, 0, c_white,,,,,"? Block", "Can't be destroyed by player jumping underneath them\nClick on a placed ? Block to set its item!");
-					scr_draw_level_editor_placable_object(order_index, LEVEL_OBJECT_ID.ID_HARD_BLOCK, true, spr_hard_block, spr_wall, + 100, 1, 0, c_white,,,,,"Hard Block");
-					scr_draw_level_editor_placable_object(order_index, LEVEL_OBJECT_ID.ID_FALLING_BLOCK, true, spr_falling_block, spr_wall, + 100, 1, 0, c_white,,,,,"Falling Block", "Falls shortly after you stand on them for too long");
-					scr_draw_level_editor_placable_object(order_index, LEVEL_OBJECT_ID.ID_FALLING_BLOCK_LONG, true, spr_falling_block_long, spr_cardboard, + 100, 1, 0, c_white, 0, -16,,,"Falling Block Long", "Falls shortly after you stand on them for too long");
-					scr_draw_level_editor_placable_object(order_index, LEVEL_OBJECT_ID.ID_INSTANT_FALLING_BLOCK, true, spr_falling_block, spr_wall, + 100, 1, 0, c_white,,,,,"Instant Falling Block", "Falls shortly after you stand on them for too long", 1);
-					scr_draw_level_editor_placable_object(order_index, LEVEL_OBJECT_ID.ID_INSTANT_FALLING_BLOCK_LONG, true, spr_falling_block_long, spr_cardboard, + 100, 1, 0, c_white, 0, -16,,,"Instant Falling Block Long", "Falls shortly after you stand on them for too long", 1);
-					scr_draw_level_editor_placable_object(order_index, LEVEL_OBJECT_ID.ID_WOOD_FALLING_BLOCK, true, spr_falling_block, spr_wall, + 100, 1, 0, c_white,,,,,"Wood Falling Block", "Falls shortly after you stand on them for too long", 2);
-					scr_draw_level_editor_placable_object(order_index, LEVEL_OBJECT_ID.ID_WOOD_FALLING_BLOCK_LONG, true, spr_falling_block_long, spr_cardboard, + 100, 1, 0, c_white, 0, -16,,,"Wood Falling Block Long", "Falls shortly after you stand on them for too long", 2);
-					scr_draw_level_editor_placable_object(order_index, LEVEL_OBJECT_ID.ID_STONE_FALLING_BLOCK, true, spr_falling_block, spr_wall, + 100, 1, 0, c_white,,,,,"Stone Falling Block", "Falls shortly after you stand on them for too long", 3);
-					scr_draw_level_editor_placable_object(order_index, LEVEL_OBJECT_ID.ID_STONE_FALLING_BLOCK_LONG, true, spr_falling_block_long, spr_cardboard, + 100, 1, 0, c_white, 0, -16,,,"Stone Falling Block Long", "Falls shortly after you stand on them for too long", 3);
-					scr_draw_level_editor_placable_object(order_index, LEVEL_OBJECT_ID.ID_CLOUD_BLOCK, true, spr_cloud_block, spr_wall, + 100, 1, 0, c_white,,,,,"Cloud Block");
-					scr_draw_level_editor_placable_object(order_index, LEVEL_OBJECT_ID.ID_ICE_BLOCK, true, spr_ice_block, spr_wall, + 100, 1, 0, c_white,,,,,"Ice Block");
-					scr_draw_level_editor_placable_object(order_index, LEVEL_OBJECT_ID.ID_ENEMY_ONLY_WALL, true, spr_enemy_only_wall, spr_wall, + 100, 1, 0, c_white,,,,,"Enemy Only Wall", "Only enemies can collide with this wall. Player will pass trough");
-					scr_draw_level_editor_placable_object(order_index, LEVEL_OBJECT_ID.ID_CARDBOARD_BLOCK, true, spr_cardboard_block, spr_wall, + 100, 1, 0, c_white,,,,,"Carbdoard Block");
-					scr_draw_level_editor_placable_object(order_index, LEVEL_OBJECT_ID.ID_CARDBOARD, true, spr_cardboard, spr_cardboard, + 100, 0.75, 0, c_white, 0, -8,,,"Cardboard");
-					scr_draw_level_editor_placable_object(order_index, LEVEL_OBJECT_ID.ID_CARDBOARD_LONG, true, spr_cardboard_long, spr_cardboard_long, + 100, 0.5, 0, c_white, 0, -16,,,"Long Cardboard");
-					scr_draw_level_editor_placable_object(order_index, LEVEL_OBJECT_ID.ID_MELON_BLOCK, true, spr_melon_block, spr_wall, + 100, 1, 0, c_white,,,,,"Melon Block", "Can only be destroyed with a ground-pound");
-					scr_draw_level_editor_placable_object(order_index, LEVEL_OBJECT_ID.ID_BOSS_BARRIER, true, spr_boss_barrier, spr_wall, + 100, 1, 0, c_white,,,,,"Boss Barrier", "This block dissapears when Mousette is defeated");
-					scr_draw_level_editor_placable_object(order_index, LEVEL_OBJECT_ID.ID_EYE_BLOCK, true, global.resource_pack_sprite_eye_block, spr_wall, + 100, 1, 0, c_white,,,,,"Eye Block", "This block is only solid when it can see its prey");
-					scr_draw_level_editor_placable_object(order_index, LEVEL_OBJECT_ID.ID_APPEAR_BLOCK_1, true, spr_appear_block, spr_wall, + 100, 1, 0, c_yellow,,,,,"Appear Block 1", "This block appears and disappears in cycles");
-					scr_draw_level_editor_placable_object(order_index, LEVEL_OBJECT_ID.ID_APPEAR_BLOCK_2, true, spr_appear_block, spr_wall, + 100, 1, 0, c_aqua,,,,,"Appear Block 2", "This block appears and disappears in cycles");
-					scr_draw_level_editor_placable_object(order_index, LEVEL_OBJECT_ID.ID_APPEAR_BLOCK_3, true, spr_appear_block, spr_wall, + 100, 1, 0, c_red,,,,,"Appear Block 3", "This block appears and disappears in cycles");
-					scr_draw_level_editor_placable_object(order_index, LEVEL_OBJECT_ID.ID_APPEAR_BLOCK_4, true, spr_appear_block, spr_wall, + 100, 1, 0, c_purple,,,,,"Appear Block 4", "This block appears and disappears in cycles");
-					scr_draw_level_editor_placable_object(order_index, LEVEL_OBJECT_ID.ID_APPEAR_BLOCK_5, true, spr_appear_block, spr_wall, + 100, 1, 0, c_lime,,,,,"Appear Block 5", "This block appears and disappears in cycles");
-				}
-				#endregion /* Terrain Objects END */
-				
-				#region /* Decoration Objects */
-				if (current_object_category == "decoration")
-				{
-					scr_draw_level_editor_placable_object(order_index, LEVEL_OBJECT_ID.ID_ARROW_SIGN, false, spr_arrow_sign, spr_wall, + 100, 1, 0, c_white,,,,,"Arrow Sign");
-					scr_draw_level_editor_placable_object(order_index, LEVEL_OBJECT_ID.ID_SIGN_READABLE, false, spr_sign_readable, spr_wall, + 100, 1, 0, c_white,,,,,"Readable Sign", "Click on the placed sign in the editor to edit what it should say!");
-					scr_draw_level_editor_placable_object(order_index, LEVEL_OBJECT_ID.ID_BIRD, true, spr_bird, spr_wall, + 100, 1, 0, c_white,,,,,"Bird");
-					scr_draw_level_editor_placable_object(order_index, LEVEL_OBJECT_ID.ID_BUSH, true, spr_bush, spr_wall, + 100, 1, 0, c_white,,,,,"Bush");
-					scr_draw_level_editor_placable_object(order_index, LEVEL_OBJECT_ID.ID_SIGN_CROUCH, true, spr_sign_crouch, spr_wall, + 100, 0.5, 0, c_white,,,,,"Tutorial Signs", "Teach the player what abilities they have");
-					scr_draw_level_editor_placable_object(order_index, LEVEL_OBJECT_ID.ID_CAKE_STEALING_ENEMY, false, global.resource_pack_sprite_cake, spr_wall, + 100, 1, 0, c_white,,,,, "Cake Rat", "This rat stole your cake! Let the player try to catch them before the end of the level\nThe player will chase this rat until the very end of the game");
-				}
-				#endregion /* Decoration Objects END */
-				
-				#region /* Item Objects */
-				if (current_object_category == "item")
-				{
-					scr_draw_level_editor_placable_object(order_index, LEVEL_OBJECT_ID.ID_BASIC_COLLECTIBLE, true, global.resource_pack_sprite_basic_collectible, spr_wall, + 100, 1, 0, c_white,,,,,"Fish", "One of the most fundemental objects to include in a level!\nFish usually come in small groups and can also be used to indicate a path");
-					scr_draw_level_editor_placable_object(order_index, LEVEL_OBJECT_ID.ID_BIG_COLLECTIBLE, false, global.resource_pack_sprite_big_collectible, spr_wall, + 100, 1, 0, c_white,,,,,"Big Fish", "A collectible that can be a good way to make your level more fun");
-					scr_draw_level_editor_placable_object(order_index, LEVEL_OBJECT_ID.ID_HEART, true, spr_heart, spr_wall, + 100, 1, 0, c_white,,,,,"Heart Balloon", "Gives you one extra hit");
-					scr_draw_level_editor_placable_object(order_index, LEVEL_OBJECT_ID.ID_INVINCIBILITY_POWERUP, true, global.resource_pack_sprite_invincibility_powerup, spr_wall, + 100, 1, 0, c_white,,,,,"Invincibility", "Temporarily turns you invincible.\nDuring the power-up's duration you become invulnerable to enemy attacks\nand will defeat almost any enemy you collide with!");
-					scr_draw_level_editor_placable_object(order_index, LEVEL_OBJECT_ID.ID_ONE_UP, true, sprite_lives_icon, spr_wall, + 100, 1, 0, c_white,,,,,"Extra Life", "Adds 1 extra life to the life counter");
-				}
-				#endregion /* Item Objects END */
-				
-				#region /* Enemy Objects */
-				if (current_object_category == "enemy")
-				{
-					scr_draw_level_editor_placable_object(order_index, LEVEL_OBJECT_ID.ID_BASIC_ENEMY, true, sprite_basic_enemy, spr_wall, + 100, 1, 0, c_white,,,,,"Rat");
-					scr_draw_level_editor_placable_object(order_index, LEVEL_OBJECT_ID.ID_ENEMY_BOWLINGBALL, true, sprite_enemy_bowlingball, spr_wall, + 100, 1, 0, c_white,,,,,"Bowlingball Rat");
-					scr_draw_level_editor_placable_object(order_index, LEVEL_OBJECT_ID.ID_BIG_STATIONARY_ENEMY, true, sprite_big_stationary_enemy, spr_wall, + 100, 1, 0, c_white,,,,,"Big Rat");
-					scr_draw_level_editor_placable_object(order_index, LEVEL_OBJECT_ID.ID_BOSS, false, spr_boss_stand, spr_wall, + 100, 0.5, 0, c_white,,,,,"Mousette");
-				}
-				#endregion /* Enemy Objects END */
-				
-				#region /* Gizmo Objects */
-				if (current_object_category == "gizmo")
-				{
-					scr_draw_level_editor_placable_object(order_index, LEVEL_OBJECT_ID.ID_BLASTER, true, global.resource_pack_sprite_blaster, spr_wall, + 100, 1, 0, c_white, -16,,,,"Rat Blaster");
-					scr_draw_level_editor_placable_object(order_index, LEVEL_OBJECT_ID.ID_DOOR, false, spr_door, spr_wall, + 100, 1, 0, c_white, -16,,,,"Door", "Teleports you to another area when player enters door");
-					scr_draw_level_editor_placable_object(order_index, LEVEL_OBJECT_ID.ID_WARP_BOX, false, spr_warp_box, spr_wall, + 100, 1, 0, c_white,,,,,"Warp Box", "Instantly teleports you to another area\nRegular Warp Boxes can be used many times\nBroken Warp Boxes disappears after one use");
-					scr_draw_level_editor_placable_object(order_index, LEVEL_OBJECT_ID.ID_SPRING, false, spr_spring, spr_wall, + 100, 1, 0, c_white,,,,,"Spring");
-					scr_draw_level_editor_placable_object(order_index, LEVEL_OBJECT_ID.ID_LADDER, true, spr_ladder, spr_wall, + 100, 1, 0, c_white,,,,,"Ladder");
-					scr_draw_level_editor_placable_object(order_index, LEVEL_OBJECT_ID.ID_CHECKPOINT, false, spr_checkpoint_activated, spr_wall, + 100, 1, 0, c_white, -16,,,,"Checkpoint");
-					scr_draw_level_editor_placable_object(order_index, LEVEL_OBJECT_ID.ID_SPIKES_EMERGE_BLOCK, true, spr_spikes_emerge_block, spr_wall, + 100, 1, 0, c_white,,,,,"Emerging Spikes");
-					scr_draw_level_editor_placable_object(order_index, LEVEL_OBJECT_ID.ID_ONEWAY, false, spr_oneway, spr_wall, + 100, 1, 0, c_white, -16,,,,"One-Way Wall");
-					scr_draw_level_editor_placable_object(order_index, LEVEL_OBJECT_ID.ID_BUMP_IN_GROUND, true, spr_bump_in_ground, spr_wall, + 100, 1, 0, c_white, -16,,,,"Bump in Ground");
-					scr_draw_level_editor_placable_object(order_index, LEVEL_OBJECT_ID.ID_WALL_JUMP_PANEL, true, spr_wall_jump_panel, spr_wall, + 100, 1.5, 0, c_white, 0, +16,,,"Wall Jump Panel", "When a character doesn't have the wall jump ability lets even these characters wall jump");
-					scr_draw_level_editor_placable_object(order_index, LEVEL_OBJECT_ID.ID_WALL_CLIMB_PANEL, true, spr_wall_climb_panel, spr_wall, + 100, 1.5, 0, c_white, 0, +16,,,"Wall Climb Panel", "When a character doesn't have the wall climb ability lets even these characters wall climb");
-					scr_draw_level_editor_placable_object(order_index, LEVEL_OBJECT_ID.ID_HORIZONTAL_ROPE, true, spr_horizontal_rope, spr_wall, + 100, 1, 0, c_white,,,,,"Horizontal Rope");
-					scr_draw_level_editor_placable_object(order_index, LEVEL_OBJECT_ID.ID_WATER, false, spr_water_surface, spr_wall, + 100, 1, 0, c_white,,,,,"Water");
-					scr_draw_level_editor_placable_object(order_index, LEVEL_OBJECT_ID.ID_LAVA, false, spr_lava_surface, spr_wall, + 100, 1, 0, c_white,,,,,"Lava");
-					scr_draw_level_editor_placable_object(order_index, LEVEL_OBJECT_ID.ID_AIR_BUBBLES_SPAWNER, true, spr_air_bubbles_spawner, spr_wall, + 100, 1, 0, c_white,,,,,"Air Bubbles", "Some characters needs air when swimming underwater");
-					scr_draw_level_editor_placable_object(order_index, LEVEL_OBJECT_ID.ID_WATER_LEVEL_CHANGE_SLOW, false, spr_water_level_change_slow, spr_wall, + 100, 1, 0, c_white,,,,,"Change Water Level Slow");
-					scr_draw_level_editor_placable_object(order_index, LEVEL_OBJECT_ID.ID_WATER_LEVEL_CHANGE_FAST, false, spr_water_level_change_fast, spr_wall, + 100, 1, 0, c_white,,,,,"Change Water Level Fast");
-					scr_draw_level_editor_placable_object(order_index, LEVEL_OBJECT_ID.ID_WATER_LEVEL_CHANGE_FASTER, false, spr_water_level_change_faster, spr_wall, + 100, 1, 0, c_white,,,,,"Change Water Level Faster");
-					scr_draw_level_editor_placable_object(order_index, LEVEL_OBJECT_ID.ID_CLIPPED_SHIRT, true, spr_clipped_shirt, spr_wall, + 100, 1, 0, c_white,,,,,"Clipped Clothes");
-					scr_draw_level_editor_placable_object(order_index, LEVEL_OBJECT_ID.ID_BUCKET, true, spr_bucket, spr_wall, + 100, 1, 0, c_white,,,,,"Bucket", "Let clothes drop into the bucket to get rewards");
-					scr_draw_level_editor_placable_object(order_index, LEVEL_OBJECT_ID.ID_ARTWORK_COLLECTION, false, spr_artwork_collection, spr_wall, + 100, 1, 0, c_white,,,,,"Artwork Collection");
-					scr_draw_level_editor_placable_object(order_index, LEVEL_OBJECT_ID.ID_RING, false, spr_ring, spr_wall, + 100, 1, 0, c_white,,,,,"Ring", "Swing with long tongue on this ring");
-				}
-				#endregion /* Gizmo Objects END */
-				
-			}
-			#endregion /* If you are in the regular level editor, then use the regular object categories END */
-			
-			else
-			
-			#region /* If you are in the Daily Build mode in level editor, then use the Daily Build object categories */
-			if (if_daily_build)
-			{
-				
-				#region /* Daily Build Standard Objects */
-				if (current_object_category == "daily_build_standard")
-				{
-					scr_draw_level_editor_placable_object(order_index, LEVEL_OBJECT_ID.ID_WALL_GRASS, true, spr_wall_grass, spr_wall, + 100, 1, 0, c_white,,,,,"Grass");
-					scr_draw_level_editor_placable_object(order_index, LEVEL_OBJECT_ID.ID_WALL_STONE, true, spr_wall_stone, spr_wall, + 100, 1, 0, c_white,,,,,"Stone");
-					scr_draw_level_editor_placable_object(order_index, LEVEL_OBJECT_ID.ID_BRICK_BLOCK, true, spr_brick_block, spr_wall, + 100, 1, 0, c_white,,,,,"Lamp Block", "Can be destroyed by player jumping underneath them if there is no items inside\nClick on a placed Lamp Block to set its item!");
-					scr_draw_level_editor_placable_object(order_index, LEVEL_OBJECT_ID.ID_QUESTION_BLOCK, true, spr_question_block, spr_wall, + 100, 1, 0, c_white,,,,,"? Block", "Can't be destroyed by player jumping underneath them\nClick on a placed ? Block to set its item!");
-					scr_draw_level_editor_placable_object(order_index, LEVEL_OBJECT_ID.ID_CLOUD_BLOCK, true, spr_cloud_block, spr_wall, + 100, 1, 0, c_white,,,,,"Cloud Block");
-					scr_draw_level_editor_placable_object(order_index, LEVEL_OBJECT_ID.ID_CARDBOARD, true, spr_cardboard, spr_cardboard, + 100, 0.75, 0, c_white, 0, -8,,,"Cardboard");
-					scr_draw_level_editor_placable_object(order_index, LEVEL_OBJECT_ID.ID_CARDBOARD_LONG, true, spr_cardboard_long, spr_cardboard_long, + 100, 0.5, 0, c_white, 0, -16,,,"Long Cardboard");
-					scr_draw_level_editor_placable_object(order_index, LEVEL_OBJECT_ID.ID_BIRD, true, spr_bird, spr_wall, + 100, 1, 0, c_white,,,,,"Bird");
-					scr_draw_level_editor_placable_object(order_index, LEVEL_OBJECT_ID.ID_SIGN_CROUCH, true, spr_sign_crouch, spr_wall, + 100, 0.5, 0, c_white,,,,,"Tutorial Signs", "Teach the player what abilities they have");
-					scr_draw_level_editor_placable_object(order_index, LEVEL_OBJECT_ID.ID_CAKE_STEALING_ENEMY, false, global.resource_pack_sprite_cake, spr_wall, + 100, 1, 0, c_white,,,,, "Cake Rat", "This rat stole your cake! Let the player try to catch them before the end of the level\nThe player will chase this rat until the very end of the game");
-					scr_draw_level_editor_placable_object(order_index, LEVEL_OBJECT_ID.ID_BASIC_COLLECTIBLE, true, global.resource_pack_sprite_basic_collectible, spr_wall, + 100, 1, 0, c_white,,,,,"Fish", "One of the most fundemental objects to include in a level!\nFish usually come in small groups and can also be used to indicate a path");
-					scr_draw_level_editor_placable_object(order_index, LEVEL_OBJECT_ID.ID_BIG_COLLECTIBLE, false, global.resource_pack_sprite_big_collectible, spr_wall, + 100, 1, 0, c_white,,,,,"Big Fish", "A collectible that can be a good way to make your level more fun");
-					scr_draw_level_editor_placable_object(order_index, LEVEL_OBJECT_ID.ID_BASIC_ENEMY, true, sprite_basic_enemy, spr_wall, + 100, 1, 0, c_white,,,,,"Rat");
-					scr_draw_level_editor_placable_object(order_index, LEVEL_OBJECT_ID.ID_LADDER, true, spr_ladder, spr_wall, + 100, 1, 0, c_white,,,,,"Ladder");
-					scr_draw_level_editor_placable_object(order_index, LEVEL_OBJECT_ID.ID_CHECKPOINT, false, spr_checkpoint_activated, spr_wall, + 100, 1, 0, c_white, -16,,,,"Checkpoint");
-					scr_draw_level_editor_placable_object(order_index, LEVEL_OBJECT_ID.ID_BUMP_IN_GROUND, true, spr_bump_in_ground, spr_wall, + 100, 1, 0, c_white, -16,,,,"Bump in Ground");
-					scr_draw_level_editor_placable_object(order_index, LEVEL_OBJECT_ID.ID_WALL_JUMP_PANEL, true, spr_wall_jump_panel, spr_wall, + 100, 1.5, 0, c_white, 0, +16,,,"Wall Jump Panel", "When a character doesn't have the wall jump ability lets even these characters wall jump");
-					scr_draw_level_editor_placable_object(order_index, LEVEL_OBJECT_ID.ID_HORIZONTAL_ROPE, true, spr_horizontal_rope, spr_wall, + 100, 1, 0, c_white,,,,,"Horizontal Rope");
-					scr_draw_level_editor_placable_object(order_index, LEVEL_OBJECT_ID.ID_ARTWORK_COLLECTION, false, spr_artwork_collection, spr_wall, + 100, 1, 0, c_white,,,,,"Artwork Collection");
-				}
-				#endregion /* Daily Build Standard Objects END */
-				
-				#region /* Daily Build Featured Objects */
-				if (current_object_category == "daily_build_featured")
-				{
-					scr_draw_level_editor_placable_object(order_index, LEVEL_OBJECT_ID.ID_WALL_DIRT, true, spr_wall_dirt, spr_wall, + 100, 1, 0, c_white,,,,,"Dirt");
-					scr_draw_level_editor_placable_object(order_index, LEVEL_OBJECT_ID.ID_WALL_GLASS, true, spr_wall_glass, spr_wall, + 100, 1, 0, c_white,,,,,"Glass");
-					scr_draw_level_editor_placable_object(order_index, LEVEL_OBJECT_ID.ID_WALL_GRAVEL, true, spr_wall_gravel, spr_wall, + 100, 1, 0, c_white,,,,,"Gravel");
-					scr_draw_level_editor_placable_object(order_index, LEVEL_OBJECT_ID.ID_WALL_METAL, true, spr_wall_metal, spr_wall, + 100, 1, 0, c_white,,,,,"Metal");
-					scr_draw_level_editor_placable_object(order_index, LEVEL_OBJECT_ID.ID_WALL_WOOD, true, spr_wall_wood, spr_wall, + 100, 1, 0, c_white,,,,,"Wood");
-					scr_draw_level_editor_placable_object(order_index, LEVEL_OBJECT_ID.ID_BLACK_WALL, true, spr_black_wall, spr_wall, + 100, 1, 0, c_white,,,,,"Black Wall");
-					scr_draw_level_editor_placable_object(order_index, LEVEL_OBJECT_ID.ID_SPIKES, true, spr_spikes, spr_wall, + 100, 1, 0, c_white,,,,,"Spikes");
-					scr_draw_level_editor_placable_object(order_index, LEVEL_OBJECT_ID.ID_SEMISOLID_PLATFORM, true, spr_semisolid_platform, spr_wall, + 100, 1, 0, c_white,,,,,"Semisolid Platform");
-					scr_draw_level_editor_placable_object(order_index, LEVEL_OBJECT_ID.ID_HARD_BLOCK, true, spr_hard_block, spr_wall, + 100, 1, 0, c_white,,,,,"Hard Block");
-					scr_draw_level_editor_placable_object(order_index, LEVEL_OBJECT_ID.ID_FALLING_BLOCK, true, spr_falling_block, spr_wall, + 100, 1, 0, c_white,,,,,"Falling Block", "Falls shortly after you stand on them for too long");
-					scr_draw_level_editor_placable_object(order_index, LEVEL_OBJECT_ID.ID_FALLING_BLOCK_LONG, true, spr_falling_block_long, spr_cardboard, + 100, 1, 0, c_white, 0, -16,,,"Falling Block Long", "Falls shortly after you stand on them for too long");
-					scr_draw_level_editor_placable_object(order_index, LEVEL_OBJECT_ID.ID_INSTANT_FALLING_BLOCK, true, spr_falling_block, spr_wall, + 100, 1, 0, c_white,,,,,"Instant Falling Block", "Falls shortly after you stand on them for too long", 1);
-					scr_draw_level_editor_placable_object(order_index, LEVEL_OBJECT_ID.ID_INSTANT_FALLING_BLOCK_LONG, true, spr_falling_block_long, spr_cardboard, + 100, 1, 0, c_white, 0, -16,,,"Instant Falling Block Long", "Falls shortly after you stand on them for too long", 1);
-					scr_draw_level_editor_placable_object(order_index, LEVEL_OBJECT_ID.ID_WOOD_FALLING_BLOCK, true, spr_falling_block, spr_wall, + 100, 1, 0, c_white,,,,,"Wood Falling Block", "Falls shortly after you stand on them for too long", 2);
-					scr_draw_level_editor_placable_object(order_index, LEVEL_OBJECT_ID.ID_WOOD_FALLING_BLOCK_LONG, true, spr_falling_block_long, spr_cardboard, + 100, 1, 0, c_white, 0, -16,,,"Wood Falling Block Long", "Falls shortly after you stand on them for too long", 2);
-					scr_draw_level_editor_placable_object(order_index, LEVEL_OBJECT_ID.ID_STONE_FALLING_BLOCK, true, spr_falling_block, spr_wall, + 100, 1, 0, c_white,,,,,"Stone Falling Block", "Falls shortly after you stand on them for too long", 3);
-					scr_draw_level_editor_placable_object(order_index, LEVEL_OBJECT_ID.ID_STONE_FALLING_BLOCK_LONG, true, spr_falling_block_long, spr_cardboard, + 100, 1, 0, c_white, 0, -16,,,"Stone Falling Block Long", "Falls shortly after you stand on them for too long", 3);
-					scr_draw_level_editor_placable_object(order_index, LEVEL_OBJECT_ID.ID_ICE_BLOCK, true, spr_ice_block, spr_wall, + 100, 1, 0, c_white,,,,,"Ice Block");
-					scr_draw_level_editor_placable_object(order_index, LEVEL_OBJECT_ID.ID_ENEMY_ONLY_WALL, true, spr_enemy_only_wall, spr_wall, + 100, 1, 0, c_white,,,,,"Enemy Only Wall", "Only enemies can collide with this wall. Player will pass trough");
-					scr_draw_level_editor_placable_object(order_index, LEVEL_OBJECT_ID.ID_CARDBOARD_BLOCK, true, spr_cardboard_block, spr_wall, + 100, 1, 0, c_white,,,,,"Carbdoard Block");
-					scr_draw_level_editor_placable_object(order_index, LEVEL_OBJECT_ID.ID_MELON_BLOCK, true, spr_melon_block, spr_wall, + 100, 1, 0, c_white,,,,,"Melon Block", "Can only be destroyed with a ground-pound");
-					scr_draw_level_editor_placable_object(order_index, LEVEL_OBJECT_ID.ID_BOSS_BARRIER, true, spr_boss_barrier, spr_wall, + 100, 1, 0, c_white,,,,,"Boss Barrier", "This block dissapears when Mousette is defeated");
-					scr_draw_level_editor_placable_object(order_index, LEVEL_OBJECT_ID.ID_EYE_BLOCK, true, global.resource_pack_sprite_eye_block, spr_wall, + 100, 1, 0, c_white,,,,,"Eye Block", "This block is only solid when it can see its prey");
-					scr_draw_level_editor_placable_object(order_index, LEVEL_OBJECT_ID.ID_APPEAR_BLOCK_1, true, spr_appear_block, spr_wall, + 100, 1, 0, c_yellow,,,,,"Appear Block 1", "This block appears and disappears in cycles");
-					scr_draw_level_editor_placable_object(order_index, LEVEL_OBJECT_ID.ID_APPEAR_BLOCK_2, true, spr_appear_block, spr_wall, + 100, 1, 0, c_aqua,,,,,"Appear Block 2", "This block appears and disappears in cycles");
-					scr_draw_level_editor_placable_object(order_index, LEVEL_OBJECT_ID.ID_APPEAR_BLOCK_3, true, spr_appear_block, spr_wall, + 100, 1, 0, c_red,,,,,"Appear Block 3", "This block appears and disappears in cycles");
-					scr_draw_level_editor_placable_object(order_index, LEVEL_OBJECT_ID.ID_APPEAR_BLOCK_4, true, spr_appear_block, spr_wall, + 100, 1, 0, c_purple,,,,,"Appear Block 4", "This block appears and disappears in cycles");
-					scr_draw_level_editor_placable_object(order_index, LEVEL_OBJECT_ID.ID_APPEAR_BLOCK_5, true, spr_appear_block, spr_wall, + 100, 1, 0, c_lime,,,,,"Appear Block 5", "This block appears and disappears in cycles");
-					
-					scr_draw_level_editor_placable_object(order_index, LEVEL_OBJECT_ID.ID_ARROW_SIGN, false, spr_arrow_sign, spr_wall, + 100, 1, 0, c_white,,,,,"Arrow Sign");
-					scr_draw_level_editor_placable_object(order_index, LEVEL_OBJECT_ID.ID_SIGN_READABLE, false, spr_sign_readable, spr_wall, + 100, 1, 0, c_white,,,,,"Readable Sign", "Click on the placed sign in the editor to edit what it should say!");
-					scr_draw_level_editor_placable_object(order_index, LEVEL_OBJECT_ID.ID_BUSH, true, spr_bush, spr_wall, + 100, 1, 0, c_white,,,,,"Bush");
-					scr_draw_level_editor_placable_object(order_index, LEVEL_OBJECT_ID.ID_HEART, true, spr_heart, spr_wall, + 100, 1, 0, c_white,,,,,"Heart Balloon", "Gives you one extra hit");
-					scr_draw_level_editor_placable_object(order_index, LEVEL_OBJECT_ID.ID_INVINCIBILITY_POWERUP, true, global.resource_pack_sprite_invincibility_powerup, spr_wall, + 100, 1, 0, c_white,,,,,"Invincibility", "Temporarily turns you invincible.\nDuring the power-up's duration you become invulnerable to enemy attacks\nand will defeat almost any enemy you collide with!");
-					scr_draw_level_editor_placable_object(order_index, LEVEL_OBJECT_ID.ID_ONE_UP, true, sprite_lives_icon, spr_wall, + 100, 1, 0, c_white,,,,,"Extra Life", "Adds 1 extra life to the life counter");
-					
-					scr_draw_level_editor_placable_object(order_index, LEVEL_OBJECT_ID.ID_ENEMY_BOWLINGBALL, true, sprite_enemy_bowlingball, spr_wall, + 100, 1, 0, c_white,,,,,"Bowlingball Rat");
-					scr_draw_level_editor_placable_object(order_index, LEVEL_OBJECT_ID.ID_BIG_STATIONARY_ENEMY, true, sprite_big_stationary_enemy, spr_wall, + 100, 1, 0, c_white,,,,,"Big Rat");
-					scr_draw_level_editor_placable_object(order_index, LEVEL_OBJECT_ID.ID_BOSS, false, spr_boss_stand, spr_wall, + 100, 0.5, 0, c_white,,,,,"Mousette");
-					
-					scr_draw_level_editor_placable_object(order_index, LEVEL_OBJECT_ID.ID_BLASTER, true, global.resource_pack_sprite_blaster, spr_wall, + 100, 1, 0, c_white, -16,,,,"Rat Blaster");
-					scr_draw_level_editor_placable_object(order_index, LEVEL_OBJECT_ID.ID_DOOR, false, spr_door, spr_wall, + 100, 1, 0, c_white, -16,,,,"Door", "Teleports you to another area when player enters door");
-					scr_draw_level_editor_placable_object(order_index, LEVEL_OBJECT_ID.ID_WARP_BOX, false, spr_warp_box, spr_wall, + 100, 1, 0, c_white,,,,,"Warp Box", "Instantly teleports you to another area\nRegular Warp Boxes can be used many times\nBroken Warp Boxes disappears after one use");
-					scr_draw_level_editor_placable_object(order_index, LEVEL_OBJECT_ID.ID_SPRING, false, spr_spring, spr_wall, + 100, 1, 0, c_white,,,,,"Spring");
-					scr_draw_level_editor_placable_object(order_index, LEVEL_OBJECT_ID.ID_SPIKES_EMERGE_BLOCK, true, spr_spikes_emerge_block, spr_wall, + 100, 1, 0, c_white,,,,,"Emerging Spikes");
-					scr_draw_level_editor_placable_object(order_index, LEVEL_OBJECT_ID.ID_ONEWAY, false, spr_oneway, spr_wall, + 100, 1, 0, c_white, -16,,,,"One-Way Wall");
-					scr_draw_level_editor_placable_object(order_index, LEVEL_OBJECT_ID.ID_WALL_CLIMB_PANEL, true, spr_wall_climb_panel, spr_wall, + 100, 1.5, 0, c_white, 0, +16,,,"Wall Climb Panel", "When a character doesn't have the wall climb ability lets even these characters wall climb");
-					scr_draw_level_editor_placable_object(order_index, LEVEL_OBJECT_ID.ID_WATER, false, spr_water_surface, spr_wall, + 100, 1, 0, c_white,,,,,"Water");
-					scr_draw_level_editor_placable_object(order_index, LEVEL_OBJECT_ID.ID_LAVA, false, spr_lava_surface, spr_wall, + 100, 1, 0, c_white,,,,,"Lava");
-					scr_draw_level_editor_placable_object(order_index, LEVEL_OBJECT_ID.ID_AIR_BUBBLES_SPAWNER, true, spr_air_bubbles_spawner, spr_wall, + 100, 1, 0, c_white,,,,,"Air Bubbles", "Some characters needs air when swimming underwater");
-					scr_draw_level_editor_placable_object(order_index, LEVEL_OBJECT_ID.ID_WATER_LEVEL_CHANGE_SLOW, false, spr_water_level_change_slow, spr_wall, + 100, 1, 0, c_white,,,,,"Change Water Level Slow");
-					scr_draw_level_editor_placable_object(order_index, LEVEL_OBJECT_ID.ID_WATER_LEVEL_CHANGE_FAST, false, spr_water_level_change_fast, spr_wall, + 100, 1, 0, c_white,,,,,"Change Water Level Fast");
-					scr_draw_level_editor_placable_object(order_index, LEVEL_OBJECT_ID.ID_WATER_LEVEL_CHANGE_FASTER, false, spr_water_level_change_faster, spr_wall, + 100, 1, 0, c_white,,,,,"Change Water Level Faster");
-					scr_draw_level_editor_placable_object(order_index, LEVEL_OBJECT_ID.ID_CLIPPED_SHIRT, true, spr_clipped_shirt, spr_wall, + 100, 1, 0, c_white,,,,,"Clipped Clothes");
-					scr_draw_level_editor_placable_object(order_index, LEVEL_OBJECT_ID.ID_BUCKET, true, spr_bucket, spr_wall, + 100, 1, 0, c_white,,,,,"Bucket", "Let clothes drop into the bucket to get rewards");
-					scr_draw_level_editor_placable_object(order_index, LEVEL_OBJECT_ID.ID_RING, false, spr_ring, spr_wall, + 100, 1, 0, c_white,,,,,"Ring", "Swing with long tongue on this ring");
-				}
-				#endregion /* Daily Build Featured Objects END */
-				
-			}
-			#endregion /* If you are in the Daily Build mode in level editor, then use the Daily Build object categories END */
 			
 			scr_draw_text_outlined(display_get_gui_width() * 0.5, 114 + 64, l10n_text(current_object_name), global.default_text_size * 0.75, noone, c_white, selected_menu_alpha);
 			

@@ -1019,7 +1019,8 @@ function scr_option_level_editor()
 			if (have_custom_asset_background1)
 			{
 				draw_set_halign(fa_center);
-				scr_draw_text_outlined(level_editor_option_x + 620, change_background1_y + 24, l10n_text("Custom Asset Loaded"), global.default_text_size * 0.75, c_black, c_white, 1);
+				scr_draw_text_outlined(level_editor_option_x + 620, change_background1_y + 24 - 10, l10n_text("Custom Asset Loaded"), global.default_text_size * 0.6, c_black, c_white, 1);
+				scr_draw_text_outlined(level_editor_option_x + 620, change_background1_y + 24 + 10, l10n_text("Fallback") + ": " + string(global.default_background1), global.default_text_size * 0.6, c_black, c_white, 1);
 			}
 			else
 			{
@@ -1031,7 +1032,8 @@ function scr_option_level_editor()
 			if (have_custom_asset_background2)
 			{
 				draw_set_halign(fa_center);
-				scr_draw_text_outlined(level_editor_option_x + 620, change_background2_y + 24, l10n_text("Custom Asset Loaded"), global.default_text_size * 0.75, c_black, c_white, 1);
+				scr_draw_text_outlined(level_editor_option_x + 620, change_background2_y + 24 - 10, l10n_text("Custom Asset Loaded"), global.default_text_size * 0.6, c_black, c_white, 1);
+				scr_draw_text_outlined(level_editor_option_x + 620, change_background2_y + 24 + 10, l10n_text("Fallback") + ": " + string(global.default_background2), global.default_text_size * 0.6, c_black, c_white, 1);
 			}
 			else
 			{

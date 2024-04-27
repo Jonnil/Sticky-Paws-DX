@@ -755,10 +755,11 @@ function scr_select_custom_level_menu()
 		
 		if (can_input_level_name)
 		{
+			show_level_editor_corner_menu = false;
 			global.level_description = scr_draw_name_input_screen(global.level_description, 75, c_black, 1, false, get_window_width * 0.5, draw_description_input_screen_y, "level_editor_enter_description_ok", "level_editor_enter_description_cancel", false, true, false);
 			draw_set_halign(fa_center);
 			draw_set_valign(fa_middle);
-			scr_draw_text_outlined(get_window_width * 0.5, draw_description_input_screen_y - 32, l10n_text("Enter level description for") + " " + string(thumbnail_level_name[global.select_level_index]), global.default_text_size, c_black, c_white, 1);
+			scr_draw_text_outlined(get_window_width * 0.5, draw_description_input_screen_y - 96, l10n_text("Enter level description for") + " " + string(thumbnail_level_name[global.select_level_index]), global.default_text_size, c_black, c_white, 1);
 		}
 		
 		#region /* Input Level Description */
@@ -775,6 +776,7 @@ function scr_select_custom_level_menu()
 				&& (global.level_description != old_level_description)
 				{
 					can_navigate = true;
+					show_level_editor_corner_menu = true;
 					menu_delay = 3;
 					
 					ini_open(game_save_id + "custom_levels/" + global.level_name + "/data/level_information.ini");

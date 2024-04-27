@@ -1,4 +1,5 @@
 if (!global.actually_play_edited_level)
+&& (!global.play_edited_level)
 {
 	
 	if (quit_level_editor == 0)

@@ -722,18 +722,8 @@ function scr_draw_online_download_list()
 		{
 			var can_load_custom_level_assets_x = display_get_gui_width() - string_width(l10n_text("Load Custom Level Assets")) - 16;
 			var can_load_custom_level_assets_y = 16;
-			draw_menu_checkmark(can_load_custom_level_assets_x, can_load_custom_level_assets_y, l10n_text("Load Custom Level Assets"), "online_list_can_load_custom_level_assets", global.can_load_custom_level_assets, true);
+			global.can_load_custom_level_assets = draw_menu_checkmark(can_load_custom_level_assets_x, can_load_custom_level_assets_y, l10n_text("Load Custom Level Assets"), "online_list_can_load_custom_level_assets", global.can_load_custom_level_assets, true);
 			
-			if (point_in_rectangle(device_mouse_x_to_gui(0), device_mouse_y_to_gui(0), can_load_custom_level_assets_x, can_load_custom_level_assets_y - 6, can_load_custom_level_assets_x + 646, can_load_custom_level_assets_y + 38))
-			&& (global.controls_used_for_navigation == "mouse")
-			&& (mouse_check_button_released(mb_left))
-			&& (menu_delay == 0 && menu_joystick_delay == 0)
-			|| (menu == "online_list_can_load_custom_level_assets")
-			&& (key_a_pressed)
-			&& (menu_delay == 0 && menu_joystick_delay == 0)
-			{
-				global.can_load_custom_level_assets = !global.can_load_custom_level_assets;
-			}
 			scr_draw_option_description();
 		}
 		#endregion /* Draw the Load Custom Level Assets END */
