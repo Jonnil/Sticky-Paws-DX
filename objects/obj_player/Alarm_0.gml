@@ -167,6 +167,7 @@ sprite_spring_transition = scr_initialize_character_sprite("spring_transition", 
 sprite_spring_up = scr_initialize_character_sprite("spring_up", sprite_spring_up);
 sprite_idle_blink = scr_initialize_character_sprite("stand_blink", sprite_idle_blink);
 sprite_idle_animation1 = scr_initialize_character_sprite("idle_animation", sprite_idle_animation1);
+sprite_idle_animation1 = scr_initialize_character_sprite("idle_animation_one", sprite_idle_animation1);
 sprite_idle_animation2 = scr_initialize_character_sprite("idle_animation_two", sprite_idle_animation2);
 sprite_idle_animation3 = scr_initialize_character_sprite("idle_animation_three", sprite_idle_animation3);
 sprite_idle_animation4 = scr_initialize_character_sprite("idle_animation_four", sprite_idle_animation4);

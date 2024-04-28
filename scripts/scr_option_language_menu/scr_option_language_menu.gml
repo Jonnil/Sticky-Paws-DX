@@ -12,9 +12,13 @@ function scr_option_language_menu()
 		draw_set_halign(fa_left);
 		draw_set_valign(fa_middle);
 		
+		var match_system_language_x = 400;
+		var match_system_language_y = 32;
+		draw_menu_button(match_system_language_x, match_system_language_y, "Match System Language", "match_system_language", "match_system_language");
+		
 		for(var i = 1; i < ds_grid_width(global.language_local_data); i ++;)
 		{
-			draw_language_checkmark(400, 52 * (i - 1) + 42, global.language_local_data[# i, 0], "Language" + string(i));
+			draw_language_checkmark(400, 52 * (i - 1) + 84, global.language_local_data[# i, 0], "Language" + string(i));
 		}
 		
 		draw_set_halign(fa_right);
@@ -69,52 +73,67 @@ function scr_option_language_menu()
 		&& (can_navigate)
 		&& (global.settings_sidebar_menu = "language_settings")
 		{
-			if (global.controls_used_for_navigation != "mouse")
+			if (key_up)
+			&& (!open_dropdown)
 			{
-				if (key_up)
-				&& (!open_dropdown)
+				menu_delay = 3;
+				if (language_index <= 1)
 				{
-					menu_delay = 3;
+					menu = "match_system_language";
+				}
+				else
+				{
 					language_index = max(language_index - 1, 1)
 					menu = "Language" + string(language_index);
 					menu_cursor_y_position = language_index * 50;
 				}
-				else
-				if (key_down)
-				&& (!open_dropdown)
+			}
+			else
+			if (key_down)
+			&& (!open_dropdown)
+			{
+				menu_delay = 3;
+				if (menu == "match_system_language")
 				{
-					menu_delay = 3;
+					menu = "Language1";
+				}
+				else
+				{
 					language_index = min(language_index + 1, ds_grid_width(global.language_local_data) - 1)
 					menu = "Language" + string(language_index);
 					menu_cursor_y_position = language_index * 50;
 				}
-				else
-				if (key_a_pressed)
-				&& (!open_dropdown)
-				{
-					menu_delay = 3;
-					global.language_localization = language_index - 1;
-					calculate_translation_completion();
-					scr_set_font();
-				}
 			}
 			else
+			if (key_a_pressed)
+			&& (!open_dropdown)
+			&& (menu != "match_system_language")
 			{
-				if (key_up)
-				&& (!open_dropdown)
-				{
-					menu_delay = 3;
-					language_mouse_scroll = max(language_mouse_scroll - 10, 1)
-					menu_cursor_y_position = language_mouse_scroll * 50;
-				}
-				else
-				if (key_down)
-				&& (!open_dropdown)
-				{
-					menu_delay = 3;
-					language_mouse_scroll = min(language_mouse_scroll + 10, ds_grid_width(global.language_local_data) - 1)
-					menu_cursor_y_position = language_mouse_scroll * 50;
-				}
+				menu_delay = 3;
+				global.language_localization = language_index - 1;
+					
+				ini_open(game_save_id + "save_file/config.ini");
+				ini_write_real("config", "language_localization", global.language_localization);
+				ini_close();
+					
+				calculate_translation_completion();
+				scr_set_font();
+			}
+			else
+			if (key_a_pressed
+			|| mouse_check_button_released(mb_left)
+			&& point_in_rectangle(device_mouse_x_to_gui(0), device_mouse_y_to_gui(0), match_system_language_x, match_system_language_y, match_system_language_x + 370, match_system_language_y + 42))
+			&& (!open_dropdown)
+			&& (menu == "match_system_language")
+			{
+				menu_delay = 3;
+				scr_set_default_language();
+					
+				ini_open(game_save_id + "save_file/config.ini");
+				ini_write_real("config", "language_localization", global.language_localization);
+				ini_close();
+					
+				scr_set_font();
 			}
 		}
 		#endregion /* Language Menu Navigation */

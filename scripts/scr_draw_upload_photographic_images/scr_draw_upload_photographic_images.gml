@@ -105,42 +105,42 @@ function scr_draw_upload_photographic_images()
 			if (background1_exists)
 			{
 				background1_uses_photographic_image = draw_menu_checkmark(get_window_width * 0.5 - 300, 64 + checkmark_offset, l10n_text("Background 1"), "background1_uses_photographic_image", background1_uses_photographic_image, false);
-				checkmark_offset += 42;
+				checkmark_offset += 52;
 			}
 			if (background2_exists)
 			{
 				background2_uses_photographic_image = draw_menu_checkmark(get_window_width * 0.5 - 300, 64 + checkmark_offset, l10n_text("Background 2"), "background2_uses_photographic_image", background2_uses_photographic_image, false);
-				checkmark_offset += 42;
+				checkmark_offset += 52;
 			}
 			if (background3_exists)
 			{
 				background3_uses_photographic_image = draw_menu_checkmark(get_window_width * 0.5 - 300, 64 + checkmark_offset, l10n_text("Background 3"), "background3_uses_photographic_image", background3_uses_photographic_image, false);
-				checkmark_offset += 42;
+				checkmark_offset += 52;
 			}
 			if (background4_exists)
 			{
 				background3_uses_photographic_image = draw_menu_checkmark(get_window_width * 0.5 - 300, 64 + checkmark_offset, l10n_text("Background 4"), "background4_uses_photographic_image", background4_uses_photographic_image, false);
-				checkmark_offset += 42;
+				checkmark_offset += 52;
 			}
 			if (foreground1_exists)
 			{
 				foreground1_uses_photographic_image = draw_menu_checkmark(get_window_width * 0.5 - 300, 64 + checkmark_offset, l10n_text("Foreground 1"), "foreground1_uses_photographic_image", foreground1_uses_photographic_image, false);
-				checkmark_offset += 42;
+				checkmark_offset += 52;
 			}
 			if (foreground1_5_exists)
 			{
 				foreground1_5_uses_photographic_image = draw_menu_checkmark(get_window_width * 0.5 - 300, 64 + checkmark_offset, l10n_text("Foreground 1.5"), "foreground1_5_uses_photographic_image", foreground1_5_uses_photographic_image, false);
-				checkmark_offset += 42;
+				checkmark_offset += 52;
 			}
 			if (foreground2_exists)
 			{
 				foreground2_uses_photographic_image = draw_menu_checkmark(get_window_width * 0.5 - 300, 64 + checkmark_offset, l10n_text("Foreground 2"), "foreground2_uses_photographic_image", foreground2_uses_photographic_image, false);
-				checkmark_offset += 42;
+				checkmark_offset += 52;
 			}
 			if (foreground_secret_exists)
 			{
 				foreground_secret_uses_photographic_image = draw_menu_checkmark(get_window_width * 0.5 - 300, 64 + checkmark_offset, l10n_text("Foreground Secret"), "foreground_secret_uses_photographic_image", foreground_secret_uses_photographic_image, false);
-				checkmark_offset += 42;
+				checkmark_offset += 52;
 			}
 			thumbnail_uses_photographic_image = draw_menu_checkmark(get_window_width * 0.5 - 300, 64 + checkmark_offset, l10n_text("Thumbnail"), "thumbnail_uses_photographic_image", thumbnail_uses_photographic_image, false);
 		}

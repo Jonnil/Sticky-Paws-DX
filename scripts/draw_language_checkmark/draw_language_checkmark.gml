@@ -94,6 +94,11 @@ function draw_language_checkmark(x_position, y_position, string_text, menu_index
 	&& (!open_dropdown)
 	{	
 		global.language_localization = real(string_delete(menu_index, 1, 8)-1);
+		
+		ini_open(game_save_id + "save_file/config.ini");
+		ini_write_real("config", "language_localization", global.language_localization);
+		ini_close();
+		
 		calculate_translation_completion()
 		language_index = real(string_delete(menu_index, 1, 8))
 		menu = menu_index;
