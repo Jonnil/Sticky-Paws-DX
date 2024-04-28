@@ -64,11 +64,11 @@ function scr_draw_level_editor_pause_menu()
 				draw_set_valign(fa_middle);
 				if (level_made_in_what_version_text != "")
 				{
-					scr_draw_text_outlined(get_window_width * 0.5, get_window_height - 32 - 32, string(level_made_in_what_version_text), global.default_text_size * 0.75, c_black, c_white, 1);
+					scr_draw_text_outlined(get_window_width * 0.5 - 100, get_window_height - 32 - 32, string(level_made_in_what_version_text), global.default_text_size * 0.75, c_black, c_white, 1);
 				}
 				if (first_created_on_version != "")
 				{
-					scr_draw_text_outlined(get_window_width * 0.5, get_window_height - 32, l10n_text("First created on version") + ": " + string(first_created_on_version), global.default_text_size, c_black, c_white, 1);
+					scr_draw_text_outlined(get_window_width * 0.5 - 100, get_window_height - 32, l10n_text("First created on version") + ": " + string(first_created_on_version), global.default_text_size, c_black, c_white, 1);
 				}
 			}
 			#endregion /* Show what version of the game the level was first created in END */

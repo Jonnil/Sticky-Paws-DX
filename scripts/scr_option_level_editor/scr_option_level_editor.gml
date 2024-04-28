@@ -1,10 +1,12 @@
 function scr_option_level_editor()
 {
-	var get_window_height = display_get_gui_height();
-	var get_window_width = display_get_gui_width();
-	
 	if (pause)
 	{
+		var get_window_height = display_get_gui_height();
+		var get_window_width = display_get_gui_width();
+		var button_info = "";
+		var parallax_info = "";
+		
 		var level_editor_option_x = (get_window_width * 0.5) - 200;
 		var option_level_editor_right_arrow_x = (get_window_width * 0.5) - 200 + 50;
 		var custom_background_x_offset1_y = (40 * 3);
@@ -1045,7 +1047,8 @@ function scr_option_level_editor()
 			if (have_custom_asset_background3)
 			{
 				draw_set_halign(fa_center);
-				scr_draw_text_outlined(level_editor_option_x + 620, change_background3_y + 24, l10n_text("Custom Asset Loaded"), global.default_text_size * 0.75, c_black, c_white, 1);
+				scr_draw_text_outlined(level_editor_option_x + 620, change_background3_y + 24 - 10, l10n_text("Custom Asset Loaded"), global.default_text_size * 0.6, c_black, c_white, 1);
+				scr_draw_text_outlined(level_editor_option_x + 620, change_background3_y + 24 + 10, l10n_text("Fallback") + ": " + string(global.default_background3), global.default_text_size * 0.6, c_black, c_white, 1);
 			}
 			else
 			{
@@ -1057,7 +1060,8 @@ function scr_option_level_editor()
 			if (have_custom_asset_background4)
 			{
 				draw_set_halign(fa_center);
-				scr_draw_text_outlined(level_editor_option_x + 620, change_background4_y + 24, l10n_text("Custom Asset Loaded"), global.default_text_size * 0.75, c_black, c_white, 1);
+				scr_draw_text_outlined(level_editor_option_x + 620, change_background4_y + 24 - 10, l10n_text("Custom Asset Loaded"), global.default_text_size * 0.6, c_black, c_white, 1);
+				scr_draw_text_outlined(level_editor_option_x + 620, change_background4_y + 24 + 10, l10n_text("Fallback") + ": " + string(global.default_background4), global.default_text_size * 0.6, c_black, c_white, 1);
 			}
 			else
 			{
@@ -1079,7 +1083,8 @@ function scr_option_level_editor()
 			if (have_custom_asset_foreground1)
 			{
 				draw_set_halign(fa_center);
-				scr_draw_text_outlined(level_editor_option_x + 620, change_foreground1_y + 24, l10n_text("Custom Asset Loaded"), global.default_text_size * 0.75, c_black, c_white, 1);
+				scr_draw_text_outlined(level_editor_option_x + 620, change_foreground1_y + 24 - 10, l10n_text("Custom Asset Loaded"), global.default_text_size * 0.6, c_black, c_white, 1);
+				scr_draw_text_outlined(level_editor_option_x + 620, change_foreground1_y + 24 + 10, l10n_text("Fallback") + ": " + string(global.default_foreground1), global.default_text_size * 0.6, c_black, c_white, 1);
 			}
 			else
 			{
@@ -1091,7 +1096,8 @@ function scr_option_level_editor()
 			if (have_custom_asset_foreground1_5)
 			{
 				draw_set_halign(fa_center);
-				scr_draw_text_outlined(level_editor_option_x + 620, change_foreground1_5_y + 24, l10n_text("Custom Asset Loaded"), global.default_text_size * 0.75, c_black, c_white, 1);
+				scr_draw_text_outlined(level_editor_option_x + 620, change_foreground1_5_y + 24 - 10, l10n_text("Custom Asset Loaded"), global.default_text_size * 0.6, c_black, c_white, 1);
+				scr_draw_text_outlined(level_editor_option_x + 620, change_foreground1_5_y + 24 + 10, l10n_text("Fallback") + ": " + string(global.default_foreground1_5), global.default_text_size * 0.6, c_black, c_white, 1);
 			}
 			else
 			{
@@ -1103,7 +1109,8 @@ function scr_option_level_editor()
 			if (have_custom_asset_foreground2)
 			{
 				draw_set_halign(fa_center);
-				scr_draw_text_outlined(level_editor_option_x + 620, change_foreground2_y + 24, l10n_text("Custom Asset Loaded"), global.default_text_size * 0.75, c_black, c_white, 1);
+				scr_draw_text_outlined(level_editor_option_x + 620, change_foreground2_y + 24 - 10, l10n_text("Custom Asset Loaded"), global.default_text_size * 0.6, c_black, c_white, 1);
+				scr_draw_text_outlined(level_editor_option_x + 620, change_foreground2_y + 24 + 10, l10n_text("Fallback") + ": " + string(global.default_foreground2), global.default_text_size * 0.6, c_black, c_white, 1);
 			}
 			else
 			{
@@ -1115,7 +1122,8 @@ function scr_option_level_editor()
 			if (have_custom_asset_foreground_secret)
 			{
 				draw_set_halign(fa_center);
-				scr_draw_text_outlined(level_editor_option_x + 620, change_foreground_secret_y + 24, l10n_text("Custom Asset Loaded"), global.default_text_size * 0.75, c_black, c_white, 1);
+				scr_draw_text_outlined(level_editor_option_x + 620, change_foreground_secret_y + 24 - 10, l10n_text("Custom Asset Loaded"), global.default_text_size * 0.6, c_black, c_white, 1);
+				scr_draw_text_outlined(level_editor_option_x + 620, change_foreground_secret_y + 24 + 10, l10n_text("Fallback") + ": " + string(global.default_foreground_secret), global.default_text_size * 0.6, c_black, c_white, 1);
 			}
 			else
 			{
@@ -1194,6 +1202,8 @@ function scr_option_level_editor()
 			else
 			if (menu == "change_background1")
 			{
+				button_info = "Change the background furthest back";
+				parallax_info = "Is affected by parallax scrolling";
 				if (key_a_pressed)
 				&& (menu_delay == 0 && menu_joystick_delay == 0)
 				&& (!open_dropdown)
@@ -1229,6 +1239,8 @@ function scr_option_level_editor()
 			else
 			if (menu == "change_background2")
 			{
+				button_info = "Change the background 2nd furthest back. Is affected by parallax scrolling";
+				parallax_info = "Is affected by parallax scrolling";
 				if (key_a_pressed)
 				&& (menu_delay == 0 && menu_joystick_delay == 0)
 				&& (!open_dropdown)
@@ -1264,6 +1276,8 @@ function scr_option_level_editor()
 			else
 			if (menu == "change_background3")
 			{
+				button_info = "Change the background 3rd furthest back";
+				parallax_info = "Is affected by parallax scrolling";
 				if (key_a_pressed)
 				&& (menu_delay == 0 && menu_joystick_delay == 0)
 				&& (!open_dropdown)
@@ -1299,6 +1313,8 @@ function scr_option_level_editor()
 			else
 			if (menu == "change_background4")
 			{
+				button_info = "Change the background 4th furthest back";
+				parallax_info = "Is affected by parallax scrolling";
 				if (key_a_pressed)
 				&& (menu_delay == 0 && menu_joystick_delay == 0)
 				&& (!open_dropdown)
@@ -1369,6 +1385,8 @@ function scr_option_level_editor()
 			else
 			if (menu == "change_foreground1")
 			{
+				button_info = "Change the foreground below all objects";
+				parallax_info = "Not affected by parallax scrolling";
 				if (key_a_pressed)
 				&& (menu_delay == 0 && menu_joystick_delay == 0)
 				&& (!open_dropdown)
@@ -1404,6 +1422,8 @@ function scr_option_level_editor()
 			else
 			if (menu == "change_foreground1_5")
 			{
+				button_info = "Change the foreground above static objects but behind moving objects";
+				parallax_info = "Not affected by parallax scrolling";
 				if (key_a_pressed)
 				&& (menu_delay == 0 && menu_joystick_delay == 0)
 				&& (!open_dropdown)
@@ -1439,6 +1459,8 @@ function scr_option_level_editor()
 			else
 			if (menu == "change_foreground2")
 			{
+				button_info = "Change the foreground above all objects";
+				parallax_info = "Not affected by parallax scrolling";
 				if (key_a_pressed)
 				&& (menu_delay == 0 && menu_joystick_delay == 0)
 				&& (!open_dropdown)
@@ -1474,6 +1496,8 @@ function scr_option_level_editor()
 			else
 			if (menu == "change_foreground_secret")
 			{
+				button_info = "Change the foreground above all objects, but fades away when player is behind it";
+				parallax_info = "Not affected by parallax scrolling";
 				if (key_a_pressed)
 				&& (menu_delay == 0 && menu_joystick_delay == 0)
 				&& (!open_dropdown)
@@ -1862,6 +1886,10 @@ function scr_option_level_editor()
 			}
 			#endregion /* Navigate remove backgrounds END */
 			
+			/* Show information about what each background layer properties are */
+			draw_set_halign(fa_center);
+			scr_draw_text_outlined(get_window_width * 0.5, get_window_height - 42, l10n_text(button_info), global.default_text_size, c_black, c_white, 1);
+			scr_draw_text_outlined(get_window_width * 0.5, get_window_height - 16, l10n_text(parallax_info), global.default_text_size * 0.75, c_black, c_white, 1);
 		}
 		#endregion /* Change Background Menu END */
 		
@@ -1917,7 +1945,8 @@ function scr_option_level_editor()
 			if (have_custom_asset_music)
 			{
 				draw_set_halign(fa_center);
-				scr_draw_text_outlined(level_editor_option_x + 620, change_music_overworld_y + 24, l10n_text("Custom Asset Loaded"), global.default_text_size * 0.75, c_black, c_white, 1);
+				scr_draw_text_outlined(level_editor_option_x + 620, change_music_overworld_y + 24 - 10, l10n_text("Custom Asset Loaded"), global.default_text_size * 0.6, c_black, c_white, 1);
+				scr_draw_text_outlined(level_editor_option_x + 620, change_music_overworld_y + 24 + 10, l10n_text("Fallback") + ": " + string(global.default_music_overworld), global.default_text_size * 0.6, c_black, c_white, 1);
 			}
 			else
 			{
@@ -1929,7 +1958,8 @@ function scr_option_level_editor()
 			if (have_custom_asset_music_underwater)
 			{
 				draw_set_halign(fa_center);
-				scr_draw_text_outlined(level_editor_option_x + 620, change_music_underwater_y + 24, l10n_text("Custom Asset Loaded"), global.default_text_size * 0.75, c_black, c_white, 1);
+				scr_draw_text_outlined(level_editor_option_x + 620, change_music_underwater_y + 24 - 10, l10n_text("Custom Asset Loaded"), global.default_text_size * 0.6, c_black, c_white, 1);
+				scr_draw_text_outlined(level_editor_option_x + 620, change_music_underwater_y + 24 + 10, l10n_text("Fallback") + ": " + string(global.default_music_underwater), global.default_text_size * 0.6, c_black, c_white, 1);
 			}
 			else
 			{
@@ -1941,7 +1971,8 @@ function scr_option_level_editor()
 			if (have_custom_asset_ambience)
 			{
 				draw_set_halign(fa_center);
-				scr_draw_text_outlined(level_editor_option_x + 620, change_ambience_overworld_y + 24, l10n_text("Custom Asset Loaded"), global.default_text_size * 0.75, c_black, c_white, 1);
+				scr_draw_text_outlined(level_editor_option_x + 620, change_ambience_overworld_y + 24 - 10, l10n_text("Custom Asset Loaded"), global.default_text_size * 0.6, c_black, c_white, 1);
+				scr_draw_text_outlined(level_editor_option_x + 620, change_ambience_overworld_y + 24 + 10, l10n_text("Fallback") + ": " + string(global.default_ambience_overworld), global.default_text_size * 0.6, c_black, c_white, 1);
 			}
 			else
 			{
@@ -1953,7 +1984,8 @@ function scr_option_level_editor()
 			if (have_custom_asset_ambience_underwater)
 			{
 				draw_set_halign(fa_center);
-				scr_draw_text_outlined(level_editor_option_x + 620, change_ambience_underwater_y + 24, l10n_text("Custom Asset Loaded"), global.default_text_size * 0.75, c_black, c_white, 1);
+				scr_draw_text_outlined(level_editor_option_x + 620, change_ambience_underwater_y + 24 - 10, l10n_text("Custom Asset Loaded"), global.default_text_size * 0.6, c_black, c_white, 1);
+				scr_draw_text_outlined(level_editor_option_x + 620, change_ambience_underwater_y + 24 + 10, l10n_text("Fallback") + ": " + string(global.default_ambience_underwater), global.default_text_size * 0.6, c_black, c_white, 1);
 			}
 			else
 			{
@@ -1965,7 +1997,8 @@ function scr_option_level_editor()
 			if (have_custom_asset_clear_melody)
 			{
 				draw_set_halign(fa_center);
-				scr_draw_text_outlined(level_editor_option_x + 620, change_clear_melody_y + 24, l10n_text("Custom Asset Loaded"), global.default_text_size * 0.75, c_black, c_white, 1);
+				scr_draw_text_outlined(level_editor_option_x + 620, change_clear_melody_y + 24 - 10, l10n_text("Custom Asset Loaded"), global.default_text_size * 0.6, c_black, c_white, 1);
+				scr_draw_text_outlined(level_editor_option_x + 620, change_clear_melody_y + 24 + 10, l10n_text("Fallback") + ": " + string(global.default_clear_melody), global.default_text_size * 0.6, c_black, c_white, 1);
 			}
 			else
 			{
@@ -3992,14 +4025,14 @@ function scr_option_level_editor()
 					if (level_editor_option_back_to_menu == "remove_ambience_overworld")
 					{
 						ini_open(game_save_id + "custom_levels/" + global.level_name + "/data/level_information.ini");
-						ini_write_string("info", "default_ambience_music", "");
+						ini_write_string("info", "default_ambience_overworld", "");
 						ini_close(); switch_save_data_commit(); /* Remember to commit the save data! */
 					}
 					else
 					if (level_editor_option_back_to_menu == "remove_ambience_underwater")
 					{
 						ini_open(game_save_id + "custom_levels/" + global.level_name + "/data/level_information.ini");
-						ini_write_string("info", "default_ambience_music", "");
+						ini_write_string("info", "default_ambience_underwater", "");
 						ini_close(); switch_save_data_commit(); /* Remember to commit the save data! */
 					}
 					else
@@ -4011,8 +4044,16 @@ function scr_option_level_editor()
 					}
 					#endregion /* Set default theme values to empty string END */
 					
-					scr_update_all_backgrounds();
-					scr_update_all_music()
+					if (level_editor_option_back_to_menu != "change_all_music") /* Don't reload all backgrounds if you are only changing sound related options */
+					&& (level_editor_option_back_to_menu != "change_music_overworld")
+					&& (level_editor_option_back_to_menu != "change_music_underwater")
+					&& (level_editor_option_back_to_menu != "change_ambience_overworld")
+					&& (level_editor_option_back_to_menu != "change_ambience_underwater")
+					&& (level_editor_option_back_to_menu != "change_clear_melody")
+					{
+						scr_update_all_backgrounds();
+					}
+					scr_update_all_music();
 					
 					menu = level_editor_option_back_to_menu; /* Lastly, go back to the previous menu */
 					menu_delay = 3;

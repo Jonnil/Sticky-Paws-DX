@@ -37,7 +37,7 @@
     <SupportedLanguage>Japanese</SupportedLanguage>
     <Screenshot>Allow</Screenshot>
     <DataLossConfirmation>None</DataLossConfirmation>
-    <UserAccountSaveDataSize>0x0000000002f00000</UserAccountSaveDataSize>
+    <UserAccountSaveDataSize>0x0000000003000000</UserAccountSaveDataSize>
     <UserAccountSaveDataJournalSize>0x0000000001000000</UserAccountSaveDataJournalSize>
     <LogoType>LicensedByNintendo</LogoType>
     <LogoHandling>Auto</LogoHandling>
@@ -93,8 +93,6 @@
     <CrashScreenshotForDev>Deny</CrashScreenshotForDev>
     <PlayLogQueryCapability>None</PlayLogQueryCapability>
     <PlayLogPolicy>Open</PlayLogPolicy>
-    <UserAccountSaveDataSizeMax>0x0000000010000000</UserAccountSaveDataSizeMax>
-    <UserAccountSaveDataJournalSizeMax>0x0000000002000000</UserAccountSaveDataJournalSizeMax>
     <TemporaryStorageSize>0x000000001ff00000</TemporaryStorageSize>
   </Application>
 </NintendoSdkMeta>

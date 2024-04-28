@@ -142,52 +142,44 @@ function scr_spawn_objects_when_starting_room()
 			    case LEVEL_OBJECT_ID.ID_FALLING_BLOCK:
 			        with(instance_create_depth(x, y, 0, obj_falling_block)) {
 						sprite_index = spr_falling_block;
-						image_index = 0;
 					}
 			        break;
 			    case LEVEL_OBJECT_ID.ID_FALLING_BLOCK_SOLID:
 			        with(instance_create_depth(x, y, 0, obj_falling_block_solid_spawner)) {
 						sprite_index = spr_falling_block_solid;
-						image_index = 0;
 					}
 					break;
 				
 				case LEVEL_OBJECT_ID.ID_INSTANT_FALLING_BLOCK:
 			        with(instance_create_depth(x, y, 0, obj_falling_block)) {
-						sprite_index = spr_falling_block;
-						image_index = 1;
+						sprite_index = spr_instant_falling_block;
 					}
 			        break;
 			    case LEVEL_OBJECT_ID.ID_INSTANT_FALLING_BLOCK_SOLID:
 			        with(instance_create_depth(x, y, 0, obj_falling_block_solid_spawner)) {
-						sprite_index = spr_falling_block_solid;
-						image_index = 1;
+						sprite_index = spr_instant_falling_block_solid;
 					}
 					break;
 				
 				case LEVEL_OBJECT_ID.ID_WOOD_FALLING_BLOCK:
 			        with(instance_create_depth(x, y, 0, obj_falling_block)) {
-						sprite_index = spr_falling_block;
-						image_index = 2;
+						sprite_index = spr_wood_falling_block;
 					}
 			        break;
 			    case LEVEL_OBJECT_ID.ID_WOOD_FALLING_BLOCK_SOLID:
 			        with(instance_create_depth(x, y, 0, obj_falling_block_solid_spawner)) {
-						sprite_index = spr_falling_block_solid;
-						image_index = 2;
+						sprite_index = spr_wood_falling_block_solid;
 					}
 					break;
 				
 				case LEVEL_OBJECT_ID.ID_STONE_FALLING_BLOCK:
 			        with(instance_create_depth(x, y, 0, obj_falling_block)) {
-						sprite_index = spr_falling_block;
-						image_index = 3;
+						sprite_index = spr_stone_falling_block;
 					}
 			        break;
 			    case LEVEL_OBJECT_ID.ID_STONE_FALLING_BLOCK_SOLID:
 			        with(instance_create_depth(x, y, 0, obj_falling_block_solid_spawner)) {
-						sprite_index = spr_falling_block_solid;
-						image_index = 3;
+						sprite_index = spr_stone_falling_block_solid;
 					}
 					break;
 			    #endregion /* Falling Blocks END */
@@ -196,52 +188,44 @@ function scr_spawn_objects_when_starting_room()
 				case LEVEL_OBJECT_ID.ID_FALLING_BLOCK_LONG:
 			        with(instance_create_depth(x, y, 0, obj_falling_block)) {
 						sprite_index = spr_falling_block_long;
-						image_index = 0;
 					}
 			        break;
 			    case LEVEL_OBJECT_ID.ID_FALLING_BLOCK_LONG_SOLID:
 			        with(instance_create_depth(x, y, 0, obj_falling_block_solid_spawner)) {
 						sprite_index = spr_falling_block_long_solid;
-						image_index = 0;
 					}
 			        break;
 				
 				case LEVEL_OBJECT_ID.ID_INSTANT_FALLING_BLOCK_LONG:
 			        with(instance_create_depth(x, y, 0, obj_falling_block)) {
-						sprite_index = spr_falling_block_long;
-						image_index = 1;
+						sprite_index = spr_instant_falling_block_long;
 					}
 			        break;
 			    case LEVEL_OBJECT_ID.ID_INSTANT_FALLING_BLOCK_LONG_SOLID:
 			        with(instance_create_depth(x, y, 0, obj_falling_block_solid_spawner)) {
-						sprite_index = spr_falling_block_long_solid;
-						image_index = 1;
+						sprite_index = spr_instant_falling_block_long_solid;
 					}
 			        break;
 				
 				case LEVEL_OBJECT_ID.ID_WOOD_FALLING_BLOCK_LONG:
 			        with(instance_create_depth(x, y, 0, obj_falling_block)) {
-						sprite_index = spr_falling_block_long;
-						image_index = 2;
+						sprite_index = spr_wood_falling_block_long;
 					}
 			        break;
 			    case LEVEL_OBJECT_ID.ID_WOOD_FALLING_BLOCK_LONG_SOLID:
 			        with(instance_create_depth(x, y, 0, obj_falling_block_solid_spawner)) {
-						sprite_index = spr_falling_block_long_solid;
-						image_index = 2;
+						sprite_index = spr_wood_falling_block_long_solid;
 					}
 			        break;
 				
 				case LEVEL_OBJECT_ID.ID_STONE_FALLING_BLOCK_LONG:
 			        with(instance_create_depth(x, y, 0, obj_falling_block)) {
-						sprite_index = spr_falling_block_long;
-						image_index = 3;
+						sprite_index = spr_stone_falling_block_long;
 					}
 			        break;
 			    case LEVEL_OBJECT_ID.ID_STONE_FALLING_BLOCK_LONG_SOLID:
 			        with(instance_create_depth(x, y, 0, obj_falling_block_solid_spawner)) {
-						sprite_index = spr_falling_block_long_solid;
-						image_index = 3;
+						sprite_index = spr_stone_falling_block_long_solid;
 					}
 			        break;
 			    #endregion /* Falling Blocks Long END*/

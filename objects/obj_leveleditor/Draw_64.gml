@@ -668,6 +668,9 @@ if (!global.actually_play_edited_level)
 		}
 		if (autosave_text != "")
 		{
+			draw_set_alpha(0.75);
+			draw_roundrect_color_ext(display_get_gui_width() * 0.5 - 300, 50, display_get_gui_width() * 0.5 + 300, 200, 50, 50, c_black, c_black, false);
+			draw_set_alpha(1);
 			scr_draw_text_outlined(display_get_gui_width() * 0.5, 100, string(autosave_text), global.default_text_size * 2, c_black, autosave_text_color, 1);
 			var autosave_countdown = ceil((autosave_timer - 18000) / -60);
 			if (autosave_text == l10n_text("Autosave in " + string(autosave_countdown)))

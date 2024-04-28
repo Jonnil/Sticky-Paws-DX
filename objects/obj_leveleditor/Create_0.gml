@@ -180,7 +180,7 @@ if (!global.actually_play_edited_level)
 	key_a_pressed = noone;
 	key_a_released = noone;
 	
-	autosave_timer = (60 * 3) + 1;
+	autosave_timer = (60 * 3) + 1; /* Default is (60 * 3) + 1. When debugging autosave, set this to 18000 - (60 * 10) */
 	
 	welcome_to_level_editor = false;
 	
@@ -294,28 +294,28 @@ if (!global.actually_play_edited_level)
 	add_object(LEVEL_OBJECT_ID.ID_FALLING_BLOCK, spr_falling_block, 0, spr_wall, 1, 0, c_white, 1, "", noone, true, 0);
 	add_object(LEVEL_OBJECT_ID.ID_FALLING_BLOCK_SOLID, spr_falling_block_solid, 0, spr_wall, 1, 0, c_white, 1, "", noone, true, 0);
 	
-	add_object(LEVEL_OBJECT_ID.ID_INSTANT_FALLING_BLOCK, spr_falling_block, 1, spr_wall, 1, 0, c_white, 1, "", noone, true, 0);
-	add_object(LEVEL_OBJECT_ID.ID_INSTANT_FALLING_BLOCK_SOLID, spr_falling_block_solid, 1, spr_wall, 1, 0, c_white, 1, "", noone, true, 0);
+	add_object(LEVEL_OBJECT_ID.ID_INSTANT_FALLING_BLOCK, spr_instant_falling_block, 0, spr_wall, 1, 0, c_white, 1, "", noone, true, 0);
+	add_object(LEVEL_OBJECT_ID.ID_INSTANT_FALLING_BLOCK_SOLID, spr_instant_falling_block_solid, 0, spr_wall, 1, 0, c_white, 1, "", noone, true, 0);
 	
-	add_object(LEVEL_OBJECT_ID.ID_WOOD_FALLING_BLOCK, spr_falling_block, 2, spr_wall, 1, 0, c_white, 1, "", noone, true, 0);
-	add_object(LEVEL_OBJECT_ID.ID_WOOD_FALLING_BLOCK_SOLID, spr_falling_block_solid, 2, spr_wall, 1, 0, c_white, 1, "", noone, true, 0);
+	add_object(LEVEL_OBJECT_ID.ID_WOOD_FALLING_BLOCK, spr_wood_falling_block, 0, spr_wall, 1, 0, c_white, 1, "", noone, true, 0);
+	add_object(LEVEL_OBJECT_ID.ID_WOOD_FALLING_BLOCK_SOLID, spr_wood_falling_block_solid, 0, spr_wall, 1, 0, c_white, 1, "", noone, true, 0);
 	
-	add_object(LEVEL_OBJECT_ID.ID_STONE_FALLING_BLOCK, spr_falling_block, 3, spr_wall, 1, 0, c_white, 1, "", noone, true, 0);
-	add_object(LEVEL_OBJECT_ID.ID_STONE_FALLING_BLOCK_SOLID, spr_falling_block_solid, 3, spr_wall, 1, 0, c_white, 1, "", noone, true, 0);
+	add_object(LEVEL_OBJECT_ID.ID_STONE_FALLING_BLOCK, spr_stone_falling_block, 0, spr_wall, 1, 0, c_white, 1, "", noone, true, 0);
+	add_object(LEVEL_OBJECT_ID.ID_STONE_FALLING_BLOCK_SOLID, spr_stone_falling_block_solid, 0, spr_wall, 1, 0, c_white, 1, "", noone, true, 0);
 	#endregion /* Falling Block END */
 	
 	#region /* Falling Block Long */
 	add_object(LEVEL_OBJECT_ID.ID_FALLING_BLOCK_LONG, spr_falling_block_long, 0, spr_mask_block_long, 1, 0, c_white, 1, "", noone, true, 0);
 	add_object(LEVEL_OBJECT_ID.ID_FALLING_BLOCK_LONG_SOLID, spr_falling_block_long_solid, 0, spr_mask_block_long, 1, 0, c_white, 1, "", noone, true, 0);
 	
-	add_object(LEVEL_OBJECT_ID.ID_INSTANT_FALLING_BLOCK_LONG, spr_falling_block_long, 1, spr_mask_block_long, 1, 0, c_white, 1, "", noone, true, 0);
-	add_object(LEVEL_OBJECT_ID.ID_INSTANT_FALLING_BLOCK_LONG_SOLID, spr_falling_block_long_solid, 1, spr_mask_block_long, 1, 0, c_white, 1, "", noone, true, 0);
+	add_object(LEVEL_OBJECT_ID.ID_INSTANT_FALLING_BLOCK_LONG, spr_instant_falling_block_long, 0, spr_mask_block_long, 1, 0, c_white, 1, "", noone, true, 0);
+	add_object(LEVEL_OBJECT_ID.ID_INSTANT_FALLING_BLOCK_LONG_SOLID, spr_instant_falling_block_long_solid, 0, spr_mask_block_long, 1, 0, c_white, 1, "", noone, true, 0);
 	
-	add_object(LEVEL_OBJECT_ID.ID_WOOD_FALLING_BLOCK_LONG, spr_falling_block_long, 2, spr_mask_block_long, 1, 0, c_white, 1, "", noone, true, 0);
-	add_object(LEVEL_OBJECT_ID.ID_WOOD_FALLING_BLOCK_LONG_SOLID, spr_falling_block_long_solid, 2, spr_mask_block_long, 1, 0, c_white, 1, "", noone, true, 0);
+	add_object(LEVEL_OBJECT_ID.ID_WOOD_FALLING_BLOCK_LONG, spr_wood_falling_block_long, 0, spr_mask_block_long, 1, 0, c_white, 1, "", noone, true, 0);
+	add_object(LEVEL_OBJECT_ID.ID_WOOD_FALLING_BLOCK_LONG_SOLID, spr_wood_falling_block_long_solid, 0, spr_mask_block_long, 1, 0, c_white, 1, "", noone, true, 0);
 	
-	add_object(LEVEL_OBJECT_ID.ID_STONE_FALLING_BLOCK_LONG, spr_falling_block_long, 3, spr_mask_block_long, 1, 0, c_white, 1, "", noone, true, 0);
-	add_object(LEVEL_OBJECT_ID.ID_STONE_FALLING_BLOCK_LONG_SOLID, spr_falling_block_long_solid, 3, spr_mask_block_long, 1, 0, c_white, 1, "", noone, true, 0);
+	add_object(LEVEL_OBJECT_ID.ID_STONE_FALLING_BLOCK_LONG, spr_stone_falling_block_long, 0, spr_mask_block_long, 1, 0, c_white, 1, "", noone, true, 0);
+	add_object(LEVEL_OBJECT_ID.ID_STONE_FALLING_BLOCK_LONG_SOLID, spr_stone_falling_block_long_solid, 0, spr_mask_block_long, 1, 0, c_white, 1, "", noone, true, 0);
 	#endregion /* Falling Block Long END */
 	
 	add_object(LEVEL_OBJECT_ID.ID_CLOUD_BLOCK, spr_cloud_block, 0, spr_wall, 1, 0, c_white, 1, "", noone, true, 0);
