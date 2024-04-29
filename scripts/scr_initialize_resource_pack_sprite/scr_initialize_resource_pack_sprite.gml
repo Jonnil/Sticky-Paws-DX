@@ -1,4 +1,4 @@
-function scr_initialize_resource_pack_sprite(sprite_name, sprite_variable = spr_noone)
+function scr_initialize_resource_pack_sprite(sprite_name, resource_sprite_variable = spr_noone)
 {
 	var saved_file_exists = false;
 	var unused_x_origin_point = noone;
@@ -17,7 +17,8 @@ function scr_initialize_resource_pack_sprite(sprite_name, sprite_variable = spr_
 	/* This loop goes through all possible combinations of sprite names and folders. */
 	/* sprite_names and sprite_folders are arrays that contain the names of the sprites and folders to search through. */
 	
-	for(var i = 0; i < array_length_1d(sprite_names); i++) {
+	for(var i = 0; i < array_length_1d(sprite_names); i++)
+	{
 		
 		/* If a sprite is already found, break out of the loop. */
 		if (sprite_found) break;
@@ -35,14 +36,15 @@ function scr_initialize_resource_pack_sprite(sprite_name, sprite_variable = spr_
 		if (file_exists(sprite_filename)) 
 		&& (sprite_number != "")
 		{
-			sprite_variable = sprite_add(sprite_filename, sprite_number, false, false, 0, 0);
+			resource_sprite_variable = sprite_add(sprite_filename, sprite_number, false, false, 0, 0);
 			sprite_found = true;
 			break;
 		}
 		
 		/* If the sprite was not found with a number in the file name, try again without a number. */
-		if (!sprite_found && file_exists(sprite_path + ".png")) {
-			sprite_variable = sprite_add(sprite_path + ".png", 1, false, false, 0, 0);
+		if (!sprite_found && file_exists(sprite_path + ".png"))
+		{
+			resource_sprite_variable = sprite_add(sprite_path + ".png", 1, false, false, 0, 0);
 			sprite_found = true;
 			break;
 		}
@@ -51,13 +53,14 @@ function scr_initialize_resource_pack_sprite(sprite_name, sprite_variable = spr_
 	/* sprite_found is a boolean variable that is true if a sprite was found, and false otherwise. */
 	
 	/* If sprite is found, set saved_file_exists to true */
-	if (sprite_found) {
+	if (sprite_found)
+	{
 		var saved_file_exists = true;
 	}
 	#endregion /* Add sprite END */
 	
 	#region /* Origin points */
-	if (sprite_variable != noone)
+	if (resource_sprite_variable != noone)
 	&& (saved_file_exists)
 	{
 		if (file_exists("resource_pack/" + string(ds_list_find_value(global.all_loaded_resource_pack, global.selected_resource_pack)) + "/data/sprite_origin_point.ini"))
@@ -77,19 +80,21 @@ function scr_initialize_resource_pack_sprite(sprite_name, sprite_variable = spr_
 		var spr_origin_y = ini_read_real("sprite origin points", "sprite_" + string(sprite_name) + "_yorig", -1);
 		
 		/* If the x origin is not found in the config file, set it to half the sprite width and save it to the config file */
-		if (spr_origin_x == -1) {
-			spr_origin_x = sprite_get_width(sprite_variable) * 0.5;
+		if (spr_origin_x == -1)
+		{
+			spr_origin_x = sprite_get_width(resource_sprite_variable) * 0.5;
 			if (can_save_to_config) ini_write_real("sprite origin points", "sprite_" + string(sprite_name) + "_xorig", spr_origin_x);
 		}
 		
 		/* If the y origin is not found in the config file, set it to half the sprite height and save it to the config file */
-		if (spr_origin_y == -1) {
-			spr_origin_y = sprite_get_height(sprite_variable) * 0.5;
+		if (spr_origin_y == -1)
+		{
+			spr_origin_y = sprite_get_height(resource_sprite_variable) * 0.5;
 			if (can_save_to_config) ini_write_real("sprite origin points", "sprite_" + string(sprite_name) + "_yorig", spr_origin_y);
 		}
 		
 		/* Set the sprite offset to the x and y origin points */
-		sprite_set_offset(sprite_variable, spr_origin_x, spr_origin_y);
+		sprite_set_offset(resource_sprite_variable, spr_origin_x, spr_origin_y);
 		#endregion /* x and y origin points END */
 		
 		ini_close(); switch_save_data_commit(); /* Remember to commit the save data! */
@@ -104,18 +109,21 @@ function scr_initialize_resource_pack_sprite(sprite_name, sprite_variable = spr_
 		var char_data_dir = "custom_resource_pack/" + string(ds_list_find_value(global.all_loaded_resource_pack, global.selected_resource_pack)) + "/data/";
 		
 		/* If the sprite variable is undefined and there is no saved file, and the sprite origin point INI file exists */
-		if (sprite_variable == noone && !saved_file_exists && file_exists(char_data_dir + "sprite_origin_point.ini")) {
+		if (resource_sprite_variable == noone && !saved_file_exists && file_exists(char_data_dir + "sprite_origin_point.ini"))
+		{
 			
 			/* Open the sprite origin point INI file and delete the x and y origin point keys for this sprite */
 			
-			with (ini_open(char_data_dir + "sprite_origin_point.ini")) {
+			with (ini_open(char_data_dir + "sprite_origin_point.ini"))
+			{
 				ini_key_delete("sprite origin points", "sprite_" + string(sprite_name) + "_xorig");
 				ini_key_delete("sprite origin points", "sprite_" + string(sprite_name) + "_yorig");
 			}
 			
 			/* Open the unused sprite origin point INI file */
 			
-			with (ini_open(char_data_dir + "unused_sprite_origin_point.ini")) {
+			with (ini_open(char_data_dir + "unused_sprite_origin_point.ini"))
+			{
 				
 				/* Read the x and y origin point keys for this sprite, if they exist */
 				var unused_x_origin_point = ini_read_real("sprite origin points", "sprite_" + string(sprite_name) + "_xorig", noone);
@@ -135,9 +143,9 @@ function scr_initialize_resource_pack_sprite(sprite_name, sprite_variable = spr_
 	}
 	#endregion /* If the sprite doesn't exist, but there are still origin points saved for that sprite, then delete those origin points from sprite_origin_point.ini, but save the unused origin points in unused_sprite_origin_point.ini END */
 	
-	if (sprite_variable != noone)
+	if (resource_sprite_variable != noone)
 	{
-		return (sprite_variable);
+		return (resource_sprite_variable);
 	}
 	else
 	{

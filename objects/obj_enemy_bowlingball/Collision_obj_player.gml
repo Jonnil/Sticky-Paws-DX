@@ -237,7 +237,7 @@ if (!die)
 				image_index = 0;
 			}
 			else
-			if (other.ground_pound)
+			if (other.ground_pound >= 1)
 			{
 				die = true;
 				global.enemy_counter ++;

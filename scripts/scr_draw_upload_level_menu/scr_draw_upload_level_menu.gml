@@ -842,7 +842,7 @@ function scr_draw_upload_level_menu()
 		
 		if (can_input_level_name)
 		{
-			global.level_name = scr_draw_name_input_screen(global.level_name, 32, c_black, 1, false, get_window_width * 0.5, draw_name_y, "upload_enter_name_ok", "upload_enter_name_cancel", false, true, false);
+			global.level_name = scr_draw_name_input_screen(global.level_name, global.max_level_name_lenght, c_black, 1, false, get_window_width * 0.5, draw_name_y, "upload_enter_name_ok", "upload_enter_name_cancel", false, true, false);
 		}
 		
 		#region /* Input Level Name */

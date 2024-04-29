@@ -5,7 +5,7 @@ if (other.vspeed > 0)
 	if (can_jump_on_head)
 	{
 		scr_audio_play(snd_boss_damaged, volume_source.sound);
-		if (other.ground_pound)
+		if (other.ground_pound >= 1)
 		{
 			hp -= 2;
 			other.ground_pound = false;

@@ -141,7 +141,7 @@ if (!die)
 				image_index = 0;
 			}
 			else
-			if (other.ground_pound) /* Ground pound the enemy and kill it instantly */
+			if (other.ground_pound >= 1) /* Ground pound the enemy and kill it instantly */
 			&& (!flat)
 			{
 				die = true;

@@ -115,7 +115,7 @@ if (instance_exists(obj_player))
 	
 		if (place_meeting(x, y - 4, obj_player)) /* If player is ground pounding this block */
 		&& (!place_meeting(x, y - 1, obj_wall))
-		&& (instance_nearest(x, y, obj_player).ground_pound)
+		&& (instance_nearest(x, y, obj_player).ground_pound == 1)
 		&& (can_be_ground_pounded)
 	
 		|| (position_meeting(x, bbox_bottom + 1, obj_player)) /* Has to be position_meeting, otherwise there are specific situations where you can break a block from above just by crouching */

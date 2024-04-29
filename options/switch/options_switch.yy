@@ -5,7 +5,7 @@
   "option_switch_allow_debug_output":false,
   "option_switch_check_nsp_publish_errors":true,
   "option_switch_enable_fileaccess_checking":true,
-  "option_switch_enable_nex_libraries":true,
+  "option_switch_enable_nex_libraries":false,
   "option_switch_enable_npln_libraries":false,
   "option_switch_gfx_mem_mb":256,
   "option_switch_interpolate_pixels":true,

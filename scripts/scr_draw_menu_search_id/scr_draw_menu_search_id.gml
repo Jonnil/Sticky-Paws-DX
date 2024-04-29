@@ -851,6 +851,7 @@ function scr_draw_menu_search_id(what_kind_of_id = "level")
 					xx_delay[fixed_player] = -1;
 					
 					/* Update the player sprite */
+					scr_delete_sprite_properly(global.sprite_select_player[fixed_player]);
 					global.sprite_select_player[fixed_player] = spr_noone;
 					scr_set_character_folder(fixed_player, global.skin_for_player[fixed_player]);
 					ini_open(string(character_folder) + "/data/sprite_origin_point.ini");

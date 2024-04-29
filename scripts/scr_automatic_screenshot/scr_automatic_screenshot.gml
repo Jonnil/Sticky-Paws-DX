@@ -14,7 +14,7 @@ function scr_automatic_screenshot()
 	
 	/* Step 2: Create a new surface with smaller dimensions */
 	var thumbnail_width = 320;
-	var thumbnail_height = 240;
+	var thumbnail_height = 240; /* 240p */
 	var thumbnail_surface = surface_create(thumbnail_width, thumbnail_height);
 	
 	/* Step 3: Draw the fullscreen screenshot onto the smaller surface */

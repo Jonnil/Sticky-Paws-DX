@@ -55,6 +55,7 @@ function scr_change_character_portrait()
 		}
 		
 		#region /* Player character select portrait sprite */
+		scr_delete_sprite_properly(global.sprite_select_player[what_player]);
 		global.sprite_select_player[what_player] = spr_noone;
 		/* This particular "character folder" is an array, so it needs to be "character folder[what player]". Otherwise you get a error saying SaveFileExists: No Save Data Mounted! trying to find [ 0,"characters/sticky" ]/data/sprite_origin_point.ini */
 		ini_open(string(character_folder[what_player]) + "/data/sprite_origin_point.ini");
@@ -117,6 +118,7 @@ function scr_change_character_skin()
 					skin_folder = "/";
 				}
 				/* Don't update "actual skin for player" here, because it will save what skin you're supposed to have with other characters, so it doesn't change unintentinally for the player */
+				scr_delete_sprite_properly(global.sprite_select_player[i]);
 				global.sprite_select_player[i] = spr_noone;
 				ini_open(string(character_folder) + "/data/sprite_origin_point.ini");
 				global.sprite_select_player[i] = scr_initialize_character_sprite("stand", global.sprite_select_player[i], character_folder[i]);

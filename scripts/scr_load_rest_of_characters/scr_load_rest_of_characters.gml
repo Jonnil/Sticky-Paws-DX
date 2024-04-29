@@ -39,6 +39,7 @@ function scr_load_rest_of_characters()
 				
 				#region /* Player 1 character select portrait sprite */
 				global.skin_for_player[fixed_player] = global.actual_skin_for_player[fixed_player]; /* Update "skin for player" to what it should actually be when selecting a new character before setting a sprite */
+				scr_delete_sprite_properly(global.sprite_select_player[fixed_player]);
 				global.sprite_select_player[fixed_player] = spr_noone;
 				scr_set_character_folder(fixed_player, global.skin_for_player[fixed_player], copied_character_name);
 				ini_open(string(character_folder) + "/data/sprite_origin_point.ini");
@@ -68,6 +69,7 @@ function scr_load_rest_of_characters()
 					
 					#region /* Player 1 character select portrait sprite */
 					global.skin_for_player[fixed_player] = global.actual_skin_for_player[fixed_player]; /* Update "skin for player" to what it should actually be when selecting a new character before setting a sprite */
+					scr_delete_sprite_properly(global.sprite_select_player[fixed_player]);
 					global.sprite_select_player[fixed_player] = spr_noone;
 					scr_set_character_folder(fixed_player, global.skin_for_player[fixed_player]);
 					ini_open(string(character_folder) + "/data/sprite_origin_point.ini");

@@ -60,6 +60,7 @@ function scr_character_select_menu_step()
 			if (global.character_index[i - 1] <= -1)
 			{
 				global.character_index[i - 1] = 0;
+				scr_delete_sprite_properly(global.sprite_select_player[i]);
 				global.sprite_select_player[i] = spr_noone;
 				scr_set_character_folder(i, global.skin_for_player[i]);
 				ini_open(string(character_folder) + "/data/sprite_origin_point.ini");
@@ -150,7 +151,8 @@ function scr_character_select_menu_step()
 					ini_open("save_file/config.ini"); /* Must save character_for_player in config.ini manually here, because scr_config_save doesn't run every frame in step event, only when you exit the options menu, to prevent config.ini to get deleted and replaced every frame */
 					for(var i = 1; i <= global.max_players; i += 1)
 					{
-						if (player_accept_selection[i] != 1) {
+						if (player_accept_selection[i] != 1)
+						{
 							global.player_can_play[i] = false; /* If players haven't joined, force the "player can play" variable to be false */
 						}
 						ini_write_real("config", "character_index_player" + string(i), global.character_index[i - 1]);
@@ -184,8 +186,10 @@ function scr_character_select_menu_step()
 						can_navigate = true;
 						menu_delay = 3;
 						var no_players_can_play = true;
-						for(var i = 1; i <= global.max_players; i += 1) {
-						    if (global.player_can_play[i]) {
+						for(var i = 1; i <= global.max_players; i += 1)
+						{
+						    if (global.player_can_play[i])
+							{
 						        no_players_can_play = false;
 						        break; /* exit the loop if any player can play */
 						    }
@@ -195,7 +199,8 @@ function scr_character_select_menu_step()
 						{
 							global.player_can_play[fixed_player] = true;
 						}
-						for(var i = 1; i <= global.max_players; i += 1) {
+						for(var i = 1; i <= global.max_players; i += 1)
+						{
 							if (player_accept_selection[i] == 1)
 							{
 								player_accept_selection[i] = 0;
@@ -242,13 +247,13 @@ function scr_character_select_menu_step()
 		{
 			if (global.clicking_ok_input_screen || global.clicking_cancel_input_screen)
 			&& (can_input_player_name[i] == 1 && menu_delay == 0 && menu_joystick_delay == 0)
-		    {
-		        menu_delay = 3;
-		        for(var j = 1; j <= global.max_players; j += 1)
+			{
+				menu_delay = 3;
+				for(var j = 1; j <= global.max_players; j += 1)
 				{
 					can_input_player_name[j] = 2;
 				}
-		    }
+			}
 		}
 		#endregion /* Press enter when done typing on name input screen END */
 		
@@ -512,8 +517,10 @@ function scr_character_select_menu_step()
 					else
 					{
 						var no_players_can_play = true;
-						for(var i = 1; i <= global.max_players; i += 1) {
-						    if (global.player_can_play[i]) {
+						for(var i = 1; i <= global.max_players; i += 1)
+						{
+						    if (global.player_can_play[i])
+							{
 						        no_players_can_play = false;
 						        break; /* exit the loop if any player can play */
 						    }
@@ -523,7 +530,8 @@ function scr_character_select_menu_step()
 						{
 							global.player_can_play[fixed_player] = true;
 						}
-						for(var i = 1; i <= global.max_players; i += 1) {
+						for(var i = 1; i <= global.max_players; i += 1)
+						{
 							if (player_accept_selection[i] == 1)
 							{
 								player_accept_selection[i] = 0;
@@ -560,7 +568,8 @@ function scr_character_select_menu_step()
 			{
 				menu_specific_joystick_delay[i] = 0;
 			}
-			if (menu_specific_joystick_delay[i] > 0) {
+			if (menu_specific_joystick_delay[i] > 0)
+			{
 				menu_specific_joystick_delay[i] --;
 			}
 		}

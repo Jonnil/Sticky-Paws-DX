@@ -31,6 +31,7 @@ global.whats_new = "Biggest Sticky Paws update yet! \n Thank you everyone for su
 global.max_file_upload_megabytes = 16; /* There needs to be a max file upload size (in megabytes), otherwise people can download files that are too big for their system to handle. Default is 16 MB */
 global.max_custom_characters = 100; /* You should be able to only store a certain amount of custom characters, these are both characters you have made, and characters you have downloaded */
 global.max_custom_levels = 100; /* You should be able to only store a certain amount of custom levels, these are both levels you have made, and levels you have downloaded */
+global.max_level_name_lenght = 32; /* There needs to be a limit to how long a level name can be */
 
 #region /* Change how menus look and function */
 global.enable_how_to_play_settings = false; /* Enable How to play settings */

@@ -174,6 +174,7 @@ function scr_character_select_menu_draw()
 			if (global.sprite_select_player[fixed_player] < 0)
 			|| (global.sprite_select_player[fixed_player] == spr_noone)
 			{
+				scr_delete_sprite_properly(global.sprite_select_player[fixed_player]);
 				global.sprite_select_player[fixed_player] = spr_noone;
 				scr_set_character_folder(fixed_player, global.skin_for_player[fixed_player]);
 				ini_open(string(character_folder) + "/data/sprite_origin_point.ini");
