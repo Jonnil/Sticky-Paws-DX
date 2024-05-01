@@ -385,56 +385,56 @@ function scr_debug_screen()
 			}
 			debug_text_y += 20;
 		}
-		scr_draw_text_outlined(32, debug_text_y, "menu_navigation_speed: " + string(global.menu_navigation_speed), global.default_text_size, c_black, c_white);
-		debug_text_y += 20;
-		scr_draw_text_outlined(32, debug_text_y, "character_index: " + string(global.character_index), global.default_text_size, c_black, c_white);
-		debug_text_y += 20;
-		scr_draw_text_outlined(32, debug_text_y, "search_id: " + string(global.search_id), global.default_text_size, c_black, c_white);
-		debug_text_y += 20;
-		if (instance_exists(obj_camera))
-		{
-			scr_draw_text_outlined(32, debug_text_y, "obj_camera.hud_show_lives_timer: " + string(obj_camera.hud_show_lives_timer), global.default_text_size, c_black, c_white);
-			debug_text_y += 20;
-		}
-		scr_draw_text_outlined(32, debug_text_y, "controls_used_for_navigation: " + string(global.controls_used_for_navigation), global.default_text_size, c_black, c_white);
-		debug_text_y += 20;
-		scr_draw_text_outlined(32, debug_text_y, "keyboard_virtual_timer: " + string(global.keyboard_virtual_timer), global.default_text_size, c_black, c_white);
-		debug_text_y += 20;
-		scr_draw_text_outlined(32, debug_text_y, "clicking_ok_input_screen: " + string(global.clicking_ok_input_screen), global.default_text_size, c_black, c_white);
-		debug_text_y += 40;
+		//scr_draw_text_outlined(32, debug_text_y, "menu_navigation_speed: " + string(global.menu_navigation_speed), global.default_text_size, c_black, c_white);
+		//debug_text_y += 20;
+		//scr_draw_text_outlined(32, debug_text_y, "character_index: " + string(global.character_index), global.default_text_size, c_black, c_white);
+		//debug_text_y += 20;
+		//scr_draw_text_outlined(32, debug_text_y, "search_id: " + string(global.search_id), global.default_text_size, c_black, c_white);
+		//debug_text_y += 20;
+		//if (instance_exists(obj_camera))
+		//{
+		//	scr_draw_text_outlined(32, debug_text_y, "obj_camera.hud_show_lives_timer: " + string(obj_camera.hud_show_lives_timer), global.default_text_size, c_black, c_white);
+		//	debug_text_y += 20;
+		//}
+		//scr_draw_text_outlined(32, debug_text_y, "controls_used_for_navigation: " + string(global.controls_used_for_navigation), global.default_text_size, c_black, c_white);
+		//debug_text_y += 20;
+		//scr_draw_text_outlined(32, debug_text_y, "keyboard_virtual_timer: " + string(global.keyboard_virtual_timer), global.default_text_size, c_black, c_white);
+		//debug_text_y += 20;
+		//scr_draw_text_outlined(32, debug_text_y, "clicking_ok_input_screen: " + string(global.clicking_ok_input_screen), global.default_text_size, c_black, c_white);
+		//debug_text_y += 40;
 		
-		if (variable_instance_exists(self, "open_sub_menu"))
-		{
-			scr_draw_text_outlined(32, debug_text_y, "open_sub_menu: " + string(open_sub_menu), global.default_text_size, c_black, c_white);
-			debug_text_y += 20;
-		}
-		if (variable_instance_exists(self, "open_upload_menu"))
-		{
-			scr_draw_text_outlined(32, debug_text_y, "open_upload_menu: " + string(open_upload_menu), global.default_text_size, c_black, c_white);
-			debug_text_y += 20;
-		}
-		if (variable_instance_exists(self, "can_input_level_name"))
-		{
-			scr_draw_text_outlined(32, debug_text_y, "can_input_level_name: " + string(can_input_level_name), global.default_text_size, c_black, c_white);
-			debug_text_y += 20;
-		}
-		if (variable_instance_exists(self, "can_navigate"))
-		{
-			scr_draw_text_outlined(32, debug_text_y, "can_navigate: " + string(can_navigate), global.default_text_size, c_black, c_white);
-			debug_text_y += 20;
-		}
-		if (variable_instance_exists(self, "file_load_timer"))
-		{
-			if (file_load_timer == 0)
-			{
-				scr_draw_text_outlined(32, debug_text_y, "file_load_timer: " + string(file_load_timer), global.default_text_size, c_black, c_white);
-			}
-			else
-			{
-				scr_draw_text_outlined(32, debug_text_y, "file_load_timer: " + string(file_load_timer), global.default_text_size, c_black, c_red);
-			}
-			debug_text_y += 20;
-		}
+		//if (variable_instance_exists(self, "open_sub_menu"))
+		//{
+		//	scr_draw_text_outlined(32, debug_text_y, "open_sub_menu: " + string(open_sub_menu), global.default_text_size, c_black, c_white);
+		//	debug_text_y += 20;
+		//}
+		//if (variable_instance_exists(self, "open_upload_menu"))
+		//{
+		//	scr_draw_text_outlined(32, debug_text_y, "open_upload_menu: " + string(open_upload_menu), global.default_text_size, c_black, c_white);
+		//	debug_text_y += 20;
+		//}
+		//if (variable_instance_exists(self, "can_input_level_name"))
+		//{
+		//	scr_draw_text_outlined(32, debug_text_y, "can_input_level_name: " + string(can_input_level_name), global.default_text_size, c_black, c_white);
+		//	debug_text_y += 20;
+		//}
+		//if (variable_instance_exists(self, "can_navigate"))
+		//{
+		//	scr_draw_text_outlined(32, debug_text_y, "can_navigate: " + string(can_navigate), global.default_text_size, c_black, c_white);
+		//	debug_text_y += 20;
+		//}
+		//if (variable_instance_exists(self, "file_load_timer"))
+		//{
+		//	if (file_load_timer == 0)
+		//	{
+		//		scr_draw_text_outlined(32, debug_text_y, "file_load_timer: " + string(file_load_timer), global.default_text_size, c_black, c_white);
+		//	}
+		//	else
+		//	{
+		//		scr_draw_text_outlined(32, debug_text_y, "file_load_timer: " + string(file_load_timer), global.default_text_size, c_black, c_red);
+		//	}
+		//	debug_text_y += 20;
+		//}
 		
 		debug_text_y += 20;
 		scr_draw_text_outlined(32, debug_text_y, "temp_directory: " + string(temp_directory), global.default_text_size, c_black, c_white);

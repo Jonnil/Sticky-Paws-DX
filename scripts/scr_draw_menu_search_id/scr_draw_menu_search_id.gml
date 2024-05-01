@@ -247,23 +247,11 @@ function scr_draw_menu_search_id(what_kind_of_id = "level")
 					}
 					
 					global.select_level_index = ds_list_find_index(global.all_loaded_custom_levels, global.level_name); /* "Select level index" should be set to where the downloaded custom level is saved */
-					scr_delete_sprite_properly(downloaded_thumbnail_sprite);
-					downloaded_thumbnail_sprite = noone;
-					if (file_exists(download_temp_path + "custom_levels/" + global.level_name + "/thumbnail.png"))
-					{
-						downloaded_thumbnail_sprite = sprite_add(download_temp_path + "custom_levels/" + global.level_name + "/thumbnail.png", 0, false, false, 0, 0);
-					}
-					else
-					if (file_exists(download_temp_path + "custom_levels/" + global.level_name + "/automatic_thumbnail.png"))
-					{
-						downloaded_thumbnail_sprite = sprite_add(download_temp_path + "custom_levels/" + global.level_name + "/automatic_thumbnail.png", 0, false, false, 0, 0);
-					}
+					
 					if (downloaded_thumbnail_sprite > 0)
 					{
 						sprite_set_offset(downloaded_thumbnail_sprite, sprite_get_width(downloaded_thumbnail_sprite) * 0.5, 0);
 					}
-					
-					thumbnail_uses_photographic_image = false;
 					
 					if (file_exists(download_temp_path + "custom_levels/" + global.level_name + "/data/level_information.ini"))
 					{
@@ -271,7 +259,6 @@ function scr_draw_menu_search_id(what_kind_of_id = "level")
 						downloaded_level_is_daily_build = ini_read_real("info", "if_daily_build", false);
 						global.level_description = ini_read_string("info", "level_description", "");
 						masked_username = ini_read_string("info", "username", "");
-						thumbnail_uses_photographic_image = ini_read_real("Custom Backgrounds", "thumbnail_uses_photographic_image", false);
 						ini_close();
 						
 						if (switch_check_profanity(global.level_description))
@@ -449,8 +436,6 @@ function scr_draw_menu_search_id(what_kind_of_id = "level")
 					var thumbnail_scale = 2;
 				}
 				if (downloaded_thumbnail_sprite > 0)
-				&& (global.can_load_photographic_images
-				|| !global.can_load_photographic_images && !thumbnail_uses_photographic_image)
 				{
 					draw_sprite_ext(downloaded_thumbnail_sprite, 0, display_get_gui_width() * 0.5, 64, 384 / sprite_get_width(downloaded_thumbnail_sprite) * thumbnail_scale, 216 / sprite_get_height(downloaded_thumbnail_sprite) * thumbnail_scale, 0, c_white, 1);
 				}
@@ -587,10 +572,14 @@ function scr_draw_menu_search_id(what_kind_of_id = "level")
 				draw_rectangle_color(- 32, - 32, display_get_gui_width() + 32, display_get_gui_height() + 32, c_black, c_black, c_black, c_black, false);
 				draw_set_alpha(inform_about_report_feature_alpha);
 				
-				draw_sprite_ext(spr_arrow_swirly, menu_cursor_index, 164, display_get_gui_height() - 132 + scr_wave(0, 16, 1), 1, 1, 0, c_white, inform_about_report_feature_alpha);
+				var inform_about_report_feature_x = 32;
+				var inform_about_report_feature_y = 252;
+				draw_roundrect_color_ext(16, display_get_gui_height() - inform_about_report_feature_y - 32, display_get_gui_width - 16, display_get_gui_height() - inform_about_report_feature_y + 64, 50, 50, c_black, c_black, false);
+				
+				draw_sprite_ext(spr_arrow_swirly, menu_cursor_index, 64, display_get_gui_height() - 132 + scr_wave(0, 16, 1), 1, 1, 0, c_white, inform_about_report_feature_alpha);
 				draw_set_halign(fa_left);
-				scr_draw_text_outlined(264, display_get_gui_height() - 196, l10n_text("If you see any inappropriate content when downloading user-generated content online"), global.default_text_size, c_black, c_white, inform_about_report_feature_alpha);
-				scr_draw_text_outlined(264, display_get_gui_height() - 164, l10n_text("Please report it by clicking this button"), global.default_text_size, c_black, c_white, inform_about_report_feature_alpha);
+				scr_draw_text_outlined(inform_about_report_feature_x, display_get_gui_height() - inform_about_report_feature_y, l10n_text("If you see any inappropriate content when downloading user-generated content online"), global.default_text_size, c_black, c_white, inform_about_report_feature_alpha);
+				scr_draw_text_outlined(inform_about_report_feature_x, display_get_gui_height() - inform_about_report_feature_y + 32, l10n_text("Please report it by clicking this button"), global.default_text_size, c_black, c_white, inform_about_report_feature_alpha);
 				draw_set_halign(fa_center);
 				if (inform_about_report_feature_alpha >= 0.99)
 				{

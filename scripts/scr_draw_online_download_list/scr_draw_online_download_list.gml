@@ -116,13 +116,16 @@ function scr_draw_online_download_list()
 				/* Get the number of items in the JSON array */
 				var num_items = array_length(data);
 				
-				if (!is_array(finished_level)) {
+				if (!is_array(finished_level))
+				{
 					finished_level = array_create(num_items, undefined); /* Create finished level array */
 				}
-				if (!is_array(zero_defeats_level)) {
+				if (!is_array(zero_defeats_level))
+				{
 					zero_defeats_level = array_create(num_items, undefined); /* Create zero defeats level array */
 				}
-				if (!is_array(liked_content)) {
+				if (!is_array(liked_content))
+				{
 					liked_content = array_create(num_items, undefined); /* Create liked content array */
 				}
 				
@@ -255,6 +258,12 @@ function scr_draw_online_download_list()
 								search_id = string_upper(draw_download_id); /* Then need to set search ID */
 								automatically_search_for_id = true; /* Don't set this variable to false yet, it's used in "scr_draw_menu_search_id" to automatically enter the search ID. We need to do the HTTP Request in that script */
 								in_online_download_list_menu = false; /* We are not supposed to show the online download list menu when going to search ID menu */
+								
+								/* Set the correct thumbnail sprite variable */
+								scr_delete_sprite_properly(downloaded_thumbnail_sprite);
+								downloaded_thumbnail_sprite = noone;
+								downloaded_thumbnail_sprite = spr_download_list_thumbnail;
+								
 								menu = "search_id_ok";
 								#endregion /* Go to download menu END */
 								
@@ -319,23 +328,33 @@ function scr_draw_online_download_list()
 						}
 						
 						#region /* Display finished icon */
-						if (is_array(finished_level)) {
-							if (finished_level[i] == 1) { /* Only Played */
+						if (is_array(finished_level))
+						{
+							if (finished_level[i] == 1) /* Only Played */
+							{
+								/* Player haven't reached the goal */
 								var played_level_text = "Played";
 								var played_level_icon = spr_icon_played;
 								var played_level_color = c_yellow;
 							}
-							else if (finished_level[i] == 2) { /* Played and finished */
+							else
+							if (finished_level[i] == 2) /* Played and finished */
+							{
+								/* Player haven't collected all the big collectibles */
 								var played_level_text = "Finished";
 								var played_level_icon = spr_icon_finished;
 								var played_level_color = c_lime;
 							}
-							else if (finished_level[i] == 3) { /* Finished and collected every big collectible */
+							else
+							if (finished_level[i] == 3) /* Finished and collected every big collectible */
+							{
+								/* Player have collected all the big collectibles */
 								var played_level_text = "Completed";
 								var played_level_icon = spr_icon_finished;
 								var played_level_color = c_lime;
 							}
-							else { /* Not played */
+							else /* Not played */
+							{
 								var played_level_text = "Unplayed";
 								var played_level_icon = spr_icon_unplayed;
 								var played_level_color = c_red;
@@ -346,23 +365,29 @@ function scr_draw_online_download_list()
 						#endregion /* Display finished icon END */
 						
 						#region /* Display zero defeats icon */
-						if (is_array(zero_defeats_level)) {
-							if (zero_defeats_level[i] == 1) { /* Zero Defeats */
+						if (is_array(zero_defeats_level))
+						{
+							if (zero_defeats_level[i] == 1) /* Zero Defeats */
+							{
 								var zero_defeats_level_text = "Zero Defeats";
 								var zero_defeats_level_icon = spr_icon_zero_defeats;
 								var zero_defeats_level_color = c_red;
 							}
-							else if (zero_defeats_level[i] == 2) { /* Zero Hits */
+							else
+							if (zero_defeats_level[i] == 2) /* Zero Hits */
+							{
 								var zero_defeats_level_text = "Zero Hits";
 								var zero_defeats_level_icon = spr_icon_zero_hits;
 								var zero_defeats_level_color = c_lime;
 							}
-							else { /* No Zero Defeats */
+							else /* No Zero Defeats */
+							{
 								var zero_defeats_level_text = "";
 								var zero_defeats_level_icon = spr_noone;
 								var zero_defeats_level_color = c_red;
 							}
-							if (zero_defeats_level_text != "") {
+							if (zero_defeats_level_text != "")
+							{
 								draw_sprite_ext(zero_defeats_level_icon, 0, download_online_x + 524, 64 + download_online_y + menu_y_offset, 1, 1, 0, c_white, 1);
 								scr_draw_text_outlined(download_online_x + 548, 64 + download_online_y + menu_y_offset, l10n_text(zero_defeats_level_text), global.default_text_size, c_menu_outline, zero_defeats_level_color, 1);
 							}
@@ -453,10 +478,12 @@ function scr_draw_online_download_list()
 				old_currently_selected_id = currently_selected_id;
 				info_data = undefined;
 				global.online_download_list_info = "";
-				global.http_request_info = http_request("https://" + global.base_url + "/metadata/" + string(content_type) + "s/" + string_upper(currently_selected_id), "GET", map, "");
+				//global.http_request_info = http_request("https://" + global.base_url + "/metadata/" + string(content_type) + "s/" + string_upper(currently_selected_id), "GET", map, "");
+				global.http_request_info = http_request("https://" + global.base_url + "/metadata/" + string(content_type) + "s/" + string_upper(currently_selected_id) + "?os_type=" + string(os_type), "GET", map, "");
 			}
 			
-			if (info_data == undefined) && (in_online_download_list_menu) {
+			if (info_data == undefined) && (in_online_download_list_menu)
+			{
 				/* If there is an online download list information loaded, interpret that as a struct using "json parse" */
 				if (global.online_download_list_info != "")
 				&& (global.online_download_list_info != "HTTP request exception")
@@ -476,7 +503,8 @@ function scr_draw_online_download_list()
 				}
 				
 				/* Check if it's an array */
-				if (is_array(info_data)) {
+				if (is_array(info_data))
+				{
 					/* Get the number of items in the JSON array */
 					var num_info_items = array_length(info_data);
 					for(var i = 0; i < num_info_items; i++;)
@@ -493,7 +521,8 @@ function scr_draw_online_download_list()
 							draw_download_name = string(item.name);
 						}
 						
-						if (spr_download_list_thumbnail == noone) { /* Get the thumbnail data */
+						if (spr_download_list_thumbnail == noone) /* Get the thumbnail data */
+						{
 							var downloaded_thumbnail_path = temp_directory + "thumbnail.png";
 							var buffer = buffer_base64_decode(item.thumbnail);
 							buffer_save(buffer, downloaded_thumbnail_path);
@@ -515,7 +544,8 @@ function scr_draw_online_download_list()
 			}
 			
 			/* Draw the thumbnail */
-			if (sprite_exists(spr_download_list_thumbnail) && data != undefined && info_data != undefined) {
+			if (sprite_exists(spr_download_list_thumbnail) && data != undefined && info_data != undefined)
+			{
 				draw_sprite_ext(spr_download_list_thumbnail, 0, download_online_x + 100, top_left_of_thumbnail_y + menu_y_offset + 4, 384 / sprite_get_width(spr_download_list_thumbnail), 216 / sprite_get_height(spr_download_list_thumbnail), 0, c_white, 1);
 			}
 			
