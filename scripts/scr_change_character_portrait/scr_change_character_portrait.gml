@@ -59,6 +59,7 @@ function scr_change_character_portrait()
 		global.sprite_select_player[what_player] = spr_noone;
 		/* This particular "character folder" is an array, so it needs to be "character folder[what player]". Otherwise you get a error saying SaveFileExists: No Save Data Mounted! trying to find [ 0,"characters/sticky" ]/data/sprite_origin_point.ini */
 		ini_open(string(character_folder[what_player]) + "/data/sprite_origin_point.ini");
+		global.sprite_select_player[what_player] = scr_initialize_character_sprite("idle", global.sprite_select_player[what_player], character_folder[what_player]);
 		global.sprite_select_player[what_player] = scr_initialize_character_sprite("stand", global.sprite_select_player[what_player], character_folder[what_player]);
 		global.sprite_player_stand[what_player] = global.sprite_select_player[what_player];
 		global.sprite_select_player[what_player] = scr_initialize_character_sprite("character_select_portrait", global.sprite_select_player[what_player], character_folder[what_player]);
