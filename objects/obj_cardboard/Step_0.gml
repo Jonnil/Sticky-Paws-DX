@@ -5,7 +5,7 @@ if (instance_exists(obj_player))
 	
 	if (place_meeting(x, y + 7, obj_player) &&
 	player_nearest.vspeed < 0 ||
-	place_meeting(x, y - 32, obj_player) && player_nearest.vspeed > 0 && player_nearest.ground_pound ||
+	place_meeting(x, y - 32, obj_player) && player_nearest.vspeed > 0 && player_nearest.ground_pound >= 1 ||
 	player_nearest.dive ||
 	player_nearest.wall_jump > 0 ||
 	player_nearest.move_towards_spring_endpoint ||
@@ -15,6 +15,10 @@ if (instance_exists(obj_player))
 		alarm[1] = 1; /* Break cardboard */
 		break_cardboard_source_x = player_nearest.x;
 		break_cardboard_source_speed = player_nearest.speed;
+		if (player_nearest.ground_pound >= 1)
+		{
+			player_nearest.ground_pound = 1;
+		}
 	}
 }
 

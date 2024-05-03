@@ -121,6 +121,7 @@ function scr_change_character_skin()
 				scr_delete_sprite_properly(global.sprite_select_player[i]);
 				global.sprite_select_player[i] = spr_noone;
 				ini_open(string(character_folder) + "/data/sprite_origin_point.ini");
+				global.sprite_select_player[i] = scr_initialize_character_sprite("idle", global.sprite_select_player[i], character_folder[i]);
 				global.sprite_select_player[i] = scr_initialize_character_sprite("stand", global.sprite_select_player[i], character_folder[i]);
 				global.sprite_player_stand[i] = global.sprite_select_player[i];
 				global.sprite_select_player[i] = scr_initialize_character_sprite("character_select_portrait", global.sprite_select_player[i], character_folder[i]);

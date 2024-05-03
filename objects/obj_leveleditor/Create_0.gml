@@ -228,7 +228,7 @@ if (!global.actually_play_edited_level)
 	
 	#region /* Load custom sprites */
 	sprite_lives_icon = spr_1up;
-	scr_set_character_folder(1, 0);
+	scr_set_character_folder(1, global.skin_for_player[1]);
 	ini_open(string(character_folder) + "/data/sprite_origin_point.ini");
 	sprite_lives_icon = scr_initialize_character_sprite("lives_icon", sprite_lives_icon);
 	ini_close(); switch_save_data_commit(); /* Remember to commit the save data! */
@@ -237,6 +237,19 @@ if (!global.actually_play_edited_level)
 	sprite_enemy_bowlingball = global.resource_pack_sprite_enemy_bowlingball_walk;
 	sprite_enemy_bowlingball_blind = global.resource_pack_sprite_enemy_bowlingball_blind_walk;
 	sprite_big_stationary_enemy = global.resource_pack_sprite_big_stationary_enemy;
+	
+	/* Loop through each character */
+	for (var i = 1; i <= global.max_players; i++)
+	{
+		scr_set_character_folder(i, global.skin_for_player[i]); /* Set the character folder */
+		ini_open(character_folder + "/data/character_config.ini"); /* Open "character config.ini" */
+		
+		/* Initialize default xscale and yscale for sprites */
+		player_default_xscale[i] = scr_initialize_character_abilities(i - 1, "default_xscale", 1, "values");
+		player_default_yscale[i] = scr_initialize_character_abilities(i - 1, "default_yscale", 1, "values");
+		
+		ini_close(); /* Close the ini file */
+	}
 	#endregion /* Load custom sprites END */
 	
 	#region /* Grid Initialization */

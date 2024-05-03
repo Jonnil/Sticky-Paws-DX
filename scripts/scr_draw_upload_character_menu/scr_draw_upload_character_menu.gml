@@ -9,6 +9,32 @@ function scr_draw_upload_character_menu()
 	var mouse_get_x = device_mouse_x_to_gui(0);
 	var mouse_get_y = device_mouse_y_to_gui(0);
 	
+	#region /* Should always be visible in character upload menu */
+	if (menu == "upload_yes_character")
+	|| (menu == "upload_no_character")
+	|| (menu == "upload_clear_check_character_again")
+	|| (menu == "upload_clear_check_character_open_character_folder")
+	|| (menu == "clear_check_character_no")
+	|| (menu == "clear_check_character_yes")
+	|| (menu == "uploading_character")
+	|| (menu == "character_uploaded")
+	{
+		draw_set_halign(fa_center);
+		draw_set_valign(fa_middle);
+		draw_set_alpha(0.9);
+		draw_rectangle_color(0, 0, get_window_width, get_window_height, c_black, c_black, c_black, c_black, false);
+		draw_set_alpha(1);
+		
+		#region /* Draw Character Portrait */
+		if (sprite_exists(global.sprite_select_player[1]))
+		{
+			draw_sprite_ext(global.sprite_select_player[1], 0, get_window_width * 0.5 + xx[1], get_window_height * 0.5, 392 / sprite_get_width(global.sprite_select_player[1]), 392 / sprite_get_width(global.sprite_select_player[1]), 0, c_white, 1);
+		}
+		#endregion /* Draw Character Portrait END */
+		
+	}
+	#endregion /* Should always be visible in character upload menu END */
+	
 	#region /* Upload Character Menu */
 	if (menu == "upload_yes_character")
 	|| (menu == "upload_no_character")
@@ -22,19 +48,6 @@ function scr_draw_upload_character_menu()
 		var upload_character_yes_y = (window_get_height() * 0.5) + 184;
 		var upload_clear_check_character_again_y = (window_get_height() * 0.5) + 184 + 84;
 		var upload_clear_check_character_open_character_folder_y = (window_get_height() * 0.5) + 184 + 84 + 42;
-		
-		draw_set_halign(fa_center);
-		draw_set_valign(fa_middle);
-		draw_set_alpha(0.9);
-		draw_rectangle_color(0, 0, get_window_width, get_window_height, c_black, c_black, c_black, c_black, false);
-		draw_set_alpha(1);
-		
-		#region /* Draw Character Portrait */
-		if (global.sprite_select_player[fixed_player] > 0)
-		{
-			draw_sprite_ext(global.sprite_select_player[fixed_player], 0, get_window_width * 0.5 + xx[fixed_player], get_window_height * 0.5, 392 / sprite_get_width(global.sprite_select_player[fixed_player]), 392 / sprite_get_width(global.sprite_select_player[fixed_player]), 0, c_white, 1);
-		}
-		#endregion /* Draw Character Portrait END */
 		
 		draw_set_alpha(0.9);
 		draw_roundrect_color_ext(get_window_width * 0.5 - message_x_offset, upload_name_question_y - 32, get_window_width * 0.5 + message_x_offset, upload_name_question_y + 32, 50, 50, c_black, c_black, false);
@@ -384,19 +397,6 @@ function scr_draw_upload_character_menu()
 		var do_a_clear_check_character_yes_y = 532;
 		if (!global.doing_clear_check_character)
 		{
-			draw_set_halign(fa_center);
-			draw_set_valign(fa_middle);
-			draw_set_alpha(0.9);
-			draw_rectangle_color(0, 0, get_window_width, get_window_height, c_black, c_black, c_black, c_black, false);
-			draw_set_alpha(1);
-			
-			#region /* Draw Character Portrait */
-			if (global.sprite_select_player[fixed_player] > 0)
-			{
-				draw_sprite_ext(global.sprite_select_player[fixed_player], 0, get_window_width * 0.5 + xx[fixed_player], get_window_height * 0.5, 392 / sprite_get_width(global.sprite_select_player[fixed_player]), 392 / sprite_get_width(global.sprite_select_player[fixed_player]), 0, c_white, 1);
-			}
-			#endregion /* Draw Character Portrait END */
-			
 			draw_set_alpha(0.9);
 			draw_roundrect_color_ext(get_window_width * 0.5 - message_x_offset - 74, do_a_clear_check_character_y - 48, get_window_width * 0.5 + message_x_offset + 74, do_a_clear_check_character_y + 64, 50, 50, c_black, c_black, false);
 			draw_set_alpha(1);
@@ -579,19 +579,6 @@ function scr_draw_upload_character_menu()
 		content_type = "character"; /* Set "content type" to be correct for what kind of files you're uploading, before uploading the files to the server */
 		var uploading_character_message_y = 532;
 		
-		draw_set_halign(fa_center);
-		draw_set_valign(fa_middle);
-		draw_set_alpha(0.9);
-		draw_rectangle_color(0, 0, get_window_width, get_window_height, c_black, c_black, c_black, c_black, false);
-		draw_set_alpha(1);
-		
-		#region /* Draw Character Portrait */
-		if (global.sprite_select_player[fixed_player] > 0)
-		{
-			draw_sprite_ext(global.sprite_select_player[fixed_player], 0, get_window_width * 0.5 + xx[fixed_player], get_window_height * 0.5, 392 / sprite_get_width(global.sprite_select_player[fixed_player]), 392 / sprite_get_width(global.sprite_select_player[fixed_player]), 0, c_white, 1);
-		}
-		#endregion /* Draw Character Portrait END */
-		
 		draw_set_alpha(0.9);
 		draw_roundrect_color_ext(get_window_width * 0.5 - message_x_offset, uploading_character_message_y - 32, get_window_width * 0.5 + message_x_offset, uploading_character_message_y + 32, 50, 50, c_black, c_black, false);
 		draw_set_alpha(1);
@@ -724,8 +711,6 @@ function scr_draw_upload_character_menu()
 	#region /* Error Character Too Big */
 	if (menu == "error_character_too_big")
 	{
-		draw_set_halign(fa_center);
-		draw_set_valign(fa_middle);
 		draw_set_alpha(0.9);
 		draw_rectangle_color(0, 0, get_window_width, get_window_height, c_black, c_black, c_black, c_black, false);
 		draw_set_alpha(1);
@@ -798,19 +783,6 @@ function scr_draw_upload_character_menu()
 		var uploaded_character_message_y = 432;
 		var ok_y = uploaded_character_message_y + 168;
 		
-		draw_set_halign(fa_center);
-		draw_set_valign(fa_middle);
-		draw_set_alpha(0.9);
-		draw_rectangle_color(0, 0, get_window_width, get_window_height, c_black, c_black, c_black, c_black, false);
-		draw_set_alpha(1);
-		
-		#region /* Draw Character Portrait */
-		if (global.sprite_select_player[fixed_player] > 0)
-		{
-			draw_sprite_ext(global.sprite_select_player[fixed_player], 0, get_window_width * 0.5 + xx[fixed_player], get_window_height * 0.5, 392 / sprite_get_width(global.sprite_select_player[fixed_player]), 392 / sprite_get_width(global.sprite_select_player[fixed_player]), 0, c_white, 1);
-		}
-		#endregion /* Draw Character Portrait END */
-		
 		draw_set_alpha(0.9);
 		draw_roundrect_color_ext(get_window_width * 0.5 - message_x_offset, uploaded_character_message_y - 32, get_window_width * 0.5 + message_x_offset, uploaded_character_message_y + 128, 50, 50, c_black, c_black, false);
 		draw_set_alpha(1);
@@ -880,8 +852,6 @@ function scr_draw_upload_character_menu()
 	#region /* No Internet */
 	if (menu == "no_internet_character")
 	{
-		draw_set_halign(fa_center);
-		draw_set_valign(fa_middle);
 		draw_set_alpha(0.9);
 		draw_rectangle_color(0, 0, get_window_width, get_window_height, c_black, c_black, c_black, c_black, false);
 		draw_set_alpha(1);

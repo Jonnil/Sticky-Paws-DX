@@ -36,9 +36,9 @@ function scr_character_manage_menu_draw()
 	{
 		
 		#region /* Draw character portrait for player 1 */
-		if (global.sprite_select_player[fixed_player] > 0)
+		if (sprite_exists(global.sprite_select_player[1]))
 		{
-			draw_sprite_ext(global.sprite_select_player[fixed_player], 0, get_window_width * 0.5 + xx[fixed_player], get_window_height * 0.5, 392 / sprite_get_width(global.sprite_select_player[fixed_player]), 392 / sprite_get_width(global.sprite_select_player[fixed_player]), 0, c_white, 1);
+			draw_sprite_ext(global.sprite_select_player[1], 0, get_window_width * 0.5 + xx[1], get_window_height * 0.5, 392 / sprite_get_width(global.sprite_select_player[1]), 392 / sprite_get_width(global.sprite_select_player[1]), 0, c_white, 1);
 		}
 		#endregion /* Draw character portrait for player 1 END */
 		
@@ -133,35 +133,48 @@ function scr_character_manage_menu_draw()
 		
 		var char_name_y, copy_character_y, delete_character_y, upload_character_y, open_character_folder_y;
 
-		if (global.enable_open_custom_folder) {
-		    if (global.free_communication_available) {
+		if (global.enable_open_custom_folder)
+		{
+		    if (global.free_communication_available)
+			{
 				char_name_y = get_window_height - (42 * 5);
 			}
-			else {
+			else
+			{
 				char_name_y = get_window_height - (42 * 4);
 			}
 		    open_character_folder_y = get_window_height - 42;
-		} else {
-			if (global.free_communication_available) {
+		}
+		else
+		{
+			if (global.free_communication_available)
+			{
 				char_name_y = get_window_height - (42 * 4);
 			}
-			else {
+			else
+			{
 				char_name_y = get_window_height - (42 * 3);
 			}
 		    open_character_folder_y = -9999;
 		}
-
-		if (!selecting_official_character) {
-		    if (global.free_communication_available) {
+		
+		if (!selecting_official_character)
+		{
+		    if (global.free_communication_available)
+			{
 		        copy_character_y = enable_copy_character ? get_window_height - (42 * 4) : -9999;
 		        delete_character_y = get_window_height - (42 * 3);
 		        upload_character_y = enable_copy_character ? get_window_height - (42 * 2) : -9999;
-		    } else {
+		    }
+			else
+			{
 		        copy_character_y = enable_copy_character ? get_window_height - (42 * 3) : -9999;
 		        delete_character_y = get_window_height - (42 * 2);
 		        upload_character_y = -9999;
 		    }
-		} else {
+		}
+		else
+		{
 		    copy_character_y = enable_copy_character ? get_window_height - (42 * 2) : -9999;
 		    delete_character_y = -9999;
 		    upload_character_y = -9999;

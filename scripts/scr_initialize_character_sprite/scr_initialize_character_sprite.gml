@@ -11,6 +11,14 @@ function scr_initialize_character_sprite(sprite_name, character_sprite_variable 
 		sprite_number = 1; /* Set sprite number to 1 if there is nothing returned, after setting the sprite filename */
 	}
 	
+	/* Rename sprites that have the _string suffix to no longer use them */
+	if (file_exists(string(sprite_path) + "_strip" + string(sprite_number) + ".png"))
+	{
+		file_rename(
+		string(sprite_path) + "_strip" + string(sprite_number) + ".png",
+		string(sprite_path) + string(sprite_number) + ".png");
+	}
+	
 	if (file_exists(sprite_filename)) /* If the file exists, add the sprite to the game and set "sprite found" to true */
 	{
 		character_sprite_variable = sprite_add(sprite_filename, sprite_number, false, false, 0, 0);

@@ -5,7 +5,6 @@ can_enter_level_automatically = true;
 max_total_big_collectibles = 50;
 
 global.max_big_collectible = 5; /* Main game only have 5 big collectibles in each level */
-global.free_communication_available = false; /* When in main game, you can't use the online features, as those are tied to the title screen, so disable now */
 full_level_map_screenshot_timer = 0;
 can_show_arrows = 0;
 show_arrows_alpha = 0;

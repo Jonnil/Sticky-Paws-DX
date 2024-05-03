@@ -91,7 +91,6 @@ function scr_config_save()
 		global.selected_title_logo = 0;
 	}
 	ini_write_real("config", "select_title_logo", global.selected_title_logo);
-	ini_write_real("config", "can_load_custom_level_assets", global.can_load_custom_level_assets);
 	ini_write_real("config", "zoom_level", global.zoom_level);
 	ini_write_real("config", "zoom_world_map", global.zoom_world_map);
 	ini_write_real("config", "reset_level_zoom_when_going_back_to_map", global.reset_level_zoom_when_going_back_to_map);
@@ -110,7 +109,6 @@ function scr_config_save()
 		ini_write_real("config", "vibration_strength" + string(i), global.vibration_strength[i]);
 		ini_write_real("config", "chosen_controller_used" + string(i), global.chosen_controller_used[i]);
 		ini_write_real("config", "character_index_player" + string(i), global.character_index[i - 1]);
-		ini_write_real("config", "skin_for_player" + string(i), global.actual_skin_for_player[i]);
 		ini_write_string("config", "player" + string(i) + "_name", global.player_name[i]);
 		ini_write_real("player" + string(i) + "_profile" + string(global.player_profile[i] + 1), "player" + string(i) + "_up_is_also_jump", global.player_up_is_also_jump[i]);
 		ini_write_real("player" + string(i) + "_profile" + string(global.player_profile[i] + 1), "player" + string(i) + "_double_jump_uses_jump_key", global.player_double_jump_uses_jump_key[i]);

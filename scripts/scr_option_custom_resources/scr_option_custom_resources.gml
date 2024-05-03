@@ -1114,6 +1114,9 @@ function scr_option_custom_resources()
 		&& (menu_delay == 0 && menu_joystick_delay == 0)
 		{
 			global.can_load_custom_level_assets = not global.can_load_custom_level_assets;
+			ini_open(game_save_id + "save_file/config.ini");
+			ini_write_real("config", "can_load_custom_level_assets", global.can_load_custom_level_assets);
+			ini_close();
 		}
 	}
 	else

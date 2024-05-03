@@ -6,7 +6,6 @@ function scr_player_move_tongue()
 		
 		#region /* Tongue */
 		if (can_move)
-		&& (!global.pause)
 		{
 			if (!instance_exists(obj_tongue))
 			{

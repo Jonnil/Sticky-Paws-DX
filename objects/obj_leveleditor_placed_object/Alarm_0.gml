@@ -3,6 +3,11 @@ if (!global.actually_play_edited_level)
 {
 	if (!global.world_editor)
 	{
+		if (object = 1)
+		{
+			object = LEVEL_OBJECT_ID.ID_WALL_STONE;
+		}
+		
 		var grid = global.object_grid;
 		var grid_height = ds_grid_height(grid) - 1;
 		

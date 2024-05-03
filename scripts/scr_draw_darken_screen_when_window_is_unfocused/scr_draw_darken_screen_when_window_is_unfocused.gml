@@ -2,8 +2,10 @@ function scr_draw_darken_screen_when_window_is_unfocused()
 {
 	
 	#region /* If Window is unfocused, make the screen darker */
-	if (!window_has_focus()) {
-	    if (self == obj_pause && !hide_menu_for_clean_screenshots) || (self != obj_pause) {
+	if (!window_has_focus())
+	{
+	    if (self == obj_pause && !hide_menu_for_clean_screenshots) || (self != obj_pause)
+		{
 	        var gui_width = display_get_gui_width();
 		    var gui_height = display_get_gui_height();
 		    var half_width = gui_width * 0.5;
@@ -13,7 +15,7 @@ function scr_draw_darken_screen_when_window_is_unfocused()
 		    draw_rectangle_color(0, 0, gui_width, gui_height, c_black, c_black, c_black, c_black, false);
 			
 			var wave_alpha = scr_wave(0.5, 2, 1);
-	        var text_width = 125;
+	        var text_width = string_width(l10n_text("Click to Focus")) * 0.5;
 			
 	        draw_set_alpha(wave_alpha);
 	        draw_set_halign(fa_center);

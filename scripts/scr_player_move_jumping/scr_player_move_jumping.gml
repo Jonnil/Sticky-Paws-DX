@@ -25,7 +25,6 @@ function scr_player_move_jumping()
 	
 	if (buffer_jump > 0)
 	&& (can_move)
-	&& (!global.pause)
 	&& (key_jump_hold)
 	{
 		

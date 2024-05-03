@@ -64,6 +64,7 @@ function scr_character_select_menu_step()
 				global.sprite_select_player[i] = spr_noone;
 				scr_set_character_folder(i, global.skin_for_player[i]);
 				ini_open(string(character_folder) + "/data/sprite_origin_point.ini");
+				global.sprite_select_player[i] = scr_initialize_character_sprite("idle", global.sprite_select_player[i]);
 				global.sprite_select_player[i] = scr_initialize_character_sprite("stand", global.sprite_select_player[i]);
 				global.sprite_select_player[i] = scr_initialize_character_sprite("character_select_portrait", global.sprite_select_player[i]);
 				ini_close(); switch_save_data_commit(); /* Remember to commit the save data! */
@@ -314,6 +315,7 @@ function scr_character_select_menu_step()
 						menu_delay = 3;
 						can_navigate = true;
 						if (global.free_communication_available)
+						&& (room == rm_title) /* Can only access online in title screen */
 						{
 							player_menu[fixed_player] = "online_character_list";
 							menu = "online_character_list";

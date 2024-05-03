@@ -62,7 +62,7 @@ else
 #region /* If you're playing on console, then some things should not show up that is for PC */
 if (os_type == os_switch)
 {
-	global.free_communication_available = switch_free_communication_available(); /* If free communication is disabled, you shouldn't be able to upload or download custom content. Set this to global.free_communication_available = switch_free_communication_available when done debugging */
+	global.free_communication_available = switch_free_communication_available(); /* If free communication is disabled, you shouldn't be able to upload or download custom content. Set this to switch_free_communication_available when done debugging */
 	global.can_load_photographic_images = false; /* It's against Nintendo Switch guidelines to be able to view photographic images in UGC */
 	global.show_prompt_when_changing_to_gamepad = false;
 	global.show_prompt_when_changing_to_keyboard_and_mouse = false;	
@@ -72,7 +72,7 @@ if (os_type == os_switch)
 }
 else
 {
-	global.free_communication_available = true; /* If free communication is disabled, you shouldn't be able to upload or download custom content. Set this to global.free_communication_available = true when done debugging */
+	global.free_communication_available = true; /* If free communication is disabled, you shouldn't be able to upload or download custom content. Set this to true when done debugging */
 	global.can_load_photographic_images = true; /* Default: true. There are no guidelines preventing other platfroms to view photographic images in UGC */
 	global.show_prompt_when_changing_to_gamepad = true;
 	global.show_prompt_when_changing_to_keyboard_and_mouse = true;

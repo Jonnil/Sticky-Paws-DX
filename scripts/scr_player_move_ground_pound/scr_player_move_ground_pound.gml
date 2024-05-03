@@ -4,7 +4,6 @@ function scr_player_move_ground_pound()
 	#region /* Ground Pound */
 	if (allow_ground_pound)
 	&& (can_move)
-	&& (!global.pause)
 	&& (can_ground_pound)
 	&& (taken_damage <= taken_damage_freezetime)
 	&& (!dive)
@@ -90,11 +89,10 @@ function scr_player_move_ground_pound()
 				#region /* Continuesly break blocks underneath you, if they are breakable */
 				if (key_crouch_hold)
 				&& (place_meeting(x, y + 1, obj_question_block))
-				&& (instance_nearest(x, y + 1, obj_question_block).item_inside == "none")
-				&& (instance_nearest(x, y + 1, obj_question_block).block_type == "brick_block")
-				|| (key_crouch_hold)
-				&& (place_meeting(x, y + 1, obj_question_block))
-				&& (instance_nearest(x, y + 1, obj_question_block).can_break_this_block)
+				&& (instance_nearest(x, y + 1, obj_question_block).item_inside == "none"
+				&& instance_nearest(x, y + 1, obj_question_block).block_type == "brick_block"
+				|| instance_nearest(x, y + 1, obj_question_block).can_break_this_block)
+				|| (place_meeting(x, y + 1, obj_cardboard))
 				{
 					ground_pound = 1;
 					speed_max = 0;
@@ -117,10 +115,10 @@ function scr_player_move_ground_pound()
 			
 			else
 			if (key_up)
-			&& (vspeed >4)
+			&& (vspeed > 4)
 			|| (key_dive_pressed)
-			&& (vspeed >4)
-			|| (vspeed <-4)
+			&& (vspeed > 4)
+			|| (vspeed < -4)
 			{
 				image_index = 0;
 				ground_pound = false;
