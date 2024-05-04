@@ -332,6 +332,7 @@
     {"name":"scr_set_controls_used_to_navigate","order":29,"path":"scripts/scr_set_controls_used_to_navigate/scr_set_controls_used_to_navigate.yy",},
     {"name":"scr_set_default_audio_settings","order":30,"path":"scripts/scr_set_default_audio_settings/scr_set_default_audio_settings.yy",},
     {"name":"scr_set_default_language","order":31,"path":"scripts/scr_set_default_language/scr_set_default_language.yy",},
+    {"name":"scr_set_default_option_description","order":13,"path":"scripts/scr_set_default_option_description/scr_set_default_option_description.yy",},
     {"name":"scr_set_default_remapping_player","order":32,"path":"scripts/scr_set_default_remapping_player/scr_set_default_remapping_player.yy",},
     {"name":"scr_set_font","order":61,"path":"scripts/scr_set_font/scr_set_font.yy",},
     {"name":"scr_set_length_variable","order":17,"path":"scripts/scr_set_length_variable/scr_set_length_variable.yy",},

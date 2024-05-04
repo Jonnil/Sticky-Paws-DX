@@ -2060,6 +2060,7 @@ function scr_option_menu()
 			"+7",
 			"+8",
 			"+9");
+			scr_set_default_dropdown_description("assist_extra_hp", "None");
 			#endregion /* Assist Extra HP END */
 			
 			#region /* Assist item appear */
@@ -2075,6 +2076,7 @@ function scr_option_menu()
 			l10n_text("Appear after 8 defeats on a level"),
 			l10n_text("Appear after 9 defeats on a level"),
 			l10n_text("Never Appear"));
+			scr_set_default_dropdown_description("assist_item_appear", "Never Appear");
 			#endregion /* Assist item appear END */
 			
 			#region /* Make sure you can't navigate the assist menu unless you have enabled assist mode */
@@ -2156,12 +2158,14 @@ function scr_option_menu()
 			else
 			{
 				draw_menu_dropdown(380, selected_font_y, l10n_text("Selected Font"), "select_font", global.selected_font, l10n_text("Game Font"), l10n_text("Normal Font"), l10n_text("Open Dyslexic")); /* Includes Open Dyslexic */
+				scr_set_default_dropdown_description("select_font", "Game Font");
 				var can_select_font = true;
 			}
 			draw_menu_dropdown(380, hud_hide_time_y, l10n_text("HUD hide timer"), "hud_hide_time", global.hud_hide_time, l10n_text("Never Show"), l10n_text("After 1 Second"), l10n_text("After 2 Seconds"), l10n_text("After 3 Seconds"), l10n_text("After 4 Seconds"), l10n_text("After 5 Seconds"), l10n_text("After 6 Seconds"), l10n_text("After 7 Seconds"), l10n_text("After 8 Seconds"), l10n_text("After 9 Seconds"), l10n_text("Always Show"));
+			scr_set_default_dropdown_description("hud_hide_time", "After 3 Seconds");
 			
 			draw_menu_dropdown(380, difficulty_settings_y, l10n_text("Level Layout Difficulty"), "difficulty_settings", global.difficulty, l10n_text("Easy"), l10n_text("Normal"), l10n_text("Hard")); /* Difficulty Settings */
-			
+			scr_set_default_dropdown_description("difficulty_settings", "Normal");
 		}
 		#endregion /* Game Settings END */
 	
@@ -2651,6 +2655,7 @@ function scr_option_menu()
 			#endregion /* Reset to Default Audio Settings END */
 			
 			draw_menu_dropdown(390, number_of_audio_channels_y, l10n_text("Number of Audio Channels"), "number_of_audio_channels", global.number_of_audio_channels, "32", "64", "96", "128", "160", "192", "224", "256"); /* Dropdown menus should be drawn last so they are above everything else when you open them */
+			scr_set_default_dropdown_description("number_of_audio_channels", "128");
 		}
 		#endregion /* Audio Settings END */
 		

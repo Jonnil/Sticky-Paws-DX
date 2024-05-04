@@ -2907,6 +2907,7 @@
     {"id":{"name":"scr_set_controls_used_to_navigate","path":"scripts/scr_set_controls_used_to_navigate/scr_set_controls_used_to_navigate.yy",},},
     {"id":{"name":"scr_set_default_audio_settings","path":"scripts/scr_set_default_audio_settings/scr_set_default_audio_settings.yy",},},
     {"id":{"name":"scr_set_default_language","path":"scripts/scr_set_default_language/scr_set_default_language.yy",},},
+    {"id":{"name":"scr_set_default_option_description","path":"scripts/scr_set_default_option_description/scr_set_default_option_description.yy",},},
     {"id":{"name":"scr_set_default_remapping_player","path":"scripts/scr_set_default_remapping_player/scr_set_default_remapping_player.yy",},},
     {"id":{"name":"scr_set_font","path":"scripts/scr_set_font/scr_set_font.yy",},},
     {"id":{"name":"scr_set_length_variable","path":"scripts/scr_set_length_variable/scr_set_length_variable.yy",},},

@@ -516,6 +516,7 @@ function scr_option_level_editor()
 			draw_menu_button(level_editor_option_x, delete_all_objects_y, l10n_text("Delete All Objects"), "delete_all_objects", "delete_all_objects_no", c_red);
 			draw_sprite_ext(spr_icon_delete, 0, level_editor_option_x + 16, delete_all_objects_y + 21, 1, 1, 0, c_white, 1);
 			draw_menu_dropdown(level_editor_option_x - 32, selected_level_editing_music_y, l10n_text("Level Editing Music"), "select_level_editing_music", global.selected_level_editing_music, l10n_text("None"), l10n_text("Random"), l10n_text("Music 1"), l10n_text("Music 2"), l10n_text("Music 3"), l10n_text("Music 4"));
+			scr_set_default_dropdown_description("select_level_editing_music", "Random");
 		}
 		else
 		if (menu == "delete_all_objects_yes")

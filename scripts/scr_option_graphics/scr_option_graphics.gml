@@ -66,6 +66,7 @@ function scr_option_graphics()
 		draw_menu_button(420, advanced_video_option_y, l10n_text("Advanced Video Options"), "advanced_video_options", "advanced_video_option_back");
 		
 		draw_menu_dropdown(400, gui_scale_modifier_y, l10n_text("GUI Scale Modifier"), "gui_scale_modifier", global.gui_scale_modifier, l10n_text("Auto"), "5", "4", "3", "2", "1", "-1", "-2", "-3", "-4", "-5");
+		scr_set_default_dropdown_description("gui_scale_modifier", "Auto");
 		
 		if (menu == "resolution_setting")
 		&& (!window_get_fullscreen())
@@ -102,6 +103,7 @@ function scr_option_graphics()
 			"1024 x 576",
 			"960 x 540",
 			"480 x 270");
+			scr_set_default_dropdown_description("resolution_setting", l10n_text("Current") + " " + string(window_get_width()) + " x " + string(window_get_height()));
 		}
 		else
 		{
@@ -412,8 +414,11 @@ function scr_option_graphics()
 	{
 		draw_menu_button(450, 48, l10n_text("Back"), "customize_button_design_back", "customize_button_design");
 		draw_menu_dropdown(420, 68 * 4, l10n_text("Transparency"), "customize_button_design_transparency", global.button_design_transparency, l10n_text("Opaque"), l10n_text("See Through"), l10n_text("Outlines Only"), l10n_text("Invisible"));
+		scr_set_default_dropdown_description("customize_button_design_transparency", "Opaque");
 		draw_menu_dropdown(420, 68 * 3, l10n_text("Shape"), "customize_button_design_shape", global.button_design_shape, l10n_text("Rectangle"), l10n_text("Round"));
+		scr_set_default_dropdown_description("customize_button_design_shape", "Round");
 		draw_menu_dropdown(420, 68 * 2, l10n_text("Color"), "customize_button_design_color", global.button_design_color, l10n_text("Gray"), l10n_text("Black"), l10n_text("Pink"), l10n_text("Blue"));
+		scr_set_default_dropdown_description("customize_button_design_color", "Pink");
 		
 		if (key_b_pressed)
 		&& (!open_dropdown)

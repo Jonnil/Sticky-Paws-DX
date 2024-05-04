@@ -16,9 +16,20 @@ function scr_draw_option_description()
 	{
 		var option_default = "";
 	}
+	
+	if (global.option_description != "" && global.option_default == -2)
+	{
+		var option_description_text = l10n_text("Default") + ": " + string(global.option_description);
+	}
+	else
 	if (global.option_description != "" && option_default != "")
 	{
 		var option_description_text = string(global.option_description) + " - " + string(option_default);
+	}
+	else
+	if (global.option_description != "")
+	{
+		var option_description_text = string(global.option_description);
 	}
 	else
 	{

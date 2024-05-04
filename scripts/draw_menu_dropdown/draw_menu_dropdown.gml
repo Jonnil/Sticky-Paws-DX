@@ -27,9 +27,8 @@ function draw_menu_dropdown(x_position, y_position, string_text, menu_index, var
 		else
 		{
 			if (menu == menu_index)
-			&& (global.controls_used_for_navigation == "keyboard")
-			|| (menu == menu_index)
-			&& (global.controls_used_for_navigation == "gamepad")
+			&& (global.controls_used_for_navigation == "keyboard"
+			|| global.controls_used_for_navigation == "gamepad")
 			{
 				draw_sprite_ext(spr_menu_button, global.menu_button_subimg, x_position + 32, y_position + 21, 1.5, 1, 0, c_gray, 1);
 			}

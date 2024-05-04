@@ -96,7 +96,7 @@ function scr_option_control_menu()
 	{
 		var menu_y_always_show_gamepad_buttons = menu_y_down_and_jump_to_groundpound + 64 * 5				+ 48;
 		var menu_y_chosen_controller_used = menu_y_down_and_jump_to_groundpound + 64 * 6				+ 48;
-		var menu_y_vibration_strength = menu_y_down_and_jump_to_groundpound + 64 * 7				+ 78;
+		var menu_y_vibration_strength = menu_y_down_and_jump_to_groundpound + 64 * 7				+ 78 + 48;
 	}
 	else
 	{
@@ -4145,6 +4145,13 @@ function scr_option_control_menu()
 		if (global.enable_option_for_pc)
 		&& (global.settings_sidebar_menu == "controller_settings")
 		{
+			if (global.chosen_controller_used[what_player] == 0) /* If you have chosen to autodetect controller, display the gamepad description */
+			{
+				draw_set_halign(fa_left);
+				scr_draw_text_outlined(420, menu_y_chosen_controller_used + menu_y_offset + 70, string(gamepad_get_description(remapping_player)), global.default_text_size, c_menu_outline, c_menu_fill, 1);
+				draw_set_halign(fa_center);
+			}
+			
 			draw_menu_dropdown(390, menu_y_chosen_controller_used + menu_y_offset, l10n_text("Chosen Controller Used"), "chosen_controller_used", global.chosen_controller_used[what_player],
 			l10n_text("Auto Detect"),
 			l10n_text("Xbox One"),
@@ -4152,12 +4159,7 @@ function scr_option_control_menu()
 			l10n_text("Nintendo Switch"),
 			l10n_text("Playstation 4"),
 			l10n_text("Playstation 5"));
-			if (global.chosen_controller_used[what_player] == 0) /* If you have chosen to autodetect controller, display the gamepad description */
-			{
-				draw_set_halign(fa_left);
-				scr_draw_text_outlined(1000, menu_y_chosen_controller_used + menu_y_offset + 20, string(gamepad_get_description(remapping_player)), global.default_text_size, c_menu_outline, c_menu_fill, 1);
-				draw_set_halign(fa_center);
-			}
+			scr_set_default_dropdown_description("chosen_controller_used", "Auto Detect");
 		}
 		if (os_type != os_ios && os_type != os_android)
 		{
@@ -4173,6 +4175,7 @@ function scr_option_control_menu()
 			l10n_text("After 8 Seconds"),
 			l10n_text("After 9 Seconds"),
 			l10n_text("Always Show"));
+			scr_set_default_dropdown_description("show_controls", "Never Show");
 		}
 		draw_menu_dropdown(390, menu_y_drop_down_from_rope + menu_y_offset, l10n_text("Drop down from rope"), "drop_from_rope", global.player_drop_from_rope[what_player],
 		l10n_text("Release Jump"),
@@ -4180,10 +4183,13 @@ function scr_option_control_menu()
 		l10n_text("Only Down"),
 		l10n_text("Only Jump"),
 		l10n_text("Down + Jump"));
+		scr_set_default_dropdown_description("drop_from_rope", "Down or Jump");
+		
 		draw_menu_dropdown(390, menu_y_wall_jump_setting + menu_y_offset, l10n_text("Wall Jump"), "wall_jump_setting", global.player_wall_jump_setting[what_player],
 		l10n_text("Off"),
 		l10n_text("When touching wall"),
 		l10n_text("When holding towards the wall"));
+		scr_set_default_dropdown_description("wall_jump_setting", "When touching wall");
 		#endregion /* Controls checkmarks and dropdown menu settings END */
 		
 		#region /* Menu cursor y position */
@@ -4217,6 +4223,7 @@ function scr_option_control_menu()
 		l10n_text("Profile 2"),
 		l10n_text("Profile 3"),
 		l10n_text("Profile 4")); /* Remap Select Profile - Which profile do you want to remap the controls for? */
+		scr_set_default_dropdown_description("remap_select_profile", "Profile 1");
 		remapping_player = draw_menu_left_right_buttons(490, 50 + menu_y_offset, 250, l10n_text("Player"), remapping_player, "remap_select_player", 1, false, +1, global.max_players - 1);
 		remapping_player = clamp(remapping_player, 0, global.max_players - 1);
 		

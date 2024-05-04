@@ -1067,6 +1067,7 @@ function scr_draw_upload_level_menu()
 		tag_themed = draw_menu_checkmark(center_of_screen - 185, (45 * 9), "Themed", "tag_themed", tag_themed);
 		tag_glitch_showcase = draw_menu_checkmark(center_of_screen + 185, (45 * 9), "Glitch Showcase", "tag_glitch_showcase", tag_glitch_showcase);
 		draw_menu_dropdown(center_of_screen - 185, (45 * 10) + 20, "Intended Difficulty", "intended_level_difficulty", intended_level_difficulty, "Easy", "Normal", "Hard", "Super Hard")
+		scr_set_default_dropdown_description("intended_level_difficulty", "Normal");
 		
 		scr_draw_level_tags(, 42); /* Tell player what tags are selected at top of tags */
 		
