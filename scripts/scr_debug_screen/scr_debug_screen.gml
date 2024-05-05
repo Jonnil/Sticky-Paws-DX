@@ -437,12 +437,6 @@ function scr_debug_screen()
 		//}
 		
 		debug_text_y += 20;
-		scr_draw_text_outlined(32, debug_text_y, "temp_directory: " + string(temp_directory), global.default_text_size, c_black, c_white);
-		
-		debug_text_y += 20;
-		scr_draw_text_outlined(32, debug_text_y, "switch_language_get_desired_language: " + string(switch_language_get_desired_language()), global.default_text_size, c_black, c_white);
-		
-		debug_text_y += 20;
 		scr_draw_text_outlined(32, debug_text_y, "current_datetime: " + string(date_datetime_string(date_current_datetime())), global.default_text_size, c_black, c_white);
 		#endregion /* More debug text END */
 		

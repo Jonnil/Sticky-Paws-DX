@@ -2037,23 +2037,23 @@ function scr_option_menu()
 		#region /* Assist Settings */
 		if (global.settings_sidebar_menu == "accessibility_settings")
 		{
-			global.assist_enable = draw_menu_checkmark(450, 50, l10n_text("Enable Assist Mode"), "assist_enable", global.assist_enable, false);
-			scr_draw_text_outlined(450, 100, l10n_text("The game is meant to be played without Assist Mode"), global.default_text_size * 0.75, c_menu_outline, c_menu_fill, 1);
-			scr_draw_text_outlined(450, 132, l10n_text("Only enable this if you cannot enjoy the game without extra help"), global.default_text_size * 0.75, c_menu_outline, c_menu_fill, 1);
+			global.assist_enable = draw_menu_checkmark(450, 50 + menu_y_offset, l10n_text("Enable Assist Mode"), "assist_enable", global.assist_enable, false);
+			scr_draw_text_outlined(450, 100 + menu_y_offset, l10n_text("The game is meant to be played without Assist Mode"), global.default_text_size * 0.75, c_menu_outline, c_menu_fill, 1);
+			scr_draw_text_outlined(450, 132 + menu_y_offset, l10n_text("Only enable this if you cannot enjoy the game without extra help"), global.default_text_size * 0.75, c_menu_outline, c_menu_fill, 1);
 			
-			global.assist_above_1_hp = draw_menu_checkmark(450, 332, l10n_text("Always above 1 hp"), "assist_above_1_hp", global.assist_above_1_hp, false);
-			global.assist_invincibility = draw_menu_checkmark(450, 332 + (45), l10n_text("Invincible"), "assist_invincibility", global.assist_invincibility, false);
-			global.assist_moonjump = draw_menu_checkmark(450, 332 + (45 * 2), l10n_text("Moonjump"), "assist_moonjump", global.assist_moonjump, false);
-			global.assist_hover_when_holding_jump = draw_menu_checkmark(450, 332 + (45 * 3), l10n_text("Hover when holding jump"), "assist_hover_when_holding_jump", global.assist_hover_when_holding_jump, false);
-			global.assist_floor_over_bottomless_pit = draw_menu_checkmark(450, 332 + (45 * 4), l10n_text("Floor Over Bottomless Pit"), "assist_floor_over_bottomless_pit", global.assist_floor_over_bottomless_pit, false);
-			global.assist_breathe_underwater = draw_menu_checkmark(450, 332 + (45 * 5), l10n_text("Breathe Underwater"), "assist_breathe_underwater", global.assist_breathe_underwater, false);
-			global.assist_guiding_arrows = draw_menu_checkmark(450, 332 + (45 * 6), l10n_text("Show Assist Arrows"), "assist_guiding_arrows", global.assist_guiding_arrows, false);
-			global.assist_normal_arrows = draw_menu_checkmark(450, 332 + (45 * 7), l10n_text("Show Normal Arrows"), "assist_normal_arrows", global.assist_normal_arrows, true);
-			global.assist_enable_enemies = draw_menu_checkmark(450, 332 + (45 * 8), l10n_text("Enable Enemies"), "assist_enable_enemies", global.assist_enable_enemies, true);
-			global.assist_enable_spikes = draw_menu_checkmark(450, 332 + (45 * 9), l10n_text("Enable Spikes"), "assist_enable_spikes", global.assist_enable_spikes, true);
+			global.assist_above_1_hp = draw_menu_checkmark(450, 332 + menu_y_offset, l10n_text("Always Above 1 HP"), "assist_above_1_hp", global.assist_above_1_hp, false);
+			global.assist_invincibility = draw_menu_checkmark(450, 332 + (45) + menu_y_offset, l10n_text("Invincible"), "assist_invincibility", global.assist_invincibility, false);
+			global.assist_moonjump = draw_menu_checkmark(450, 332 + (45 * 2) + menu_y_offset, l10n_text("Moonjump"), "assist_moonjump", global.assist_moonjump, false);
+			global.assist_hover_when_holding_jump = draw_menu_checkmark(450, 332 + (45 * 3) + menu_y_offset, l10n_text("Hover When Holding Jump"), "assist_hover_when_holding_jump", global.assist_hover_when_holding_jump, false);
+			global.assist_floor_over_bottomless_pit = draw_menu_checkmark(450, 332 + (45 * 4) + menu_y_offset, l10n_text("Floor Over Bottomless Pit"), "assist_floor_over_bottomless_pit", global.assist_floor_over_bottomless_pit, false);
+			global.assist_breathe_underwater = draw_menu_checkmark(450, 332 + (45 * 5) + menu_y_offset, l10n_text("Breathe Underwater"), "assist_breathe_underwater", global.assist_breathe_underwater, false);
+			global.assist_guiding_arrows = draw_menu_checkmark(450, 332 + (45 * 6) + menu_y_offset, l10n_text("Show Assist Arrows"), "assist_guiding_arrows", global.assist_guiding_arrows, false);
+			global.assist_normal_arrows = draw_menu_checkmark(450, 332 + (45 * 7) + menu_y_offset, l10n_text("Show Normal Arrows"), "assist_normal_arrows", global.assist_normal_arrows, true);
+			global.assist_enable_enemies = draw_menu_checkmark(450, 332 + (45 * 8) + menu_y_offset, l10n_text("Enable Enemies"), "assist_enable_enemies", global.assist_enable_enemies, true);
+			global.assist_enable_spikes = draw_menu_checkmark(450, 332 + (45 * 9) + menu_y_offset, l10n_text("Enable Spikes"), "assist_enable_spikes", global.assist_enable_spikes, true);
 			
 			#region /* Assist Extra HP */
-			draw_menu_dropdown(450, 262, l10n_text("Extra Health Points"), "assist_extra_hp", global.assist_extra_hp,
+			draw_menu_dropdown(450, 262 + menu_y_offset, l10n_text("Extra Health Points"), "assist_extra_hp", global.assist_extra_hp,
 			l10n_text("None"),
 			"+1",
 			"+2",
@@ -2068,7 +2068,7 @@ function scr_option_menu()
 			#endregion /* Assist Extra HP END */
 			
 			#region /* Assist item appear */
-			draw_menu_dropdown(450, 182, l10n_text("Assist Item"), "assist_item_appear", global.assist_item_appear,
+			draw_menu_dropdown(450, 182 + menu_y_offset, l10n_text("Assist Item"), "assist_item_appear", global.assist_item_appear,
 			l10n_text("Always Appear"),
 			l10n_text("Appear after 1 defeat on a level"),
 			l10n_text("Appear after 2 defeats on a level"),
@@ -2101,7 +2101,7 @@ function scr_option_menu()
 				}
 				open_dropdown = false;
 				draw_set_alpha(0.5);
-				draw_rectangle_color(left_sidebar_x + 370, 157, get_window_width, get_window_height, c_black, c_black, c_black, c_black, false);
+				draw_rectangle_color(left_sidebar_x + 370, 157 + menu_y_offset, get_window_width, get_window_height, c_black, c_black, c_black, c_black, false);
 				draw_set_alpha(1);
 			}
 			#endregion /* Make sure you can't navigate the assist menu unless you have enabled assist mode END */
