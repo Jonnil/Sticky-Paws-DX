@@ -26,7 +26,7 @@ function scr_player_move_mid_air_jump()
 			&& (global.equipped_upgrade_double_jump)
 			|| (number_of_jumps <= -1)
 			&& (global.equipped_upgrade_double_jump)
-			|| (global.playtest_moonjump)
+			|| (global.playtest_moonjump || global.assist_enable && global.assist_moonjump)
 			{
 				buffer_jump = 0;
 				dive = false;

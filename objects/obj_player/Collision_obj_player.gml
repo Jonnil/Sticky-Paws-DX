@@ -1,14 +1,17 @@
-if (other.invincible_timer > 0 && !assist_invincible) {
+if (other.invincible_timer > 0)
+{
 	invincible_timer = other.invincible_timer;
 }
 
 if (global.players_can_collide)
 && (y >= other.y)
 && (!stick_to_wall)
-&& (!other.stick_to_wall) {
+&& (!other.stick_to_wall)
+{
 	if (hspeed < 0) /* If you are going left */
 	&& (x > other.x)
-	&& (other.hspeed > 0) { /* And other is going right */
+	&& (other.hspeed > 0)
+	{ /* And other is going right */
 		hspeed = 0;
 		x ++; /* Push yourself right */
 		other.hspeed = 0;

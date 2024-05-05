@@ -117,34 +117,34 @@ if (hspeed != 0)
 	hspeed_dir = sign(hspeed);
 }
 
-#region /* Assist Invincible */
-if (assist_invincible)
+#region /* Assist Always Above 1 HP */
+if (global.assist_enable && global.assist_above_1_hp && hp <= 1)
 {
-	if (hp <= 0)
+	hp = 2;
+}
+#endregion /* Assist Always Above 1 HP END */
+
+#region /* Assist Hover When Holding Jump */
+if (key_jump_hold)
+&& (global.assist_hover_when_holding_jump || assist_item)
+{
+	if (!on_ground)
+	&& (!dive)
+	&& (!ground_pound)
+	&& (!crouch)
+	&& (vspeed > 1)
 	{
-		hp = 1;
-	}
-	invincible_timer = true;
-	audio_stop_sound(music_invincible);
-	if (key_jump_hold)
-	{
-		if (!on_ground)
-		&& (!dive)
-		&& (!ground_pound)
-		&& (!crouch)
-		&& (vspeed > 1)
-		{
-			vspeed = +1;
-			crouch = false;
-			can_ground_pound = false;
-		}
+		vspeed = +1;
+		crouch = false;
+		can_ground_pound = false;
 	}
 }
-#endregion /* Assist Invincible END */
+#endregion /* Assist Hover When Holding Jump END */
 
 #region /* Playtest Invincibility */
-if (global.playtest_invincibility)
+if (global.playtest_invincibility || global.assist_enable && global.assist_invincibility || assist_item)
 {
+	chain_reaction = 0; /* You can never get chain reactions when you have assist invincibility */
 	invincible_timer = true;
 	if (floor(random(10)) == 0)
 	{
@@ -152,13 +152,6 @@ if (global.playtest_invincibility)
 	}
 }
 #endregion /* Playtest Invincibility END */
-
-#region /* If Assist delault hp is invincible, stay invincible */
-if (global.assist_enable && global.assist_invincible && hp < max_hp)
-{
-	hp = max_hp;
-}
-#endregion /* If Assist delault hp is invincible, stay invincible END */
 
 scr_player_move_customizable_controls(); /* Sets up what the buttons do */
 
@@ -172,6 +165,27 @@ if (place_meeting(x, y + 1, obj_wall)) /* If there is wall underneath */
 else
 {
 	on_ground = false;
+}
+
+if (global.assist_floor_over_bottomless_pit && bbox_bottom >= room_height)
+{
+	on_ground = true;
+	if (vspeed >= 0 && !dive)
+	{
+		vspeed = 0;
+	}
+	if (!crouch)
+	{
+		y = room_height - sprite_get_height(mask_index) * 0.5 - 5;
+	}
+	else
+	{
+		y = room_height - sprite_get_height(mask_index) * 0.5 + 5;
+	}
+	if (key_dive_pressed && allow_dive && can_dive)
+	{
+		y -= 5; /* When diving, push player upward a bit so you don't get stuck in the bottomless pit. Need to run this code last */
+	}
 }
 #endregion /* Save to variable when on ground */
 
@@ -366,10 +380,6 @@ if (on_ground)
 		chain_reaction = 0;
 	}
 }
-if (assist_invincible || global.playtest_invincibility) /* You can never get chain reactions when you have assist invincibility */
-{
-	chain_reaction = 0;
-}
 #endregion /* Chain Reaction Reset END */
 
 scr_player_move_wall_jump_and_wall_climb();
@@ -509,7 +519,7 @@ if (in_water != old_in_water)
 #endregion /* Water Splash Effect END */
 
 #region /* Speedup to Dashspeed */
-if (power_meter_running_sound && invincible_timer >= 1 && abs(hspeed) > 7)
+if (power_meter_running_sound && invincible_timer >= 2 && abs(hspeed) > 7)
 {
 	speedunit += 2;
 	if (speedunit > 100)
@@ -575,9 +585,7 @@ if (burnt == 2)
 #endregion /* Burnt END */
 
 #region /* Invincible Music */
-if (!assist_invincible)
-&& (invincible_timer >= 1)
-&& (!global.playtest_invincibility)
+if (invincible_timer >= 1)
 {
 	invincible_timer --;
 	if (invincible_timer >= 2)

@@ -13,7 +13,7 @@ if (can_clamp_inside_view > 3)
 #region /* Bottomless Pit */
 /* This code needs to be in Outside View event, Outside Room event only runs code only one time when moved outside the room */
 /* Don't stop horizontal speed, as it feels awkward when falling down */
-if (bbox_top >= room_height + 10)
+if (bbox_top >= room_height + 100)
 && (!goal)
 && (!global.goal_active)
 {

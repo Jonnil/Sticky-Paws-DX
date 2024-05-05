@@ -38,7 +38,11 @@ function scr_config_load()
 		if (ini_key_exists("config", "assist_enable")){global.assist_enable = ini_read_real("config", "assist_enable", 0);}
 		if (ini_key_exists("config", "assist_item_appear")){global.assist_item_appear = ini_read_real("config", "assist_item_appear", 0);}
 		if (ini_key_exists("config", "assist_extra_hp")){global.assist_extra_hp = ini_read_real("config", "assist_extra_hp", 0);}
-		if (ini_key_exists("config", "assist_invincible")){global.assist_invincible = ini_read_real("config", "assist_invincible", 0);}
+		if (ini_key_exists("config", "assist_above_1_hp")){global.assist_above_1_hp = ini_read_real("config", "assist_above_1_hp", 0);}
+		if (ini_key_exists("config", "assist_invincibility")){global.assist_invincibility = ini_read_real("config", "assist_invincibility", 0);}
+		if (ini_key_exists("config", "assist_moonjump")){global.assist_moonjump = ini_read_real("config", "assist_moonjump", 0);}
+		if (ini_key_exists("config", "assist_hover_when_holding_jump")){global.assist_hover_when_holding_jump = ini_read_real("config", "assist_hover_when_holding_jump", 0);}
+		if (ini_key_exists("config", "assist_floor_over_bottomless_pit")){global.assist_floor_over_bottomless_pit = ini_read_real("config", "assist_floor_over_bottomless_pit", 0);}
 		if (ini_key_exists("config", "assist_breathe_underwater")){global.assist_breathe_underwater = ini_read_real("config", "assist_breathe_underwater", 0);}
 		if (ini_key_exists("config", "assist_guiding_arrows")){global.assist_guiding_arrows = ini_read_real("config", "assist_guiding_arrows", 0);}
 		if (ini_key_exists("config", "assist_normal_arrows")){global.assist_normal_arrows = ini_read_real("config", "assist_normal_arrows", 0);}

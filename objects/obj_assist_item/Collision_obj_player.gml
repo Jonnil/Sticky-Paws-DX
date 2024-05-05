@@ -1,1 +1,1 @@
-other.assist_invincible = true;
+other.assist_item = true;

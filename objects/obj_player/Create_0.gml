@@ -44,7 +44,7 @@ intro_animation_sprite = noone; /* When there is a intro animation, the sprites 
 #endregion /* Intro Animation Variables END */
 
 can_clamp_inside_view = 0; /* There should be a 3 frame delay before the player clamps inside view, so that the player always starts where the camera object spawns */
-assist_invincible = false;
+assist_item = false;
 buffer_jump = 0; /* Jump buffer timer, set to 0 */
 coyote_jump = 0; /* Cayote jump timer, set to 0 so you can't jump mid-air when starting level. The player still has the ability to jump after walking off a ledge for a few frames */
 can_attack_after_dive_on_ground = 0; /* When landing on ground after dive, you should be able to still kill enemies for some frames, otherwise it feels unfair if you miss your dive a pixel away */

@@ -27,7 +27,11 @@ function scr_config_save()
 	ini_write_real("config", "assist_enable", global.assist_enable);
 	ini_write_real("config", "assist_item_appear", global.assist_item_appear);
 	ini_write_real("config", "assist_extra_hp", global.assist_extra_hp);
-	ini_write_real("config", "assist_invincible", global.assist_invincible);
+	ini_write_real("config", "assist_above_1_hp", global.assist_above_1_hp);
+	ini_write_real("config", "assist_invincibility", global.assist_invincibility);
+	ini_write_real("config", "assist_moonjump", global.assist_moonjump);
+	ini_write_real("config", "assist_hover_when_holding_jump", global.assist_hover_when_holding_jump);
+	ini_write_real("config", "assist_floor_over_bottomless_pit", global.assist_floor_over_bottomless_pit);
 	ini_write_real("config", "assist_breathe_underwater", global.assist_breathe_underwater);
 	ini_write_real("config", "assist_guiding_arrows", global.assist_guiding_arrows);
 	ini_write_real("config", "assist_normal_arrows", global.assist_normal_arrows);

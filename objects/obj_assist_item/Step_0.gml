@@ -7,11 +7,8 @@ if (effect_time > 60)
 }
 #endregion /* Expanding Ring Effect END */
 
-if (instance_number(obj_player) == 1)
+if (instance_number(obj_player) == 1 && obj_player.assist_item)
 {
-	if (obj_player.assist_invincible)
-	{
-		effect_create_above(ef_ring, x, y, 1, c_white);
-		instance_destroy();
-	}
+	effect_create_above(ef_ring, x, y, 1, c_white);
+	instance_destroy();
 }

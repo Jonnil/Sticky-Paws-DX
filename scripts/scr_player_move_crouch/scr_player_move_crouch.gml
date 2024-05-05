@@ -20,6 +20,12 @@ function scr_player_move_crouch()
 		
 		#region /* Get the nearest surface object before changing mask */
 		var nearest_surface_object = self;
+		if (global.assist_floor_over_bottomless_pit && bbox_bottom >= room_height)
+		{
+			/* Teleport the player to the nearest ground surface at the end of the "start crouching" code */
+			y = room_height - sprite_get_height(mask_index) * 0.5 + 15;
+		}
+		else
 		if (instance_exists(obj_wall))
 		&& (instance_exists(obj_semisolid_platform))
 		{
@@ -54,7 +60,10 @@ function scr_player_move_crouch()
 		}
 		
 		/* Teleport the player to the nearest ground surface at the end of the "start crouching" code */
-		y = nearest_surface_object.y - sprite_get_height(mask_index) * 0.5 - 15;
+		if (nearest_surface_object != self)
+		{
+			y = nearest_surface_object.y - sprite_get_height(mask_index) * 0.5 - 15;
+		}
 	}
 	#endregion /* Crouch END */
 	

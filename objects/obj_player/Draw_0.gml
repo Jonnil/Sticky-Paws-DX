@@ -37,10 +37,12 @@ if (hold_item_in_hands = "enemy_bowlingball") {
 #endregion /* Draw holding items in hands underneath the player sprite END */
 
 if (y < view_y) /* Outside top view */
-|| (y > view_bottom_y && y < room_height) /* Outside bottom view */ {
+|| (y > view_bottom_y && y < room_height) /* Outside bottom view */
+{
 	draw_arrow_outside_view_alpha = lerp(draw_arrow_outside_view_alpha, 1, 0.3);
 }
-else {
+else
+{
 	draw_arrow_outside_view_alpha = lerp(draw_arrow_outside_view_alpha, 0, 0.3);
 }
 
@@ -154,43 +156,51 @@ else {
 #endregion /* Blink red when only having 1 HP left and no heart balloon END */
 
 #region /* Invincible */
-if (!assist_invincible) {
-	if (invincible_timer >= true) {
-		invincible_blinking ++;
-		if (invincible_blinking > 21) {
-			invincible_blinking = 0;
+if (invincible_timer >= 2)
+{
+	invincible_blinking ++;
+	if (invincible_blinking > 21)
+	{
+		invincible_blinking = 0;
+	}
+	if (invincible_blinking%20 == 0)
+	{
+		var draw_x = xx;
+		var draw_y = yy;
+		var draw_blend = c_black;
+		var draw_alpha = image_alpha * collision_mask_alpha;
+	}
+	else
+	{
+		if (invincible_timer > 80)
+		{
+			invincible_blend = make_color_hsv((current_time * 0.1) mod 255, 127, 255);
 		}
-		if (invincible_blinking%20 == 0) {
-			var draw_x = xx;
-			var draw_y = yy;
-			var draw_blend = c_black;
-			var draw_alpha = image_alpha * collision_mask_alpha;
+		else
+		{
+			invincible_blend = image_blend;
 		}
-		else {
-			if (invincible_timer > 80) {
-				invincible_blend = make_color_hsv((current_time * 0.1) mod 255, 127, 255);
-			}
-			else {
-				invincible_blend = image_blend;
-			}
-			var draw_x = xx;
-			var draw_y = yy;
-			var draw_blend = invincible_blend;
-			var draw_alpha = image_alpha * collision_mask_alpha;
-		}
+		var draw_x = xx;
+		var draw_y = yy;
+		var draw_blend = invincible_blend;
+		var draw_alpha = image_alpha * collision_mask_alpha;
 	}
 }
-if (invincible_timer >= true) {
-	if (floor(random(10)) == 0) {
+if (invincible_timer >= 1)
+{
+	if (floor(random(10)) == 0)
+	{
 		effect_create_above(ef_star, x + random_range(- 50, + 50), y+ random_range(- 50, + 50), 0, c_white);
 	}
 }
 #endregion /* Invincible END */
 
-if (sprite_exists(sprite_index)) {
-if (draw_arrow_outside_view_alpha > 0) {
-	draw_sprite_ext(sprite_index, image_index, x, draw_arrow_outside_view_y, draw_xscale * default_xscale * 0.5 * sign(image_xscale), draw_yscale * default_yscale * 0.5, angle, draw_blend, draw_arrow_outside_view_alpha);
-}
+if (sprite_exists(sprite_index))
+{
+	if (draw_arrow_outside_view_alpha > 0)
+	{
+		draw_sprite_ext(sprite_index, image_index, x, draw_arrow_outside_view_y, draw_xscale * default_xscale * 0.5 * sign(image_xscale), draw_yscale * default_yscale * 0.5, angle, draw_blend, draw_arrow_outside_view_alpha);
+	}
 	/* Actually draw player sprite with correct attributes */
 	draw_sprite_ext(sprite_index, image_index, draw_x, draw_y, draw_xscale * default_xscale * sign(image_xscale), draw_yscale * default_yscale, angle, draw_blend, draw_alpha);
 }
@@ -199,26 +209,32 @@ if (draw_arrow_outside_view_alpha > 0) {
 #region /* Draw things on top of the player */
 
 #region /* Draw Collision Mask */
-if (global.show_collision_mask) {
-	if (crouch && sprite_mask_crouch > 0) {
+if (global.show_collision_mask)
+{
+	if (crouch && sprite_mask_crouch > 0)
+	{
 		draw_sprite_ext(sprite_mask_crouch, 0, x, y, image_xscale, 1, 0, c_white, 1);
 	}
 	else
-	if (sprite_mask > 0) {
+	if (sprite_mask > 0)
+	{
 		draw_sprite_ext(sprite_mask, 0, x, y, image_xscale, 1, 0, c_white, 1);
 	}
 	draw_rectangle_color(x - 2, y, x + 2, y, c_red, c_red, c_red, c_red, false);
 	draw_rectangle_color(x, y - 2, x, y + 2, c_red, c_red, c_red, c_red, false);
 	collision_mask_alpha = lerp(collision_mask_alpha, 0.5, 0.01);
 }
-else {
+else
+{
 	collision_mask_alpha = lerp(collision_mask_alpha, 1, 0.01);
 }
 #endregion /* Draw Collision Mask END */
 
 #region /* Turnaround Effect */
-if (effect_turnaround_subimg < 10) {
-	if (!climb && !horizontal_rope_climb) {
+if (effect_turnaround_subimg < 10)
+{
+	if (!climb && !horizontal_rope_climb)
+	{
 		draw_sprite_ext(spr_effect_turnaround, effect_turnaround_subimg, xx, yy, image_xscale, 1, angle, c_white, 0.5);
 	}
 	effect_turnaround_subimg ++;
@@ -226,8 +242,10 @@ if (effect_turnaround_subimg < 10) {
 #endregion /* Turnaround Effect END */
 
 #region /* Running Sparks Effect */
-if (effect_speedspark_subimg < 4 && hold_item_in_hands == "") {
-	if (on_ground && !climb && !horizontal_rope_climb) {
+if (effect_speedspark_subimg < 4 && hold_item_in_hands == "")
+{
+	if (on_ground && !climb && !horizontal_rope_climb)
+	{
 		draw_sprite_ext(spr_speedspark, effect_speedspark_subimg, xx, bbox_bottom, image_xscale, 1, 0, c_white, 0.5);
 	}
 	effect_speedspark_subimg += 0.5;
@@ -235,24 +253,28 @@ if (effect_speedspark_subimg < 4 && hold_item_in_hands == "") {
 #endregion /* Running Sparks Effect END */
 
 #region /* Don't make it look like the player is teleporting when the player teleports */
-if (smooth_teleport < 1) {
+if (smooth_teleport < 1)
+{
 	xx = lerp(xx, x, smooth_teleport);
 	yy = lerp(yy, y, smooth_teleport);
 	smooth_teleport += 0.1;
 }
 else
-if (stomp_spin || spring) {
+if (stomp_spin || spring)
+{
 	xx = lerp(xx, x, 0.4);
 	yy = lerp(yy, y, 0.4);
 }
-else {
+else
+{
 	xx = lerp(xx, x, 1);
 	yy = lerp(yy, y, 1);
 }
 #endregion /* Don't make it look like the player is teleporting when the player teleports END */
 
 #region /* Homing Attack */
-if (allow_homing_attack) {
+if (allow_homing_attack)
+{
 	
 	#region /* Homing Enemy */
 	if (!on_ground)
@@ -264,7 +286,8 @@ if (allow_homing_attack) {
 	&& (!collision_line(x + 1, y + 1, instance_nearest(x, y, obj_enemy).x + 1, instance_nearest(x, y, obj_enemy).y + 1, obj_wall, false, true))
 	&& (distance_to_object(obj_enemy) < homing_attack_distance)
 	&& (instance_nearest(x, y, obj_enemy).bbox_bottom > y)
-	&& (!instance_nearest(x, y, obj_enemy).die) {
+	&& (!instance_nearest(x, y, obj_enemy).die)
+	{
 		aim_image_index ++;
 		draw_sprite_ext(spr_aim, aim_image_index, instance_nearest(x, y, obj_enemy).x, instance_nearest(x, y, obj_enemy).y, 1, 1, 0, c_white, 1);
 	}
@@ -281,26 +304,31 @@ if (allow_homing_attack) {
 	&& (!collision_line(x, y, instance_nearest(x, y, obj_spring).x, instance_nearest(x, y, obj_spring).y, obj_wall, false, true))
 	&& (!collision_line(x + 1, y + 1, instance_nearest(x, y, obj_spring).x + 1, instance_nearest(x, y, obj_spring).y + 1, obj_wall, false, true))
 	&& (distance_to_object(obj_spring) < homing_attack_distance)
-	&& (instance_nearest(x, y, obj_spring).bbox_bottom > y) {
+	&& (instance_nearest(x, y, obj_spring).bbox_bottom > y)
+	{
 		aim_image_index ++;
 		draw_sprite_ext(spr_aim, aim_image_index, instance_nearest(x, y, obj_spring).x, instance_nearest(x, y, obj_spring).y, 1, 1, 0, c_white, 1);
 	}
 	#endregion /* Homing Spring END */
 	
-	else {
+	else
+	{
 		aim_image_index = 0;
 	}
 }
 #endregion /* Homing Attack END */
 
 #region /* Display Player Number and Name */
-if (global.playergame >= 2) {
+if (global.playergame >= 2)
+{
 	draw_set_halign(fa_center);
 	draw_set_valign(fa_middle);
-	if (global.player_name[player] = "") {
+	if (global.player_name[player] = "")
+	{
 		var player_name_text = "P" + string(player);
 	}
-	else {
+	else
+	{
 		var player_name_text = string(global.player_name[player]);
 	}
 	scr_draw_text_outlined(x, y - 64, string(player_name_text), global.default_text_size, c_black, global.player_color[player], 1);
@@ -308,9 +336,11 @@ if (global.playergame >= 2) {
 #endregion /* Display Player Number and Name END */
 
 #region /* If player has more hp, show that */
-if (global.assist_enable) && (hp > 0 && !global.assist_invincible || hp > 0) {
+if (global.assist_enable) && (hp > 0 && !global.assist_above_1_hp || hp > 0)
+{
 	if (max_hp == 2 && sprite_panting == noone) /* If there is only max 2 hp and there is no panting sprite, display HP */
-	|| (max_hp >= 3) { /* If there is more than max 3 hp, always display HP */
+	|| (max_hp >= 3) /* If there is more than max 3 hp, always display HP */
+	{
 		draw_set_halign(fa_center);
 		draw_set_valign(fa_middle);
 		scr_draw_text_outlined(x, bbox_top - 32, "HP: " + string(hp) + "/" + string(max_hp), global.default_text_size, c_white, c_black, 1);
