@@ -6,12 +6,9 @@ function scr_spawn_objects_when_starting_room()
 	{
 		
 		#region /* Only spawn objects according to difficulty settings */
-		if (global.difficulty <= 0)
-		&& (easy)
-		|| (global.difficulty == 1)
-		&& (normal)
-		|| (global.difficulty >= 2)
-		&& (hard)
+		if (global.difficulty <= 0 && easy)
+		|| (global.difficulty == 1 && normal)
+		|| (global.difficulty >= 2 && hard)
 		{
 			switch (object)
 			{
@@ -506,7 +503,7 @@ function scr_spawn_objects_when_starting_room()
 				}
 				break;
 				case LEVEL_OBJECT_ID.ID_BLACK_WALL: instance_create_depth(x, y, 0, obj_black_wall);break;
-				case LEVEL_OBJECT_ID.ID_RING: instance_create_depth(x, y, 0, obj_ring);
+				case LEVEL_OBJECT_ID.ID_RING: instance_create_depth(x, y, 0, obj_ring);break;
 				case LEVEL_OBJECT_ID.ID_APPEAR_BLOCK_1: with(instance_create_depth(x, y, 0, obj_appear_block_spawner)){appear_cycle = 1;image_blend = c_yellow;}break;
 				case LEVEL_OBJECT_ID.ID_APPEAR_BLOCK_2: with(instance_create_depth(x, y, 0, obj_appear_block_spawner)){appear_cycle = 2;image_blend = c_aqua;}break;
 				case LEVEL_OBJECT_ID.ID_APPEAR_BLOCK_3: with(instance_create_depth(x, y, 0, obj_appear_block_spawner)){appear_cycle = 3;image_blend = c_red;}break;

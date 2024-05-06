@@ -322,17 +322,19 @@ function scr_draw_name_input_screen(what_string /* What string to edit */, max_c
 	if (menu_delay == 0 && menu_joystick_delay == 0)
 	&& (use_script_navigation_code)
 	{
-		if (keyboard_check_pressed(vk_up))
-		|| (gamepad_button_check_pressed(global.player_slot[1], gp_padu))
-		|| (gamepad_axis_value(global.player_slot[1], gp_axislv) < -0.3)
+		if (keyboard_check_pressed(vk_up)
+		|| gamepad_button_check_pressed(global.player_slot[1], gp_padu)
+		|| gamepad_axis_value(global.player_slot[1], gp_axislv) < -0.3)
+		&& (menu == cancel_menu_string)
 		{
 			menu_delay = 3;
 			menu = ok_menu_string;
 		}
 		else
-		if (keyboard_check_pressed(vk_down))
-		|| (gamepad_button_check_pressed(global.player_slot[1], gp_padd))
-		|| (gamepad_axis_value(global.player_slot[1], gp_axislv) > +0.3)
+		if (keyboard_check_pressed(vk_down)
+		|| gamepad_button_check_pressed(global.player_slot[1], gp_padd)
+		|| gamepad_axis_value(global.player_slot[1], gp_axislv) > +0.3)
+		&& (menu == ok_menu_string)
 		{
 			menu_delay = 3;
 			menu = cancel_menu_string;

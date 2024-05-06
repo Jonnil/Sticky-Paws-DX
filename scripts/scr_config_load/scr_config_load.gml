@@ -16,6 +16,7 @@ function scr_config_load()
 		{
 			upload_rules_do_not_show_character = ini_read_real("config", "upload_rules_do_not_show_character", false);
 		}
+		if (ini_key_exists("config", "first_time_opened_level_editor")){global.first_time_opened_level_editor = ini_read_real("config", "first_time_opened_level_editor", true);}
 		if (ini_key_exists("config", "caution_online_do_not_show")){global.online_enabled = ini_read_real("config", "caution_online_do_not_show", false);}
 		if (ini_key_exists("config", "always_show_level_editor_buttons")){global.always_show_level_editor_buttons = ini_read_real("config", "always_show_level_editor_buttons", true);}
 		if (ini_key_exists("config", "current_file")){global.file = ini_read_real("config", "current_file", 0);}

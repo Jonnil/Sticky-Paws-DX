@@ -17,4 +17,6 @@ if (block_type = "melon_block")
 {
 	sprite_index = spr_melon_block;
 	can_break_this_block = true; /* Melon blocks always break, even if there are items inside */
+	can_be_ground_pounded = true; /* Melon blocks can only be broken with a ground pound */
+	can_be_hit_from_below = false; /* Melon blocks can't be broken from below */
 }

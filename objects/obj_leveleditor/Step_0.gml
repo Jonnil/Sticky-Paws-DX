@@ -1882,7 +1882,6 @@ if (!global.actually_play_edited_level)
 	#region /* Press Pause Button */
 	if (quit_level_editor == 0)
 	&& (!pause)
-	&& (!in_modify_object_menu)
 	&& (menu_delay == 0 && menu_joystick_delay == 0)
 	{
 		if (keyboard_check_pressed(vk_escape))
@@ -2029,6 +2028,8 @@ if (!global.actually_play_edited_level)
 			#endregion /* Get what custom assets are in the level END */
 			
 			global.pause_room = rm_leveleditor;
+			in_modify_object_menu = false;
+			welcome_to_level_editor = 0;
 			quit_level_editor = 0;
 			can_input_level_name = false;
 			input_key = false;

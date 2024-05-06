@@ -1,9 +1,21 @@
 function scr_draw_welcome_to_level_editor_menu()
 {
+	var welcome_screen_shortcuts_x = display_get_gui_width() * 0.5 - 320;
+	var welcome_screen_tutorial_x = display_get_gui_width() * 0.5 - 95;
+	var welcome_screen_close_x = display_get_gui_width() * 0.5 + 130;
 	
 	#region /* Welcome to Level Editor screen */
 	if (welcome_to_level_editor == 1)
+	|| (global.first_time_opened_level_editor)
 	{
+		if (global.first_time_opened_level_editor)
+		{
+			welcome_to_level_editor = 1;
+			global.first_time_opened_level_editor = false;
+			ini_open(game_save_id + "save_file/config.ini");
+			ini_write_real("config", "first_time_opened_level_editor", false);
+			ini_close(); switch_save_data_commit();
+		}
 		if (menu != "welcome_screen_shortcuts")
 		&& (menu != "welcome_screen_close")
 		{
@@ -50,19 +62,20 @@ function scr_draw_welcome_to_level_editor_menu()
 		scr_draw_text_outlined(display_get_gui_width() * 0.5, display_get_gui_height() * 0.5 + 42 + 42 + 42 + 42 + 42 - 126, l10n_text("Select objects from toolbar and start making!"), global.default_text_size, c_black, c_white, 1);
 		if (global.controls_used_for_navigation != "gamepad")
 		{
-			draw_menu_button_sprite(spr_menu_button, display_get_gui_width() * 0.5 - 290, display_get_gui_height() * 0.5 + 42 + 42 + 42 + 42 + 42 + 42 - 126, 0, 0, 0.5, 1, 185, 42, l10n_text("Shortcuts"), "welcome_screen_shortcuts", "welcome_screen_shortcuts");
+			draw_menu_button_sprite(spr_menu_button, welcome_screen_shortcuts_x, display_get_gui_height() * 0.5 + 126, 0, 0, 0.5, 1, 185, 42, l10n_text("Shortcuts"), "welcome_screen_shortcuts", "welcome_screen_shortcuts");
 		}
 		else
 		{
 			menu = "welcome_screen_close";
 		}
-		draw_menu_button_sprite(spr_menu_button, display_get_gui_width() * 0.5 + 90, display_get_gui_height() * 0.5 + 42 + 42 + 42 + 42 + 42 + 42 - 126, 0, 0, 0.5, 1, 185, 42, l10n_text("Close"), "welcome_screen_close", "welcome_screen_close");
+		//draw_menu_button_sprite(spr_menu_button, welcome_screen_tutorial_x, display_get_gui_height() * 0.5 + 126, 0, 0, 0.5, 1, 185, 42, l10n_text("Tutorial"), "welcome_screen_tutorial", "welcome_screen_tutorial");
+		draw_menu_button_sprite(spr_menu_button, welcome_screen_close_x, display_get_gui_height() * 0.5 + 126, 0, 0, 0.5, 1, 185, 42, l10n_text("Close"), "welcome_screen_close", "welcome_screen_close");
 		if (menu == "welcome_screen_shortcuts")
 		&& (global.controls_used_for_navigation != "gamepad")
 		{
 			if (key_a_pressed)
 			&& (menu_delay == 0 && menu_joystick_delay == 0)
-			|| (point_in_rectangle(cursor_x, cursor_y, display_get_gui_width() * 0.5 - 290, display_get_gui_height() * 0.5 + 42 + 42 + 42 + 42 + 42 + 42 - 126, display_get_gui_width() * 0.5 - 290 + 185, display_get_gui_height() * 0.5 + 42 + 42 + 42 + 42 + 42 + 42 - 126 + 42))
+			|| (point_in_rectangle(cursor_x, cursor_y, welcome_screen_shortcuts_x, display_get_gui_height() * 0.5 + 126, welcome_screen_shortcuts_x + 185, display_get_gui_height() * 0.5 + 126 + 42))
 			&& (global.controls_used_for_navigation == "mouse")
 			&& (mouse_check_button_pressed(mb_left))
 			&& (menu_delay == 0 && menu_joystick_delay == 0)
@@ -71,7 +84,8 @@ function scr_draw_welcome_to_level_editor_menu()
 				place_object_delay_timer = -10;
 				welcome_to_level_editor = 2;
 			}
-			if (key_right)
+			if (key_right
+			|| keyboard_check_pressed(ord("L")))
 			{
 				menu = "welcome_screen_close";
 			}
@@ -81,7 +95,7 @@ function scr_draw_welcome_to_level_editor_menu()
 		{
 			if (key_a_pressed)
 			&& (menu_delay == 0 && menu_joystick_delay == 0)
-			|| (point_in_rectangle(cursor_x, cursor_y, display_get_gui_width() * 0.5 + 90, display_get_gui_height() * 0.5 + 42 + 42 + 42 + 42 + 42 + 42 - 126, display_get_gui_width() * 0.5 + 90 + 185, display_get_gui_height() * 0.5 + 42 + 42 + 42 + 42 + 42 + 42 - 126 + 42))
+			|| (point_in_rectangle(cursor_x, cursor_y, welcome_screen_close_x, display_get_gui_height() * 0.5 + 126, welcome_screen_close_x + 185, display_get_gui_height() * 0.5 + 126 + 42))
 			&& (global.controls_used_for_navigation == "mouse")
 			&& (mouse_check_button_pressed(mb_left))
 			&& (menu_delay == 0 && menu_joystick_delay == 0)
@@ -92,9 +106,10 @@ function scr_draw_welcome_to_level_editor_menu()
 				}
 				menu_delay = 3;
 				place_object_delay_timer = -10;
-				welcome_to_level_editor = false;
+				welcome_to_level_editor = 0;
 			}
-			if (key_left)
+			if (key_left
+			|| keyboard_check_pressed(ord("J")))
 			&& (global.controls_used_for_navigation != "gamepad")
 			{
 				menu = "welcome_screen_shortcuts";
@@ -141,13 +156,13 @@ function scr_draw_welcome_to_level_editor_menu()
 		scr_draw_text_outlined(display_get_gui_width() * 0.5 - 84, display_get_gui_height() * 0.5 - 126 + line_y, ": " + l10n_text("Change to erase tool"), global.default_text_size, c_black, c_white, 1);
 		
 		/* Back and Close buttons */
-		draw_menu_button_sprite(spr_menu_button, display_get_gui_width() * 0.5 - 290, display_get_gui_height() * 0.5 + 42 + 42 + 42 + 42 + 42 + 42 - 126, 0, 0, 0.5, 1, 185, 42, l10n_text("Back"), "welcome_screen_shortcuts", "welcome_screen_shortcuts");
-		draw_menu_button_sprite(spr_menu_button, display_get_gui_width() * 0.5 + 90, display_get_gui_height() * 0.5 + 42 + 42 + 42 + 42 + 42 + 42 - 126, 0, 0, 0.5, 1, 185, 42, l10n_text("Close"), "welcome_screen_close", "welcome_screen_close");
+		draw_menu_button_sprite(spr_menu_button, welcome_screen_shortcuts_x, display_get_gui_height() * 0.5 + 126, 0, 0, 0.5, 1, 185, 42, l10n_text("Back"), "welcome_screen_shortcuts", "welcome_screen_shortcuts");
+		draw_menu_button_sprite(spr_menu_button, welcome_screen_close_x, display_get_gui_height() * 0.5 + 126, 0, 0, 0.5, 1, 185, 42, l10n_text("Close"), "welcome_screen_close", "welcome_screen_close");
 		if (menu == "welcome_screen_shortcuts")
 		{
 			if (key_a_pressed)
 			&& (menu_delay == 0 && menu_joystick_delay == 0)
-			|| (point_in_rectangle(cursor_x, cursor_y, display_get_gui_width() * 0.5 - 290, display_get_gui_height() * 0.5 + 42 + 42 + 42 + 42 + 42 + 42 - 126, display_get_gui_width() * 0.5 - 290 + 185, display_get_gui_height() * 0.5 + 42 + 42 + 42 + 42 + 42 + 42 - 126 + 42))
+			|| (point_in_rectangle(cursor_x, cursor_y, welcome_screen_shortcuts_x, display_get_gui_height() * 0.5 + 126, welcome_screen_shortcuts_x + 185, display_get_gui_height() * 0.5 + 126 + 42))
 			&& (global.controls_used_for_navigation == "mouse")
 			&& (mouse_check_button_pressed(mb_left))
 			&& (menu_delay == 0 && menu_joystick_delay == 0)
@@ -156,7 +171,8 @@ function scr_draw_welcome_to_level_editor_menu()
 				place_object_delay_timer = -10;
 				welcome_to_level_editor = 1;
 			}
-			if (key_right)
+			if (key_right
+			|| keyboard_check_pressed(ord("L")))
 			{
 				menu = "welcome_screen_close";
 			}
@@ -166,7 +182,7 @@ function scr_draw_welcome_to_level_editor_menu()
 		{
 			if (key_a_pressed)
 			&& (menu_delay == 0 && menu_joystick_delay == 0)
-			|| (point_in_rectangle(cursor_x, cursor_y, display_get_gui_width() * 0.5 + 90, display_get_gui_height() * 0.5 + 42 + 42 + 42 + 42 + 42 + 42 - 126, display_get_gui_width() * 0.5 + 90 + 185, display_get_gui_height() * 0.5 + 42 + 42 + 42 + 42 + 42 + 42 - 126 + 42))
+			|| (point_in_rectangle(cursor_x, cursor_y, welcome_screen_close_x, display_get_gui_height() * 0.5 + 126, welcome_screen_close_x + 185, display_get_gui_height() * 0.5 + 126 + 42))
 			&& (global.controls_used_for_navigation == "mouse")
 			&& (mouse_check_button_pressed(mb_left))
 			&& (menu_delay == 0 && menu_joystick_delay == 0)
@@ -177,9 +193,10 @@ function scr_draw_welcome_to_level_editor_menu()
 				}
 				menu_delay = 3;
 				place_object_delay_timer = -10;
-				welcome_to_level_editor = false;
+				welcome_to_level_editor = 0;
 			}
-			if (key_left)
+			if (key_left
+			|| keyboard_check_pressed(ord("J")))
 			&& (global.controls_used_for_navigation != "gamepad")
 			{
 				menu = "welcome_screen_shortcuts";

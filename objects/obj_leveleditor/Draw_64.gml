@@ -584,13 +584,23 @@ if (!global.actually_play_edited_level)
 		#endregion /* Click Zoom In END */
 		
 		#region /* Click Help Button */
+		if (global.first_time_opened_level_editor) /* When you have created a new level, open the help menu */
+		&& (!pause)
+		&& (!in_modify_object_menu)
+		&& (menu_delay == 0 && menu_joystick_delay == 0)
+		{
+			menu_delay = 3;
+			welcome_to_level_editor = 1;
+			level_editor_menu = "help_open";
+		}
+		else
 		if (keyboard_check_pressed(ord("H")))
 		&& (!pause)
 		&& (!in_modify_object_menu)
 		&& (menu_delay == 0 && menu_joystick_delay == 0)
 		{
 			menu_delay = 3;
-			welcome_to_level_editor = not welcome_to_level_editor;
+			welcome_to_level_editor = !welcome_to_level_editor;
 			if (welcome_to_level_editor != 0)
 			&& (level_editor_menu != "")
 			{
@@ -636,7 +646,7 @@ if (!global.actually_play_edited_level)
 			{
 				menu_delay = 3;
 				level_editor_menu = "help_open";
-				welcome_to_level_editor = not welcome_to_level_editor;
+				welcome_to_level_editor = !welcome_to_level_editor;
 			}
 		}
 		#endregion /* Click Help Button END */

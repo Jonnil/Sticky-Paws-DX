@@ -112,31 +112,32 @@ if (instance_exists(obj_player))
 {
 	if (!bounce_up)
 	{
-	
 		if (place_meeting(x, y - 4, obj_player)) /* If player is ground pounding this block */
 		&& (!place_meeting(x, y - 1, obj_wall))
 		&& (instance_nearest(x, y, obj_player).ground_pound == 1)
 		&& (can_be_ground_pounded)
-	
+		
 		|| (position_meeting(x, bbox_bottom + 1, obj_player)) /* Has to be position_meeting, otherwise there are specific situations where you can break a block from above just by crouching */
 		&& (!position_meeting(x, bbox_bottom + 1, obj_wall))
 		&& (can_be_hit_from_below)
-	
+		
 		|| (position_meeting(bbox_left + 9, bbox_bottom + 1, obj_player)) /* Has to be position_meeting, otherwise there are specific situations where you can break a block from above just by crouching */
 		&& (!position_meeting(x, bbox_bottom + 1, obj_wall))
 		&& (can_be_hit_from_below)
-	
+		
 		|| (position_meeting(bbox_right - 9, bbox_bottom + 1, obj_player)) /* Has to be position_meeting, otherwise there are specific situations where you can break a block from above just by crouching */
 		&& (!position_meeting(x, bbox_bottom + 1, obj_wall))
 		&& (can_be_hit_from_below)
-	
+		
 		|| (place_meeting(bbox_left - 4, y, obj_player))
 		&& (!place_meeting(x - 4, y, obj_wall))
 		&& (instance_nearest(x, y, obj_player).dive)
-	
+		&& (can_be_hit_from_below)
+		
 		|| (place_meeting(bbox_right + 4, y, obj_player))
 		&& (!place_meeting(x + 4, y, obj_wall))
 		&& (instance_nearest(x, y, obj_player).dive)
+		&& (can_be_hit_from_below)
 		{
 			if (!empty)
 			{

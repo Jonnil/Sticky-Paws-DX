@@ -294,6 +294,7 @@ global.grid_vsnap = 32; /* Vertical grid snapping */
 global.iris_zoom_in = false; /* When you want to enable and disable iris zoom in code */
 global.player_can_go_outside_view = false; /* Let the player go outside view in specific scenarios */
 global.level_editor_level = 0; /* What level is selected in the custom level editor */
+global.first_time_opened_level_editor = true; /* If you have never opened the level editor before, then automatically show the level editor help menu */
 global.narrator = 0; /* Select Narrator */
 global.pause = false; /* If game is paused or not */
 global.play_edited_level = false; /* Playtest edited level */
