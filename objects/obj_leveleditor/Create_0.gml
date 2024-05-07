@@ -102,25 +102,32 @@ if (!global.actually_play_edited_level)
 	
 	#region /* Save what date this level was first created in */
 	ini_open(game_save_id + "custom_levels/" + global.level_name + "/data/level_information.ini");
-	if (!ini_key_exists("info", "first_created_on_version")) {
+	if (!ini_key_exists("info", "first_created_on_version"))
+	{
 		ini_write_string("info", "first_created_on_version", "v" + scr_get_build_date());
 	}
-	if (!ini_key_exists("info", "first_created_on_date_year")) { /* Save what year this level was first created in */
+	if (!ini_key_exists("info", "first_created_on_date_year")) /* Save what year this level was first created in */
+	{
 		ini_write_real("info", "first_created_on_date_year", date_get_year(date_current_datetime()));
 	}
-	if (!ini_key_exists("info", "first_created_on_date_month")) { /* Save what month this level was first created in */
+	if (!ini_key_exists("info", "first_created_on_date_month")) /* Save what month this level was first created in */
+	{
 		ini_write_real("info", "first_created_on_date_month", date_get_month(date_current_datetime()));
 	}
-	if (!ini_key_exists("info", "first_created_on_date_day")) { /* Save what day this level was first created in */
+	if (!ini_key_exists("info", "first_created_on_date_day")) /* Save what day this level was first created in */
+	{
 		ini_write_real("info", "first_created_on_date_day", date_get_day(date_current_datetime()));
 	}
-	if (!ini_key_exists("info", "first_created_on_date_hour")) { /* Save what hour this level was first created in */
+	if (!ini_key_exists("info", "first_created_on_date_hour")) /* Save what hour this level was first created in */
+	{
 		ini_write_real("info", "first_created_on_date_hour", date_get_hour(date_current_datetime()));
 	}
-	if (!ini_key_exists("info", "first_created_on_date_minute")) { /* Save what minute this level was first created in */
+	if (!ini_key_exists("info", "first_created_on_date_minute")) /* Save what minute this level was first created in */
+	{
 		ini_write_real("info", "first_created_on_date_minute", date_get_minute(date_current_datetime()));
 	}
-	if (!ini_key_exists("info", "first_created_on_date_second")) { /* Save what second this level was first created in */
+	if (!ini_key_exists("info", "first_created_on_date_second")) /* Save what second this level was first created in */
+	{
 		ini_write_real("info", "first_created_on_date_second", date_get_second(date_current_datetime()));
 	}
 	ini_close();
@@ -485,11 +492,13 @@ if (!global.actually_play_edited_level)
 	ini_open(game_save_id + "save_file/config.ini");
 	upload_rules_do_not_show_level = ini_read_real("config", "upload_rules_do_not_show_level", false);
 	upload_rules_do_not_show_character = ini_read_real("config", "upload_rules_do_not_show_character", false);
-	if (ini_key_exists("config", "select_level_editing_music")) {
+	if (ini_key_exists("config", "select_level_editing_music"))
+	{
 		global.selected_level_editing_music = ini_read_real("config", "select_level_editing_music", 1); /* The selected background music when editing in the level editor */
 		previous_selected_level_editing_music = ini_read_real("config", "select_level_editing_music", 1); /* When changing the editing music, you want to compare it to this variable */
 	}
-	else {
+	else
+	{
 		global.selected_level_editing_music = 1;
 		previous_selected_level_editing_music = 1;
 	}
@@ -748,7 +757,7 @@ if (!global.actually_play_edited_level)
 	background_x_offset[7] = 0;background_x[7] = 0;background_y_offset[7] = 0;background_y[7] = 0;
 	#endregion /* Initialize Background END */
 	
-	selected_object_menu_x = 0;
+	select_object_menu_x = 0;
 	sprite_index = spr_wall;
 	mask_index = spr_wall;
 	alarm[1] = 2;
@@ -760,12 +769,14 @@ if (!global.actually_play_edited_level)
 ini_open(game_save_id + "custom_levels/" + global.level_name + "/data/level_information.ini");
 place_object = ini_read_real("info", "place_object", 1);
 selected_object = ini_read_real("info", "selected_object", 0);
-selected_object_menu_actual_x = ini_read_real("info", "selected_object_menu_actual_x", 0);
-if (!if_daily_build) {
+select_object_menu_actual_x = ini_read_real("info", "select_object_menu_actual_x", 0);
+if (!if_daily_build)
+{
 	var default_category = "terrain";
 }
 else
-if (if_daily_build) {
+if (if_daily_build)
+{
 	var default_category = "daily_build_standard";
 }
 current_object_category = ini_read_string("info", "current_object_category", default_category); /* Seperate objects into different categories, to make objects easier to find */

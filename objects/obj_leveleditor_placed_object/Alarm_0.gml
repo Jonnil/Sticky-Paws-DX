@@ -147,6 +147,7 @@ if (!global.actually_play_edited_level)
 			case LEVEL_OBJECT_ID.ID_BUMP_IN_GROUND_INVINCIBILITY_POWERUP_COIL_SPRING:
 			case LEVEL_OBJECT_ID.ID_INVISIBLE_BUMP_IN_GROUND_INVINCIBILITY_POWERUP_COIL_SPRING:
 			case LEVEL_OBJECT_ID.ID_BUCKET_INVINCIBILITY_POWERUP_COIL_SPRING:
+			case LEVEL_OBJECT_ID.ID_INVINCIBILITY_POWERUP_COIL_SPRING:
 				draw_item_with_spring = true;
 				draw_item_on_top = global.resource_pack_sprite_invincibility_powerup;
 				break;

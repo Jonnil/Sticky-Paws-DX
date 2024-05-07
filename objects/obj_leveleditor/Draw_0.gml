@@ -167,14 +167,14 @@ if (!global.actually_play_edited_level)
 	{
 		if (global.world_editor)
 		{
-			draw_sprite_ext(spr_wall, 0, view_center_x + selected_object_menu_x, cam_y + 64, 1, 1, 0, c_white, selected_menu_alpha);
-			draw_sprite_ext(spr_level_ring, 0, view_center_x + selected_object_menu_x + 64, cam_y + 64, 1, 1, 0, c_yellow, selected_menu_alpha);
-			draw_sprite_ext(spr_level, 0, view_center_x + selected_object_menu_x + 64, cam_y + 64, 1, 1, 0, c_black, selected_menu_alpha);
-			draw_sprite_ext(spr_map_exit, 0, view_center_x + selected_object_menu_x + 64 * 2, cam_y + 64, 1, 1, 0, c_white, selected_menu_alpha);
-			draw_sprite_ext(spr_map_turn_right_down, 0,	view_center_x + selected_object_menu_x + 64 * 3, cam_y + 64, 1, 1, 0, c_white, selected_menu_alpha);
-			draw_sprite_ext(spr_map_turn_right_down, 0,	view_center_x + selected_object_menu_x + 64 * 4, cam_y + 64, 1, 1, 90, c_white, selected_menu_alpha);
-			draw_sprite_ext(spr_map_turn_right_down, 0,	view_center_x + selected_object_menu_x + 64 * 5, cam_y + 64, 1, 1, 180, c_white, selected_menu_alpha);
-			draw_sprite_ext(spr_map_turn_right_down, 0,	view_center_x + selected_object_menu_x + 64 * 6, cam_y + 64, 1, 1, 270, c_white, selected_menu_alpha);
+			draw_sprite_ext(spr_wall, 0, view_center_x + select_object_menu_x, cam_y + 64, 1, 1, 0, c_white, selected_menu_alpha);
+			draw_sprite_ext(spr_level_ring, 0, view_center_x + select_object_menu_x + 64, cam_y + 64, 1, 1, 0, c_yellow, selected_menu_alpha);
+			draw_sprite_ext(spr_level, 0, view_center_x + select_object_menu_x + 64, cam_y + 64, 1, 1, 0, c_black, selected_menu_alpha);
+			draw_sprite_ext(spr_map_exit, 0, view_center_x + select_object_menu_x + 64 * 2, cam_y + 64, 1, 1, 0, c_white, selected_menu_alpha);
+			draw_sprite_ext(spr_map_turn_right_down, 0,	view_center_x + select_object_menu_x + 64 * 3, cam_y + 64, 1, 1, 0, c_white, selected_menu_alpha);
+			draw_sprite_ext(spr_map_turn_right_down, 0,	view_center_x + select_object_menu_x + 64 * 4, cam_y + 64, 1, 1, 90, c_white, selected_menu_alpha);
+			draw_sprite_ext(spr_map_turn_right_down, 0,	view_center_x + select_object_menu_x + 64 * 5, cam_y + 64, 1, 1, 180, c_white, selected_menu_alpha);
+			draw_sprite_ext(spr_map_turn_right_down, 0,	view_center_x + select_object_menu_x + 64 * 6, cam_y + 64, 1, 1, 270, c_white, selected_menu_alpha);
 		}
 	}
 	#endregion /* Select Object Menu END */

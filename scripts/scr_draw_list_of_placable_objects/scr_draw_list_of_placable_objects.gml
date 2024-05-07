@@ -147,7 +147,7 @@ function scr_draw_list_of_placable_objects()
 			if (selected_object > total_number_of_objects)
 			{
 				selected_object = total_number_of_objects;
-				selected_object_menu_actual_x =- 100 * total_number_of_objects;
+				select_object_menu_actual_x =- 100 * total_number_of_objects;
 			}
 		}
 		else
@@ -213,10 +213,14 @@ function scr_draw_list_of_placable_objects()
 		}
 		
 		/* Draw an arrow pointing to currently selected object */
-		draw_set_alpha(selected_menu_alpha);
-		draw_set_color(c_white);
-		draw_arrow(display_get_gui_width() * 0.5, 16 - 8 + 64 + scr_wave(0, -8, 1), display_get_gui_width() * 0.5, 16 + 8 + 64 + scr_wave(0, -8, 1), 30);
-		draw_arrow(display_get_gui_width() * 0.5, 110 - 16 + 8 + 64 + scr_wave(0, 8, 1), display_get_gui_width() * 0.5, 110 - 16 - 8 + 64 + scr_wave(0, 8, 1), 30);
+		if (level_editor_menu == "select_object_menu")
+		|| (level_editor_menu == "")
+		{
+			draw_set_alpha(selected_menu_alpha);
+			draw_set_color(c_white);
+			draw_arrow(display_get_gui_width() * 0.5, 16 - 8 + 64 + scr_wave(0, -8, 1), display_get_gui_width() * 0.5, 16 + 8 + 64 + scr_wave(0, -8, 1), 30);
+			draw_arrow(display_get_gui_width() * 0.5, 110 - 16 + 8 + 64 + scr_wave(0, 8, 1), display_get_gui_width() * 0.5, 110 - 16 - 8 + 64 + scr_wave(0, 8, 1), 30);
+		}
 		draw_set_alpha(1);
 	}
 	#endregion /* List of Placable Objects END */

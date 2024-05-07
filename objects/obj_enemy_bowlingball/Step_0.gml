@@ -28,12 +28,7 @@ else
 	
 	#region /* Set the gravity */
 	gravity_direction = 270; /* Direction of the gravity */
-	if (!place_meeting(x, y + 1, obj_wall))
-	&& (!position_meeting(x, bbox_bottom + 1, obj_semisolid_platform))
-	&& (!position_meeting(bbox_left, bbox_bottom + 1, obj_semisolid_platform))
-	&& (!position_meeting(bbox_right, bbox_bottom + 1, obj_semisolid_platform))
-	&& (x - 32 < camera_get_view_x(view_camera[view_current]) + camera_get_view_width(view_camera[view_current]))
-	&& (x + 32 > camera_get_view_x(view_camera[view_current]))
+	if (!on_ground)
 	|| (die)
 	{
 		gravity = 0.5; /* The gravity */
@@ -315,37 +310,6 @@ if (!blind)
 	{
 		image_xscale = +1;
 	}
-}
-
-if (coil_spring)
-&& (!die)
-&& (place_meeting(x, y + 1, obj_wall))
-|| (coil_spring)
-&& (!die)
-&& (position_meeting(x, bbox_bottom + 1, obj_semisolid_platform))
-{
-	if (instance_exists(obj_foreground_secret))
-	&& (place_meeting(x, y, obj_foreground_secret))
-	&& (obj_foreground_secret.image_alpha < 0.5)
-	|| (instance_exists(obj_foreground_secret))
-	&& (!place_meeting(x, y, obj_foreground_secret))
-	{
-		if (instance_exists(obj_camera))
-		&& (obj_camera.iris_xscale > 1)
-		{
-			effect_create_above(ef_smoke, x - 16, bbox_bottom, 0, c_white);
-			effect_create_above(ef_smoke, x, bbox_bottom, 0, c_white);
-			effect_create_above(ef_smoke, x + 16, bbox_bottom, 0, c_white);
-			effect_create_above(ef_smoke, x - 16 - 8, bbox_bottom- 8, 0, c_white);
-			effect_create_above(ef_smoke, x, bbox_bottom- 8, 0, c_white);
-			effect_create_above(ef_smoke, x + 16 + 8, bbox_bottom- 8, 0, c_white);
-		}
-		scr_audio_play(snd_spring, volume_source.sound, 0.1);
-	}
-	vspeed = -15;
-	gravity = 0;
-	draw_xscale = 1.25;
-	draw_yscale = 0.75;
 }
 
 if (sliding_along_ground == -1)

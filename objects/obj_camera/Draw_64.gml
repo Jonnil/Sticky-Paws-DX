@@ -57,6 +57,7 @@ scr_virtual_keys();
 /* Letterboxing during cutscenes */
 if (show_letterbox > 0)
 {
+	draw_set_alpha(1);
 	draw_rectangle_color(0, 0, window_width, letterbox_top_y, c_black, c_black, c_black, c_black, false);
 	draw_rectangle_color(0, letterbox_bottom_y, window_width, window_height, c_black, c_black, c_black, c_black, false);
 }

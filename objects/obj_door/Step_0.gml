@@ -43,19 +43,22 @@ if (open_door)
 		instance_nearest(x, y, obj_camera).y = second_y;
 		instance_nearest(x, y, obj_camera).xx = second_x;
 		instance_nearest(x, y, obj_camera).yy = second_y;
-		instance_nearest(x, y, obj_player).can_move = true;
-		instance_nearest(x, y, obj_player).x = second_x;
-		instance_nearest(x, y, obj_player).y = second_y;
-		instance_nearest(x, y, obj_player).xx_heart = second_x;
-		instance_nearest(x, y, obj_player).yy_heart = second_y;
-		instance_nearest(x, y, obj_player).image_alpha = 1;
+		obj_player.can_clamp_inside_view = 0; /* Make the player not clamp within view before teleporting the player. View needs to have time to catch up */
+		obj_player.can_move = true;
+		obj_player.xx_heart = second_x;
+		obj_player.yy_heart = second_y;
+		obj_player.image_alpha = 1;
+		obj_player.x = second_x; /* Lastly, teleport the player */
+		obj_player.y = second_y;
 		open_door = false;
+		
 		var time_source = time_source_create(time_source_game, 10, time_source_units_frames, function()
 		{
 			global.player_can_go_outside_view = false;
 		}
 		, [], 1);
 		time_source_start(time_source);
+		
 		with (instance_nearest(obj_player.x, obj_player.y, obj_door))
 		{
 			if (place_meeting(x, y, obj_player))

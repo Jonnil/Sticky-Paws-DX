@@ -1,7 +1,7 @@
 function scr_draw_level_editor_placable_object(v_selected_object, v_place_object_id, v_can_make_place_size_bigger, v_sprite_index, v_mask_index, v_scroll_x, v_scale, v_rotation, v_color, v_scroll_y = 0, v_x_offset = 0, alpha_offset = 1, add_order_index = 1, object_name = "", object_description = "", v_image_index = 0)
 {
 	var half_gui_width = display_get_gui_width() * 0.5;
-	var menu_x_offset = selected_object_menu_x + v_scroll_x * v_selected_object;
+	var menu_x_offset = select_object_menu_x + v_scroll_x * v_selected_object;
 	var draw_x = half_gui_width + menu_x_offset + v_x_offset;
 	var is_selected = (selected_object == v_selected_object);
 	
@@ -33,7 +33,7 @@ function scr_draw_level_editor_placable_object(v_selected_object, v_place_object
 				if (mouse_check_button_pressed(mb_left))
 				{
 					selected_object = v_selected_object;
-					selected_object_menu_actual_x = v_selected_object * -100;
+					select_object_menu_actual_x = v_selected_object * -100;
 				}
 			}
 			draw_set_alpha(selected_menu_alpha * alpha_offset);

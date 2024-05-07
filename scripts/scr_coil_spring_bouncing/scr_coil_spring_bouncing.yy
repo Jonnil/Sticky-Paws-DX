@@ -1,0 +1,13 @@
+{
+  "$GMScript":"",
+  "%Name":"scr_coil_spring_bouncing",
+  "isCompatibility":false,
+  "isDnD":false,
+  "name":"scr_coil_spring_bouncing",
+  "parent":{
+    "name":"Other",
+    "path":"folders/Scripts/Other.yy",
+  },
+  "resourceType":"GMScript",
+  "resourceVersion":"2.0",
+}

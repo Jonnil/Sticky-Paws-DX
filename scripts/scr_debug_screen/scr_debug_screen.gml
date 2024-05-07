@@ -324,6 +324,12 @@ function scr_debug_screen()
 			debug_text_y += 20;
 		}
 		
+		if (variable_instance_exists(self, "level_editor_menu"))
+		{
+			scr_draw_text_outlined(32, debug_text_y, "level_editor_menu: " + string(level_editor_menu), global.default_text_size, c_black, c_white);
+			debug_text_y += 20;
+		}
+		
 		debug_text_y += 20;
 		
 		if (variable_instance_exists(self, "menu_y_offset"))

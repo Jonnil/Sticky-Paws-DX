@@ -205,7 +205,7 @@ function scr_save_level_information() {
 		#region /* Save what selected object you were using most recent in the specific level */
 		ini_write_real("info", "place_object", place_object);
 		ini_write_real("info", "selected_object", selected_object);
-		ini_write_real("info", "selected_object_menu_actual_x", selected_object_menu_actual_x);
+		ini_write_real("info", "select_object_menu_actual_x", select_object_menu_actual_x);
 		ini_write_string("info", "current_object_category", current_object_category); /* Seperate objects into different categories, to make objects easier to find */
 		ini_write_real("info", "selected_object_sprite", sprite_index);
 		#endregion /* Save what selected object you were using most recent in the specific level END */

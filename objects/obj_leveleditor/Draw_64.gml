@@ -116,7 +116,8 @@ if (!global.actually_play_edited_level)
 		
 		var category_title = "";
 		
-		if (!if_daily_build) {
+		if (!if_daily_build)
+		{
 			if (current_object_category == "terrain")
 			{
 				draw_sprite_ext(spr_leveleditor_icon_empty, 0, icon_object_category_terrain_x, 32 + icon_at_top_y, 1, 1, 0, c_white, 1);
@@ -174,7 +175,8 @@ if (!global.actually_play_edited_level)
 			}
 		}
 		
-		if (if_daily_build) {
+		if (if_daily_build)
+		{
 			if (current_object_category == "daily_build_standard")
 			{
 				draw_sprite_ext(spr_leveleditor_icon_empty, 3, icon_object_category_daily_build_standard_x, 32 + icon_at_top_y, 1, 1, 0, c_white, 1);
@@ -210,127 +212,116 @@ if (!global.actually_play_edited_level)
 		}
 		
 		#region /* Navigate Category Icons */
-		if (!if_daily_build) {
+		if (!if_daily_build)
+		{
 			if (global.controls_used_for_navigation == "mouse")
 			&& (point_in_rectangle(cursor_x, cursor_y, icon_object_category_terrain_x - 32 + 1, icon_at_top_y, icon_object_category_terrain_x + 32, + 64 + icon_at_top_y))
-			|| (level_editor_menu == "category_terrain")
+			|| (level_editor_menu == "terrain")
 			{
-				if (!show_selected_menu)
-				{
-					draw_sprite_ext(spr_menu_cursor, menu_cursor_index, icon_object_category_terrain_x, icon_at_top_y + 80, 1, 1, 90, c_white, 1);
-				}
+				draw_sprite_ext(spr_menu_cursor, menu_cursor_index, icon_object_category_terrain_x, icon_at_top_y + 80, 1, 1, 90, c_white, 1);
 				draw_set_alpha(0.5);
 				draw_rectangle_color(icon_object_category_terrain_x - 32, icon_at_top_y, icon_object_category_terrain_x + 32, 64 + icon_at_top_y, c_white, c_white, c_white, c_white, false);
 				draw_set_alpha(1);
 				if (global.controls_used_for_navigation == "mouse")
 				&& (mouse_check_button_pressed(mb_left))
-				|| (level_editor_menu == "category_terrain")
+				|| (level_editor_menu == "terrain")
 				&& (key_a_pressed)
 				{
 					menu_delay = 3;
 					show_selected_menu = true;
 					current_object_category = "terrain";
+					level_editor_menu = "select_object_menu";
 				}
 			}
 			else
 			if (global.controls_used_for_navigation == "mouse")
 			&& (point_in_rectangle(cursor_x, cursor_y, icon_object_category_decoration_x - 32 + 1, icon_at_top_y, icon_object_category_decoration_x + 32, + 64 + icon_at_top_y))
-			|| (level_editor_menu == "category_decoration")
+			|| (level_editor_menu == "decoration")
 			{
-				if (!show_selected_menu)
-				{
-					draw_sprite_ext(spr_menu_cursor, menu_cursor_index, icon_object_category_decoration_x, icon_at_top_y + 80, 1, 1, 90, c_white, 1);
-				}
+				draw_sprite_ext(spr_menu_cursor, menu_cursor_index, icon_object_category_decoration_x, icon_at_top_y + 80, 1, 1, 90, c_white, 1);
 				draw_set_alpha(0.5);
 				draw_rectangle_color(icon_object_category_decoration_x - 32, icon_at_top_y, icon_object_category_decoration_x + 32, 64 + icon_at_top_y, c_white, c_white, c_white, c_white, false);
 				draw_set_alpha(1);
 				if (global.controls_used_for_navigation == "mouse")
 				&& (mouse_check_button_pressed(mb_left))
-				|| (level_editor_menu == "category_decoration")
+				|| (level_editor_menu == "decoration")
 				&& (key_a_pressed)
 				{
 					menu_delay = 3;
 					show_selected_menu = true;
 					current_object_category = "decoration";
+					level_editor_menu = "select_object_menu";
 				}
 			}
 			else
 			if (global.controls_used_for_navigation == "mouse")
 			&& (point_in_rectangle(cursor_x, cursor_y, icon_object_category_item_x - 32 + 1, icon_at_top_y, icon_object_category_item_x + 32, + 64 + icon_at_top_y))
-			|| (level_editor_menu == "category_item")
+			|| (level_editor_menu == "item")
 			{
-				if (!show_selected_menu)
-				{
-					draw_sprite_ext(spr_menu_cursor, menu_cursor_index, icon_object_category_item_x, icon_at_top_y + 80, 1, 1, 90, c_white, 1);
-				}
+				draw_sprite_ext(spr_menu_cursor, menu_cursor_index, icon_object_category_item_x, icon_at_top_y + 80, 1, 1, 90, c_white, 1);
 				draw_set_alpha(0.5);
 				draw_rectangle_color(icon_object_category_item_x - 32, icon_at_top_y, icon_object_category_item_x + 32, 64 + icon_at_top_y, c_white, c_white, c_white, c_white, false);
 				draw_set_alpha(1);
 				if (global.controls_used_for_navigation == "mouse")
 				&& (mouse_check_button_pressed(mb_left))
-				|| (level_editor_menu == "category_item")
+				|| (level_editor_menu == "item")
 				&& (key_a_pressed)
 				{
 					menu_delay = 3;
 					show_selected_menu = true;
 					current_object_category = "item";
+					level_editor_menu = "select_object_menu";
 				}
 			}
 			else
 			if (global.controls_used_for_navigation == "mouse")
 			&& (point_in_rectangle(cursor_x, cursor_y, icon_object_category_enemy_x - 32 + 1, icon_at_top_y, icon_object_category_enemy_x + 32, + 64 + icon_at_top_y))
-			|| (level_editor_menu == "category_enemy")
+			|| (level_editor_menu == "enemy")
 			{
-				if (!show_selected_menu)
-				{
-					draw_sprite_ext(spr_menu_cursor, menu_cursor_index, icon_object_category_enemy_x, icon_at_top_y + 80, 1, 1, 90, c_white, 1);
-				}
+				draw_sprite_ext(spr_menu_cursor, menu_cursor_index, icon_object_category_enemy_x, icon_at_top_y + 80, 1, 1, 90, c_white, 1);
 				draw_set_alpha(0.5);
 				draw_rectangle_color(icon_object_category_enemy_x - 32, icon_at_top_y, icon_object_category_enemy_x + 32, 64 + icon_at_top_y, c_white, c_white, c_white, c_white, false);
 				draw_set_alpha(1);
 				if (global.controls_used_for_navigation == "mouse")
 				&& (mouse_check_button_pressed(mb_left))
-				|| (level_editor_menu == "category_enemy")
+				|| (level_editor_menu == "enemy")
 				&& (key_a_pressed)
 				{
 					menu_delay = 3;
 					show_selected_menu = true;
 					current_object_category = "enemy";
+					level_editor_menu = "select_object_menu";
 				}
 			}
 			else
 			if (global.controls_used_for_navigation == "mouse")
 			&& (point_in_rectangle(cursor_x, cursor_y, icon_object_category_gizmo_x - 32 + 1, icon_at_top_y, icon_object_category_gizmo_x + 32, + 64 + icon_at_top_y))
-			|| (level_editor_menu == "category_gizmo")
+			|| (level_editor_menu == "gizmo")
 			{
-				if (!show_selected_menu)
-				{
-					draw_sprite_ext(spr_menu_cursor, menu_cursor_index, icon_object_category_gizmo_x, icon_at_top_y + 80, 1, 1, 90, c_white, 1);
-				}
+				draw_sprite_ext(spr_menu_cursor, menu_cursor_index, icon_object_category_gizmo_x, icon_at_top_y + 80, 1, 1, 90, c_white, 1);
 				draw_set_alpha(0.5);
 				draw_rectangle_color(icon_object_category_gizmo_x - 32, icon_at_top_y, icon_object_category_gizmo_x + 32, 64 + icon_at_top_y, c_white, c_white, c_white, c_white, false);
 				draw_set_alpha(1);
 				if (global.controls_used_for_navigation == "mouse")
 				&& (mouse_check_button_pressed(mb_left))
-				|| (level_editor_menu == "category_gizmo")
+				|| (level_editor_menu == "gizmo")
 				&& (key_a_pressed)
 				{
 					menu_delay = 3;
 					show_selected_menu = true;
 					current_object_category = "gizmo";
+					level_editor_menu = "select_object_menu";
 				}
 			}
 		}
 		else
-		if (if_daily_build) {
+		if (if_daily_build)
+		{
 			if (global.controls_used_for_navigation == "mouse")
 			&& (point_in_rectangle(cursor_x, cursor_y, icon_object_category_daily_build_standard_x - 32 + 1, icon_at_top_y, icon_object_category_daily_build_standard_x + 32, + 64 + icon_at_top_y))
 			|| (level_editor_menu == "daily_build_standard")
 			{
-				if (!show_selected_menu)
-				{
-					draw_sprite_ext(spr_menu_cursor, menu_cursor_index, icon_object_category_daily_build_standard_x, icon_at_top_y + 80, 1, 1, 90, c_white, 1);
-				}
+				draw_sprite_ext(spr_menu_cursor, menu_cursor_index, icon_object_category_daily_build_standard_x, icon_at_top_y + 80, 1, 1, 90, c_white, 1);
 				draw_set_alpha(0.5);
 				draw_rectangle_color(icon_object_category_daily_build_standard_x - 32, icon_at_top_y, icon_object_category_daily_build_standard_x + 32, 64 + icon_at_top_y, c_white, c_white, c_white, c_white, false);
 				draw_set_alpha(1);
@@ -342,6 +333,7 @@ if (!global.actually_play_edited_level)
 					menu_delay = 3;
 					show_selected_menu = true;
 					current_object_category = "daily_build_standard";
+					level_editor_menu = "select_object_menu";
 				}
 			}
 			else
@@ -349,10 +341,7 @@ if (!global.actually_play_edited_level)
 			&& (point_in_rectangle(cursor_x, cursor_y, icon_object_category_daily_build_featured_x - 32 + 1, icon_at_top_y, icon_object_category_daily_build_featured_x + 32, + 64 + icon_at_top_y))
 			|| (level_editor_menu == "daily_build_featured")
 			{
-				if (!show_selected_menu)
-				{
-					draw_sprite_ext(spr_menu_cursor, menu_cursor_index, icon_object_category_daily_build_featured_x, icon_at_top_y + 80, 1, 1, 90, c_white, 1);
-				}
+				draw_sprite_ext(spr_menu_cursor, menu_cursor_index, icon_object_category_daily_build_featured_x, icon_at_top_y + 80, 1, 1, 90, c_white, 1);
 				draw_set_alpha(0.5);
 				draw_rectangle_color(icon_object_category_daily_build_featured_x - 32, icon_at_top_y, icon_object_category_daily_build_featured_x + 32, 64 + icon_at_top_y, c_white, c_white, c_white, c_white, false);
 				draw_set_alpha(1);
@@ -364,6 +353,7 @@ if (!global.actually_play_edited_level)
 					menu_delay = 3;
 					show_selected_menu = true;
 					current_object_category = "daily_build_featured";
+					level_editor_menu = "select_object_menu";
 				}
 			}
 		}

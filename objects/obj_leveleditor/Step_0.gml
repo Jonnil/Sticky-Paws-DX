@@ -18,31 +18,32 @@ if (menu_delay == 0 && menu_joystick_delay == 0)
 	|| (gamepad_button_check_pressed(global.player_slot[1], gp_padu))
 	{
 		menu_delay = 3;
-		if (level_editor_menu == ""){if (!if_daily_build){level_editor_menu = "category_terrain";}else{level_editor_menu = "daily_build_standard";}}else
-		if (level_editor_menu == "play"){if (!if_daily_build){level_editor_menu = "category_terrain";}else{level_editor_menu = "daily_build_standard";}}
-		if (level_editor_menu == "pen"){if (!if_daily_build){level_editor_menu = "category_terrain";}else{level_editor_menu = "daily_build_standard";}}else
-		if (level_editor_menu == "erase"){if (!if_daily_build){level_editor_menu = "category_terrain";}else{level_editor_menu = "daily_build_standard";}}else
-		if (level_editor_menu == "fill"){if (!if_daily_build){level_editor_menu = "category_terrain";}else{level_editor_menu = "daily_build_standard";}}else
-		if (level_editor_menu == "hide"){if (!if_daily_build){level_editor_menu = "category_terrain";}else{level_editor_menu = "daily_build_standard";}}else
+		if (level_editor_menu == ""){if (show_selected_menu){level_editor_menu = "select_object_menu";}else{if (!if_daily_build){level_editor_menu = "terrain";}else{level_editor_menu = "daily_build_standard";}}}else
+		if (level_editor_menu == "play"){if (show_selected_menu){level_editor_menu = "select_object_menu";}else{if (!if_daily_build){level_editor_menu = "terrain";}else{level_editor_menu = "daily_build_standard";}}}else
+		if (level_editor_menu == "pen"){if (show_selected_menu){level_editor_menu = "select_object_menu";}else{if (!if_daily_build){level_editor_menu = "terrain";}else{level_editor_menu = "daily_build_standard";}}}else
+		if (level_editor_menu == "erase"){if (show_selected_menu){level_editor_menu = "select_object_menu";}else{if (!if_daily_build){level_editor_menu = "terrain";}else{level_editor_menu = "daily_build_standard";}}}else
+		if (level_editor_menu == "fill"){if (show_selected_menu){level_editor_menu = "select_object_menu";}else{if (!if_daily_build){level_editor_menu = "terrain";}else{level_editor_menu = "daily_build_standard";}}}else
+		if (level_editor_menu == "hide"){if (show_selected_menu){level_editor_menu = "select_object_menu";}else{if (!if_daily_build){level_editor_menu = "terrain";}else{level_editor_menu = "daily_build_standard";}}}else
 		if (level_editor_menu == "difficulty_toggle"){level_editor_menu = "help";}else
 		if (level_editor_menu == "wipe"){level_editor_menu = "help";}else
 		if (level_editor_menu == "easy"){level_editor_menu = "help";}else
 		if (level_editor_menu == "normal"){level_editor_menu = "help";}else
-		if (level_editor_menu == "hard"){level_editor_menu = "help";}
+		if (level_editor_menu == "hard"){level_editor_menu = "help";}else
+		if (level_editor_menu == "select_object_menu"){level_editor_menu = string(current_object_category);}
 	}
 	/* Left */ if (keyboard_check_pressed(ord("J")))
 	|| (gamepad_button_check_pressed(global.player_slot[1], gp_padl))
 	{
 		menu_delay = 3;
 		if (level_editor_menu == ""){level_editor_menu = "play";}else
-		if (level_editor_menu == "category_terrain"){level_editor_menu = "play";}else
-		if (level_editor_menu == "category_decoration"){level_editor_menu = "category_terrain";}else
-		if (level_editor_menu == "category_item"){level_editor_menu = "category_decoration";}else
-		if (level_editor_menu == "category_enemy"){level_editor_menu = "category_item";}else
-		if (level_editor_menu == "category_gizmo"){level_editor_menu = "category_enemy";}else
+		if (level_editor_menu == "terrain"){level_editor_menu = "play";}else
+		if (level_editor_menu == "decoration"){level_editor_menu = "terrain";}else
+		if (level_editor_menu == "item"){level_editor_menu = "decoration";}else
+		if (level_editor_menu == "enemy"){level_editor_menu = "item";}else
+		if (level_editor_menu == "gizmo"){level_editor_menu = "enemy";}else
 		if (level_editor_menu == "daily_build_standard"){level_editor_menu = "play";}else
 		if (level_editor_menu == "daily_build_featured"){level_editor_menu = "daily_build_standard";}else
-		if (level_editor_menu == "grid"){if (!if_daily_build){level_editor_menu = "category_gizmo";}else if (if_daily_build){level_editor_menu = "daily_build_featured"}}else
+		if (level_editor_menu == "grid"){if (!if_daily_build){level_editor_menu = "gizmo";}else if (if_daily_build){level_editor_menu = "daily_build_featured"}}else
 		if (level_editor_menu == "zoom_out"){level_editor_menu = "grid";}else
 		if (level_editor_menu == "zoom_reset"){level_editor_menu = "zoom_out";}else
 		if (level_editor_menu == "zoom_in"){level_editor_menu = "zoom_reset";}else
@@ -62,29 +63,30 @@ if (menu_delay == 0 && menu_joystick_delay == 0)
 	{
 		menu_delay = 3;
 		if (level_editor_menu == ""){level_editor_menu = "play";}else
-		if (level_editor_menu == "category_terrain"){level_editor_menu = "play";}else
-		if (level_editor_menu == "category_decoration"){level_editor_menu = "play";}else
-		if (level_editor_menu == "category_item"){level_editor_menu = "play";}else
-		if (level_editor_menu == "category_enemy"){level_editor_menu = "play";}else
-		if (level_editor_menu == "category_gizmo"){level_editor_menu = "play";}else
-		if (level_editor_menu == "daily_build_standard"){level_editor_menu = "play";}else
-		if (level_editor_menu == "daily_build_featured"){level_editor_menu = "play";}else
+		if (level_editor_menu == "terrain"){if (show_selected_menu){level_editor_menu = "select_object_menu";}else{level_editor_menu = "play";}}else
+		if (level_editor_menu == "decoration"){if (show_selected_menu){level_editor_menu = "select_object_menu";}else{level_editor_menu = "play";}}else
+		if (level_editor_menu == "item"){if (show_selected_menu){level_editor_menu = "select_object_menu";}else{level_editor_menu = "play";}}else
+		if (level_editor_menu == "enemy"){if (show_selected_menu){level_editor_menu = "select_object_menu";}else{level_editor_menu = "play";}}else
+		if (level_editor_menu == "gizmo"){if (show_selected_menu){level_editor_menu = "select_object_menu";}else{level_editor_menu = "play";}}else
+		if (level_editor_menu == "daily_build_standard"){if (show_selected_menu){level_editor_menu = "select_object_menu";}else{level_editor_menu = "play";}}else
+		if (level_editor_menu == "daily_build_featured"){if (show_selected_menu){level_editor_menu = "select_object_menu";}else{level_editor_menu = "play";}}else
 		if (level_editor_menu == "grid"){level_editor_menu = "wipe";}else
 		if (level_editor_menu == "zoom_out"){level_editor_menu = "wipe";}else
 		if (level_editor_menu == "zoom_reset"){level_editor_menu = "wipe";}else
 		if (level_editor_menu == "zoom_in"){level_editor_menu = "wipe";}else
-		if (level_editor_menu == "help"){level_editor_menu = "wipe";}
+		if (level_editor_menu == "help"){level_editor_menu = "wipe";}else
+		if (level_editor_menu == "select_object_menu"){level_editor_menu = "play";}
 	}
 	/* Right */ if (keyboard_check_pressed(ord("L")))
 	|| (gamepad_button_check_pressed(global.player_slot[1], gp_padr))
 	{
 		menu_delay = 3;
 		if (level_editor_menu == ""){level_editor_menu = "help";}else
-		if (level_editor_menu == "category_terrain"){level_editor_menu = "category_decoration";}else
-		if (level_editor_menu == "category_decoration"){level_editor_menu = "category_item";}else
-		if (level_editor_menu == "category_item"){level_editor_menu = "category_enemy";}else
-		if (level_editor_menu == "category_enemy"){level_editor_menu = "category_gizmo";}else
-		if (level_editor_menu == "category_gizmo"){level_editor_menu = "grid";}else
+		if (level_editor_menu == "terrain"){level_editor_menu = "decoration";}else
+		if (level_editor_menu == "decoration"){level_editor_menu = "item";}else
+		if (level_editor_menu == "item"){level_editor_menu = "enemy";}else
+		if (level_editor_menu == "enemy"){level_editor_menu = "gizmo";}else
+		if (level_editor_menu == "gizmo"){level_editor_menu = "grid";}else
 		if (level_editor_menu == "daily_build_standard"){level_editor_menu = "daily_build_featured";}else
 		if (level_editor_menu == "daily_build_featured"){level_editor_menu = "grid";}else
 		if (level_editor_menu == "grid"){level_editor_menu = "zoom_out";}else
@@ -180,17 +182,21 @@ if (doing_clear_check_timer_thumbnail == 3)
 }
 #endregion /* Save automatic thumbnail before doing a clear check END */
 
-if (doing_clear_check_timer == 1) { /* Save the level before starting clear check */
+if (doing_clear_check_timer == 1) /* Save the level before starting clear check */
+{
 	show_debug_message("Save the level before starting clear check");
 	scr_save_custom_level_json();
 }
-if (doing_clear_check_timer == 3) { /* Spawn the objects before starting clear check */
+if (doing_clear_check_timer == 3) /* Spawn the objects before starting clear check */
+{
 	show_debug_message("Spawn the objects before starting clear check ");
-	with(obj_leveleditor_placed_object) {
+	with(obj_leveleditor_placed_object)
+	{
 		alarm[1] = 1;
 	}
 }
-if (doing_clear_check_timer == 5) { /* Start the clear check */
+if (doing_clear_check_timer == 5) /* Start the clear check */
+{
 	show_debug_message("Start the clear check");
 	audio_stop_sound(level_editing_music);
 	global.character_select_in_this_menu = "level_editor";
@@ -1457,6 +1463,7 @@ if (!global.actually_play_edited_level)
 	&& (!point_in_rectangle(mouse_get_x, mouse_get_y, 0, 0, display_get_gui_width(), 192)) /* Can't make menu fade away quicker when clicking the object category buttons or objects in toolbar */
 	|| (keyboard_check_pressed(vk_anykey))
 	|| (key_a_pressed)
+	|| (key_b_pressed)
 	{
 		if (menu_delay == 0 && menu_joystick_delay == 0)
 		{
@@ -1640,27 +1647,26 @@ if (!global.actually_play_edited_level)
 		&& (!key_a_pressed)
 		&& (!mouse_check_button(mb_left))
 		&& (!erase_mode)
-		&& (!pause)
-		&& (!in_modify_object_menu)
 		|| (gamepad_button_check_pressed(global.player_slot[1], button_scroll_object_left))
-		&& (!pause)
-		&& (!in_modify_object_menu)
 		|| (keyboard_check_pressed(key_scroll_object_left))
-		&& (!pause)
-		&& (!in_modify_object_menu)
+		|| (level_editor_menu == "select_object_menu")
+		&& (keyboard_check_pressed(ord("J")) || gamepad_button_check_pressed(global.player_slot[1], gp_padl))
 		{
 			if (!instance_exists(obj_leveleditor_fill))
+			&& (!pause)
+			&& (!in_modify_object_menu)
 			{
-				level_editor_menu = "";
+				level_editor_menu = "select_object_menu";
 				scr_audio_play(snd_leveleditor_cycle_item_left, volume_source.sound);
 				if (selected_object > 0)
 				{
 					selected_object --;
-					selected_object_menu_actual_x += 100;
+					select_object_menu_actual_x += 100;
 				}
 				else
 				{
-					if (!if_daily_build) {
+					if (!if_daily_build)
+					{
 						if (current_object_category == "terrain")
 						{
 							current_object_category = "gizmo";
@@ -1687,7 +1693,8 @@ if (!global.actually_play_edited_level)
 						}
 					}
 					else
-					if (if_daily_build) {
+					if (if_daily_build)
+					{
 						if (current_object_category == "daily_build_standard")
 						{
 							current_object_category = "daily_build_featured";
@@ -1712,27 +1719,26 @@ if (!global.actually_play_edited_level)
 		&& (!key_a_pressed)
 		&& (!mouse_check_button(mb_left))
 		&& (!erase_mode)
-		&& (!pause)
-		&& (!in_modify_object_menu)
 		|| (gamepad_button_check_pressed(global.player_slot[1], button_scroll_object_right))
-		&& (!pause)
-		&& (!in_modify_object_menu)
 		|| (keyboard_check_pressed(key_scroll_object_right))
-		&& (!pause)
-		&& (!in_modify_object_menu)
+		|| (level_editor_menu == "select_object_menu")
+		&& (keyboard_check_pressed(ord("L")) || gamepad_button_check_pressed(global.player_slot[1], gp_padr))
 		{
 			if (!instance_exists(obj_leveleditor_fill))
+			&& (!pause)
+			&& (!in_modify_object_menu)
 			{
-				level_editor_menu = "";
+				level_editor_menu = "select_object_menu";
 				scr_audio_play(snd_leveleditor_cycle_item_right, volume_source.sound);
 				if (selected_object < total_number_of_objects)
 				{
 					selected_object ++;
-					selected_object_menu_actual_x -= 100;
+					select_object_menu_actual_x -= 100;
 				}
 				else
 				{
-					if (!if_daily_build) {
+					if (!if_daily_build)
+					{
 						if (current_object_category == "terrain")
 						{
 							current_object_category = "decoration";
@@ -1759,7 +1765,8 @@ if (!global.actually_play_edited_level)
 						}
 					}
 					else
-					if (if_daily_build) {
+					if (if_daily_build)
+					{
 						if (current_object_category == "daily_build_standard")
 						{
 							current_object_category = "daily_build_featured";
@@ -1771,7 +1778,7 @@ if (!global.actually_play_edited_level)
 						}
 					}
 					selected_object = 0;
-					selected_object_menu_actual_x = 0;
+					select_object_menu_actual_x = 0;
 				}
 				global.part_limit_text_alpha = 0;
 				show_selected_menu = true;
@@ -2096,7 +2103,7 @@ if (!global.actually_play_edited_level)
 	}
 	#endregion /* Scroll View. Need to have this code at the bottom of the Step Event END */
 	
-	selected_object_menu_x = lerp(selected_object_menu_x, selected_object_menu_actual_x, 0.3); /* Lerp the object selection scrolling */
+	select_object_menu_x = lerp(select_object_menu_x, select_object_menu_actual_x, 0.3); /* Lerp the object selection scrolling */
 }
 
 if (!global.actually_play_edited_level && quit_level_editor == 0)
@@ -2204,11 +2211,11 @@ if (!global.actually_play_edited_level && quit_level_editor == 0)
 		if (global.always_show_level_editor_buttons
 		|| global.controls_used_for_navigation == "mouse"
 		&& point_in_rectangle(cursor_x, cursor_y, - 32, - 64, display_get_gui_width() + 32, + 64)
-		|| level_editor_menu == "category_terrain"
-		|| level_editor_menu == "category_decoration"
-		|| level_editor_menu == "category_item"
-		|| level_editor_menu == "category_enemy"
-		|| level_editor_menu == "category_gizmo"
+		|| level_editor_menu == "terrain"
+		|| level_editor_menu == "decoration"
+		|| level_editor_menu == "item"
+		|| level_editor_menu == "enemy"
+		|| level_editor_menu == "gizmo"
 		|| level_editor_menu == "daily_build_standard"
 		|| level_editor_menu == "daily_build_featured"
 		|| level_editor_menu == "grid"
@@ -2288,7 +2295,8 @@ if (!global.actually_play_edited_level && quit_level_editor == 0)
 	{
 		
 		#region /* Difficulty settings, 0 = All, 1 = Easy, 2 = Normal, 3 = Hard */
-		if (global.enable_difficutly_layers_in_level_editor) {
+		if (global.enable_difficutly_layers_in_level_editor)
+		{
 			
 			#region /* Easy */
 			if (set_difficulty_mode)
