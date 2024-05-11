@@ -174,12 +174,12 @@ else
 #region /* Main Menu */
 if (!in_settings)
 {
-    if (menu == "main_game" ||
-		menu == "level_editor" ||
-		menu == "options" ||
-        menu == "quit" ||
-		menu == "information" ||
-		menu == "fullscreen_mode_title")
+	if (menu == "main_game" ||
+	menu == "level_editor" ||
+	menu == "options" ||
+	menu == "quit" ||
+	menu == "information" ||
+	menu == "fullscreen_mode_title")
     {
 		
 		draw_menu_button(display_get_gui_width() * 0.5 - 185, main_game_y, l10n_text("Main Game"), "main_game", "main_game");
@@ -281,7 +281,7 @@ if (!in_settings)
 		&& (menu_delay == 0 && menu_joystick_delay == 0)
 		&& (!in_settings)
 		{
-		
+			
 			#region /* Play Options Voice */
 			if (voice_options > noone)
 			{
@@ -289,7 +289,8 @@ if (!in_settings)
 				scr_audio_play(voice_options, volume_source.voice);
 			}
 			#endregion /* Play Options Voice END */
-		
+			
+			menu_cursor_y_position = 0; /* Reset so the scrolling menus are back to 0 */
 			in_settings = true;
 			can_navigate_settings_sidebar = true;
 			menu = noone;

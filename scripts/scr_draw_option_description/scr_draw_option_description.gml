@@ -41,7 +41,7 @@ function scr_draw_option_description()
 		draw_set_alpha(1);
 		draw_roundrect_color_ext((display_get_gui_width() * 0.5) - (string_width(option_description_text) * 0.5), display_get_gui_height() - 32, (display_get_gui_width() * 0.5) + (string_width(option_description_text) * 0.5), display_get_gui_height(), 50, 50, c_black, c_black, false);
 		draw_set_halign(fa_center);
-		scr_draw_text_outlined(display_get_gui_width() * 0.5, display_get_gui_height() - 16, string(option_description_text), global.default_text_size, c_black, text_fill, 1);
+		scr_draw_text_outlined(display_get_gui_width() * 0.5, display_get_gui_height() - 16, string(option_description_text), global.default_text_size * 0.9, c_black, text_fill, 1);
 	}
 	
 	/* Reset these at the end of the code so when you aren't selecting a option using these, the description menu dissapears */

@@ -71,10 +71,12 @@ function scr_draw_upload_account_name(what_kind_of_file = "level")
 		&& (global.controls_used_for_navigation == "mouse")
 		&& (mouse_check_button_released(mb_left))
 		{
-			if (variable_instance_exists(self, "open_sub_menu")) {
+			if (variable_instance_exists(self, "open_sub_menu"))
+			{
 				open_sub_menu = false;
 			}
-			if (variable_instance_exists(self, "show_level_editor_corner_menu")) {
+			if (variable_instance_exists(self, "show_level_editor_corner_menu"))
+			{
 				show_level_editor_corner_menu = true;
 			}
 			
@@ -85,6 +87,7 @@ function scr_draw_upload_account_name(what_kind_of_file = "level")
 			select_custom_level_menu_open = false;
 			level_editor_template_select = false;
 			
+			menu_cursor_y_position = 0; /* Reset so the scrolling menus are back to 0 */
 			in_settings = true;
 			can_navigate_settings_sidebar = false;
 			global.settings_sidebar_menu = "account_settings";

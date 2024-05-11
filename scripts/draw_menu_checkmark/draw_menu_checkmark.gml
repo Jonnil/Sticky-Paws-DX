@@ -63,8 +63,9 @@ function draw_menu_checkmark(x_position, y_position, string_text, menu_index, va
 	if (menu == menu_index)
 	{
 		if (variable_instance_exists(self, "menu_cursor_y_position"))
+		&& (variable_instance_exists(self, "menu_y_offset"))
 		{
-			menu_cursor_y_position = y_position;
+			menu_cursor_y_position = y_position - menu_y_offset;
 		}
 		draw_sprite_ext(spr_menu_cursor, menu_cursor_index, x_position + 16, y_position + 16, 1, 1, 0, c_white, 1);
 		global.option_default = option_default;

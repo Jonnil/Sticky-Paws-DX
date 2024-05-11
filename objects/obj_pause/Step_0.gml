@@ -382,6 +382,7 @@ if (!hide_menu_for_clean_screenshots)
 			&& (point_in_rectangle(mouse_get_x, mouse_get_y, get_window_width * 0.5 - 185, option_y, get_window_width * 0.5 + 185, option_y + 42))
 			&& (menu_delay == 0 && menu_joystick_delay == 0)
 			{
+				menu_cursor_y_position = 0; /* Reset so the scrolling menus are back to 0 */
 				menu_delay = 3;
 				scr_audio_play(voice_options, volume_source.voice);
 				menu = noone;

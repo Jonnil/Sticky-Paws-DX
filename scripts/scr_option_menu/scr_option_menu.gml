@@ -2649,7 +2649,6 @@ function scr_option_menu()
 			
 			if (menu == "default_audio_settings")
 			{
-				menu_cursor_y_position = default_audio_settings_y;
 				if (key_a_pressed)
 				&& (menu_delay == 0 && menu_joystick_delay == 0)
 				|| (mouse_check_button_released(mb_left) && mouse_get_x > 370)

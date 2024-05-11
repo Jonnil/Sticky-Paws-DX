@@ -4192,29 +4192,6 @@ function scr_option_control_menu()
 		scr_set_default_dropdown_description("wall_jump_setting", "When touching wall");
 		#endregion /* Controls checkmarks and dropdown menu settings END */
 		
-		#region /* Menu cursor y position */
-		if (menu == "vibration_strength")
-		{
-			menu_cursor_y_position = menu_y_vibration_strength;
-		}
-		if (menu == "chosen_controller_used")
-		{
-			menu_cursor_y_position = menu_y_chosen_controller_used + 100;
-		}
-		if (menu == "show_controls")
-		{
-			menu_cursor_y_position = menu_y_show_controls + 100;
-		}
-		if (menu == "drop_from_rope")
-		{
-			menu_cursor_y_position = menu_y_drop_down_from_rope;
-		}
-		if (menu == "wall_jump_setting")
-		{
-			menu_cursor_y_position = menu_y_wall_jump_setting;
-		}
-		#endregion /* Menu cursor y position END */
-		
 		/* Have multiple remapping profiles that players can save and change to easily */
 		remapping_player = clamp(remapping_player, 0, global.max_players - 1);
 		var remapping_profile = global.player_profile[what_player];
@@ -4282,7 +4259,6 @@ function scr_option_control_menu()
 			#region /* Remap Select Player Navigation */
 			if (menu == "remap_select_player")
 			{
-				menu_cursor_y_position = 0;
 				if (key_up)
 				&& (!open_dropdown)
 				{
@@ -4316,7 +4292,6 @@ function scr_option_control_menu()
 			#region /* Remap Select Profile Navigation */
 			if (menu == "remap_select_profile")
 			{
-				menu_cursor_y_position = 0;
 				if (key_up && !open_dropdown) {
 					menu = "remap_select_player";
 					menu_delay = 3;
@@ -4358,7 +4333,6 @@ function scr_option_control_menu()
 			#region /* Up Key is Jump Key Navigation */
 			if (menu == "up_is_also_jump")
 			{
-				menu_cursor_y_position = menu_y_up_is_also_jump;
 				if (key_up)
 				{
 					menu = "remap_reset";
@@ -4386,7 +4360,6 @@ function scr_option_control_menu()
 			#region /* Double Jump Uses Jump Key Navigation */
 			if (menu == "double_jump_uses_jump_key")
 			{
-				menu_cursor_y_position = menu_y_up_is_also_jump;
 				if (key_up)
 				{
 					menu = "up_is_also_jump";
@@ -4435,7 +4408,6 @@ function scr_option_control_menu()
 			#region /* Down Key is Crouch Key Navigation */
 			if (menu == "down_is_also_crouch")
 			{
-				menu_cursor_y_position = menu_y_down_is_also_crouch;
 				if (key_up)
 				{
 					if (allow_player_double_jump[what_player] >= 2 || allow_player_double_jump[what_player] == -1)
@@ -4469,7 +4441,6 @@ function scr_option_control_menu()
 			#region /* Double Tap To Run Navigation */
 			if (menu == "double_tap_to_run")
 			{
-				menu_cursor_y_position = menu_y_double_tap_direction_to_run;
 				if (key_up)
 				{
 					menu = "down_is_also_crouch";
@@ -4489,7 +4460,6 @@ function scr_option_control_menu()
 			#region /* Always Run Navigation */
 			if (menu == "always_run")
 			{
-				menu_cursor_y_position = menu_y_always_run;
 				if (key_up)
 				{
 					menu = "double_tap_to_run";
@@ -4516,7 +4486,6 @@ function scr_option_control_menu()
 			#region /* Double tap to dive Navigation */
 			if (menu == "double_tap_to_dive")
 			{
-				menu_cursor_y_position = menu_y_double_tap_direction_to_dive;
 				if (key_up)
 				{
 					menu = "always_run";
@@ -4543,7 +4512,6 @@ function scr_option_control_menu()
 			#region /* Cancel dive by pressing the jump or dive key Navigation */
 			if (menu == "cancel_dive_by_jump_or_dive")
 			{
-				menu_cursor_y_position = menu_y_cancel_dive_by_jump_or_dive;
 				if (key_up)
 				{
 					if (allow_player_dive[what_player])
@@ -4577,7 +4545,6 @@ function scr_option_control_menu()
 			#region /* Cancel dive by pressing the opposite direction Navigation */
 			if (menu == "cancel_dive_by_pressing_opposite_direction")
 			{
-				menu_cursor_y_position = menu_y_cancel_dive_by_opposite_direction;
 				if (key_up)
 				{
 					if (allow_player_dive[what_player])
@@ -4604,7 +4571,6 @@ function scr_option_control_menu()
 			#region /* Down + Jump to Ground Pound Navigation */
 			if (menu == "down_and_jump_to_groundpound")
 			{
-				menu_cursor_y_position = menu_y_down_and_jump_to_groundpound;
 				if (key_up)
 				{
 					if (allow_player_dive[what_player])
@@ -4754,7 +4720,6 @@ function scr_option_control_menu()
 			#region /* Show prompt when changing controller Navigation */
 			if (menu == "show_prompt_when_changing_controller")
 			{
-				menu_cursor_y_position = menu_y_show_prompt_when_changing_controller;
 				if (key_up)
 				{
 					menu = "show_controls";
@@ -4787,7 +4752,6 @@ function scr_option_control_menu()
 			#region /* Always Show Gamepad Buttons Navigation */
 			if (menu == "always_show_gamepad_buttons")
 			{
-				menu_cursor_y_position = menu_y_always_show_gamepad_buttons;
 				if (key_up)
 				{
 					if (global.enable_option_for_pc)

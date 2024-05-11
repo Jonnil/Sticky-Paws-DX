@@ -18,6 +18,7 @@ scr_make_background_visible();
 #region /* Essential variables */
 if_clear_checked = false;
 if_daily_build = false;
+level_id = "";
 cam_x = camera_get_view_x(view_camera[view_current]);
 cam_y = camera_get_view_y(view_camera[view_current]);
 cam_width = camera_get_view_width(view_camera[view_current]);
@@ -150,6 +151,10 @@ if (!global.actually_play_edited_level)
 		if (ini_key_exists("info", "if_daily_build"))
 		{
 			if_daily_build = ini_read_string("info", "if_daily_build", false); /* Draw if level have been created in Daily Build on top of screen */
+		}
+		if (ini_key_exists("info", "level_id"))
+		{
+			level_id = ini_read_string("info", "level_id", ""); /* Draw the Level ID on top of screen */
 		}
 		if (ini_key_exists("info", "first_created_on_version"))
 		{
