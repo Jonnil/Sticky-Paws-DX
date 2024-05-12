@@ -5,6 +5,9 @@ quit_nevermind_y = 0;
 for(var p = 1; p <= global.max_players; p += 1) {
 	show_player_controls_y[p] = -64;
 	
+	show_player_controller_cant_use[p] = 0;
+	show_player_controller_cant_use_y[p] = display_get_gui_height() + 64;
+	
 	if (global.character_select_in_this_menu == "level_editor" && global.search_id != "")
 	{
 		var show_controls_x = 128 + 74;

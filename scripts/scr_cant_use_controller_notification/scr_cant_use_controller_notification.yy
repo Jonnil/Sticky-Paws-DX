@@ -1,0 +1,13 @@
+{
+  "$GMScript":"",
+  "%Name":"scr_cant_use_controller_notification",
+  "isCompatibility":false,
+  "isDnD":false,
+  "name":"scr_cant_use_controller_notification",
+  "parent":{
+    "name":"Other",
+    "path":"folders/Scripts/Other.yy",
+  },
+  "resourceType":"GMScript",
+  "resourceVersion":"2.0",
+}

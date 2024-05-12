@@ -377,6 +377,8 @@ if (!hide_menu_for_clean_screenshots)
 	scr_option_menu(); /* Options */
 	scr_character_select_menu_draw();
 	
+	scr_cant_use_controller_notification();
+	
 	scr_quit_to_desktop_menu("quit_to_desktop");
 	scr_draw_darken_screen_when_window_is_unfocused();
 	scr_debug_screen();

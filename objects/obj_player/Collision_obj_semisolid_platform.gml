@@ -1,17 +1,6 @@
 /* Collision Event with a solid object */
 
-if (position_meeting(x, bbox_bottom + 1, other))
-|| (position_meeting(x, bbox_bottom + 2, other))
-|| (position_meeting(x, bbox_bottom + 3, other))
-|| (position_meeting(x, bbox_bottom + 4, other))
-|| (position_meeting(bbox_left, bbox_bottom + 1, other))
-|| (position_meeting(bbox_left, bbox_bottom + 2, other))
-|| (position_meeting(bbox_left, bbox_bottom + 3, other))
-|| (position_meeting(bbox_left, bbox_bottom + 4, other))
-|| (position_meeting(bbox_right, bbox_bottom + 1, other))
-|| (position_meeting(bbox_right, bbox_bottom + 2, other))
-|| (position_meeting(bbox_right, bbox_bottom + 3, other))
-|| (position_meeting(bbox_right, bbox_bottom + 4, other))
+if (collision_rectangle(bbox_left, bbox_bottom + 1, bbox_right, bbox_bottom + 4, other, false, true))
 {
 	if (dive)
 	&& (vspeed >= -5)
@@ -29,11 +18,7 @@ if (position_meeting(x, bbox_bottom + 1, other))
 }
 
 #region /* Landing on solid object */
-if (position_meeting(x, bbox_bottom + 1, other))
-&& (!stick_to_wall)
-|| (position_meeting(bbox_left, bbox_bottom + 1, other))
-&& (!stick_to_wall)
-|| (position_meeting(bbox_right, bbox_bottom + 1, other))
+if (collision_rectangle(bbox_left, bbox_bottom + 1, bbox_right, bbox_bottom + 1, other, false, true))
 && (!stick_to_wall)
 {
 	
