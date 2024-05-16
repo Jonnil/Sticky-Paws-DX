@@ -2214,13 +2214,17 @@ function scr_option_menu()
 			{
 				can_get_device_username = true;
 			}
+			
 			var change_username_x = 410;
-			var change_username_y = 20 + (40 * 5);
+			var change_username_y = 80;
+			
 			if (menu != "get_device_name_ok")
 			&& (menu != "get_device_name_cancel")
 			{
-				scr_draw_text_outlined(change_username_x, 20 + (40), l10n_text("Setup your Account here"), global.default_text_size * 1.1, c_menu_outline, c_menu_fill, 1);
-				scr_draw_text_outlined(change_username_x, 20 + (40 * 2), l10n_text("This is used for uploading levels"), global.default_text_size * 1.1, c_menu_outline, c_menu_fill, 1);
+				draw_set_halign(fa_right);
+				scr_draw_text_outlined(display_get_gui_width() - 8, 40, l10n_text("Setup your Account here"), global.default_text_size * 1.1, c_menu_outline, c_menu_fill, 1);
+				scr_draw_text_outlined(display_get_gui_width() - 8, 40 * 2, l10n_text("This is used for uploading levels"), global.default_text_size * 1.1, c_menu_outline, c_menu_fill, 1);
+				draw_set_halign(fa_center);
 				if (menu != "change_username_ok")
 				&& (menu != "change_username_cancel")
 				{
@@ -2333,7 +2337,7 @@ function scr_option_menu()
 			}
 			#endregion /* Ask the player if they want to change username into device name, and make sure they understand what this means END */
 			
-			#region /* Change username */
+			#region /* Click Change username */
 			if (menu == "change_username")
 			{
 				if (point_in_rectangle(mouse_get_x, mouse_get_y, change_username_x, change_username_y, change_username_x + 370, change_username_y + 40 - 1))
@@ -2349,6 +2353,27 @@ function scr_option_menu()
 					menu = "change_username_ok";
 				}
 			}
+			#endregion /* Click Change username END */
+			
+			#region /* Draw the username text above everything */
+			if (menu != "get_device_name_ok")
+			&& (menu != "get_device_name_cancel")
+			{
+				draw_set_halign(fa_left);
+				draw_set_valign(fa_middle);
+				if (global.username != "")
+				{
+					scr_draw_text_outlined(change_username_x, change_username_y - 40, l10n_text("Account name") + ": " + string(global.username), global.default_text_size, c_menu_outline, c_menu_fill, 1);
+				}
+				else
+				{
+					scr_draw_text_outlined(change_username_x, change_username_y - 40, l10n_text("No username!"), global.default_text_size, c_menu_outline, c_menu_fill, 1);
+					scr_draw_text_outlined(change_username_x, change_username_y - 40, l10n_text("No username!"), global.default_text_size, c_menu_outline, c_red, scr_wave(0, 1, 1, 0));
+				}
+			}
+			#endregion /* Draw the username text above everything END */
+			
+			#region /* Type username */
 			if (menu == "change_username_ok")
 			|| (menu == "change_username_cancel")
 			{
@@ -2366,25 +2391,7 @@ function scr_option_menu()
 					menu = "change_username";
 				}
 			}
-			#endregion /* Change username END */
-			
-			#region /* Draw the username text above everything */
-			if (menu != "get_device_name_ok")
-			&& (menu != "get_device_name_cancel")
-			{
-				draw_set_halign(fa_left);
-				draw_set_valign(fa_middle);
-				if (global.username != "")
-				{
-					scr_draw_text_outlined(change_username_x, 20 + (40 * 4), l10n_text("Account name") + ": " + string(global.username), global.default_text_size, c_menu_outline, c_menu_fill, 1);
-				}
-				else
-				{
-					scr_draw_text_outlined(change_username_x, 20 + (40 * 4), l10n_text("No username!"), global.default_text_size, c_menu_outline, c_menu_fill, 1);
-					scr_draw_text_outlined(change_username_x, 20 + (40 * 4), l10n_text("No username!"), global.default_text_size, c_menu_outline, c_red, scr_wave(0, 1, 1, 0));
-				}
-			}
-			#endregion /* Draw the username text above everything END */
+			#endregion /* Type username END */
 			
 			if (key_up)
 			&& (menu_delay == 0 && menu_joystick_delay == 0)
@@ -2414,16 +2421,16 @@ function scr_option_menu()
 		#region /* Audio Settings */
 		if (global.settings_sidebar_menu == "audio_settings")
 		{
-			var volume_main_y = 64;
-			var volume_music_y = 96 + (64);
-			var volume_melody_y = 96 + (64 * 2);
-			var volume_sound_y = 96 + (64 * 3);
-			var volume_ambient_y = 96 + (64 * 4);
-			var volume_footstep_y = 96 + (64 * 5);
-			var volume_voice_y = 96 + (64 * 6);
-			var number_of_audio_channels_y = 96 + 8 + (64 * 7) - 10;
-			var narrator_y = 96 + 8 + (64 * 8);
-			var default_audio_settings_y = 96 + (64 * 9);
+			var volume_main_y = 64 + menu_y_offset;
+			var volume_music_y = 96 + (64) + menu_y_offset;
+			var volume_melody_y = 96 + (64 * 2) + menu_y_offset;
+			var volume_sound_y = 96 + (64 * 3) + menu_y_offset;
+			var volume_ambient_y = 96 + (64 * 4) + menu_y_offset;
+			var volume_footstep_y = 96 + (64 * 5) + menu_y_offset;
+			var volume_voice_y = 96 + (64 * 6) + menu_y_offset;
+			var number_of_audio_channels_y = 96 + 8 + (64 * 7) - 20 + menu_y_offset;
+			var narrator_y = 96 + 8 + (64 * 8) - 10 + menu_y_offset;
+			var default_audio_settings_y = 96 + (64 * 8) + 20 + menu_y_offset;
 			
 			#region /* Make volumes stay between 0 and 1 */
 			global.volume_main = clamp(global.volume_main, 0, 1);

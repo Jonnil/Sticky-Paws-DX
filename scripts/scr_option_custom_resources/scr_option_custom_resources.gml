@@ -2,43 +2,53 @@ function scr_option_custom_resources()
 {
 	var mouse_get_x = device_mouse_x_to_gui(0);
 	var mouse_get_y = device_mouse_y_to_gui(0);
+	var title_bg_layer_max = 3;
 	
 	if (global.settings_sidebar_menu == "custom_resources_settings")
 	{
 		if (sprite_exists(global.title_logo_index))
 		{
-			draw_sprite_ext(global.title_logo_index, image_index, display_get_gui_width() - 350, display_get_gui_height() - 250, (402 / sprite_get_height(global.title_logo_index)), (402 / sprite_get_height(global.title_logo_index)), 0, c_white, 1);
+			draw_sprite_ext(
+			global.title_logo_index,
+			image_index,
+			display_get_gui_width() - 200,
+			display_get_gui_height() - 150,
+			(202 / sprite_get_height(global.title_logo_index)),
+			(202 / sprite_get_height(global.title_logo_index)),
+			0,
+			c_white,
+			1);
 		}
 		
 		if (ds_list_size(global.all_loaded_resource_pack) >= 2)
 		&& (!global.enable_option_for_pc)
 		|| (global.enable_option_for_pc)
 		{
-			var resource_pack_y = 40;
-			var open_resource_pack_y = 40 * 3;
-			var custom_title_layer_y = 40 * 5;
-			var custom_title_background_y = 40 * 6;
-			var custom_title_background_scale_y = 40 * 8;
-			var background_layer_x_scroll_y = 40 * 9;
-			var background_layer_y_scroll_y = 40 * 10;
-			var custom_title_background_open_y = 40 * 11;
-			var custom_title_logo_y = 40 * 13;
-			var custom_title_logo_open_y = 40 * 15;
-			var can_load_custom_level_assets_y = 40 * 16 + 32;
+			var resource_pack_y = 40 + menu_y_offset;
+			var open_resource_pack_y = 40 * 3 + menu_y_offset;
+			var custom_title_layer_y = 40 * 5 + menu_y_offset;
+			var custom_title_background_y = 40 * 6 + menu_y_offset;
+			var custom_title_background_scale_y = 40 * 8 + menu_y_offset;
+			var background_layer_x_scroll_y = 40 * 9 + menu_y_offset;
+			var background_layer_y_scroll_y = 40 * 10 + menu_y_offset;
+			var custom_title_background_open_y = 40 * 11 + menu_y_offset;
+			var custom_title_logo_y = 40 * 13 + menu_y_offset;
+			var custom_title_logo_open_y = 40 * 15 + menu_y_offset;
+			var can_load_custom_level_assets_y = 40 * 16 + 32 + menu_y_offset;
 		}
 		else
 		{
 			var resource_pack_y = -999;
 			var open_resource_pack_y = -999;
-			var custom_title_layer_y = 40;
-			var custom_title_background_y = 40 * 2;
-			var custom_title_background_scale_y = 40 * 4;
-			var background_layer_x_scroll_y = 40 * 5;
-			var background_layer_y_scroll_y = 40 * 6;
-			var custom_title_background_open_y = 40 * 7;
-			var custom_title_logo_y = 40 * 9;
-			var custom_title_logo_open_y = 40 * 11;
-			var can_load_custom_level_assets_y = 40 * 12 + 32;
+			var custom_title_layer_y = 40 + menu_y_offset;
+			var custom_title_background_y = 40 * 2 + menu_y_offset;
+			var custom_title_background_scale_y = 40 * 4 + menu_y_offset;
+			var background_layer_x_scroll_y = 40 * 5 + menu_y_offset;
+			var background_layer_y_scroll_y = 40 * 6 + menu_y_offset;
+			var custom_title_background_open_y = 40 * 7 + menu_y_offset;
+			var custom_title_logo_y = 40 * 9 + menu_y_offset;
+			var custom_title_logo_open_y = 40 * 11 + menu_y_offset;
+			var can_load_custom_level_assets_y = 40 * 12 + 32 + menu_y_offset;
 		}
 		
 		if (key_up)
@@ -58,6 +68,7 @@ function scr_option_custom_resources()
 				|| (global.enable_option_for_pc)
 				{
 					menu = "resource_pack";
+					menu_cursor_y_position = 0;
 				}
 				else
 				{
@@ -77,6 +88,7 @@ function scr_option_custom_resources()
 				|| (global.enable_option_for_pc)
 				{
 					menu = "resource_pack";
+					menu_cursor_y_position = 0;
 				}
 				else
 				{
@@ -87,6 +99,7 @@ function scr_option_custom_resources()
 			if (menu == "title_background")
 			{
 				menu = "title_background_layer";
+				menu_cursor_y_position = custom_title_layer_y;
 			}
 			else
 			if (menu == "title_background_scale")
@@ -153,12 +166,14 @@ function scr_option_custom_resources()
 				else
 				{
 					menu = "title_background_layer";
+					menu_cursor_y_position = custom_title_layer_y;
 				}
 			}
 			else
 			if (menu == "open_resource_pack_folder")
 			{
 				menu = "title_background_layer";
+				menu_cursor_y_position = custom_title_layer_y;
 			}
 			else
 			if (menu == "title_background_layer")
@@ -222,10 +237,12 @@ function scr_option_custom_resources()
 				|| (global.enable_option_for_pc)
 				{
 					menu = "resource_pack";
+					menu_cursor_y_position = 0;
 				}
 				else
 				{
 					menu = "title_background_layer";
+					menu_cursor_y_position = custom_title_layer_y;
 				}
 			}
 		}
@@ -260,6 +277,7 @@ function scr_option_custom_resources()
 				&& (global.controls_used_for_navigation == "mouse")
 				{
 					menu = "resource_pack";
+					menu_cursor_y_position = 0;
 					can_navigate_settings_sidebar = false;
 					draw_set_alpha(0.5);
 					draw_rectangle_color(resource_pack_x - 32 - 16, 20 + (resource_pack_y) - 16, resource_pack_x - 32 + 16, 20 + (resource_pack_y) + 16, c_white, c_white, c_white, c_white, false);
@@ -277,6 +295,7 @@ function scr_option_custom_resources()
 				&& (global.controls_used_for_navigation == "mouse")
 				{
 					menu = "resource_pack";
+					menu_cursor_y_position = 0;
 					can_navigate_settings_sidebar = false;
 					draw_set_alpha(0.5);
 					draw_rectangle_color(resource_pack_x +resource_pack_right_arrow_x - 16, 20 + (resource_pack_y) - 16, resource_pack_x +resource_pack_right_arrow_x + 16, 20 + (resource_pack_y) + 16, c_white, c_white, c_white, c_white, false);
@@ -297,6 +316,7 @@ function scr_option_custom_resources()
 			&& (global.controls_used_for_navigation == "mouse")
 			{
 				menu = "resource_pack";
+				menu_cursor_y_position = 0;
 				if (menu_delay == 0 && menu_joystick_delay == 0)
 				&& (!can_navigate_settings_sidebar)
 				&& (global.selected_resource_pack > 0)
@@ -318,6 +338,7 @@ function scr_option_custom_resources()
 			&& (global.controls_used_for_navigation == "mouse")
 			{
 				menu = "resource_pack";
+				menu_cursor_y_position = 0;
 				
 				if (menu_delay == 0 && menu_joystick_delay == 0)
 				&& (!can_navigate_settings_sidebar)
@@ -385,7 +406,6 @@ function scr_option_custom_resources()
 		#endregion /* Make the layer blink so you can see easier which layer is actually selected END */
 		
 		#region /* Custom Title Background Layer */
-		var title_bg_layer_max = 3;
 		draw_set_halign(fa_left);
 		draw_set_valign(fa_middle);
 		scr_draw_text_outlined(resource_pack_x, 20 + (custom_title_layer_y), l10n_text("Background Layer") + ": " + string(title_bg_layer), global.default_text_size, c_menu_outline, c_menu_fill, 1);
@@ -396,6 +416,7 @@ function scr_option_custom_resources()
 			&& (global.controls_used_for_navigation == "mouse")
 			{
 				menu = "title_background_layer";
+				menu_cursor_y_position = custom_title_layer_y;
 				can_navigate_settings_sidebar = false;
 				draw_set_alpha(0.5);
 				draw_rectangle_color(resource_pack_x - 32 - 16, 20 + (custom_title_layer_y) - 16, resource_pack_x - 32 + 16, 20 + (custom_title_layer_y) + 16, c_white, c_white, c_white, c_white, false);
@@ -409,6 +430,7 @@ function scr_option_custom_resources()
 			&& (global.controls_used_for_navigation == "mouse")
 			{
 				menu = "title_background_layer";
+				menu_cursor_y_position = custom_title_layer_y;
 				can_navigate_settings_sidebar = false;
 				draw_set_alpha(0.5);
 				draw_rectangle_color(resource_pack_x +resource_pack_right_arrow_x - 16, 20 + (custom_title_layer_y) - 16, resource_pack_x +resource_pack_right_arrow_x + 16, 20 + (custom_title_layer_y) + 16, c_white, c_white, c_white, c_white, false);
@@ -426,6 +448,7 @@ function scr_option_custom_resources()
 		&& (global.controls_used_for_navigation == "mouse")
 		{
 			menu = "title_background_layer";
+			menu_cursor_y_position = custom_title_layer_y;
 			if (menu_delay == 0 && menu_joystick_delay == 0)
 			&& (!can_navigate_settings_sidebar)
 			&& (title_bg_layer > 1)
@@ -448,6 +471,7 @@ function scr_option_custom_resources()
 		&& (global.controls_used_for_navigation == "mouse")
 		{
 			menu = "title_background_layer";
+			menu_cursor_y_position = custom_title_layer_y;
 			if (menu_delay == 0 && menu_joystick_delay == 0)
 			&& (!can_navigate_settings_sidebar)
 			&& (title_bg_layer < title_bg_layer_max)
