@@ -2201,18 +2201,17 @@ function scr_option_menu()
 		{
 			draw_set_halign(fa_left);
 			draw_set_valign(fa_middle);
-			var can_get_device_username = false;
-			if (os_type == os_windows)
-			&& (environment_get_variable("USERNAME") != "")
-			|| (os_type == os_macosx)
-			&& (environment_get_variable("USERNAME") != "")
-			|| (os_type == os_linux)
-			&& (environment_get_variable("USERNAME") != "")
-			|| (os_type != os_windows)
-			&& (os_type != os_macosx)
-			&& (os_type != os_linux)
+			
+			var get_device_username_text = "";
+			
+			if (environment_get_variable("USERNAME") != "")
 			{
-				can_get_device_username = true;
+				get_device_username_text = l10n_text("Get Device Username");
+			}
+			else
+			if (os_type == os_switch)
+			{
+				get_device_username_text = l10n_text("Get Username");
 			}
 			
 			var change_username_x = 410;
@@ -2229,15 +2228,15 @@ function scr_option_menu()
 				&& (menu != "change_username_cancel")
 				{
 					draw_menu_button(change_username_x, change_username_y, l10n_text("Change Username"), "change_username");
-					if (can_get_device_username)
+					if (get_device_username_text != "")
 					{
-						draw_menu_button(change_username_x, change_username_y + 50, l10n_text("Get Device Username"), "get_device_name");
+						draw_menu_button(change_username_x, change_username_y + 50, get_device_username_text, "get_device_name");
 					}
 				}
 			}
 			
 			#region /* Ask the player if they want to change username into device name, and make sure they understand what this means */
-			if (can_get_device_username)
+			if (get_device_username_text != "")
 			{
 				if (point_in_rectangle(mouse_get_x, mouse_get_y, change_username_x, change_username_y + 50, change_username_x + 370, change_username_y + 50 + 40 - 1))
 				&& (global.controls_used_for_navigation == "mouse")
@@ -2406,7 +2405,7 @@ function scr_option_menu()
 			&& (!input_key)
 			{
 				menu_delay = 3;
-				if (can_get_device_username)
+				if (get_device_username_text != "")
 				{
 					menu = "get_device_name";
 				}

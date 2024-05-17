@@ -62,6 +62,23 @@ else
 #region /* If you're playing on console, then some things should not show up that is for PC */
 if (os_type == os_switch)
 {
+	
+	#region /* Need to set these Nintendo Switch specific functions */
+	var switch_controller_style = switch_controller_handheld | switch_controller_joycon_left | switch_controller_joycon_right | switch_controller_pro_controller | switch_controller_joycon_dual;
+	switch_controller_set_supported_styles(switch_controller_style);
+	switch_controller_support_set_singleplayer_only(false);
+	switch_controller_support_set_player_min(1);
+	switch_controller_support_set_player_max(global.max_players);
+	
+	var switch_accounts_num = switch_accounts_get_accounts();
+	for (var i = 0; i < switch_accounts_num; ++i;)
+	{
+		global.switch_account_name[i] = switch_accounts_get_nickname(i); 
+		global.switch_account_open[i] = switch_accounts_is_user_open(i);
+		global.switch_account_handle[i] = switch_accounts_get_handle(i);
+	}
+	#endregion /* Need to set these Nintendo Switch specific functions END */
+	
 	global.free_communication_available = switch_free_communication_available(); /* If free communication is disabled, you shouldn't be able to upload or download custom content. Set this to switch_free_communication_available when done debugging */
 	global.can_load_photographic_images = false; /* It's against Nintendo Switch guidelines to be able to view photographic images in UGC */
 	global.show_prompt_when_changing_to_gamepad = false;
@@ -69,6 +86,7 @@ if (os_type == os_switch)
 	global.enable_open_custom_folder = false; /* Enable the option to open custom folders in the game */
 	global.enable_option_for_pc = false; /* Enable if options related to gamepad, but only intended for when playing with gamepad on PC should show up */
 	global.enable_keyboard_and_mouse_settings = false; /* Enable Keyboard and Mouse settings */
+	global.always_show_gamepad_buttons = true;
 }
 else
 {
@@ -79,6 +97,7 @@ else
 	global.enable_open_custom_folder = true; /* Enable the option to open custom folders in the game */
 	global.enable_option_for_pc = true; /* Enable if options related to gamepad, but only intended for when playing with gamepad on PC should show up */
 	global.enable_keyboard_and_mouse_settings = true; /* Enable Keyboard and Mouse settings */
+	global.always_show_gamepad_buttons = false; /* You can force to show gamepad buttons, even if playing with keyboard, mouse or touch controls. Default = false */
 }
 #endregion /* If you're playing on console, then some things should not show up that is for PC END */
 
@@ -194,15 +213,6 @@ initialized_title_logo = false;
 load_ok = 0;
 sprite_splash_easteregg_yoffset = +228;
 goto_title_screen = false; /* If game is allowed to go to title screen yet or not. Need to load everything before going to title screen */
-
-if (os_type == os_switch)
-{
-	var switch_controller_style = switch_controller_handheld | switch_controller_joycon_left | switch_controller_joycon_right | switch_controller_pro_controller | switch_controller_joycon_dual;
-	switch_controller_set_supported_styles(switch_controller_style);
-	switch_controller_support_set_singleplayer_only(false);
-	switch_controller_support_set_player_min(1);
-	switch_controller_support_set_player_max(global.max_players);
-}
 
 global.saveid = noone;
 global.savebuff = noone;
@@ -592,15 +602,6 @@ global.resource_pack_sprite_buttons_nintendoswitch_vertical = spr_noone;
 global.resource_pack_sprite_buttons_playstation4 = spr_noone;
 global.resource_pack_sprite_buttons_playstation5 = spr_noone;
 #endregion /* Resource Packs END */
-
-if (os_type == os_switch)
-{
-	global.always_show_gamepad_buttons = true;
-}
-else
-{
-	global.always_show_gamepad_buttons = false; /* You can force to show gamepad buttons, even if playing with keyboard, mouse or touch controls. Default = false */
-}
 
 company_splash = noone;
 company_splash_1 = noone;
