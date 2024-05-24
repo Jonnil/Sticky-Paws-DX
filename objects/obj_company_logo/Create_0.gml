@@ -59,6 +59,15 @@ else
 }
 #endregion /* If you're playing on mobile, then some things should show up that is not on PC END */
 
+global.switch_account_name = noone;
+global.switch_account_open = noone;
+global.switch_account_handle = noone;
+
+global.switch_account_netid = noone;
+global.switch_account_online_token = noone;
+global.switch_account_is_user_online = noone;
+global.switch_account_network_service_available = noone;
+
 #region /* If you're playing on console, then some things should not show up that is for PC */
 if (os_type == os_switch)
 {
@@ -73,10 +82,21 @@ if (os_type == os_switch)
 	var switch_accounts_num = switch_accounts_get_accounts();
 	for (var i = 0; i < switch_accounts_num; ++i;)
 	{
-		global.switch_account_name[i] = switch_accounts_get_nickname(i); 
-		global.switch_account_open[i] = switch_accounts_is_user_open(i);
-		global.switch_account_handle[i] = switch_accounts_get_handle(i);
+		global.switch_account_name[i] = switch_accounts_get_nickname(i); /* First get the nickname. With this function you can retrieve the nickname of the user in the given Account ID slot or the User Network Id */
+		global.switch_account_open[i] = switch_accounts_is_user_open(i); /* Second get if user is open. With this function you can check an account ID slot to see if the account has been flagged as "open" (active) or not */
+		global.switch_account_handle[i] = switch_accounts_get_handle(i); /* Third get the handle. With this function you can retrieve the "handle" (as a pointer) of the user in the given Account ID slot */
+		
+		/* Other Switch accounts functions to look for */
+		global.switch_account_netid[i] = switch_accounts_get_netid(i);
+		global.switch_account_online_token[i] = switch_accounts_get_online_token(i);
+		global.switch_account_is_user_online[i] = switch_accounts_is_user_online(i);
+		
+		/* For some reason I can't retrieve infromation from network_service_available like this without crashing the game with unknown error */
+		//global.switch_account_network_service_available[i] = switch_accounts_network_service_available(i);
+		
+		global.switch_account_network_service_available = switch_accounts_network_service_available(0);
 	}
+	
 	#endregion /* Need to set these Nintendo Switch specific functions END */
 	
 	global.free_communication_available = switch_free_communication_available(); /* If free communication is disabled, you shouldn't be able to upload or download custom content. Set this to switch_free_communication_available when done debugging */

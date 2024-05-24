@@ -283,11 +283,8 @@ function scr_debug_screen()
 				}
 			}
 		}
-		for(var i = 1; i <= global.max_players; i += 1)
-		{
-			scr_draw_text_outlined(32, debug_text_y, "player_can_play[" + string(i) + "]: " + string(global.player_can_play[i]), global.default_text_size, c_black, c_white);
-			debug_text_y += 20;
-		}
+		scr_draw_text_outlined(32, debug_text_y, "player_can_play: " + string(global.player_can_play), global.default_text_size, c_black, c_white);
+		debug_text_y += 20;
 		
 		/* Get Gamepad Description */
 		if (gamepad_get_description(0) != "")
@@ -367,36 +364,36 @@ function scr_debug_screen()
 			}
 			debug_text_y += 20;
 		}
-		if (variable_instance_exists(self, "menu_joystick_delay") && gamepad_is_connected(0))
-		{
-			if (menu_joystick_delay == 0)
-			{
-				scr_draw_text_outlined(32, debug_text_y, "menu_joystick_delay: " + string(menu_joystick_delay), global.default_text_size, c_black, c_white);
-			}
-			else
-			{
-				scr_draw_text_outlined(32, debug_text_y, "menu_joystick_delay: " + string(menu_joystick_delay), global.default_text_size, c_black, c_red);
-			}
-			debug_text_y += 20;
-		}
-		if (variable_instance_exists(self, "menu_specific_joystick_delay") && gamepad_is_connected(0))
-		{
-			if (menu_specific_joystick_delay[0] == 0)
-			{
-				scr_draw_text_outlined(32, debug_text_y, "menu_specific_joystick_delay[0]: " + string(menu_specific_joystick_delay[0]), global.default_text_size, c_black, c_white);
-			}
-			else
-			{
-				scr_draw_text_outlined(32, debug_text_y, "menu_specific_joystick_delay[0]: " + string(menu_specific_joystick_delay[0]), global.default_text_size, c_black, c_red);
-			}
-			debug_text_y += 20;
-		}
+		//if (variable_instance_exists(self, "menu_joystick_delay") && gamepad_is_connected(0))
+		//{
+		//	if (menu_joystick_delay == 0)
+		//	{
+		//		scr_draw_text_outlined(32, debug_text_y, "menu_joystick_delay: " + string(menu_joystick_delay), global.default_text_size, c_black, c_white);
+		//	}
+		//	else
+		//	{
+		//		scr_draw_text_outlined(32, debug_text_y, "menu_joystick_delay: " + string(menu_joystick_delay), global.default_text_size, c_black, c_red);
+		//	}
+		//	debug_text_y += 20;
+		//}
+		//if (variable_instance_exists(self, "menu_specific_joystick_delay") && gamepad_is_connected(0))
+		//{
+		//	if (menu_specific_joystick_delay[0] == 0)
+		//	{
+		//		scr_draw_text_outlined(32, debug_text_y, "menu_specific_joystick_delay[0]: " + string(menu_specific_joystick_delay[0]), global.default_text_size, c_black, c_white);
+		//	}
+		//	else
+		//	{
+		//		scr_draw_text_outlined(32, debug_text_y, "menu_specific_joystick_delay[0]: " + string(menu_specific_joystick_delay[0]), global.default_text_size, c_black, c_red);
+		//	}
+		//	debug_text_y += 20;
+		//}
 		//scr_draw_text_outlined(32, debug_text_y, "menu_navigation_speed: " + string(global.menu_navigation_speed), global.default_text_size, c_black, c_white);
 		//debug_text_y += 20;
 		//scr_draw_text_outlined(32, debug_text_y, "character_index: " + string(global.character_index), global.default_text_size, c_black, c_white);
 		//debug_text_y += 20;
-		scr_draw_text_outlined(32, debug_text_y, "search_id: " + string(global.search_id), global.default_text_size, c_black, c_white);
-		debug_text_y += 20;
+		//scr_draw_text_outlined(32, debug_text_y, "search_id: " + string(global.search_id), global.default_text_size, c_black, c_white);
+		//debug_text_y += 20;
 		//if (instance_exists(obj_camera))
 		//{
 		//	scr_draw_text_outlined(32, debug_text_y, "obj_camera.hud_show_lives_timer: " + string(obj_camera.hud_show_lives_timer), global.default_text_size, c_black, c_white);
@@ -443,6 +440,31 @@ function scr_debug_screen()
 		//}
 		
 		debug_text_y += 20;
+		scr_draw_text_outlined(32, debug_text_y, "switch_account_name: " + string(global.switch_account_name), global.default_text_size, c_black, c_white);
+		
+		debug_text_y += 20;
+		scr_draw_text_outlined(32, debug_text_y, "switch_account_open: " + string(global.switch_account_open), global.default_text_size, c_black, c_white);
+		
+		debug_text_y += 20;
+		scr_draw_text_outlined(32, debug_text_y, "switch_account_handle: " + string(global.switch_account_handle), global.default_text_size, c_black, c_white);
+		
+		
+		
+		debug_text_y += 40;
+		scr_draw_text_outlined(32, debug_text_y, "switch_account_netid: " + string(global.switch_account_netid), global.default_text_size, c_black, c_white);
+		
+		debug_text_y += 20;
+		scr_draw_text_outlined(32, debug_text_y, "switch_account_online_token: " + string(global.switch_account_online_token), global.default_text_size, c_black, c_white);
+		
+		debug_text_y += 20;
+		scr_draw_text_outlined(32, debug_text_y, "switch_account_is_user_online: " + string(global.switch_account_is_user_online), global.default_text_size, c_black, c_white);
+		
+		debug_text_y += 20;
+		scr_draw_text_outlined(32, debug_text_y, "switch_account_network_service_available: " + string(global.switch_account_network_service_available), global.default_text_size, c_black, c_white);
+		
+		
+		
+		debug_text_y += 40;
 		scr_draw_text_outlined(32, debug_text_y, "current_datetime: " + string(date_datetime_string(date_current_datetime())), global.default_text_size, c_black, c_white);
 		#endregion /* More debug text END */
 		
