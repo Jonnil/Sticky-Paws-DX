@@ -1,5 +1,5 @@
 {
-  "$GMScript":"",
+  "$GMScript":"v1",
   "%Name":"scr_dont_move_outside_view",
   "isCompatibility":false,
   "isDnD":false,

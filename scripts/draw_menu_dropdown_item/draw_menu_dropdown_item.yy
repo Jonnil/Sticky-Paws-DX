@@ -1,5 +1,5 @@
 {
-  "$GMScript":"",
+  "$GMScript":"v1",
   "%Name":"draw_menu_dropdown_item",
   "isCompatibility":false,
   "isDnD":false,

@@ -481,34 +481,47 @@ function scr_character_manage_menu_step()
 			{
 				menu_delay = 3;
 				if (global.online_enabled)
+				&& (os_is_network_connected())
 				{
-					if (upload_rules_do_not_show_character)
+					scr_switch_update_online_status();
+					
+					if (global.switch_account_network_service_available) /* Need to make sure that network service is available before going online */
 					{
-						ini_open(game_save_id + "custom_characters/" + string(ds_list_find_value(global.all_loaded_characters, global.character_index[fixed_player - 1])) + "/data/character_config.ini");
-						if (ini_key_exists("info", "clear_check_character"))
+						if (upload_rules_do_not_show_character)
 						{
-							if (ini_read_real("info", "clear_check_character", false))
+							ini_open(game_save_id + "custom_characters/" + string(ds_list_find_value(global.all_loaded_characters, global.character_index[fixed_player - 1])) + "/data/character_config.ini");
+							if (ini_key_exists("info", "clear_check_character"))
 							{
-								menu = "upload_yes_character";
+								if (ini_read_real("info", "clear_check_character", false))
+								{
+									menu = "upload_yes_character";
+								}
+								else
+								{
+									menu = "clear_check_character_yes";
+								}
 							}
 							else
 							{
 								menu = "clear_check_character_yes";
 							}
+							ini_close(); switch_save_data_commit(); /* Remember to commit the save data! */
 						}
 						else
 						{
-							menu = "clear_check_character_yes";
+							caution_online_takes_you_to = "upload_yes_character";
+							caution_online_takes_you_back_to = "click_upload_character";
+							content_type = "character";
+							menu = "upload_rules";
+							menu_delay = 3;
 						}
-						ini_close(); switch_save_data_commit(); /* Remember to commit the save data! */
 					}
 					else
 					{
+						menu_delay = 3;
 						caution_online_takes_you_to = "upload_yes_character";
 						caution_online_takes_you_back_to = "click_upload_character";
-						content_type = "character";
-						menu = "upload_rules";
-						menu_delay = 3;
+						menu = "caution_online_network_service_unavailable";
 					}
 				}
 				else

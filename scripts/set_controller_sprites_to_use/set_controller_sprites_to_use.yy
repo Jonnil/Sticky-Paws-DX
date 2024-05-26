@@ -1,5 +1,5 @@
 {
-  "$GMScript":"",
+  "$GMScript":"v1",
   "%Name":"set_controller_sprites_to_use",
   "isCompatibility":false,
   "isDnD":false,

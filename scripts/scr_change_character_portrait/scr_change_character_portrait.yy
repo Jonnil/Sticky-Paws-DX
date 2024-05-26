@@ -1,5 +1,5 @@
 {
-  "$GMScript":"",
+  "$GMScript":"v1",
   "%Name":"scr_change_character_portrait",
   "isCompatibility":false,
   "isDnD":false,

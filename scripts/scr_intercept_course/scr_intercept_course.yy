@@ -1,5 +1,5 @@
 {
-  "$GMScript":"",
+  "$GMScript":"v1",
   "%Name":"scr_intercept_course",
   "isCompatibility":false,
   "isDnD":false,

@@ -1,5 +1,5 @@
 {
-  "$GMScript":"",
+  "$GMScript":"v1",
   "%Name":"scr_coil_spring_bouncing",
   "isCompatibility":false,
   "isDnD":false,

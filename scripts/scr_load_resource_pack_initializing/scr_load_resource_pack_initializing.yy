@@ -1,5 +1,5 @@
 {
-  "$GMScript":"",
+  "$GMScript":"v1",
   "%Name":"scr_load_resource_pack_initializing",
   "isCompatibility":false,
   "isDnD":false,

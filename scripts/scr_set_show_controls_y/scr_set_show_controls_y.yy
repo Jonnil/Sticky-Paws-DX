@@ -1,5 +1,5 @@
 {
-  "$GMScript":"",
+  "$GMScript":"v1",
   "%Name":"scr_set_show_controls_y",
   "isCompatibility":false,
   "isDnD":false,

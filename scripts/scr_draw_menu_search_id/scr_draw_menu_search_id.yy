@@ -1,5 +1,5 @@
 {
-  "$GMScript":"",
+  "$GMScript":"v1",
   "%Name":"scr_draw_menu_search_id",
   "isCompatibility":false,
   "isDnD":false,

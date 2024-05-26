@@ -1,5 +1,5 @@
 {
-  "$GMScript":"",
+  "$GMScript":"v1",
   "%Name":"scr_value_range_map",
   "isCompatibility":false,
   "isDnD":false,

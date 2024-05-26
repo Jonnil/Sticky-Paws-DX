@@ -1,5 +1,5 @@
 {
-  "$GMScript":"",
+  "$GMScript":"v1",
   "%Name":"scr_initialize_level_information_ini",
   "isCompatibility":false,
   "isDnD":false,

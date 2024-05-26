@@ -1,5 +1,5 @@
 {
-  "$GMScript":"",
+  "$GMScript":"v1",
   "%Name":"scr_player_move_horizontal_rope",
   "isCompatibility":false,
   "isDnD":false,

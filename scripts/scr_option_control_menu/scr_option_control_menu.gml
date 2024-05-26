@@ -4156,7 +4156,7 @@ function scr_option_control_menu()
 			l10n_text("Auto Detect"),
 			l10n_text("Xbox One"),
 			l10n_text("Xbox Series X/S"),
-			l10n_text("Nintendo Switch"),
+			l10n_text("Switch"),
 			l10n_text("Playstation 4"),
 			l10n_text("Playstation 5"));
 			scr_set_default_dropdown_description("chosen_controller_used", "Auto Detect");

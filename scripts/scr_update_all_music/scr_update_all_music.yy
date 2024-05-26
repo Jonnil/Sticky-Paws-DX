@@ -1,5 +1,5 @@
 {
-  "$GMScript":"",
+  "$GMScript":"v1",
   "%Name":"scr_update_all_music",
   "isCompatibility":false,
   "isDnD":false,

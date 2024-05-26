@@ -1,5 +1,5 @@
 {
-  "$GMScript":"",
+  "$GMScript":"v1",
   "%Name":"scr_select_official_level_menu",
   "isCompatibility":false,
   "isDnD":false,

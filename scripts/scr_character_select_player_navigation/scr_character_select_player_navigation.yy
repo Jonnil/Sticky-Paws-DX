@@ -1,5 +1,5 @@
 {
-  "$GMScript":"",
+  "$GMScript":"v1",
   "%Name":"scr_character_select_player_navigation",
   "isCompatibility":false,
   "isDnD":false,

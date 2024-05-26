@@ -1,5 +1,5 @@
 {
-  "$GMScript":"",
+  "$GMScript":"v1",
   "%Name":"scr_draw_upload_account_name",
   "isCompatibility":false,
   "isDnD":false,

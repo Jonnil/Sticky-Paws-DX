@@ -1,7 +1,7 @@
 function scr_switch_expand_save_data(desired_save_size_mib = 16, desired_journal_size_mib = 8)
 {
 	
-	#region /* Nintendo Switch Save Data Handling */
+	#region /* Switch Save Data Handling */
 	if (os_type == os_switch)
 	{
 		show_debug_message("See if you need to expand save data");
@@ -115,9 +115,10 @@ function scr_switch_expand_save_data(desired_save_size_mib = 16, desired_journal
 			global.save_data_size_is_sufficient = false;
 		}
 	}
-	else {
+	else
+	{
 		global.save_data_size_is_sufficient = true; /* Default to true for every other OS type */
 	}
-	#endregion /* Nintendo Switch Save Data Handling */
+	#endregion /* Switch Save Data Handling */
 	
 }

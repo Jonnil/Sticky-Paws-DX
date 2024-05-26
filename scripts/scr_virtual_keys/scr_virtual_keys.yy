@@ -1,5 +1,5 @@
 {
-  "$GMScript":"",
+  "$GMScript":"v1",
   "%Name":"scr_virtual_keys",
   "isCompatibility":false,
   "isDnD":false,

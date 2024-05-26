@@ -12,7 +12,7 @@ function scr_set_screen_size()
 			/* 2560 x 1440 */ if (window_get_width() >= 2560 - 40 && window_get_height() >= 1440 - 40){global.gui_width = window_width * 0.9; global.gui_height = window_height * 0.9; break;}else
 			/* 1920 x 1080 */ if (window_get_width() >= 1920 - 40 && window_get_height() >= 1080 - 40){global.gui_width = window_width; global.gui_height = window_height; break;}else
 			/* 1600 x 900 */ if (window_get_width() >= 1600 - 40 && window_get_height() >= 900 - 40){global.gui_width = window_width * 1.0; global.gui_height = window_height * 1.0; break;}else
-			/* 1280 x 720 */ if (window_get_width() >= 1280 - 40 && window_get_height() >= 720 - 40){global.gui_width = window_width * 1.0; global.gui_height = window_height * 1.0; break;} /* Nintendo Switch Handheld Resolution */ else
+			/* 1280 x 720 */ if (window_get_width() >= 1280 - 40 && window_get_height() >= 720 - 40){global.gui_width = window_width * 1.0; global.gui_height = window_height * 1.0; break;} /* Switch Handheld Resolution */ else
 			/* 1024 x 576 */ if (window_get_width() >= 1024 - 40 && window_get_height() >= 576 - 40){global.gui_width = window_width * 1.1; global.gui_height = window_height * 1.1; break;}else
 			/* 960 x 540 */ if (window_get_width() >= 960 - 40 && window_get_height() >= 540 - 40){global.gui_width = window_width * 1.2; global.gui_height = window_height * 1.2; break;}else
 			/* Lower than 540p, like 480 x 270 */ {global.gui_width = window_width * 2.5; global.gui_height = window_height * 2.5; break;}

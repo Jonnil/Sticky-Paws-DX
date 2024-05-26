@@ -1,5 +1,5 @@
 {
-  "$GMScript":"",
+  "$GMScript":"v1",
   "%Name":"scr_draw_darken_screen_when_window_is_unfocused",
   "isCompatibility":false,
   "isDnD":false,

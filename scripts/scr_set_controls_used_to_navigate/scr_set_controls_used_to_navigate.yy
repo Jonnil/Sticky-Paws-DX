@@ -1,5 +1,5 @@
 {
-  "$GMScript":"",
+  "$GMScript":"v1",
   "%Name":"scr_set_controls_used_to_navigate",
   "isCompatibility":false,
   "isDnD":false,

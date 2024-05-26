@@ -2,7 +2,7 @@ function scr_set_show_controls_x(what_player = 1, xx = 32)
 {
 	
 	#region /* Show keys x positions */
-	/* For some reason, code within "Show keys x positions" lags the Nintendo Switch version */
+	/* For some reason, code within "Show keys x positions" lags the Switch version */
 	player_show_dive_key_x[what_player] = xx;
 	player_show_jump_key_x[what_player] = string_width(l10n_text("Pounce")) + (xx + 43);
 	player_show_crouch_key_x[what_player] = player_show_jump_key_x[what_player] + string_width(l10n_text("Jump")) + 37;

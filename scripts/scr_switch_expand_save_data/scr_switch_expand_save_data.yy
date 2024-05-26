@@ -1,5 +1,5 @@
 {
-  "$GMScript":"",
+  "$GMScript":"v1",
   "%Name":"scr_switch_expand_save_data",
   "isCompatibility":false,
   "isDnD":false,

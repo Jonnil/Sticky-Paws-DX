@@ -1,5 +1,5 @@
 {
-  "$GMScript":"",
+  "$GMScript":"v1",
   "%Name":"scr_automatic_screenshot",
   "isCompatibility":false,
   "isDnD":false,

@@ -1,5 +1,5 @@
 {
-  "$GMScript":"",
+  "$GMScript":"v1",
   "%Name":"scr_character_portrait_for_player_step",
   "isCompatibility":false,
   "isDnD":false,

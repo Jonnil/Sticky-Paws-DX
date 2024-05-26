@@ -1,5 +1,5 @@
 {
-  "$GMScript":"",
+  "$GMScript":"v1",
   "%Name":"scr_make_color_hsv_transition",
   "isCompatibility":false,
   "isDnD":false,

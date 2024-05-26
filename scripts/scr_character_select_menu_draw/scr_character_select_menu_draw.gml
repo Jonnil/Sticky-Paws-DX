@@ -212,12 +212,25 @@ function scr_character_select_menu_draw()
 				&& (!max_custom_characters_reached)
 				{
 					if (global.online_enabled)
+					&& (os_is_network_connected())
 					{
-						/* Go to online level list, so you can browse all uploaded levels, instead of just searching for specific levels */
-						select_custom_level_menu_open = false;
-						content_type = "character"; /* Need to set the "content type" to "level", so Async - HTTP Event is running correctly */
-						global.selected_online_download_index = 1;
-						menu = "online_download_list_load";
+						scr_switch_update_online_status();
+						
+						if (global.switch_account_network_service_available) /* Need to make sure that network service is available before going online */
+						{
+							/* Go to online level list, so you can browse all uploaded levels, instead of just searching for specific levels */
+							select_custom_level_menu_open = false;
+							content_type = "character"; /* Need to set the "content type" to "level", so Async - HTTP Event is running correctly */
+							global.selected_online_download_index = 1;
+							menu = "online_download_list_load";
+						}
+						else
+						{
+							menu_delay = 3;
+							caution_online_takes_you_to = "online_download_list_load";
+							caution_online_takes_you_back_to = "online_character_list";
+							menu = "caution_online_network_service_unavailable";
+						}
 					}
 					else
 					{

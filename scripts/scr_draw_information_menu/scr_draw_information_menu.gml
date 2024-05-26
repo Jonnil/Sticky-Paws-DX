@@ -414,22 +414,38 @@ function scr_draw_information_menu()
 			{
 				menu_delay = 3;
 				if (global.online_enabled)
+				&& (os_is_network_connected())
 				{
-					/* Go to online level list, so you can browse all uploaded levels, instead of just searching for specific levels */
-					select_custom_level_menu_open = false;
-					content_type = "level"; /* Need to set the "content type" to "level", so Async - HTTP Event is running correctly */
-					global.selected_online_download_index = 1;
-					menu = "online_download_list_load";
-					information_menu_open = "";
-					var any_player_can_play = false;
-					for(var i = 1; i <= global.max_players; i += 1) {
-						if (global.player_can_play[i]) { /* Check if any player can play */
-					        any_player_can_play = true;
-					        break; /* exit the loop if any player can play */
-					    }
+					scr_switch_update_online_status();
+					
+					if (global.switch_account_network_service_available) /* Need to make sure that network service is available before going online */
+					{
+						/* Go to online level list, so you can browse all uploaded levels, instead of just searching for specific levels */
+						select_custom_level_menu_open = false;
+						content_type = "level"; /* Need to set the "content type" to "level", so Async - HTTP Event is running correctly */
+						global.selected_online_download_index = 1;
+						menu = "online_download_list_load";
+						information_menu_open = "";
+						var any_player_can_play = false;
+						for(var i = 1; i <= global.max_players; i += 1)
+						{
+							if (global.player_can_play[i]) /* Check if any player can play */
+							{
+						        any_player_can_play = true;
+						        break; /* exit the loop if any player can play */
+						    }
+						}
+						if (!any_player_can_play) /* If no player can play, set "player can play" to true */
+						{
+							global.player_can_play[fixed_player] = true;
+						}
 					}
-					if (!any_player_can_play) { /* If no player can play, set "player can play" to true */
-					    global.player_can_play[fixed_player] = true;
+					else
+					{
+						menu_delay = 3;
+						caution_online_takes_you_to = "online_download_list_load";
+						caution_online_takes_you_back_to = "about_online_level_list";
+						menu = "caution_online_network_service_unavailable";
 					}
 				}
 				else

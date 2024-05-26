@@ -1,5 +1,5 @@
 {
-  "$GMScript":"",
+  "$GMScript":"v1",
   "%Name":"scr_player_move_roll_when_landing",
   "isCompatibility":false,
   "isDnD":false,

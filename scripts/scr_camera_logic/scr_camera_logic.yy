@@ -1,5 +1,5 @@
 {
-  "$GMScript":"",
+  "$GMScript":"v1",
   "%Name":"scr_camera_logic",
   "isCompatibility":false,
   "isDnD":false,

@@ -1,5 +1,5 @@
 {
-  "$GMScript":"",
+  "$GMScript":"v1",
   "%Name":"scr_make_sprite_transparent_setting_difficulty_levels",
   "isCompatibility":false,
   "isDnD":false,

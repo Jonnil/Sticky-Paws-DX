@@ -1,5 +1,5 @@
 {
-  "$GMScript":"",
+  "$GMScript":"v1",
   "%Name":"scr_draw_links_menu",
   "isCompatibility":false,
   "isDnD":false,

@@ -1,5 +1,5 @@
 {
-  "$GMScript":"",
+  "$GMScript":"v1",
   "%Name":"set_pause_button_y_positions",
   "isCompatibility":false,
   "isDnD":false,

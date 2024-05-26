@@ -1,5 +1,5 @@
 {
-  "$GMScript":"",
+  "$GMScript":"v1",
   "%Name":"scr_player_move_crouch",
   "isCompatibility":false,
   "isDnD":false,

@@ -1,5 +1,5 @@
 {
-  "$GMScript":"",
+  "$GMScript":"v1",
   "%Name":"scr_draw_remap_key",
   "isCompatibility":false,
   "isDnD":false,

@@ -34,32 +34,40 @@ function scr_draw_upload_account_name(what_kind_of_file = "level")
 		draw_menu_button(change_username_x - 185, button_ok_y, l10n_text("OK"), "question_upload_" + string(what_kind_of_file) + "_edit_username_ok", "question_upload_" + string(what_kind_of_file) + "_edit_username_ok");
 		draw_menu_button(change_username_x - 185, button_cancel_y, l10n_text("Cancel"), "question_upload_" + string(what_kind_of_file) + "_edit_username_cancel", "question_upload_" + string(what_kind_of_file) + "_edit_username_cancel");
 		
-		if (key_up && menu_delay == 0 && menu_joystick_delay == 0) {
+		if (key_up && menu_delay == 0 && menu_joystick_delay == 0)
+		{
 			menu_delay = 3;
-			if (menu == "question_upload_" + string(what_kind_of_file) + "_edit_username_options") {
+			if (menu == "question_upload_" + string(what_kind_of_file) + "_edit_username_options")
+			{
 				menu = "question_upload_" + string(what_kind_of_file) + "_edit_username_cancel";
 			}
 			else
-			if (menu == "question_upload_" + string(what_kind_of_file) + "_edit_username_ok") {
+			if (menu == "question_upload_" + string(what_kind_of_file) + "_edit_username_ok")
+			{
 				menu = "question_upload_" + string(what_kind_of_file) + "_edit_username_options";
 			}
 			else
-			if (menu == "question_upload_" + string(what_kind_of_file) + "_edit_username_cancel") {
+			if (menu == "question_upload_" + string(what_kind_of_file) + "_edit_username_cancel")
+			{
 				menu = "question_upload_" + string(what_kind_of_file) + "_edit_username_ok";
 			}
 		}
 		else
-		if (key_down && menu_delay == 0 && menu_joystick_delay == 0) {
+		if (key_down && menu_delay == 0 && menu_joystick_delay == 0)
+		{
 			menu_delay = 3;
-			if (menu == "question_upload_" + string(what_kind_of_file) + "_edit_username_options") {
+			if (menu == "question_upload_" + string(what_kind_of_file) + "_edit_username_options")
+			{
 				menu = "question_upload_" + string(what_kind_of_file) + "_edit_username_ok";
 			}
 			else
-			if (menu == "question_upload_" + string(what_kind_of_file) + "_edit_username_ok") {
+			if (menu == "question_upload_" + string(what_kind_of_file) + "_edit_username_ok")
+			{
 				menu = "question_upload_" + string(what_kind_of_file) + "_edit_username_cancel";
 			}
 			else
-			if (menu == "question_upload_" + string(what_kind_of_file) + "_edit_username_cancel") {
+			if (menu == "question_upload_" + string(what_kind_of_file) + "_edit_username_cancel")
+			{
 				menu = "question_upload_" + string(what_kind_of_file) + "_edit_username_options";
 			}
 		}
@@ -123,15 +131,19 @@ function scr_draw_upload_account_name(what_kind_of_file = "level")
 			keyboard_string = "";
 			menu_delay = 3;
 			input_key = false;
-			if (what_kind_of_file == "character") {
+			if (what_kind_of_file == "character")
+			{
 				menu = "click_upload_character"; /* Go back to the upload character button */
 			}
 			else
-			if (what_kind_of_file == "level") {
-				if (variable_instance_exists(self, "open_sub_menu")) {
+			if (what_kind_of_file == "level")
+			{
+				if (variable_instance_exists(self, "open_sub_menu"))
+				{
 					open_sub_menu = true; /* Open the sub menu when not in uploading level menu */
 				}
-				if (variable_instance_exists(self, "show_level_editor_corner_menu")) {
+				if (variable_instance_exists(self, "show_level_editor_corner_menu"))
+				{
 					show_level_editor_corner_menu = true;
 				}
 				menu = "level_editor_upload"; /* Go back to the upload level button */
@@ -159,7 +171,8 @@ function scr_draw_upload_account_name(what_kind_of_file = "level")
 		global.username = scr_draw_name_input_screen(global.username, 32, c_white, 0.9, false, change_username_x - 185 + 185, change_username_y + 21, "upload_" + string(what_kind_of_file) + "_edit_username_ok", "upload_" + string(what_kind_of_file) + "_edit_username_cancel", false, true, false);
 		
 		#region /* Pressing Change Username OK */
-		if (global.clicking_ok_input_screen && global.username != "") {
+		if (global.clicking_ok_input_screen && global.username != "")
+		{
 			ini_open(game_save_id + "save_file/config.ini");
 			ini_write_string("config", "username", string(global.username)); /* Save username to config file */
 			ini_close(); switch_save_data_commit(); /* Remember to commit the save data! */
@@ -168,12 +181,23 @@ function scr_draw_upload_account_name(what_kind_of_file = "level")
 			input_key = false;
 			if (os_is_network_connected())
 			{
-				if (what_kind_of_file == "character") {
-					menu = "uploading_character"; /* Go to uploading character loading screen */
+				scr_switch_update_online_status();
+				
+				if (global.switch_account_network_service_available) /* Need to make sure that network service is available before going online */
+				{
+					if (what_kind_of_file == "character")
+					{
+						menu = "uploading_character"; /* Go to uploading character loading screen */
+					}
+					else
+					if (what_kind_of_file == "level")
+					{
+						menu = "upload_edit_name"; /* Go to edit name, description, and tags menu */
+					}
 				}
 				else
-				if (what_kind_of_file == "level") {
-					menu = "upload_edit_name"; /* Go to edit name, description, and tags menu */
+				{
+					menu = "caution_online_network_service_unavailable";
 				}
 			}
 			else
@@ -186,7 +210,8 @@ function scr_draw_upload_account_name(what_kind_of_file = "level")
 		else
 		
 		#region /* Pressing Change Username Cancel */
-		if (global.clicking_cancel_input_screen) {
+		if (global.clicking_cancel_input_screen)
+		{
 			ini_open(game_save_id + "save_file/config.ini");
 			ini_write_string("config", "username", ""); /* Save username as blank to config file, then go back */
 			ini_close(); switch_save_data_commit(); /* Remember to commit the save data! */
@@ -194,15 +219,19 @@ function scr_draw_upload_account_name(what_kind_of_file = "level")
 			keyboard_string = "";
 			menu_delay = 3;
 			input_key = false;
-			if (what_kind_of_file == "character") {
+			if (what_kind_of_file == "character")
+			{
 				menu = "click_upload_character"; /* Go back to the upload character button */
 			}
 			else
-			if (what_kind_of_file == "level") {
-				if (variable_instance_exists(self, "open_sub_menu")) {
+			if (what_kind_of_file == "level")
+			{
+				if (variable_instance_exists(self, "open_sub_menu"))
+				{
 					open_sub_menu = true; /* Open the sub menu when not in uploading level menu */
 				}
-				if (variable_instance_exists(self, "show_level_editor_corner_menu")) {
+				if (variable_instance_exists(self, "show_level_editor_corner_menu"))
+				{
 					show_level_editor_corner_menu = true;
 				}
 				menu = "level_editor_upload"; /* Go back to the upload level button */

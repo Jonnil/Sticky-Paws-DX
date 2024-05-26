@@ -114,23 +114,36 @@ function scr_draw_upload_level_menu()
 			&& (menu_delay == 0 && menu_joystick_delay == 0)
 			{
 				if (global.online_enabled)
+				&& (os_is_network_connected())
 				{
-					if (upload_rules_do_not_show_level)
+					scr_switch_update_online_status();
+					
+					if (global.switch_account_network_service_available) /* Need to make sure that network service is available before going online */
 					{
-						menu = "level_editor_upload_pressed";
-						menu_delay = 3;
+						if (upload_rules_do_not_show_level)
+						{
+							menu = "level_editor_upload_pressed";
+							menu_delay = 3;
+						}
+						else
+						{
+							if (variable_instance_exists(self, "show_level_editor_corner_menu"))
+							{
+								show_level_editor_corner_menu = false;
+							}
+							caution_online_takes_you_to = "level_editor_upload_pressed";
+							caution_online_takes_you_back_to = "level_editor_upload";
+							content_type = "level";
+							menu = "upload_rules";
+							menu_delay = 3;
+						}
 					}
 					else
 					{
-						if (variable_instance_exists(self, "show_level_editor_corner_menu"))
-						{
-							show_level_editor_corner_menu = false;
-						}
+						menu_delay = 3;
 						caution_online_takes_you_to = "level_editor_upload_pressed";
 						caution_online_takes_you_back_to = "level_editor_upload";
-						content_type = "level";
-						menu = "upload_rules";
-						menu_delay = 3;
+						menu = "caution_online_network_service_unavailable";
 					}
 				}
 				else
@@ -162,33 +175,57 @@ function scr_draw_upload_level_menu()
 		if (global.free_communication_available)
 		{
 			if (global.online_enabled)
+			&& (os_is_network_connected())
 			{
-				global.actually_play_edited_level = false;
-				global.play_edited_level = false;
-				menu_delay = 3;
-				ini_open(upload_level_path + "/data/level_information.ini");
-				if (ini_key_exists("info", "clear_check") && !skip_clear_check) || (skip_clear_check)
+				scr_switch_update_online_status();
+				
+				if (global.switch_account_network_service_available) /* Need to make sure that network service is available before going online */
 				{
-					if (ini_read_real("info", "clear_check", false) && !skip_clear_check) || (skip_clear_check)
+					global.actually_play_edited_level = false;
+					global.play_edited_level = false;
+					menu_delay = 3;
+					ini_open(upload_level_path + "/data/level_information.ini");
+					if (ini_key_exists("info", "clear_check") && !skip_clear_check) || (skip_clear_check)
 					{
-						if (global.username != "") /* Check if there is an username or not */
+						if (ini_read_real("info", "clear_check", false) && !skip_clear_check) || (skip_clear_check)
 						{
-							if (os_is_network_connected()) /* Check if you're even connected to the internet */
+							if (global.username != "") /* Check if there is an username or not */
 							{
-								
-								scr_load_level_tags(upload_level_path);
-									
-								menu_delay = 3;
-								menu = "upload_edit_name"; /* Go to the menu where you can edit things about the custom level before uploading it*/
-								if (variable_instance_exists(self, "show_level_editor_corner_menu"))
+								if (os_is_network_connected()) /* Check if you're even connected to the internet */
 								{
-									show_level_editor_corner_menu = false;
+									scr_switch_update_online_status();
+								
+									if (global.switch_account_network_service_available) /* Need to make sure that network service is available before going online */
+									{
+										scr_load_level_tags(upload_level_path);
+									
+										menu_delay = 3;
+										menu = "upload_edit_name"; /* Go to the menu where you can edit things about the custom level before uploading it*/
+										if (variable_instance_exists(self, "show_level_editor_corner_menu"))
+										{
+											show_level_editor_corner_menu = false;
+										}
+									}
+									else
+									{
+										menu = "caution_online_network_service_unavailable";
+									}
+								}
+								else
+								{
+									menu_delay = 3;
+									menu = "no_internet_level"; /* If you're not connected to the internet, tell the player that */
+									if (variable_instance_exists(self, "show_level_editor_corner_menu"))
+									{
+										show_level_editor_corner_menu = false;
+									}
 								}
 							}
 							else
 							{
+								keyboard_string = "";
 								menu_delay = 3;
-								menu = "no_internet_level"; /* If you're not connected to the internet, tell the player that */
+								menu = "question_upload_level_edit_username_ok"; /* If there isn't an username, have the player make an username */
 								if (variable_instance_exists(self, "show_level_editor_corner_menu"))
 								{
 									show_level_editor_corner_menu = false;
@@ -197,9 +234,8 @@ function scr_draw_upload_level_menu()
 						}
 						else
 						{
-							keyboard_string = "";
 							menu_delay = 3;
-							menu = "question_upload_level_edit_username_ok"; /* If there isn't an username, have the player make an username */
+							menu = "clear_check_yes";
 							if (variable_instance_exists(self, "show_level_editor_corner_menu"))
 							{
 								show_level_editor_corner_menu = false;
@@ -215,17 +251,15 @@ function scr_draw_upload_level_menu()
 							show_level_editor_corner_menu = false;
 						}
 					}
+					ini_close(); switch_save_data_commit(); /* Remember to commit the save data! */
 				}
 				else
 				{
 					menu_delay = 3;
-					menu = "clear_check_yes";
-					if (variable_instance_exists(self, "show_level_editor_corner_menu"))
-					{
-						show_level_editor_corner_menu = false;
-					}
+					caution_online_takes_you_to = "level_editor_upload_pressed";
+					caution_online_takes_you_back_to = "level_editor_upload";
+					menu = "caution_online_network_service_unavailable";
 				}
-				ini_close(); switch_save_data_commit(); /* Remember to commit the save data! */
 			}
 			else
 			{
@@ -431,7 +465,9 @@ function scr_draw_upload_level_menu()
 	scr_draw_upload_account_name("level");
 	scr_draw_upload_photographic_images();
 	
-	if (keyboard_virtual_status() && keyboard_virtual_height() != 0)
+	if (keyboard_virtual_status()
+	&& keyboard_virtual_height() != 0
+	&& keyboard_virtual_height() != undefined)
 	{
 		var draw_name_y = display_get_gui_height() - keyboard_virtual_height() - 160;
 	}
@@ -439,7 +475,9 @@ function scr_draw_upload_level_menu()
 	{
 		var draw_name_y = get_window_height * 0.5 - 22;
 	}
-	if (keyboard_virtual_status() && keyboard_virtual_height() != 0)
+	if (keyboard_virtual_status()
+	&& keyboard_virtual_height() != 0
+	&& keyboard_virtual_height() != undefined)
 	{
 		var draw_description_y = display_get_gui_height() - keyboard_virtual_height() - 160;
 	}
@@ -1570,16 +1608,25 @@ function scr_draw_upload_level_menu()
 					}
 					if (os_is_network_connected())
 					{
-						/* Update a list of downloaded levels that you have finished. The level you are uploading have already been finished */
-						ini_open(game_save_id + "save_file/custom_level_save.ini");
-						if (ini_read_real("finished_downloaded_level", string(level_id), 0) < 2)
-						{
-							ini_write_real("finished_downloaded_level", string(level_id), 2); /* Played and finished when uploading own level */
-						}
-						ini_close(); switch_save_data_commit(); /* Remember to commit the save data! */
+						scr_switch_update_online_status();
 						
-						search_for_id_still = false;
-						menu = "level_uploaded";
+						if (global.switch_account_network_service_available) /* Need to make sure that network service is available before going online */
+						{
+							/* Update a list of downloaded levels that you have finished. The level you are uploading have already been finished */
+							ini_open(game_save_id + "save_file/custom_level_save.ini");
+							if (ini_read_real("finished_downloaded_level", string(level_id), 0) < 2)
+							{
+								ini_write_real("finished_downloaded_level", string(level_id), 2); /* Played and finished when uploading own level */
+							}
+							ini_close(); switch_save_data_commit(); /* Remember to commit the save data! */
+							
+							search_for_id_still = false;
+							menu = "level_uploaded";
+						}
+						else
+						{
+							menu = "caution_online_network_service_unavailable";
+						}
 					}
 					else
 					{

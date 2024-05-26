@@ -1,5 +1,5 @@
 {
-  "$GMScript":"",
+  "$GMScript":"v1",
   "%Name":"scr_player_move_ground_pound",
   "isCompatibility":false,
   "isDnD":false,

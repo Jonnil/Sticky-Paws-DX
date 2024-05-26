@@ -1,5 +1,5 @@
 {
-  "$GMScript":"",
+  "$GMScript":"v1",
   "%Name":"scr_line_trace",
   "isCompatibility":false,
   "isDnD":false,

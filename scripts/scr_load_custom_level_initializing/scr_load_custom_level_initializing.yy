@@ -1,5 +1,5 @@
 {
-  "$GMScript":"",
+  "$GMScript":"v1",
   "%Name":"scr_load_custom_level_initializing",
   "isCompatibility":false,
   "isDnD":false,

@@ -1,5 +1,5 @@
 {
-  "$GMScript":"",
+  "$GMScript":"v1",
   "%Name":"scr_get_1up_when_collect_basic_collectibles",
   "isCompatibility":false,
   "isDnD":false,

@@ -3,8 +3,9 @@ function scr_character_portrait_for_player_step(what_player = 1)
 	var skin_y = 192;
 	var voicepack_y = 234;
 	
-	if (keyboard_virtual_status())
-	&& (keyboard_virtual_height() != 0)
+	if (keyboard_virtual_status()
+	&& keyboard_virtual_height() != 0
+	&& keyboard_virtual_height() != undefined)
 	{
 		var name_input_y = display_get_gui_height() - keyboard_virtual_height() - 160;
 	}

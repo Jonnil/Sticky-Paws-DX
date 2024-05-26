@@ -1,5 +1,5 @@
 {
-  "$GMScript":"",
+  "$GMScript":"v1",
   "%Name":"scr_remapping_keyboard",
   "isCompatibility":false,
   "isDnD":false,

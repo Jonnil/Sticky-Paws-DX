@@ -1,5 +1,5 @@
 {
-  "$GMScript":"",
+  "$GMScript":"v1",
   "%Name":"scr_retriggerable_delay",
   "isCompatibility":false,
   "isDnD":false,

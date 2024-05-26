@@ -1,5 +1,5 @@
 {
-  "$GMScript":"",
+  "$GMScript":"v1",
   "%Name":"scr_player_move_save_whole_level_as_screenshot",
   "isCompatibility":false,
   "isDnD":false,

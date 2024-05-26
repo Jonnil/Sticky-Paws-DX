@@ -1,5 +1,5 @@
 {
-  "$GMScript":"",
+  "$GMScript":"v1",
   "%Name":"scr_player_move_dive_ground_boost",
   "isCompatibility":false,
   "isDnD":false,

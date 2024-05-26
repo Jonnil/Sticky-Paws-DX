@@ -1,5 +1,5 @@
 {
-  "$GMScript":"",
+  "$GMScript":"v1",
   "%Name":"scr_option_reset_controls_to_default_settings",
   "isCompatibility":false,
   "isDnD":false,

@@ -1,5 +1,5 @@
 {
-  "$GMScript":"",
+  "$GMScript":"v1",
   "%Name":"scr_zoom_camera_controls",
   "isCompatibility":false,
   "isDnD":false,

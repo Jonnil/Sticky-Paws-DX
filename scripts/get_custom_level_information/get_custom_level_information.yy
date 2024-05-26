@@ -1,5 +1,5 @@
 {
-  "$GMScript":"",
+  "$GMScript":"v1",
   "%Name":"get_custom_level_information",
   "isCompatibility":false,
   "isDnD":false,

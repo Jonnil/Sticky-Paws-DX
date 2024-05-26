@@ -1,5 +1,5 @@
 {
-  "$GMScript":"",
+  "$GMScript":"v1",
   "%Name":"scr_delete_sprite_properly",
   "isCompatibility":false,
   "isDnD":false,

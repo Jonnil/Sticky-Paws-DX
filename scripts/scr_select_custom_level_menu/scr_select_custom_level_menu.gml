@@ -111,6 +111,7 @@ function scr_select_custom_level_menu()
 		&& (menu != "caution_online_back")
 		&& (menu != "caution_online_do_not_show")
 		&& (menu != "caution_online_proceed")
+		&& (menu != "caution_online_network_service_unavailable")
 		&& (menu != "upload_rules_back")
 		&& (menu != "upload_rules_do_not_show")
 		&& (menu != "upload_rules")
@@ -169,6 +170,7 @@ function scr_select_custom_level_menu()
 		&& (menu != "caution_online_back")
 		&& (menu != "caution_online_do_not_show")
 		&& (menu != "caution_online_proceed")
+		&& (menu != "caution_online_network_service_unavailable")
 		&& (menu != "upload_rules_back")
 		&& (menu != "upload_rules_do_not_show")
 		&& (menu != "upload_rules")
@@ -212,6 +214,7 @@ function scr_select_custom_level_menu()
 	&& (menu != "caution_online_back")
 	&& (menu != "caution_online_do_not_show")
 	&& (menu != "caution_online_proceed")
+	&& (menu != "caution_online_network_service_unavailable")
 	&& (menu != "upload_rules_back")
 	&& (menu != "upload_rules_do_not_show")
 	&& (menu != "upload_rules")
@@ -244,6 +247,7 @@ function scr_select_custom_level_menu()
 	&& (menu != "caution_online_back")
 	&& (menu != "caution_online_do_not_show")
 	&& (menu != "caution_online_proceed")
+	&& (menu != "caution_online_network_service_unavailable")
 	&& (menu != "upload_rules_back")
 	&& (menu != "upload_rules_do_not_show")
 	&& (menu != "upload_rules")
@@ -278,6 +282,7 @@ function scr_select_custom_level_menu()
 		&& (menu != "caution_online_back")
 		&& (menu != "caution_online_do_not_show")
 		&& (menu != "caution_online_proceed")
+		&& (menu != "caution_online_network_service_unavailable")
 		&& (menu != "upload_rules_back")
 		&& (menu != "upload_rules_do_not_show")
 		&& (menu != "upload_rules")
@@ -371,6 +376,7 @@ function scr_select_custom_level_menu()
 	&& (menu != "caution_online_back")
 	&& (menu != "caution_online_do_not_show")
 	&& (menu != "caution_online_proceed")
+	&& (menu != "caution_online_network_service_unavailable")
 	&& (menu != "upload_rules_back")
 	&& (menu != "upload_rules_do_not_show")
 	&& (menu != "upload_rules")
@@ -453,12 +459,25 @@ function scr_select_custom_level_menu()
 			&& (menu_delay == 0 && menu_joystick_delay == 0)
 			{
 				if (global.online_enabled)
+				&& (os_is_network_connected())
 				{
-					/* Go to online level list, so you can browse all uploaded levels, instead of just searching for specific levels */
-					select_custom_level_menu_open = false;
-					content_type = "level"; /* Need to set the "content type" to "level", so Async - HTTP Event is running correctly */
-					global.selected_online_download_index = 1;
-					menu = "online_download_list_load";
+					scr_switch_update_online_status();
+					
+					if (global.switch_account_network_service_available) /* Need to make sure that network service is available before going online */
+					{
+						/* Go to online level list, so you can browse all uploaded levels, instead of just searching for specific levels */
+						select_custom_level_menu_open = false;
+						content_type = "level"; /* Need to set the "content type" to "level", so Async - HTTP Event is running correctly */
+						global.selected_online_download_index = 1;
+						menu = "online_download_list_load";
+					}
+					else
+					{
+						menu_delay = 3;
+						caution_online_takes_you_to = "online_download_list_load";
+						caution_online_takes_you_back_to = "online_level_list";
+						menu = "caution_online_network_service_unavailable";
+					}
 				}
 				else
 				{
@@ -628,8 +647,9 @@ function scr_select_custom_level_menu()
 	if (menu == "level_editor_enter_name_ok")
 	|| (menu == "level_editor_enter_name_cancel")
 	{
-		if (keyboard_virtual_status())
-		&& (keyboard_virtual_height() != 0)
+		if (keyboard_virtual_status()
+		&& keyboard_virtual_height() != 0
+		&& keyboard_virtual_height() != undefined)
 		{
 			var draw_name_input_screen_y = display_get_gui_height() - keyboard_virtual_height() - 160;
 		}
@@ -747,8 +767,9 @@ function scr_select_custom_level_menu()
 	if (menu == "level_editor_enter_description_ok")
 	|| (menu == "level_editor_enter_description_cancel")
 	{
-		if (keyboard_virtual_status())
-		&& (keyboard_virtual_height() != 0)
+		if (keyboard_virtual_status()
+		&& keyboard_virtual_height() != 0
+		&& keyboard_virtual_height() != undefined)
 		{
 			var draw_description_input_screen_y = display_get_gui_height() - keyboard_virtual_height() - 160;
 		}

@@ -1,5 +1,5 @@
 {
-  "$GMScript":"",
+  "$GMScript":"v1",
   "%Name":"scr_player_move_double_tap_direction_to_dive",
   "isCompatibility":false,
   "isDnD":false,

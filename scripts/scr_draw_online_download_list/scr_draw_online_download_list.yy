@@ -1,5 +1,5 @@
 {
-  "$GMScript":"",
+  "$GMScript":"v1",
   "%Name":"scr_draw_online_download_list",
   "isCompatibility":false,
   "isDnD":false,

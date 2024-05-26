@@ -1,5 +1,5 @@
 {
-  "$GMScript":"",
+  "$GMScript":"v1",
   "%Name":"scr_start_intro_animations",
   "isCompatibility":false,
   "isDnD":false,

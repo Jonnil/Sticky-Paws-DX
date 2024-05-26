@@ -1,5 +1,5 @@
 {
-  "$GMScript":"",
+  "$GMScript":"v1",
   "%Name":"scr_gamepad_vibration",
   "isCompatibility":false,
   "isDnD":false,

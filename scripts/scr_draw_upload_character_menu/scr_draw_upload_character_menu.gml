@@ -282,11 +282,20 @@ function scr_draw_upload_character_menu()
 						{
 							if (os_is_network_connected())
 							{
-								if (file_exists(game_save_id + "custom_characters/" + character_name + "/data/character_config.ini"))
+								scr_switch_update_online_status();
+								
+								if (global.switch_account_network_service_available) /* Need to make sure that network service is available before going online */
 								{
-									/* Essential files does exist, so upload now */
-									menu = "uploading_character"; /* Go to uploading character loading screen */
-									menu_delay = 60 * 3;
+									if (file_exists(game_save_id + "custom_characters/" + character_name + "/data/character_config.ini"))
+									{
+										/* Essential files does exist, so upload now */
+										menu = "uploading_character"; /* Go to uploading character loading screen */
+										menu_delay = 60 * 3;
+									}
+								}
+								else
+								{
+									menu = "caution_online_network_service_unavailable";
 								}
 							}
 							else
@@ -691,9 +700,18 @@ function scr_draw_upload_character_menu()
 					
 					if (os_is_network_connected())
 					{
-						menu_delay = 3;
-						search_for_id_still = false;
-						menu = "character_uploaded";
+						scr_switch_update_online_status();
+						
+						if (global.switch_account_network_service_available) /* Need to make sure that network service is available before going online */
+						{
+							menu_delay = 3;
+							search_for_id_still = false;
+							menu = "character_uploaded";
+						}
+						else
+						{
+							menu = "caution_online_network_service_unavailable";
+						}
 					}
 					else
 					{

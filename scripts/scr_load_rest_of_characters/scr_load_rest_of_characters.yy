@@ -1,5 +1,5 @@
 {
-  "$GMScript":"",
+  "$GMScript":"v1",
   "%Name":"scr_load_rest_of_characters",
   "isCompatibility":false,
   "isDnD":false,

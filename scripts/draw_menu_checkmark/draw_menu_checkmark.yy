@@ -1,5 +1,5 @@
 {
-  "$GMScript":"",
+  "$GMScript":"v1",
   "%Name":"draw_menu_checkmark",
   "isCompatibility":false,
   "isDnD":false,

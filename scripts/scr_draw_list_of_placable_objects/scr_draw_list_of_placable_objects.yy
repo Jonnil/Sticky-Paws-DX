@@ -1,5 +1,5 @@
 {
-  "$GMScript":"",
+  "$GMScript":"v1",
   "%Name":"scr_draw_list_of_placable_objects",
   "isCompatibility":false,
   "isDnD":false,

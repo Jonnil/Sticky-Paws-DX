@@ -1,5 +1,5 @@
 {
-  "$GMScript":"",
+  "$GMScript":"v1",
   "%Name":"scr_player_move_go_left",
   "isCompatibility":false,
   "isDnD":false,

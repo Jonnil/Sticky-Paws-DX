@@ -1,5 +1,5 @@
 {
-  "$GMScript":"",
+  "$GMScript":"v1",
   "%Name":"scr_character_manage_copy",
   "isCompatibility":false,
   "isDnD":false,

@@ -1,5 +1,5 @@
 {
-  "$GMScript":"",
+  "$GMScript":"v1",
   "%Name":"scr_crash_error_handling",
   "isCompatibility":false,
   "isDnD":false,

@@ -1,5 +1,5 @@
 {
-  "$GMScript":"",
+  "$GMScript":"v1",
   "%Name":"scr_spawn_objects_when_starting_room",
   "isCompatibility":false,
   "isDnD":false,

@@ -1,5 +1,5 @@
 {
-  "$GMScript":"",
+  "$GMScript":"v1",
   "%Name":"scr_draw_fullscreen_button",
   "isCompatibility":false,
   "isDnD":false,

@@ -1,5 +1,5 @@
 {
-  "$GMScript":"",
+  "$GMScript":"v1",
   "%Name":"scr_cant_use_controller_notification",
   "isCompatibility":false,
   "isDnD":false,

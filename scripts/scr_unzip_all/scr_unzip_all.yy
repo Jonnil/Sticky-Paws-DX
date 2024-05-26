@@ -1,5 +1,5 @@
 {
-  "$GMScript":"",
+  "$GMScript":"v1",
   "%Name":"scr_unzip_all",
   "isCompatibility":false,
   "isDnD":false,

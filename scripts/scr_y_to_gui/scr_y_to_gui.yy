@@ -1,5 +1,5 @@
 {
-  "$GMScript":"",
+  "$GMScript":"v1",
   "%Name":"scr_y_to_gui",
   "isCompatibility":false,
   "isDnD":false,

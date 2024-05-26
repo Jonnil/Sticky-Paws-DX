@@ -1,5 +1,5 @@
 {
-  "$GMScript":"",
+  "$GMScript":"v1",
   "%Name":"scr_key_initialize",
   "isCompatibility":false,
   "isDnD":false,

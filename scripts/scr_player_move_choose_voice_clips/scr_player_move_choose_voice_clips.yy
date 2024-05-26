@@ -1,5 +1,5 @@
 {
-  "$GMScript":"",
+  "$GMScript":"v1",
   "%Name":"scr_player_move_choose_voice_clips",
   "isCompatibility":false,
   "isDnD":false,

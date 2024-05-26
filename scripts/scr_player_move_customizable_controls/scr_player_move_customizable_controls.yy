@@ -1,5 +1,5 @@
 {
-  "$GMScript":"",
+  "$GMScript":"v1",
   "%Name":"scr_player_move_customizable_controls",
   "isCompatibility":false,
   "isDnD":false,

@@ -2,7 +2,7 @@ function scr_draw_upload_photographic_images()
 {
 	
 	#region /* Ask if level uses photographic images if custom assets are detected */
-	/* Nintendo have guidelines to not share photographic images in UGC */
+	/* Switch have guidelines to not share photographic images in UGC */
 	if (menu == "level_uses_photographic_images_checkbox")
 	|| (menu == "background1_uses_photographic_image")
 	|| (menu == "background2_uses_photographic_image")

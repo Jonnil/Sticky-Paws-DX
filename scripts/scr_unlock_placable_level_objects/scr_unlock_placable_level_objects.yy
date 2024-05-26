@@ -1,5 +1,5 @@
 {
-  "$GMScript":"",
+  "$GMScript":"v1",
   "%Name":"scr_unlock_placable_level_objects",
   "isCompatibility":false,
   "isDnD":false,

@@ -1,5 +1,5 @@
 {
-  "$GMScript":"",
+  "$GMScript":"v1",
   "%Name":"scr_player_move_restart_or_quit",
   "isCompatibility":false,
   "isDnD":false,

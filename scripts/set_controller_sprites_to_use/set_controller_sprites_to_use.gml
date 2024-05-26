@@ -29,12 +29,12 @@ function set_controller_sprites_to_use()
 				if (gamepad_get_description(global.player_slot[i]) == "Joy-Con (L)")
 				|| (gamepad_get_description(global.player_slot[i]) == "Joy-Con (R)")
 				{
-					/* If you're using Nintendo Switch with Joy-Cons on the side, use horizontal button prompts */
+					/* If you're using Switch with Joy-Cons on the side, use horizontal button prompts */
 					global.what_controller_sprites_to_use[i] = global.resource_pack_sprite_buttons_nintendoswitch_horizontal;
 				}
 				else
 				{
-					/* If you're using other Nintendo Switch controllers, use vertical button prompts */
+					/* If you're using other Switch controllers, use vertical button prompts */
 					global.what_controller_sprites_to_use[i] = global.resource_pack_sprite_buttons_nintendoswitch_vertical;
 				}
 			}
@@ -59,12 +59,12 @@ function set_controller_sprites_to_use()
 				if (gamepad_get_description(global.player_slot[i]) == "Joy-Con (L)")
 				|| (gamepad_get_description(global.player_slot[i]) == "Joy-Con (R)")
 				{
-					/* If you're using Nintendo Switch with Joy-Cons on the side, use horizontal button prompts */
+					/* If you're using Switch with Joy-Cons on the side, use horizontal button prompts */
 					global.what_controller_sprites_to_use[i] = global.resource_pack_sprite_buttons_nintendoswitch_horizontal;
 				}
 				else
 				{
-					/* If you're using other Nintendo Switch controllers, use vertical button prompts */
+					/* If you're using other Switch controllers, use vertical button prompts */
 					global.what_controller_sprites_to_use[i] = global.resource_pack_sprite_buttons_nintendoswitch_vertical;
 				}
 			}

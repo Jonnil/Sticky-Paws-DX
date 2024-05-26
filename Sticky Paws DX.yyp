@@ -2589,7 +2589,7 @@
   "isEcma":false,
   "LibraryEmitters":[],
   "MetaData":{
-    "IDEVersion":"2024.400.0.556",
+    "IDEVersion":"2024.600.0.560",
   },
   "name":"Sticky Paws DX",
   "resources":[
@@ -2851,6 +2851,7 @@
     {"id":{"name":"scr_menu_navigation_with_joystick_delay","path":"scripts/scr_menu_navigation_with_joystick_delay/scr_menu_navigation_with_joystick_delay.yy",},},
     {"id":{"name":"scr_modify_objects_in_level_editor","path":"scripts/scr_modify_objects_in_level_editor/scr_modify_objects_in_level_editor.yy",},},
     {"id":{"name":"scr_open_folder","path":"scripts/scr_open_folder/scr_open_folder.yy",},},
+    {"id":{"name":"scr_option_account","path":"scripts/scr_option_account/scr_option_account.yy",},},
     {"id":{"name":"scr_option_control_menu","path":"scripts/scr_option_control_menu/scr_option_control_menu.yy",},},
     {"id":{"name":"scr_option_custom_resources","path":"scripts/scr_option_custom_resources/scr_option_custom_resources.yy",},},
     {"id":{"name":"scr_option_graphics","path":"scripts/scr_option_graphics/scr_option_graphics.yy",},},
@@ -2923,6 +2924,7 @@
     {"id":{"name":"scr_spawn_objects_when_starting_room","path":"scripts/scr_spawn_objects_when_starting_room/scr_spawn_objects_when_starting_room.yy",},},
     {"id":{"name":"scr_start_intro_animations","path":"scripts/scr_start_intro_animations/scr_start_intro_animations.yy",},},
     {"id":{"name":"scr_switch_expand_save_data","path":"scripts/scr_switch_expand_save_data/scr_switch_expand_save_data.yy",},},
+    {"id":{"name":"scr_switch_update_online_status","path":"scripts/scr_switch_update_online_status/scr_switch_update_online_status.yy",},},
     {"id":{"name":"scr_sync_saving_create","path":"scripts/scr_sync_saving_create/scr_sync_saving_create.yy",},},
     {"id":{"name":"scr_toggle_fullscreen","path":"scripts/scr_toggle_fullscreen/scr_toggle_fullscreen.yy",},},
     {"id":{"name":"scr_translation","path":"scripts/scr_translation/scr_translation.yy",},},

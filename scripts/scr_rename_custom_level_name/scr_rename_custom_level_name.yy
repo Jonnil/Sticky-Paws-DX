@@ -1,5 +1,5 @@
 {
-  "$GMScript":"",
+  "$GMScript":"v1",
   "%Name":"scr_rename_custom_level_name",
   "isCompatibility":false,
   "isDnD":false,

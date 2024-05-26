@@ -1,5 +1,5 @@
 {
-  "$GMScript":"",
+  "$GMScript":"v1",
   "%Name":"scr_draw_cursor_mouse",
   "isCompatibility":false,
   "isDnD":false,

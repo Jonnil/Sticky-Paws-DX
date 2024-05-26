@@ -1,5 +1,5 @@
 {
-  "$GMScript":"",
+  "$GMScript":"v1",
   "%Name":"draw_menu_button_sprite",
   "isCompatibility":false,
   "isDnD":false,

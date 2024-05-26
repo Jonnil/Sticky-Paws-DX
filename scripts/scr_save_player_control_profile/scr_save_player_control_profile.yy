@@ -1,5 +1,5 @@
 {
-  "$GMScript":"",
+  "$GMScript":"v1",
   "%Name":"scr_save_player_control_profile",
   "isCompatibility":false,
   "isDnD":false,

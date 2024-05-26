@@ -25,7 +25,7 @@ global.link_to_wiki = ""; //"https://stickypedia.miraheze.org/wiki/Main_Page";
 global.link_to_youtube = "https://www.youtube.com/Jonnilescom";
 
 /* Update this text explaining what is new in each update */
-global.whats_new = "Biggest Sticky Paws update yet! \n Thank you everyone for supporting my game! \n I've been working very hard on porting this game to Nintendo Switch. \n Been focusing a lot on making the level editor better, \n and there is now a level sharing feature in-game. \n Please support this game by sharing the game with friends. \n I would greatly appreciate it. \n Have a great time making and playing shared levels! \n \n -Jonnil";
+global.whats_new = "Biggest Sticky Paws update yet! \n Thank you everyone for supporting my game! \n I've been working very hard on porting this game to Switch. \n Been focusing a lot on making the level editor better, \n and there is now a level sharing feature in-game. \n Please support this game by sharing the game with friends. \n I would greatly appreciate it. \n Have a great time making and playing shared levels! \n \n -Jonnil";
 
 /* There needs to be limits to the custom characters and levels. Upload and download limits are important */
 global.max_file_upload_megabytes = 16; /* There needs to be a max file upload size (in megabytes), otherwise people can download files that are too big for their system to handle. Default is 16 MB */
@@ -72,35 +72,18 @@ global.switch_account_network_service_available = noone;
 if (os_type == os_switch)
 {
 	
-	#region /* Need to set these Nintendo Switch specific functions */
+	#region /* Need to set these Switch specific functions */
 	var switch_controller_style = switch_controller_handheld | switch_controller_joycon_left | switch_controller_joycon_right | switch_controller_pro_controller | switch_controller_joycon_dual;
 	switch_controller_set_supported_styles(switch_controller_style);
 	switch_controller_support_set_singleplayer_only(false);
 	switch_controller_support_set_player_min(1);
 	switch_controller_support_set_player_max(global.max_players);
 	
-	var switch_accounts_num = switch_accounts_get_accounts();
-	for (var i = 0; i < switch_accounts_num; ++i;)
-	{
-		global.switch_account_name[i] = switch_accounts_get_nickname(i); /* First get the nickname. With this function you can retrieve the nickname of the user in the given Account ID slot or the User Network Id */
-		global.switch_account_open[i] = switch_accounts_is_user_open(i); /* Second get if user is open. With this function you can check an account ID slot to see if the account has been flagged as "open" (active) or not */
-		global.switch_account_handle[i] = switch_accounts_get_handle(i); /* Third get the handle. With this function you can retrieve the "handle" (as a pointer) of the user in the given Account ID slot */
-		
-		/* Other Switch accounts functions to look for */
-		global.switch_account_netid[i] = switch_accounts_get_netid(i);
-		global.switch_account_online_token[i] = switch_accounts_get_online_token(i);
-		global.switch_account_is_user_online[i] = switch_accounts_is_user_online(i);
-		
-		/* For some reason I can't retrieve infromation from network_service_available like this without crashing the game with unknown error */
-		//global.switch_account_network_service_available[i] = switch_accounts_network_service_available(i);
-		
-		global.switch_account_network_service_available = switch_accounts_network_service_available(0);
-	}
+	scr_switch_update_online_status();
 	
-	#endregion /* Need to set these Nintendo Switch specific functions END */
+	#endregion /* Need to set these Switch specific functions END */
 	
-	global.free_communication_available = switch_free_communication_available(); /* If free communication is disabled, you shouldn't be able to upload or download custom content. Set this to switch_free_communication_available when done debugging */
-	global.can_load_photographic_images = false; /* It's against Nintendo Switch guidelines to be able to view photographic images in UGC */
+	global.can_load_photographic_images = false; /* It's against Switch guidelines to be able to view photographic images in UGC */
 	global.show_prompt_when_changing_to_gamepad = false;
 	global.show_prompt_when_changing_to_keyboard_and_mouse = false;	
 	global.enable_open_custom_folder = false; /* Enable the option to open custom folders in the game */
@@ -285,7 +268,8 @@ global.button_design_transparency = 0;
 global.menu_button_subimg = 16; /* In the menu button sprites are several sub-images, each with its own design that the button can use */
 global.menu_navigation_speed = 60; /* Make the menu navigation go faster the longer you hold down a direction */
 global.collectible_image_index = 0; /* Make all collectibles animate in sync */
-global.online_enabled = false;
+global.caution_online_do_not_show = false; /* When the game shows the online caution screen, you should be able to disable that screen from showing up again */
+global.online_enabled = false; /* You need to accept the online caution screen before you can go online */
 global.report_reason = "";
 global.report_message = "";
 global.clicking_cancel_input_screen = false;
@@ -303,7 +287,7 @@ global.all_loaded_title_backgrounds = ds_list_create();
 global.all_loaded_title_logo = ds_list_create();
 global.automatically_pause_when_window_is_unfocused = true; /* Whenever you unfocus the window by clicking off the window, the game pauses by itself */
 global.automatically_play_downloaded_level = false; /* If the player wants to immediately play the downloaded level, then set this variable to true */
-global.use_temp_or_working = game_save_id; /* When downloading levels from online and temporarily playing the level, you have to use the "temp directory", but normally you need to use the "game save id" or "working directory". On Nintendo Switch if you don't enable "Cache storage data save area size" in AuthoringEditor, you can't use "cache directory" without crashing the game */
+global.use_temp_or_working = game_save_id; /* When downloading levels from online and temporarily playing the level, you have to use the "temp directory", but normally you need to use the "game save id" or "working directory". On Switch if you don't enable "Cache storage data save area size" in AuthoringEditor, you can't use "cache directory" without crashing the game */
 global.character_select_in_this_menu = "main_game"; /* In what menu character select is going to appear in */
 global.controls_used_for_navigation = "keyboard"; /* keyboard, mouse, or controller */
 global.create_level_from_template = false; /* If you're currently creating a level from template or not */

@@ -1,5 +1,5 @@
 {
-  "$GMScript":"",
+  "$GMScript":"v1",
   "%Name":"scr_brush_size_place_object",
   "isCompatibility":false,
   "isDnD":false,

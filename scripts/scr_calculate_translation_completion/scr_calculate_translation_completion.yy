@@ -1,5 +1,5 @@
 {
-  "$GMScript":"",
+  "$GMScript":"v1",
   "%Name":"scr_calculate_translation_completion",
   "isCompatibility":false,
   "isDnD":false,

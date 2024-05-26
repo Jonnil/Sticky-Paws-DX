@@ -1,5 +1,5 @@
 {
-  "$GMScript":"",
+  "$GMScript":"v1",
   "%Name":"scr_initialize_virtual_button",
   "isCompatibility":false,
   "isDnD":false,

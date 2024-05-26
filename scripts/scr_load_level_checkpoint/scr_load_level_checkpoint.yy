@@ -1,5 +1,5 @@
 {
-  "$GMScript":"",
+  "$GMScript":"v1",
   "%Name":"scr_load_level_checkpoint",
   "isCompatibility":false,
   "isDnD":false,

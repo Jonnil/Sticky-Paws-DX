@@ -1,5 +1,5 @@
 {
-  "$GMScript":"",
+  "$GMScript":"v1",
   "%Name":"scr_set_menu_font_color",
   "isCompatibility":false,
   "isDnD":false,

@@ -1,5 +1,5 @@
 {
-  "$GMScript":"",
+  "$GMScript":"v1",
   "%Name":"scr_replace_illegal_characters",
   "isCompatibility":false,
   "isDnD":false,

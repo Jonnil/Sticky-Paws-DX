@@ -1,5 +1,5 @@
 {
-  "$GMScript":"",
+  "$GMScript":"v1",
   "%Name":"scr_parallax_scrolling_background",
   "isCompatibility":false,
   "isDnD":false,

@@ -1,5 +1,5 @@
 {
-  "$GMScript":"",
+  "$GMScript":"v1",
   "%Name":"scr_player_initialize_custom_character",
   "isCompatibility":false,
   "isDnD":false,

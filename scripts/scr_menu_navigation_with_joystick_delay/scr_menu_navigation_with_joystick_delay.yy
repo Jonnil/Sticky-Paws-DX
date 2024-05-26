@@ -1,5 +1,5 @@
 {
-  "$GMScript":"",
+  "$GMScript":"v1",
   "%Name":"scr_menu_navigation_with_joystick_delay",
   "isCompatibility":false,
   "isDnD":false,

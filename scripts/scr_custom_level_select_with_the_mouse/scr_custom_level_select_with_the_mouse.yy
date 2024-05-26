@@ -1,5 +1,5 @@
 {
-  "$GMScript":"",
+  "$GMScript":"v1",
   "%Name":"scr_custom_level_select_with_the_mouse",
   "isCompatibility":false,
   "isDnD":false,

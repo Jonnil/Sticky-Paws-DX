@@ -1,5 +1,5 @@
 {
-  "$GMScript":"",
+  "$GMScript":"v1",
   "%Name":"scr_when_placing_on_difficulty_layer",
   "isCompatibility":false,
   "isDnD":false,

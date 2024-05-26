@@ -1,5 +1,5 @@
 {
-  "$GMScript":"",
+  "$GMScript":"v1",
   "%Name":"scr_player_move_homing_attack",
   "isCompatibility":false,
   "isDnD":false,

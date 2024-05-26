@@ -1,5 +1,5 @@
 {
-  "$GMScript":"",
+  "$GMScript":"v1",
   "%Name":"scr_initialize_object_id_enums",
   "isCompatibility":false,
   "isDnD":false,

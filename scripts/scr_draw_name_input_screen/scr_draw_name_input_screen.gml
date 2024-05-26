@@ -1,4 +1,4 @@
-function scr_draw_name_input_screen(what_string /* What string to edit */, max_char = 500 /* 500 is max characters on Nintendo Switch */, box_color, black_rec_alpha /* Black Rectangle Alpha */, can_ok_when_empty /* Can press ok when input is empty */, xx, yy, ok_menu_string, cancel_menu_string, max_char_needed = false, use_script_navigation_code = true, only_big_letter = false)
+function scr_draw_name_input_screen(what_string /* What string to edit */, max_char = 500 /* 500 is max characters on Switch */, box_color, black_rec_alpha /* Black Rectangle Alpha */, can_ok_when_empty /* Can press ok when input is empty */, xx, yy, ok_menu_string, cancel_menu_string, max_char_needed = false, use_script_navigation_code = true, only_big_letter = false)
 {
 	var buttons_x = -185;
 	var buttons_ok_y = +54;
@@ -23,8 +23,9 @@ function scr_draw_name_input_screen(what_string /* What string to edit */, max_c
 	#endregion /* Never draw x too far off screen END */
 	
 	#region /* Never draw y too low on screen so it shows up underneath the screen */
-	if (keyboard_virtual_status())
-	&& (keyboard_virtual_height() != 0)
+	if (keyboard_virtual_status()
+	&& keyboard_virtual_height() != 0
+	&& keyboard_virtual_height() != undefined)
 	{
 		/* Set name input screen to always be above the virtual keyboard */
 		yy = display_get_gui_height() - keyboard_virtual_height() - 160;

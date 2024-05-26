@@ -1,5 +1,5 @@
 {
-  "$GMScript":"",
+  "$GMScript":"v1",
   "%Name":"scr_upload_zip_add_files",
   "isCompatibility":false,
   "isDnD":false,

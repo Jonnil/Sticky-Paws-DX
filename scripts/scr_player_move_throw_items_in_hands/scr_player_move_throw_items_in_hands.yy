@@ -1,5 +1,5 @@
 {
-  "$GMScript":"",
+  "$GMScript":"v1",
   "%Name":"scr_player_move_throw_items_in_hands",
   "isCompatibility":false,
   "isDnD":false,

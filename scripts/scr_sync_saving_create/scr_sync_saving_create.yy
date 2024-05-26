@@ -1,5 +1,5 @@
 {
-  "$GMScript":"",
+  "$GMScript":"v1",
   "%Name":"scr_sync_saving_create",
   "isCompatibility":false,
   "isDnD":false,

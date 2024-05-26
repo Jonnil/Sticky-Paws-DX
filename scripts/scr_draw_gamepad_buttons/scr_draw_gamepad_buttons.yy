@@ -1,5 +1,5 @@
 {
-  "$GMScript":"",
+  "$GMScript":"v1",
   "%Name":"scr_draw_gamepad_buttons",
   "isCompatibility":false,
   "isDnD":false,

@@ -1,5 +1,5 @@
 {
-  "$GMScript":"",
+  "$GMScript":"v1",
   "%Name":"scr_draw_level_editor_sub_menu",
   "isCompatibility":false,
   "isDnD":false,

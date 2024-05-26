@@ -15,8 +15,8 @@ function scr_deactivate_objects_outside_view()
 		/* Using the "min" and "max" function, it will either read the distance from center if that's the bigger number, or if the actual view is bigger it will read that number instead */
 		var view_left = min(view_x_center - view_distance_from_center, camera_get_view_x(view_camera_current) - 64);
 		var view_top = min(view_y_center - view_distance_from_center, camera_get_view_y(view_camera_current) - 64);
-		var view_width = max(view_distance_from_center * 2, camera_get_view_width(view_camera_current) + 64);
-		var view_height = max(view_distance_from_center * 2, camera_get_view_height(view_camera_current) + 64);
+		var view_width = max(view_distance_from_center * 2, camera_get_view_width(view_camera_current) + 128);
+		var view_height = max(view_distance_from_center * 2, camera_get_view_height(view_camera_current) + 128);
 		
 		global.deactivate_timer ++;
 		

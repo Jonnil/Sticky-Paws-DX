@@ -1,5 +1,5 @@
 {
-  "$GMScript":"",
+  "$GMScript":"v1",
   "%Name":"scr_load_title_logo_initializing",
   "isCompatibility":false,
   "isDnD":false,

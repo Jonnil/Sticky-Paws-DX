@@ -1,5 +1,5 @@
 {
-  "$GMScript":"",
+  "$GMScript":"v1",
   "%Name":"scr_cos_oscillate",
   "isCompatibility":false,
   "isDnD":false,

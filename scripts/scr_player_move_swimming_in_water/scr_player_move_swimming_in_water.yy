@@ -1,5 +1,5 @@
 {
-  "$GMScript":"",
+  "$GMScript":"v1",
   "%Name":"scr_player_move_swimming_in_water",
   "isCompatibility":false,
   "isDnD":false,

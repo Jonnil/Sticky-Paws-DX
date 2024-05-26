@@ -1,5 +1,5 @@
 {
-  "$GMScript":"",
+  "$GMScript":"v1",
   "%Name":"scr_get_rewards_when_jumped_on",
   "isCompatibility":false,
   "isDnD":false,

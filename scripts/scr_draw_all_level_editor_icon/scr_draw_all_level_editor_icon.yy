@@ -1,5 +1,5 @@
 {
-  "$GMScript":"",
+  "$GMScript":"v1",
   "%Name":"scr_draw_all_level_editor_icon",
   "isCompatibility":false,
   "isDnD":false,

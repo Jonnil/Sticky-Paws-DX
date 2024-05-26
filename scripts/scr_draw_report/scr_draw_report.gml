@@ -80,17 +80,26 @@ function scr_draw_report()
 		
 		if (os_is_network_connected())
 		{
-			search_for_id_still = false;
-			if (content_type == "level")
-			&& (file_exists(game_save_id + "custom_levels/" + global.level_name + "/data/level_information.ini"))
-			|| (content_type == "character")
-			&& (file_exists(game_save_id + "custom_characters/" + string(downloaded_character_name) + "/data/character_config.ini"))
+			scr_switch_update_online_status();
+			
+			if (global.switch_account_network_service_available) /* Need to make sure that network service is available before going online */
 			{
-				menu = "report_complete_delete"; /* When done sending report to server, go to the final menu */
+				search_for_id_still = false;
+				if (content_type == "level")
+				&& (file_exists(game_save_id + "custom_levels/" + global.level_name + "/data/level_information.ini"))
+				|| (content_type == "character")
+				&& (file_exists(game_save_id + "custom_characters/" + string(downloaded_character_name) + "/data/character_config.ini"))
+				{
+					menu = "report_complete_delete"; /* When done sending report to server, go to the final menu */
+				}
+				else
+				{
+					menu = "report_complete_back_to_online_list"; /* When done sending report to server, go to the final menu */
+				}
 			}
 			else
 			{
-				menu = "report_complete_back_to_online_list"; /* When done sending report to server, go to the final menu */
+				menu = "caution_online_network_service_unavailable";
 			}
 		}
 		else
@@ -761,7 +770,16 @@ function scr_draw_report()
 				input_key = false;
 				if (os_is_network_connected())
 				{
-					menu = "report_send_confirm"; /* Go to send report screen */
+					scr_switch_update_online_status();
+					
+					if (global.switch_account_network_service_available) /* Need to make sure that network service is available before going online */
+					{
+						menu = "report_send_confirm"; /* Go to send report screen */
+					}
+					else
+					{
+						menu = "caution_online_network_service_unavailable";
+					}
 				}
 				else
 				{

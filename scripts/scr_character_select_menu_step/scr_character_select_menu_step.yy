@@ -1,5 +1,5 @@
 {
-  "$GMScript":"",
+  "$GMScript":"v1",
   "%Name":"scr_character_select_menu_step",
   "isCompatibility":false,
   "isDnD":false,
