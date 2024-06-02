@@ -123,7 +123,19 @@ function scr_player_move_wall_jump_and_wall_climb()
 				dive = false;
 				last_standing_y = y;
 				
-				if (key_down && !key_up && taken_damage <= taken_damage_freezetime)
+				if (vspeed >= 0)
+				{
+					can_ground_pound = true;
+					can_dive = true;
+					ledge_grab_jump = false;
+					vspeed = 0;
+					gravity = 0;
+				}
+				
+				#region /* Climbing Wall Down */
+				if (key_down
+				&& !key_up
+				&& taken_damage <= taken_damage_freezetime)
 				{
 					if (!audio_is_playing(snd_move_ivy))
 					{
@@ -133,31 +145,27 @@ function scr_player_move_wall_jump_and_wall_climb()
 					ledge_grab_jump = false;
 					vspeed = +4;
 				}
+				#endregion /* Climbing Wall Down END */
+				
 				else
-				if ((key_up && !key_down) ||
-				(image_xscale < 0 && key_left_hold && !key_right_hold) ||
-				(image_xscale > 0 && key_right_hold && !key_left_hold))
+				
+				#region /* Climbing Wall Up */
+				if ((key_up
+				&& !key_down)
+				|| (image_xscale < 0 && key_left_hold && !key_right_hold)
+				|| (image_xscale > 0 && key_right_hold && !key_left_hold))
+				&& (bbox_bottom > 0 && taken_damage <= taken_damage_freezetime)
 				{
-					if (bbox_bottom > 0 && taken_damage <= taken_damage_freezetime)
+					if (!place_meeting(x, y - 16, obj_wall))
 					{
-						if (!place_meeting(x, y - 16, obj_wall))
+						if (!audio_is_playing(snd_move_ivy))
 						{
-							if (!audio_is_playing(snd_move_ivy))
-							{
-								scr_audio_play(snd_move_ivy, volume_source.sound);
-							}
-							can_ground_pound = true;
-							can_dive = true;
-							ledge_grab_jump = true;
-							vspeed = -4;
+							scr_audio_play(snd_move_ivy, volume_source.sound);
 						}
-						else
-						{
-							if (!audio_is_playing(snd_bump))
-							{
-								scr_audio_play(snd_bump, volume_source.sound);
-							}
-						}
+						can_ground_pound = true;
+						can_dive = true;
+						ledge_grab_jump = true;
+						vspeed = -4;
 					}
 					else
 					{
@@ -167,15 +175,7 @@ function scr_player_move_wall_jump_and_wall_climb()
 						}
 					}
 				}
-				else
-				if (vspeed >= 0)
-				{
-					can_ground_pound = true;
-					can_dive = true;
-					ledge_grab_jump = false;
-					vspeed = 0;
-					gravity = 0;
-				}
+				#endregion /* Climbing Wall Up END */
 				
 				#region /* Climbing Ice Blocks makes you slip off */
 				if (image_xscale < 0 && place_meeting(x - 1, y, obj_ice_block))

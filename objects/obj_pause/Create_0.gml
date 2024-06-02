@@ -153,6 +153,15 @@ background_brightness_menu_lerp = 0;
 language_index = global.language_localization + 1;
 language_mouse_scroll = 0;
 
+valid_languages = noone;
+for(var i = 1; i < ds_grid_width(global.language_local_data); i ++;)
+{
+	if (global.language_local_data[# i, 1] != "No") /* If the language should show up in-game or not */
+	{
+		valid_languages[i] = i;
+	}
+}
+
 fade_in_pause_alpha = 0.001;
 darken_settings_alpha = 0;
 darken_settings_sidebar_alpha = 0;

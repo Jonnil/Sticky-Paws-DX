@@ -15,13 +15,14 @@ if (!bounce_up)
 		}
 	}
 	
-	scr_get_1up_when_collect_basic_collectibles();
-	
 	if (instance_exists(obj_camera))
 	{
 		obj_camera.hud_show_basic_collectibles_timer = global.hud_hide_time * 60;
 		obj_camera.hud_show_score_timer = global.hud_hide_time * 60;
 	}
 	scr_audio_play(snd_basic_collectible, volume_source.sound);
+	
+	get_1up_when_collect_basic_collectibles();
+	
 	instance_destroy();
 }

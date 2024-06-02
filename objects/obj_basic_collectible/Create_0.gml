@@ -7,3 +7,4 @@ basic_collectible_sound = false;
 sprite_index = global.resource_pack_sprite_basic_collectible;
 image_index = global.collectible_image_index;
 image_speed = 0.25;
+bulk_number = 1;

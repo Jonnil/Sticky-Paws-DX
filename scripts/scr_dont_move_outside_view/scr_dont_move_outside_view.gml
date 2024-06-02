@@ -11,10 +11,10 @@ function scr_dont_move_outside_view()
 	var view_bottom = view_y_center + view_distance_from_center;
 	if (!die)
 	{
-		if (bbox_right < view_left)
-		|| (bbox_left > view_right)
-		|| (bbox_bottom < view_top)
-		|| (bbox_top > view_bottom)
+		if (bbox_right < min(camera_get_view_x(view_camera[view_current]) - 32, view_left))
+		|| (bbox_left > max(camera_get_view_x(view_camera[view_current]) + camera_get_view_width(view_camera[view_current]) + 32, view_right))
+		|| (bbox_bottom < min(camera_get_view_y(view_camera[view_current]) - 32, view_top))
+		|| (bbox_top > max(camera_get_view_y(view_camera[view_current]) + camera_get_view_height(view_camera[view_current]) + 32, view_bottom))
 		{
 			hspeed = 0;
 			vspeed = 0;

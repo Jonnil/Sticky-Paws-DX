@@ -47,10 +47,11 @@ global.collectible_image_index = image_index; /* Make all the collectibles anima
 
 var get_room_speed = 60;
 
-/* Timer Countup */
-if (!global.goal_active && !global.pause)
+if (!global.goal_active)
 {
-    global.timeattack_millisecond++;
+	
+	/* Timer Countup */
+	global.timeattack_millisecond++;
     global.timeattack_realmillisecond++;
     if (global.timeattack_millisecond > 60)
 	{
@@ -62,30 +63,8 @@ if (!global.goal_active && !global.pause)
             global.timeattack_minute++;
         }
     }
-}
-else
-if (!global.pause)
-{
-    if (!global.goal_active)
-	{
-        global.timeattack_millisecond++;
-        global.timeattack_realmillisecond++;
-        if (global.timeattack_millisecond > 60)
-		{
-            global.timeattack_millisecond = 0;
-            global.timeattack_second++;
-            if (global.timeattack_second > 59)
-			{
-                global.timeattack_second = 0;
-                global.timeattack_minute++;
-            }
-        }
-    }
-}
-
-/* Time Countdown */
-if (!global.pause && !global.goal_active)
-{
+	
+	/* Time Countdown */
 	time_second++;
 	if (time_second > get_room_speed)
 	{
@@ -96,9 +75,10 @@ if (!global.pause && !global.goal_active)
 			global.time_countdown--;
 		}
 	}
+	
 }
 
-/* global.spikes_emerge_time increment */
+/* Spikes Emerge Time increment */
 global.spikes_emerge_time++;
 if (global.spikes_emerge_time >= get_room_speed * 4)
 {
@@ -197,8 +177,7 @@ for(var i = 1; i <= global.max_players; i += 1)
 }
 
 #region /* Spawn Players in multiplayer */
-if (!global.pause)
-&& (!global.goal_active)
+if (!global.goal_active)
 && (instance_exists(obj_player))
 {
 	for(var i = 1; i <= global.max_players; i += 1)

@@ -1,5 +1,25 @@
+if (locked_door)
+&& (sprite_index == spr_door)
+{
+	sprite_index = spr_door_locked;
+}
+else
+if (locked_door)
+&& (sprite_index == spr_warp_box)
+{
+	sprite_index = spr_warp_box_locked;
+}
+else
+if (locked_door)
+&& (sprite_index == spr_warp_box_one_use)
+{
+	sprite_index = spr_warp_box_one_use_locked;
+}
+
 if (sprite_index == spr_warp_box)
 || (sprite_index == spr_warp_box_one_use)
+|| (sprite_index == spr_warp_box_locked)
+|| (sprite_index == spr_warp_box_one_use_locked)
 {
 	image_blend = make_color_hsv((current_time * 0.1) mod 255, 127, 255);
 }
@@ -22,6 +42,8 @@ if (open_door)
 		}
 		if (instance_nearest(x, y, obj_door).sprite_index == spr_warp_box)
 		|| (instance_nearest(x, y, obj_door).sprite_index == spr_warp_box_one_use)
+		|| (instance_nearest(x, y, obj_door).sprite_index == spr_warp_box_locked)
+		|| (instance_nearest(x, y, obj_door).sprite_index == spr_warp_box_one_use_locked)
 		{
 			image_alpha = lerp(image_alpha, 0, 0.3);
 		}
@@ -63,6 +85,11 @@ if (open_door)
 		{
 			if (place_meeting(x, y, obj_player))
 			{
+				if (locked_door) /* Unlock the door you come out of */
+				{
+					sprite_index = spr_door;
+					locked_door = false;
+				}
 				door_x = +32;
 				door_xscale = -1;
 				open_door = false;

@@ -75,6 +75,7 @@ if (!die)
 		|| (!other.climb)
 		&& (other.vspeed < 0)
 		|| (other.bbox_bottom < y)
+		|| (other.triplejumpdelay > 0) /* If you land on the ground too early, but you haven't been standing on the ground for too long, make it so it still counts as you jumping on the enemy */
 		{
 			if (other.ground_pound != true)
 			&& (!flat)

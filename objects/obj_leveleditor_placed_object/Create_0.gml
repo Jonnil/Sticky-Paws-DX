@@ -17,6 +17,7 @@ if (!global.actually_play_edited_level)
 	delay = 0;
 	i = 0;
 	default_blend = c_white;
+	draw_text_over_placed_object = "";
 	
 	place_object_angle = false;
 	draw_rotate_arrow = false;

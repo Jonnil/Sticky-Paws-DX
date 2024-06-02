@@ -3,7 +3,7 @@
   <Core>
     <Name>Application</Name>
     <Is64BitInstruction>True</Is64BitInstruction>
-    <ApplicationId>0x0100c8201aa36000</ApplicationId>
+    <ApplicationId>0x01004b9000490000</ApplicationId>
     <ProgramIndex>0</ProgramIndex>
     <MainThreadStackSize>0x00100000</MainThreadStackSize>
     <ProcessAddressSpace>AddressSpace64Bit</ProcessAddressSpace>

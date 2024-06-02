@@ -305,30 +305,49 @@ function scr_spawn_objects_when_starting_room()
 				break;
 				case LEVEL_OBJECT_ID.ID_INVISIBLE_BUMP_IN_GROUND_INVINCIBILITY_POWERUP: with(instance_create_depth(x, y, 0, obj_bump_in_ground)){type_of_bump = "invincibility_powerup";visible = false;}break;
 				case LEVEL_OBJECT_ID.ID_INVISIBLE_BUMP_IN_GROUND_INVINCIBILITY_POWERUP_COIL_SPRING: with(instance_create_depth(x, y, 0, obj_bump_in_ground)){type_of_bump = "invincibility_powerup_coil_spring";visible = false;}break;
-				case 40: instance_create_depth(x, y, 0, obj_basic_collectible);break;
-				case 41: with(instance_create_depth(x, y, 0, obj_basic_collectible)){image_angle = 315;}break;
-				case 42: with(instance_create_depth(x, y, 0, obj_basic_collectible)){image_angle = 270;}break;
-				case 43: with(instance_create_depth(x, y, 0, obj_basic_collectible)){image_angle = 225; image_yscale = -1;}break;
-				case 44: with(instance_create_depth(x, y, 0, obj_basic_collectible)){image_angle = 180; image_yscale = -1;}break;
-				case 45: with(instance_create_depth(x, y, 0, obj_basic_collectible)){image_angle = 135; image_yscale = -1;}break;
-				case 46: with(instance_create_depth(x, y, 0, obj_basic_collectible)){image_angle = 90;}break;
-				case 47: with(instance_create_depth(x, y, 0, obj_basic_collectible)){image_angle = 45;}break;
+				case LEVEL_OBJECT_ID.ID_BASIC_COLLECTIBLE: instance_create_depth(x, y, 0, obj_basic_collectible);break;
+				case LEVEL_OBJECT_ID.ID_BASIC_COLLECTIBLE_2: with(instance_create_depth(x, y, 0, obj_basic_collectible)){image_angle = 315;}break;
+				case LEVEL_OBJECT_ID.ID_BASIC_COLLECTIBLE_3: with(instance_create_depth(x, y, 0, obj_basic_collectible)){image_angle = 270;}break;
+				case LEVEL_OBJECT_ID.ID_BASIC_COLLECTIBLE_4: with(instance_create_depth(x, y, 0, obj_basic_collectible)){image_angle = 225; image_yscale = -1;}break;
+				case LEVEL_OBJECT_ID.ID_BASIC_COLLECTIBLE_5: with(instance_create_depth(x, y, 0, obj_basic_collectible)){image_angle = 180; image_yscale = -1;}break;
+				case LEVEL_OBJECT_ID.ID_BASIC_COLLECTIBLE_6: with(instance_create_depth(x, y, 0, obj_basic_collectible)){image_angle = 135; image_yscale = -1;}break;
+				case LEVEL_OBJECT_ID.ID_BASIC_COLLECTIBLE_7: with(instance_create_depth(x, y, 0, obj_basic_collectible)){image_angle = 90;}break;
+				case LEVEL_OBJECT_ID.ID_BASIC_COLLECTIBLE_8: with(instance_create_depth(x, y, 0, obj_basic_collectible)){image_angle = 45;}break;
+				case LEVEL_OBJECT_ID.ID_10_BULK_COLLECTIBLE: with(instance_create_depth(x, y, 0, obj_basic_collectible)){bulk_number = 10;}break;
+				case LEVEL_OBJECT_ID.ID_30_BULK_COLLECTIBLE: with(instance_create_depth(x, y, 0, obj_basic_collectible)){bulk_number = 30;}break;
+				case LEVEL_OBJECT_ID.ID_50_BULK_COLLECTIBLE: with(instance_create_depth(x, y, 0, obj_basic_collectible)){bulk_number = 50;}break;
 				case LEVEL_OBJECT_ID.ID_BIG_COLLECTIBLE:
 					instance_create_depth(x, y, 0, obj_big_collectible);
 					instance_create_depth(x, y, 0, obj_big_collectible_number);
-				
+					
 					#region /* Tell the player how many big collectibles exist in the level */
 					if (instance_exists(obj_big_collectible_number))
 					{
 						with(obj_big_collectible_number)
 						{
 							big_collectible_max_number = min(instance_number(obj_big_collectible_number), 99);
-							global.max_big_collectible = min(instance_number(obj_big_collectible_number), 99);
+							global.max_big_collectible = big_collectible_max_number;
 						}
 					}
 					#endregion /* Tell the player how many big collectibles exist in the level END */
-				
+					
 				break;
+				
+				case LEVEL_OBJECT_ID.ID_KEY_FRAGMENT:
+					instance_create_depth(x, y, 0, obj_key_fragment);
+					
+					#region /* Tell the player how many big collectibles exist in the level */
+					if (instance_exists(obj_key_fragment))
+					{
+						with(obj_key_fragment)
+						{
+							key_fragment_max_number = min(instance_number(obj_key_fragment), 99);
+						}
+					}
+					#endregion /* Tell the player how many big collectibles exist in the level END */
+					
+				break;
+				
 				case 53: instance_create_depth(x, y, 0, obj_heart_balloon);break;
 				case 54: instance_create_depth(x, y, 0, obj_hp_pickup);break;
 				case 55: with(instance_create_depth(x, y, 0, obj_invincibility_powerup)){coil_spring = false;}break;
@@ -466,6 +485,18 @@ function scr_spawn_objects_when_starting_room()
 					}
 				}
 				break;
+				case LEVEL_OBJECT_ID.ID_DOOR_LOCKED: with(instance_create_depth(x, y, 0, obj_door))
+				{
+					locked_door = true;
+					if (instance_exists(obj_leveleditor_placed_object))
+					{
+						second_x = instance_nearest(x, y, obj_leveleditor_placed_object).second_x;
+						second_y = instance_nearest(x, y, obj_leveleditor_placed_object).second_y;
+					}
+				}
+				break;
+				
+				#region /* Spawn Warp Boxes */
 				case LEVEL_OBJECT_ID.ID_WARP_BOX: with(instance_create_depth(x, y, 0, obj_door))
 				{
 					player_need_to_be_on_ground_to_enter = false;
@@ -494,6 +525,38 @@ function scr_spawn_objects_when_starting_room()
 					}
 				}
 				break;
+				case LEVEL_OBJECT_ID.ID_WARP_BOX_LOCKED: with(instance_create_depth(x, y, 0, obj_door))
+				{
+					locked_door = true;
+					player_need_to_be_on_ground_to_enter = false;
+					door_need_to_be_on_ground_to_enter = false;
+					need_to_press_up_to_enter = false;
+					destroy_door_after_use = false;
+					sprite_index = spr_warp_box;
+					if (instance_exists(obj_leveleditor_placed_object))
+					{
+						second_x = instance_nearest(x, y, obj_leveleditor_placed_object).second_x;
+						second_y = instance_nearest(x, y, obj_leveleditor_placed_object).second_y;
+					}
+				}
+				break;
+				case LEVEL_OBJECT_ID.ID_WARP_BOX_ONE_USE_LOCKED: with(instance_create_depth(x, y, 0, obj_door))
+				{
+					locked_door = true;
+					player_need_to_be_on_ground_to_enter = false;
+					door_need_to_be_on_ground_to_enter = false;
+					need_to_press_up_to_enter = false;
+					destroy_door_after_use = true;
+					sprite_index = spr_warp_box_one_use;
+					if (instance_exists(obj_leveleditor_placed_object))
+					{
+						second_x = instance_nearest(x, y, obj_leveleditor_placed_object).second_x;
+						second_y = instance_nearest(x, y, obj_leveleditor_placed_object).second_y;
+					}
+				}
+				break;
+				#endregion /* Spawn Warp Boxes END */
+				
 				case LEVEL_OBJECT_ID.ID_SIGN_READABLE: with(instance_create_depth(x, y, 0, obj_sign_readable))
 				{
 					if (instance_exists(obj_leveleditor_placed_object))

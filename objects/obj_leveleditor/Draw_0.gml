@@ -196,6 +196,7 @@ if (!global.actually_play_edited_level)
 		{
 			if (!place_meeting(x, y, obj_leveleditor_placed_object))
 			&& (sprite_index >= 0)
+			&& (sprite_index <= 339)
 			{
 				draw_sprite_ext(sprite_index, image_index, x, y, 1, 1, 0, c_white, 0.2);
 			}
@@ -257,6 +258,7 @@ if (!global.actually_play_edited_level)
 		{
 			if (!place_meeting(x, y, obj_leveleditor_placed_object))
 			&& (sprite_index >= 0)
+			&& (sprite_index <= 339)
 			{
 				draw_sprite_ext(sprite_index, image_index, x, y, 1, 1, 0, c_white, 0.2);
 			}

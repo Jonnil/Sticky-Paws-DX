@@ -15,6 +15,8 @@ switch(object)
 	case LEVEL_OBJECT_ID.ID_BOSS:
 	case LEVEL_OBJECT_ID.ID_WARP_BOX:
 	case LEVEL_OBJECT_ID.ID_WARP_BOX_ONE_USE:
+	case LEVEL_OBJECT_ID.ID_WARP_BOX_LOCKED:
+	case LEVEL_OBJECT_ID.ID_WARP_BOX_ONE_USE_LOCKED:
 		global.part_limit_entity --;
 		global.part_limit_entity_text_alpha = 1;
 		break;

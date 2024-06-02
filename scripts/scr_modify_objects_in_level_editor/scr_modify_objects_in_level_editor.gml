@@ -222,6 +222,25 @@ function scr_modify_objects_in_level_editor()
 					
 					else
 					
+					#region /* Change Bulk Collectible Number */
+					if (object == LEVEL_OBJECT_ID.ID_10_BULK_COLLECTIBLE)
+					{
+						object = LEVEL_OBJECT_ID.ID_30_BULK_COLLECTIBLE;
+					}
+					else
+					if (object == LEVEL_OBJECT_ID.ID_30_BULK_COLLECTIBLE)
+					{
+						object = LEVEL_OBJECT_ID.ID_50_BULK_COLLECTIBLE;
+					}
+					else
+					if (object == LEVEL_OBJECT_ID.ID_50_BULK_COLLECTIBLE)
+					{
+						object = LEVEL_OBJECT_ID.ID_10_BULK_COLLECTIBLE;
+					}
+					#endregion /* Change Bulk Collectible Number */
+					
+					else
+					
 					#region /* Falling Block */
 					if (object == LEVEL_OBJECT_ID.ID_FALLING_BLOCK)
 					{
@@ -811,6 +830,16 @@ function scr_modify_objects_in_level_editor()
 					}
 					else
 					if (object == LEVEL_OBJECT_ID.ID_WARP_BOX_ONE_USE)
+					{
+						object = LEVEL_OBJECT_ID.ID_WARP_BOX_LOCKED;
+					}
+					else
+					if (object == LEVEL_OBJECT_ID.ID_WARP_BOX_LOCKED)
+					{
+						object = LEVEL_OBJECT_ID.ID_WARP_BOX_ONE_USE_LOCKED;
+					}
+					else
+					if (object == LEVEL_OBJECT_ID.ID_WARP_BOX_ONE_USE_LOCKED)
 					{
 						object = LEVEL_OBJECT_ID.ID_WARP_BOX;
 					}

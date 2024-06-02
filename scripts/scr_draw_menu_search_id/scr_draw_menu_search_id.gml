@@ -168,7 +168,6 @@ function scr_draw_menu_search_id(what_kind_of_id = "level")
 					global.level_description = ""; /* Reset the description to be empty */
 					data = undefined; /* Reset "data" so you can reload online level list next time you go to this menu */
 					info_data = undefined; /* Don't forget to reset info data too */
-					spr_download_list_thumbnail = noone; /* Don't forget to reset download list thumbnail too */
 					menu = "searching_for_id";
 					menu_delay = 3;
 				}

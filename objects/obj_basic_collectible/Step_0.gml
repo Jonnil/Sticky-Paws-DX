@@ -1,3 +1,11 @@
+if (bulk_number != 1)
+{
+	if (sprite_index != global.resource_pack_sprite_bulk_collectible)
+	{
+		sprite_index = global.resource_pack_sprite_bulk_collectible;
+	}
+}
+
 image_index = global.collectible_image_index;
 
 #region /* Bounce up */

@@ -39,6 +39,11 @@ function scr_draw_level_editor_placable_object(v_selected_object, v_place_object
 			draw_set_alpha(selected_menu_alpha * alpha_offset);
 			draw_sprite_ext(v_sprite_index, v_image_index, draw_x, y_offset + v_scroll_y, v_scale * v_scale_modify, v_scale * v_scale_modify, v_rotation, v_color, selected_menu_alpha * alpha_offset);
 			
+			if (object_text != "")
+			{
+				scr_draw_text_outlined(draw_x, y_offset + v_scroll_y, string(object_text), global.default_text_size * v_scale * v_scale_modify, c_white, c_black, selected_menu_alpha * alpha_offset);
+			}
+			
 			/* If you have recently unlocked a new object, indicate that to the player */
 			if (unlocked_object[v_place_object_id] == 1 && global.show_new_items_notification)
 			{

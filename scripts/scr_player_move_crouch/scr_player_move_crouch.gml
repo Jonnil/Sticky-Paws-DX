@@ -74,7 +74,7 @@ function scr_player_move_crouch()
 	&& (crouch)
 	{
 		if (sprite_mask >= 0)
-		&& (!collision_rectangle(bbox_left, bbox_bottom - sprite_get_height(sprite_mask), bbox_right, bbox_bottom, obj_wall, false, true))
+		&& (!collision_rectangle(bbox_left, bbox_bottom - sprite_get_height(sprite_mask) - 1, bbox_right, bbox_bottom, obj_wall, false, true))
 		{
 			/* Player should be able to stop crouching at any point in mid-air, even when traveling upwards */
 			draw_xscale = 0.75;

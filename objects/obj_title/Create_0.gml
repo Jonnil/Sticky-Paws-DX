@@ -45,6 +45,7 @@ masked_character_name = "";
 masked_level_name = "";
 draw_download_name = "";
 spr_download_list_thumbnail = noone;
+top_left_of_thumbnail_x = 0;
 top_left_of_thumbnail_y = 0;
 load_ok = 0;
 hovering_over_level_editor_corner_menu = false;
@@ -118,7 +119,6 @@ in_online_download_list_menu = false; /* If you are in the online download list 
 in_online_download_list_load_menu = false; /* If you are loading online download list or not */
 currently_selected_id = ""; /* In the online list, what level/character are you currently selecting? */
 old_currently_selected_id = ""; /* this is just to compare to "currently selected id" once it changes, so that information about that specific id only have to load once */
-spr_download_list_thumbnail = noone;
 
 load_from_where = "characters";
 can_save_to_character_config = false; /* Only turn true when playing as custom character */
@@ -170,6 +170,15 @@ scroll_to_timer = 3;
 level_editor_template_select = false;
 language_index = global.language_localization + 1;
 language_mouse_scroll = 0;
+
+valid_languages = noone;
+for(var i = 1; i < ds_grid_width(global.language_local_data); i ++;)
+{
+	if (global.language_local_data[# i, 1] != "No") /* If the language should show up in-game or not */
+	{
+		valid_languages[i] = i;
+	}
+}
 
 narrator_name = string(ds_list_find_value(global.all_loaded_characters, global.narrator)); /* Character Name */
 
@@ -231,8 +240,11 @@ global.always_show_level_editor_buttons = true; /* If level editor buttons shoul
 
 scr_config_load(); /* Load Config */
 
-if (file_exists("localization.csv")) {
-	if (global.language_localization > ds_grid_width(global.language_local_data) || global.language_localization < 0) {
+if (file_exists("localization.csv"))
+{
+	if (global.language_localization > ds_grid_width(global.language_local_data)
+	|| global.language_localization < 0)
+	{
 		scr_set_default_language();
 	}
 }

@@ -164,12 +164,16 @@ function scr_character_select_menu_draw()
 		
 		#region /* Manage Characters */
 		draw_menu_button(0, manage_characters_y, l10n_text("Manage Characters"), "manage_character", "manage_character");
+		
 		if (menu == "manage_character")
-		&& (point_in_rectangle(mouse_get_x, mouse_get_y, 0, manage_characters_y + 2, 370, manage_characters_y + 41))
 		&& (mouse_check_button_released(mb_left))
+		&& (point_in_rectangle(mouse_get_x, mouse_get_y, 0, manage_characters_y + 2, 370, manage_characters_y + 41))
+		&& (menu_delay == 0 && menu_joystick_delay == 0)
 		|| (key_a_pressed)
 		&& (menu == "manage_character")
+		&& (menu_delay == 0 && menu_joystick_delay == 0)
 		{
+			menu_delay = 3;
 			var fixed_player = 1;
 			if (global.sprite_select_player[fixed_player] < 0)
 			|| (global.sprite_select_player[fixed_player] == spr_noone)
@@ -183,7 +187,6 @@ function scr_character_select_menu_draw()
 				ini_close(); switch_save_data_commit(); /* Remember to commit the save data! */
 			}
 			menu = "click_copy_character";
-			menu_delay = 3;
 		}
 		#endregion /* Manage Characters END */
 		

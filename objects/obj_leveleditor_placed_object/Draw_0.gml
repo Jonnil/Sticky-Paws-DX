@@ -61,6 +61,11 @@ if (draw_item_with_spring)
 	draw_sprite_ext(global.resource_pack_sprite_coil_spring, 0, x, y + 16, spring_scale, spring_scale, 0, image_blend, image_alpha);
 }
 
+if (draw_text_over_placed_object != "")
+{
+	scr_draw_text_outlined(x, y, string(draw_text_over_placed_object), global.default_text_size, c_white, c_black, 1);
+}
+
 if (object == LEVEL_OBJECT_ID.ID_SIGN_READABLE)
 && (position_meeting(x, y, obj_leveleditor))
 {

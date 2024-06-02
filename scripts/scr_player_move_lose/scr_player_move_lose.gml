@@ -28,75 +28,71 @@ function scr_player_move_lose()
 		}
 		#endregion /* Update Level Editor Checkpoint Time END */
 		
-		if (!global.pause)
+		if (instance_number(obj_player) <= 1)
 		{
-			if (instance_number(obj_player) <= 1)
-			{
-				audio_sound_gain(global.music, 0, 0);
-				audio_sound_gain(global.music_underwater, 0, 0);
-				audio_stop_sound(global.music);
-				audio_stop_sound(global.music_underwater);
-				global.music = noone;
-				global.music_underwater = noone;
-				audio_stop_sound(snd_skidding);
-				audio_stop_sound(snd_skidding_ice);
-				audio_stop_sound(snd_skiddingvertical);
-			}
-			speed = 0;
-			taken_damage = 0;
-			invincible_timer = false;
-			scr_audio_play(snd_lose, volume_source.sound);
-			
-			#region /* Turn into obj_player_lose */
-			with(instance_create_depth(x, y, 0, obj_player_lose))
-			{
-				var instance_nearest_player = instance_nearest(x, y, obj_player);
-				player = instance_nearest_player.player;
-				if (instance_nearest_player.burnt >= 1)
-				&& (instance_nearest_player.sprite_burnt > noone)
-				{
-					burnt = true;
-					sprite_index = instance_nearest_player.sprite_burnt;
-				}
-				else
-				if (instance_nearest_player.sprite_die > noone)
-				{
-					sprite_index = instance_nearest_player.sprite_die;
-				}
-				else
-				if (instance_nearest_player.sprite_idle > noone)
-				{
-					sprite_index = instance_nearest_player.sprite_idle;
-				}
-				else
-				if (instance_nearest_player.sprite_walk > noone)
-				{
-					sprite_index = instance_nearest_player.sprite_walk;
-				}
-				if (instance_nearest_player.sprite_game_over_character_portrait > noone)
-				{
-					sprite_game_over_character_portrait = instance_nearest_player.sprite_game_over_character_portrait;
-				}
-				player_lose_melody = instance_nearest_player.player_lose_melody;
-				voice_damage = instance_nearest_player.voice_damage;
-				voice_burned_die = instance_nearest_player.voice_burned_die;
-				default_voice_pitch = instance_nearest_player.default_voice_pitch;
-				default_xscale = instance_nearest_player.default_xscale;
-				default_yscale = instance_nearest_player.default_yscale;
-				image_xscale = instance_nearest_player.image_xscale;
-			}
-			#endregion /* Turn into obj_player_lose END */
-			
-			#region /* Stop invincibility music if you're the last player dying */
-			if (!global.pause)
-			&& (instance_number(obj_player) == 1)
-			{
-				audio_stop_sound(music_invincible);
-			}
-			#endregion /* Stop invincibility music if you're the last player dying END */
-			
-			instance_destroy();
+			audio_sound_gain(global.music, 0, 0);
+			audio_sound_gain(global.music_underwater, 0, 0);
+			audio_stop_sound(global.music);
+			audio_stop_sound(global.music_underwater);
+			global.music = noone;
+			global.music_underwater = noone;
+			audio_stop_sound(snd_skidding);
+			audio_stop_sound(snd_skidding_ice);
+			audio_stop_sound(snd_skiddingvertical);
 		}
+		speed = 0;
+		taken_damage = 0;
+		invincible_timer = false;
+		scr_audio_play(snd_lose, volume_source.sound);
+		
+		#region /* Turn into obj_player_lose */
+		with(instance_create_depth(x, y, 0, obj_player_lose))
+		{
+			var instance_nearest_player = instance_nearest(x, y, obj_player);
+			player = instance_nearest_player.player;
+			if (instance_nearest_player.burnt >= 1)
+			&& (instance_nearest_player.sprite_burnt > noone)
+			{
+				burnt = true;
+				sprite_index = instance_nearest_player.sprite_burnt;
+			}
+			else
+			if (instance_nearest_player.sprite_die > noone)
+			{
+				sprite_index = instance_nearest_player.sprite_die;
+			}
+			else
+			if (instance_nearest_player.sprite_idle > noone)
+			{
+				sprite_index = instance_nearest_player.sprite_idle;
+			}
+			else
+			if (instance_nearest_player.sprite_walk > noone)
+			{
+				sprite_index = instance_nearest_player.sprite_walk;
+			}
+			if (instance_nearest_player.sprite_game_over_character_portrait > noone)
+			{
+				sprite_game_over_character_portrait = instance_nearest_player.sprite_game_over_character_portrait;
+			}
+			player_lose_melody = instance_nearest_player.player_lose_melody;
+			voice_damage = instance_nearest_player.voice_damage;
+			voice_burned_die = instance_nearest_player.voice_burned_die;
+			default_voice_pitch = instance_nearest_player.default_voice_pitch;
+			default_xscale = instance_nearest_player.default_xscale;
+			default_yscale = instance_nearest_player.default_yscale;
+			image_xscale = instance_nearest_player.image_xscale;
+		}
+		#endregion /* Turn into obj_player_lose END */
+		
+		#region /* Stop invincibility music if you're the last player dying */
+		if (instance_number(obj_player) == 1)
+		{
+			audio_stop_sound(music_invincible);
+		}
+		#endregion /* Stop invincibility music if you're the last player dying END */
+		
+		instance_destroy();
 	}
 	#endregion /* Die END */
 	

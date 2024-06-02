@@ -1,5 +1,7 @@
 if (sprite_index == spr_warp_box)
 || (sprite_index == spr_warp_box_one_use)
+|| (sprite_index == spr_warp_box_locked)
+|| (sprite_index == spr_warp_box_one_use_locked)
 {
 	draw_self();
 }
@@ -11,6 +13,7 @@ else
 
 #region /* Show Player Up Key */
 if (need_to_press_up_to_enter)
+&& (!locked_door)
 {
 	if (instance_exists(obj_player))
 	{

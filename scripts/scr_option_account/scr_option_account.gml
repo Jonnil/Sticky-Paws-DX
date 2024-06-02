@@ -26,8 +26,8 @@ function scr_option_account()
 		&& (menu != "get_device_name_cancel")
 		{
 			draw_set_halign(fa_right);
-			scr_draw_text_outlined(display_get_gui_width() - 8, 40, l10n_text("Setup your Account here"), global.default_text_size * 1.1, c_menu_outline, c_menu_fill, 1);
-			scr_draw_text_outlined(display_get_gui_width() - 8, 40 * 2, l10n_text("This is used for uploading levels"), global.default_text_size * 1.1, c_menu_outline, c_menu_fill, 1);
+			scr_draw_text_outlined(display_get_gui_width() - 8, 40, l10n_text("Setup your Account here"), global.default_text_size * 0.9, c_menu_outline, c_menu_fill, 1);
+			scr_draw_text_outlined(display_get_gui_width() - 8, 40 * 2, l10n_text("This is used for uploading levels"), global.default_text_size * 0.9, c_menu_outline, c_menu_fill, 1);
 			draw_set_halign(fa_center);
 			if (menu != "change_username_ok")
 			&& (menu != "change_username_cancel")

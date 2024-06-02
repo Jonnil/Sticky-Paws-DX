@@ -649,8 +649,8 @@ function scr_character_manage_menu_step()
 		#endregion /* Open Character Folder END */
 		
 		#region /* Back from Copy Characters */
-		if (point_in_rectangle(device_mouse_x_to_gui(0), device_mouse_y_to_gui(0), display_get_gui_width() * 0.5 - 185, 0, display_get_gui_width() * 0.5 - 185 + 371, 42))
-		&& (mouse_check_button_released(mb_left))
+		if (mouse_check_button_released(mb_left))
+		&& (point_in_rectangle(device_mouse_x_to_gui(0), device_mouse_y_to_gui(0), 0, 0, 370, 41))
 		&& (menu_delay == 0 && menu_joystick_delay == 0)
 		&& (can_navigate)
 		|| (menu == "back_from_copy_character")
@@ -664,9 +664,9 @@ function scr_character_manage_menu_step()
 			if (menu != "click_delete_character_no")
 			&& (menu != "click_delete_character_yes")
 			{
+				menu_delay = 3;
 				menu = "manage_character";
 				player_menu[fixed_player] = "manage_character"; /* When going back to previous menu from "manage character", you have to set this to "manage character" */
-				menu_delay = 3;
 				scr_change_character_portrait();
 			}
 		}

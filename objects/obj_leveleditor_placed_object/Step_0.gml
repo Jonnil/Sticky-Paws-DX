@@ -36,12 +36,20 @@ if (!global.actually_play_edited_level)
 	/* Some objects should not save second x and second y, only objects that actually rotate should save */
 	if (place_object_angle)
 	{
+		
+		/* Make sure that you can drag the second x and second y outside of the view without the origin point being deactivated */
+		global.deactivate_timer = 0;
+		instance_activate_region(obj_leveleditor.cam_x - 32, obj_leveleditor.cam_y - 32, obj_leveleditor.cam_width + 32, obj_leveleditor.cam_height + 32, true);
+		
 		switch (object)
 		{
 			case LEVEL_OBJECT_ID.ID_SPRING:
 			case LEVEL_OBJECT_ID.ID_DOOR:
+			case LEVEL_OBJECT_ID.ID_DOOR_LOCKED:
 			case LEVEL_OBJECT_ID.ID_WARP_BOX:
 			case LEVEL_OBJECT_ID.ID_WARP_BOX_ONE_USE:
+			case LEVEL_OBJECT_ID.ID_WARP_BOX_LOCKED:
+			case LEVEL_OBJECT_ID.ID_WARP_BOX_ONE_USE_LOCKED:
 			case LEVEL_OBJECT_ID.ID_ARROW_SIGN:
 			case LEVEL_OBJECT_ID.ID_ARROW_SIGN_SMALL:
 			case LEVEL_OBJECT_ID.ID_WATER:

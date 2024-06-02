@@ -1,7 +1,7 @@
 function scr_unlock_placable_level_objects()
 {
 	
-	var default_unlock = false; /* Change to true to unlock every object for debugging, otherwise set this to false */
+	var default_unlock = true; /* Change to true to unlock every object for debugging, otherwise set this to false */
 	var always_unlock = true; /* Some objects should always be unlocked from the start */
 	
 	#region /* Load what date this level was first created in */
@@ -26,6 +26,7 @@ function scr_unlock_placable_level_objects()
 	unlocked_object[LEVEL_OBJECT_ID.ID_CAKE_STEALING_ENEMY] = ini_read_real("Unlock Placable Objects", LEVEL_OBJECT_ID.ID_CAKE_STEALING_ENEMY, always_unlock);
 	unlocked_object[LEVEL_OBJECT_ID.ID_BASIC_COLLECTIBLE] = ini_read_real("Unlock Placable Objects", LEVEL_OBJECT_ID.ID_BASIC_COLLECTIBLE, always_unlock);
 	unlocked_object[LEVEL_OBJECT_ID.ID_BIG_COLLECTIBLE] = ini_read_real("Unlock Placable Objects", LEVEL_OBJECT_ID.ID_BIG_COLLECTIBLE, always_unlock);
+	unlocked_object[LEVEL_OBJECT_ID.ID_KEY_FRAGMENT] = ini_read_real("Unlock Placable Objects", LEVEL_OBJECT_ID.ID_KEY_FRAGMENT, always_unlock);
 	unlocked_object[LEVEL_OBJECT_ID.ID_BASIC_ENEMY] = ini_read_real("Unlock Placable Objects", LEVEL_OBJECT_ID.ID_BASIC_ENEMY, always_unlock);
 	unlocked_object[LEVEL_OBJECT_ID.ID_LADDER] = ini_read_real("Unlock Placable Objects", LEVEL_OBJECT_ID.ID_LADDER, always_unlock);
 	unlocked_object[LEVEL_OBJECT_ID.ID_CHECKPOINT] = ini_read_real("Unlock Placable Objects", LEVEL_OBJECT_ID.ID_CHECKPOINT, always_unlock);
@@ -53,18 +54,28 @@ function scr_unlock_placable_level_objects()
 	ds_list_add(all_items, LEVEL_OBJECT_ID.ID_INSTANT_FALLING_BLOCK_LONG);
 	ds_list_add(all_items, LEVEL_OBJECT_ID.ID_WOOD_FALLING_BLOCK);
 	ds_list_add(all_items, LEVEL_OBJECT_ID.ID_WOOD_FALLING_BLOCK_LONG);
+	ds_list_add(all_items, LEVEL_OBJECT_ID.ID_STONE_FALLING_BLOCK);
+	ds_list_add(all_items, LEVEL_OBJECT_ID.ID_STONE_FALLING_BLOCK_LONG);
 	ds_list_add(all_items, LEVEL_OBJECT_ID.ID_ICE_BLOCK);
 	ds_list_add(all_items, LEVEL_OBJECT_ID.ID_ENEMY_ONLY_WALL);
+	ds_list_add(all_items, LEVEL_OBJECT_ID.ID_10_BULK_COLLECTIBLE);
+	ds_list_add(all_items, LEVEL_OBJECT_ID.ID_30_BULK_COLLECTIBLE);
+	ds_list_add(all_items, LEVEL_OBJECT_ID.ID_50_BULK_COLLECTIBLE);
 	ds_list_add(all_items, LEVEL_OBJECT_ID.ID_HEART);
 	ds_list_add(all_items, LEVEL_OBJECT_ID.ID_INVINCIBILITY_POWERUP);
 	ds_list_add(all_items, LEVEL_OBJECT_ID.ID_ONE_UP);
+	ds_list_add(all_items, LEVEL_OBJECT_ID.ID_TWO_UP);
+	ds_list_add(all_items, LEVEL_OBJECT_ID.ID_THREE_UP);
 	ds_list_add(all_items, LEVEL_OBJECT_ID.ID_ENEMY_BOWLINGBALL);
 	ds_list_add(all_items, LEVEL_OBJECT_ID.ID_BIG_STATIONARY_ENEMY);
 	ds_list_add(all_items, LEVEL_OBJECT_ID.ID_BOSS);
 	ds_list_add(all_items, LEVEL_OBJECT_ID.ID_BLASTER);
 	ds_list_add(all_items, LEVEL_OBJECT_ID.ID_DOOR);
+	ds_list_add(all_items, LEVEL_OBJECT_ID.ID_DOOR_LOCKED);
 	ds_list_add(all_items, LEVEL_OBJECT_ID.ID_WARP_BOX);
 	ds_list_add(all_items, LEVEL_OBJECT_ID.ID_WARP_BOX_ONE_USE);
+	ds_list_add(all_items, LEVEL_OBJECT_ID.ID_WARP_BOX_LOCKED);
+	ds_list_add(all_items, LEVEL_OBJECT_ID.ID_WARP_BOX_ONE_USE_LOCKED);
 	ds_list_add(all_items, LEVEL_OBJECT_ID.ID_SPRING);
 	ds_list_add(all_items, LEVEL_OBJECT_ID.ID_ARROW_SIGN);
 	ds_list_add(all_items, LEVEL_OBJECT_ID.ID_SPIKES_EMERGE_BLOCK);

@@ -16,7 +16,7 @@ function scr_switch_update_online_status()
 			global.switch_account_online_token[i] = switch_accounts_get_online_token(i);
 			global.switch_account_is_user_online[i] = switch_accounts_is_user_online(i);
 			
-			/* For some reason I can't retrieve infromation from network_service_available as an array without crashing the game with unknown error */
+			/* For some reason I can't retrieve information from network_service_available as an array without crashing the game with unknown error */
 			/* Account needs to be open before you can check network service availability */
 			if (global.switch_account_open[i])
 			&& (global.switch_account_is_user_online[i])

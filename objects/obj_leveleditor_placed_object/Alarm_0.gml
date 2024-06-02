@@ -32,6 +32,7 @@ if (!global.actually_play_edited_level)
 			image_blend = grid[# 6, grid_object_index];
 			default_blend = image_blend;
 			image_alpha = grid[# 7, grid_object_index];
+			draw_text_over_placed_object = grid[# 8, grid_object_index];
 		}
 		
 		draw_item_on_top = noone;
@@ -167,8 +168,11 @@ if (!global.actually_play_edited_level)
 				draw_leveleditor_arrow = true;
 				break;
 			case LEVEL_OBJECT_ID.ID_DOOR:
+			case LEVEL_OBJECT_ID.ID_DOOR_LOCKED:
 			case LEVEL_OBJECT_ID.ID_WARP_BOX:
 			case LEVEL_OBJECT_ID.ID_WARP_BOX_ONE_USE:
+			case LEVEL_OBJECT_ID.ID_WARP_BOX_LOCKED:
+			case LEVEL_OBJECT_ID.ID_WARP_BOX_ONE_USE_LOCKED:
 				draw_leveleditor_arrow = true;
 			case LEVEL_OBJECT_ID.ID_ENEMY_BOWLINGBALL:
 			case LEVEL_OBJECT_ID.ID_ENEMY_BOWLINGBALL_BLIND:

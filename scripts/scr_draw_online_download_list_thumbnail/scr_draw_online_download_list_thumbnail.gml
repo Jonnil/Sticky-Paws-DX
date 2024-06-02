@@ -14,7 +14,7 @@ function scr_draw_online_download_list_thumbnail(thumbnail_index, number_of_thum
 	if (menu == "download_online_" + string(online_download_index))
 	{
 		var custom_level_select_arrows_moving = scr_wave(10, 0, 1, 0);
-		var top_left_of_thumbnail_x = download_online_x + 100 - 4;
+		top_left_of_thumbnail_x = download_online_x + 100 - 4;
 		top_left_of_thumbnail_y = download_online_y - 4;
 		var bottom_right_of_thumbnail_x = download_online_x + 484 + 4;
 		var bottom_right_of_thumbnail_y = download_online_y + menu_y_offset + 216 + 4;
@@ -37,7 +37,8 @@ function scr_draw_online_download_list_thumbnail(thumbnail_index, number_of_thum
 		draw_set_alpha(1);
 	}
 	
-	/* Draw a placeholder thumbnail if the real thumbnail is not loaded */ draw_sprite_ext(spr_thumbnail_missing, 0, download_online_x + 100, download_online_y + menu_y_offset, 1, 1, 0, c_white, 1);
+	/* Draw the thumbnails */
+	draw_sprite_ext(spr_download_list_thumbnail[online_download_index], 0, download_online_x + 100, download_online_y + menu_y_offset, 384 / sprite_get_width(spr_download_list_thumbnail[online_download_index]), 216 / sprite_get_height(spr_download_list_thumbnail[online_download_index]), 0, c_white, 1);
 	
 	#region /* Draw 4 red small triangles above the level thumbnail to be even more certain what level you are selecting */
 	if (menu == "download_online_" + string(online_download_index))
@@ -81,12 +82,6 @@ function scr_draw_online_download_list_thumbnail(thumbnail_index, number_of_thum
 	{
 		if (menu != "download_online_" + string(online_download_index))
 		{
-			if (menu != "download_online_back"
-			&& menu != "download_online_search_id"
-			&& menu != "online_list_can_load_custom_level_assets")
-			{
-				scr_delete_sprite_properly(spr_download_list_thumbnail);spr_download_list_thumbnail = noone; /* Delete the previous thumbnail sprite so you can load in a new one */
-			}
 			menu = "download_online_" + string(online_download_index);
 		}
 	}
@@ -132,7 +127,7 @@ function scr_draw_online_download_list_thumbnail(thumbnail_index, number_of_thum
 				/* Set the correct thumbnail sprite variable */
 				scr_delete_sprite_properly(downloaded_thumbnail_sprite);
 				downloaded_thumbnail_sprite = noone;
-				downloaded_thumbnail_sprite = spr_download_list_thumbnail;
+				downloaded_thumbnail_sprite = spr_download_list_thumbnail[global.selected_online_download_index];
 				
 				menu = "search_id_ok";
 				#endregion /* Go to download menu END */

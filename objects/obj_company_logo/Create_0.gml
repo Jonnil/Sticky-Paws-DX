@@ -557,6 +557,7 @@ global.resource_pack_sprite_logo_twitter = spr_noone;
 global.resource_pack_sprite_logo_wiki = spr_noone;
 global.resource_pack_sprite_artwork_collection = spr_noone;
 global.resource_pack_sprite_basic_collectible = spr_noone;
+global.resource_pack_sprite_bulk_collectible = spr_noone;
 global.resource_pack_sprite_basic_enemy = spr_noone;
 global.resource_pack_sprite_basic_enemy_angry = spr_noone;
 global.resource_pack_sprite_basic_enemy_blind = spr_noone;

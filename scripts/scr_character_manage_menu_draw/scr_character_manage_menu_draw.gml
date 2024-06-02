@@ -227,7 +227,7 @@ function scr_character_manage_menu_draw()
 				#endregion /* Open Character Folder END */
 				
 				#region /* Back from Copy Characters */
-				draw_menu_button(0, 0, l10n_text("Back"), "back_from_copy_character", "manage_character");
+				draw_menu_button(0, 0, l10n_text("Back"), "back_from_copy_character", "back_from_copy_character");
 				draw_sprite_ext(spr_icon_back, 0, 20, 21, 1, 1, 0, c_white, 1);
 				#endregion /* Back from Copy Characters END */
 				

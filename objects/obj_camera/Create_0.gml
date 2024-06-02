@@ -172,6 +172,7 @@ hud_show_score_timer = 0;
 time_countup_y = 32; /* What y position the countup timer should be at */
 hurry_up_message_timer = 0; /* How long the hurry up message should stay on screen */
 set_all_big_collectible = 0;
+key_fragment_total = 0; /* The total amount of key fragments you have collected */
 for (var i = 1; i <= 99; i++)
 {
 	hud_show_big_collectible_blink[i] = 0;
@@ -405,3 +406,15 @@ best_time_text = l10n_text("Best") + ": " + string(timeattack_record_minute_text
 										  + string_replace_all(string_format(timeattack_record_millisecond, 2, 0), " ", "0");
 
 scr_initialize_effects();
+
+/* Show when you are in Test Mode */
+if (!global.actually_play_edited_level)
+{
+	with(instance_create_depth(display_get_gui_width() * 0.5, display_get_gui_height() * 0.5, 0, obj_score_up))
+	{
+		above_gui = true;
+		above_gui_y = 64;
+		score_up = "Test Mode";
+		show_debug_message(string(score_up));
+	}
+}

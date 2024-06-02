@@ -9,10 +9,10 @@ var view_bottom = view_y_center + view_distance_from_center;
 
 if (!position_meeting(x, bbox_bottom + 1, obj_wall))
 && (!position_meeting(x, bbox_bottom + 1, obj_semisolid_platform))
-&& (x < view_right)
-&& (x > view_left)
-&& (bbox_top < view_bottom)
-&& (bbox_bottom > view_top)
+&& (bbox_left < max(camera_get_view_x(view_camera[view_current]) + camera_get_view_width(view_camera[view_current]) + 32, view_right))
+&& (bbox_right > min(camera_get_view_x(view_camera[view_current]), view_left))
+&& (bbox_top < max(camera_get_view_y(view_camera[view_current]) + camera_get_view_height(view_camera[view_current]) + 32, view_bottom))
+&& (bbox_bottom > min(camera_get_view_y(view_camera[view_current]), view_top))
 {
 	gravity = 0.5;
 }
@@ -22,6 +22,7 @@ else
 	vspeed = 0;
 	gravity = 0;
 }
+
 if (vspeed >= 16)
 {
 	vspeed = 16;

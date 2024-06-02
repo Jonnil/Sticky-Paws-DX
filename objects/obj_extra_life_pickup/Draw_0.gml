@@ -159,7 +159,6 @@ if effect_time < 60
 	effect_time ++;
 }
 if effect_time > 60
-&& (!global.pause)
 {
 	effect_time = 0;
 	effect_create_below(ef_ring, x, y, 1, c_white);

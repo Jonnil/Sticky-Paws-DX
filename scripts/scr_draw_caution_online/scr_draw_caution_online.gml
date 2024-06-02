@@ -97,6 +97,23 @@ function scr_draw_caution_online()
 					menu = "caution_online_network_service_unavailable";
 				}
 			}
+			else
+			{
+				/* No Internet Connection */
+				if (content_type == "character")
+				{
+					in_online_download_list_menu = false;
+					menu = "no_internet_character";
+				}
+				else
+				if (content_type == "level")
+				{
+					in_online_download_list_menu = false;
+					select_custom_level_menu_open = true;
+					show_level_editor_corner_menu = false;
+					menu = "no_internet_level";
+				}
+			}
 			menu_delay = 3;
 		}
 		

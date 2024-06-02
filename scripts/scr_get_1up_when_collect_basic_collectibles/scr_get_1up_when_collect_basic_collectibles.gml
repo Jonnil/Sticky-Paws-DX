@@ -10,10 +10,10 @@ function get_1up_when_collect_basic_collectibles()
 {
 	
 	#region /* Get 1-up if you get 100 basic collectibles */
-	var basic_collectible_threshold = 99;
+	var basic_collectible_threshold = 100;
 	if (global.basic_collectibles >= basic_collectible_threshold)
 	{
-		global.basic_collectibles = -1;
+		global.basic_collectibles -= basic_collectible_threshold;
 		obj_camera.hud_show_lives_timer = global.hud_hide_time * 60;
 		var nearest_instance = instance_nearest(x, y, obj_player);
 		if (nearest_instance != noone)

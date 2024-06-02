@@ -10,7 +10,7 @@ if (can_collide_with_wall)
 	{
 		/* Make sure you are actually being crushed if player is stuck inside a wall for a certain time */
 		stuck_in_wall_counter ++;
-		if (stuck_in_wall_counter >= 2)
+		if (stuck_in_wall_counter >= 3)
 		&& (!global.goal_active)
 		{
 			die = true;

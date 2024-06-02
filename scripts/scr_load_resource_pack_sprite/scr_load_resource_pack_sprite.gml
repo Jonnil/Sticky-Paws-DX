@@ -21,6 +21,7 @@ function scr_load_resource_pack_sprite()
 		if (global.resource_pack_sprite_logo_wiki > 0){global.resource_pack_sprite_logo_wiki = spr_noone;}
 		if (global.resource_pack_sprite_artwork_collection > 0){global.resource_pack_sprite_artwork_collection = spr_noone;}
 		if (global.resource_pack_sprite_basic_collectible > 0){global.resource_pack_sprite_basic_collectible = spr_noone;}
+		if (global.resource_pack_sprite_bulk_collectible > 0){global.resource_pack_sprite_bulk_collectible = spr_noone;}
 		if (global.resource_pack_sprite_basic_enemy > 0){global.resource_pack_sprite_basic_enemy = spr_noone;}
 		if (global.resource_pack_sprite_basic_enemy_angry > 0){global.resource_pack_sprite_basic_enemy_angry = spr_noone;}
 		if (global.resource_pack_sprite_basic_enemy_blind > 0){global.resource_pack_sprite_basic_enemy_blind = spr_noone;}
@@ -93,6 +94,7 @@ function scr_load_resource_pack_sprite()
 		global.resource_pack_sprite_logo_wiki = scr_initialize_resource_pack_sprite("logo_wiki", global.resource_pack_sprite_logo_wiki);
 		global.resource_pack_sprite_artwork_collection = scr_initialize_resource_pack_sprite("artwork_collection", global.resource_pack_sprite_artwork_collection);
 		global.resource_pack_sprite_basic_collectible = scr_initialize_resource_pack_sprite("basic_collectible", global.resource_pack_sprite_basic_collectible);
+		global.resource_pack_sprite_bulk_collectible = scr_initialize_resource_pack_sprite("bulk_collectible", global.resource_pack_sprite_bulk_collectible);
 		global.resource_pack_sprite_basic_enemy = scr_initialize_resource_pack_sprite("basic_enemy", global.resource_pack_sprite_basic_enemy);
 		global.resource_pack_sprite_basic_enemy_angry = scr_initialize_resource_pack_sprite("basic_enemy_angry", global.resource_pack_sprite_basic_enemy_angry);
 		global.resource_pack_sprite_basic_enemy_blind = scr_initialize_resource_pack_sprite("basic_enemy_blind", global.resource_pack_sprite_basic_enemy_blind);

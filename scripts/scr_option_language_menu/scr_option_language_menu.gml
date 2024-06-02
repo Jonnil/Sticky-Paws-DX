@@ -16,9 +16,9 @@ function scr_option_language_menu()
 		var match_system_language_y = 32;
 		draw_menu_button(match_system_language_x, match_system_language_y, "Match System Language", "match_system_language", "match_system_language");
 		
-		for(var i = 1; i < ds_grid_width(global.language_local_data); i ++;)
+		for(var i = 1; i < array_length(valid_languages); i ++;)
 		{
-			draw_language_checkmark(400, 52 * (i - 1) + 84, global.language_local_data[# i, 0], "Language" + string(i));
+			draw_language_checkmark(400, 52 * (i - 1) + 84, global.language_local_data[# valid_languages[i], 0], "Language" + string(i));
 		}
 		
 		draw_set_halign(fa_right);
@@ -53,7 +53,7 @@ function scr_option_language_menu()
 			}
 			if (mouse_check_button_released(mb_left))
 			{
-			    global.translation_debug = not global.translation_debug;
+			    global.translation_debug = !global.translation_debug;
 			}
 		}
 		
@@ -99,7 +99,7 @@ function scr_option_language_menu()
 				}
 				else
 				{
-					language_index = min(language_index + 1, ds_grid_width(global.language_local_data) - 1)
+					language_index = min(language_index + 1, array_length(valid_languages) - 1)
 					menu = "Language" + string(language_index);
 					menu_cursor_y_position = language_index * 50;
 				}
