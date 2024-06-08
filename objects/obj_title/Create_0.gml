@@ -55,6 +55,8 @@ finished_level = undefined; /* This needs to be set to undefined by default */
 liked_content = undefined;
 i = 0;
 creating_daily_build = false; /* If you are going to create a daily build or not */
+development_stage_index = 1 /* What development stage custom content is being published by. 0 = Early Access. 1 = Complete/Stable */
+visibility_index = 0; /* If custom content should show up publicly in online list or not. 0 = Public. 1 = Unlisted */
 
 information_menu_open = ""; /* If the information menu is opened or not */
 

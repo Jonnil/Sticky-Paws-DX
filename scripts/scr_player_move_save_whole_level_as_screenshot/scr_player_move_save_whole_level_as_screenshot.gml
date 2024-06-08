@@ -54,11 +54,11 @@ function scr_player_move_save_whole_level_as_screenshot()
 			if (global.select_level_index <= 0)
 			|| (global.create_level_from_template >= 2)
 			{
-				sprite_save(custom_level_map_sprite, 0, game_save_id + "custom_levels/" + global.level_name + "/full_level_map_" + global.level_name + ".png");
+				sprite_save(custom_level_map_sprite, 0, game_save_id + "custom_levels/" + string(global.level_name) + "/full_level_map_" + string(global.level_name) + ".png");
 			}
 			else
 			{
-				sprite_save(custom_level_map_sprite, 0, game_save_id + "custom_levels/" + string(ds_list_find_value(global.all_loaded_custom_levels, global.select_level_index)) + "/full_level_map_" + global.level_name + ".png");
+				sprite_save(custom_level_map_sprite, 0, game_save_id + "custom_levels/" + string(ds_list_find_value(global.all_loaded_custom_levels, global.select_level_index)) + "/full_level_map_" + string(global.level_name) + ".png");
 			}
 			scr_delete_sprite_properly(custom_level_map_sprite);
 		}

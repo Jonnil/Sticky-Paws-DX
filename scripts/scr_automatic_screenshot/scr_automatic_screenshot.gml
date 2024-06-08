@@ -26,7 +26,7 @@ function scr_automatic_screenshot()
 	var thumbnail_sprite = sprite_create_from_surface(thumbnail_surface, 0, 0, thumbnail_width, thumbnail_height, 0, 0, 0, 0);
 	
 	/* Step 5: Save the sprite to a file */
-	sprite_save(thumbnail_sprite, 0, game_save_id + "custom_levels/" + global.level_name + "/automatic_thumbnail.png");
+	sprite_save(thumbnail_sprite, 0, game_save_id + "custom_levels/" + string(global.level_name) + "/automatic_thumbnail.png");
 	
 	/* Cleanup */
 	surface_free(screenshot);

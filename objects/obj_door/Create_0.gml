@@ -1,7 +1,7 @@
 door_x = 0;
 door_xscale = 1;
 open_door = false;
-depth = 100;
+depth = 40;
 second_x = x;
 second_y = y;
 player_gamepad_button_up = noone;

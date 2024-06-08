@@ -1,4 +1,4 @@
-function instance_nth_nearest(argument0, argument1, argument2, argument3)
+function instance_nth_nearest(pointx, pointy, object, n)
 {
 	/* instance_nth_nearest(x,y,obj,n)
 	
@@ -11,15 +11,11 @@ function instance_nth_nearest(argument0, argument1, argument2, argument3)
 	
 	GMLscripts.com/license */
 	{
-	    var pointx,pointy,object,n,list,nearest;
-	    pointx = argument0;
-	    pointy = argument1;
-	    object = argument2;
-	    n = argument3;
+	    var list, nearest;
 	    n = min(max(1,n),instance_number(object));
 	    list = ds_priority_create();
 	    nearest = noone;
-	    with (object) ds_priority_add(list,id,distance_to_point(pointx,pointy));
+	    with (object) ds_priority_add(list, id, distance_to_point(pointx, pointy));
 	    repeat (n) nearest = ds_priority_delete_min(list);
 	    ds_priority_destroy(list);
 	    return nearest;

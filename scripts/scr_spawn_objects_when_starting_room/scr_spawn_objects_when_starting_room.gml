@@ -348,6 +348,7 @@ function scr_spawn_objects_when_starting_room()
 					
 				break;
 				
+				case LEVEL_OBJECT_ID.ID_KEY: instance_create_depth(x, y, 0, obj_key);break;
 				case 53: instance_create_depth(x, y, 0, obj_heart_balloon);break;
 				case 54: instance_create_depth(x, y, 0, obj_hp_pickup);break;
 				case 55: with(instance_create_depth(x, y, 0, obj_invincibility_powerup)){coil_spring = false;}break;

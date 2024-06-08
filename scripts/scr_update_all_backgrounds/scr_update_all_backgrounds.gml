@@ -23,8 +23,8 @@ function scr_update_all_backgrounds()
 	}
 	else
 	{
-		global.path_to_use = global.use_temp_or_working + "custom_levels/" + global.level_name + "/background/";
-		ini_open(global.use_temp_or_working + "custom_levels/" + global.level_name + "/data/level_information.ini");
+		global.path_to_use = global.use_temp_or_working + "custom_levels/" + string(global.level_name) + "/background/";
+		ini_open(global.use_temp_or_working + "custom_levels/" + string(global.level_name) + "/data/level_information.ini");
 	}
 	
 	global.default_background1 = ini_read_string("info", "default_background1", "level1");
@@ -499,9 +499,9 @@ function scr_update_all_backgrounds()
 			global.custom_tileset = sprite_add("levels/" + string(ds_list_find_value(global.all_loaded_main_levels, global.select_level_index)) + "/tilesets/tileset_default.png", 0, false, false, 0, 0);
 		}
 		else
-		if (global.character_select_in_this_menu == "level_editor" && file_exists(global.use_temp_or_working + "custom_levels/" + global.level_name + "/tilesets/tileset_default.png"))
+		if (global.character_select_in_this_menu == "level_editor" && file_exists(global.use_temp_or_working + "custom_levels/" + string(global.level_name) + "/tilesets/tileset_default.png"))
 		{
-			global.custom_tileset = sprite_add(global.use_temp_or_working + "custom_levels/" + global.level_name + "/tilesets/tileset_default.png", 0, false, false, 0, 0);
+			global.custom_tileset = sprite_add(global.use_temp_or_working + "custom_levels/" + string(global.level_name) + "/tilesets/tileset_default.png", 0, false, false, 0, 0);
 		}
 		else
 		{

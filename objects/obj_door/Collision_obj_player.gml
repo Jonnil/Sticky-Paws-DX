@@ -20,12 +20,18 @@ if (!open_door)
 			|| position_meeting(bbox_right + 1, bbox_bottom + 1, obj_semisolid_platform))
 			{
 				if (locked_door)
-				&& (place_meeting(x, y, obj_key))
+				&& (instance_exists(obj_key_follow))
+				&& (instance_nearest(x, y, obj_key_follow).follow_player != noone)
 				{
-					with (instance_nearest(x, y, obj_key))
+					with(obj_key_follow)
 					{
-						instance_destroy();
+						what_key --;
+						if (what_key <= 1)
+						{
+							nearest_key = noone;
+						}
 					}
+					
 					if (sprite_index == spr_door_locked)
 					{
 						sprite_index = spr_door;
@@ -40,8 +46,15 @@ if (!open_door)
 					{
 						sprite_index = spr_warp_box_one_use;
 					}
+					other.keys --;
 					locked_door = false;
 					open_door = true;
+					
+					/* Lastly, destroy the key being used */
+					with (instance_nearest(x, y, obj_key_follow))
+					{
+						instance_destroy();
+					}
 				}
 				else
 				if (!locked_door)

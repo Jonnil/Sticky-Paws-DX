@@ -804,7 +804,7 @@ function scr_select_custom_level_menu()
 					show_level_editor_corner_menu = true;
 					menu_delay = 3;
 					
-					ini_open(game_save_id + "custom_levels/" + global.level_name + "/data/level_information.ini");
+					ini_open(game_save_id + "custom_levels/" + string(global.level_name) + "/data/level_information.ini");
 					ini_write_string("info", "level_description", string(global.level_description)); /* Save description */
 					ini_close(); switch_save_data_commit(); /* Remember to commit the save data! */
 					

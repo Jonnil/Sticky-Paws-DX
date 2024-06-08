@@ -102,7 +102,7 @@ if (!global.actually_play_edited_level)
 {
 	
 	#region /* Save what date this level was first created in */
-	ini_open(game_save_id + "custom_levels/" + global.level_name + "/data/level_information.ini");
+	ini_open(game_save_id + "custom_levels/" + string(global.level_name) + "/data/level_information.ini");
 	if (!ini_key_exists("info", "first_created_on_version"))
 	{
 		ini_write_string("info", "first_created_on_version", "v" + scr_get_build_date());
@@ -139,7 +139,7 @@ if (!global.actually_play_edited_level)
 	/* Showing the original version number makes it easier to pinpoint what changes happened from one version to another */
 	level_made_in_what_version_text = "";
 	first_created_on_version = "";
-	var level_information_ini_path = game_save_id + "custom_levels/" + global.level_name + "/data/level_information.ini";
+	var level_information_ini_path = game_save_id + "custom_levels/" + string(global.level_name) + "/data/level_information.ini";
 	if (global.level_name != "")
 	&& (file_exists(level_information_ini_path))
 	{
@@ -397,6 +397,7 @@ if (!global.actually_play_edited_level)
 	add_object(LEVEL_OBJECT_ID.ID_BIG_COLLECTIBLE, global.resource_pack_sprite_big_collectible, 0, spr_wall, 1, 0, c_white, 1, "", noone, true, 0);
 	#endregion /* Big Collectible END */
 	
+	add_object(LEVEL_OBJECT_ID.ID_KEY, spr_key, 0, spr_wall, 1, 0, c_white, 1, "", noone, true, 0);
 	add_object(LEVEL_OBJECT_ID.ID_KEY_FRAGMENT, spr_key_fragment, 0, spr_wall, 1, 0, c_white, 1, "", noone, true, 0);
 	add_object(LEVEL_OBJECT_ID.ID_HEART, spr_heart, 0, spr_wall, 1, 0, c_white, 1, "", noone, true, 0);
 	add_object(LEVEL_OBJECT_ID.ID_HP_PICKUP, global.resource_pack_sprite_hp_pickup, 0, spr_wall, 1, 0, c_white, 1, "", noone, true, 0);
@@ -792,7 +793,7 @@ if (!global.actually_play_edited_level)
 #endregion /* If you're actually playing a level, then you don't need to run a lot of the code only relevant when making a level END */
 
 #region /* Load what selected object you were using most recent in the specific level */
-ini_open(game_save_id + "custom_levels/" + global.level_name + "/data/level_information.ini");
+ini_open(game_save_id + "custom_levels/" + string(global.level_name) + "/data/level_information.ini");
 place_object = ini_read_real("info", "place_object", 1);
 selected_object = ini_read_real("info", "selected_object", 0);
 select_object_menu_actual_x = ini_read_real("info", "select_object_menu_actual_x", 0);

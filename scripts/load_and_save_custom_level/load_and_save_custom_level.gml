@@ -14,7 +14,7 @@ function scr_load_object_placement_json()
 			var directories = ["background", "data", "sound", "tilesets"];
 			for(var i = 0; i < array_length_1d(directories); i++)
 			{
-				var dir_path = global.use_temp_or_working + "custom_levels/" + global.level_name + "/" + directories[i];
+				var dir_path = global.use_temp_or_working + "custom_levels/" + string(global.level_name) + "/" + directories[i];
 				if (!directory_exists(dir_path))
 				{
 					directory_create(dir_path);
@@ -31,7 +31,7 @@ function scr_load_object_placement_json()
 	else
 	if (global.level_name != "")
 	{
-		file_path = global.use_temp_or_working + "custom_levels/" + global.level_name + "/data/object_placement_all.json";
+		file_path = global.use_temp_or_working + "custom_levels/" + string(global.level_name) + "/data/object_placement_all.json";
 	}
 	
 	if (file_exists(file_path))
@@ -236,7 +236,7 @@ function scr_save_level_information()
 	&& (!global.create_level_from_template) /* Don't save when you are creating a level from template, as it will incorrectly create a "levels" folder in Local AppData */
 	{
 		show_debug_message("SAVE LEVEL INFORMATION");
-		ini_open(game_save_id + "custom_levels/" + global.level_name + "/data/level_information.ini");
+		ini_open(game_save_id + "custom_levels/" + string(global.level_name) + "/data/level_information.ini");
 		
 		#region /* Save what selected object you were using most recent in the specific level */
 		ini_write_real("info", "place_object", place_object);

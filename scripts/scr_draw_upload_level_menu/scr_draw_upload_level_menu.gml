@@ -24,6 +24,8 @@ function scr_draw_upload_level_menu()
 	|| (menu == "upload_edit_name")
 	|| (menu == "upload_edit_description")
 	|| (menu == "upload_edit_tags")
+	|| (menu == "upload_edit_development_stage")
+	|| (menu == "upload_edit_visibility")
 	|| (menu == "edit_ok")
 	|| (menu == "edit_cancel")
 	|| (menu == "upload_enter_name_ok")
@@ -105,7 +107,7 @@ function scr_draw_upload_level_menu()
 			
 			if (room == rm_leveleditor)
 			{
-				ini_open(game_save_id + "custom_levels/" + global.level_name + "/data/level_information.ini");
+				ini_open(game_save_id + "custom_levels/" + string(global.level_name) + "/data/level_information.ini");
 				ini_write_real("info", "clear_check", false); /* Set clear check to false when trying to upload within the level editor */
 				ini_close(); switch_save_data_commit(); /* Remember to commit the save data! */
 			}
@@ -198,7 +200,12 @@ function scr_draw_upload_level_menu()
 									if (global.switch_account_network_service_available) /* Need to make sure that network service is available before going online */
 									{
 										scr_load_level_tags(upload_level_path);
-									
+										
+										ini_open(game_save_id + "custom_levels/" + string(global.level_name) + "/data/level_information.ini");
+										development_stage_index = ini_read_real("info", "development_stage_index", 1);
+										visibility_index = ini_read_real("info", "visibility_index", 0);
+										ini_close(); switch_save_data_commit(); /* Remember to commit the save data! */
+										
 										menu_delay = 3;
 										menu = "upload_edit_name"; /* Go to the menu where you can edit things about the custom level before uploading it*/
 										if (variable_instance_exists(self, "show_level_editor_corner_menu"))
@@ -473,7 +480,7 @@ function scr_draw_upload_level_menu()
 	}
 	else
 	{
-		var draw_name_y = get_window_height * 0.5 - 22;
+		var draw_name_y = get_window_height - 42 * 12;
 	}
 	if (keyboard_virtual_status()
 	&& keyboard_virtual_height() != 0
@@ -483,19 +490,24 @@ function scr_draw_upload_level_menu()
 	}
 	else
 	{
-		var draw_description_y = get_window_height * 0.5 + 42;
+		var draw_description_y = get_window_height - 42 * 11;
 	}
-	var draw_tags_y = get_window_height * 0.5 + 42 * 2;
-	var edit_name_y = get_window_height * 0.5 + 42 * 3;
-	var edit_description_y = get_window_height * 0.5 + 42 * 4;
-	var edit_tags_y = get_window_height * 0.5 + 42 * 5;
-	var ok_y = get_window_height * 0.5 + 42 * 6;
-	var cancel_y = get_window_height * 0.5 + 42 * 7;
+	var draw_tags_y = get_window_height - 42 * 10;
+	
+	var edit_name_y = get_window_height - 42 * 9;
+	var edit_description_y = get_window_height - 42 * 8;
+	var edit_tags_y = get_window_height - 42 * 7;
+	var edit_development_stage_y = get_window_height - 42 * 4 - 42;
+	var edit_visibility_y = get_window_height - 42 * 3 - 16;
+	var ok_y = get_window_height - 42 * 2;
+	var cancel_y = get_window_height - 42 * 1;
 	
 	#region /* Edit things before uploading */
 	if (menu == "upload_edit_name")
 	|| (menu == "upload_edit_description")
 	|| (menu == "upload_edit_tags")
+	|| (menu == "upload_edit_development_stage")
+	|| (menu == "upload_edit_visibility")
 	|| (menu == "edit_ok")
 	|| (menu == "edit_cancel")
 	{
@@ -583,6 +595,10 @@ function scr_draw_upload_level_menu()
 		draw_sprite_ext(spr_icon_pen, 0, get_window_width * 0.5 - 185 + 16, edit_description_y + 21, 1, 1, 0, c_white, 1);
 		draw_menu_button(get_window_width * 0.5 - 185, edit_tags_y, l10n_text("Edit Tags"), "upload_edit_tags", "upload_edit_tags");
 		draw_sprite_ext(spr_icon_pen, 0, get_window_width * 0.5 - 185 + 16, edit_tags_y + 21, 1, 1, 0, c_white, 1);
+		
+		draw_menu_dropdown(get_window_width * 0.5 - 300, edit_visibility_y, l10n_text("Visibility"), "upload_edit_visibility", visibility_index, l10n_text("Public"), l10n_text("Unlisted"));
+		draw_menu_dropdown(get_window_width * 0.5 - 300, edit_development_stage_y, l10n_text("Development Stage"), "upload_edit_development_stage", development_stage_index, l10n_text("Early Access"), l10n_text("Complete/Stable"));
+		
 		draw_menu_button(get_window_width * 0.5 - 185, ok_y, l10n_text("Upload"), "edit_ok", "edit_ok");
 		draw_sprite_ext(spr_icon_upload, 0, get_window_width * 0.5 - 185 + 16, ok_y + 21, 1, 1, 0, c_white, 1);
 		draw_menu_button(get_window_width * 0.5 - 185, cancel_y, l10n_text("Cancel"), "edit_cancel", "edit_cancel");
@@ -678,6 +694,52 @@ function scr_draw_upload_level_menu()
 		
 		if (key_up)
 		&& (menu_delay == 0 && menu_joystick_delay == 0)
+		&& (open_dropdown)
+		{
+			if (menu == "upload_edit_development_stage")
+			&& (development_stage_index > 0)
+			{
+				development_stage_index --;
+				ini_open(game_save_id + "custom_levels/" + string(global.level_name) + "/data/level_information.ini");
+				ini_write_real("info", "development_stage_index", development_stage_index);
+				ini_close(); switch_save_data_commit(); /* Remember to commit the save data! */
+			}
+			else
+			if (menu == "upload_edit_visibility")
+			&& (visibility_index > 0)
+			{
+				visibility_index --;
+				ini_open(game_save_id + "custom_levels/" + string(global.level_name) + "/data/level_information.ini");
+				ini_write_real("info", "visibility_index", visibility_index);
+				ini_close(); switch_save_data_commit(); /* Remember to commit the save data! */
+			}
+		}
+		if (key_down)
+		&& (menu_delay == 0 && menu_joystick_delay == 0)
+		&& (open_dropdown)
+		{
+			if (menu == "upload_edit_development_stage")
+			&& (development_stage_index < 1)
+			{
+				development_stage_index ++;
+				ini_open(game_save_id + "custom_levels/" + string(global.level_name) + "/data/level_information.ini");
+				ini_write_real("info", "development_stage_index", development_stage_index);
+				ini_close(); switch_save_data_commit(); /* Remember to commit the save data! */
+			}
+			else
+			if (menu == "upload_edit_visibility")
+			&& (visibility_index < 1)
+			{
+				visibility_index ++;
+				ini_open(game_save_id + "custom_levels/" + string(global.level_name) + "/data/level_information.ini");
+				ini_write_real("info", "visibility_index", visibility_index);
+				ini_close(); switch_save_data_commit(); /* Remember to commit the save data! */
+			}
+		}
+		
+		if (key_up)
+		&& (menu_delay == 0 && menu_joystick_delay == 0)
+		&& (!open_dropdown)
 		{
 			menu_delay = 3;
 			if (menu == "upload_edit_name")
@@ -695,9 +757,19 @@ function scr_draw_upload_level_menu()
 				menu = "upload_edit_description";
 			}
 			else
-			if (menu == "edit_ok")
+			if (menu == "upload_edit_development_stage")
 			{
 				menu = "upload_edit_tags";
+			}
+			else
+			if (menu == "upload_edit_visibility")
+			{
+				menu = "upload_edit_development_stage";
+			}
+			else
+			if (menu == "edit_ok")
+			{
+				menu = "upload_edit_visibility";
 			}
 			else
 			if (menu == "edit_cancel")
@@ -707,6 +779,7 @@ function scr_draw_upload_level_menu()
 		}
 		if (key_down)
 		&& (menu_delay == 0 && menu_joystick_delay == 0)
+		&& (!open_dropdown)
 		{
 			menu_delay = 3;
 			if (menu == "upload_edit_name")
@@ -720,6 +793,16 @@ function scr_draw_upload_level_menu()
 			}
 			else
 			if (menu == "upload_edit_tags")
+			{
+				menu = "upload_edit_development_stage";
+			}
+			else
+			if (menu == "upload_edit_development_stage")
+			{
+				menu = "upload_edit_visibility";
+			}
+			else
+			if (menu == "upload_edit_visibility")
 			{
 				menu = "edit_ok";
 			}
@@ -1294,7 +1377,7 @@ function scr_draw_upload_level_menu()
 		draw_set_alpha(0.9);
 		draw_roundrect_color_ext(0, upload_name_question_y - 32, get_window_width, upload_name_question_y + 32, 50, 50, c_black, c_black, false);
 		draw_set_alpha(1);
-		scr_draw_text_outlined(get_window_width * 0.5, upload_name_question_y, l10n_text("Upload") + " " + global.level_name + "?", global.default_text_size * 1.9, c_black, c_white, 1);
+		scr_draw_text_outlined(get_window_width * 0.5, upload_name_question_y, l10n_text("Upload") + " " + string(global.level_name) + "?", global.default_text_size * 1.9, c_black, c_white, 1);
 		
 		#region /* Upload Level No */
 		if (point_in_rectangle(mouse_get_x, mouse_get_y, get_window_width * 0.5 - 370, upload_level_no_y - 42, get_window_width * 0.5 + 370, upload_level_no_y + 42))
@@ -1493,7 +1576,7 @@ function scr_draw_upload_level_menu()
 		draw_set_alpha(0.9);
 		draw_roundrect_color_ext(0, uploading_level_message_y - 32, get_window_width, uploading_level_message_y + 32, 50, 50, c_black, c_black, false);
 		draw_set_alpha(1);
-		scr_draw_text_outlined(get_window_width * 0.5, uploading_level_message_y, l10n_text("Uploading") + " " + global.level_name + "...", global.default_text_size * 1.9, c_black, c_white, 1);
+		scr_draw_text_outlined(get_window_width * 0.5, uploading_level_message_y, l10n_text("Uploading") + " " + string(global.level_name) + "...", global.default_text_size * 1.9, c_black, c_white, 1);
 		
 		draw_menu_button(get_window_width * 0.5 - 185, get_window_height - 42, l10n_text("Cancel"), "uploading_level", "edit_ok");
 		draw_sprite_ext(spr_icon_back, 0, get_window_width * 0.5 - 185 + 16, get_window_height - 42 + 21, 1, 1, 0, c_white, 1);

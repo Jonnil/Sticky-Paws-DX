@@ -326,7 +326,7 @@ if (!hide_menu_for_clean_screenshots)
 			&& (menu_delay == 0 && menu_joystick_delay == 0)
 			&& (global.character_select_in_this_menu == "level_editor")
 			{
-				if (!file_exists(game_save_id + "custom_levels/" + global.level_name + "/data/level_information.ini"))
+				if (!file_exists(game_save_id + "custom_levels/" + string(global.level_name) + "/data/level_information.ini"))
 				{
 					if (ds_list_size(global.all_loaded_custom_levels) - 1 < global.max_custom_levels) /* Don't let player download levels if they have reached the max amount of levels stored */
 					{
@@ -337,7 +337,7 @@ if (!hide_menu_for_clean_screenshots)
 					}
 				}
 				else
-				if (file_exists(game_save_id + "custom_levels/" + global.level_name + "/data/level_information.ini"))
+				if (file_exists(game_save_id + "custom_levels/" + string(global.level_name) + "/data/level_information.ini"))
 				{
 					/* Edit the downloaded level */
 					global.doing_clear_check_level = false;

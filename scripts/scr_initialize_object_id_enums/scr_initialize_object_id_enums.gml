@@ -124,6 +124,7 @@ function scr_initialize_object_id_enums()
 		ID_50_BULK_COLLECTIBLE = 475,
 		ID_BIG_COLLECTIBLE = 48,
 		ID_KEY_FRAGMENT = 481,
+		ID_KEY = 482,
 		ID_HEART = 53,
 		ID_HP_PICKUP = 54,
 		ID_INVINCIBILITY_POWERUP = 55,

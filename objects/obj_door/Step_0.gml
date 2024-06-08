@@ -58,6 +58,14 @@ if (open_door)
 	}
 	if (obj_camera.iris_xscale <= 0.01)
 	{
+		/* Activate objects at the teleport destination so you don't fall trough the floor */
+		instance_activate_region(
+		real(second_x) - (camera_get_view_width(view_camera[view_current]) * 0.5),
+		real(second_y) - (camera_get_view_height(view_camera[view_current]) * 0.5),
+		camera_get_view_width(view_camera[view_current]),
+		camera_get_view_height(view_camera[view_current]),
+		true);
+		
 		door_x = 0;
 		door_xscale = 1;
 		global.iris_zoom_in = false;
@@ -72,6 +80,12 @@ if (open_door)
 		obj_player.image_alpha = 1;
 		obj_player.x = second_x; /* Lastly, teleport the player */
 		obj_player.y = second_y;
+		if (instance_exists(obj_key_follow))
+		{
+			obj_key_follow.x = second_x; /* Teleport any keys following the player */
+			obj_key_follow.y = second_y;
+		}
+		
 		open_door = false;
 		
 		var time_source = time_source_create(time_source_game, 10, time_source_units_frames, function()
