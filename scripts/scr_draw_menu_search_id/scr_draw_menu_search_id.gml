@@ -232,8 +232,6 @@ function scr_draw_menu_search_id(what_kind_of_id = "level")
 					
 					global.select_level_index = ds_list_find_index(global.all_loaded_custom_levels, global.level_name); /* "Select level index" should be set to where the downloaded custom level is saved */
 					
-					show_message(string(downloaded_thumbnail_sprite))
-					
 					if (downloaded_thumbnail_sprite == noone)
 					{
 						if (file_exists(download_temp_path + "custom_levels/" + string(global.level_name) + "/thumbnail.png"))
@@ -259,6 +257,7 @@ function scr_draw_menu_search_id(what_kind_of_id = "level")
 						global.level_description = ini_read_string("info", "level_description", "");
 						masked_username = ini_read_string("info", "username", "");
 						development_stage_index = ini_read_string("info", "development_stage_index", 1);
+						downloaded_content_is_unlisted = ini_read_string("info", "visibility_index", 0);
 						ini_close();
 						
 						if (switch_check_profanity(global.level_description))
@@ -481,7 +480,16 @@ function scr_draw_menu_search_id(what_kind_of_id = "level")
 			var draw_id_y = 32;
 			if (global.enable_option_for_pc)
 			{
-				var draw_name_y = display_get_gui_height() - (42 * 8);
+				if (downloaded_content_is_unlisted)
+				{
+					var draw_name_y = display_get_gui_height() - (42 * 9);
+					var draw_unlisted_y = display_get_gui_height() - (42 * 8);
+				}
+				else
+				{
+					var draw_name_y = display_get_gui_height() - (42 * 8);
+					var draw_unlisted_y = display_get_gui_height() + 999;
+				}
 				var draw_author_name_y = display_get_gui_height() - (42 * 7);
 				var draw_description_y = display_get_gui_height() - (42 * 6);
 				var searched_file_play_y = display_get_gui_height() - (42 * 5);
@@ -491,8 +499,16 @@ function scr_draw_menu_search_id(what_kind_of_id = "level")
 			}
 			else
 			{
-				var draw_id_y = 32;
-				var draw_name_y = display_get_gui_height() - (42 * 7);
+				if (downloaded_content_is_unlisted)
+				{
+					var draw_name_y = display_get_gui_height() - (42 * 8);
+					var draw_unlisted_y = display_get_gui_height() - (42 * 7);
+				}
+				else
+				{
+					var draw_name_y = display_get_gui_height() - (42 * 7);
+					var draw_unlisted_y = display_get_gui_height() + 999;
+				}
 				var draw_author_name_y = display_get_gui_height() - (42 * 6);
 				var draw_description_y = display_get_gui_height() - (42 * 5);
 				var searched_file_play_y = display_get_gui_height() - (42 * 4);
@@ -503,7 +519,16 @@ function scr_draw_menu_search_id(what_kind_of_id = "level")
 			
 			if (what_kind_of_id == "level")
 			{
-				/* Draw Level Name */ draw_set_halign(fa_center); scr_draw_text_outlined(display_get_gui_width() * 0.5, draw_name_y, string(masked_level_name), global.default_text_size * 1.9, c_black, c_white, 1);
+				/* Draw Level Name */
+				draw_set_halign(fa_center);
+				scr_draw_text_outlined(display_get_gui_width() * 0.5, draw_name_y, string(masked_level_name), global.default_text_size * 1.9, c_black, c_white, 1);
+				
+				/* Draw if level is unlisted */
+				if (downloaded_content_is_unlisted)
+				{
+					scr_draw_text_outlined(display_get_gui_width() * 0.5, draw_unlisted_y, l10n_text("Unlisted"), global.default_text_size, c_black, c_white, 1);
+					draw_sprite_ext(spr_icon_unlisted, 1, display_get_gui_width() * 0.5 - 100, draw_unlisted_y, 1, 1, 0, c_white, 1);
+				}
 				
 				/* Level is downloaded, so you get a choice if you want to play, make, or go back to custom level select*/
 				if (file_exists(game_save_id + "custom_levels/" + string(global.level_name) + "/data/level_information.ini"))

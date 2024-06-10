@@ -544,6 +544,7 @@
     {"name":"spr_icon_played","order":32,"path":"sprites/spr_icon_played/spr_icon_played.yy",},
     {"name":"spr_icon_report","order":25,"path":"sprites/spr_icon_report/spr_icon_report.yy",},
     {"name":"spr_icon_unfinished","order":33,"path":"sprites/spr_icon_unfinished/spr_icon_unfinished.yy",},
+    {"name":"spr_icon_unlisted","order":48,"path":"sprites/spr_icon_unlisted/spr_icon_unlisted.yy",},
     {"name":"spr_icon_unplayed","order":31,"path":"sprites/spr_icon_unplayed/spr_icon_unplayed.yy",},
     {"name":"spr_icon_upload","order":23,"path":"sprites/spr_icon_upload/spr_icon_upload.yy",},
     {"name":"spr_icon_zero_defeats","order":42,"path":"sprites/spr_icon_zero_defeats/spr_icon_zero_defeats.yy",},

@@ -104,17 +104,23 @@ function scr_draw_level_editor_thumbnail(load_what_levels = global.all_loaded_cu
 			{
 				if (variable_instance_exists(self, "thumbnail_clear_check"))
 				&& (variable_instance_exists(self, "thumbnail_level_id"))
+				&& (variable_instance_exists(self, "thumbnail_level_unlisted"))
 				&& (is_array(thumbnail_clear_check))
 				&& (array_length(thumbnail_clear_check) > 0)
 				&& (is_array(thumbnail_level_id))
 				&& (array_length(thumbnail_level_id) > 0)
+				&& (is_array(thumbnail_level_unlisted))
+				&& (array_length(thumbnail_level_unlisted) > 0)
 				&& (!level_editor_template_select && i >= 1)
 				&& (i < array_length(thumbnail_clear_check))
 				&& (i < array_length(thumbnail_level_id))
+				&& (i < array_length(thumbnail_level_unlisted))
 				{
 					var clear_check = thumbnail_clear_check[i];
 					var var_level_id = thumbnail_level_id[i];
+					var var_level_unlisted = thumbnail_level_unlisted[i];
 					var level_id_text = "";
+					var level_unlisted_text = "";
 					var clear_check_text = "";
 					
 					/* Get the Level ID */
@@ -123,6 +129,7 @@ function scr_draw_level_editor_thumbnail(load_what_levels = global.all_loaded_cu
 						if (global.select_level_index == i)
 						{
 							var level_id_text = string(var_level_id);
+							var level_unlisted_text = l10n_text("Unlisted");
 							if (room == rm_title)
 							{
 								global.search_id = string(var_level_id); /* Set the global search id for future use within the level editor */
@@ -152,20 +159,31 @@ function scr_draw_level_editor_thumbnail(load_what_levels = global.all_loaded_cu
 					
 					var draw_x = 394 * (i - column * row) + 140 + thumbnail_x_offset;
 					var level_id_draw_y = 226 * (column - scroll) + 274;
+					var unlisted_draw_y = 226 * (column - scroll) + 274;
 					var clear_check_draw_y = 226 * (column - scroll) + 274;
 					var text_size = global.default_text_size * scr_wave(1, 1.1, 1, 0);
 						
 					draw_set_halign(fa_left);
 					draw_set_valign(fa_middle);
+					
 					/* Draw Level ID furthest up */
 					if (var_level_id != "")
 					{
 						scr_draw_text_outlined(draw_x, level_id_draw_y, level_id_text, text_size, c_white, c_black, 1);
 						draw_sprite_ext(spr_icon_upload, 1, draw_x - 20, level_id_draw_y, icon_scale, icon_scale, 0, c_white, 1);
+						var unlisted_draw_y = level_id_draw_y + 32;
 						var clear_check_draw_y = level_id_draw_y + 32;
 					}
-						
-					/* Draw Clear Check status below the Level ID */
+					
+					/* Draw if level is unlisted below Level ID */
+					if (var_level_unlisted)
+					{
+						scr_draw_text_outlined(draw_x, unlisted_draw_y, level_unlisted_text, text_size, c_white, c_black, 1);
+						draw_sprite_ext(spr_icon_unlisted, 1, draw_x - 20, unlisted_draw_y, icon_scale, icon_scale, 0, c_white, 1);
+						var clear_check_draw_y = unlisted_draw_y + 32;
+					}
+					
+					/* Draw Clear Check status below if level is unlisted */
 					if (clear_check)
 					{
 						scr_draw_text_outlined(draw_x, clear_check_draw_y, clear_check_text, text_size, c_white, c_black, 1);

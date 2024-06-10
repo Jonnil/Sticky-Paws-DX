@@ -17,6 +17,7 @@ function scr_load_custom_levels()
 			&& (variable_instance_exists(self, "thumbnail_clear_check"))
 			&& (variable_instance_exists(self, "thumbnail_daily_build"))
 			&& (variable_instance_exists(self, "thumbnail_level_id"))
+			&& (variable_instance_exists(self, "thumbnail_level_unlisted"))
 			&& (is_array(thumbnail_level_name))
 			&& (array_length(thumbnail_level_name) > 0)
 			&& (is_array(thumbnail_level_description))
@@ -27,6 +28,8 @@ function scr_load_custom_levels()
 			&& (array_length(thumbnail_daily_build) > 0)
 			&& (is_array(thumbnail_level_id))
 			&& (array_length(thumbnail_level_id) > 0)
+			&& (is_array(thumbnail_level_unlisted))
+			&& (array_length(thumbnail_level_unlisted) > 0)
 			//&& (i >= 0)
 			//&& (i < array_length(thumbnail_level_name))
 			//&& (i < array_length(thumbnail_level_description))
@@ -40,6 +43,7 @@ function scr_load_custom_levels()
 					thumbnail_clear_check[i] = ini_read_string("info", "clear_check", false);
 					thumbnail_daily_build[i] = ini_read_string("info", "if_daily_build", false);
 					thumbnail_level_id[i] = string(ini_read_string("info", "level_id", ""));
+					thumbnail_level_unlisted[i] = string(ini_read_real("info", "visibility_index", 0));
 					if (switch_check_profanity(string(ini_read_string("info", "level_name", ""))))
 					{
 						thumbnail_level_name[i] = string(switch_mask_profanity(ini_read_string("info", "level_name", "")));

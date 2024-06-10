@@ -3125,6 +3125,7 @@
     {"id":{"name":"spr_icon_played","path":"sprites/spr_icon_played/spr_icon_played.yy",},},
     {"id":{"name":"spr_icon_report","path":"sprites/spr_icon_report/spr_icon_report.yy",},},
     {"id":{"name":"spr_icon_unfinished","path":"sprites/spr_icon_unfinished/spr_icon_unfinished.yy",},},
+    {"id":{"name":"spr_icon_unlisted","path":"sprites/spr_icon_unlisted/spr_icon_unlisted.yy",},},
     {"id":{"name":"spr_icon_unplayed","path":"sprites/spr_icon_unplayed/spr_icon_unplayed.yy",},},
     {"id":{"name":"spr_icon_upload","path":"sprites/spr_icon_upload/spr_icon_upload.yy",},},
     {"id":{"name":"spr_icon_zero_defeats","path":"sprites/spr_icon_zero_defeats/spr_icon_zero_defeats.yy",},},

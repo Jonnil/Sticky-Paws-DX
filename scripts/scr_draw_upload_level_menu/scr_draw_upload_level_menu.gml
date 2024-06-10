@@ -597,6 +597,11 @@ function scr_draw_upload_level_menu()
 		draw_sprite_ext(spr_icon_pen, 0, get_window_width * 0.5 - 185 + 16, edit_tags_y + 21, 1, 1, 0, c_white, 1);
 		
 		draw_menu_dropdown(get_window_width * 0.5 - 300, edit_visibility_y, l10n_text("Visibility"), "upload_edit_visibility", visibility_index, l10n_text("Public"), l10n_text("Unlisted"));
+		if (visibility_index == 1)
+		{
+			draw_sprite_ext(spr_icon_unlisted, 0, get_window_width * 0.5 - 300 - 16, edit_visibility_y + 21, 1, 1, 0, c_white, 1);
+		}
+		
 		draw_menu_dropdown(get_window_width * 0.5 - 300, edit_development_stage_y, l10n_text("Development Stage"), "upload_edit_development_stage", development_stage_index, l10n_text("Early Access"), l10n_text("Complete/Stable"));
 		
 		draw_menu_button(get_window_width * 0.5 - 185, ok_y, l10n_text("Upload"), "edit_ok", "edit_ok");
@@ -709,6 +714,7 @@ function scr_draw_upload_level_menu()
 			&& (visibility_index > 0)
 			{
 				visibility_index --;
+				thumbnail_level_unlisted[global.select_level_index] = visibility_index;
 				ini_open(game_save_id + "custom_levels/" + string(global.level_name) + "/data/level_information.ini");
 				ini_write_real("info", "visibility_index", visibility_index);
 				ini_close(); switch_save_data_commit(); /* Remember to commit the save data! */
@@ -731,6 +737,7 @@ function scr_draw_upload_level_menu()
 			&& (visibility_index < 1)
 			{
 				visibility_index ++;
+				thumbnail_level_unlisted[global.select_level_index] = visibility_index;
 				ini_open(game_save_id + "custom_levels/" + string(global.level_name) + "/data/level_information.ini");
 				ini_write_real("info", "visibility_index", visibility_index);
 				ini_close(); switch_save_data_commit(); /* Remember to commit the save data! */

@@ -55,6 +55,7 @@ finished_level = undefined; /* This needs to be set to undefined by default */
 liked_content = undefined;
 i = 0;
 creating_daily_build = false; /* If you are going to create a daily build or not */
+downloaded_content_is_unlisted = 0; /* If downloaded content is unlisted or not */
 development_stage_index = 1 /* What development stage custom content is being published by. 0 = Early Access. 1 = Complete/Stable */
 visibility_index = 0; /* If custom content should show up publicly in online list or not. 0 = Public. 1 = Unlisted */
 
@@ -72,6 +73,7 @@ key_right = noone;
 thumbnail_clear_check[0] = noone;
 thumbnail_daily_build[0] = noone;
 thumbnail_level_id[0] = "";
+thumbnail_level_unlisted[0] = 0;
 thumbnail_level_name[0] = "";
 thumbnail_level_description[0] = "";
 thumbnail_level_username[0] = "";

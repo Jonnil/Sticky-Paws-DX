@@ -139,6 +139,7 @@ function menu_dropdown_variable_to_change(variable_to_change, change_to_value)
 	&& (variable_to_change == visibility_index)
 	{
 		visibility_index = change_to_value;
+		thumbnail_level_unlisted[global.select_level_index] = visibility_index;
 		ini_open(game_save_id + "custom_levels/" + string(global.level_name) + "/data/level_information.ini");
 		ini_write_real("info", "visibility_index", visibility_index);
 		ini_close(); switch_save_data_commit(); /* Remember to commit the save data! */
