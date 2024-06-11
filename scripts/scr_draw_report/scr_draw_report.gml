@@ -33,6 +33,10 @@ function scr_draw_report()
 		draw_set_alpha(1);
 		#endregion /* Opaque transparent black rectangle over whole screen, but underneath text END */
 		
+		/* Show the Email Support in the bottom left screen */
+		draw_set_halign(fa_left);
+		scr_draw_text_outlined(32, display_get_gui_height() - 32, l10n_text("Email Support") + ": " + string(global.email_support));
+		draw_set_halign(fa_center);
 	}
 	
 	#region /* Send report information to the server */
@@ -744,21 +748,13 @@ function scr_draw_report()
 	if (menu == "report_message_ok")
 	|| (menu == "report_message_back")
 	{
-		var report_message_x = display_get_gui_width() * 0.5;
-		var report_message_y = display_get_gui_height() * 0.5;
-		
 		global.report_message = scr_draw_name_input_screen(global.report_message, 100, c_white, 0.9, false, display_get_gui_width() * 0.5, display_get_gui_height() * 0.5, "report_message_ok", "report_message_back", false, true, false);
 		
 		scr_draw_text_outlined(display_get_gui_width() * 0.5, display_get_gui_height() * 0.5 - 96, l10n_text("Please provide a reason for this report"), global.default_text_size, c_black, c_white, 1);
 		
 		#region /* Pressing Report Comment OK */
-		if (key_a_pressed)
-		&& (menu = "report_message_ok")
+		if (global.clicking_ok_input_screen)
 		&& (global.report_message != "")
-		|| (point_in_rectangle(mouse_get_x, mouse_get_y, report_message_x - 185, report_message_y + 52, report_message_x - 185 + 370, report_message_y + 52 + 42))
-		&& (global.report_message != "")
-		&& (global.controls_used_for_navigation == "mouse")
-		&& (mouse_check_button_released(mb_left))
 		{
 			if (!keyboard_check_pressed(ord("Z")))
 			&& (!keyboard_check_pressed(ord("X")))
@@ -800,12 +796,7 @@ function scr_draw_report()
 		else
 		
 		#region /* Pressing Report Comment Cancel */
-		if (key_a_pressed)
-		&& (menu = "report_message_back")
-		|| (key_b_pressed)
-		|| (point_in_rectangle(mouse_get_x, mouse_get_y, report_message_x - 185, report_message_y + 52 + 42, report_message_x - 185 + 370, report_message_y + 52 + 42 + 42))
-		&& (global.controls_used_for_navigation == "mouse")
-		&& (mouse_check_button_released(mb_left))
+		if (global.clicking_cancel_input_screen)
 		{
 			if (!keyboard_check_pressed(ord("Z")))
 			&& (!keyboard_check_pressed(ord("X")))
@@ -822,6 +813,10 @@ function scr_draw_report()
 		}
 		#endregion /* Pressing Report Comment Cancel END */
 		
+		/* Show the Email Support in the bottom left screen */
+		draw_set_halign(fa_left);
+		scr_draw_text_outlined(32, display_get_gui_height() - 32, l10n_text("Email Support") + ": " + string(global.email_support));
+		draw_set_halign(fa_center);
 	}
 	#endregion /* Report Comment END */
 	

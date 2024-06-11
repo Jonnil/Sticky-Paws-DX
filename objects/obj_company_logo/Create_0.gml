@@ -23,6 +23,7 @@ global.link_to_website = "https://www.jonnil.games/";
 global.link_to_website_guide = "https://www.jonnil.games/sticky-paws-guide";
 global.link_to_wiki = ""; //"https://stickypedia.miraheze.org/wiki/Main_Page";
 global.link_to_youtube = "https://www.youtube.com/Jonnilescom";
+global.email_support = "contact@jonnil.games"; /* This is the email address for an email support, which is required by most game platforms. Will show up whenever you report content in the game */
 
 /* Update this text explaining what is new in each update */
 global.whats_new = "Biggest Sticky Paws update yet! \n Thank you everyone for supporting my game! \n I've been working very hard on porting this game to Switch. \n Been focusing a lot on making the level editor better, \n and there is now a level sharing feature in-game. \n Please support this game by sharing the game with friends. \n I would greatly appreciate it. \n Have a great time making and playing shared levels! \n \n -Jonnil";
