@@ -3,7 +3,7 @@
   <Core>
     <Name>Application</Name>
     <Is64BitInstruction>True</Is64BitInstruction>
-    <ApplicationId>0x01004b9000490000</ApplicationId>
+    <ApplicationId>0x0100c8201aa36000</ApplicationId>
     <ProgramIndex>0</ProgramIndex>
     <MainThreadStackSize>0x00100000</MainThreadStackSize>
     <ProcessAddressSpace>AddressSpace64Bit</ProcessAddressSpace>
@@ -85,7 +85,7 @@
       <Organization>USK</Organization>
       <Age>0</Age>
     </Rating>
-    <LegalInformationFilePath>legal_info_0100c8201aa36000_b4ee.zip</LegalInformationFilePath>
+    <LegalInformationFilePath>legal_info_0100c8201aa36000_1e4b.zip</LegalInformationFilePath>
     <VideoCapture>Enable</VideoCapture>
     <RuntimeAddOnContentInstall>Deny</RuntimeAddOnContentInstall>
     <CrashReport>Allow</CrashReport>
