@@ -89,7 +89,6 @@ if (instance_exists(obj_player))
 						}
 						else
 						if (room == rm_leveleditor)
-						&& (global.character_select_in_this_menu == "level_editor")
 						&& (global.actually_play_edited_level)
 						{
 							var level_name = global.level_name;

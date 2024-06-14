@@ -1,7 +1,8 @@
 player = 1;
 selected_skin = 0;
 selected_voicepack = 0;
-for(var p = 1; p <= global.max_players; p += 1) {
+for(var p = 1; p <= global.max_players; p += 1)
+{
 	gamepad_set_vibration(p - 1, 0, 0);
 	
 	player_accept_selection[p] = -1;
@@ -130,6 +131,7 @@ can_save_to_character_config = false; /* Only turn true when playing as custom c
 initialized_copy = false;
 first_copy_file = "";
 
+how_many_levels_added_today_text = "+7 levels added today!"; /* The text should say "+n levels added today!" */
 copied_character_name = ""; /* When you have copied a character, get the name for later use */
 downloaded_thumbnail_sprite = noone; /* When downloading a level, you want to show a thumbnail temporarely */
 level_editor_edit_name = false; /* If you are editing an already made level's name or not */

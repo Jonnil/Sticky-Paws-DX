@@ -448,6 +448,12 @@ function scr_select_custom_level_menu()
 		if (global.free_communication_available)
 		{
 			draw_menu_button(0, draw_online_level_list_y, l10n_text("Online Level List"), "online_level_list", "");
+			if (how_many_levels_added_today_text != "")
+			{
+				draw_set_halign(fa_left);
+				scr_draw_text_outlined(370 + 25, draw_online_level_list_y + 21, string(how_many_levels_added_today_text), global.default_text_size + scr_wave(0, 0.1, 1), c_black, c_lime, 1);
+				draw_set_halign(fa_center);
+			}
 			
 			if (menu == "online_level_list")
 			&& (global.controls_used_for_navigation == "mouse")

@@ -590,7 +590,6 @@ if (!global.actually_play_edited_level)
 			if (!pause)
 			&& (!in_modify_object_menu)
 			&& (menu_delay == 0 && menu_joystick_delay == 0)
-			&& (global.character_select_in_this_menu == "level_editor")
 			{
 				if (!instance_exists(obj_camera))
 				|| (point_in_rectangle(mouse_get_x, mouse_get_y, get_window_width - 64, get_window_height * 0.5 - 32, get_window_width, get_window_height * 0.5 + 32))
@@ -606,7 +605,6 @@ if (!global.actually_play_edited_level)
 					menu_delay = 9999; /* Disable all menu control */
 					lives = 5;
 					global.lives_until_assist = 0;
-					global.character_select_in_this_menu = "level_editor";
 					
 					audio_stop_sound(level_editing_music); /* Stop the background music that plays during level editing when playtesting a level */
 					

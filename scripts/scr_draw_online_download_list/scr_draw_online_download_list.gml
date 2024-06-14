@@ -380,7 +380,15 @@ function scr_draw_online_download_list()
 					}
 					global.go_to_menu_when_going_back_to_title = "online_level_list";
 					select_custom_level_menu_open = false;
-					menu = "load_custom_level"; /* Always reload all custom levels before going to the level select menu, just in case */
+					if (global.character_select_in_this_menu == "level_editor")
+					{
+						menu = "load_custom_level"; /* Always reload all custom levels before going to the level select menu, just in case */
+					}
+					else
+					if (global.character_select_in_this_menu == "online_level_list_title")
+					{
+						menu = "online_level_list_title";
+					}
 				}
 				else
 				{

@@ -27,17 +27,17 @@ moonjump_key = ord("M");
 moonjump_button = gp_shoulderlb;
 show_playtest_buttons = false;
 
-if (global.character_select_in_this_menu == "level_editor")
-{
-	pause_x = 32;
-	playtest_invincibility_x = 96;
-	playtest_moonjump_x = 160;
-}
-else
+if (global.character_select_in_this_menu == "main_game")
 {
 	pause_x = -999;
 	playtest_invincibility_x = 32;
 	playtest_moonjump_x = 96;
+}
+else
+{
+	pause_x = 32;
+	playtest_invincibility_x = 96;
+	playtest_moonjump_x = 160;
 }
 
 prev_display_width = display_get_gui_width();
@@ -105,15 +105,13 @@ else
 
 if (global.character_select_in_this_menu == "main_game")
 && (file_exists("levels/" + string(ds_list_find_value(global.all_loaded_main_levels, global.select_level_index)) + "/data/level_information.ini"))
-|| (global.character_select_in_this_menu == "level_editor")
-&& (file_exists(global.use_temp_or_working + "custom_levels/" + string(global.level_name) + "/data/level_information.ini"))
+|| (file_exists(global.use_temp_or_working + "custom_levels/" + string(global.level_name) + "/data/level_information.ini"))
 {
 	if (global.character_select_in_this_menu == "main_game")
 	{
 		ini_open("levels/" + string(ds_list_find_value(global.all_loaded_main_levels, global.select_level_index)) + "/data/level_information.ini");
 	}
 	else
-	if (global.character_select_in_this_menu == "level_editor")
 	{
 		ini_open(global.use_temp_or_working + "custom_levels/" + string(global.level_name) + "/data/level_information.ini");
 	}

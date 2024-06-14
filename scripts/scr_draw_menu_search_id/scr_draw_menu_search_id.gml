@@ -694,6 +694,7 @@ function scr_draw_menu_search_id(what_kind_of_id = "level")
 				&& (key_a_pressed)
 				{
 					/* Play the level */
+					global.character_select_in_this_menu = "level_editor"; /* Make sure this variable is set to level editor, as it's necessary when playing levels from online level list */
 					global.doing_clear_check_level = false;
 					global.actually_play_edited_level = true; /* Even before going to the level, set this variable to true */
 					global.play_edited_level = true;
@@ -841,6 +842,7 @@ function scr_draw_menu_search_id(what_kind_of_id = "level")
 				&& (key_a_pressed)
 				{
 					/* Edit the downloaded level */
+					global.character_select_in_this_menu = "level_editor"; /* Make sure this variable is set to level editor, as it's necessary when editing levels from online level list */
 					global.doing_clear_check_level = false;
 					global.actually_play_edited_level = false;
 					global.play_edited_level = false;

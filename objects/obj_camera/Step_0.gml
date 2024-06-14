@@ -556,13 +556,12 @@ else
 }
 #endregion /* Make the screen completly black in Draw GUI, so there is no chance to see something you're not supposed to see END */
 
-if (global.character_select_in_this_menu == "level_editor")
-&& (global.play_edited_level) /* When playtesting the level */
-&& (!global.actually_play_edited_level) /* But not actually playing the level */
+if (global.character_select_in_this_menu == "main_game")
+&& (global.debug_screen)
 && (!global.doing_clear_check_level)
 && (!global.doing_clear_check_character)
-|| (global.character_select_in_this_menu == "main_game")
-&& (global.debug_screen)
+|| (global.play_edited_level) /* When playtesting the level */
+&& (!global.actually_play_edited_level) /* But not actually playing the level */
 && (!global.doing_clear_check_level)
 && (!global.doing_clear_check_character)
 {

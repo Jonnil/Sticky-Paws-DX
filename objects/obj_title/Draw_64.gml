@@ -1,6 +1,15 @@
 var main_game_y = display_get_gui_height() * 0.5 + 100 + 40;
 var level_editor_y = display_get_gui_height() * 0.5 + 100 + 80 + 2;
-var option_and_quit_y = display_get_gui_height() * 0.5 + 225;
+if (global.free_communication_available)
+{
+	var online_level_list_title_y = display_get_gui_height() * 0.5 + 100 + 120 + 4;
+	var option_and_quit_y = display_get_gui_height() * 0.5 + 225 + 40;
+}
+else
+{
+	var online_level_list_title_y = -999;
+	var option_and_quit_y = display_get_gui_height() * 0.5 + 225;
+}
 var mouse_get_x = device_mouse_x_to_gui(0);
 var mouse_get_y = device_mouse_y_to_gui(0);
 var fixed_player = 1;
@@ -42,6 +51,7 @@ if (global.enable_option_for_pc)
 {
 	if (menu == "main_game")
 	|| (menu == "level_editor")
+	|| (menu == "online_level_list_title")
 	|| (menu == "options")
 	|| (menu == "information")
 	|| (menu == "quit")
@@ -113,6 +123,7 @@ draw_set_halign(fa_center);
 #region /* Hide Fullscreen and Version text / Set certain variables to default value */
 if (menu == "main_game")
 || (menu == "level_editor")
+|| (menu == "online_level_list_title")
 || (menu == "options")
 || (menu == "quit")
 || (menu == "information")
@@ -176,6 +187,7 @@ if (!in_settings)
 {
 	if (menu == "main_game" ||
 	menu == "level_editor" ||
+	menu == "online_level_list_title" ||
 	menu == "options" ||
 	menu == "quit" ||
 	menu == "information" ||
@@ -184,6 +196,16 @@ if (!in_settings)
 		
 		draw_menu_button(display_get_gui_width() * 0.5 - 185, main_game_y, l10n_text("Main Game"), "main_game", "main_game");
 		draw_menu_button(display_get_gui_width() * 0.5 - 185, level_editor_y, l10n_text("Level Editor"), "level_editor", "level_editor");
+		if (global.free_communication_available)
+		{
+			draw_menu_button(display_get_gui_width() * 0.5 - 185, online_level_list_title_y, l10n_text("Online Level List"), "online_level_list_title", "online_level_list_title");
+			if (how_many_levels_added_today_text != "")
+			{
+				draw_set_halign(fa_left);
+				scr_draw_text_outlined(display_get_gui_width() * 0.5 + 185 + 25, online_level_list_title_y + 21, string(how_many_levels_added_today_text), global.default_text_size + scr_wave(0, 0.1, 1), c_black, c_lime, 1);
+				draw_set_halign(fa_center);
+			}
+		}
 		
 		select_custom_level_menu_open = false;
 		can_input_level_name = false;
@@ -243,7 +265,7 @@ if (!in_settings)
 				player_accept_selection[i] = - 1;
 			}
 			in_settings = false;
-		
+			
 			#region /* Select Level Editor */
 			if (menu == "level_editor")
 			&& (menu_delay == 0 && menu_joystick_delay == 0)
@@ -259,12 +281,57 @@ if (!in_settings)
 				global.level_editor_level = 1;
 			}
 			#endregion /* Select Level Editor END */
-	
+			
 		}
 		#endregion /* Click Level Editor END */
-	
+		
 		else
-	
+		
+		#region /* Click Online Level List Title */
+		if (point_in_rectangle(mouse_get_x, mouse_get_y, display_get_gui_width() * 0.5 - 185, online_level_list_title_y, display_get_gui_width() * 0.5 + 185, online_level_list_title_y + 41))
+		&& (mouse_check_button_released(mb_left))
+		&& (menu == "online_level_list_title")
+		&& (menu_delay == 0 && menu_joystick_delay == 0)
+		&& (!in_settings)
+		&& (global.free_communication_available)
+		|| (menu == "online_level_list_title")
+		&& (key_a_pressed)
+		&& (menu_delay == 0 && menu_joystick_delay == 0)
+		&& (!in_settings)
+		&& (global.free_communication_available)
+		{
+			if (mouse_check_button_released(mb_left))
+			{
+				player_automatically_join[fixed_player] = true; /* Player 1 joins if you click Level Editor */
+			}
+			for(var i = 1; i <= global.max_players; i += 1)
+			{
+				global.player_can_play[i] = false;
+				player_accept_selection[i] = - 1;
+			}
+			in_settings = false;
+			
+			#region /* Go to character select before going to online level list */
+			if (menu == "online_level_list_title")
+			&& (menu_delay == 0 && menu_joystick_delay == 0)
+			{
+				menu_delay = 3;
+				scr_audio_play(menuvoice_leveleditor, volume_source.voice);
+				global.doing_clear_check_level = false;
+				global.actually_play_edited_level = false;
+				global.play_edited_level = false;
+				global.character_select_in_this_menu = "online_level_list_title";
+				scr_load_character_initializing();
+				menu = "load_characters";
+				global.level_editor_level = 1;
+			}
+			#endregion /* Go to character select before going to online level list END */
+			
+		}
+		#endregion /* Click Online Level List Title END */
+		
+		else
+		
 		#region /* Click Options */
 		if (global.enable_option_for_pc)
 		&& (point_in_rectangle(mouse_get_x, mouse_get_y, display_get_gui_width() * 0.5 - 185, option_and_quit_y + 2, display_get_gui_width() * 0.5, option_and_quit_y + 41))
@@ -512,6 +579,28 @@ if (!input_key)
 		if (key_down)
 		{
 			menu_delay = 3;
+			if (global.free_communication_available)
+			{
+				menu = "online_level_list_title";
+			}
+			else
+			{
+				menu = "options";
+			}
+		}
+	}
+	else
+	if (menu == "online_level_list_title")
+	{
+		if (key_up)
+		{
+			menu_delay = 3;
+			menu = "level_editor";
+		}
+		else
+		if (key_down)
+		{
+			menu_delay = 3;
 			menu = "options";
 		}
 	}
@@ -535,7 +624,14 @@ if (!input_key)
 		if (key_up)
 		{
 			menu_delay = 3;
-			menu = "level_editor";
+			if (global.free_communication_available)
+			{
+				menu = "online_level_list_title";
+			}
+			else
+			{
+				menu = "level_editor";
+			}
 		}
 		else
 		if (key_down)
@@ -557,7 +653,14 @@ if (!input_key)
 		if (key_up)
 		{
 			menu_delay = 3;
-			menu = "level_editor";
+			if (global.free_communication_available)
+			{
+				menu = "online_level_list_title";
+			}
+			else
+			{
+				menu = "level_editor";
+			}
 		}
 		else
 		if (key_down)
