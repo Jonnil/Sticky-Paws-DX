@@ -195,6 +195,13 @@ function scr_character_select_menu_draw()
 		&& (room == rm_title) /* Can only access online in title screen */
 		{
 			draw_menu_button(0, draw_online_character_list_y, l10n_text("Online Character List"), "online_character_list", "online_character_list");
+			if (characters_added_today_text != "")
+			{
+				draw_set_halign(fa_left);
+				scr_draw_text_outlined(370 + 25, draw_online_character_list_y + 21, string(characters_added_today_text), global.default_text_size + scr_wave(0, 0.1, 1), c_black, c_lime, 1);
+				draw_set_halign(fa_center);
+			}
+			
 			if (max_custom_characters_reached)
 			{
 				draw_sprite_ext(spr_menu_button, global.menu_button_subimg, 0, draw_online_character_list_y + 21, 1, 1, 0, c_dkgray, 0.5);

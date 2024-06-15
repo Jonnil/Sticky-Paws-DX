@@ -131,7 +131,8 @@ can_save_to_character_config = false; /* Only turn true when playing as custom c
 initialized_copy = false;
 first_copy_file = "";
 
-how_many_levels_added_today_text = "+7 levels added today!"; /* The text should say "+n levels added today!" */
+levels_added_today_text = ""; /* The text should say "+n levels added today!" */
+characters_added_today_text = ""; /* The text should say "+n characters added today!" */
 copied_character_name = ""; /* When you have copied a character, get the name for later use */
 downloaded_thumbnail_sprite = noone; /* When downloading a level, you want to show a thumbnail temporarely */
 level_editor_edit_name = false; /* If you are editing an already made level's name or not */
@@ -566,3 +567,5 @@ if (global.narrator >= 0)
 scr_audio_play(voice_game_title, volume_source.voice); /* Say the games title */
 
 set_controller_sprites_to_use();
+
+scr_get_todays_upload_count();

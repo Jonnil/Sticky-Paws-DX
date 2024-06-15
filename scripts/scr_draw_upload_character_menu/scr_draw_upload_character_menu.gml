@@ -857,6 +857,7 @@ function scr_draw_upload_character_menu()
 		{
 			search_for_id_still = false;
 			scr_load_character_initializing();
+			scr_get_todays_upload_count(); /* Update the todays upload count, so that player knows that the character was uploaded */
 			menu = "load_characters";
 			player_menu[fixed_player] = "select_character"; /* Go back to this menu after reloading all characters */
 			menu_delay = 3;

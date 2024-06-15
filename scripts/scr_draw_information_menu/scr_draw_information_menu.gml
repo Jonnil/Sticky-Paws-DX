@@ -403,10 +403,10 @@ function scr_draw_information_menu()
 			scr_draw_text_outlined(32, to_share_levels_y, l10n_text("To share levels press the Upload button in level editor"), global.default_text_size, c_black, c_white, 1);
 			scr_draw_text_outlined(32, to_browse_levels_y, l10n_text("To browse levels press the Online Level List button in level editor"), global.default_text_size, c_black, c_white, 1);
 			draw_menu_button(32 + 25, online_level_list_button_y, l10n_text("Online Level List"), "about_online_level_list", "about_online_level_list");
-			if (how_many_levels_added_today_text != "")
+			if (levels_added_today_text != "")
 			{
 				draw_set_halign(fa_left);
-				scr_draw_text_outlined(370 + 32 + 25 + 25, online_level_list_button_y + 21, string(how_many_levels_added_today_text), global.default_text_size + scr_wave(0, 0.1, 1), c_black, c_lime, 1);
+				scr_draw_text_outlined(370 + 32 + 25 + 25, online_level_list_button_y + 21, string(levels_added_today_text), global.default_text_size + scr_wave(0, 0.1, 1), c_black, c_lime, 1);
 				draw_set_halign(fa_center);
 			}
 			

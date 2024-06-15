@@ -1880,6 +1880,7 @@ function scr_draw_upload_level_menu()
 			{
 				show_level_editor_corner_menu = true;
 			}
+			scr_get_todays_upload_count(); /* Update the todays upload count, so that player knows that the level was uploaded */
 			menu = "level_editor_upload"; /* Return to previous menu */
 		}
 		#endregion /* Return to game END */

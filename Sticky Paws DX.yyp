@@ -2590,7 +2590,7 @@
   "isEcma":false,
   "LibraryEmitters":[],
   "MetaData":{
-    "IDEVersion":"2024.600.0.575",
+    "IDEVersion":"2024.600.0.576",
   },
   "name":"Sticky Paws DX",
   "resources":[
@@ -2827,6 +2827,7 @@
     {"id":{"name":"scr_get_each_big_collectible_from_main_game","path":"scripts/scr_get_each_big_collectible_from_main_game/scr_get_each_big_collectible_from_main_game.yy",},},
     {"id":{"name":"scr_get_relative_timestamp","path":"scripts/scr_get_relative_timestamp/scr_get_relative_timestamp.yy",},},
     {"id":{"name":"scr_get_rewards_when_jumped_on","path":"scripts/scr_get_rewards_when_jumped_on/scr_get_rewards_when_jumped_on.yy",},},
+    {"id":{"name":"scr_get_todays_upload_count","path":"scripts/scr_get_todays_upload_count/scr_get_todays_upload_count.yy",},},
     {"id":{"name":"scr_get_voice","path":"scripts/scr_get_voice/scr_get_voice.yy",},},
     {"id":{"name":"scr_initialize_camera","path":"scripts/scr_initialize_camera/scr_initialize_camera.yy",},},
     {"id":{"name":"scr_initialize_character_abilities","path":"scripts/scr_initialize_character_abilities/scr_initialize_character_abilities.yy",},},

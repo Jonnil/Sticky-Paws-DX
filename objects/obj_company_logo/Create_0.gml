@@ -124,6 +124,7 @@ ds_list_add(global.all_loaded_main_levels, "intro", "level1", "level2", "level3"
 global.base_url = "sticky-paws.uc.r.appspot.com";
 global.api_key = "eMCnsR7k2dq_jGHijae6_3tazPYp!UUL";
 global.http_request_info = noone;
+global.http_request_id = noone;
 #endregion /* Server stuff END */
 
 #endregion /* Things you could change END */
