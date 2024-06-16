@@ -301,6 +301,7 @@ function scr_draw_menu_search_id(what_kind_of_id = "level")
 					
 					scr_set_character_folder(fixed_player, 0, string(downloaded_character_name));
 					ini_open(string(character_folder) + "/data/sprite_origin_point.ini");
+					downloaded_thumbnail_sprite = scr_initialize_character_sprite("idle", downloaded_thumbnail_sprite);
 					downloaded_thumbnail_sprite = scr_initialize_character_sprite("stand", downloaded_thumbnail_sprite);
 					downloaded_thumbnail_sprite = scr_initialize_character_sprite("character_select_portrait", downloaded_thumbnail_sprite);
 					ini_close(); switch_save_data_commit(); /* Remember to commit the save data! */
@@ -918,6 +919,7 @@ function scr_draw_menu_search_id(what_kind_of_id = "level")
 					global.sprite_select_player[fixed_player] = spr_noone;
 					scr_set_character_folder(fixed_player, global.skin_for_player[fixed_player]);
 					ini_open(string(character_folder) + "/data/sprite_origin_point.ini");
+					global.sprite_select_player[fixed_player] = scr_initialize_character_sprite("idle", global.sprite_select_player[fixed_player]);
 					global.sprite_select_player[fixed_player] = scr_initialize_character_sprite("stand", global.sprite_select_player[fixed_player]);
 					global.sprite_select_player[fixed_player] = scr_initialize_character_sprite("character_select_portrait", global.sprite_select_player[fixed_player]);
 					ini_close(); switch_save_data_commit(); /* Remember to commit the save data! */

@@ -458,11 +458,12 @@ function scr_spawn_objects_when_starting_room()
 				case LEVEL_OBJECT_ID.ID_BUCKET_INVINCIBILITY_POWERUP_COIL_SPRING: with(instance_create_depth(x, y, 0, obj_bucket)){item_inside = "invincibility_powerup_coil_spring";}break;
 				case LEVEL_OBJECT_ID.ID_BIRD: instance_create_depth(x, y, 0, obj_bird);break;
 				case LEVEL_OBJECT_ID.ID_BUSH: instance_create_depth(x, y, 0, obj_bush);break;
-				case 90: with(instance_create_depth(x, y, 0, obj_sign_moveset)){sprite_index = spr_sign_crouch; sprite_sign = spr_sign_crouch;}break;
-				case 91: with(instance_create_depth(x, y, 0, obj_sign_moveset)){sprite_index = spr_sign_dive; sprite_sign = spr_sign_dive;}break;
-				case 92: with(instance_create_depth(x, y, 0, obj_sign_moveset)){sprite_index = spr_sign_ground_pound; sprite_sign = spr_sign_ground_pound;}break;
-				case 93: with(instance_create_depth(x, y, 0, obj_sign_moveset)){sprite_index = spr_sign_rope_spin; sprite_sign = spr_sign_rope_spin;}break;
-				case 94: with(instance_create_depth(x, y, 0, obj_sign_moveset)){sprite_index = spr_sign_wall_jump; sprite_sign = spr_sign_wall_jump;}break;
+				case LEVEL_OBJECT_ID.ID_SIGN_CROUCH: with(instance_create_depth(x, y, 0, obj_sign_moveset)){sprite_index = spr_sign_crouch; sprite_sign = spr_sign_crouch;}break;
+				case LEVEL_OBJECT_ID.ID_SIGN_DIVE: with(instance_create_depth(x, y, 0, obj_sign_moveset)){sprite_index = spr_sign_dive; sprite_sign = spr_sign_dive;}break;
+				case LEVEL_OBJECT_ID.ID_SIGN_GROUND_POUND: with(instance_create_depth(x, y, 0, obj_sign_moveset)){sprite_index = spr_sign_ground_pound; sprite_sign = spr_sign_ground_pound;}break;
+				case LEVEL_OBJECT_ID.ID_SIGN_ROPE_SPIN: with(instance_create_depth(x, y, 0, obj_sign_moveset)){sprite_index = spr_sign_rope_spin; sprite_sign = spr_sign_rope_spin;}break;
+				case LEVEL_OBJECT_ID.ID_SIGN_WALL_JUMP: with(instance_create_depth(x, y, 0, obj_sign_moveset)){sprite_index = spr_sign_wall_jump; sprite_sign = spr_sign_wall_jump;}break;
+				case LEVEL_OBJECT_ID.ID_SIGN_RUN: with(instance_create_depth(x, y, 0, obj_sign_moveset)){sprite_index = spr_sign_run; sprite_sign = spr_sign_run; show_button_graphic = true;}break;
 				case LEVEL_OBJECT_ID.ID_BOSS: instance_create_depth(x, y, 0, obj_boss);break;
 				case LEVEL_OBJECT_ID.ID_BOSS_BARRIER: instance_create_depth(x, y, 0, obj_boss_barrier);break;
 				case LEVEL_OBJECT_ID.ID_CAKE_STEALING_ENEMY:

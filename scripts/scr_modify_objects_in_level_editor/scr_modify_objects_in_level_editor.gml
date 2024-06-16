@@ -757,29 +757,34 @@ function scr_modify_objects_in_level_editor()
 					else
 					
 					#region /* Change Moveset Signs */
-					if (object == 90)
+					if (object == LEVEL_OBJECT_ID.ID_SIGN_CROUCH)
 					{
-						object = 91;
+						object = LEVEL_OBJECT_ID.ID_SIGN_DIVE;
 					}
 					else
-					if (object == 91)
+					if (object == LEVEL_OBJECT_ID.ID_SIGN_DIVE)
 					{
-						object = 92;
+						object = LEVEL_OBJECT_ID.ID_SIGN_GROUND_POUND;
 					}
 					else
-					if (object == 92)
+					if (object == LEVEL_OBJECT_ID.ID_SIGN_GROUND_POUND)
 					{
-						object = 93;
+						object = LEVEL_OBJECT_ID.ID_SIGN_ROPE_SPIN;
 					}
 					else
-					if (object == 93)
+					if (object == LEVEL_OBJECT_ID.ID_SIGN_ROPE_SPIN)
 					{
-						object = 94;
+						object = LEVEL_OBJECT_ID.ID_SIGN_WALL_JUMP;
 					}
 					else
-					if (object == 94)
+					if (object == LEVEL_OBJECT_ID.ID_SIGN_WALL_JUMP)
 					{
-						object = 90;
+						object = LEVEL_OBJECT_ID.ID_SIGN_RUN;
+					}
+					else
+					if (object == LEVEL_OBJECT_ID.ID_SIGN_RUN)
+					{
+						object = LEVEL_OBJECT_ID.ID_SIGN_CROUCH;
 					}
 					#endregion /* Change Moveset Signs END */
 					

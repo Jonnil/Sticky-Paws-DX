@@ -1,26 +1,40 @@
 /* Have a function for drawing the on-screen controls, for less repeatable code */
-function scr_draw_show_controls_key(show_controls_name = "", gp_button = noone, gp_button2 = noone, player_key = noone, player_key2 = noone, player_show_key_x, what_player = 1, yy = show_player_controls_y[what_player], alpha = player_show_controls_alpha[what_player], gp_is_connected, get_window_height) {
+function scr_draw_show_controls_key(show_controls_name = "", gp_button = noone, gp_button2 = noone, player_key = noone, player_key2 = noone, player_show_key_x, what_player = 1, yy = show_player_controls_y[what_player], alpha = player_show_controls_alpha[what_player], gp_is_connected, get_window_height)
+{
+	if (get_window_height != 0)
+	{
+		var real_yy = get_window_height - yy;
+	}
+	else
+	{
+		var real_yy = yy;
+	}
+	
 	var draw_text_show_controls = false;
 	
 	var show_controls_button = (gp_button != noone) ? gp_button : gp_button2;
 	var show_controls_key = (player_key != noone) ? player_key : player_key2;
 	
-	if (show_controls_button != noone) && (global.controls_used_for_navigation == "gamepad" && gp_is_connected || global.always_show_gamepad_buttons) {
+	if (show_controls_button != noone) && (global.controls_used_for_navigation == "gamepad" && gp_is_connected || global.always_show_gamepad_buttons)
+	{
 		draw_text_show_controls = true;
-		scr_draw_gamepad_buttons(show_controls_button, player_show_key_x, get_window_height - yy, 0.5, c_white, alpha, 1, 1, what_player);
+		scr_draw_gamepad_buttons(show_controls_button, player_show_key_x, real_yy, 0.5, c_white, alpha, 1, 1, what_player);
 	}
 	else
-	if (show_controls_key != noone) {
+	if (show_controls_key != noone)
+	{
 		draw_text_show_controls = true;
-		draw_sprite_ext(spr_keyboard_keys, show_controls_key, player_show_key_x, get_window_height - yy, 0.5, 0.5, 0, c_white, alpha);
+		draw_sprite_ext(spr_keyboard_keys, show_controls_key, player_show_key_x, real_yy, 0.5, 0.5, 0, c_white, alpha);
 	}
 	
-	if (draw_text_show_controls) {
-		scr_draw_text_outlined(player_show_key_x + 22, get_window_height - yy, l10n_text(show_controls_name), global.default_text_size, c_black, global.player_color[what_player], alpha);
+	if (draw_text_show_controls)
+	{
+		scr_draw_text_outlined(player_show_key_x + 22, real_yy, l10n_text(show_controls_name), global.default_text_size, c_black, global.player_color[what_player], alpha);
 	}
 }
 
-function scr_draw_show_controls(what_player = 1, yy = show_player_controls_y[what_player], alpha = player_show_controls_alpha[what_player], player_exist = player[what_player]) {
+function scr_draw_show_controls(what_player = 1, yy = show_player_controls_y[what_player], alpha = player_show_controls_alpha[what_player], player_exist = player[what_player])
+{
 	/* You need to show what the controls are on the screen by default, so every new player knows how to control the game */
 	/* On PC, not every new player is used to controlling a platformer on keyboard, if they don't own a gamepad */
 	/* The players that knows how to control the game, should turn off the "show controls" themselves if they want to */
@@ -52,16 +66,20 @@ function scr_draw_show_controls(what_player = 1, yy = show_player_controls_y[wha
 	var player_key2_crouch = global.player_[inp.key][what_player][2][action.crouch];
 	
 	/* If crouch buttons are not found, find crouch toggle buttons instead */
-	if (gp_button_crouch == noone) {
+	if (gp_button_crouch == noone)
+	{
 		var gp_button_crouch = global.player_[inp.gp][what_player][1][action.crouch_toggle];
 	}
-	if (gp_button2_crouch == noone) {
+	if (gp_button2_crouch == noone)
+	{
 		var gp_button2_crouch = global.player_[inp.gp][what_player][2][action.crouch_toggle];
 	}
-	if (player_key_crouch == noone) {
+	if (player_key_crouch == noone)
+	{
 		var player_key_crouch = global.player_[inp.key][what_player][1][action.crouch_toggle];
 	}
-	if (player_key2_crouch == noone) {
+	if (player_key2_crouch == noone)
+	{
 		var player_key2_crouch = global.player_[inp.key][what_player][2][action.crouch_toggle];
 	}
 	
@@ -71,16 +89,20 @@ function scr_draw_show_controls(what_player = 1, yy = show_player_controls_y[wha
 	var player_key2_run = global.player_[inp.key][what_player][2][action.run];
 	
 	/* If run buttons are not found, find run toggle buttons instead */
-	if (gp_button_run == noone) {
+	if (gp_button_run == noone)
+	{
 		var gp_button_run = global.player_[inp.gp][what_player][1][action.run_toggle];
 	}
-	if (gp_button2_run == noone) {
+	if (gp_button2_run == noone)
+	{
 		var gp_button2_run = global.player_[inp.gp][what_player][2][action.run_toggle];
 	}
-	if (player_key_run == noone) {
+	if (player_key_run == noone)
+	{
 		var player_key_run = global.player_[inp.key][what_player][1][action.run_toggle];
 	}
-	if (player_key2_run == noone) {
+	if (player_key2_run == noone)
+	{
 		var player_key2_run = global.player_[inp.key][what_player][2][action.run_toggle];
 	}
 	
@@ -108,7 +130,8 @@ function scr_draw_show_controls(what_player = 1, yy = show_player_controls_y[wha
 	#region /* Show Controls for Player */
 	draw_set_halign(fa_left);
 	draw_set_valign(fa_middle);
-	if (player_exist > 0) {
+	if (player_exist > 0)
+	{
 		scr_draw_show_controls_key("Dive", gp_button_dive, gp_button2_dive, player_key_dive, player_key2_dive, player_show_dive_key_x[what_player], what_player, yy, alpha, gamepad_player_is_connected, get_window_height);
 		scr_draw_show_controls_key("Jump", gp_button_jump, gp_button2_jump, player_key_jump, player_key2_jump, player_show_jump_key_x[what_player], what_player, yy, alpha, gamepad_player_is_connected, get_window_height);
 		scr_draw_show_controls_key("Crouch", gp_button_crouch, gp_button2_crouch, player_key_crouch, player_key2_crouch, player_show_crouch_key_x[what_player], what_player, yy, alpha, gamepad_player_is_connected, get_window_height);
@@ -119,7 +142,8 @@ function scr_draw_show_controls(what_player = 1, yy = show_player_controls_y[wha
 		scr_draw_show_controls_key("Up", gp_button_up, gp_button2_up, player_key_up, player_key2_up, player_show_up_key_x[what_player], what_player, yy, alpha, gamepad_player_is_connected, get_window_height);
 	}
 	else
-	if (lives != 0 && can_spawn_player[what_player]) {
+	if (lives != 0 && can_spawn_player[what_player])
+	{
 		scr_draw_show_controls_key("Join Game", gp_button_accept, gp_button2_accept, player_key_accept, player_key2_accept, 32, what_player, yy, alpha, gamepad_player_is_connected, get_window_height);
 	}
 	#endregion /* Show Controls for Player END */

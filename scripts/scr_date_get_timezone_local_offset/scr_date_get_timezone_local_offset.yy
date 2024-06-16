@@ -1,0 +1,13 @@
+{
+  "$GMScript":"v1",
+  "%Name":"scr_date_get_timezone_local_offset",
+  "isCompatibility":false,
+  "isDnD":false,
+  "name":"scr_date_get_timezone_local_offset",
+  "parent":{
+    "name":"Other",
+    "path":"folders/Scripts/Other.yy",
+  },
+  "resourceType":"GMScript",
+  "resourceVersion":"2.0",
+}

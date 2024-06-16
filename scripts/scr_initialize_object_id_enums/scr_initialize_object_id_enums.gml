@@ -196,6 +196,7 @@ function scr_initialize_object_id_enums()
 		ID_SIGN_GROUND_POUND = 92,
 		ID_SIGN_ROPE_SPIN = 93,
 		ID_SIGN_WALL_JUMP = 94,
+		ID_SIGN_RUN = 941,
 		ID_BOSS = 95,
 		ID_BOSS_BARRIER = 96,
 		ID_CAKE_STEALING_ENEMY = 961,
