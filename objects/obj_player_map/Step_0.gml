@@ -9,19 +9,24 @@ scr_resize_application_surface();
 scr_menu_navigation_initialization();
 
 /* Only update audio listener position and velocity when the player is moving */
-if (speed > 0) {
+if (speed > 0)
+{
     audio_listener_position(x, y, 0);
     audio_listener_velocity(abs(hspeed), abs(vspeed), 0);
 }
 
 /* Check if "obj level" exists */
-if (stop_at_level && nearest_level == noone) { /* Only get info from levels when you stop at a level and nothing is stored in "nearest level" variable, so this code isn't running every frame */
-	if (instance_exists(obj_level)) {
+if (stop_at_level && nearest_level == noone) /* Only get info from levels when you stop at a level and nothing is stored in "nearest level" variable, so this code isn't running every frame */
+{
+	if (instance_exists(obj_level))
+	{
 	    nearest_level = instance_nearest(x, y, obj_level);
 	    distance_to_level = distance_to_object(nearest_level);
 	    at_least_one_big_collectible = false;
-		for(var i = 1; i <= global.max_big_collectible; i += 1) {
-			if (nearest_level.big_collectible[i]) {
+		for(var i = 1; i <= global.max_big_collectible; i += 1)
+		{
+			if (nearest_level.big_collectible[i])
+			{
 				at_least_one_big_collectible = true;
 				break; /* exit the loop if any big collectible is false */
 			}
@@ -40,8 +45,10 @@ if (stop_at_level && nearest_level == noone) { /* Only get info from levels when
 }
 
 /* Quit Game */
-if (global.quit_level) {
-    if (speed == 0) {
+if (global.quit_level)
+{
+    if (speed == 0)
+	{
         ini_open(game_save_id + "save_file/file" + string(global.file) + ".ini");
         ini_write_real("Player", "player_x", x);
         ini_write_real("Player", "player_y", y);
@@ -64,15 +71,18 @@ var pause_condition_met = keyboard_check_pressed(vk_escape) ||
                            (global.automatically_pause_when_window_is_unfocused && !window_has_focus()) ||
                            (global.controls_used_for_navigation == "mouse" && mouse_check_button_released(mb_left) && point_in_rectangle(mouse_get_x, mouse_get_y, display_get_gui_width() - 185, 0, display_get_gui_width(), 42));
 
-for (var i = 1; i <= global.max_players; i++) {
-    if (gamepad_button_check_pressed(global.player_slot[i], gp_select) || gamepad_button_check_pressed(global.player_slot[i], gp_start)) {
+for (var i = 1; i <= global.max_players; i++)
+{
+    if (gamepad_button_check_pressed(global.player_slot[i], gp_select) || gamepad_button_check_pressed(global.player_slot[i], gp_start))
+	{
         pause_condition_met = true;
         global.pause_player = i - 1;
         break;
     }
 }
 
-if (pause_condition_met) {
+if (pause_condition_met)
+{
     global.pause = true;
     global.pause_screenshot = sprite_create_from_surface(application_surface, 0, 0, surface_get_width(application_surface), surface_get_height(application_surface), 0, 0, 0, 0);
     room_persistent = true;
@@ -82,27 +92,31 @@ if (pause_condition_met) {
 }
 
 #region /* Stop player when touching level */
-if (!place_meeting(x, y, obj_level)) {
+if (!place_meeting(x, y, obj_level))
+{
 	stop_at_level = false;
 	nearest_level = noone; /* Reset nearest level when */
 }
 #endregion /* Stop player when touching level END */
 
 /* Delay countup */
-if (!can_move) {
+if (!can_move)
+{
     if (delay < 100) delay++;
 }
 if (move_delay < 50) move_delay++;
 if (can_enter_level < 30) can_enter_level++;
 
 /* Start level after pressing enter */
-if (!can_move && entering_level && delay >= 60 && iris_yscale <= 0.001 && !global.quit_level && !loading_assets) {
+if (!can_move && entering_level && delay >= 60 && iris_yscale <= 0.001 && !global.quit_level && !loading_assets)
+{
     global.level_name = string(ds_list_find_value(global.all_loaded_custom_levels, global.select_level_index));
     room_persistent = false;
     audio_sound_gain(music_map, 0, 0);
     audio_stop_sound(music_map);
     audio_stop_all();
-    if (global.loading_music > 0 && !audio_is_playing(global.loading_music)) {
+    if (global.loading_music > 0 && !audio_is_playing(global.loading_music))
+	{
         scr_audio_play(global.loading_music, volume_source.music);
     }
     global.pause = false;
@@ -111,7 +125,8 @@ if (!can_move && entering_level && delay >= 60 && iris_yscale <= 0.001 && !globa
     global.actually_play_edited_level = true;
     global.play_edited_level = true;
     global.part_limit = global.part_limit_entity = 0;
-    var time_source = time_source_create(time_source_game, 10, time_source_units_frames, function() {
+    var time_source = time_source_create(time_source_game, 10, time_source_units_frames, function()
+	{
         audio_sound_gain(music_map, 0, 0);
         audio_stop_sound(music_map);
         room_goto(rm_leveleditor);
@@ -121,7 +136,8 @@ if (!can_move && entering_level && delay >= 60 && iris_yscale <= 0.001 && !globa
 }
 
 /* Set sprite index */
-if (entering_level) {
+if (entering_level)
+{
     if (sprite_map_enter_level > noone) sprite_index = sprite_map_enter_level;
     else if (sprite_map > noone) sprite_index = sprite_map;
     else if (sprite_idle > noone) sprite_index = sprite_idle;
@@ -136,7 +152,8 @@ else
 }
 
 #region /* Set a bunch of global variables to default when you're not on a selected level */
-if (iris_xscale >= 1 && distance_to_object(instance_nearest(xx, yy, obj_level)) > 32) {
+if (iris_xscale >= 1 && distance_to_object(instance_nearest(xx, yy, obj_level)) > 32)
+{
 	global.checkpoint_x = 0;
 	global.checkpoint_y = 0;
 	global.timeattack_millisecond = 0;
@@ -157,18 +174,23 @@ if (iris_xscale >= 1 && distance_to_object(instance_nearest(xx, yy, obj_level)) 
 #region /* Zoom In and Out */
 
 #region /* Zoom In */
-if (entering_level) {
-	if (iris_zoom == 1) {
+if (entering_level)
+{
+	if (iris_zoom == 1)
+	{
 		iris_xscale = lerp(iris_xscale, 1, 0.15);
 		iris_yscale = lerp(iris_yscale, 1, 0.15);
-		if (iris_xscale <= 1.1) {
+		if (iris_xscale <= 1.1)
+		{
 			iris_zoom = 0;
 		}
 	}
-	else {
+	else
+	{
 		iris_xscale = lerp(iris_xscale, 0, 0.15);
 		iris_yscale = lerp(iris_yscale, 0, 0.15);
-		if (iris_xscale <= 1.1) {
+		if (iris_xscale <= 1.1)
+		{
 			iris_zoom = 0;
 		}
 	}
@@ -178,17 +200,21 @@ if (entering_level) {
 else
 
 #region /* Zoom Out */
-if (iris_zoom == 0) {
+if (iris_zoom == 0)
+{
 	iris_xscale = lerp(iris_xscale, 1, 0.15);
 	iris_yscale = lerp(iris_yscale, 1, 0.15);
-	if (iris_xscale >= 0.99) {
+	if (iris_xscale >= 0.99)
+	{
 		iris_zoom = 1;
 	}
 }
-else {
+else
+{
 	iris_xscale = lerp(iris_xscale, 32, 0.015);
 	iris_yscale = lerp(iris_yscale, 32, 0.015);
-	if (iris_xscale >= 0.99) {
+	if (iris_xscale >= 0.99)
+	{
 		iris_zoom = 1;
 	}
 }
@@ -197,20 +223,25 @@ else {
 #endregion /* Zoom In and Out END */
 
 #region /* Movement */
-if (can_move && !global.quit_level) {
-    if (move_delay > 10 && speed == 0) {
+if (can_move && !global.quit_level)
+{
+    if (move_delay > 10 && speed == 0)
+	{
         var mouse_dir = point_direction(x, y, mouse_x, mouse_y);
         var mouse_dist = distance_to_point(mouse_x, mouse_y);
         var mouse_not_on_pause_button = !point_in_rectangle(mouse_get_x, mouse_get_y, display_get_gui_width() - 185, 0, display_get_gui_width(), 42);
-        
-        if (key_up || mouse_check_button_released(mb_left) && mouse_dir > 45 && mouse_dir < 135 && mouse_dist > 16 && mouse_dist < 100 && mouse_not_on_pause_button) {
-            if (!position_meeting(x, y - 32, obj_wall)) {
+		
+        if (key_up || mouse_check_button_released(mb_left) && mouse_dir > 45 && mouse_dir < 135 && mouse_dist > 16 && mouse_dist < 100 && mouse_not_on_pause_button)
+		{
+            if (!position_meeting(x, y - 32, obj_wall))
+			{
                 vspeed -= move_speed;
                 move_delay = 0;
                 transfer_data = false;
             }
 			else
-			if (!audio_is_playing(snd_bump)) {
+			if (!audio_is_playing(snd_bump))
+			{
                 draw_xscale = 1.5;
                 draw_yscale = 0.5;
                 yy -= 32;
@@ -218,14 +249,17 @@ if (can_move && !global.quit_level) {
             }
         }
 		else
-		if (key_left || mouse_check_button_released(mb_left) && mouse_dir > 135 && mouse_dir < 225 && mouse_dist > 16 && mouse_dist < 100 && mouse_not_on_pause_button) {
-            if (!position_meeting(x - 32, y, obj_wall)) {
+		if (key_left || mouse_check_button_released(mb_left) && mouse_dir > 135 && mouse_dir < 225 && mouse_dist > 16 && mouse_dist < 100 && mouse_not_on_pause_button)
+		{
+            if (!position_meeting(x - 32, y, obj_wall))
+			{
                 hspeed -= move_speed;
                 move_delay = 0;
                 transfer_data = false;
             }
 			else
-			if (!audio_is_playing(snd_bump)) {
+			if (!audio_is_playing(snd_bump))
+			{
                 draw_xscale = 0.5;
                 draw_yscale = 1.5;
                 xx -= 32;
@@ -233,14 +267,17 @@ if (can_move && !global.quit_level) {
             }
         }
 		else
-		if (key_right || mouse_check_button_released(mb_left) && (mouse_dir > 0 && mouse_dir < 45 || mouse_dir > 315 && mouse_dir < 361) && mouse_dist > 16 && mouse_dist < 100 && mouse_not_on_pause_button) {
-            if (!position_meeting(x + 32, y, obj_wall)) {
+		if (key_right || mouse_check_button_released(mb_left) && (mouse_dir > 0 && mouse_dir < 45 || mouse_dir > 315 && mouse_dir < 361) && mouse_dist > 16 && mouse_dist < 100 && mouse_not_on_pause_button)
+		{
+            if (!position_meeting(x + 32, y, obj_wall))
+			{
                 hspeed += move_speed;
                 move_delay = 0;
                 transfer_data = false;
             }
 			else
-			if (!audio_is_playing(snd_bump)) {
+			if (!audio_is_playing(snd_bump))
+			{
                 draw_xscale = 0.5;
                 draw_yscale = 1.5;
                 xx += 32;
@@ -248,14 +285,17 @@ if (can_move && !global.quit_level) {
             }
         }
 		else
-		if (key_down || mouse_check_button_released(mb_left) && mouse_dir > 225 && mouse_dir < 315 && mouse_dist > 16 && mouse_dist < 100 && mouse_not_on_pause_button) {
-            if (!position_meeting(x, y + 32, obj_wall)) {
+		if (key_down || mouse_check_button_released(mb_left) && mouse_dir > 225 && mouse_dir < 315 && mouse_dist > 16 && mouse_dist < 100 && mouse_not_on_pause_button)
+		{
+            if (!position_meeting(x, y + 32, obj_wall))
+			{
                 vspeed += move_speed;
                 move_delay = 0;
                 transfer_data = false;
             }
 			else
-			if (!audio_is_playing(snd_bump)) {
+			if (!audio_is_playing(snd_bump))
+			{
                 draw_xscale = 1.5;
                 draw_yscale = 0.5;
                 yy += 32;
@@ -268,12 +308,14 @@ if (can_move && !global.quit_level) {
 
 #region /* Menu cursor image speed */
 menu_cursor_index += 0.3;
-if (menu_cursor_index > 4) {
+if (menu_cursor_index > 4)
+{
 	menu_cursor_index = 0;
 }
 #endregion /* Menu cursor image speed END */
 
-if (menu_delay > 0) {
+if (menu_delay > 0)
+{
 	menu_delay --;
 }
 

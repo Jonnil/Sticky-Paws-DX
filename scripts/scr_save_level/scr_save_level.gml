@@ -44,11 +44,14 @@ function scr_save_level()
 		ini_write_real(level_name, "checkpoint_realmillisecond", global.checkpoint_realmillisecond);
 		
 		#region /* Zero Defeats */
-		if (global.lives_until_assist == 0 && global.player_has_entered_goal) {
-			if (global.zero_hits && ini_read_real(level_name, "zero_defeats", 0) <= 1) {
+		if (global.lives_until_assist == 0 && global.player_has_entered_goal)
+		{
+			if (global.zero_hits && ini_read_real(level_name, "zero_defeats", 0) <= 1)
+			{
 				
 				/* Update zero defeats stat achievement */
-				if (ini_read_real(level_name, "zero_defeats", 0) <= 0) {
+				if (ini_read_real(level_name, "zero_defeats", 0) <= 0)
+				{
 					ini_write_real("Player", "total_zero_defeats", ini_read_real("Player", "total_zero_defeats", 0) + 1);
 					scr_set_stat_achievement("ZERO_DEFEATS", ini_read_real("Player", "total_zero_defeats", 0));
 				}
@@ -59,7 +62,9 @@ function scr_save_level()
 				
 				ini_write_real(level_name, "zero_defeats", 2); /* Write Zero Hits value last */
 			}
-			else if (ini_read_real(level_name, "zero_defeats", 0) <= 0) {
+			else
+			if (ini_read_real(level_name, "zero_defeats", 0) <= 0)
+			{
 				
 				/* Update zero defeats stat achievement */
 				ini_write_real("Player", "total_zero_defeats", ini_read_real("Player", "total_zero_defeats", 0) + 1);
@@ -71,9 +76,11 @@ function scr_save_level()
 		#endregion /* Zero Defeats END */
 		
 		#region /* Save Fastest Time */
-		if (global.timeattack_realmillisecond > 2) {
+		if (global.timeattack_realmillisecond > 2)
+		{
 			if (!ini_key_exists(level_name, "timeattack_realmillisecond"))
-			|| (global.timeattack_realmillisecond < ini_read_real(level_name, "timeattack_realmillisecond", 999999999)) {
+			|| (global.timeattack_realmillisecond < ini_read_real(level_name, "timeattack_realmillisecond", 999999999))
+			{
 				ini_write_real(level_name, "timeattack_millisecond", global.timeattack_millisecond);
 				ini_write_real(level_name, "timeattack_second", global.timeattack_second);
 				ini_write_real(level_name, "timeattack_minute", global.timeattack_minute);
@@ -82,28 +89,33 @@ function scr_save_level()
 		}
 		#endregion /* Save Fastest Time END */
 		
-		if (score > ini_read_real(level_name, "level_score", false)) {
+		if (score > ini_read_real(level_name, "level_score", false))
+		{
 			ini_write_real(level_name, "level_score", score);
 		}
 		ini_close(); switch_save_data_commit(); /* Remember to commit the save data! */
 	}
 	else
-	if (global.character_select_in_this_menu == "level_editor" && global.actually_play_edited_level) {
+	if (global.character_select_in_this_menu == "level_editor" && global.actually_play_edited_level)
+	{
 		
 		#region /* Update ranking highscore to actual custom level */
 		ini_open(global.use_temp_or_working + "custom_levels/" + string(level_name) + "/data/level_information.ini");
 		
 		var level_id = ini_read_string("info", "level_id", "");
 		
-		if (global.level_clear_rate == "clear" && global.doing_clear_check_level) {
+		if (global.level_clear_rate == "clear" && global.doing_clear_check_level)
+		{
 			ini_write_real("info", "clear_check", true); /* If doing a level clear check, and winning the level, then add in level information that you have done a clear check */
 			global.go_to_menu_when_going_back_to_title = "upload_edit_name";
 		}
 		
 		#region /* Save Fastest Time */
-		if (global.timeattack_realmillisecond > 2) {
+		if (global.timeattack_realmillisecond > 2)
+		{
 			if (!ini_key_exists("rank", "rank_timeattack_realmillisecond"))
-			|| (global.timeattack_realmillisecond < ini_read_real("rank", "rank_timeattack_realmillisecond", global.timeattack_realmillisecond)) {
+			|| (global.timeattack_realmillisecond < ini_read_real("rank", "rank_timeattack_realmillisecond", global.timeattack_realmillisecond))
+			{
 				ini_write_real("rank", "rank_timeattack_millisecond", global.timeattack_millisecond);
 				ini_write_real("rank", "rank_timeattack_second", global.timeattack_second);
 				ini_write_real("rank", "rank_timeattack_minute", global.timeattack_minute);
@@ -112,7 +124,8 @@ function scr_save_level()
 		}
 		#endregion /* Save Fastest Time END */
 		
-		if (score > ini_read_real("rank", "rank_level_score", false)) {
+		if (score > ini_read_real("rank", "rank_level_score", false))
+		{
 			ini_write_real("rank", "rank_level_score", score);
 		}
 		ini_close(); switch_save_data_commit(); /* Remember to commit the save data! */
@@ -123,13 +136,17 @@ function scr_save_level()
 		
 		#region /* Downloaded Level Progression */
 		/* Update a list of downloaded levels that you have finished */
-		if (level_id != "" && !global.doing_clear_check_character) {
+		if (level_id != "" && !global.doing_clear_check_character)
+		{
 			var read_finished_downloaded_level = ini_read_real("finished_downloaded_level", string(level_id), 0);
-			if (global.level_clear_rate == "clear") {
+			if (global.level_clear_rate == "clear")
+			{
 				
 				var all_collected = true; /* Assume all collected */
-				for (var i = 1; i <= global.max_big_collectible; i += 1) {
-					if (!global.big_collectible_already_collected[i]) {
+				for (var i = 1; i <= global.max_big_collectible; i += 1)
+				{
+					if (!global.big_collectible_already_collected[i])
+					{
 						all_collected = false; /* Found a big collectible not collected */
 						break; /* No need to check further, exit loop */
 					}
@@ -137,25 +154,35 @@ function scr_save_level()
 				
 				if (all_collected
 				|| global.max_big_collectible == 0 /* If the level have no big collectibles, then always set to "Completed" */)
-				&& (read_finished_downloaded_level < 3) { /* If you have collected all big collectibles */
+				&& (read_finished_downloaded_level < 3) /* If you have collected all big collectibles */
+				{
 					ini_write_real("finished_downloaded_level", string(level_id), 3); /* Finished and collected every big collectible */
 				}
-				else if (read_finished_downloaded_level < 2) {
+				else
+				if (read_finished_downloaded_level < 2)
+				{
 					ini_write_real("finished_downloaded_level", string(level_id), 2); /* Played and finished */
 				}
 			}
-			else if (read_finished_downloaded_level < 1) {
+			else
+			if (read_finished_downloaded_level < 1)
+			{
 				ini_write_real("finished_downloaded_level", string(level_id), 1); /* Only played, but not finished */
 			}
 		}
 		/* Update a list of downloaded levels that you have completed with zero defeats or zero hits */
 		var read_zero_defeats_downloaded_level = ini_read_real("zero_defeats_downloaded_level", string(level_id), 0);
-		if (level_id != "" && read_zero_defeats_downloaded_level < 2 && !global.doing_clear_check_character) {
-			if (global.lives_until_assist == 0 && global.player_has_entered_goal) {
-				if (global.zero_hits && read_zero_defeats_downloaded_level <= 1) {
+		if (level_id != "" && read_zero_defeats_downloaded_level < 2 && !global.doing_clear_check_character)
+		{
+			if (global.lives_until_assist == 0 && global.player_has_entered_goal)
+			{
+				if (global.zero_hits && read_zero_defeats_downloaded_level <= 1)
+				{
 					ini_write_real("zero_defeats_downloaded_level", string(level_id), 2); /* Zero Hits */
 				}
-				else if (read_zero_defeats_downloaded_level <= 0) {
+				else
+				if (read_zero_defeats_downloaded_level <= 0)
+				{
 					ini_write_real("zero_defeats_downloaded_level", string(level_id), 1); /* Zero Defeats */
 				}
 			}
@@ -171,11 +198,14 @@ function scr_save_level()
 		ini_write_real(level_name, "checkpoint_realmillisecond", global.checkpoint_realmillisecond);
 		
 		#region /* Zero Defeats */
-		if (global.lives_until_assist == 0 && global.player_has_entered_goal) {
-			if (global.zero_hits && ini_read_real(level_name, "zero_defeats", 0) <= 1) {
+		if (global.lives_until_assist == 0 && global.player_has_entered_goal)
+		{
+			if (global.zero_hits && ini_read_real(level_name, "zero_defeats", 0) <= 1)
+			{
 				
 				/* Update zero defeats stat achievement */
-				if (ini_read_real(level_name, "zero_defeats", 0) == 0) {
+				if (ini_read_real(level_name, "zero_defeats", 0) == 0)
+				{
 					ini_write_real("Player", "total_zero_defeats", ini_read_real("Player", "total_zero_defeats", 0) + 1);
 				}
 				
@@ -184,7 +214,9 @@ function scr_save_level()
 				
 				ini_write_real(level_name, "zero_defeats", 2); /* Write Zero Hits value last */
 			}
-			else if (ini_read_real(level_name, "zero_defeats", 0) == 0) {
+			else
+			if (ini_read_real(level_name, "zero_defeats", 0) == 0)
+			{
 				
 				/* Update zero defeats stat achievement */
 				ini_write_real("Player", "total_zero_defeats", ini_read_real("Player", "total_zero_defeats", 0) + 1);
@@ -194,11 +226,13 @@ function scr_save_level()
 		}
 		#endregion /* Zero Defeats END */
 		
-		if (global.timeattack_realmillisecond > 2) {
+		if (global.timeattack_realmillisecond > 2)
+		{
 			
 			#region /* Save Fastest Time */
 			if (!ini_key_exists(level_name, "timeattack_realmillisecond"))
-			|| (global.timeattack_realmillisecond < ini_read_real(level_name, "timeattack_realmillisecond", 999999999)) {
+			|| (global.timeattack_realmillisecond < ini_read_real(level_name, "timeattack_realmillisecond", 999999999))
+			{
 				ini_write_real(level_name, "timeattack_millisecond", global.timeattack_millisecond);
 				ini_write_real(level_name, "timeattack_second", global.timeattack_second);
 				ini_write_real(level_name, "timeattack_minute", global.timeattack_minute);
@@ -207,7 +241,8 @@ function scr_save_level()
 			#endregion /* Save Fastest Time END */
 			
 		}
-		if (score > ini_read_real(level_name, "level_score", false)) {
+		if (score > ini_read_real(level_name, "level_score", false))
+		{
 			ini_write_real(level_name, "level_score", score);
 		}
 		ini_close(); switch_save_data_commit(); /* Remember to commit the save data! */
@@ -218,9 +253,10 @@ function scr_save_level()
 	/* Only reset the "big collectible already collected" variables in certain cases */
 	if (global.level_clear_rate == "clear")
 	|| (global.quit_level)
-	|| (global.restart_level && global.checkpoint_x = 0 && global.checkpoint_y = 0)
+	|| (global.restart_level && global.checkpoint_x == 0 && global.checkpoint_y == 0)
 	{
-		for(var i = 1; i <= global.max_big_collectible; i += 1) {
+		for(var i = 1; i <= global.max_big_collectible; i += 1)
+		{
 			global.big_collectible_already_collected[i] = false;
 		}
 		global.how_many_big_collectible_collected = 0;

@@ -95,18 +95,9 @@ if (y > room_height)
 }
 #endregion /* Make sure the level end isn't outside of the level, this code has to be after the drag object code END */
 
-if (global.play_edited_level)
-|| (global.actually_play_edited_level)
-{
-	if (global.actually_play_edited_level)
-	{
-		if (!instance_exists(obj_camera))
-		{
-			scr_load_level_checkpoint();
-		}
-	}
-}
+scr_load_level_checkpoint();
 
-if (instance_exists(obj_camera)) {
-		instance_destroy(); /* Destroy the level player 4 start if player 4 has spawned in the level */
-	}
+if (instance_exists(obj_camera))
+{
+	instance_destroy(); /* Destroy the level player 4 start if player 4 has spawned in the level */
+}

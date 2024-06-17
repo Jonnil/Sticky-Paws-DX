@@ -97,10 +97,12 @@ if (instance_exists(obj_player))
 							ini_write_real(level_name, "checkpoint_x", x);
 							ini_write_real(level_name, "checkpoint_y", y);
 							ini_write_real(level_name, "checkpoint_what_player", instance_nearest(x, y, obj_player).player);
-							if (instance_nearest(x, y, obj_player).hspeed < 0) {
+							if (instance_nearest(x, y, obj_player).hspeed < 0)
+							{
 								ini_write_real(level_name, "checkpoint_direction", -1);
 							}
-							else {
+							else
+							{
 								ini_write_real(level_name, "checkpoint_direction", +1);
 							}
 							ini_write_real(level_name, "checkpoint_millisecond", global.timeattack_millisecond);
@@ -115,20 +117,24 @@ if (instance_exists(obj_player))
 					
 					#region /* Load correct sprite when you get the checkpoint */
 					if (instance_exists(obj_camera))
-					&& (instance_exists(obj_player)) {
+					&& (instance_exists(obj_player))
+					{
 						sprite_index = spr_checkpoint_activated;
 						image_speed = 0;
-						for(var i = 1; i <= global.max_players; i += 1) {
-							if (checkpoint_what_player == i &&
-								obj_camera.player[i] > 0 &&
-								instance_exists(obj_camera.player[i]) &&
-								obj_camera.player[i].sprite_checkpoint_activated > 0) {
+						for(var i = 1; i <= global.max_players; i += 1)
+						{
+							if (checkpoint_what_player == i
+							&& obj_camera.player[i] > 0
+							&& instance_exists(obj_camera.player[i])
+							&& obj_camera.player[i].sprite_checkpoint_activated > 0)
+							{
 								sprite_index = obj_camera.player[i].sprite_checkpoint_activated;
 								break; /* Exit the loop once a valid player is found */
 							}
 						}
 					}
-					else {
+					else
+					{
 						sprite_index = spr_checkpoint_activated;
 						image_speed = 0;
 					}

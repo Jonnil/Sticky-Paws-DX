@@ -374,19 +374,25 @@ function scr_spawn_objects_when_starting_room()
 				case 64: with(instance_create_depth(x, y, 0, obj_arrow_sign)){if (instance_exists(obj_leveleditor_placed_object)){second_x = instance_nearest(x, y, obj_leveleditor_placed_object).second_x;second_y = instance_nearest(x, y, obj_leveleditor_placed_object).second_y;}}break;
 				case 65: with(instance_create_depth(x, y, 0, obj_arrow_sign_small)){if (instance_exists(obj_leveleditor_placed_object)){second_x = instance_nearest(x, y, obj_leveleditor_placed_object).second_x;second_y = instance_nearest(x, y, obj_leveleditor_placed_object).second_y;}}break;
 				case LEVEL_OBJECT_ID.ID_CHECKPOINT:
-					instance_create_depth(x, y, 0, obj_checkpoint);
-				
-					#region /* Tell the player how many checkpoints exist in the level */
-					if (instance_exists(obj_checkpoint))
+					/* Set the correct activation state if this checkpoint should only appear after certain amounts of defeats */
+					if (real(second_x) > 0) /* If this variable is above 0, that is the only time it should check for "lives until assist" variable */
+					&& (global.lives_until_assist >= real(second_x)) /* If you have got defeated enough times to make the checkpoint appear */
+					&& (!global.doing_clear_check_level) /* Checkpoints that appear after certain amounts of defeats should not appear when doing a clear check */
+					|| (real(second_x) <= 0)
 					{
-						with(obj_checkpoint)
+						instance_create_depth(x, y, 0, obj_checkpoint);
+						
+						#region /* Tell the player how many checkpoints exist in the level */
+						if (instance_exists(obj_checkpoint))
 						{
-							checkpoint_max_number = instance_number(obj_checkpoint);
+							with(obj_checkpoint)
+							{
+								checkpoint_max_number = instance_number(obj_checkpoint);
+							}
 						}
+						#endregion /* Tell the player how many checkpoints exist in the level END */
 					}
-					#endregion /* Tell the player how many checkpoints exist in the level END */
-				
-				break;
+					break;
 				case LEVEL_OBJECT_ID.ID_SPIKES_EMERGE_BLOCK: instance_create_depth(x, y + 16, 0, obj_spikes_emerge);break;
 				case LEVEL_OBJECT_ID.ID_SPIKES_EMERGE_BLOCK_LEFT: with(instance_create_depth(x, y + 16, 0, obj_spikes_emerge)){image_angle = 90; x += 20; y -= 15;}break;
 				case LEVEL_OBJECT_ID.ID_SPIKES_EMERGE_BLOCK_DOWN: with(instance_create_depth(x, y + 16, 0, obj_spikes_emerge)){image_angle = 180; y -= 30;}break;

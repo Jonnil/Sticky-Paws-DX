@@ -196,6 +196,7 @@ function scr_save_custom_level_json()
 				ds_list_add(obj_ids, LEVEL_OBJECT_ID.ID_LAVA);
 				ds_list_add(obj_ids, LEVEL_OBJECT_ID.ID_BREATHABLE_WATER);
 				ds_list_add(obj_ids, LEVEL_OBJECT_ID.ID_SIGN_READABLE);
+				ds_list_add(obj_ids, LEVEL_OBJECT_ID.ID_CHECKPOINT);
 				
 				if (ds_list_find_index(obj_ids, object) != -1)
 				{

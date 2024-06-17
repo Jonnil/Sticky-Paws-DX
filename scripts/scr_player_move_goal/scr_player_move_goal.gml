@@ -1,9 +1,12 @@
-function scr_player_move_goal() {
+function scr_player_move_goal()
+{
 	
 	#region /* Goal */
-	if (instance_exists(obj_goal)) {
+	if (instance_exists(obj_goal))
+	{
 		var nearest_goal = obj_goal;
-		if (distance_to_object(nearest_goal) < 1920) {
+		if (distance_to_object(nearest_goal) < 1920)
+		{
 			
 			#region /* Touching goal */
 			if (!goal)
@@ -12,7 +15,8 @@ function scr_player_move_goal() {
 			&& y < nearest_goal.bbox_bottom
 			&& !collision_line(x, y, nearest_goal.x, nearest_goal.y, obj_wall, false, true)
 			&& !collision_line(x + 1, y + 1, nearest_goal.x + 1, nearest_goal.y + 1, obj_wall, false, true)
-			|| place_meeting(x, y, nearest_goal)) {
+			|| place_meeting(x, y, nearest_goal))
+			{
 				just_hit_goal = true;
 				nearest_goal.goal = true;
 			}
@@ -21,19 +25,24 @@ function scr_player_move_goal() {
 			else
 			
 			#region /* Can't walk back when touched goal */
-			if (goal && x < nearest_goal.x) {
+			if (goal && x < nearest_goal.x)
+			{
 				x = nearest_goal.x;
 			}
 			#endregion /* Can't walk back when touched goal END */
 			
-			if (just_hit_goal && !goal) {
+			if (just_hit_goal && !goal)
+			{
 				/* Get clear level achievement */
-				if (global.character_select_in_this_menu == "main_game" && global.actually_play_edited_level && !global.doing_clear_check_character) {
+				if (global.character_select_in_this_menu == "main_game" && global.actually_play_edited_level && !global.doing_clear_check_character)
+				{
 					scr_set_achievement("CLEAR_LEVEL_" + string_upper(global.level_name));
 				}
 				
-				for(var i = 1; i <= global.max_players; i += 1) {
-					if (!instance_exists(obj_camera.player[i])) {
+				for(var i = 1; i <= global.max_players; i += 1)
+				{
+					if (!instance_exists(obj_camera.player[i]))
+					{
 					    global.player_can_play[i] = false;
 					}
 				}
@@ -44,7 +53,8 @@ function scr_player_move_goal() {
 				nearest_goal.image_index = 1;
 				invincible_timer = false;
 				
-				if (nearest_goal.trigger_ending) {
+				if (nearest_goal.trigger_ending)
+				{
 					global.trigger_ending = true;
 				}
 				
@@ -58,7 +68,8 @@ function scr_player_move_goal() {
 				#endregion /* Stop Music END */
 				
 				#region /* Save Checkpoint */
-				if (global.character_select_in_this_menu == "main_game" && room == rm_leveleditor) {
+				if (global.character_select_in_this_menu == "main_game" && room == rm_leveleditor)
+				{
 					global.checkpoint_x = 0;
 					global.checkpoint_y = 0;
 					global.checkpoint_millisecond = 0;
@@ -78,7 +89,9 @@ function scr_player_move_goal() {
 					ini_key_delete(level_name, "checkpoint_direction");
 					ini_close(); switch_save_data_commit(); /* Remember to commit the save data! */
 				}
-				else if (global.character_select_in_this_menu == "level_editor" && room == rm_leveleditor) {
+				else
+				if (global.character_select_in_this_menu == "level_editor" && room == rm_leveleditor)
+				{
 					global.checkpoint_x = 0;
 					global.checkpoint_y = 0;
 					global.checkpoint_millisecond = 0;
@@ -103,7 +116,8 @@ function scr_player_move_goal() {
 				scr_audio_play(voice_enter_goal, volume_source.voice);
 				
 				#region /* Level Clear Melody */
-				if (global.level_clear_melody > noone && !audio_is_playing(global.level_clear_melody)) {
+				if (global.level_clear_melody > noone && !audio_is_playing(global.level_clear_melody))
+				{
 					scr_audio_play(global.level_clear_melody, volume_source.melody);
 				}
 				#endregion /* Level Clear Melody END */

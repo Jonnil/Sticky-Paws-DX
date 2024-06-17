@@ -7,7 +7,8 @@ scr_set_menu_font_color();
 scr_set_controls_used_to_navigate();
 scr_menu_navigation_initialization(0);
 
-for(var p = 1; p <= global.max_players; p += 1) {
+for(var p = 1; p <= global.max_players; p += 1)
+{
 	if (global.player_can_play[p])
 	{
 		player_show_controls_alpha[p] = 1;
@@ -130,7 +131,8 @@ if (show_loading_icon)
 	show_loading_icon = true;
 	global.loading_spinning_angle -= 10;
 	
-	if (menu == "reset_from_checkpoint" && global.loading_spinning_angle < -20) {
+	if (menu == "reset_from_checkpoint" && global.loading_spinning_angle < -20)
+	{
 		
 		#region /* Restart Level from Checkpoint */
 		global.restart_level = true;
@@ -152,7 +154,8 @@ if (show_loading_icon)
 		#region /* Restart Level from Start */
 		
 		/* Reset the "big collectible already collected" variables when restarting from start */
-		for(var i = 1; i <= global.max_big_collectible; i += 1) {
+		for(var i = 1; i <= global.max_big_collectible; i += 1)
+		{
 			global.big_collectible_already_collected[i] = false;
 		}
 		global.how_many_big_collectible_collected = 0;
@@ -164,10 +167,12 @@ if (show_loading_icon)
 		global.timeattack_minute = 0;
 		#endregion /* Reset timer back to zero END */
 		
-		if (global.character_select_in_this_menu == "main_game") {
+		if (global.character_select_in_this_menu == "main_game")
+		{
 			ini_open(game_save_id + "save_file/file" + string(global.file) + ".ini");
 		}
-		else {
+		else
+		{
 			ini_open(game_save_id + "save_file/custom_level_save.ini");
 		}
 		ini_key_delete(global.level_name, "checkpoint_x");

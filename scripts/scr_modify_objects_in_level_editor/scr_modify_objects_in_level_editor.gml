@@ -852,15 +852,29 @@ function scr_modify_objects_in_level_editor()
 					
 					else
 					
-					#region /* Readable Sign */
+					#region /* Objects that needs modify menu */
 					if (object == LEVEL_OBJECT_ID.ID_SIGN_READABLE)
 					{
 						if (!instance_exists(obj_leveleditor_modify_object_menu))
 						{
-							instance_create_depth(x, y, 0, obj_leveleditor_modify_object_menu);
+							with(instance_create_depth(x, y, 0, obj_leveleditor_modify_object_menu))
+							{
+								modify_object_description = l10n_text("Type what the sign should say");
+							}
 						}
 					}
-					#endregion /* Readable Sign END */
+					else
+					if (object == LEVEL_OBJECT_ID.ID_CHECKPOINT)
+					{
+						if (!instance_exists(obj_leveleditor_modify_object_menu))
+						{
+							with(instance_create_depth(x, y, 0, obj_leveleditor_modify_object_menu))
+							{
+								modify_object_description = l10n_text("How many times does the player have to get defeated until the checkpoint appears?");
+							}
+						}
+					}
+					#endregion /* Objects that needs modify menu END */
 					
 					#region /* Update variables */
 					if (!global.actually_play_edited_level)

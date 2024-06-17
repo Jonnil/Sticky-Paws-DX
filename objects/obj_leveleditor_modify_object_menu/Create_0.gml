@@ -1,4 +1,5 @@
 modify_object_text = "";
+modify_object_description = "";
 menu = "ok";
 menu_delay = 3;
 menu_joystick_delay = 0;

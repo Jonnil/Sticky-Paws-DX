@@ -1,20 +1,27 @@
-function scr_player_move_restart() {
+function scr_player_move_restart()
+{
 	
 	#region /* Restart Level */
 	var quick_restart = false;
-	if (controller_connected) {
+	if (controller_connected)
+	{
 		if (gamepad_button_check(global.player_slot[player], gp_shoulderlb))
 		&& (gamepad_button_check(global.player_slot[player], gp_shoulderrb))
-		&& (gamepad_button_check_pressed(global.player_slot[player], gp_select)) {
+		&& (gamepad_button_check_pressed(global.player_slot[player], gp_select))
+		{
 			var quick_restart = true;
 		}
 	}
-	if (global.restart_level || quick_restart) {
-		if (quick_restart) {
-			if (global.character_select_in_this_menu == "main_game") {
+	if (global.restart_level || quick_restart)
+	{
+		if (quick_restart)
+		{
+			if (global.character_select_in_this_menu == "main_game")
+			{
 				var ini_path = game_save_id + "save_file/file" + string(global.file) + ".ini";
 			}
-			else {
+			else
+			{
 				var ini_path = game_save_id + "save_file/custom_level_save.ini";
 			}
 			ini_open(ini_path);
@@ -29,7 +36,8 @@ function scr_player_move_restart() {
 		global.quit_level = false;
 		audio_stop_all();
 		room_persistent = false; /* Turn OFF Room Persistency */
-		if (global.goal_active || global.player_has_entered_goal) {
+		if (global.goal_active || global.player_has_entered_goal)
+		{
 			scr_save_level(); /* Save timeattack record when resetting at goal */
 			global.goal_active = false;
 			global.player_has_entered_goal = false;
@@ -39,7 +47,8 @@ function scr_player_move_restart() {
 		global.timeattack_second = 0;
 		global.timeattack_minute = 0;	
 		score = 0;
-		for(var i = 1; i <= global.max_players + 1; i += 1) {
+		for(var i = 1; i <= global.max_players + 1; i += 1)
+		{
 			gamepad_set_vibration(i - 1, 0, 0);
 		}
 		room_restart();
@@ -48,10 +57,12 @@ function scr_player_move_restart() {
 	
 }
 
-function scr_player_move_quit() {
+function scr_player_move_quit()
+{
 	
 	#region /* Quit Level */
-	if (global.quit_level) {
+	if (global.quit_level)
+	{
 		global.doing_clear_check_level = false; /* If you exit the level manually , you no longer are doing level clear check */
 		global.doing_clear_check_character = false; /* If you exit the level manually , you no longer are doing character clear check */
 		audio_stop_all();
@@ -62,12 +73,15 @@ function scr_player_move_quit() {
 		global.timeattack_minute = 0;	
 		score = 0;
 		scr_save_level();
-		if (global.quit_to_map || global.quit_to_title) {
+		if (global.quit_to_map || global.quit_to_title)
+		{
 			
 			#region /* Player availability check. These variables control player availability */
 			/* If certain players are not playing the level anymore, make them disconnect until they join manually again */
-			for(var i = 1; i <= global.max_players; i += 1) {
-				if (!instance_exists(obj_camera.player[i])) {
+			for(var i = 1; i <= global.max_players; i += 1)
+			{
+				if (!instance_exists(obj_camera.player[i]))
+				{
 					global.player_can_play[i] = false;
 				}
 				gamepad_set_vibration(i - 1, 0, 0);
