@@ -870,6 +870,7 @@ function scr_modify_objects_in_level_editor()
 						{
 							with(instance_create_depth(x, y, 0, obj_leveleditor_modify_object_menu))
 							{
+								can_only_input_numbers = true;
 								modify_object_description = l10n_text("How many times does the player have to get defeated until the checkpoint appears?");
 							}
 						}

@@ -49,6 +49,22 @@ function scr_draw_level_editor_placable_object(v_selected_object, v_place_object
 			{
 				draw_circle_color(half_gui_width + menu_x_offset + 16, y_offset - 16, 3 + scr_wave(0, 3, 1, 0), c_red, c_red, false);
 			}
+			
+			if (is_selected)
+			&& (object_video_tutorial != "")
+			{
+				draw_menu_button(0, 0, l10n_text("Watch Tutorial") + " - " + (current_object_name), "watch_video_tutorial", "watch_video_tutorial_click",,selected_menu_alpha);
+				draw_sprite_ext(global.resource_pack_sprite_logo_youtube, 0, 24, 20, 0.25, 0.25, 0, c_white, selected_menu_alpha);
+				draw_set_halign(fa_left);
+				scr_draw_text_outlined(10, 58, string(object_video_tutorial), global.default_text_size * 0.5, c_black, c_white, selected_menu_alpha);
+				draw_set_halign(fa_center);
+				if (menu == "watch_video_tutorial_click")
+				{
+					url_open(object_video_tutorial);
+					menu = "watch_video_tutorial";
+					menu_delay = 3;
+				}
+			}
 		}
 		order_index += add_order_index;
 	}

@@ -375,10 +375,13 @@ function scr_spawn_objects_when_starting_room()
 				case 65: with(instance_create_depth(x, y, 0, obj_arrow_sign_small)){if (instance_exists(obj_leveleditor_placed_object)){second_x = instance_nearest(x, y, obj_leveleditor_placed_object).second_x;second_y = instance_nearest(x, y, obj_leveleditor_placed_object).second_y;}}break;
 				case LEVEL_OBJECT_ID.ID_CHECKPOINT:
 					/* Set the correct activation state if this checkpoint should only appear after certain amounts of defeats */
-					if (real(second_x) > 0) /* If this variable is above 0, that is the only time it should check for "lives until assist" variable */
+					if (second_x != "")
+					&& (real(second_x) > 0) /* If this variable is above 0, that is the only time it should check for "lives until assist" variable */
 					&& (global.lives_until_assist >= real(second_x)) /* If you have got defeated enough times to make the checkpoint appear */
 					&& (!global.doing_clear_check_level) /* Checkpoints that appear after certain amounts of defeats should not appear when doing a clear check */
-					|| (real(second_x) <= 0)
+					|| (second_x != "")
+					&& (real(second_x) <= 0)
+					|| (second_x == "")
 					{
 						instance_create_depth(x, y, 0, obj_checkpoint);
 						

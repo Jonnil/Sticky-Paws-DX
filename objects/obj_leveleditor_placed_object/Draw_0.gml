@@ -82,16 +82,26 @@ if (position_meeting(x, y, obj_leveleditor))
 		}
 		else
 		{
-			var textbox_text = l10n_text("This is a sign. Click on it in the editor to edit text!");
+			if (object == LEVEL_OBJECT_ID.ID_SIGN_READABLE)
+			{
+				var textbox_text = l10n_text("This is a sign. Click on it in the editor to edit text!");
+			}
+			else
+			{
+				var textbox_text = "";
+			}
 		}
 		
-		draw_set_alpha(0.9);
-		draw_roundrect_color_ext(x_adjusted - (string_width_ext(textbox_text, 40, 1000) * 0.41) - 8, yy - string_height_ext(textbox_text, 40, 1000), x_adjusted + (string_width_ext(textbox_text, 40, 1000) * 0.41) + 8, yy + 8, 50, 50, c_black, c_black, false);
-		draw_triangle_color(xx - 8, yy + 8, xx + 8, yy + 8, xx, yy + 32, c_black, c_black, c_black, false);
-		draw_set_alpha(1);
-		draw_set_halign(fa_center);
-		draw_set_valign(fa_bottom);
-		draw_text_ext_transformed_color(x_adjusted, yy, string(textbox_text), 40, 1000, global.default_text_size, global.default_text_size, 0, c_white, c_white, c_white, c_white, 1);
+		if (textbox_text != "")
+		{
+			draw_set_alpha(0.9);
+			draw_roundrect_color_ext(x_adjusted - (string_width_ext(textbox_text, 40, 1000) * 0.41) - 8, yy - string_height_ext(textbox_text, 40, 1000), x_adjusted + (string_width_ext(textbox_text, 40, 1000) * 0.41) + 8, yy + 8, 50, 50, c_black, c_black, false);
+			draw_triangle_color(xx - 8, yy + 8, xx + 8, yy + 8, xx, yy + 32, c_black, c_black, c_black, false);
+			draw_set_alpha(1);
+			draw_set_halign(fa_center);
+			draw_set_valign(fa_bottom);
+			draw_text_ext_transformed_color(x_adjusted, yy, string(textbox_text), 40, 1000, global.default_text_size, global.default_text_size, 0, c_white, c_white, c_white, c_white, 1);
+		}
 	}
 }
 #endregion /* Objects that need to display text when hovered over END */
