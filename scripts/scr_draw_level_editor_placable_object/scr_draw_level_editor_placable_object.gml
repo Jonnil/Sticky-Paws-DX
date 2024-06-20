@@ -53,7 +53,16 @@ function scr_draw_level_editor_placable_object(v_selected_object, v_place_object
 			if (is_selected)
 			&& (object_video_tutorial != "")
 			{
-				draw_menu_button(0, 0, l10n_text("Watch Tutorial") + " - " + (current_object_name), "watch_video_tutorial", "watch_video_tutorial_click",,selected_menu_alpha);
+				if (os_type == os_switch)
+				{
+					draw_menu_button(0, 0, l10n_text("Watch Tutorial") + " - " + (current_object_name), "watch_video_tutorial", "watch_video_tutorial_click",,selected_menu_alpha);
+				}
+				else
+				{
+					draw_set_halign(fa_left);
+					scr_draw_text_outlined(42, 20, l10n_text("Watch Tutorial") + " - " + (current_object_name), global.default_text_size, c_black, c_white, selected_menu_alpha);
+					draw_set_halign(fa_center);
+				}
 				draw_sprite_ext(global.resource_pack_sprite_logo_youtube, 0, 24, 20, 0.25, 0.25, 0, c_white, selected_menu_alpha);
 				draw_set_halign(fa_left);
 				scr_draw_text_outlined(10, 58, string(object_video_tutorial), global.default_text_size * 0.5, c_black, c_white, selected_menu_alpha);

@@ -5,8 +5,8 @@
   "isDnD":false,
   "name":"scr_switch_update_online_status",
   "parent":{
-    "name":"Other",
-    "path":"folders/Scripts/Other.yy",
+    "name":"Server Scripts",
+    "path":"folders/Scripts/Server Scripts.yy",
   },
   "resourceType":"GMScript",
   "resourceVersion":"2.0",

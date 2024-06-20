@@ -1,8 +1,9 @@
 function scr_get_todays_upload_count()
 {
-	scr_switch_update_online_status();
+	scr_switch_update_online_status(false);
 	
-	if (global.switch_account_network_service_available) /* Need to make sure that network service is available before going online */
+	if (global.switch_logged_in)
+	&& (global.switch_account_network_service_available) /* Need to make sure that network service is available before going online */
 	&& (global.online_enabled)
 	&& (global.free_communication_available)
 	{

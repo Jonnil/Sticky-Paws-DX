@@ -284,18 +284,26 @@ function scr_draw_upload_character_menu()
 							{
 								scr_switch_update_online_status();
 								
-								if (global.switch_account_network_service_available) /* Need to make sure that network service is available before going online */
+								if (global.switch_logged_in)
 								{
-									if (file_exists(game_save_id + "custom_characters/" + character_name + "/data/character_config.ini"))
+									if (global.switch_account_network_service_available) /* Need to make sure that network service is available before going online */
 									{
-										/* Essential files does exist, so upload now */
-										menu = "uploading_character"; /* Go to uploading character loading screen */
-										menu_delay = 60 * 3;
+										if (file_exists(game_save_id + "custom_characters/" + character_name + "/data/character_config.ini"))
+										{
+											/* Essential files does exist, so upload now */
+											menu = "uploading_character"; /* Go to uploading character loading screen */
+											menu_delay = 60 * 3;
+										}
+									}
+									else
+									{
+										menu = "caution_online_network_service_unavailable";
 									}
 								}
 								else
 								{
-									menu = "caution_online_network_service_unavailable";
+									menu_delay = 3;
+									menu = "upload_yes_character";
 								}
 							}
 							else
@@ -577,7 +585,8 @@ function scr_draw_upload_character_menu()
 	#region /* Uploading Character */
 	if (menu == "uploading_character")
 	{
-		if (global.username == "") {
+		if (global.username == "")
+		{
 			keyboard_string = "";
 			menu_delay = 3;
 			menu = "question_upload_character_edit_username_ok"; /* If there isn't an username, have the player make an username */
@@ -647,70 +656,78 @@ function scr_draw_upload_character_menu()
 				scr_switch_expand_save_data(); /* Expand the save data before upload */
 				if (global.save_data_size_is_sufficient)
 				{
-					#region /* Actually upload the character to the server */
-					
-					content_type = "character"; /* Set "content type" to be correct for what kind of files you're uploading, before uploading the files to the server */
-					
-					/* User is prompted for a file to upload */
-					file_name = filename_name(file);
-					
-					/* Create DS Map to hold the HTTP Header info */
-					map = ds_map_create();
-					
-					/* Add to the header DS Map */
-					ds_map_add(map, "Host", global.base_url);
-					var boundary = "----GMBoundary";
-					ds_map_add(map, "Content-Type", "multipart/form-data; boundary=" + boundary);
-					ds_map_add(map, "User-Agent", "gmuploader");
-					ds_map_add(map, "X-API-Key", global.api_key);
-					
-					/* Loads the file into a buffer */
-					send_buffer = buffer_create(1, buffer_grow, 1);
-					buffer_load_ext(send_buffer, file, 0);
-					
-					/* Encodes the data as base64 */
-					data_send = buffer_base64_encode(send_buffer, 0, buffer_get_size(send_buffer));
-					
-					/* Post the data to the upload script */
-					var post_data = "--" + boundary + "\r\n";
-					post_data += "Content-Disposition: form-data; name=\"name\"\r\n\r\n";
-					post_data += file_name + "\r\n";
-					post_data += "--" + boundary + "\r\n";
-					post_data += "Content-Disposition: form-data; name=\"content_type\"\r\n\r\n";
-					post_data += "characters" + "\r\n";
-					post_data += "--" + boundary + "\r\n";
-					post_data += "Content-Disposition: form-data; name=\"data\"\r\n\r\n";
-					post_data += data_send + "\r\n";
-					post_data += "--" + boundary + "--";
-					
-					/* Add the Content-Length header to the map */
-					ds_map_add(map, "Content-Length", string(string_length(post_data)));
-					global.http_request_id = http_request("https://" + global.base_url + "/upload", "POST", map, post_data);
-					
-					/* Cleans up! */
-					buffer_delete(send_buffer);
-					ds_map_destroy(map);
-					
-					#endregion /* Actually upload the character to the server END */
-					
-					if (destroy_zip_after_uploading) /* Delete some leftover files and folders */
-					{
-						file_delete(game_save_id + string(character_id) + ".zip");
-					}
-					
 					if (os_is_network_connected())
 					{
 						scr_switch_update_online_status();
 						
-						if (global.switch_account_network_service_available) /* Need to make sure that network service is available before going online */
+						if (global.switch_logged_in)
 						{
-							menu_delay = 3;
-							search_for_id_still = false;
-							menu = "character_uploaded";
+							if (global.switch_account_network_service_available) /* Need to make sure that network service is available before going online */
+							{
+								
+								#region /* Actually upload the character to the server */
+								
+								content_type = "character"; /* Set "content type" to be correct for what kind of files you're uploading, before uploading the files to the server */
+								
+								/* User is prompted for a file to upload */
+								file_name = filename_name(file);
+								
+								/* Create DS Map to hold the HTTP Header info */
+								map = ds_map_create();
+								
+								/* Add to the header DS Map */
+								ds_map_add(map, "Host", global.base_url);
+								var boundary = "----GMBoundary";
+								ds_map_add(map, "Content-Type", "multipart/form-data; boundary=" + boundary);
+								ds_map_add(map, "User-Agent", "gmuploader");
+								ds_map_add(map, "X-API-Key", global.api_key);
+								
+								/* Loads the file into a buffer */
+								send_buffer = buffer_create(1, buffer_grow, 1);
+								buffer_load_ext(send_buffer, file, 0);
+								
+								/* Encodes the data as base64 */
+								data_send = buffer_base64_encode(send_buffer, 0, buffer_get_size(send_buffer));
+								
+								/* Post the data to the upload script */
+								var post_data = "--" + boundary + "\r\n";
+								post_data += "Content-Disposition: form-data; name=\"name\"\r\n\r\n";
+								post_data += file_name + "\r\n";
+								post_data += "--" + boundary + "\r\n";
+								post_data += "Content-Disposition: form-data; name=\"content_type\"\r\n\r\n";
+								post_data += "characters" + "\r\n";
+								post_data += "--" + boundary + "\r\n";
+								post_data += "Content-Disposition: form-data; name=\"data\"\r\n\r\n";
+								post_data += data_send + "\r\n";
+								post_data += "--" + boundary + "--";
+								
+								/* Add the Content-Length header to the map */
+								ds_map_add(map, "Content-Length", string(string_length(post_data)));
+								global.http_request_id = http_request("https://" + global.base_url + "/upload", "POST", map, post_data);
+								
+								/* Cleans up! */
+								buffer_delete(send_buffer);
+								ds_map_destroy(map);
+								
+								if (destroy_zip_after_uploading) /* Delete some leftover files and folders */
+								{
+									file_delete(game_save_id + string(character_id) + ".zip");
+								}
+								#endregion /* Actually upload the character to the server END */
+								
+								menu_delay = 3;
+								search_for_id_still = false;
+								menu = "character_uploaded";
+							}
+							else
+							{
+								menu = "caution_online_network_service_unavailable";
+							}
 						}
 						else
 						{
-							menu = "caution_online_network_service_unavailable";
+							menu_delay = 3;
+							menu = "upload_yes_character";
 						}
 					}
 					else

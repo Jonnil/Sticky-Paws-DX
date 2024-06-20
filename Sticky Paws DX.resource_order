@@ -354,7 +354,7 @@
     {"name":"scr_spawn_objects_when_starting_room","order":5,"path":"scripts/scr_spawn_objects_when_starting_room/scr_spawn_objects_when_starting_room.yy",},
     {"name":"scr_start_intro_animations","order":34,"path":"scripts/scr_start_intro_animations/scr_start_intro_animations.yy",},
     {"name":"scr_switch_expand_save_data","order":73,"path":"scripts/scr_switch_expand_save_data/scr_switch_expand_save_data.yy",},
-    {"name":"scr_switch_update_online_status","order":99,"path":"scripts/scr_switch_update_online_status/scr_switch_update_online_status.yy",},
+    {"name":"scr_switch_update_online_status","order":14,"path":"scripts/scr_switch_update_online_status/scr_switch_update_online_status.yy",},
     {"name":"scr_sync_saving_create","order":69,"path":"scripts/scr_sync_saving_create/scr_sync_saving_create.yy",},
     {"name":"scr_toggle_fullscreen","order":35,"path":"scripts/scr_toggle_fullscreen/scr_toggle_fullscreen.yy",},
     {"name":"scr_translation","order":36,"path":"scripts/scr_translation/scr_translation.yy",},

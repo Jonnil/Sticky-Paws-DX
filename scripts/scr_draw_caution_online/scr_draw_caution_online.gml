@@ -42,59 +42,67 @@ function scr_draw_caution_online()
 			{
 				scr_switch_update_online_status();
 				
-				if (global.switch_account_network_service_available) /* Need to make sure that network service is available before going online */
+				if (global.switch_logged_in)
 				{
-					if (caution_online_takes_you_to == "online_download_list_load")
+					if (global.switch_account_network_service_available) /* Need to make sure that network service is available before going online */
 					{
-						/* Go to online level list, so you can browse all uploaded levels, instead of just searching for specific levels */
-						select_custom_level_menu_open = false;
-						global.selected_online_download_index = 1;
-					}
-					if (caution_online_takes_you_to == "search_id_ok")
-					{
-						keyboard_string = "";
-						search_id = "";
-						content_type = "character";
-						menu = "search_id_ok";
-						select_custom_level_menu_open = false;
-						menu_delay = 3;
-					}
-					global.online_enabled = true;
-					if (global.caution_online_do_not_show)
-					{
-						ini_open(game_save_id + "save_file/config.ini");
-						ini_write_string("config", "caution_online_do_not_show", true);
-						ini_close(); switch_save_data_commit(); /* Remember to commit the save data! */
-					}
-					var no_players_can_play = true;
-					for(var i = 1; i <= global.max_players; i += 1)
-					{
-					    if (global.player_can_play[i])
+						if (caution_online_takes_you_to == "online_download_list_load")
 						{
-					        no_players_can_play = false;
-					        break; /* exit the loop if any player can play */
-					    }
-					}
-					if (no_players_can_play)
-					|| (global.playergame <= 0)
-					{
-						global.player_can_play[fixed_player] = true;
-					}
-					information_menu_open = "";
+							/* Go to online level list, so you can browse all uploaded levels, instead of just searching for specific levels */
+							select_custom_level_menu_open = false;
+							global.selected_online_download_index = 1;
+						}
+						if (caution_online_takes_you_to == "search_id_ok")
+						{
+							keyboard_string = "";
+							search_id = "";
+							content_type = "character";
+							menu = "search_id_ok";
+							select_custom_level_menu_open = false;
+							menu_delay = 3;
+						}
+						global.online_enabled = true;
+						if (global.caution_online_do_not_show)
+						{
+							ini_open(game_save_id + "save_file/config.ini");
+							ini_write_string("config", "caution_online_do_not_show", true);
+							ini_close(); switch_save_data_commit(); /* Remember to commit the save data! */
+						}
+						var no_players_can_play = true;
+						for(var i = 1; i <= global.max_players; i += 1)
+						{
+						    if (global.player_can_play[i])
+							{
+						        no_players_can_play = false;
+						        break; /* exit the loop if any player can play */
+						    }
+						}
+						if (no_players_can_play)
+						|| (global.playergame <= 0)
+						{
+							global.player_can_play[fixed_player] = true;
+						}
+						information_menu_open = "";
 					
-					if (!upload_rules_do_not_show_level) /* If you have not yet agreed to the upload rules for uploading levels */
-					&& (caution_online_takes_you_to == "level_editor_upload_pressed") /* And you're supposed to go to the upload edit menu */
-					{
-						menu = "upload_rules"; /* Then take you to the upload rules menu */
+						if (!upload_rules_do_not_show_level) /* If you have not yet agreed to the upload rules for uploading levels */
+						&& (caution_online_takes_you_to == "level_editor_upload_pressed") /* And you're supposed to go to the upload edit menu */
+						{
+							menu = "upload_rules"; /* Then take you to the upload rules menu */
+						}
+						else
+						{
+							menu = caution_online_takes_you_to; /* You go to the menu you're supposed to go to from beginning */
+						}
 					}
 					else
 					{
-						menu = caution_online_takes_you_to; /* You go to the menu you're supposed to go to from beginning */
+						menu = "caution_online_network_service_unavailable";
 					}
 				}
 				else
 				{
-					menu = "caution_online_network_service_unavailable";
+					menu_delay = 3;
+					menu = "caution_online_proceed";
 				}
 			}
 			else

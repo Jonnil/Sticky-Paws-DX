@@ -4,12 +4,6 @@ scr_character_select_menu_step();
 scr_set_menu_font_color();
 scr_toggle_fullscreen();
 
-if (gamepad_button_check(global.player_slot[1], gp_face4))
-{
-	scr_switch_update_online_status();
-	effect_create_above(ef_firework, 128, 128, 2, random(999999));
-}
-
 var fixed_player = 1;
 
 if (global.go_to_menu_when_going_back_to_title == "upload_yes_character")

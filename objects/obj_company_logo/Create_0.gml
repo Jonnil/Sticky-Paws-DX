@@ -68,6 +68,7 @@ global.switch_account_netid = noone;
 global.switch_account_online_token = noone;
 global.switch_account_is_user_online = noone;
 global.switch_account_network_service_available = noone;
+global.switch_logged_in = noone;
 
 #region /* If you're playing on console, then some things should not show up that is for PC */
 if (os_type == os_switch)
@@ -79,8 +80,6 @@ if (os_type == os_switch)
 	switch_controller_support_set_singleplayer_only(false);
 	switch_controller_support_set_player_min(1);
 	switch_controller_support_set_player_max(global.max_players);
-	
-	scr_switch_update_online_status();
 	
 	#endregion /* Need to set these Switch specific functions END */
 	

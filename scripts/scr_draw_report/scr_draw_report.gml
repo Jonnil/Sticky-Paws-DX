@@ -42,68 +42,76 @@ function scr_draw_report()
 	#region /* Send report information to the server */
 	if (menu == "report_send_to_server")
 	{
-		
-		#region /* Actually upload the report to the server */
-		
-		/* Create DS Map to hold the HTTP Header info */
-		map = ds_map_create();
-		
-		/* Add to the header DS Map */
-		ds_map_add(map, "Host", global.base_url);
-		var boundary = "----GMBoundary";
-		ds_map_add(map, "Content-Type", "multipart/form-data; boundary=" + boundary);
-		ds_map_add(map, "User-Agent", "gmuploader");
-		ds_map_add(map, "X-API-Key", global.api_key);
-		
-		/* If there is a report message, save that in data_send */
-		if (global.report_message != undefined && global.report_message != "") 
-		{
-			data_send = string(global.report_message);
-		}
-		else
-		{
-			data_send = "";
-		}
-		
-		/* Post the data to the upload script */
-		var post_data = "--" + boundary + "\r\n";
-		post_data += "Content-Disposition: form-data; name=\"report_reason\"\r\n\r\n";
-		post_data += string(global.report_reason) + "\r\n";
-		post_data += "--" + boundary + "\r\n";
-		post_data += "Content-Disposition: form-data; name=\"report_message\"\r\n\r\n";
-		post_data += data_send + "\r\n";
-		post_data += "--" + boundary + "--";
-		
-		/* Add the Content-Length header to the map */
-		ds_map_add(map, "Content-Length", string(string_length(post_data)));
-		global.http_request_id = http_request("https://" + global.base_url + "/report/" + string(content_type) + "s/" + string(global.search_id), "POST", map, post_data);
-		
-		/* Cleans up! */
-		ds_map_destroy(map);
-		#endregion /* Actually upload the level to the server END */
-		
 		if (os_is_network_connected())
 		{
 			scr_switch_update_online_status();
 			
-			if (global.switch_account_network_service_available) /* Need to make sure that network service is available before going online */
+			if (global.switch_logged_in)
 			{
-				search_for_id_still = false;
-				if (content_type == "level")
-				&& (file_exists(game_save_id + "custom_levels/" + string(global.level_name) + "/data/level_information.ini"))
-				|| (content_type == "character")
-				&& (file_exists(game_save_id + "custom_characters/" + string(downloaded_character_name) + "/data/character_config.ini"))
+				if (global.switch_account_network_service_available) /* Need to make sure that network service is available before going online */
 				{
-					menu = "report_complete_delete"; /* When done sending report to server, go to the final menu */
+					
+					#region /* Actually upload the report to the server */
+					
+					/* Create DS Map to hold the HTTP Header info */
+					map = ds_map_create();
+					
+					/* Add to the header DS Map */
+					ds_map_add(map, "Host", global.base_url);
+					var boundary = "----GMBoundary";
+					ds_map_add(map, "Content-Type", "multipart/form-data; boundary=" + boundary);
+					ds_map_add(map, "User-Agent", "gmuploader");
+					ds_map_add(map, "X-API-Key", global.api_key);
+					
+					/* If there is a report message, save that in data_send */
+					if (global.report_message != undefined && global.report_message != "") 
+					{
+						data_send = string(global.report_message);
+					}
+					else
+					{
+						data_send = "";
+					}
+					
+					/* Post the data to the upload script */
+					var post_data = "--" + boundary + "\r\n";
+					post_data += "Content-Disposition: form-data; name=\"report_reason\"\r\n\r\n";
+					post_data += string(global.report_reason) + "\r\n";
+					post_data += "--" + boundary + "\r\n";
+					post_data += "Content-Disposition: form-data; name=\"report_message\"\r\n\r\n";
+					post_data += data_send + "\r\n";
+					post_data += "--" + boundary + "--";
+					
+					/* Add the Content-Length header to the map */
+					ds_map_add(map, "Content-Length", string(string_length(post_data)));
+					global.http_request_id = http_request("https://" + global.base_url + "/report/" + string(content_type) + "s/" + string(global.search_id), "POST", map, post_data);
+					
+					/* Cleans up! */
+					ds_map_destroy(map);
+					#endregion /* Actually upload the level to the server END */
+					
+					search_for_id_still = false;
+					if (content_type == "level")
+					&& (file_exists(game_save_id + "custom_levels/" + string(global.level_name) + "/data/level_information.ini"))
+					|| (content_type == "character")
+					&& (file_exists(game_save_id + "custom_characters/" + string(downloaded_character_name) + "/data/character_config.ini"))
+					{
+						menu = "report_complete_delete"; /* When done sending report to server, go to the final menu */
+					}
+					else
+					{
+						menu = "report_complete_back_to_online_list"; /* When done sending report to server, go to the final menu */
+					}
 				}
 				else
 				{
-					menu = "report_complete_back_to_online_list"; /* When done sending report to server, go to the final menu */
+					menu = "caution_online_network_service_unavailable";
 				}
 			}
 			else
 			{
-				menu = "caution_online_network_service_unavailable";
+				menu_delay = 3;
+				menu = "report_send_confirm";
 			}
 		}
 		else
@@ -768,13 +776,21 @@ function scr_draw_report()
 				{
 					scr_switch_update_online_status();
 					
-					if (global.switch_account_network_service_available) /* Need to make sure that network service is available before going online */
+					if (global.switch_logged_in)
 					{
-						menu = "report_send_confirm"; /* Go to send report screen */
+						if (global.switch_account_network_service_available) /* Need to make sure that network service is available before going online */
+						{
+							menu = "report_send_confirm"; /* Go to send report screen */
+						}
+						else
+						{
+							menu = "caution_online_network_service_unavailable";
+						}
 					}
 					else
 					{
-						menu = "caution_online_network_service_unavailable";
+						menu_delay = 3;
+						menu = "report_message_ok";
 					}
 				}
 				else

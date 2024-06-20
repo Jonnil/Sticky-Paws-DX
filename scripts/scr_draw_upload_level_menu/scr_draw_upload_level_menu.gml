@@ -120,32 +120,40 @@ function scr_draw_upload_level_menu()
 				{
 					scr_switch_update_online_status();
 					
-					if (global.switch_account_network_service_available) /* Need to make sure that network service is available before going online */
+					if (global.switch_logged_in)
 					{
-						if (upload_rules_do_not_show_level)
+						if (global.switch_account_network_service_available) /* Need to make sure that network service is available before going online */
 						{
-							menu = "level_editor_upload_pressed";
-							menu_delay = 3;
+							if (upload_rules_do_not_show_level)
+							{
+								menu = "level_editor_upload_pressed";
+								menu_delay = 3;
+							}
+							else
+							{
+								if (variable_instance_exists(self, "show_level_editor_corner_menu"))
+								{
+									show_level_editor_corner_menu = false;
+								}
+								caution_online_takes_you_to = "level_editor_upload_pressed";
+								caution_online_takes_you_back_to = "level_editor_upload";
+								content_type = "level";
+								menu = "upload_rules";
+								menu_delay = 3;
+							}
 						}
 						else
 						{
-							if (variable_instance_exists(self, "show_level_editor_corner_menu"))
-							{
-								show_level_editor_corner_menu = false;
-							}
+							menu_delay = 3;
 							caution_online_takes_you_to = "level_editor_upload_pressed";
 							caution_online_takes_you_back_to = "level_editor_upload";
-							content_type = "level";
-							menu = "upload_rules";
-							menu_delay = 3;
+							menu = "caution_online_network_service_unavailable";
 						}
 					}
 					else
 					{
 						menu_delay = 3;
-						caution_online_takes_you_to = "level_editor_upload_pressed";
-						caution_online_takes_you_back_to = "level_editor_upload";
-						menu = "caution_online_network_service_unavailable";
+						menu = "level_editor_upload";
 					}
 				}
 				else
@@ -181,23 +189,21 @@ function scr_draw_upload_level_menu()
 			{
 				scr_switch_update_online_status();
 				
-				if (global.switch_account_network_service_available) /* Need to make sure that network service is available before going online */
+				if (global.switch_logged_in)
 				{
-					global.actually_play_edited_level = false;
-					global.play_edited_level = false;
-					menu_delay = 3;
-					ini_open(upload_level_path + "/data/level_information.ini");
-					if (ini_key_exists("info", "clear_check") && !skip_clear_check) || (skip_clear_check)
+					if (global.switch_account_network_service_available) /* Need to make sure that network service is available before going online */
 					{
-						if (ini_read_real("info", "clear_check", false) && !skip_clear_check) || (skip_clear_check)
+						global.actually_play_edited_level = false;
+						global.play_edited_level = false;
+						menu_delay = 3;
+						ini_open(upload_level_path + "/data/level_information.ini");
+						if (ini_key_exists("info", "clear_check") && !skip_clear_check) || (skip_clear_check)
 						{
-							if (global.username != "") /* Check if there is an username or not */
+							if (ini_read_real("info", "clear_check", false) && !skip_clear_check) || (skip_clear_check)
 							{
-								if (os_is_network_connected()) /* Check if you're even connected to the internet */
+								if (global.username != "") /* Check if there is an username or not */
 								{
-									scr_switch_update_online_status();
-								
-									if (global.switch_account_network_service_available) /* Need to make sure that network service is available before going online */
+									if (os_is_network_connected()) /* Check if you're even connected to the internet */
 									{
 										scr_load_level_tags(upload_level_path);
 										
@@ -215,13 +221,19 @@ function scr_draw_upload_level_menu()
 									}
 									else
 									{
-										menu = "caution_online_network_service_unavailable";
+										menu_delay = 3;
+										menu = "no_internet_level"; /* If you're not connected to the internet, tell the player that */
+										if (variable_instance_exists(self, "show_level_editor_corner_menu"))
+										{
+											show_level_editor_corner_menu = false;
+										}
 									}
 								}
 								else
 								{
+									keyboard_string = "";
 									menu_delay = 3;
-									menu = "no_internet_level"; /* If you're not connected to the internet, tell the player that */
+									menu = "question_upload_level_edit_username_ok"; /* If there isn't an username, have the player make an username */
 									if (variable_instance_exists(self, "show_level_editor_corner_menu"))
 									{
 										show_level_editor_corner_menu = false;
@@ -230,9 +242,8 @@ function scr_draw_upload_level_menu()
 							}
 							else
 							{
-								keyboard_string = "";
 								menu_delay = 3;
-								menu = "question_upload_level_edit_username_ok"; /* If there isn't an username, have the player make an username */
+								menu = "clear_check_yes";
 								if (variable_instance_exists(self, "show_level_editor_corner_menu"))
 								{
 									show_level_editor_corner_menu = false;
@@ -248,24 +259,20 @@ function scr_draw_upload_level_menu()
 								show_level_editor_corner_menu = false;
 							}
 						}
+						ini_close(); switch_save_data_commit(); /* Remember to commit the save data! */
 					}
 					else
 					{
 						menu_delay = 3;
-						menu = "clear_check_yes";
-						if (variable_instance_exists(self, "show_level_editor_corner_menu"))
-						{
-							show_level_editor_corner_menu = false;
-						}
+						caution_online_takes_you_to = "level_editor_upload_pressed";
+						caution_online_takes_you_back_to = "level_editor_upload";
+						menu = "caution_online_network_service_unavailable";
 					}
-					ini_close(); switch_save_data_commit(); /* Remember to commit the save data! */
 				}
 				else
 				{
 					menu_delay = 3;
-					caution_online_takes_you_to = "level_editor_upload_pressed";
-					caution_online_takes_you_back_to = "level_editor_upload";
-					menu = "caution_online_network_service_unavailable";
+					menu = "level_editor_upload";
 				}
 			}
 			else
@@ -1646,76 +1653,85 @@ function scr_draw_upload_level_menu()
 				scr_switch_expand_save_data(); /* Expand the save data before upload */
 				if (global.save_data_size_is_sufficient)
 				{
-					
-					#region /* Actually upload the level to the server */
-					content_type = "level"; /* Set "content type" to be correct for what kind of files you're uploading, before uploading the files to the server */
-					
-					/* User is prompted for a file to upload */
-					file_name = filename_name(game_save_id + string(file));
-					
-					/* Create DS Map to hold the HTTP Header info */
-					map = ds_map_create();
-					
-					/* Add to the header DS Map */
-					ds_map_add(map, "Host", global.base_url);
-					var boundary = "----GMBoundary";
-					ds_map_add(map, "Content-Type", "multipart/form-data; boundary=" + boundary);
-					ds_map_add(map, "User-Agent", "gmuploader");
-					ds_map_add(map, "X-API-Key", global.api_key);
-					
-					/* Loads the file into a buffer */
-					send_buffer = buffer_create(1, buffer_grow, 1);
-					buffer_load_ext(send_buffer, game_save_id + string(file), 0);
-					
-					/* Encodes the data as base64 */
-					data_send = buffer_base64_encode(send_buffer, 0, buffer_get_size(send_buffer));
-					
-					/* Post the data to the upload script */
-					var post_data = "--" + boundary + "\r\n";
-					post_data += "Content-Disposition: form-data; name=\"name\"\r\n\r\n";
-					post_data += file_name + "\r\n";
-					post_data += "--" + boundary + "\r\n";
-					post_data += "Content-Disposition: form-data; name=\"content_type\"\r\n\r\n";
-					post_data += "levels" + "\r\n";
-					post_data += "--" + boundary + "\r\n";
-					post_data += "Content-Disposition: form-data; name=\"data\"\r\n\r\n";
-					post_data += data_send + "\r\n";
-					post_data += "--" + boundary + "--";
-					
-					/* Add the Content-Length header to the map */
-					ds_map_add(map, "Content-Length", string(string_length(post_data)));
-					global.http_request_id = http_request("https://" + global.base_url + "/upload", "POST", map, post_data);
-					
-					/* Cleans up! */
-					buffer_delete(send_buffer);
-					ds_map_destroy(map);
-					#endregion /* Actually upload the level to the server END */
-					
-					/* Delete some leftover files and folders */
-					if (destroy_zip_after_uploading)
-					{
-						file_delete(game_save_id + string(level_id) + ".zip");
-					}
 					if (os_is_network_connected())
 					{
 						scr_switch_update_online_status();
 						
-						if (global.switch_account_network_service_available) /* Need to make sure that network service is available before going online */
+						if (global.switch_logged_in)
 						{
-							/* Update a list of downloaded levels that you have finished. The level you are uploading have already been finished */
-							ini_open(game_save_id + "save_file/custom_level_save.ini");
-							if (ini_read_real("finished_downloaded_level", string(level_id), 0) < 2)
+							if (global.switch_account_network_service_available) /* Need to make sure that network service is available before going online */
 							{
-								ini_write_real("finished_downloaded_level", string(level_id), 2); /* Played and finished when uploading own level */
+								
+								#region /* Actually upload the level to the server */
+								content_type = "level"; /* Set "content type" to be correct for what kind of files you're uploading, before uploading the files to the server */
+								
+								/* User is prompted for a file to upload */
+								file_name = filename_name(game_save_id + string(file));
+								
+								/* Create DS Map to hold the HTTP Header info */
+								map = ds_map_create();
+								
+								/* Add to the header DS Map */
+								ds_map_add(map, "Host", global.base_url);
+								var boundary = "----GMBoundary";
+								ds_map_add(map, "Content-Type", "multipart/form-data; boundary=" + boundary);
+								ds_map_add(map, "User-Agent", "gmuploader");
+								ds_map_add(map, "X-API-Key", global.api_key);
+								
+								/* Loads the file into a buffer */
+								send_buffer = buffer_create(1, buffer_grow, 1);
+								buffer_load_ext(send_buffer, game_save_id + string(file), 0);
+								
+								/* Encodes the data as base64 */
+								data_send = buffer_base64_encode(send_buffer, 0, buffer_get_size(send_buffer));
+								
+								/* Post the data to the upload script */
+								var post_data = "--" + boundary + "\r\n";
+								post_data += "Content-Disposition: form-data; name=\"name\"\r\n\r\n";
+								post_data += file_name + "\r\n";
+								post_data += "--" + boundary + "\r\n";
+								post_data += "Content-Disposition: form-data; name=\"content_type\"\r\n\r\n";
+								post_data += "levels" + "\r\n";
+								post_data += "--" + boundary + "\r\n";
+								post_data += "Content-Disposition: form-data; name=\"data\"\r\n\r\n";
+								post_data += data_send + "\r\n";
+								post_data += "--" + boundary + "--";
+								
+								/* Add the Content-Length header to the map */
+								ds_map_add(map, "Content-Length", string(string_length(post_data)));
+								global.http_request_id = http_request("https://" + global.base_url + "/upload", "POST", map, post_data);
+								
+								/* Cleans up! */
+								buffer_delete(send_buffer);
+								ds_map_destroy(map);
+								
+								/* Delete some leftover files and folders */
+								if (destroy_zip_after_uploading)
+								{
+									file_delete(game_save_id + string(level_id) + ".zip");
+								}
+								#endregion /* Actually upload the level to the server END */
+								
+								/* Update a list of downloaded levels that you have finished. The level you are uploading have already been finished */
+								ini_open(game_save_id + "save_file/custom_level_save.ini");
+								if (ini_read_real("finished_downloaded_level", string(level_id), 0) < 2)
+								{
+									ini_write_real("finished_downloaded_level", string(level_id), 2); /* Played and finished when uploading own level */
+								}
+								ini_close(); switch_save_data_commit(); /* Remember to commit the save data! */
+								
+								search_for_id_still = false;
+								menu = "level_uploaded";
 							}
-							ini_close(); switch_save_data_commit(); /* Remember to commit the save data! */
-							
-							search_for_id_still = false;
-							menu = "level_uploaded";
+							else
+							{
+								menu = "caution_online_network_service_unavailable";
+							}
 						}
 						else
 						{
-							menu = "caution_online_network_service_unavailable";
+							menu_delay = 3;
+							menu = "upload_yes";
 						}
 					}
 					else

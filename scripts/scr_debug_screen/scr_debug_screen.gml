@@ -463,6 +463,9 @@ function scr_debug_screen()
 			
 			debug_text_y += 20;
 			scr_draw_text_outlined(32, debug_text_y, "switch_account_network_service_available: " + string(global.switch_account_network_service_available), global.default_text_size, c_black, c_white);
+			
+			debug_text_y += 20;
+			scr_draw_text_outlined(32, debug_text_y, "switch_logged_in: " + string(global.switch_logged_in), global.default_text_size, c_black, c_white);
 		}
 		
 		debug_text_y += 40;

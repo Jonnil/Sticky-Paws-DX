@@ -183,21 +183,29 @@ function scr_draw_upload_account_name(what_kind_of_file = "level")
 			{
 				scr_switch_update_online_status();
 				
-				if (global.switch_account_network_service_available) /* Need to make sure that network service is available before going online */
+				if (global.switch_logged_in)
 				{
-					if (what_kind_of_file == "character")
+					if (global.switch_account_network_service_available) /* Need to make sure that network service is available before going online */
 					{
-						menu = "uploading_character"; /* Go to uploading character loading screen */
+						if (what_kind_of_file == "character")
+						{
+							menu = "uploading_character"; /* Go to uploading character loading screen */
+						}
+						else
+						if (what_kind_of_file == "level")
+						{
+							menu = "upload_edit_name"; /* Go to edit name, description, and tags menu */
+						}
 					}
 					else
-					if (what_kind_of_file == "level")
 					{
-						menu = "upload_edit_name"; /* Go to edit name, description, and tags menu */
+						menu = "caution_online_network_service_unavailable";
 					}
 				}
 				else
 				{
-					menu = "caution_online_network_service_unavailable";
+					menu_delay = 3;
+					menu = "upload_" + string(what_kind_of_file) + "_edit_username_ok";
 				}
 			}
 			else
