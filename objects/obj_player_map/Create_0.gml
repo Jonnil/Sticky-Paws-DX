@@ -287,9 +287,11 @@ global.ambience_underwater = noone;
 global.goal_active = false;
 
 /* Give player lives if they get a game over */
-if (lives <= 0) {
+if (lives <= 0)
+{
     lives = 5 * global.playergame;
-    if (global.character_select_in_this_menu == "main_game") {
+    if (global.character_select_in_this_menu == "main_game")
+	{
         ini_open(game_save_id + "save_file/file" + string(global.file) + ".ini");
         ini_write_real("Player", "lives", lives);
         ini_close(); switch_save_data_commit();

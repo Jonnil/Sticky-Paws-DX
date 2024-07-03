@@ -65,7 +65,6 @@ global.switch_account_open = noone;
 global.switch_account_handle = noone;
 
 global.switch_account_netid = noone;
-global.switch_account_online_token = noone;
 global.switch_account_is_user_online = noone;
 global.switch_account_network_service_available = noone;
 global.switch_logged_in = noone;
@@ -124,6 +123,8 @@ global.base_url = "sticky-paws.uc.r.appspot.com";
 global.api_key = "eMCnsR7k2dq_jGHijae6_3tazPYp!UUL";
 global.http_request_info = noone;
 global.http_request_id = noone;
+global.content_added_today = noone;
+global.online_token_validated = false;
 #endregion /* Server stuff END */
 
 #endregion /* Things you could change END */

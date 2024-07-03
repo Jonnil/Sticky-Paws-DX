@@ -24,6 +24,22 @@ function scr_switch_update_online_status(show_login_screen = true)
 				{
 					global.switch_logged_in = switch_accounts_login_user(i);
 				}
+				if (global.switch_logged_in) /* If you are logged in, only then are you able to retrieve the online token */
+				&& (!global.online_token_validated)
+				{
+					/* Create DS Map to hold the HTTP Header info */
+					var map = ds_map_create();
+					
+					/* Add to the header DS Map */
+					ds_map_add(map, "Host", global.base_url);
+					ds_map_add(map, "Content-Type", "application/json");
+					ds_map_add(map, "User-Agent", "gmdownloader");
+					ds_map_add(map, "X-API-Key", global.api_key);
+					
+					/* Send the HTTP GET request to the /account_online_token endpoint */
+					global.online_token_validated = http_request("https://" + global.base_url + "/account_online_token" + "?switch_accounts_get_online_token=" + string(switch_accounts_get_online_token(i)), "GET", map, "");
+					ds_map_destroy(map);
+				}
 			}
 			#endregion /* Second, check network service availability and login user END */
 			
@@ -33,7 +49,6 @@ function scr_switch_update_online_status(show_login_screen = true)
 			
 			/* Other Switch accounts functions to look for */
 			global.switch_account_netid[i] = switch_accounts_get_netid(i);
-			global.switch_account_online_token[i] = switch_accounts_get_online_token(i);
 			#endregion /* Third, retrieve information about the account END */
 			
 		}
@@ -45,6 +60,9 @@ function scr_switch_update_online_status(show_login_screen = true)
 	}
 	else
 	{
+		/* On any other version other than Switch, these global variables should be set to true */
 		global.switch_account_network_service_available = true;
+		global.switch_logged_in = true;
+		global.online_token_validated = true;
 	}
 }

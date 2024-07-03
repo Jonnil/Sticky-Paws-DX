@@ -456,9 +456,6 @@ function scr_debug_screen()
 			scr_draw_text_outlined(32, debug_text_y, "switch_account_netid: " + string(global.switch_account_netid), global.default_text_size, c_black, c_white);
 			
 			debug_text_y += 20;
-			scr_draw_text_outlined(32, debug_text_y, "switch_account_online_token: " + string(global.switch_account_online_token), global.default_text_size, c_black, c_white);
-			
-			debug_text_y += 20;
 			scr_draw_text_outlined(32, debug_text_y, "switch_account_is_user_online: " + string(global.switch_account_is_user_online), global.default_text_size, c_black, c_white);
 			
 			debug_text_y += 20;
