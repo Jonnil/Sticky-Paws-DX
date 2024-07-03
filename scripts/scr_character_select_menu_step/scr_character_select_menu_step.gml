@@ -220,7 +220,15 @@ function scr_character_select_menu_step()
 								content_type = "level"; /* Need to set the "content type" to "level", so Async - HTTP Event is running correctly */
 								caution_online_takes_you_to = "online_download_list_load";
 								caution_online_takes_you_back_to = "online_level_list_title";
-								menu = "caution_online_proceed";
+								if (os_is_network_connected())
+								{
+									menu = "caution_online_proceed";
+								}
+								else
+								{
+									caution_online_takes_you_back_to = "online_level_list_title";
+									menu = "no_internet_level";
+								}
 								menu_delay = 3;
 							}
 						}

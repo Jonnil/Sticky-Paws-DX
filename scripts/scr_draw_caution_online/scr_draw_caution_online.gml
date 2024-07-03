@@ -38,6 +38,15 @@ function scr_draw_caution_online()
 		&& (key_a_pressed)
 		&& (menu_delay == 0 && menu_joystick_delay == 0)
 		{
+			
+			/* If you have enabled "do not show", then save that regardless if you have a internet connection or not */
+			if (global.caution_online_do_not_show)
+			{
+				ini_open(game_save_id + "save_file/config.ini");
+				ini_write_string("config", "caution_online_do_not_show", true);
+				ini_close(); switch_save_data_commit(); /* Remember to commit the save data! */
+			}
+			
 			if (os_is_network_connected()) /* Need to check if you are connected to the internet before proceeding to online content */
 			{
 				scr_switch_update_online_status();
@@ -62,12 +71,7 @@ function scr_draw_caution_online()
 							menu_delay = 3;
 						}
 						global.online_enabled = true;
-						if (global.caution_online_do_not_show)
-						{
-							ini_open(game_save_id + "save_file/config.ini");
-							ini_write_string("config", "caution_online_do_not_show", true);
-							ini_close(); switch_save_data_commit(); /* Remember to commit the save data! */
-						}
+						
 						var no_players_can_play = true;
 						for(var i = 1; i <= global.max_players; i += 1)
 						{
@@ -111,6 +115,7 @@ function scr_draw_caution_online()
 				if (content_type == "character")
 				{
 					in_online_download_list_menu = false;
+					caution_online_takes_you_back_to = "download_online_search_id";
 					menu = "no_internet_character";
 				}
 				else
@@ -119,6 +124,7 @@ function scr_draw_caution_online()
 					in_online_download_list_menu = false;
 					select_custom_level_menu_open = true;
 					show_level_editor_corner_menu = false;
+					caution_online_takes_you_back_to = "level_editor_upload";
 					menu = "no_internet_level";
 				}
 			}

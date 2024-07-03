@@ -118,10 +118,12 @@ function scr_draw_report()
 		{
 			if (content_type == "level")
 			{
+				caution_online_takes_you_back_to = "level_editor_upload";
 				menu = "no_internet_level"
 			}
 			else
 			{
+				caution_online_takes_you_back_to = "download_online_search_id";
 				menu = "no_internet_character"
 			}
 		}
@@ -797,11 +799,13 @@ function scr_draw_report()
 				{
 					if (content_type == "level")
 					{
+						caution_online_takes_you_back_to = "level_editor_upload";
 						menu = "no_internet_level";
 					}
 					else
 					if (content_type == "character")
 					{
+						caution_online_takes_you_back_to = "download_online_search_id";
 						menu = "no_internet_character";
 					}
 				}

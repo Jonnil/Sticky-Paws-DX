@@ -537,7 +537,14 @@ function scr_character_manage_menu_step()
 				{
 					caution_online_takes_you_to = "upload_yes_character";
 					caution_online_takes_you_back_to = "click_upload_character";
-					menu = "caution_online_proceed";
+					if (os_is_network_connected())
+					{
+						menu = "caution_online_proceed";
+					}
+					else
+					{
+						menu = "no_internet_character";
+					}
 				}
 			}
 		}

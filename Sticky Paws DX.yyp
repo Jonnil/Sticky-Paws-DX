@@ -2807,6 +2807,7 @@
     {"id":{"name":"scr_draw_mouse_cursor_sprite","path":"scripts/scr_draw_mouse_cursor_sprite/scr_draw_mouse_cursor_sprite.yy",},},
     {"id":{"name":"scr_draw_name_box","path":"scripts/scr_draw_name_box/scr_draw_name_box.yy",},},
     {"id":{"name":"scr_draw_name_input_screen","path":"scripts/scr_draw_name_input_screen/scr_draw_name_input_screen.yy",},},
+    {"id":{"name":"scr_draw_no_internet_menu","path":"scripts/scr_draw_no_internet_menu/scr_draw_no_internet_menu.yy",},},
     {"id":{"name":"scr_draw_online_download_list_thumbnail","path":"scripts/scr_draw_online_download_list_thumbnail/scr_draw_online_download_list_thumbnail.yy",},},
     {"id":{"name":"scr_draw_online_download_list","path":"scripts/scr_draw_online_download_list/scr_draw_online_download_list.yy",},},
     {"id":{"name":"scr_draw_option_description","path":"scripts/scr_draw_option_description/scr_draw_option_description.yy",},},

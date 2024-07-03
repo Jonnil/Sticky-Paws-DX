@@ -164,7 +164,9 @@ function scr_draw_menu_search_id(what_kind_of_id = "level")
 			if (content_type == "character")
 			{
 				in_online_download_list_menu = false;
+				caution_online_takes_you_back_to = "download_online_search_id";
 				menu = "no_internet_character";
+				menu_delay = 3;
 			}
 			else
 			if (content_type == "level")
@@ -172,7 +174,10 @@ function scr_draw_menu_search_id(what_kind_of_id = "level")
 				in_online_download_list_menu = false;
 				select_custom_level_menu_open = true;
 				show_level_editor_corner_menu = false;
+				open_sub_menu = false;
+				caution_online_takes_you_back_to = "level_editor_upload";
 				menu = "no_internet_level";
+				menu_delay = 3;
 			}
 		}
 		
@@ -382,6 +387,7 @@ function scr_draw_menu_search_id(what_kind_of_id = "level")
 			if (content_type == "character")
 			{
 				in_online_download_list_menu = false;
+				caution_online_takes_you_back_to = "download_online_search_id";
 				menu = "no_internet_character";
 			}
 			else
@@ -390,6 +396,7 @@ function scr_draw_menu_search_id(what_kind_of_id = "level")
 				in_online_download_list_menu = false;
 				select_custom_level_menu_open = true;
 				show_level_editor_corner_menu = false;
+				caution_online_takes_you_back_to = "level_editor_upload";
 				menu = "no_internet_level";
 			}
 		}

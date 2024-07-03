@@ -826,6 +826,8 @@ if (global.enable_transitions)
 }
 #endregion /* Draw Iris Transitions END */
 
+scr_draw_no_internet_menu();
+
 scr_draw_darken_screen_when_window_is_unfocused();
 scr_debug_screen();
 scr_draw_cursor_mouse();
