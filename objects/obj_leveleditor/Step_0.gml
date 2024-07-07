@@ -1,3 +1,10 @@
+/* Top Right Icons X Positions */
+grid_button_x = display_get_gui_width() - 288;
+zoom_out_button_x = display_get_gui_width() - 224;
+zoom_reset_button_x = display_get_gui_width() - 160;
+zoom_in_button_x = display_get_gui_width() - 96;
+help_button_x = display_get_gui_width() - 32;
+
 if (instance_exists(obj_leveleditor_modify_object_menu))
 {
 	in_modify_object_menu = true;

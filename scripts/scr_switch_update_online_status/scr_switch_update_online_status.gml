@@ -7,6 +7,7 @@ function scr_switch_update_online_status(show_login_screen = true)
 		var switch_accounts_num = switch_accounts_get_accounts();
 		for (var i = 0; i < switch_accounts_num; ++i;)
 		{
+			
 			#region /* First, check if user is open and user is online */
 			global.switch_account_open[i] = switch_accounts_is_user_open(i); /* Second get if user is open. With this function you can check an account ID slot to see if the account has been flagged as "open" (active) or not */
 			global.switch_account_is_user_online[i] = switch_accounts_is_user_online(i);
@@ -25,10 +26,13 @@ function scr_switch_update_online_status(show_login_screen = true)
 					global.switch_logged_in = switch_accounts_login_user(i);
 				}
 				if (global.switch_logged_in) /* If you are logged in, only then are you able to retrieve the online token */
-				&& (!global.online_token_validated)
+				&& (global.online_token_validated != true)
 				{
 					/* Create DS Map to hold the HTTP Header info */
 					var map = ds_map_create();
+					
+					/* Create a JSON object with the id_token */
+					var id_token = switch_accounts_get_online_token(i); /* ID token you need to send */
 					
 					/* Add to the header DS Map */
 					ds_map_add(map, "Host", global.base_url);
@@ -36,8 +40,8 @@ function scr_switch_update_online_status(show_login_screen = true)
 					ds_map_add(map, "User-Agent", "gmdownloader");
 					ds_map_add(map, "X-API-Key", global.api_key);
 					
-					/* Send the HTTP GET request to the /account_online_token endpoint */
-					global.online_token_validated = http_request("https://" + global.base_url + "/account_online_token" + "?switch_accounts_get_online_token=" + string(switch_accounts_get_online_token(i)), "GET", map, "");
+					/* Send the HTTP GET request to the /validate_token endpoint */
+					global.online_token_validated = http_request("https://" + global.base_url + "/validate_token" + "?id_token=" + string(id_token), "GET", map, "");
 					ds_map_destroy(map);
 				}
 			}

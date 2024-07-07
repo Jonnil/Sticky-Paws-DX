@@ -3,6 +3,59 @@ function scr_draw_all_level_editor_icon()
 	
 	#region /* Level Editor Icons */
 	
+	#region /* Autoscroll Button */
+	autoscroll_icon_y = display_get_gui_height() - 192;
+	if (autoscroll_speed == 0)
+	{
+		autoscroll_icon_sprite = spr_leveleditor_icon_autoscroll_none;
+	}
+	else
+	if (autoscroll_speed <= 1)
+	{
+		autoscroll_icon_sprite = spr_leveleditor_icon_autoscroll_slow;
+	}
+	else
+	if (autoscroll_speed <= 2)
+	{
+		autoscroll_icon_sprite = spr_leveleditor_icon_autoscroll_normal;
+	}
+	else
+	{
+		autoscroll_icon_sprite = spr_leveleditor_icon_autoscroll_fast;
+	}
+	
+	autoscroll_icon_subimg += autoscroll_speed * 0.1;
+	
+	draw_sprite_ext(autoscroll_icon_sprite, autoscroll_icon_subimg, icon_at_left_x, autoscroll_icon_y, 1, 1, 0, c_white, 1);
+	
+	if (show_autoscroll_menu)
+	{
+		autoscroll_speed = draw_menu_left_right_buttons(icon_at_left_x + 132, autoscroll_icon_y, 332, l10n_text("Autoscroll Speed"), autoscroll_speed, "autoscroll_speed", 0.1, false, 0, 32);
+	}
+	#endregion /* Autoscroll Button END */
+	
+	#region /* Click Autoscroll Button */
+	if (global.controls_used_for_navigation == "mouse")
+	&& (point_in_rectangle(cursor_x, cursor_y, icon_at_left_x - 32, autoscroll_icon_y - 32, icon_at_left_x + 32, autoscroll_icon_y + 32))
+	&& (show_icon_at_bottom)
+	&& (!pause)
+	|| (level_editor_menu == "autoscroll")
+	{
+		draw_sprite_ext(spr_menu_cursor, menu_cursor_index, icon_at_left_x + 32, autoscroll_icon_y, 1, 1, 180, c_white, 1);
+		draw_set_alpha(0.5);
+		draw_rectangle_color(icon_at_left_x - 32, autoscroll_icon_y - 32, icon_at_left_x + 32, autoscroll_icon_y + 32, c_white, c_white, c_white, c_white, false);
+		draw_set_alpha(1);
+		tooltip = l10n_text("Autoscroll");
+		show_tooltip += 2;
+		if (mouse_check_button_pressed(mb_left))
+		|| (level_editor_menu == "autoscroll")
+		&& (key_a_pressed)
+		{
+			show_autoscroll_menu = !show_autoscroll_menu;
+		}
+	}
+	#endregion /* Click Autoscroll Button END */
+	
 	#region /* Play Level Button */
 	if (global.controls_used_for_navigation == "mouse"
 	&& point_in_rectangle(mouse_get_x, mouse_get_y, play_level_icon_x - 32, display_get_gui_height() - 64, play_level_icon_x + 32, display_get_gui_height() + 64)
@@ -113,7 +166,8 @@ function scr_draw_all_level_editor_icon()
 		|| (level_editor_menu == "pen")
 		&& (key_a_pressed)
 		{
-			if (erase_mode || fill_mode) {
+			if (erase_mode || fill_mode)
+			{
 			    erase_mode = false;
 			    fill_mode = false;
 			}

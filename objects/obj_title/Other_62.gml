@@ -174,5 +174,7 @@ if (async_load[? "id"] == global.online_token_validated)
 		
 		/* Free the buffer memory */
 		buffer_delete(buffer);
+		
+		show_debug_message(global.online_token_validated);
 	}
 }

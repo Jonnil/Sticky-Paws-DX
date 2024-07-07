@@ -53,7 +53,7 @@ function scr_draw_level_editor_placable_object(v_selected_object, v_place_object
 			if (is_selected)
 			&& (object_video_tutorial != "")
 			{
-				if (os_type == os_switch)
+				if (os_type != os_switch)
 				{
 					draw_menu_button(0, 0, l10n_text("Watch Tutorial") + " - " + (current_object_name), "watch_video_tutorial", "watch_video_tutorial_click",,selected_menu_alpha);
 				}

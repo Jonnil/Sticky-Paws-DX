@@ -437,7 +437,7 @@ function scr_draw_online_download_list()
 		{
 			var can_load_custom_level_assets_x = display_get_gui_width() - string_width(l10n_text("Load Custom Level Assets")) - 16;
 			var can_load_custom_level_assets_y = 16;
-			global.can_load_custom_level_assets = draw_menu_checkmark(can_load_custom_level_assets_x, can_load_custom_level_assets_y, l10n_text("Load Custom Level Assets"), "online_list_can_load_custom_level_assets", global.can_load_custom_level_assets, true);
+			global.can_load_custom_level_assets = draw_menu_checkmark(can_load_custom_level_assets_x, can_load_custom_level_assets_y, l10n_text("Load Custom Level Assets"), "online_list_can_load_custom_level_assets", global.can_load_custom_level_assets, true,,false);
 			
 			scr_draw_option_description();
 		}
@@ -496,7 +496,8 @@ function scr_draw_online_download_list()
 			{
 				menu = "download_online_" + string(num_items);
 				menu_cursor_y_position = menu_cursor_y_position_start;
-				menu_y_offset_real = menu_y_offset_real_start;
+				menu_y_offset = menu_y_offset_real_start  - 999;
+				menu_y_offset_real = menu_y_offset_real_start  - 999;
 			}
 		}
 		else
@@ -559,7 +560,8 @@ function scr_draw_online_download_list()
 			{
 				menu = "download_online_" + string(num_items);
 				menu_cursor_y_position = menu_cursor_y_position_start;
-				menu_y_offset_real = menu_y_offset_real_start;
+				menu_y_offset = menu_y_offset_real_start - 999;
+				menu_y_offset_real = menu_y_offset_real_start - 999;
 			}
 		}
 		else

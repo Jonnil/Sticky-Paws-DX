@@ -1,4 +1,4 @@
-function draw_menu_checkmark(x_position, y_position, string_text, menu_index, variable_to_check, option_default = -1, option_description = "")
+function draw_menu_checkmark(x_position, y_position, string_text, menu_index, variable_to_check, option_default = -1, option_description = "", can_move_cursor_position = true)
 {
 	var mouse_get_x = device_mouse_x_to_gui(0);
 	var mouse_get_y = device_mouse_y_to_gui(0);
@@ -62,7 +62,8 @@ function draw_menu_checkmark(x_position, y_position, string_text, menu_index, va
 	#region /* Show a menu cursor when the option is highlighted */
 	if (menu == menu_index)
 	{
-		if (variable_instance_exists(self, "menu_cursor_y_position"))
+		if (can_move_cursor_position)
+		&& (variable_instance_exists(self, "menu_cursor_y_position"))
 		&& (variable_instance_exists(self, "menu_y_offset"))
 		{
 			menu_cursor_y_position = y_position - menu_y_offset;

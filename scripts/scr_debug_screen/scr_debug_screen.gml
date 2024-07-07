@@ -441,32 +441,33 @@ function scr_debug_screen()
 		
 		if (os_type == os_switch)
 		{
-			debug_text_y += 20;
-			scr_draw_text_outlined(32, debug_text_y, "switch_account_name: " + string(global.switch_account_name), global.default_text_size, c_black, c_white);
+			//debug_text_y += 20;
+			//scr_draw_text_outlined(32, debug_text_y, "switch_account_name: " + string(global.switch_account_name), global.default_text_size, c_black, c_white);
+			
+			//debug_text_y += 20;
+			//scr_draw_text_outlined(32, debug_text_y, "switch_account_open: " + string(global.switch_account_open), global.default_text_size, c_black, c_white);
+			
+			//debug_text_y += 20;
+			//scr_draw_text_outlined(32, debug_text_y, "switch_account_handle: " + string(global.switch_account_handle), global.default_text_size, c_black, c_white);
 			
 			debug_text_y += 20;
-			scr_draw_text_outlined(32, debug_text_y, "switch_account_open: " + string(global.switch_account_open), global.default_text_size, c_black, c_white);
+			scr_draw_text_outlined(32, debug_text_y, "online_token_validated: " + string(global.online_token_validated), global.default_text_size, c_black, c_white);
 			
-			debug_text_y += 20;
-			scr_draw_text_outlined(32, debug_text_y, "switch_account_handle: " + string(global.switch_account_handle), global.default_text_size, c_black, c_white);
+			//debug_text_y += 40;
+			//scr_draw_text_outlined(32, debug_text_y, "switch_account_netid: " + string(global.switch_account_netid), global.default_text_size, c_black, c_white);
 			
+			//debug_text_y += 20;
+			//scr_draw_text_outlined(32, debug_text_y, "switch_account_is_user_online: " + string(global.switch_account_is_user_online), global.default_text_size, c_black, c_white);
 			
+			//debug_text_y += 20;
+			//scr_draw_text_outlined(32, debug_text_y, "switch_account_network_service_available: " + string(global.switch_account_network_service_available), global.default_text_size, c_black, c_white);
 			
-			debug_text_y += 40;
-			scr_draw_text_outlined(32, debug_text_y, "switch_account_netid: " + string(global.switch_account_netid), global.default_text_size, c_black, c_white);
-			
-			debug_text_y += 20;
-			scr_draw_text_outlined(32, debug_text_y, "switch_account_is_user_online: " + string(global.switch_account_is_user_online), global.default_text_size, c_black, c_white);
-			
-			debug_text_y += 20;
-			scr_draw_text_outlined(32, debug_text_y, "switch_account_network_service_available: " + string(global.switch_account_network_service_available), global.default_text_size, c_black, c_white);
-			
-			debug_text_y += 20;
-			scr_draw_text_outlined(32, debug_text_y, "switch_logged_in: " + string(global.switch_logged_in), global.default_text_size, c_black, c_white);
+			//debug_text_y += 20;
+			//scr_draw_text_outlined(32, debug_text_y, "switch_logged_in: " + string(global.switch_logged_in), global.default_text_size, c_black, c_white);
 		}
 		
-		debug_text_y += 40;
-		scr_draw_text_outlined(32, debug_text_y, "current_datetime: " + string(date_datetime_string(date_current_datetime())), global.default_text_size, c_black, c_white);
+		//debug_text_y += 40;
+		//scr_draw_text_outlined(32, debug_text_y, "current_datetime: " + string(date_datetime_string(date_current_datetime())), global.default_text_size, c_black, c_white);
 		#endregion /* More debug text END */
 		
 	}

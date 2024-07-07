@@ -14,11 +14,6 @@ function draw_menu_button(x_position, y_position, string_text, menu_index, menu_
 		if (menu_delay == 0 && menu_joystick_delay == 0) /* Only change menu when "menu delay" is 0, otherwise there could be weird menu bugs that happen when you hover over a button when game needs to load code */
 		{
 			menu = menu_index;
-			//if (variable_instance_exists(self, "menu_cursor_y_position"))
-			//&& (variable_instance_exists(self, "menu_y_offset"))
-			//{
-			//	menu_cursor_y_position = y_position - menu_y_offset;
-			//}
 		}
 		
 		if (mouse_check_button_released(mb_left) && menu_takes_you_to != false && menu_takes_you_to != noone && menu_takes_you_to != "" && menu_takes_you_to != menu_index && menu_delay == 0 && menu_joystick_delay == 0)

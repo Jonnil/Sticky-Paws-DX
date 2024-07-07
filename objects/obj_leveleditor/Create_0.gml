@@ -622,6 +622,7 @@ if (!global.actually_play_edited_level)
 	placing_object = 0; /* If you are currently placing any object or not. This check is used for when modifying other objects, it shouldn't happen when currently placing any object */
 	show_icon_at_bottom = false;
 	show_icon_at_top = false;
+	icon_at_left_x = 32;
 	icon_at_bottom_y = +110;
 	show_undo_redo_icon = true; /* If the undo and redo buttons should show */
 	undo_redo_icon_y = +200; /* Undo and redo buttons y postition */
@@ -694,6 +695,11 @@ if (!global.actually_play_edited_level)
 	erase_icon_x = 160;
 	fill_icon_x = 224;
 	always_show_level_editor_buttons_x = 288;
+	
+	autoscroll_icon_sprite = spr_leveleditor_icon_autoscroll_none;
+	autoscroll_speed = 0;
+	autoscroll_icon_subimg = 0;
+	show_autoscroll_menu = false;
 	
 	/* Top Right Icons X Positions */
 	grid_button_x = display_get_gui_width() - 288;
