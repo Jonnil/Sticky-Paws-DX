@@ -13,7 +13,8 @@ function scr_initialize_level_information_ini()
 		{
 			ini_open("levels/" + string(ds_list_find_value(global.all_loaded_main_levels, global.select_level_index)) + "/data/level_information.ini");
 		}
-		else if (global.character_select_in_this_menu == "level_editor")
+		else
+		if (global.character_select_in_this_menu == "level_editor")
 		{
 			ini_open(global.use_temp_or_working + "custom_levels/" + string(global.level_name) + "/data/level_information.ini");
 			can_save_to_level_information = true;
@@ -56,12 +57,16 @@ function scr_initialize_level_information_ini()
 		global.effect_rain = get_custom_level_information_real("info", "rain", false);
 		global.effect_snow = get_custom_level_information_real("info", "snow", false);
 		global.effect_wind = get_custom_level_information_real("info", "wind", false);
+		autoscroll_speed_x = get_custom_level_information_real("info", "autoscroll_speed_x", 0);
+		autoscroll_speed_y = get_custom_level_information_real("info", "autoscroll_speed_y", 0);
 		
 		intro_animation_play_only_once = get_custom_level_information_real("info", "intro_animation_play_only_once", false);
-		if (intro_animation_play_only_once && global.current_level_clear_rate == "clear") {
+		if (intro_animation_play_only_once && global.current_level_clear_rate == "clear")
+		{
 			intro_animation = "";
 		}
-		else {
+		else
+		{
 			intro_animation = get_custom_level_information_string("info", "intro_animation", "");
 		}
 		after_goal_go_to_this_level = get_custom_level_information_real("info", "after_goal_go_to_this_level", noone);

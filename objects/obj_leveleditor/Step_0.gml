@@ -4,6 +4,7 @@ zoom_out_button_x = display_get_gui_width() - 224;
 zoom_reset_button_x = display_get_gui_width() - 160;
 zoom_in_button_x = display_get_gui_width() - 96;
 help_button_x = display_get_gui_width() - 32;
+autoscroll_icon_y = display_get_gui_height() - 192;
 
 if (instance_exists(obj_leveleditor_modify_object_menu))
 {
@@ -20,17 +21,21 @@ scr_set_controls_used_to_navigate();
 if (menu_delay == 0 && menu_joystick_delay == 0)
 && (!pause)
 && (!in_modify_object_menu)
+&& (!show_autoscroll_menu)
 {
 	/* UP */ if (keyboard_check_pressed(ord("I")))
 	|| (gamepad_button_check_pressed(global.player_slot[1], gp_padu))
 	{
 		menu_delay = 3;
 		if (level_editor_menu == ""){if (show_selected_menu){level_editor_menu = "select_object_menu";}else{if (!if_daily_build){level_editor_menu = "terrain";}else{level_editor_menu = "daily_build_standard";}}}else
-		if (level_editor_menu == "play"){if (show_selected_menu){level_editor_menu = "select_object_menu";}else{if (!if_daily_build){level_editor_menu = "terrain";}else{level_editor_menu = "daily_build_standard";}}}else
-		if (level_editor_menu == "pen"){if (show_selected_menu){level_editor_menu = "select_object_menu";}else{if (!if_daily_build){level_editor_menu = "terrain";}else{level_editor_menu = "daily_build_standard";}}}else
-		if (level_editor_menu == "erase"){if (show_selected_menu){level_editor_menu = "select_object_menu";}else{if (!if_daily_build){level_editor_menu = "terrain";}else{level_editor_menu = "daily_build_standard";}}}else
-		if (level_editor_menu == "fill"){if (show_selected_menu){level_editor_menu = "select_object_menu";}else{if (!if_daily_build){level_editor_menu = "terrain";}else{level_editor_menu = "daily_build_standard";}}}else
-		if (level_editor_menu == "hide"){if (show_selected_menu){level_editor_menu = "select_object_menu";}else{if (!if_daily_build){level_editor_menu = "terrain";}else{level_editor_menu = "daily_build_standard";}}}else
+		
+		if (level_editor_menu == "autoscroll"){if (show_selected_menu){level_editor_menu = "select_object_menu";}else{if (!if_daily_build){level_editor_menu = "terrain";}else{level_editor_menu = "daily_build_standard";}}}else
+		
+		if (level_editor_menu == "play"){level_editor_menu = "autoscroll";}else
+		if (level_editor_menu == "pen"){level_editor_menu = "autoscroll";}else
+		if (level_editor_menu == "erase"){level_editor_menu = "autoscroll";}else
+		if (level_editor_menu == "fill"){level_editor_menu = "autoscroll";}else
+		if (level_editor_menu == "hide"){level_editor_menu = "autoscroll";}else
 		if (level_editor_menu == "difficulty_toggle"){level_editor_menu = "help";}else
 		if (level_editor_menu == "wipe"){level_editor_menu = "help";}else
 		if (level_editor_menu == "easy"){level_editor_menu = "help";}else
@@ -70,19 +75,21 @@ if (menu_delay == 0 && menu_joystick_delay == 0)
 	{
 		menu_delay = 3;
 		if (level_editor_menu == ""){level_editor_menu = "play";}else
-		if (level_editor_menu == "terrain"){if (show_selected_menu){level_editor_menu = "select_object_menu";}else{level_editor_menu = "play";}}else
-		if (level_editor_menu == "decoration"){if (show_selected_menu){level_editor_menu = "select_object_menu";}else{level_editor_menu = "play";}}else
-		if (level_editor_menu == "item"){if (show_selected_menu){level_editor_menu = "select_object_menu";}else{level_editor_menu = "play";}}else
-		if (level_editor_menu == "enemy"){if (show_selected_menu){level_editor_menu = "select_object_menu";}else{level_editor_menu = "play";}}else
-		if (level_editor_menu == "gizmo"){if (show_selected_menu){level_editor_menu = "select_object_menu";}else{level_editor_menu = "play";}}else
-		if (level_editor_menu == "daily_build_standard"){if (show_selected_menu){level_editor_menu = "select_object_menu";}else{level_editor_menu = "play";}}else
-		if (level_editor_menu == "daily_build_featured"){if (show_selected_menu){level_editor_menu = "select_object_menu";}else{level_editor_menu = "play";}}else
+		if (level_editor_menu == "terrain"){if (show_selected_menu){level_editor_menu = "select_object_menu";}else{level_editor_menu = "autoscroll";}}else
+		if (level_editor_menu == "decoration"){if (show_selected_menu){level_editor_menu = "select_object_menu";}else{level_editor_menu = "autoscroll";}}else
+		if (level_editor_menu == "item"){if (show_selected_menu){level_editor_menu = "select_object_menu";}else{level_editor_menu = "autoscroll";}}else
+		if (level_editor_menu == "enemy"){if (show_selected_menu){level_editor_menu = "select_object_menu";}else{level_editor_menu = "autoscroll";}}else
+		if (level_editor_menu == "gizmo"){if (show_selected_menu){level_editor_menu = "select_object_menu";}else{level_editor_menu = "autoscroll";}}else
+		if (level_editor_menu == "daily_build_standard"){if (show_selected_menu){level_editor_menu = "select_object_menu";}else{level_editor_menu = "autoscroll";}}else
+		if (level_editor_menu == "daily_build_featured"){if (show_selected_menu){level_editor_menu = "select_object_menu";}else{level_editor_menu = "autoscroll";}}else
 		if (level_editor_menu == "grid"){level_editor_menu = "wipe";}else
 		if (level_editor_menu == "zoom_out"){level_editor_menu = "wipe";}else
 		if (level_editor_menu == "zoom_reset"){level_editor_menu = "wipe";}else
 		if (level_editor_menu == "zoom_in"){level_editor_menu = "wipe";}else
 		if (level_editor_menu == "help"){level_editor_menu = "wipe";}else
-		if (level_editor_menu == "select_object_menu"){level_editor_menu = "play";}
+		if (level_editor_menu == "select_object_menu"){level_editor_menu = "autoscroll";}else
+		
+		if (level_editor_menu == "autoscroll"){level_editor_menu = "play";}
 	}
 	/* Right */ if (keyboard_check_pressed(ord("L")))
 	|| (gamepad_button_check_pressed(global.player_slot[1], gp_padr))
@@ -357,6 +364,9 @@ if (!global.actually_play_edited_level)
 	|| (show_selected_menu)
 	&& (point_in_rectangle(mouse_get_x, mouse_get_y, 0, 0, display_get_gui_width(), 192)) /* Can't place objects when clicking the object category buttons or objects in toolbar */
 	|| (point_in_rectangle(mouse_get_x, mouse_get_y, display_get_gui_width() - 185, pause_button_y, display_get_gui_width(), pause_button_y + 42)) /* Hovering over pause button */
+	|| (show_autoscroll_menu)
+	&& (point_in_rectangle(mouse_get_x, mouse_get_y, 132, autoscroll_icon_y - 8, 670, autoscroll_icon_y + 48 + 42)) /* Hovering over autoscroll menu */
+	|| (point_in_rectangle(mouse_get_x, mouse_get_y, icon_at_left_x - 32, autoscroll_icon_y - 32, icon_at_left_x + 64, autoscroll_icon_y + 32)) /* Hovering over autoscroll button */
 	{
 		if (global.controls_used_for_navigation == "mouse")
 		{
@@ -818,6 +828,7 @@ if (!global.actually_play_edited_level)
 			
 			if (!pause)
 			&& (!in_modify_object_menu)
+			&& (!show_autoscroll_menu)
 			{
 				if (key_up)
 				&& (controller_y > cam_y)
@@ -908,6 +919,7 @@ if (!global.actually_play_edited_level)
 		var view_y_direction = 0;
 		if (!pause)
 		&& (!in_modify_object_menu)
+		&& (!show_autoscroll_menu)
 		{
 			if (gamepad_axis_value(global.player_slot[1], gp_axisrv) < 0)
 			|| (global.controls_used_for_navigation != "gamepad")
@@ -2180,6 +2192,27 @@ if (!global.actually_play_edited_level && quit_level_editor == 0)
 	}
 	#endregion /* Make bottom row of icon appear if mouse is hovering at bottom screen END */
 	
+	#region /* Make left column of icon appear if mouse is hovering at left screen */
+	if (!drag_object)
+	{
+		if (point_in_rectangle(cursor_x, cursor_y, 0, autoscroll_icon_y - 32, 64, autoscroll_icon_y + 32)) /* Autoscroll button on left side */
+		|| (global.always_show_level_editor_buttons)
+		{
+			if (!show_icon_at_left)
+			{
+				show_icon_at_left = true;
+			}
+		}
+		else
+		{
+			if (show_icon_at_left)
+			{
+				show_icon_at_left = false;
+			}
+		}
+	}
+	#endregion /* Make left column of icon appear if mouse is hovering at left screen END */
+	
 	#region /* Make undo and redo icon appear if mouse is hovering at right screen */
 	if (undo_and_redo_buttons_enabled)
 	&& (!drag_object)
@@ -2281,6 +2314,21 @@ if (!global.actually_play_edited_level && quit_level_editor == 0)
 		icon_at_bottom_y = lerp(icon_at_bottom_y, +110, 0.1);
 	}
 	#endregion /* Show icon at bottom of screen END */
+	
+	#region /* Show icon at left of screen */
+	if (show_icon_at_left
+	|| global.always_show_level_editor_buttons
+	|| level_editor_menu == "autoscroll")
+	&& (!drag_object && !pause && !in_modify_object_menu)
+	|| (show_autoscroll_menu)
+	{
+		icon_at_left_x = lerp(icon_at_left_x, 0, 0.1);
+	}
+	else
+	{
+		icon_at_left_x = lerp(icon_at_left_x, -110, 0.1);
+	}
+	#endregion /* Show icon at left of screen END */
 	
 	#region /* Show undo and redo icon to the right of screen */
 	if (show_undo_redo_icon)

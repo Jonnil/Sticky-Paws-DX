@@ -7,8 +7,8 @@ function scr_camera_logic()
         /* Screen shake */
         if (shake > 0)
 		{
-            x += random_range(-shake, shake);
-            y += random_range(-shake, shake);
+			x += random_range(-shake, shake);
+			y += random_range(-shake, shake);
             shake = lerp(shake, 0, 0.1);
         }
         
@@ -21,7 +21,7 @@ function scr_camera_logic()
 		&& instance_exists(obj_player)
 		&& distance_to_object(obj_boss) < 400)
 		{
-            // Center camera between boss and player
+            /* Center camera between boss and player */
             var target_player = -1;
             for (var i = 1; i <= global.max_players; i++)
 			{
@@ -33,8 +33,14 @@ function scr_camera_logic()
             }
             if (target_player != -1)
 			{
-                xx = mean(player[target_player].x, obj_boss.x);
-                yy = mean(player[target_player].y, obj_boss.y);
+				if (!is_autoscrolling_horizontal)
+				{
+					xx = mean(player[target_player].x, obj_boss.x);
+				}
+				if (!is_autoscrolling_vertical)
+				{
+					yy = mean(player[target_player].y, obj_boss.y);
+				}
             }
         }
 		#endregion /* Boss Battle Camera END */
@@ -62,8 +68,14 @@ function scr_camera_logic()
                     sum_x += players_to_follow[i].x;
                     sum_y += players_to_follow[i].y;
                 }
-                xx = sum_x / array_length(players_to_follow);
-                yy = sum_y / array_length(players_to_follow);
+				if (!is_autoscrolling_horizontal)
+				{
+					xx = sum_x / array_length(players_to_follow);
+				}
+				if (!is_autoscrolling_vertical)
+				{
+					yy = sum_y / array_length(players_to_follow);
+				}
             }
         }
 		#endregion /* Multiplayer Camera END */
@@ -78,37 +90,43 @@ function scr_camera_logic()
                 if (player[i] > 0 && instance_exists(player[i]))
 				{
                     /* Follow one player */
-                    xx = player[i].x + player[i].hspeed * 15;
-                    if (player[i].on_ground && player[i].vspeed >= 0)
+					if (!is_autoscrolling_horizontal)
 					{
-                        yy = player[i].y;
-                    }
-					else
-					if (player[i].y < camera_get_view_y(view_camera[view_current]) + 128)
+						xx = player[i].x + player[i].hspeed * 15;
+					}
+                    if (!is_autoscrolling_vertical)
 					{
-                        yy -= abs(player[i].vspeed);
-                    }
-                    
-					/* Additional conditions for y position adjustments */
-                    if (player[i].wall_jump
-					|| player[i].climb
-					|| player[i].y > camera_get_view_y(view_camera[view_current]) + camera_get_view_height(view_camera[view_current]) * 0.5)
-					{
-                        yy = player[i].y;
-                    }
-                    
-					/* Adjust y position for specific player actions */
-                    if (player[i].in_water
-					|| player[i].stick_to_wall
-					|| player[i].spring
-					|| player[i].climb
-					|| player[i].horizontal_rope_climb)
-					{
-                        if (player[i].y < camera_get_view_y(view_camera[view_current]) + camera_get_view_height(view_camera[view_current]) * 0.5)
+						if (player[i].on_ground && player[i].vspeed >= 0)
 						{
-                            yy = player[i].y;
-                        }
-                    }
+	                        yy = player[i].y;
+	                    }
+						else
+						if (player[i].y < camera_get_view_y(view_camera[view_current]) + 128)
+						{
+	                        yy -= abs(player[i].vspeed);
+	                    }
+                    
+						/* Additional conditions for y position adjustments */
+	                    if (player[i].wall_jump
+						|| player[i].climb
+						|| player[i].y > camera_get_view_y(view_camera[view_current]) + camera_get_view_height(view_camera[view_current]) * 0.5)
+						{
+	                        yy = player[i].y;
+	                    }
+                    
+						/* Adjust y position for specific player actions */
+	                    if (player[i].in_water
+						|| player[i].stick_to_wall
+						|| player[i].spring
+						|| player[i].climb
+						|| player[i].horizontal_rope_climb)
+						{
+	                        if (player[i].y < camera_get_view_y(view_camera[view_current]) + camera_get_view_height(view_camera[view_current]) * 0.5)
+							{
+	                            yy = player[i].y;
+	                        }
+	                    }
+					}
                     break;
                 }
             }
@@ -117,11 +135,28 @@ function scr_camera_logic()
 		
 		else
 		{
-            /* Default camera behavior */
-            xx = x;
-            yy = y;
+			/* Default camera behavior */
+			if (!is_autoscrolling_horizontal)
+			{
+				xx = x;
+			}
+			if (!is_autoscrolling_vertical)
+			{
+				yy = y;
+			}
         }
     }
 	#endregion /* Camera Logic END */
+	
+	#region /* Autoscroll Logic */
+	if (is_autoscrolling_horizontal)
+	{
+		xx += autoscroll_speed_x;
+	}
+	if (is_autoscrolling_vertical)
+	{
+		yy += autoscroll_speed_y;
+	}
+	#endregion /* Autoscroll Logic END */
 	
 }

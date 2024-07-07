@@ -415,3 +415,21 @@ if (!global.actually_play_edited_level)
 		score_up = "Test Mode";
 	}
 }
+
+if (autoscroll_speed_x <> 0)
+{
+	is_autoscrolling_horizontal = true;
+}
+else
+{
+	is_autoscrolling_horizontal = false;
+}
+
+if (autoscroll_speed_y <> 0)
+{
+	is_autoscrolling_vertical = true;
+}
+else
+{
+	is_autoscrolling_vertical = false;
+}

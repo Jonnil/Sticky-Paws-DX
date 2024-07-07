@@ -309,6 +309,8 @@ function scr_save_level_information()
 		ini_write_real("info", "wind", global.effect_wind);
 		ini_write_real("info", "enable_time_countdown", global.enable_time_countdown);
 		ini_write_real("info", "time_countdown", global.time_countdown);
+		ini_write_real("info", "autoscroll_speed_x", autoscroll_speed_x);
+		ini_write_real("info", "autoscroll_speed_y", autoscroll_speed_y);
 		
 		#region /* Reset Fastest Time and Score */
 		ini_key_delete("rank", "rank_timeattack_millisecond");

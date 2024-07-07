@@ -4,54 +4,133 @@ function scr_draw_all_level_editor_icon()
 	#region /* Level Editor Icons */
 	
 	#region /* Autoscroll Button */
-	autoscroll_icon_y = display_get_gui_height() - 192;
-	if (autoscroll_speed == 0)
+	
+	var autoscroll_speed_overall = max(abs(autoscroll_speed_x), abs(autoscroll_speed_y));
+	
+	#region /* Autoscroll Icon X */
+	var autoscroll_xscale = 1;
+	
+	if (autoscroll_speed_x == 0)
+	&& (autoscroll_speed_y == 0)
 	{
 		autoscroll_icon_sprite = spr_leveleditor_icon_autoscroll_none;
+		autoscroll_xscale = 1;
 	}
 	else
-	if (autoscroll_speed <= 1)
+	if (autoscroll_speed_overall <= +1.5)
+	&& (autoscroll_speed_overall > 0)
+	|| (autoscroll_speed_overall >= -1.5)
+	&& (autoscroll_speed_overall < 0)
 	{
 		autoscroll_icon_sprite = spr_leveleditor_icon_autoscroll_slow;
+		autoscroll_xscale = sign(autoscroll_speed_x);
 	}
 	else
-	if (autoscroll_speed <= 2)
+	if (autoscroll_speed_overall <= +2.5)
+	&& (autoscroll_speed_overall > 0)
+	|| (autoscroll_speed_overall >= -2.5)
+	&& (autoscroll_speed_overall < 0)
 	{
 		autoscroll_icon_sprite = spr_leveleditor_icon_autoscroll_normal;
+		autoscroll_xscale = sign(autoscroll_speed_x);
 	}
 	else
 	{
 		autoscroll_icon_sprite = spr_leveleditor_icon_autoscroll_fast;
+		autoscroll_xscale = sign(autoscroll_speed_x);
 	}
+	if (autoscroll_xscale == 0)
+	{
+		autoscroll_xscale = 1;
+	}
+	#endregion /* Autoscroll Icon X END */
 	
-	autoscroll_icon_subimg += autoscroll_speed * 0.1;
+	#region /* Autoscroll Icon Y */
+	if (autoscroll_speed_y == 0)
+	{
+		var autoscroll_angle = 0;
+	}
+	else
+	if (autoscroll_speed_y < 0)
+	{
+		if (autoscroll_xscale == 1)
+		{
+			var autoscroll_angle = 90;
+		}
+		else
+		{
+			var autoscroll_angle = 270;
+		}
+	}
+	else
+	if (autoscroll_speed_y > 0)
+	{
+		if (autoscroll_xscale == 1)
+		{
+			var autoscroll_angle = 270;
+		}
+		else
+		{
+			var autoscroll_angle = 90;
+		}
+	}
+	#endregion /* Autoscroll Icon Y END */
 	
-	draw_sprite_ext(autoscroll_icon_sprite, autoscroll_icon_subimg, icon_at_left_x, autoscroll_icon_y, 1, 1, 0, c_white, 1);
+	draw_sprite_ext(autoscroll_icon_sprite, autoscroll_icon_subimg, icon_at_left_x + 32, autoscroll_icon_y, autoscroll_xscale, 1, autoscroll_angle, c_white, 1);
 	
 	if (show_autoscroll_menu)
+	&& (!pause)
 	{
-		autoscroll_speed = draw_menu_left_right_buttons(icon_at_left_x + 132, autoscroll_icon_y, 332, l10n_text("Autoscroll Speed"), autoscroll_speed, "autoscroll_speed", 0.1, false, 0, 32);
+		autoscroll_icon_subimg += autoscroll_speed_overall * 0.1;
+		draw_roundrect_color_ext(132, autoscroll_icon_y - 8, 670, autoscroll_icon_y + 48 + 42, 50, 50, c_white, c_white, false);
+		draw_roundrect_color_ext(132, autoscroll_icon_y - 8, 670, autoscroll_icon_y + 48 + 42, 50, 50, c_black, c_black, true);
+		autoscroll_speed_x = draw_menu_left_right_buttons(196, autoscroll_icon_y, 396, l10n_text("Autoscroll Speed X"), autoscroll_speed_x, "autoscroll_speed_x", 0.1, true, 0, 32);
+		autoscroll_speed_y = draw_menu_left_right_buttons(196, autoscroll_icon_y + 42, 396, l10n_text("Autoscroll Speed Y"), autoscroll_speed_y, "autoscroll_speed_y", 0.1, true, 0, 32);
+		if (key_up)
+		{
+			level_editor_menu = "autoscroll";
+			menu = "autoscroll_speed_x";
+		}
+		else
+		if (key_down)
+		{
+			level_editor_menu = "autoscroll";
+			menu = "autoscroll_speed_y";
+		}
 	}
 	#endregion /* Autoscroll Button END */
 	
 	#region /* Click Autoscroll Button */
 	if (global.controls_used_for_navigation == "mouse")
-	&& (point_in_rectangle(cursor_x, cursor_y, icon_at_left_x - 32, autoscroll_icon_y - 32, icon_at_left_x + 32, autoscroll_icon_y + 32))
-	&& (show_icon_at_bottom)
+	&& (point_in_rectangle(cursor_x, cursor_y, icon_at_left_x - 32, autoscroll_icon_y - 32, icon_at_left_x + 64, autoscroll_icon_y + 32))
+	&& (show_icon_at_left)
 	&& (!pause)
 	|| (level_editor_menu == "autoscroll")
+	|| (show_autoscroll_menu)
+	&& (key_b_pressed)
 	{
-		draw_sprite_ext(spr_menu_cursor, menu_cursor_index, icon_at_left_x + 32, autoscroll_icon_y, 1, 1, 180, c_white, 1);
+		if (!show_autoscroll_menu)
+		{
+			autoscroll_icon_subimg += autoscroll_speed_overall * 0.1;
+		}
+		draw_sprite_ext(spr_menu_cursor, menu_cursor_index, icon_at_left_x + 80, autoscroll_icon_y, 1, 1, 180, c_white, 1);
 		draw_set_alpha(0.5);
-		draw_rectangle_color(icon_at_left_x - 32, autoscroll_icon_y - 32, icon_at_left_x + 32, autoscroll_icon_y + 32, c_white, c_white, c_white, c_white, false);
+		draw_rectangle_color(icon_at_left_x - 32, autoscroll_icon_y - 32, icon_at_left_x + 64, autoscroll_icon_y + 32, c_white, c_white, c_white, c_white, false);
 		draw_set_alpha(1);
 		tooltip = l10n_text("Autoscroll");
 		show_tooltip += 2;
 		if (mouse_check_button_pressed(mb_left))
 		|| (level_editor_menu == "autoscroll")
 		&& (key_a_pressed)
+		|| (show_autoscroll_menu)
+		&& (key_b_pressed)
 		{
+			menu = "autoscroll_speed_x";
 			show_autoscroll_menu = !show_autoscroll_menu;
+			ini_open(game_save_id + "custom_levels/" + string(global.level_name) + "/data/level_information.ini");
+			ini_write_real("info", "autoscroll_speed_x", autoscroll_speed_x);
+			ini_write_real("info", "autoscroll_speed_y", autoscroll_speed_y);
+			ini_close();
 		}
 	}
 	#endregion /* Click Autoscroll Button END */
