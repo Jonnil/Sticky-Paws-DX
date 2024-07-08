@@ -106,8 +106,10 @@ function scr_draw_all_level_editor_icon()
 	&& (show_icon_at_left)
 	&& (!pause)
 	|| (level_editor_menu == "autoscroll")
+	&& (!pause)
 	|| (show_autoscroll_menu)
 	&& (key_b_pressed)
+	&& (!pause)
 	{
 		if (!show_autoscroll_menu)
 		{
@@ -126,6 +128,7 @@ function scr_draw_all_level_editor_icon()
 		&& (key_b_pressed)
 		{
 			menu = "autoscroll_speed_x";
+			show_time_menu = false;
 			show_autoscroll_menu = !show_autoscroll_menu;
 			ini_open(game_save_id + "custom_levels/" + string(global.level_name) + "/data/level_information.ini");
 			ini_write_real("info", "autoscroll_speed_x", autoscroll_speed_x);
@@ -134,6 +137,80 @@ function scr_draw_all_level_editor_icon()
 		}
 	}
 	#endregion /* Click Autoscroll Button END */
+	
+	#region /* Time Button */
+	
+	if (global.enable_time_countdown)
+	&& (global.time_countdown > 0)
+	{
+		var time_icon_sprite = spr_leveleditor_icon_time;
+	}
+	else
+	{
+		var time_icon_sprite = spr_leveleditor_icon_time_no;
+	}
+	
+	draw_sprite_ext(time_icon_sprite, 0, icon_at_left_x + 32, time_icon_y, 1, 1, 0, c_white, 1);
+	
+	if (show_time_menu)
+	&& (!pause)
+	{
+		draw_roundrect_color_ext(132, time_icon_y - 8, 670, time_icon_y + 48 + 42, 50, 50, c_white, c_white, false);
+		draw_roundrect_color_ext(132, time_icon_y - 8, 670, time_icon_y + 48 + 42, 50, 50, c_black, c_black, true);
+		global.enable_time_countdown = draw_menu_checkmark(150, time_icon_y, l10n_text("Enable Time Countdown"), "in_editor_enable_time_countdown", global.enable_time_countdown, false);
+		if (global.enable_time_countdown)
+		{
+			global.time_countdown = draw_menu_left_right_buttons(196, time_icon_y + 42, 396, l10n_text("Time Countdown"), global.time_countdown, "in_editor_time_countdown", 1, false);
+		}
+		if (key_up)
+		{
+			level_editor_menu = "time";
+			menu = "in_editor_enable_time_countdown";
+		}
+		else
+		if (key_down)
+		&& (global.enable_time_countdown)
+		{
+			level_editor_menu = "time";
+			menu = "in_editor_time_countdown";
+		}
+	}
+	#endregion /* Time Button END */
+	
+	#region /* Click Time Button */
+	if (global.controls_used_for_navigation == "mouse")
+	&& (point_in_rectangle(cursor_x, cursor_y, icon_at_left_x - 32, time_icon_y - 32, icon_at_left_x + 64, time_icon_y + 32))
+	&& (show_icon_at_left)
+	&& (!pause)
+	|| (level_editor_menu == "time")
+	&& (!pause)
+	|| (show_time_menu)
+	&& (key_b_pressed)
+	&& (!pause)
+	{
+		draw_sprite_ext(spr_menu_cursor, menu_cursor_index, icon_at_left_x + 80, time_icon_y, 1, 1, 180, c_white, 1);
+		draw_set_alpha(0.5);
+		draw_rectangle_color(icon_at_left_x - 32, time_icon_y - 32, icon_at_left_x + 64, time_icon_y + 32, c_white, c_white, c_white, c_white, false);
+		draw_set_alpha(1);
+		tooltip = l10n_text("Time");
+		show_tooltip += 2;
+		if (mouse_check_button_pressed(mb_left))
+		|| (level_editor_menu == "time")
+		&& (key_a_pressed)
+		&& (menu != "in_editor_enable_time_countdown")
+		|| (show_time_menu)
+		&& (key_b_pressed)
+		{
+			menu = "in_editor_enable_time_countdown";
+			show_autoscroll_menu = false;
+			show_time_menu = !show_time_menu;
+			ini_open(game_save_id + "custom_levels/" + string(global.level_name) + "/data/level_information.ini");
+			ini_write_real("info", "enable_time_countdown", global.enable_time_countdown);
+			ini_write_real("info", "time_countdown", global.time_countdown);
+			ini_close();
+		}
+	}
+	#endregion /* Click Time Button END */
 	
 	#region /* Play Level Button */
 	if (global.controls_used_for_navigation == "mouse"

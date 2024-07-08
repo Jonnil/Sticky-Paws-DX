@@ -3,6 +3,8 @@ can_spawn_players = true;
 #endregion /* Debug toggles END */
 
 selected_voicepack = noone;
+time_fill_color = c_white;
+time_fill_color_blink = c_white;
 
 #region /* Set Backgrounds */
 layer_background_sprite(layer_background_get_id(layer_get_id("Background_1")), global.custom_background1);

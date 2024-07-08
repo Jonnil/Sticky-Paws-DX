@@ -588,6 +588,8 @@
     {"name":"spr_leveleditor_icon_invincibility","order":35,"path":"sprites/spr_leveleditor_icon_invincibility/spr_leveleditor_icon_invincibility.yy",},
     {"name":"spr_leveleditor_icon_moonjump","order":36,"path":"sprites/spr_leveleditor_icon_moonjump/spr_leveleditor_icon_moonjump.yy",},
     {"name":"spr_leveleditor_icon_pen","order":38,"path":"sprites/spr_leveleditor_icon_pen/spr_leveleditor_icon_pen.yy",},
+    {"name":"spr_leveleditor_icon_time_no","order":54,"path":"sprites/spr_leveleditor_icon_time_no/spr_leveleditor_icon_time_no.yy",},
+    {"name":"spr_leveleditor_icon_time","order":53,"path":"sprites/spr_leveleditor_icon_time/spr_leveleditor_icon_time.yy",},
     {"name":"spr_leveleditor_icon_wipe","order":30,"path":"sprites/spr_leveleditor_icon_wipe/spr_leveleditor_icon_wipe.yy",},
     {"name":"spr_leveleditor_icon","order":17,"path":"sprites/spr_leveleditor_icon/spr_leveleditor_icon.yy",},
     {"name":"spr_loading","order":39,"path":"sprites/spr_loading/spr_loading.yy",},

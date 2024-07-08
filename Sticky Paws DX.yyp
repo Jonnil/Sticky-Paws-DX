@@ -3172,6 +3172,8 @@
     {"id":{"name":"spr_leveleditor_icon_invincibility","path":"sprites/spr_leveleditor_icon_invincibility/spr_leveleditor_icon_invincibility.yy",},},
     {"id":{"name":"spr_leveleditor_icon_moonjump","path":"sprites/spr_leveleditor_icon_moonjump/spr_leveleditor_icon_moonjump.yy",},},
     {"id":{"name":"spr_leveleditor_icon_pen","path":"sprites/spr_leveleditor_icon_pen/spr_leveleditor_icon_pen.yy",},},
+    {"id":{"name":"spr_leveleditor_icon_time_no","path":"sprites/spr_leveleditor_icon_time_no/spr_leveleditor_icon_time_no.yy",},},
+    {"id":{"name":"spr_leveleditor_icon_time","path":"sprites/spr_leveleditor_icon_time/spr_leveleditor_icon_time.yy",},},
     {"id":{"name":"spr_leveleditor_icon_wipe","path":"sprites/spr_leveleditor_icon_wipe/spr_leveleditor_icon_wipe.yy",},},
     {"id":{"name":"spr_leveleditor_icon","path":"sprites/spr_leveleditor_icon/spr_leveleditor_icon.yy",},},
     {"id":{"name":"spr_loading","path":"sprites/spr_loading/spr_loading.yy",},},

@@ -5,8 +5,10 @@ function scr_draw_information_menu()
 	var fixed_player = 1;
 	
 	#region /* Information menu */
-	if (information_menu_open != "") {
-		if (information_menu_open != "credits" && instance_exists(obj_credits)) {
+	if (information_menu_open != "")
+	{
+		if (information_menu_open != "credits" && instance_exists(obj_credits))
+		{
 			instance_destroy(obj_credits);
 		}
 		
@@ -637,6 +639,11 @@ function scr_draw_information_menu()
 			}
 		}
 		else
+		if (information_menu_open == "community") /* Community tab */ 
+		{
+			/* Link to Discord server here so that you can build a community for the game */
+		}
+		else
 		if (information_menu_open == "credits") /* Credits tab */ 
 		{
 			
@@ -648,7 +655,9 @@ function scr_draw_information_menu()
 			#endregion /* Play Credits END */
 			
 		}
-		else if (information_menu_open == "links") { /* Links tab */ 
+		else
+		if (information_menu_open == "links") /* Links tab */ 
+		{
 			scr_draw_links_menu();
 		}
 	}

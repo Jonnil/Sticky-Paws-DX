@@ -696,11 +696,13 @@ if (!global.actually_play_edited_level)
 	erase_icon_x = 160;
 	fill_icon_x = 224;
 	always_show_level_editor_buttons_x = 288;
-	autoscroll_icon_y = display_get_gui_height() - 192;
+	autoscroll_icon_y = display_get_gui_height() - 192 - 64;
+	time_icon_y = display_get_gui_height() - 192;
 	
 	autoscroll_icon_sprite = spr_leveleditor_icon_autoscroll_none;
 	autoscroll_icon_subimg = 0;
 	show_autoscroll_menu = false;
+	show_time_menu = false;
 	
 	/* Top Right Icons X Positions */
 	grid_button_x = display_get_gui_width() - 288;

@@ -431,7 +431,7 @@ if (!in_settings)
 		if (menu == "information")
 		{
 			draw_set_halign(fa_right);
-			scr_draw_text_outlined(display_get_gui_width() - 8, display_get_gui_height() - 64, l10n_text("Information"), global.default_text_size, c_black, c_white, 1);
+			scr_draw_text_outlined(display_get_gui_width() - 8, display_get_gui_height() - 54, l10n_text("Information"), global.default_text_size, c_black, c_white, 1);
 			if (key_a_pressed)
 			&& (menu_delay == 0 && menu_joystick_delay == 0)
 			|| (point_in_rectangle(mouse_get_x, mouse_get_y, display_get_gui_width() - 32, display_get_gui_height() - 35, display_get_gui_width(), display_get_gui_height()))

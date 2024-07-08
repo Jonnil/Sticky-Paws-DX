@@ -1,10 +1,11 @@
-/* Top Right Icons X Positions */
+/* Icon Positions */
 grid_button_x = display_get_gui_width() - 288;
 zoom_out_button_x = display_get_gui_width() - 224;
 zoom_reset_button_x = display_get_gui_width() - 160;
 zoom_in_button_x = display_get_gui_width() - 96;
 help_button_x = display_get_gui_width() - 32;
-autoscroll_icon_y = display_get_gui_height() - 192;
+autoscroll_icon_y = display_get_gui_height() - 192 - 64;
+time_icon_y = display_get_gui_height() - 192;
 
 if (instance_exists(obj_leveleditor_modify_object_menu))
 {
@@ -22,6 +23,7 @@ if (menu_delay == 0 && menu_joystick_delay == 0)
 && (!pause)
 && (!in_modify_object_menu)
 && (!show_autoscroll_menu)
+&& (!show_time_menu)
 {
 	/* UP */ if (keyboard_check_pressed(ord("I")))
 	|| (gamepad_button_check_pressed(global.player_slot[1], gp_padu))
@@ -29,13 +31,14 @@ if (menu_delay == 0 && menu_joystick_delay == 0)
 		menu_delay = 3;
 		if (level_editor_menu == ""){if (show_selected_menu){level_editor_menu = "select_object_menu";}else{if (!if_daily_build){level_editor_menu = "terrain";}else{level_editor_menu = "daily_build_standard";}}}else
 		
-		if (level_editor_menu == "autoscroll"){if (show_selected_menu){level_editor_menu = "select_object_menu";}else{if (!if_daily_build){level_editor_menu = "terrain";}else{level_editor_menu = "daily_build_standard";}}}else
+		if (level_editor_menu == "autoscroll")&&(!show_autoscroll_menu){if (show_selected_menu){level_editor_menu = "select_object_menu";}else{if (!if_daily_build){level_editor_menu = "terrain";}else{level_editor_menu = "daily_build_standard";}}}else
+		if (level_editor_menu == "time"){level_editor_menu = "autoscroll";}else
 		
-		if (level_editor_menu == "play"){level_editor_menu = "autoscroll";}else
-		if (level_editor_menu == "pen"){level_editor_menu = "autoscroll";}else
-		if (level_editor_menu == "erase"){level_editor_menu = "autoscroll";}else
-		if (level_editor_menu == "fill"){level_editor_menu = "autoscroll";}else
-		if (level_editor_menu == "hide"){level_editor_menu = "autoscroll";}else
+		if (level_editor_menu == "play"){level_editor_menu = "time";}else
+		if (level_editor_menu == "pen"){level_editor_menu = "time";}else
+		if (level_editor_menu == "erase"){level_editor_menu = "time";}else
+		if (level_editor_menu == "fill"){level_editor_menu = "time";}else
+		if (level_editor_menu == "hide"){level_editor_menu = "time";}else
 		if (level_editor_menu == "difficulty_toggle"){level_editor_menu = "help";}else
 		if (level_editor_menu == "wipe"){level_editor_menu = "help";}else
 		if (level_editor_menu == "easy"){level_editor_menu = "help";}else
@@ -89,7 +92,8 @@ if (menu_delay == 0 && menu_joystick_delay == 0)
 		if (level_editor_menu == "help"){level_editor_menu = "wipe";}else
 		if (level_editor_menu == "select_object_menu"){level_editor_menu = "autoscroll";}else
 		
-		if (level_editor_menu == "autoscroll"){level_editor_menu = "play";}
+		if (level_editor_menu == "autoscroll")&&(!show_autoscroll_menu){level_editor_menu = "time";}else
+		if (level_editor_menu == "time")&&(!show_time_menu){level_editor_menu = "play";}
 	}
 	/* Right */ if (keyboard_check_pressed(ord("L")))
 	|| (gamepad_button_check_pressed(global.player_slot[1], gp_padr))
@@ -367,6 +371,9 @@ if (!global.actually_play_edited_level)
 	|| (show_autoscroll_menu)
 	&& (point_in_rectangle(mouse_get_x, mouse_get_y, 132, autoscroll_icon_y - 8, 670, autoscroll_icon_y + 48 + 42)) /* Hovering over autoscroll menu */
 	|| (point_in_rectangle(mouse_get_x, mouse_get_y, icon_at_left_x - 32, autoscroll_icon_y - 32, icon_at_left_x + 64, autoscroll_icon_y + 32)) /* Hovering over autoscroll button */
+	|| (show_time_menu)
+	&& (point_in_rectangle(mouse_get_x, mouse_get_y, 132, time_icon_y - 8, 670, time_icon_y + 48 + 42)) /* Hovering over time menu */
+	|| (point_in_rectangle(mouse_get_x, mouse_get_y, icon_at_left_x - 32, time_icon_y - 32, icon_at_left_x + 64, time_icon_y + 32)) /* Hovering over time button */
 	{
 		if (global.controls_used_for_navigation == "mouse")
 		{
@@ -546,6 +553,7 @@ if (!global.actually_play_edited_level)
 	
 	#region /* Holding the play key down */
 	if (keyboard_check_pressed(key_play))
+	&& (!show_autoscroll_menu && !show_time_menu)
 	&& (welcome_to_level_editor == 0)
 	|| (level_editor_menu == "play")
 	&& (key_a_pressed)
@@ -562,6 +570,7 @@ if (!global.actually_play_edited_level)
 		}
 	}
 	if (keyboard_check(key_play))
+	&& (!show_autoscroll_menu && !show_time_menu)
 	&& (welcome_to_level_editor == 0)
 	|| (level_editor_menu == "play")
 	&& (key_a_hold)
@@ -596,6 +605,7 @@ if (!global.actually_play_edited_level)
 	{
 		instance_activate_all(); /* Activate all instances before saving the custom level. You need this code right here otherwise the game crashes */
 		if (keyboard_check_released(key_play))
+		&& (!show_autoscroll_menu && !show_time_menu)
 		|| (level_editor_menu == "play")
 		&& (key_a_released)
 		|| (gamepad_button_check_released(global.player_slot[1], button_play))
@@ -829,6 +839,7 @@ if (!global.actually_play_edited_level)
 			if (!pause)
 			&& (!in_modify_object_menu)
 			&& (!show_autoscroll_menu)
+			&& (!show_time_menu)
 			{
 				if (key_up)
 				&& (controller_y > cam_y)
@@ -920,6 +931,7 @@ if (!global.actually_play_edited_level)
 		if (!pause)
 		&& (!in_modify_object_menu)
 		&& (!show_autoscroll_menu)
+		&& (!show_time_menu)
 		{
 			if (gamepad_axis_value(global.player_slot[1], gp_axisrv) < 0)
 			|| (global.controls_used_for_navigation != "gamepad")
@@ -2058,6 +2070,8 @@ if (!global.actually_play_edited_level)
 			can_input_level_name = false;
 			input_key = false;
 			menu = "continue";
+			show_autoscroll_menu = false;
+			show_time_menu = false;
 			pause = true;
 			menu_delay = 3;
 		}
@@ -2195,7 +2209,7 @@ if (!global.actually_play_edited_level && quit_level_editor == 0)
 	#region /* Make left column of icon appear if mouse is hovering at left screen */
 	if (!drag_object)
 	{
-		if (point_in_rectangle(cursor_x, cursor_y, 0, autoscroll_icon_y - 32, 64, autoscroll_icon_y + 32)) /* Autoscroll button on left side */
+		if (point_in_rectangle(cursor_x, cursor_y, 0, autoscroll_icon_y - 32, 64, time_icon_y + 32)) /* Buttons on left side */
 		|| (global.always_show_level_editor_buttons)
 		{
 			if (!show_icon_at_left)
@@ -2318,9 +2332,11 @@ if (!global.actually_play_edited_level && quit_level_editor == 0)
 	#region /* Show icon at left of screen */
 	if (show_icon_at_left
 	|| global.always_show_level_editor_buttons
-	|| level_editor_menu == "autoscroll")
+	|| level_editor_menu == "autoscroll"
+	|| level_editor_menu == "time"
+	|| show_autoscroll_menu
+	|| show_time_menu)
 	&& (!drag_object && !pause && !in_modify_object_menu)
-	|| (show_autoscroll_menu)
 	{
 		icon_at_left_x = lerp(icon_at_left_x, 0, 0.1);
 	}
@@ -2487,6 +2503,8 @@ if (!global.actually_play_edited_level && quit_level_editor == 0)
 				menu_delay = 3;
 				level_editor_option_back_to_menu = "delete_all_objects_button";
 				menu = "delete_all_objects_no";
+				show_autoscroll_menu = false;
+				show_time_menu = false;
 				pause = true;
 			}
 		}
