@@ -1,5 +1,7 @@
 function scr_draw_menu_search_id(what_kind_of_id = "level")
 {
+	var get_window_width = display_get_gui_width();
+	var get_window_height = display_get_gui_height();
 	var mouse_get_x = device_mouse_x_to_gui(0);
 	var mouse_get_y = device_mouse_y_to_gui(0);
 	var id_max_length = 9;
@@ -22,18 +24,18 @@ function scr_draw_menu_search_id(what_kind_of_id = "level")
 		&& keyboard_virtual_height() != 0
 		&& keyboard_virtual_height() != undefined)
 		{
-			var draw_name_input_screen_y = min(display_get_gui_height() * 0.5, display_get_gui_height() - keyboard_virtual_height() - 160);
+			var draw_name_input_screen_y = min(get_window_height * 0.5, get_window_height - keyboard_virtual_height() - 160);
 		}
 		else
 		{
-			var draw_name_input_screen_y = display_get_gui_height() * 0.5;
+			var draw_name_input_screen_y = get_window_height * 0.5;
 		}
 		#endregion /* Set name input screen to always be above the virtual keyboard END */
 		
 		if (!in_online_download_list_menu)
 		&& (!automatically_search_for_id)
 		{
-			search_id = scr_draw_name_input_screen(search_id, id_max_length, c_black, 1, false, display_get_gui_width() * 0.5, draw_name_input_screen_y, "search_id_ok", "search_id_cancel", true, false, true);
+			search_id = scr_draw_name_input_screen(search_id, id_max_length, c_black, 1, false, get_window_width * 0.5, draw_name_input_screen_y, "search_id_ok", "search_id_cancel", true, false, true);
 			draw_set_halign(fa_center);
 			draw_set_valign(fa_middle);
 			if (what_kind_of_id == "level")
@@ -45,14 +47,14 @@ function scr_draw_menu_search_id(what_kind_of_id = "level")
 			{
 				var please_enter_what = l10n_text("Please enter a character ID");
 			}
-			scr_draw_text_outlined(display_get_gui_width() * 0.5, draw_name_input_screen_y - 64, string(please_enter_what), global.default_text_size * 2, c_black, c_white, 1)
+			scr_draw_text_outlined(get_window_width * 0.5, draw_name_input_screen_y - 64, string(please_enter_what), global.default_text_size * 2, c_black, c_white, 1)
 		}
 		else
 		{
 			
 			#region /* Opaque transparent black rectangle over whole screen, but underneath text */
 			draw_set_alpha(0.9);
-			draw_rectangle_color(- 32, - 32, display_get_gui_width() + 32, display_get_gui_height() + 32, c_black, c_black, c_black, c_black, false);
+			draw_rectangle_color(- 32, - 32, get_window_width + 32, get_window_height + 32, c_black, c_black, c_black, c_black, false);
 			draw_set_alpha(1);
 			#endregion /* Opaque transparent black rectangle over whole screen, but underneath text END */
 			
@@ -263,6 +265,27 @@ function scr_draw_menu_search_id(what_kind_of_id = "level")
 						masked_username = ini_read_string("info", "username", "");
 						development_stage_index = ini_read_string("info", "development_stage_index", 1);
 						downloaded_content_is_unlisted = ini_read_string("info", "visibility_index", 0);
+						
+						#region /* Show what version of the game the level was first created in */
+						/* This should make it easier to port old levels to new game versions */
+						/* Showing the original version number makes it easier to pinpoint what changes happened from one version to another */
+						made_in_what_version_text = "";
+						first_created_on_version = "";
+						if (ini_key_exists("info", "first_created_on_version"))
+						{
+							if (string_digits(ini_read_string("info", "first_created_on_version", "v" + scr_get_build_date())) < string_digits(scr_get_build_date()))
+							{
+								made_in_what_version_text = l10n_text("Level made in old version");
+							}
+							else
+							if (string_digits(ini_read_string("info", "first_created_on_version", "v" + scr_get_build_date())) > string_digits(scr_get_build_date()))
+							{
+								made_in_what_version_text = l10n_text("Level made in new version");
+							}
+							first_created_on_version = ini_read_string("info", "first_created_on_version", "v" + scr_get_build_date());	
+						}
+						#endregion /* Show what version of the game the level was first created in END */
+						
 						ini_close();
 						
 						if (switch_check_profanity(global.level_description))
@@ -316,6 +339,27 @@ function scr_draw_menu_search_id(what_kind_of_id = "level")
 						ini_open(game_save_id + "custom_characters/" + string(downloaded_character_name) + "/data/character_config.ini");
 						global.level_description = ini_read_string("info", "character_description", "");
 						masked_username = ini_read_string("info", "username", "");
+						
+						#region /* Show what version of the game the character was first created in */
+						/* This should make it easier to port old characters to new game versions */
+						/* Showing the original version number makes it easier to pinpoint what changes happened from one version to another */
+						made_in_what_version_text = "";
+						first_created_on_version = "";
+						if (ini_key_exists("info", "first_created_on_version"))
+						{
+							if (string_digits(ini_read_string("info", "first_created_on_version", "v" + scr_get_build_date())) < string_digits(scr_get_build_date()))
+							{
+								made_in_what_version_text = l10n_text("Character made in old version");
+							}
+							else
+							if (string_digits(ini_read_string("info", "first_created_on_version", "v" + scr_get_build_date())) > string_digits(scr_get_build_date()))
+							{
+								made_in_what_version_text = l10n_text("Character made in new version");
+							}
+							first_created_on_version = ini_read_string("info", "first_created_on_version", "v" + scr_get_build_date());	
+						}
+						#endregion /* Show what version of the game the level was first created in END */
+						
 						ini_close(); switch_save_data_commit(); /* Remember to commit the save data! */
 						
 						if (switch_check_profanity(global.level_description))
@@ -341,34 +385,34 @@ function scr_draw_menu_search_id(what_kind_of_id = "level")
 		
 		#region /* Opaque transparent black rectangle over whole screen, but underneath name input screen */
 		draw_set_alpha(0.9);
-		draw_rectangle_color(- 32, - 32, display_get_gui_width() + 32, display_get_gui_height() + 32, c_black, c_black, c_black, c_black, false);
+		draw_rectangle_color(- 32, - 32, get_window_width + 32, get_window_height + 32, c_black, c_black, c_black, c_black, false);
 		draw_set_alpha(1);
 		#endregion /* Opaque transparent black rectangle over whole screen, but underneath name input screen END */
 		
 		draw_set_halign(fa_center);
 		draw_set_valign(fa_middle);
-		scr_draw_text_outlined(display_get_gui_width() * 0.5, display_get_gui_height() * 0.5, l10n_text("Downloading" + " " + string(what_kind_of_id) + "..."), global.default_text_size * 2, c_black, c_white, 1);
-		scr_draw_text_outlined(display_get_gui_width() * 0.5, display_get_gui_height() * 0.5 + 64, string(global.search_id), global.default_text_size, c_black, c_white, 1);
+		scr_draw_text_outlined(get_window_width * 0.5, get_window_height * 0.5, l10n_text("Downloading" + " " + string(what_kind_of_id) + "..."), global.default_text_size * 2, c_black, c_white, 1);
+		scr_draw_text_outlined(get_window_width * 0.5, get_window_height * 0.5 + 64, string(global.search_id), global.default_text_size, c_black, c_white, 1);
 		
 		/* If we could show the player the growing http buffer, that would be great feedback that the files are downloading */
 		/* var growing_http_buffer = buffer_get_size(global.http_request_id) */
-		/* scr_draw_text_outlined(display_get_gui_width() * 0.5, display_get_gui_height() * 0.5 + 128, "Growing http buffer to: " + string(growing_http_buffer), global.default_text_size, c_black, c_white, 1) */
+		/* scr_draw_text_outlined(get_window_width * 0.5, get_window_height * 0.5 + 128, "Growing http buffer to: " + string(growing_http_buffer), global.default_text_size, c_black, c_white, 1) */
 		
 		#region /* Draw loading icon when waiting for download */
 		draw_set_halign(fa_center);
 		draw_set_valign(fa_middle);
 		global.loading_spinning_angle -= 10;
-		draw_sprite_ext(spr_loading, 0, display_get_gui_width() * 0.5, display_get_gui_height() * 0.5 + 64 + 64, 1, 1, global.loading_spinning_angle, c_white, 1);
+		draw_sprite_ext(spr_loading, 0, get_window_width * 0.5, get_window_height * 0.5 + 64 + 64, 1, 1, global.loading_spinning_angle, c_white, 1);
 		#endregion /* Draw loading icon when waiting for download END */
 		
 		#endregion /* Draw text explaining to the player that the file is downloading, and a loading icon that is spinning END */
 		
 		#region /* You can always cancel searching if game can't find file on server */
-		var cancel_button_y = display_get_gui_height() * 0.5 + 100 + 64;
-		draw_menu_button(display_get_gui_width() * 0.5 - 185, cancel_button_y, l10n_text("Cancel"), "searching_for_id", "searching_for_id");
-		draw_sprite_ext(spr_icon_back, 0, display_get_gui_width() * 0.5 - 185 + 16, cancel_button_y + 20, 1, 1, 0, c_white, 1);
+		var cancel_button_y = get_window_height * 0.5 + 100 + 64;
+		draw_menu_button(get_window_width * 0.5 - 185, cancel_button_y, l10n_text("Cancel"), "searching_for_id", "searching_for_id");
+		draw_sprite_ext(spr_icon_back, 0, get_window_width * 0.5 - 185 + 16, cancel_button_y + 20, 1, 1, 0, c_white, 1);
 		
-		if (point_in_rectangle(mouse_get_x, mouse_get_y, display_get_gui_width() * 0.5 - 185, cancel_button_y, display_get_gui_width() * 0.5 + 185, cancel_button_y + 41))
+		if (point_in_rectangle(mouse_get_x, mouse_get_y, get_window_width * 0.5 - 185, cancel_button_y, get_window_width * 0.5 + 185, cancel_button_y + 41))
 		&& (global.controls_used_for_navigation == "mouse")
 		&& (mouse_check_button_released(mb_left))
 		&& (menu_delay == 0 && menu_joystick_delay == 0)
@@ -420,16 +464,16 @@ function scr_draw_menu_search_id(what_kind_of_id = "level")
 		
 		#region /* Opaque transparent black rectangle over whole screen, but underneath text */
 		draw_set_alpha(0.9);
-		draw_rectangle_color(- 32, - 32, display_get_gui_width() + 32, display_get_gui_height() + 32, c_black, c_black, c_black, c_black, false);
+		draw_rectangle_color(- 32, - 32, get_window_width + 32, get_window_height + 32, c_black, c_black, c_black, c_black, false);
 		draw_set_alpha(1);
 		#endregion /* Opaque transparent black rectangle over whole screen, but underneath text END */
 		
 		/* If content is early access, tell the player that at this screen */
 		if (development_stage_index == 0)
 		{
-			draw_rectangle_color(- 32, display_get_gui_height() - 128, display_get_gui_width() + 32, display_get_gui_height() + 32, c_black, c_black, c_blue, c_blue, false);
+			draw_rectangle_color(- 32, get_window_height - 128, get_window_width + 32, get_window_height + 32, c_black, c_black, c_blue, c_blue, false);
 			draw_set_halign(fa_left);
-			scr_draw_text_outlined(32, display_get_gui_height() - 64, l10n_text("Early Access"), global.default_text_size, c_black, c_white, 1);
+			scr_draw_text_outlined(32, get_window_height - 64, l10n_text("Early Access"), global.default_text_size, c_black, c_white, 1);
 			draw_set_halign(fa_center);
 		}
 		
@@ -444,7 +488,7 @@ function scr_draw_menu_search_id(what_kind_of_id = "level")
 				/* Show level name, level thumbnail, and level description */
 				
 				#region /* Draw Level Thumbnail */
-				if (display_get_gui_height() <= 720)
+				if (get_window_height <= 720)
 				{
 					var thumbnail_scale = 1.1;
 				}
@@ -454,11 +498,11 @@ function scr_draw_menu_search_id(what_kind_of_id = "level")
 				}
 				if (downloaded_thumbnail_sprite > 0)
 				{
-					draw_sprite_ext(downloaded_thumbnail_sprite, 0, display_get_gui_width() * 0.5, 64, 384 / sprite_get_width(downloaded_thumbnail_sprite) * thumbnail_scale, 216 / sprite_get_height(downloaded_thumbnail_sprite) * thumbnail_scale, 0, c_white, 1);
+					draw_sprite_ext(downloaded_thumbnail_sprite, 0, get_window_width * 0.5, 64, 384 / sprite_get_width(downloaded_thumbnail_sprite) * thumbnail_scale, 216 / sprite_get_height(downloaded_thumbnail_sprite) * thumbnail_scale, 0, c_white, 1);
 				}
 				else
 				{
-					draw_sprite_ext(spr_thumbnail_missing, 0, display_get_gui_width() * 0.5 - 192, 64, 1, 1, 0, c_white, 1);
+					draw_sprite_ext(spr_thumbnail_missing, 0, get_window_width * 0.5 - 192, 64, 1, 1, 0, c_white, 1);
 				}
 				#endregion /* Draw Level Thumbnail END */
 				
@@ -471,11 +515,11 @@ function scr_draw_menu_search_id(what_kind_of_id = "level")
 				if (downloaded_thumbnail_sprite > 0)
 				{
 					var scale_offset = 1;
-					draw_sprite_ext(downloaded_thumbnail_sprite, 0, display_get_gui_width() * 0.5, display_get_gui_height() * 0.5 - 100, (392 / sprite_get_width(downloaded_thumbnail_sprite)) * scale_offset, (392 / sprite_get_width(downloaded_thumbnail_sprite)) * scale_offset, 0, c_white, 1);
+					draw_sprite_ext(downloaded_thumbnail_sprite, 0, get_window_width * 0.5, get_window_height * 0.5 - 100, (392 / sprite_get_width(downloaded_thumbnail_sprite)) * scale_offset, (392 / sprite_get_width(downloaded_thumbnail_sprite)) * scale_offset, 0, c_white, 1);
 				}
 				else
 				{
-					draw_sprite_ext(spr_thumbnail_missing, 0, display_get_gui_width() * 0.5 - 192, 64, 1, 1, 0, c_white, 1);
+					draw_sprite_ext(spr_thumbnail_missing, 0, get_window_width * 0.5 - 192, 64, 1, 1, 0, c_white, 1);
 				}
 				#endregion /* Draw Character Thumbnail END */
 				
@@ -490,60 +534,60 @@ function scr_draw_menu_search_id(what_kind_of_id = "level")
 			{
 				if (downloaded_content_is_unlisted)
 				{
-					var draw_name_y = display_get_gui_height() - (42 * 9);
-					var draw_unlisted_y = display_get_gui_height() - (42 * 8);
+					var draw_name_y = get_window_height - (42 * 9);
+					var draw_unlisted_y = get_window_height - (42 * 8);
 				}
 				else
 				{
-					var draw_name_y = display_get_gui_height() - (42 * 8);
-					var draw_unlisted_y = display_get_gui_height() + 999;
+					var draw_name_y = get_window_height - (42 * 8);
+					var draw_unlisted_y = get_window_height + 999;
 				}
-				var draw_author_name_y = display_get_gui_height() - (42 * 7);
-				var draw_description_y = display_get_gui_height() - (42 * 6);
-				var searched_file_play_y = display_get_gui_height() - (42 * 5);
-				var searched_file_make_y = display_get_gui_height() - (42 * 4);
-				var searched_file_open_folder_y = display_get_gui_height() - (42 * 3);
-				var searched_file_downloaded_delete_y = display_get_gui_height() - (42 * 2);
+				var draw_author_name_y = get_window_height - (42 * 7);
+				var draw_description_y = get_window_height - (42 * 6);
+				var searched_file_play_y = get_window_height - (42 * 5);
+				var searched_file_make_y = get_window_height - (42 * 4);
+				var searched_file_open_folder_y = get_window_height - (42 * 3);
+				var searched_file_downloaded_delete_y = get_window_height - (42 * 2);
 			}
 			else
 			{
 				if (downloaded_content_is_unlisted)
 				{
-					var draw_name_y = display_get_gui_height() - (42 * 8);
-					var draw_unlisted_y = display_get_gui_height() - (42 * 7);
+					var draw_name_y = get_window_height - (42 * 8);
+					var draw_unlisted_y = get_window_height - (42 * 7);
 				}
 				else
 				{
-					var draw_name_y = display_get_gui_height() - (42 * 7);
-					var draw_unlisted_y = display_get_gui_height() + 999;
+					var draw_name_y = get_window_height - (42 * 7);
+					var draw_unlisted_y = get_window_height + 999;
 				}
-				var draw_author_name_y = display_get_gui_height() - (42 * 6);
-				var draw_description_y = display_get_gui_height() - (42 * 5);
-				var searched_file_play_y = display_get_gui_height() - (42 * 4);
-				var searched_file_make_y = display_get_gui_height() - (42 * 3);
+				var draw_author_name_y = get_window_height - (42 * 6);
+				var draw_description_y = get_window_height - (42 * 5);
+				var searched_file_play_y = get_window_height - (42 * 4);
+				var searched_file_make_y = get_window_height - (42 * 3);
 				var searched_file_open_folder_y = -999;
-				var searched_file_downloaded_delete_y = display_get_gui_height() - (42 * 2);
+				var searched_file_downloaded_delete_y = get_window_height - (42 * 2);
 			}
 			
 			if (what_kind_of_id == "level")
 			{
 				/* Draw Level Name */
 				draw_set_halign(fa_center);
-				scr_draw_text_outlined(display_get_gui_width() * 0.5, draw_name_y, string(masked_level_name), global.default_text_size * 1.9, c_black, c_white, 1);
+				scr_draw_text_outlined(get_window_width * 0.5, draw_name_y, string(masked_level_name), global.default_text_size * 1.9, c_black, c_white, 1);
 				
 				/* Draw if level is unlisted */
 				if (downloaded_content_is_unlisted)
 				{
-					scr_draw_text_outlined(display_get_gui_width() * 0.5, draw_unlisted_y, l10n_text("Unlisted"), global.default_text_size, c_black, c_white, 1);
-					draw_sprite_ext(spr_icon_unlisted, 1, display_get_gui_width() * 0.5 - 100, draw_unlisted_y, 1, 1, 0, c_white, 1);
+					scr_draw_text_outlined(get_window_width * 0.5, draw_unlisted_y, l10n_text("Unlisted"), global.default_text_size, c_black, c_white, 1);
+					draw_sprite_ext(spr_icon_unlisted, 1, get_window_width * 0.5 - 100, draw_unlisted_y, 1, 1, 0, c_white, 1);
 				}
 				
 				/* Level is downloaded, so you get a choice if you want to play, make, or go back to custom level select*/
 				if (file_exists(game_save_id + "custom_levels/" + string(global.level_name) + "/data/level_information.ini"))
 				&& (!inform_about_report_feature)
 				{
-					draw_menu_button(display_get_gui_width() * 0.5 - 185, searched_file_play_y, l10n_text("Play"), "searched_file_downloaded_play", "searched_file_downloaded_play");
-					draw_menu_button(display_get_gui_width() * 0.5 - 185, searched_file_make_y, l10n_text("Make"), "searched_file_downloaded_make", "searched_file_downloaded_make");
+					draw_menu_button(get_window_width * 0.5 - 185, searched_file_play_y, l10n_text("Play"), "searched_file_downloaded_play", "searched_file_downloaded_play");
+					draw_menu_button(get_window_width * 0.5 - 185, searched_file_make_y, l10n_text("Make"), "searched_file_downloaded_make", "searched_file_downloaded_make");
 				}
 				
 				else
@@ -552,10 +596,10 @@ function scr_draw_menu_search_id(what_kind_of_id = "level")
 				if (file_exists(download_temp_path + "custom_levels/" + string(global.level_name) + "/data/level_information.ini"))
 				&& (!inform_about_report_feature)
 				{
-					draw_menu_button(display_get_gui_width() * 0.5 - 185, searched_file_play_y, l10n_text("Play"), "play_from_temp", "play_from_temp");
+					draw_menu_button(get_window_width * 0.5 - 185, searched_file_play_y, l10n_text("Play"), "play_from_temp", "play_from_temp");
 					if (ds_list_size(global.all_loaded_custom_levels) - 1 < global.max_custom_levels) /* Don't let player download levels if they have reached the max amount of levels stored */
 					{
-						draw_menu_button(display_get_gui_width() * 0.5 - 185, searched_file_make_y, l10n_text("Download to Level Select"), "download_to_working", "download_to_working");
+						draw_menu_button(get_window_width * 0.5 - 185, searched_file_make_y, l10n_text("Download to Level Select"), "download_to_working", "download_to_working");
 					}
 				}
 				
@@ -565,7 +609,7 @@ function scr_draw_menu_search_id(what_kind_of_id = "level")
 			else
 			if (!inform_about_report_feature)
 			{
-				/* Draw Character Name */ draw_set_halign(fa_center); scr_draw_text_outlined(display_get_gui_width() * 0.5, draw_name_y, string(downloaded_character_name), global.default_text_size * 1.9, c_black, c_white, 1);
+				/* Draw Character Name */ draw_set_halign(fa_center); scr_draw_text_outlined(get_window_width * 0.5, draw_name_y, string(downloaded_character_name), global.default_text_size * 1.9, c_black, c_white, 1);
 				
 				var back_to_list_text = l10n_text("Back to online character list");
 				var searched_file_downloaded_back_text = l10n_text("Back to character select");
@@ -573,10 +617,40 @@ function scr_draw_menu_search_id(what_kind_of_id = "level")
 			
 			draw_set_halign(fa_center);
 			draw_set_valign(fa_middle);
-			/* Draw if level was made with Daily Build */ if (downloaded_level_is_daily_build){draw_sprite_ext(spr_icon_daily_build, 0, display_get_gui_width() * 0.5 - 216, draw_id_y, 1, 1, 0, c_white, 1);}
-			/* Draw ID */ scr_draw_text_outlined(display_get_gui_width() * 0.5, draw_id_y, l10n_text(string(what_kind_of_id)) + " " + l10n_text("ID") + ": " + string_upper(search_id), global.default_text_size * 1.25, c_black, c_white, 1);
-			/* Draw who made the level */ if (masked_username != ""){scr_draw_text_outlined(display_get_gui_width() * 0.5, draw_author_name_y, l10n_text("By") + ": " + string(masked_username), global.default_text_size, c_black, c_white, 1);}
-			/* Draw Description */ scr_draw_text_outlined(display_get_gui_width() * 0.5, draw_description_y, string(global.level_description), global.default_text_size, c_black, c_white, 1);
+			
+			/* Draw if level was made with Daily Build */
+			if (downloaded_level_is_daily_build)
+			{
+				draw_sprite_ext(spr_icon_daily_build, 0, get_window_width * 0.5 - 216, draw_id_y, 1, 1, 0, c_white, 1);
+			}
+			
+			/* Draw ID */
+			scr_draw_text_outlined(get_window_width * 0.5, draw_id_y, l10n_text(string(what_kind_of_id)) + " " + l10n_text("ID") + ": " + string_upper(search_id), global.default_text_size * 1.25, c_black, c_white, 1);
+			
+			/* Draw who made the level */
+			if (masked_username != "")
+			{
+				scr_draw_text_outlined(get_window_width * 0.5, draw_author_name_y, l10n_text("By") + ": " + string(masked_username), global.default_text_size, c_black, c_white, 1);
+			}
+			
+			/* Draw Description */
+			scr_draw_text_outlined(get_window_width * 0.5, draw_description_y, string(global.level_description), global.default_text_size, c_black, c_white, 1);
+			
+			#region /* Show what version of the game the content was first created in */
+			/* This should make it easier to port old content to new game versions */
+			/* Showing the original version number makes it easier to pinpoint what changes happened from one version to another */
+			draw_set_halign(fa_right);
+			draw_set_valign(fa_middle);
+			if (made_in_what_version_text != "")
+			{
+				scr_draw_text_outlined(get_window_width - 8, 16, string(made_in_what_version_text), global.default_text_size * 0.75, c_black, c_white, 1);
+			}
+			if (first_created_on_version != "")
+			{
+				scr_draw_text_outlined(get_window_width - 8, 40, l10n_text("First created on version") + ": " + string(first_created_on_version), global.default_text_size * 0.75, c_black, c_white, 1);
+			}
+			draw_set_halign(fa_center);
+			#endregion /* Show what version of the game the content was first created in END */
 			
 			if (!inform_about_report_feature)
 			{
@@ -585,13 +659,13 @@ function scr_draw_menu_search_id(what_kind_of_id = "level")
 				|| (what_kind_of_id == "character")
 				&& (file_exists(game_save_id + "custom_characters/" + string(downloaded_character_name) + "/data/character_config.ini"))
 				{
-					draw_menu_button(display_get_gui_width() * 0.5 - 185, searched_file_downloaded_delete_y, l10n_text("Delete"), "searched_file_downloaded_delete", "searched_file_downloaded_delete", c_red);
-					draw_sprite_ext(spr_icon_delete, 0, display_get_gui_width() * 0.5 - 185 + 16, searched_file_downloaded_delete_y + 20, 1, 1, 0, c_white, 1);
+					draw_menu_button(get_window_width * 0.5 - 185, searched_file_downloaded_delete_y, l10n_text("Delete"), "searched_file_downloaded_delete", "searched_file_downloaded_delete", c_red);
+					draw_sprite_ext(spr_icon_delete, 0, get_window_width * 0.5 - 185 + 16, searched_file_downloaded_delete_y + 20, 1, 1, 0, c_white, 1);
 				}
 				if (what_kind_of_id == "character")
 				&& (file_exists(game_save_id + "custom_characters/" + string(downloaded_character_name) + "/data/character_config.ini"))
 				{
-					var back_to_list_x = display_get_gui_width() * 0.5 - 185;
+					var back_to_list_x = get_window_width * 0.5 - 185;
 					var back_to_list_y = searched_file_downloaded_delete_y - 42;
 				}
 				else
@@ -627,26 +701,26 @@ function scr_draw_menu_search_id(what_kind_of_id = "level")
 				
 				/* Darken background behind report button even more when giving information about the report button */
 				draw_set_alpha(inform_about_report_feature_alpha * 0.9);
-				draw_rectangle_color(- 32, - 32, display_get_gui_width() + 32, display_get_gui_height() + 32, c_black, c_black, c_black, c_black, false);
+				draw_rectangle_color(- 32, - 32, get_window_width + 32, get_window_height + 32, c_black, c_black, c_black, c_black, false);
 				draw_set_alpha(inform_about_report_feature_alpha);
 				
 				var inform_about_report_feature_x = 32;
 				var inform_about_report_feature_y = 252;
-				draw_roundrect_color_ext(16, display_get_gui_height() - inform_about_report_feature_y - 32, display_get_gui_width - 16, display_get_gui_height() - inform_about_report_feature_y + 64, 50, 50, c_black, c_black, false);
+				draw_roundrect_color_ext(16, get_window_height - inform_about_report_feature_y - 32, display_get_gui_width - 16, get_window_height - inform_about_report_feature_y + 64, 50, 50, c_black, c_black, false);
 				
-				draw_sprite_ext(spr_arrow_swirly, menu_cursor_index, 64, display_get_gui_height() - 132 + scr_wave(0, 16, 1), 1, 1, 0, c_white, inform_about_report_feature_alpha);
+				draw_sprite_ext(spr_arrow_swirly, menu_cursor_index, 64, get_window_height - 132 + scr_wave(0, 16, 1), 1, 1, 0, c_white, inform_about_report_feature_alpha);
 				draw_set_halign(fa_left);
-				scr_draw_text_outlined(inform_about_report_feature_x, display_get_gui_height() - inform_about_report_feature_y, l10n_text("If you see any inappropriate content when downloading user-generated content online"), global.default_text_size, c_black, c_white, inform_about_report_feature_alpha);
-				scr_draw_text_outlined(inform_about_report_feature_x, display_get_gui_height() - inform_about_report_feature_y + 32, l10n_text("Please report it by clicking this button"), global.default_text_size, c_black, c_white, inform_about_report_feature_alpha);
+				scr_draw_text_outlined(inform_about_report_feature_x, get_window_height - inform_about_report_feature_y, l10n_text("If you see any inappropriate content when downloading user-generated content online"), global.default_text_size, c_black, c_white, inform_about_report_feature_alpha);
+				scr_draw_text_outlined(inform_about_report_feature_x, get_window_height - inform_about_report_feature_y + 32, l10n_text("Please report it by clicking this button"), global.default_text_size, c_black, c_white, inform_about_report_feature_alpha);
 				draw_set_halign(fa_center);
 				if (inform_about_report_feature_alpha >= 0.99)
 				{
-					draw_menu_button(display_get_gui_width() * 0.5 - 185, display_get_gui_height() - 64, l10n_text("I understand"), "searched_file_downloaded_i_understand", "searched_file_downloaded_i_understand", c_lime, inform_about_report_feature_alpha);
+					draw_menu_button(get_window_width * 0.5 - 185, get_window_height - 64, l10n_text("I understand"), "searched_file_downloaded_i_understand", "searched_file_downloaded_i_understand", c_lime, inform_about_report_feature_alpha);
 				}
 				
 				if (menu_delay == 0 && menu_joystick_delay == 0)
 				&& (inform_about_report_feature_alpha >= 0.99)
-				&& (point_in_rectangle(mouse_get_x, mouse_get_y, display_get_gui_width() * 0.5 - 185, display_get_gui_height() - 64, display_get_gui_width() * 0.5 + 185, display_get_gui_height() - 64 + 41))
+				&& (point_in_rectangle(mouse_get_x, mouse_get_y, get_window_width * 0.5 - 185, get_window_height - 64, get_window_width * 0.5 + 185, get_window_height - 64 + 41))
 				&& (menu == "searched_file_downloaded_i_understand")
 				&& (global.controls_used_for_navigation == "mouse")
 				&& (mouse_check_button_released(mb_left))
@@ -683,8 +757,8 @@ function scr_draw_menu_search_id(what_kind_of_id = "level")
 			#endregion /* Inform about report feature. Needs to be above all other buttons END */
 			
 			/* Report Button in bottom left corner */
-			draw_menu_button(0, display_get_gui_height() - 42, l10n_text("Report"), "searched_file_downloaded_report", "searched_file_downloaded_report");
-			draw_sprite_ext(spr_icon_report, 0, 16, display_get_gui_height() - 42 + 20, 1, 1, 0, c_white, 1);
+			draw_menu_button(0, get_window_height - 42, l10n_text("Report"), "searched_file_downloaded_report", "searched_file_downloaded_report");
+			draw_sprite_ext(spr_icon_report, 0, 16, get_window_height - 42 + 20, 1, 1, 0, c_white, 1);
 			
 			#region /* Play, Download, Make, Delete, Back Navigation */
 			
@@ -693,7 +767,7 @@ function scr_draw_menu_search_id(what_kind_of_id = "level")
 			&& (what_kind_of_id == "level")
 			&& (!inform_about_report_feature)
 			{
-				if (point_in_rectangle(mouse_get_x, mouse_get_y, display_get_gui_width() * 0.5 - 185, searched_file_play_y, display_get_gui_width() * 0.5 + 185, searched_file_play_y + 41))
+				if (point_in_rectangle(mouse_get_x, mouse_get_y, get_window_width * 0.5 - 185, searched_file_play_y, get_window_width * 0.5 + 185, searched_file_play_y + 41))
 				&& (global.controls_used_for_navigation == "mouse")
 				&& (mouse_check_button_released(mb_left))
 				|| (menu == "searched_file_downloaded_play")
@@ -727,7 +801,7 @@ function scr_draw_menu_search_id(what_kind_of_id = "level")
 			&& (!inform_about_report_feature)
 			&& (!file_exists(game_save_id + "custom_levels/" + string(global.level_name) + "/data/level_information.ini"))
 			{
-				if (point_in_rectangle(mouse_get_x, mouse_get_y, display_get_gui_width() * 0.5 - 185, searched_file_make_y, display_get_gui_width() * 0.5 + 185, searched_file_make_y + 41))
+				if (point_in_rectangle(mouse_get_x, mouse_get_y, get_window_width * 0.5 - 185, searched_file_make_y, get_window_width * 0.5 + 185, searched_file_make_y + 41))
 				&& (global.controls_used_for_navigation == "mouse")
 				&& (mouse_check_button_released(mb_left))
 				|| (menu == "download_to_working")
@@ -843,7 +917,7 @@ function scr_draw_menu_search_id(what_kind_of_id = "level")
 			&& (!inform_about_report_feature)
 			&& (file_exists(game_save_id + "custom_levels/" + string(global.level_name) + "/data/level_information.ini"))
 			{
-				if (point_in_rectangle(mouse_get_x, mouse_get_y, display_get_gui_width() * 0.5 - 185, searched_file_make_y, display_get_gui_width() * 0.5 + 185, searched_file_make_y + 41))
+				if (point_in_rectangle(mouse_get_x, mouse_get_y, get_window_width * 0.5 - 185, searched_file_make_y, get_window_width * 0.5 + 185, searched_file_make_y + 41))
 				&& (global.controls_used_for_navigation == "mouse")
 				&& (mouse_check_button_released(mb_left))
 				|| (menu == "searched_file_downloaded_make")
@@ -865,9 +939,9 @@ function scr_draw_menu_search_id(what_kind_of_id = "level")
 			if (global.enable_option_for_pc)
 			&& (file_exists(game_save_id + "custom_levels/" + string(global.level_name) + "/data/level_information.ini"))
 			{
-				draw_menu_button(display_get_gui_width() * 0.5 - 185, searched_file_open_folder_y, l10n_text("Open Custom Level Folder"), "open_downloaded_level_folder", "open_downloaded_level_folder");
-				draw_sprite_ext(spr_icon_folder, 0, display_get_gui_width() * 0.5 - 185 + 16, searched_file_open_folder_y + 21, 1, 1, 0, c_white, 1);
-				if (point_in_rectangle(mouse_get_x, mouse_get_y, display_get_gui_width() * 0.5 - 185, searched_file_open_folder_y, display_get_gui_width() * 0.5 - 185 + 371, searched_file_open_folder_y + 41))
+				draw_menu_button(get_window_width * 0.5 - 185, searched_file_open_folder_y, l10n_text("Open Custom Level Folder"), "open_downloaded_level_folder", "open_downloaded_level_folder");
+				draw_sprite_ext(spr_icon_folder, 0, get_window_width * 0.5 - 185 + 16, searched_file_open_folder_y + 21, 1, 1, 0, c_white, 1);
+				if (point_in_rectangle(mouse_get_x, mouse_get_y, get_window_width * 0.5 - 185, searched_file_open_folder_y, get_window_width * 0.5 - 185 + 371, searched_file_open_folder_y + 41))
 				&& (global.controls_used_for_navigation == "mouse")
 				&& (mouse_check_button_released(mb_left))
 				&& (menu_delay == 0 && menu_joystick_delay == 0)
@@ -884,7 +958,7 @@ function scr_draw_menu_search_id(what_kind_of_id = "level")
 			#endregion /* Open Custom Levels Folder END */
 			
 			#region /* Click Delete */
-			if (point_in_rectangle(mouse_get_x, mouse_get_y, display_get_gui_width() * 0.5 - 185, searched_file_downloaded_delete_y, display_get_gui_width() * 0.5 + 185, searched_file_downloaded_delete_y + 41))
+			if (point_in_rectangle(mouse_get_x, mouse_get_y, get_window_width * 0.5 - 185, searched_file_downloaded_delete_y, get_window_width * 0.5 + 185, searched_file_downloaded_delete_y + 41))
 			&& (global.controls_used_for_navigation == "mouse")
 			&& (mouse_check_button_released(mb_left))
 			&& (menu_delay == 0 && menu_joystick_delay == 0)
@@ -961,7 +1035,7 @@ function scr_draw_menu_search_id(what_kind_of_id = "level")
 			#endregion /* Click back to online level list END */
 			
 			#region /* Click Report */
-			if (point_in_rectangle(mouse_get_x, mouse_get_y, 0, display_get_gui_height() - 42, 370, display_get_gui_height()))
+			if (point_in_rectangle(mouse_get_x, mouse_get_y, 0, get_window_height - 42, 370, get_window_height))
 			&& (global.controls_used_for_navigation == "mouse")
 			&& (mouse_check_button_released(mb_left))
 			&& (menu_delay == 0 && menu_joystick_delay == 0)
@@ -1166,22 +1240,22 @@ function scr_draw_menu_search_id(what_kind_of_id = "level")
 		{
 			if (what_kind_of_id == "level")
 			{
-				scr_draw_text_outlined(display_get_gui_width() * 0.5, display_get_gui_height() * 0.5 - 128, l10n_text("Level name") + ": " + global.level_name, global.default_text_size, c_black, c_white, 1)
-				scr_draw_text_outlined(display_get_gui_width() * 0.5, display_get_gui_height() * 0.5 - 64, l10n_text("Level was not correctly uploaded"), global.default_text_size * 2, c_black, c_white, 1)
-				scr_draw_text_outlined(display_get_gui_width() * 0.5, display_get_gui_height() * 0.5, l10n_text("Uploaded level was missing level_information.ini"), global.default_text_size, c_black, c_white, 1)
+				scr_draw_text_outlined(get_window_width * 0.5, get_window_height * 0.5 - 128, l10n_text("Level name") + ": " + global.level_name, global.default_text_size, c_black, c_white, 1)
+				scr_draw_text_outlined(get_window_width * 0.5, get_window_height * 0.5 - 64, l10n_text("Level was not correctly uploaded"), global.default_text_size * 2, c_black, c_white, 1)
+				scr_draw_text_outlined(get_window_width * 0.5, get_window_height * 0.5, l10n_text("Uploaded level was missing level_information.ini"), global.default_text_size, c_black, c_white, 1)
 			}
 			else
 			if (what_kind_of_id == "character")
 			{
-				scr_draw_text_outlined(display_get_gui_width() * 0.5, display_get_gui_height() * 0.5 - 128, l10n_text("Character name") + ": " + string(downloaded_character_name), global.default_text_size, c_black, c_white, 1)
-				scr_draw_text_outlined(display_get_gui_width() * 0.5, display_get_gui_height() * 0.5 - 64, l10n_text("Character was not correctly uploaded"), global.default_text_size * 2, c_black, c_white, 1)
-				scr_draw_text_outlined(display_get_gui_width() * 0.5, display_get_gui_height() * 0.5, l10n_text("Uploaded character was missing character_config.ini"), global.default_text_size, c_black, c_white, 1)
+				scr_draw_text_outlined(get_window_width * 0.5, get_window_height * 0.5 - 128, l10n_text("Character name") + ": " + string(downloaded_character_name), global.default_text_size, c_black, c_white, 1)
+				scr_draw_text_outlined(get_window_width * 0.5, get_window_height * 0.5 - 64, l10n_text("Character was not correctly uploaded"), global.default_text_size * 2, c_black, c_white, 1)
+				scr_draw_text_outlined(get_window_width * 0.5, get_window_height * 0.5, l10n_text("Uploaded character was missing character_config.ini"), global.default_text_size, c_black, c_white, 1)
 			}
 			
-			draw_menu_button(display_get_gui_width() * 0.5 - 185, display_get_gui_height() * 0.5 + 50, l10n_text("OK"), "searched_file_downloaded_play", "searched_file_downloaded_play");
-			draw_sprite_ext(spr_icon_back, 0, display_get_gui_width() * 0.5 - 185 + 16, display_get_gui_height() * 0.5 + 50 + 20, 1, 1, 0, c_white, 1);
+			draw_menu_button(get_window_width * 0.5 - 185, get_window_height * 0.5 + 50, l10n_text("OK"), "searched_file_downloaded_play", "searched_file_downloaded_play");
+			draw_sprite_ext(spr_icon_back, 0, get_window_width * 0.5 - 185 + 16, get_window_height * 0.5 + 50 + 20, 1, 1, 0, c_white, 1);
 			
-			if (point_in_rectangle(mouse_get_x, mouse_get_y, display_get_gui_width() * 0.5 - 185, display_get_gui_height() * 0.5 + 50, display_get_gui_width() * 0.5 + 185, display_get_gui_height() * 0.5 + 50 + 41))
+			if (point_in_rectangle(mouse_get_x, mouse_get_y, get_window_width * 0.5 - 185, get_window_height * 0.5 + 50, get_window_width * 0.5 + 185, get_window_height * 0.5 + 50 + 41))
 			&& (global.controls_used_for_navigation == "mouse")
 			&& (mouse_check_button_released(mb_left))
 			&& (menu_delay == 0 && menu_joystick_delay == 0)
@@ -1214,30 +1288,30 @@ function scr_draw_menu_search_id(what_kind_of_id = "level")
 	{
 		#region /* Opaque transparent black rectangle over whole screen, but underneath text */
 		draw_set_alpha(0.9);
-		draw_rectangle_color(- 32, - 32, display_get_gui_width() + 32, display_get_gui_height() + 32, c_black, c_black, c_black, c_black, false);
+		draw_rectangle_color(- 32, - 32, get_window_width + 32, get_window_height + 32, c_black, c_black, c_black, c_black, false);
 		draw_set_alpha(1);
 		#endregion /* Opaque transparent black rectangle over whole screen, but underneath text END */
 		
-		var deleted_download_again_y = display_get_gui_height() * 0.5;
+		var deleted_download_again_y = get_window_height * 0.5;
 		var deleted_back_to_list_y = deleted_download_again_y + 42;
 		draw_set_halign(fa_center);
 		draw_set_valign(fa_middle);
 		if (what_kind_of_id == "level")
 		{
-			scr_draw_text_outlined(display_get_gui_width() * 0.5, display_get_gui_height() * 0.5 - 32, l10n_text("Deleted") + " " + string(masked_level_name), global.default_text_size * 2, c_black, c_white, 1);
-			draw_menu_button(display_get_gui_width() * 0.5 - 185, deleted_back_to_list_y + 50, l10n_text("Back to online level list"), "searched_file_downloaded_deleted_back_to_list", "searched_file_downloaded_deleted_back_to_list");
-			draw_sprite_ext(spr_icon_back, 0, display_get_gui_width() * 0.5 - 185 + 16, deleted_back_to_list_y + 50 + 20, 1, 1, 0, c_white, 1);
+			scr_draw_text_outlined(get_window_width * 0.5, get_window_height * 0.5 - 32, l10n_text("Deleted") + " " + string(masked_level_name), global.default_text_size * 2, c_black, c_white, 1);
+			draw_menu_button(get_window_width * 0.5 - 185, deleted_back_to_list_y + 50, l10n_text("Back to online level list"), "searched_file_downloaded_deleted_back_to_list", "searched_file_downloaded_deleted_back_to_list");
+			draw_sprite_ext(spr_icon_back, 0, get_window_width * 0.5 - 185 + 16, deleted_back_to_list_y + 50 + 20, 1, 1, 0, c_white, 1);
 		}
 		else
 		if (what_kind_of_id == "character")
 		{
-			scr_draw_text_outlined(display_get_gui_width() * 0.5, display_get_gui_height() * 0.5 - 32, l10n_text("Deleted") + " " + string(masked_character_name), global.default_text_size * 2, c_black, c_white, 1);
-			draw_menu_button(display_get_gui_width() * 0.5 - 185, deleted_back_to_list_y + 50, l10n_text("Back to online character list"), "searched_file_downloaded_deleted_back_to_list", "searched_file_downloaded_deleted_back_to_list");
-			draw_sprite_ext(spr_icon_back, 0, display_get_gui_width() * 0.5 - 185 + 16, deleted_back_to_list_y + 50 + 20, 1, 1, 0, c_white, 1);
+			scr_draw_text_outlined(get_window_width * 0.5, get_window_height * 0.5 - 32, l10n_text("Deleted") + " " + string(masked_character_name), global.default_text_size * 2, c_black, c_white, 1);
+			draw_menu_button(get_window_width * 0.5 - 185, deleted_back_to_list_y + 50, l10n_text("Back to online character list"), "searched_file_downloaded_deleted_back_to_list", "searched_file_downloaded_deleted_back_to_list");
+			draw_sprite_ext(spr_icon_back, 0, get_window_width * 0.5 - 185 + 16, deleted_back_to_list_y + 50 + 20, 1, 1, 0, c_white, 1);
 		}
-		draw_menu_button(display_get_gui_width() * 0.5 - 185, deleted_download_again_y + 50, l10n_text("Oops... Download Again"), "searched_file_downloaded_deleted_download_again", "searched_file_downloaded_deleted_download_again");
+		draw_menu_button(get_window_width * 0.5 - 185, deleted_download_again_y + 50, l10n_text("Oops... Download Again"), "searched_file_downloaded_deleted_download_again", "searched_file_downloaded_deleted_download_again");
 		
-		if (point_in_rectangle(mouse_get_x, mouse_get_y, display_get_gui_width() * 0.5 - 185, deleted_back_to_list_y + 50, display_get_gui_width() * 0.5 + 185, deleted_back_to_list_y + 50 + 41))
+		if (point_in_rectangle(mouse_get_x, mouse_get_y, get_window_width * 0.5 - 185, deleted_back_to_list_y + 50, get_window_width * 0.5 + 185, deleted_back_to_list_y + 50 + 41))
 		&& (global.controls_used_for_navigation == "mouse")
 		&& (mouse_check_button_released(mb_left))
 		&& (menu_delay == 0 && menu_joystick_delay == 0)
@@ -1260,7 +1334,7 @@ function scr_draw_menu_search_id(what_kind_of_id = "level")
 		
 		#region /* Click download again */
 		if (menu == "searched_file_downloaded_deleted_download_again")
-		&& (point_in_rectangle(mouse_get_x, mouse_get_y, display_get_gui_width() * 0.5 - 185, deleted_download_again_y + 50, display_get_gui_width() * 0.5 + 185, deleted_download_again_y + 50 + 41))
+		&& (point_in_rectangle(mouse_get_x, mouse_get_y, get_window_width * 0.5 - 185, deleted_download_again_y + 50, get_window_width * 0.5 + 185, deleted_download_again_y + 50 + 41))
 		&& (global.controls_used_for_navigation == "mouse")
 		&& (mouse_check_button_released(mb_left))
 		&& (menu_delay == 0 && menu_joystick_delay == 0)
@@ -1278,7 +1352,7 @@ function scr_draw_menu_search_id(what_kind_of_id = "level")
 		
 		#region /* Click back to online list */
 		if (menu == "searched_file_downloaded_deleted_back_to_list")
-		&& (point_in_rectangle(mouse_get_x, mouse_get_y, display_get_gui_width() * 0.5 - 185, deleted_back_to_list_y + 50, display_get_gui_width() * 0.5 + 185, deleted_back_to_list_y + 50 + 41))
+		&& (point_in_rectangle(mouse_get_x, mouse_get_y, get_window_width * 0.5 - 185, deleted_back_to_list_y + 50, get_window_width * 0.5 + 185, deleted_back_to_list_y + 50 + 41))
 		&& (global.controls_used_for_navigation == "mouse")
 		&& (mouse_check_button_released(mb_left))
 		&& (menu_delay == 0 && menu_joystick_delay == 0)
@@ -1333,11 +1407,11 @@ function scr_draw_menu_search_id(what_kind_of_id = "level")
 	{
 		#region /* Opaque transparent black rectangle over whole screen, but underneath text */
 		draw_set_alpha(0.9);
-		draw_rectangle_color(- 32, - 32, display_get_gui_width() + 32, display_get_gui_height() + 32, c_black, c_black, c_black, c_black, false);
+		draw_rectangle_color(- 32, - 32, get_window_width + 32, get_window_height + 32, c_black, c_black, c_black, c_black, false);
 		draw_set_alpha(1);
 		#endregion /* Opaque transparent black rectangle over whole screen, but underneath text END */
 		
-		var downloaded_message_y = display_get_gui_height() * 0.5;
+		var downloaded_message_y = get_window_height * 0.5;
 		draw_set_halign(fa_center);
 		draw_set_valign(fa_middle);
 		if (what_kind_of_id == "level")
@@ -1349,20 +1423,20 @@ function scr_draw_menu_search_id(what_kind_of_id = "level")
 		{
 			var failed_to_download_what = l10n_text("Failed to download character");
 		}
-		scr_draw_text_outlined(display_get_gui_width() * 0.5, display_get_gui_height() * 0.5 - 32, string(failed_to_download_what), global.default_text_size * 2, c_black, c_white, 1);
+		scr_draw_text_outlined(get_window_width * 0.5, get_window_height * 0.5 - 32, string(failed_to_download_what), global.default_text_size * 2, c_black, c_white, 1);
 		if (string_length(search_id) > id_max_length)
 		{
-			scr_draw_text_outlined(display_get_gui_width() * 0.5, display_get_gui_height() * 0.5 + 22, l10n_text("Retrieved ID with more than max character length"), global.default_text_size, c_black, c_white, 1)
+			scr_draw_text_outlined(get_window_width * 0.5, get_window_height * 0.5 + 22, l10n_text("Retrieved ID with more than max character length"), global.default_text_size, c_black, c_white, 1)
 		}
 		else
 		if (string_length(search_id) < id_max_length)
 		{
-			scr_draw_text_outlined(display_get_gui_width() * 0.5, display_get_gui_height() * 0.5 + 22, l10n_text("Retrieved ID with less than max character length"), global.default_text_size, c_black, c_white, 1)
+			scr_draw_text_outlined(get_window_width * 0.5, get_window_height * 0.5 + 22, l10n_text("Retrieved ID with less than max character length"), global.default_text_size, c_black, c_white, 1)
 		}
-		draw_menu_button(display_get_gui_width() * 0.5 - 185, downloaded_message_y + 50, l10n_text("OK"), "searched_file_downloaded_failed", "searched_file_downloaded_failed");
-		draw_sprite_ext(spr_icon_back, 0, display_get_gui_width() * 0.5 - 185 + 16, downloaded_message_y + 50 + 20, 1, 1, 0, c_white, 1);
+		draw_menu_button(get_window_width * 0.5 - 185, downloaded_message_y + 50, l10n_text("OK"), "searched_file_downloaded_failed", "searched_file_downloaded_failed");
+		draw_sprite_ext(spr_icon_back, 0, get_window_width * 0.5 - 185 + 16, downloaded_message_y + 50 + 20, 1, 1, 0, c_white, 1);
 		
-		if (point_in_rectangle(mouse_get_x, mouse_get_y, display_get_gui_width() * 0.5 - 185, downloaded_message_y + 50, display_get_gui_width() * 0.5 + 185, downloaded_message_y + 50 + 41))
+		if (point_in_rectangle(mouse_get_x, mouse_get_y, get_window_width * 0.5 - 185, downloaded_message_y + 50, get_window_width * 0.5 + 185, downloaded_message_y + 50 + 41))
 		&& (global.controls_used_for_navigation == "mouse")
 		&& (mouse_check_button_released(mb_left))
 		&& (menu_delay == 0 && menu_joystick_delay == 0)

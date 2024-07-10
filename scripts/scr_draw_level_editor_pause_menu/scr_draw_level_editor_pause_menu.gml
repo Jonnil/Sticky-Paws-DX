@@ -62,9 +62,9 @@ function scr_draw_level_editor_pause_menu()
 			{
 				draw_set_halign(fa_center);
 				draw_set_valign(fa_middle);
-				if (level_made_in_what_version_text != "")
+				if (made_in_what_version_text != "")
 				{
-					scr_draw_text_outlined(get_window_width * 0.5 - 100, get_window_height - 32 - 32, string(level_made_in_what_version_text), global.default_text_size * 0.75, c_black, c_white, 1);
+					scr_draw_text_outlined(get_window_width * 0.5 - 100, get_window_height - 32 - 32, string(made_in_what_version_text), global.default_text_size * 0.75, c_black, c_white, 1);
 				}
 				if (first_created_on_version != "")
 				{

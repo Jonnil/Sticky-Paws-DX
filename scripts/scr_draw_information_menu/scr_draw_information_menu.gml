@@ -44,11 +44,18 @@ function scr_draw_information_menu()
 				information_menu_open = "whats_new";
 			}
 			else
-			if (menu == "credits")
+			if (menu == "community")
 			{
 				menu_delay = 3;
 				menu = "backups";
 				information_menu_open = "backups";
+			}
+			else
+			if (menu == "credits")
+			{
+				menu_delay = 3;
+				menu = "community";
+				information_menu_open = "community";
 			}
 			else
 			if (menu == "links")
@@ -75,6 +82,12 @@ function scr_draw_information_menu()
 			else
 			if (menu == "backups")
 			{
+				menu = "community";
+				information_menu_open = "community";
+			}
+			else
+			if (menu == "community")
+			{
 				menu = "credits";
 				information_menu_open = "credits";
 			}
@@ -98,6 +111,7 @@ function scr_draw_information_menu()
 			if (menu == "about")
 			|| (menu == "whats_new")
 			|| (menu == "backups")
+			|| (menu == "community")
 			|| (menu == "credits")
 			{
 				menu_delay = 3;
@@ -162,6 +176,19 @@ function scr_draw_information_menu()
 				}
 			}
 			else
+			if (menu == "information_back")
+			&& (information_menu_open == "community")
+			{
+				menu_delay = 3;
+				menu = "community_discord";
+			}
+			else
+			if (menu == "community_discord")
+			{
+				menu_delay = 3;
+				menu = "community";
+			}
+			else
 			if (menu == "backup_open_custom_levels_folder")
 			{
 				menu_delay = 3;
@@ -200,6 +227,11 @@ function scr_draw_information_menu()
 				if (information_menu_open == "backups")
 				{
 					menu = "backups";
+				}
+				else
+				if (information_menu_open == "community")
+				{
+					menu = "community";
 				}
 				else
 				if (information_menu_open == "credits")
@@ -286,6 +318,18 @@ function scr_draw_information_menu()
 				menu_delay = 3;
 				menu = "information_back";
 			}
+			else
+			if (menu == "community")
+			{
+				menu_delay = 3;
+				menu = "community_discord";
+			}
+			else
+			if (menu == "community_discord")
+			{
+				menu_delay = 3;
+				menu = "information_back";
+			}
 		}
 		
 		#region /* About, What's New, Backups, Credits, and Back tabs */
@@ -337,9 +381,22 @@ function scr_draw_information_menu()
 			menu_delay = 3;
 		}
 		
-		/* Credits tab button */
-		draw_menu_button_sprite(spr_menu_button, 185 * 3, 0, 0, 0, 0.5, 1, 185, 42, l10n_text("Credits"), "credits", "credits", false);
+		/* Community tab button */
+		draw_menu_button_sprite(spr_menu_button, 185 * 3, 0, 0, 0, 0.5, 1, 185, 42, l10n_text("Community"), "community", "community", false);
 		if (point_in_rectangle(mouse_get_x, mouse_get_y, 185 * 3, 0, 185 * 4, 42))
+		&& (mouse_check_button_released(mb_left))
+		&& (menu_delay == 0 && menu_joystick_delay == 0)
+		|| (menu == "community")
+		&& (key_a_pressed)
+		&& (menu_delay == 0 && menu_joystick_delay == 0)
+		{
+			information_menu_open = "community";
+			menu_delay = 3;
+		}
+		
+		/* Credits tab button */
+		draw_menu_button_sprite(spr_menu_button, 185 * 4, 0, 0, 0, 0.5, 1, 185, 42, l10n_text("Credits"), "credits", "credits", false);
+		if (point_in_rectangle(mouse_get_x, mouse_get_y, 185 * 4, 0, 185 * 5, 42))
 		&& (mouse_check_button_released(mb_left))
 		&& (menu_delay == 0 && menu_joystick_delay == 0)
 		|| (menu == "credits")
@@ -351,8 +408,8 @@ function scr_draw_information_menu()
 		}
 		
 		/* Links tab button */
-		draw_menu_button_sprite(spr_menu_button, 185 * 4, 0, 0, 0, 0.5, 1, 185, 42, l10n_text("Links"), "links", "links", false);
-		if (point_in_rectangle(mouse_get_x, mouse_get_y, 185 * 4, 0, 185 * 5, 42))
+		draw_menu_button_sprite(spr_menu_button, 185 * 5, 0, 0, 0, 0.5, 1, 185, 42, l10n_text("Links"), "links", "links", false);
+		if (point_in_rectangle(mouse_get_x, mouse_get_y, 185 * 5, 0, 185 * 6, 42))
 		&& (mouse_check_button_released(mb_left))
 		&& (menu_delay == 0 && menu_joystick_delay == 0)
 		|| (menu == "links")
@@ -642,6 +699,34 @@ function scr_draw_information_menu()
 		if (information_menu_open == "community") /* Community tab */ 
 		{
 			/* Link to Discord server here so that you can build a community for the game */
+			if (os_type != os_switch)
+			{
+				draw_set_halign(fa_left);
+				scr_draw_text_outlined(32, 100, l10n_text("Join our Discord!"), global.default_text_size, c_black, c_white, 1);
+			}
+			var community_discord_y = 132;
+			draw_menu_button_sprite(spr_menu_button, 32, community_discord_y, 0, 0, 2.1, 1, 370 * 2.1, 42, string(global.link_to_discord), "community_discord", "community_discord", false);
+			draw_sprite_ext(global.resource_pack_sprite_logo_discord, 0, 780, community_discord_y + 20, 0.25, 0.25, 0, c_white, 1);
+			
+			draw_set_halign(fa_left);
+			scr_draw_text_outlined(32, 196, l10n_text("There is a Discord server for this game"), global.default_text_size, c_black, c_white, 1);
+			scr_draw_text_outlined(32, 196 + 32, l10n_text("Feel free to join to follow updates on this game"), global.default_text_size, c_black, c_white, 1);
+			scr_draw_text_outlined(32, 196 + (32 * 3), l10n_text("Discuss level design"), global.default_text_size, c_black, c_white, 1);
+			scr_draw_text_outlined(32, 196 + (32 * 4), l10n_text("Give feedback"), global.default_text_size, c_black, c_white, 1);
+			scr_draw_text_outlined(32, 196 + (32 * 5), l10n_text("Report bugs"), global.default_text_size, c_black, c_white, 1);
+			scr_draw_text_outlined(32, 196 + (32 * 6), l10n_text("Share and find level codes!"), global.default_text_size, c_black, c_white, 1);
+			scr_draw_text_outlined(32, 196 + (32 * 8), l10n_text("Anyone is welcome whether you're new to the game or not!"), global.default_text_size, c_black, c_white, 1);
+			
+			if ((point_in_rectangle(mouse_get_x, mouse_get_y, 32, community_discord_y, 32 + (370 * 2.1), community_discord_y + 20 + 42))
+			&& (mouse_check_button_released(mb_left))
+			&& (menu_delay == 0 && menu_joystick_delay == 0)
+			|| (menu == "community_discord")
+			&& (key_a_pressed)
+			&& (menu_delay == 0 && menu_joystick_delay == 0))
+			{
+				url_open(global.link_to_discord);
+				menu_delay = 3;
+			}
 		}
 		else
 		if (information_menu_open == "credits") /* Credits tab */ 
