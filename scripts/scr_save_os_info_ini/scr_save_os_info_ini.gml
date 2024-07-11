@@ -1,6 +1,6 @@
 function scr_save_os_info_ini()
 {
-	var _info = os_get_info();
+	var _info = global.os_info;
 	var udid = _info[? "udid"];
 	var gl_vendor_string = _info[? "gl_vendor_string"];
 	var gl_version_string = _info[? "gl_version_string"];

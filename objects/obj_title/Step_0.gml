@@ -22,6 +22,11 @@ if (global.go_to_menu_when_going_back_to_title == "upload_yes_character")
 		ini_close(); switch_save_data_commit(); /* Remember to commit the save data! */
 	}
 	select_custom_level_menu_open = false;
+	
+	ini_open(game_save_id + "custom_characters/" + string(ds_list_find_value(global.all_loaded_characters, global.character_index[fixed_player - 1])) + "/data/character_config.ini");
+	visibility_index = ini_read_real("info", "visibility_index", 0);
+	ini_close();
+	
 	menu = "upload_yes_character";
 	global.go_to_menu_when_going_back_to_title = "";
 	global.doing_clear_check_character = false;

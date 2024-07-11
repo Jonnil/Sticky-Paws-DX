@@ -231,19 +231,47 @@ function scr_character_manage_menu_draw()
 				draw_sprite_ext(spr_icon_back, 0, 20, 21, 1, 1, 0, c_white, 1);
 				#endregion /* Back from Copy Characters END */
 				
-				#region /* Draw who made the character */
+				#region /* Get information from character config */
 				draw_set_halign(fa_right);
 				if (file_exists(game_save_id + "custom_characters/" + string(ds_list_find_value(global.all_loaded_characters, global.character_index[0])) + "/data/character_config.ini"))
 				{
 					ini_open(game_save_id + "custom_characters/" + string(ds_list_find_value(global.all_loaded_characters, global.character_index[0])) + "/data/character_config.ini");
+					
+					#region /* Draw who made the character */
 					if (ini_key_exists("info", "username"))
 					&& (ini_read_string("info", "username", "") != "")
 					{
 						scr_draw_text_outlined(get_window_width - 32, get_window_height - 32, l10n_text("By") + ": " + string(ini_read_string("info", "username", "")), global.default_text_size, c_black, c_white, 1);
 					}
-					ini_close(); switch_save_data_commit(); /* Remember to commit the save data! */
+					#endregion /* Draw who made the character END */
+					
+					#region /* Draw if character is unlisted */
+					if (ini_key_exists("info", "visibility_index"))
+					&& (ini_read_string("info", "visibility_index", "") == 1)
+					{
+						var draw_character_id_y = get_window_height - 96;
+						scr_draw_text_outlined(get_window_width - 32, get_window_height - 64, l10n_text("Unlisted"), global.default_text_size, c_black, c_white, 1);
+						draw_sprite_ext(spr_icon_unlisted, 0, get_window_width - 32 - string_width(l10n_text("Unlisted")), get_window_height - 64, 1, 1, 0, c_white, 1);
+					}
+					else
+					{
+						var draw_character_id_y = get_window_height - 64;
+					}
+					#endregion /* Draw if character is unlisted END */
+					
+					#region /* Draw character ID */
+					if (ini_key_exists("info", "character_id"))
+					&& (ini_read_string("info", "character_id", "") != "")
+					{
+						var draw_character_id = string(ini_read_string("info", "character_id", ""));
+						scr_draw_text_outlined(get_window_width - 32, draw_character_id_y, draw_character_id, global.default_text_size, c_black, c_white, 1);
+						draw_sprite_ext(spr_icon_upload, 0, get_window_width - 32 - string_width(draw_character_id), draw_character_id_y, 1, 1, 0, c_white, 1);
+					}
+					#endregion /* Draw character ID END */
+					
+					ini_close();
 				}
-				#endregion /* Draw who made the character END */
+				#endregion /* Get information from character config END */
 				
 			}
 			else

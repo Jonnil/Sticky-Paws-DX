@@ -246,10 +246,9 @@ function scr_debug_screen()
 		draw_set_halign(fa_right);
 		scr_draw_text_outlined(display_get_gui_width() - 32, display_y, "Display: " + string(window_get_width()) + "x" + string(window_get_height()), global.default_text_size, c_black, c_white, 1); /* Get the display dimensions */
 		
-		var _info = os_get_info();
-		if (_info[? "video_adapter_description"] != undefined) /* Need to check that this isn't "undefined", otherwise it will display the word "undefined" on screen */
+		if (global.os_info[? "video_adapter_description"] != undefined) /* Need to check that this isn't "undefined", otherwise it will display the word "undefined" on screen */
 		{
-			scr_draw_text_outlined(display_get_gui_width() - 32, d3d11_y, string(_info[? "video_adapter_description"]), global.default_text_size, c_black, c_white, 1);
+			scr_draw_text_outlined(display_get_gui_width() - 32, d3d11_y, string(global.os_info[? "video_adapter_description"]), global.default_text_size, c_black, c_white, 1);
 		}
 		#endregion /* Top-right corner info END */
 		

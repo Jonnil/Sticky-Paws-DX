@@ -144,4 +144,15 @@ function menu_dropdown_variable_to_change(variable_to_change, change_to_value)
 		ini_write_real("info", "visibility_index", visibility_index);
 		ini_close(); switch_save_data_commit(); /* Remember to commit the save data! */
 	}
+	else
+	if (menu == "upload_character_edit_visibility")
+	&& (variable_to_change == visibility_index)
+	{
+		visibility_index = change_to_value;
+		var fixed_player = 1;
+		var character_name = string(ds_list_find_value(global.all_loaded_characters, global.character_index[fixed_player - 1]))
+		ini_open(game_save_id + "custom_characters/" + string(character_name) + "/data/character_config.ini");
+		ini_write_real("info", "visibility_index", visibility_index);
+		ini_close(); switch_save_data_commit(); /* Remember to commit the save data! */
+	}
 }

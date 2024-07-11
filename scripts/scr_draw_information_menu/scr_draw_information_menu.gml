@@ -699,11 +699,9 @@ function scr_draw_information_menu()
 		if (information_menu_open == "community") /* Community tab */ 
 		{
 			/* Link to Discord server here so that you can build a community for the game */
-			if (os_type != os_switch)
-			{
-				draw_set_halign(fa_left);
-				scr_draw_text_outlined(32, 100, l10n_text("Join our Discord!"), global.default_text_size, c_black, c_white, 1);
-			}
+			draw_set_halign(fa_left);
+			scr_draw_text_outlined(32, 100, l10n_text("Join our Discord!"), global.default_text_size, c_black, c_white, 1);
+			
 			var community_discord_y = 132;
 			draw_menu_button_sprite(spr_menu_button, 32, community_discord_y, 0, 0, 2.1, 1, 370 * 2.1, 42, string(global.link_to_discord), "community_discord", "community_discord", false);
 			draw_sprite_ext(global.resource_pack_sprite_logo_discord, 0, 780, community_discord_y + 20, 0.25, 0.25, 0, c_white, 1);

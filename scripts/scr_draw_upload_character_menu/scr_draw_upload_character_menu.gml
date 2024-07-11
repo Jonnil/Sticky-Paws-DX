@@ -12,6 +12,7 @@ function scr_draw_upload_character_menu()
 	#region /* Should always be visible in character upload menu */
 	if (menu == "upload_yes_character")
 	|| (menu == "upload_no_character")
+	|| (menu == "upload_character_edit_visibility")
 	|| (menu == "upload_clear_check_character_again")
 	|| (menu == "upload_clear_check_character_open_character_folder")
 	|| (menu == "clear_check_character_no")
@@ -38,19 +39,21 @@ function scr_draw_upload_character_menu()
 	#region /* Upload Character Menu */
 	if (menu == "upload_yes_character")
 	|| (menu == "upload_no_character")
+	|| (menu == "upload_character_edit_visibility")
 	|| (menu == "upload_clear_check_character_again")
 	|| (menu == "upload_clear_check_character_open_character_folder")
 	{
 		var character_name = string(ds_list_find_value(global.all_loaded_characters, global.character_index[fixed_player - 1]));
 		
-		var upload_name_question_y = window_get_height() * 0.5;
-		var upload_character_no_y = (window_get_height() * 0.5) + 100;
-		var upload_character_yes_y = (window_get_height() * 0.5) + 184;
-		var upload_clear_check_character_again_y = (window_get_height() * 0.5) + 184 + 84;
-		var upload_clear_check_character_open_character_folder_y = (window_get_height() * 0.5) + 184 + 84 + 42;
+		var upload_name_question_y = display_get_gui_height() - (48 * 9);
+		var upload_character_no_y = display_get_gui_height() - (48 * 7);
+		var upload_character_yes_y = display_get_gui_height() - (48 * 5);
+		var edit_visibility_y = display_get_gui_height() - (48 * 3);
+		var upload_clear_check_character_again_y = display_get_gui_height() - (48 * 2);
+		var upload_clear_check_character_open_character_folder_y = display_get_gui_height() - 48;
 		
 		draw_set_alpha(0.9);
-		draw_roundrect_color_ext(get_window_width * 0.5 - message_x_offset, upload_name_question_y - 32, get_window_width * 0.5 + message_x_offset, upload_name_question_y + 32, 50, 50, c_black, c_black, false);
+		draw_roundrect_color_ext(get_window_width * 0.5 - message_x_offset, upload_name_question_y - 32, get_window_width * 0.5 + message_x_offset, upload_name_question_y + 64, 50, 50, c_black, c_black, false);
 		draw_set_alpha(1);
 		scr_draw_text_outlined(get_window_width * 0.5, upload_name_question_y, l10n_text("Upload") + " " + string(character_name) + "?", global.default_text_size * 1.9, c_black, c_white, 1);
 		
@@ -88,6 +91,7 @@ function scr_draw_upload_character_menu()
 				draw_sprite_ext(spr_icon_back, 0, get_window_width * 0.5 - 370 + 32, upload_character_no_y, 1, 1, 0, c_white, 1);
 			}
 		}
+		scr_draw_text_outlined(get_window_width * 0.5, upload_character_no_y - 55, l10n_text("You have to clear check again if you don't upload now"), global.default_text_size * 0.75, c_black, c_white, 1);
 		#endregion /* Upload Character No END */
 		
 		#region /* Upload Character Yes */
@@ -140,6 +144,12 @@ function scr_draw_upload_character_menu()
 		{
 			draw_menu_button(get_window_width * 0.5 - 185, upload_clear_check_character_open_character_folder_y, "Open Character Folder", "upload_clear_check_character_open_character_folder", "upload_clear_check_character_open_character_folder");
 			draw_sprite_ext(spr_icon_folder, 0, get_window_width * 0.5 - 185 + 16, upload_clear_check_character_open_character_folder_y + 21, 1, 1, 0, c_white, 1);
+		}
+		
+		draw_menu_dropdown(get_window_width * 0.5 - 300, edit_visibility_y, l10n_text("Visibility"), "upload_character_edit_visibility", visibility_index, l10n_text("Public"), l10n_text("Unlisted"));
+		if (visibility_index == 1)
+		{
+			draw_sprite_ext(spr_icon_unlisted, 0, get_window_width * 0.5 - 300 - 16, edit_visibility_y + 21, 1, 1, 0, c_white, 1);
 		}
 		
 		#region /* Click Character Clear Check Again */
@@ -271,7 +281,7 @@ function scr_draw_upload_character_menu()
 			&& (file_exists(game_save_id + "custom_characters/" + character_name + "/data/character_config.ini"))
 			|| (key_a_pressed)
 			&& (menu_delay == 0 && menu_joystick_delay == 0)
-			&& (file_exists(game_save_id + "custom_characters/" + character_name + "/data/character_config.ini"))
+			&& (file_exists(game_save_id + "custom_characters/" + string(character_name) + "/data/character_config.ini"))
 			{
 				ini_open(game_save_id + "custom_characters/" + string(character_name) + "/data/character_config.ini");
 				if (ini_key_exists("info", "clear_check_character"))
@@ -288,12 +298,13 @@ function scr_draw_upload_character_menu()
 								{
 									if (global.switch_account_network_service_available) /* Need to make sure that network service is available before going online */
 									{
-										if (file_exists(game_save_id + "custom_characters/" + character_name + "/data/character_config.ini"))
+										/* Essential files does exist, so upload now */
+										if (!ini_key_exists("info", "first_created_on_version")) /* If the character doesn't have a "first created on version", then create one now before uploading to the server */
 										{
-											/* Essential files does exist, so upload now */
-											menu = "uploading_character"; /* Go to uploading character loading screen */
-											menu_delay = 60 * 3;
+											ini_write_string("info", "first_created_on_version", "v" + scr_get_build_date());
 										}
+										menu = "uploading_character"; /* Go to uploading character loading screen */
+										menu_delay = 60 * 3;
 									}
 									else
 									{
@@ -335,6 +346,7 @@ function scr_draw_upload_character_menu()
 			}
 		}
 		if (key_up)
+		&& (!open_dropdown)
 		&& (menu_delay == 0 && menu_joystick_delay == 0)
 		{
 			menu_delay = 3;
@@ -355,9 +367,14 @@ function scr_draw_upload_character_menu()
 				menu = "upload_no_character";
 			}
 			else
-			if (menu == "upload_clear_check_character_again")
+			if (menu == "upload_character_edit_visibility")
 			{
 				menu = "upload_yes_character";
+			}
+			else
+			if (menu == "upload_clear_check_character_again")
+			{
+				menu = "upload_character_edit_visibility";
 			}
 			else
 			if (menu == "upload_clear_check_character_open_character_folder")
@@ -367,6 +384,7 @@ function scr_draw_upload_character_menu()
 		}
 		else
 		if (key_down)
+		&& (!open_dropdown)
 		&& (menu_delay == 0 && menu_joystick_delay == 0)
 		{
 			menu_delay = 3;
@@ -376,6 +394,11 @@ function scr_draw_upload_character_menu()
 			}
 			else
 			if (menu == "upload_yes_character")
+			{
+				menu = "upload_character_edit_visibility";
+			}
+			else
+			if (menu == "upload_character_edit_visibility")
 			{
 				menu = "upload_clear_check_character_again";
 			}
@@ -395,6 +418,21 @@ function scr_draw_upload_character_menu()
 			if (menu == "upload_clear_check_character_open_character_folder")
 			{
 				menu = "upload_no_character";
+			}
+		}
+		else
+		if (menu == "upload_character_edit_visibility")
+		&& (open_dropdown)
+		&& (menu_delay == 0 && menu_joystick_delay == 0)
+		{
+			if (key_up)
+			{
+				visibility_index = 0;
+			}
+			else
+			if (key_down)
+			{
+				visibility_index = 1;
 			}
 		}
 		#endregion /* Upload Character Menu Navigation END */

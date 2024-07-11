@@ -38,7 +38,11 @@ function scr_draw_online_download_list_thumbnail(thumbnail_index, number_of_thum
 	}
 	
 	/* Draw the thumbnails */
-	draw_sprite_ext(spr_download_list_thumbnail[online_download_index], 0, download_online_x + 100, download_online_y + menu_y_offset, 384 / sprite_get_width(spr_download_list_thumbnail[online_download_index]), 216 / sprite_get_height(spr_download_list_thumbnail[online_download_index]), 0, c_white, 1);
+	var draw_thumbnail = spr_download_list_thumbnail[online_download_index];
+	if (sprite_exists(draw_thumbnail)) /* Thumbnail sprite needs to exist before trying to display it */
+	{
+		draw_sprite_ext(draw_thumbnail, 0, download_online_x + 100, download_online_y + menu_y_offset, 384 / sprite_get_width(draw_thumbnail), 216 / sprite_get_height(draw_thumbnail), 0, c_white, 1);
+	}
 	
 	#region /* Draw 4 red small triangles above the level thumbnail to be even more certain what level you are selecting */
 	if (menu == "download_online_" + string(online_download_index))
@@ -224,7 +228,10 @@ function scr_draw_online_download_list_thumbnail(thumbnail_index, number_of_thum
 				var played_level_icon = spr_icon_unplayed;
 				var played_level_color = c_red;
 			}
-			draw_sprite_ext(played_level_icon, 0, download_online_x + 524, 32 + download_online_y + menu_y_offset, 1, 1, 0, c_white, 1);
+			if (sprite_exists(played_level_icon)) /* Played Level Icon sprite needs to exist before trying to display it */
+			{
+				draw_sprite_ext(played_level_icon, 0, download_online_x + 524, 32 + download_online_y + menu_y_offset, 1, 1, 0, c_white, 1);
+			}
 			scr_draw_text_outlined(download_online_x + 548, 32 + download_online_y + menu_y_offset, l10n_text(played_level_text), global.default_text_size, c_menu_outline, played_level_color, 1);
 		}
 		#endregion /* Display finished icon END */
@@ -253,7 +260,10 @@ function scr_draw_online_download_list_thumbnail(thumbnail_index, number_of_thum
 			}
 			if (zero_defeats_level_text != "")
 			{
-				draw_sprite_ext(zero_defeats_level_icon, 0, download_online_x + 524, 64 + download_online_y + menu_y_offset, 1, 1, 0, c_white, 1);
+				if (sprite_exists(zero_defeats_level_icon)) /* Zero Defeats Level Icon sprite needs to exist before trying to display it */
+				{
+					draw_sprite_ext(zero_defeats_level_icon, 0, download_online_x + 524, 64 + download_online_y + menu_y_offset, 1, 1, 0, c_white, 1);
+				}
 				scr_draw_text_outlined(download_online_x + 548, 64 + download_online_y + menu_y_offset, l10n_text(zero_defeats_level_text), global.default_text_size, c_menu_outline, zero_defeats_level_color, 1);
 			}
 		}
@@ -312,7 +322,10 @@ function scr_draw_online_download_list_thumbnail(thumbnail_index, number_of_thum
 		}
 		if (liked_content_text != "")
 		{
-			draw_sprite_ext(liked_content_icon, 0, download_online_x + 524, 32 + download_online_y + menu_y_offset, 1, 1, 0, c_white, 1);
+			if (sprite_exists(liked_content_icon)) /* Liked Content Icon sprite needs to exist before trying to display it */
+			{
+				draw_sprite_ext(liked_content_icon, 0, download_online_x + 524, 32 + download_online_y + menu_y_offset, 1, 1, 0, c_white, 1);
+			}
 			scr_draw_text_outlined(download_online_x + 548, 32 + download_online_y + menu_y_offset, l10n_text(liked_content_text), global.default_text_size, c_menu_outline, liked_content_color, 1);
 		}
 	}

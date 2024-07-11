@@ -497,6 +497,7 @@ function scr_character_manage_menu_step()
 								{
 									if (ini_read_real("info", "clear_check_character", false))
 									{
+										visibility_index = ini_read_real("info", "visibility_index", 0);
 										menu = "upload_yes_character";
 									}
 									else
