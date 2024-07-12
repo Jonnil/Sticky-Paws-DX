@@ -4,6 +4,13 @@ function scr_draw_caution_online()
 	var mouse_get_x = device_mouse_x_to_gui(0);
 	var mouse_get_y = device_mouse_y_to_gui(0);
 	
+	#region /* Opaque transparent black rectangle over whole screen, but underneath text */
+	draw_set_alpha(0.9);
+	draw_rectangle_color(- 32, - 32, display_get_gui_width() + 32, display_get_gui_height() + 32, c_black, c_black, c_black, c_black, false);
+	draw_set_alpha(1);
+	draw_roundrect_color_ext(display_get_gui_width() * 0.5 - 600, display_get_gui_height() * 0.5 - 200, display_get_gui_width() * 0.5 + 600, display_get_gui_height() * 0.5 + 200, 50, 50, c_black, c_black, false);
+	#endregion /* Opaque transparent black rectangle over whole screen, but underneath text END */
+	
 	if (menu == "caution_online_back")
 	|| (menu == "caution_online_do_not_show")
 	|| (menu == "caution_online_proceed")
@@ -12,13 +19,6 @@ function scr_draw_caution_online()
 		{
 			show_level_editor_corner_menu = false;
 		}
-		
-		#region /* Opaque transparent black rectangle over whole screen, but underneath text */
-		draw_set_alpha(0.9);
-		draw_rectangle_color(- 32, - 32, display_get_gui_width() + 32, display_get_gui_height() + 32, c_black, c_black, c_black, c_black, false);
-		draw_set_alpha(1);
-		draw_roundrect_color_ext(display_get_gui_width() * 0.5 - 600, display_get_gui_height() * 0.5 - 200, display_get_gui_width() * 0.5 + 600, display_get_gui_height() * 0.5 + 200, 50, 50, c_black, c_black, false);
-		#endregion /* Opaque transparent black rectangle over whole screen, but underneath text END */
 		
 		draw_menu_button(0, 0, l10n_text("Back"), "caution_online_back", "caution_online_back");
 		draw_sprite_ext(spr_icon_back, 0, 16, 21, 1, 1, 0, c_white, 1);
@@ -55,47 +55,54 @@ function scr_draw_caution_online()
 				{
 					if (global.switch_account_network_service_available) /* Need to make sure that network service is available before going online */
 					{
-						if (caution_online_takes_you_to == "online_download_list_load")
+						if (global.online_token_validated) /* Need to make sure that online token is validated before going online */
 						{
-							/* Go to online level list, so you can browse all uploaded levels, instead of just searching for specific levels */
-							select_custom_level_menu_open = false;
-							global.selected_online_download_index = 1;
-						}
-						if (caution_online_takes_you_to == "search_id_ok")
-						{
-							keyboard_string = "";
-							search_id = "";
-							content_type = "character";
-							menu = "search_id_ok";
-							select_custom_level_menu_open = false;
-							menu_delay = 3;
-						}
-						global.online_enabled = true;
-						
-						var no_players_can_play = true;
-						for(var i = 1; i <= global.max_players; i += 1)
-						{
-						    if (global.player_can_play[i])
+							if (caution_online_takes_you_to == "online_download_list_load")
 							{
-						        no_players_can_play = false;
-						        break; /* exit the loop if any player can play */
-						    }
-						}
-						if (no_players_can_play)
-						|| (global.playergame <= 0)
-						{
-							global.player_can_play[fixed_player] = true;
-						}
-						information_menu_open = "";
-					
-						if (!upload_rules_do_not_show_level) /* If you have not yet agreed to the upload rules for uploading levels */
-						&& (caution_online_takes_you_to == "level_editor_upload_pressed") /* And you're supposed to go to the upload edit menu */
-						{
-							menu = "upload_rules"; /* Then take you to the upload rules menu */
+								/* Go to online level list, so you can browse all uploaded levels, instead of just searching for specific levels */
+								select_custom_level_menu_open = false;
+								global.selected_online_download_index = 1;
+							}
+							if (caution_online_takes_you_to == "search_id_ok")
+							{
+								keyboard_string = "";
+								search_id = "";
+								content_type = "character";
+								menu = "search_id_ok";
+								select_custom_level_menu_open = false;
+								menu_delay = 3;
+							}
+							global.online_enabled = true;
+							
+							var no_players_can_play = true;
+							for(var i = 1; i <= global.max_players; i += 1)
+							{
+							    if (global.player_can_play[i])
+								{
+							        no_players_can_play = false;
+							        break; /* exit the loop if any player can play */
+							    }
+							}
+							if (no_players_can_play)
+							|| (global.playergame <= 0)
+							{
+								global.player_can_play[fixed_player] = true;
+							}
+							information_menu_open = "";
+							
+							if (!upload_rules_do_not_show_level) /* If you have not yet agreed to the upload rules for uploading levels */
+							&& (caution_online_takes_you_to == "level_editor_upload_pressed") /* And you're supposed to go to the upload edit menu */
+							{
+								menu = "upload_rules"; /* Then take you to the upload rules menu */
+							}
+							else
+							{
+								menu = caution_online_takes_you_to; /* You go to the menu you're supposed to go to from beginning */
+							}
 						}
 						else
 						{
-							menu = caution_online_takes_you_to; /* You go to the menu you're supposed to go to from beginning */
+							menu = "caution_online_token_invalidated";
 						}
 					}
 					else
@@ -195,17 +202,11 @@ function scr_draw_caution_online()
 	
 	else
 	
+	#region /* Caution Online Network Service Unavailable */
 	if (menu == "caution_online_network_service_unavailable")
 	{
 		
 		#region /* Tell the player when Network Servie is unavailable */
-		
-		#region /* Opaque transparent black rectangle over whole screen, but underneath text */
-		draw_set_alpha(0.9);
-		draw_rectangle_color(- 32, - 32, display_get_gui_width() + 32, display_get_gui_height() + 32, c_black, c_black, c_black, c_black, false);
-		draw_set_alpha(1);
-		draw_roundrect_color_ext(display_get_gui_width() * 0.5 - 600, display_get_gui_height() * 0.5 - 200, display_get_gui_width() * 0.5 + 600, display_get_gui_height() * 0.5 + 200, 50, 50, c_black, c_black, false);
-		#endregion /* Opaque transparent black rectangle over whole screen, but underneath text END */
 		
 		var network_service_unavailable_x = display_get_gui_width() * 0.5 - 180;
 		var network_service_unavailable_y = display_get_gui_height() * 0.5 + 64;
@@ -224,8 +225,7 @@ function scr_draw_caution_online()
 		&& (mouse_check_button_released(mb_left))
 		&& (point_in_rectangle(mouse_get_x, mouse_get_y, network_service_unavailable_x, network_service_unavailable_y, network_service_unavailable_x + 370, network_service_unavailable_y + 41))
 		&& (menu_delay == 0 && menu_joystick_delay == 0)
-		|| (menu == "caution_online_network_service_unavailable")
-		&& (key_a_pressed)
+		|| (key_a_pressed)
 		&& (menu_delay == 0 && menu_joystick_delay == 0)
 		|| (key_b_pressed)
 		&& (menu_delay == 0 && menu_joystick_delay == 0)
@@ -245,4 +245,49 @@ function scr_draw_caution_online()
 		#endregion /* Tell the player when Network Servie is unavailable END */
 		
 	}
+	#endregion /* Caution Online Network Service Unavailable END */
+	
+	else
+	
+	#region /* Caution Online Token Invalidated */
+	if (menu == "caution_online_token_invalidated")
+	{
+		
+		#region /* Tell the player when Online Token is invalidated */
+		
+		var online_token_invalidated_x = display_get_gui_width() * 0.5 - 180;
+		var online_token_invalidated_y = display_get_gui_height() * 0.5 + 64;
+		
+		draw_menu_button(online_token_invalidated_x, online_token_invalidated_y, l10n_text("Back"), "caution_online_token_invalidated", "caution_online_token_invalidated");
+		draw_sprite_ext(spr_icon_back, 0, online_token_invalidated_x + 16, online_token_invalidated_y + 21, 1, 1, 0, c_white, 1);
+		scr_draw_text_outlined(display_get_gui_width() * 0.5, display_get_gui_height() * 0.5 - 128, l10n_text("Online Token Invalid!"), global.default_text_size * 2, c_black, c_white, 1);
+		
+		scr_draw_text_outlined(display_get_gui_width() * 0.5, display_get_gui_height() * 0.5 - 128, l10n_text(string(global.online_token_validated)), global.default_text_size, c_black, c_white, 1);
+		
+		if (global.controls_used_for_navigation == "mouse")
+		&& (mouse_check_button_released(mb_left))
+		&& (point_in_rectangle(mouse_get_x, mouse_get_y, online_token_invalidated_x, online_token_invalidated_y, online_token_invalidated_x + 370, online_token_invalidated_y + 41))
+		&& (menu_delay == 0 && menu_joystick_delay == 0)
+		|| (key_a_pressed)
+		&& (menu_delay == 0 && menu_joystick_delay == 0)
+		|| (key_b_pressed)
+		&& (menu_delay == 0 && menu_joystick_delay == 0)
+		{
+			if (variable_instance_exists(self, "show_level_editor_corner_menu"))
+			{
+				show_level_editor_corner_menu = true;
+			}
+			if (caution_online_takes_you_back_to == "about_online_level_list")
+			{
+				information_menu_open = "about"; /* Go back to the about page on information menu when going back from online caution menu */
+			}
+			menu_delay = 3;
+			menu = caution_online_takes_you_back_to;
+		}
+		
+		#endregion /* Tell the player when Online Token is invalidated END */
+		
+	}
+	#endregion /* Caution Online Token Invalidated END */
+	
 }

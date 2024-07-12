@@ -187,14 +187,21 @@ function scr_draw_upload_account_name(what_kind_of_file = "level")
 				{
 					if (global.switch_account_network_service_available) /* Need to make sure that network service is available before going online */
 					{
-						if (what_kind_of_file == "character")
+						if (global.online_token_validated) /* Need to make sure that online token is validated before going online */
 						{
-							menu = "uploading_character"; /* Go to uploading character loading screen */
+							if (what_kind_of_file == "character")
+							{
+								menu = "uploading_character"; /* Go to uploading character loading screen */
+							}
+							else
+							if (what_kind_of_file == "level")
+							{
+								menu = "upload_edit_name"; /* Go to edit name, description, and tags menu */
+							}
 						}
 						else
-						if (what_kind_of_file == "level")
 						{
-							menu = "upload_edit_name"; /* Go to edit name, description, and tags menu */
+							menu = "caution_online_token_invalidated";
 						}
 					}
 					else

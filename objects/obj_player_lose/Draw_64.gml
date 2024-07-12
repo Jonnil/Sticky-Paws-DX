@@ -14,6 +14,24 @@ if (lives <= 0)
 	global.checkpoint_second = 0;
 	global.checkpoint_minute = 0;
 	global.checkpoint_realmillisecond = 0;
+	var level_name = global.level_name;
+	if (global.character_select_in_this_menu == "main_game")
+	{
+		ini_open(game_save_id + "save_file/file" + string(global.file) + ".ini");
+	}
+	else
+	{
+		ini_open(game_save_id + "save_file/custom_level_save.ini");
+	}
+	ini_key_delete(level_name, "checkpoint_x");
+	ini_key_delete(level_name, "checkpoint_y");
+	ini_key_delete(level_name, "checkpoint_what_player");
+	ini_key_delete(level_name, "checkpoint_direction");
+	ini_key_delete(level_name, "checkpoint_millisecond");
+	ini_key_delete(level_name, "checkpoint_second");
+	ini_key_delete(level_name, "checkpoint_minute");
+	ini_key_delete(level_name, "checkpoint_realmillisecond");
+	ini_close(); switch_save_data_commit(); /* Remember to commit the save data! */
 	#endregion /* When you get a game over, reset checkpoints END */
 	
 	draw_set_halign(fa_center);
