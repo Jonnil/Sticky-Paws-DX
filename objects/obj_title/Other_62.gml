@@ -3,11 +3,11 @@ if (async_load[? "id"] == global.http_request_id)
 {
 	
 	/* Get the status code and response body */
-	var status_code = async_load[? "status"];
+	var status_code = async_load[? "http_status"];
 	var response_str = async_load[? "result"];
 	
-	/* Check if the response status is 200 (OK) or 0 */
-	if (status_code == 200 || status_code == 0)
+	/* Check if the response status is 200 (OK) */
+	if (status_code == 200)
 	{
 		/* Get the response as a string and decode it from JSON */
 		var response_json = json_decode(response_str);
@@ -81,11 +81,11 @@ if (async_load[? "id"] == global.http_request_id)
 if (async_load[? "id"] == global.http_request_info)
 {
 	/* Get the status code and response body */
-	var status_code = async_load[? "status"];
+	var status_code = async_load[? "http_status"];
 	var response_str = async_load[? "result"];
 	
-	/* Check if the response status is 200 (OK) or 0 */
-	if (status_code == 200 || status_code == 0)
+	/* Check if the response status is 200 (OK) */
+	if (status_code == 200)
 	{
 		/* Get the response as a string and decode it from JSON */
 		var response_json = json_decode(response_str);
@@ -104,11 +104,11 @@ if (async_load[? "id"] == global.http_request_info)
 if (async_load[? "id"] == global.content_added_today)
 {
 	/* Get the status code and response body */
-	var status_code = async_load[? "status"];
+	var status_code = async_load[? "http_status"];
 	var response_str = async_load[? "result"];
 	
-	/* Check if the response status is 200 (OK) or 0 */
-	if (status_code == 200 || status_code == 0)
+	/* Check if the response status is 200 (OK) */
+	if (status_code == 200)
 	{
 		/* Get the response as a string and decode it from JSON */
 		var response_json = json_decode(response_str);
@@ -158,11 +158,11 @@ if (async_load[? "id"] == global.content_added_today)
 if (async_load[? "id"] == global.online_token_validated)
 {
 	/* Get the status code and response body */
-	var status_code = async_load[? "status"];
+	var status_code = async_load[? "http_status"];
 	var response_str = async_load[? "result"];
 	
-	/* Check if the response status is 200 (OK) or 0 */
-	if (status_code == 200 || status_code == 0)
+	/* Check if the response status is 200 (OK) */
+	if (status_code == 200)
 	{
 		/* Get the response as a string and decode it from JSON */
 		var response_json = json_decode(response_str);
@@ -170,11 +170,16 @@ if (async_load[? "id"] == global.online_token_validated)
 		
 		/* Save the decoded data to a local file (with the .zip extension) */
 		var buffer = buffer_base64_decode(file_data_base64);
-		global.online_token_validated = response_str;
+		global.online_token_validated = true;
 		
 		/* Free the buffer memory */
 		buffer_delete(buffer);
 		
-		show_debug_message(global.online_token_validated);
+		show_debug_message("global.online_token_validated: " + string(global.online_token_validated));
+	}
+	else
+	{
+		global.online_token_validated = response_str; /* Return the error code */
+		show_debug_message("global.online_token_validated: " + string(global.online_token_validated));
 	}
 }
