@@ -13,4 +13,23 @@ if (!global.actually_play_edited_level)
 			instance_destroy();
 		}
 	}
+	
+	#region /* Insert objects into specific objects that can hold items */
+	if (!drag_object)
+	&& (!other.drag_object)
+	&& (other.x == x)
+	&& (other.y == y)
+	&& (position_meeting(x, y, other))
+	{
+		if (object == LEVEL_OBJECT_ID.ID_QUESTION_BLOCK)
+		{
+			second_x = other.object;
+			with(other)
+			{
+				instance_destroy();
+			}
+		}
+	}
+	#endregion /* Insert objects into specific objects that can hold items END */
+	
 }

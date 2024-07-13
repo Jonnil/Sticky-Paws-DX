@@ -4,7 +4,7 @@ function scr_different_items_inside()
 	#region /* Different Items Inside */
 	
 	#region /* No Items Inside (1 Basic Collectible if it's a question block) */
-	if (item_inside = "none")
+	if (item_inside == "none")
 	{
 		empty = true;
 		if (block_type = "question_block")
@@ -27,8 +27,11 @@ function scr_different_items_inside()
 	}
 	#endregion /* No Items Inside (1 Basic Collectible if it's a question block) END */
 	
+	else
+	
 	#region /* 10 Basic Collectible */
-	if (item_inside = "10_basic_collectibles")
+	if (item_inside == LEVEL_OBJECT_ID.ID_BASIC_COLLECTIBLE)
+	|| (item_inside == "10_basic_collectibles")
 	{
 		if (hit <= 4)
 		&& (!empty)
@@ -65,8 +68,10 @@ function scr_different_items_inside()
 	}
 	#endregion /* 10 Basic Collectible END */
 	
+	else
+	
 	#region /* Heart Balloon */
-	if (item_inside = "heart_balloon")
+	if (item_inside == "heart_balloon")
 	{
 		if (!place_meeting(x, y - 1, obj_wall))
 		{
@@ -81,8 +86,10 @@ function scr_different_items_inside()
 	}
 	#endregion /* Heart Balloon END */
 	
+	else
+	
 	#region /* 1-up */
-	if (item_inside = "1-up")
+	if (item_inside == "1-up")
 	{
 		if (!place_meeting(x, y - 1, obj_wall))
 		{
@@ -98,8 +105,10 @@ function scr_different_items_inside()
 	}
 	#endregion /* 1-up END */
 	
+	else
+	
 	#region /* 2-up */
-	if (item_inside = "2-up")
+	if (item_inside == "2-up")
 	{
 		if (!place_meeting(x, y - 1, obj_wall))
 		{
@@ -115,8 +124,10 @@ function scr_different_items_inside()
 	}
 	#endregion /* 2-up END */
 	
+	else
+	
 	#region /* 3-up */
-	if (item_inside = "3-up")
+	if (item_inside == "3-up")
 	{
 		if (!place_meeting(x, y - 1, obj_wall))
 		{
@@ -132,8 +143,10 @@ function scr_different_items_inside()
 	}
 	#endregion /* 3-up END */
 	
+	else
+	
 	#region /* Invincibility Powerup */
-	if (item_inside = "invincibility_powerup")
+	if (item_inside == "invincibility_powerup")
 	{
 		if (!place_meeting(x, y - 1, obj_wall))
 		{
@@ -150,8 +163,10 @@ function scr_different_items_inside()
 	}
 	#endregion /* Invincibility Powerup END */
 	
+	else
+	
 	#region /* Invincibility Powerup Coil Spring */
-	if (item_inside = "invincibility_powerup_coil_spring")
+	if (item_inside == "invincibility_powerup_coil_spring")
 	{
 		if (!place_meeting(x, y - 1, obj_wall))
 		{
@@ -167,6 +182,25 @@ function scr_different_items_inside()
 		empty = true;
 	}
 	#endregion /* Invincibility Powerup END */
+	
+	else
+	
+	#region /* Any item */
+	if (item_inside != "none")
+	{
+		if (!place_meeting(x, y - 1, obj_wall))
+		{
+			var obj = instance_create_depth(x, bbox_top - 32, 0, obj_leveleditor_placed_object);
+			obj.object = item_inside;
+			obj.bounce_up = true;
+			with (obj)
+			{
+				scr_spawn_objects_when_starting_room(); /* Immediately spawn the actual object */
+			}
+		}
+		empty = true;
+	}
+	#endregion /* Any item END */
 	
 	#endregion /* Different Items Inside END */
 	

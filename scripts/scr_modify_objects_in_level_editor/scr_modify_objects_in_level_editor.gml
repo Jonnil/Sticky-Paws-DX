@@ -371,49 +371,49 @@ function scr_modify_objects_in_level_editor()
 					
 					else
 					
-					#region /* Question Block */
-					if (object == LEVEL_OBJECT_ID.ID_QUESTION_BLOCK)
-					{
-						object = LEVEL_OBJECT_ID.ID_QUESTION_BLOCK_10_BASIC_COLLECTIBLES;
-					}
-					else
-					if (object == LEVEL_OBJECT_ID.ID_QUESTION_BLOCK_10_BASIC_COLLECTIBLES)
-					{
-						object = LEVEL_OBJECT_ID.ID_QUESTION_BLOCK_HEART_BALLOON;
-					}
-					else
-					if (object == LEVEL_OBJECT_ID.ID_QUESTION_BLOCK_HEART_BALLOON)
-					{
-						object = LEVEL_OBJECT_ID.ID_QUESTION_BLOCK_ONE_UP;
-					}
-					else
-					if (object == LEVEL_OBJECT_ID.ID_QUESTION_BLOCK_ONE_UP)
-					{
-						object = LEVEL_OBJECT_ID.ID_QUESTION_BLOCK_TWO_UP;
-					}
-					else
-					if (object == LEVEL_OBJECT_ID.ID_QUESTION_BLOCK_TWO_UP)
-					{
-						object = LEVEL_OBJECT_ID.ID_QUESTION_BLOCK_THREE_UP;
-					}
-					else
-					if (object == LEVEL_OBJECT_ID.ID_QUESTION_BLOCK_THREE_UP)
-					{
-						object = LEVEL_OBJECT_ID.ID_QUESTION_BLOCK_INVINCIBILITY_POWERUP;
-					}
-					else
-					if (object == LEVEL_OBJECT_ID.ID_QUESTION_BLOCK_INVINCIBILITY_POWERUP)
-					{
-						object = LEVEL_OBJECT_ID.ID_QUESTION_BLOCK_INVINCIBILITY_POWERUP_COIL_SPRING;
-					}
-					else
-					if (object == LEVEL_OBJECT_ID.ID_QUESTION_BLOCK_INVINCIBILITY_POWERUP_COIL_SPRING)
-					{
-						object = LEVEL_OBJECT_ID.ID_QUESTION_BLOCK;
-					}
-					#endregion /* Question Block */
+					//#region /* Question Block */
+					//if (object == LEVEL_OBJECT_ID.ID_QUESTION_BLOCK)
+					//{
+					//	object = LEVEL_OBJECT_ID.ID_QUESTION_BLOCK_10_BASIC_COLLECTIBLES;
+					//}
+					//else
+					//if (object == LEVEL_OBJECT_ID.ID_QUESTION_BLOCK_10_BASIC_COLLECTIBLES)
+					//{
+					//	object = LEVEL_OBJECT_ID.ID_QUESTION_BLOCK_HEART_BALLOON;
+					//}
+					//else
+					//if (object == LEVEL_OBJECT_ID.ID_QUESTION_BLOCK_HEART_BALLOON)
+					//{
+					//	object = LEVEL_OBJECT_ID.ID_QUESTION_BLOCK_ONE_UP;
+					//}
+					//else
+					//if (object == LEVEL_OBJECT_ID.ID_QUESTION_BLOCK_ONE_UP)
+					//{
+					//	object = LEVEL_OBJECT_ID.ID_QUESTION_BLOCK_TWO_UP;
+					//}
+					//else
+					//if (object == LEVEL_OBJECT_ID.ID_QUESTION_BLOCK_TWO_UP)
+					//{
+					//	object = LEVEL_OBJECT_ID.ID_QUESTION_BLOCK_THREE_UP;
+					//}
+					//else
+					//if (object == LEVEL_OBJECT_ID.ID_QUESTION_BLOCK_THREE_UP)
+					//{
+					//	object = LEVEL_OBJECT_ID.ID_QUESTION_BLOCK_INVINCIBILITY_POWERUP;
+					//}
+					//else
+					//if (object == LEVEL_OBJECT_ID.ID_QUESTION_BLOCK_INVINCIBILITY_POWERUP)
+					//{
+					//	object = LEVEL_OBJECT_ID.ID_QUESTION_BLOCK_INVINCIBILITY_POWERUP_COIL_SPRING;
+					//}
+					//else
+					//if (object == LEVEL_OBJECT_ID.ID_QUESTION_BLOCK_INVINCIBILITY_POWERUP_COIL_SPRING)
+					//{
+					//	object = LEVEL_OBJECT_ID.ID_QUESTION_BLOCK;
+					//}
+					//#endregion /* Question Block */
 					
-					else
+					//else
 					
 					#region /* Melon Block */
 					if (object == LEVEL_OBJECT_ID.ID_MELON_BLOCK)

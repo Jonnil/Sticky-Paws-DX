@@ -39,6 +39,30 @@ if (!global.actually_play_edited_level)
 		draw_item_on_top_blend = c_white;
 		draw_item_with_spring = false;
 		
+		#region /* Set what item is drawn on top, if this object contains any times */
+		if (object == LEVEL_OBJECT_ID.ID_QUESTION_BLOCK)
+		&& (second_x != 0)
+		{
+			var grid = global.object_grid;
+			var grid_height = ds_grid_height(grid) - 1;
+			
+			var grid_object_index = -1;
+			for(var i = 0; i < grid_height; i++)
+			{
+				if (second_x == grid[# 0, i])
+				{
+					grid_object_index = i;
+					break;
+				}
+			}
+			
+			if (grid_object_index != -1)
+			{
+				draw_item_on_top = grid[# 1, grid_object_index];
+			}
+		}
+		#endregion /* Set what item is drawn on top, if this object contains any times END */
+		
 		switch (object)
 		{
 			case LEVEL_OBJECT_ID.ID_BASIC_COLLECTIBLE:

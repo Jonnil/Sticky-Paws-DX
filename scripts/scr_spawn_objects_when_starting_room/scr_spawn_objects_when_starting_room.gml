@@ -73,7 +73,12 @@ function scr_spawn_objects_when_starting_room()
 			        with(instance_create_depth(x, y, 0, obj_question_block)) {block_type = "brick_block";item_inside = "invincibility_powerup_coil_spring";}
 			        break;
 				case LEVEL_OBJECT_ID.ID_QUESTION_BLOCK:
-					with (instance_create_depth(x, y, 0, obj_question_block)) {block_type = "question_block";}
+					var obj = instance_create_depth(x, y, 0, obj_question_block);
+					obj.block_type = "question_block";
+					if (second_x != 0)
+					{
+						obj.item_inside = second_x;
+					}
 					break;
 				case LEVEL_OBJECT_ID.ID_QUESTION_BLOCK_10_BASIC_COLLECTIBLES:
 					with (instance_create_depth(x, y, 0, obj_question_block)) {block_type = "question_block";item_inside = "10_basic_collectibles";}
