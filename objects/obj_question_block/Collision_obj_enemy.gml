@@ -28,7 +28,7 @@ if (!bounce_up)
 				image_yscale = 0.1;
 			}
 			
-			scr_different_items_inside();
+			scr_different_items_inside(bbox_top);
 			
 		}
 	}

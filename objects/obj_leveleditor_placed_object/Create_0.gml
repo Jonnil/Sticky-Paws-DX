@@ -29,6 +29,8 @@ if (!global.actually_play_edited_level)
 	second_x = x;
 	second_y = y;
 	
+	item_inside = 0;
+	
 	draw_xscale = 1;
 	draw_yscale = 1;
 	draw_angle = 0;

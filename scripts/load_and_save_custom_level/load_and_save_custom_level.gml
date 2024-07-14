@@ -36,7 +36,7 @@ function scr_load_object_placement_json()
 	
 	if (file_exists(file_path))
 	{
-		var var_struct = {X : 0, Y : 0, O : 0, E : 1, N : 1, H : 1, Q : 0, W : 0, L : 0};
+		var var_struct = {X : 0, Y : 0, O : 0, E : 1, N : 1, H : 1, Q : 0, W : 0, I : 0, L : 0};
 		/*
 			X = x position
 			Y = y position
@@ -44,8 +44,9 @@ function scr_load_object_placement_json()
 			E = easy difficulty layer
 			N = normal difficulty layer
 			H = hard difficulty layer
-			Q = custom value 1
-			W = custom value 2
+			Q = custom value 1 (second x)
+			W = custom value 2 (second y)
+			I = item inside
 			L = length repetition
 		*/
 		var placed_objects_list = ds_list_create(); /* Only create a DS list if the file exists */
@@ -74,6 +75,7 @@ function scr_load_object_placement_json()
 						if variable_struct_exists(var_struct, "H") new_obj.hard = var_struct.H else new_obj.hard = 1;
 						if variable_struct_exists(var_struct, "Q") new_obj.second_x = var_struct.Q else new_obj.second_x = 0;
 						if variable_struct_exists(var_struct, "W") new_obj.second_y = var_struct.W else new_obj.second_y = 0;
+						if variable_struct_exists(var_struct, "I") new_obj.item_inside = var_struct.I else new_obj.item_inside = 0;
 					}
 				}
 			}
@@ -89,10 +91,11 @@ function scr_load_object_placement_json()
 					if variable_struct_exists(var_struct, "H") new_obj.hard = var_struct.H else new_obj.hard = 1;
 					if variable_struct_exists(var_struct, "Q") new_obj.second_x = var_struct.Q else new_obj.second_x = 0;
 					if variable_struct_exists(var_struct, "W") new_obj.second_y = var_struct.W else new_obj.second_y = 0;
+					if variable_struct_exists(var_struct, "I") new_obj.item_inside = var_struct.I else new_obj.item_inside = 0;
 				}
 			}
 			/* Reset the var struct variables after creating the object */
-			var_struct.E = 1;var_struct.N = 1;var_struct.H = 1;var_struct.Q = 0;var_struct.W = 0;var_struct.L = 0;
+			var_struct.E = 1;var_struct.N = 1;var_struct.H = 1;var_struct.Q = 0;var_struct.W = 0;var_struct.I = 0;var_struct.L = 0;
 		}
 		
 		#region /* Save unlockable objects, only if the file exists */
@@ -179,6 +182,7 @@ function scr_save_custom_level_json()
 				if (!normal){obj_data.N = string(normal);} /* Only add the "N" variable if normal is not true */
 				if (!hard){obj_data.H = string(hard);} /* Only add the "H" variable if hard is not true */
 				
+				#region /* Save second x and second y variables */
 				var obj_ids = ds_list_create();
 				ds_list_add(obj_ids, LEVEL_OBJECT_ID.ID_SPRING);
 				ds_list_add(obj_ids, LEVEL_OBJECT_ID.ID_DOOR);
@@ -197,7 +201,6 @@ function scr_save_custom_level_json()
 				ds_list_add(obj_ids, LEVEL_OBJECT_ID.ID_BREATHABLE_WATER);
 				ds_list_add(obj_ids, LEVEL_OBJECT_ID.ID_SIGN_READABLE);
 				ds_list_add(obj_ids, LEVEL_OBJECT_ID.ID_CHECKPOINT);
-				ds_list_add(obj_ids, LEVEL_OBJECT_ID.ID_QUESTION_BLOCK);
 				
 				if (ds_list_find_index(obj_ids, object) != -1)
 				{
@@ -206,6 +209,21 @@ function scr_save_custom_level_json()
 					obj_data.W = string(second_y);
 				}
 				ds_list_destroy(obj_ids);
+				#endregion /* Save second x and second y variables END */
+				
+				#region /* Save item inside variables */
+				var obj_ids = ds_list_create();
+				ds_list_add(obj_ids, LEVEL_OBJECT_ID.ID_QUESTION_BLOCK);
+				ds_list_add(obj_ids, LEVEL_OBJECT_ID.ID_BRICK_BLOCK);
+				ds_list_add(obj_ids, LEVEL_OBJECT_ID.ID_MELON_BLOCK);
+				ds_list_add(obj_ids, LEVEL_OBJECT_ID.ID_BUMP_IN_GROUND);
+				
+				if (ds_list_find_index(obj_ids, object) != -1)
+				{
+					obj_data.I = string(item_inside);
+				}
+				ds_list_destroy(obj_ids);
+				#endregion /* Save item inside variables END */
 				
 				if (repeat_length >= 1) /* Only save "L" if length variable is 1 or above */
 				{

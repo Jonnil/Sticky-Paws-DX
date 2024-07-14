@@ -152,7 +152,7 @@ if (instance_exists(obj_player))
 				{
 					image_yscale = 0.1;
 				}
-				scr_different_items_inside();
+				scr_different_items_inside(bbox_top);
 			}
 		}
 	}
@@ -202,7 +202,7 @@ if (instance_exists(obj_enemy_bowlingball))
 				{
 					image_yscale = 0.1;
 				}
-				scr_different_items_inside();
+				scr_different_items_inside(bbox_top);
 			}
 		}
 	}

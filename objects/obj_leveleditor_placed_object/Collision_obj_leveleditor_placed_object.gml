@@ -22,8 +22,11 @@ if (!global.actually_play_edited_level)
 	&& (position_meeting(x, y, other))
 	{
 		if (object == LEVEL_OBJECT_ID.ID_QUESTION_BLOCK)
+		|| (object == LEVEL_OBJECT_ID.ID_BRICK_BLOCK)
+		|| (object == LEVEL_OBJECT_ID.ID_MELON_BLOCK)
+		|| (object == LEVEL_OBJECT_ID.ID_BUMP_IN_GROUND)
 		{
-			second_x = other.object;
+			item_inside = other.object;
 			with(other)
 			{
 				instance_destroy();

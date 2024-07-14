@@ -1,4 +1,4 @@
-function scr_different_items_inside()
+function scr_different_items_inside(create_from_y = bbox_top)
 {
 	
 	#region /* Different Items Inside */
@@ -7,22 +7,23 @@ function scr_different_items_inside()
 	if (item_inside == "none")
 	{
 		empty = true;
-		if (block_type = "question_block")
+		
+		if (object_index == obj_question_block)
+		&& (block_type = "brick_block")
+		{
+			can_break_this_block = true;
+			break_this_block = true;
+		}
+		else
 		{
 			scr_audio_play(snd_basic_collectible, volume_source.sound);
-			with(instance_create_depth(x, bbox_top, 0, obj_basic_collectible))
+			with(instance_create_depth(x, create_from_y, 0, obj_basic_collectible))
 			{
 				image_speed = 1;
 				motion_set(90, 10);
 				bounce_up = true;
 			}
 			can_break_this_block = false;
-		}
-		else
-		if (block_type = "brick_block")
-		{
-			can_break_this_block = true;
-			break_this_block = true;
 		}
 	}
 	#endregion /* No Items Inside (1 Basic Collectible if it's a question block) END */
@@ -32,8 +33,82 @@ function scr_different_items_inside()
 	#region /* 10 Basic Collectible */
 	if (item_inside == LEVEL_OBJECT_ID.ID_BASIC_COLLECTIBLE)
 	|| (item_inside == "10_basic_collectibles")
+	|| (item_inside == "8_basic_collectibles")
 	{
-		if (hit <= 4)
+		
+		#region /* Bump in Ground 8 Basic Collectible */
+		if (object_index == obj_bump_in_ground)
+		{
+			with(instance_create_depth(x - 32, create_from_y, 0, obj_basic_collectible))
+			{
+				image_speed = 1;
+				motion_set(90, 10);
+				bounce_up = true;
+			}
+			with(instance_create_depth(x - 24, create_from_y, 0, obj_basic_collectible))
+			{
+				image_speed = 1;
+				visible = false;
+				motion_set(90, 10);
+				bounce_up = true;
+				delay_time = 10;
+			}
+			with(instance_create_depth(x - 16, create_from_y, 0, obj_basic_collectible))
+			{
+				image_speed = 1;
+				visible = false;
+				motion_set(90, 10);
+				bounce_up = true;
+				delay_time = 20;
+			}
+			with(instance_create_depth(x - 8, create_from_y, 0, obj_basic_collectible))
+			{
+				image_speed = 1;
+				visible = false;
+				motion_set(90, 10);
+				bounce_up = true;
+				delay_time = 30;
+			}
+			with(instance_create_depth(x + 8, create_from_y, 0, obj_basic_collectible))
+			{
+				image_speed = 1;
+				visible = false;
+				motion_set(90, 10);
+				bounce_up = true;
+				delay_time = 40;
+			}
+			with(instance_create_depth(x + 16, create_from_y, 0, obj_basic_collectible))
+			{
+				image_speed = 1;
+				visible = false;
+				motion_set(90, 10);
+				bounce_up = true;
+				delay_time = 50;
+			}
+			with(instance_create_depth(x + 24, create_from_y, 0, obj_basic_collectible))
+			{
+				image_speed = 1;
+				visible = false;
+				motion_set(90, 10);
+				bounce_up = true;
+				delay_time = 60;
+			}
+			with(instance_create_depth(x + 32, create_from_y, 0, obj_basic_collectible))
+			{
+				image_speed = 1;
+				visible = false;
+				motion_set(90, 10);
+				bounce_up = true;
+				delay_time = 70;
+			}
+		}
+		#endregion /* Bump in Ground 8 Basic Collectible END */
+		
+		else
+		
+		#region /* Block 10 Basic Collectible */
+		if (object_index == obj_question_block)
+		&& (hit <= 4)
 		&& (!empty)
 		{
 			bounce_up = true;
@@ -45,13 +120,13 @@ function scr_different_items_inside()
 			
 			#region /* 2 Basic Collectibles per hit */
 			scr_audio_play(snd_basic_collectible, volume_source.sound);
-			with(instance_create_depth(x, bbox_top, 0, obj_basic_collectible))
+			with(instance_create_depth(x, create_from_y, 0, obj_basic_collectible))
 			{
 				image_speed = 1;
 				motion_set(90, 10);
 				bounce_up = true;
 			}
-			with(instance_create_depth(x, bbox_top, 0, obj_basic_collectible))
+			with(instance_create_depth(x, create_from_y, 0, obj_basic_collectible))
 			{
 				image_speed = 1;
 				motion_set(90, 10);
@@ -65,6 +140,8 @@ function scr_different_items_inside()
 			#endregion /* 2 Basic Collectibles per hit END */
 			
 		}
+		#endregion /* Block 10 Basic Collectible END */
+		
 	}
 	#endregion /* 10 Basic Collectible END */
 	
@@ -73,9 +150,9 @@ function scr_different_items_inside()
 	#region /* Heart Balloon */
 	if (item_inside == "heart_balloon")
 	{
-		if (!place_meeting(x, y - 1, obj_wall))
+		if (!position_meeting(x, bbox_top - 1, obj_wall))
 		{
-			with(instance_create_depth(x, bbox_top - 16, 0, obj_heart_balloon))
+			with(instance_create_depth(x, create_from_y - 16, 0, obj_heart_balloon))
 			{
 				image_speed = 1;
 				motion_set(90, 10);
@@ -91,9 +168,9 @@ function scr_different_items_inside()
 	#region /* 1-up */
 	if (item_inside == "1-up")
 	{
-		if (!place_meeting(x, y - 1, obj_wall))
+		if (!position_meeting(x, bbox_top - 1, obj_wall))
 		{
-			with(instance_create_depth(x, bbox_top - 16, 0, obj_extra_life_pickup))
+			with(instance_create_depth(x, create_from_y - 16, 0, obj_extra_life_pickup))
 			{
 				image_speed = 1;
 				motion_set(90, 10);
@@ -110,9 +187,9 @@ function scr_different_items_inside()
 	#region /* 2-up */
 	if (item_inside == "2-up")
 	{
-		if (!place_meeting(x, y - 1, obj_wall))
+		if (!position_meeting(x, bbox_top - 1, obj_wall))
 		{
-			with(instance_create_depth(x, bbox_top - 16, 0, obj_extra_life_pickup))
+			with(instance_create_depth(x, create_from_y - 16, 0, obj_extra_life_pickup))
 			{
 				image_speed = 1;
 				motion_set(90, 10);
@@ -129,9 +206,9 @@ function scr_different_items_inside()
 	#region /* 3-up */
 	if (item_inside == "3-up")
 	{
-		if (!place_meeting(x, y - 1, obj_wall))
+		if (!position_meeting(x, bbox_top - 1, obj_wall))
 		{
-			with(instance_create_depth(x, bbox_top - 16, 0, obj_extra_life_pickup))
+			with(instance_create_depth(x, create_from_y - 16, 0, obj_extra_life_pickup))
 			{
 				image_speed = 1;
 				motion_set(90, 10);
@@ -148,9 +225,9 @@ function scr_different_items_inside()
 	#region /* Invincibility Powerup */
 	if (item_inside == "invincibility_powerup")
 	{
-		if (!place_meeting(x, y - 1, obj_wall))
+		if (!position_meeting(x, bbox_top - 1, obj_wall))
 		{
-			with(instance_create_depth(x, bbox_top - 32, 0, obj_invincibility_powerup))
+			with(instance_create_depth(x, create_from_y - 32, 0, obj_invincibility_powerup))
 			{
 				hspeed = +2;
 				image_speed = 1;
@@ -168,9 +245,9 @@ function scr_different_items_inside()
 	#region /* Invincibility Powerup Coil Spring */
 	if (item_inside == "invincibility_powerup_coil_spring")
 	{
-		if (!place_meeting(x, y - 1, obj_wall))
+		if (!position_meeting(x, bbox_top - 1, obj_wall))
 		{
-			with(instance_create_depth(x, bbox_top - 32, 0, obj_invincibility_powerup))
+			with(instance_create_depth(x, create_from_y - 32, 0, obj_invincibility_powerup))
 			{
 				hspeed = +2;
 				image_speed = 1;
@@ -188,9 +265,9 @@ function scr_different_items_inside()
 	#region /* Any item */
 	if (item_inside != "none")
 	{
-		if (!place_meeting(x, y - 1, obj_wall))
+		if (!position_meeting(x, bbox_top - 1, obj_wall))
 		{
-			var obj = instance_create_depth(x, bbox_top - 32, 0, obj_leveleditor_placed_object);
+			var obj = instance_create_depth(x, create_from_y - 32, 0, obj_leveleditor_placed_object);
 			obj.object = item_inside;
 			obj.bounce_up = true;
 			with (obj)

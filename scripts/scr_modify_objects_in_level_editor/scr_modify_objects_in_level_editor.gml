@@ -80,101 +80,101 @@ function scr_modify_objects_in_level_editor()
 					}
 					#endregion /* Change wall into it's different forms END */
 					
-					else
+					//else
 					
-					#region /* Change bump in ground to it's different forms */
-					if (object == LEVEL_OBJECT_ID.ID_BUMP_IN_GROUND)
-					{
-						object = LEVEL_OBJECT_ID.ID_BUMP_IN_GROUND_8_BASIC_COLLECTIBLES;
-					}
-					else
-					if (object == LEVEL_OBJECT_ID.ID_BUMP_IN_GROUND_8_BASIC_COLLECTIBLES)
-					{
-						object = LEVEL_OBJECT_ID.ID_BUMP_IN_GROUND_HEART_BALLOON;
-					}
-					else
-					if (object == LEVEL_OBJECT_ID.ID_BUMP_IN_GROUND_HEART_BALLOON)
-					{
-						object = LEVEL_OBJECT_ID.ID_BUMP_IN_GROUND_ONE_UP;
-					}
-					else
-					if (object == LEVEL_OBJECT_ID.ID_BUMP_IN_GROUND_ONE_UP)
-					{
-						object = LEVEL_OBJECT_ID.ID_BUMP_IN_GROUND_TWO_UP;
-					}
-					else
-					if (object == LEVEL_OBJECT_ID.ID_BUMP_IN_GROUND_TWO_UP)
-					{
-						object = LEVEL_OBJECT_ID.ID_BUMP_IN_GROUND_THREE_UP;
-					}
-					else
-					if (object == LEVEL_OBJECT_ID.ID_BUMP_IN_GROUND_THREE_UP)
-					{
-						object = LEVEL_OBJECT_ID.ID_BUMP_IN_GROUND_BIG_COLLECTIBLE;
-					}
-					else
-					if (object == LEVEL_OBJECT_ID.ID_BUMP_IN_GROUND_BIG_COLLECTIBLE)
-					{
-						object = LEVEL_OBJECT_ID.ID_BUMP_IN_GROUND_INVINCIBILITY_POWERUP;
-					}
-					else
-					if (object == LEVEL_OBJECT_ID.ID_BUMP_IN_GROUND_INVINCIBILITY_POWERUP)
-					{
-						object = LEVEL_OBJECT_ID.ID_BUMP_IN_GROUND_INVINCIBILITY_POWERUP_COIL_SPRING;
-					}
-					else
-					if (object == LEVEL_OBJECT_ID.ID_BUMP_IN_GROUND_INVINCIBILITY_POWERUP_COIL_SPRING)
-					{
-						object = LEVEL_OBJECT_ID.ID_INVISIBLE_BUMP_IN_GROUND;
-					}
-					#endregion /* Change bump in ground to it's different forms END */
+					//#region /* Change bump in ground to it's different forms */
+					//if (object == LEVEL_OBJECT_ID.ID_BUMP_IN_GROUND)
+					//{
+					//	object = LEVEL_OBJECT_ID.ID_BUMP_IN_GROUND_8_BASIC_COLLECTIBLES;
+					//}
+					//else
+					//if (object == LEVEL_OBJECT_ID.ID_BUMP_IN_GROUND_8_BASIC_COLLECTIBLES)
+					//{
+					//	object = LEVEL_OBJECT_ID.ID_BUMP_IN_GROUND_HEART_BALLOON;
+					//}
+					//else
+					//if (object == LEVEL_OBJECT_ID.ID_BUMP_IN_GROUND_HEART_BALLOON)
+					//{
+					//	object = LEVEL_OBJECT_ID.ID_BUMP_IN_GROUND_ONE_UP;
+					//}
+					//else
+					//if (object == LEVEL_OBJECT_ID.ID_BUMP_IN_GROUND_ONE_UP)
+					//{
+					//	object = LEVEL_OBJECT_ID.ID_BUMP_IN_GROUND_TWO_UP;
+					//}
+					//else
+					//if (object == LEVEL_OBJECT_ID.ID_BUMP_IN_GROUND_TWO_UP)
+					//{
+					//	object = LEVEL_OBJECT_ID.ID_BUMP_IN_GROUND_THREE_UP;
+					//}
+					//else
+					//if (object == LEVEL_OBJECT_ID.ID_BUMP_IN_GROUND_THREE_UP)
+					//{
+					//	object = LEVEL_OBJECT_ID.ID_BUMP_IN_GROUND_BIG_COLLECTIBLE;
+					//}
+					//else
+					//if (object == LEVEL_OBJECT_ID.ID_BUMP_IN_GROUND_BIG_COLLECTIBLE)
+					//{
+					//	object = LEVEL_OBJECT_ID.ID_BUMP_IN_GROUND_INVINCIBILITY_POWERUP;
+					//}
+					//else
+					//if (object == LEVEL_OBJECT_ID.ID_BUMP_IN_GROUND_INVINCIBILITY_POWERUP)
+					//{
+					//	object = LEVEL_OBJECT_ID.ID_BUMP_IN_GROUND_INVINCIBILITY_POWERUP_COIL_SPRING;
+					//}
+					//else
+					//if (object == LEVEL_OBJECT_ID.ID_BUMP_IN_GROUND_INVINCIBILITY_POWERUP_COIL_SPRING)
+					//{
+					//	object = LEVEL_OBJECT_ID.ID_INVISIBLE_BUMP_IN_GROUND;
+					//}
+					//#endregion /* Change bump in ground to it's different forms END */
 					
-					#region /* Change invisible bump in ground to it's different forms */
-					if (object == LEVEL_OBJECT_ID.ID_INVISIBLE_BUMP_IN_GROUND)
-					{
-						object = LEVEL_OBJECT_ID.ID_INVISIBLE_BUMP_IN_GROUND_8_BASIC_COLLECTIBLES;
-					}
-					else
-					if (object == LEVEL_OBJECT_ID.ID_INVISIBLE_BUMP_IN_GROUND_8_BASIC_COLLECTIBLES)
-					{
-						object = LEVEL_OBJECT_ID.ID_INVISIBLE_BUMP_IN_GROUND_HEART_BALLOON;
-					}
-					else
-					if (object == LEVEL_OBJECT_ID.ID_INVISIBLE_BUMP_IN_GROUND_HEART_BALLOON)
-					{
-						object = LEVEL_OBJECT_ID.ID_INVISIBLE_BUMP_IN_GROUND_ONE_UP;
-					}
-					else
-					if (object == LEVEL_OBJECT_ID.ID_INVISIBLE_BUMP_IN_GROUND_ONE_UP)
-					{
-						object = LEVEL_OBJECT_ID.ID_INVISIBLE_BUMP_IN_GROUND_TWO_UP;
-					}
-					else
-					if (object == LEVEL_OBJECT_ID.ID_INVISIBLE_BUMP_IN_GROUND_TWO_UP)
-					{
-						object = LEVEL_OBJECT_ID.ID_INVISIBLE_BUMP_IN_GROUND_THREE_UP;
-					}
-					else
-					if (object == LEVEL_OBJECT_ID.ID_INVISIBLE_BUMP_IN_GROUND_THREE_UP)
-					{
-						object = LEVEL_OBJECT_ID.ID_INVISIBLE_BUMP_IN_GROUND_BIG_COLLECTIBLE;
-					}
-					else
-					if (object == LEVEL_OBJECT_ID.ID_INVISIBLE_BUMP_IN_GROUND_BIG_COLLECTIBLE)
-					{
-						object = LEVEL_OBJECT_ID.ID_INVISIBLE_BUMP_IN_GROUND_INVINCIBILITY_POWERUP;
-					}
-					else
-					if (object == LEVEL_OBJECT_ID.ID_INVISIBLE_BUMP_IN_GROUND_INVINCIBILITY_POWERUP)
-					{
-						object = LEVEL_OBJECT_ID.ID_INVISIBLE_BUMP_IN_GROUND_INVINCIBILITY_POWERUP_COIL_SPRING;
-					}
-					else
-					if (object == LEVEL_OBJECT_ID.ID_INVISIBLE_BUMP_IN_GROUND_INVINCIBILITY_POWERUP_COIL_SPRING)
-					{
-						object = LEVEL_OBJECT_ID.ID_BUMP_IN_GROUND;
-					}
-					#endregion /* Change invisible bump in ground to it's different forms END */
+					//#region /* Change invisible bump in ground to it's different forms */
+					//if (object == LEVEL_OBJECT_ID.ID_INVISIBLE_BUMP_IN_GROUND)
+					//{
+					//	object = LEVEL_OBJECT_ID.ID_INVISIBLE_BUMP_IN_GROUND_8_BASIC_COLLECTIBLES;
+					//}
+					//else
+					//if (object == LEVEL_OBJECT_ID.ID_INVISIBLE_BUMP_IN_GROUND_8_BASIC_COLLECTIBLES)
+					//{
+					//	object = LEVEL_OBJECT_ID.ID_INVISIBLE_BUMP_IN_GROUND_HEART_BALLOON;
+					//}
+					//else
+					//if (object == LEVEL_OBJECT_ID.ID_INVISIBLE_BUMP_IN_GROUND_HEART_BALLOON)
+					//{
+					//	object = LEVEL_OBJECT_ID.ID_INVISIBLE_BUMP_IN_GROUND_ONE_UP;
+					//}
+					//else
+					//if (object == LEVEL_OBJECT_ID.ID_INVISIBLE_BUMP_IN_GROUND_ONE_UP)
+					//{
+					//	object = LEVEL_OBJECT_ID.ID_INVISIBLE_BUMP_IN_GROUND_TWO_UP;
+					//}
+					//else
+					//if (object == LEVEL_OBJECT_ID.ID_INVISIBLE_BUMP_IN_GROUND_TWO_UP)
+					//{
+					//	object = LEVEL_OBJECT_ID.ID_INVISIBLE_BUMP_IN_GROUND_THREE_UP;
+					//}
+					//else
+					//if (object == LEVEL_OBJECT_ID.ID_INVISIBLE_BUMP_IN_GROUND_THREE_UP)
+					//{
+					//	object = LEVEL_OBJECT_ID.ID_INVISIBLE_BUMP_IN_GROUND_BIG_COLLECTIBLE;
+					//}
+					//else
+					//if (object == LEVEL_OBJECT_ID.ID_INVISIBLE_BUMP_IN_GROUND_BIG_COLLECTIBLE)
+					//{
+					//	object = LEVEL_OBJECT_ID.ID_INVISIBLE_BUMP_IN_GROUND_INVINCIBILITY_POWERUP;
+					//}
+					//else
+					//if (object == LEVEL_OBJECT_ID.ID_INVISIBLE_BUMP_IN_GROUND_INVINCIBILITY_POWERUP)
+					//{
+					//	object = LEVEL_OBJECT_ID.ID_INVISIBLE_BUMP_IN_GROUND_INVINCIBILITY_POWERUP_COIL_SPRING;
+					//}
+					//else
+					//if (object == LEVEL_OBJECT_ID.ID_INVISIBLE_BUMP_IN_GROUND_INVINCIBILITY_POWERUP_COIL_SPRING)
+					//{
+					//	object = LEVEL_OBJECT_ID.ID_BUMP_IN_GROUND;
+					//}
+					//#endregion /* Change invisible bump in ground to it's different forms END */
 					
 					else
 					
@@ -324,138 +324,6 @@ function scr_modify_objects_in_level_editor()
 						object = LEVEL_OBJECT_ID.ID_FALLING_BLOCK_LONG;
 					}
 					#endregion /* Falling Block Long END */
-					
-					else
-					
-					#region /* Brick Block */
-					if (object == LEVEL_OBJECT_ID.ID_BRICK_BLOCK)
-					{
-						object = LEVEL_OBJECT_ID.ID_BRICK_BLOCK_10_BASIC_COLLECTIBLES;
-					}
-					else
-					if (object == LEVEL_OBJECT_ID.ID_BRICK_BLOCK_10_BASIC_COLLECTIBLES)
-					{
-						object = LEVEL_OBJECT_ID.ID_BRICK_BLOCK_HEART_BALLOON;
-					}
-					else
-					if (object == LEVEL_OBJECT_ID.ID_BRICK_BLOCK_HEART_BALLOON)
-					{
-						object = LEVEL_OBJECT_ID.ID_BRICK_BLOCK_ONE_UP;
-					}
-					else
-					if (object == LEVEL_OBJECT_ID.ID_BRICK_BLOCK_ONE_UP)
-					{
-						object = LEVEL_OBJECT_ID.ID_BRICK_BLOCK_TWO_UP;
-					}
-					else
-					if (object == LEVEL_OBJECT_ID.ID_BRICK_BLOCK_TWO_UP)
-					{
-						object = LEVEL_OBJECT_ID.ID_BRICK_BLOCK_THREE_UP;
-					}
-					else
-					if (object == LEVEL_OBJECT_ID.ID_BRICK_BLOCK_THREE_UP)
-					{
-						object = LEVEL_OBJECT_ID.ID_BRICK_BLOCK_INVINCIBILITY_POWERUP;
-					}
-					else
-					if (object == LEVEL_OBJECT_ID.ID_BRICK_BLOCK_INVINCIBILITY_POWERUP)
-					{
-						object = LEVEL_OBJECT_ID.ID_BRICK_BLOCK_INVINCIBILITY_POWERUP_COIL_SPRING;
-					}
-					else
-					if (object == LEVEL_OBJECT_ID.ID_BRICK_BLOCK_INVINCIBILITY_POWERUP_COIL_SPRING)
-					{
-						object = LEVEL_OBJECT_ID.ID_BRICK_BLOCK;
-					}
-					#endregion /* Brick Block */
-					
-					else
-					
-					//#region /* Question Block */
-					//if (object == LEVEL_OBJECT_ID.ID_QUESTION_BLOCK)
-					//{
-					//	object = LEVEL_OBJECT_ID.ID_QUESTION_BLOCK_10_BASIC_COLLECTIBLES;
-					//}
-					//else
-					//if (object == LEVEL_OBJECT_ID.ID_QUESTION_BLOCK_10_BASIC_COLLECTIBLES)
-					//{
-					//	object = LEVEL_OBJECT_ID.ID_QUESTION_BLOCK_HEART_BALLOON;
-					//}
-					//else
-					//if (object == LEVEL_OBJECT_ID.ID_QUESTION_BLOCK_HEART_BALLOON)
-					//{
-					//	object = LEVEL_OBJECT_ID.ID_QUESTION_BLOCK_ONE_UP;
-					//}
-					//else
-					//if (object == LEVEL_OBJECT_ID.ID_QUESTION_BLOCK_ONE_UP)
-					//{
-					//	object = LEVEL_OBJECT_ID.ID_QUESTION_BLOCK_TWO_UP;
-					//}
-					//else
-					//if (object == LEVEL_OBJECT_ID.ID_QUESTION_BLOCK_TWO_UP)
-					//{
-					//	object = LEVEL_OBJECT_ID.ID_QUESTION_BLOCK_THREE_UP;
-					//}
-					//else
-					//if (object == LEVEL_OBJECT_ID.ID_QUESTION_BLOCK_THREE_UP)
-					//{
-					//	object = LEVEL_OBJECT_ID.ID_QUESTION_BLOCK_INVINCIBILITY_POWERUP;
-					//}
-					//else
-					//if (object == LEVEL_OBJECT_ID.ID_QUESTION_BLOCK_INVINCIBILITY_POWERUP)
-					//{
-					//	object = LEVEL_OBJECT_ID.ID_QUESTION_BLOCK_INVINCIBILITY_POWERUP_COIL_SPRING;
-					//}
-					//else
-					//if (object == LEVEL_OBJECT_ID.ID_QUESTION_BLOCK_INVINCIBILITY_POWERUP_COIL_SPRING)
-					//{
-					//	object = LEVEL_OBJECT_ID.ID_QUESTION_BLOCK;
-					//}
-					//#endregion /* Question Block */
-					
-					//else
-					
-					#region /* Melon Block */
-					if (object == LEVEL_OBJECT_ID.ID_MELON_BLOCK)
-					{
-						object = LEVEL_OBJECT_ID.ID_MELON_BLOCK_10_BASIC_COLLECTIBLES;
-					}
-					else
-					if (object == LEVEL_OBJECT_ID.ID_MELON_BLOCK_10_BASIC_COLLECTIBLES)
-					{
-						object = LEVEL_OBJECT_ID.ID_MELON_BLOCK_HEART_BALLOON;
-					}
-					else
-					if (object == LEVEL_OBJECT_ID.ID_MELON_BLOCK_HEART_BALLOON)
-					{
-						object = LEVEL_OBJECT_ID.ID_MELON_BLOCK_ONE_UP;
-					}
-					else
-					if (object == LEVEL_OBJECT_ID.ID_MELON_BLOCK_ONE_UP)
-					{
-						object = LEVEL_OBJECT_ID.ID_MELON_BLOCK_TWO_UP;
-					}
-					else
-					if (object == LEVEL_OBJECT_ID.ID_MELON_BLOCK_TWO_UP)
-					{
-						object = LEVEL_OBJECT_ID.ID_MELON_BLOCK_THREE_UP;
-					}
-					else
-					if (object == LEVEL_OBJECT_ID.ID_MELON_BLOCK_THREE_UP)
-					{
-						object = LEVEL_OBJECT_ID.ID_MELON_BLOCK_INVINCIBILITY_POWERUP;
-					}
-					else
-					if (object == LEVEL_OBJECT_ID.ID_MELON_BLOCK_INVINCIBILITY_POWERUP)
-					{
-						object = LEVEL_OBJECT_ID.ID_MELON_BLOCK_INVINCIBILITY_POWERUP_COIL_SPRING;
-					}
-					else
-					if (object == LEVEL_OBJECT_ID.ID_MELON_BLOCK_INVINCIBILITY_POWERUP_COIL_SPRING)
-					{
-						object = LEVEL_OBJECT_ID.ID_MELON_BLOCK;
-					}
-					#endregion /* Melon Block */
 					
 					else
 					

@@ -41,7 +41,10 @@ if (!global.actually_play_edited_level)
 		
 		#region /* Set what item is drawn on top, if this object contains any times */
 		if (object == LEVEL_OBJECT_ID.ID_QUESTION_BLOCK)
-		&& (second_x != 0)
+		|| (object == LEVEL_OBJECT_ID.ID_BRICK_BLOCK)
+		|| (object == LEVEL_OBJECT_ID.ID_MELON_BLOCK)
+		|| (object == LEVEL_OBJECT_ID.ID_BUMP_IN_GROUND)
+		&& (item_inside != 0)
 		{
 			var grid = global.object_grid;
 			var grid_height = ds_grid_height(grid) - 1;
@@ -49,7 +52,7 @@ if (!global.actually_play_edited_level)
 			var grid_object_index = -1;
 			for(var i = 0; i < grid_height; i++)
 			{
-				if (second_x == grid[# 0, i])
+				if (item_inside == grid[# 0, i])
 				{
 					grid_object_index = i;
 					break;
