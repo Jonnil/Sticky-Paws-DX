@@ -1210,9 +1210,7 @@ if (!global.actually_play_edited_level)
 		#region /* Nearest Placed Object Code */
 		with(instance_nearest(x, y, obj_leveleditor_placed_object))
 		{
-			
 			scr_modify_objects_in_level_editor(); /* Change object when you click on it */
-			
 		}
 		#endregion /* Nearest Placed Object Code END */
 		

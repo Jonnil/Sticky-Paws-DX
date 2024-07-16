@@ -5,6 +5,7 @@ hard = 1;
 object = 0;
 menu_joystick_delay = 0;
 drag_object = false;
+bounce_up = false; /* Some objects should bounce up when spawning */
 
 if (!global.actually_play_edited_level)
 {
@@ -24,6 +25,7 @@ if (!global.actually_play_edited_level)
 	draw_item_on_top = noone;
 	draw_item_on_top_blend = c_white;
 	draw_item_with_spring = false;
+	draw_enemy_with_spring = false;
 	draw_leveleditor_arrow = noone;
 	
 	second_x = x;

@@ -1,5 +1,6 @@
 #region /* Turn around */
-if (!die && sliding_along_ground == 0 && !other.die) {
+if (!die && sliding_along_ground == 0 && !other.die)
+{
 	if (!place_meeting(x, y, obj_bullet))
 	&& (!place_meeting(x, y, obj_arrow))
 	{
@@ -28,32 +29,64 @@ if (!die && sliding_along_ground == 0 && !other.die) {
 if (!other.die)
 && (!die)
 && (!die_volting)
-&& (!other.die_volting) {
+&& (!other.die_volting)
+{
 	if (sliding_along_ground == +1)
 	|| (sliding_along_ground == -1)
-	|| (speed > 8) {
-		if (other.x < x) {
-			other.die_volting = +1;
-			other.hspeed = +4;
-			if (other.sliding_along_ground <> 0) {
-				die = true;
-				die_volting = -1;
-				hspeed = -4;
-				vspeed = -4;
-			}
-		}
-		else {
-			other.die_volting = -1;
-			other.hspeed = -4;
-			if (other.sliding_along_ground <> 0) {
-				die = true;
+	|| (speed > 8)
+	{
+		
+		#region /* If bowlingball is hitting boss */
+		if (other.object_index == obj_boss)
+		{
+			if (other.x > x)
+			{
 				die_volting = +1;
 				hspeed = +4;
-				vspeed = -4;
 			}
+			else
+			{
+				die_volting = -1;
+				hspeed = -4;
+			}
+			die = true;
+			vspeed = -8;
 		}
-		other.die = true;
-		other.vspeed = -8;
+		#endregion /* If bowlingball is hitting boss END */
+		
+		else
+		
+		#region /* If bowlingball is hitting regualr enemy */
+		{
+			if (other.x < x)
+			{
+				other.die_volting = +1;
+				other.hspeed = +4;
+				if (other.sliding_along_ground <> 0)
+				{
+					die = true;
+					die_volting = -1;
+					hspeed = -4;
+					vspeed = -4;
+				}
+			}
+			else
+			{
+				other.die_volting = -1;
+				other.hspeed = -4;
+				if (other.sliding_along_ground <> 0)
+				{
+					die = true;
+					die_volting = +1;
+					hspeed = +4;
+					vspeed = -4;
+				}
+			}
+			other.die = true;
+			other.vspeed = -8;
+		}
+		#endregion /* If bowlingball is hitting regualr enemy END */
+		
 	}
 }
 #endregion /* Defeat other enemies with bowlingball END */

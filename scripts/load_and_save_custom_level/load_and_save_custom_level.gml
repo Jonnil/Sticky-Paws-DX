@@ -217,6 +217,20 @@ function scr_save_custom_level_json()
 				ds_list_add(obj_ids, LEVEL_OBJECT_ID.ID_BRICK_BLOCK);
 				ds_list_add(obj_ids, LEVEL_OBJECT_ID.ID_MELON_BLOCK);
 				ds_list_add(obj_ids, LEVEL_OBJECT_ID.ID_BUMP_IN_GROUND);
+				ds_list_add(obj_ids, LEVEL_OBJECT_ID.ID_INVISIBLE_BUMP_IN_GROUND);
+				ds_list_add(obj_ids, LEVEL_OBJECT_ID.ID_BUCKET);
+				
+				ds_list_add(obj_ids, LEVEL_OBJECT_ID.ID_BASIC_ENEMY);
+				ds_list_add(obj_ids, LEVEL_OBJECT_ID.ID_BASIC_ENEMY_COIL_SPRING);
+				ds_list_add(obj_ids, LEVEL_OBJECT_ID.ID_BASIC_ENEMY_BLIND);
+				ds_list_add(obj_ids, LEVEL_OBJECT_ID.ID_BASIC_ENEMY_BLIND_COIL_SPRING);
+				ds_list_add(obj_ids, LEVEL_OBJECT_ID.ID_ENEMY_BOWLINGBALL);
+				ds_list_add(obj_ids, LEVEL_OBJECT_ID.ID_ENEMY_BOWLINGBALL_COIL_SPRING);
+				ds_list_add(obj_ids, LEVEL_OBJECT_ID.ID_ENEMY_BOWLINGBALL_BLIND);
+				ds_list_add(obj_ids, LEVEL_OBJECT_ID.ID_ENEMY_BOWLINGBALL_BLIND_COIL_SPRING);
+				ds_list_add(obj_ids, LEVEL_OBJECT_ID.ID_BIG_STATIONARY_ENEMY);
+				ds_list_add(obj_ids, LEVEL_OBJECT_ID.ID_BIG_STATIONARY_ENEMY_COIL_SPRING);
+				ds_list_add(obj_ids, LEVEL_OBJECT_ID.ID_BOSS);
 				
 				if (ds_list_find_index(obj_ids, object) != -1)
 				{

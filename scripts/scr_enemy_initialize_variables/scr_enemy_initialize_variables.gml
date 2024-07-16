@@ -1,7 +1,9 @@
-function scr_enemy_initialize_variables() {
+function scr_enemy_initialize_variables()
+{
 	
 	/* If enemies are disabled, destroy this object */
-	if (global.assist_enable && !global.assist_enable_enemies) {
+	if (global.assist_enable && !global.assist_enable_enemies)
+	{
 		instance_destroy();
 	}
 	
@@ -13,11 +15,13 @@ function scr_enemy_initialize_variables() {
 	die_volting = false;
 	draw_xscale = 1;
 	draw_yscale = 1;
+	empty = false;
 	enemyvoice_defeated1 = snd_enemyvoice_defeated;
 	enemyvoice_defeated2 = snd_enemyvoice_defeated2;
 	enemyvoice_defeated3 = snd_enemyvoice_defeated3;
 	flat = false;
 	give_rewards = true;
+	item_inside = 0;
 	number_of_times_stomped = 0;
 	on_ground = false;
 	sliding_along_ground = 0;

@@ -51,6 +51,7 @@ if (sliding_along_ground == +1)
 			hspeed = -4;
 			vspeed = -4;
 		}
+		scr_different_items_inside(bbox_top);
 	}
 	else
 	{
@@ -65,6 +66,7 @@ if (sliding_along_ground == +1)
 			hspeed = +4;
 			vspeed = -4;
 		}
+		scr_different_items_inside(bbox_top);
 	}
 }
 
@@ -85,12 +87,14 @@ if (!die)
 			vspeed = -8;
 			die_volting = -1;
 			die = true;
+			scr_different_items_inside(bbox_top);
 		}
 		else
 		{
 			vspeed = -8;
 			die_volting = +1;
 			die = true;
+			scr_different_items_inside(bbox_top);
 		}
 		effect_create_above(ef_smoke, x, y, 2, c_white);
 		if (instance_exists(obj_player))
@@ -101,24 +105,27 @@ if (!die)
 		scr_audio_play(choose(enemyvoice_defeated1, enemyvoice_defeated2, enemyvoice_defeated3), volume_source.voice);
 		
 		#region /* Rewards */
-		
-		#region /* 1 Coin */
-		with(instance_create_depth(x, bbox_top, 0, obj_basic_collectible))
+		if (!empty)
 		{
-			image_speed = 1;
-			motion_set(90, 10);
-			bounce_up = true;
+			
+			#region /* 1 Coin */
+			with(instance_create_depth(x, bbox_top, 0, obj_basic_collectible))
+			{
+				image_speed = 1;
+				motion_set(90, 10);
+				bounce_up = true;
+			}
+			#endregion /* 1 Coin END */
+			
+			#region /* 200 Score */
+			score += 200;
+			with(instance_create_depth(x, y, 0, obj_score_up))
+			{
+				score_up = 200;
+			}
+			#endregion /* 200 Score END */
+			
 		}
-		#endregion /* 1 Coin END */
-		
-		#region /* 200 Score */
-		score += 200;
-		with(instance_create_depth(x, y, 0, obj_score_up))
-		{
-			score_up = 200;
-		}
-		#endregion /* 200 Score END */
-		
 		#endregion /* Rewards END */
 		
 		audio_sound_pitch(snd_stomp, 1);

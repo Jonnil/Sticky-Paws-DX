@@ -2,39 +2,43 @@ function scr_modify_objects_in_level_editor()
 {
 	
 	#region /* Modify Objects */
-	if (!dragged_from_original_place)
-	&& (!placed_for_the_first_time)
-	&& (delay > 1)
-	&& (!keyboard_check(vk_space))
-	&& (!mouse_check_button(mb_middle))
-	&& (!mouse_check_button(mb_right))
-	&& (instance_exists(obj_leveleditor))
-	&& (!keyboard_check(vk_space))
-	&& (!mouse_check_button(mb_middle))
-	&& (!mouse_check_button(mb_right))
-	&& (instance_exists(obj_leveleditor))
-	&& (!obj_leveleditor.fill_mode)
-	&& (!obj_leveleditor.erase_mode)
-	&& (!obj_leveleditor.pause)
-	&& (obj_leveleditor.menu_delay == 0 && menu_joystick_delay == 0)
-	&& (!place_meeting(x, y, obj_level_player1_start))
-	&& (!place_meeting(x, y, obj_level_player2_start))
-	&& (!place_meeting(x, y, obj_level_player3_start))
-	&& (!place_meeting(x, y, obj_level_player4_start))
-	&& (!position_meeting(x, y, obj_level_height))
-	&& (!position_meeting(x, y, obj_level_width))
-	&& (!position_meeting(x, y, obj_level_end))
-	&& (!position_meeting(x, y, obj_water_level_height))
-	&& (!obj_leveleditor.hovering_over_icon)
-	&& (obj_leveleditor.placing_object <= 0)
+	
+	if (mouse_check_button_released(mb_left))
+	|| (instance_exists(obj_leveleditor))
+	&& (obj_leveleditor.key_a_released)
+	|| (instance_exists(obj_leveleditor))
+	&& (gamepad_button_check_released(global.player_slot[1], obj_leveleditor.button_draw))
 	{
-		if (mouse_check_button_released(mb_left))
-		|| (instance_exists(obj_leveleditor))
-		&& (obj_leveleditor.key_a_released)
-		|| (instance_exists(obj_leveleditor))
-		&& (gamepad_button_check_released(global.player_slot[1], obj_leveleditor.button_draw))
+		if (!dragged_from_original_place)
+		&& (!placed_for_the_first_time)
+		&& (delay > 1)
+		&& (!keyboard_check(vk_space))
+		&& (!mouse_check_button(mb_middle))
+		&& (!mouse_check_button(mb_right))
+		&& (instance_exists(obj_leveleditor))
+		&& (!keyboard_check(vk_space))
+		&& (!mouse_check_button(mb_middle))
+		&& (!mouse_check_button(mb_right))
+		&& (instance_exists(obj_leveleditor))
+		&& (!obj_leveleditor.fill_mode)
+		&& (!obj_leveleditor.erase_mode)
+		&& (!obj_leveleditor.pause)
+		&& (obj_leveleditor.menu_delay == 0 && menu_joystick_delay == 0)
+		&& (!place_meeting(x, y, obj_level_player1_start))
+		&& (!place_meeting(x, y, obj_level_player2_start))
+		&& (!place_meeting(x, y, obj_level_player3_start))
+		&& (!place_meeting(x, y, obj_level_player4_start))
+		&& (!position_meeting(x, y, obj_level_height))
+		&& (!position_meeting(x, y, obj_level_width))
+		&& (!position_meeting(x, y, obj_level_end))
+		&& (!position_meeting(x, y, obj_water_level_height))
+		&& (!obj_leveleditor.hovering_over_icon)
+		&& (obj_leveleditor.placing_object <= 0)
 		{
-			if (position_meeting(obj_leveleditor.x, obj_leveleditor.y, id))
+			var other_instance = instance_place(x, y, obj_leveleditor_placed_object); /* Check if another obj_leveleditor_placed_object is at the same position (x, y) */
+			
+			if (other_instance == noone || other_instance == id) /* Ensure that no other instance is found or that the only instance found is the current instance */
+			&& (position_meeting(obj_leveleditor.x, obj_leveleditor.y, id))
 			{
 				/* Don't put a move_snap here! We don't want the object to change position when modifying it */
 				
@@ -79,102 +83,6 @@ function scr_modify_objects_in_level_editor()
 						object = LEVEL_OBJECT_ID.ID_WALL_DIRT;
 					}
 					#endregion /* Change wall into it's different forms END */
-					
-					//else
-					
-					//#region /* Change bump in ground to it's different forms */
-					//if (object == LEVEL_OBJECT_ID.ID_BUMP_IN_GROUND)
-					//{
-					//	object = LEVEL_OBJECT_ID.ID_BUMP_IN_GROUND_8_BASIC_COLLECTIBLES;
-					//}
-					//else
-					//if (object == LEVEL_OBJECT_ID.ID_BUMP_IN_GROUND_8_BASIC_COLLECTIBLES)
-					//{
-					//	object = LEVEL_OBJECT_ID.ID_BUMP_IN_GROUND_HEART_BALLOON;
-					//}
-					//else
-					//if (object == LEVEL_OBJECT_ID.ID_BUMP_IN_GROUND_HEART_BALLOON)
-					//{
-					//	object = LEVEL_OBJECT_ID.ID_BUMP_IN_GROUND_ONE_UP;
-					//}
-					//else
-					//if (object == LEVEL_OBJECT_ID.ID_BUMP_IN_GROUND_ONE_UP)
-					//{
-					//	object = LEVEL_OBJECT_ID.ID_BUMP_IN_GROUND_TWO_UP;
-					//}
-					//else
-					//if (object == LEVEL_OBJECT_ID.ID_BUMP_IN_GROUND_TWO_UP)
-					//{
-					//	object = LEVEL_OBJECT_ID.ID_BUMP_IN_GROUND_THREE_UP;
-					//}
-					//else
-					//if (object == LEVEL_OBJECT_ID.ID_BUMP_IN_GROUND_THREE_UP)
-					//{
-					//	object = LEVEL_OBJECT_ID.ID_BUMP_IN_GROUND_BIG_COLLECTIBLE;
-					//}
-					//else
-					//if (object == LEVEL_OBJECT_ID.ID_BUMP_IN_GROUND_BIG_COLLECTIBLE)
-					//{
-					//	object = LEVEL_OBJECT_ID.ID_BUMP_IN_GROUND_INVINCIBILITY_POWERUP;
-					//}
-					//else
-					//if (object == LEVEL_OBJECT_ID.ID_BUMP_IN_GROUND_INVINCIBILITY_POWERUP)
-					//{
-					//	object = LEVEL_OBJECT_ID.ID_BUMP_IN_GROUND_INVINCIBILITY_POWERUP_COIL_SPRING;
-					//}
-					//else
-					//if (object == LEVEL_OBJECT_ID.ID_BUMP_IN_GROUND_INVINCIBILITY_POWERUP_COIL_SPRING)
-					//{
-					//	object = LEVEL_OBJECT_ID.ID_INVISIBLE_BUMP_IN_GROUND;
-					//}
-					//#endregion /* Change bump in ground to it's different forms END */
-					
-					//#region /* Change invisible bump in ground to it's different forms */
-					//if (object == LEVEL_OBJECT_ID.ID_INVISIBLE_BUMP_IN_GROUND)
-					//{
-					//	object = LEVEL_OBJECT_ID.ID_INVISIBLE_BUMP_IN_GROUND_8_BASIC_COLLECTIBLES;
-					//}
-					//else
-					//if (object == LEVEL_OBJECT_ID.ID_INVISIBLE_BUMP_IN_GROUND_8_BASIC_COLLECTIBLES)
-					//{
-					//	object = LEVEL_OBJECT_ID.ID_INVISIBLE_BUMP_IN_GROUND_HEART_BALLOON;
-					//}
-					//else
-					//if (object == LEVEL_OBJECT_ID.ID_INVISIBLE_BUMP_IN_GROUND_HEART_BALLOON)
-					//{
-					//	object = LEVEL_OBJECT_ID.ID_INVISIBLE_BUMP_IN_GROUND_ONE_UP;
-					//}
-					//else
-					//if (object == LEVEL_OBJECT_ID.ID_INVISIBLE_BUMP_IN_GROUND_ONE_UP)
-					//{
-					//	object = LEVEL_OBJECT_ID.ID_INVISIBLE_BUMP_IN_GROUND_TWO_UP;
-					//}
-					//else
-					//if (object == LEVEL_OBJECT_ID.ID_INVISIBLE_BUMP_IN_GROUND_TWO_UP)
-					//{
-					//	object = LEVEL_OBJECT_ID.ID_INVISIBLE_BUMP_IN_GROUND_THREE_UP;
-					//}
-					//else
-					//if (object == LEVEL_OBJECT_ID.ID_INVISIBLE_BUMP_IN_GROUND_THREE_UP)
-					//{
-					//	object = LEVEL_OBJECT_ID.ID_INVISIBLE_BUMP_IN_GROUND_BIG_COLLECTIBLE;
-					//}
-					//else
-					//if (object == LEVEL_OBJECT_ID.ID_INVISIBLE_BUMP_IN_GROUND_BIG_COLLECTIBLE)
-					//{
-					//	object = LEVEL_OBJECT_ID.ID_INVISIBLE_BUMP_IN_GROUND_INVINCIBILITY_POWERUP;
-					//}
-					//else
-					//if (object == LEVEL_OBJECT_ID.ID_INVISIBLE_BUMP_IN_GROUND_INVINCIBILITY_POWERUP)
-					//{
-					//	object = LEVEL_OBJECT_ID.ID_INVISIBLE_BUMP_IN_GROUND_INVINCIBILITY_POWERUP_COIL_SPRING;
-					//}
-					//else
-					//if (object == LEVEL_OBJECT_ID.ID_INVISIBLE_BUMP_IN_GROUND_INVINCIBILITY_POWERUP_COIL_SPRING)
-					//{
-					//	object = LEVEL_OBJECT_ID.ID_BUMP_IN_GROUND;
-					//}
-					//#endregion /* Change invisible bump in ground to it's different forms END */
 					
 					else
 					
@@ -572,55 +480,6 @@ function scr_modify_objects_in_level_editor()
 						object = LEVEL_OBJECT_ID.ID_CLIPPED_SHIRT;
 					}
 					#endregion /* Change Clipped Clothing on Rope END */
-					
-					else
-					
-					#region /* Change bucket to its different forms */
-					if (object == LEVEL_OBJECT_ID.ID_BUCKET)
-					{
-						object = LEVEL_OBJECT_ID.ID_BUCKET_8_BASIC_COLLECTIBLES;
-					}
-					else
-					if (object == LEVEL_OBJECT_ID.ID_BUCKET_8_BASIC_COLLECTIBLES)
-					{
-						object = LEVEL_OBJECT_ID.ID_BUCKET_HEART_BALLOON;
-					}
-					else
-					if (object == LEVEL_OBJECT_ID.ID_BUCKET_HEART_BALLOON)
-					{
-						object = LEVEL_OBJECT_ID.ID_BUCKET_ONE_UP;
-					}
-					else
-					if (object == LEVEL_OBJECT_ID.ID_BUCKET_ONE_UP)
-					{
-						object = LEVEL_OBJECT_ID.ID_BUCKET_TWO_UP;
-					}
-					else
-					if (object == LEVEL_OBJECT_ID.ID_BUCKET_TWO_UP)
-					{
-						object = LEVEL_OBJECT_ID.ID_BUCKET_THREE_UP;
-					}
-					else
-					if (object == LEVEL_OBJECT_ID.ID_BUCKET_THREE_UP)
-					{
-						object = LEVEL_OBJECT_ID.ID_BUCKET_BIG_COLLECTIBLE;
-					}
-					else
-					if (object == LEVEL_OBJECT_ID.ID_BUCKET_BIG_COLLECTIBLE)
-					{
-						object = LEVEL_OBJECT_ID.ID_BUCKET_INVINCIBILITY_POWERUP;
-					}
-					else
-					if (object == LEVEL_OBJECT_ID.ID_BUCKET_INVINCIBILITY_POWERUP)
-					{
-						object = LEVEL_OBJECT_ID.ID_BUCKET_INVINCIBILITY_POWERUP_COIL_SPRING;
-					}
-					else
-					if (object == LEVEL_OBJECT_ID.ID_BUCKET_INVINCIBILITY_POWERUP_COIL_SPRING)
-					{
-						object = LEVEL_OBJECT_ID.ID_BUCKET;
-					}
-					#endregion /* Change bucket to its different forms END */
 					
 					else
 					

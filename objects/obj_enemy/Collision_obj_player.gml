@@ -36,6 +36,7 @@ if (!die)
 					flat = true;
 					stomped_delay = 5;
 					die = true;
+					scr_different_items_inside(bbox_top);
 					/* If the enemy is a bullet being blasted out of a blaster, the enemy have to spawn a special object that targets the original blaster, so the blaster can count how many of its bullets have been defeated by the player */
 					if (spawn_blaster_reward_decrease_mask)
 					{
@@ -110,6 +111,7 @@ if (!die)
 					flat = true;
 					stomped_delay = 5;
 					die = true;
+					scr_different_items_inside(bbox_top);
 					/* If the enemy is a bullet being blasted out of a blaster, the enemy have to spawn a special object that targets the original blaster, so the blaster can count how many of its bullets have been defeated by the player */
 					if (spawn_blaster_reward_decrease_mask)
 					{
@@ -146,6 +148,7 @@ if (!die)
 			&& (!flat)
 			{
 				die = true;
+				scr_different_items_inside(bbox_top);
 				/* If the enemy is a bullet being blasted out of a blaster, the enemy have to spawn a special object that targets the original blaster, so the blaster can count how many of its bullets have been defeated by the player */
 				if (spawn_blaster_reward_decrease_mask)
 				{

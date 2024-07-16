@@ -38,30 +38,47 @@ if (!global.actually_play_edited_level)
 		draw_item_on_top = noone;
 		draw_item_on_top_blend = c_white;
 		draw_item_with_spring = false;
+		draw_enemy_with_spring = false;
 		
 		#region /* Set what item is drawn on top, if this object contains any times */
 		if (object == LEVEL_OBJECT_ID.ID_QUESTION_BLOCK)
 		|| (object == LEVEL_OBJECT_ID.ID_BRICK_BLOCK)
 		|| (object == LEVEL_OBJECT_ID.ID_MELON_BLOCK)
 		|| (object == LEVEL_OBJECT_ID.ID_BUMP_IN_GROUND)
-		&& (item_inside != 0)
+		|| (object == LEVEL_OBJECT_ID.ID_INVISIBLE_BUMP_IN_GROUND)
+		|| (object == LEVEL_OBJECT_ID.ID_BUCKET)
+		
+		|| (object == LEVEL_OBJECT_ID.ID_BASIC_ENEMY)
+		|| (object == LEVEL_OBJECT_ID.ID_BASIC_ENEMY_COIL_SPRING)
+		|| (object == LEVEL_OBJECT_ID.ID_BASIC_ENEMY_BLIND)
+		|| (object == LEVEL_OBJECT_ID.ID_BASIC_ENEMY_BLIND_COIL_SPRING)
+		|| (object == LEVEL_OBJECT_ID.ID_ENEMY_BOWLINGBALL)
+		|| (object == LEVEL_OBJECT_ID.ID_ENEMY_BOWLINGBALL_COIL_SPRING)
+		|| (object == LEVEL_OBJECT_ID.ID_ENEMY_BOWLINGBALL_BLIND)
+		|| (object == LEVEL_OBJECT_ID.ID_ENEMY_BOWLINGBALL_BLIND_COIL_SPRING)
+		|| (object == LEVEL_OBJECT_ID.ID_BIG_STATIONARY_ENEMY)
+		|| (object == LEVEL_OBJECT_ID.ID_BIG_STATIONARY_ENEMY_COIL_SPRING)
+		|| (object == LEVEL_OBJECT_ID.ID_BOSS)
 		{
-			var grid = global.object_grid;
-			var grid_height = ds_grid_height(grid) - 1;
-			
-			var grid_object_index = -1;
-			for(var i = 0; i < grid_height; i++)
+			if (item_inside != 0)
 			{
-				if (item_inside == grid[# 0, i])
+				var grid = global.object_grid;
+				var grid_height = ds_grid_height(grid) - 1;
+			
+				var grid_object_index = -1;
+				for(var i = 0; i < grid_height; i++)
 				{
-					grid_object_index = i;
-					break;
+					if (item_inside == grid[# 0, i])
+					{
+						grid_object_index = i;
+						break;
+					}
 				}
-			}
 			
-			if (grid_object_index != -1)
-			{
-				draw_item_on_top = grid[# 1, grid_object_index];
+				if (grid_object_index != -1)
+				{
+					draw_item_on_top = grid[# 1, grid_object_index];
+				}
 			}
 		}
 		#endregion /* Set what item is drawn on top, if this object contains any times END */
@@ -222,7 +239,7 @@ if (!global.actually_play_edited_level)
 			case LEVEL_OBJECT_ID.ID_BASIC_ENEMY_BLIND_COIL_SPRING:
 			case LEVEL_OBJECT_ID.ID_BASIC_ENEMY_COIL_SPRING:
 			case LEVEL_OBJECT_ID.ID_BIG_STATIONARY_ENEMY_COIL_SPRING:
-				draw_item_with_spring = true;
+				draw_enemy_with_spring = true;
 				if (!first_created)
 				{
 					global.part_limit_entity ++;

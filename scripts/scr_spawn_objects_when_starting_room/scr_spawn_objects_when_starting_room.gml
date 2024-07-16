@@ -51,26 +51,7 @@ function scr_spawn_objects_when_starting_room()
 				case LEVEL_OBJECT_ID.ID_BRICK_BLOCK:
 			        var obj = instance_create_depth(x, y, 0, obj_question_block);
 					obj.block_type = "brick_block";
-					if (item_inside != 0)
-					{
-						obj.item_inside = item_inside;
-						
-						#region /* If the item inside is a big collectible, then create the necessary objects to initialize that */
-						if (item_inside == LEVEL_OBJECT_ID.ID_BIG_COLLECTIBLE)
-						{
-							instance_create_depth(x, y, 0, obj_big_collectible_number);
-					        if (instance_exists(obj_big_collectible_number))
-							{
-					            with(obj_big_collectible_number)
-								{
-					                big_collectible_max_number = min(instance_number(obj_big_collectible_number), 99);
-									global.max_big_collectible = min(instance_number(obj_big_collectible_number), 99);
-					            }
-					        }
-						}
-						#endregion /* If the item inside is a big collectible, then create the necessary objects to initialize that END */
-						
-					}
+					scr_spawn_objects_with_items_inside(obj);
 					break;
 				case LEVEL_OBJECT_ID.ID_BRICK_BLOCK_10_BASIC_COLLECTIBLES:
 			        with(instance_create_depth(x, y, 0, obj_question_block)) {block_type = "brick_block";item_inside = "10_basic_collectibles";}
@@ -97,26 +78,7 @@ function scr_spawn_objects_when_starting_room()
 				case LEVEL_OBJECT_ID.ID_QUESTION_BLOCK:
 					var obj = instance_create_depth(x, y, 0, obj_question_block);
 					obj.block_type = "question_block";
-					if (item_inside != 0)
-					{
-						obj.item_inside = item_inside;
-						
-						#region /* If the item inside is a big collectible, then create the necessary objects to initialize that */
-						if (item_inside == LEVEL_OBJECT_ID.ID_BIG_COLLECTIBLE)
-						{
-							instance_create_depth(x, y, 0, obj_big_collectible_number);
-					        if (instance_exists(obj_big_collectible_number))
-							{
-					            with(obj_big_collectible_number)
-								{
-					                big_collectible_max_number = min(instance_number(obj_big_collectible_number), 99);
-									global.max_big_collectible = min(instance_number(obj_big_collectible_number), 99);
-					            }
-					        }
-						}
-						#endregion /* If the item inside is a big collectible, then create the necessary objects to initialize that END */
-						
-					}
+					scr_spawn_objects_with_items_inside(obj);
 					break;
 				case LEVEL_OBJECT_ID.ID_QUESTION_BLOCK_10_BASIC_COLLECTIBLES:
 					with (instance_create_depth(x, y, 0, obj_question_block)) {block_type = "question_block";item_inside = "10_basic_collectibles";}
@@ -143,26 +105,7 @@ function scr_spawn_objects_when_starting_room()
 				case LEVEL_OBJECT_ID.ID_MELON_BLOCK:
 					var obj = instance_create_depth(x, y, 0, obj_question_block);
 					obj.block_type = "melon_block";
-					if (item_inside != 0)
-					{
-						obj.item_inside = item_inside;
-						
-						#region /* If the item inside is a big collectible, then create the necessary objects to initialize that */
-						if (item_inside == LEVEL_OBJECT_ID.ID_BIG_COLLECTIBLE)
-						{
-							instance_create_depth(x, y, 0, obj_big_collectible_number);
-					        if (instance_exists(obj_big_collectible_number))
-							{
-					            with(obj_big_collectible_number)
-								{
-					                big_collectible_max_number = min(instance_number(obj_big_collectible_number), 99);
-									global.max_big_collectible = min(instance_number(obj_big_collectible_number), 99);
-					            }
-					        }
-						}
-						#endregion /* If the item inside is a big collectible, then create the necessary objects to initialize that END */
-						
-					}
+					scr_spawn_objects_with_items_inside(obj);
 					break;
 				case LEVEL_OBJECT_ID.ID_MELON_BLOCK_10_BASIC_COLLECTIBLES:
 					with (instance_create_depth(x, y, 0, obj_question_block)) {block_type = "melon_block";item_inside = "10_basic_collectibles";}
@@ -312,26 +255,7 @@ function scr_spawn_objects_when_starting_room()
 			        break;
 			    case LEVEL_OBJECT_ID.ID_BUMP_IN_GROUND:
 					var obj = instance_create_depth(x, y, 0, obj_bump_in_ground);
-					if (item_inside != 0)
-					{
-						obj.item_inside = item_inside;
-						
-						#region /* If the item inside is a big collectible, then create the necessary objects to initialize that */
-						if (item_inside == LEVEL_OBJECT_ID.ID_BIG_COLLECTIBLE)
-						{
-							instance_create_depth(x, y, 0, obj_big_collectible_number);
-					        if (instance_exists(obj_big_collectible_number))
-							{
-					            with(obj_big_collectible_number)
-								{
-					                big_collectible_max_number = min(instance_number(obj_big_collectible_number), 99);
-									global.max_big_collectible = min(instance_number(obj_big_collectible_number), 99);
-					            }
-					        }
-						}
-						#endregion /* If the item inside is a big collectible, then create the necessary objects to initialize that END */
-						
-					}
+					scr_spawn_objects_with_items_inside(obj);
 					break;
 				case LEVEL_OBJECT_ID.ID_BUMP_IN_GROUND_8_BASIC_COLLECTIBLES:
 					with(instance_create_depth(x, y, 0, obj_bump_in_ground)) {item_inside = "8_basic_collectibles";}
@@ -365,7 +289,13 @@ function scr_spawn_objects_when_starting_room()
 			        break;
 				case LEVEL_OBJECT_ID.ID_BUMP_IN_GROUND_INVINCIBILITY_POWERUP: with(instance_create_depth(x, y, 0, obj_bump_in_ground)){item_inside = "invincibility_powerup";}break;
 				case LEVEL_OBJECT_ID.ID_BUMP_IN_GROUND_INVINCIBILITY_POWERUP_COIL_SPRING: with(instance_create_depth(x, y, 0, obj_bump_in_ground)){item_inside = "invincibility_powerup_coil_spring";}break;
-				case 281: with(instance_create_depth(x, y, 0, obj_bump_in_ground)){visible = false;}break;
+				
+				case LEVEL_OBJECT_ID.ID_INVISIBLE_BUMP_IN_GROUND:
+					var obj = instance_create_depth(x, y, 0, obj_bump_in_ground);
+					obj.visible = false;
+					scr_spawn_objects_with_items_inside(obj);
+					break;
+				
 				case 291: with(instance_create_depth(x, y, 0, obj_bump_in_ground)){item_inside = "8_basic_collectibles";visible = false;}break;
 				case 301: with(instance_create_depth(x, y, 0, obj_bump_in_ground)){item_inside = "heart_balloon";visible = false;}break;
 				case 311: with(instance_create_depth(x, y, 0, obj_bump_in_ground)){item_inside = "1-up";visible = false;}break;
@@ -393,31 +323,123 @@ function scr_spawn_objects_when_starting_room()
 				break;
 				case LEVEL_OBJECT_ID.ID_INVISIBLE_BUMP_IN_GROUND_INVINCIBILITY_POWERUP: with(instance_create_depth(x, y, 0, obj_bump_in_ground)){item_inside = "invincibility_powerup";visible = false;}break;
 				case LEVEL_OBJECT_ID.ID_INVISIBLE_BUMP_IN_GROUND_INVINCIBILITY_POWERUP_COIL_SPRING: with(instance_create_depth(x, y, 0, obj_bump_in_ground)){item_inside = "invincibility_powerup_coil_spring";visible = false;}break;
-				case LEVEL_OBJECT_ID.ID_BASIC_COLLECTIBLE: instance_create_depth(x, y, 0, obj_basic_collectible);break;
-				case LEVEL_OBJECT_ID.ID_BASIC_COLLECTIBLE_2: with(instance_create_depth(x, y, 0, obj_basic_collectible)){image_angle = 315;}break;
-				case LEVEL_OBJECT_ID.ID_BASIC_COLLECTIBLE_3: with(instance_create_depth(x, y, 0, obj_basic_collectible)){image_angle = 270;}break;
-				case LEVEL_OBJECT_ID.ID_BASIC_COLLECTIBLE_4: with(instance_create_depth(x, y, 0, obj_basic_collectible)){image_angle = 225; image_yscale = -1;}break;
-				case LEVEL_OBJECT_ID.ID_BASIC_COLLECTIBLE_5: with(instance_create_depth(x, y, 0, obj_basic_collectible)){image_angle = 180; image_yscale = -1;}break;
-				case LEVEL_OBJECT_ID.ID_BASIC_COLLECTIBLE_6: with(instance_create_depth(x, y, 0, obj_basic_collectible)){image_angle = 135; image_yscale = -1;}break;
-				case LEVEL_OBJECT_ID.ID_BASIC_COLLECTIBLE_7: with(instance_create_depth(x, y, 0, obj_basic_collectible)){image_angle = 90;}break;
-				case LEVEL_OBJECT_ID.ID_BASIC_COLLECTIBLE_8: with(instance_create_depth(x, y, 0, obj_basic_collectible)){image_angle = 45;}break;
-				case LEVEL_OBJECT_ID.ID_10_BULK_COLLECTIBLE: with(instance_create_depth(x, y, 0, obj_basic_collectible)){bulk_number = 10;}break;
-				case LEVEL_OBJECT_ID.ID_30_BULK_COLLECTIBLE: with(instance_create_depth(x, y, 0, obj_basic_collectible)){bulk_number = 30;}break;
-				case LEVEL_OBJECT_ID.ID_50_BULK_COLLECTIBLE: with(instance_create_depth(x, y, 0, obj_basic_collectible)){bulk_number = 50;}break;
+				case LEVEL_OBJECT_ID.ID_BASIC_COLLECTIBLE:
+					obj = instance_create_depth(x, y, 0, obj_basic_collectible);
+					obj.bounce_up = bounce_up;
+					if (bounce_up)
+					{
+						with(obj){motion_set(90, 10);}
+					}
+					break;
+				case LEVEL_OBJECT_ID.ID_BASIC_COLLECTIBLE_2:
+					obj = instance_create_depth(x, y, 0, obj_basic_collectible)
+					obj.image_angle = 315;
+					obj.bounce_up = bounce_up;
+					if (bounce_up)
+					{
+						with(obj){motion_set(90, 10);}
+					}
+					break;
+				case LEVEL_OBJECT_ID.ID_BASIC_COLLECTIBLE_3:
+					obj = instance_create_depth(x, y, 0, obj_basic_collectible)
+					obj.image_angle = 270;
+					obj.bounce_up = bounce_up;
+					if (bounce_up)
+					{
+						with(obj){motion_set(90, 10);}
+					}
+					break;
+				case LEVEL_OBJECT_ID.ID_BASIC_COLLECTIBLE_4:
+					obj = instance_create_depth(x, y, 0, obj_basic_collectible)
+					obj.image_angle = 225;
+					obj.image_yscale = -1;
+					obj.bounce_up = bounce_up;
+					if (bounce_up)
+					{
+						with(obj){motion_set(90, 10);}
+					}
+					break;
+				case LEVEL_OBJECT_ID.ID_BASIC_COLLECTIBLE_5:
+					obj = instance_create_depth(x, y, 0, obj_basic_collectible)
+					obj.image_angle = 180;
+					obj.image_yscale = -1;
+					obj.bounce_up = bounce_up;
+					if (bounce_up)
+					{
+						with(obj){motion_set(90, 10);}
+					}
+					break;
+				case LEVEL_OBJECT_ID.ID_BASIC_COLLECTIBLE_6:
+					obj = instance_create_depth(x, y, 0, obj_basic_collectible)
+					obj.image_angle = 135;
+					obj.image_yscale = -1;
+					obj.bounce_up = bounce_up;
+					if (bounce_up)
+					{
+						with(obj){motion_set(90, 10);}
+					}
+					break;
+				case LEVEL_OBJECT_ID.ID_BASIC_COLLECTIBLE_7:
+					obj = instance_create_depth(x, y, 0, obj_basic_collectible)
+					obj.image_angle = 90;
+					obj.bounce_up = bounce_up;
+					if (bounce_up)
+					{
+						with(obj){motion_set(90, 10);}
+					}
+					break;
+				case LEVEL_OBJECT_ID.ID_BASIC_COLLECTIBLE_8:
+					obj = instance_create_depth(x, y, 0, obj_basic_collectible)
+					obj.image_angle = 45;
+					obj.bounce_up = bounce_up;
+					if (bounce_up)
+					{
+						with(obj){motion_set(90, 10);}
+					}
+					break;
+				case LEVEL_OBJECT_ID.ID_10_BULK_COLLECTIBLE:
+					obj = instance_create_depth(x, y, 0, obj_basic_collectible)
+					obj.bulk_number = 10;
+					obj.bounce_up = bounce_up;
+					if (bounce_up)
+					{
+						with(obj){motion_set(90, 10);}
+					}
+					break;
+				case LEVEL_OBJECT_ID.ID_30_BULK_COLLECTIBLE:
+					obj = instance_create_depth(x, y, 0, obj_basic_collectible)
+					obj.bulk_number = 30;
+					obj.bounce_up = bounce_up;
+					if (bounce_up)
+					{
+						with(obj){motion_set(90, 10);}
+					}
+					break;
+				case LEVEL_OBJECT_ID.ID_50_BULK_COLLECTIBLE:
+					obj = instance_create_depth(x, y, 0, obj_basic_collectible)
+					obj.bulk_number = 50;
+					obj.bounce_up = bounce_up;
+					if (bounce_up)
+					{
+						with(obj){motion_set(90, 10);}
+					}
+					break;
 				case LEVEL_OBJECT_ID.ID_BIG_COLLECTIBLE:
-					instance_create_depth(x, y, 0, obj_big_collectible);
+					obj = instance_create_depth(x, y, 0, obj_big_collectible);
+					obj.bounce_up = bounce_up;
+					if (bounce_up)
+					{
+						with(obj){motion_set(90, 10);}
+					}
 					
 					#region /* Tell the player how many big collectibles exist in the level */
-					if (instance_exists(obj_leveleditor)) /* Only count new big collectibles at the very start when loading a level */
+					if (!bounce_up) /* Only count new big collectibles at the very start when loading a level */
 					{
-						instance_create_depth(x, y, 0, obj_big_collectible_number);
+						obj = instance_create_depth(x, y, 0, obj_big_collectible_number);
 						if (instance_exists(obj_big_collectible_number))
 						{
-							with(obj_big_collectible_number)
-							{
-								big_collectible_max_number = min(instance_number(obj_big_collectible_number), 99);
-								global.max_big_collectible = big_collectible_max_number;
-							}
+							obj.big_collectible_max_number = min(instance_number(obj_big_collectible_number), 99);
+							global.max_big_collectible = obj.big_collectible_max_number;
 						}
 					}
 					#endregion /* Tell the player how many big collectibles exist in the level END */
@@ -440,30 +462,127 @@ function scr_spawn_objects_when_starting_room()
 				break;
 				
 				case LEVEL_OBJECT_ID.ID_KEY: instance_create_depth(x, y, 0, obj_key);break;
-				case 53: instance_create_depth(x, y, 0, obj_heart_balloon);break;
-				case 54: instance_create_depth(x, y, 0, obj_hp_pickup);break;
-				case 55: with(instance_create_depth(x, y, 0, obj_invincibility_powerup)){coil_spring = false;}break;
-				case 55001: with(instance_create_depth(x, y, 0, obj_invincibility_powerup)){coil_spring = true;}break;
-				case 56: instance_create_depth(x, y, 0, obj_extra_life_pickup);break;
-				case 57: with(instance_create_depth(x, y, 0, obj_extra_life_pickup)){number_of_extra_lives = 2;}break;
-				case 58: with(instance_create_depth(x, y, 0, obj_extra_life_pickup)){number_of_extra_lives = 3;}break;
+				case LEVEL_OBJECT_ID.ID_HEART:
+					obj = instance_create_depth(x, y, 0, obj_heart_balloon);
+					obj.bounce_up = bounce_up;
+					if (bounce_up)
+					{
+						with(obj){motion_set(90, 10);}
+					}
+					break;
+				case LEVEL_OBJECT_ID.ID_HP_PICKUP:
+					obj = instance_create_depth(x, y, 0, obj_hp_pickup);
+					obj.bounce_up = bounce_up;
+					if (bounce_up)
+					{
+						with(obj){motion_set(90, 10);}
+					}
+					break;
+				case LEVEL_OBJECT_ID.ID_INVINCIBILITY_POWERUP:
+					obj = instance_create_depth(x, y, 0, obj_invincibility_powerup);
+					obj.coil_spring = false;
+					obj.bounce_up = bounce_up;
+					if (bounce_up)
+					{
+						with(obj){motion_set(90, 10);}
+					}
+					break;
+				case LEVEL_OBJECT_ID.ID_INVINCIBILITY_POWERUP_COIL_SPRING:
+					obj = instance_create_depth(x, y, 0, obj_invincibility_powerup);
+					obj.coil_spring = true;
+					obj.bounce_up = bounce_up;
+					if (bounce_up)
+					{
+						with(obj){motion_set(90, 10);}
+					}
+					break;
+				case LEVEL_OBJECT_ID.ID_ONE_UP:
+					obj = instance_create_depth(x, y, 0, obj_extra_life_pickup);
+					obj.number_of_extra_lives = 1;
+					obj.bounce_up = bounce_up;
+					if (bounce_up)
+					{
+						with(obj){motion_set(90, 10);}
+					}
+					break;
+				case LEVEL_OBJECT_ID.ID_TWO_UP:
+					obj = instance_create_depth(x, y, 0, obj_extra_life_pickup);
+					obj.number_of_extra_lives = 2;
+					obj.bounce_up = bounce_up;
+					if (bounce_up)
+					{
+						with(obj){motion_set(90, 10);}
+					}
+					break;
+				case LEVEL_OBJECT_ID.ID_THREE_UP:
+					obj = instance_create_depth(x, y, 0, obj_extra_life_pickup);
+					obj.number_of_extra_lives = 3;
+					obj.bounce_up = bounce_up;
+					if (bounce_up)
+					{
+						with(obj){motion_set(90, 10);}
+					}
+					break;
+				
+				case LEVEL_OBJECT_ID.ID_BASIC_ENEMY:
+					obj = instance_create_depth(x, y, 0, obj_basic_enemy);
+					obj.blind = false;
+					scr_spawn_objects_with_items_inside(obj);
+					break;
+				case LEVEL_OBJECT_ID.ID_BASIC_ENEMY_COIL_SPRING:
+					obj = instance_create_depth(x, y, 0, obj_basic_enemy);
+					obj.blind = false;
+					obj.coil_spring = true;
+					scr_spawn_objects_with_items_inside(obj);
+					break;
+				case LEVEL_OBJECT_ID.ID_BASIC_ENEMY_BLIND:
+					obj = instance_create_depth(x, y, 0, obj_basic_enemy);
+					obj.blind = true;
+					scr_spawn_objects_with_items_inside(obj);
+					break;
+				case LEVEL_OBJECT_ID.ID_BASIC_ENEMY_BLIND_COIL_SPRING:
+					obj = instance_create_depth(x, y, 0, obj_basic_enemy);
+					obj.blind = true;
+					obj.coil_spring = true;
+					scr_spawn_objects_with_items_inside(obj);
+					break;
 			
-				case 59: with(instance_create_depth(x, y, 0, obj_basic_enemy)){blind = false;}break;
-				case 5901: with(instance_create_depth(x, y, 0, obj_basic_enemy)){blind = false;coil_spring = true;}break;
-				case 5902: with(instance_create_depth(x, y, 0, obj_basic_enemy)){blind = true;}break;
-				case 5903: with(instance_create_depth(x, y, 0, obj_basic_enemy)){blind = true;coil_spring = true;}break;
-			
-				case 591: with(instance_create_depth(x, y, 0, obj_enemy_bowlingball)){blind = false;}break;
-				case 592: with(instance_create_depth(x, y, 0, obj_enemy_bowlingball)){blind = false;coil_spring = true;}break;
-				case 5911: with(instance_create_depth(x, y, 0, obj_enemy_bowlingball)){blind = true;}break;
-				case 5912: with(instance_create_depth(x, y, 0, obj_enemy_bowlingball)){blind = true;coil_spring = true;}break;
-				case 60: instance_create_depth(x, y, 0, obj_big_stationary_enemy);break;
-				case 601: with(instance_create_depth(x, y, 0, obj_big_stationary_enemy)){coil_spring = true;}break;
+				case LEVEL_OBJECT_ID.ID_ENEMY_BOWLINGBALL:
+					obj = instance_create_depth(x, y, 0, obj_enemy_bowlingball);
+					obj.blind = false;
+					scr_spawn_objects_with_items_inside(obj);
+					break;
+				case LEVEL_OBJECT_ID.ID_ENEMY_BOWLINGBALL_COIL_SPRING:
+					obj = instance_create_depth(x, y, 0, obj_enemy_bowlingball);
+					obj.blind = false;
+					obj.coil_spring = true;
+					scr_spawn_objects_with_items_inside(obj);
+					break;
+				case LEVEL_OBJECT_ID.ID_ENEMY_BOWLINGBALL_BLIND:
+					obj = instance_create_depth(x, y, 0, obj_enemy_bowlingball);
+					obj.blind = true;
+					scr_spawn_objects_with_items_inside(obj);
+					break;
+				case LEVEL_OBJECT_ID.ID_ENEMY_BOWLINGBALL_BLIND_COIL_SPRING:
+					obj = instance_create_depth(x, y, 0, obj_enemy_bowlingball);
+					obj.blind = true;
+					obj.coil_spring = true;
+					scr_spawn_objects_with_items_inside(obj);
+					break;
+				case LEVEL_OBJECT_ID.ID_BIG_STATIONARY_ENEMY:
+					obj = instance_create_depth(x, y, 0, obj_big_stationary_enemy);
+					scr_spawn_objects_with_items_inside(obj);
+					break;
+				case LEVEL_OBJECT_ID.ID_BIG_STATIONARY_ENEMY_COIL_SPRING:
+					obj = instance_create_depth(x, y, 0, obj_big_stationary_enemy);
+					obj.coil_spring = true;
+					scr_spawn_objects_with_items_inside(obj);
+					break;
 				case LEVEL_OBJECT_ID.ID_BLASTER: instance_create_depth(x, y, 0, obj_blaster);break;
 				case LEVEL_OBJECT_ID.ID_SPRING: with(instance_create_depth(x, y, 0, obj_spring)){if (instance_exists(obj_leveleditor_placed_object)){second_x = instance_nearest(x, y, obj_leveleditor_placed_object).second_x;second_y = instance_nearest(x, y, obj_leveleditor_placed_object).second_y;}}break;
 				case LEVEL_OBJECT_ID.ID_LADDER: instance_create_depth(x, y, 0, obj_vine);break;
-				case 64: with(instance_create_depth(x, y, 0, obj_arrow_sign)){if (instance_exists(obj_leveleditor_placed_object)){second_x = instance_nearest(x, y, obj_leveleditor_placed_object).second_x;second_y = instance_nearest(x, y, obj_leveleditor_placed_object).second_y;}}break;
-				case 65: with(instance_create_depth(x, y, 0, obj_arrow_sign_small)){if (instance_exists(obj_leveleditor_placed_object)){second_x = instance_nearest(x, y, obj_leveleditor_placed_object).second_x;second_y = instance_nearest(x, y, obj_leveleditor_placed_object).second_y;}}break;
+				case LEVEL_OBJECT_ID.ID_ARROW_SIGN: with(instance_create_depth(x, y, 0, obj_arrow_sign)){if (instance_exists(obj_leveleditor_placed_object)){second_x = instance_nearest(x, y, obj_leveleditor_placed_object).second_x;second_y = instance_nearest(x, y, obj_leveleditor_placed_object).second_y;}}break;
+				case LEVEL_OBJECT_ID.ID_ARROW_SIGN_SMALL: with(instance_create_depth(x, y, 0, obj_arrow_sign_small)){if (instance_exists(obj_leveleditor_placed_object)){second_x = instance_nearest(x, y, obj_leveleditor_placed_object).second_x;second_y = instance_nearest(x, y, obj_leveleditor_placed_object).second_y;}}break;
 				case LEVEL_OBJECT_ID.ID_CHECKPOINT:
 					/* Set the correct activation state if this checkpoint should only appear after certain amounts of defeats */
 					if (second_x != "")
@@ -495,10 +614,10 @@ function scr_spawn_objects_when_starting_room()
 				case LEVEL_OBJECT_ID.ID_SPIKES_EMERGE_BLOCK_LEFT_OFFSET_TIME: with(instance_create_depth(x, y + 16, 0, obj_spikes_emerge)){image_angle = 90; x += 20; y -= 15; timer_offset = true;}break;
 				case LEVEL_OBJECT_ID.ID_SPIKES_EMERGE_BLOCK_DOWN_OFFSET_TIME: with(instance_create_depth(x, y + 16, 0, obj_spikes_emerge)){image_angle = 180; y -= 30; timer_offset = true;}break;
 				case LEVEL_OBJECT_ID.ID_SPIKES_EMERGE_BLOCK_RIGHT_OFFSET_TIME: with(instance_create_depth(x, y + 16, 0, obj_spikes_emerge)){image_angle = 270; x -= 20; y -= 15; timer_offset = true;}break;
-				case 68: instance_create_depth(x, y, 0, obj_oneway);break;
-				case 69: with(instance_create_depth(x, y, 0, obj_oneway)){image_angle = 90;}break;
-				case 70: with(instance_create_depth(x, y, 0, obj_oneway)){image_angle = 180;}break;
-				case 71: with(instance_create_depth(x, y, 0, obj_oneway)){image_angle = 270;}break;
+				case LEVEL_OBJECT_ID.ID_ONEWAY: instance_create_depth(x, y, 0, obj_oneway);break;
+				case LEVEL_OBJECT_ID.ID_ONEWAY2: with(instance_create_depth(x, y, 0, obj_oneway)){image_angle = 90;}break;
+				case LEVEL_OBJECT_ID.ID_ONEWAY3: with(instance_create_depth(x, y, 0, obj_oneway)){image_angle = 180;}break;
+				case LEVEL_OBJECT_ID.ID_ONEWAY4: with(instance_create_depth(x, y, 0, obj_oneway)){image_angle = 270;}break;
 				case LEVEL_OBJECT_ID.ID_HORIZONTAL_ROPE: instance_create_depth(x, y, 0, obj_horizontal_rope);break;
 				case LEVEL_OBJECT_ID.ID_WATER:
 					with(instance_create_depth(x, y, 0, obj_water))
@@ -530,7 +649,10 @@ function scr_spawn_objects_when_starting_room()
 				case LEVEL_OBJECT_ID.ID_CLIPPED_SHIRT: with(instance_create_depth(x, y, 0, obj_clipped_clothes)){sprite_index = spr_clipped_shirt;}break;
 				case LEVEL_OBJECT_ID.ID_CLIPPED_PANTS: with(instance_create_depth(x, y, 0, obj_clipped_clothes)){sprite_index = spr_clipped_pants;}break;
 				case LEVEL_OBJECT_ID.ID_CLIPPED_SOCK: with(instance_create_depth(x, y, 0, obj_clipped_clothes)){sprite_index = spr_clipped_sock;}break;
-				case LEVEL_OBJECT_ID.ID_BUCKET: instance_create_depth(x, y, 0, obj_bucket);break;
+				case LEVEL_OBJECT_ID.ID_BUCKET:
+					obj = instance_create_depth(x, y, 0, obj_bucket);
+					scr_spawn_objects_with_items_inside(obj);
+					break;
 				case LEVEL_OBJECT_ID.ID_BUCKET_8_BASIC_COLLECTIBLES: with(instance_create_depth(x, y, 0, obj_bucket)){item_inside = "8_basic_collectibles";}break;
 				case LEVEL_OBJECT_ID.ID_BUCKET_HEART_BALLOON: with(instance_create_depth(x, y, 0, obj_bucket)){item_inside = "heart_balloon";}break;
 				case LEVEL_OBJECT_ID.ID_BUCKET_ONE_UP: with(instance_create_depth(x, y, 0, obj_bucket)){item_inside = "1-up";}break;
@@ -564,7 +686,10 @@ function scr_spawn_objects_when_starting_room()
 				case LEVEL_OBJECT_ID.ID_SIGN_ROPE_SPIN: with(instance_create_depth(x, y, 0, obj_sign_moveset)){sprite_index = spr_sign_rope_spin; sprite_sign = spr_sign_rope_spin;}break;
 				case LEVEL_OBJECT_ID.ID_SIGN_WALL_JUMP: with(instance_create_depth(x, y, 0, obj_sign_moveset)){sprite_index = spr_sign_wall_jump; sprite_sign = spr_sign_wall_jump;}break;
 				case LEVEL_OBJECT_ID.ID_SIGN_RUN: with(instance_create_depth(x, y, 0, obj_sign_moveset)){sprite_index = spr_sign_run; sprite_sign = spr_sign_run; show_button_graphic = true;}break;
-				case LEVEL_OBJECT_ID.ID_BOSS: instance_create_depth(x, y, 0, obj_boss);break;
+				case LEVEL_OBJECT_ID.ID_BOSS:
+					obj = instance_create_depth(x, y, 0, obj_boss);
+					scr_spawn_objects_with_items_inside(obj);
+					break;
 				case LEVEL_OBJECT_ID.ID_BOSS_BARRIER: instance_create_depth(x, y, 0, obj_boss_barrier);break;
 				case LEVEL_OBJECT_ID.ID_CAKE_STEALING_ENEMY:
 					with(instance_create_depth(x, y, 0, obj_cake_stealing_enemy))
@@ -721,4 +846,32 @@ function scr_spawn_objects_when_starting_room()
 	#endregion /* Spawn objects when starting room END */
 	
 	instance_destroy(); /* Last thing to do is delete itself */
+}
+
+function scr_spawn_objects_with_items_inside(what_object)
+{
+	
+	#region /* If there should be items put inside objects */
+	if (item_inside != 0)
+	{
+		what_object.item_inside = item_inside;
+		
+		#region /* If the item inside is a big collectible, then create the necessary objects to initialize that */
+		if (item_inside == LEVEL_OBJECT_ID.ID_BIG_COLLECTIBLE)
+		{
+			instance_create_depth(x, y, 0, obj_big_collectible_number);
+			if (instance_exists(obj_big_collectible_number))
+			{
+				with(obj_big_collectible_number)
+				{
+					big_collectible_max_number = min(instance_number(obj_big_collectible_number), 99);
+					global.max_big_collectible = min(instance_number(obj_big_collectible_number), 99);
+				}
+			}
+		}
+		#endregion /* If the item inside is a big collectible, then create the necessary objects to initialize that END */
+		
+	}
+	#endregion /* If there should be items put inside objects END */
+	
 }

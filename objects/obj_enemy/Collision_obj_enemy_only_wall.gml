@@ -57,6 +57,7 @@ if (!die)
 			flat = false;
 			die = true;
 			die_volting = true;
+			scr_different_items_inside(bbox_top);
 		}
 	}
 	else

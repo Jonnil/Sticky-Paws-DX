@@ -9,7 +9,7 @@ function scr_different_items_inside(create_from_y = bbox_top)
 		empty = true;
 		
 		if (object_index == obj_question_block)
-		&& (block_type = "brick_block")
+		&& (block_type = "brick_block" || block_type = "melon_block")
 		{
 			can_break_this_block = true;
 			break_this_block = true;
@@ -38,6 +38,7 @@ function scr_different_items_inside(create_from_y = bbox_top)
 		
 		#region /* Bump in Ground 8 Basic Collectible */
 		if (object_index == obj_bump_in_ground)
+		|| (object_index == obj_bucket)
 		{
 			with(instance_create_depth(x - 32, create_from_y, 0, obj_basic_collectible))
 			{
@@ -262,8 +263,23 @@ function scr_different_items_inside(create_from_y = bbox_top)
 	
 	else
 	
+	#region /* Big Collectible */
+	if (item_inside = "big_collectible")
+	{
+		with(instance_create_depth(x, bbox_top, 0, obj_big_collectible))
+		{
+			image_speed = 1;
+			motion_set(90, 10);
+			bounce_up = true;
+		}
+	}
+	#endregion /* Big Collectible END */
+	
+	else
+	
 	#region /* Any item */
 	if (item_inside != "none")
+	&& (item_inside != 0)
 	{
 		if (!position_meeting(x, bbox_top - 1, obj_wall))
 		{

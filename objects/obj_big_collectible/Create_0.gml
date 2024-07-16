@@ -6,7 +6,6 @@ bounce_up = false;
 delay = 0;
 delay_time = 0;
 mask_index = sprite_index;
-coinsound = false;
 follow_player = false;
 effect_time = 0;
 

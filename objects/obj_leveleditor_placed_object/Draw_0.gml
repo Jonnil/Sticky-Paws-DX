@@ -1,3 +1,8 @@
+if (draw_enemy_with_spring)
+{
+	draw_sprite_ext(global.resource_pack_sprite_coil_spring, 0, x, y + (sprite_height * 0.5), 1, 1, 0, image_blend, image_alpha);
+}
+
 var liquid_color, spring_scale;
 
 switch (object)

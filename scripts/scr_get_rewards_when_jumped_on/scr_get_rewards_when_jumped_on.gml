@@ -1,6 +1,7 @@
 function scr_get_rewards_when_jumped_on()
 {
 	if (give_rewards)
+	&& (!empty)
 	{
 		
 		#region /* Rewards */

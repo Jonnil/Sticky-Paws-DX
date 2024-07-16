@@ -105,6 +105,7 @@ function scr_unlock_placable_level_objects()
 	ds_list_add(all_items, LEVEL_OBJECT_ID.ID_APPEAR_BLOCK_3);
 	ds_list_add(all_items, LEVEL_OBJECT_ID.ID_APPEAR_BLOCK_4);
 	ds_list_add(all_items, LEVEL_OBJECT_ID.ID_APPEAR_BLOCK_5);
+	ds_list_add(all_items, LEVEL_OBJECT_ID.ID_INVISIBLE_BUMP_IN_GROUND);
 	#endregion /* Create a list of all items END */
 	
 	#region /* Unlock placable level objects */

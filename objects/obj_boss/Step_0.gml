@@ -468,27 +468,32 @@ if (hp <= 0)
 		effect_create_above(ef_smoke, x - 32, y, 2, c_white);
 		effect_create_above(ef_smoke, x - 42, y + 32, 2, c_white);
 		effect_create_above(ef_smoke, x - 32, y + 64, 2, c_white);
-
+		
 		effect_create_above(ef_smoke, x, y, 2, c_white);
 		effect_create_above(ef_smoke, x, y + 32, 2, c_white);
 		effect_create_above(ef_smoke, x, y + 64, 2, c_white);
-
+		
 		effect_create_above(ef_smoke, x + 32, y, 2, c_white);
 		effect_create_above(ef_smoke, x + 42, y + 32, 2, c_white);
 		effect_create_above(ef_smoke, x + 32, y + 64, 2, c_white);
-
-		/* 1 Coin */
-		with(instance_create_depth(x, bbox_top, 0, obj_basic_collectible))
+		
+		scr_different_items_inside(bbox_top);
+		
+		if (!empty)
 		{
-			image_speed = 1;
-			motion_set(90, 10);
-			bounce_up = true;
-		}
-		/* 200 Score */
-		score += 200;
-		with(instance_create_depth(x, y, 0, obj_score_up))
-		{
-			score_up = 200;
+			/* 1 Coin */
+			with(instance_create_depth(x, bbox_top, 0, obj_basic_collectible))
+			{
+				image_speed = 1;
+				motion_set(90, 10);
+				bounce_up = true;
+			}
+			/* 200 Score */
+			score += 200;
+			with(instance_create_depth(x, y, 0, obj_score_up))
+			{
+				score_up = 200;
+			}
 		}
 		scr_audio_play(snd_boss_defeated, volume_source.sound);
 		instance_destroy();

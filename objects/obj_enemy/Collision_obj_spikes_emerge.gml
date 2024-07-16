@@ -23,6 +23,7 @@ if (can_die_from_spikes)
 		}
 		vspeed = -8;
 		die = true;
+		scr_different_items_inside(bbox_top);
 	}
 }
 #endregion /* Enemy touching emerging spikes END */
@@ -87,6 +88,7 @@ if (!die)
 			flat = false;
 			die = true;
 			die_volting = true;
+			scr_different_items_inside(bbox_top);
 		}
 	}
 	else
