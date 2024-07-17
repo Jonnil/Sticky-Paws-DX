@@ -432,6 +432,12 @@ for(var i = 1; i <= 99; i += 1)
 	global.big_collectible[i] = false; /* If you have Big Collectible or not */
 	global.big_collectible_already_collected[i] = false;
 }
+global.max_key_fragment = 0;
+for(var i = 1; i <= 99; i += 1)
+{
+	global.key_fragment[i] = false; /* If you have Key Fragment or not */
+	global.key_fragment_already_collected[i] = false;
+}
 global.lives_until_assist = 0;
 
 #region /* Assist Settings */

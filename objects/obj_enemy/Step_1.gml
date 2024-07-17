@@ -34,6 +34,12 @@ if (!blind && !coil_spring && on_ground)
     }
 }
 
+if (die)
+&& (!empty)
+{
+	scr_different_items_inside(bbox_top);
+}
+
 scr_dont_move_outside_view();
 
 scr_coil_spring_bouncing();

@@ -12,6 +12,8 @@ function scr_draw_level_hud()
 	    var collectible_outline_sprite = global.resource_pack_sprite_big_collectible_outline;
 	    var collectible_sprite = global.resource_pack_sprite_big_collectible;
 		
+		var key_fragment_alpha = 1;
+		
 		if (global.player_has_entered_goal && global.lives_until_assist == 0)
 		{
 			var zero_defeats_x = 200;
@@ -70,6 +72,27 @@ function scr_draw_level_hud()
 	        }
 	    }
 		#endregion /* Big Collectibles END */
+		
+		#region /* Key Fragments */
+	    if (hud_show_key_fragment_y != -64)
+		{
+	        draw_set_halign(fa_left);
+	        draw_set_valign(fa_middle);
+	        for (var i = 1; i <= global.max_key_fragment; i++)
+			{
+				if (hud_show_key_fragment_blink[i] >= 1)
+				{
+					hud_show_key_fragment_blink[i] -= 1;
+					key_fragment_alpha = scr_wave(0, 1, 0.5);
+				}
+				else
+				{
+					key_fragment_alpha = (global.key_fragment[i]) ? 1 : 0.25;
+				}
+	            draw_sprite_ext(spr_key_fragment, 0, 32 * i, hud_show_key_fragment_y, 0.9, 0.9, 0, c_white, key_fragment_alpha);
+	        }
+	    }
+		#endregion /* Key Fragments END */
 		
 	    /* Basic Collectible */
 	    if (hud_show_basic_collectibles_y != -64)

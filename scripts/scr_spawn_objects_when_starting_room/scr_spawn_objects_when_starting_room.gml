@@ -447,17 +447,24 @@ function scr_spawn_objects_when_starting_room()
 				break;
 				
 				case LEVEL_OBJECT_ID.ID_KEY_FRAGMENT:
-					instance_create_depth(x, y, 0, obj_key_fragment);
-					
-					#region /* Tell the player how many big collectibles exist in the level */
-					if (instance_exists(obj_key_fragment))
+					obj = instance_create_depth(x, y, 0, obj_key_fragment);
+					obj.bounce_up = bounce_up;
+					if (bounce_up)
 					{
-						with(obj_key_fragment)
+						with(obj){motion_set(90, 10);}
+					}
+					
+					#region /* Tell the player how many key fragments exist in the level */
+					if (!bounce_up) /* Only count new big collectibles at the very start when loading a level */
+					{
+						obj = instance_create_depth(x, y, 0, obj_key_fragment_number);
+						if (instance_exists(obj_key_fragment_number))
 						{
-							key_fragment_max_number = min(instance_number(obj_key_fragment), 99);
+							obj.key_fragment_max_number = min(instance_number(obj_key_fragment_number), 99);
+							global.max_key_fragment = obj.key_fragment_max_number;
 						}
 					}
-					#endregion /* Tell the player how many big collectibles exist in the level END */
+					#endregion /* Tell the player how many key fragments exist in the level END */
 					
 				break;
 				
@@ -585,25 +592,28 @@ function scr_spawn_objects_when_starting_room()
 				case LEVEL_OBJECT_ID.ID_ARROW_SIGN_SMALL: with(instance_create_depth(x, y, 0, obj_arrow_sign_small)){if (instance_exists(obj_leveleditor_placed_object)){second_x = instance_nearest(x, y, obj_leveleditor_placed_object).second_x;second_y = instance_nearest(x, y, obj_leveleditor_placed_object).second_y;}}break;
 				case LEVEL_OBJECT_ID.ID_CHECKPOINT:
 					/* Set the correct activation state if this checkpoint should only appear after certain amounts of defeats */
-					if (second_x != "")
-					&& (real(second_x) > 0) /* If this variable is above 0, that is the only time it should check for "lives until assist" variable */
-					&& (global.lives_until_assist >= real(second_x)) /* If you have got defeated enough times to make the checkpoint appear */
-					&& (!global.doing_clear_check_level) /* Checkpoints that appear after certain amounts of defeats should not appear when doing a clear check */
-					|| (second_x != "")
-					&& (real(second_x) <= 0)
-					|| (second_x == "")
+					if (variable_instance_exists(self, "second_x"))
 					{
-						instance_create_depth(x, y, 0, obj_checkpoint);
-						
-						#region /* Tell the player how many checkpoints exist in the level */
-						if (instance_exists(obj_checkpoint))
+						if (second_x != "")
+						&& (real(second_x) > 0) /* If this variable is above 0, that is the only time it should check for "lives until assist" variable */
+						&& (global.lives_until_assist >= real(second_x)) /* If you have got defeated enough times to make the checkpoint appear */
+						&& (!global.doing_clear_check_level) /* Checkpoints that appear after certain amounts of defeats should not appear when doing a clear check */
+						|| (second_x != "")
+						&& (real(second_x) <= 0)
+						|| (second_x == "")
 						{
-							with(obj_checkpoint)
+							instance_create_depth(x, y, 0, obj_checkpoint);
+						
+							#region /* Tell the player how many checkpoints exist in the level */
+							if (instance_exists(obj_checkpoint))
 							{
-								checkpoint_max_number = instance_number(obj_checkpoint);
+								with(obj_checkpoint)
+								{
+									checkpoint_max_number = instance_number(obj_checkpoint);
+								}
 							}
+							#endregion /* Tell the player how many checkpoints exist in the level END */
 						}
-						#endregion /* Tell the player how many checkpoints exist in the level END */
 					}
 					break;
 				case LEVEL_OBJECT_ID.ID_SPIKES_EMERGE_BLOCK: instance_create_depth(x, y + 16, 0, obj_spikes_emerge);break;
@@ -870,6 +880,21 @@ function scr_spawn_objects_with_items_inside(what_object)
 			}
 		}
 		#endregion /* If the item inside is a big collectible, then create the necessary objects to initialize that END */
+		
+		#region /* If the item inside is a key fragment, then create the necessary objects to initialize that */
+		if (item_inside == LEVEL_OBJECT_ID.ID_KEY_FRAGMENT)
+		{
+			instance_create_depth(x, y, 0, obj_key_fragment_number);
+			if (instance_exists(obj_key_fragment_number))
+			{
+				with(obj_key_fragment_number)
+				{
+					key_fragment_max_number = min(instance_number(obj_key_fragment_number), 99);
+					global.max_key_fragment = min(instance_number(obj_key_fragment_number), 99);
+				}
+			}
+		}
+		#endregion /* If the item inside is a key fragment, then create the necessary objects to initialize that END */
 		
 	}
 	#endregion /* If there should be items put inside objects END */

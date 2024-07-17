@@ -26,6 +26,7 @@ if (!die)
 	
 	#region /* Rewards */
 	if (number_of_times_stomped < 10)
+	&& (!empty)
 	{
 		number_of_times_stomped ++;
 		

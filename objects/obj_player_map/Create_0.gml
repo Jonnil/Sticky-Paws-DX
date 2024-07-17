@@ -180,7 +180,8 @@ else
 
 #region /* Make absolutely sure that the big collectibles counter is correct */
 scr_get_each_big_collectible_from_main_game();
-if (total_big_collectibles < total_big_collectibles_add) {
+if (total_big_collectibles < total_big_collectibles_add)
+{
 	total_big_collectibles = total_big_collectibles_add;
 	ini_open(game_save_id + "save_file/file" + string(global.file) + ".ini");
 	ini_write_real("Player", "total_big_collectibles", total_big_collectibles_add);

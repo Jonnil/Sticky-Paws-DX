@@ -19,7 +19,7 @@ function scr_camera_logic()
         #region /* Boss Battle Camera */
         if (instance_exists(obj_boss)
 		&& instance_exists(obj_player)
-		&& distance_to_object(obj_boss) < 400)
+		&& distance_to_object(obj_boss) < 380)
 		{
             /* Center camera between boss and player */
             var target_player = -1;

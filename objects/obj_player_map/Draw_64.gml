@@ -7,36 +7,44 @@ var clear_prompt_x = 164;
 var common_conditions_met = (nearest_level != noone && can_move && can_enter_level >= 30 && distance_to_level < 4 && speed == 0);
 
 /* Show Enter Level Key */
-if (common_conditions_met && nearest_level.clear_rate != "closed") {
+if (common_conditions_met && nearest_level.clear_rate != "closed")
+{
     draw_set_halign(fa_left);
     draw_set_valign(fa_middle);
     scr_draw_text_outlined(64, window_height - 20, l10n_text("Play"), global.default_text_size, c_black, c_white, 1);
 
-    if ((global.controls_used_for_navigation == "gamepad" && gamepad_is_connected(global.player_slot[player])) || global.always_show_gamepad_buttons) {
+    if ((global.controls_used_for_navigation == "gamepad" && gamepad_is_connected(global.player_slot[player])) || global.always_show_gamepad_buttons)
+	{
         scr_draw_gamepad_buttons(global.player_[inp.gp][player][1][action.accept], 32, window_height - 20, 0.5, c_white, 1, 1, 1, player);
     }
 	else
-	if (global.player_can_play[player]) {
+	if (global.player_can_play[player])
+	{
         var key_accept = (global.player_[inp.key][player][1][action.accept] > noone) ? global.player_[inp.key][player][1][action.accept] : global.player_[inp.key][player][2][action.accept];
-        if (key_accept > noone) {
+        if (key_accept > noone)
+		{
             draw_sprite_ext(spr_keyboard_keys, key_accept, 32, window_height - 20, 0.5, 0.5, 0, c_white, 1);
         }
     }
 }
 
 /* Show Clear Level Key in debug */
-if (global.debug_screen && common_conditions_met && nearest_level.clear_rate == "enter") {
+if (global.debug_screen && common_conditions_met && nearest_level.clear_rate == "enter")
+{
     draw_set_halign(fa_left);
     draw_set_valign(fa_middle);
     scr_draw_text_outlined(clear_prompt_x + 32, window_height - 20, l10n_text("Clear"), global.default_text_size, c_black, c_white, 1);
 
-    if (gamepad_is_connected(global.player_slot[player]) && global.controls_used_for_navigation == "gamepad") {
+    if (gamepad_is_connected(global.player_slot[player]) && global.controls_used_for_navigation == "gamepad")
+	{
         scr_draw_gamepad_buttons(global.player_[inp.gp][player][1][action.back], clear_prompt_x, window_height - 20, 0.5, c_white, 1, 1, 1, player);
     }
 	else
-	if (global.player_can_play[player]) {
+	if (global.player_can_play[player])
+	{
         var key_back = (global.player_[inp.key][player][1][action.back] > noone) ? global.player_[inp.key][player][1][action.back] : global.player_[inp.key][player][2][action.back];
-        if (key_back > noone) {
+        if (key_back > noone)
+		{
             draw_sprite_ext(spr_keyboard_keys, key_back, clear_prompt_x, window_height - 20, 0.5, 0.5, 0, c_white, 1);
         }
     }
@@ -52,8 +60,10 @@ if (iris_xscale > 9)
 }
 
 /* Check if conditions are met to show level info */
-if (nearest_level != noone && iris_xscale > 9 && move_delay > 10 && distance_to_level < 4 && nearest_level.level_number != 0) {
-    if (nearest_level.clear_rate == "enter" || nearest_level.clear_rate == "clear") {
+if (nearest_level != noone && iris_xscale > 9 && move_delay > 10 && distance_to_level < 4 && nearest_level.level_number != 0)
+{
+    if (nearest_level.clear_rate == "enter" || nearest_level.clear_rate == "clear")
+	{
         var show_level_info_x = 180;
         var show_level_info_y = 232;
         var show_big_collectibles_y = -160;
@@ -65,7 +75,8 @@ if (nearest_level != noone && iris_xscale > 9 && move_delay > 10 && distance_to_
                        (nearest_level.timeattack_realmillisecond < 999999999 && nearest_level.timeattack_realmillisecond > 0) ||
                        at_least_one_big_collectible;
 		
-        if (show_info) {
+        if (show_info)
+		{
             draw_set_halign(fa_center);
             draw_set_valign(fa_top);
             draw_set_alpha(0.9);
@@ -74,7 +85,8 @@ if (nearest_level != noone && iris_xscale > 9 && move_delay > 10 && distance_to_
 			
             /* Draw level info */
             var total_defeats_text = "";
-			if (global.show_defeats_counter && nearest_level.number_of_defeats > 0) {
+			if (global.show_defeats_counter && nearest_level.number_of_defeats > 0)
+			{
 				var total_defeats_text = l10n_text("Total Defeats") + ": " + string(nearest_level.number_of_defeats) + "\n";
 			}
 			scr_draw_text_outlined(show_level_info_x, show_level_info_y - 150,
@@ -84,16 +96,25 @@ if (nearest_level != noone && iris_xscale > 9 && move_delay > 10 && distance_to_
 			total_defeats_text,
 			global.default_text_size, c_black, c_white, 1);
             
-			for (var i = 1; i <= global.max_big_collectible; i++) {
+			for (var i = 1; i <= global.max_big_collectible; i++)
+			{
 				var sprite_to_draw = global.resource_pack_sprite_big_collectible_outline;
-				if (global.resource_pack_sprite_big_collectible > 0 && nearest_level.big_collectible[i]) {
+				if (global.resource_pack_sprite_big_collectible > 0 && nearest_level.big_collectible[i])
+				{
 					sprite_to_draw = global.resource_pack_sprite_big_collectible;
 				}
 				draw_sprite_ext(sprite_to_draw, 0, show_level_info_x - 72 + (24 * i), show_level_info_y + show_big_collectibles_y, 0.3, 0.3, 0, c_white, 1);
 			}
-			if (nearest_level.zero_defeats != 0) {
-				if (nearest_level.zero_defeats == 1) {var sprite_zero_defeats = spr_icon_zero_defeats;}
-				else {var sprite_zero_defeats = spr_icon_zero_hits;}
+			if (nearest_level.zero_defeats != 0)
+			{
+				if (nearest_level.zero_defeats == 1)
+				{
+					var sprite_zero_defeats = spr_icon_zero_defeats;
+				}
+				else
+				{
+					var sprite_zero_defeats = spr_icon_zero_hits;
+				}
 				draw_sprite_ext(sprite_zero_defeats, 0, show_level_info_x + 100, show_level_info_y + show_big_collectibles_y, 1, 1, 0, c_white, 1);
 			}
         }
@@ -102,8 +123,10 @@ if (nearest_level != noone && iris_xscale > 9 && move_delay > 10 && distance_to_
 #endregion /* Show Level Info END */
 
 /* Draw GUI when conditions are met */
-if (iris_yscale <= 0.002 || (brand_new_file && can_enter_level_automatically) || black_screen_at_start_delay < 1) {
-    if (global.enable_transitions) {
+if (iris_yscale <= 0.002 || (brand_new_file && can_enter_level_automatically) || black_screen_at_start_delay < 1)
+{
+    if (global.enable_transitions)
+	{
         draw_rectangle_color(0, 0, window_width, window_height, c_black, c_black, c_black, c_black, false);
     }
     black_screen_at_start_delay++;

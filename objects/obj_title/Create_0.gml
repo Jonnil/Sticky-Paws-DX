@@ -190,22 +190,28 @@ for(var i = 1; i < ds_grid_width(global.language_local_data); i ++;)
 narrator_name = string(ds_list_find_value(global.all_loaded_characters, global.narrator)); /* Character Name */
 
 #region /* Create directories */
-if (!directory_exists(game_save_id + "custom_characters")) {
+if (!directory_exists(game_save_id + "custom_characters"))
+{
 	directory_create(game_save_id + "custom_characters"); /* Create directory for saving custom characters */
 }
-if (!directory_exists(game_save_id + "custom_levels")) {
+if (!directory_exists(game_save_id + "custom_levels"))
+{
 	directory_create(game_save_id + "custom_levels"); /* Create directory for saving custom levels */
 }
-if (!directory_exists(game_save_id + "custom_resource_pack")) {
+if (!directory_exists(game_save_id + "custom_resource_pack"))
+{
 	directory_create(game_save_id + "custom_resource_pack"); /* Create directory for saving custom resource_pack */
 }
-if (!directory_exists(game_save_id + "custom_title_background")) {
+if (!directory_exists(game_save_id + "custom_title_background"))
+{
 	directory_create(game_save_id + "custom_title_background"); /* Create directory for saving custom title backgrounds */
 }
-if (!directory_exists(game_save_id + "custom_title_logo")) {
+if (!directory_exists(game_save_id + "custom_title_logo"))
+{
 	directory_create(game_save_id + "custom_title_logo"); /* Create directory for saving custom title logos */
 }
-if (!directory_exists(game_save_id + "save_file")) {
+if (!directory_exists(game_save_id + "save_file"))
+{
 	directory_create(game_save_id + "save_file"); /* Create directory for saving files */
 }
 #endregion /* Create directories END */
@@ -222,6 +228,10 @@ global.basic_collectibles = 0;
 for(var b = 1; b <= global.max_big_collectible; b += 1)
 {
 	global.big_collectible[b] = false;
+}
+for(var b = 1; b <= global.max_key_fragment; b += 1)
+{
+	global.key_fragment[b] = false;
 }
 global.lives_until_assist = 0;
 global.checkpoint_x = false;

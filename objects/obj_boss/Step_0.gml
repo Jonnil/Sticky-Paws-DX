@@ -46,20 +46,27 @@ else
 #endregion /* Set the gravity END */
 
 /* Put at right angle */
-if (angle < -360 || angle > 360) {
+if (angle < -360 || angle > 360)
+{
 	angle += 16 * sign(angle);
-} else {
+}
+else
+{
 	angle = lerp(angle, 0, 0.1);
 }
 
-if (has_seen_player) {
+if (has_seen_player)
+&& (hp > 0)
+{
 	time++;
 }
 
 taken_damage = max(0, taken_damage - 1);
 
-if (time == get_room_speed * 3) {
-	if (can_jump_on_head) {
+if (time == get_room_speed * 3)
+{
+	if (can_jump_on_head)
+	{
 		can_jump_on_head = false;
 		scr_audio_play(snd_boss_invulnerable, volume_source.sound);
 	}

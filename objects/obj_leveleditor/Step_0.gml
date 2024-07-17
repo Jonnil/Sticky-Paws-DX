@@ -629,6 +629,19 @@ if (!global.actually_play_edited_level)
 					global.checkpoint_minute = 0;
 					global.checkpoint_realmillisecond = 0;
 					
+					#region /* Reset all collected big collectibles and key fragments when playtesting level */
+					for(var b = 1; b <= 99; b += 1)
+					{
+						global.big_collectible[b] = false;
+						global.big_collectible_already_collected[b] = false;
+					}
+					for(var b = 1; b <= 99; b += 1)
+					{
+						global.key_fragment[b] = false;
+						global.key_fragment_already_collected[b] = false;
+					}
+					#endregion /* Reset all collected big collectibles and key fragments when playtesting level END */
+					
 					menu_delay = 9999; /* Disable all menu control */
 					lives = 5;
 					global.lives_until_assist = 0;

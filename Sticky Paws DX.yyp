@@ -2670,6 +2670,7 @@
     {"id":{"name":"obj_ice_block","path":"objects/obj_ice_block/obj_ice_block.yy",},},
     {"id":{"name":"obj_invincibility_powerup","path":"objects/obj_invincibility_powerup/obj_invincibility_powerup.yy",},},
     {"id":{"name":"obj_key_follow","path":"objects/obj_key_follow/obj_key_follow.yy",},},
+    {"id":{"name":"obj_key_fragment_number","path":"objects/obj_key_fragment_number/obj_key_fragment_number.yy",},},
     {"id":{"name":"obj_key_fragment","path":"objects/obj_key_fragment/obj_key_fragment.yy",},},
     {"id":{"name":"obj_key","path":"objects/obj_key/obj_key.yy",},},
     {"id":{"name":"obj_lava","path":"objects/obj_lava/obj_lava.yy",},},

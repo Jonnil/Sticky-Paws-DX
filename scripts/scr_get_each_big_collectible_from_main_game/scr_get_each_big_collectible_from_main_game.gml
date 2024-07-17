@@ -1,5 +1,7 @@
-function scr_get_each_big_collectible_from_main_game() {
-	if (file_exists(game_save_id + "save_file/file" + string(global.file) + ".ini")) {
+function scr_get_each_big_collectible_from_main_game()
+{
+	if (file_exists(game_save_id + "save_file/file" + string(global.file) + ".ini"))
+	{
 		ini_open(game_save_id + "save_file/file" + string(global.file) + ".ini");
 		
 		var level_number = 1;

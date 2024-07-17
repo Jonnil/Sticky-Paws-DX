@@ -40,6 +40,8 @@ function scr_deactivate_objects_outside_view()
 				instance_activate_object(obj_level_height);
 				instance_activate_object(obj_level_width);
 				instance_activate_object(obj_goal);
+				instance_activate_object(obj_big_collectible_number);
+				instance_activate_object(obj_key_fragment_number);
 			}
 			else
 			if (room == rm_world_map)

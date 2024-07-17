@@ -259,6 +259,10 @@ function scr_save_level()
 		{
 			global.big_collectible_already_collected[i] = false;
 		}
+		for(var i = 1; i <= global.max_key_fragment; i += 1)
+		{
+			global.key_fragment_already_collected[i] = false;
+		}
 		global.how_many_big_collectible_collected = 0;
 	}
 	

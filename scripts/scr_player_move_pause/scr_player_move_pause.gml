@@ -15,6 +15,7 @@ function scr_player_move_pause()
 		obj_camera.hud_show_defeats_timer = global.hud_hide_time * 60;
 		obj_camera.hud_show_basic_collectibles_timer = global.hud_hide_time * 60;
 		obj_camera.hud_show_big_collectibles_timer = global.hud_hide_time * 60;
+		obj_camera.hud_show_key_fragment_timer = global.hud_hide_time * 60;
 		obj_camera.hud_show_score_timer = global.hud_hide_time * 60;
 		
 		controller_connected = false;

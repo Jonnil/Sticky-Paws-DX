@@ -39,6 +39,7 @@ if (!die)
 				die = true;
 				die_volting = +1;
 			}
+			scr_different_items_inside(bbox_top);
 			effect_create_above(ef_smoke, x, y, 2, c_white);
 			scr_gamepad_vibration(other.player, 0.5, 10);
 			
@@ -240,6 +241,7 @@ if (!die)
 			if (other.ground_pound >= 1)
 			{
 				die = true;
+				scr_different_items_inside(bbox_top);
 				global.enemy_counter ++;
 				with(instance_nearest(x, y, obj_player))
 				{
