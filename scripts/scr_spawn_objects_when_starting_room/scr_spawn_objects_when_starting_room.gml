@@ -282,7 +282,6 @@ function scr_spawn_objects_when_starting_room()
 					{
 			            with(obj_big_collectible_number)
 						{
-			                big_collectible_max_number = min(instance_number(obj_big_collectible_number), 99);
 							global.max_big_collectible = min(instance_number(obj_big_collectible_number), 99);
 			            }
 			        }
@@ -314,7 +313,6 @@ function scr_spawn_objects_when_starting_room()
 					{
 						with(obj_big_collectible_number)
 						{
-							big_collectible_max_number = min(instance_number(obj_big_collectible_number), 99);
 							global.max_big_collectible = min(instance_number(obj_big_collectible_number), 99);
 						}
 					}
@@ -438,8 +436,7 @@ function scr_spawn_objects_when_starting_room()
 						obj = instance_create_depth(x, y, 0, obj_big_collectible_number);
 						if (instance_exists(obj_big_collectible_number))
 						{
-							obj.big_collectible_max_number = min(instance_number(obj_big_collectible_number), 99);
-							global.max_big_collectible = obj.big_collectible_max_number;
+							global.max_big_collectible = min(instance_number(obj_big_collectible_number), 99);
 						}
 					}
 					#endregion /* Tell the player how many big collectibles exist in the level END */
@@ -460,8 +457,7 @@ function scr_spawn_objects_when_starting_room()
 						obj = instance_create_depth(x, y, 0, obj_key_fragment_number);
 						if (instance_exists(obj_key_fragment_number))
 						{
-							obj.key_fragment_max_number = min(instance_number(obj_key_fragment_number), 99);
-							global.max_key_fragment = obj.key_fragment_max_number;
+							global.max_key_fragment = min(instance_number(obj_key_fragment_number), 99);
 						}
 					}
 					#endregion /* Tell the player how many key fragments exist in the level END */
@@ -603,7 +599,7 @@ function scr_spawn_objects_when_starting_room()
 						|| (second_x == "")
 						{
 							instance_create_depth(x, y, 0, obj_checkpoint);
-						
+							
 							#region /* Tell the player how many checkpoints exist in the level */
 							if (instance_exists(obj_checkpoint))
 							{
@@ -613,7 +609,23 @@ function scr_spawn_objects_when_starting_room()
 								}
 							}
 							#endregion /* Tell the player how many checkpoints exist in the level END */
+							
 						}
+					}
+					else
+					{
+						instance_create_depth(x, y, 0, obj_checkpoint);
+						
+						#region /* Tell the player how many checkpoints exist in the level */
+						if (instance_exists(obj_checkpoint))
+						{
+							with(obj_checkpoint)
+							{
+								checkpoint_max_number = instance_number(obj_checkpoint);
+							}
+						}
+						#endregion /* Tell the player how many checkpoints exist in the level END */
+						
 					}
 					break;
 				case LEVEL_OBJECT_ID.ID_SPIKES_EMERGE_BLOCK: instance_create_depth(x, y + 16, 0, obj_spikes_emerge);break;
@@ -680,7 +692,6 @@ function scr_spawn_objects_when_starting_room()
 					{
 						with(obj_big_collectible_number)
 						{
-							big_collectible_max_number = min(instance_number(obj_big_collectible_number), 99);
 							global.max_big_collectible = min(instance_number(obj_big_collectible_number), 99);
 						}
 					}
@@ -874,7 +885,6 @@ function scr_spawn_objects_with_items_inside(what_object)
 			{
 				with(obj_big_collectible_number)
 				{
-					big_collectible_max_number = min(instance_number(obj_big_collectible_number), 99);
 					global.max_big_collectible = min(instance_number(obj_big_collectible_number), 99);
 				}
 			}
@@ -889,12 +899,28 @@ function scr_spawn_objects_with_items_inside(what_object)
 			{
 				with(obj_key_fragment_number)
 				{
-					key_fragment_max_number = min(instance_number(obj_key_fragment_number), 99);
 					global.max_key_fragment = min(instance_number(obj_key_fragment_number), 99);
 				}
 			}
 		}
 		#endregion /* If the item inside is a key fragment, then create the necessary objects to initialize that END */
+		
+		#region /* If the item inside is a checkpoint, then create the necessary objects to initialize that */
+		if (item_inside == LEVEL_OBJECT_ID.ID_CHECKPOINT)
+		{
+			
+			#region /* Tell the player how many checkpoints exist in the level */
+			if (instance_exists(obj_checkpoint))
+			{
+				with(obj_checkpoint)
+				{
+					checkpoint_max_number = instance_number(obj_checkpoint);
+				}
+			}
+			#endregion /* Tell the player how many checkpoints exist in the level END */
+			
+		}
+		#endregion /* If the item inside is a checkpoint, then create the necessary objects to initialize that END */
 		
 	}
 	#endregion /* If there should be items put inside objects END */

@@ -579,6 +579,20 @@ function scr_modify_objects_in_level_editor()
 					
 					else
 					
+					#region /* Change Bump in Ground */
+					if (object == LEVEL_OBJECT_ID.ID_BUMP_IN_GROUND)
+					{
+						object = LEVEL_OBJECT_ID.ID_INVISIBLE_BUMP_IN_GROUND;
+					}
+					else
+					if (object == LEVEL_OBJECT_ID.ID_INVISIBLE_BUMP_IN_GROUND)
+					{
+						object = LEVEL_OBJECT_ID.ID_BUMP_IN_GROUND;
+					}
+					#endregion /* Change Bump in Ground END */
+					
+					else
+					
 					#region /* Objects that needs modify menu */
 					if (object == LEVEL_OBJECT_ID.ID_SIGN_READABLE)
 					{

@@ -9,7 +9,6 @@ mask_index = sprite_index;
 follow_player = false;
 effect_time = 0;
 
-big_collectible_max_number = 0; /* Tell the player how many big collectibles exist in the level */
 big_collectible = 0; /* Tell the player which big collectible they're activating */
 
 collect_big_collectible = false;

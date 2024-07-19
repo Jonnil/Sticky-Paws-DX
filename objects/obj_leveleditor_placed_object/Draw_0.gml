@@ -1,6 +1,6 @@
 if (draw_enemy_with_spring)
 {
-	draw_sprite_ext(global.resource_pack_sprite_coil_spring, 0, x, y + (sprite_height * 0.5), 1, 1, 0, image_blend, image_alpha);
+	draw_sprite_ext(global.resource_pack_sprite_coil_spring, 0, x, y + (sprite_height * 0.5), 1, 1, 0, image_blend, draw_alpha * image_alpha);
 }
 
 var liquid_color, spring_scale;
@@ -33,7 +33,7 @@ switch (object)
 
 if (sprite_exists(sprite_index))
 {
-	draw_sprite_ext(sprite_index, image_index, x, y, draw_xscale, draw_yscale, draw_angle, image_blend, image_alpha);
+	draw_sprite_ext(sprite_index, image_index, x, y, draw_xscale, draw_yscale, draw_angle, image_blend, draw_alpha * image_alpha);
 	if (hover_over_object_indicator)
 	{
 		draw_sprite_ext(sprite_index, image_index, x, y, draw_xscale, draw_yscale, draw_angle, c_blue, scr_wave(0.25, 0.75, 0.5));
@@ -50,7 +50,7 @@ if (draw_leveleditor_arrow)
 if (draw_item_on_top != noone)
 {
 	spring_scale = 0.5;
-	draw_sprite_ext(draw_item_on_top, 0, x, y, 0.5, 0.5, 0, draw_item_on_top_blend, image_alpha);
+	draw_sprite_ext(draw_item_on_top, 0, x, y, 0.5, 0.5, 0, draw_item_on_top_blend, draw_alpha * image_alpha);
 	if (hover_over_object_indicator)
 	{
 		draw_sprite_ext(draw_item_on_top, 0, x, y, 0.5, 0.5, 0, c_blue, scr_wave(0.25, 0.75, 0.5));
@@ -63,7 +63,7 @@ else
 
 if (draw_item_with_spring)
 {
-	draw_sprite_ext(global.resource_pack_sprite_coil_spring, 0, x, y + 16, spring_scale, spring_scale, 0, image_blend, image_alpha);
+	draw_sprite_ext(global.resource_pack_sprite_coil_spring, 0, x, y + 16, spring_scale, spring_scale, 0, image_blend, draw_alpha * image_alpha);
 }
 
 if (draw_text_over_placed_object != "")

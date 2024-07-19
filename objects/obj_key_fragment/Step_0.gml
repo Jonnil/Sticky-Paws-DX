@@ -68,7 +68,7 @@ if (collect_key_fragment)
 		#endregion /* What Key Fragment is this? END */
 		
 		obj_camera.key_fragment_total += 1;
-		if (obj_camera.key_fragment_total >= key_fragment_max_number)
+		if (obj_camera.key_fragment_total >= global.max_key_fragment)
 		{
 			instance_create_depth(x, y, 0, obj_key);
 		}

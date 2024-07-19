@@ -286,6 +286,8 @@ function scr_different_items_inside(create_from_y = bbox_top)
 			var obj = instance_create_depth(x, create_from_y - 32, 0, obj_leveleditor_placed_object);
 			obj.object = item_inside;
 			obj.bounce_up = true;
+			obj.second_x = 0;
+			obj.second_y = 0;
 			with (obj)
 			{
 				scr_spawn_objects_when_starting_room(); /* Immediately spawn the actual object */

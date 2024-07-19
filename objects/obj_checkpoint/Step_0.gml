@@ -1,8 +1,3 @@
-if (get_rewards_cooldown > 0)
-{
-	get_rewards_cooldown --;
-}
-
 if (instance_exists(obj_player))
 {
 	if (global.checkpoint_x != x)
@@ -21,7 +16,8 @@ if (instance_exists(obj_player))
 					checkpoint_activated = true;
 					checkpoint_what_player = instance_nearest(x, y, obj_player).player;
 					
-					if (get_rewards_cooldown <= 0)
+					if (instance_exists(obj_camera))
+					&& (obj_camera.black_screen_gui_alpha <= 0.9) /* Don't get rewards if this code is run when a level first start */
 					{
 						with(instance_nearest(x, y, obj_player))
 						{
@@ -117,7 +113,6 @@ if (instance_exists(obj_player))
 					
 					#region /* Load correct sprite when you get the checkpoint */
 					if (instance_exists(obj_camera))
-					&& (instance_exists(obj_player))
 					{
 						sprite_index = spr_checkpoint_activated;
 						image_speed = 0;

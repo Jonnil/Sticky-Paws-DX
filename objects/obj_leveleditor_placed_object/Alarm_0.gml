@@ -3,7 +3,7 @@ if (!global.actually_play_edited_level)
 {
 	if (!global.world_editor)
 	{
-		if (object = 1)
+		if (object == 1)
 		{
 			object = LEVEL_OBJECT_ID.ID_WALL_STONE;
 		}
@@ -32,6 +32,7 @@ if (!global.actually_play_edited_level)
 			image_blend = grid[# 6, grid_object_index];
 			default_blend = image_blend;
 			image_alpha = grid[# 7, grid_object_index];
+			draw_alpha = grid[# 7, grid_object_index];
 			draw_text_over_placed_object = grid[# 8, grid_object_index];
 		}
 		

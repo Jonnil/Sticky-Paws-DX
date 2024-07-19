@@ -35,6 +35,7 @@ if (!global.actually_play_edited_level)
 	draw_xscale = 1;
 	draw_yscale = 1;
 	draw_angle = 0;
+	draw_alpha = 1;
 	hover_over_object_indicator = false;
 	
 	mask_index = spr_wall;

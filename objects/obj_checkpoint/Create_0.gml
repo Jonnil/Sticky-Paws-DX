@@ -1,7 +1,6 @@
 depth = 20;
 image_speed = 0;
 mask_index = spr_checkpoint;
-get_rewards_cooldown = 10;
 checkpoint_number = 1; /* Tell the player which checkpoint they're activating */
 checkpoint_max_number = 1; /* Tell the player how many checkpoints exist in the level */
 if (global.checkpoint_x == xstart)

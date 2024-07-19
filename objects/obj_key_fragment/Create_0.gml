@@ -1,4 +1,3 @@
-key_fragment_max_number = 1; /* Tell the player how many key fragments exist in the level */
 key_fragment = 0;
 bounce_up = false;
 delay = 0;
