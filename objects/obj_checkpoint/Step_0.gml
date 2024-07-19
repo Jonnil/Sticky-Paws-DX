@@ -36,7 +36,7 @@ if (instance_exists(obj_player))
 							score_up = 2000;
 						}
 						#endregion /* 2000 Score END */
-							
+						
 						#region /* Checkpoint text when touching the checkpoint, so everybody knows that this is a checkpoint */
 						with(instance_create_depth(x, y - 20, 0, obj_score_up))
 						{
@@ -47,6 +47,8 @@ if (instance_exists(obj_player))
 						#endregion /* Checkpoint text when touching the checkpoint, so everybody knows that this is a checkpoint END */
 						
 						scr_audio_play(snd_1up, volume_source.sound);
+						
+						scr_different_items_inside(bbox_top);
 					}
 					
 					if (!global.doing_clear_check_level) /* Don't save these things if you're doing a clear check. You need to restart from the very start if you lose, regardless if you hit checkpoints */

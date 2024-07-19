@@ -112,10 +112,13 @@ if (!can_move && entering_level && delay >= 60 && iris_yscale <= 0.001 && !globa
 {
     global.level_name = string(ds_list_find_value(global.all_loaded_custom_levels, global.select_level_index));
     room_persistent = false;
-    audio_sound_gain(music_map, 0, 0);
-    audio_stop_sound(music_map);
-    audio_stop_all();
-    if (global.loading_music > 0 && !audio_is_playing(global.loading_music))
+	if (music_map != noone)
+	{
+		audio_sound_gain(music_map, 0, 0);
+		audio_stop_sound(music_map);
+	}
+	audio_stop_all();
+	if (global.loading_music > 0 && !audio_is_playing(global.loading_music))
 	{
         scr_audio_play(global.loading_music, volume_source.music);
     }
@@ -127,8 +130,11 @@ if (!can_move && entering_level && delay >= 60 && iris_yscale <= 0.001 && !globa
     global.part_limit = global.part_limit_entity = 0;
     var time_source = time_source_create(time_source_game, 10, time_source_units_frames, function()
 	{
-        audio_sound_gain(music_map, 0, 0);
-        audio_stop_sound(music_map);
+		if (music_map != noone)
+		{
+			audio_sound_gain(music_map, 0, 0);
+			audio_stop_sound(music_map);
+		}
         room_goto(rm_leveleditor);
     }, [], 1);
     time_source_start(time_source);

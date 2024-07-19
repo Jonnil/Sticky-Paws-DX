@@ -48,7 +48,7 @@ if (global.go_to_menu_when_going_back_to_title == "online_download_list_load")
 scr_menu_navigation_initialization(0, true); /* Keyboard Controls */
 
 #region /* Play title screen music */
-if (title_music > noone)
+if (title_music != noone)
 {
 	audio_sound_gain(title_music, global.volume_music * global.volume_main * title_music_lerp, 0);
 	title_music_lerp = lerp(title_music_lerp, 1, 0.01);

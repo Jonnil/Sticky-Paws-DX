@@ -27,6 +27,7 @@ if (!global.actually_play_edited_level)
 	|| object == LEVEL_OBJECT_ID.ID_BUMP_IN_GROUND
 	|| object == LEVEL_OBJECT_ID.ID_INVISIBLE_BUMP_IN_GROUND
 	|| object == LEVEL_OBJECT_ID.ID_BUCKET
+	|| object == LEVEL_OBJECT_ID.ID_CHECKPOINT
 	
 	|| object == LEVEL_OBJECT_ID.ID_BASIC_ENEMY
 	|| object == LEVEL_OBJECT_ID.ID_BASIC_ENEMY_COIL_SPRING

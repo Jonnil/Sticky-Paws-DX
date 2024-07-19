@@ -3,6 +3,7 @@ image_speed = 0;
 mask_index = spr_checkpoint;
 checkpoint_number = 1; /* Tell the player which checkpoint they're activating */
 checkpoint_max_number = 1; /* Tell the player how many checkpoints exist in the level */
+item_inside = 0;
 if (global.checkpoint_x == xstart)
 && (global.checkpoint_y == ystart)
 {

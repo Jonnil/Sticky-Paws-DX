@@ -30,10 +30,16 @@ function scr_player_move_lose()
 		
 		if (instance_number(obj_player) <= 1)
 		{
-			audio_sound_gain(global.music, 0, 0);
-			audio_sound_gain(global.music_underwater, 0, 0);
-			audio_stop_sound(global.music);
-			audio_stop_sound(global.music_underwater);
+			if (global.music != noone)
+			{
+				audio_sound_gain(global.music, 0, 0);
+				audio_stop_sound(global.music);
+			}
+			if (global.music_underwater != noone)
+			{
+				audio_sound_gain(global.music_underwater, 0, 0);
+				audio_stop_sound(global.music_underwater);
+			}
 			global.music = noone;
 			global.music_underwater = noone;
 			audio_stop_sound(snd_skidding);

@@ -13,14 +13,20 @@ draw_yscale = lerp(draw_yscale, 1, 0.1);
 
 var nearest_player = instance_nearest(x, y, obj_player);
 
-if (instance_exists(obj_camera) && distance_to_object(obj_camera) < 500 && global.music != snd_music_boss && has_seen_player)
+if (has_seen_player
+&& global.music_boss == noone
+&& instance_exists(obj_camera)
+&& distance_to_object(obj_camera) < 500)
 {
 	audio_stop_sound(global.music);
 	audio_stop_sound(global.music_underwater);
-	global.music = snd_music_boss;
+	global.music_boss = snd_music_boss;
 }
 
-if (instance_exists(obj_player) && distance_to_object(obj_player) < 500 && !collision_line(x, y, nearest_player.x, nearest_player.y, obj_wall, true, true) && !has_seen_player)
+if (!has_seen_player
+&& instance_exists(obj_player)
+&& distance_to_object(obj_player) < 500
+&& !collision_line(x, y, nearest_player.x, nearest_player.y, obj_wall, true, true))
 {
 	has_seen_player = true; /* Only see player if player is close and in line of sight */
 }

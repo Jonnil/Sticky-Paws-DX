@@ -13,16 +13,37 @@ scr_start_intro_animations();
 scr_player_move_restart();
 scr_player_move_quit();
 
-#region /* Music Pitch */
-if (global.time_countdown < 100 && global.enable_time_countdown)
+if (global.music_boss != noone) /* If there is boss music loaded */
 {
-	audio_sound_pitch(global.music, music_pitch + 0.3);
-	audio_sound_pitch(global.music_underwater, music_pitch + 0.3);
+	var current_music_playing = global.music_boss; /* Then play the boss music */
 }
 else
 {
-	audio_sound_pitch(global.music, music_pitch);
-	audio_sound_pitch(global.music_underwater, music_pitch);
+	var current_music_playing = global.music; /* Otherwise play the regular music */
+}
+
+#region /* Music Pitch */
+if (global.time_countdown < 100 && global.enable_time_countdown)
+{
+	if (current_music_playing != noone)
+	{
+		audio_sound_pitch(current_music_playing, music_pitch + 0.3);
+	}
+	if (global.music_underwater != noone)
+	{
+		audio_sound_pitch(global.music_underwater, music_pitch + 0.3);
+	}
+}
+else
+{
+	if (current_music_playing != noone)
+	{
+		audio_sound_pitch(current_music_playing, music_pitch);
+	}
+	if (global.music_underwater != noone)
+	{
+		audio_sound_pitch(global.music_underwater, music_pitch);
+	}
 }
 #endregion /* Music Pitch END */
 
@@ -449,40 +470,58 @@ if (invincible_timer <= 2)
 {
 	if (in_water)
 	{
-		if (global.music_underwater > 0)
+		if (global.music_underwater != noone)
 		{
-			audio_sound_gain(global.music, 0, 0);
+			if (current_music_playing != noone)
+			{
+				audio_sound_gain(current_music_playing, 0, 0);
+			}
 			audio_sound_gain(global.music_underwater, global.volume_music * global.volume_main, 0);
 		}
 		else
-		if (global.music > 0)
+		if (current_music_playing != noone)
 		{
-			audio_sound_gain(global.music, global.volume_music * global.volume_main, 0);
-			audio_sound_gain(global.music_underwater, 0, 0);
+			audio_sound_gain(current_music_playing, global.volume_music * global.volume_main, 0);
+			if (global.music_underwater != noone)
+			{
+				audio_sound_gain(global.music_underwater, 0, 0);
+			}
 		}
-		if (global.ambience_underwater > 0)
+		if (global.ambience_underwater != noone)
 		{
-			audio_sound_gain(global.ambience, 0, 0);
+			if (global.ambience != noone)
+			{
+				audio_sound_gain(global.ambience, 0, 0);
+			}
 			audio_sound_gain(global.ambience_underwater, global.volume_ambient * global.volume_main, 0);
 		}
 		else
-		if (global.ambience > 0)
+		if (global.ambience != noone)
 		{
 			audio_sound_gain(global.ambience, global.volume_ambient * global.volume_main, 0);
-			audio_sound_gain(global.ambience_underwater, 0, 0);
+			if (global.ambience_underwater != noone)
+			{
+				audio_sound_gain(global.ambience_underwater, 0, 0);
+			}
 		}
 	}
 	else
 	{
-		if (global.music > 0)
+		if (current_music_playing != noone)
 		{
-			audio_sound_gain(global.music, global.volume_music * global.volume_main, 0);
-			audio_sound_gain(global.music_underwater, 0, 0);
+			audio_sound_gain(current_music_playing, global.volume_music * global.volume_main, 0);
+			if (global.music_underwater != noone)
+			{
+				audio_sound_gain(global.music_underwater, 0, 0);
+			}
 		}
-		if (global.ambience > 0)
+		if (global.ambience != noone)
 		{
 			audio_sound_gain(global.ambience, global.volume_ambient * global.volume_main, 0);
-			audio_sound_gain(global.ambience_underwater, 0, 0);
+			if (global.ambience_underwater != noone)
+			{
+				audio_sound_gain(global.ambience_underwater, 0, 0);
+			}
 		}
 	}
 }
@@ -602,11 +641,11 @@ else
 	{
 		audio_stop_sound(music_invincible);
 	}
-	if (!audio_is_playing(global.music))
+	if (!audio_is_playing(current_music_playing))
 	{
 		if (!audio_is_playing(snd_hurry_up))
 		{
-			scr_audio_play(global.music, volume_source.music);
+			scr_audio_play(current_music_playing, volume_source.music);
 			if (audio_is_playing(global.loading_music))
 			{
 				audio_stop_sound(global.loading_music);
@@ -640,7 +679,7 @@ if (invincible_timer >= 50)
 		scr_audio_play(snd_star_bound, volume_source.sound);
 	}
 	/* Stop the main music so it can restart from beginning when invincibility wears off */
-	audio_stop_sound(global.music);
+	audio_stop_sound(current_music_playing);
 	audio_stop_sound(global.music_underwater);
 }
 #endregion /* Invincible Music END */
@@ -663,7 +702,7 @@ if (!goal)
 		}
 		if (audio_is_playing(snd_hurry_up))
 		{
-			audio_stop_sound(global.music);
+			audio_stop_sound(current_music_playing);
 			audio_stop_sound(global.music_underwater);
 		}
 	}

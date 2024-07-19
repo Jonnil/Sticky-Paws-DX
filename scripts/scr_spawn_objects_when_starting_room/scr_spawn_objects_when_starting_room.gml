@@ -588,44 +588,21 @@ function scr_spawn_objects_when_starting_room()
 				case LEVEL_OBJECT_ID.ID_ARROW_SIGN_SMALL: with(instance_create_depth(x, y, 0, obj_arrow_sign_small)){if (instance_exists(obj_leveleditor_placed_object)){second_x = instance_nearest(x, y, obj_leveleditor_placed_object).second_x;second_y = instance_nearest(x, y, obj_leveleditor_placed_object).second_y;}}break;
 				case LEVEL_OBJECT_ID.ID_CHECKPOINT:
 					/* Set the correct activation state if this checkpoint should only appear after certain amounts of defeats */
-					if (variable_instance_exists(self, "second_x"))
+					if (variable_instance_exists(self, "second_x") && second_x != "")
+					&& (real(second_x) > 0) /* If this variable is above 0, that is the only time it should check for "lives until assist" variable */
+					&& (global.lives_until_assist >= real(second_x)) /* If you have got defeated enough times to make the checkpoint appear */
+					&& (!global.doing_clear_check_level) /* Checkpoints that appear after certain amounts of defeats should not appear when doing a clear check */
+					|| (variable_instance_exists(self, "second_x") && second_x != "")
+					&& (real(second_x) <= 0)
+					|| (variable_instance_exists(self, "second_x") && second_x == "")
+					|| (!variable_instance_exists(self, "second_x"))
 					{
-						if (second_x != "")
-						&& (real(second_x) > 0) /* If this variable is above 0, that is the only time it should check for "lives until assist" variable */
-						&& (global.lives_until_assist >= real(second_x)) /* If you have got defeated enough times to make the checkpoint appear */
-						&& (!global.doing_clear_check_level) /* Checkpoints that appear after certain amounts of defeats should not appear when doing a clear check */
-						|| (second_x != "")
-						&& (real(second_x) <= 0)
-						|| (second_x == "")
+						obj = instance_create_depth(x, y, 0, obj_checkpoint);
+						with(obj_checkpoint) /* Update EVERY checkpoints that have been spawned */
 						{
-							instance_create_depth(x, y, 0, obj_checkpoint);
-							
-							#region /* Tell the player how many checkpoints exist in the level */
-							if (instance_exists(obj_checkpoint))
-							{
-								with(obj_checkpoint)
-								{
-									checkpoint_max_number = instance_number(obj_checkpoint);
-								}
-							}
-							#endregion /* Tell the player how many checkpoints exist in the level END */
-							
+							checkpoint_max_number = instance_number(obj_checkpoint); /* Tell the player how many checkpoints exist in the level */
 						}
-					}
-					else
-					{
-						instance_create_depth(x, y, 0, obj_checkpoint);
-						
-						#region /* Tell the player how many checkpoints exist in the level */
-						if (instance_exists(obj_checkpoint))
-						{
-							with(obj_checkpoint)
-							{
-								checkpoint_max_number = instance_number(obj_checkpoint);
-							}
-						}
-						#endregion /* Tell the player how many checkpoints exist in the level END */
-						
+						scr_spawn_objects_with_items_inside(obj);
 					}
 					break;
 				case LEVEL_OBJECT_ID.ID_SPIKES_EMERGE_BLOCK: instance_create_depth(x, y + 16, 0, obj_spikes_emerge);break;

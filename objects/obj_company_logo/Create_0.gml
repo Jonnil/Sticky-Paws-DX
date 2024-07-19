@@ -490,6 +490,7 @@ scr_set_default_audio_settings();
 
 global.music = noone;
 global.music_underwater = noone;
+global.music_boss = noone;
 global.ambience = noone;
 global.ambience_underwater = noone;
 global.level_clear_melody = noone;

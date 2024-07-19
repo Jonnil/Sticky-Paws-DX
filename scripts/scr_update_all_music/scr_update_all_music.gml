@@ -16,26 +16,33 @@ function scr_update_all_music()
 	
 	#region /* Custom Music */
 	
-	if (audio_exists(global.music))
+	#region /* Destroy the audio streams before loading new ones */
+	if (global.music != noone)
+	&& (audio_exists(global.music))
 	{
 		audio_destroy_stream(global.music);
 	}
-	if (audio_exists(global.music_underwater))
+	if (global.music_underwater != noone)
+	&& (audio_exists(global.music_underwater))
 	{	
 		audio_destroy_stream(global.music_underwater);
 	}
-	if (audio_exists(global.ambience))
+	if (global.ambience != noone)
+	&& (audio_exists(global.ambience))
 	{	
 		audio_destroy_stream(global.ambience);
 	}
-	if (audio_exists(global.ambience_underwater))
+	if (global.ambience_underwater != noone)
+	&& (audio_exists(global.ambience_underwater))
 	{	
 		audio_destroy_stream(global.ambience_underwater);
 	}
-	if (audio_exists(global.level_clear_melody))
+	if (global.level_clear_melody != noone)
+	&& (audio_exists(global.level_clear_melody))
 	{	
 		audio_destroy_stream(global.level_clear_melody);
 	}
+	#endregion /* Destroy the audio streams before loading new ones END */
 	
 	#region /* Update Music */
 	/* OGG small letter File */

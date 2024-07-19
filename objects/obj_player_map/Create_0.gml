@@ -275,7 +275,7 @@ best_time_text = "";
 /* Stop audio */
 audio_stop_sound(snd_skidding);
 audio_stop_sound(snd_skidding_ice);
-audio_stop_sound(snd_music_boss);
+audio_stop_sound(global.music_boss);
 audio_stop_sound(global.music);
 audio_stop_sound(global.music_underwater);
 audio_stop_sound(global.ambience);

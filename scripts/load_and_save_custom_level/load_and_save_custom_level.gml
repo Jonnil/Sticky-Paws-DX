@@ -219,6 +219,7 @@ function scr_save_custom_level_json()
 				ds_list_add(obj_ids, LEVEL_OBJECT_ID.ID_BUMP_IN_GROUND);
 				ds_list_add(obj_ids, LEVEL_OBJECT_ID.ID_INVISIBLE_BUMP_IN_GROUND);
 				ds_list_add(obj_ids, LEVEL_OBJECT_ID.ID_BUCKET);
+				ds_list_add(obj_ids, LEVEL_OBJECT_ID.ID_CHECKPOINT);
 				
 				ds_list_add(obj_ids, LEVEL_OBJECT_ID.ID_BASIC_ENEMY);
 				ds_list_add(obj_ids, LEVEL_OBJECT_ID.ID_BASIC_ENEMY_COIL_SPRING);

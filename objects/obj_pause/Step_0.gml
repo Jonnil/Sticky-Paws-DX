@@ -213,10 +213,22 @@ if (keyboard_check_pressed(vk_escape))
 	{
 		scr_config_save(); /* Save Config */
 		audio_resume_all();
-		audio_sound_gain(global.music, global.volume_music * global.volume_main, 0);
-		audio_sound_gain(global.music_underwater, 0, 0);
-		audio_sound_gain(global.ambience, global.volume_ambient * global.volume_main, 0);
-		audio_sound_gain(global.ambience_underwater, 0, 0);
+		if (global.music != noone)
+		{
+			audio_sound_gain(global.music, global.volume_music * global.volume_main, 0);
+		}
+		if (global.music_underwater != noone)
+		{
+			audio_sound_gain(global.music_underwater, 0, 0);
+		}
+		if (global.ambience != noone)
+		{
+			audio_sound_gain(global.ambience, global.volume_ambient * global.volume_main, 0);
+		}
+		if (global.ambience_underwater != noone)
+		{
+			audio_sound_gain(global.ambience_underwater, 0, 0);
+		}
 		global.pause = false;
 	}
 }
@@ -244,10 +256,22 @@ if (!hide_menu_for_clean_screenshots)
 				
 				#region /* Return to game */
 				audio_resume_all();
-				audio_sound_gain(global.music, global.volume_music * global.volume_main, 0);
-				audio_sound_gain(global.music_underwater, 0, 0);
-				audio_sound_gain(global.ambience, global.volume_ambient * global.volume_main, 0);
-				audio_sound_gain(global.ambience_underwater, 0, 0);
+				if (global.music != noone)
+				{
+					audio_sound_gain(global.music, global.volume_music * global.volume_main, 0);
+				}
+				if (global.music_underwater != noone)
+				{
+					audio_sound_gain(global.music_underwater, 0, 0);
+				}
+				if (global.ambience != noone)
+				{
+					audio_sound_gain(global.ambience, global.volume_ambient * global.volume_main, 0);
+				}
+				if (global.ambience_underwater != noone)
+				{
+					audio_sound_gain(global.ambience_underwater, 0, 0);
+				}
 				global.pause = false;
 				#endregion /* Return to game END */
 				
@@ -986,10 +1010,22 @@ if (!hide_menu_for_clean_screenshots)
 			{
 				scr_config_save(); /* Save Config */
 				audio_resume_all();
-				audio_sound_gain(global.music, global.volume_music * global.volume_main, 0);
-				audio_sound_gain(global.music_underwater, 0, 0);
-				audio_sound_gain(global.ambience, global.volume_ambient * global.volume_main, 0);
-				audio_sound_gain(global.ambience_underwater, 0, 0);
+				if (global.music != noone)
+				{
+					audio_sound_gain(global.music, global.volume_music * global.volume_main, 0);
+				}
+				if (global.music_underwater != noone)
+				{
+					audio_sound_gain(global.music_underwater, 0, 0);
+				}
+				if (global.ambience != noone)
+				{
+					audio_sound_gain(global.ambience, global.volume_ambient * global.volume_main, 0);
+				}
+				if (global.ambience_underwater != noone)
+				{
+					audio_sound_gain(global.ambience_underwater, 0, 0);
+				}
 				global.pause = false;
 			}
 			else

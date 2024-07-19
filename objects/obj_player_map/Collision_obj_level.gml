@@ -32,8 +32,11 @@ if (can_enter_level_automatically)
 			
 			if (brand_new_file)
 			{
-				audio_sound_gain(music_map, 0, 0);
-				audio_stop_sound(music_map);
+				if (music_map != noone)
+				{
+					audio_sound_gain(music_map, 0, 0);
+					audio_stop_sound(music_map);
+				}
 				audio_stop_all(); /* Stop all sound from playing whenever a brand new file is loaded, so nothing is playing at the loading screen first */
 				if (global.loading_music > 0)
 				{

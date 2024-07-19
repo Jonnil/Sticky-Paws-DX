@@ -1,11 +1,14 @@
 #region /* Make player spring */
-if (can_bounce == 0) {
+if (can_bounce == 0)
+{
 	audio_sound_pitch(snd_spring, 1);
 	scr_audio_play(snd_spring, volume_source.sound);
-	if (!other.horizontal_rope_climb) {
+	if (!other.horizontal_rope_climb)
+	{
 		image_index = 1;
 		image_speed = 1;
-		with(other) {
+		with(other)
+		{
 			var nearest_spring = instance_nearest(x, y, obj_spring);
 			can_climb_horizontal_rope_cooldown = 3;
 			can_dive = true; /* Can dive when you jump out of a spring still */
@@ -36,20 +39,25 @@ if (can_bounce == 0) {
 			spring_twist_sprite = true;
 			stick_to_wall = false;
 			
-			if (ground_pound >= true) {
+			if (ground_pound >= true)
+			{
 				effect_create_above(ef_smoke, x, bbox_bottom, 2, c_white);
 				image_index = 0;
 				ground_pound = false;
 				speed_max = 4;
-				with(instance_nearest(x, y, obj_camera)) {
+				with(instance_nearest(x, y, obj_camera))
+				{
 					shake = 10;
 				}
 				scr_audio_play(snd_hipattack, volume_source.sound);
 			}
-			if (hspeed < 0) {
+			if (hspeed < 0)
+			{
 				image_xscale = -1;
 			}
-			else if (hspeed > 0) {
+			else
+			if (hspeed > 0)
+			{
 				image_xscale = +1;
 			}
 		}

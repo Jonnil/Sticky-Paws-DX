@@ -10,7 +10,8 @@ room_speed = global.max_fps; /* Room Speed */
 /*direction = point_direction(scr_x_to_gui(x), scr_y_to_gui(y), device_mouse_x_to_gui(0), device_mouse_y_to_gui(0));*/
 
 #region /* Create object that always follows mouse */
-if (can_create_follow_mouse && !instance_exists(obj_follow_mouse)) {
+if (can_create_follow_mouse && !instance_exists(obj_follow_mouse))
+{
 	instance_create_depth(mouse_x, mouse_y, 0, obj_follow_mouse);
 }
 #endregion /* Create object that always follows mouse END */
@@ -299,14 +300,18 @@ ini_close(); switch_save_data_commit(); /* Remember to commit the save data! */
 #endregion /* Load Checkpoint Direction END */
 
 #region /* Play Ambience */
-if (!audio_is_playing(global.ambience)) {
+if (global.ambience != noone)
+&& (!audio_is_playing(global.ambience))
+{
 	scr_audio_play(global.ambience, volume_source.ambient);
 	audio_sound_gain(global.ambience, global.volume_ambient * global.volume_main, 0);
 }
 #endregion /* Play Ambience END */
 
 #region /* Play Underwater Ambience */
-if (!audio_is_playing(global.ambience_underwater)) {
+if (global.ambience_underwater != noone)
+&& (!audio_is_playing(global.ambience_underwater))
+{
 	scr_audio_play(global.ambience_underwater, volume_source.ambient);
 	audio_sound_gain(global.ambience_underwater, 0, 0);
 }
