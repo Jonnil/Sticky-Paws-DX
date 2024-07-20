@@ -50,6 +50,7 @@ function scr_zoom_camera_controls()
 	#region /* Zoom in and out controls */
 	if (key_in_hold && !key_out_hold)
 	{
+		show_zoom_value = 60 * 3;
 		global.deactivate_timer = 999; /* Force update deactivate region */
 		if (zoom_variable > zoom_minimum)
 		{
@@ -70,6 +71,7 @@ function scr_zoom_camera_controls()
 	else
 	if (key_out_hold && !key_in_hold)
 	{
+		show_zoom_value = 60 * 3;
 		global.deactivate_timer = 999; /* Force update deactivate region */
 		if (zoom_variable < zoom_maximum)
 		{

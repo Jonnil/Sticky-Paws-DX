@@ -37,6 +37,7 @@ else
 
 zoom_lerp = global.zoom_world_map;
 zoom_border_lerp = 0;
+show_zoom_value = 0;
 
 instance_create_depth(0, 0, 0, obj_background_brightness_gameplay); /* Create Background Brightness in Gameplay */
 

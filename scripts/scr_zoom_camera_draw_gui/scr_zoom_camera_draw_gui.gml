@@ -10,4 +10,18 @@ function scr_zoom_camera_draw_gui(width = 10)
 		draw_rectangle_color(0, display_get_gui_height() - width, display_get_gui_width(), display_get_gui_height(), c_red, c_red, c_red, c_red, false); /* Bottom */
 		draw_set_alpha(1);
 	}
+	
+	if (show_zoom_value > 0)
+	{
+		if (room == rm_leveleditor)
+		{
+			var what_zoom_value = global.zoom_level;
+		}
+		else
+		{
+			var what_zoom_value = global.zoom_world_map;
+		}
+		show_zoom_value--;
+		scr_draw_text_outlined(display_get_gui_width() * 0.5, 32, l10n_text("Zoom: ") + string(what_zoom_value), global.default_text_size, c_white, c_black, 1);
+	}
 }

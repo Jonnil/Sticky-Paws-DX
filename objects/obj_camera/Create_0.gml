@@ -392,6 +392,7 @@ switch(global.number_of_audio_channels)
 
 zoom_lerp = global.zoom_level;
 zoom_border_lerp = 0;
+show_zoom_value = 0;
 
 #region /* Set Particle System */
 part_system_rain = noone;
