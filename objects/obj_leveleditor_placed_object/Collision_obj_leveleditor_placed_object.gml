@@ -10,13 +10,14 @@ if (!global.actually_play_edited_level)
 	{
 		with(other)
 		{
+			show_message("bruh 1");
 			instance_destroy();
 		}
 	}
 	
 	#region /* Insert objects into specific objects that can hold items */
-	if (!drag_object)
-	&& (!other.drag_object)
+	if (drag_object == 0)
+	&& (other.drag_object == 0.5) /* When you have released the object you just dragged onto the other object */
 	&& (other.x == x)
 	&& (other.y == y)
 	&& (position_meeting(x, y, other))
@@ -48,6 +49,7 @@ if (!global.actually_play_edited_level)
 		item_inside = other.object;
 		with(other)
 		{
+			show_message("bruh 2");
 			instance_destroy();
 		}
 		alarm[0] = 1;

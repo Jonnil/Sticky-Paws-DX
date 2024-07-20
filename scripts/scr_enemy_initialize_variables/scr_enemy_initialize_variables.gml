@@ -30,6 +30,7 @@ function scr_enemy_initialize_variables()
 	sprite_used = "stand";
 	stomped_delay = 0;
 	stuck_in_wall_counter = 0;
+	invincibility_when_spawned = 10; /* This is so that the enemy can be spawned from bouncing on enemies that contain another enemy, or a block containing a enemy, without the enemy being spawned accidentally being defeated when it spawns */
 	
 	depth = +9;
 	mask_index = spr_small_mask;

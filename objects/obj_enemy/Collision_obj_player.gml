@@ -1,5 +1,6 @@
 /* Collision Event with player object */
 if (!die)
+&& (invincibility_when_spawned == 0)
 {
 	if (other.vspeed >= 0)
 	{

@@ -581,6 +581,16 @@ function scr_spawn_objects_when_starting_room()
 					obj.coil_spring = true;
 					scr_spawn_objects_with_items_inside(obj);
 					break;
+				case LEVEL_OBJECT_ID.ID_ENEMY_BULLET_LEFT:
+					obj = instance_create_depth(x, y, 0, obj_bullet);
+					obj.image_xscale = -1;
+					scr_spawn_objects_with_items_inside(obj);
+					break;
+				case LEVEL_OBJECT_ID.ID_ENEMY_BULLET_RIGHT:
+					obj = instance_create_depth(x, y, 0, obj_bullet);
+					obj.image_xscale = +1;
+					scr_spawn_objects_with_items_inside(obj);
+					break;
 				case LEVEL_OBJECT_ID.ID_BLASTER: instance_create_depth(x, y, 0, obj_blaster);break;
 				case LEVEL_OBJECT_ID.ID_SPRING: with(instance_create_depth(x, y, 0, obj_spring)){if (instance_exists(obj_leveleditor_placed_object)){second_x = instance_nearest(x, y, obj_leveleditor_placed_object).second_x;second_y = instance_nearest(x, y, obj_leveleditor_placed_object).second_y;}}break;
 				case LEVEL_OBJECT_ID.ID_LADDER: instance_create_depth(x, y, 0, obj_vine);break;

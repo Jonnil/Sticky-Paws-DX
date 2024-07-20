@@ -43,3 +43,8 @@ if (die)
 scr_dont_move_outside_view();
 
 scr_coil_spring_bouncing();
+
+if (invincibility_when_spawned > 0)
+{
+	invincibility_when_spawned--;
+}
