@@ -1682,7 +1682,7 @@ function scr_draw_upload_level_menu()
 				scr_switch_expand_save_data(); /* Expand the save data before upload */
 				if (global.save_data_size_is_sufficient)
 				{
-					if (os_is_network_connected())
+					if (os_is_network_connected()) /* Need to check if OS is connected to network before getting online */
 					{
 						scr_switch_update_online_status();
 						

@@ -125,6 +125,7 @@ function scr_draw_menu_search_id(what_kind_of_id = "level")
 		&& (keyboard_string != "")
 		&& (string_length(search_id) == id_max_length)
 		&& (search_id != undefined)
+		&& (os_is_network_connected()) /* Need to check if OS is connected to network before getting online */
 		{
 			if (global.clicking_ok_input_screen)
 			|| (automatically_search_for_id) /* If you enter this menu from "online level list menu", automatically enter the search ID and search for the level */

@@ -42,7 +42,7 @@ function scr_draw_report()
 	#region /* Send report information to the server */
 	if (menu == "report_send_to_server")
 	{
-		if (os_is_network_connected())
+		if (os_is_network_connected()) /* Need to check if OS is connected to network before getting online */
 		{
 			scr_switch_update_online_status();
 			

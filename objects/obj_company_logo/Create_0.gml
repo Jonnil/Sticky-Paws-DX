@@ -82,6 +82,7 @@ if (os_type == os_switch)
 	
 	#endregion /* Need to set these Switch specific functions END */
 	
+	global.free_communication_available = false; /* If free communication is disabled, you shouldn't be able to upload or download custom content. Set this to true when done debugging */
 	global.can_load_photographic_images = false; /* It's against Switch guidelines to be able to view photographic images in UGC */
 	global.show_prompt_when_changing_to_gamepad = false;
 	global.show_prompt_when_changing_to_keyboard_and_mouse = false;	

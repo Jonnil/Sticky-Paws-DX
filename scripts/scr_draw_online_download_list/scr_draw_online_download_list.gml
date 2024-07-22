@@ -6,45 +6,48 @@ function scr_draw_online_download_list()
 	
 	if (menu == "online_download_list_load")
 	{
-		draw_set_alpha(0.5);
-		draw_rectangle_color(0, 0, display_get_gui_width(), display_get_gui_height(), c_black, c_black, c_black, c_black, false);
-		draw_set_alpha(1);
-		
-		#region /* Get Online Download List */
-		/* Don't ever change "content type" in this script, so Async - HTTP Event is running correctly */
-		in_online_download_list_load_menu = true; /* Let Async - HTTP Event know that we want to load a onload download list */
-		
-		finished_level = undefined;
-		zero_defeats_level = undefined;
-		liked_content = undefined;
-		
-		/* Create DS Map to hold the HTTP Header info */
-		map = ds_map_create();
-		
-		/* Add to the header DS Map */
-		ds_map_add(map, "Host", global.base_url);
-		ds_map_add(map, "Content-Type", "application/json");
-		ds_map_add(map, "User-Agent", "gmdownloader");
-		ds_map_add(map, "X-API-Key", global.api_key);
-		
-		/* Send the HTTP GET request to the /level endpoint */
-		global.http_request_id = http_request("https://" + global.base_url + "/" + string(content_type) + "s", "GET", map, "");
-		ds_map_destroy(map);
-		#endregion /* Get Online Download List END */
-		
-		menu = "download_online_" + string(global.selected_online_download_index);
-		
-		/* Put the scroll position on the selected thumbnail immediately */
-		menu_cursor_y_position = menu_cursor_y_position_start;
-		menu_y_offset_real = menu_y_offset_real_start;
-		menu_y_offset = menu_y_offset_real_start;
-		
-		automatically_search_for_id = false;
-		in_online_download_list_menu = true;
-		menu_delay = 3;
-		
-		scr_draw_loading(1,,,"Loading from server"); /* Draw loading screen when loading download list END */
-		
+		if (os_is_network_connected()) /* Need to check if OS is connected to network before getting online */
+		{
+			draw_set_alpha(0.5);
+			draw_rectangle_color(0, 0, display_get_gui_width(), display_get_gui_height(), c_black, c_black, c_black, c_black, false);
+			draw_set_alpha(1);
+			
+			#region /* Get Online Download List */
+			/* Don't ever change "content type" in this script, so Async - HTTP Event is running correctly */
+			in_online_download_list_load_menu = true; /* Let Async - HTTP Event know that we want to load a onload download list */
+			
+			finished_level = undefined;
+			zero_defeats_level = undefined;
+			liked_content = undefined;
+			
+			/* Create DS Map to hold the HTTP Header info */
+			map = ds_map_create();
+			
+			/* Add to the header DS Map */
+			ds_map_add(map, "Host", global.base_url);
+			ds_map_add(map, "Content-Type", "application/json");
+			ds_map_add(map, "User-Agent", "gmdownloader");
+			ds_map_add(map, "X-API-Key", global.api_key);
+			
+			/* Send the HTTP GET request to the /level endpoint */
+			global.http_request_id = http_request("https://" + global.base_url + "/" + string(content_type) + "s", "GET", map, "");
+			ds_map_destroy(map);
+			#endregion /* Get Online Download List END */
+			
+			menu = "download_online_" + string(global.selected_online_download_index);
+			
+			/* Put the scroll position on the selected thumbnail immediately */
+			menu_cursor_y_position = menu_cursor_y_position_start;
+			menu_y_offset_real = menu_y_offset_real_start;
+			menu_y_offset = menu_y_offset_real_start;
+			
+			automatically_search_for_id = false;
+			in_online_download_list_menu = true;
+			menu_delay = 3;
+			
+			scr_draw_loading(1,,,"Loading from server"); /* Draw loading screen when loading download list END */
+		}
+		else
 		if (!os_is_network_connected())
 		{
 			if (content_type == "character")
@@ -164,7 +167,10 @@ function scr_draw_online_download_list()
 				old_currently_selected_id = currently_selected_id;
 				info_data = undefined;
 				global.online_download_list_info = "";
-				global.http_request_info = http_request("https://" + global.base_url + "/metadata/" + string(content_type) + "s/" + string_upper(currently_selected_id) + "?os_type=" + string(os_type), "GET", map, "");
+				if (os_is_network_connected()) /* Need to check if OS is connected to network before getting online */
+				{
+					global.http_request_info = http_request("https://" + global.base_url + "/metadata/" + string(content_type) + "s/" + string_upper(currently_selected_id) + "?os_type=" + string(os_type), "GET", map, "");
+				}
 			}
 			
 			if (info_data == undefined) && (in_online_download_list_menu)
