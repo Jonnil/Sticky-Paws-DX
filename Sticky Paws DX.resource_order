@@ -80,6 +80,7 @@
     {"name":"obj_door","order":30,"path":"objects/obj_door/obj_door.yy",},
     {"name":"obj_enemy_bowlingball","order":6,"path":"objects/obj_enemy_bowlingball/obj_enemy_bowlingball.yy",},
     {"name":"obj_enemy_only_wall","order":21,"path":"objects/obj_enemy_only_wall/obj_enemy_only_wall.yy",},
+    {"name":"obj_enemy_vengeful_spirit","order":8,"path":"objects/obj_enemy_vengeful_spirit/obj_enemy_vengeful_spirit.yy",},
     {"name":"obj_enemy","order":7,"path":"objects/obj_enemy/obj_enemy.yy",},
     {"name":"obj_erase_brush","order":12,"path":"objects/obj_erase_brush/obj_erase_brush.yy",},
     {"name":"obj_extra_life_pickup","order":15,"path":"objects/obj_extra_life_pickup/obj_extra_life_pickup.yy",},

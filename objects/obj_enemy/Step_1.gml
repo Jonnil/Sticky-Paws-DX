@@ -48,3 +48,21 @@ if (invincibility_when_spawned > 0)
 {
 	invincibility_when_spawned--;
 }
+
+if (die_volting == -1 || die_volting == 1)
+{
+	depth = -1000;
+	if (die_volting == -1)
+	{
+		image_angle -= 20;
+		hspeed = +4;
+	}
+	else
+	{
+		image_angle += 20;
+		hspeed = -4;
+	}
+	
+	gravity_direction = 270; /* Direction of the gravity */
+	gravity = 0.5; /* The gravity */
+}

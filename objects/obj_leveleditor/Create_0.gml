@@ -421,9 +421,10 @@ if (!global.actually_play_edited_level)
 	add_object(LEVEL_OBJECT_ID.ID_ENEMY_BOWLINGBALL_BLIND_COIL_SPRING, global.resource_pack_sprite_enemy_bowlingball_blind_walk, 0, spr_wall, 1, 0, c_white, 1, "", noone, true, 0);
 	add_object(LEVEL_OBJECT_ID.ID_BIG_STATIONARY_ENEMY, global.resource_pack_sprite_big_stationary_enemy, 0, spr_wall, 1, 0, c_white, 1, "", noone, true, 0);
 	add_object(LEVEL_OBJECT_ID.ID_BIG_STATIONARY_ENEMY_COIL_SPRING, global.resource_pack_sprite_big_stationary_enemy, 0, spr_wall, 1, 0, c_white, 1, "", noone, true, 0);
-	add_object(LEVEL_OBJECT_ID.ID_ENEMY_BULLET_LEFT, global.resource_pack_sprite_bullet, 0, spr_wall, 1, 270, c_white, 1, "", noone, false, 0);
+	add_object(LEVEL_OBJECT_ID.ID_ENEMY_BULLET_LEFT, global.resource_pack_sprite_bullet, 0, spr_wall, 1, 180, c_white, 1, "", noone, false, 0);
 	add_object(LEVEL_OBJECT_ID.ID_ENEMY_BULLET_RIGHT, global.resource_pack_sprite_bullet, 0, spr_wall, 1, 0, c_white, 1, "", noone, false, 0);
 	add_object(LEVEL_OBJECT_ID.ID_BLASTER, spr_blaster, 0, spr_wall, 1, 0, c_white, 1, "", noone, false, 0);
+	add_object(LEVEL_OBJECT_ID.ID_ENEMY_VENGEFUL_SPIRIT, global.resource_pack_sprite_enemy_vengeful_spirit, 0, spr_wall, 1, 0, c_white, 1, "", noone, false, 0);
 	
 	add_object(LEVEL_OBJECT_ID.ID_SPRING, spr_spring, 0, spr_wall, 1, 0, c_white, 1, "", noone, false, 0);
 	add_object(LEVEL_OBJECT_ID.ID_LADDER, spr_ladder, 0, spr_wall, 1, 0, c_white, 1, "", noone, true, 0);

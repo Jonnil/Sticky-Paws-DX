@@ -40,6 +40,7 @@ if (!global.actually_play_edited_level)
 	|| object == LEVEL_OBJECT_ID.ID_ENEMY_BOWLINGBALL_BLIND_COIL_SPRING
 	|| object == LEVEL_OBJECT_ID.ID_BIG_STATIONARY_ENEMY
 	|| object == LEVEL_OBJECT_ID.ID_BIG_STATIONARY_ENEMY_COIL_SPRING
+	|| object == LEVEL_OBJECT_ID.ID_ENEMY_VENGEFUL_SPIRIT
 	|| object == LEVEL_OBJECT_ID.ID_BOSS)
 	{
 		if (instance_exists(obj_leveleditor))

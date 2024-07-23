@@ -97,10 +97,9 @@ function scr_player_move_dive()
 			jump = 0;
 			spring = false;
 			move_towards_spring_endpoint = false;
-			if (!place_meeting(x, y + 1, obj_wall))
-			&& (!position_meeting(x, bbox_bottom + 1, obj_semisolid_platform))
-			&& (!position_meeting(bbox_left, bbox_bottom + 1, obj_semisolid_platform))
-			&& (!position_meeting(bbox_right, bbox_bottom + 1, obj_semisolid_platform))
+			if (!on_ground)
+			&& (sprite_mask >= 0)
+			&& (!collision_rectangle(bbox_left, bbox_bottom - sprite_get_height(sprite_mask) - 1, bbox_right, bbox_bottom, obj_wall, false, true))
 			{
 				crouch = false;
 			}

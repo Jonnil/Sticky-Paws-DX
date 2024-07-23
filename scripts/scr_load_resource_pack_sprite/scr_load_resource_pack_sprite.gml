@@ -46,6 +46,7 @@ function scr_load_resource_pack_sprite()
 		if (global.resource_pack_sprite_enemy_bowlingball_revive > 0){global.resource_pack_sprite_enemy_bowlingball_revive = spr_noone;}
 		if (global.resource_pack_sprite_enemy_bowlingball_stomped > 0){global.resource_pack_sprite_enemy_bowlingball_stomped = spr_noone;}
 		if (global.resource_pack_sprite_enemy_bowlingball_walk > 0){global.resource_pack_sprite_enemy_bowlingball_walk = spr_noone;}
+		if (global.resource_pack_sprite_enemy_vengeful_spirit > 0){global.resource_pack_sprite_enemy_vengeful_spirit = spr_noone;}
 		if (global.resource_pack_sprite_hp_pickup > 0){global.resource_pack_sprite_hp_pickup = spr_noone;}
 		if (global.resource_pack_sprite_invincibility_powerup > 0){global.resource_pack_sprite_invincibility_powerup = spr_noone;}
 		if (global.resource_pack_sprite_menu_button_1player > 0){global.resource_pack_sprite_menu_button_1player = spr_noone;}
@@ -119,6 +120,7 @@ function scr_load_resource_pack_sprite()
 		global.resource_pack_sprite_enemy_bowlingball_revive = scr_initialize_resource_pack_sprite("enemy_bowlingball_revive", global.resource_pack_sprite_enemy_bowlingball_revive);
 		global.resource_pack_sprite_enemy_bowlingball_stomped = scr_initialize_resource_pack_sprite("enemy_bowlingball_stomped", global.resource_pack_sprite_enemy_bowlingball_stomped);
 		global.resource_pack_sprite_enemy_bowlingball_walk = scr_initialize_resource_pack_sprite("enemy_bowlingball_walk", global.resource_pack_sprite_enemy_bowlingball_walk);
+		global.resource_pack_sprite_enemy_vengeful_spirit = scr_initialize_resource_pack_sprite("enemy_vengeful_spirit", global.resource_pack_sprite_enemy_vengeful_spirit);
 		global.resource_pack_sprite_hp_pickup = scr_initialize_resource_pack_sprite("hp_pickup", global.resource_pack_sprite_hp_pickup);
 		global.resource_pack_sprite_invincibility_powerup = scr_initialize_resource_pack_sprite("invincibility_powerup", global.resource_pack_sprite_invincibility_powerup);
 		global.resource_pack_sprite_menu_button_1player = scr_initialize_resource_pack_sprite("menu_button_1player", global.resource_pack_sprite_menu_button_1player);

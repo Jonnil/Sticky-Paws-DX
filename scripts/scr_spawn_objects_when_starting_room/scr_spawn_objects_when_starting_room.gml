@@ -581,6 +581,10 @@ function scr_spawn_objects_when_starting_room()
 					obj.coil_spring = true;
 					scr_spawn_objects_with_items_inside(obj);
 					break;
+				case LEVEL_OBJECT_ID.ID_ENEMY_VENGEFUL_SPIRIT:
+					obj = instance_create_depth(x, y, 0, obj_enemy_vengeful_spirit);
+					scr_spawn_objects_with_items_inside(obj);
+					break;
 				case LEVEL_OBJECT_ID.ID_ENEMY_BULLET_LEFT:
 					obj = instance_create_depth(x, y, 0, obj_bullet);
 					obj.image_xscale = -1;
@@ -860,7 +864,8 @@ function scr_spawn_objects_with_items_inside(what_object)
 {
 	
 	#region /* If there should be items put inside objects */
-	if (item_inside != 0)
+	if (variable_instance_exists(self, "item_inside"))
+	&& (item_inside != 0)
 	{
 		what_object.item_inside = item_inside;
 		

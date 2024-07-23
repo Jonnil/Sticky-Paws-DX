@@ -1,21 +1,4 @@
-if (die_volting == -1 || die_volting == 1)
-{
-	depth = -900;
-	if (die_volting == -1)
-	{
-		image_angle -= 20;
-		hspeed = 4;
-	}
-	else
-	{
-		image_angle += 20;
-		hspeed = -4;
-	}
-
-	gravity_direction = 270; /* Direction of the gravity */
-	gravity = 0.5; /* The gravity */
-}
-else
+if (die_volting == 0)
 {
 	gravity_direction = 270; /* Direction of the gravity */
 	if (!on_ground)
@@ -35,7 +18,7 @@ else
 	{
 		hspeed = 1;
 	}
-
+	
 	if (flat)
 	{
 		speed = 0;
@@ -50,11 +33,13 @@ else
 	}
 	else
 	{
-		if (instance_exists(obj_player) && distance_to_object(obj_player) < 256) {
+		if (instance_exists(obj_player) && distance_to_object(obj_player) < 256)
+		{
 			sprite_used = "angry";
 			sprite_index = blind ? global.resource_pack_sprite_basic_enemy_blind : global.resource_pack_sprite_basic_enemy_angry;
 		}
-		else {
+		else
+		{
 			sprite_used = "stand";
 			sprite_index = blind ? global.resource_pack_sprite_basic_enemy_blind : global.resource_pack_sprite_basic_enemy;
 		}

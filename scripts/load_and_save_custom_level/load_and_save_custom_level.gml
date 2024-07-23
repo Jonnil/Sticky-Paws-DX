@@ -231,6 +231,7 @@ function scr_save_custom_level_json()
 				ds_list_add(obj_ids, LEVEL_OBJECT_ID.ID_ENEMY_BOWLINGBALL_BLIND_COIL_SPRING);
 				ds_list_add(obj_ids, LEVEL_OBJECT_ID.ID_BIG_STATIONARY_ENEMY);
 				ds_list_add(obj_ids, LEVEL_OBJECT_ID.ID_BIG_STATIONARY_ENEMY_COIL_SPRING);
+				ds_list_add(obj_ids, LEVEL_OBJECT_ID.ID_ENEMY_VENGEFUL_SPIRIT);
 				ds_list_add(obj_ids, LEVEL_OBJECT_ID.ID_BOSS);
 				
 				if (ds_list_find_index(obj_ids, object) != -1)

@@ -593,6 +593,7 @@ global.resource_pack_sprite_enemy_bowlingball_blind_walk = spr_noone;
 global.resource_pack_sprite_enemy_bowlingball_revive = spr_noone;
 global.resource_pack_sprite_enemy_bowlingball_stomped = spr_noone;
 global.resource_pack_sprite_enemy_bowlingball_walk = spr_noone;
+global.resource_pack_sprite_enemy_vengeful_spirit = spr_noone;
 global.resource_pack_sprite_hp_pickup = spr_noone;
 global.resource_pack_sprite_invincibility_powerup = spr_noone;
 global.resource_pack_sprite_menu_button_1player = spr_noone;
@@ -683,3 +684,5 @@ scr_set_font();
 
 /* Set network settings before starting game */
 network_set_config(network_config_use_non_blocking_socket, 1);
+
+scr_switch_update_online_status();

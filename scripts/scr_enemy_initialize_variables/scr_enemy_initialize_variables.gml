@@ -32,6 +32,10 @@ function scr_enemy_initialize_variables()
 	stuck_in_wall_counter = 0;
 	invincibility_when_spawned = 10; /* This is so that the enemy can be spawned from bouncing on enemies that contain another enemy, or a block containing a enemy, without the enemy being spawned accidentally being defeated when it spawns */
 	
+	can_be_attacked_by_stomp = true;
+	can_be_attacked_by_dive = true;
+	can_be_attacked_by_damage_invulnerability = true;
+	
 	depth = +9;
 	mask_index = spr_small_mask;
 }

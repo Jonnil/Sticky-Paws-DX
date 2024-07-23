@@ -1,15 +1,13 @@
 function scr_get_todays_upload_count()
 {
-	
+	scr_switch_update_online_status(false);
 	
 	if (global.switch_logged_in)
 	&& (global.switch_account_network_service_available) /* Need to make sure that network service is available before going online */
 	&& (global.online_enabled)
 	&& (global.free_communication_available)
-	&& (os_is_network_connected()) /* Need to check if OS is connected to network before getting online */
+	&& (os_is_network_connected(network_connect_passive)) /* Need to check if OS is connected to network before getting online */
 	{
-		scr_switch_update_online_status(false);
-		
 		global.content_added_today = noone;
 		
 		/* Create DS Map to hold the HTTP Header info */

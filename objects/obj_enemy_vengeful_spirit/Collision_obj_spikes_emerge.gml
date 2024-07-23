@@ -1,0 +1,1 @@
+/* Vengeful spirit can go trough spikes */

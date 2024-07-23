@@ -71,6 +71,7 @@ function scr_unlock_placable_level_objects()
 	ds_list_add(all_items, LEVEL_OBJECT_ID.ID_ENEMY_BULLET_LEFT);
 	ds_list_add(all_items, LEVEL_OBJECT_ID.ID_ENEMY_BULLET_RIGHT);
 	ds_list_add(all_items, LEVEL_OBJECT_ID.ID_BOSS);
+	ds_list_add(all_items, LEVEL_OBJECT_ID.ID_ENEMY_VENGEFUL_SPIRIT);
 	ds_list_add(all_items, LEVEL_OBJECT_ID.ID_BLASTER);
 	ds_list_add(all_items, LEVEL_OBJECT_ID.ID_KEY);
 	ds_list_add(all_items, LEVEL_OBJECT_ID.ID_DOOR);

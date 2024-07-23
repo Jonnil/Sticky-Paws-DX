@@ -42,27 +42,29 @@ if (!global.actually_play_edited_level)
 		draw_enemy_with_spring = false;
 		
 		#region /* Set what item is drawn on top, if this object contains any times */
-		if (object == LEVEL_OBJECT_ID.ID_QUESTION_BLOCK)
-		|| (object == LEVEL_OBJECT_ID.ID_BRICK_BLOCK)
-		|| (object == LEVEL_OBJECT_ID.ID_MELON_BLOCK)
-		|| (object == LEVEL_OBJECT_ID.ID_BUMP_IN_GROUND)
-		|| (object == LEVEL_OBJECT_ID.ID_INVISIBLE_BUMP_IN_GROUND)
-		|| (object == LEVEL_OBJECT_ID.ID_BUCKET)
-		|| (object == LEVEL_OBJECT_ID.ID_CHECKPOINT)
+		if (object == LEVEL_OBJECT_ID.ID_QUESTION_BLOCK
+		|| object == LEVEL_OBJECT_ID.ID_BRICK_BLOCK
+		|| object == LEVEL_OBJECT_ID.ID_MELON_BLOCK
+		|| object == LEVEL_OBJECT_ID.ID_BUMP_IN_GROUND
+		|| object == LEVEL_OBJECT_ID.ID_INVISIBLE_BUMP_IN_GROUND
+		|| object == LEVEL_OBJECT_ID.ID_BUCKET
+		|| object == LEVEL_OBJECT_ID.ID_CHECKPOINT
 		
-		|| (object == LEVEL_OBJECT_ID.ID_BASIC_ENEMY)
-		|| (object == LEVEL_OBJECT_ID.ID_BASIC_ENEMY_COIL_SPRING)
-		|| (object == LEVEL_OBJECT_ID.ID_BASIC_ENEMY_BLIND)
-		|| (object == LEVEL_OBJECT_ID.ID_BASIC_ENEMY_BLIND_COIL_SPRING)
-		|| (object == LEVEL_OBJECT_ID.ID_ENEMY_BOWLINGBALL)
-		|| (object == LEVEL_OBJECT_ID.ID_ENEMY_BOWLINGBALL_COIL_SPRING)
-		|| (object == LEVEL_OBJECT_ID.ID_ENEMY_BOWLINGBALL_BLIND)
-		|| (object == LEVEL_OBJECT_ID.ID_ENEMY_BOWLINGBALL_BLIND_COIL_SPRING)
-		|| (object == LEVEL_OBJECT_ID.ID_BIG_STATIONARY_ENEMY)
-		|| (object == LEVEL_OBJECT_ID.ID_BIG_STATIONARY_ENEMY_COIL_SPRING)
-		|| (object == LEVEL_OBJECT_ID.ID_BOSS)
+		|| object == LEVEL_OBJECT_ID.ID_BASIC_ENEMY
+		|| object == LEVEL_OBJECT_ID.ID_BASIC_ENEMY_COIL_SPRING
+		|| object == LEVEL_OBJECT_ID.ID_BASIC_ENEMY_BLIND
+		|| object == LEVEL_OBJECT_ID.ID_BASIC_ENEMY_BLIND_COIL_SPRING
+		|| object == LEVEL_OBJECT_ID.ID_ENEMY_BOWLINGBALL
+		|| object == LEVEL_OBJECT_ID.ID_ENEMY_BOWLINGBALL_COIL_SPRING
+		|| object == LEVEL_OBJECT_ID.ID_ENEMY_BOWLINGBALL_BLIND
+		|| object == LEVEL_OBJECT_ID.ID_ENEMY_BOWLINGBALL_BLIND_COIL_SPRING
+		|| object == LEVEL_OBJECT_ID.ID_BIG_STATIONARY_ENEMY
+		|| object == LEVEL_OBJECT_ID.ID_BIG_STATIONARY_ENEMY_COIL_SPRING
+		|| object == LEVEL_OBJECT_ID.ID_ENEMY_VENGEFUL_SPIRIT
+		|| object == LEVEL_OBJECT_ID.ID_BOSS)
 		{
-			if (item_inside != 0)
+			if (variable_instance_exists(self, "item_inside"))
+			&& (item_inside != 0)
 			{
 				var grid = global.object_grid;
 				var grid_height = ds_grid_height(grid) - 1;
@@ -225,6 +227,7 @@ if (!global.actually_play_edited_level)
 			case LEVEL_OBJECT_ID.ID_BASIC_ENEMY:
 			case LEVEL_OBJECT_ID.ID_BASIC_ENEMY_BLIND:
 			case LEVEL_OBJECT_ID.ID_BIG_STATIONARY_ENEMY:
+			case LEVEL_OBJECT_ID.ID_ENEMY_VENGEFUL_SPIRIT:
 			case LEVEL_OBJECT_ID.ID_BOSS:
 				if (!first_created)
 				{

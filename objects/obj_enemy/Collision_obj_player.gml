@@ -10,9 +10,8 @@ if (!die)
 	if (stomped_delay <= 0)
 	{
 		if (other.invincible_timer > 0)
-		|| (other.taken_damage > 0)
-		|| (other.dive)
-		|| (other.can_attack_after_dive_on_ground > 0)
+		|| (can_be_attacked_by_damage_invulnerability && other.taken_damage > 0)
+		|| (can_be_attacked_by_dive && (other.dive || other.can_attack_after_dive_on_ground > 0))
 		{
 			if (other.key_jump_hold)
 			&& (!other.horizontal_rope_climb)
@@ -70,14 +69,15 @@ if (!die)
 	if (!die_volting)
 	&& (stomped_delay <= 0)
 	{
-		if (!other.on_ground) /* When player is in the air, it counts as you jumping at the enemy */
-		&& (!other.climb)
-		&& (other.stick_to_wall == 0)
-		|| (other.vspeed > 0)
-		|| (!other.climb)
-		&& (other.vspeed < 0)
-		|| (other.bbox_bottom < y)
-		|| (other.triplejumpdelay > 0) /* If you land on the ground too early, but you haven't been standing on the ground for too long, make it so it still counts as you jumping on the enemy */
+		if (can_be_attacked_by_stomp)
+		&& (!other.on_ground /* When player is in the air, it counts as you jumping at the enemy */
+		&& !other.climb
+		&& other.stick_to_wall == 0
+		|| other.vspeed > 0
+		|| !other.climb
+		&& other.vspeed < 0
+		|| other.bbox_bottom < y
+		|| other.triplejumpdelay > 0) /* If you land on the ground too early, but you haven't been standing on the ground for too long, make it so it still counts as you jumping on the enemy */
 		{
 			if (other.ground_pound != true)
 			&& (!flat)

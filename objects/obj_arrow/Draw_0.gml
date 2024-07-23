@@ -1,23 +1,6 @@
 depth = -bbox_bottom* 0.1;
 
-if (die_volting < 0)
-|| (die_volting > 0)
-{
-	if (die_volting < 0)
-	{
-		image_angle -= 20;
-		hspeed = +4;
-	}
-	else
-	{
-		image_angle += 20;
-		hspeed = -4;
-	}
-	/* Sets the gravity */
-	gravity_direction = 270; /* Direction of the gravity */
-	gravity = 0.5; /* The gravity */
-}
-else
+if (die_volting == 0)
 {
 	/* Sets the gravity */
 	gravity = 0; /* The gravity */

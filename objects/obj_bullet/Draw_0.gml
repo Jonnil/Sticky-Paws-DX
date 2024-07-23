@@ -1,24 +1,4 @@
-if (die_volting = - 1)
-|| (die_volting = +1)
-{
-	if (die_volting = - 1)
-	{
-		image_angle -= 20;
-		hspeed = +4;
-	}
-	else
-	{
-		image_angle += 20;
-		hspeed = -4;
-	}
-	#region /* Set the gravity */
-	gravity_direction = 270; /* Direction of the gravity */
-	gravity = 0.5; /* The gravity */
-	#endregion /* Set the gravity END */
-	
-	sprite_index = global.resource_pack_sprite_bullet;
-}
-else
+if (die_volting == 0)
 {
 	if (!flat)
 	{

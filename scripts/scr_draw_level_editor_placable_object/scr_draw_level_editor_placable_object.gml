@@ -17,6 +17,7 @@ function scr_draw_level_editor_placable_object(v_selected_object, v_place_object
 				can_make_place_size_bigger = v_can_make_place_size_bigger;
 				sprite_index = v_sprite_index;
 				mask_index = v_mask_index;
+				image_angle = v_rotation;
 				place_object = v_place_object_id; /* Set the currently selected object ID */
 				initialize_recent_object_selected = false;
 			}

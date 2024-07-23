@@ -2,7 +2,7 @@ function scr_switch_update_online_status(show_login_screen = true)
 {
 	if (os_type == os_switch)
 	{
-		if (os_is_network_connected()) /* Need to check if OS is connected to network before getting online */
+		if (os_is_network_connected(network_connect_passive)) /* Need to check if OS is connected to network before getting online */
 		{
 			global.switch_account_network_service_available = false;
 			
