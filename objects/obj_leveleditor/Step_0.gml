@@ -565,6 +565,7 @@ if (!global.actually_play_edited_level)
 	{
 		if (!pause)
 		&& (!in_modify_object_menu)
+		&& (menu_delay == 0)
 		{
 			pressing_play_timer = 1;
 		}
@@ -585,6 +586,7 @@ if (!global.actually_play_edited_level)
 		&& (!in_modify_object_menu)
 		&& (pressing_play_timer >= 1)
 		&& (!key_b_hold)
+		&& (menu_delay == 0)
 		{
 			if (!audio_is_playing(snd_charge_up))
 			{
@@ -599,6 +601,17 @@ if (!global.actually_play_edited_level)
 	}
 	#endregion /* Holding the play key down END */
 	
+	#region /* If you are going to play level from beginning or not */
+	if (pressing_play_timer > frames_until_playtest_from_start)
+	{
+		global.playing_level_from_beginning = true;
+	}
+	else
+	{
+		global.playing_level_from_beginning = false;
+	}
+	#endregion /* If you are going to play level from beginning or not END */
+	
 	#region /* Play Level when releasing Enter Key */
 	if (pressing_play_timer >= 1)
 	|| (global.full_level_map_screenshot)
@@ -612,7 +625,7 @@ if (!global.actually_play_edited_level)
 		|| (point_in_rectangle(mouse_get_x, mouse_get_y, play_level_icon_x - 32, display_get_gui_height() - 64, play_level_icon_x + 32, display_get_gui_height() + 64))
 		&& (mouse_check_button_released(mb_left))
 		|| (global.full_level_map_screenshot)
-		|| (pressing_play_timer > frames_until_playtest_from_start)
+		|| (global.playing_level_from_beginning)
 		{
 			if (!pause)
 			&& (!in_modify_object_menu)
@@ -657,7 +670,7 @@ if (!global.actually_play_edited_level)
 							alarm[1] = 1;
 						}
 						
-						if (pressing_play_timer >= frames_until_playtest_from_start || global.full_level_map_screenshot)
+						if (global.playing_level_from_beginning || global.full_level_map_screenshot)
 						{
 							instance_create_depth(obj_level_player1_start.x, obj_level_player1_start.y, 0, obj_camera);
 						}
@@ -1013,7 +1026,9 @@ if (!global.actually_play_edited_level)
 		|| (can_make_place_size_bigger && key_a_hold)
 		|| (key_a_pressed)
 		{
-			if (level_editor_menu == "")
+			if (menu != "level_length_recommendation_ok")
+			&& (menu != "level_length_recommendation_back")
+			&& (level_editor_menu == "")
 			&& (!gamepad_button_check(global.player_slot[1], button_play))
 			&& (!keyboard_check(key_play))
 			&& (!keyboard_check(vk_space))
@@ -1050,6 +1065,14 @@ if (!global.actually_play_edited_level)
 					if (place_object_delay_timer >= 2)
 					|| (!can_make_place_size_bigger)
 					{
+						if (if_clear_checked)
+						{
+							ini_open(game_save_id + "custom_levels/" + string(global.level_name) + "/data/level_information.ini");
+							ini_write_real("info", "clear_check", false); /* Set clear check to false when trying to upload within the level editor */
+							ini_close(); switch_save_data_commit(); /* Remember to commit the save data! */
+							if_clear_checked = false;
+						}
+						
 						drag_object = false;
 						
 						#region /* Brush size 1 */
@@ -1137,7 +1160,9 @@ if (!global.actually_play_edited_level)
 		#endregion /* Make object change difficulty layer depending on what difficulty layer is selected END */
 		
 		#region /* Delete / Erase Objects */
-		if (level_editor_menu == "")
+		if (menu != "level_length_recommendation_ok")
+		&& (menu != "level_length_recommendation_back")
+		&& (level_editor_menu == "")
 		&& (difficulty_layer == 0)
 		&& (!drag_object)
 		&& (erase_mode)
@@ -1155,6 +1180,13 @@ if (!global.actually_play_edited_level)
 			|| (key_b_hold)
 			|| (keyboard_check(key_erase_object))
 			{
+				if (if_clear_checked)
+				{
+					ini_open(game_save_id + "custom_levels/" + string(global.level_name) + "/data/level_information.ini");
+					ini_write_real("info", "clear_check", false); /* Set clear check to false when trying to upload within the level editor */
+					ini_close(); switch_save_data_commit(); /* Remember to commit the save data! */
+					if_clear_checked = false;
+				}
 				instance_create_depth(x, y, 0, obj_erase_brush);
 			}
 		}

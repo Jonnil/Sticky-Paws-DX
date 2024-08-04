@@ -116,6 +116,7 @@ function scr_select_custom_level_menu()
 		&& (menu != "upload_rules_do_not_show")
 		&& (menu != "upload_rules")
 		&& (menu != "level_editor_downloaded_level")
+		&& (menu != "level_length_recommendation_ok" && menu != "level_length_recommendation_back")
 		{
 			menu_delay = 3;
 			if (global.select_level_index - row < 0)
@@ -175,6 +176,7 @@ function scr_select_custom_level_menu()
 		&& (menu != "upload_rules_do_not_show")
 		&& (menu != "upload_rules")
 		&& (menu != "level_editor_downloaded_level")
+		&& (menu != "level_length_recommendation_ok" && menu != "level_length_recommendation_back")
 		{
 			menu_delay = 3;
 			if (global.select_level_index + row > ds_list_size(global.thumbnail_sprite) - 1)
@@ -219,6 +221,7 @@ function scr_select_custom_level_menu()
 	&& (menu != "upload_rules_do_not_show")
 	&& (menu != "upload_rules")
 	&& (menu != "level_editor_downloaded_level")
+	&& (menu != "level_length_recommendation_ok" && menu != "level_length_recommendation_back")
 	{
 		menu_delay = 3;
 		if (global.select_level_index - 1 < 0)
@@ -252,6 +255,7 @@ function scr_select_custom_level_menu()
 	&& (menu != "upload_rules_do_not_show")
 	&& (menu != "upload_rules")
 	&& (menu != "level_editor_downloaded_level")
+	&& (menu != "level_length_recommendation_ok" && menu != "level_length_recommendation_back")
 	{
 		menu_delay = 3;
 		if (global.select_level_index + 1 > ds_list_size(global.thumbnail_sprite) - 1)
@@ -287,6 +291,7 @@ function scr_select_custom_level_menu()
 		&& (menu != "upload_rules_do_not_show")
 		&& (menu != "upload_rules")
 		&& (menu != "level_editor_downloaded_level")
+		&& (menu != "level_length_recommendation_ok" && menu != "level_length_recommendation_back")
 		{
 			
 			#region /* Create New Level */
@@ -380,6 +385,8 @@ function scr_select_custom_level_menu()
 	&& (menu != "upload_rules_back")
 	&& (menu != "upload_rules_do_not_show")
 	&& (menu != "upload_rules")
+	&& (menu != "level_editor_downloaded_level")
+	&& (menu != "level_length_recommendation_ok" && menu != "level_length_recommendation_back")
 	&& (show_level_editor_corner_menu)
 	{
 		

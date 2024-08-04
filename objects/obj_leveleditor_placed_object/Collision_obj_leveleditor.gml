@@ -19,6 +19,8 @@ if (!other.set_difficulty_mode)
 		&& !other.pause
 		&& !other.hovering_over_icon
 		&& other.menu_delay == 0
+		&& other.menu != "level_length_recommendation_ok"
+		&& other.menu != "level_length_recommendation_back"
 		&& other.level_editor_menu == ""
 		&& !place_meeting(x, y, obj_level_player1_start)
 		&& !place_meeting(x, y, obj_level_player2_start)

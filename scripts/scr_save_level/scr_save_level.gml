@@ -99,38 +99,6 @@ function scr_save_level()
 	if (global.character_select_in_this_menu == "level_editor" && global.actually_play_edited_level)
 	{
 		
-		#region /* Update ranking highscore to actual custom level */
-		ini_open(global.use_temp_or_working + "custom_levels/" + string(level_name) + "/data/level_information.ini");
-		
-		var level_id = ini_read_string("info", "level_id", "");
-		
-		if (global.level_clear_rate == "clear" && global.doing_clear_check_level)
-		{
-			ini_write_real("info", "clear_check", true); /* If doing a level clear check, and winning the level, then add in level information that you have done a clear check */
-			global.go_to_menu_when_going_back_to_title = "upload_edit_name";
-		}
-		
-		#region /* Save Fastest Time */
-		if (global.timeattack_realmillisecond > 2)
-		{
-			if (!ini_key_exists("rank", "rank_timeattack_realmillisecond"))
-			|| (global.timeattack_realmillisecond < ini_read_real("rank", "rank_timeattack_realmillisecond", global.timeattack_realmillisecond))
-			{
-				ini_write_real("rank", "rank_timeattack_millisecond", global.timeattack_millisecond);
-				ini_write_real("rank", "rank_timeattack_second", global.timeattack_second);
-				ini_write_real("rank", "rank_timeattack_minute", global.timeattack_minute);
-				ini_write_real("rank", "rank_timeattack_realmillisecond", global.timeattack_realmillisecond);
-			}
-		}
-		#endregion /* Save Fastest Time END */
-		
-		if (score > ini_read_real("rank", "rank_level_score", false))
-		{
-			ini_write_real("rank", "rank_level_score", score);
-		}
-		ini_close(); switch_save_data_commit(); /* Remember to commit the save data! */
-		#endregion /* Update ranking highscore to actual custom level END */
-		
 		#region /* Save to custom level save file */
 		ini_open(game_save_id + "save_file/custom_level_save.ini");
 		
@@ -250,6 +218,50 @@ function scr_save_level()
 		
 	}
 	
+	#region /* Update ranking highscore to actual custom level */
+	if (global.character_select_in_this_menu == "level_editor" && (global.actually_play_edited_level || global.playing_level_from_beginning))
+	{
+		ini_open(global.use_temp_or_working + "custom_levels/" + string(level_name) + "/data/level_information.ini");
+		
+		var level_id = ini_read_string("info", "level_id", "");
+		
+		#region /* Save Fastest Time */
+		if (global.timeattack_realmillisecond > 2)
+		{
+			if (!ini_key_exists("rank", "rank_timeattack_realmillisecond"))
+			|| (global.timeattack_realmillisecond < ini_read_real("rank", "rank_timeattack_realmillisecond", global.timeattack_realmillisecond))
+			{
+				ini_write_real("rank", "rank_timeattack_millisecond", global.timeattack_millisecond);
+				ini_write_real("rank", "rank_timeattack_second", global.timeattack_second);
+				ini_write_real("rank", "rank_timeattack_minute", global.timeattack_minute);
+				ini_write_real("rank", "rank_timeattack_realmillisecond", global.timeattack_realmillisecond);
+			}
+		}
+		#endregion /* Save Fastest Time END */
+		
+		if (score > ini_read_real("rank", "rank_level_score", false))
+		{
+			ini_write_real("rank", "rank_level_score", score);
+		}
+		
+		if (global.level_clear_rate == "clear" && global.doing_clear_check_level)
+		{
+			ini_write_real("info", "clear_check", true); /* If doing a level clear check, and winning the level, then add in level information that you have done a clear check */
+			if (global.enable_level_length_target)
+			&& (global.timeattack_minute < global.target_length_minutes)
+			{
+				global.go_to_menu_when_going_back_to_title = "level_length_recommendation_back";
+			}
+			else
+			{
+				global.go_to_menu_when_going_back_to_title = "upload_edit_name";
+			}
+		}
+		
+		ini_close(); switch_save_data_commit(); /* Remember to commit the save data! */
+	}
+	#endregion /* Update ranking highscore to actual custom level END */
+	
 	/* Only reset the "big collectible already collected" variables in certain cases */
 	if (global.level_clear_rate == "clear")
 	|| (global.quit_level)
@@ -266,10 +278,14 @@ function scr_save_level()
 		global.how_many_big_collectible_collected = 0;
 	}
 	
-	global.timeattack_realmillisecond = 0;
-	global.timeattack_millisecond = 0;
-	global.timeattack_second = 0;
-	global.timeattack_minute = 0;
+	if (global.actually_play_edited_level) /* Only reset when actually playing level, this information needs to be used in level editor after playtesting from beginning */
+	&& (!global.doing_clear_check_level)
+	{
+		global.timeattack_realmillisecond = 0;
+		global.timeattack_millisecond = 0;
+		global.timeattack_second = 0;
+		global.timeattack_minute = 0;
+	}
 	global.level_clear_rate = noone;
 	score = 0;
 	

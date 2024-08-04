@@ -2594,7 +2594,7 @@
   "isEcma":false,
   "LibraryEmitters":[],
   "MetaData":{
-    "IDEVersion":"2024.800.0.593",
+    "IDEVersion":"2024.800.0.602",
   },
   "name":"Sticky Paws DX",
   "resources":[
@@ -2802,6 +2802,7 @@
     {"id":{"name":"scr_draw_level_editor_sub_menu","path":"scripts/scr_draw_level_editor_sub_menu/scr_draw_level_editor_sub_menu.yy",},},
     {"id":{"name":"scr_draw_level_editor_thumbnail","path":"scripts/scr_draw_level_editor_thumbnail/scr_draw_level_editor_thumbnail.yy",},},
     {"id":{"name":"scr_draw_level_hud","path":"scripts/scr_draw_level_hud/scr_draw_level_hud.yy",},},
+    {"id":{"name":"scr_draw_level_length_recommendation","path":"scripts/scr_draw_level_length_recommendation/scr_draw_level_length_recommendation.yy",},},
     {"id":{"name":"scr_draw_level_tags","path":"scripts/scr_draw_level_tags/scr_draw_level_tags.yy",},},
     {"id":{"name":"scr_draw_links_menu","path":"scripts/scr_draw_links_menu/scr_draw_links_menu.yy",},},
     {"id":{"name":"scr_draw_list_of_placable_objects","path":"scripts/scr_draw_list_of_placable_objects/scr_draw_list_of_placable_objects.yy",},},

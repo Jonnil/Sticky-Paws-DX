@@ -196,7 +196,22 @@ function scr_draw_upload_account_name(what_kind_of_file = "level")
 							else
 							if (what_kind_of_file == "level")
 							{
-								menu = "upload_edit_name"; /* Go to edit name, description, and tags menu */
+								ini_open(game_save_id + "custom_levels/" + string(global.level_name) + "/data/level_information.ini");
+								var short_level_minute = ini_read_real("rank", "rank_timeattack_minute", 0);
+								ini_close(); switch_save_data_commit(); /* Remember to commit the save data! */
+								
+								#region /* Tell the player before uploading, if the level they clear checked was too short or not */
+								if (global.enable_level_length_target)
+								&& (short_level_minute < global.target_length_minutes)
+								{
+									menu = "level_length_recommendation_back";
+								}
+								else
+								{
+									menu = "upload_edit_name"; /* Go to edit name, description, and tags menu */
+								}
+								#endregion /* Tell the player before uploading, if the level they clear checked was too short or not END */
+								
 							}
 						}
 						else

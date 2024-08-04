@@ -316,7 +316,6 @@ function scr_save_level_information()
 		
 		ini_write_string("info", "level_name", global.level_name);
 		ini_write_string("info", "username", string(global.username));
-		ini_write_real("info", "clear_check", false);
 		ini_write_real("info", "make_every_tileset_into_default_tileset", global.make_every_tileset_into_default_tileset);
 		
 		var player_starts = [		[obj_level_player1_start, "level_player1_start"],

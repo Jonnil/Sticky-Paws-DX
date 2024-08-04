@@ -287,6 +287,19 @@ function scr_draw_menu_search_id(what_kind_of_id = "level")
 						}
 						#endregion /* Show what version of the game the level was first created in END */
 						
+						#region /* Show if level uses custom backgrounds */
+						if (file_exists(download_temp_path + "custom_levels/" + string(global.level_name) + "/background/*"))
+						{
+							show_message("level_has_custom_backgrounds = true");
+							level_has_custom_backgrounds = true;
+						}
+						else
+						{
+							show_message("level_has_custom_backgrounds = false");
+							level_has_custom_backgrounds = false;
+						}
+						#endregion /* Show if level uses custom backgrounds END */
+						
 						ini_close();
 						
 						if (switch_check_profanity(global.level_description))

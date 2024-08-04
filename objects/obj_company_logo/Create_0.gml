@@ -313,6 +313,7 @@ global.iris_zoom_in = false; /* When you want to enable and disable iris zoom in
 global.player_can_go_outside_view = false; /* Let the player go outside view in specific scenarios */
 global.level_editor_level = 0; /* What level is selected in the custom level editor */
 global.first_time_opened_level_editor = true; /* If you have never opened the level editor before, then automatically show the level editor help menu */
+global.playing_level_from_beginning = false; /* If you are playtesting a level from beginning, need to remember that */
 global.narrator = 0; /* Select Narrator */
 global.pause = false; /* If game is paused or not */
 global.play_edited_level = false; /* Playtest edited level */
@@ -472,6 +473,8 @@ global.timeattack_second = 0;
 global.timeattack_minute = 0;
 global.timeattack_realmillisecond = 0;
 global.timeattack_realmillisecond_real = 0;
+global.enable_level_length_target = false;
+global.target_length_minutes = 3;
 
 #region /* Checkpoint Timer */
 global.checkpoint_millisecond = 0;

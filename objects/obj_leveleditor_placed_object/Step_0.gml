@@ -27,6 +27,13 @@ if (!global.actually_play_edited_level)
 	#region /* Actually drag the object */
 	if (drag_object)
 	{
+		if (obj_leveleditor.if_clear_checked)
+		{
+			ini_open(game_save_id + "custom_levels/" + string(global.level_name) + "/data/level_information.ini");
+			ini_write_real("info", "clear_check", false); /* Set clear check to false when trying to upload within the level editor */
+			ini_close(); switch_save_data_commit(); /* Remember to commit the save data! */
+			obj_leveleditor.if_clear_checked = false;
+		}
 		x = global.leveleditor_x;
 		y = global.leveleditor_y;
 	}

@@ -7,6 +7,8 @@ function scr_custom_level_select_with_the_mouse(all_loaded_what = global.all_loa
 	&& (menu != "upload_rules_back")
 	&& (menu != "upload_rules_do_not_show")
 	&& (menu != "upload_rules")
+	&& (menu != "level_editor_downloaded_level")
+	&& (menu != "level_length_recommendation_ok" && menu != "level_length_recommendation_back")
 	&& (menu != "load_custom_level")
 	&& (menu_delay == 0 && menu_joystick_delay == 0)
 	{

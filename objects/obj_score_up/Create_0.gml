@@ -9,6 +9,7 @@ checkpoint_max_number = 1;
 above_gui = false;
 above_gui_x = display_get_gui_width() * 0.5;
 above_gui_y = display_get_gui_height() * 0.5;
+above_gui_scale = 1;
 image_xscale = 0;
 image_yscale = 0;
 sprite_index = spr_noone;

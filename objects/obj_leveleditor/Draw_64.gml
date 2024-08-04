@@ -697,6 +697,8 @@ if (!global.actually_play_edited_level)
 		
 		scr_draw_welcome_to_level_editor_menu(); /* Welcome to Level Editor screen */
 		
+		scr_draw_level_length_recommendation();
+		
 		#region /* Object Specific Help */
 		/* At the bottom of the screen, you can view help for specific objects that you have currently selected */
 		if (object_help_description != "")

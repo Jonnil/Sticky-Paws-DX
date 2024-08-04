@@ -221,7 +221,6 @@ player_start_game = false; /* Character select Accept Selection */
 can_input_level_name = false;
 
 global.player_has_entered_goal = false;
-global.doing_clear_check_level = false;
 global.actually_play_edited_level = false;
 global.play_edited_level = false;
 global.basic_collectibles = 0;
@@ -241,6 +240,7 @@ global.timeattack_second = 0;
 global.timeattack_minute = 0;
 global.timeattack_realmillisecond = 0;
 global.timeattack_realmillisecond_real = 0;
+global.doing_clear_check_level = false; /* After the timeattack variables are reset, then set the "doing clear check level" variable to false */
 global.checkpoint_millisecond = 0; /* Checkpoint Timer */
 global.checkpoint_second = 0;
 global.checkpoint_minute = 0;

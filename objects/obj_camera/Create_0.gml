@@ -424,6 +424,16 @@ if (!global.actually_play_edited_level)
 		above_gui_y = 64;
 		score_up = "Test Mode";
 	}
+	if (global.playing_level_from_beginning)
+	{
+		with(instance_create_depth(display_get_gui_width() * 0.5, display_get_gui_height() * 0.5, 0, obj_score_up))
+		{
+			above_gui_scale = 0.5;
+			above_gui = true;
+			above_gui_y = 128;
+			score_up = "From Beginning";
+		}
+	}
 }
 
 if (autoscroll_speed_x <> 0)

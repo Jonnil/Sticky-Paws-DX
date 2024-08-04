@@ -575,8 +575,6 @@ if (!global.actually_play_edited_level)
 	can_save_to_level_information = false;
 	depth = -300;
 	
-	global.player_has_entered_goal = false;
-	
 	old_window_get_height = 0;
 	old_window_get_width = 0;
 	
@@ -662,6 +660,22 @@ if (!global.actually_play_edited_level)
 	background_brightness_menu_lerp = 0;
 	language_index = global.language_localization + 1;
 	language_mouse_scroll = 0;
+	
+	#region /* Toggle for menu warning whenever the player plays a level from beginning and finishes the level too fast */
+	if (global.playing_level_from_beginning && global.player_has_entered_goal)
+	{
+		ini_open(game_save_id + "custom_levels/" + string(global.level_name) + "/data/level_information.ini");
+		ini_write_real("info", "clear_check", true); /* If doing a level clear check, and winning the level, then add in level information that you have done a clear check */
+		ini_close(); switch_save_data_commit(); /* Remember to commit the save data! */
+		if_clear_checked = true;
+		if (global.enable_level_length_target)
+		{
+			menu = "level_length_recommendation_ok";
+		}
+	}
+	#endregion /* Toggle for menu warning whenever the player plays a level from beginning and finishes the level too fast END */
+	
+	global.player_has_entered_goal = false; /* Set this variable after checking for level length warning */
 	
 	valid_languages = noone;
 	for(var i = 1; i < ds_grid_width(global.language_local_data); i ++;)

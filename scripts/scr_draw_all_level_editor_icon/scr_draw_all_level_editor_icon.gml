@@ -127,6 +127,14 @@ function scr_draw_all_level_editor_icon()
 		|| (show_autoscroll_menu)
 		&& (key_b_pressed)
 		{
+			if (if_clear_checked)
+			{
+				ini_open(game_save_id + "custom_levels/" + string(global.level_name) + "/data/level_information.ini");
+				ini_write_real("info", "clear_check", false); /* Set clear check to false when trying to upload within the level editor */
+				ini_close(); switch_save_data_commit(); /* Remember to commit the save data! */
+				if_clear_checked = false;
+			}
+			
 			menu = "autoscroll_speed_x";
 			show_time_menu = false;
 			show_autoscroll_menu = !show_autoscroll_menu;
@@ -201,6 +209,14 @@ function scr_draw_all_level_editor_icon()
 		|| (show_time_menu)
 		&& (key_b_pressed)
 		{
+			if (if_clear_checked)
+			{
+				ini_open(game_save_id + "custom_levels/" + string(global.level_name) + "/data/level_information.ini");
+				ini_write_real("info", "clear_check", false); /* Set clear check to false when trying to upload within the level editor */
+				ini_close(); switch_save_data_commit(); /* Remember to commit the save data! */
+				if_clear_checked = false;
+			}
+			
 			menu = "in_editor_enable_time_countdown";
 			show_autoscroll_menu = false;
 			show_time_menu = !show_time_menu;

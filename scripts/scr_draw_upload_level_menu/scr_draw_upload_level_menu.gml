@@ -3,7 +3,6 @@ function scr_draw_upload_level_menu()
 	
 	#region /* Debug toggles */
 	var destroy_zip_after_uploading = true; /* Game should destroy the zip file once it's been uploaded to the server as a zip file. By default set this to true */
-	var skip_clear_check = false;
 	#endregion /* Debug toggles END */
 	
 	var upload_y = 42 * 2;
@@ -77,7 +76,7 @@ function scr_draw_upload_level_menu()
 	}
 	else
 	{
-		open_upload_menu = false
+		open_upload_menu = false;
 	}
 	
 	#region /* Pressing the Upload button */
@@ -104,13 +103,6 @@ function scr_draw_upload_level_menu()
 				open_sub_menu = false; /* Close the the sub menu when uploading level, so it doesn't interfere */
 			}
 			open_upload_menu = true;
-			
-			if (room == rm_leveleditor)
-			{
-				ini_open(game_save_id + "custom_levels/" + string(global.level_name) + "/data/level_information.ini");
-				ini_write_real("info", "clear_check", false); /* Set clear check to false when trying to upload within the level editor */
-				ini_close(); switch_save_data_commit(); /* Remember to commit the save data! */
-			}
 			
 			if (global.free_communication_available)
 			&& (menu_delay == 0 && menu_joystick_delay == 0)
@@ -217,44 +209,44 @@ function scr_draw_upload_level_menu()
 							global.play_edited_level = false;
 							menu_delay = 3;
 							ini_open(upload_level_path + "/data/level_information.ini");
-							if (ini_key_exists("info", "clear_check") && !skip_clear_check) || (skip_clear_check)
+							if (ini_read_real("info", "clear_check", false) == true)
 							{
-								if (ini_read_real("info", "clear_check", false) && !skip_clear_check) || (skip_clear_check)
+								if (global.username != "") /* Check if there is an username or not */
 								{
-									if (global.username != "") /* Check if there is an username or not */
+									if (os_is_network_connected()) /* Check if you're even connected to the internet */
 									{
-										if (os_is_network_connected()) /* Check if you're even connected to the internet */
+										scr_load_level_tags(upload_level_path);
+											
+										ini_open(game_save_id + "custom_levels/" + string(global.level_name) + "/data/level_information.ini");
+										var short_level_minute = ini_read_real("rank", "rank_timeattack_minute", 0);
+										development_stage_index = ini_read_real("info", "development_stage_index", 1);
+										visibility_index = ini_read_real("info", "visibility_index", 0);
+										ini_close(); switch_save_data_commit(); /* Remember to commit the save data! */
+											
+										menu_delay = 3;
+											
+										#region /* Tell the player before uploading, if the level they clear checked was too short or not */
+										if (global.enable_level_length_target)
+										&& (short_level_minute < global.target_length_minutes)
 										{
-											scr_load_level_tags(upload_level_path);
-											
-											ini_open(game_save_id + "custom_levels/" + string(global.level_name) + "/data/level_information.ini");
-											development_stage_index = ini_read_real("info", "development_stage_index", 1);
-											visibility_index = ini_read_real("info", "visibility_index", 0);
-											ini_close(); switch_save_data_commit(); /* Remember to commit the save data! */
-											
-											menu_delay = 3;
-											menu = "upload_edit_name"; /* Go to the menu where you can edit things about the custom level before uploading it*/
-											if (variable_instance_exists(self, "show_level_editor_corner_menu"))
-											{
-												show_level_editor_corner_menu = false;
-											}
+											menu = "level_length_recommendation_back";
 										}
 										else
 										{
-											menu_delay = 3;
-											caution_online_takes_you_back_to = "level_editor_upload";
-											menu = "no_internet_level"; /* If you're not connected to the internet, tell the player that */
-											if (variable_instance_exists(self, "show_level_editor_corner_menu"))
-											{
-												show_level_editor_corner_menu = false;
-											}
+											menu = "upload_edit_name"; /* Go to the menu where you can edit things about the custom level before uploading it*/
+										}
+										#endregion /* Tell the player before uploading, if the level they clear checked was too short or not END */
+											
+										if (variable_instance_exists(self, "show_level_editor_corner_menu"))
+										{
+											show_level_editor_corner_menu = false;
 										}
 									}
 									else
 									{
-										keyboard_string = "";
 										menu_delay = 3;
-										menu = "question_upload_level_edit_username_ok"; /* If there isn't an username, have the player make an username */
+										caution_online_takes_you_back_to = "level_editor_upload";
+										menu = "no_internet_level"; /* If you're not connected to the internet, tell the player that */
 										if (variable_instance_exists(self, "show_level_editor_corner_menu"))
 										{
 											show_level_editor_corner_menu = false;
@@ -263,8 +255,9 @@ function scr_draw_upload_level_menu()
 								}
 								else
 								{
+									keyboard_string = "";
 									menu_delay = 3;
-									menu = "clear_check_yes";
+									menu = "question_upload_level_edit_username_ok"; /* If there isn't an username, have the player make an username */
 									if (variable_instance_exists(self, "show_level_editor_corner_menu"))
 									{
 										show_level_editor_corner_menu = false;
@@ -871,7 +864,6 @@ function scr_draw_upload_level_menu()
 			#region /* If at any point the game checks that the level isn't clear checked, then go to the clear check menu */
 			ini_open(upload_level_path + "/data/level_information.ini");
 			if (!ini_read_real("info", "clear_check", false))
-			&& (!skip_clear_check)
 			{
 				menu = "clear_check_yes";
 				if (variable_instance_exists(self, "show_level_editor_corner_menu"))
@@ -1034,7 +1026,22 @@ function scr_draw_upload_level_menu()
 				else
 				if (level_editor_edit_name && global.level_name == old_level_name)
 				{
-					menu = "upload_edit_name";
+					ini_open(game_save_id + "custom_levels/" + string(global.level_name) + "/data/level_information.ini");
+					var short_level_minute = ini_read_real("rank", "rank_timeattack_minute", 0);
+					ini_close(); switch_save_data_commit(); /* Remember to commit the save data! */
+					
+					#region /* Tell the player before uploading, if the level they clear checked was too short or not */
+					if (global.enable_level_length_target)
+					&& (short_level_minute < global.target_length_minutes)
+					{
+						menu = "level_length_recommendation_back";
+					}
+					else
+					{
+						menu = "upload_edit_name"; /* Go to the menu where you can edit things about the custom level before uploading it*/
+					}
+					#endregion /* Tell the player before uploading, if the level they clear checked was too short or not END */
+					
 				}
 				else
 				if (!level_editor_edit_name)
@@ -1067,13 +1074,25 @@ function scr_draw_upload_level_menu()
 				can_input_level_name = false;
 				if (level_editor_edit_name)
 				{
-					menu = "upload_edit_name";
 					level_editor_edit_name = false;
+				}
+				
+				ini_open(game_save_id + "custom_levels/" + string(global.level_name) + "/data/level_information.ini");
+				var short_level_minute = ini_read_real("rank", "rank_timeattack_minute", 0);
+				ini_close(); switch_save_data_commit(); /* Remember to commit the save data! */
+				
+				#region /* Tell the player before uploading, if the level they clear checked was too short or not */
+				if (global.enable_level_length_target)
+				&& (short_level_minute < global.target_length_minutes)
+				{
+					menu = "level_length_recommendation_back";
 				}
 				else
 				{
-					menu = "upload_edit_name";
+					menu = "upload_edit_name"; /* Go to the menu where you can edit things about the custom level before uploading it*/
 				}
+				#endregion /* Tell the player before uploading, if the level they clear checked was too short or not END */
+				
 			}
 		}
 		#endregion /* Press Escape to back out from name input menu END */

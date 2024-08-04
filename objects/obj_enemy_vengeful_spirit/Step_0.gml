@@ -5,7 +5,7 @@ if (!die)
 	yy = lerp(yy, instance_nearest(x, y, obj_player).y, 0.1);
 	speed = lerp(speed, 3, 0.01);
 	
-	move_towards_point(xx, yy, speed);
+	move_towards_point(xx, yy - scr_wave(-10, +10), speed);
 	
 	if (hspeed < 0)
 	{

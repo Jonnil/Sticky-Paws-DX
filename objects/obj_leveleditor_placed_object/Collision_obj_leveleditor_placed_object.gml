@@ -10,7 +10,6 @@ if (!global.actually_play_edited_level)
 	{
 		with(other)
 		{
-			show_message("bruh 1");
 			instance_destroy();
 		}
 	}
@@ -50,7 +49,6 @@ if (!global.actually_play_edited_level)
 		item_inside = other.object;
 		with(other)
 		{
-			show_message("bruh 2");
 			instance_destroy();
 		}
 		alarm[0] = 1;

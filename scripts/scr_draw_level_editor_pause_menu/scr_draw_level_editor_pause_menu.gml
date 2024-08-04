@@ -246,6 +246,14 @@ function scr_draw_level_editor_pause_menu()
 			&& (!can_input_level_name)
 			&& (keyboard_check_pressed(vk_enter))
 			{
+				if (if_clear_checked)
+				{
+					ini_open(game_save_id + "custom_levels/" + string(global.level_name) + "/data/level_information.ini");
+					ini_write_real("info", "clear_check", false); /* Set clear check to false when trying to upload within the level editor */
+					ini_close(); switch_save_data_commit(); /* Remember to commit the save data! */
+					if_clear_checked = false;
+				}
+				
 				level_editor_option_back_to_menu = ""; /* Reset this variable to nothing */
 				quit_level_editor = 0;
 				can_input_level_name = false;

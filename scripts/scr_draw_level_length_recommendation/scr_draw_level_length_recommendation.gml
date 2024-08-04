@@ -1,0 +1,162 @@
+function scr_draw_level_length_recommendation()
+{
+	
+	#region /* Show short level warning */
+	if (menu == "level_length_recommendation_ok")
+	|| (menu == "level_length_recommendation_back")
+	{
+		if (global.timeattack_realmillisecond == 0)
+		{
+			ini_open(game_save_id + "custom_levels/" + string(global.level_name) + "/data/level_information.ini");
+			global.timeattack_minute = ini_read_real("rank", "rank_timeattack_minute", 0);
+			global.timeattack_second = ini_read_real("rank", "rank_timeattack_second", 0);
+			global.timeattack_realmillisecond = ini_read_real("rank", "rank_timeattack_realmillisecond", 0);
+			ini_close(); switch_save_data_commit(); /* Remember to commit the save data! */
+		}
+		
+		draw_set_alpha(0.9);
+		draw_rectangle_color(0, 0, display_get_gui_width(), display_get_gui_height(), c_black, c_black, c_black, c_black, false);
+		draw_set_alpha(1);
+		
+		if (room == rm_title)
+		|| (variable_instance_exists(self, "pause") && pause)
+		{
+			if (variable_instance_exists(self, "show_level_editor_corner_menu"))
+			{
+				show_level_editor_corner_menu = false;
+			}
+			var box_height = display_get_gui_height() * 0.5 + 64 + 64 + 42;
+			var show_back_button = true;
+		}
+		else
+		{
+			var box_height = display_get_gui_height() * 0.5 + 64 + 64;
+			var show_back_button = false;
+		}
+		
+		if (global.timeattack_minute < global.target_length_minutes)
+		{
+			var short_level_color = c_orange;
+		}
+		else
+		{
+			var short_level_color = c_lime;
+		}
+		draw_roundrect_color_ext(display_get_gui_width() * 0.5 - 440 - 4, display_get_gui_height() * 0.5 - 64 - 4, display_get_gui_width() * 0.5 + 440 + 4, box_height + 4, 50, 50, short_level_color, short_level_color, false);
+		draw_roundrect_color_ext(display_get_gui_width() * 0.5 - 440, display_get_gui_height() * 0.5 - 64, display_get_gui_width() * 0.5 + 440, box_height, 50, 50, c_black, c_black, false);
+		draw_set_halign(fa_center);
+		draw_set_valign(fa_middle);
+		if (global.timeattack_minute < global.target_length_minutes)
+		{
+			scr_draw_text_outlined(display_get_gui_width() * 0.5, display_get_gui_height() * 0.5 - 32, l10n_text("Level is shorter than your level length target"), global.default_text_size, c_black, short_level_color, 1);
+			scr_draw_text_outlined(display_get_gui_width() * 0.5, display_get_gui_height() * 0.5, l10n_text("Your time") + ": " + string(global.timeattack_minute) + ":" + string_replace_all(string_format(global.timeattack_second, 2, 0), " ", "0"), global.default_text_size, c_black, short_level_color, 1);
+			scr_draw_text_outlined(display_get_gui_width() * 0.5, display_get_gui_height() * 0.5 + 32, l10n_text("You have set your minimum") + ": " + string(global.target_length_minutes) + " " + l10n_text("minutes"), global.default_text_size, c_black, short_level_color, 1);
+		}
+		else
+		{
+			scr_draw_text_outlined(display_get_gui_width() * 0.5, display_get_gui_height() * 0.5 - 32, l10n_text("You hit your length target!"), global.default_text_size, c_black, short_level_color, 1);
+			scr_draw_text_outlined(display_get_gui_width() * 0.5, display_get_gui_height() * 0.5, l10n_text("Your time") + ": " + string(global.timeattack_minute) + ":" + string_replace_all(string_format(global.timeattack_second, 2, 0), " ", "0"), global.default_text_size, c_black, short_level_color, 1);
+			scr_draw_text_outlined(display_get_gui_width() * 0.5, display_get_gui_height() * 0.5 + 32, l10n_text("Your level is longer than") + ": " + string(global.target_length_minutes) + " " + l10n_text("minutes"), global.default_text_size, c_black, short_level_color, 1);
+		}
+		
+		var button_x = display_get_gui_width() * 0.5 - 185;
+		var ok_y = display_get_gui_height() * 0.5 + 64;
+		var back_y = display_get_gui_height() * 0.5 + 64 + 42;
+		
+		if (show_back_button)
+		{
+			draw_menu_button(button_x, ok_y, l10n_text("Upload Anyway"), "level_length_recommendation_ok", "level_length_recommendation_ok", c_red);
+			draw_menu_button(button_x, back_y, l10n_text("Back"), "level_length_recommendation_back");
+		}
+		else
+		{
+			draw_menu_button(button_x, ok_y, l10n_text("OK"), "level_length_recommendation_ok");
+		}
+		
+		if (menu == "level_length_recommendation_ok")
+		&& (key_a_pressed
+		|| mouse_check_button_released(mb_left)
+		&& point_in_rectangle(device_mouse_x_to_gui(0), device_mouse_y_to_gui(0), button_x, ok_y, button_x + 370, ok_y + 41))
+		{
+			menu_delay = 10;
+			global.timeattack_millisecond = 0;
+			global.timeattack_minute = 0;
+			global.timeattack_second = 0;
+			
+			if (room == rm_title)
+			{
+				if (variable_instance_exists(self, "open_sub_menu"))
+				{
+					open_sub_menu = false; /* Close the the sub menu when uploading level, so it doesn't interfere */
+				}
+				open_upload_menu = true;
+				menu = "upload_edit_name";
+			}
+			else
+			if (variable_instance_exists(self, "pause") && pause)
+			{
+				pressing_play_timer = 0;
+				if (if_clear_checked)
+				{
+					menu = "";
+					quit_level_editor ++;
+					global.go_to_menu_when_going_back_to_title = "upload_edit_name";
+				}
+				else
+				{
+					menu = "level_editor_upload_pressed";
+				}
+			}
+			if (variable_instance_exists(self, "pause") && !pause)
+			{
+				pressing_play_timer = 0;
+				menu = "";
+			}
+		}
+		
+		if (menu == "level_length_recommendation_back")
+		&& (key_a_pressed
+		|| mouse_check_button_released(mb_left)
+		&& point_in_rectangle(device_mouse_x_to_gui(0), device_mouse_y_to_gui(0), button_x, back_y, button_x + 370, back_y + 41))
+		{
+			menu_delay = 10;
+			global.timeattack_millisecond = 0;
+			global.timeattack_minute = 0;
+			global.timeattack_second = 0;
+			
+			if (room == rm_title)
+			{
+				if (variable_instance_exists(self, "show_level_editor_corner_menu"))
+				{
+					show_level_editor_corner_menu = true;
+				}
+				menu = "level_editor_make";
+			}
+			else
+			{
+				if (variable_instance_exists(self, "pause") && pause)
+				{
+					menu = "level_editor_upload";
+				}
+				else
+				{
+					menu = "";
+				}
+			}
+		}
+		
+		if (key_up)
+		&& (menu_delay == 0)
+		{
+			menu = "level_length_recommendation_ok";
+		}
+		else
+		if (key_down)
+		&& (menu_delay == 0)
+		{
+			menu = "level_length_recommendation_back";
+		}
+	}
+	#endregion /* Show short level warning END */
+	
+}

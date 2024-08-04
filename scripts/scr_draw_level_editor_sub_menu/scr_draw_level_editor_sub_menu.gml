@@ -17,6 +17,8 @@ function scr_draw_level_editor_sub_menu(xx = 394 * (global.select_level_index - 
 	&& (menu != "upload_rules_back")
 	&& (menu != "upload_rules_do_not_show")
 	&& (menu != "upload_rules")
+	&& (menu != "level_editor_downloaded_level")
+	&& (menu != "level_length_recommendation_ok" && menu != "level_length_recommendation_back")
 	{
 		
 		#region /* Navigate Sub Menu */
