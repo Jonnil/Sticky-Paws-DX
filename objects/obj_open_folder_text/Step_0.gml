@@ -1,3 +1,30 @@
+if (instance_exists(obj_title))
+&& (obj_title.key_up)
+|| (instance_exists(obj_pause))
+&& (obj_pause.key_up)
+|| (instance_exists(obj_leveleditor))
+&& (obj_leveleditor.key_up)
+{
+	key_up = true;
+}
+else
+{
+	key_up = false;
+}
+if (instance_exists(obj_title))
+&& (obj_title.key_down)
+|| (instance_exists(obj_pause))
+&& (obj_pause.key_down)
+|| (instance_exists(obj_leveleditor))
+&& (obj_leveleditor.key_down)
+{
+	key_down = true;
+}
+else
+{
+	key_down = false;
+}
+
 #region /* Menu cursor image speed */
 menu_cursor_index += 0.3;
 if (menu_cursor_index > 4)
@@ -13,41 +40,25 @@ var mouse_get_y = device_mouse_y_to_gui(0);
 
 #region /* Navigate menu up and down */
 if (menu == "copy_to_clipboard")
+&& (menu_delay == 0 && menu_joystick_delay == 0)
 {
-	if (instance_exists(obj_title))
-	&& (obj_title.key_up)
-	|| (instance_exists(obj_pause))
-	&& (obj_pause.key_up)
-	|| (instance_exists(obj_leveleditor))
-	&& (obj_leveleditor.key_up)
-	|| (instance_exists(obj_title))
-	&& (obj_title.key_down)
-	|| (instance_exists(obj_pause))
-	&& (obj_pause.key_down)
-	|| (instance_exists(obj_leveleditor))
-	&& (obj_leveleditor.key_down)
+	if (key_up)
+	|| (key_down)
 	{
+		menu_delay = 3;
 		menu = "back_open_folder_text";
 	}
 }
 else
 if (menu == "back_open_folder_text")
+&& (menu_delay == 0 && menu_joystick_delay == 0)
 {
-	if (instance_exists(obj_title))
-	&& (obj_title.key_up)
-	|| (instance_exists(obj_pause))
-	&& (obj_pause.key_up)
-	|| (instance_exists(obj_leveleditor))
-	&& (obj_leveleditor.key_up)
-	|| (instance_exists(obj_title))
-	&& (obj_title.key_down)
-	|| (instance_exists(obj_pause))
-	&& (obj_pause.key_down)
-	|| (instance_exists(obj_leveleditor))
-	&& (obj_leveleditor.key_down)
+	if (key_up)
+	|| (key_down)
 	{
 		if (show_copy_to_clipboard_button)
 		{
+			menu_delay = 3;
 			menu = "copy_to_clipboard";
 		}
 	}
@@ -81,10 +92,7 @@ if (show_copy_to_clipboard_button)
 				instance_destroy();
 			}
 		}
-		with(instance_create_depth(get_window_width * 0.5, get_window_height * 0.5 + 42, 0, obj_score_up))
-		{
-			score_up = "Copied";
-		}
+		show_copied_text = 60;
 	}
 }
 
@@ -162,3 +170,15 @@ if (menu_joystick_delay > 0)
 {
 	menu_joystick_delay --;
 }
+
+if (show_copied_text > 0)
+{
+	copied_text_size = lerp(copied_text_size, 2, 0.2);
+	show_copied_text--;
+}
+else
+{
+	copied_text_size = lerp(copied_text_size, 0, 0.2);
+}
+
+scr_menu_navigation_with_joystick_delay();

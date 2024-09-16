@@ -54,12 +54,12 @@ function scr_draw_upload_rules()
 		
 		if (content_type == "level")
 		{
-			upload_rules_do_not_show_level = draw_menu_checkmark(display_get_gui_width() * 0.5 - 280, display_get_gui_height() - 84, l10n_text("Do not show this screen again"), "upload_rules_do_not_show", upload_rules_do_not_show_level);
+			global.upload_rules_do_not_show_level = draw_menu_checkmark(display_get_gui_width() * 0.5 - 280, display_get_gui_height() - 84, l10n_text("Do not show this screen again"), "upload_rules_do_not_show", global.upload_rules_do_not_show_level);
 		}
 		else
 		if (content_type == "character")
 		{
-			upload_rules_do_not_show_character = draw_menu_checkmark(display_get_gui_width() * 0.5 - 280, display_get_gui_height() - 84, l10n_text("Do not show this screen again"), "upload_rules_do_not_show", upload_rules_do_not_show_character);
+			global.upload_rules_do_not_show_character = draw_menu_checkmark(display_get_gui_width() * 0.5 - 280, display_get_gui_height() - 84, l10n_text("Do not show this screen again"), "upload_rules_do_not_show", global.upload_rules_do_not_show_character);
 		}
 		draw_menu_button(display_get_gui_width() * 0.5 - 185, display_get_gui_height() - 42, l10n_text("I agree"), "upload_rules", "upload_rules");
 		
@@ -107,8 +107,8 @@ function scr_draw_upload_rules()
 				ini_close(); switch_save_data_commit(); /* Remember to commit the save data! */
 			}
 			ini_open(game_save_id + "save_file/config.ini");
-			ini_write_string("config", "upload_rules_do_not_show_level", upload_rules_do_not_show_level);
-			ini_write_string("config", "upload_rules_do_not_show_character", upload_rules_do_not_show_character);
+			ini_write_string("config", "upload_rules_do_not_show_level", global.upload_rules_do_not_show_level);
+			ini_write_string("config", "upload_rules_do_not_show_character", global.upload_rules_do_not_show_character);
 			ini_close(); switch_save_data_commit(); /* Remember to commit the save data! */
 			menu = caution_online_takes_you_to;
 			menu_delay = 3;

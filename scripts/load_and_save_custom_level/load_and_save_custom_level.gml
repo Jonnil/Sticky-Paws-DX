@@ -356,6 +356,55 @@ function scr_save_level_information()
 		
 		#region /* Save Custom Background Settings */
 		
+		#region /* Save if any custom background exist at all */
+		if (file_exists(game_save_id + "custom_levels/" + string(global.level_name) + "/background/" + "background1.png"))
+		|| (file_exists(game_save_id + "custom_levels/" + string(global.level_name) + "/background/" + "background1.gif"))
+		|| (file_exists(game_save_id + "custom_levels/" + string(global.level_name) + "/background/" + "background1.jpg"))
+		|| (file_exists(game_save_id + "custom_levels/" + string(global.level_name) + "/background/" + "background1.jpeg"))
+		
+		|| (file_exists(game_save_id + "custom_levels/" + string(global.level_name) + "/background/" + "background2.png"))
+		|| (file_exists(game_save_id + "custom_levels/" + string(global.level_name) + "/background/" + "background2.gif"))
+		|| (file_exists(game_save_id + "custom_levels/" + string(global.level_name) + "/background/" + "background2.jpg"))
+		|| (file_exists(game_save_id + "custom_levels/" + string(global.level_name) + "/background/" + "background2.jpeg"))
+		
+		|| (file_exists(game_save_id + "custom_levels/" + string(global.level_name) + "/background/" + "background3.png"))
+		|| (file_exists(game_save_id + "custom_levels/" + string(global.level_name) + "/background/" + "background3.gif"))
+		|| (file_exists(game_save_id + "custom_levels/" + string(global.level_name) + "/background/" + "background3.jpg"))
+		|| (file_exists(game_save_id + "custom_levels/" + string(global.level_name) + "/background/" + "background3.jpeg"))
+		
+		|| (file_exists(game_save_id + "custom_levels/" + string(global.level_name) + "/background/" + "background4.png"))
+		|| (file_exists(game_save_id + "custom_levels/" + string(global.level_name) + "/background/" + "background4.gif"))
+		|| (file_exists(game_save_id + "custom_levels/" + string(global.level_name) + "/background/" + "background4.jpg"))
+		|| (file_exists(game_save_id + "custom_levels/" + string(global.level_name) + "/background/" + "background4.jpeg"))
+		
+		|| (file_exists(game_save_id + "custom_levels/" + string(global.level_name) + "/background/" + "foreground1.png"))
+		|| (file_exists(game_save_id + "custom_levels/" + string(global.level_name) + "/background/" + "foreground1.gif"))
+		|| (file_exists(game_save_id + "custom_levels/" + string(global.level_name) + "/background/" + "foreground1.jpg"))
+		|| (file_exists(game_save_id + "custom_levels/" + string(global.level_name) + "/background/" + "foreground1.jpeg"))
+		
+		|| (file_exists(game_save_id + "custom_levels/" + string(global.level_name) + "/background/" + "foreground1_5.png"))
+		|| (file_exists(game_save_id + "custom_levels/" + string(global.level_name) + "/background/" + "foreground1_5.gif"))
+		|| (file_exists(game_save_id + "custom_levels/" + string(global.level_name) + "/background/" + "foreground1_5.jpg"))
+		|| (file_exists(game_save_id + "custom_levels/" + string(global.level_name) + "/background/" + "foreground1_5.jpeg"))
+		
+		|| (file_exists(game_save_id + "custom_levels/" + string(global.level_name) + "/background/" + "foreground2.png"))
+		|| (file_exists(game_save_id + "custom_levels/" + string(global.level_name) + "/background/" + "foreground2.gif"))
+		|| (file_exists(game_save_id + "custom_levels/" + string(global.level_name) + "/background/" + "foreground2.jpg"))
+		|| (file_exists(game_save_id + "custom_levels/" + string(global.level_name) + "/background/" + "foreground2.jpeg"))
+		
+		|| (file_exists(game_save_id + "custom_levels/" + string(global.level_name) + "/background/" + "foreground_secret.png"))
+		|| (file_exists(game_save_id + "custom_levels/" + string(global.level_name) + "/background/" + "foreground_secret.gif"))
+		|| (file_exists(game_save_id + "custom_levels/" + string(global.level_name) + "/background/" + "foreground_secret.jpg"))
+		|| (file_exists(game_save_id + "custom_levels/" + string(global.level_name) + "/background/" + "foreground_secret.jpeg"))
+		{
+			ini_write_real("info", "level_has_custom_background", true);
+		}
+		else
+		{
+			ini_write_real("info", "level_has_custom_background", false);
+		}
+		#endregion /* Save if any custom background exist at all END */
+		
 		#region /* Save Custom Backgrounds Offset */
 		ini_write_real("Custom Backgrounds", "custom_background1_x_offset", custom_background_x_offset[1]);
 		ini_write_real("Custom Backgrounds", "custom_background1_y_offset", custom_background_y_offset[1]);

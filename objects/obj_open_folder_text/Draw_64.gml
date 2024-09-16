@@ -66,5 +66,9 @@ if (!close)
 	draw_sprite_ext(spr_icon_back, 0, get_window_width * 0.5 - 185 + 20, get_window_height * 0.5 + 42 + 42 + 21, 1, 1, 0, c_white, 1);
 }
 
+draw_set_halign(fa_center);
+draw_set_valign(fa_middle);
+scr_draw_text_outlined(get_window_width * 0.5, get_window_height * 0.5 - 32, l10n_text("Copied"), global.default_text_size * copied_text_size, c_black, c_lime, 1);
+
 scr_draw_darken_screen_when_window_is_unfocused();
 scr_draw_cursor_mouse();

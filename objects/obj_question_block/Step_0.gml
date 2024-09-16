@@ -7,17 +7,20 @@ if (empty)
 if (can_break_this_block)
 && (break_this_block)
 {
-	if (place_meeting(x, y + 1, obj_player))
-	&& (!position_meeting(x, bbox_bottom + 1, obj_wall))
-	|| (place_meeting(bbox_left - 4, y, obj_player))
-	&& (!place_meeting(x - 4, y, obj_wall))
-	&& (instance_nearest(x, y, obj_player).dive)
-	|| (place_meeting(bbox_right + 4, y, obj_player))
-	&& (!place_meeting(x + 4, y, obj_wall))
-	&& (instance_nearest(x, y, obj_player).dive)
+	if (instance_exists(obj_player))
 	{
-		instance_nearest(x, y, obj_player).dive = false;
-		instance_nearest(x, y, obj_player).vspeed = +4;
+		if (place_meeting(x, y + 1, obj_player))
+		&& (!position_meeting(x, bbox_bottom + 1, obj_wall))
+		|| (place_meeting(bbox_left - 4, y, obj_player))
+		&& (!place_meeting(x - 4, y, obj_wall))
+		&& (instance_nearest(x, y, obj_player).dive)
+		|| (place_meeting(bbox_right + 4, y, obj_player))
+		&& (!place_meeting(x + 4, y, obj_wall))
+		&& (instance_nearest(x, y, obj_player).dive)
+		{
+			instance_nearest(x, y, obj_player).dive = false;
+			instance_nearest(x, y, obj_player).vspeed = +4;
+		}
 	}
 	with(instance_create_depth(x, y - 32, 0, obj_block_break))
 	{

@@ -13,14 +13,17 @@ var draw_arrow_outside_view_y = view_y + 32;
 #region /* Draw things underneath the player */
 
 #region /* Heart above head */
-if (have_heart_balloon) {
+if (have_heart_balloon)
+{
 	draw_set_alpha(image_alpha);
 	draw_line_width_color(xx, yy, xx_heart, yy_heart, 6, c_black, c_black);
 	draw_line_width_color(xx, yy, xx_heart, yy_heart, 3, c_white, c_white);
-	if (taken_damage % 2 == 0) {
+	if (taken_damage % 2 == 0)
+	{
 		var heart_alpha = image_alpha;
 	}
-	else {
+	else
+	{
 		var heart_alpha = image_alpha * 0.3;
 	}
 	draw_set_alpha(heart_alpha);
@@ -29,7 +32,8 @@ if (have_heart_balloon) {
 #endregion /* Heart above head END */
 
 #region /* Draw holding items in hands underneath the player sprite */
-if (hold_item_in_hands = "enemy_bowlingball") {
+if (hold_item_in_hands = "enemy_bowlingball")
+{
 	draw_sprite_ext(global.resource_pack_sprite_bowlingball, 0, xx + hold_item_in_hands_x, yy, draw_xscale * 1 * sign(image_xscale), draw_yscale * 1, 0, c_white, draw_alpha);
 	draw_sprite_ext(global.resource_pack_sprite_bowlingball_shine, 0, xx + hold_item_in_hands_x, yy, draw_xscale * 1, draw_yscale * 1, 0, c_white, draw_alpha);
 	draw_sprite_ext(global.resource_pack_sprite_enemy_bowlingball_stomped, 0, xx + hold_item_in_hands_x, yy, draw_xscale * 1 * sign(image_xscale), draw_yscale * 1, 0, c_white, draw_alpha);
@@ -48,7 +52,8 @@ else
 
 #region /* Draw arrow when player is outside top view */
 if (draw_arrow_outside_view_alpha > 0.01)
-&& (y < view_y + (view_height * 0.5)) {
+&& (y < view_y + (view_height * 0.5))
+{
 	var draw_arrow_outside_view_y = view_y + 32;
 	draw_set_alpha(draw_arrow_outside_view_alpha);
 	draw_set_color(c_black);
@@ -63,7 +68,8 @@ if (draw_arrow_outside_view_alpha > 0.01)
 
 #region /* Draw arrow when player is outside bottom view */
 if (draw_arrow_outside_view_alpha > 0.01)
-&& (y > view_y + (view_height * 0.5)) {
+&& (y > view_y + (view_height * 0.5))
+{
 	var draw_arrow_outside_view_y = view_bottom_y - 32;
 	draw_set_alpha(draw_arrow_outside_view_alpha);
 	draw_set_color(c_black);
@@ -81,33 +87,34 @@ if (draw_arrow_outside_view_alpha > 0.01)
 #region /* Draw Self */
 
 #region /* Draw intro animation sprites (cutscene) if intro is playing */
-if (intro_animation != "" && intro_animation_sprite > 0) {
+if (intro_animation != "" && intro_animation_sprite > 0)
+{
 	sprite_index = intro_animation_sprite;
 }
 #endregion /* Draw intro animation sprites (cutscene) if intro is playing END */
 
 #region /* Make it obvious if you take damage */
-if (taken_damage == 199 && !die && hp >= 1) {
+if (taken_damage == 199 && !die && hp >= 1)
+{
 	scr_audio_play(snd_lose, volume_source.sound); /* Play a sound effect when you get hit */
 	scr_audio_play(voice_damage, volume_source.voice); /* Play a voice effect when you get hit */
 }
-if (taken_damage >= taken_damage_freezetime) {
+if (taken_damage >= taken_damage_freezetime)
+{
 	dive = false;
 	gravity = 0;
 	hspeed = 0;
 	vspeed = 0;
 	speed = 0;
-	if (sprite_die > noone) {
-		sprite_index = sprite_die;
-	}
-	else {
-		if (sprite_idle > noone){sprite_index = sprite_idle;}else
-		if (sprite_walk > noone){sprite_index = sprite_walk;}
-	}
-	if (image_index > image_number - 1) {
+	
+	scr_select_first_valid_sprite(sprite_die, sprite_idle, sprite_walk);
+	
+	if (image_index > image_number - 1)
+	{
 		image_speed = 0;
 	}
-	else {
+	else
+	{
 		image_speed = 0.5;
 	}
 }
@@ -115,16 +122,20 @@ if (taken_damage >= taken_damage_freezetime) {
 
 #region /* Red blink timer */
 red_blink_timer ++;
-if (red_blink_timer > 30) {
+if (red_blink_timer > 30)
+{
 	red_blink_timer = 0;
 }
-if (midair_jumps_left == 0 && number_of_jumps > 1) {
+if (midair_jumps_left == 0 && number_of_jumps > 1)
+{
 	double_jump_depleted_blink ++;
-	if (double_jump_depleted_blink > 20) {
+	if (double_jump_depleted_blink > 20)
+	{
 		double_jump_depleted_blink = 0;
 	}
 }
-else {
+else
+{
 	double_jump_depleted_blink = 0;
 }
 #endregion /* Red blink timer END */
@@ -134,20 +145,23 @@ if (red_blink_timer > 25)
 && (!have_heart_balloon)
 && (hp <= 1)
 && (max_hp >= 2)
-&& (invincible_timer == 0) {
+&& (invincible_timer == 0)
+{
 	var draw_x = xx + random_range(- 8, + 8);
 	var draw_y = yy + random_range(- 8, + 8);
 	var draw_blend = c_red;
 	var draw_alpha = image_alpha * collision_mask_alpha;
 }
 else
-if (taken_damage%2 == 0) {
+if (taken_damage%2 == 0)
+{
 	var draw_x = xx;
 	var draw_y = yy;
 	var draw_blend = image_blend;
 	var draw_alpha = image_alpha * collision_mask_alpha;
 }
-else {
+else
+{
 	var draw_x = xx;
 	var draw_y = yy;
 	var draw_blend = image_blend;
@@ -213,16 +227,23 @@ if (global.show_collision_mask)
 {
 	if (crouch && sprite_mask_crouch > 0)
 	{
-		draw_sprite_ext(sprite_mask_crouch, 0, x, y, image_xscale, 1, 0, c_white, 1);
+		draw_sprite_ext(sprite_mask_crouch, 0, x, y, image_xscale, 1, 0, c_white, 0.9);
 	}
 	else
 	if (sprite_mask > 0)
 	{
-		draw_sprite_ext(sprite_mask, 0, x, y, image_xscale, 1, 0, c_white, 1);
+		draw_sprite_ext(sprite_mask, 0, x, y, image_xscale, 1, 0, c_white, 0.9);
 	}
 	draw_rectangle_color(x - 2, y, x + 2, y, c_red, c_red, c_red, c_red, false);
 	draw_rectangle_color(x, y - 2, x, y + 2, c_red, c_red, c_red, c_red, false);
 	collision_mask_alpha = lerp(collision_mask_alpha, 0.5, 0.01);
+	
+	draw_set_halign(fa_center);
+	draw_set_valign(fa_bottom);
+	scr_draw_text_outlined(x, bbox_top - 32,
+	l10n_text("X Offset") + ": " + string(sprite_xoffset) + "\n" +
+	l10n_text("Y Offset") + ": " + string(sprite_yoffset) + "\n",
+	global.default_text_size * 0.5, c_black, c_white, 1);
 }
 else
 {

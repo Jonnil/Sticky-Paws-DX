@@ -590,7 +590,7 @@ function scr_draw_upload_level_menu()
 		/* Draw Level Name */ scr_draw_text_outlined(get_window_width * 0.5, draw_name_y, global.level_name, global.default_text_size * 1.9, c_black, c_white, 1);
 		
 		#region /* Draw Level Description */
-		if (thumbnail_level_description[global.select_level_index] == "")
+		if (global.level_description == "")
 		{
 			/* Notify the player that the level doesn't have a description */
 			scr_draw_text_outlined(get_window_width * 0.5, draw_description_y, l10n_text("Description") + ": " + l10n_text("None"), global.default_text_size, c_black, c_white, 1);
@@ -598,7 +598,7 @@ function scr_draw_upload_level_menu()
 		}
 		else
 		{
-			scr_draw_text_outlined(get_window_width * 0.5, draw_description_y, string(thumbnail_level_description[global.select_level_index]), global.default_text_size, c_black, c_white, 1);
+			scr_draw_text_outlined(get_window_width * 0.5, draw_description_y, string(global.level_description), global.default_text_size, c_black, c_white, 1);
 		}
 		#endregion /* Draw Level Description END */
 		
@@ -1143,12 +1143,15 @@ function scr_draw_upload_level_menu()
 					ini_write_string("info", "level_description", string(global.level_description));
 					ini_close(); switch_save_data_commit(); /* Remember to commit the save data! */
 					
-					if (is_array(thumbnail_level_description))
-					&& (array_length(thumbnail_level_description) > 0)
-					&& (global.select_level_index >= 0)
-					&& (global.select_level_index < array_length(thumbnail_level_description))
+					if (variable_instance_exists(self, "thumbnail_level_description"))
 					{
-						thumbnail_level_description[global.select_level_index] = string(global.level_description);
+						if (is_array(thumbnail_level_description))
+						&& (array_length(thumbnail_level_description) > 0)
+						&& (global.select_level_index >= 0)
+						&& (global.select_level_index < array_length(thumbnail_level_description))
+						{
+							thumbnail_level_description[global.select_level_index] = string(global.level_description);
+						}
 					}
 					
 					menu = "upload_edit_description";

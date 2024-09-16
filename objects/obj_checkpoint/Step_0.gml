@@ -17,7 +17,7 @@ if (instance_exists(obj_player))
 					checkpoint_what_player = instance_nearest(x, y, obj_player).player;
 					
 					if (instance_exists(obj_camera))
-					&& (obj_camera.black_screen_gui_alpha <= 0.9) /* Don't get rewards if this code is run when a level first start */
+					&& (obj_camera.black_screen_gui_alpha <= 0.8) /* Don't get rewards if this code is run when a level first start */
 					{
 						with(instance_nearest(x, y, obj_player))
 						{

@@ -22,6 +22,7 @@ function scr_draw_information_menu()
 		
 		if (key_left)
 		&& (menu_delay == 0 && menu_joystick_delay == 0)
+		&& (information_menu_open != "about_privacy_policy")
 		{
 			if (menu == "about")
 			{
@@ -67,6 +68,7 @@ function scr_draw_information_menu()
 		}
 		if (key_right)
 		&& (menu_delay == 0 && menu_joystick_delay == 0)
+		&& (information_menu_open != "about_privacy_policy")
 		{
 			if (menu == "about")
 			{
@@ -142,11 +144,17 @@ function scr_draw_information_menu()
 				menu = "about_link_to_website_guide";
 			}
 			else
+			if (menu == "about_privacy_policy")
+			{
+				menu_delay = 3;
+				menu = "about_link_to_update_schedule";
+			}
+			else
 			if (menu == "information_back")
 			&& (information_menu_open == "about")
 			{
 				menu_delay = 3;
-				menu = "about_link_to_update_schedule";
+				menu = "about_privacy_policy";
 			}
 			else
 			if (menu == "information_back")
@@ -272,6 +280,12 @@ function scr_draw_information_menu()
 			if (menu == "about_link_to_update_schedule")
 			{
 				menu_delay = 3;
+				menu = "about_privacy_policy";
+			}
+			else
+			if (menu == "about_privacy_policy")
+			{
+				menu_delay = 3;
 				menu = "information_back";
 			}
 			else
@@ -333,114 +347,116 @@ function scr_draw_information_menu()
 		}
 		
 		#region /* About, What's New, Backups, Credits, and Back tabs */
-		
-		/* About tab button */
-		draw_menu_button_sprite(spr_menu_button, 0, 0, 0, 0, 0.5, 1, 185, 42, l10n_text("About"), "about", "about", false);
-		if (point_in_rectangle(mouse_get_x, mouse_get_y, 0, 0, 185, 42))
-		&& (mouse_check_button_released(mb_left))
-		&& (menu_delay == 0 && menu_joystick_delay == 0)
-		|| (menu == "about")
-		&& (key_a_pressed)
-		&& (menu_delay == 0 && menu_joystick_delay == 0)
+		if (information_menu_open != "about_privacy_policy")
 		{
-			information_menu_open = "about";
-			menu_delay = 3;
-		}
-		
-		/* What's New tab button */
-		if (!latest_whats_new_read)
-		{
-			var whats_new_alpha = scr_wave(0, 1, 1);
-		}
-		else
-		{
-			var whats_new_alpha = 1;
-		}
-		draw_menu_button_sprite(spr_menu_button, 185, 0, 0, 0, 0.5, 1, 185, 42, l10n_text("What's New?"), "whats_new", "whats_new", false,,whats_new_alpha);
-		if (point_in_rectangle(mouse_get_x, mouse_get_y, 185, 0, 185 * 2, 42))
-		&& (mouse_check_button_released(mb_left))
-		&& (menu_delay == 0 && menu_joystick_delay == 0)
-		|| (menu == "whats_new")
-		&& (key_a_pressed)
-		&& (menu_delay == 0 && menu_joystick_delay == 0)
-		{
-			information_menu_open = "whats_new";
-			menu_delay = 3;
-		}
-		
-		/* Backups tab button */
-		draw_menu_button_sprite(spr_menu_button, 185 * 2, 0, 0, 0, 0.5, 1, 185, 42, l10n_text("Backups"), "backups", "backups", false);
-		if (point_in_rectangle(mouse_get_x, mouse_get_y, 185 * 2, 0, 185 * 3, 42))
-		&& (mouse_check_button_released(mb_left))
-		&& (menu_delay == 0 && menu_joystick_delay == 0)
-		|| (menu == "backups")
-		&& (key_a_pressed)
-		&& (menu_delay == 0 && menu_joystick_delay == 0)
-		{
-			information_menu_open = "backups";
-			menu_delay = 3;
-		}
-		
-		/* Community tab button */
-		draw_menu_button_sprite(spr_menu_button, 185 * 3, 0, 0, 0, 0.5, 1, 185, 42, l10n_text("Community"), "community", "community", false);
-		if (point_in_rectangle(mouse_get_x, mouse_get_y, 185 * 3, 0, 185 * 4, 42))
-		&& (mouse_check_button_released(mb_left))
-		&& (menu_delay == 0 && menu_joystick_delay == 0)
-		|| (menu == "community")
-		&& (key_a_pressed)
-		&& (menu_delay == 0 && menu_joystick_delay == 0)
-		{
-			information_menu_open = "community";
-			menu_delay = 3;
-		}
-		
-		/* Credits tab button */
-		draw_menu_button_sprite(spr_menu_button, 185 * 4, 0, 0, 0, 0.5, 1, 185, 42, l10n_text("Credits"), "credits", "credits", false);
-		if (point_in_rectangle(mouse_get_x, mouse_get_y, 185 * 4, 0, 185 * 5, 42))
-		&& (mouse_check_button_released(mb_left))
-		&& (menu_delay == 0 && menu_joystick_delay == 0)
-		|| (menu == "credits")
-		&& (key_a_pressed)
-		&& (menu_delay == 0 && menu_joystick_delay == 0)
-		{
-			information_menu_open = "credits";
-			menu_delay = 3;
-		}
-		
-		/* Links tab button */
-		draw_menu_button_sprite(spr_menu_button, 185 * 5, 0, 0, 0, 0.5, 1, 185, 42, l10n_text("Links"), "links", "links", false);
-		if (point_in_rectangle(mouse_get_x, mouse_get_y, 185 * 5, 0, 185 * 6, 42))
-		&& (mouse_check_button_released(mb_left))
-		&& (menu_delay == 0 && menu_joystick_delay == 0)
-		|| (menu == "links")
-		&& (key_a_pressed)
-		&& (menu_delay == 0 && menu_joystick_delay == 0)
-		{
-			information_menu_open = "links";
-			menu_delay = 3;
-		}
-		
-		/* Back from Information Menu */
-		draw_menu_button(display_get_gui_width() - 370, display_get_gui_height() - 42, l10n_text("Back"), "information_back", "information_back");
-		draw_sprite_ext(spr_icon_back, 0, display_get_gui_width() - 354, display_get_gui_height() - 21, 1, 1, 0, c_white, 1);
-		if (point_in_rectangle(mouse_get_x, mouse_get_y, display_get_gui_width() - 370, display_get_gui_height() - 42, display_get_gui_width(), display_get_gui_height()))
-		&& (mouse_check_button_released(mb_left))
-		&& (menu_delay == 0 && menu_joystick_delay == 0)
-		|| (menu == "information_back")
-		&& (key_a_pressed)
-		&& (menu_delay == 0 && menu_joystick_delay == 0)
-		|| (key_b_pressed)
-		&& (menu_delay == 0 && menu_joystick_delay == 0)
-		{
-			if (instance_exists(obj_credits))
+			
+			/* About tab button */
+			draw_menu_button_sprite(spr_menu_button, 0, 0, 0, 0, 0.5, 1, 185, 42, l10n_text("About"), "about", "about", false);
+			if (point_in_rectangle(mouse_get_x, mouse_get_y, 0, 0, 185, 42))
+			&& (mouse_check_button_released(mb_left))
+			&& (menu_delay == 0 && menu_joystick_delay == 0)
+			|| (menu == "about")
+			&& (key_a_pressed)
+			&& (menu_delay == 0 && menu_joystick_delay == 0)
 			{
-				instance_destroy(obj_credits);
+				information_menu_open = "about";
+				menu_delay = 3;
 			}
-			information_menu_open = "";
-			menu = "information";
-			menu_delay = 3;
+			
+			/* What's New tab button */
+			if (!latest_whats_new_read)
+			{
+				var whats_new_alpha = scr_wave(0, 1, 1);
+			}
+			else
+			{
+				var whats_new_alpha = 1;
+			}
+			draw_menu_button_sprite(spr_menu_button, 185, 0, 0, 0, 0.5, 1, 185, 42, l10n_text("What's New?"), "whats_new", "whats_new", false,,whats_new_alpha);
+			if (point_in_rectangle(mouse_get_x, mouse_get_y, 185, 0, 185 * 2, 42))
+			&& (mouse_check_button_released(mb_left))
+			&& (menu_delay == 0 && menu_joystick_delay == 0)
+			|| (menu == "whats_new")
+			&& (key_a_pressed)
+			&& (menu_delay == 0 && menu_joystick_delay == 0)
+			{
+				information_menu_open = "whats_new";
+				menu_delay = 3;
+			}
+			
+			/* Backups tab button */
+			draw_menu_button_sprite(spr_menu_button, 185 * 2, 0, 0, 0, 0.5, 1, 185, 42, l10n_text("Backups"), "backups", "backups", false);
+			if (point_in_rectangle(mouse_get_x, mouse_get_y, 185 * 2, 0, 185 * 3, 42))
+			&& (mouse_check_button_released(mb_left))
+			&& (menu_delay == 0 && menu_joystick_delay == 0)
+			|| (menu == "backups")
+			&& (key_a_pressed)
+			&& (menu_delay == 0 && menu_joystick_delay == 0)
+			{
+				information_menu_open = "backups";
+				menu_delay = 3;
+			}
+			
+			/* Community tab button */
+			draw_menu_button_sprite(spr_menu_button, 185 * 3, 0, 0, 0, 0.5, 1, 185, 42, l10n_text("Community"), "community", "community", false);
+			if (point_in_rectangle(mouse_get_x, mouse_get_y, 185 * 3, 0, 185 * 4, 42))
+			&& (mouse_check_button_released(mb_left))
+			&& (menu_delay == 0 && menu_joystick_delay == 0)
+			|| (menu == "community")
+			&& (key_a_pressed)
+			&& (menu_delay == 0 && menu_joystick_delay == 0)
+			{
+				information_menu_open = "community";
+				menu_delay = 3;
+			}
+			
+			/* Credits tab button */
+			draw_menu_button_sprite(spr_menu_button, 185 * 4, 0, 0, 0, 0.5, 1, 185, 42, l10n_text("Credits"), "credits", "credits", false);
+			if (point_in_rectangle(mouse_get_x, mouse_get_y, 185 * 4, 0, 185 * 5, 42))
+			&& (mouse_check_button_released(mb_left))
+			&& (menu_delay == 0 && menu_joystick_delay == 0)
+			|| (menu == "credits")
+			&& (key_a_pressed)
+			&& (menu_delay == 0 && menu_joystick_delay == 0)
+			{
+				information_menu_open = "credits";
+				menu_delay = 3;
+			}
+			
+			/* Links tab button */
+			draw_menu_button_sprite(spr_menu_button, 185 * 5, 0, 0, 0, 0.5, 1, 185, 42, l10n_text("Links"), "links", "links", false);
+			if (point_in_rectangle(mouse_get_x, mouse_get_y, 185 * 5, 0, 185 * 6, 42))
+			&& (mouse_check_button_released(mb_left))
+			&& (menu_delay == 0 && menu_joystick_delay == 0)
+			|| (menu == "links")
+			&& (key_a_pressed)
+			&& (menu_delay == 0 && menu_joystick_delay == 0)
+			{
+				information_menu_open = "links";
+				menu_delay = 3;
+			}
+			
+			/* Back from Information Menu */
+			draw_menu_button(display_get_gui_width() - 370, display_get_gui_height() - 42, l10n_text("Back"), "information_back", "information_back");
+			draw_sprite_ext(spr_icon_back, 0, display_get_gui_width() - 354, display_get_gui_height() - 21, 1, 1, 0, c_white, 1);
+			if (point_in_rectangle(mouse_get_x, mouse_get_y, display_get_gui_width() - 370, display_get_gui_height() - 42, display_get_gui_width(), display_get_gui_height()))
+			&& (mouse_check_button_released(mb_left))
+			&& (menu_delay == 0 && menu_joystick_delay == 0)
+			|| (menu == "information_back")
+			&& (key_a_pressed)
+			&& (menu_delay == 0 && menu_joystick_delay == 0)
+			|| (key_b_pressed)
+			&& (menu_delay == 0 && menu_joystick_delay == 0)
+			{
+				if (instance_exists(obj_credits))
+				{
+					instance_destroy(obj_credits);
+				}
+				information_menu_open = "";
+				menu = "information";
+				menu_delay = 3;
+			}
 		}
-		
 		#endregion /* About, What's New, Backups, Credits, and Back tabs */
 		
 		if (information_menu_open == "about") /* About tab */
@@ -453,6 +469,7 @@ function scr_draw_information_menu()
 			var check_out_website_y = 42 * 6;
 			var check_out_guide_y = 42 * 8;
 			var check_out_update_schedule_y = 42 * 10;
+			var privacy_policy_y = 42 * 12;
 			
 			draw_set_halign(fa_center);
 			scr_draw_text_outlined(display_get_gui_width() * 0.5, welcome_to_game_y, l10n_text("Welcome to " + string(global.game_name) + "!"), global.default_text_size, c_black, c_white, 1);
@@ -597,9 +614,175 @@ function scr_draw_information_menu()
 			}
 			
 			draw_set_halign(fa_left);
+			draw_set_valign(fa_middle);
+			draw_menu_button(32, privacy_policy_y, l10n_text("Privacy Policy"), "about_privacy_policy", "about_privacy_policy");
+			if (point_in_rectangle(mouse_get_x, mouse_get_y, 32, privacy_policy_y, 32 + 370, privacy_policy_y + 42))
+			&& (mouse_check_button_released(mb_left))
+			&& (menu_delay == 0 && menu_joystick_delay == 0)
+			|| (menu == "about_privacy_policy")
+			&& (key_a_pressed)
+			&& (menu_delay == 0 && menu_joystick_delay == 0)
+			{
+				menu_delay = 3;
+				menu = "about_privacy_policy_back";
+				information_menu_open = "about_privacy_policy";
+				privacy_policy_text_y = 100;
+				
+				#region /* Retrieve Privacy Policy */
+				/* Check if the file exists */
+				if (file_exists("privacy_policy.txt"))
+				{
+				    /* Open the file for reading */
+				    var file = file_text_open_read("privacy_policy.txt");
+					
+				    /* Initialize an empty string to store the text */
+				    privacy_policy_text_content = "";
+					
+				    /* Loop through each line until the end of the file */
+				    while (!file_text_eof(file))
+					{
+				        /* Read a line and append it to the "privacy policy text content" variable */
+				        privacy_policy_text_content += file_text_read_string(file) + "\n";
+						
+				        /* Move to the next line */
+				        file_text_readln(file);
+				    }
+					
+				    /* Close the file */
+				    file_text_close(file);
+				}
+				#endregion /* Retrieve Privacy Policy END */
+
+			}
+			
+			draw_set_halign(fa_left);
 			draw_sprite_ext(spr_heart, 0, 48, display_get_gui_height() - 64, 1, 1, 0, c_white, 1);
 			scr_draw_text_outlined(48 + 16 + 8, display_get_gui_height() - 64, l10n_text("This is a game made with love"), global.default_text_size, c_black, c_white, 1);
 			scr_draw_text_outlined(32, display_get_gui_height() - 32, l10n_text("Check out credits for more info"), global.default_text_size, c_black, c_white, 1);
+		}
+		else
+		if (information_menu_open == "about_privacy_policy") /* Privacy Policy */
+		{
+			var to_top_x = 370 * 0.5 + 1;
+			var link_to_privacy_policy_x = to_top_x + 186;
+			
+			#region /* Privacy Policy Text */
+			draw_set_halign(fa_left);
+			draw_set_valign(fa_top);
+			draw_set_color(c_white);
+			draw_text_ext(32, privacy_policy_text_y, string(privacy_policy_text_content), 30, display_get_gui_width() - 64);
+			#endregion /* Privacy Policy Text END */
+			
+			draw_set_halign(fa_left);
+			draw_set_valign(fa_middle);
+			draw_menu_button_sprite(spr_menu_button, 0, 0, 0, 0, 0.5, 1, 370 * 0.5, 42, l10n_text("Back"), "about_privacy_policy_back", "about_privacy_policy_back");
+			draw_menu_button_sprite(spr_menu_button, to_top_x, 0, 0, 0, 0.5, 1, 370 * 0.5, 42, l10n_text("To Top"), "about_privacy_policy_to_top", "about_privacy_policy_to_top");
+			
+			#region /* Link to Privacy Policy Website */
+			if (global.link_to_privacy_policy != "")
+			{
+				draw_menu_button_sprite(spr_menu_button, link_to_privacy_policy_x, 0, 0, 0, 2.1, 1, 370 * 2.1, 42, string(global.link_to_privacy_policy), "about_link_to_privacy_policy", "about_link_to_privacy_policy");
+				if (point_in_rectangle(mouse_get_x, mouse_get_y, link_to_privacy_policy_x, 0, link_to_privacy_policy_x + (370 * 2.1), 42))
+				&& (mouse_check_button_released(mb_left))
+				&& (menu_delay == 0 && menu_joystick_delay == 0)
+				|| (menu == "about_link_to_privacy_policy")
+				&& (key_a_pressed)
+				&& (menu_delay == 0 && menu_joystick_delay == 0)
+				{
+					url_open(global.link_to_privacy_policy);
+					menu_delay = 3;
+				}
+			}
+			#endregion /* Link to Privacy Policy Website END */
+			
+			#region /* Navigate the Privacy Policy page */
+			if (key_up)
+			{
+				privacy_policy_text_y += 10;
+			}
+			else
+			if (key_down)
+			{
+				privacy_policy_text_y -= 10;
+			}
+			else
+			if (mouse_wheel_up())
+			{
+				privacy_policy_text_y += 20;
+			}
+			else
+			if (mouse_wheel_down())
+			{
+				privacy_policy_text_y -= 20;
+			}
+			if (privacy_policy_text_y > 100)
+			{
+				privacy_policy_text_y = 100;
+			}
+			if (key_left)
+			&& (menu_delay == 0 && menu_joystick_delay == 0)
+			{
+				menu_delay = 3;
+				if (menu == "about_privacy_policy_back")
+				{
+					menu = "about_link_to_privacy_policy";
+				}
+				else
+				if (menu == "about_privacy_policy_to_top")
+				{
+					menu = "about_privacy_policy_back";
+				}
+				else
+				if (menu == "about_link_to_privacy_policy")
+				{
+					menu = "about_privacy_policy_to_top";
+				}
+			}
+			if (key_right)
+			&& (menu_delay == 0 && menu_joystick_delay == 0)
+			{
+				menu_delay = 3;
+				if (menu == "about_privacy_policy_back")
+				{
+					menu = "about_privacy_policy_to_top";
+				}
+				else
+				if (menu == "about_privacy_policy_to_top")
+				{
+					menu = "about_link_to_privacy_policy";
+				}
+				else
+				if (menu == "about_link_to_privacy_policy")
+				{
+					menu = "about_privacy_policy_back";
+				}
+			}
+			
+			if (point_in_rectangle(mouse_get_x, mouse_get_y, 0, 0, 185, 42))
+			&& (mouse_check_button_released(mb_left))
+			&& (menu_delay == 0 && menu_joystick_delay == 0)
+			|| (menu == "about_privacy_policy_back")
+			&& (key_a_pressed)
+			&& (menu_delay == 0 && menu_joystick_delay == 0)
+			|| (key_b_pressed)
+			&& (menu_delay == 0 && menu_joystick_delay == 0)
+			{
+				menu_delay = 3;
+				menu = "about_privacy_policy";
+				information_menu_open = "about";
+			}
+			if (point_in_rectangle(mouse_get_x, mouse_get_y, to_top_x, 0, to_top_x + 185, 42))
+			&& (mouse_check_button_released(mb_left))
+			&& (menu_delay == 0 && menu_joystick_delay == 0)
+			|| (menu == "about_privacy_policy_to_top")
+			&& (key_a_pressed)
+			&& (menu_delay == 0 && menu_joystick_delay == 0)
+			{
+				menu_delay = 3;
+				privacy_policy_text_y = 100;
+			}
+			#endregion /* Navigate the Privacy Policy page END */
+			
 		}
 		else
 		if (information_menu_open == "whats_new") /* What's New tab */

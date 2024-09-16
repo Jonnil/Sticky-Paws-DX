@@ -100,8 +100,15 @@ if (async_load[? "id"] == global.http_request_info)
 	}
 }
 
+/* Initialize the "content added today" global variable if not already set */
+if (global.content_added_today == undefined)
+{
+    global.content_added_today = noone;
+}
+
 /* Check if the current request "content added today" matches the one we sent */
-if (async_load[? "id"] == global.content_added_today)
+if (global.content_added_today != noone
+&& async_load[? "id"] == global.content_added_today)
 {
 	/* Get the status code and response body */
 	var status_code = async_load[? "http_status"];

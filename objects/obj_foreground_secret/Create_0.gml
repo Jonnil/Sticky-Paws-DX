@@ -1,9 +1,5 @@
-if (global.custom_foreground_secret >= 0)
-{
-	mask_index = global.custom_foreground_secret;
-	sprite_index = global.custom_foreground_secret;
-	sprite_collision_mask(global.custom_foreground_secret, true, 1, 0, 0, 0, 0, bboxkind_precise, 254); /* bboxmode needs to be 1 for this to work */
-}
+mask_index = spr_noone;
+sprite_index = spr_noone;
 
 #region /* Initialize Foreground */
 if (global.character_select_in_this_menu == "main_game")

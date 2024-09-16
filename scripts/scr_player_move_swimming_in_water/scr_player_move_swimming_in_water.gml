@@ -3,7 +3,7 @@ function scr_player_move_swimming_in_water()
 	
 	#region /* Swimming In Water */
 	if (position_meeting(x, y, obj_water))
-	|| (y > obj_water_level.y)
+	|| (instance_exists(obj_water_level) && y > obj_water_level.y)
 	&& (obj_water_level.y < room_height)
 	{
 		dive = false;

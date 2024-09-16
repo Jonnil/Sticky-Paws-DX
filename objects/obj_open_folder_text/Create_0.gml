@@ -7,6 +7,8 @@ menu_cursor_index = 0;
 menu_delay = 3;
 menu_joystick_delay = 3;
 open_dropdown = false;
+show_copied_text = false;
+copied_text_size = 0;
 
 if (os_type == os_linux)
 {
@@ -20,3 +22,8 @@ else
 {
 	show_copy_to_clipboard_button = true;
 }
+
+key_up = false;
+key_down = false;
+key_left = false;
+key_right = false;

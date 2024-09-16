@@ -246,9 +246,15 @@ function scr_debug_screen()
 		draw_set_halign(fa_right);
 		scr_draw_text_outlined(display_get_gui_width() - 32, display_y, "Display: " + string(window_get_width()) + "x" + string(window_get_height()), global.default_text_size, c_black, c_white, 1); /* Get the display dimensions */
 		
-		if (global.os_info[? "video_adapter_description"] != undefined) /* Need to check that this isn't "undefined", otherwise it will display the word "undefined" on screen */
+		if (ds_exists(global.os_info, ds_type_map))
 		{
-			scr_draw_text_outlined(display_get_gui_width() - 32, d3d11_y, string(global.os_info[? "video_adapter_description"]), global.default_text_size, c_black, c_white, 1);
+			if (ds_map_exists(global.os_info, "video_adapter_description"))
+			{
+				if (global.os_info[? "video_adapter_description"] != undefined) /* Need to check that this isn't "undefined", otherwise it will display the word "undefined" on screen */
+				{
+					scr_draw_text_outlined(display_get_gui_width() - 32, d3d11_y, string(global.os_info[? "video_adapter_description"]), global.default_text_size, c_black, c_white, 1);
+				}
+			}
 		}
 		#endregion /* Top-right corner info END */
 		
@@ -438,17 +444,17 @@ function scr_debug_screen()
 		//	debug_text_y += 20;
 		//}
 		
-		debug_text_y += 20;
-		scr_draw_text_outlined(32, debug_text_y, "doing_clear_check_level: " + string(global.doing_clear_check_level), global.default_text_size, c_black, c_white);
+		//debug_text_y += 20;
+		//scr_draw_text_outlined(32, debug_text_y, "doing_clear_check_level: " + string(global.doing_clear_check_level), global.default_text_size, c_black, c_white);
 		
-		debug_text_y += 20;
-		scr_draw_text_outlined(32, debug_text_y, "timeattack_minute: " + string(global.timeattack_minute), global.default_text_size, c_black, c_white);
+		//debug_text_y += 20;
+		//scr_draw_text_outlined(32, debug_text_y, "timeattack_minute: " + string(global.timeattack_minute), global.default_text_size, c_black, c_white);
 		
-		debug_text_y += 20;
-		scr_draw_text_outlined(32, debug_text_y, "playing_level_from_beginning: " + string(global.playing_level_from_beginning), global.default_text_size, c_black, c_white);
+		//debug_text_y += 20;
+		//scr_draw_text_outlined(32, debug_text_y, "playing_level_from_beginning: " + string(global.playing_level_from_beginning), global.default_text_size, c_black, c_white);
 		
-		debug_text_y += 20;
-		scr_draw_text_outlined(32, debug_text_y, "player_has_entered_goal: " + string(global.player_has_entered_goal), global.default_text_size, c_black, c_white);
+		//debug_text_y += 20;
+		//scr_draw_text_outlined(32, debug_text_y, "player_has_entered_goal: " + string(global.player_has_entered_goal), global.default_text_size, c_black, c_white);
 		
 		//if (os_type == os_switch)
 		//{

@@ -1,5 +1,14 @@
 function scr_character_manage_menu_step()
 {
+	if (variable_instance_exists(self, "in_edit_character_menu"))
+	{
+		var enable_edit_character = true;
+	}
+	else
+	{
+		var enable_edit_character = false;
+	}
+	
 	if (ds_list_size(global.all_loaded_characters) >= global.max_custom_characters)
 	{
 		var max_custom_characters_reached = true;
@@ -23,7 +32,8 @@ function scr_character_manage_menu_step()
 	var get_window_height = display_get_gui_height();
 	var fixed_player = 1;
 	
-	if (menu == "click_copy_character")
+	if (menu == "click_edit_character")
+	|| (menu == "click_copy_character")
 	|| (menu == "click_delete_character")
 	|| (menu == "click_delete_character_no")
 	|| (menu == "click_delete_character_yes")
@@ -148,13 +158,14 @@ function scr_character_manage_menu_step()
 		if (file_exists("characters/" + string(ds_list_find_value(global.all_loaded_characters, global.character_index[fixed_player - 1])) + "/data/character_config.ini"))
 		{
 			var selecting_official_character = true;
+			enable_edit_character = false;
 		}
 		else
 		{
 			var selecting_official_character = false;
 		}
 		
-		var character_name_y, copy_character_y, delete_character_y, upload_character_y, open_character_folder_y;
+		var character_name_y, edit_character_y, copy_character_y, delete_character_y, upload_character_y, open_character_folder_y;
 		
 		if (global.enable_open_custom_folder)
 		{
@@ -174,12 +185,14 @@ function scr_character_manage_menu_step()
 		        copy_character_y = enable_copy_character ? get_window_height - (42 * 4) : -9999;
 		        delete_character_y = get_window_height - (42 * 3);
 		        upload_character_y = enable_copy_character ? get_window_height - (42 * 2) : -9999;
+				edit_character_y = copy_character_y - 42;
 		    }
 			else
 			{
 		        copy_character_y = enable_copy_character ? get_window_height - (42 * 3) : -9999;
 		        delete_character_y = get_window_height - (42 * 2);
 		        upload_character_y = -9999;
+				edit_character_y = copy_character_y - 42;
 		    }
 		}
 		else
@@ -187,10 +200,74 @@ function scr_character_manage_menu_step()
 		    copy_character_y = enable_copy_character ? get_window_height - (42 * 2) : -9999;
 		    delete_character_y = -9999;
 		    upload_character_y = -9999;
+			edit_character_y = copy_character_y - 42;
 		}
 		
 		var delete_character_no_y = display_get_gui_height() - (42 * 3);
 		var delete_character_yes_y = display_get_gui_height() - (42 * 2);
+		
+		#region /* Edit Characters */
+		if (enable_edit_character)
+		{
+			if (point_in_rectangle(device_mouse_x_to_gui(0), device_mouse_y_to_gui(0), display_get_gui_width() * 0.5 - 185, edit_character_y + 2, display_get_gui_width() * 0.5 - 185 + 371, edit_character_y + 42))
+			&& (mouse_check_button_released(mb_left))
+			&& (menu_delay == 0 && menu_joystick_delay == 0)
+			&& (can_navigate)
+			&& (ds_list_find_value(global.all_loaded_characters, global.character_index[fixed_player - 1]) != undefined)
+			|| (menu == "click_edit_character")
+			&& (key_a_pressed)
+			&& (menu_delay == 0 && menu_joystick_delay == 0)
+			&& (can_navigate)
+			&& (ds_list_find_value(global.all_loaded_characters, global.character_index[fixed_player - 1]) != undefined)
+			{
+				/* Go to the edit character menu */
+				in_edit_character_menu = true;
+				menu = "edit_character_load";
+				menu_delay = 20;
+			}
+		}
+		if (keyboard_check_pressed(global.player_[inp.key][fixed_player][1][action.up]))
+		|| (keyboard_check_pressed(global.player_[inp.key][fixed_player][2][action.up]))
+		|| (gamepad_button_check_pressed(global.player_slot[fixed_player], gp_padu))
+		|| (gamepad_axis_value(global.player_slot[fixed_player], gp_axislv) < -0.3)
+		&& (menu_specific_joystick_delay[fixed_player] <= 0)
+		{
+			if (menu == "click_edit_character")
+			&& (menu_delay == 0 && menu_joystick_delay == 0)
+			&& (can_navigate)
+			{
+				menu_delay = 3;
+				can_navigate = true;
+				player_menu[fixed_player] = "back_from_copy_character";
+				menu = "back_from_copy_character";
+			}
+		}
+		if (menu == "click_edit_character")
+		&& (key_down)
+		&& (menu_delay == 0 && menu_joystick_delay == 0)
+		&& (menu_specific_joystick_delay[fixed_player] <= 0)
+		&& (can_navigate)
+		{
+			menu_delay = 3;
+			can_navigate = true;
+			if (enable_copy_character)
+			{
+				player_menu[fixed_player] = "click_copy_character";
+				menu = "click_copy_character";
+			}
+			else
+			if (!selecting_official_character)
+			{
+				player_menu[fixed_player] = "click_delete_character";
+				menu = "click_delete_character";
+			}
+			else
+			{
+				player_menu[fixed_player] = "open_folder_copy_character";
+				menu = "open_folder_copy_character";
+			}
+		}
+		#endregion /* Edit Characters END */
 		
 		#region /* Copy Characters */
 		if (enable_copy_character)
@@ -271,8 +348,16 @@ function scr_character_manage_menu_step()
 			{
 				menu_delay = 3;
 				can_navigate = true;
-				player_menu[fixed_player] = "back_from_copy_character";
-				menu = "back_from_copy_character";
+				if (enable_edit_character)
+				{
+					player_menu[fixed_player] = "click_edit_character";
+					menu = "click_edit_character";
+				}
+				else
+				{
+					player_menu[fixed_player] = "back_from_copy_character";
+					menu = "back_from_copy_character";
+				}
 			}
 		}
 		if (menu == "click_copy_character")
@@ -480,6 +565,12 @@ function scr_character_manage_menu_step()
 			if (!selecting_official_character)
 			&& (global.free_communication_available)
 			{
+				ini_open("save_file/config.ini"); /* Save what character, skin, and name is being used for player 1, before trying to upload a character to the server */
+				ini_write_real("config", "character_index_player1", global.character_index[0]);
+				ini_write_real("config", "skin_for_player1", global.skin_for_player[1]);
+				ini_write_string("config", "player1_name", global.player_name[1]);
+				ini_close(); switch_save_data_commit(); /* Remember to commit the save data! */
+				
 				menu_delay = 3;
 				if (global.online_enabled)
 				&& (os_is_network_connected())
@@ -492,7 +583,7 @@ function scr_character_manage_menu_step()
 						{
 							if (global.online_token_validated) /* Need to make sure that online token is validated before going online */
 							{
-								if (upload_rules_do_not_show_character)
+								if (global.upload_rules_do_not_show_character)
 								{
 									ini_open(game_save_id + "custom_characters/" + string(ds_list_find_value(global.all_loaded_characters, global.character_index[fixed_player - 1])) + "/data/character_config.ini");
 									if (ini_key_exists("info", "clear_check_character"))
@@ -736,6 +827,12 @@ function scr_character_manage_menu_step()
 		{
 			menu_delay = 3;
 			can_navigate = true;
+			if (enable_edit_character)
+			{
+				player_menu[fixed_player] = "click_edit_character";
+				menu = "click_edit_character";
+			}
+			else
 			if (enable_copy_character)
 			{
 				player_menu[fixed_player] = "click_copy_character";

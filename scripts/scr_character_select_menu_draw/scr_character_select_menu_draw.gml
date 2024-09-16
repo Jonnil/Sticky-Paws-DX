@@ -387,6 +387,14 @@ function scr_character_select_menu_draw()
 	}
 	else
 	
+	if (variable_instance_exists(self, "in_edit_character_menu"))
+	&& (in_edit_character_menu)
+	{
+		scr_character_edit_menu_draw();
+	}
+	
+	else
+	
 	#region /* Draw Manage Characters Menu */
 	{
 		scr_character_manage_menu_draw();

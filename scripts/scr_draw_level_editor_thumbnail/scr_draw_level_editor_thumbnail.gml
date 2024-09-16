@@ -232,6 +232,49 @@ function scr_draw_level_editor_thumbnail(load_what_levels = global.all_loaded_cu
 			}
 			#endregion /* Draw if level have been created in Daily Build mode on top of level thumbnail END */
 			
+			#region /* Draw if level have custom background on top of level thumbnail */
+			if (room == rm_title)
+			{
+				if (variable_instance_exists(self, "thumbnail_custom_background"))
+				&& (is_array(thumbnail_custom_background))
+				&& (array_length(thumbnail_custom_background) > 0)
+				&& (!level_editor_template_select && i >= 1)
+				&& (i < array_length(thumbnail_custom_background))
+				{
+					if (thumbnail_custom_background[i])
+					{
+						var icon_scale = scr_wave(0.9, 1, 1, 0);
+						var draw_x = 394 * (i - column * row) + 140 + thumbnail_x_offset;
+						if (thumbnail_daily_build[i])
+						{
+							var has_custom_background_draw_y = daily_build_draw_y + 32;
+						}
+						else
+						if (clear_check)
+						{
+							var has_custom_background_draw_y = clear_check_draw_y + 32;
+						}
+						else
+						if (var_level_id != "")
+						{
+							var has_custom_background_draw_y = level_id_draw_y + 32;
+						}
+						else
+						{
+							var has_custom_background_draw_y = 226 * (column - scroll) + 274;
+						}
+						if (global.select_level_index == i)
+						{
+							draw_set_halign(fa_left);
+							draw_set_valign(fa_middle);
+							scr_draw_text_outlined(draw_x, has_custom_background_draw_y, l10n_text("Custom BG"), global.default_text_size * scr_wave(1, 1.1, 1, 0), c_white, c_black, 1);
+						}
+						draw_sprite_ext(spr_icon_pen, 1, draw_x - 20, has_custom_background_draw_y, icon_scale, icon_scale, 0, c_white, 1);
+					}
+				}
+			}
+			#endregion /* Draw if level have custom background on top of level thumbnail END */
+			
 		}
 		
 		if (i == 0)

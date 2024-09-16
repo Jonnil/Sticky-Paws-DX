@@ -21,8 +21,10 @@ global.link_to_twitter = "https://twitter.com/jonnilll";
 global.link_to_update_schedule = "https://www.jonnil.games/sticky-paws-update-schedule";
 global.link_to_website = "https://www.jonnil.games/";
 global.link_to_website_guide = "https://www.jonnil.games/sticky-paws-guide";
+global.link_to_website_guide_custom_character = "https://www.jonnil.games/sticky-paws-custom-character";
 global.link_to_wiki = ""; //"https://stickypedia.miraheze.org/wiki/Main_Page";
 global.link_to_youtube = "https://www.youtube.com/Jonnilescom";
+global.link_to_privacy_policy = "https://www.jonnil.com/sticky-paws-privacy-policy";
 global.email_support = "contact@jonnil.games"; /* This is the email address for an email support, which is required by most game platforms. Will show up whenever you report content in the game */
 
 /* Update this text explaining what is new in each update */
@@ -260,6 +262,8 @@ global.default_ambience_underwater = "";
 global.default_clear_melody = "";
 #endregion /* Set default backgrounds and music END */
 
+global.upload_rules_do_not_show_level = false;
+global.upload_rules_do_not_show_character = false;
 global.initial_gamepad_status = array_create(max(global.max_players, gamepad_get_device_count()) + 1, false); /* Create an array to store initial status for all gamepads */
 global.can_load_custom_level_assets = true; /* Should be able to turn off loading custom assets */
 global.playtest_invincibility = false;

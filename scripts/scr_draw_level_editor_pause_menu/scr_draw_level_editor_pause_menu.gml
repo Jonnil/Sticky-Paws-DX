@@ -112,7 +112,24 @@ function scr_draw_level_editor_pause_menu()
 				scr_draw_text_outlined(64, daily_build_y, l10n_text("Daily Build"), global.default_text_size * scr_wave(1, 1.1, 1, 0), c_black, c_white, 1);
 				draw_sprite_ext(spr_icon_daily_build, 1, 32, daily_build_y, scr_wave(0.9, 1, 1, 0), scr_wave(0.9, 1, 1, 0), 0, c_white, 1);
 			}
+			else
+			{
+				var daily_build_y = clear_check_y;
+			}
 			#endregion /* Draw if level is created in Daily Build on top of screen END */
+			
+			#region /* Draw if level uses Custom Backgrounds on top of screen */
+			var level_has_custom_background_y = daily_build_y + 32;
+			
+			if (variable_instance_exists(self, "level_has_custom_background"))
+			&& (level_has_custom_background)
+			{
+				draw_set_halign(fa_left);
+				draw_set_valign(fa_middle);
+				scr_draw_text_outlined(64, level_has_custom_background_y, l10n_text("Uses Custom Background"), global.default_text_size * scr_wave(1, 1.1, 1, 0), c_black, c_white, 1);
+				draw_sprite_ext(spr_icon_pen, 1, 32, level_has_custom_background_y, scr_wave(0.9, 1, 1, 0), scr_wave(0.9, 1, 1, 0), 0, c_white, 1);
+			}
+			#endregion /* Draw if level uses Custom Backgrounds on top of screen END */
 			
 			#region /* Show text in bottom right of screen what the current custom level name is. This will make it less confusing what level you are editing */
 			draw_set_halign(fa_right);

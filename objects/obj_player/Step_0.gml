@@ -195,13 +195,16 @@ if (global.assist_floor_over_bottomless_pit && bbox_bottom >= room_height)
 	{
 		vspeed = 0;
 	}
-	if (!crouch)
+	if (sprite_exists(mask_index))
 	{
-		y = room_height - sprite_get_height(mask_index) * 0.5 - 5;
-	}
-	else
-	{
-		y = room_height - sprite_get_height(mask_index) * 0.5 + 5;
+		if (!crouch)
+		{
+			y = room_height - sprite_get_height(mask_index) * 0.5 - 5;
+		}
+		else
+		{
+			y = room_height - sprite_get_height(mask_index) * 0.5 + 5;
+		}
 	}
 	if (key_dive_pressed && allow_dive && can_dive)
 	{
@@ -798,9 +801,9 @@ draw_yscale = lerp(draw_yscale, 1, 0.2); /* Make vertical stretching slowly rese
 if (sprite_index == sprite_jump)
 || (sprite_index == sprite_idle)
 || (sprite_index == sprite_run)
-|| (sprite_index == sprite_run2)
-|| (sprite_index == sprite_run3)
-|| (sprite_index == sprite_run4)
+|| (sprite_index == sprite_run_two)
+|| (sprite_index == sprite_run_three)
+|| (sprite_index == sprite_run_four)
 {
 	jump_transition_to_fall_animation = 0;
 }
@@ -1091,122 +1094,7 @@ if (in_water && !climb)
 	can_ground_pound = false;
 	chain_reaction = 0;
 	
-	if (crouch)
-	{
-		stick_to_wall = false;
-		if (on_ground)
-		{
-			if (abs(hspeed) > 3)
-			{
-				if (!audio_is_playing(snd_skidding))
-				{
-					scr_audio_play(snd_skidding, volume_source.sound);
-				}
-				effect_create_above(ef_smoke, x, bbox_bottom, 0, c_white);
-			}
-			else
-			{
-				if (audio_is_playing(snd_skidding))
-				{
-					audio_stop_sound(snd_skidding);
-				}
-			}
-		}
-		if (abs(hspeed) >= 2.5)
-		&& (on_ground)
-		{
-			if (sprite_mask_crouch >= 0)
-			{
-				mask_index = sprite_mask_crouch;
-			}
-			else
-			{
-				mask_index = spr_player_stand;
-			}
-			if (sprite_crouch_crawl > noone){sprite_index = sprite_crouch_crawl;}else
-			if (sprite_idle > noone) && (typeof(sprite_idle) != "undefined"){sprite_index = sprite_idle;}else
-			if (sprite_walk > noone){sprite_index = sprite_walk;}
-			if (image_index > image_number - 1)
-			{
-				image_speed = 0;
-			}
-			else
-			{
-				image_speed = 0.5;
-			}
-		}
-		else
-		if (on_ground)
-		{
-		
-			#region /* Crouch Stand */
-			if (speed == 0)
-			&& (!key_left_hold)
-			&& (!key_right_hold)
-			{
-				if (sprite_crouch > noone){sprite_index = sprite_crouch;}else
-				if (sprite_idle > noone) && (typeof(sprite_idle) != "undefined"){sprite_index = sprite_idle;}else
-				if (sprite_walk > noone){sprite_index = sprite_walk;}
-				if (image_index > image_number - 1)
-				{
-					image_speed = 0;
-				}
-				else
-				{
-					image_speed = 0.5;
-				}
-			}
-			#endregion /* Crouch Stand END */
-		
-			else
-		
-			#region /* Crouch Crawl */
-			if (key_left_hold)
-			|| (key_right_hold)
-			{
-				if (sprite_crouch_crawl > noone){sprite_index = sprite_crouch_crawl;}else
-				if (sprite_crouch > noone){sprite_index = sprite_crouch;}else
-				if (sprite_idle > noone) && (typeof(sprite_idle) != "undefined"){sprite_index = sprite_idle;}else
-				if (sprite_walk > noone){sprite_index = sprite_walk;}
-				image_speed = 0.5;
-			}
-			#endregion /* Crouch Crawl END */
-		
-		}
-		else
-		if (!on_ground)
-		{
-			if (key_jump)
-			{
-				image_index = 0;
-			}
-			if (image_index > image_number - 1)
-			{
-				image_speed = 0;
-			}
-			else
-			{
-				image_speed = 0.3;
-			}
-			if (vspeed > 0)
-			{
-				if (sprite_swim_fall > noone){sprite_index = sprite_swim_fall;}else
-				if (sprite_swim > noone){sprite_index = sprite_swim;}else
-				if (sprite_swim_stand > noone){sprite_index = sprite_swim_stand;}else
-				if (sprite_idle > noone) && (typeof(sprite_idle) != "undefined"){sprite_index = sprite_idle;}else
-				if (sprite_walk > noone){sprite_index = sprite_walk;}
-			}
-			else
-			{
-				if (sprite_swim > noone){sprite_index = sprite_swim;}else
-				if (sprite_swim_stand > noone){sprite_index = sprite_swim_stand;}else
-				if (sprite_idle > noone) && (typeof(sprite_idle) != "undefined"){sprite_index = sprite_idle;}else
-				if (sprite_walk > noone){sprite_index = sprite_walk;}
-			}
-		}
-	}
-	else
-	if (on_ground)
+	if (on_ground && !crouch)
 	{
 	
 		#region /* Skidding */
@@ -1318,7 +1206,7 @@ if (in_water && !climb)
 	else
 	
 	#region /* Swimming Sprites */
-	if (!on_ground)
+	if (!on_ground && !crouch)
 	{
 		/* Don't have skidding animations underwater */
 	
@@ -1366,191 +1254,6 @@ if (in_water && !climb)
 
 else
 {
-	if (crouch)
-	{
-		
-		#region /* Destroy blocks above you when you jump while crouching */
-		if (key_jump)
-		{
-			with (instance_create_depth(x, bbox_top, 0, obj_block_break))
-			{
-				can_break_other_blocks = true;
-				image_xscale = 0.75;
-				image_yscale = 0.75;
-			}
-		}
-		#endregion /* Destroy blocks above you when you jump while crouching END */
-		
-		if (on_ground)
-		{
-			if (abs(hspeed) > 3)
-			{
-				if (!audio_is_playing(snd_skidding))
-				{
-					scr_audio_play(snd_skidding, volume_source.sound);
-				}
-				effect_create_above(ef_smoke, x, bbox_bottom, 0, c_white);
-				scr_gamepad_vibration(player, 0.1, 10);
-			}
-			else
-			if (audio_is_playing(snd_skidding))
-			{
-				audio_stop_sound(snd_skidding);
-			}
-		}
-		if (on_ground && abs(hspeed) >= 2.5)
-		{
-			if (sprite_mask_crouch >= 0)
-			{
-				mask_index = sprite_mask_crouch;
-			}
-			else
-			{
-				mask_index = spr_player_stand;
-			}
-			if (sprite_crouch_crawl > noone){sprite_index = sprite_crouch_crawl;}else
-			if (sprite_crouch > noone){sprite_index = sprite_crouch;}else
-			if (sprite_idle > noone) && (typeof(sprite_idle) != "undefined"){sprite_index = sprite_idle;}else
-			if (sprite_walk > noone){sprite_index = sprite_walk;}
-			if (image_index > image_number - 1)
-			{
-				image_speed = 0;
-			}
-			else
-			{
-				image_speed = 0.5;
-			}
-		}
-		else
-		if (on_ground)
-		{
-			
-			#region /* Crouch Still */
-			if (speed == 0)
-			&& (!key_left_hold)
-			&& (!key_right_hold)
-			{
-				if (sprite_crouch > noone){sprite_index = sprite_crouch;}else
-				if (sprite_idle > noone) && (typeof(sprite_idle) != "undefined"){sprite_index = sprite_idle;}else
-				if (sprite_walk > noone){sprite_index = sprite_walk;}
-				if (image_index > image_number - 1)
-				{
-					image_speed = 0;
-				}
-				else
-				{
-					image_speed = 0.5;
-				}
-			}
-			#endregion /* Crouch Still END */
-			
-			else
-			
-			#region /* Crouch Crawl */
-			if (key_left_hold || key_right_hold)
-			{
-				if (sprite_crouch_crawl > noone){sprite_index = sprite_crouch_crawl;}else
-				if (sprite_crouch > noone){sprite_index = sprite_crouch;}else
-				if (sprite_idle > noone) && (typeof(sprite_idle) != "undefined"){sprite_index = sprite_idle;}else
-				if (sprite_walk > noone){sprite_index = sprite_walk;}
-				image_speed = 0.5;
-			}
-			#endregion /* Crouch Crawl END */
-			
-		}
-		else
-		if (!on_ground)
-		{
-			
-			#region /* Crouch Jump */
-			if (vspeed < 0)
-			{
-				jump_transition_to_fall_animation = 0;
-				if (sprite_crouch_jump > noone){sprite_index = sprite_crouch_jump;}else
-				if (sprite_crouch_fall > noone){sprite_index = sprite_crouch_fall;}else
-				if (sprite_jump > noone) && (vspeed <= 0){sprite_index = sprite_jump;}else
-				if (sprite_fall_slower > noone) && (vspeed > 0) && (key_jump_hold){sprite_index = sprite_fall_slower;}else
-				if (sprite_fall > noone) && (vspeed > 0){sprite_index = sprite_fall; image_speed = 0.5;}else
-				if (sprite_jump > noone){sprite_index = sprite_jump;}else
-				if (sprite_crouch > noone){sprite_index = sprite_crouch;}else
-				if (sprite_fall > noone){sprite_index = sprite_fall; image_speed = 0.5;}else
-				if (sprite_idle > noone) && (typeof(sprite_idle) != "undefined"){sprite_index = sprite_idle;}else
-				if (sprite_walk > noone){sprite_index = sprite_walk;}
-				if (image_index > image_number - 1)
-				{
-					image_speed = 0;
-				}
-				else
-				{
-					image_speed = 0.5;
-				}
-			}
-			#endregion /* Crouch Jump END */
-			
-			else
-			if (!stick_to_wall && vspeed > 0)
-			{
-				
-				#region /* Crouch Fall sprites */
-				if (jump_transition_to_fall_animation == 0)
-				{
-					image_index = 0;
-					jump_transition_to_fall_animation = 1;
-				}
-				if (jump_transition_to_fall_animation == 1)
-				{
-					image_speed = 0.5;
-					if (sprite_crouch_jump_transition_to_fall > noone)
-					{
-						sprite_index = sprite_crouch_jump_transition_to_fall;
-					}
-					else
-					{
-						jump_transition_to_fall_animation = 2;
-					}
-					if (image_index > image_number - 1)
-					{
-						image_index = 0;
-						jump_transition_to_fall_animation = 2;
-					}
-				}
-				if (jump_transition_to_fall_animation == 2)
-				{
-					if (sprite_crouch_fall > noone){sprite_index = sprite_crouch_fall;}else
-					if (sprite_crouch_jump_transition_to_fall > noone){sprite_index = sprite_crouch_jump_transition_to_fall; image_index = image_number - 1;}else
-					if (sprite_crouch_jump > noone){sprite_index = sprite_crouch_jump;}else
-					if (sprite_jump > noone) && (vspeed <= 0){sprite_index = sprite_jump;}else
-					if (sprite_fall_slower > noone) && (vspeed > 0) && (key_jump_hold){sprite_index = sprite_fall_slower;}else
-					if (sprite_fall > noone) && (vspeed > 0){sprite_index = sprite_fall; image_speed = 0.5;}else
-					if (sprite_jump > noone){sprite_index = sprite_jump;}else
-					if (sprite_crouch > noone){sprite_index = sprite_crouch;}else
-					if (sprite_fall > noone){sprite_index = sprite_fall; image_speed = 0.5;}else
-					if (sprite_idle > noone) && (typeof(sprite_idle) != "undefined"){sprite_index = sprite_idle;}else
-					if (sprite_walk > noone){sprite_index = sprite_walk;}
-					if (image_index > image_number - 1)
-					{
-						image_speed = 0;
-					}
-					else
-					{
-						image_speed = 0.5;
-					}
-				}
-				#endregion /* Crouch Fall sprites END */
-				
-			}
-		}
-		jump = 0;
-		if (sprite_mask_crouch >= 0)
-		{
-			mask_index = sprite_mask_crouch;
-		}
-		else
-		{
-			mask_index = spr_player_stand;
-		}
-	}
-	else
 	if (ground_pound == 1)
 	{
 		if (sprite_ground_pound > noone){sprite_index = sprite_ground_pound;}else
@@ -1590,7 +1293,7 @@ else
 		if (sprite_walk > noone){sprite_index = sprite_walk;}
 	}
 	else
-	if (on_ground)
+	if (on_ground && !crouch)
 	&& (vspeed == 0)
 	{
 		
@@ -1641,9 +1344,9 @@ else
 				}
 				else
 				if (sprite_skidding> noone){sprite_index = sprite_skidding; image_speed = 0.5;}else
-				if (abs(hspeed) > 20) && (sprite_run4 > noone){sprite_index = sprite_run4;}else
-				if (abs(hspeed) > 15) && (sprite_run3 > noone){sprite_index = sprite_run3;}else
-				if (abs(hspeed) > 10) && (sprite_run2 > noone){sprite_index = sprite_run2;}else
+				if (abs(hspeed) > 20) && (sprite_run_four > noone){sprite_index = sprite_run_four;}else
+				if (abs(hspeed) > 15) && (sprite_run_three > noone){sprite_index = sprite_run_three;}else
+				if (abs(hspeed) > 10) && (sprite_run_two > noone){sprite_index = sprite_run_two;}else
 				if (abs(hspeed) > 5) && (sprite_run > noone){sprite_index = sprite_run;}else
 				if (sprite_walk >  noone) && (hspeed <> 0){sprite_index = sprite_walk;}else
 				if (sprite_run > noone) && (hspeed <> 0){sprite_index = sprite_run;}else
@@ -1670,9 +1373,9 @@ else
 			}
 			else
 			if (sprite_skidding_stop > noone){sprite_index = sprite_skidding_stop; image_speed = 0.5;}else
-			if (abs(hspeed) > 20) && (sprite_run4 > noone){sprite_index = sprite_run4; image_speed = speed / 10 + 0.1;}else
-			if (abs(hspeed) > 15) && (sprite_run3 > noone){sprite_index = sprite_run3; image_speed = speed / 10 + 0.1;}else
-			if (abs(hspeed) > 10) && (sprite_run2 > noone){sprite_index = sprite_run2; image_speed = speed / 10 + 0.1;}else
+			if (abs(hspeed) > 20) && (sprite_run_four > noone){sprite_index = sprite_run_four; image_speed = speed / 10 + 0.1;}else
+			if (abs(hspeed) > 15) && (sprite_run_three > noone){sprite_index = sprite_run_three; image_speed = speed / 10 + 0.1;}else
+			if (abs(hspeed) > 10) && (sprite_run_two > noone){sprite_index = sprite_run_two; image_speed = speed / 10 + 0.1;}else
 			if (abs(hspeed) > 5) && (sprite_run > noone){sprite_index = sprite_run; image_speed = speed / 10 + 0.1;}else
 			if (sprite_walk > noone) && (hspeed <> 0){sprite_index = sprite_walk; image_speed = speed / 10 + 0.1;}else
 			if (sprite_run > noone) && (hspeed <> 0){sprite_index = sprite_run; image_speed = speed / 10 + 0.1;}else
@@ -1736,9 +1439,9 @@ else
 			else
 			if (abs(hspeed) >= 20)
 			{
-				if (sprite_run4 > noone){sprite_index = sprite_run4;}else
-				if (sprite_run3 > noone){sprite_index = sprite_run3;}else
-				if (sprite_run2 > noone){sprite_index = sprite_run2;}else
+				if (sprite_run_four > noone){sprite_index = sprite_run_four;}else
+				if (sprite_run_three > noone){sprite_index = sprite_run_three;}else
+				if (sprite_run_two > noone){sprite_index = sprite_run_two;}else
 				if (sprite_run > noone){sprite_index = sprite_run;}else
 				if (sprite_walk > noone){sprite_index = sprite_walk;}else
 				if (typeof(sprite_idle) != "undefined"){sprite_index = sprite_idle;}
@@ -1746,8 +1449,8 @@ else
 			else
 			if (abs(hspeed) >= 15)
 			{
-				if (sprite_run3 > noone){sprite_index = sprite_run3;}else
-				if (sprite_run2 > noone){sprite_index = sprite_run2;}else
+				if (sprite_run_three > noone){sprite_index = sprite_run_three;}else
+				if (sprite_run_two > noone){sprite_index = sprite_run_two;}else
 				if (sprite_run > noone){sprite_index = sprite_run;}else
 				if (sprite_walk > noone){sprite_index = sprite_walk;}else
 				if (typeof(sprite_idle) != "undefined"){sprite_index = sprite_idle;}
@@ -1755,7 +1458,7 @@ else
 			else
 			if (abs(hspeed) >= 10)
 			{
-				if (sprite_run2 > noone){sprite_index = sprite_run2;}else
+				if (sprite_run_two > noone){sprite_index = sprite_run_two;}else
 				if (sprite_run > noone){sprite_index = sprite_run;}else
 				if (sprite_walk > noone){sprite_index = sprite_walk;}else
 				if (typeof(sprite_idle) != "undefined"){sprite_index = sprite_idle;}
@@ -1879,57 +1582,57 @@ else
 				}
 				else
 				if (idle_animtaion = 2)
-				&& (sprite_idle_animation1 > noone)
+				&& (sprite_idle_animation_one > noone)
 				{
-					sprite_index = sprite_idle_animation1;
+					sprite_index = sprite_idle_animation_one;
 				}
 				else
 				if (idle_animtaion = 3)
-				&& (sprite_idle_animation2 > noone)
+				&& (sprite_idle_animation_two > noone)
 				{
-					sprite_index = sprite_idle_animation2;
+					sprite_index = sprite_idle_animation_two;
 				}
 				else
 				if (idle_animtaion = 4)
-				&& (sprite_idle_animation3 > noone)
+				&& (sprite_idle_animation_three > noone)
 				{
-					sprite_index = sprite_idle_animation3;
+					sprite_index = sprite_idle_animation_three;
 				}
 				else
 				if (idle_animtaion == 5)
-				&& (sprite_idle_animation4 > noone)
+				&& (sprite_idle_animation_four > noone)
 				{
-					sprite_index = sprite_idle_animation4;
+					sprite_index = sprite_idle_animation_four;
 				}
 				else
 				if (idle_animtaion == 6)
-				&& (sprite_idle_animation5 > noone)
+				&& (sprite_idle_animation_five > noone)
 				{
-					sprite_index = sprite_idle_animation5;
+					sprite_index = sprite_idle_animation_five;
 				}
 				else
 				if (idle_animtaion == 7)
-				&& (sprite_idle_animation6 > noone)
+				&& (sprite_idle_animation_six > noone)
 				{
-					sprite_index = sprite_idle_animation6;
+					sprite_index = sprite_idle_animation_six;
 				}
 				else
 				if (idle_animtaion == 8)
-				&& (sprite_idle_animation7 > noone)
+				&& (sprite_idle_animation_seven > noone)
 				{
-					sprite_index = sprite_idle_animation7;
+					sprite_index = sprite_idle_animation_seven;
 				}
 				else
 				if (idle_animtaion = 9)
-				&& (sprite_idle_animation8 > noone)
+				&& (sprite_idle_animation_eight > noone)
 				{
-					sprite_index = sprite_idle_animation8;
+					sprite_index = sprite_idle_animation_eight;
 				}
 				else
 				if (idle_animtaion = 10)
-				&& (sprite_idle_animation9 > noone)
+				&& (sprite_idle_animation_nine > noone)
 				{
-					sprite_index = sprite_idle_animation9;
+					sprite_index = sprite_idle_animation_nine;
 				}
 				else
 				if (sprite_idle > noone)
@@ -1970,7 +1673,7 @@ else
 	else
 	
 	#region /* Jumping Sprites */
-	if (!on_ground)
+	if (!on_ground && !crouch)
 	{
 		if (burnt > 0)
 		{

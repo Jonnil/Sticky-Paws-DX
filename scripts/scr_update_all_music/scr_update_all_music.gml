@@ -1,7 +1,7 @@
 function scr_update_all_music()
 {
 	
-	#region /* Get default music if they exist */
+	#region /* Load Default Music Data */
 	if (global.character_select_in_this_menu == "level_editor")
 	{
 		ini_open(global.use_temp_or_working + "custom_levels/" + string(global.level_name) + "/data/level_information.ini");
@@ -10,200 +10,68 @@ function scr_update_all_music()
 		global.default_ambience_overworld = ini_read_string("info", "default_ambience_overworld", "level1");
 		global.default_ambience_underwater = ini_read_string("info", "default_ambience_underwater", "level1");
 		global.default_clear_melody = ini_read_string("info", "default_clear_melody", "level1");
-		ini_close(); switch_save_data_commit(); /* Remember to commit the save data! */
+		ini_close();
+		switch_save_data_commit();
+		show_debug_message("Default music and ambience loaded from level_information.ini");
 	}
-	#endregion /* Get default music if they exist END */
+	#endregion /* Load Default Music Data END */
 	
-	#region /* Custom Music */
+	#region /* Destroy Existing Audio Streams */
+	var audio_streams = [global.music, global.music_underwater, global.ambience, global.ambience_underwater, global.level_clear_melody];
+	var stream_names = ["music", "music_underwater", "ambience", "ambience_underwater", "level_clear_melody"];
 	
-	#region /* Destroy the audio streams before loading new ones */
-	if (global.music != noone)
-	&& (audio_exists(global.music))
+	for (var i = 0; i < array_length(audio_streams); i++)
 	{
-		audio_destroy_stream(global.music);
+		if (audio_streams[i] != noone && audio_exists(audio_streams[i]))
+		{
+			audio_destroy_stream(audio_streams[i]);
+			show_debug_message("Destroyed existing " + stream_names[i] + " stream.");
+		}
 	}
-	if (global.music_underwater != noone)
-	&& (audio_exists(global.music_underwater))
-	{	
-		audio_destroy_stream(global.music_underwater);
-	}
-	if (global.ambience != noone)
-	&& (audio_exists(global.ambience))
-	{	
-		audio_destroy_stream(global.ambience);
-	}
-	if (global.ambience_underwater != noone)
-	&& (audio_exists(global.ambience_underwater))
-	{	
-		audio_destroy_stream(global.ambience_underwater);
-	}
-	if (global.level_clear_melody != noone)
-	&& (audio_exists(global.level_clear_melody))
-	{	
-		audio_destroy_stream(global.level_clear_melody);
-	}
-	#endregion /* Destroy the audio streams before loading new ones END */
+	#endregion /* Destroy Existing Audio Streams END */
 	
-	#region /* Update Music */
-	/* OGG small letter File */
-	if (file_exists("levels/" + string(ds_list_find_value(global.all_loaded_main_levels, global.select_level_index)) + "/sound/music.ogg"))
-	&& (global.character_select_in_this_menu == "main_game")
-	|| (file_exists("levels/" + string(ds_list_find_value(global.all_loaded_main_levels, global.select_level_index)) + "/sound/music.ogg"))
-	&& (global.character_select_in_this_menu == "level_editor")
-	&& (global.create_level_from_template >= true)
+	function load_audio(filename, default_filename, audio_asset_path)
 	{
-		global.music = audio_create_stream("levels/" + string(ds_list_find_value(global.all_loaded_main_levels, global.select_level_index)) + "/sound/music.ogg");
+		if (file_exists(audio_asset_path + filename))
+		{
+			return audio_create_stream(audio_asset_path + filename);
+		}
+		else
+		if (global.character_select_in_this_menu == "level_editor" && default_filename != noone &&
+		file_exists("levels/" + string(default_filename) + "/sound/" + filename))
+		{
+			return audio_create_stream("levels/" + string(default_filename) + "/sound/" + filename);
+		}
+		return noone;
 	}
-	else
-	/* OGG small letter File */
-	if (global.can_load_custom_level_assets)
-	&& (file_exists(global.use_temp_or_working + "custom_levels/" + string(global.level_name) + "/sound/music.ogg"))
-	&& (global.character_select_in_this_menu == "level_editor")
-	{
-		global.music = audio_create_stream(global.use_temp_or_working + "custom_levels/" + string(global.level_name) + "/sound/music.ogg");
-	}
-	else
-	if (global.character_select_in_this_menu == "level_editor" && global.default_music_overworld != noone)
-	&& (file_exists("levels/" + string(global.default_music_overworld) + "/sound/music.ogg"))
-	{
-		global.music = audio_create_stream("levels/" + string(global.default_music_overworld) + "/sound/music.ogg");
-	}
-	else
-	{
-		global.music = noone;
-	}
-	#endregion /* Update Music END */
 	
-	#region /* Update Music Underwater */
-	/* OGG small letter File */
-	if (file_exists("levels/" + string(ds_list_find_value(global.all_loaded_main_levels, global.select_level_index)) + "/sound/music_underwater.ogg"))
-	&& (global.character_select_in_this_menu == "main_game")
-	|| (file_exists("levels/" + string(ds_list_find_value(global.all_loaded_main_levels, global.select_level_index)) + "/sound/music_underwater.ogg"))
-	&& (global.character_select_in_this_menu == "level_editor")
-	&& (global.create_level_from_template >= true)
-	{
-		global.music_underwater = audio_create_stream("levels/" + string(ds_list_find_value(global.all_loaded_main_levels, global.select_level_index)) + "/sound/music_underwater.ogg");
-	}
-	else
-	/* OGG small letter File */
-	if (global.can_load_custom_level_assets)
-	&& (file_exists(global.use_temp_or_working + "custom_levels/" + string(global.level_name) + "/sound/music_underwater.ogg"))
-	&& (global.character_select_in_this_menu == "level_editor")
-	{
-		global.music_underwater = audio_create_stream(global.use_temp_or_working + "custom_levels/" + string(global.level_name) + "/sound/music_underwater.ogg");
-	}
-	else
-	if (global.character_select_in_this_menu == "level_editor" && global.default_music_underwater != noone)
-	&& (file_exists("levels/" + string(global.default_music_underwater) + "/sound/music_underwater.ogg"))
-	{
-		global.music_underwater = audio_create_stream("levels/" + string(global.default_music_underwater) + "/sound/music_underwater.ogg");
-	}
-	else
-	{
-		global.music_underwater = noone;
-	}
-	#endregion /* Update Music Underwater END */
+	#region /* Load Music Streams */
+	var base_path = global.character_select_in_this_menu == "main_game" ? 
+					"levels/" + string(ds_list_find_value(global.all_loaded_main_levels, global.select_level_index)) + "/sound/" : 
+					global.use_temp_or_working + "custom_levels/" + string(global.level_name) + "/sound/";
 	
-	#region /* Update Ambience */
-	/* OGG small letter File */
-	if (file_exists("levels/" + string(ds_list_find_value(global.all_loaded_main_levels, global.select_level_index)) + "/sound/ambience.ogg"))
-	&& (global.character_select_in_this_menu == "main_game")
-	|| (file_exists("levels/" + string(ds_list_find_value(global.all_loaded_main_levels, global.select_level_index)) + "/sound/ambience.ogg"))
-	&& (global.character_select_in_this_menu == "level_editor")
-	&& (global.create_level_from_template >= true)
-	{
-		global.ambience = audio_create_stream("levels/" + string(ds_list_find_value(global.all_loaded_main_levels, global.select_level_index)) + "/sound/ambience.ogg");
-	}
-	else
-	/* OGG small letter File */
-	if (global.can_load_custom_level_assets)
-	&& (file_exists(global.use_temp_or_working + "custom_levels/" + string(global.level_name) + "/sound/ambience.ogg"))
-	&& (global.character_select_in_this_menu == "level_editor")
-	{
-		global.ambience = audio_create_stream(global.use_temp_or_working + "custom_levels/" + string(global.level_name) + "/sound/ambience.ogg");
-	}
-	else
-	if (global.character_select_in_this_menu == "level_editor" && global.default_ambience_overworld != noone)
-	&& (file_exists("levels/" + string(global.default_ambience_overworld) + "/sound/ambience.ogg"))
-	{
-		global.ambience = audio_create_stream("levels/" + string(global.default_ambience_overworld) + "/sound/ambience.ogg");
-	}
-	else
-	{
-		global.ambience = noone;
-	}
-	#endregion /* Update Ambience END */
+	global.music = load_audio("music.ogg", global.default_music_overworld, base_path);
+	global.music_underwater = load_audio("music_underwater.ogg", global.default_music_underwater, base_path);
+	global.ambience = load_audio("ambience.ogg", global.default_ambience_overworld, base_path);
+	global.ambience_underwater = load_audio("ambience_underwater.ogg", global.default_ambience_underwater, base_path);
+	global.level_clear_melody = load_audio("level_clear_melody.ogg", global.default_clear_melody, base_path);
+	#endregion /* Load Music Streams END */
 	
-	#region /* Update Ambience Underwater */
-	/* OGG small letter File */
-	if (file_exists("levels/" + string(ds_list_find_value(global.all_loaded_main_levels, global.select_level_index)) + "/sound/ambience_underwater.ogg"))
-	&& (global.character_select_in_this_menu == "main_game")
-	|| (file_exists("levels/" + string(ds_list_find_value(global.all_loaded_main_levels, global.select_level_index)) + "/sound/ambience_underwater.ogg"))
-	&& (global.character_select_in_this_menu == "level_editor")
-	&& (global.create_level_from_template >= true)
-	{
-		global.ambience_underwater = audio_create_stream("levels/" + string(ds_list_find_value(global.all_loaded_main_levels, global.select_level_index)) + "/sound/ambience_underwater.ogg");
-	}
-	else
-	/* OGG small letter File */
-	if (global.can_load_custom_level_assets)
-	&& (file_exists(global.use_temp_or_working + "custom_levels/" + string(global.level_name) + "/sound/ambience_underwater.ogg"))
-	&& (global.character_select_in_this_menu == "level_editor")
-	{
-		global.ambience_underwater = audio_create_stream(global.use_temp_or_working + "custom_levels/" + string(global.level_name) + "/sound/ambience_underwater.ogg");
-	}
-	else
-	if (global.character_select_in_this_menu == "level_editor" && global.default_ambience_underwater != noone)
-	&& (file_exists("levels/" + string(global.default_ambience_underwater) + "/sound/ambience_underwater.ogg"))
-	{
-		global.ambience_underwater = audio_create_stream("levels/" + string(global.default_ambience_underwater) + "/sound/ambience_underwater.ogg");
-	}
-	else
-	{
-		global.ambience_underwater = noone;
-	}
-	#endregion /* Update Ambience Underwater END */
+	#region /* Debug Messages */
+	var audio_debug_names = ["music", "music_underwater", "ambience", "ambience_underwater", "level_clear_melody"];
+	var audio_globals = [global.music, global.music_underwater, global.ambience, global.ambience_underwater, global.level_clear_melody];
 	
-	#region /* Update Level Clear Melody */
-	/* OGG small letter File */
-	if (file_exists("levels/" + string(ds_list_find_value(global.all_loaded_main_levels, global.select_level_index)) + "/sound/clear_melody.ogg"))
-	&& (global.character_select_in_this_menu == "main_game")
-	|| (file_exists("levels/" + string(ds_list_find_value(global.all_loaded_main_levels, global.select_level_index)) + "/sound/clear_melody.ogg"))
-	&& (global.character_select_in_this_menu == "level_editor")
-	&& (global.create_level_from_template)
+	for (var j = 0; j < array_length(audio_globals); j++)
 	{
-		global.level_clear_melody = audio_create_stream("levels/" + string(ds_list_find_value(global.all_loaded_main_levels, global.select_level_index)) + "/sound/clear_melody.ogg");
+		if (audio_globals[j] != noone)
+		{
+			show_debug_message("Loaded " + audio_debug_names[j] + ": " + base_path + audio_debug_names[j] + ".ogg");
+		}
+		else
+		{
+			show_debug_message("No " + audio_debug_names[j] + " file found. global." + audio_debug_names[j] + " set to noone.");
+		}
 	}
-	else
-	/* OGG small letter File */
-	if (global.can_load_custom_level_assets)
-	&& (file_exists(global.use_temp_or_working + "custom_levels/" + string(global.level_name) + "/sound/clear_melody.ogg"))
-	&& (global.character_select_in_this_menu == "level_editor")
-	{
-		global.level_clear_melody = audio_create_stream(global.use_temp_or_working + "custom_levels/" + string(global.level_name) + "/sound/clear_melody.ogg");
-	}
-	else
-	if (file_exists("resource_pack/" + string(ds_list_find_value(global.all_loaded_resource_pack, global.selected_resource_pack)) + "/sound/clear_melody.ogg"))
-	{
-		global.level_clear_melody = audio_create_stream("resource_pack/" + string(ds_list_find_value(global.all_loaded_resource_pack, global.selected_resource_pack)) + "/sound/clear_melody.ogg");
-	}
-	else
-	if (file_exists(global.use_temp_or_working + "custom_resource_pack/" + string(ds_list_find_value(global.all_loaded_resource_pack, global.selected_resource_pack)) + "/sound/clear_melody.ogg"))
-	{
-		global.level_clear_melody = audio_create_stream(global.use_temp_or_working + "custom_resource_pack/" + string(ds_list_find_value(global.all_loaded_resource_pack, global.selected_resource_pack)) + "/sound/clear_melody.ogg");
-	}
-	else
-	if (global.character_select_in_this_menu == "level_editor" && global.default_clear_melody != noone)
-	&& (file_exists("levels/" + string(global.default_clear_melody) + "/sound/clear_melody.ogg"))
-	{
-		global.level_clear_melody = audio_create_stream("levels/" + string(global.default_clear_melody) + "/sound/clear_melody.ogg");
-	}
-	else
-	{
-		global.level_clear_melody = noone;
-	}
-	#endregion /* Update Level Clear Melody END */
-	
-	#endregion /* Custom Music END */
+	#endregion /* Debug Messages END */
 	
 }

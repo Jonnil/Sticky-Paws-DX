@@ -47,7 +47,6 @@ function scr_player_move_lose()
 			audio_stop_sound(snd_skiddingvertical);
 		}
 		speed = 0;
-		taken_damage = 0;
 		invincible_timer = false;
 		scr_audio_play(snd_lose, volume_source.sound);
 		

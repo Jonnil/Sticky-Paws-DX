@@ -1,15 +1,14 @@
 if (instance_exists(obj_player))
-&& (distance_to_object(obj_player) < 20)
+&& (distance_to_object(obj_player) < 21)
 {
 	var player_nearest = instance_nearest(x, y, obj_player);
 	
-	if (place_meeting(x, y + 7, obj_player) &&
-	player_nearest.vspeed < 0 ||
-	place_meeting(x, y - 32, obj_player) && player_nearest.vspeed > 0 && player_nearest.ground_pound >= 1 ||
-	player_nearest.dive ||
-	player_nearest.wall_jump > 0 ||
-	player_nearest.move_towards_spring_endpoint ||
-	player_nearest.speed > 30)
+	if (place_meeting(x, y + 7, obj_player) && player_nearest.vspeed < 0
+	|| player_nearest.ground_pound >= 1 && collision_rectangle(bbox_left - 1, bbox_top - 32, bbox_right + 1, bbox_bottom + 1, obj_player, false, true)
+	|| player_nearest.dive
+	|| player_nearest.wall_jump > 0
+	|| player_nearest.move_towards_spring_endpoint
+	|| player_nearest.speed > 30)
 	&& (!player_nearest.die)
 	{
 		alarm[1] = 1; /* Break cardboard */
@@ -42,8 +41,8 @@ var check_margin = 3; /* Adjust this value to set the margin from the corners */
 var check_left = bbox_left + check_margin;
 var check_right = bbox_right - check_margin;
 var check_bottom = bbox_bottom + check_margin;
-if (!collision_rectangle(check_left, check_bottom, check_right, check_bottom, obj_wall, false, true) &&
-    !collision_rectangle(check_left, check_bottom, check_right, check_bottom, obj_semisolid_platform, false, true))
+if (!collision_rectangle(check_left, check_bottom, check_right, check_bottom, obj_wall, false, true)
+&& !collision_rectangle(check_left, check_bottom, check_right, check_bottom, obj_semisolid_platform, false, true))
 {
 	var view_x_center = camera_get_view_x(view_camera[view_current]) + (camera_get_view_width(view_camera[view_current]) * 0.5);
 	var view_y_center = camera_get_view_y(view_camera[view_current]) + (camera_get_view_height(view_camera[view_current]) * 0.5);

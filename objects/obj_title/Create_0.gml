@@ -38,6 +38,7 @@ scr_delete_sprite_properly(global.custom_foreground1);
 scr_delete_sprite_properly(global.custom_foreground1_5);
 scr_delete_sprite_properly(global.custom_foreground2);
 scr_delete_sprite_properly(global.custom_foreground_secret);
+in_edit_character_menu = false;
 loading_assets = false;
 allowed_to_load_template_level = false;
 downloaded_level_is_daily_build = false;
@@ -78,6 +79,7 @@ thumbnail_level_unlisted[0] = 0;
 thumbnail_level_name[0] = "";
 thumbnail_level_description[0] = "";
 thumbnail_level_username[0] = "";
+thumbnail_custom_background[0] = false;
 
 level_id = "";
 character_id = "";
@@ -105,8 +107,6 @@ intended_level_difficulty = 1; /* Easy = 0. Normal = 1. Hard = 2. Super Hard = 3
 
 scr_unzip_all() /* Unzip any .zip folder found in AppData */
 
-upload_rules_do_not_show_level = false;
-upload_rules_do_not_show_character = false;
 inform_about_report_feature = true; /* When you download user-generated content for the first time, inform the player about the report feature */
 inform_about_report_feature_alpha = -3; /* Fade in the inform report feature menu */
 remember_keyboard_string = ""; /* In case you want to click "Cancel", revert back to whatever was already written before entering name input screen */

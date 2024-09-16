@@ -2,7 +2,8 @@ selected_skin = 0;
 quit_nevermind_y = 0;
 
 #region /* Set variables for character select in pause menu */
-for(var p = 1; p <= global.max_players; p += 1) {
+for(var p = 1; p <= global.max_players; p += 1)
+{
 	show_player_controls_y[p] = -64;
 	
 	show_player_controller_cant_use[p] = 0;

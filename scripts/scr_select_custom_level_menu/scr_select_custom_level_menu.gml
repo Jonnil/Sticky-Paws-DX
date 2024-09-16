@@ -655,6 +655,7 @@ function scr_select_custom_level_menu()
 	
 	#region /* Draw Level Description and Creator*/
 	if (global.select_level_index >= 1)
+	&& (variable_instance_exists(self, "thumbnail_level_description"))
 	{
 		draw_set_valign(fa_middle);
 		if (is_array(thumbnail_level_description))
@@ -846,12 +847,15 @@ function scr_select_custom_level_menu()
 					ini_write_string("info", "level_description", string(global.level_description)); /* Save description */
 					ini_close(); switch_save_data_commit(); /* Remember to commit the save data! */
 					
-					if (is_array(thumbnail_level_description))
-					&& (array_length(thumbnail_level_description) > 0)
-					&& (global.select_level_index >= 0)
-					&& (global.select_level_index < array_length(thumbnail_level_description))
+					if (variable_instance_exists(self, "thumbnail_level_description"))
 					{
-						thumbnail_level_description[global.select_level_index] = string(global.level_description);
+						if (is_array(thumbnail_level_description))
+						&& (array_length(thumbnail_level_description) > 0)
+						&& (global.select_level_index >= 0)
+						&& (global.select_level_index < array_length(thumbnail_level_description))
+						{
+							thumbnail_level_description[global.select_level_index] = string(global.level_description);
+						}
 					}
 					
 					menu = "level_editor_enter_description";

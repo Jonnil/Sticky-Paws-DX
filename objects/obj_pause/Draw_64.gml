@@ -377,6 +377,21 @@ if (!hide_menu_for_clean_screenshots)
 	scr_option_menu(); /* Options */
 	scr_character_select_menu_draw();
 	
+	if (menu == "caution_online_back")
+	|| (menu == "caution_online_do_not_show")
+	|| (menu == "caution_online_proceed")
+	|| (menu == "caution_online_network_service_unavailable")
+	|| (menu == "caution_online_token_invalidated")
+	{
+		scr_draw_caution_online();
+	}
+	if (menu == "upload_rules_back")
+	|| (menu == "upload_rules_do_not_show")
+	|| (menu == "upload_rules")
+	{
+		scr_draw_upload_rules();
+	}
+	
 	scr_cant_use_controller_notification();
 	
 	scr_quit_to_desktop_menu("quit_to_desktop");

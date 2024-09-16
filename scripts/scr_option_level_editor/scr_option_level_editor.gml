@@ -1253,6 +1253,7 @@ function scr_option_level_editor()
 			#region /* Navigate change backgrounds */
 			if (menu == "change_all_background")
 			{
+				parallax_info = "Is affected by parallax scrolling";
 				if (key_a_pressed)
 				&& (menu_delay == 0 && menu_joystick_delay == 0)
 				&& (!open_dropdown)
@@ -1325,7 +1326,7 @@ function scr_option_level_editor()
 			else
 			if (menu == "change_background2")
 			{
-				button_info = "Change the background 2nd furthest back. Is affected by parallax scrolling";
+				button_info = "Change the background 2nd furthest back";
 				parallax_info = "Is affected by parallax scrolling";
 				if (key_a_pressed)
 				&& (menu_delay == 0 && menu_joystick_delay == 0)
@@ -1436,6 +1437,7 @@ function scr_option_level_editor()
 			else
 			if (menu == "change_all_foreground")
 			{
+				parallax_info = "Not affected by parallax scrolling";
 				if (key_a_pressed)
 				&& (menu_delay == 0 && menu_joystick_delay == 0)
 				&& (!open_dropdown)

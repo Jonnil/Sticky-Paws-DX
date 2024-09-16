@@ -73,15 +73,19 @@ function scr_character_portrait_for_player_draw(what_player = 1)
 	#region /* Draw character portrait for player */
 	if (sprite_select_player > 0
 	&& player_accept_selection[what_player] >= 0
-	&& sprite_exists(sprite_select_player)) {
+	&& sprite_exists(sprite_select_player))
+	{
 		var can_select = true;
-		for(var i = 1; i <= global.max_players; i += 1) {
-			if (i != what_player && can_input_player_name[i] != 0) {
+		for(var i = 1; i <= global.max_players; i += 1)
+		{
+			if (i != what_player && can_input_player_name[i] != 0)
+			{
 				can_select = false;
 				break;
 			}
 		}
-		if (can_select) {
+		if (can_select)
+		{
 			draw_sprite_ext(sprite_select_player, 0, get_window_width * 0.5 + xx[what_player] , get_window_height * 0.5, (392 / sprite_get_width(sprite_select_player)) * scale_offset, (392 / sprite_get_width(sprite_select_player)) * scale_offset, 0, c_white, 1);
 			draw_set_halign(fa_center);
 			draw_set_valign(fa_middle);
@@ -95,7 +99,7 @@ function scr_character_portrait_for_player_draw(what_player = 1)
 				scr_draw_text_outlined(get_window_width * 0.5 + player_display_x[what_player], get_window_height * 0.5 + 324, string(character_name), global.default_text_size, c_menu_outline, c_menu_fill, 1);
 			}
 			#endregion /* Display Character Name END */
-		
+			
 		}
 	}
 	#endregion /* Draw character portrait for player END */
@@ -372,19 +376,25 @@ function scr_character_portrait_for_player_draw(what_player = 1)
 	#endregion /* Show left and right arrows when selecting character END */
 	
 	#region /* Tell the player the inputed name */
-	if (player_accept_selection[what_player] >= 0) {
+	if (player_accept_selection[what_player] >= 0)
+	{
 	    var can_select = true;
-	    for(var i = 1; i <= global.max_players; i += 1) {
-	        if (can_input_player_name[i] != 0) {
+	    for(var i = 1; i <= global.max_players; i += 1)
+		{
+	        if (can_input_player_name[i] != 0)
+			{
 	            can_select = false;
 	            break;
 	        }
 	    }
-	    if (can_select) {
-			if (player_name = "") {
+	    if (can_select)
+		{
+			if (player_name = "")
+			{
 				scr_draw_name_box(l10n_text("Player " + string(what_player)), player_color, 0.5, get_window_width * 0.5 + player_display_x[what_player], name_input_y);
 			}
-			else {
+			else
+			{
 				scr_draw_name_box(player_name, player_color, 0.5, get_window_width * 0.5 + player_display_x[what_player], name_input_y);
 			}
 		}

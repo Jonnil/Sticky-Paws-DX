@@ -18,6 +18,7 @@ function scr_load_custom_levels()
 			&& (variable_instance_exists(self, "thumbnail_daily_build"))
 			&& (variable_instance_exists(self, "thumbnail_level_id"))
 			&& (variable_instance_exists(self, "thumbnail_level_unlisted"))
+			&& (variable_instance_exists(self, "thumbnail_custom_background"))
 			&& (is_array(thumbnail_level_name))
 			&& (array_length(thumbnail_level_name) > 0)
 			&& (is_array(thumbnail_level_description))
@@ -30,6 +31,8 @@ function scr_load_custom_levels()
 			&& (array_length(thumbnail_level_id) > 0)
 			&& (is_array(thumbnail_level_unlisted))
 			&& (array_length(thumbnail_level_unlisted) > 0)
+			&& (is_array(thumbnail_custom_background))
+			&& (array_length(thumbnail_custom_background) > 0)
 			//&& (i >= 0)
 			//&& (i < array_length(thumbnail_level_name))
 			//&& (i < array_length(thumbnail_level_description))
@@ -40,10 +43,11 @@ function scr_load_custom_levels()
 				for(i = 1; i < ds_list_size(global.thumbnail_sprite); i += 1)
 				{
 					ini_open(game_save_id + "custom_levels/" + string(ds_list_find_value(global.all_loaded_custom_levels, i)) + "/data/level_information.ini");
-					thumbnail_clear_check[i] = ini_read_string("info", "clear_check", false);
-					thumbnail_daily_build[i] = ini_read_string("info", "if_daily_build", false);
+					thumbnail_clear_check[i] = ini_read_real("info", "clear_check", false);
+					thumbnail_daily_build[i] = ini_read_real("info", "if_daily_build", false);
 					thumbnail_level_id[i] = string(ini_read_string("info", "level_id", ""));
 					thumbnail_level_unlisted[i] = string(ini_read_real("info", "visibility_index", 0));
+					thumbnail_custom_background[i] = ini_read_real("info", "level_has_custom_background", false);
 					if (switch_check_profanity(string(ini_read_string("info", "level_name", ""))))
 					{
 						thumbnail_level_name[i] = string(switch_mask_profanity(ini_read_string("info", "level_name", "")));

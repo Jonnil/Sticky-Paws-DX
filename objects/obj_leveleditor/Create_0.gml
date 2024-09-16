@@ -1,4 +1,8 @@
 #region /* Essential code that needs to be initialized */
+ini_open(game_save_id + "custom_levels/" + string(global.level_name) + "/data/level_information.ini");
+global.level_description = ini_read_string("info", "level_description", "");
+ini_close();
+
 scr_gamepad_vibration(0, 0, 0); /* Reset gamepad vibration when exiting playtest */
 scr_gamepad_vibration(1, 0, 0);
 scr_gamepad_vibration(2, 0, 0);
@@ -19,6 +23,7 @@ scr_make_background_visible();
 #region /* Essential variables */
 if_clear_checked = false;
 if_daily_build = false;
+level_has_custom_background = false;
 level_id = "";
 cam_x = camera_get_view_x(view_camera[view_current]);
 cam_y = camera_get_view_y(view_camera[view_current]);
@@ -152,6 +157,10 @@ if (!global.actually_play_edited_level)
 		if (ini_key_exists("info", "if_daily_build"))
 		{
 			if_daily_build = ini_read_string("info", "if_daily_build", false); /* Draw if level have been created in Daily Build on top of screen */
+		}
+		if (ini_key_exists("info", "level_has_custom_background"))
+		{
+			level_has_custom_background = ini_read_string("info", "level_has_custom_background", false); /* Draw if level uses Custom Background on top of screen */
 		}
 		if (ini_key_exists("info", "level_id"))
 		{
@@ -514,8 +523,8 @@ if (!global.actually_play_edited_level)
 	unlock_index = 0;
 	
 	ini_open(game_save_id + "save_file/config.ini");
-	upload_rules_do_not_show_level = ini_read_real("config", "upload_rules_do_not_show_level", false);
-	upload_rules_do_not_show_character = ini_read_real("config", "upload_rules_do_not_show_character", false);
+	global.upload_rules_do_not_show_level = ini_read_real("config", "upload_rules_do_not_show_level", false);
+	global.upload_rules_do_not_show_character = ini_read_real("config", "upload_rules_do_not_show_character", false);
 	if (ini_key_exists("config", "select_level_editing_music"))
 	{
 		global.selected_level_editing_music = ini_read_real("config", "select_level_editing_music", 1); /* The selected background music when editing in the level editor */

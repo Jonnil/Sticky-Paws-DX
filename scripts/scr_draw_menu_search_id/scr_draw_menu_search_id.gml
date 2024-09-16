@@ -261,6 +261,7 @@ function scr_draw_menu_search_id(what_kind_of_id = "level")
 					if (file_exists(download_temp_path + "custom_levels/" + string(global.level_name) + "/data/level_information.ini"))
 					{
 						ini_open(download_temp_path + "custom_levels/" + string(global.level_name) + "/data/level_information.ini");
+						level_has_custom_background = ini_read_real("info", "level_has_custom_background", false); /* Show if level uses custom backgrounds */
 						downloaded_level_is_daily_build = ini_read_real("info", "if_daily_build", false);
 						global.level_description = ini_read_string("info", "level_description", "");
 						masked_username = ini_read_string("info", "username", "");
@@ -286,19 +287,6 @@ function scr_draw_menu_search_id(what_kind_of_id = "level")
 							first_created_on_version = ini_read_string("info", "first_created_on_version", "v" + scr_get_build_date());	
 						}
 						#endregion /* Show what version of the game the level was first created in END */
-						
-						#region /* Show if level uses custom backgrounds */
-						if (file_exists(download_temp_path + "custom_levels/" + string(global.level_name) + "/background/*"))
-						{
-							show_message("level_has_custom_backgrounds = true");
-							level_has_custom_backgrounds = true;
-						}
-						else
-						{
-							show_message("level_has_custom_backgrounds = false");
-							level_has_custom_backgrounds = false;
-						}
-						#endregion /* Show if level uses custom backgrounds END */
 						
 						ini_close();
 						
@@ -663,8 +651,17 @@ function scr_draw_menu_search_id(what_kind_of_id = "level")
 			{
 				scr_draw_text_outlined(get_window_width - 8, 40, l10n_text("First created on version") + ": " + string(first_created_on_version), global.default_text_size * 0.75, c_black, c_white, 1);
 			}
-			draw_set_halign(fa_center);
 			#endregion /* Show what version of the game the content was first created in END */
+			
+			if (what_kind_of_id == "level")
+			&& (variable_instance_exists(self, "level_has_custom_background"))
+			&& (level_has_custom_background)
+			{
+				draw_sprite_ext(spr_icon_pen, 1, get_window_width - string_width(l10n_text("Uses Custom Background")), 80, 1, 1, 0, c_white, 1);
+				scr_draw_text_outlined(get_window_width - 8, 80, l10n_text("Uses Custom Background"), global.default_text_size, c_black, c_white, 1);
+			}
+			
+			draw_set_halign(fa_center);
 			
 			if (!inform_about_report_feature)
 			{

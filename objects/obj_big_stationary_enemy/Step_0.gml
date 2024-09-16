@@ -1,5 +1,3 @@
-depth = +9;
-
 if (stomped_delay > 0)
 {
 	stomped_delay --;
