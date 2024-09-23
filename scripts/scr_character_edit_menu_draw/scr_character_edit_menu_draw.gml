@@ -13,6 +13,7 @@ function scr_character_edit_menu_draw()
 		
 		if (menu_delay == 19)
 		{
+			edit_charcter_flip_sprite = false;
 			edit_character_sprite_index = spr_noone;
 			edit_character_mask_index = spr_noone;
 			edit_character_image_index = 0;
@@ -20,6 +21,10 @@ function scr_character_edit_menu_draw()
 			what_character_name = string(ds_list_find_value(global.all_loaded_characters, global.character_index[0]));
 			can_input_sprite_name = false;
 			global.show_collision_mask = true;
+			
+			ini_open("save_file/config.ini"); /* Must save character_for_player in config.ini manually here, because scr_config_save doesn't run every frame in step event, only when you exit the options menu, to prevent config.ini to get deleted and replaced every frame */
+			ini_write_real("config", "character_index_player1", global.character_index[0]);
+			ini_close();
 			
 			if (!instance_exists(obj_player))
 			{
@@ -58,6 +63,7 @@ function scr_character_edit_menu_draw()
 	|| (menu == "open_folder_edit_character")
 	|| (menu == "open_custom_character_guide")
 	|| (menu == "edit_charcter_input_sprite")
+	|| (menu == "edit_charcter_flip_sprite")
 	|| (menu == "input_sprite_name_ok")
 	|| (menu == "input_sprite_name_cancel")
 	|| (menu == "sprite_not_exist_warning")
@@ -132,11 +138,13 @@ function scr_character_edit_menu_draw()
 		var sprite_name_y = custom_character_guide_y + 84;
 		scr_draw_name_box(edit_character_sprite_name, c_white, 0.5, sprite_name_x, sprite_name_y);
 		if (point_in_rectangle(device_mouse_x_to_gui(0), device_mouse_y_to_gui(0), sprite_name_x - 150, sprite_name_y - 16, sprite_name_x + 150, sprite_name_y + 16))
+		|| (menu == "edit_charcter_input_sprite")
 		{
 			draw_set_alpha(0.5);
 			draw_rectangle_color(sprite_name_x - 150, sprite_name_y - 16, sprite_name_x + 150, sprite_name_y + 16, c_white, c_white, c_white, c_white, false);
 			draw_set_alpha(1);
-			if (mouse_check_button_released(mb_left))
+			if (mouse_check_button_released(mb_left)
+			|| menu == "edit_charcter_input_sprite" && key_a_pressed)
 			&& (menu_delay == 0 && menu_joystick_delay == 0)
 			{
 				menu_delay = 3;
@@ -145,6 +153,10 @@ function scr_character_edit_menu_draw()
 				menu = "input_sprite_name_ok";
 			}
 		}
+		
+		var flip_sprite_menu_x = 32;
+		var flip_sprite_menu_y = sprite_name_y + 42;
+		edit_charcter_flip_sprite = draw_menu_checkmark(flip_sprite_menu_x, flip_sprite_menu_y, l10n_text("Flip Sprite"), "edit_charcter_flip_sprite", edit_charcter_flip_sprite, false);
 		
 		if (menu == "edit_charcter_back")
 		&& (key_a_pressed || key_b_pressed)
@@ -191,21 +203,35 @@ function scr_character_edit_menu_draw()
 		
 		if (sprite_exists(edit_character_sprite_index)) /* Check if the sprite exists */
 		{
-		    /* Get the origin offsets */
-		    var spr_origin_x = sprite_get_xoffset(edit_character_sprite_index);
-		    var spr_origin_y = sprite_get_yoffset(edit_character_sprite_index);
-    
-		    /* Calculate the sprite's width and height considering scaling */
-		    var edit_character_sprite_width = sprite_get_width(edit_character_sprite_index) * xscale;
-		    var edit_character_sprite_height = sprite_get_height(edit_character_sprite_index) * yscale;
-    
-		    /* Draw the main character sprite */
-		    draw_sprite_ext(edit_character_sprite_index, edit_character_image_index, draw_x, draw_y, xscale, yscale, 0, c_white, 1);
+			/* Get the origin offsets */
+			var spr_origin_x = sprite_get_xoffset(edit_character_sprite_index);
+			var spr_origin_y = sprite_get_yoffset(edit_character_sprite_index);
+			
+			/* Variable for crosshair x */
+			var crosshair_center_x;
+			
+			/* Draw the main character sprite */
+			if (!edit_charcter_flip_sprite)
+			{
+			    /* Draw the sprite normally */
+			    draw_sprite_ext(edit_character_sprite_index, edit_character_image_index, draw_x, draw_y, xscale, yscale, 0, c_white, 1);
+				
+			    /* Calculate the center of the crosshair (centered relative to the sprite origin) */
+			    crosshair_center_x = draw_x - (spr_origin_x * xscale) + (sprite_get_width(edit_character_sprite_index) * 0.5 * xscale);
+			}
+			else
+			{
+			    /* Draw the sprite flipped horizontally */
+			    draw_sprite_ext(edit_character_sprite_index, edit_character_image_index, draw_x, draw_y, -xscale, yscale, 0, c_white, 1);
+				
+			    /* Calculate the center of the crosshair when flipped */
+			    crosshair_center_x = draw_x + (spr_origin_x * xscale) - (sprite_get_width(edit_character_sprite_index) * 0.5 * xscale);
+			}
 			
 			/* Draw the mask above the character sprite */
 			if (sprite_exists(edit_character_mask_index)) /* Check if the mask exists */
 			{
-				draw_sprite_ext(edit_character_mask_index, edit_character_image_index, draw_x, draw_y, xscale, yscale, 0, c_white, 0.5);
+			    draw_sprite_ext(edit_character_mask_index, edit_character_image_index, draw_x, draw_y, xscale, yscale, 0, c_white, 0.5);
 			}
 			
 			/* Draw the floor */
@@ -213,18 +239,16 @@ function scr_character_edit_menu_draw()
 			draw_set_alpha(0.5);
 			draw_rectangle_color(0, floor_y, display_get_gui_width(), display_get_gui_height(), c_black, c_black, c_black, c_black, false);
 			
-		    #region /* Draw a crosshair centered on the character sprite */
-			var crosshair_center_x = draw_x - (spr_origin_x * xscale) + (edit_character_sprite_width * 0.5)
-			var crosshair_center_y = draw_y - (spr_origin_y * yscale) + (edit_character_sprite_height * 0.5)
-			
+			#region /* Draw a crosshair centered on the character sprite */
+			var crosshair_center_y = draw_y - (spr_origin_y * yscale) + (sprite_get_height(edit_character_sprite_index) * 0.5 * yscale);
 			var crosshair_size = scr_wave(32, 42, 2);
 			draw_set_alpha(0.5);
 			draw_rectangle_color(crosshair_center_x - crosshair_size - 1, crosshair_center_y - 1, crosshair_center_x + crosshair_size + 1, crosshair_center_y + 1, c_black, c_black, c_black, c_black, false);
 			draw_rectangle_color(crosshair_center_x - 1, crosshair_center_y - crosshair_size - 1, crosshair_center_x + 1, crosshair_center_y + crosshair_size + 1, c_black, c_black, c_black, c_black, false);
 			draw_rectangle_color(crosshair_center_x - crosshair_size, crosshair_center_y, crosshair_center_x + crosshair_size, crosshair_center_y, c_red, c_red, c_red, c_red, c_red);
 			draw_rectangle_color(crosshair_center_x, crosshair_center_y - crosshair_size, crosshair_center_x, crosshair_center_y + crosshair_size, c_red, c_red, c_red, c_red, c_red);
+			#endregion /* Draw a crosshair centered on the character sprite END */
 			
-		    #endregion /* Draw a crosshair centered on the character sprite END */
 		}
 		
 		#region /* Crosshair for Sprite Origin Point */
@@ -316,7 +340,7 @@ function scr_character_edit_menu_draw()
 		/* Draw character sprite stats in top-left of screen */
 		draw_set_halign(fa_top);
 		draw_set_valign(fa_left);
-		scr_draw_text_outlined(32, sprite_name_y + 42,
+		scr_draw_text_outlined(32, flip_sprite_menu_y + 42,
 		l10n_text("X Offset") + ": " + string(spr_origin_x) + "\n" +
 		l10n_text("Y Offset") + ": " + string(spr_origin_y) + "\n" +
 		l10n_text("Sprite Width") + ": " + string(sprite_get_width(edit_character_sprite_index)) + "\n" +

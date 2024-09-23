@@ -900,13 +900,11 @@ function scr_draw_information_menu()
 			draw_sprite_ext(global.resource_pack_sprite_logo_discord, 0, 780, community_discord_y + 20, 0.25, 0.25, 0, c_white, 1);
 			
 			draw_set_halign(fa_left);
-			scr_draw_text_outlined(32, 196, l10n_text("There is a Discord server for this game"), global.default_text_size, c_black, c_white, 1);
-			scr_draw_text_outlined(32, 196 + 32, l10n_text("Feel free to join to follow updates on this game"), global.default_text_size, c_black, c_white, 1);
-			scr_draw_text_outlined(32, 196 + (32 * 3), l10n_text("Discuss level design"), global.default_text_size, c_black, c_white, 1);
-			scr_draw_text_outlined(32, 196 + (32 * 4), l10n_text("Give feedback"), global.default_text_size, c_black, c_white, 1);
-			scr_draw_text_outlined(32, 196 + (32 * 5), l10n_text("Report bugs"), global.default_text_size, c_black, c_white, 1);
-			scr_draw_text_outlined(32, 196 + (32 * 6), l10n_text("Share and find level codes!"), global.default_text_size, c_black, c_white, 1);
-			scr_draw_text_outlined(32, 196 + (32 * 8), l10n_text("Anyone is welcome whether you're new to the game or not!"), global.default_text_size, c_black, c_white, 1);
+			scr_draw_text_outlined(32, 196, l10n_text("Get the latest updates on the game"), global.default_text_size, c_black, c_white, 1);
+			scr_draw_text_outlined(32, 196 + 32, l10n_text("Share and discover levels"), global.default_text_size, c_black, c_white, 1);
+			scr_draw_text_outlined(32, 196 + (32 * 2), l10n_text("Discuss level design"), global.default_text_size, c_black, c_white, 1);
+			scr_draw_text_outlined(32, 196 + (32 * 3), l10n_text("Report bugs and give feedback"), global.default_text_size, c_black, c_white, 1);
+			scr_draw_text_outlined(32, 196 + (32 * 4), l10n_text("Everyone is welcome from beginners to experts!"), global.default_text_size, c_black, c_white, 1);
 			
 			if ((point_in_rectangle(mouse_get_x, mouse_get_y, 32, community_discord_y, 32 + (370 * 2.1), community_discord_y + 20 + 42))
 			&& (mouse_check_button_released(mb_left))

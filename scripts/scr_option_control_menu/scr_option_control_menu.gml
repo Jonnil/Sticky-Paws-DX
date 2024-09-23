@@ -95,8 +95,16 @@ function scr_option_control_menu()
 	&& (global.settings_sidebar_menu == "controller_settings")
 	{
 		var menu_y_always_show_gamepad_buttons = menu_y_down_and_jump_to_groundpound + 64 * 5				+ 48;
-		var menu_y_chosen_controller_used = menu_y_down_and_jump_to_groundpound + 64 * 6				+ 48;
-		var menu_y_vibration_strength = menu_y_down_and_jump_to_groundpound + 64 * 7				+ 78 + 48;
+		if (global.debug_screen)
+		{
+			var menu_y_chosen_controller_used = menu_y_down_and_jump_to_groundpound + 64 * 6				+ 48;
+			var menu_y_vibration_strength = menu_y_down_and_jump_to_groundpound + 64 * 7				+ 78 + 48;
+		}
+		else
+		{
+			var menu_y_chosen_controller_used = -999;
+			var menu_y_vibration_strength = menu_y_down_and_jump_to_groundpound + 64 * 6				+ 78;
+		}
 	}
 	else
 	{
@@ -4144,6 +4152,7 @@ function scr_option_control_menu()
 		
 		if (global.enable_option_for_pc)
 		&& (global.settings_sidebar_menu == "controller_settings")
+		&& (global.debug_screen)
 		{
 			if (global.chosen_controller_used[what_player] == 0) /* If you have chosen to autodetect controller, display the gamepad description */
 			{
@@ -4769,6 +4778,7 @@ function scr_option_control_menu()
 				{
 					if (global.settings_sidebar_menu == "controller_settings")
 					&& (global.enable_option_for_pc)
+					&& (global.debug_screen)
 					{
 						menu = "chosen_controller_used"
 					}
@@ -4828,6 +4838,7 @@ function scr_option_control_menu()
 				if (key_up)
 				&& (open_dropdown)
 				&& (global.chosen_controller_used[what_player] > 0)
+				&& (global.debug_screen)
 				{
 					global.chosen_controller_used[what_player] --;
 					menu_delay = 3;
@@ -4837,6 +4848,7 @@ function scr_option_control_menu()
 				if (key_down)
 				&& (open_dropdown)
 				&& (global.chosen_controller_used[what_player] < 5)
+				&& (global.debug_screen)
 				{
 					global.chosen_controller_used[what_player] ++;
 					menu_delay = 3;
@@ -4856,7 +4868,25 @@ function scr_option_control_menu()
 					if (global.settings_sidebar_menu == "controller_settings")
 					&& (global.enable_option_for_pc)
 					{
-						menu = "chosen_controller_used";
+						if (global.debug_screen)
+						{
+							menu = "chosen_controller_used";
+						}
+						else
+						if (global.settings_sidebar_menu == "controller_settings")
+						&& (global.enable_option_for_pc)
+						{
+							menu = "always_show_gamepad_buttons";
+						}
+						else
+						if (global.enable_option_for_pc)
+						{
+							menu = "show_prompt_when_changing_controller";
+						}
+						else
+						{
+							menu = "show_controls";
+						}
 					}
 					else
 					if (global.enable_option_for_pc)

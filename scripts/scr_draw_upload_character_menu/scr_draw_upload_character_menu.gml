@@ -863,6 +863,7 @@ function scr_draw_upload_character_menu()
 	
 	#region /* Character Uploaded */
 	if (menu == "character_uploaded")
+	|| (menu == "character_uploaded_discord")
 	{
 		var character_name = string(ds_list_find_value(global.all_loaded_characters, global.character_index[fixed_player - 1]));
 		
@@ -918,7 +919,7 @@ function scr_draw_upload_character_menu()
 		&& (menu_delay == 0 && menu_joystick_delay == 0)
 		|| (mouse_check_button_released(mb_right))
 		&& (menu_delay == 0 && menu_joystick_delay == 0)
-		|| (key_a_pressed)
+		|| (key_a_pressed && menu == "character_uploaded")
 		&& (menu_delay == 0 && menu_joystick_delay == 0)
 		|| (key_b_pressed)
 		&& (menu_delay == 0 && menu_joystick_delay == 0)
@@ -932,6 +933,55 @@ function scr_draw_upload_character_menu()
 			menu_specific_joystick_delay[fixed_player] = 30;
 		}
 		#endregion /* Return to game END */
+		
+		#region /* After uploading a character, let player know that there is a Discord server for the game */
+		if (global.enable_option_for_pc)
+		{
+			/* Link to Discord server here so that you can build a community for the game */
+			draw_set_halign(fa_left);
+			scr_draw_text_outlined(32, get_window_height - 32 * 7 - 30, l10n_text("Join our Discord!"), global.default_text_size, c_black, c_white, 1);
+			
+			var community_discord_y = get_window_height - 32 * 6 - 30;
+			draw_menu_button_sprite(spr_menu_button, 32, community_discord_y, 0, 0, 2.1, 1, 370 * 2.1, 42, string(global.link_to_discord), "character_uploaded_discord", "character_uploaded_discord", false);
+			draw_sprite_ext(global.resource_pack_sprite_logo_discord, 0, 780, community_discord_y + 20, 0.25, 0.25, 0, c_white, 1);
+			
+			draw_set_halign(fa_left);
+			scr_draw_text_outlined(32, get_window_height - 32 * 5, l10n_text("Get the latest updates on the game"), global.default_text_size, c_black, c_white, 1);
+			scr_draw_text_outlined(32, get_window_height - 32 * 4, l10n_text("Share and discover characters"), global.default_text_size, c_black, c_white, 1);
+			scr_draw_text_outlined(32, get_window_height - 32 * 3, l10n_text("Discuss character design"), global.default_text_size, c_black, c_white, 1);
+			scr_draw_text_outlined(32, get_window_height - 32 * 2, l10n_text("Report bugs and give feedback"), global.default_text_size, c_black, c_white, 1);
+			scr_draw_text_outlined(32, get_window_height - 32, l10n_text("Everyone is welcome from beginners to experts!"), global.default_text_size, c_black, c_white, 1);
+			
+			if ((point_in_rectangle(mouse_get_x, mouse_get_y, 32, community_discord_y, 32 + (370 * 2.1), community_discord_y + 20 + 42))
+			&& (mouse_check_button_released(mb_left))
+			&& (menu_delay == 0 && menu_joystick_delay == 0)
+			|| (menu == "character_uploaded_discord")
+			&& (key_a_pressed)
+			&& (menu_delay == 0 && menu_joystick_delay == 0))
+			{
+				url_open(global.link_to_discord);
+				menu_delay = 3;
+			}
+			if (key_up)
+			&& (menu_delay == 0 && menu_joystick_delay == 0)
+			{
+				menu_delay = 3;
+				if (menu == "character_uploaded_discord")
+				{
+					menu = "character_uploaded";
+				}
+			}
+			if (key_down)
+			&& (menu_delay == 0 && menu_joystick_delay == 0)
+			{
+				menu_delay = 3;
+				if (menu == "character_uploaded")
+				{
+					menu = "character_uploaded_discord";
+				}
+			}
+		}
+		#endregion /* After uploading a character, let player know that there is a Discord server for the game END */
 		
 	}
 	#endregion /* Character Uploaded END */

@@ -151,11 +151,17 @@ function scr_camera_logic()
 	#region /* Autoscroll Logic */
 	if (is_autoscrolling_horizontal)
 	{
-		xx += autoscroll_speed_x;
+		if (is_real(autoscroll_speed_x) && is_real(xx))
+		{
+			xx += autoscroll_speed_x;
+		}
 	}
 	if (is_autoscrolling_vertical)
 	{
-		yy += autoscroll_speed_y;
+		if (is_real(autoscroll_speed_y) && is_real(yy))
+		{
+			yy += autoscroll_speed_y;
+		}
 	}
 	#endregion /* Autoscroll Logic END */
 	

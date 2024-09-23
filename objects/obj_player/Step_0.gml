@@ -188,7 +188,8 @@ else
 	on_ground = false;
 }
 
-if (global.assist_floor_over_bottomless_pit && bbox_bottom >= room_height)
+if (global.assist_enable)
+&& (global.assist_floor_over_bottomless_pit && bbox_bottom >= room_height)
 {
 	on_ground = true;
 	if (vspeed >= 0 && !dive)

@@ -135,6 +135,7 @@ input_gamepad_button = false;
 can_remap_gamepad_button = false;
 #endregion /* Remapping options variables END */
 
+in_edit_character_menu = false;
 open_dropdown = false;
 menu_joystick_delay = 0;
 can_navigate = true;
@@ -273,10 +274,12 @@ if (room == rm_leveleditor)
 set_controller_sprites_to_use();
 
 #region /* Load level information that can be displayed in pause menu */
-if (global.character_select_in_this_menu == "main_game") {
+if (global.character_select_in_this_menu == "main_game")
+{
 	var level_path = "levels/" + string(ds_list_find_value(global.all_loaded_main_levels, global.select_level_index));
 }
-else if (global.character_select_in_this_menu == "level_editor")
+else
+if (global.character_select_in_this_menu == "level_editor")
 {
 	var level_path = global.use_temp_or_working + "custom_levels/" + global.level_name;
 }

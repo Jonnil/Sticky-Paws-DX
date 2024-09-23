@@ -1,8 +1,11 @@
 /* Save Level Information like if you have cleared the level or if you have a checkpoint */
 function scr_save_level()
 {
-	var level_id = "";
-	var level_name = global.level_name;
+	var level_name = global.level_name; /* Before getting the level id, we need to get the level name, as the level name is needed so we know what level to look for level id */
+	
+	ini_open(global.use_temp_or_working + "custom_levels/" + string(level_name) + "/data/level_information.ini");
+	var level_id = ini_read_string("info", "level_id", "");
+	ini_close();
 	
 	#region /* If doing a character clear check, and winning the level, then add in character config that you have done a clear check */
 	if (global.level_clear_rate == "clear" && global.doing_clear_check_character)
@@ -106,7 +109,14 @@ function scr_save_level()
 		/* Update a list of downloaded levels that you have finished */
 		if (level_id != "" && !global.doing_clear_check_character)
 		{
-			var read_finished_downloaded_level = ini_read_real("finished_downloaded_level", string(level_id), 0);
+			if (ini_key_exists("finished_downloaded_level", string(level_id)))
+			{
+				var read_finished_downloaded_level = ini_read_real("finished_downloaded_level", string(level_id), 0);
+			}
+			else
+			{
+				var read_finished_downloaded_level = 0;
+			}
 			if (global.level_clear_rate == "clear")
 			{
 				
@@ -194,25 +204,23 @@ function scr_save_level()
 		}
 		#endregion /* Zero Defeats END */
 		
+		#region /* Save Fastest Time */
 		if (global.timeattack_realmillisecond > 2)
+		&& (!ini_key_exists(level_name, "timeattack_realmillisecond")
+		|| global.timeattack_realmillisecond < ini_read_real(level_name, "timeattack_realmillisecond", 999999999))
 		{
-			
-			#region /* Save Fastest Time */
-			if (!ini_key_exists(level_name, "timeattack_realmillisecond"))
-			|| (global.timeattack_realmillisecond < ini_read_real(level_name, "timeattack_realmillisecond", 999999999))
-			{
-				ini_write_real(level_name, "timeattack_millisecond", global.timeattack_millisecond);
-				ini_write_real(level_name, "timeattack_second", global.timeattack_second);
-				ini_write_real(level_name, "timeattack_minute", global.timeattack_minute);
-				ini_write_real(level_name, "timeattack_realmillisecond", global.timeattack_realmillisecond);
-			}
-			#endregion /* Save Fastest Time END */
-			
+			ini_write_real(level_name, "timeattack_millisecond", global.timeattack_millisecond);
+			ini_write_real(level_name, "timeattack_second", global.timeattack_second);
+			ini_write_real(level_name, "timeattack_minute", global.timeattack_minute);
+			ini_write_real(level_name, "timeattack_realmillisecond", global.timeattack_realmillisecond);
 		}
+		#endregion /* Save Fastest Time END */
+		
 		if (score > ini_read_real(level_name, "level_score", false))
 		{
 			ini_write_real(level_name, "level_score", score);
 		}
+		
 		ini_close(); switch_save_data_commit(); /* Remember to commit the save data! */
 		#endregion /* Save to custom level save file END */
 		
@@ -222,8 +230,6 @@ function scr_save_level()
 	if (global.character_select_in_this_menu == "level_editor" && (global.actually_play_edited_level || global.playing_level_from_beginning))
 	{
 		ini_open(global.use_temp_or_working + "custom_levels/" + string(level_name) + "/data/level_information.ini");
-		
-		var level_id = ini_read_string("info", "level_id", "");
 		
 		#region /* Save Fastest Time */
 		if (global.timeattack_realmillisecond > 2)

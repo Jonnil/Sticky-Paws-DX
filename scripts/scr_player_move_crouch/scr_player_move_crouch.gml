@@ -13,7 +13,8 @@ function scr_player_move_crouch()
 		#region /* Get the nearest surface object before changing mask */
 		var nearest_surface_object = self;
 		
-		if (global.assist_floor_over_bottomless_pit && bbox_bottom >= room_height)
+		if (global.assist_enable)
+		&& (global.assist_floor_over_bottomless_pit && bbox_bottom >= room_height)
 		&& (sprite_exists(mask_index))
 		{
 			y = room_height - sprite_get_height(mask_index) * 0.5 + 15;
