@@ -13,7 +13,7 @@ function scr_character_edit_menu_draw()
 		
 		if (menu_delay == 19)
 		{
-			edit_charcter_flip_sprite = false;
+			edit_character_flip_sprite = false;
 			edit_character_sprite_index = spr_noone;
 			edit_character_mask_index = spr_noone;
 			edit_character_image_index = 0;
@@ -55,15 +55,15 @@ function scr_character_edit_menu_draw()
 		}
 		if (menu_delay == 5)
 		{
-			menu = "edit_charcter_back";
+			menu = "edit_character_back";
 		}
 	}
 	else
-	if (menu == "edit_charcter_back")
+	if (menu == "edit_character_back")
 	|| (menu == "open_folder_edit_character")
 	|| (menu == "open_custom_character_guide")
-	|| (menu == "edit_charcter_input_sprite")
-	|| (menu == "edit_charcter_flip_sprite")
+	|| (menu == "edit_character_input_sprite")
+	|| (menu == "edit_character_flip_sprite")
 	|| (menu == "input_sprite_name_ok")
 	|| (menu == "input_sprite_name_cancel")
 	|| (menu == "sprite_not_exist_warning")
@@ -92,12 +92,15 @@ function scr_character_edit_menu_draw()
 			var custom_character_guide_y = 42;
 		}
 		
+		var sprite_name_y = 32;
+		var flip_sprite_menu_y = 32;
+		
 		if (!can_input_sprite_name)
 		&& (menu != "sprite_not_exist_warning")
 		&& (menu != "sprite_not_exist_folder")
 		&& (menu != "sprite_not_exist_guide")
 		{
-			draw_menu_button(0, 0, l10n_text("Back"), "edit_charcter_back", "edit_character_actually_back");
+			draw_menu_button(0, 0, l10n_text("Back"), "edit_character_back", "edit_character_actually_back");
 			draw_sprite_ext(spr_icon_back, 0, 16, 21, 1, 1, 0, c_white, 1);
 			
 			#region /* Open Character Folder */
@@ -109,56 +112,55 @@ function scr_character_edit_menu_draw()
 			#endregion /* Open Character Folder END */
 			
 			#region /* Open Custom Character Guide */
-			var custom_character_guide_x = 0;
-			draw_menu_button(custom_character_guide_x, custom_character_guide_y, l10n_text("Custom Character Guide"), "open_custom_character_guide", "open_custom_character_guide");
-			if (menu == "open_custom_character_guide")
+			if (global.enable_option_for_pc)
 			{
-				draw_set_halign(fa_left);
-				scr_draw_text_outlined(custom_character_guide_x + 380, custom_character_guide_y + 21, string(global.link_to_website_guide_custom_character), global.default_text_size, c_black, c_white, 1);
-				draw_set_halign(fa_center);
-			}
-			
-			if (point_in_rectangle(device_mouse_x_to_gui(0), device_mouse_y_to_gui(0), custom_character_guide_x, custom_character_guide_y + 2, custom_character_guide_x + 371, custom_character_guide_y + 42))
-			&& (mouse_check_button_released(mb_left))
-			&& (menu_delay == 0 && menu_joystick_delay == 0)
-			&& (can_navigate)
-			|| (menu == "sprite_not_exist_guide")
-			&& (key_a_pressed)
-			&& (menu_delay == 0 && menu_joystick_delay == 0)
-			&& (can_navigate)
-			{
-				menu_delay = 3;
-				url_open(global.link_to_website_guide_custom_character);
+				var custom_character_guide_x = 0;
+				draw_menu_button(custom_character_guide_x, custom_character_guide_y, l10n_text("Custom Character Guide"), "open_custom_character_guide", "open_custom_character_guide");
+				if (menu == "open_custom_character_guide")
+				{
+					draw_set_halign(fa_left);
+					scr_draw_text_outlined(custom_character_guide_x + 380, custom_character_guide_y + 21, string(global.link_to_website_guide_custom_character), global.default_text_size, c_black, c_white, 1);
+					draw_set_halign(fa_center);
+				}
+				
+				if (point_in_rectangle(device_mouse_x_to_gui(0), device_mouse_y_to_gui(0), custom_character_guide_x, custom_character_guide_y + 2, custom_character_guide_x + 371, custom_character_guide_y + 42))
+				&& (mouse_check_button_released(mb_left))
+				&& (menu_delay == 0 && menu_joystick_delay == 0)
+				&& (can_navigate)
+				|| (menu == "sprite_not_exist_guide")
+				&& (key_a_pressed)
+				&& (menu_delay == 0 && menu_joystick_delay == 0)
+				&& (can_navigate)
+				{
+					menu_delay = 3;
+					url_open(global.link_to_website_guide_custom_character);
+				}
 			}
 			#endregion /* Open Custom Character Guide END */
 			
-		}
-		
-		var sprite_name_x = 185;
-		var sprite_name_y = custom_character_guide_y + 84;
-		scr_draw_name_box(edit_character_sprite_name, c_white, 0.5, sprite_name_x, sprite_name_y);
-		if (point_in_rectangle(device_mouse_x_to_gui(0), device_mouse_y_to_gui(0), sprite_name_x - 150, sprite_name_y - 16, sprite_name_x + 150, sprite_name_y + 16))
-		|| (menu == "edit_charcter_input_sprite")
-		{
-			draw_set_alpha(0.5);
-			draw_rectangle_color(sprite_name_x - 150, sprite_name_y - 16, sprite_name_x + 150, sprite_name_y + 16, c_white, c_white, c_white, c_white, false);
-			draw_set_alpha(1);
-			if (mouse_check_button_released(mb_left)
-			|| menu == "edit_charcter_input_sprite" && key_a_pressed)
-			&& (menu_delay == 0 && menu_joystick_delay == 0)
+			var sprite_name_x = 185;
+			var sprite_name_y = custom_character_guide_y + 84;
+			scr_draw_name_box(edit_character_sprite_name, c_white, 0.5, sprite_name_x, sprite_name_y, "edit_character_input_sprite");
+			if (point_in_rectangle(device_mouse_x_to_gui(0), device_mouse_y_to_gui(0), sprite_name_x - 150, sprite_name_y - 16, sprite_name_x + 150, sprite_name_y + 16))
+			|| (menu == "edit_character_input_sprite")
 			{
-				menu_delay = 3;
-				keyboard_string = string(edit_character_sprite_name);
-				can_input_sprite_name = true;
-				menu = "input_sprite_name_ok";
+				if (mouse_check_button_released(mb_left)
+				|| menu == "edit_character_input_sprite" && key_a_pressed)
+				&& (menu_delay == 0 && menu_joystick_delay == 0)
+				{
+					menu_delay = 3;
+					keyboard_string = string(edit_character_sprite_name);
+					can_input_sprite_name = true;
+					menu = "input_sprite_name_ok";
+				}
 			}
+			
+			var flip_sprite_menu_x = 32;
+			var flip_sprite_menu_y = sprite_name_y + 42;
+			edit_character_flip_sprite = draw_menu_checkmark(flip_sprite_menu_x, flip_sprite_menu_y, l10n_text("Flip Sprite"), "edit_character_flip_sprite", edit_character_flip_sprite, false);
 		}
 		
-		var flip_sprite_menu_x = 32;
-		var flip_sprite_menu_y = sprite_name_y + 42;
-		edit_charcter_flip_sprite = draw_menu_checkmark(flip_sprite_menu_x, flip_sprite_menu_y, l10n_text("Flip Sprite"), "edit_charcter_flip_sprite", edit_charcter_flip_sprite, false);
-		
-		if (menu == "edit_charcter_back")
+		if (menu == "edit_character_back")
 		&& (key_a_pressed || key_b_pressed)
 		&& (menu_delay == 0 && menu_joystick_delay == 0)
 		&& (!can_input_sprite_name)
@@ -211,7 +213,7 @@ function scr_character_edit_menu_draw()
 			var crosshair_center_x;
 			
 			/* Draw the main character sprite */
-			if (!edit_charcter_flip_sprite)
+			if (!edit_character_flip_sprite)
 			{
 			    /* Draw the sprite normally */
 			    draw_sprite_ext(edit_character_sprite_index, edit_character_image_index, draw_x, draw_y, xscale, yscale, 0, c_white, 1);
@@ -266,18 +268,21 @@ function scr_character_edit_menu_draw()
 		&& (menu != "sprite_not_exist_folder")
 		&& (menu != "sprite_not_exist_guide")
 		{
+			if (keyboard_check(vk_control))
+			{
+				var move_origin_speed = 10;
+			}
+			else
+			{
+				var move_origin_speed = 1;
+			}
 			if (key_up)
 			&& (menu_delay == 0 && menu_joystick_delay == 0)
 			{
 				menu_delay = 2;
-				if (keyboard_check(vk_control))
-				{
-					spr_origin_y -= 10;
-				}
-				else
-				{
-					spr_origin_y --;
-				}
+				
+				spr_origin_y -= move_origin_speed;
+				
 				ini_open(game_save_id + "custom_characters/" + string(what_character_name) + "/data/sprite_origin_point.ini");
 				ini_write_real("sprite origin points", "sprite_" + string(edit_character_sprite_name) + "_xorig", spr_origin_x);
 				ini_close(); switch_save_data_commit();
@@ -287,14 +292,9 @@ function scr_character_edit_menu_draw()
 			&& (menu_delay == 0 && menu_joystick_delay == 0)
 			{
 				menu_delay = 2;
-				if (keyboard_check(vk_control))
-				{
-					spr_origin_y += 10;
-				}
-				else
-				{
-					spr_origin_y ++;
-				}
+				
+				spr_origin_y += move_origin_speed;
+				
 				ini_open(game_save_id + "custom_characters/" + string(what_character_name) + "/data/sprite_origin_point.ini");
 				ini_write_real("sprite origin points", "sprite_" + string(edit_character_sprite_name) + "_xorig", spr_origin_x);
 				ini_close(); switch_save_data_commit();
@@ -304,14 +304,16 @@ function scr_character_edit_menu_draw()
 			&& (menu_delay == 0 && menu_joystick_delay == 0)
 			{
 				menu_delay = 2;
-				if (keyboard_check(vk_control))
+				
+				if (!edit_character_flip_sprite)
 				{
-					spr_origin_x -= 10;
+					spr_origin_x -= move_origin_speed;
 				}
 				else
 				{
-					spr_origin_x --;
+					spr_origin_x += move_origin_speed;
 				}
+				
 				ini_open(game_save_id + "custom_characters/" + string(what_character_name) + "/data/sprite_origin_point.ini");
 				ini_write_real("sprite origin points", "sprite_" + string(edit_character_sprite_name) + "_xorig", spr_origin_x);
 				ini_close(); switch_save_data_commit();
@@ -321,14 +323,16 @@ function scr_character_edit_menu_draw()
 			&& (menu_delay == 0 && menu_joystick_delay == 0)
 			{
 				menu_delay = 2;
-				if (keyboard_check(vk_control))
+				
+				if (!edit_character_flip_sprite)
 				{
-					spr_origin_x += 10;
+					spr_origin_x += move_origin_speed;
 				}
 				else
 				{
-					spr_origin_x ++;
+					spr_origin_x -= move_origin_speed;
 				}
+				
 				ini_open(game_save_id + "custom_characters/" + string(what_character_name) + "/data/sprite_origin_point.ini");
 				ini_write_real("sprite origin points", "sprite_" + string(edit_character_sprite_name) + "_xorig", spr_origin_x);
 				ini_close(); switch_save_data_commit();
@@ -364,6 +368,7 @@ function scr_character_edit_menu_draw()
 						spr_origin_x = ini_read_real("sprite origin points", "sprite_" + string(edit_character_sprite_name) + "_xorig", 0);
 						spr_origin_y = ini_read_real("sprite origin points", "sprite_" + string(edit_character_sprite_name) + "_yorig", 0);
 						ini_close(); switch_save_data_commit();
+						menu = "edit_character_input_sprite";
 					}
 					else
 					{
@@ -378,6 +383,7 @@ function scr_character_edit_menu_draw()
 			{
 				menu_delay = 3;
 				can_input_sprite_name = false;
+				menu = "edit_character_input_sprite";
 			}
 		}
 		
@@ -432,22 +438,25 @@ function scr_character_edit_menu_draw()
 				}
 			}
 			
-			var sprite_not_exist_guide_x = display_get_gui_width() * 0.5 - 370;
-			var sprite_not_exist_guide_y = display_get_gui_height() * 0.5 + 64;
-			scr_draw_text_outlined(display_get_gui_width() * 0.5, sprite_not_exist_guide_y - 32, l10n_text("Open the Custom Character Guide if you need help"), global.default_text_size, c_black, c_white, 1);
-			draw_menu_button_sprite(spr_menu_button, sprite_not_exist_guide_x, sprite_not_exist_guide_y, 0, 0, 2, 1, 370 * 2, 42, l10n_text(string(global.link_to_website_guide_custom_character)), "sprite_not_exist_guide", "sprite_not_exist_guide");
-			
-			if (point_in_rectangle(device_mouse_x_to_gui(0), device_mouse_y_to_gui(0), sprite_not_exist_guide_x, sprite_not_exist_guide_y + 2, sprite_not_exist_guide_x + (371 * 2), sprite_not_exist_guide_y + 42))
-			&& (mouse_check_button_released(mb_left))
-			&& (menu_delay == 0 && menu_joystick_delay == 0)
-			&& (can_navigate)
-			|| (menu == "sprite_not_exist_guide")
-			&& (key_a_pressed)
-			&& (menu_delay == 0 && menu_joystick_delay == 0)
-			&& (can_navigate)
+			if (global.enable_option_for_pc)
 			{
-				menu_delay = 3;
-				url_open(global.link_to_website_guide_custom_character);
+				var sprite_not_exist_guide_x = display_get_gui_width() * 0.5 - 370;
+				var sprite_not_exist_guide_y = display_get_gui_height() * 0.5 + 64;
+				scr_draw_text_outlined(display_get_gui_width() * 0.5, sprite_not_exist_guide_y - 32, l10n_text("Open the Custom Character Guide if you need help"), global.default_text_size, c_black, c_white, 1);
+				draw_menu_button_sprite(spr_menu_button, sprite_not_exist_guide_x, sprite_not_exist_guide_y, 0, 0, 2, 1, 370 * 2, 42, l10n_text(string(global.link_to_website_guide_custom_character)), "sprite_not_exist_guide", "sprite_not_exist_guide");
+				
+				if (point_in_rectangle(device_mouse_x_to_gui(0), device_mouse_y_to_gui(0), sprite_not_exist_guide_x, sprite_not_exist_guide_y + 2, sprite_not_exist_guide_x + (371 * 2), sprite_not_exist_guide_y + 42))
+				&& (mouse_check_button_released(mb_left))
+				&& (menu_delay == 0 && menu_joystick_delay == 0)
+				&& (can_navigate)
+				|| (menu == "sprite_not_exist_guide")
+				&& (key_a_pressed)
+				&& (menu_delay == 0 && menu_joystick_delay == 0)
+				&& (can_navigate)
+				{
+					menu_delay = 3;
+					url_open(global.link_to_website_guide_custom_character);
+				}
 			}
 			
 			var sprite_not_exist_back_x = display_get_gui_width() * 0.5 - 185;
@@ -476,7 +485,15 @@ function scr_character_edit_menu_draw()
 				menu_delay = 3;
 				if (menu == "sprite_not_exist_warning")
 				{
-					menu = "sprite_not_exist_guide";
+					if (global.enable_option_for_pc)
+					{
+						menu = "sprite_not_exist_guide";
+					}
+					else
+					if (global.enable_open_custom_folder)
+					{
+						menu = "sprite_not_exist_folder";
+					}
 				}
 				else
 				if (menu == "sprite_not_exist_folder")
@@ -486,7 +503,14 @@ function scr_character_edit_menu_draw()
 				else
 				if (menu == "sprite_not_exist_guide")
 				{
-					menu = "sprite_not_exist_folder";
+					if (global.enable_open_custom_folder)
+					{
+						menu = "sprite_not_exist_folder";
+					}
+					else
+					{
+						menu = "sprite_not_exist_warning";
+					}
 				}
 			}
 			if (key_down)
@@ -495,12 +519,27 @@ function scr_character_edit_menu_draw()
 				menu_delay = 3;
 				if (menu == "sprite_not_exist_warning")
 				{
-					menu = "sprite_not_exist_folder";
+					if (global.enable_open_custom_folder)
+					{
+						menu = "sprite_not_exist_folder";
+					}
+					else
+					{
+						menu = "sprite_not_exist_warning";
+					}
 				}
 				else
 				if (menu == "sprite_not_exist_folder")
 				{
-					menu = "sprite_not_exist_guide";
+					if (global.enable_option_for_pc)
+					{
+						menu = "sprite_not_exist_guide";
+					}
+					else
+					if (global.enable_open_custom_folder)
+					{
+						menu = "sprite_not_exist_warning";
+					}
 				}
 				else
 				if (menu == "sprite_not_exist_guide")
@@ -510,6 +549,70 @@ function scr_character_edit_menu_draw()
 			}
 		}
 		#endregion /* If sprite doesn't exist when searching for it END */
+		
+		#region /* Navigate regular edit menu */
+		if (keyboard_check(ord("I"))
+		|| gamepad_axis_value(global.player_slot[1], gp_axisrv) < -0.3)
+		&& (menu_delay == 0 && menu_joystick_delay == 0)
+		{
+			menu_delay = 3;
+			if (menu == "edit_character_back")
+			{
+				menu = "edit_character_flip_sprite";
+			}
+			else
+			if (menu == "open_folder_edit_character")
+			{
+				menu = "edit_character_back";
+			}
+			else
+			if (menu == "open_custom_character_guide")
+			{
+				menu = "open_folder_edit_character";
+			}
+			else
+			if (menu == "edit_character_input_sprite")
+			{
+				menu = "open_custom_character_guide";
+			}
+			else
+			if (menu == "edit_character_flip_sprite")
+			{
+				menu = "edit_character_input_sprite";
+			}
+		}
+		else
+		if (keyboard_check(ord("K"))
+		|| gamepad_axis_value(global.player_slot[1], gp_axisrv) > +0.3)
+		&& (menu_delay == 0 && menu_joystick_delay == 0)
+		{
+			menu_delay = 3;
+			if (menu == "edit_character_back")
+			{
+				menu = "open_folder_edit_character";
+			}
+			else
+			if (menu == "open_folder_edit_character")
+			{
+				menu = "open_custom_character_guide";
+			}
+			else
+			if (menu == "open_custom_character_guide")
+			{
+				menu = "edit_character_input_sprite";
+			}
+			else
+			if (menu == "edit_character_input_sprite")
+			{
+				menu = "edit_character_flip_sprite";
+			}
+			else
+			if (menu == "edit_character_flip_sprite")
+			{
+				menu = "edit_character_back";
+			}
+		}
+		#endregion /* Navigate regular edit menu */
 		
 	}
 	else

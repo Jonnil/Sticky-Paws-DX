@@ -15,7 +15,7 @@ function scr_save_level()
 		ini_close(); switch_save_data_commit(); /* Remember to commit the save data! */
 		global.go_to_menu_when_going_back_to_title = "upload_yes_character";
 	}
-	#endregion /* If doing a character clear check, and winning the level, then add in charcter config that you have done a clear check END */
+	#endregion /* If doing a character clear check, and winning the level, then add in character config that you have done a clear check END */
 	
 	if (global.character_select_in_this_menu == "main_game" && global.actually_play_edited_level)
 	{

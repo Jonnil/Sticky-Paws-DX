@@ -136,7 +136,7 @@ function scr_character_manage_menu_draw()
 		}
 		
 		var char_name_y, edit_character_y, copy_character_y, delete_character_y, upload_character_y, open_character_folder_y;
-
+		
 		if (global.enable_open_custom_folder)
 		{
 		    if (global.free_communication_available)
@@ -159,29 +159,29 @@ function scr_character_manage_menu_draw()
 			{
 				char_name_y = get_window_height - (42 * 4);
 			}
-		    open_character_folder_y = -9999;
+		    open_character_folder_y = get_window_height;
 		}
 		
 		if (!selecting_official_character)
 		{
 		    if (global.free_communication_available)
 			{
-		        copy_character_y = enable_copy_character ? get_window_height - (42 * 4) : -9999;
-		        delete_character_y = get_window_height - (42 * 3);
-		        upload_character_y = enable_copy_character ? get_window_height - (42 * 2) : -9999;
+		        copy_character_y = enable_copy_character ? open_character_folder_y - (42 * 3) : -9999;
+		        delete_character_y = open_character_folder_y - (42 * 2);
+		        upload_character_y = enable_copy_character ? open_character_folder_y - 42 : -9999;
 				edit_character_y = copy_character_y - 42;
 		    }
 			else
 			{
-		        copy_character_y = enable_copy_character ? get_window_height - (42 * 3) : -9999;
-		        delete_character_y = get_window_height - (42 * 2);
+		        copy_character_y = enable_copy_character ? open_character_folder_y - (42 * 2) : -9999;
+		        delete_character_y = open_character_folder_y - 42;
 		        upload_character_y = -9999;
 				edit_character_y = copy_character_y - 42;
 		    }
 		}
 		else
 		{
-		    copy_character_y = enable_copy_character ? get_window_height - (42 * 2) : -9999;
+		    copy_character_y = enable_copy_character ? open_character_folder_y - 42 : -9999;
 		    delete_character_y = -9999;
 		    upload_character_y = -9999;
 			edit_character_y = copy_character_y - 42;

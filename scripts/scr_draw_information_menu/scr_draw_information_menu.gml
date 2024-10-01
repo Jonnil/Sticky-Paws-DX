@@ -26,45 +26,56 @@ function scr_draw_information_menu()
 		{
 			if (menu == "about")
 			{
-				menu_delay = 3;
-				menu = "links";
-				information_menu_open = "links";
+				if (global.enable_option_for_pc)
+				{
+					menu = "links";
+					information_menu_open = "links";
+				}
+				else
+				{
+					menu = "credits";
+					information_menu_open = "credits";
+				}
 			}
 			else
 			if (menu == "whats_new")
 			{
-				menu_delay = 3;
 				menu = "about";
 				information_menu_open = "about";
 			}
 			else
 			if (menu == "backups")
 			{
-				menu_delay = 3;
 				menu = "whats_new";
 				information_menu_open = "whats_new";
 			}
 			else
 			if (menu == "community")
 			{
-				menu_delay = 3;
 				menu = "backups";
 				information_menu_open = "backups";
 			}
 			else
 			if (menu == "credits")
 			{
-				menu_delay = 3;
-				menu = "community";
-				information_menu_open = "community";
+				if (global.enable_option_for_pc)
+				{
+					menu = "community";
+					information_menu_open = "community";
+				}
+				else
+				{
+					menu = "backups";
+					information_menu_open = "backups";
+				}
 			}
 			else
 			if (menu == "links")
 			{
-				menu_delay = 3;
 				menu = "credits";
 				information_menu_open = "credits";
 			}
+			menu_delay = 3;
 		}
 		if (key_right)
 		&& (menu_delay == 0 && menu_joystick_delay == 0)
@@ -84,8 +95,16 @@ function scr_draw_information_menu()
 			else
 			if (menu == "backups")
 			{
-				menu = "community";
-				information_menu_open = "community";
+				if (global.enable_option_for_pc)
+				{
+					menu = "community";
+					information_menu_open = "community";
+				}
+				else
+				{
+					menu = "credits";
+					information_menu_open = "credits";
+				}
 			}
 			else
 			if (menu == "community")
@@ -96,8 +115,16 @@ function scr_draw_information_menu()
 			else
 			if (menu == "credits")
 			{
-				menu = "links";
-				information_menu_open = "links";
+				if (global.enable_option_for_pc)
+				{
+					menu = "links";
+					information_menu_open = "links";
+				}
+				else
+				{
+					menu = "about";
+					information_menu_open = "about";
+				}
 			}
 			else
 			if (menu == "links")
@@ -147,7 +174,14 @@ function scr_draw_information_menu()
 			if (menu == "about_privacy_policy")
 			{
 				menu_delay = 3;
-				menu = "about_link_to_update_schedule";
+				if (global.enable_option_for_pc)
+				{
+					menu = "about_link_to_update_schedule";
+				}
+				else
+				{
+					menu = "about_online_level_list";
+				}
 			}
 			else
 			if (menu == "information_back")
@@ -161,7 +195,14 @@ function scr_draw_information_menu()
 			&& (information_menu_open == "whats_new")
 			{
 				menu_delay = 3;
-				menu = "changelog_history";
+				if (global.enable_option_for_pc)
+				{
+					menu = "changelog_history";
+				}
+				else
+				{
+					menu = "whats_new";
+				}
 			}
 			else
 			if (menu == "changelog_history")
@@ -262,7 +303,14 @@ function scr_draw_information_menu()
 			if (menu == "about_online_level_list")
 			{
 				menu_delay = 3;
-				menu = "about_link_to_website";
+				if (global.enable_option_for_pc)
+				{
+					menu = "about_link_to_website";
+				}
+				else
+				{
+					menu = "about_privacy_policy";
+				}
 			}
 			else
 			if (menu == "about_link_to_website")
@@ -292,7 +340,14 @@ function scr_draw_information_menu()
 			if (menu == "whats_new")
 			{
 				menu_delay = 3;
-				menu = "changelog_history";
+				if (global.enable_option_for_pc)
+				{
+					menu = "changelog_history";
+				}
+				else
+				{
+					menu = "information_back";
+				}
 			}
 			else
 			if (menu == "changelog_history")
@@ -304,7 +359,7 @@ function scr_draw_information_menu()
 			if (menu == "backups")
 			{
 				menu_delay = 3;
-				if (global.enable_option_for_pc)
+				if (global.enable_open_custom_folder)
 				{
 					menu = "backup_open_custom_levels_folder";
 				}
@@ -317,7 +372,7 @@ function scr_draw_information_menu()
 			if (menu == "backup_open_custom_levels_folder")
 			{
 				menu_delay = 3;
-				if (global.enable_option_for_pc)
+				if (global.enable_open_custom_folder)
 				{
 					menu = "backup_open_custom_character_folder";
 				}
@@ -398,21 +453,29 @@ function scr_draw_information_menu()
 			}
 			
 			/* Community tab button */
-			draw_menu_button_sprite(spr_menu_button, 185 * 3, 0, 0, 0, 0.5, 1, 185, 42, l10n_text("Community"), "community", "community", false);
-			if (point_in_rectangle(mouse_get_x, mouse_get_y, 185 * 3, 0, 185 * 4, 42))
-			&& (mouse_check_button_released(mb_left))
-			&& (menu_delay == 0 && menu_joystick_delay == 0)
-			|| (menu == "community")
-			&& (key_a_pressed)
-			&& (menu_delay == 0 && menu_joystick_delay == 0)
+			if (global.enable_option_for_pc)
 			{
-				information_menu_open = "community";
-				menu_delay = 3;
+				draw_menu_button_sprite(spr_menu_button, 185 * 3, 0, 0, 0, 0.5, 1, 185, 42, l10n_text("Community"), "community", "community", false);
+				if (point_in_rectangle(mouse_get_x, mouse_get_y, 185 * 3, 0, 185 * 4, 42))
+				&& (mouse_check_button_released(mb_left))
+				&& (menu_delay == 0 && menu_joystick_delay == 0)
+				|| (menu == "community")
+				&& (key_a_pressed)
+				&& (menu_delay == 0 && menu_joystick_delay == 0)
+				{
+					information_menu_open = "community";
+					menu_delay = 3;
+				}
+				var credits_y = 185 * 4;
+			}
+			else
+			{
+				var credits_y = 185 * 3;
 			}
 			
 			/* Credits tab button */
-			draw_menu_button_sprite(spr_menu_button, 185 * 4, 0, 0, 0, 0.5, 1, 185, 42, l10n_text("Credits"), "credits", "credits", false);
-			if (point_in_rectangle(mouse_get_x, mouse_get_y, 185 * 4, 0, 185 * 5, 42))
+			draw_menu_button_sprite(spr_menu_button, credits_y, 0, 0, 0, 0.5, 1, 185, 42, l10n_text("Credits"), "credits", "credits", false);
+			if (point_in_rectangle(mouse_get_x, mouse_get_y, credits_y, 0, credits_y + 185, 42))
 			&& (mouse_check_button_released(mb_left))
 			&& (menu_delay == 0 && menu_joystick_delay == 0)
 			|| (menu == "credits")
@@ -424,16 +487,19 @@ function scr_draw_information_menu()
 			}
 			
 			/* Links tab button */
-			draw_menu_button_sprite(spr_menu_button, 185 * 5, 0, 0, 0, 0.5, 1, 185, 42, l10n_text("Links"), "links", "links", false);
-			if (point_in_rectangle(mouse_get_x, mouse_get_y, 185 * 5, 0, 185 * 6, 42))
-			&& (mouse_check_button_released(mb_left))
-			&& (menu_delay == 0 && menu_joystick_delay == 0)
-			|| (menu == "links")
-			&& (key_a_pressed)
-			&& (menu_delay == 0 && menu_joystick_delay == 0)
+			if (global.enable_option_for_pc)
 			{
-				information_menu_open = "links";
-				menu_delay = 3;
+				draw_menu_button_sprite(spr_menu_button, 185 * 5, 0, 0, 0, 0.5, 1, 185, 42, l10n_text("Links"), "links", "links", false);
+				if (point_in_rectangle(mouse_get_x, mouse_get_y, 185 * 5, 0, 185 * 6, 42))
+				&& (mouse_check_button_released(mb_left))
+				&& (menu_delay == 0 && menu_joystick_delay == 0)
+				|| (menu == "links")
+				&& (key_a_pressed)
+				&& (menu_delay == 0 && menu_joystick_delay == 0)
+				{
+					information_menu_open = "links";
+					menu_delay = 3;
+				}
 			}
 			
 			/* Back from Information Menu */
@@ -469,7 +535,14 @@ function scr_draw_information_menu()
 			var check_out_website_y = 42 * 6;
 			var check_out_guide_y = 42 * 8;
 			var check_out_update_schedule_y = 42 * 10;
-			var privacy_policy_y = 42 * 12;
+			if (global.enable_option_for_pc)
+			{
+				var privacy_policy_y = 42 * 12;
+			}
+			else
+			{
+				var privacy_policy_y = 32 * 6 + 55;
+			}
 			
 			draw_set_halign(fa_center);
 			scr_draw_text_outlined(display_get_gui_width() * 0.5, welcome_to_game_y, l10n_text("Welcome to " + string(global.game_name) + "!"), global.default_text_size, c_black, c_white, 1);
@@ -560,62 +633,65 @@ function scr_draw_information_menu()
 			}
 			#endregion /* Click Online Level List button in About tab END */
 			
-			if (global.link_to_website != "")
+			if (global.enable_option_for_pc)
 			{
-				draw_set_halign(fa_left);
-				scr_draw_text_outlined(32, check_out_website_y + 20, l10n_text("Check out our website") + ":", global.default_text_size, c_black, c_white, 1);
-				draw_menu_button(string_width(l10n_text("Check out our website") + ":"), check_out_website_y, string(global.link_to_website), "about_link_to_website", "about_link_to_website");
-				if (point_in_rectangle(mouse_get_x, mouse_get_y, string_width(l10n_text("Check out our website") + ":"), check_out_website_y, 370 + string_width(l10n_text("Check out our website") + ":"), check_out_website_y + 42))
-				&& (mouse_check_button_released(mb_left))
-				&& (menu_delay == 0 && menu_joystick_delay == 0)
-				|| (menu == "about_link_to_website")
-				&& (key_a_pressed)
-				&& (menu_delay == 0 && menu_joystick_delay == 0)
+				if (global.link_to_website != "")
 				{
-					url_open(global.link_to_website);
-					menu_delay = 3;
+					draw_set_halign(fa_left);
+					scr_draw_text_outlined(32, check_out_website_y + 20, l10n_text("Check out our website") + ":", global.default_text_size, c_black, c_white, 1);
+					draw_menu_button(string_width(l10n_text("Check out our website") + ":"), check_out_website_y, string(global.link_to_website), "about_link_to_website", "about_link_to_website");
+					if (point_in_rectangle(mouse_get_x, mouse_get_y, string_width(l10n_text("Check out our website") + ":"), check_out_website_y, 370 + string_width(l10n_text("Check out our website") + ":"), check_out_website_y + 42))
+					&& (mouse_check_button_released(mb_left))
+					&& (menu_delay == 0 && menu_joystick_delay == 0)
+					|| (menu == "about_link_to_website")
+					&& (key_a_pressed)
+					&& (menu_delay == 0 && menu_joystick_delay == 0)
+					{
+						url_open(global.link_to_website);
+						menu_delay = 3;
+					}
 				}
-			}
-			
-			if (global.link_to_website_guide != "")
-			{
-				draw_set_halign(fa_left);
-				draw_set_valign(fa_middle);
-				scr_draw_text_outlined(32, check_out_guide_y, l10n_text("Check out the guide") + ":", global.default_text_size, c_black, c_white, 1);
-				draw_menu_button_sprite(spr_menu_button, 32, check_out_guide_y + 20, 0, 0, 2, 1, 370 * 2, 42, string(global.link_to_website_guide), "about_link_to_website_guide", "about_link_to_website_guide");
-				if (point_in_rectangle(mouse_get_x, mouse_get_y, 32, check_out_guide_y + 20, 32 + (370 * 2), check_out_guide_y + 20 + 42))
-				&& (mouse_check_button_released(mb_left))
-				&& (menu_delay == 0 && menu_joystick_delay == 0)
-				|| (menu == "about_link_to_website_guide")
-				&& (key_a_pressed)
-				&& (menu_delay == 0 && menu_joystick_delay == 0)
+				
+				if (global.link_to_website_guide != "")
 				{
-					url_open(global.link_to_website_guide);
-					menu_delay = 3;
+					draw_set_halign(fa_left);
+					draw_set_valign(fa_middle);
+					scr_draw_text_outlined(32, check_out_guide_y, l10n_text("Check out the guide") + ":", global.default_text_size, c_black, c_white, 1);
+					draw_menu_button_sprite(spr_menu_button, 32, check_out_guide_y + 20, 0, 0, 2, 1, 370 * 2, 42, string(global.link_to_website_guide), "about_link_to_website_guide", "about_link_to_website_guide");
+					if (point_in_rectangle(mouse_get_x, mouse_get_y, 32, check_out_guide_y + 20, 32 + (370 * 2), check_out_guide_y + 20 + 42))
+					&& (mouse_check_button_released(mb_left))
+					&& (menu_delay == 0 && menu_joystick_delay == 0)
+					|| (menu == "about_link_to_website_guide")
+					&& (key_a_pressed)
+					&& (menu_delay == 0 && menu_joystick_delay == 0)
+					{
+						url_open(global.link_to_website_guide);
+						menu_delay = 3;
+					}
 				}
-			}
-			
-			if (global.link_to_update_schedule != "")
-			{
-				draw_set_halign(fa_left);
-				draw_set_valign(fa_middle);
-				scr_draw_text_outlined(32, check_out_update_schedule_y, l10n_text("Check out the update schedule") + ":", global.default_text_size, c_black, c_white, 1);
-				draw_menu_button_sprite(spr_menu_button, 32, check_out_update_schedule_y + 20, 0, 0, 2.1, 1, 370 * 2.1, 42, string(global.link_to_update_schedule), "about_link_to_update_schedule", "about_link_to_update_schedule");
-				if (point_in_rectangle(mouse_get_x, mouse_get_y, 32, check_out_update_schedule_y + 20, 32 + (370 * 2.1), check_out_update_schedule_y + 20 + 42))
-				&& (mouse_check_button_released(mb_left))
-				&& (menu_delay == 0 && menu_joystick_delay == 0)
-				|| (menu == "about_link_to_update_schedule")
-				&& (key_a_pressed)
-				&& (menu_delay == 0 && menu_joystick_delay == 0)
+				
+				if (global.link_to_update_schedule != "")
 				{
-					url_open(global.link_to_update_schedule);
-					menu_delay = 3;
+					draw_set_halign(fa_left);
+					draw_set_valign(fa_middle);
+					scr_draw_text_outlined(32, check_out_update_schedule_y, l10n_text("Check out the update schedule") + ":", global.default_text_size, c_black, c_white, 1);
+					draw_menu_button_sprite(spr_menu_button, 32, check_out_update_schedule_y + 20, 0, 0, 2.1, 1, 370 * 2.1, 42, string(global.link_to_update_schedule), "about_link_to_update_schedule", "about_link_to_update_schedule");
+					if (point_in_rectangle(mouse_get_x, mouse_get_y, 32, check_out_update_schedule_y + 20, 32 + (370 * 2.1), check_out_update_schedule_y + 20 + 42))
+					&& (mouse_check_button_released(mb_left))
+					&& (menu_delay == 0 && menu_joystick_delay == 0)
+					|| (menu == "about_link_to_update_schedule")
+					&& (key_a_pressed)
+					&& (menu_delay == 0 && menu_joystick_delay == 0)
+					{
+						url_open(global.link_to_update_schedule);
+						menu_delay = 3;
+					}
 				}
 			}
 			
 			draw_set_halign(fa_left);
 			draw_set_valign(fa_middle);
-			draw_menu_button(32, privacy_policy_y, l10n_text("Privacy Policy"), "about_privacy_policy", "about_privacy_policy");
+			draw_menu_button(32 + 25, privacy_policy_y, l10n_text("Privacy Policy"), "about_privacy_policy", "about_privacy_policy");
 			if (point_in_rectangle(mouse_get_x, mouse_get_y, 32, privacy_policy_y, 32 + 370, privacy_policy_y + 42))
 			&& (mouse_check_button_released(mb_left))
 			&& (menu_delay == 0 && menu_joystick_delay == 0)
@@ -680,6 +756,7 @@ function scr_draw_information_menu()
 			
 			#region /* Link to Privacy Policy Website */
 			if (global.link_to_privacy_policy != "")
+			&& (global.enable_option_for_pc)
 			{
 				draw_menu_button_sprite(spr_menu_button, link_to_privacy_policy_x, 0, 0, 0, 2.1, 1, 370 * 2.1, 42, string(global.link_to_privacy_policy), "about_link_to_privacy_policy", "about_link_to_privacy_policy");
 				if (point_in_rectangle(mouse_get_x, mouse_get_y, link_to_privacy_policy_x, 0, link_to_privacy_policy_x + (370 * 2.1), 42))
@@ -725,7 +802,14 @@ function scr_draw_information_menu()
 				menu_delay = 3;
 				if (menu == "about_privacy_policy_back")
 				{
-					menu = "about_link_to_privacy_policy";
+					if (global.enable_option_for_pc)
+					{
+						menu = "about_link_to_privacy_policy";
+					}
+					else
+					{
+						menu = "about_privacy_policy_to_top";
+					}
 				}
 				else
 				if (menu == "about_privacy_policy_to_top")
@@ -749,7 +833,14 @@ function scr_draw_information_menu()
 				else
 				if (menu == "about_privacy_policy_to_top")
 				{
-					menu = "about_link_to_privacy_policy";
+					if (global.enable_option_for_pc)
+					{
+						menu = "about_link_to_privacy_policy";
+					}
+					else
+					{
+						menu = "about_privacy_policy_back";
+					}
 				}
 				else
 				if (menu == "about_link_to_privacy_policy")
@@ -816,6 +907,7 @@ function scr_draw_information_menu()
 			scr_draw_text_outlined(display_get_gui_width() - 8, whats_new_date_y, l10n_text("Build date") + ": " + string(year) + "-" + string(month) + "-" + string(day) + " " + string(hour) + ":" + string(minute) + ":" + string(second), global.default_text_size, c_black, c_white, 1);
 			
 			if (global.link_to_changelog_history != "")
+			&& (global.enable_option_for_pc)
 			{
 				draw_menu_button_sprite(spr_menu_button, string_width(l10n_text("Changelog History") + ":"), changelog_history_y - 8, 0, 0, 1.9, 1, 370 * 1.9, 42, string(global.link_to_changelog_history), "changelog_history", "changelog_history");
 				draw_set_halign(fa_left);
@@ -931,6 +1023,7 @@ function scr_draw_information_menu()
 		}
 		else
 		if (information_menu_open == "links") /* Links tab */ 
+		&& (global.enable_option_for_pc)
 		{
 			scr_draw_links_menu();
 		}

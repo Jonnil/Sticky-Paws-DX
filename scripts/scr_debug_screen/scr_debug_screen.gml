@@ -369,18 +369,27 @@ function scr_debug_screen()
 			}
 			debug_text_y += 20;
 		}
-		//if (variable_instance_exists(self, "menu_joystick_delay") && gamepad_is_connected(0))
-		//{
-		//	if (menu_joystick_delay == 0)
-		//	{
-		//		scr_draw_text_outlined(32, debug_text_y, "menu_joystick_delay: " + string(menu_joystick_delay), global.default_text_size, c_black, c_white);
-		//	}
-		//	else
-		//	{
-		//		scr_draw_text_outlined(32, debug_text_y, "menu_joystick_delay: " + string(menu_joystick_delay), global.default_text_size, c_black, c_red);
-		//	}
-		//	debug_text_y += 20;
-		//}
+		if (variable_instance_exists(self, "menu_joystick_delay") && gamepad_is_connected(0))
+		{
+			if (menu_joystick_delay == 0)
+			{
+				scr_draw_text_outlined(32, debug_text_y, "menu_joystick_delay: " + string(menu_joystick_delay), global.default_text_size, c_black, c_white);
+			}
+			else
+			{
+				scr_draw_text_outlined(32, debug_text_y, "menu_joystick_delay: " + string(menu_joystick_delay), global.default_text_size, c_black, c_red);
+			}
+			debug_text_y += 20;
+		}
+		if (global.menu_navigation_speed == 0)
+		{
+			scr_draw_text_outlined(32, debug_text_y, "menu_navigation_speed: " + string(global.menu_navigation_speed), global.default_text_size, c_black, c_white);
+		}
+		else
+		{
+			scr_draw_text_outlined(32, debug_text_y, "menu_navigation_speed: " + string(global.menu_navigation_speed), global.default_text_size, c_black, c_red);
+		}
+		debug_text_y += 20;
 		//if (variable_instance_exists(self, "menu_specific_joystick_delay") && gamepad_is_connected(0))
 		//{
 		//	if (menu_specific_joystick_delay[0] == 0)
