@@ -156,7 +156,14 @@ function scr_draw_information_menu()
 			if (menu == "about_link_to_website")
 			{
 				menu_delay = 3;
-				menu = "about_online_level_list";
+				if (global.free_communication_available)
+				{
+					menu = "about_online_level_list";
+				}
+				else
+				{
+					menu = "about";
+				}
 			}
 			else
 			if (menu == "about_link_to_website_guide")
@@ -179,8 +186,13 @@ function scr_draw_information_menu()
 					menu = "about_link_to_update_schedule";
 				}
 				else
+				if (global.free_communication_available)
 				{
 					menu = "about_online_level_list";
+				}
+				else
+				{
+					menu = "about";
 				}
 			}
 			else
@@ -297,7 +309,19 @@ function scr_draw_information_menu()
 			if (menu == "about")
 			{
 				menu_delay = 3;
-				menu = "about_online_level_list";
+				if (global.free_communication_available)
+				{
+					menu = "about_online_level_list";
+				}
+				else
+				if (global.enable_option_for_pc)
+				{
+					menu = "about_link_to_website";
+				}
+				else
+				{
+					menu = "about_privacy_policy";
+				}
 			}
 			else
 			if (menu == "about_online_level_list")
@@ -549,9 +573,12 @@ function scr_draw_information_menu()
 			draw_set_halign(fa_left);
 			scr_draw_text_outlined(32, this_is_a_game_y, l10n_text("This is a game that allows you to create your own levels"), global.default_text_size, c_black, c_white, 1);
 			
-			scr_draw_text_outlined(32, to_share_levels_y, l10n_text("To share levels press the Upload button in level editor"), global.default_text_size, c_black, c_white, 1);
-			scr_draw_text_outlined(32, to_browse_levels_y, l10n_text("To browse levels press the Online Level List button in level editor"), global.default_text_size, c_black, c_white, 1);
-			draw_menu_button(32 + 25, online_level_list_button_y, l10n_text("Online Level List"), "about_online_level_list", "about_online_level_list");
+			if (global.free_communication_available)
+			{
+				scr_draw_text_outlined(32, to_share_levels_y, l10n_text("To share levels press the Upload button in level editor"), global.default_text_size, c_black, c_white, 1);
+				scr_draw_text_outlined(32, to_browse_levels_y, l10n_text("To browse levels press the Online Level List button in level editor"), global.default_text_size, c_black, c_white, 1);
+				draw_menu_button(32 + 25, online_level_list_button_y, l10n_text("Online Level List"), "about_online_level_list", "about_online_level_list");
+			}
 			if (levels_added_today_text != "")
 			{
 				draw_set_halign(fa_left);
@@ -570,6 +597,7 @@ function scr_draw_information_menu()
 				menu_delay = 3;
 				if (global.online_enabled)
 				&& (os_is_network_connected())
+				&& (global.free_communication_available)
 				{
 					scr_switch_update_online_status();
 					

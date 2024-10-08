@@ -38,6 +38,8 @@ scr_delete_sprite_properly(global.custom_foreground1);
 scr_delete_sprite_properly(global.custom_foreground1_5);
 scr_delete_sprite_properly(global.custom_foreground2);
 scr_delete_sprite_properly(global.custom_foreground_secret);
+caution_online_takes_you_to = "";
+caution_online_takes_you_back_to = "";
 in_edit_character_menu = false;
 loading_assets = false;
 allowed_to_load_template_level = false;

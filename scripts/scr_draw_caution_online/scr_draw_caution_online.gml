@@ -215,11 +215,11 @@ function scr_draw_caution_online()
 		draw_sprite_ext(spr_icon_back, 0, network_service_unavailable_x + 16, network_service_unavailable_y + 21, 1, 1, 0, c_white, 1);
 		scr_draw_text_outlined(display_get_gui_width() * 0.5, display_get_gui_height() * 0.5 - 128, l10n_text("Network Service is Unavailable!"), global.default_text_size * 2, c_black, c_white, 1);
 		
-		if (os_type == os_switch)
-		{
-			scr_draw_text_outlined(display_get_gui_width() * 0.5, display_get_gui_height() * 0.5, l10n_text("Please link your Nintendo Account"), global.default_text_size, c_black, c_white, 1);
-			scr_draw_text_outlined(display_get_gui_width() * 0.5, display_get_gui_height() * 0.5 + 32, l10n_text("With a linked account you can access online play"), global.default_text_size * 0.75, c_black, c_ltgray, 1);
-		}
+		//if (os_type == os_switch)
+		//{
+			scr_draw_text_outlined(display_get_gui_width() * 0.5, display_get_gui_height() * 0.5, l10n_text("Please connect your account"), global.default_text_size, c_black, c_white, 1);
+			scr_draw_text_outlined(display_get_gui_width() * 0.5, display_get_gui_height() * 0.5 + 32, l10n_text("With a connected account you can access online play"), global.default_text_size * 0.75, c_black, c_ltgray, 1);
+		//}
 		
 		if (global.controls_used_for_navigation == "mouse")
 		&& (mouse_check_button_released(mb_left))
