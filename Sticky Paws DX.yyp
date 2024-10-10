@@ -3025,7 +3025,6 @@
     {"id":{"name":"scr_start_intro_animations","path":"scripts/scr_start_intro_animations/scr_start_intro_animations.yy",},},
     {"id":{"name":"scr_switch_expand_save_data","path":"scripts/scr_switch_expand_save_data/scr_switch_expand_save_data.yy",},},
     {"id":{"name":"scr_switch_update_online_status","path":"scripts/scr_switch_update_online_status/scr_switch_update_online_status.yy",},},
-    {"id":{"name":"scr_sync_saving_create","path":"scripts/scr_sync_saving_create/scr_sync_saving_create.yy",},},
     {"id":{"name":"scr_toggle_fullscreen","path":"scripts/scr_toggle_fullscreen/scr_toggle_fullscreen.yy",},},
     {"id":{"name":"scr_translation","path":"scripts/scr_translation/scr_translation.yy",},},
     {"id":{"name":"scr_unlock_placable_level_objects","path":"scripts/scr_unlock_placable_level_objects/scr_unlock_placable_level_objects.yy",},},

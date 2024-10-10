@@ -86,6 +86,7 @@ function scr_debug_screen()
 	if (os_type == os_switch)
 	{
 		if (!gamepad_is_connected(0))
+		|| (gamepad_get_description(0) == "Handheld") /* If gamepad 0 is "Handheld", then gamepad 1 is also player 1, and gamepad 2 is player 2 and so on */
 		{
 			for(var i = 1; i <= global.max_players; i += 1)
 			{
@@ -99,14 +100,83 @@ function scr_debug_screen()
 				global.player_slot[i] = i - 1;
 			}
 		}
+		
+		/* If gamepad 0 is "Handheld", then gamepad 1 is also player 1, and gamepad 2 is player 2 and so on */
+		if (gamepad_get_description(0) == "Handheld")
+		{
+			global.player_slot[0] = 1; /* Gamepad 0 is always player 1 */
+			
+			#region /* Check which gamepad is active and assign it to player 1 */
+			if (gamepad_button_check(0, gp_face1)) /* If pressing gamepad buttons, then set "gamepad" as the navigation method. Assign gamepad 0 to player 1 */
+			|| (gamepad_button_check(0, gp_face2))
+			|| (gamepad_button_check(0, gp_face3))
+			|| (gamepad_button_check(0, gp_face4))
+			|| (gamepad_button_check(0, gp_padd))
+			|| (gamepad_button_check(0, gp_padl))
+			|| (gamepad_button_check(0, gp_padr))
+			|| (gamepad_button_check(0, gp_padu))
+			|| (gamepad_button_check(0, gp_select))
+			|| (gamepad_button_check(0, gp_shoulderl))
+			|| (gamepad_button_check(0, gp_shoulderlb))
+			|| (gamepad_button_check(0, gp_shoulderr))
+			|| (gamepad_button_check(0, gp_shoulderrb))
+			|| (gamepad_button_check(0, gp_start))
+			|| (gamepad_button_check(0, gp_stickl))
+			|| (gamepad_button_check(0, gp_stickr))
+			|| (gamepad_axis_value(0, gp_axislh) < -0.3)
+			|| (gamepad_axis_value(0, gp_axislv) < -0.3)
+			|| (gamepad_axis_value(0, gp_axisrh) < -0.3)
+			|| (gamepad_axis_value(0, gp_axisrv) < -0.3)
+			|| (gamepad_axis_value(0, gp_axislh) > +0.3)
+			|| (gamepad_axis_value(0, gp_axislv) > +0.3)
+			|| (gamepad_axis_value(0, gp_axisrh) > +0.3)
+			|| (gamepad_axis_value(0, gp_axisrv) > +0.3)
+			{
+				global.player_slot[1] = 0; /* Assign gamepad 0 to player 1 */
+			}
+			else
+			if (gamepad_button_check(1, gp_face1)) /* If pressing gamepad buttons, then set "gamepad" as the navigation method. Assign gamepad 1 to player 1 */
+			|| (gamepad_button_check(1, gp_face2))
+			|| (gamepad_button_check(1, gp_face3))
+			|| (gamepad_button_check(1, gp_face4))
+			|| (gamepad_button_check(1, gp_padd))
+			|| (gamepad_button_check(1, gp_padl))
+			|| (gamepad_button_check(1, gp_padr))
+			|| (gamepad_button_check(1, gp_padu))
+			|| (gamepad_button_check(1, gp_select))
+			|| (gamepad_button_check(1, gp_shoulderl))
+			|| (gamepad_button_check(1, gp_shoulderlb))
+			|| (gamepad_button_check(1, gp_shoulderr))
+			|| (gamepad_button_check(1, gp_shoulderrb))
+			|| (gamepad_button_check(1, gp_start))
+			|| (gamepad_button_check(1, gp_stickl))
+			|| (gamepad_button_check(1, gp_stickr))
+			|| (gamepad_axis_value(1, gp_axislh) < -0.3)
+			|| (gamepad_axis_value(1, gp_axislv) < -0.3)
+			|| (gamepad_axis_value(1, gp_axisrh) < -0.3)
+			|| (gamepad_axis_value(1, gp_axisrv) < -0.3)
+			|| (gamepad_axis_value(1, gp_axislh) > +0.3)
+			|| (gamepad_axis_value(1, gp_axislv) > +0.3)
+			|| (gamepad_axis_value(1, gp_axisrh) > +0.3)
+			|| (gamepad_axis_value(1, gp_axisrv) > +0.3)
+			{
+				global.player_slot[1] = 1; /* Assign gamepad 1 to player 1 */
+			}
+			#endregion /* Check which gamepad is active and assign it to player 1 END */
+			
+		}
 	}
 	else
+	
+	#region /* Default Controller Ports */
 	{
 		for(var i = 1; i <= global.max_players; i += 1)
 		{
 			global.player_slot[i] = i - 1;
 		}
 	}
+	#endregion /* Default Controller Ports END */
+	
 	#endregion /* Controller ports END */
 	
 	#region /* Detect when controllers are disconnected */
@@ -289,6 +359,8 @@ function scr_debug_screen()
 			}
 		}
 		scr_draw_text_outlined(32, debug_text_y, "player_can_play: " + string(global.player_can_play), global.default_text_size, c_black, c_white);
+		debug_text_y += 20;
+		scr_draw_text_outlined(32, debug_text_y, "player_slot: " + string(global.player_slot), global.default_text_size, c_black, c_white);
 		debug_text_y += 20;
 		
 		/* Get Gamepad Description */
