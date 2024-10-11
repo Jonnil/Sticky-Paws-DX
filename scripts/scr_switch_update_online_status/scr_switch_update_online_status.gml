@@ -58,12 +58,6 @@ function scr_switch_update_online_status(show_login_screen = true)
 				#endregion /* Third, retrieve information about the account END */
 				
 			}
-			
-			/* If free communication is disabled, and switch_accounts_network_service_available is false, you shouldn't be able to upload or download custom content */
-			/* If free communication is disabled, you shouldn't even see the buttons for going online */
-			/* But if switch_accounts_network_service_available is false, you should be able to see the buttons for going online, but stop you from going online and instead show a notification telling you to link a Switch Account before proceeding */
-			/* Free communication is basically what determines if you are using parental controls or not */
-			global.free_communication_available = switch_free_communication_available();
 		}
 		else
 		{

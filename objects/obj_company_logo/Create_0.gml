@@ -84,7 +84,12 @@ if (os_type == os_switch)
 	
 	#endregion /* Need to set these Switch specific functions END */
 	
-	global.free_communication_available = false; /* If free communication is disabled, you shouldn't be able to upload or download custom content. Set this to true when done debugging. Free communication is basically what determines if you are using parental controls or not */
+	/* If free communication is disabled, you shouldn't be able to upload or download custom content */
+	/* If free communication is disabled, you shouldn't even see the buttons for going online */
+	/* But if switch_accounts_network_service_available is false, you should be able to see the buttons for going online, but stop you from going online and instead show a notification telling you to link a Switch Account before proceeding */
+	/* Free communication is basically what determines if you are using parental controls or not */
+	global.free_communication_available = switch_free_communication_available();
+	
 	global.can_load_photographic_images = false; /* It's against Switch guidelines to be able to view photographic images in UGC */
 	global.show_prompt_when_changing_to_gamepad = false;
 	global.show_prompt_when_changing_to_keyboard_and_mouse = false;	
