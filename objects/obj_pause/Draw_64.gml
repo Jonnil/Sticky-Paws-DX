@@ -127,7 +127,8 @@ if (!hide_menu_for_clean_screenshots)
 		}
 		
 		#region /* Display level information */
-		if (global.pause_room == rm_leveleditor) {
+		if (global.pause_room == rm_leveleditor)
+		{
 			draw_set_halign(fa_left);
 			draw_set_valign(fa_center);
 			scr_draw_text_outlined(32, 320,
@@ -137,7 +138,8 @@ if (!hide_menu_for_clean_screenshots)
 			, global.default_text_size * 0.75, c_black, c_white, 1 * fade_in_pause_alpha);
 			scr_draw_level_tags(32, 420, false, fa_left, false, global.default_text_size * 0.75, 1 * fade_in_pause_alpha);
 			
-			if (display_level_author != "") {
+			if (display_level_author != "")
+			{
 				draw_sprite_ext(spr_icon_person, 0, 16, 320, 1, 1, 0, c_white, 1);
 			}
 			

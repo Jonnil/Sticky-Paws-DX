@@ -830,6 +830,8 @@ if (global.enable_transitions)
 scr_draw_no_internet_menu();
 scr_draw_level_length_recommendation();
 
+scr_cant_use_controller_notification();
+
 scr_draw_darken_screen_when_window_is_unfocused();
 scr_debug_screen();
 scr_draw_cursor_mouse();

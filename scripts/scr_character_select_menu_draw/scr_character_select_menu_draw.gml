@@ -33,7 +33,8 @@ function scr_character_select_menu_draw()
 		for(var i = 1; i <= global.max_players; i += 1)
 		{
 			/* Give feedback that you have selected a character, run this before the character portrait code */
-			if (player_accept_selection[i] == 1) {
+			if (player_accept_selection[i] == 1)
+			{
 				draw_sprite_ext(spr_select_character_background, image_index, get_window_width * 0.5 + player_display_x[i], get_window_height * 0.5, player_scale[i], player_scale[i], 0, global.player_color[i], 1);
 			}
 			scr_character_portrait_for_player_draw(i); /* Display Selected Characters, run this before the "play the game" text code */
