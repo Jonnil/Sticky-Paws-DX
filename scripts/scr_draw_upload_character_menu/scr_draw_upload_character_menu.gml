@@ -212,7 +212,7 @@ function scr_draw_upload_character_menu()
 			{
 				ini_open(game_save_id + "custom_characters/" + string(character_name) + "/data/character_config.ini");
 				ini_write_real("info", "clear_check_character", false); /* Set "clear check" to false */
-				ini_close(); switch_save_data_commit(); /* Remember to commit the save data! */
+				ini_close(); /* Don't commit the save data on Switch, this is only temporary! */
 			}
 			#endregion /* Set clear_check_character to false whenever you back out from uploading custom character, in case you edit the custom character later END */
 			
@@ -236,7 +236,7 @@ function scr_draw_upload_character_menu()
 				{
 					ini_open(game_save_id + "custom_characters/" + string(character_name) + "/data/character_config.ini");
 					ini_write_real("info", "clear_check_character", false); /* Set "clear check" to false */
-					ini_close(); switch_save_data_commit(); /* Remember to commit the save data! */
+					ini_close(); /* Don't commit the save data on Switch, this is only temporary! */
 				}
 				#endregion /* Set clear_check_character to false whenever you back out from uploading custom character, in case you edit the custom character later END */
 				
@@ -321,7 +321,7 @@ function scr_draw_upload_character_menu()
 					menu_delay = 3;
 					menu = "clear_check_character_yes";
 				}
-				ini_close(); switch_save_data_commit(); /* Remember to commit the save data! */
+				ini_close(); /* Don't commit the save data on Switch, this is only temporary! */
 			}
 		}
 		if (key_up)
@@ -575,7 +575,7 @@ function scr_draw_upload_character_menu()
 		{
 			ini_open(game_save_id + "custom_characters/" + string(character_name) + "/data/character_config.ini");
 			ini_write_real("info", "clear_check_character", false); /* Set "clear check" to false when you click on "clear check yes" just in case it isn't already false when doing a "clear check" */
-			ini_close(); switch_save_data_commit(); /* Remember to commit the save data! */
+			ini_close(); /* Don't commit the save data on Switch, this is only temporary! */
 		}
 		
 		global.select_level_index = 1; /* When doing clear check for character, they have to complete level 1 */
@@ -683,7 +683,7 @@ function scr_draw_upload_character_menu()
 		{
 			var zip_file = file_bin_open(game_save_id + string(character_id) + ".zip", 0);
 			var zip_size = file_bin_size(zip_file);
-			file_bin_close(zip_file); switch_save_data_commit(); /* Remember to commit the save data! */
+			file_bin_close(zip_file); /* Don't commit the save data on Switch, this is only temporary! */
 			zip_megabytes = zip_size / 1024 / 1024;
 			
 			if (zip_megabytes > global.max_file_upload_megabytes)
@@ -762,6 +762,8 @@ function scr_draw_upload_character_menu()
 									
 									menu_delay = 3;
 									search_for_id_still = false;
+									
+									switch_save_data_commit(); /* Remember to commit the save data when uploading content to server */
 									menu = "character_uploaded";
 								}
 								else

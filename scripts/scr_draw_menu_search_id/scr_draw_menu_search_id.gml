@@ -334,7 +334,7 @@ function scr_draw_menu_search_id(what_kind_of_id = "level")
 					downloaded_thumbnail_sprite = scr_initialize_character_sprite("idle", downloaded_thumbnail_sprite);
 					downloaded_thumbnail_sprite = scr_initialize_character_sprite("stand", downloaded_thumbnail_sprite);
 					downloaded_thumbnail_sprite = scr_initialize_character_sprite("character_select_portrait", downloaded_thumbnail_sprite);
-					ini_close(); switch_save_data_commit(); /* Remember to commit the save data! */
+					ini_close(); /* Don't commit the save data on Switch, this is only temporary! */
 					
 					if (file_exists(game_save_id + "custom_characters/" + string(downloaded_character_name) + "/data/character_config.ini"))
 					{
@@ -362,7 +362,7 @@ function scr_draw_menu_search_id(what_kind_of_id = "level")
 						}
 						#endregion /* Show what version of the game the level was first created in END */
 						
-						ini_close(); switch_save_data_commit(); /* Remember to commit the save data! */
+						ini_close(); /* Don't commit the save data on Switch, this is only temporary! */
 						
 						if (switch_check_profanity(global.level_description))
 						{
@@ -744,7 +744,7 @@ function scr_draw_menu_search_id(what_kind_of_id = "level")
 					
 					ini_open(game_save_id + "save_file/config.ini");
 					ini_write_real("config", "inform_about_report_feature", false);
-					ini_close(); switch_save_data_commit(); /* Remember to commit the save data! */
+					ini_close(); /* Don't commit the save data on Switch, this is only temporary! */
 					
 					inform_about_report_feature = false;
 					if (what_kind_of_id == "level")
@@ -912,7 +912,7 @@ function scr_draw_menu_search_id(what_kind_of_id = "level")
 								file_delete(game_save_id + "custom_levels/" + string(global.level_name) + "/automatic_thumbnail.png");
 								ini_write_real("Custom Backgrounds", "thumbnail_uses_photographic_image", false);
 							}
-							ini_close(); switch_save_data_commit();
+							ini_close(); /* Don't commit the save data on Switch, this is only temporary! */
 						}
 						#endregion /* After files have been moved to the working directory, check if game doesn't accept photographic images, and if they are found, remove them END */
 						
@@ -989,7 +989,7 @@ function scr_draw_menu_search_id(what_kind_of_id = "level")
 					
 					ini_open(game_save_id + "save_file/custom_level_save.ini");
 					ini_section_delete(global.level_name);
-					ini_close(); switch_save_data_commit(); /* Remember to commit the save data! */
+					ini_close(); /* Don't commit the save data on Switch, this is only temporary! */
 					
 					global.select_level_index = 0;
 					global.level_name = "";
@@ -1014,7 +1014,7 @@ function scr_draw_menu_search_id(what_kind_of_id = "level")
 					global.sprite_select_player[fixed_player] = scr_initialize_character_sprite("idle", global.sprite_select_player[fixed_player]);
 					global.sprite_select_player[fixed_player] = scr_initialize_character_sprite("stand", global.sprite_select_player[fixed_player]);
 					global.sprite_select_player[fixed_player] = scr_initialize_character_sprite("character_select_portrait", global.sprite_select_player[fixed_player]);
-					ini_close(); switch_save_data_commit(); /* Remember to commit the save data! */
+					ini_close(); /* Don't commit the save data on Switch, this is only temporary! */
 					#endregion /* After deleting character, go to previous character, so you don't accidentally go to a undefined character END */
 					
 				}

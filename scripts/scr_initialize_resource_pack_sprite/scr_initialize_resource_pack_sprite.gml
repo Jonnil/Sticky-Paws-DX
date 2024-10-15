@@ -97,7 +97,7 @@ function scr_initialize_resource_pack_sprite(sprite_name, resource_sprite_variab
 		sprite_set_offset(resource_sprite_variable, spr_origin_x, spr_origin_y);
 		#endregion /* x and y origin points END */
 		
-		ini_close(); switch_save_data_commit(); /* Remember to commit the save data! */
+		ini_close(); /* Don't commit the save data on Switch, this is only temporary! */
 	}
 	#endregion /* Origin points END */
 	

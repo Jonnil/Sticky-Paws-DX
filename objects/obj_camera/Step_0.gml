@@ -653,7 +653,7 @@ if (global.character_select_in_this_menu == "main_game")
 				ini_open(game_save_id + "custom_levels/" + string(global.level_name) + "/data/level_information.ini");
 				ini_write_real("info", "view_xview", camera_get_view_x(view_camera[view_current]));
 				ini_write_real("info", "view_yview", camera_get_view_y(view_camera[view_current]));
-				ini_close(); switch_save_data_commit(); /* Remember to commit the save data! */
+				ini_close(); /* Don't commit the save data on Switch, this is only temporary! */
 			}
 			#endregion /* Save Level Information when in level editor END */
 			

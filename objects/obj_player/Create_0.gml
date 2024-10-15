@@ -296,7 +296,7 @@ if (ini_key_exists(global.level_name, "checkpoint_direction"))
 	spawned_from_checkpoint = true;
 	image_xscale = ini_read_real(global.level_name, "checkpoint_direction", +1);
 }
-ini_close(); switch_save_data_commit(); /* Remember to commit the save data! */
+ini_close(); /* Don't commit the save data on Switch, this is only temporary! */
 #endregion /* Load Checkpoint Direction END */
 
 #region /* Play Ambience */

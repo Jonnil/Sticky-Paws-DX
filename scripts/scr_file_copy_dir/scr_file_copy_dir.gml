@@ -23,5 +23,5 @@ function scr_file_copy_dir(source, target)
     file_copy(from, to);
   }
 
-  file_find_close(); switch_save_data_commit(); /* Remember to commit the save data! */
+  file_find_close(); /* Don't commit the save data on Switch, this is only temporary! */
 }

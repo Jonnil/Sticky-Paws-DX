@@ -726,7 +726,7 @@ function scr_option_menu()
 					allow_player_tongue[i] = scr_initialize_character_abilities(i - 1, "allow_tongue", false);
 					allow_player_double_jump[i] = scr_initialize_character_abilities(i - 1, "number_of_jumps", 1, "values");
 					allow_player_dive[i] = scr_initialize_character_abilities(i - 1, "allow_dive", false);
-					ini_close(); switch_save_data_commit(); /* Remember to commit the save data! */
+					ini_close(); /* Don't commit the save data on Switch, this is only temporary! */
 				}
 			}
 			if (global.settings_sidebar_menu == "account_settings"){menu = "change_username";}
@@ -921,7 +921,7 @@ function scr_option_menu()
 				allow_player_tongue[i] = scr_initialize_character_abilities(i - 1, "allow_tongue", false);
 				allow_player_double_jump[i] = scr_initialize_character_abilities(i - 1, "number_of_jumps", 1, "values");
 				allow_player_dive[i] = scr_initialize_character_abilities(i - 1, "allow_dive", false);
-				ini_close(); switch_save_data_commit(); /* Remember to commit the save data! */
+				ini_close(); /* Don't commit the save data on Switch, this is only temporary! */
 			}
 		}
 		#endregion /* Click Keyboard and Mouse END */
@@ -968,7 +968,7 @@ function scr_option_menu()
 					allow_player_tongue[i] = scr_initialize_character_abilities(i - 1, "allow_tongue", false);
 					allow_player_double_jump[i] = scr_initialize_character_abilities(i - 1, "number_of_jumps", 1, "values");
 					allow_player_dive[i] = scr_initialize_character_abilities(i - 1, "allow_dive", false);
-					ini_close(); switch_save_data_commit(); /* Remember to commit the save data! */
+					ini_close(); /* Don't commit the save data on Switch, this is only temporary! */
 				}
 			}
 			#endregion /* Click Controller END */
@@ -2347,7 +2347,7 @@ function scr_option_menu()
 							narrator_name = string(ds_list_find_value(global.all_loaded_characters, global.narrator));
 							#endregion /* Character Name END */
 						
-							ini_close(); switch_save_data_commit(); /* Remember to commit the save data! */
+							ini_close(); /* Don't commit the save data on Switch, this is only temporary! */
 						}
 						else
 						{
@@ -2363,7 +2363,7 @@ function scr_option_menu()
 						global.sprite_select_player[fixed_player] = scr_initialize_character_sprite("idle", global.sprite_select_player[fixed_player]);
 						global.sprite_select_player[fixed_player] = scr_initialize_character_sprite("stand", global.sprite_select_player[fixed_player]);
 						global.sprite_select_player[fixed_player] = scr_initialize_character_sprite("character_select_portrait", global.sprite_select_player[fixed_player]);
-						ini_close(); switch_save_data_commit(); /* Remember to commit the save data! */
+						ini_close(); /* Don't commit the save data on Switch, this is only temporary! */
 						#endregion /* Player 1 character select portrait sprite END */
 						
 					}
@@ -2402,7 +2402,7 @@ function scr_option_menu()
 							narrator_name = string(ds_list_find_value(global.all_loaded_characters, global.narrator));
 							#endregion /* Character Name END */
 						
-							ini_close(); switch_save_data_commit(); /* Remember to commit the save data! */
+							ini_close(); /* Don't commit the save data on Switch, this is only temporary! */
 						}
 						else
 						{
@@ -2419,7 +2419,7 @@ function scr_option_menu()
 						global.sprite_select_player[fixed_player] = scr_initialize_character_sprite("idle", global.sprite_select_player[fixed_player]);
 						global.sprite_select_player[fixed_player] = scr_initialize_character_sprite("stand", global.sprite_select_player[fixed_player]);
 						global.sprite_select_player[fixed_player] = scr_initialize_character_sprite("character_select_portrait", global.sprite_select_player[fixed_player]);
-						ini_close(); switch_save_data_commit(); /* Remember to commit the save data! */
+						ini_close(); /* Don't commit the save data on Switch, this is only temporary! */
 						#endregion /* Player 1 character select portrait sprite END */
 						
 					}

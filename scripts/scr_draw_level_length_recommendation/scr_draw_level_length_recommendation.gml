@@ -11,7 +11,7 @@ function scr_draw_level_length_recommendation()
 			global.timeattack_minute = ini_read_real("rank", "rank_timeattack_minute", 0);
 			global.timeattack_second = ini_read_real("rank", "rank_timeattack_second", 0);
 			global.timeattack_realmillisecond = ini_read_real("rank", "rank_timeattack_realmillisecond", 0);
-			ini_close(); switch_save_data_commit(); /* Remember to commit the save data! */
+			ini_close(); /* Don't commit the save data on Switch, this is only temporary! */
 		}
 		
 		draw_set_alpha(0.9);

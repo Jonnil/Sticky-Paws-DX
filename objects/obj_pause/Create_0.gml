@@ -29,7 +29,7 @@ for(var p = 1; p <= global.max_players; p += 1)
 	allow_player_tongue[p] = scr_initialize_character_abilities(p - 1, "allow_tongue", false);
 	allow_player_double_jump[p] = scr_initialize_character_abilities(p - 1, "number_of_jumps", 1, "values");
 	allow_player_dive[p] = scr_initialize_character_abilities(p - 1, "allow_dive", false);
-	ini_close(); switch_save_data_commit(); /* Remember to commit the save data! */
+	ini_close(); /* Don't commit the save data on Switch, this is only temporary! */
 	
 	menu_specific_joystick_delay[p] = 3;
 	player_display_x[p] = 0;
@@ -220,7 +220,7 @@ if (file_exists("characters/" + string(ds_list_find_value(global.all_loaded_char
 	narrator_name = string(ds_list_find_value(global.all_loaded_characters, global.narrator));
 	#endregion /* Character Name END */
 						
-	ini_close(); switch_save_data_commit(); /* Remember to commit the save data! */
+	ini_close(); /* Don't commit the save data on Switch, this is only temporary! */
 }
 else
 {
@@ -250,7 +250,7 @@ if (room == rm_leveleditor)
 	ini_write_real(level_name, "checkpoint_minute", global.timeattack_minute);
 	ini_write_real(level_name, "checkpoint_realmillisecond", global.timeattack_realmillisecond);
 	
-	ini_close(); switch_save_data_commit(); /* Remember to commit the save data! */
+	ini_close(); /* Don't commit the save data on Switch, this is only temporary! */
 }
 else
 if (room == rm_leveleditor)
@@ -267,7 +267,7 @@ if (room == rm_leveleditor)
 	ini_write_real(level_name, "checkpoint_minute", global.timeattack_minute);
 	ini_write_real(level_name, "checkpoint_realmillisecond", global.timeattack_realmillisecond);
 	
-	ini_close(); switch_save_data_commit(); /* Remember to commit the save data! */
+	ini_close(); /* Don't commit the save data on Switch, this is only temporary! */
 }
 #endregion /* Save Level Editor Checkpoint END */
 

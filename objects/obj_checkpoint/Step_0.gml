@@ -83,7 +83,7 @@ if (instance_exists(obj_player))
 							ini_write_real(level_name, "checkpoint_second", global.timeattack_second);
 							ini_write_real(level_name, "checkpoint_minute", global.timeattack_minute);
 							ini_write_real(level_name, "checkpoint_realmillisecond", global.timeattack_realmillisecond);
-							ini_close(); switch_save_data_commit(); /* Remember to commit the save data! */
+							ini_close(); /* Don't commit the save data on Switch, this is only temporary! */
 						}
 						else
 						if (room == rm_leveleditor)
@@ -107,7 +107,7 @@ if (instance_exists(obj_player))
 							ini_write_real(level_name, "checkpoint_second", global.timeattack_second);
 							ini_write_real(level_name, "checkpoint_minute", global.timeattack_minute);
 							ini_write_real(level_name, "checkpoint_realmillisecond", global.timeattack_realmillisecond);
-							ini_close(); switch_save_data_commit(); /* Remember to commit the save data! */
+							ini_close(); /* Don't commit the save data on Switch, this is only temporary! */
 						}
 						#endregion /* Save Level Editor Checkpoint END */
 						

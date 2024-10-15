@@ -204,6 +204,6 @@ function scr_config_load()
 			
 		}
 		
-		ini_close(); switch_save_data_commit(); /* Remember to commit the save data! */
+		ini_close(); /* Don't commit the save data on Switch, this is only temporary! */
 	}
 }

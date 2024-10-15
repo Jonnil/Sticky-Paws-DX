@@ -27,7 +27,7 @@ function scr_load_rest_of_characters()
 		
 		if (file_found == "")
 		{
-			file_find_close(); switch_save_data_commit(); /* Remember to commit the save data! */
+			file_find_close(); /* Don't commit the save data on Switch, this is only temporary! */
 			
 			if (player_menu[fixed_player] == "click_copy_character")
 			{
@@ -46,7 +46,7 @@ function scr_load_rest_of_characters()
 				global.sprite_select_player[fixed_player] = scr_initialize_character_sprite("idle", global.sprite_select_player[fixed_player]);
 				global.sprite_select_player[fixed_player] = scr_initialize_character_sprite("stand", global.sprite_select_player[fixed_player]);
 				global.sprite_select_player[fixed_player] = scr_initialize_character_sprite("character_select_portrait", global.sprite_select_player[fixed_player]);
-				ini_close(); switch_save_data_commit(); /* Remember to commit the save data! */
+				ini_close(); /* Don't commit the save data on Switch, this is only temporary! */
 				#endregion /* Player 1 character select portrait sprite END */
 				
 				menu = "click_copy_character";
@@ -77,7 +77,7 @@ function scr_load_rest_of_characters()
 					global.sprite_select_player[fixed_player] = scr_initialize_character_sprite("idle", global.sprite_select_player[fixed_player]);
 					global.sprite_select_player[fixed_player] = scr_initialize_character_sprite("stand", global.sprite_select_player[fixed_player]);
 					global.sprite_select_player[fixed_player] = scr_initialize_character_sprite("character_select_portrait", global.sprite_select_player[fixed_player]);
-					ini_close(); switch_save_data_commit(); /* Remember to commit the save data! */
+					ini_close(); /* Don't commit the save data on Switch, this is only temporary! */
 					#endregion /* Player 1 character select portrait sprite END */
 					
 				}

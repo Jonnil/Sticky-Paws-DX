@@ -1,9 +1,10 @@
-function scr_rename_custom_level_name() {
+function scr_rename_custom_level_name()
+{
 	
 	#region /* Save the newly entered name */
 	ini_open(game_save_id + "save_file/custom_level_save.ini");
 	ini_section_delete(string(ds_list_find_value(global.all_loaded_custom_levels, global.select_level_index)));
-	ini_close(); switch_save_data_commit(); /* Remember to commit the save data! */
+	ini_close(); /* Don't commit the save data on Switch, this is only temporary! */
 	
 	/* For actual folder name, replace illegal characters with underscore only for naming folder */
 	var folder_name = global.level_name;
@@ -22,7 +23,7 @@ function scr_rename_custom_level_name() {
 		{
 			ini_write_real("info", "if_daily_build", true);
 		}
-		ini_close(); switch_save_data_commit(); /* Remember to commit the save data! */
+		ini_close(); /* Don't commit the save data on Switch, this is only temporary! */
 		thumbnail_level_name[global.select_level_index] = global.level_name;
 	}
 	

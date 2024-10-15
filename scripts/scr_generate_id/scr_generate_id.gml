@@ -27,5 +27,5 @@ function scr_generate_id(what_kind_of_id = "level")
 		character_id = generate_id;
 	}
 	ini_write_string("info", "username", string(global.username)); /* Save the username in the .ini file, so that it can be referenced later */
-	ini_close(); switch_save_data_commit(); /* Remember to commit the save data! */
+	ini_close(); /* Don't commit the save data on Switch, this is only temporary! */
 }

@@ -187,7 +187,7 @@ function scr_remapping_gamepad()
 			global.player_[inp.gp][remapping_player + 1][remap_key_number][action.dive] = last_key;
 			ini_open(game_save_id + "save_file/config.ini");
 			ini_write_real("player" + string(remapping_player + 1) + "_profile" + string(player_profile + 1), "player" + string(remapping_player + 1) + "_gamepad_button" + string(remap_key_number_string) + "_dive", last_key);
-			ini_close(); switch_save_data_commit(); /* Remember to commit the save data! */
+			ini_close(); /* Don't commit the save data on Switch, this is only temporary! */
 		}
 		else
 		if (menu == "remap_key_jump")
@@ -195,7 +195,7 @@ function scr_remapping_gamepad()
 			global.player_[inp.gp][remapping_player + 1][remap_key_number][action.jump] = last_key;
 			ini_open(game_save_id + "save_file/config.ini");
 			ini_write_real("player" + string(remapping_player + 1) + "_profile" + string(player_profile + 1), "player" + string(remapping_player + 1) + "_gamepad_button" + string(remap_key_number_string) + "_jump", last_key);
-			ini_close(); switch_save_data_commit(); /* Remember to commit the save data! */
+			ini_close(); /* Don't commit the save data on Switch, this is only temporary! */
 		}
 		else
 		if (menu == "remap_key_double_jump")
@@ -203,7 +203,7 @@ function scr_remapping_gamepad()
 			global.player_[inp.gp][remapping_player + 1][remap_key_number][action.double_jump] = last_key;
 			ini_open(game_save_id + "save_file/config.ini");
 			ini_write_real("player" + string(remapping_player + 1) + "_profile" + string(player_profile + 1), "player" + string(remapping_player + 1) + "_gamepad_button" + string(remap_key_number_string) + "_double_jump", last_key);
-			ini_close(); switch_save_data_commit(); /* Remember to commit the save data! */
+			ini_close(); /* Don't commit the save data on Switch, this is only temporary! */
 		}
 		else
 		if (menu == "remap_key_crouch")
@@ -211,7 +211,7 @@ function scr_remapping_gamepad()
 			global.player_[inp.gp][remapping_player + 1][remap_key_number][action.crouch] = last_key;
 			ini_open(game_save_id + "save_file/config.ini");
 			ini_write_real("player" + string(remapping_player + 1) + "_profile" + string(player_profile + 1), "player" + string(remapping_player + 1) + "_gamepad_button" + string(remap_key_number_string) + "_crouch", last_key);
-			ini_close(); switch_save_data_commit(); /* Remember to commit the save data! */
+			ini_close(); /* Don't commit the save data on Switch, this is only temporary! */
 		}
 		else
 		if (menu == "remap_key_crouch_toggle")
@@ -219,7 +219,7 @@ function scr_remapping_gamepad()
 			global.player_[inp.gp][remapping_player + 1][remap_key_number][action.crouch_toggle] = last_key;
 			ini_open(game_save_id + "save_file/config.ini");
 			ini_write_real("player" + string(remapping_player + 1) + "_profile" + string(player_profile + 1), "player" + string(remapping_player + 1) + "_gamepad_button" + string(remap_key_number_string) + "_crouch_toggle", last_key);
-			ini_close(); switch_save_data_commit(); /* Remember to commit the save data! */
+			ini_close(); /* Don't commit the save data on Switch, this is only temporary! */
 		}
 		else
 		if (menu == "remap_key_run")
@@ -227,7 +227,7 @@ function scr_remapping_gamepad()
 			global.player_[inp.gp][remapping_player + 1][remap_key_number][action.run] = last_key;
 			ini_open(game_save_id + "save_file/config.ini");
 			ini_write_real("player" + string(remapping_player + 1) + "_profile" + string(player_profile + 1), "player" + string(remapping_player + 1) + "_gamepad_button" + string(remap_key_number_string) + "_run", last_key);
-			ini_close(); switch_save_data_commit(); /* Remember to commit the save data! */
+			ini_close(); /* Don't commit the save data on Switch, this is only temporary! */
 		}
 		else
 		if (menu == "remap_key_run_toggle")
@@ -235,7 +235,7 @@ function scr_remapping_gamepad()
 			global.player_[inp.gp][remapping_player + 1][remap_key_number][action.run_toggle] = last_key;
 			ini_open(game_save_id + "save_file/config.ini");
 			ini_write_real("player" + string(remapping_player + 1) + "_profile" + string(player_profile + 1), "player" + string(remapping_player + 1) + "_gamepad_button" + string(remap_key_number_string) + "_run_toggle", last_key);
-			ini_close(); switch_save_data_commit(); /* Remember to commit the save data! */
+			ini_close(); /* Don't commit the save data on Switch, this is only temporary! */
 		}
 		else
 		if (menu == "remap_key_left")
@@ -248,7 +248,7 @@ function scr_remapping_gamepad()
 			global.player_[inp.gp][remapping_player + 1][remap_key_number][action.left] = last_key;
 			ini_open(game_save_id + "save_file/config.ini");
 			ini_write_real("player" + string(remapping_player + 1) + "_profile" + string(player_profile + 1), "player" + string(remapping_player + 1) + "_gamepad_button" + string(remap_key_number_string) + "_left", last_key);
-			ini_close(); switch_save_data_commit(); /* Remember to commit the save data! */
+			ini_close(); /* Don't commit the save data on Switch, this is only temporary! */
 		}
 		else
 		if (menu == "remap_key_right")
@@ -261,7 +261,7 @@ function scr_remapping_gamepad()
 			global.player_[inp.gp][remapping_player + 1][remap_key_number][action.right] = last_key;
 			ini_open(game_save_id + "save_file/config.ini");
 			ini_write_real("player" + string(remapping_player + 1) + "_profile" + string(player_profile + 1), "player" + string(remapping_player + 1) + "_gamepad_button" + string(remap_key_number_string) + "_right", last_key);
-			ini_close(); switch_save_data_commit(); /* Remember to commit the save data! */
+			ini_close(); /* Don't commit the save data on Switch, this is only temporary! */
 		}
 		else
 		if (menu == "remap_key_down")
@@ -274,7 +274,7 @@ function scr_remapping_gamepad()
 			global.player_[inp.gp][remapping_player + 1][remap_key_number][action.down] = last_key;
 			ini_open(game_save_id + "save_file/config.ini");
 			ini_write_real("player" + string(remapping_player + 1) + "_profile" + string(player_profile + 1), "player" + string(remapping_player + 1) + "_gamepad_button" + string(remap_key_number_string) + "_down", last_key);
-			ini_close(); switch_save_data_commit(); /* Remember to commit the save data! */
+			ini_close(); /* Don't commit the save data on Switch, this is only temporary! */
 		}
 		else
 		if (menu == "remap_key_up")
@@ -287,7 +287,7 @@ function scr_remapping_gamepad()
 			global.player_[inp.gp][remapping_player + 1][remap_key_number][action.up] = last_key;
 			ini_open(game_save_id + "save_file/config.ini");
 			ini_write_real("player" + string(remapping_player + 1) + "_profile" + string(player_profile + 1), "player" + string(remapping_player + 1) + "_gamepad_button" + string(remap_key_number_string) + "_up", last_key);
-			ini_close(); switch_save_data_commit(); /* Remember to commit the save data! */
+			ini_close(); /* Don't commit the save data on Switch, this is only temporary! */
 		}
 		else
 		if (menu == "remap_key_tongue")
@@ -295,7 +295,7 @@ function scr_remapping_gamepad()
 			global.player_[inp.gp][remapping_player + 1][remap_key_number][action.tongue] = last_key;
 			ini_open(game_save_id + "save_file/config.ini");
 			ini_write_real("player" + string(remapping_player + 1) + "_profile" + string(player_profile + 1), "player" + string(remapping_player + 1) + "_gamepad_button" + string(remap_key_number_string) + "_tongue", last_key);
-			ini_close(); switch_save_data_commit(); /* Remember to commit the save data! */
+			ini_close(); /* Don't commit the save data on Switch, this is only temporary! */
 		}
 		else
 		if (menu == "remap_key_zoom_in")
@@ -303,7 +303,7 @@ function scr_remapping_gamepad()
 			global.player_[inp.gp][remapping_player + 1][remap_key_number][action.zoom_in] = last_key;
 			ini_open(game_save_id + "save_file/config.ini");
 			ini_write_real("player" + string(remapping_player + 1) + "_profile" + string(player_profile + 1), "player" + string(remapping_player + 1) + "_gamepad_button" + string(remap_key_number_string) + "_zoom_in", last_key);
-			ini_close(); switch_save_data_commit(); /* Remember to commit the save data! */
+			ini_close(); /* Don't commit the save data on Switch, this is only temporary! */
 		}
 		else
 		if (menu == "remap_key_zoom_out")
@@ -311,7 +311,7 @@ function scr_remapping_gamepad()
 			global.player_[inp.gp][remapping_player + 1][remap_key_number][action.zoom_out] = last_key;
 			ini_open(game_save_id + "save_file/config.ini");
 			ini_write_real("player" + string(remapping_player + 1) + "_profile" + string(player_profile + 1), "player" + string(remapping_player + 1) + "_gamepad_button" + string(remap_key_number_string) + "_zoom_out", last_key);
-			ini_close(); switch_save_data_commit(); /* Remember to commit the save data! */
+			ini_close(); /* Don't commit the save data on Switch, this is only temporary! */
 		}
 		else
 		if (menu == "remap_key_accept")
@@ -333,12 +333,12 @@ function scr_remapping_gamepad()
 				global.player_[inp.gp][remapping_player + 1][remap_key_number][action.back] = global.player_[inp.gp][remapping_player + 1][remap_key_number][action.accept];
 				ini_open(game_save_id + "save_file/config.ini");
 				ini_write_real("player" + string(remapping_player + 1) + "_profile" + string(player_profile + 1), "player" + string(remapping_player + 1) + "_gamepad_button" + string(remap_key_number_string) + "_back", global.player_[inp.gp][remapping_player + 1][remap_key_number][action.accept]);
-				ini_close(); switch_save_data_commit(); /* Remember to commit the save data! */
+				ini_close(); /* Don't commit the save data on Switch, this is only temporary! */
 			}
 			global.player_[inp.gp][remapping_player + 1][remap_key_number][action.accept] = last_key;
 			ini_open(game_save_id + "save_file/config.ini");
 			ini_write_real("player" + string(remapping_player + 1) + "_profile" + string(player_profile + 1), "player" + string(remapping_player + 1) + "_gamepad_button" + string(remap_key_number_string) + "_accept", last_key);
-			ini_close(); switch_save_data_commit(); /* Remember to commit the save data! */
+			ini_close(); /* Don't commit the save data on Switch, this is only temporary! */
 		}
 		else
 		if (menu == "remap_key_back")
@@ -360,12 +360,12 @@ function scr_remapping_gamepad()
 				global.player_[inp.gp][remapping_player + 1][remap_key_number][action.accept] = global.player_[inp.gp][remapping_player + 1][remap_key_number][action.back];
 				ini_open(game_save_id + "save_file/config.ini");
 				ini_write_real("player" + string(remapping_player + 1) + "_profile" + string(player_profile + 1), "player" + string(remapping_player + 1) + "_gamepad_button" + string(remap_key_number_string) + "_accept", global.player_[inp.gp][remapping_player + 1][remap_key_number][action.back]);
-				ini_close(); switch_save_data_commit(); /* Remember to commit the save data! */
+				ini_close(); /* Don't commit the save data on Switch, this is only temporary! */
 			}
 			global.player_[inp.gp][remapping_player + 1][remap_key_number][action.back] = last_key;
 			ini_open(game_save_id + "save_file/config.ini");
 			ini_write_real("player" + string(remapping_player + 1) + "_profile" + string(player_profile + 1), "player" + string(remapping_player + 1) + "_gamepad_button" + string(remap_key_number_string) + "_back", last_key);
-			ini_close(); switch_save_data_commit(); /* Remember to commit the save data! */
+			ini_close(); /* Don't commit the save data on Switch, this is only temporary! */
 		}
 		can_remap_key = false;
 		input_key = false;

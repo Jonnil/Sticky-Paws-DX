@@ -50,7 +50,7 @@ function scr_character_edit_menu_draw()
 				ini_open(game_save_id + "custom_characters/" + string(what_character_name) + "/data/sprite_origin_point.ini");
 				spr_origin_x = ini_read_real("sprite origin points", "sprite_" + string(edit_character_sprite_name) + "_xorig", 0);
 				spr_origin_y = ini_read_real("sprite origin points", "sprite_" + string(edit_character_sprite_name) + "_yorig", 0);
-				ini_close(); switch_save_data_commit();
+				ini_close(); /* Don't commit the save data on Switch, this is only temporary! */
 			}
 		}
 		if (menu_delay == 5)
@@ -285,7 +285,7 @@ function scr_character_edit_menu_draw()
 				
 				ini_open(game_save_id + "custom_characters/" + string(what_character_name) + "/data/sprite_origin_point.ini");
 				ini_write_real("sprite origin points", "sprite_" + string(edit_character_sprite_name) + "_xorig", spr_origin_x);
-				ini_close(); switch_save_data_commit();
+				ini_close(); /* Don't commit the save data on Switch, this is only temporary! */
 				sprite_set_offset(edit_character_sprite_index, spr_origin_x, spr_origin_y);
 			}
 			if (key_down)
@@ -297,7 +297,7 @@ function scr_character_edit_menu_draw()
 				
 				ini_open(game_save_id + "custom_characters/" + string(what_character_name) + "/data/sprite_origin_point.ini");
 				ini_write_real("sprite origin points", "sprite_" + string(edit_character_sprite_name) + "_xorig", spr_origin_x);
-				ini_close(); switch_save_data_commit();
+				ini_close(); /* Don't commit the save data on Switch, this is only temporary! */
 				sprite_set_offset(edit_character_sprite_index, spr_origin_x, spr_origin_y);
 			}
 			if (key_left)
@@ -316,7 +316,7 @@ function scr_character_edit_menu_draw()
 				
 				ini_open(game_save_id + "custom_characters/" + string(what_character_name) + "/data/sprite_origin_point.ini");
 				ini_write_real("sprite origin points", "sprite_" + string(edit_character_sprite_name) + "_xorig", spr_origin_x);
-				ini_close(); switch_save_data_commit();
+				ini_close(); /* Don't commit the save data on Switch, this is only temporary! */
 				sprite_set_offset(edit_character_sprite_index, spr_origin_x, spr_origin_y);
 			}
 			if (key_right)
@@ -335,7 +335,7 @@ function scr_character_edit_menu_draw()
 				
 				ini_open(game_save_id + "custom_characters/" + string(what_character_name) + "/data/sprite_origin_point.ini");
 				ini_write_real("sprite origin points", "sprite_" + string(edit_character_sprite_name) + "_xorig", spr_origin_x);
-				ini_close(); switch_save_data_commit();
+				ini_close(); /* Don't commit the save data on Switch, this is only temporary! */
 				sprite_set_offset(edit_character_sprite_index, spr_origin_x, spr_origin_y);
 			}
 		}
@@ -367,7 +367,7 @@ function scr_character_edit_menu_draw()
 						ini_open(game_save_id + "custom_characters/" + string(what_character_name) + "/data/sprite_origin_point.ini");
 						spr_origin_x = ini_read_real("sprite origin points", "sprite_" + string(edit_character_sprite_name) + "_xorig", 0);
 						spr_origin_y = ini_read_real("sprite origin points", "sprite_" + string(edit_character_sprite_name) + "_yorig", 0);
-						ini_close(); switch_save_data_commit();
+						ini_close(); /* Don't commit the save data on Switch, this is only temporary! */
 						menu = "edit_character_input_sprite";
 					}
 					else

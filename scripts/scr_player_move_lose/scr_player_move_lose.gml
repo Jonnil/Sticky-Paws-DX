@@ -24,7 +24,7 @@ function scr_player_move_lose()
 			ini_write_real(string(ds_list_find_value(global.all_loaded_custom_levels, global.select_level_index)), "checkpoint_second", global.timeattack_second);
 			ini_write_real(string(ds_list_find_value(global.all_loaded_custom_levels, global.select_level_index)), "checkpoint_minute", global.timeattack_minute);
 			ini_write_real(string(ds_list_find_value(global.all_loaded_custom_levels, global.select_level_index)), "checkpoint_realmillisecond", global.timeattack_realmillisecond);
-			ini_close(); switch_save_data_commit(); /* Remember to commit the save data! */
+			ini_close(); /* Don't commit the save data on Switch, this is only temporary! */
 		}
 		#endregion /* Update Level Editor Checkpoint Time END */
 		

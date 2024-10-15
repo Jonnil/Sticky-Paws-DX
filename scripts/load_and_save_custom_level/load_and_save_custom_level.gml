@@ -52,7 +52,7 @@ function scr_load_object_placement_json()
 		var placed_objects_list = ds_list_create(); /* Only create a DS list if the file exists */
 		var file = file_text_open_read(file_path)
 		var json_string = file_text_read_string(file);
-		file_text_close(file); switch_save_data_commit(); /* Remember to commit the save data! */
+		file_text_close(file); /* Don't commit the save data on Switch, this is only temporary! */
 		
 		var data = json_parse(json_string);
 		
@@ -116,7 +116,7 @@ function scr_load_object_placement_json()
 			}
 			
 			/* Close the INI file */
-			ini_close(); switch_save_data_commit(); /* Remember to commit the save data! */
+			ini_close(); /* Don't commit the save data on Switch, this is only temporary! */
 		}
 		ds_list_destroy(placed_objects_list);
 		#endregion /* Save unlockable objects, only if the file exists END */
@@ -254,7 +254,7 @@ function scr_save_custom_level_json()
 		var json_string = json_stringify(data);
 		show_debug_message("SAVE OBJECT PLACEMENT");
 		file_text_write_string(file, json_string); /* Write string with wall information to file and start a new line */
-		file_text_close(file); switch_save_data_commit(); /* Remember to commit the save data! */
+		file_text_close(file); /* Don't commit the save data on Switch, this is only temporary! The commit happens in "scr save level information" */
 		#endregion /* Save object placement END */
 		
 		scr_save_level_information(); /* At the very end when saving a custom level, save the level information */
@@ -456,7 +456,7 @@ function scr_save_level_information()
 		
 		#endregion /* Save Custom Background Settings END */
 		
-		ini_close(); switch_save_data_commit(); /* Remember to commit the save data! */
+		ini_close();
 		
 		/* Update custom level save data */
 		ini_open(game_save_id + "save_file/custom_level_save.ini");
@@ -467,7 +467,7 @@ function scr_save_level_information()
 		ini_key_delete(global.level_name, "checkpoint_minute");
 		ini_key_delete(global.level_name, "checkpoint_realmillisecond");
 		ini_key_delete(global.level_name, "checkpoint_direction");
-		ini_close(); switch_save_data_commit(); /* Remember to commit the save data! */
+		ini_close();
 		
 		#region /* Unlocked objects should be set as not recently unlocked anymore */
 		ini_open(game_save_id + "save_file/file" + string(global.file) + ".ini"); /* Open the INI file */
@@ -480,11 +480,12 @@ function scr_save_level_information()
 		}
 		
 		/* Close the INI file */
-		ini_close(); switch_save_data_commit(); /* Remember to commit the save data! */
+		ini_close();
 		ds_list_destroy(placed_objects_list);
 		placed_objects_list = ds_list_create(); /* Only create a DS list if the file exists */
 		#endregion /* Unlocked objects should be set as not recently unlocked anymore END */
 		
+		switch_save_data_commit(); /* Remember to commit the save data! */
 	}
 	#endregion /* Save Level Information END */
 	

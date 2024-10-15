@@ -138,7 +138,7 @@ if (collect_big_collectible)
 			}
 			
 			ini_write_real(global.level_name, "big_collectible" + string(i), true); /* After increasing total big collectibles, then set this big collectible to be collected */
-			ini_close(); switch_save_data_commit(); /* Remember to commit the save data! */
+			ini_close(); /* Don't commit the save data on Switch, this is only temporary! */
 			break;
 		}
 		else

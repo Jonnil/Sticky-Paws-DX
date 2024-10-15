@@ -175,7 +175,7 @@ function scr_draw_upload_account_name(what_kind_of_file = "level")
 		{
 			ini_open(game_save_id + "save_file/config.ini");
 			ini_write_string("config", "username", string(global.username)); /* Save username to config file */
-			ini_close(); switch_save_data_commit(); /* Remember to commit the save data! */
+			ini_close(); /* Don't commit the save data on Switch, this is only temporary! */
 				
 			menu_delay = 3;
 			input_key = false;
@@ -198,7 +198,7 @@ function scr_draw_upload_account_name(what_kind_of_file = "level")
 							{
 								ini_open(game_save_id + "custom_levels/" + string(global.level_name) + "/data/level_information.ini");
 								var short_level_minute = ini_read_real("rank", "rank_timeattack_minute", 0);
-								ini_close(); switch_save_data_commit(); /* Remember to commit the save data! */
+								ini_close(); /* Don't commit the save data on Switch, this is only temporary! */
 								
 								#region /* Tell the player before uploading, if the level they clear checked was too short or not */
 								if (global.enable_level_length_target)
@@ -244,7 +244,7 @@ function scr_draw_upload_account_name(what_kind_of_file = "level")
 		{
 			ini_open(game_save_id + "save_file/config.ini");
 			ini_write_string("config", "username", ""); /* Save username as blank to config file, then go back */
-			ini_close(); switch_save_data_commit(); /* Remember to commit the save data! */
+			ini_close(); /* Don't commit the save data on Switch, this is only temporary! */
 			global.username = "";
 			keyboard_string = "";
 			menu_delay = 3;

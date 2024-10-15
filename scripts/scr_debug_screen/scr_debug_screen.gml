@@ -242,7 +242,7 @@ function scr_debug_screen()
 				global.show_fps = !global.show_fps;
 				ini_open(game_save_id + "save_file/config.ini");
 				ini_write_real("config", "show_fps", global.show_fps);
-				ini_close(); switch_save_data_commit(); /* Remember to commit the save data! */
+				ini_close(); /* Don't commit the save data on Switch, this is only temporary! */
 			}
 		}
 		#endregion /* Click on FPS to toggle if it should stay on screen even after you close debug screen END */
@@ -258,7 +258,7 @@ function scr_debug_screen()
 				global.show_instance_count = !global.show_instance_count;
 				ini_open(game_save_id + "save_file/config.ini");
 				ini_write_real("config", "show_instance_count", global.show_instance_count);
-				ini_close(); switch_save_data_commit(); /* Remember to commit the save data! */
+				ini_close(); /* Don't commit the save data on Switch, this is only temporary! */
 			}
 		}
 		#endregion /* Click on Instance Count to toggle if it should stay on screen even after you close debug screen END */

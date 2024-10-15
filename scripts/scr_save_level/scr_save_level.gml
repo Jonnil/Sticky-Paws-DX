@@ -12,7 +12,7 @@ function scr_save_level()
 	{
 		ini_open(game_save_id + "custom_characters/" + string(ds_list_find_value(global.all_loaded_characters, global.character_index[0])) + "/data/character_config.ini");
 		ini_write_real("info", "clear_check_character", true);
-		ini_close(); switch_save_data_commit(); /* Remember to commit the save data! */
+		ini_close(); /* Don't commit the save data on Switch, this is only temporary! */
 		global.go_to_menu_when_going_back_to_title = "upload_yes_character";
 	}
 	#endregion /* If doing a character clear check, and winning the level, then add in character config that you have done a clear check END */
@@ -96,7 +96,7 @@ function scr_save_level()
 		{
 			ini_write_real(level_name, "level_score", score);
 		}
-		ini_close(); switch_save_data_commit(); /* Remember to commit the save data! */
+		ini_close(); /* Don't commit the save data on Switch, this is only temporary! */
 	}
 	else
 	if (global.character_select_in_this_menu == "level_editor" && global.actually_play_edited_level)
@@ -221,7 +221,7 @@ function scr_save_level()
 			ini_write_real(level_name, "level_score", score);
 		}
 		
-		ini_close(); switch_save_data_commit(); /* Remember to commit the save data! */
+		ini_close(); /* Don't commit the save data on Switch, this is only temporary! */
 		#endregion /* Save to custom level save file END */
 		
 	}
@@ -264,7 +264,7 @@ function scr_save_level()
 			}
 		}
 		
-		ini_close(); switch_save_data_commit(); /* Remember to commit the save data! */
+		ini_close(); /* Don't commit the save data on Switch, this is only temporary! */
 	}
 	#endregion /* Update ranking highscore to actual custom level END */
 	
@@ -298,5 +298,7 @@ function scr_save_level()
 	ini_open(game_save_id + "save_file/config.ini")
 	ini_write_real("config", "zoom_level", global.zoom_level);
 	ini_write_real("config", "zoom_world_map", global.zoom_world_map);
-	ini_close(); switch_save_data_commit(); /* Remember to commit the save data! */
+	ini_close();
+	
+	switch_save_data_commit(); /* Remember to commit the save data! */
 }

@@ -97,7 +97,7 @@ function scr_character_portrait_for_player_step(what_player = 1)
 						global.actual_skin_for_player[what_player] = global.skin_for_player[what_player]; /* When changing skins, update "actual skin for player" to match "skin for player". Update "skin for player" first */
 						ini_open(game_save_id + "save_file/config.ini");
 						ini_write_real("config", "skin_for_player" + string(what_player), global.actual_skin_for_player[what_player]);
-						ini_close() switch_save_data_commit();
+						ini_close(); /* Don't commit the save data on Switch, this is only temporary! */
 						menu_specific_joystick_delay[what_player] = 30;
 						xx_delay[what_player] = -1;
 						#endregion /* Player character select portrait sprite END */
@@ -128,7 +128,7 @@ function scr_character_portrait_for_player_step(what_player = 1)
 						global.actual_skin_for_player[what_player] = global.skin_for_player[what_player]; /* When changing skins, update "actual skin for player" to match "skin for player". Update "skin for player" first */
 						ini_open(game_save_id + "save_file/config.ini");
 						ini_write_real("config", "skin_for_player" + string(what_player), global.actual_skin_for_player[what_player]);
-						ini_close() switch_save_data_commit();
+						ini_close(); /* Don't commit the save data on Switch, this is only temporary! */
 						menu_specific_joystick_delay[what_player] = 30;
 						xx_delay[what_player] = +1;
 						#endregion /* Player character select portrait sprite END */

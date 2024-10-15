@@ -145,6 +145,6 @@ function scr_load_resource_pack_sprite()
 		global.resource_pack_sprite_buttons_nintendoswitch_vertical = scr_initialize_resource_pack_sprite("buttons_nintendoswitch_vertical", global.resource_pack_sprite_buttons_nintendoswitch_vertical);
 		global.resource_pack_sprite_buttons_playstation4 = scr_initialize_resource_pack_sprite("buttons_playstation_four", global.resource_pack_sprite_buttons_playstation4);
 		global.resource_pack_sprite_buttons_playstation5 = scr_initialize_resource_pack_sprite("buttons_playstation_five", global.resource_pack_sprite_buttons_playstation5);
-		ini_close(); switch_save_data_commit(); /* Remember to commit the save data! */
+		ini_close(); /* Don't commit the save data on Switch, this is only temporary! */
 	}
 }

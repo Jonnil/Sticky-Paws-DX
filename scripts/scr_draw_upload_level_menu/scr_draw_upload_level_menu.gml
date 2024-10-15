@@ -222,7 +222,7 @@ function scr_draw_upload_level_menu()
 										var short_level_minute = ini_read_real("rank", "rank_timeattack_minute", 0);
 										development_stage_index = ini_read_real("info", "development_stage_index", 1);
 										visibility_index = ini_read_real("info", "visibility_index", 0);
-										ini_close(); switch_save_data_commit(); /* Remember to commit the save data! */
+										ini_close(); /* Don't commit the save data on Switch, this is only temporary! */
 											
 										menu_delay = 3;
 											
@@ -274,7 +274,7 @@ function scr_draw_upload_level_menu()
 									show_level_editor_corner_menu = false;
 								}
 							}
-							ini_close(); switch_save_data_commit(); /* Remember to commit the save data! */
+							ini_close(); /* Don't commit the save data on Switch, this is only temporary! */
 						}
 						else
 						{
@@ -454,7 +454,7 @@ function scr_draw_upload_level_menu()
 					{
 						ini_open(upload_level_path + "/data/level_information.ini");
 						ini_write_real("info", "clear_check", false); /* Set "clear check" to false when you click on "clear check yes" just in case it isn't already false when doing a "clear check" */
-						ini_close(); switch_save_data_commit(); /* Remember to commit the save data! */
+						ini_close(); /* Don't commit the save data on Switch, this is only temporary! */
 					}
 				}
 				#endregion /* Set clear_check to false whenever you agree to do a clear check for the first time, just in case it's already not END */
@@ -615,7 +615,7 @@ function scr_draw_upload_level_menu()
 			{
 				scr_draw_text_outlined(display_get_gui_width() - 32, display_get_gui_height() - 32, l10n_text("By") + ": " + string(ini_read_string("info", "username", "")), global.default_text_size, c_black, c_white, 1);
 			}
-			ini_close(); switch_save_data_commit(); /* Remember to commit the save data! */
+			ini_close(); /* Don't commit the save data on Switch, this is only temporary! */
 		}
 		#endregion /* Draw who made the level END */
 		
@@ -690,7 +690,7 @@ function scr_draw_upload_level_menu()
 				{
 					ini_open(upload_level_path + "/data/level_information.ini");
 					keyboard_string = ini_read_string("info", "level_description", "");
-					ini_close(); switch_save_data_commit(); /* Remember to commit the save data! */
+					ini_close(); /* Don't commit the save data on Switch, this is only temporary! */
 				}
 				else
 				{
@@ -737,7 +737,7 @@ function scr_draw_upload_level_menu()
 				development_stage_index --;
 				ini_open(game_save_id + "custom_levels/" + string(global.level_name) + "/data/level_information.ini");
 				ini_write_real("info", "development_stage_index", development_stage_index);
-				ini_close(); switch_save_data_commit(); /* Remember to commit the save data! */
+				ini_close(); /* Don't commit the save data on Switch, this is only temporary! */
 			}
 			else
 			if (menu == "upload_edit_visibility")
@@ -747,7 +747,7 @@ function scr_draw_upload_level_menu()
 				thumbnail_level_unlisted[global.select_level_index] = visibility_index;
 				ini_open(game_save_id + "custom_levels/" + string(global.level_name) + "/data/level_information.ini");
 				ini_write_real("info", "visibility_index", visibility_index);
-				ini_close(); switch_save_data_commit(); /* Remember to commit the save data! */
+				ini_close(); /* Don't commit the save data on Switch, this is only temporary! */
 			}
 		}
 		if (key_down)
@@ -760,7 +760,7 @@ function scr_draw_upload_level_menu()
 				development_stage_index ++;
 				ini_open(game_save_id + "custom_levels/" + string(global.level_name) + "/data/level_information.ini");
 				ini_write_real("info", "development_stage_index", development_stage_index);
-				ini_close(); switch_save_data_commit(); /* Remember to commit the save data! */
+				ini_close(); /* Don't commit the save data on Switch, this is only temporary! */
 			}
 			else
 			if (menu == "upload_edit_visibility")
@@ -770,7 +770,7 @@ function scr_draw_upload_level_menu()
 				thumbnail_level_unlisted[global.select_level_index] = visibility_index;
 				ini_open(game_save_id + "custom_levels/" + string(global.level_name) + "/data/level_information.ini");
 				ini_write_real("info", "visibility_index", visibility_index);
-				ini_close(); switch_save_data_commit(); /* Remember to commit the save data! */
+				ini_close(); /* Don't commit the save data on Switch, this is only temporary! */
 			}
 		}
 		
@@ -956,7 +956,7 @@ function scr_draw_upload_level_menu()
 				}
 				menu_delay = 3;
 			}
-			ini_close(); switch_save_data_commit(); /* Remember to commit the save data! */
+			ini_close(); /* Don't commit the save data on Switch, this is only temporary! */
 			#endregion /* If at any point the game checks that the level isn't clear checked, then go to the clear check menu END */
 			
 		}
@@ -1029,7 +1029,7 @@ function scr_draw_upload_level_menu()
 				{
 					ini_open(game_save_id + "custom_levels/" + string(global.level_name) + "/data/level_information.ini");
 					var short_level_minute = ini_read_real("rank", "rank_timeattack_minute", 0);
-					ini_close(); switch_save_data_commit(); /* Remember to commit the save data! */
+					ini_close(); /* Don't commit the save data on Switch, this is only temporary! */
 					
 					#region /* Tell the player before uploading, if the level they clear checked was too short or not */
 					if (global.enable_level_length_target)
@@ -1080,7 +1080,7 @@ function scr_draw_upload_level_menu()
 				
 				ini_open(game_save_id + "custom_levels/" + string(global.level_name) + "/data/level_information.ini");
 				var short_level_minute = ini_read_real("rank", "rank_timeattack_minute", 0);
-				ini_close(); switch_save_data_commit(); /* Remember to commit the save data! */
+				ini_close(); /* Don't commit the save data on Switch, this is only temporary! */
 				
 				#region /* Tell the player before uploading, if the level they clear checked was too short or not */
 				if (global.enable_level_length_target)
@@ -1142,7 +1142,7 @@ function scr_draw_upload_level_menu()
 					/* Save description to level_information.ini */
 					ini_open(upload_level_path + "/data/level_information.ini");
 					ini_write_string("info", "level_description", string(global.level_description));
-					ini_close(); switch_save_data_commit(); /* Remember to commit the save data! */
+					ini_close(); /* Don't commit the save data on Switch, this is only temporary! */
 					
 					if (variable_instance_exists(self, "thumbnail_level_description"))
 					{
@@ -1304,7 +1304,7 @@ function scr_draw_upload_level_menu()
 				if (tag_themed){ini_write_real("tags", "tag_themed", true);}
 				if (tag_glitch_showcase){ini_write_real("tags", "tag_glitch_showcase", true);}
 				ini_write_real("info", "intended_level_difficulty", intended_level_difficulty);
-				ini_close(); switch_save_data_commit(); /* Remember to commit the save data! */
+				ini_close(); /* Don't commit the save data on Switch, this is only temporary! */
 				
 				menu_delay = 3;
 				menu = "upload_edit_tags";
@@ -1689,7 +1689,7 @@ function scr_draw_upload_level_menu()
 		{
 			var zip_file = file_bin_open(game_save_id + string(level_id) + ".zip", 0);
 			var zip_size = file_bin_size(zip_file);
-			file_bin_close(zip_file); switch_save_data_commit(); /* Remember to commit the save data! */
+			file_bin_close(zip_file); /* Don't commit the save data on Switch, this is only temporary! */
 			zip_megabytes = zip_size / 1024 / 1024;
 			
 			if (zip_megabytes > global.max_file_upload_megabytes)
@@ -1772,9 +1772,11 @@ function scr_draw_upload_level_menu()
 									{
 										ini_write_real("finished_downloaded_level", string(level_id), 2); /* Played and finished when uploading own level */
 									}
-									ini_close(); switch_save_data_commit(); /* Remember to commit the save data! */
+									ini_close(); /* Don't commit the save data on Switch, this is only temporary! */
 									
 									search_for_id_still = false;
+									
+									switch_save_data_commit(); /* Remember to commit the save data when uploading content to server */
 									menu = "level_uploaded";
 								}
 								else

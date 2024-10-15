@@ -43,6 +43,5 @@ function scr_save_os_info_ini()
 	ini_write_string("Other", "date_current_datetime", string(date_datetime_string(date_current_datetime())));
 	
 	/* Close the .ini file and commit the save data */
-	ini_close();
-	switch_save_data_commit();
+	ini_close(); /* Don't commit the save data on Switch, this is only temporary! */
 }

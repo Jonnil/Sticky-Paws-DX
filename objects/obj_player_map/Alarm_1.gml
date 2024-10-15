@@ -6,5 +6,5 @@ if (instance_nearest(x, y, obj_level).clear_rate == "clear")
 	{
 		instance_create_depth(x, y, 0, obj_map_cake_stealing_enemy);
 	}
-	ini_close(); switch_save_data_commit(); /* Remember to commit the save data! */
+	ini_close(); /* Don't commit the save data on Switch, this is only temporary! */
 }

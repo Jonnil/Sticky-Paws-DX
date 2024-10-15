@@ -9,7 +9,7 @@ function scr_load_custom_levels()
 		
 		if (file_found == "")
 		{
-			file_find_close(); switch_save_data_commit(); /* Remember to commit the save data! */
+			file_find_close(); /* Don't commit the save data on Switch, this is only temporary! */
 			
 			#region /* Get clear check and level ID information */
 			if (variable_instance_exists(self, "thumbnail_level_name"))
@@ -72,7 +72,7 @@ function scr_load_custom_levels()
 					{
 						thumbnail_level_username[i] = string(ini_read_string("info", "username", ""));
 					}
-					ini_close(); switch_save_data_commit(); /* Remember to commit the save data! */
+					ini_close(); /* Don't commit the save data on Switch, this is only temporary! */
 				}
 			}
 			else

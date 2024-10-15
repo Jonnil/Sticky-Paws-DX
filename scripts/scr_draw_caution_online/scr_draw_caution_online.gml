@@ -44,7 +44,7 @@ function scr_draw_caution_online()
 			{
 				ini_open(game_save_id + "save_file/config.ini");
 				ini_write_string("config", "caution_online_do_not_show", true);
-				ini_close(); switch_save_data_commit(); /* Remember to commit the save data! */
+				ini_close(); /* Don't commit the save data on Switch, this is only temporary! */
 			}
 			
 			if (os_is_network_connected()) /* Need to check if you are connected to the internet before proceeding to online content */

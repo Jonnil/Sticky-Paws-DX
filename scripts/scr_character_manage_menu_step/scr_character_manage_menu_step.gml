@@ -459,7 +459,7 @@ function scr_character_manage_menu_step()
 				global.sprite_select_player[fixed_player] = scr_initialize_character_sprite("idle", global.sprite_select_player[fixed_player]);
 				global.sprite_select_player[fixed_player] = scr_initialize_character_sprite("stand", global.sprite_select_player[fixed_player]);
 				global.sprite_select_player[fixed_player] = scr_initialize_character_sprite("character_select_portrait", global.sprite_select_player[fixed_player]);
-				ini_close(); switch_save_data_commit(); /* Remember to commit the save data! */
+				ini_close(); /* Don't commit the save data on Switch, this is only temporary! */
 				#endregion /* After deleting character, go to previous character, so you don't accidentally go to a undefined character END */
 				
 				scr_load_character_initializing();
@@ -569,7 +569,7 @@ function scr_character_manage_menu_step()
 				ini_write_real("config", "character_index_player1", global.character_index[0]);
 				ini_write_real("config", "skin_for_player1", global.skin_for_player[1]);
 				ini_write_string("config", "player1_name", global.player_name[1]);
-				ini_close(); switch_save_data_commit(); /* Remember to commit the save data! */
+				ini_close(); /* Don't commit the save data on Switch, this is only temporary! */
 				
 				menu_delay = 3;
 				if (global.online_enabled)
@@ -602,7 +602,7 @@ function scr_character_manage_menu_step()
 									{
 										menu = "clear_check_character_yes";
 									}
-									ini_close(); switch_save_data_commit(); /* Remember to commit the save data! */
+									ini_close(); /* Don't commit the save data on Switch, this is only temporary! */
 								}
 								else
 								{

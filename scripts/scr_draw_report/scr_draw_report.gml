@@ -218,7 +218,7 @@ function scr_draw_report()
 					directory_destroy(game_save_id + "custom_levels/" + global.level_name);
 					ini_open(game_save_id + "save_file/custom_level_save.ini");
 					ini_section_delete(global.level_name);
-					ini_close(); switch_save_data_commit(); /* Remember to commit the save data! */
+					ini_close(); /* Don't commit the save data on Switch, this is only temporary! */
 					global.select_level_index = 0;
 					global.level_name = "";
 				}

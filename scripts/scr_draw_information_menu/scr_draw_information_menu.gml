@@ -914,7 +914,7 @@ function scr_draw_information_menu()
 				ini_open(game_save_id + "save_file/config.ini");
 				ini_write_string("config", "latest_whats_new_version", "v" + scr_get_build_date());
 				ini_write_string("config", "latest_whats_new_text", string(global.whats_new));
-				ini_close(); switch_save_data_commit(); /* Remember to commit the save data! */
+				ini_close(); /* Don't commit the save data on Switch, this is only temporary! */
 			}
 			
 			var build_version_y = 32 * 2;

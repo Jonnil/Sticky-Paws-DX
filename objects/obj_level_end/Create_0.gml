@@ -27,5 +27,5 @@ if (global.character_select_in_this_menu == "main_game")
 		y = ini_read_real("info", "level_end_y", 0);
 	}
 	
-	ini_close(); switch_save_data_commit(); /* Remember to commit the save data! */
+	ini_close(); /* Don't commit the save data on Switch, this is only temporary! */
 }

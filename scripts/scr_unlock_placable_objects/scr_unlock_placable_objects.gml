@@ -14,6 +14,6 @@ function scr_unlock_placable_objects(variable_to_check /* var_struct.O */)
 			/* Only write to the INI file if it exists and the object is not already unlocked */
 			ini_write_real("Unlock Placable Objects", variable_to_check, true);
 		}
-		ini_close(); switch_save_data_commit(); /* Remember to commit the save data! */
+		ini_close(); /* Don't commit the save data on Switch, this is only temporary! */
 	}
 }

@@ -532,7 +532,7 @@ if (!global.actually_play_edited_level)
 		{
 			ini_open(game_save_id + "save_file/config.ini");
 			ini_write_real("config", "select_level_editing_music", global.selected_level_editing_music);
-			ini_close(); switch_save_data_commit(); /* Remember to commit the save data! */
+			ini_close(); /* Don't commit the save data on Switch, this is only temporary! */
 		}
 	}
 	
@@ -756,7 +756,7 @@ if (!global.actually_play_edited_level)
 		ini_write_real(global.level_name, "checkpoint_second", 0);
 		ini_write_real(global.level_name, "checkpoint_minute", 0);
 		ini_write_real(global.level_name, "checkpoint_realmillisecond", 0);
-		ini_close(); switch_save_data_commit(); /* Remember to commit the save data! */
+		ini_close(); /* Don't commit the save data on Switch, this is only temporary! */
 		
 		menu_delay = 3; /* Disable all menu control */
 		lives = 5;
@@ -1069,7 +1069,7 @@ if (!global.actually_play_edited_level)
 						{
 							ini_open(game_save_id + "custom_levels/" + string(global.level_name) + "/data/level_information.ini");
 							ini_write_real("info", "clear_check", false); /* Set clear check to false when trying to upload within the level editor */
-							ini_close(); switch_save_data_commit(); /* Remember to commit the save data! */
+							ini_close(); /* Don't commit the save data on Switch, this is only temporary! */
 							if_clear_checked = false;
 						}
 						
@@ -1184,7 +1184,7 @@ if (!global.actually_play_edited_level)
 				{
 					ini_open(game_save_id + "custom_levels/" + string(global.level_name) + "/data/level_information.ini");
 					ini_write_real("info", "clear_check", false); /* Set clear check to false when trying to upload within the level editor */
-					ini_close(); switch_save_data_commit(); /* Remember to commit the save data! */
+					ini_close(); /* Don't commit the save data on Switch, this is only temporary! */
 					if_clear_checked = false;
 				}
 				instance_create_depth(x, y, 0, obj_erase_brush);
@@ -1892,7 +1892,7 @@ if (!global.actually_play_edited_level)
 			ini_write_real(global.level_name, "checkpoint_second", 0);
 			ini_write_real(global.level_name, "checkpoint_minute", 0);
 			ini_write_real(global.level_name, "checkpoint_realmillisecond", 0);
-			ini_close(); switch_save_data_commit(); /* Remember to commit the save data! */
+			ini_close(); /* Don't commit the save data on Switch, this is only temporary! */
 			
 			global.checkpoint_x = 0;
 			global.checkpoint_y = 0;

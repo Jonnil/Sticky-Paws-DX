@@ -162,14 +162,14 @@ if (file_exists(game_save_id + "save_file/file" + string(global.file) + ".ini"))
 	}
 	#endregion /* Have Heart Balloon END */
 	
-	ini_close(); switch_save_data_commit(); /* Remember to commit the save data! */
+	ini_close(); /* Don't commit the save data on Switch, this is only temporary! */
 	move_snap(32, 32);
 }
 else
 {
 	ini_open(game_save_id + "save_file/file" + string(global.file) + ".ini");
 	ini_write_real("Player", "brand_new_file", true);
-	ini_close(); switch_save_data_commit(); /* Remember to commit the save data! */
+	ini_close(); /* Don't commit the save data on Switch, this is only temporary! */
 	brand_new_file = true;
 	total_big_collectibles = 0;
 	xx_heart = x;
@@ -226,7 +226,7 @@ if (ini_read_real("Player", "number_of_levels_cleared", 1) < 1)
 {
 	ini_write_real("Player", "number_of_levels_cleared", 1)
 }
-ini_close(); switch_save_data_commit(); /* Remember to commit the save data! */
+ini_close(); /* Don't commit the save data on Switch, this is only temporary! */
 
 #region /* Reset level zoom */
 if (global.reset_level_zoom_when_going_back_to_map)
@@ -234,7 +234,7 @@ if (global.reset_level_zoom_when_going_back_to_map)
 	global.zoom_level = global.default_zoom_level;
 	ini_open("save_file/config.ini");
 	ini_write_real("config", "zoom_level", global.default_zoom_level);
-	ini_close(); switch_save_data_commit(); /* Remember to commit the save data! */
+	ini_close(); /* Don't commit the save data on Switch, this is only temporary! */
 }
 #endregion /* Reset level zoom END */
 
@@ -246,7 +246,7 @@ if (global.reset_world_map_zoom_when_going_back_to_map)
 	zoom_border_lerp = 0;
 	ini_open("save_file/config.ini");
 	ini_write_real("config", "zoom_world_map", global.default_zoom_world_map);
-	ini_close(); switch_save_data_commit(); /* Remember to commit the save data! */
+	ini_close(); /* Don't commit the save data on Switch, this is only temporary! */
 }
 #endregion /* Reset world map zoom END */
 
@@ -295,6 +295,6 @@ if (lives <= 0)
 	{
         ini_open(game_save_id + "save_file/file" + string(global.file) + ".ini");
         ini_write_real("Player", "lives", lives);
-        ini_close(); switch_save_data_commit();
+        ini_close(); /* Don't commit the save data on Switch, this is only temporary! */
     }
 }

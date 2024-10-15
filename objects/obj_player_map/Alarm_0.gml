@@ -9,7 +9,7 @@ scr_set_character_folder();
 ini_open(string(character_folder) + "/data/character_config.ini");
 default_xscale = ini_read_real("values", "default_xscale", 1);
 default_yscale = ini_read_real("values", "default_yscale", 1);
-ini_close(); switch_save_data_commit(); /* Remember to commit the save data! */
+ini_close(); /* Don't commit the save data on Switch, this is only temporary! */
 
 #region /* Sprite variables */
 ini_open(string(character_folder) + "/data/sprite_origin_point.ini");
@@ -19,24 +19,30 @@ sprite_map_enter_level = scr_initialize_character_sprite("map_enter", sprite_map
 sprite_idle = scr_initialize_character_sprite("idle", sprite_idle);
 sprite_idle = scr_initialize_character_sprite("stand", sprite_idle);
 sprite_walk = scr_initialize_character_sprite("walk", sprite_walk);
-ini_close(); switch_save_data_commit(); /* Remember to commit the save data! */
+ini_close(); /* Don't commit the save data on Switch, this is only temporary! */
 #endregion /* Sprite variables END */
 
 #endregion /* Play as Custom Character END */
 
-if (sprite_map > noone) {
+if (sprite_map > noone)
+{
 	sprite_index = sprite_map;
 }
-else if (sprite_idle > noone) {
+else
+if (sprite_idle > noone)
+{
 	sprite_index = sprite_idle;
 }
-else if (sprite_walk > noone) {
+else
+if (sprite_walk > noone)
+{
 	sprite_index = sprite_walk;
 }
 #endregion /* Initialize Custom Character END */
 
 #region /* Make sure you spawn on top of a level one last time before playing */
-if (instance_exists(obj_level) && !position_meeting(x, y, obj_level)) {
+if (instance_exists(obj_level) && !position_meeting(x, y, obj_level))
+{
 	x = instance_nearest(x, y, obj_level).x;
 	y = instance_nearest(x, y, obj_level).y;
 	xx = instance_nearest(x, y, obj_level).x;

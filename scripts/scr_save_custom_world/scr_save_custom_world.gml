@@ -43,7 +43,7 @@ function scr_save_custom_world()
 		#endregion /* Write all objects to file END */
 		
 		file_text_write_string(file, str); /* Write string with wall information to file and start a new line */
-		file_text_close(file); switch_save_data_commit(); /* Remember to commit the save data! */
+		file_text_close(file); /* Don't commit the save data on Switch, this is only temporary! */
 		
 		#endregion /* Save object placement END */
 		
@@ -78,11 +78,12 @@ function scr_save_custom_world()
 			}
 			ini_write_real("info", "view_xview", camera_get_view_x(view_camera[view_current]));
 			ini_write_real("info", "view_yview", camera_get_view_y(view_camera[view_current]));
-			ini_close(); switch_save_data_commit(); /* Remember to commit the save data! */
+			ini_close();
 		}
 		#endregion /* Save World Information END */
-	
+		
+		switch_save_data_commit(); /* Remember to commit the save data! */
 	}
-
 	#endregion /* Save Custom World END */
+	
 }

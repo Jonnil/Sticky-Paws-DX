@@ -132,7 +132,7 @@ function menu_dropdown_variable_to_change(variable_to_change, change_to_value)
 		development_stage_index = change_to_value;
 		ini_open(game_save_id + "custom_levels/" + string(global.level_name) + "/data/level_information.ini");
 		ini_write_real("info", "development_stage_index", development_stage_index);
-		ini_close(); switch_save_data_commit(); /* Remember to commit the save data! */
+		ini_close(); /* Don't commit the save data on Switch, this is only temporary! */
 	}
 	else
 	if (menu == "upload_edit_visibility")
@@ -142,7 +142,7 @@ function menu_dropdown_variable_to_change(variable_to_change, change_to_value)
 		thumbnail_level_unlisted[global.select_level_index] = visibility_index;
 		ini_open(game_save_id + "custom_levels/" + string(global.level_name) + "/data/level_information.ini");
 		ini_write_real("info", "visibility_index", visibility_index);
-		ini_close(); switch_save_data_commit(); /* Remember to commit the save data! */
+		ini_close(); /* Don't commit the save data on Switch, this is only temporary! */
 	}
 	else
 	if (menu == "upload_character_edit_visibility")
@@ -153,6 +153,6 @@ function menu_dropdown_variable_to_change(variable_to_change, change_to_value)
 		var character_name = string(ds_list_find_value(global.all_loaded_characters, global.character_index[fixed_player - 1]))
 		ini_open(game_save_id + "custom_characters/" + string(character_name) + "/data/character_config.ini");
 		ini_write_real("info", "visibility_index", visibility_index);
-		ini_close(); switch_save_data_commit(); /* Remember to commit the save data! */
+		ini_close(); /* Don't commit the save data on Switch, this is only temporary! */
 	}
 }

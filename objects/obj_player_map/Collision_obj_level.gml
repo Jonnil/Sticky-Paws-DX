@@ -54,7 +54,7 @@ if (can_enter_level_automatically)
 			ini_write_real("Player", "player_x", x);
 			ini_write_real("Player", "player_y", y);
 			ini_write_real("Player", "brand_new_file", false);
-			ini_close(); switch_save_data_commit(); /* Remember to commit the save data! */
+			ini_close(); /* Don't commit the save data on Switch, this is only temporary! */
 			#endregion /* Save Player Position END */
 			
 			can_move = false;
@@ -116,7 +116,7 @@ if (key_b_pressed)
 		ini_write_real("Player", "player_x", x);
 		ini_write_real("Player", "player_y", y);
 		ini_write_real("Player", "brand_new_file", false);
-		ini_close(); switch_save_data_commit(); /* Remember to commit the save data! */
+		ini_close(); /* Don't commit the save data on Switch, this is only temporary! */
 		#endregion /* Save Player Position END */
 		
 		if (global.character_select_in_this_menu == "main_game")
@@ -124,7 +124,7 @@ if (key_b_pressed)
 			var level_name = string(ds_list_find_value(global.all_loaded_main_levels, global.select_level_index));
 			ini_open(game_save_id + "save_file/file" + string(global.file) + ".ini");
 			ini_write_string(level_name, "clear_rate", "clear"); /* Make the level clear after checking number of levels cleared */
-			ini_close(); switch_save_data_commit(); /* Remember to commit the save data! */
+			ini_close(); /* Don't commit the save data on Switch, this is only temporary! */
 		}
 	}
 }

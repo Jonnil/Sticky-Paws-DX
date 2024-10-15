@@ -87,7 +87,7 @@ function scr_player_move_goal()
 					ini_key_delete(level_name, "checkpoint_x");
 					ini_key_delete(level_name, "checkpoint_y");
 					ini_key_delete(level_name, "checkpoint_direction");
-					ini_close(); switch_save_data_commit(); /* Remember to commit the save data! */
+					ini_close(); /* Don't commit the save data on Switch, this is only temporary! */
 				}
 				else
 				if (global.character_select_in_this_menu == "level_editor" && room == rm_leveleditor)
@@ -109,7 +109,7 @@ function scr_player_move_goal()
 					ini_key_delete(level_name, "checkpoint_x");
 					ini_key_delete(level_name, "checkpoint_y");
 					ini_key_delete(level_name, "checkpoint_direction");
-					ini_close(); switch_save_data_commit(); /* Remember to commit the save data! */
+					ini_close(); /* Don't commit the save data on Switch, this is only temporary! */
 				}
 				#endregion /* Save Checkpoint END */
 				

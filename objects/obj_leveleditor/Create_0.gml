@@ -179,7 +179,7 @@ if (!global.actually_play_edited_level)
 			}
 			first_created_on_version = ini_read_string("info", "first_created_on_version", "v" + scr_get_build_date());	
 		}
-		ini_close(); switch_save_data_commit(); /* Remember to commit the save data! */
+		ini_close(); /* Don't commit the save data on Switch, this is only temporary! */
 	}
 	#endregion /* Show what version of the game the level was first created in END */
 	
@@ -255,7 +255,7 @@ if (!global.actually_play_edited_level)
 	scr_set_character_folder(1, global.skin_for_player[1]);
 	ini_open(string(character_folder) + "/data/sprite_origin_point.ini");
 	sprite_lives_icon = scr_initialize_character_sprite("lives_icon", sprite_lives_icon);
-	ini_close(); switch_save_data_commit(); /* Remember to commit the save data! */
+	ini_close(); /* Don't commit the save data on Switch, this is only temporary! */
 	sprite_basic_enemy = global.resource_pack_sprite_basic_enemy;
 	sprite_basic_enemy_blind = global.resource_pack_sprite_basic_enemy_blind;
 	sprite_enemy_bowlingball = global.resource_pack_sprite_enemy_bowlingball_walk;
@@ -535,7 +535,7 @@ if (!global.actually_play_edited_level)
 		global.selected_level_editing_music = 1;
 		previous_selected_level_editing_music = 1;
 	}
-	ini_close(); switch_save_data_commit(); /* Remember to commit the save data! */
+	ini_close(); /* Don't commit the save data on Switch, this is only temporary! */
 	
 	#region /* Loading selected level editing music */
 	if (global.selected_level_editing_music == 0)
@@ -675,7 +675,7 @@ if (!global.actually_play_edited_level)
 	{
 		ini_open(game_save_id + "custom_levels/" + string(global.level_name) + "/data/level_information.ini");
 		ini_write_real("info", "clear_check", true); /* If doing a level clear check, and winning the level, then add in level information that you have done a clear check */
-		ini_close(); switch_save_data_commit(); /* Remember to commit the save data! */
+		ini_close(); /* Don't commit the save data on Switch, this is only temporary! */
 		if_clear_checked = true;
 		if (global.enable_level_length_target)
 		{
@@ -771,7 +771,7 @@ if (!global.actually_play_edited_level)
 		allow_player_tongue[i] = scr_initialize_character_abilities(i - 1, "allow_tongue", false);
 		allow_player_double_jump[i] = scr_initialize_character_abilities(i - 1, "number_of_jumps", 1, "values");
 		allow_player_dive[i] = scr_initialize_character_abilities(i - 1, "allow_dive", false);
-		ini_close(); switch_save_data_commit(); /* Remember to commit the save data! */
+		ini_close(); /* Don't commit the save data on Switch, this is only temporary! */
 	}
 	#endregion /* Remapping options variables END */
 	
@@ -792,7 +792,7 @@ if (!global.actually_play_edited_level)
 		narrator_name = string(ds_list_find_value(global.all_loaded_characters, global.narrator));
 		#endregion /* Character Name END */
 		
-		ini_close(); switch_save_data_commit(); /* Remember to commit the save data! */
+		ini_close(); /* Don't commit the save data on Switch, this is only temporary! */
 	}
 	else
 	{

@@ -19,7 +19,7 @@ if (global.go_to_menu_when_going_back_to_title == "upload_yes_character")
 		global.sprite_select_player[fixed_player] = scr_initialize_character_sprite("idle", global.sprite_select_player[fixed_player]);
 		global.sprite_select_player[fixed_player] = scr_initialize_character_sprite("stand", global.sprite_select_player[fixed_player]);
 		global.sprite_select_player[fixed_player] = scr_initialize_character_sprite("character_select_portrait", global.sprite_select_player[fixed_player]);
-		ini_close(); switch_save_data_commit(); /* Remember to commit the save data! */
+		ini_close(); /* Don't commit the save data on Switch, this is only temporary! */
 	}
 	select_custom_level_menu_open = false;
 	
@@ -199,7 +199,7 @@ if (iris_xscale <= 0.01)
 			{
 				ini_write_real("config", "character_index_player" + string(p), global.character_index[p - 1]);
 			}
-			ini_close(); switch_save_data_commit(); /* Remember to commit the save data! */
+			ini_close(); /* Don't commit the save data on Switch, this is only temporary! */
 			
 			if (title_music > noone)
 			{
@@ -243,7 +243,7 @@ if (iris_xscale <= 0.01)
 		{
 			ini_write_real("config", "character_index_player" + string(p), global.character_index[p - 1]);
 		}
-		ini_close(); switch_save_data_commit(); /* Remember to commit the save data! */
+		ini_close(); /* Don't commit the save data on Switch, this is only temporary! */
 		
 		if (title_music > noone)
 		{
@@ -256,7 +256,7 @@ if (iris_xscale <= 0.01)
 		scr_config_save();
 		ini_open(game_save_id + "save_file/file" + string(global.file) + ".ini");
 		lives = ini_read_real("Player", "lives", 5);
-		ini_close(); switch_save_data_commit(); /* Remember to commit the save data! */
+		ini_close(); /* Don't commit the save data on Switch, this is only temporary! */
 		room_goto(rm_world_map);
 	}
 	#endregion /* Load File END */

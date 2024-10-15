@@ -28,7 +28,7 @@ function scr_player_move_restart()
 			ini_key_delete(global.level_name, "checkpoint_x");
 			ini_key_delete(global.level_name, "checkpoint_y");
 			ini_key_delete(global.level_name, "checkpoint_direction");
-			ini_close(); switch_save_data_commit(); /* Remember to commit the save data! */
+			ini_close(); /* Don't commit the save data on Switch, this is only temporary! */
 			global.checkpoint_x = 0;
 			global.checkpoint_y = 0;
 		}

@@ -14,7 +14,7 @@ function scr_draw_welcome_to_level_editor_menu()
 			global.first_time_opened_level_editor = false;
 			ini_open(game_save_id + "save_file/config.ini");
 			ini_write_real("config", "first_time_opened_level_editor", false);
-			ini_close(); switch_save_data_commit();
+			ini_close(); /* Don't commit the save data on Switch, this is only temporary! */
 		}
 		if (menu != "welcome_screen_shortcuts")
 		&& (menu != "welcome_screen_close")

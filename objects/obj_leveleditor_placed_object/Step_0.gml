@@ -31,7 +31,7 @@ if (!global.actually_play_edited_level)
 		{
 			ini_open(game_save_id + "custom_levels/" + string(global.level_name) + "/data/level_information.ini");
 			ini_write_real("info", "clear_check", false); /* Set clear check to false when trying to upload within the level editor */
-			ini_close(); switch_save_data_commit(); /* Remember to commit the save data! */
+			ini_close(); /* Don't commit the save data on Switch, this is only temporary! */
 			obj_leveleditor.if_clear_checked = false;
 		}
 		x = global.leveleditor_x;

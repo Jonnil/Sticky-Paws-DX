@@ -15,7 +15,7 @@ for(var p = 1; p <= global.max_players; p += 1)
 	allow_player_tongue[p] = scr_initialize_character_abilities(p - 1, "allow_tongue", false);
 	allow_player_double_jump[p] = scr_initialize_character_abilities(p - 1, "number_of_jumps", 1, "values");
 	allow_player_dive[p] = scr_initialize_character_abilities(p - 1, "allow_dive", false);
-	ini_close(); switch_save_data_commit(); /* Remember to commit the save data! */
+	ini_close(); /* Don't commit the save data on Switch, this is only temporary! */
 	
 	menu_specific_joystick_delay[p] = 3;
 	player_display_x[p] = 0;
@@ -495,7 +495,7 @@ if (global.reset_level_zoom_when_going_back_to_map)
 	global.zoom_level = global.default_zoom_level;
 	ini_open("save_file/config.ini");
 	ini_write_real("config", "zoom_level", global.default_zoom_level);
-	ini_close(); switch_save_data_commit(); /* Remember to commit the save data! */
+	ini_close(); /* Don't commit the save data on Switch, this is only temporary! */
 }
 #endregion /* Reset level zoom END */
 
@@ -505,14 +505,14 @@ if (global.reset_world_map_zoom_when_going_back_to_map)
 	global.zoom_world_map = global.default_zoom_world_map;
 	ini_open("save_file/config.ini");
 	ini_write_real("config", "zoom_world_map", global.default_zoom_world_map);
-	ini_close(); switch_save_data_commit(); /* Remember to commit the save data! */
+	ini_close(); /* Don't commit the save data on Switch, this is only temporary! */
 }
 #endregion /* Reset world map zoom END */
 
 ini_open(game_save_id + "save_file/config.ini");
 var latest_whats_new_version = ini_read_string("config", "latest_whats_new_version", "");
 var latest_whats_new_text = ini_read_string("config", "latest_whats_new_text", "");
-ini_close(); switch_save_data_commit(); /* Remember to commit the save data! */
+ini_close(); /* Don't commit the save data on Switch, this is only temporary! */
 
 if (latest_whats_new_version != "v" + scr_get_build_date() && latest_whats_new_text != global.whats_new)
 {

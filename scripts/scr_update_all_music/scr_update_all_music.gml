@@ -10,8 +10,7 @@ function scr_update_all_music()
 		global.default_ambience_overworld = ini_read_string("info", "default_ambience_overworld", "level1");
 		global.default_ambience_underwater = ini_read_string("info", "default_ambience_underwater", "level1");
 		global.default_clear_melody = ini_read_string("info", "default_clear_melody", "level1");
-		ini_close();
-		switch_save_data_commit();
+		ini_close(); /* Don't commit the save data on Switch, this is only temporary! */
 		show_debug_message("Default music and ambience loaded from level_information.ini");
 	}
 	#endregion /* Load Default Music Data END */

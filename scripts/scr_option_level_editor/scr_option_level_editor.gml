@@ -98,7 +98,7 @@ function scr_option_level_editor()
 					ini_write_real("info", "wind", global.effect_wind);
 					ini_write_real("info", "enable_time_countdown", global.enable_time_countdown);
 					ini_write_real("info", "time_countdown", global.time_countdown);
-					ini_close(); switch_save_data_commit(); /* Remember to commit the save data! */
+					ini_close(); /* Don't commit the save data on Switch, this is only temporary! */
 				}
 				#endregion /* Save level_information.ini END */
 				
@@ -112,7 +112,7 @@ function scr_option_level_editor()
 					ini_write_real("config", "target_length_minutes", global.target_length_minutes);
 					ini_write_real("config", "can_save_length_variable", global.can_save_length_variable);
 					ini_write_real("config", "select_level_editing_music", global.selected_level_editing_music);
-					ini_close(); switch_save_data_commit(); /* Remember to commit the save data! */
+					ini_close(); /* Don't commit the save data on Switch, this is only temporary! */
 				}
 				#endregion /* Save config.ini END */
 				
@@ -667,7 +667,7 @@ function scr_option_level_editor()
 		{
 			ini_open(game_save_id + "custom_levels/" + string(global.level_name) + "/data/level_information.ini");
 			ini_write_real("info", "clear_check", false);
-			ini_close(); switch_save_data_commit(); /* Remember to commit the save data! */
+			ini_close(); /* Don't commit the save data on Switch, this is only temporary! */
 			if_clear_checked = false;
 			
 			instance_activate_all();
@@ -2625,7 +2625,7 @@ function scr_option_level_editor()
 						ini_write_real("Custom Backgrounds", "custom_foreground_secret_x_offset", obj_foreground_secret.x);
 						ini_write_real("Custom Backgrounds", "custom_foreground_secret_y_offset", obj_foreground_secret.y);
 					}
-					ini_close(); switch_save_data_commit(); /* Remember to commit the save data! */
+					ini_close(); /* Don't commit the save data on Switch, this is only temporary! */
 				}
 				#endregion /* Background Offset Save level_information.ini END */
 				
@@ -3025,7 +3025,7 @@ function scr_option_level_editor()
 						ini_write_real("Custom Backgrounds", "custom_background" + string(i) + "_x_parallax", custom_background_x_parallax[i]);
 						ini_write_real("Custom Backgrounds", "custom_background" + string(i) + "_y_parallax", custom_background_y_parallax[i]);
 					}
-					ini_close(); switch_save_data_commit(); /* Remember to commit the save data! */
+					ini_close(); /* Don't commit the save data on Switch, this is only temporary! */
 				}
 				#endregion /* Background Parallax Save level_information.ini END */
 				
@@ -3434,7 +3434,7 @@ function scr_option_level_editor()
 				ini_write_real("Custom Backgrounds", "custom_background3_y_scale", custom_background3_y_scale);
 				ini_write_real("Custom Backgrounds", "custom_background4_x_scale", custom_background4_x_scale);
 				ini_write_real("Custom Backgrounds", "custom_background4_y_scale", custom_background4_y_scale);
-				ini_close(); switch_save_data_commit(); /* Remember to commit the save data! */
+				ini_close(); /* Don't commit the save data on Switch, this is only temporary! */
 			}
 			#endregion /* Background Scale Save level_information.ini END */
 			
@@ -3505,7 +3505,7 @@ function scr_option_level_editor()
 					ini_write_real("Custom Backgrounds", "custom_background3_vtiled", custom_background3_vtiled);
 					ini_write_real("Custom Backgrounds", "custom_background4_htiled", custom_background4_htiled);
 					ini_write_real("Custom Backgrounds", "custom_background4_vtiled", custom_background4_vtiled);
-					ini_close(); switch_save_data_commit(); /* Remember to commit the save data! */
+					ini_close(); /* Don't commit the save data on Switch, this is only temporary! */
 				}
 				#endregion /* Background Tiled Save level_information.ini END */
 				
@@ -3998,7 +3998,7 @@ function scr_option_level_editor()
 						ini_write_string("info", "default_ambience_overworld", "");
 						ini_write_string("info", "default_ambience_underwater", "");
 						ini_write_string("info", "default_clear_melody", "");
-						ini_close(); switch_save_data_commit(); /* Remember to commit the save data! */
+						ini_close(); /* Don't commit the save data on Switch, this is only temporary! */
 					}
 					else
 					if (level_editor_option_back_to_menu == "remove_all_background")
@@ -4012,7 +4012,7 @@ function scr_option_level_editor()
 						layer_background_sprite(layer_background_get_id(layer_get_id("Background_3")), spr_noone);
 						ini_write_string("info", "default_background4", "");
 						layer_background_sprite(layer_background_get_id(layer_get_id("Background_4")), spr_noone);
-						ini_close(); switch_save_data_commit(); /* Remember to commit the save data! */
+						ini_close(); /* Don't commit the save data on Switch, this is only temporary! */
 					}
 					else
 					if (level_editor_option_back_to_menu == "remove_all_foreground")
@@ -4022,7 +4022,7 @@ function scr_option_level_editor()
 						ini_write_string("info", "default_foreground1_5", "");
 						ini_write_string("info", "default_foreground2", "");
 						ini_write_string("info", "default_foreground_secret", "");
-						ini_close(); switch_save_data_commit(); /* Remember to commit the save data! */
+						ini_close(); /* Don't commit the save data on Switch, this is only temporary! */
 					}
 					else
 					if (level_editor_option_back_to_menu == "remove_background1")
@@ -4030,7 +4030,7 @@ function scr_option_level_editor()
 						ini_open(game_save_id + "custom_levels/" + string(global.level_name) + "/data/level_information.ini");
 						ini_write_string("info", "default_background1", "");
 						layer_background_sprite(layer_background_get_id(layer_get_id("Background_1")), spr_noone);
-						ini_close(); switch_save_data_commit(); /* Remember to commit the save data! */
+						ini_close(); /* Don't commit the save data on Switch, this is only temporary! */
 					}
 					else
 					if (level_editor_option_back_to_menu == "remove_background2")
@@ -4038,7 +4038,7 @@ function scr_option_level_editor()
 						ini_open(game_save_id + "custom_levels/" + string(global.level_name) + "/data/level_information.ini");
 						ini_write_string("info", "default_background2", "");
 						layer_background_sprite(layer_background_get_id(layer_get_id("Background_2")), spr_noone);
-						ini_close(); switch_save_data_commit(); /* Remember to commit the save data! */
+						ini_close(); /* Don't commit the save data on Switch, this is only temporary! */
 					}
 					else
 					if (level_editor_option_back_to_menu == "remove_background3")
@@ -4046,7 +4046,7 @@ function scr_option_level_editor()
 						ini_open(game_save_id + "custom_levels/" + string(global.level_name) + "/data/level_information.ini");
 						ini_write_string("info", "default_background3", "");
 						layer_background_sprite(layer_background_get_id(layer_get_id("Background_3")), spr_noone);
-						ini_close(); switch_save_data_commit(); /* Remember to commit the save data! */
+						ini_close(); /* Don't commit the save data on Switch, this is only temporary! */
 					}
 					else
 					if (level_editor_option_back_to_menu == "remove_background4")
@@ -4054,35 +4054,35 @@ function scr_option_level_editor()
 						ini_open(game_save_id + "custom_levels/" + string(global.level_name) + "/data/level_information.ini");
 						ini_write_string("info", "default_background4", "");
 						layer_background_sprite(layer_background_get_id(layer_get_id("Background_4")), spr_noone);
-						ini_close(); switch_save_data_commit(); /* Remember to commit the save data! */
+						ini_close(); /* Don't commit the save data on Switch, this is only temporary! */
 					}
 					else
 					if (level_editor_option_back_to_menu == "remove_foreground1")
 					{
 						ini_open(game_save_id + "custom_levels/" + string(global.level_name) + "/data/level_information.ini");
 						ini_write_string("info", "default_foreground1", "");
-						ini_close(); switch_save_data_commit(); /* Remember to commit the save data! */
+						ini_close(); /* Don't commit the save data on Switch, this is only temporary! */
 					}
 					else
 					if (level_editor_option_back_to_menu == "remove_foreground1_5")
 					{
 						ini_open(game_save_id + "custom_levels/" + string(global.level_name) + "/data/level_information.ini");
 						ini_write_string("info", "default_foreground1_5", "");
-						ini_close(); switch_save_data_commit(); /* Remember to commit the save data! */
+						ini_close(); /* Don't commit the save data on Switch, this is only temporary! */
 					}
 					else
 					if (level_editor_option_back_to_menu == "remove_foreground2")
 					{
 						ini_open(game_save_id + "custom_levels/" + string(global.level_name) + "/data/level_information.ini");
 						ini_write_string("info", "default_foreground2", "");
-						ini_close(); switch_save_data_commit(); /* Remember to commit the save data! */
+						ini_close(); /* Don't commit the save data on Switch, this is only temporary! */
 					}
 					else
 					if (level_editor_option_back_to_menu == "remove_foreground_secret")
 					{
 						ini_open(game_save_id + "custom_levels/" + string(global.level_name) + "/data/level_information.ini");
 						ini_write_string("info", "default_foreground_secret", "");
-						ini_close(); switch_save_data_commit(); /* Remember to commit the save data! */
+						ini_close(); /* Don't commit the save data on Switch, this is only temporary! */
 					}
 					else
 					if (level_editor_option_back_to_menu == "remove_all_music")
@@ -4093,42 +4093,42 @@ function scr_option_level_editor()
 						ini_write_string("info", "default_ambience_overworld", "");
 						ini_write_string("info", "default_ambience_underwater", "");
 						ini_write_string("info", "default_clear_melody", "");
-						ini_close(); switch_save_data_commit(); /* Remember to commit the save data! */
+						ini_close(); /* Don't commit the save data on Switch, this is only temporary! */
 					}
 					else
 					if (level_editor_option_back_to_menu == "remove_music_overworld")
 					{
 						ini_open(game_save_id + "custom_levels/" + string(global.level_name) + "/data/level_information.ini");
 						ini_write_string("info", "default_music_overworld", "");
-						ini_close(); switch_save_data_commit(); /* Remember to commit the save data! */
+						ini_close(); /* Don't commit the save data on Switch, this is only temporary! */
 					}
 					else
 					if (level_editor_option_back_to_menu == "remove_music_underwater")
 					{
 						ini_open(game_save_id + "custom_levels/" + string(global.level_name) + "/data/level_information.ini");
 						ini_write_string("info", "default_music_underwater", "");
-						ini_close(); switch_save_data_commit(); /* Remember to commit the save data! */
+						ini_close(); /* Don't commit the save data on Switch, this is only temporary! */
 					}
 					else
 					if (level_editor_option_back_to_menu == "remove_ambience_overworld")
 					{
 						ini_open(game_save_id + "custom_levels/" + string(global.level_name) + "/data/level_information.ini");
 						ini_write_string("info", "default_ambience_overworld", "");
-						ini_close(); switch_save_data_commit(); /* Remember to commit the save data! */
+						ini_close(); /* Don't commit the save data on Switch, this is only temporary! */
 					}
 					else
 					if (level_editor_option_back_to_menu == "remove_ambience_underwater")
 					{
 						ini_open(game_save_id + "custom_levels/" + string(global.level_name) + "/data/level_information.ini");
 						ini_write_string("info", "default_ambience_underwater", "");
-						ini_close(); switch_save_data_commit(); /* Remember to commit the save data! */
+						ini_close(); /* Don't commit the save data on Switch, this is only temporary! */
 					}
 					else
 					if (level_editor_option_back_to_menu == "remove_clear_melody")
 					{
 						ini_open(game_save_id + "custom_levels/" + string(global.level_name) + "/data/level_information.ini");
 						ini_write_string("info", "default_clear_melody", "");
-						ini_close(); switch_save_data_commit(); /* Remember to commit the save data! */
+						ini_close(); /* Don't commit the save data on Switch, this is only temporary! */
 					}
 					#endregion /* Set default theme values to empty string END */
 					

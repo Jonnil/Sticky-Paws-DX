@@ -104,12 +104,12 @@ function scr_draw_upload_rules()
 				{
 					caution_online_takes_you_to = "clear_check_character_yes";
 				}
-				ini_close(); switch_save_data_commit(); /* Remember to commit the save data! */
+				ini_close(); /* Don't commit the save data on Switch, this is only temporary! */
 			}
 			ini_open(game_save_id + "save_file/config.ini");
 			ini_write_string("config", "upload_rules_do_not_show_level", global.upload_rules_do_not_show_level);
 			ini_write_string("config", "upload_rules_do_not_show_character", global.upload_rules_do_not_show_character);
-			ini_close(); switch_save_data_commit(); /* Remember to commit the save data! */
+			ini_close(); /* Don't commit the save data on Switch, this is only temporary! */
 			menu = caution_online_takes_you_to;
 			menu_delay = 3;
 		}

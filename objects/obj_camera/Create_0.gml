@@ -94,7 +94,7 @@ if (global.character_select_in_this_menu == "main_game")
 	timeattack_record_minute = ini_read_real(level_name, "timeattack_minute", 0);
 	timeattack_record_realmillisecond = ini_read_real(level_name, "timeattack_realmillisecond", 999999999);
 	level_score_record = ini_read_real(level_name, "level_score", 0);
-	ini_close(); switch_save_data_commit(); /* Remember to commit the save data! */
+	ini_close(); /* Don't commit the save data on Switch, this is only temporary! */
 }
 else
 {
@@ -126,7 +126,7 @@ if (global.character_select_in_this_menu == "main_game")
 	{
 		global.make_every_tileset_into_default_tileset = false;
 	}
-	ini_close(); switch_save_data_commit(); /* Remember to commit the save data! */
+	ini_close(); /* Don't commit the save data on Switch, this is only temporary! */
 }
 else
 {

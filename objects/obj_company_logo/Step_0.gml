@@ -193,7 +193,7 @@ if (!can_navigate)
 			file_found = file_find_next()
 			if (file_found == "")
 			{
-				file_find_close(); switch_save_data_commit(); /* Remember to commit the save data! */
+				file_find_close(); /* Don't commit the save data on Switch, this is only temporary! */
 				
 				#region /* Narrator Voice variable handeling */
 				
@@ -366,7 +366,7 @@ if (!can_navigate)
 			file_found = file_find_next()
 			if (file_found == "")
 			{
-				file_find_close(); switch_save_data_commit(); /* Remember to commit the save data! */
+				file_find_close(); /* Don't commit the save data on Switch, this is only temporary! */
 			
 				if (directory_exists("resource_pack/" + string(ds_list_find_value(global.all_loaded_resource_pack, global.selected_resource_pack)) + "/sound"))
 				&& (!directory_exists("resource_pack/" + "" + "/sound"))
@@ -414,7 +414,7 @@ if (!can_navigate)
 			file_found = file_find_next()
 			if (file_found == "")
 			{
-				file_find_close(); switch_save_data_commit(); /* Remember to commit the save data! */
+				file_find_close(); /* Don't commit the save data on Switch, this is only temporary! */
 				load_ok = 3;
 			}
 			else
@@ -443,7 +443,7 @@ if (!can_navigate)
 			file_found = file_find_next()
 			if (file_found == "")
 			{
-				file_find_close(); switch_save_data_commit(); /* Remember to commit the save data! */
+				file_find_close(); /* Don't commit the save data on Switch, this is only temporary! */
 				if (file_exists("title_logo/" + string(ds_list_find_value(global.all_loaded_title_logo, global.selected_title_logo))))
 				{
 					global.title_logo_index = sprite_add("title_logo/" + string(ds_list_find_value(global.all_loaded_title_logo, global.selected_title_logo)), 1, false, false, 0, 0);
@@ -490,21 +490,21 @@ if (load_ok >= 4)
 		global.selected_resource_pack = ds_list_size(global.all_loaded_resource_pack) - 1;
 		ini_open(game_save_id + "save_file/config.ini");
 		ini_write_real("config", "select_resource_pack", global.selected_resource_pack);
-		ini_close(); switch_save_data_commit(); /* Remember to commit the save data! */
+		ini_close(); /* Don't commit the save data on Switch, this is only temporary! */
 	}
 	if (global.selected_title_background[title_bg_layer] > ds_list_size(global.all_loaded_title_backgrounds) - 1)
 	{
 		global.selected_title_background[title_bg_layer] = ds_list_size(global.all_loaded_title_backgrounds) - 1;
 		ini_open(game_save_id + "save_file/config.ini");
 		ini_write_real("config", "select_title_background" + string(title_bg_layer), global.selected_title_background[title_bg_layer]);
-		ini_close(); switch_save_data_commit(); /* Remember to commit the save data! */
+		ini_close(); /* Don't commit the save data on Switch, this is only temporary! */
 	}
 	if (global.selected_title_logo > ds_list_size(global.all_loaded_title_logo) - 1)
 	{
 		global.selected_title_logo = ds_list_size(global.all_loaded_title_logo) - 1;
 		ini_open(game_save_id + "save_file/config.ini");
 		ini_write_real("config", "select_title_logo", global.selected_title_logo);
-		ini_close(); switch_save_data_commit(); /* Remember to commit the save data! */
+		ini_close(); /* Don't commit the save data on Switch, this is only temporary! */
 	}
 	#endregion /* Set so custom assets can't go above what it finds END */
 	

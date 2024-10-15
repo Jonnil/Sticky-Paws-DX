@@ -70,7 +70,7 @@ if (acceleration_on_ice >= 1)
 }
 #endregion /* Character Values Handeling END */
 
-ini_close(); switch_save_data_commit(); /* Remember to commit the save data! */
+ini_close(); /* Don't commit the save data on Switch, this is only temporary! */
 
 #region /* Play as Custom character */
 
@@ -88,7 +88,7 @@ else
 	}
 	climb_under_y_offset = 10;
 }
-ini_close(); switch_save_data_commit(); /* Remember to commit the save data! */
+ini_close(); /* Don't commit the save data on Switch, this is only temporary! */
 #endregion /* Climb under y offset origin points END */
 
 #region /* Sprite variables */
@@ -209,7 +209,7 @@ sprite_glide_down = scr_initialize_character_sprite("glide_down", sprite_glide_d
 sprite_mask = scr_initialize_character_sprite("mask", sprite_mask); /* Standing Mask */
 sprite_mask_crouch = scr_initialize_character_sprite("mask_crouch", sprite_mask_crouch); /* Crouching Mask */
 
-ini_close(); switch_save_data_commit(); /* Remember to commit the save data! */
+ini_close(); /* Don't commit the save data on Switch, this is only temporary! */
 #endregion /* Sprite variables END */
 
 #region /* Voices */
@@ -495,7 +495,7 @@ if (global.character_select_in_this_menu == "main_game" && !global.doing_clear_c
 {
 	ini_open(game_save_id + "save_file/file" + string(global.file) + ".ini");
 	have_heart_balloon = ini_read_real("Player", "player" + string(player) + "_have_heart_balloon", false);
-	ini_close(); switch_save_data_commit(); /* Remember to commit the save data! */
+	ini_close(); /* Don't commit the save data on Switch, this is only temporary! */
 }
 else
 {

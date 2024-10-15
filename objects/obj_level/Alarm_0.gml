@@ -29,7 +29,7 @@ if (file_exists(game_save_id + "save_file/file" + string(global.file) + ".ini"))
 	level_score = ini_read_real(level_name, "level_score", 0);
 	zero_defeats = ini_read_real(level_name, "zero_defeats", 0);
 	
-	ini_close(); switch_save_data_commit(); /* Remember to commit the save data! */
+	ini_close(); /* Don't commit the save data on Switch, this is only temporary! */
 	
 }
 else

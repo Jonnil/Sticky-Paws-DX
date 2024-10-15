@@ -747,7 +747,7 @@ function scr_select_custom_level_menu()
 							{
 								ini_write_real("info", "if_daily_build", true);
 							}
-							ini_close(); switch_save_data_commit(); /* Remember to commit the save data! */
+							ini_close(); /* Don't commit the save data on Switch, this is only temporary! */
 						}
 						
 						global.level_name = folder_name; /* Set the global level name to the filtered level name, because it will be reading filtered folder names */
@@ -845,7 +845,7 @@ function scr_select_custom_level_menu()
 					
 					ini_open(game_save_id + "custom_levels/" + string(global.level_name) + "/data/level_information.ini");
 					ini_write_string("info", "level_description", string(global.level_description)); /* Save description */
-					ini_close(); switch_save_data_commit(); /* Remember to commit the save data! */
+					ini_close(); /* Don't commit the save data on Switch, this is only temporary! */
 					
 					if (variable_instance_exists(self, "thumbnail_level_description"))
 					{

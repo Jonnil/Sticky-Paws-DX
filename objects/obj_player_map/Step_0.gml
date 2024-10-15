@@ -52,8 +52,7 @@ if (global.quit_level)
         ini_open(game_save_id + "save_file/file" + string(global.file) + ".ini");
         ini_write_real("Player", "player_x", x);
         ini_write_real("Player", "player_y", y);
-        ini_close();
-        switch_save_data_commit();
+        ini_close(); /* Don't commit the save data on Switch, this is only temporary! */
     }
     global.quit_level = false;
     room_persistent = false;

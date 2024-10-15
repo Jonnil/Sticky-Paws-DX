@@ -376,7 +376,7 @@ if (collision_rectangle(bbox_left - 1, bbox_top - 1, bbox_right + 1, bbox_bottom
 			#region /* Save heart balloon to be false */
 			ini_open(game_save_id + "save_file/file" + string(global.file) + ".ini");
 			ini_write_real("Player", "player" + string(player) + "_have_heart_balloon", false);
-			ini_close(); switch_save_data_commit(); /* Remember to commit the save data! */
+			ini_close(); /* Don't commit the save data on Switch, this is only temporary! */
 			#endregion /* Save heart balloon to be false END */
 			
 		}

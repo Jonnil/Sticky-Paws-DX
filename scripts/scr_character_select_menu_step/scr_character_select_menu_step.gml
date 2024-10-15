@@ -67,7 +67,7 @@ function scr_character_select_menu_step()
 				global.sprite_select_player[i] = scr_initialize_character_sprite("idle", global.sprite_select_player[i]);
 				global.sprite_select_player[i] = scr_initialize_character_sprite("stand", global.sprite_select_player[i]);
 				global.sprite_select_player[i] = scr_initialize_character_sprite("character_select_portrait", global.sprite_select_player[i]);
-				ini_close(); switch_save_data_commit(); /* Remember to commit the save data! */
+				ini_close(); /* Don't commit the save data on Switch, this is only temporary! */
 			}
 			#endregion /* If any "character index" is set to -1, reset it to 0 END */
 			
@@ -160,7 +160,7 @@ function scr_character_select_menu_step()
 						ini_write_real("config", "skin_for_player" + string(i), global.skin_for_player[i]);
 						ini_write_string("config", "player" + string(i) + "_name", global.player_name[i]);
 					}
-					ini_close(); switch_save_data_commit(); /* Remember to commit the save data! */
+					ini_close(); /* Don't commit the save data on Switch, this is only temporary! */
 					if (room == rm_title)
 					{
 						if (global.character_select_in_this_menu == "main_game")

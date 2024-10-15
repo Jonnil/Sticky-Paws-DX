@@ -50,7 +50,7 @@ if (!global.actually_play_edited_level)
 					ini_key_delete(ds_list_find_value(global.all_loaded_custom_levels, global.select_level_index), "checkpoint_minute");
 					ini_key_delete(ds_list_find_value(global.all_loaded_custom_levels, global.select_level_index), "checkpoint_realmillisecond");
 					ini_key_delete(ds_list_find_value(global.all_loaded_custom_levels, global.select_level_index), "checkpoint_direction");
-					ini_close(); switch_save_data_commit(); /* Remember to commit the save data! */			
+					ini_close(); /* Don't commit the save data on Switch, this is only temporary! */		
 				}
 				#endregion /* Reset Level Editor Checkpoint END */
 				
