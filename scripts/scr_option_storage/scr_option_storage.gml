@@ -16,6 +16,8 @@ function scr_load_storage_variables()
 
 function scr_option_storage()
 {
+	var get_window_height = display_get_gui_height();
+	var get_window_width = display_get_gui_width();
 	
 	#region /* Storage Settings */
 	if (global.settings_sidebar_menu == "storage_settings")

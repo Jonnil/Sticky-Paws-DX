@@ -1,7 +1,7 @@
 draw_self();
 
 if (show_button_graphic)
-&& (sprite_index == spr_sign_run)
+&& (sprite_index == spr_sign_run || sprite_index == spr_sign_run_alternative)
 {
 	
 	#region /* Set correct variables for players */
@@ -34,7 +34,14 @@ if (show_button_graphic)
 	#region /* Show Controls for Player */
 	draw_set_halign(fa_left);
 	draw_set_valign(fa_middle);
-	scr_draw_show_controls_key("", gp_button_run, gp_button2_run, player_key_run, player_key2_run, x + 32, what_player, y - 32, 1, gamepad_player_is_connected, 0);
+	if (!run_button_alternative)
+	{
+		scr_draw_show_controls_key("", gp_button_run, gp_button2_run, player_key_run, player_key2_run, x + 32, what_player, y - 32, 1, gamepad_player_is_connected, 0);
+	}
+	else
+	{
+		scr_draw_show_controls_key("", gp_button2_run, gp_button_run, player_key2_run, player_key_run, x + 32, what_player, y - 32, 1, gamepad_player_is_connected, 0);
+	}
 	#endregion /* Show Controls for Player END */
 	
 }

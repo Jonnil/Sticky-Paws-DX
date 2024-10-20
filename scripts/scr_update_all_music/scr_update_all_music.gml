@@ -53,7 +53,7 @@ function scr_update_all_music()
 	global.music_underwater = load_audio("music_underwater.ogg", global.default_music_underwater, base_path);
 	global.ambience = load_audio("ambience.ogg", global.default_ambience_overworld, base_path);
 	global.ambience_underwater = load_audio("ambience_underwater.ogg", global.default_ambience_underwater, base_path);
-	global.level_clear_melody = load_audio("level_clear_melody.ogg", global.default_clear_melody, base_path);
+	global.level_clear_melody = load_audio("clear_melody.ogg", global.default_clear_melody, base_path);
 	#endregion /* Load Music Streams END */
 	
 	#region /* Debug Messages */

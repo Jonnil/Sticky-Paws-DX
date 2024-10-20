@@ -45,7 +45,6 @@ function scr_rename_custom_level_name()
 	menu_delay = 3;
 	open_sub_menu = false;
 	show_level_editor_corner_menu = true;
-	//scroll_to = floor(global.select_level_index / row); /* Scroll the view back to show the thumbnails */
 	file_found = "";
 	level_editor_edit_name = false;
 	

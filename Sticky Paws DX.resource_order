@@ -653,6 +653,7 @@
     {"name":"spr_sign_readable","order":144,"path":"sprites/spr_sign_readable/spr_sign_readable.yy",},
     {"name":"spr_sign_reset","order":79,"path":"sprites/spr_sign_reset/spr_sign_reset.yy",},
     {"name":"spr_sign_rope_spin","order":115,"path":"sprites/spr_sign_rope_spin/spr_sign_rope_spin.yy",},
+    {"name":"spr_sign_run_alternative","order":164,"path":"sprites/spr_sign_run_alternative/spr_sign_run_alternative.yy",},
     {"name":"spr_sign_run","order":162,"path":"sprites/spr_sign_run/spr_sign_run.yy",},
     {"name":"spr_sign_wall_jump","order":116,"path":"sprites/spr_sign_wall_jump/spr_sign_wall_jump.yy",},
     {"name":"spr_skid_dust","order":117,"path":"sprites/spr_skid_dust/spr_skid_dust.yy",},

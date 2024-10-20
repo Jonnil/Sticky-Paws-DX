@@ -11,8 +11,8 @@ scr_menu_navigation_initialization();
 /* Only update audio listener position and velocity when the player is moving */
 if (speed > 0)
 {
-    audio_listener_position(x, y, 0);
-    audio_listener_velocity(abs(hspeed), abs(vspeed), 0);
+	audio_listener_position(x, y, 0);
+	audio_listener_velocity(abs(hspeed), abs(vspeed), 0);
 }
 
 /* Check if "obj level" exists */
@@ -20,9 +20,9 @@ if (stop_at_level && nearest_level == noone) /* Only get info from levels when y
 {
 	if (instance_exists(obj_level))
 	{
-	    nearest_level = instance_nearest(x, y, obj_level);
-	    distance_to_level = distance_to_object(nearest_level);
-	    at_least_one_big_collectible = false;
+		nearest_level = instance_nearest(x, y, obj_level);
+		distance_to_level = distance_to_object(nearest_level);
+		at_least_one_big_collectible = false;
 		for(var i = 1; i <= global.max_big_collectible; i += 1)
 		{
 			if (nearest_level.big_collectible[i])
@@ -40,23 +40,23 @@ if (stop_at_level && nearest_level == noone) /* Only get info from levels when y
 	}
 	else
 	{
-	    at_least_one_big_collectible = false;
+		at_least_one_big_collectible = false;
 	}
 }
 
 /* Quit Game */
 if (global.quit_level)
 {
-    if (speed == 0)
+	if (speed == 0)
 	{
-        ini_open(game_save_id + "save_file/file" + string(global.file) + ".ini");
-        ini_write_real("Player", "player_x", x);
-        ini_write_real("Player", "player_y", y);
-        ini_close(); /* Don't commit the save data on Switch, this is only temporary! */
-    }
-    global.quit_level = false;
-    room_persistent = false;
-    room_goto(rm_title);
+		ini_open(game_save_id + "save_file/file" + string(global.file) + ".ini");
+		ini_write_real("Player", "player_x", x);
+		ini_write_real("Player", "player_y", y);
+		ini_close(); /* Don't commit the save data on Switch, this is only temporary! */
+	}
+	global.quit_level = false;
+	room_persistent = false;
+	room_goto(rm_title);
 }
 
 /* Lerp player position and scale */
@@ -67,27 +67,27 @@ draw_yscale = lerp(draw_yscale, 1, 0.1);
 
 /* Pause */
 var pause_condition_met = keyboard_check_pressed(vk_escape) ||
-                           (global.automatically_pause_when_window_is_unfocused && !window_has_focus()) ||
-                           (global.controls_used_for_navigation == "mouse" && mouse_check_button_released(mb_left) && point_in_rectangle(mouse_get_x, mouse_get_y, display_get_gui_width() - 185, 0, display_get_gui_width(), 42));
+(global.automatically_pause_when_window_is_unfocused && !window_has_focus()) ||
+(global.controls_used_for_navigation == "mouse" && mouse_check_button_released(mb_left) && point_in_rectangle(mouse_get_x, mouse_get_y, display_get_gui_width() - 185, 0, display_get_gui_width(), 42));
 
 for (var i = 1; i <= global.max_players; i++)
 {
-    if (gamepad_button_check_pressed(global.player_slot[i], gp_select) || gamepad_button_check_pressed(global.player_slot[i], gp_start))
+	if (gamepad_button_check_pressed(global.player_slot[i], gp_select) || gamepad_button_check_pressed(global.player_slot[i], gp_start))
 	{
-        pause_condition_met = true;
-        global.pause_player = i - 1;
-        break;
-    }
+		pause_condition_met = true;
+		global.pause_player = i - 1;
+		break;
+	}
 }
 
 if (pause_condition_met)
 {
-    global.pause = true;
-    global.pause_screenshot = sprite_create_from_surface(application_surface, 0, 0, surface_get_width(application_surface), surface_get_height(application_surface), 0, 0, 0, 0);
-    room_persistent = true;
-    global.pause_room = room;
-    audio_pause_all();
-    room_goto(rm_pause);
+	global.pause = true;
+	global.pause_screenshot = sprite_create_from_surface(application_surface, 0, 0, surface_get_width(application_surface), surface_get_height(application_surface), 0, 0, 0, 0);
+	room_persistent = true;
+	global.pause_room = room;
+	audio_pause_all();
+	room_goto(rm_pause);
 }
 
 #region /* Stop player when touching level */
@@ -100,60 +100,67 @@ if (!place_meeting(x, y, obj_level))
 
 /* Delay countup */
 if (!can_move)
+&& (delay < 100)
 {
-    if (delay < 100) delay++;
+	delay++;
 }
-if (move_delay < 50) move_delay++;
-if (can_enter_level < 30) can_enter_level++;
+if (move_delay < 50)
+{
+	move_delay++;
+}
+if (can_enter_level < 30)
+{
+	can_enter_level++;
+}
 
 /* Start level after pressing enter */
 if (!can_move && entering_level && delay >= 60 && iris_yscale <= 0.001 && !global.quit_level && !loading_assets)
 {
-    global.level_name = string(ds_list_find_value(global.all_loaded_custom_levels, global.select_level_index));
-    room_persistent = false;
+	global.level_name = string(ds_list_find_value(global.all_loaded_custom_levels, global.select_level_index));
+	room_persistent = false;
 	if (music_map != noone)
 	{
 		audio_sound_gain(music_map, 0, 0);
 		audio_stop_sound(music_map);
 	}
-	audio_stop_all();
+	/* Don't "audio stop all" here, otherwise the loading music will play twice during loading screen */
 	if (global.loading_music > 0 && !audio_is_playing(global.loading_music))
 	{
-        scr_audio_play(global.loading_music, volume_source.music);
-    }
-    global.pause = false;
-    global.quit_level = false;
-    scr_update_all_backgrounds();
-    global.actually_play_edited_level = true;
-    global.play_edited_level = true;
-    global.part_limit = global.part_limit_entity = 0;
-    var time_source = time_source_create(time_source_game, 10, time_source_units_frames, function()
+		scr_audio_play(global.loading_music, volume_source.music);
+	}
+	global.pause = false;
+	global.quit_level = false;
+	scr_update_all_backgrounds();
+	global.actually_play_edited_level = true;
+	global.play_edited_level = true;
+	global.part_limit = global.part_limit_entity = 0;
+	var time_source = time_source_create(time_source_game, 10, time_source_units_frames, function()
 	{
 		if (music_map != noone)
 		{
 			audio_sound_gain(music_map, 0, 0);
 			audio_stop_sound(music_map);
 		}
-        room_goto(rm_leveleditor);
-    }, [], 1);
-    time_source_start(time_source);
-    loading_assets = true;
+		room_goto(rm_leveleditor);
+	}, [], 1);
+	time_source_start(time_source);
+	loading_assets = true;
 }
 
 /* Set sprite index */
 if (entering_level)
 {
-    if (sprite_map_enter_level > noone) sprite_index = sprite_map_enter_level;
-    else if (sprite_map > noone) sprite_index = sprite_map;
-    else if (sprite_idle > noone) sprite_index = sprite_idle;
-    else if (sprite_walk > noone) sprite_index = sprite_walk;
+	if (sprite_map_enter_level > noone) sprite_index = sprite_map_enter_level;
+	else if (sprite_map > noone) sprite_index = sprite_map;
+	else if (sprite_idle > noone) sprite_index = sprite_idle;
+	else if (sprite_walk > noone) sprite_index = sprite_walk;
 }
 else
 {
-    if (sprite_map > noone) sprite_index = sprite_map;
-    else if (sprite_walk > noone && speed > 0) sprite_index = sprite_walk;
-    else if (sprite_idle > noone) sprite_index = sprite_idle;
-    else if (sprite_walk > noone) sprite_index = sprite_walk;
+	if (sprite_map > noone) sprite_index = sprite_map;
+	else if (sprite_walk > noone && speed > 0) sprite_index = sprite_walk;
+	else if (sprite_idle > noone) sprite_index = sprite_idle;
+	else if (sprite_walk > noone) sprite_index = sprite_walk;
 }
 
 #region /* Set a bunch of global variables to default when you're not on a selected level */
@@ -230,84 +237,84 @@ else
 #region /* Movement */
 if (can_move && !global.quit_level)
 {
-    if (move_delay > 10 && speed == 0)
+	if (move_delay > 10 && speed == 0)
 	{
-        var mouse_dir = point_direction(x, y, mouse_x, mouse_y);
-        var mouse_dist = distance_to_point(mouse_x, mouse_y);
-        var mouse_not_on_pause_button = !point_in_rectangle(mouse_get_x, mouse_get_y, display_get_gui_width() - 185, 0, display_get_gui_width(), 42);
+		var mouse_dir = point_direction(x, y, mouse_x, mouse_y);
+		var mouse_dist = distance_to_point(mouse_x, mouse_y);
+		var mouse_not_on_pause_button = !point_in_rectangle(mouse_get_x, mouse_get_y, display_get_gui_width() - 185, 0, display_get_gui_width(), 42);
 		
-        if (key_up || mouse_check_button_released(mb_left) && mouse_dir > 45 && mouse_dir < 135 && mouse_dist > 16 && mouse_dist < 100 && mouse_not_on_pause_button)
+		if (key_up || mouse_check_button_released(mb_left) && mouse_dir > 45 && mouse_dir < 135 && mouse_dist > 16 && mouse_dist < 100 && mouse_not_on_pause_button)
 		{
-            if (!position_meeting(x, y - 32, obj_wall))
+			if (!position_meeting(x, y - 32, obj_wall))
 			{
-                vspeed -= move_speed;
-                move_delay = 0;
-                transfer_data = false;
-            }
+				vspeed -= move_speed;
+				move_delay = 0;
+				transfer_data = false;
+			}
 			else
 			if (!audio_is_playing(snd_bump))
 			{
-                draw_xscale = 1.5;
-                draw_yscale = 0.5;
-                yy -= 32;
-                scr_audio_play(snd_bump, volume_source.sound);
-            }
-        }
+				draw_xscale = 1.5;
+				draw_yscale = 0.5;
+				yy -= 32;
+				scr_audio_play(snd_bump, volume_source.sound);
+			}
+		}
 		else
 		if (key_left || mouse_check_button_released(mb_left) && mouse_dir > 135 && mouse_dir < 225 && mouse_dist > 16 && mouse_dist < 100 && mouse_not_on_pause_button)
 		{
-            if (!position_meeting(x - 32, y, obj_wall))
+			if (!position_meeting(x - 32, y, obj_wall))
 			{
-                hspeed -= move_speed;
-                move_delay = 0;
-                transfer_data = false;
-            }
+				hspeed -= move_speed;
+				move_delay = 0;
+				transfer_data = false;
+			}
 			else
 			if (!audio_is_playing(snd_bump))
 			{
-                draw_xscale = 0.5;
-                draw_yscale = 1.5;
-                xx -= 32;
-                scr_audio_play(snd_bump, volume_source.sound);
-            }
-        }
+				draw_xscale = 0.5;
+				draw_yscale = 1.5;
+				xx -= 32;
+				scr_audio_play(snd_bump, volume_source.sound);
+			}
+		}
 		else
 		if (key_right || mouse_check_button_released(mb_left) && (mouse_dir > 0 && mouse_dir < 45 || mouse_dir > 315 && mouse_dir < 361) && mouse_dist > 16 && mouse_dist < 100 && mouse_not_on_pause_button)
 		{
-            if (!position_meeting(x + 32, y, obj_wall))
+			if (!position_meeting(x + 32, y, obj_wall))
 			{
-                hspeed += move_speed;
-                move_delay = 0;
-                transfer_data = false;
-            }
+				hspeed += move_speed;
+				move_delay = 0;
+				transfer_data = false;
+			}
 			else
 			if (!audio_is_playing(snd_bump))
 			{
-                draw_xscale = 0.5;
-                draw_yscale = 1.5;
-                xx += 32;
-                scr_audio_play(snd_bump, volume_source.sound);
-            }
-        }
+				draw_xscale = 0.5;
+				draw_yscale = 1.5;
+				xx += 32;
+				scr_audio_play(snd_bump, volume_source.sound);
+			}
+		}
 		else
 		if (key_down || mouse_check_button_released(mb_left) && mouse_dir > 225 && mouse_dir < 315 && mouse_dist > 16 && mouse_dist < 100 && mouse_not_on_pause_button)
 		{
-            if (!position_meeting(x, y + 32, obj_wall))
+			if (!position_meeting(x, y + 32, obj_wall))
 			{
-                vspeed += move_speed;
-                move_delay = 0;
-                transfer_data = false;
-            }
+				vspeed += move_speed;
+				move_delay = 0;
+				transfer_data = false;
+			}
 			else
 			if (!audio_is_playing(snd_bump))
 			{
-                draw_xscale = 1.5;
-                draw_yscale = 0.5;
-                yy += 32;
-                scr_audio_play(snd_bump, volume_source.sound);
-            }
-        }
-    }
+				draw_xscale = 1.5;
+				draw_yscale = 0.5;
+				yy += 32;
+				scr_audio_play(snd_bump, volume_source.sound);
+			}
+		}
+	}
 }
 #endregion /* Movement END */
 

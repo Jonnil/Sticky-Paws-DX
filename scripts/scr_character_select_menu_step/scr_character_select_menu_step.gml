@@ -700,14 +700,6 @@ function scr_character_select_menu_step()
 	}
 	else
 	
-	if (variable_instance_exists(self, "in_edit_character_menu"))
-	&& (in_edit_character_menu)
-	{
-		//scr_character_edit_menu_step();
-	}
-	
-	else
-	
 	#region /* Step Manage Characters Menu */
 	{
 		play_the_game_text_y_lerp = display_get_gui_height() + 100;

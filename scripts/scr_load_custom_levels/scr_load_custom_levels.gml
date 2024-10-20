@@ -33,12 +33,6 @@ function scr_load_custom_levels()
 			&& (array_length(thumbnail_level_unlisted) > 0)
 			&& (is_array(thumbnail_custom_background))
 			&& (array_length(thumbnail_custom_background) > 0)
-			//&& (i >= 0)
-			//&& (i < array_length(thumbnail_level_name))
-			//&& (i < array_length(thumbnail_level_description))
-			//&& (i < array_length(thumbnail_clear_check))
-			//&& (i < array_length(thumbnail_daily_build))
-			//&& (i < array_length(thumbnail_level_id))
 			{
 				for(i = 1; i < ds_list_size(global.thumbnail_sprite); i += 1)
 				{

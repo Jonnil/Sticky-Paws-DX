@@ -1,7 +1,5 @@
 function scr_update_all_backgrounds(delete_existing_bg = true)
 {
-	//var time_source_period = 1; /* Limit Concurrent Processes, 1 frame delay between each operation */
-	
 	/* Delete existing sprites to free memory */
 	if (delete_existing_bg)
 	{
@@ -82,50 +80,43 @@ function load_sprite_with_fallback(filename_prefix, default_filename, index, use
 	var file_formats = ["png", "bmp", "gif", "jpg", "jpeg"];
 	var loaded = false;
 	
-	//var time_source = time_source_create(time_source_game, time_source_period, time_source_units_frames, function()
-	//{
-		if (use_photographic_images == false && global.can_load_custom_level_assets)
+	if (use_photographic_images == false && global.can_load_custom_level_assets)
+	{
+		for (var i = 0; i < array_length(file_formats); i++)
 		{
-			for (var i = 0; i < array_length(file_formats); i++)
+			var file_path = string(global.path_to_use) + filename_prefix + "." + file_formats[i];
+			if (file_exists(file_path))
 			{
-				var file_path = string(global.path_to_use) + filename_prefix + "." + file_formats[i];
-				if (file_exists(file_path))
-				{
-					show_debug_message(string(filename_prefix) + " updated from custom");
-					return sprite_add(file_path, 0, false, false, 0, 0);
-					loaded = true;
-					break;
-				}
-			}
-			
-			/* If no custom sprite, use default */
-			if (!loaded && default_filename != "" && file_exists("levels/" + string(default_filename) + "/background/" + filename_prefix + ".png"))
-			{
-				show_debug_message(string(filename_prefix) + " updated to default");
-				return sprite_add("levels/" + string(default_filename) + "/background/" + filename_prefix + ".png", 0, false, false, 0, 0);
-			}
-			
-			/* If still not loaded, assign 'noone' */
-			if (!loaded)
-			{
-				show_debug_message(string(filename_prefix) + " set to noone");
-				return noone;
+				show_debug_message(string(filename_prefix) + " updated from custom");
+				return sprite_add(file_path, 0, false, false, 0, 0);
+				loaded = true;
+				break;
 			}
 		}
-		else
-		if (default_filename != "" && file_exists("levels/" + string(default_filename) + "/background/" + filename_prefix + ".png"))
+			
+		/* If no custom sprite, use default */
+		if (!loaded && default_filename != "" && file_exists("levels/" + string(default_filename) + "/background/" + filename_prefix + ".png"))
 		{
 			show_debug_message(string(filename_prefix) + " updated to default");
 			return sprite_add("levels/" + string(default_filename) + "/background/" + filename_prefix + ".png", 0, false, false, 0, 0);
 		}
-		else
+			
+		/* If still not loaded, assign 'noone' */
+		if (!loaded)
 		{
 			show_debug_message(string(filename_prefix) + " set to noone");
 			return noone;
 		}
-	//}
-	//, [], 1);
-	
-	//time_source_start(time_source);
-	//time_source_period += 1;
+	}
+	else
+	if (default_filename != "" && file_exists("levels/" + string(default_filename) + "/background/" + filename_prefix + ".png"))
+	{
+		show_debug_message(string(filename_prefix) + " updated to default");
+		return sprite_add("levels/" + string(default_filename) + "/background/" + filename_prefix + ".png", 0, false, false, 0, 0);
+	}
+	else
+	{
+		show_debug_message(string(filename_prefix) + " set to noone");
+		return noone;
+	}
 }
