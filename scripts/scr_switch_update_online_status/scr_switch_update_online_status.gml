@@ -4,29 +4,32 @@ function scr_switch_update_online_status(show_login_screen = true)
 	{
 		if (os_is_network_connected(network_connect_passive)) /* Need to check if OS is connected to network before getting online */
 		{
-			global.switch_account_network_service_available = false;
-			
 			var switch_accounts_num = switch_accounts_get_accounts();
 			for (var i = 0; i < switch_accounts_num; ++i;)
 			{
-			
-				#region /* First, check if user is open and user is online */
+				
+				#region /* First, make sure to login the user before anything else */
+				if (show_login_screen)
+				&& (global.switch_logged_in != 1)
+				{
+					global.switch_logged_in = switch_accounts_login_user(i); /* This is what shows the login screen on Switch */
+				}
+				#endregion /* First, make sure to login the user before anything else END */
+				
+				#region /* Second, check if user is open and user is online */
 				global.switch_account_open[i] = switch_accounts_is_user_open(i); /* Second get if user is open. With this function you can check an account ID slot to see if the account has been flagged as "open" (active) or not */
 				global.switch_account_is_user_online[i] = switch_accounts_is_user_online(i);
-				#endregion /* First, check if user is open and user is online END */
+				#endregion /* Second, check if user is open and user is online END */
 				
-				#region /* Second, check network service availability and login user */
+				#region /* Third, check network service availability and login user */
 				/* For some reason I can't retrieve information from network_service_available as an array without crashing the game with unknown error */
 				/* Account needs to be open before you can check network service availability */
 				if (global.switch_account_open[i])
 				&& (global.switch_account_is_user_online[i])
 				{
 					global.switch_account_network_service_available = switch_accounts_network_service_available(i);
-					if (show_login_screen)
-					&& (global.switch_logged_in != 1)
-					{
-						global.switch_logged_in = switch_accounts_login_user(i);
-					}
+					show_debug_message("Bruh: global.switch_account_network_service_available = " + string(global.switch_account_network_service_available));
+					
 					if (global.switch_logged_in) /* If you are logged in, only then are you able to retrieve the online token */
 					&& (global.online_token_validated != true)
 					{
@@ -47,9 +50,9 @@ function scr_switch_update_online_status(show_login_screen = true)
 						ds_map_destroy(map);
 					}
 				}
-				#endregion /* Second, check network service availability and login user END */
+				#endregion /* Third, check network service availability and login user END */
 				
-				#region /* Third, retrieve information about the account */
+				#region /* Fourth, retrieve information about the account */
 				global.switch_account_name[i] = switch_accounts_get_nickname(i); /* First get the nickname. With this function you can retrieve the nickname of the user in the given Account ID slot or the User Network Id */
 				global.switch_account_handle[i] = switch_accounts_get_handle(i); /* Third get the handle. With this function you can retrieve the "handle" (as a pointer) of the user in the given Account ID slot */
 				
@@ -61,7 +64,6 @@ function scr_switch_update_online_status(show_login_screen = true)
 		}
 		else
 		{
-			global.switch_account_network_service_available = false;
 			global.switch_logged_in = false;
 			global.online_token_validated = false;
 		}

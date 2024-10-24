@@ -145,21 +145,7 @@ function scr_character_select_menu_draw()
 		var draw_online_character_list_y = 42 * 2;
 		
 		#region /* Show Back key when you can go back to main menu */
-		if (room == rm_title)
-		{
-			if (global.character_select_in_this_menu == "main_game")
-			{
-				draw_menu_button(0, back_y, l10n_text("Back"), "back_from_character_select", "main_game");
-			}
-			else
-			{
-				draw_menu_button(0, back_y, l10n_text("Back"), "back_from_character_select", "level_editor");
-			}
-		}
-		else
-		{
-			draw_menu_button(0, back_y, l10n_text("Back"), "back_from_character_select", "change_character");
-		}
+		draw_menu_button(0, back_y, l10n_text("Back"), "back_from_character_select");
 		draw_sprite_ext(spr_icon_back, 0, + 20, + 21, 1, 1, 0, c_white, 1);
 		#endregion /* Show Back key when you can go back to main menu END */
 		

@@ -43,6 +43,7 @@ for(var p = 1; p <= global.max_players; p += 1)
 	character_portrait_for_player_dir_exists_3[p] = false;
 	character_portrait_for_player_dir_exists_4[p] = false;
 }
+in_character_select_menu = false;
 file_load_timer = 0;
 player_start_game = false;
 voice_select_character = noone;

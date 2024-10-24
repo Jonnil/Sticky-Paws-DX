@@ -537,7 +537,10 @@ if (menu == "upload_rules_back")
 	scr_draw_upload_rules();
 }
 
-scr_character_select_menu_draw();
+if (in_character_select_menu)
+{
+	scr_character_select_menu_draw();
+}
 
 scr_draw_online_download_list();
 

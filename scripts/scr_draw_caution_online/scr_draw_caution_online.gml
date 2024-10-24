@@ -221,6 +221,12 @@ function scr_draw_caution_online()
 			scr_draw_text_outlined(display_get_gui_width() * 0.5, display_get_gui_height() * 0.5 + 32, l10n_text("With a connected account you can access online play"), global.default_text_size * 0.75, c_black, c_ltgray, 1);
 		}
 		
+		if (global.switch_account_network_service_available) /* In case this variable gets enabled on this error screen, proceed automatically to the correct menu */
+		&& (caution_online_takes_you_to != "")
+		{
+			menu = caution_online_takes_you_to;
+		}
+		
 		if (global.controls_used_for_navigation == "mouse")
 		&& (mouse_check_button_released(mb_left))
 		&& (point_in_rectangle(mouse_get_x, mouse_get_y, network_service_unavailable_x, network_service_unavailable_y, network_service_unavailable_x + 370, network_service_unavailable_y + 41))

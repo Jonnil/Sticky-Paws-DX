@@ -38,6 +38,7 @@ scr_delete_sprite_properly(global.custom_foreground1);
 scr_delete_sprite_properly(global.custom_foreground1_5);
 scr_delete_sprite_properly(global.custom_foreground2);
 scr_delete_sprite_properly(global.custom_foreground_secret);
+in_character_select_menu = false;
 caution_online_takes_you_to = "";
 caution_online_takes_you_back_to = "";
 in_edit_character_menu = false;

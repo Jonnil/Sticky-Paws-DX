@@ -68,7 +68,7 @@ global.switch_account_handle = noone;
 
 global.switch_account_netid = noone;
 global.switch_account_is_user_online = noone;
-global.switch_account_network_service_available = noone;
+global.switch_account_network_service_available = false;
 global.switch_logged_in = noone;
 
 #region /* If you're playing on console, then some things should not show up that is for PC */

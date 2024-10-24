@@ -181,6 +181,7 @@ function scr_character_select_menu_step()
 							menu_delay = 3;
 							open_sub_menu = false;
 							menu = "load_custom_level";
+							in_character_select_menu = false;
 						}
 						else
 						if (global.character_select_in_this_menu == "online_level_list_title")
@@ -241,6 +242,7 @@ function scr_character_select_menu_step()
 								}
 								menu_delay = 3;
 							}
+							in_character_select_menu = false;
 						}
 					}
 					else
@@ -564,6 +566,8 @@ function scr_character_select_menu_step()
 			|| (player_key_a_pressed[fixed_player])
 			&& (menu == "back_from_character_select")
 			|| (player_key_a_pressed_back_from_character_select)
+			|| (point_in_rectangle(mouse_get_x, mouse_get_y, 0, 0, 370, 42))
+			&& (mouse_check_button_released(mb_left))
 			{
 				if (menu_delay == 0 && menu_joystick_delay == 0)
 				{
@@ -622,6 +626,7 @@ function scr_character_select_menu_step()
 					}
 					can_navigate = true;
 					global.level_editor_level = 1;
+					in_character_select_menu = false;
 				}
 			}
 			#endregion /* Back / Cancel Selection END */

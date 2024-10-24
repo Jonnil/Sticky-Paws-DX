@@ -84,6 +84,7 @@ function scr_load_rest_of_characters()
 				
 				player_menu[fixed_player] = "select_character"; /* Set this to be "select character" so it's not on wrong menu unintentionally */
 				menu = "select_character"; /* Default menu to go to after loading all characters */
+				in_character_select_menu = true;
 			}
 		}
 		else
