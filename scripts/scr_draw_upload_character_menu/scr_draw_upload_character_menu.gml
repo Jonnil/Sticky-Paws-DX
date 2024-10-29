@@ -282,12 +282,12 @@ function scr_draw_upload_character_menu()
 										}
 										else
 										{
-											menu = "caution_online_token_invalidated";
+											menu = "caution_online_network_error";
 										}
 									}
 									else
 									{
-										menu = "caution_online_network_service_unavailable";
+										menu = "caution_online_network_error";
 									}
 								}
 								else
@@ -768,12 +768,12 @@ function scr_draw_upload_character_menu()
 								}
 								else
 								{
-									menu = "caution_online_token_invalidated";
+									menu = "caution_online_network_error";
 								}
 							}
 							else
 							{
-								menu = "caution_online_network_service_unavailable";
+								menu = "caution_online_network_error";
 							}
 						}
 						else

@@ -216,12 +216,12 @@ function scr_draw_upload_account_name(what_kind_of_file = "level")
 						}
 						else
 						{
-							menu = "caution_online_token_invalidated";
+							menu = "caution_online_network_error";
 						}
 					}
 					else
 					{
-						menu = "caution_online_network_service_unavailable";
+						menu = "caution_online_network_error";
 					}
 				}
 				else

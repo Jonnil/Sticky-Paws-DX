@@ -231,7 +231,7 @@ function scr_character_select_menu_draw()
 									menu_delay = 3;
 									caution_online_takes_you_to = "online_download_list_load";
 									caution_online_takes_you_back_to = "online_character_list";
-									menu = "caution_online_token_invalidated";
+									menu = "caution_online_network_error";
 								}
 							}
 							else
@@ -239,7 +239,7 @@ function scr_character_select_menu_draw()
 								menu_delay = 3;
 								caution_online_takes_you_to = "online_download_list_load";
 								caution_online_takes_you_back_to = "online_character_list";
-								menu = "caution_online_network_service_unavailable";
+								menu = "caution_online_network_error";
 							}
 						}
 						else

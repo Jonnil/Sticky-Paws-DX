@@ -4124,24 +4124,40 @@ function scr_option_control_menu()
 		
 		#region /* Controls checkmarks and dropdown menu settings */
 		draw_menu_checkmark(390, menu_y_up_is_also_jump + menu_y_offset, l10n_text("Up is also jump"), "up_is_also_jump", global.player_up_is_also_jump[what_player], false);
-		draw_menu_checkmark(390, menu_y_double_jump_uses_jump_key + menu_y_offset, l10n_text("Double jump uses jump key"), "double_jump_uses_jump_key", global.player_double_jump_uses_jump_key[what_player], true);
+		draw_menu_checkmark(390, menu_y_double_jump_uses_jump_key + menu_y_offset, l10n_text("Double jump uses jump"), "double_jump_uses_jump_key", global.player_double_jump_uses_jump_key[what_player], true);
+		if (remapping_player_key_jump != noone)
+		{
+			var key_for_jump = remapping_player_key_jump;
+		}
+		else
+		{
+			var key_for_jump = remapping_player_key2_jump;
+		}
+		if (global.settings_sidebar_menu == "controller_settings")
+		{
+			scr_draw_gamepad_buttons(key_for_jump, 390 + (string_width(l10n_text("Double jump uses jump"))) + 32, menu_y_double_jump_uses_jump_key + menu_y_offset + 16, 0.5, c_white, 1, 1, 1, what_player);
+		}
+		else
+		{
+			draw_sprite_ext(spr_keyboard_keys, key_for_jump, 390 + (string_width(l10n_text("Double jump uses jump"))) + 32, menu_y_double_jump_uses_jump_key + menu_y_offset + 16, 0.5, 0.5, 0, c_white, 1);
+		}
 		draw_menu_checkmark(390, menu_y_down_is_also_crouch + menu_y_offset, l10n_text("Down is also crouch"), "down_is_also_crouch", global.player_down_is_also_crouch[what_player], true);
 		draw_menu_checkmark(390, menu_y_double_tap_direction_to_run + menu_y_offset, l10n_text("Double-tap direction to run"), "double_tap_to_run", global.player_double_tap_to_run[what_player], true);
 		draw_menu_checkmark(390, menu_y_always_run + menu_y_offset, l10n_text("Always run"), "always_run", global.player_run_toggle[what_player], false);
 		draw_menu_checkmark(390, menu_y_double_tap_direction_to_dive + menu_y_offset, l10n_text("Double-tap direction to dive"), "double_tap_to_dive", global.player_double_tap_to_dive[what_player], false);
-		draw_menu_checkmark(390, menu_y_cancel_dive_by_jump_or_dive + menu_y_offset, l10n_text("Cancel dive by pressing the jump or dive key"), "cancel_dive_by_jump_or_dive", global.player_cancel_dive_by_jump_or_dive[what_player], false);
+		draw_menu_checkmark(390, menu_y_cancel_dive_by_jump_or_dive + menu_y_offset, l10n_text("Cancel dive by pressing jump or dive"), "cancel_dive_by_jump_or_dive", global.player_cancel_dive_by_jump_or_dive[what_player], false);
 		draw_menu_checkmark(390, menu_y_cancel_dive_by_opposite_direction + menu_y_offset, l10n_text("Cancel dive by pressing the opposite direction"), "cancel_dive_by_pressing_opposite_direction", global.player_cancel_dive_by_pressing_opposite_direction[what_player], false);
 		draw_menu_checkmark(390, menu_y_down_and_jump_to_groundpound + menu_y_offset, l10n_text("Down + Jump to Ground Pound"), "down_and_jump_to_groundpound", global.player_down_and_jump_to_groundpound[what_player], false);
-		if (global.settings_sidebar_menu == "controller_settings")
-		{
-			draw_menu_checkmark(390, menu_y_show_prompt_when_changing_controller + menu_y_offset, l10n_text("Show prompt when changing to gamepad"), "show_prompt_when_changing_controller", global.show_prompt_when_changing_to_gamepad, true);
-		}
-		else
-		{
-			draw_menu_checkmark(390, menu_y_show_prompt_when_changing_controller + menu_y_offset, l10n_text("Show prompt when changing to keyboard and mouse"), "show_prompt_when_changing_controller", global.show_prompt_when_changing_to_keyboard_and_mouse, true);
-		}
 		if (global.enable_option_for_pc)
 		{
+			if (global.settings_sidebar_menu == "controller_settings")
+			{
+				draw_menu_checkmark(390, menu_y_show_prompt_when_changing_controller + menu_y_offset, l10n_text("Show prompt when changing to gamepad"), "show_prompt_when_changing_controller", global.show_prompt_when_changing_to_gamepad, true);
+			}
+			else
+			{
+				draw_menu_checkmark(390, menu_y_show_prompt_when_changing_controller + menu_y_offset, l10n_text("Show prompt when changing to keyboard and mouse"), "show_prompt_when_changing_controller", global.show_prompt_when_changing_to_keyboard_and_mouse, true);
+			}
 			draw_menu_checkmark(390, menu_y_always_show_gamepad_buttons + menu_y_offset, l10n_text("Always Show Gamepad Buttons"), "always_show_gamepad_buttons", global.always_show_gamepad_buttons, false);
 		}
 		
@@ -4246,7 +4262,7 @@ function scr_option_control_menu()
 			
 			/* Text saying input gamepad button now for player */
 			draw_set_halign(fa_center);
-			scr_draw_text_outlined(display_get_gui_width() * 0.5, 32, l10n_text("INPUT BUTTON NOW FOR PLAYER " + string(what_player)), global.default_text_size, c_menu_outline, c_menu_fill, 1);
+			scr_draw_text_outlined(display_get_gui_width() * 0.5, 32, l10n_text("INPUT NOW FOR PLAYER " + string(what_player)), global.default_text_size, c_menu_outline, c_menu_fill, 1);
 			
 			scr_draw_text_outlined(display_get_gui_width() * 0.5 - 10, 64, l10n_text("Buttons can be disabled using"), global.default_text_size, c_menu_outline, c_menu_fill, 1);
 			if (global.controls_used_for_navigation == "gamepad" || global.always_show_gamepad_buttons)

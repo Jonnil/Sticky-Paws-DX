@@ -111,7 +111,7 @@ function scr_select_custom_level_menu()
 		&& (menu != "caution_online_back")
 		&& (menu != "caution_online_do_not_show")
 		&& (menu != "caution_online_proceed")
-		&& (menu != "caution_online_network_service_unavailable")
+		&& (menu != "caution_online_network_error")
 		&& (menu != "upload_rules_back")
 		&& (menu != "upload_rules_do_not_show")
 		&& (menu != "upload_rules")
@@ -171,7 +171,7 @@ function scr_select_custom_level_menu()
 		&& (menu != "caution_online_back")
 		&& (menu != "caution_online_do_not_show")
 		&& (menu != "caution_online_proceed")
-		&& (menu != "caution_online_network_service_unavailable")
+		&& (menu != "caution_online_network_error")
 		&& (menu != "upload_rules_back")
 		&& (menu != "upload_rules_do_not_show")
 		&& (menu != "upload_rules")
@@ -216,7 +216,7 @@ function scr_select_custom_level_menu()
 	&& (menu != "caution_online_back")
 	&& (menu != "caution_online_do_not_show")
 	&& (menu != "caution_online_proceed")
-	&& (menu != "caution_online_network_service_unavailable")
+	&& (menu != "caution_online_network_error")
 	&& (menu != "upload_rules_back")
 	&& (menu != "upload_rules_do_not_show")
 	&& (menu != "upload_rules")
@@ -250,7 +250,7 @@ function scr_select_custom_level_menu()
 	&& (menu != "caution_online_back")
 	&& (menu != "caution_online_do_not_show")
 	&& (menu != "caution_online_proceed")
-	&& (menu != "caution_online_network_service_unavailable")
+	&& (menu != "caution_online_network_error")
 	&& (menu != "upload_rules_back")
 	&& (menu != "upload_rules_do_not_show")
 	&& (menu != "upload_rules")
@@ -286,7 +286,7 @@ function scr_select_custom_level_menu()
 		&& (menu != "caution_online_back")
 		&& (menu != "caution_online_do_not_show")
 		&& (menu != "caution_online_proceed")
-		&& (menu != "caution_online_network_service_unavailable")
+		&& (menu != "caution_online_network_error")
 		&& (menu != "upload_rules_back")
 		&& (menu != "upload_rules_do_not_show")
 		&& (menu != "upload_rules")
@@ -381,7 +381,7 @@ function scr_select_custom_level_menu()
 	&& (menu != "caution_online_back")
 	&& (menu != "caution_online_do_not_show")
 	&& (menu != "caution_online_proceed")
-	&& (menu != "caution_online_network_service_unavailable")
+	&& (menu != "caution_online_network_error")
 	&& (menu != "upload_rules_back")
 	&& (menu != "upload_rules_do_not_show")
 	&& (menu != "upload_rules")
@@ -493,7 +493,7 @@ function scr_select_custom_level_menu()
 								menu_delay = 3;
 								caution_online_takes_you_to = "online_download_list_load";
 								caution_online_takes_you_back_to = "online_level_list";
-								menu = "caution_online_token_invalidated";
+								menu = "caution_online_network_error";
 							}
 						}
 						else
@@ -501,7 +501,7 @@ function scr_select_custom_level_menu()
 							menu_delay = 3;
 							caution_online_takes_you_to = "online_download_list_load";
 							caution_online_takes_you_back_to = "online_level_list";
-							menu = "caution_online_network_service_unavailable";
+							menu = "caution_online_network_error";
 						}
 					}
 					else

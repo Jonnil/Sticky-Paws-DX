@@ -366,6 +366,10 @@ else
 
 #region /* If you touch spikes, take damage */
 if (collision_rectangle(bbox_left - 1, bbox_top - 1, bbox_right + 1, bbox_bottom + 1, obj_spikes, false, true))
+|| (collision_rectangle(bbox_left - 1, bbox_bottom - 1, bbox_right + 1, bbox_bottom + 1, obj_spikes_emerge, false, true) && instance_nearest(x, bbox_bottom, obj_spikes_emerge).image_angle == 0 && instance_nearest(x, bbox_bottom, obj_spikes_emerge).sprite_index == spr_spikes_emerge)
+|| (collision_rectangle(bbox_right - 1, bbox_top - 1, bbox_right + 1, bbox_bottom + 1, obj_spikes_emerge, false, true) && instance_nearest(x, bbox_bottom, obj_spikes_emerge).image_angle == 90 && instance_nearest(x, bbox_bottom, obj_spikes_emerge).sprite_index == spr_spikes_emerge)
+|| (collision_rectangle(bbox_left - 1, bbox_top - 1, bbox_right + 1, bbox_top + 1, obj_spikes_emerge, false, true) && instance_nearest(x, bbox_bottom, obj_spikes_emerge).image_angle == 180 && instance_nearest(x, bbox_bottom, obj_spikes_emerge).sprite_index == spr_spikes_emerge)
+|| (collision_rectangle(bbox_right - 1, bbox_top - 1, bbox_right + 1, bbox_bottom + 1, obj_spikes_emerge, false, true) && instance_nearest(x, bbox_bottom, obj_spikes_emerge).image_angle == 270 && instance_nearest(x, bbox_bottom, obj_spikes_emerge).sprite_index == spr_spikes_emerge)
 {
 	if (taken_damage < 1 && invincible_timer == 0)
 	{

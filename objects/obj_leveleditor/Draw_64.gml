@@ -737,8 +737,7 @@ if (!global.actually_play_edited_level)
 if (menu == "caution_online_back")
 || (menu == "caution_online_do_not_show")
 || (menu == "caution_online_proceed")
-|| (menu == "caution_online_network_service_unavailable")
-|| (menu == "caution_online_token_invalidated")
+|| (menu == "caution_online_network_error")
 {
 	scr_draw_caution_online();
 }

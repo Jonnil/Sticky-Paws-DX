@@ -102,12 +102,12 @@ function scr_draw_caution_online()
 						}
 						else
 						{
-							menu = "caution_online_token_invalidated";
+							menu = "caution_online_network_error";
 						}
 					}
 					else
 					{
-						menu = "caution_online_network_service_unavailable";
+						menu = "caution_online_network_error";
 					}
 				}
 				else
@@ -203,26 +203,37 @@ function scr_draw_caution_online()
 	else
 	
 	#region /* Caution Online Network Service Unavailable */
-	if (menu == "caution_online_network_service_unavailable")
+	if (menu == "caution_online_network_error")
 	{
+		var network_service_unavailable_x = display_get_gui_width() * 0.5 - 180;
+		var network_service_unavailable_y = display_get_gui_height() - 64;
+		
+		draw_menu_button(network_service_unavailable_x, network_service_unavailable_y, l10n_text("Back"), "caution_online_network_error", "caution_online_network_error");
+		draw_sprite_ext(spr_icon_back, 0, network_service_unavailable_x + 16, network_service_unavailable_y + 21, 1, 1, 0, c_white, 1);
 		
 		#region /* Tell the player when Network Servie is unavailable */
-		
-		var network_service_unavailable_x = display_get_gui_width() * 0.5 - 180;
-		var network_service_unavailable_y = display_get_gui_height() * 0.5 + 64;
-		
-		draw_menu_button(network_service_unavailable_x, network_service_unavailable_y, l10n_text("Back"), "caution_online_network_service_unavailable", "caution_online_network_service_unavailable");
-		draw_sprite_ext(spr_icon_back, 0, network_service_unavailable_x + 16, network_service_unavailable_y + 21, 1, 1, 0, c_white, 1);
-		scr_draw_text_outlined(display_get_gui_width() * 0.5, display_get_gui_height() * 0.5 - 128, l10n_text("Network Service is Unavailable!"), global.default_text_size * 2, c_black, c_white, 1);
-		
-		if (os_type == os_switch)
+		if (!global.switch_account_network_service_available)
 		{
-			scr_draw_text_outlined(display_get_gui_width() * 0.5, display_get_gui_height() * 0.5, l10n_text("Please connect your account"), global.default_text_size, c_black, c_white, 1);
-			scr_draw_text_outlined(display_get_gui_width() * 0.5, display_get_gui_height() * 0.5 + 32, l10n_text("With a connected account you can access online play"), global.default_text_size * 0.75, c_black, c_ltgray, 1);
+			scr_draw_text_outlined(display_get_gui_width() * 0.5, display_get_gui_height() * 0.5 - 128, l10n_text("Network Service is Unavailable!"), global.default_text_size * 2, c_black, c_white, 1);
+			if (os_type == os_switch)
+			{
+				scr_draw_text_outlined(display_get_gui_width() * 0.5, display_get_gui_height() * 0.5 - 32, l10n_text("Please connect your account"), global.default_text_size, c_black, c_white, 1);
+				scr_draw_text_outlined(display_get_gui_width() * 0.5, display_get_gui_height() * 0.5, l10n_text("With a connected account you can access online play"), global.default_text_size * 0.75, c_black, c_ltgray, 1);
+			}
 		}
+		#endregion /* Tell the player when Network Servie is unavailable END */
 		
-		if (global.switch_account_network_service_available) /* In case this variable gets enabled on this error screen, proceed automatically to the correct menu */
-		&& (caution_online_takes_you_to != "")
+		#region /* Tell the player when Online Token is invalidated */
+		if (string_pos("error", global.online_token_validated) > 0)
+		{
+			scr_draw_text_outlined(display_get_gui_width() * 0.5, display_get_gui_height() * 0.5 + 128, l10n_text("Online Token Invalid!"), global.default_text_size * 2, c_black, c_white, 1);
+			scr_draw_text_outlined(display_get_gui_width() * 0.5, display_get_gui_height() * 0.5 + 192, l10n_text(string(global.online_token_validated)), global.default_text_size, c_black, c_white, 1);
+		}
+		#endregion /* Tell the player when Online Token is invalidated END */
+		
+		if (caution_online_takes_you_to != "")
+		&& (global.switch_account_network_service_available) /* In case this variable gets enabled on this error screen, proceed automatically to the correct menu */
+		&& (!string_pos("error", global.online_token_validated) > 0) /* Make sure that id token isn't missing too before proceeding automatically */
 		{
 			menu = caution_online_takes_you_to;
 		}
@@ -248,52 +259,7 @@ function scr_draw_caution_online()
 			menu = caution_online_takes_you_back_to;
 		}
 		
-		#endregion /* Tell the player when Network Servie is unavailable END */
-		
 	}
 	#endregion /* Caution Online Network Service Unavailable END */
-	
-	else
-	
-	#region /* Caution Online Token Invalidated */
-	if (menu == "caution_online_token_invalidated")
-	{
-		
-		#region /* Tell the player when Online Token is invalidated */
-		
-		var online_token_invalidated_x = display_get_gui_width() * 0.5 - 180;
-		var online_token_invalidated_y = display_get_gui_height() * 0.5 + 64;
-		
-		draw_menu_button(online_token_invalidated_x, online_token_invalidated_y, l10n_text("Back"), "caution_online_token_invalidated", "caution_online_token_invalidated");
-		draw_sprite_ext(spr_icon_back, 0, online_token_invalidated_x + 16, online_token_invalidated_y + 21, 1, 1, 0, c_white, 1);
-		scr_draw_text_outlined(display_get_gui_width() * 0.5, display_get_gui_height() * 0.5 - 128, l10n_text("Online Token Invalid!"), global.default_text_size * 2, c_black, c_white, 1);
-		
-		scr_draw_text_outlined(display_get_gui_width() * 0.5, display_get_gui_height() * 0.5 - 128, l10n_text(string(global.online_token_validated)), global.default_text_size, c_black, c_white, 1);
-		
-		if (global.controls_used_for_navigation == "mouse")
-		&& (mouse_check_button_released(mb_left))
-		&& (point_in_rectangle(mouse_get_x, mouse_get_y, online_token_invalidated_x, online_token_invalidated_y, online_token_invalidated_x + 370, online_token_invalidated_y + 41))
-		&& (menu_delay == 0 && menu_joystick_delay == 0)
-		|| (key_a_pressed)
-		&& (menu_delay == 0 && menu_joystick_delay == 0)
-		|| (key_b_pressed)
-		&& (menu_delay == 0 && menu_joystick_delay == 0)
-		{
-			if (variable_instance_exists(self, "show_level_editor_corner_menu"))
-			{
-				show_level_editor_corner_menu = true;
-			}
-			if (caution_online_takes_you_back_to == "about_online_level_list")
-			{
-				information_menu_open = "about"; /* Go back to the about page on information menu when going back from online caution menu */
-			}
-			menu_delay = 3;
-			menu = caution_online_takes_you_back_to;
-		}
-		
-		#endregion /* Tell the player when Online Token is invalidated END */
-		
-	}
-	#endregion /* Caution Online Token Invalidated END */
 	
 }
