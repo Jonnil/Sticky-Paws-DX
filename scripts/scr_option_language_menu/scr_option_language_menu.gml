@@ -19,6 +19,12 @@ function scr_option_language_menu()
 		for(var i = 1; i < array_length(valid_languages); i ++;)
 		{
 			draw_language_checkmark(400, 52 * (i - 1) + 84, global.language_local_data[# valid_languages[i], 0], "Language" + string(i));
+			if (global.language_completion[i] < 100)
+			{
+				draw_set_halign(fa_left);
+				draw_set_valign(fa_middle);
+				scr_draw_text_outlined(448 + string_width(global.language_local_data[# valid_languages[i], 0]), 52 * (i - 1) + 84 + 16, string(global.language_completion[i]) + "%", global.default_text_size * 0.75, c_menu_outline, make_color_hsv(global.language_completion[i] * 0.5, 255, 255), 1);
+			}
 		}
 		
 		draw_set_halign(fa_right);
