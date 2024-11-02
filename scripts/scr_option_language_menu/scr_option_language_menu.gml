@@ -25,10 +25,10 @@ function scr_option_language_menu()
 		draw_set_valign(fa_middle);
 		scr_draw_text_outlined(get_window_width - 32, 64, l10n_text("Translator") + ":", global.default_text_size * 1.5, c_menu_outline, c_menu_fill, 1);
 		scr_draw_text_outlined(get_window_width - 32, 114, l10n_text("Translator name"), global.default_text_size * 1.5, c_menu_outline, c_menu_fill, 1);
-		if (global.language_completion < 100)
+		if (global.language_completion[global.language_localization + 1] < 100)
 		{
 			var translation_completion_outline_color = c_menu_outline;
-			var translation_completion_fill_color = make_color_hsv(global.language_completion * 0.5, 255, 255);
+			var translation_completion_fill_color = make_color_hsv(global.language_completion[global.language_localization + 1] * 0.5, 255, 255);
 		}
 		else
 		{
@@ -37,14 +37,14 @@ function scr_option_language_menu()
 		}
 		
 		#region /* Clicking on language completion text enables and disables the translation debug mode */
-		if (point_in_rectangle(mouse_get_x, mouse_get_y, get_window_width - 32 - string_width(l10n_text("Translation completion") + ": " + string(global.language_completion) + "%"), 164 - 32, get_window_width - 32, 164 + 32))
+		if (point_in_rectangle(mouse_get_x, mouse_get_y, get_window_width - 32 - string_width(l10n_text("Translation completion") + ": " + string(global.language_completion[global.language_localization + 1]) + "%"), 164 - 32, get_window_width - 32, 164 + 32))
 		&& (global.controls_used_for_navigation == "mouse")
 		&& (global.enable_option_for_pc)
 		{
-			if (global.language_completion < 100)
+			if (global.language_completion[global.language_localization + 1] < 100)
 			{
 				var translation_completion_outline_color = c_menu_fill;
-				var translation_completion_fill_color = make_color_hsv(global.language_completion * 0.5, 255, 255);
+				var translation_completion_fill_color = make_color_hsv(global.language_completion[global.language_localization + 1] * 0.5, 255, 255);
 			}
 			else
 			{
@@ -57,7 +57,10 @@ function scr_option_language_menu()
 			}
 		}
 		
-		scr_draw_text_outlined(get_window_width - 32, 164, l10n_text("Translation completion") + ": " + string(global.language_completion) + "%", global.default_text_size, translation_completion_outline_color, translation_completion_fill_color, 1);
+		if (os_type != os_switch) /* Switch version can only contain languages that have been 100% translated according to guidelines */
+		{
+			scr_draw_text_outlined(get_window_width - 32, 164, l10n_text("Translation completion") + ": " + string(global.language_completion[global.language_localization + 1]) + "%", global.default_text_size, translation_completion_outline_color, translation_completion_fill_color, 1);
+		}
 		
 		if (global.translation_debug)
 		{
@@ -115,8 +118,6 @@ function scr_option_language_menu()
 				ini_open(game_save_id + "save_file/config.ini");
 				ini_write_real("config", "language_localization", global.language_localization);
 				ini_close();
-					
-				calculate_translation_completion();
 				scr_set_font();
 			}
 			else

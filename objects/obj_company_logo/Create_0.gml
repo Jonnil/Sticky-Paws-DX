@@ -416,12 +416,10 @@ global.reset_level_zoom_when_going_back_to_map = false;
 global.reset_world_map_zoom_when_going_back_to_map = false;
 
 global.language_localization = 0;
-global.language_completion = 0;
+global.language_local_data = 0;
 global.translation_debug = false; /* If you can see debug information about translations */
 /* Shows csv cell letter and cell number, to more easily find the cell to translate */
 /* Will be false by defaul and can be enabled or disabled if you click on "Translation Completion" on the language options in-game */
-
-scr_set_default_language();
 
 global.settings_sidebar_menu = "accessibility_settings"; /* Settings sidebar */
 global.show_tutorial_signs = true;

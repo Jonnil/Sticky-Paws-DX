@@ -161,7 +161,15 @@ for(var i = 1; i < ds_grid_width(global.language_local_data); i ++;)
 {
 	if (global.language_local_data[# i, 1] != "No") /* If the language should show up in-game or not */
 	{
-		valid_languages[i] = i;
+		if (os_type == os_switch && global.language_completion[i] >= 100)
+		{
+			valid_languages[i] = i;
+		}
+		else
+		if (os_type != os_switch)
+		{
+			valid_languages[i] = i;
+		}
 	}
 }
 

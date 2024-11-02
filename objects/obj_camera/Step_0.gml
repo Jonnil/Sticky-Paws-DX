@@ -184,7 +184,15 @@ for(var i = 1; i <= global.max_players; i += 1)
 	{
 		player_motor_speed[i] = lerp(player_motor_speed[i], 0, 0.1);
 	}
-	gamepad_set_vibration(i - 1, player_motor_speed[i], player_motor_speed[i]);
+	
+	if (os_type == os_switch)
+	{
+		switch_controller_vibrate_hd(global.player_slot[i], player_motor_speed[i], player_motor_speed[i], player_motor_speed[i], player_motor_speed[i], player_motor_speed[i]);
+	}
+	else
+	{
+		gamepad_set_vibration(global.player_slot[i], player_motor_speed[i], player_motor_speed[i]);
+	}
 	#endregion /* Stop gamepad vibration for player END */
 	
 }

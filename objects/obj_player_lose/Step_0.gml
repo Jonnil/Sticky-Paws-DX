@@ -206,7 +206,14 @@ if (global.restart_level)
 	
 	score = 0;
 	
-	gamepad_set_vibration(player - 1, 0, 0);
+	if (os_type == os_switch)
+	{
+		switch_controller_vibrate_hd(global.player_slot[player], 0, 0, 0, 0, 0);
+	}
+	else
+	{
+		gamepad_set_vibration(global.player_slot[player], 0, 0);
+	}
 	room_restart();
 }
 #endregion /* Restart Level END */
@@ -232,7 +239,14 @@ if (global.quit_level)
 	
 	if (global.quit_to_map || global.quit_to_title)
 	{
-		gamepad_set_vibration(player - 1, 0, 0);
+		if (os_type == os_switch)
+		{
+			switch_controller_vibrate_hd(global.player_slot[player], 0, 0, 0, 0, 0);
+		}
+		else
+		{
+			gamepad_set_vibration(global.player_slot[player], 0, 0);
+		}
 		room_goto(global.quit_to_map ? rm_world_map : rm_title); /* If player chose to quit to map, then go to world map, otherwise go to title screen */
 		global.quit_level = false;
 		global.quit_to_map = false;

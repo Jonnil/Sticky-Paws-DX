@@ -99,14 +99,13 @@ function draw_language_checkmark(x_position, y_position, string_text, menu_index
 		ini_write_real("config", "language_localization", global.language_localization);
 		ini_close();
 		
-		calculate_translation_completion()
 		language_index = real(string_delete(menu_index, 1, 8))
 		menu = menu_index;
 		can_navigate_settings_sidebar = false;
 		scr_set_font();
 	}
 	#endregion /* Clicking the menu button END */
-
+	
 	#region /* Text inside the menu button */
 	draw_set_halign(fa_left);
 	draw_set_valign(fa_middle);

@@ -69,7 +69,14 @@ if (goal && global.time_countdown_bonus <= 0 && instance_exists(obj_camera) && o
 			{
 				global.player_can_play[i] = false;
 			}
-			gamepad_set_vibration(i - 1, 0, 0);
+			if (os_type == os_switch)
+			{
+				switch_controller_vibrate_hd(global.player_slot[player], 0, 0, 0, 0, 0);
+			}
+			else
+			{
+				gamepad_set_vibration(global.player_slot[player], 0, 0);
+			}
 		}
 		
 		if (!global.actually_play_edited_level && global.play_edited_level && global.character_select_in_this_menu == "level_editor")

@@ -53,6 +53,7 @@ function initialize_translations()
 	{
 		global.language_local_data = 0;
 		global.translations = 0;
+		global.language_completion = 0;
 	}
 }
 
