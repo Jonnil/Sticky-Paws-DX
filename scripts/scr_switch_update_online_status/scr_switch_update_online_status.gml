@@ -11,6 +11,10 @@ function scr_switch_update_online_status(show_login_screen = true)
 			for (var i = 0; i < switch_accounts_num; ++i;)
 			{
 				global.switch_logged_in = switch_accounts_is_user_open(i); /* This checks if the player is logged in */
+				if (global.switch_logged_in)
+				{
+					break; /* Make sure that global.switch_logged_in does not overwrite itself during the loop unintentionally. Verify that the intended user is consistently checked and set, not just the last checked account in the loop */
+				}
 			}
 			if (show_login_screen)
 			&& (!global.switch_logged_in)

@@ -4,7 +4,6 @@ scr_set_controls_used_to_navigate();
 
 if (goto_title_screen)
 {
-	show_debug_message("bruh");
 	calculate_translation_completion();
 	room_goto(rm_title);
 }
