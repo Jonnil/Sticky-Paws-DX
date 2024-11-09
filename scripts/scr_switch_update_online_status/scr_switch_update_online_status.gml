@@ -10,6 +10,7 @@ function scr_switch_update_online_status(show_login_screen = true)
 			var switch_accounts_num = switch_accounts_get_accounts();
 			for (var i = 0; i < switch_accounts_num; ++i;)
 			{
+				global.switch_account_network_service_available = switch_accounts_network_service_available(i);
 				global.switch_logged_in = switch_accounts_is_user_open(i); /* This checks if the player is logged in */
 				if (global.switch_logged_in)
 				{
@@ -17,10 +18,10 @@ function scr_switch_update_online_status(show_login_screen = true)
 				}
 			}
 			if (show_login_screen)
-			&& (!global.switch_logged_in)
+			&& (!global.switch_logged_in || !global.switch_account_network_service_available)
 			{
 				global.switch_logged_in = switch_accounts_login_user(0);
-				/* switch_accounts_login_user is used to forcefully login a user, if the game is unable to, the player will be prompted to manually login */
+				/* switch_accounts_login_user is used to forcefully login a user, need to use a function to ask player to login manually */
 			}
 			#endregion /* Login user correctly END */
 			
@@ -42,8 +43,6 @@ function scr_switch_update_online_status(show_login_screen = true)
 					if (global.switch_account_open[i])
 					&& (global.switch_account_is_user_online[i])
 					{
-						global.switch_account_network_service_available = switch_accounts_network_service_available(i);
-						
 						if (global.online_token_validated != true) /* If you are logged in, only then are you able to retrieve the online token */
 						{
 							/* Create DS Map to hold the HTTP Header info */
