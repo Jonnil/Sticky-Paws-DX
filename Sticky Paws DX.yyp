@@ -2285,6 +2285,7 @@
     {"$GMIncludedFile":"","%Name":"object_placement_all.json","CopyToMask":-1,"filePath":"datafiles/Levels/Level1/data","name":"object_placement_all.json","resourceType":"GMIncludedFile","resourceVersion":"2.0",},
     {"$GMIncludedFile":"","%Name":"object_placement_all.json","CopyToMask":-1,"filePath":"datafiles/Levels/Level1/Data","name":"object_placement_all.json","resourceType":"GMIncludedFile","resourceVersion":"2.0",},
     {"$GMIncludedFile":"","%Name":"clear_melody.ogg","CopyToMask":-1,"filePath":"datafiles/levels/Level1/sound","name":"clear_melody.ogg","resourceType":"GMIncludedFile","resourceVersion":"2.0",},
+    {"$GMIncludedFile":"","%Name":"clear_melody.ogg","CopyToMask":-1,"filePath":"datafiles/Levels/Level1/sound","name":"clear_melody.ogg","resourceType":"GMIncludedFile","resourceVersion":"2.0",},
     {"$GMIncludedFile":"","%Name":"music.ogg","CopyToMask":-1,"filePath":"datafiles/levels/level1/sound","name":"music.ogg","resourceType":"GMIncludedFile","resourceVersion":"2.0",},
     {"$GMIncludedFile":"","%Name":"music.ogg","CopyToMask":-1,"filePath":"datafiles/levels/Level1/sound","name":"music.ogg","resourceType":"GMIncludedFile","resourceVersion":"2.0",},
     {"$GMIncludedFile":"","%Name":"music.ogg","CopyToMask":-1,"filePath":"datafiles/Levels/level1/sound","name":"music.ogg","resourceType":"GMIncludedFile","resourceVersion":"2.0",},
@@ -2679,7 +2680,7 @@
   "isEcma":false,
   "LibraryEmitters":[],
   "MetaData":{
-    "IDEVersion":"2024.1100.0.674",
+    "IDEVersion":"2024.1100.0.713",
   },
   "name":"Sticky Paws DX",
   "resources":[

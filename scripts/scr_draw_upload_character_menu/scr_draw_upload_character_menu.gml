@@ -270,7 +270,7 @@ function scr_draw_upload_character_menu()
 								{
 									if (global.switch_account_network_service_available) /* Need to make sure that network service is available before going online */
 									{
-										if (global.online_token_validated) /* Need to make sure that online token is validated before going online */
+										if (scr_online_token_is_valid() == true)
 										{
 											/* Essential files does exist, so upload now */
 											if (!ini_key_exists("info", "first_created_on_version")) /* If the character doesn't have a "first created on version", then create one now before uploading to the server */
@@ -707,7 +707,7 @@ function scr_draw_upload_character_menu()
 						{
 							if (global.switch_account_network_service_available) /* Need to make sure that network service is available before going online */
 							{
-								if (global.online_token_validated) /* Need to make sure that online token is validated before going online */
+								if (scr_online_token_is_valid() == true)
 								{
 									
 									#region /* Actually upload the character to the server */

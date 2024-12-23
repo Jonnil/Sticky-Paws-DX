@@ -581,7 +581,7 @@ function scr_character_manage_menu_step()
 					{
 						if (global.switch_account_network_service_available) /* Need to make sure that network service is available before going online */
 						{
-							if (global.online_token_validated) /* Need to make sure that online token is validated before going online */
+							if (scr_online_token_is_valid() == true)
 							{
 								if (global.upload_rules_do_not_show_character)
 								{

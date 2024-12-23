@@ -117,7 +117,7 @@ function scr_draw_upload_level_menu()
 					{
 						if (global.switch_account_network_service_available) /* Need to make sure that network service is available before going online */
 						{
-							if (global.online_token_validated) /* Need to make sure that online token is validated before going online */
+							if (scr_online_token_is_valid() == true)
 							{
 								if (global.upload_rules_do_not_show_level)
 								{
@@ -204,7 +204,7 @@ function scr_draw_upload_level_menu()
 				{
 					if (global.switch_account_network_service_available) /* Need to make sure that network service is available before going online */
 					{
-						if (global.online_token_validated) /* Need to make sure that online token is validated before going online */
+						if (scr_online_token_is_valid() == true)
 						{
 							global.actually_play_edited_level = false;
 							global.play_edited_level = false;
@@ -1713,7 +1713,7 @@ function scr_draw_upload_level_menu()
 						{
 							if (global.switch_account_network_service_available) /* Need to make sure that network service is available before going online */
 							{
-								if (global.online_token_validated) /* Need to make sure that online token is validated before going online */
+								if (scr_online_token_is_valid() == true)
 								{
 									
 									#region /* Actually upload the level to the server */

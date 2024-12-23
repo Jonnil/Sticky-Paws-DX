@@ -97,6 +97,7 @@ function scr_draw_menu_search_id(what_kind_of_id = "level")
 		
 		#region /* Press Escape to back out from Search ID menu */
 		if (global.clicking_cancel_input_screen)
+		&& (scr_online_token_is_valid() == true)
 		{
 			show_level_editor_corner_menu = true;
 			search_for_id_still = false;
@@ -422,9 +423,12 @@ function scr_draw_menu_search_id(what_kind_of_id = "level")
 		&& (key_a_pressed || key_b_pressed)
 		&& (menu_delay == 0 && menu_joystick_delay == 0)
 		{
-			in_online_download_list_menu = true;
-			menu_delay = 3;
-			menu = "online_download_list_load";
+			if (scr_online_token_is_valid() == true)
+			{
+				in_online_download_list_menu = true;
+				menu_delay = 3;
+				menu = "online_download_list_load";
+			}
 		}
 		#endregion /* You can always cancel searching if game can't find file on server END */
 		
@@ -1037,11 +1041,14 @@ function scr_draw_menu_search_id(what_kind_of_id = "level")
 			&& (menu_delay == 0 && menu_joystick_delay == 0)
 			&& (!inform_about_report_feature)
 			{
-				global.use_temp_or_working = game_save_id;
-				select_custom_level_menu_open = false;
-				/* Don't set the "select level index" or "level name" here, because we want it saved still */
-				menu = "online_download_list_load"; /* Go back to online level list */
-				menu_delay = 3;
+				if (scr_online_token_is_valid() == true)
+				{
+					global.use_temp_or_working = game_save_id;
+					select_custom_level_menu_open = false;
+					/* Don't set the "select level index" or "level name" here, because we want it saved still */
+					menu = "online_download_list_load"; /* Go back to online level list */
+					menu_delay = 3;
+				}
 			}
 			#endregion /* Click back to online level list END */
 			
@@ -1274,8 +1281,11 @@ function scr_draw_menu_search_id(what_kind_of_id = "level")
 			&& (key_a_pressed)
 			&& (menu_delay == 0 && menu_joystick_delay == 0)
 			{
-				menu_delay = 3;
-				menu = "online_download_list_load"; /* Go back to online level list */
+				if (scr_online_token_is_valid() == true)
+				{
+					menu_delay = 3;
+					menu = "online_download_list_load"; /* Go back to online level list */
+				}
 			}
 		}
 		#endregion /* Level was not uploaded correctly END */
@@ -1371,10 +1381,13 @@ function scr_draw_menu_search_id(what_kind_of_id = "level")
 		&& (key_a_pressed)
 		&& (menu_delay == 0 && menu_joystick_delay == 0)
 		{
-			select_custom_level_menu_open = false;
-			/* Don't set the "select level index" or "level name" here, because we want it saved still */
-			menu = "online_download_list_load"; /* Go back to online level list */
-			menu_delay = 3;
+			if (scr_online_token_is_valid() == true)
+			{
+				select_custom_level_menu_open = false;
+				/* Don't set the "select level index" or "level name" here, because we want it saved still */
+				menu = "online_download_list_load"; /* Go back to online level list */
+				menu_delay = 3;
+			}
 		}
 		#endregion /* Click back to online list END */
 		
@@ -1455,10 +1468,13 @@ function scr_draw_menu_search_id(what_kind_of_id = "level")
 		&& (key_a_pressed)
 		&& (menu_delay == 0 && menu_joystick_delay == 0)
 		{
-			menu_delay = 3;
-			file_delete(download_temp_path + "downloaded_" + string(what_kind_of_id) + "/" + string_upper(search_id) + ".zip"); /* Destroy any leftover files in temporary folder */
-			directory_destroy(download_temp_path + "downloaded_" + string(what_kind_of_id)); /* Destroy the now empty directory, it's only temporary */
-			menu = "online_download_list_load";
+			if (scr_online_token_is_valid() == true)
+			{
+				menu_delay = 3;
+				file_delete(download_temp_path + "downloaded_" + string(what_kind_of_id) + "/" + string_upper(search_id) + ".zip"); /* Destroy any leftover files in temporary folder */
+				directory_destroy(download_temp_path + "downloaded_" + string(what_kind_of_id)); /* Destroy the now empty directory, it's only temporary */
+				menu = "online_download_list_load";
+			}
 		}
 	}
 	#endregion /* Show Download Failed message END */

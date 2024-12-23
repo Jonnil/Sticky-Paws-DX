@@ -50,7 +50,7 @@ function scr_draw_report()
 			{
 				if (global.switch_account_network_service_available) /* Need to make sure that network service is available before going online */
 				{
-					if (global.online_token_validated) /* Need to make sure that online token is validated before going online */
+					if (scr_online_token_is_valid() == true)
 					{
 						
 						#region /* Actually upload the report to the server */
@@ -269,6 +269,7 @@ function scr_draw_report()
 			menu_delay = 3;
 			
 			if (room == rm_title)
+			&& (scr_online_token_is_valid() == true)
 			{
 				menu = "online_download_list_load"; /* Go back to online level list */
 			}
@@ -789,7 +790,7 @@ function scr_draw_report()
 					{
 						if (global.switch_account_network_service_available) /* Need to make sure that network service is available before going online */
 						{
-							if (global.online_token_validated) /* Need to make sure that online token is validated before going online */
+							if (scr_online_token_is_valid() == true)
 							{
 								menu = "report_send_confirm"; /* Go to send report screen */
 							}

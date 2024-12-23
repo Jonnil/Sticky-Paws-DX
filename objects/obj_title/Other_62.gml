@@ -17,55 +17,33 @@ if (async_load[? "id"] == global.http_request_id)
 		var buffer = buffer_base64_decode(file_data_base64);
 		var download_temp_path = temp_directory;
 		
-		switch (content_type)
+		#region /* Handle file saving and menu updates based on content_type */
+		if (response_json != undefined && !in_online_download_list_load_menu)
 		{
-			case "level":
-			if (response_json != undefined)
-			&& (!in_online_download_list_load_menu)
+			/* Check if the response JSON has a valid name */
+			if (response_json[? "name"] != undefined)
 			{
-				var file_save_location = download_temp_path + "downloaded_level/" + string(response_json[? "name"]) + ".zip";
-				if (response_json[? "name"] == undefined)
-				&& (search_for_id_still)
+				var file_save_location = download_temp_path + "downloaded_" + string(content_type) + "/" + string(response_json[? "name"]) + ".zip";
+			}
+			else
+			{
+				/* Set file save location to an empty string if name is undefined */
+				var file_save_location = "";
+				if (search_for_id_still)
 				{
 					menu = "searched_file_downloaded_failed";
 				}
 			}
-			else
-			{
-				/* Handle the list data here */
-				in_online_download_list_load_menu = false;
-				var file_save_location = "";
-				global.online_download_list = response_str;
-			}
-			break;
-			
-			case "character":
-			if (response_json != undefined)
-			&& (!in_online_download_list_load_menu)
-			{
-				var file_save_location = download_temp_path + "downloaded_character/" + string(response_json[? "name"]) + ".zip";
-				if (response_json[? "name"] == undefined)
-				&& (search_for_id_still)
-				{
-					menu = "searched_file_downloaded_failed";
-				}
-			}
-			else
-			{
-				/* Handle the list data here */
-				in_online_download_list_load_menu = false;
-				var file_save_location = "";
-				global.online_download_list = response_str;
-			}
-			break;
-			
-			default:
+		}
+		else
+		{
 			/* Handle the list data here */
 			in_online_download_list_load_menu = false;
 			var file_save_location = "";
 			global.online_download_list = response_str;
-			break;
 		}
+		#endregion /* Handle file saving and menu updates based on content_type END */
+		
 		if (file_save_location != "")
 		{
 			show_debug_message("file_save_location: " + string(file_save_location));
@@ -182,11 +160,11 @@ if (async_load[? "id"] == global.online_token_validated)
 		/* Free the buffer memory */
 		buffer_delete(buffer);
 		
-		show_debug_message("global.online_token_validated: " + string(global.online_token_validated));
+		show_debug_message("status code == 200   global.online_token_validated: " + string(global.online_token_validated));
 	}
 	else
 	{
 		global.online_token_validated = response_str; /* Return the error code */
-		show_debug_message("global.online_token_validated: " + string(global.online_token_validated));
+		show_debug_message("status code failed   global.online_token_validated: " + string(global.online_token_validated));
 	}
 }

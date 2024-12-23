@@ -218,7 +218,7 @@ function scr_character_select_menu_draw()
 						{
 							if (global.switch_account_network_service_available) /* Need to make sure that network service is available before going online */
 							{
-								if (global.online_token_validated) /* Need to make sure that online token is validated before going online */
+								if (scr_online_token_is_valid() == true)
 								{
 									/* Go to online level list, so you can browse all uploaded levels, instead of just searching for specific levels */
 									select_custom_level_menu_open = false;

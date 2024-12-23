@@ -1,98 +1,184 @@
 function scr_switch_update_online_status(show_login_screen = true)
 {
+	
+	#region /* Update Nintendo Switch Online Status */
 	if (os_type == os_switch)
 	{
-		if (os_is_network_connected(network_connect_passive)) /* Need to check if OS is connected to network before getting online */
+		/* Check if the system is connected to the network */
+		if (os_is_network_connected(network_connect_passive))
 		{
-			
-			#region /* Login user correctly */
-			/* First, make sure to login the user correctly before anything else */
+			/* Retrieve the number of available accounts on the system */
 			var switch_accounts_num = switch_accounts_get_accounts();
-			for (var i = 0; i < switch_accounts_num; ++i;)
+			var logged_in_account = undefined;
+			
+			#region /* Iterate through accounts to find an open user with network service available */
+			for (var i = 0; i < switch_accounts_num; ++i)
 			{
-				global.switch_account_network_service_available = switch_accounts_network_service_available(i);
-				global.switch_logged_in = switch_accounts_is_user_open(i); /* This checks if the player is logged in */
-				if (global.switch_logged_in)
+				show_debug_message("Checking account index: " + string(i));
+				
+				if (switch_accounts_is_user_open(i)
+				&& switch_accounts_network_service_available(i))
 				{
-					break; /* Make sure that global.switch_logged_in does not overwrite itself during the loop unintentionally. Verify that the intended user is consistently checked and set, not just the last checked account in the loop */
+					logged_in_account = i; /* Save the valid account index */
+					global.switch_account_network_service_available = switch_accounts_network_service_available(i); /* Set global variable for network service availability */
+					show_debug_message("Account is open and network service is available: " + string(i));
+					
+					/* Attempt to retrieve the ID token */
+					var id_token = switch_accounts_get_online_token(i);
+					show_debug_message("ID Token Retrieved: " + string(id_token));
+					
+					/* Check if the token is valid */
+					if (id_token != ""
+					&& id_token != undefined
+					&& id_token != false)
+					{
+						show_debug_message("Valid ID Token found for account index: " + string(i));
+						break; /* Stop checking further accounts once a valid one is found */
+					}
+					else
+					{
+						show_debug_message("ID Token is invalid or retrieval failed for account index: " + string(i));
+						logged_in_account = undefined; /* Reset if the token is invalid */
+					}
+				}
+				else
+				{
+					show_debug_message("Account index " + string(i) + " is either not open or network service is unavailable.");
 				}
 			}
-			if (show_login_screen)
-			&& (!global.switch_logged_in || !global.switch_account_network_service_available)
-			{
-				global.switch_logged_in = switch_accounts_login_user(0);
-				/* switch_accounts_login_user is used to forcefully login a user, need to use a function to ask player to login manually */
-			}
-			#endregion /* Login user correctly END */
+			#endregion /* Iterate through accounts to find an open user with network service available END */
 			
-			#region /* If user is logged in, then do other online checks */
+			#region /* If no valid account is found, prompt the user to log in */
+			if (show_login_screen
+			&& is_undefined(logged_in_account))
+			{
+				show_debug_message("No valid account found. Prompting user to select account...");
+				logged_in_account = switch_accounts_select_account(true, true, false); /* Prompt user for account selection */
+				global.switch_account_network_service_available = switch_accounts_network_service_available(logged_in_account); /* Set global variable for network service availability */
+				show_debug_message("Logged in account: " + string(logged_in_account));
+				
+				/* Restart the room if login fails */
+				if (!is_undefined(logged_in_account)
+				&& !switch_accounts_login_user(logged_in_account))
+				{
+					show_debug_message("Login failed after prompting user. Restarting room...");
+					room_restart();
+				}
+				else
+				{
+					show_debug_message("Login successful after prompting user.");
+				}
+			}
+			#endregion /* If no valid account is found, prompt the user to log in END */
+			
+			/* Update global variable to reflect login status */
+			global.switch_logged_in = !is_undefined(logged_in_account);
+			show_debug_message("Global switch_logged_in: " + string(global.switch_logged_in));
+			
 			if (global.switch_logged_in)
 			{
-				var switch_accounts_num = switch_accounts_get_accounts();
-				for (var i = 0; i < switch_accounts_num; ++i;)
+				
+				#region /* Process all accounts to retrieve detailed information */
+				for (var i = 0; i < switch_accounts_num; ++i)
 				{
+					global.switch_account_open[i] = switch_accounts_is_user_open(i); /* Check if account is open */
+					global.switch_account_is_user_online[i] = switch_accounts_is_user_online(i); /* Check if account is online */
 					
-					#region /* First, check if user is open and user is online */
-					global.switch_account_open[i] = switch_accounts_is_user_open(i); /* Second get if user is open. With this function you can check an account ID slot to see if the account has been flagged as "open" (active) or not */
-					global.switch_account_is_user_online[i] = switch_accounts_is_user_online(i);
-					#endregion /* First, check if user is open and user is online END */
-					
-					#region /* Second, check network service availability and login user */
-					/* For some reason I can't retrieve information from network_service_available as an array without crashing the game with unknown error */
-					/* Account needs to be open before you can check network service availability */
-					if (global.switch_account_open[i])
-					&& (global.switch_account_is_user_online[i])
+					/* If the account is open and online, validate the online token */
+					if (global.switch_account_open[i]
+					&& global.switch_account_is_user_online[i])
 					{
-						if (global.online_token_validated != true) /* If you are logged in, only then are you able to retrieve the online token */
+						show_debug_message("Validating online token. Current global.online_token_validated value: " + string(global.online_token_validated));
+						
+						/* Check if token validation is required */
+						if (global.online_token_validated == false
+						|| typeof(global.online_token_validated) != "boolean")
 						{
-							/* Create DS Map to hold the HTTP Header info */
+							show_debug_message("Token validation failed. Token data: " + string(global.online_token_validated));
+							show_debug_message("Starting token validation process for account index: " + string(i));
+							
+							/* Create DS Map to hold HTTP Header info */
 							var map = ds_map_create();
+							var id_token = switch_accounts_get_online_token(i); /* Get the online token for the account */
+							show_debug_message("id_token: " + string(id_token));
 							
-							/* Create a JSON object with the id_token */
-							var id_token = switch_accounts_get_online_token(i); /* ID token you need to send */
-							
-							/* Add to the header DS Map */
+							/* Add headers to the map for the HTTP request */
 							ds_map_add(map, "Host", global.base_url);
 							ds_map_add(map, "Content-Type", "application/json");
 							ds_map_add(map, "User-Agent", "gmdownloader");
 							ds_map_add(map, "X-API-Key", global.api_key);
 							
-							/* Send the HTTP GET request to the /validate_token endpoint */
-							global.online_token_validated = http_request("https://" + global.base_url + "/validate_token" + "?id_token=" + string(id_token), "GET", map, "");
-							ds_map_destroy(map);
+							/* Send the HTTP GET request to validate the token */
+							global.online_token_validated = http_request(
+								"https://" + global.base_url + "/validate_token" + "?id_token=" + string(id_token), /* URL */
+								"GET", /* Method */
+								map, /* Header Map */
+								"" /* Body */
+							);
+							ds_map_destroy(map); /* Clean up the DS Map after use */
 						}
 					}
-					#endregion /* Second, check network service availability and login user END */
 					
-					#region /* Third, retrieve information about the account */
-					global.switch_account_name[i] = switch_accounts_get_nickname(i); /* First get the nickname. With this function you can retrieve the nickname of the user in the given Account ID slot or the User Network Id */
-					global.switch_account_handle[i] = switch_accounts_get_handle(i); /* Third get the handle. With this function you can retrieve the "handle" (as a pointer) of the user in the given Account ID slot */
-					
-					/* Other Switch accounts functions to look for */
-					global.switch_account_netid[i] = switch_accounts_get_netid(i);
-					#endregion /* Third, retrieve information about the account END */
-					
+					/* Retrieve account details for further use */
+					global.switch_account_name[i] = switch_accounts_get_nickname(i); /* Get account nickname */
+					global.switch_account_handle[i] = switch_accounts_get_handle(i); /* Get account handle */
+					global.switch_account_netid[i] = switch_accounts_get_netid(i); /* Get network ID of the account */
 				}
+				#endregion /* Process all accounts to retrieve detailed information END */
+				
 			}
-			#endregion /* If user is logged in, then do other online checks END */
-			
 			else
 			{
+				/* Set global variables to false if no user is logged in */
 				global.switch_logged_in = false;
 				global.online_token_validated = false;
+				global.switch_account_network_service_available = false;
+				show_debug_message("No user is logged in. Setting global variables to false.");
 			}
 		}
 		else
 		{
+			/* Set global variables to false if the system is not connected to the network */
 			global.switch_logged_in = false;
 			global.online_token_validated = false;
+			global.switch_account_network_service_available = false;
+			show_debug_message("System is not connected to the network. Setting global variables to false.");
 		}
 	}
 	else
 	{
-		/* On any other version other than Switch, these global variables should be set to true */
+		/* On any other version other than Switch, set these global variables to true */
 		global.switch_account_network_service_available = true;
 		global.switch_logged_in = true;
 		global.online_token_validated = true;
+		show_debug_message("Running on a platform other than Nintendo Switch. Defaulting online status to true.");
 	}
+	#endregion /* Update Nintendo Switch Online Status END */
+	
+}
+
+function scr_online_token_is_valid()
+{
+	
+	/* Static variable to track if a debug message has already been logged */
+	static debug_logged = false;
+	
+	/* Need to make sure that online token is validated before going online */
+	/* This variable can hold both string and bool values, so we need to make sure that it's a bool value of true first */
+	if (typeof(global.online_token_validated) == typeof(true)
+	&& global.online_token_validated == true)
+	{
+		debug_logged = false; /* Reset debug tracking if validation succeeds */
+		show_debug_message("Token validation returned TRUE");
+		return true;
+	}
+	
+	/* Log only the first failed validation for better debugging */
+	if (!debug_logged)
+	{
+		show_debug_message("Token validation returned FALSE. Please check server response or token validity.");
+		debug_logged = true;
+	}
+	
+	return false; /* Explicitly return false if the condition isn't met */
 }

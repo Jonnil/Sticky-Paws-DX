@@ -55,7 +55,7 @@ function scr_draw_caution_online()
 				{
 					if (global.switch_account_network_service_available) /* Need to make sure that network service is available before going online */
 					{
-						if (global.online_token_validated) /* Need to make sure that online token is validated before going online */
+						if (scr_online_token_is_valid() == true)
 						{
 							if (caution_online_takes_you_to == "online_download_list_load")
 							{
@@ -234,6 +234,7 @@ function scr_draw_caution_online()
 		if (caution_online_takes_you_to != "")
 		&& (global.switch_account_network_service_available) /* In case this variable gets enabled on this error screen, proceed automatically to the correct menu */
 		&& (!string_pos("error", global.online_token_validated) > 0) /* Make sure that id token isn't missing too before proceeding automatically */
+		&& (scr_online_token_is_valid() == true)
 		{
 			menu = caution_online_takes_you_to;
 		}
