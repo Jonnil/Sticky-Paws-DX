@@ -17,7 +17,7 @@ function scr_switch_expand_save_data(desired_save_size_mib = 16, desired_journal
 		max_sizes = switch_save_data_get_max_size(); /* Game crashes on other platforms, because it thinks this is a function that doesn't exist */
 		
 		/* Retrieve current save data size and journal size */
-		if (array_length_1d(current_sizes) == 2)
+		if (array_length(current_sizes) == 2)
 		{
 			var save_data_size = current_sizes[0];
 			var journal_size = current_sizes[1];
@@ -25,7 +25,7 @@ function scr_switch_expand_save_data(desired_save_size_mib = 16, desired_journal
 			show_debug_message("Current Journal Size: " + string(journal_size) + " bytes");
 			
 			/* Retrieve maximum save data size and journal size */
-			if (array_length_1d(max_sizes) == 2)
+			if (array_length(max_sizes) == 2)
 			{
 				var max_save_data_size = max_sizes[0];
 				var max_journal_size = max_sizes[1];

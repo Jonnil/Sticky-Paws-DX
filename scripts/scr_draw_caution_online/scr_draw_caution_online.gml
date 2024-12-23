@@ -224,16 +224,23 @@ function scr_draw_caution_online()
 		#endregion /* Tell the player when Network Servie is unavailable END */
 		
 		#region /* Tell the player when Online Token is invalidated */
-		if (string_pos("error", global.online_token_validated) > 0)
+		if (!global.online_token_validated)
 		{
 			scr_draw_text_outlined(display_get_gui_width() * 0.5, display_get_gui_height() * 0.5 + 128, l10n_text("Online Token Invalid!"), global.default_text_size * 2, c_black, c_white, 1);
-			scr_draw_text_outlined(display_get_gui_width() * 0.5, display_get_gui_height() * 0.5 + 192, l10n_text(string(global.online_token_validated)), global.default_text_size, c_black, c_white, 1);
+			scr_draw_text_outlined(display_get_gui_width() * 0.5, display_get_gui_height() * 0.5 + 192, l10n_text(string(global.online_token_error_message)), global.default_text_size, c_black, c_white, 1);
 		}
 		#endregion /* Tell the player when Online Token is invalidated END */
 		
+		/* If you are still in this network error screen, but there isn't any immediate errors, just make this into a loading screen */
+		if (global.switch_account_network_service_available)
+		&& (global.online_token_validated)
+		{
+			scr_draw_loading();
+		}
+		
 		if (caution_online_takes_you_to != "")
 		&& (global.switch_account_network_service_available) /* In case this variable gets enabled on this error screen, proceed automatically to the correct menu */
-		&& (!string_pos("error", global.online_token_validated) > 0) /* Make sure that id token isn't missing too before proceeding automatically */
+		&& (global.online_token_validated) /* Make sure that id token isn't missing too before proceeding automatically */
 		&& (scr_online_token_is_valid() == true)
 		{
 			menu = caution_online_takes_you_to;

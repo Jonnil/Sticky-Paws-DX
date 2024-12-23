@@ -6,7 +6,7 @@ function scr_set_font(selected_font_index = global.selected_font)
 	}
 	var font_files = ["game_font.ttf", "normal_font.ttc", "open_dyslexic_font.otf"];
 	var font_sizes = [34, 24, 24];
-	var fonts = array_create(array_length_1d(font_files), noone);
+	var fonts = array_create(array_length(font_files), noone);
 	
 	if (file_exists(font_files[selected_font_index]))
 	{

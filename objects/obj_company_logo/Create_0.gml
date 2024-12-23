@@ -132,7 +132,8 @@ global.api_key = "eMCnsR7k2dq_jGHijae6_3tazPYp!UUL";
 global.http_request_info = noone;
 global.http_request_id = noone;
 global.content_added_today = noone;
-global.online_token_validated = false;
+global.online_token_validated = false; /* Can only be a boolean value */
+global.online_token_error_message = ""; /* Can only be a string value */
 #endregion /* Server stuff END */
 
 #endregion /* Things you could change END */

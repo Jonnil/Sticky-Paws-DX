@@ -48,7 +48,7 @@ function scr_draw_links_menu()
 	var valid_link_count = 0; /* Initialize the count of valid links */
 	
 	/* Loop through the buttons array */
-	for (var i = 0; i < array_length_1d(buttons); i++)
+	for (var i = 0; i < array_length(buttons); i++)
 	{
 		var button_info = buttons[i];
 		var link_global = button_info.link;
@@ -110,7 +110,7 @@ function scr_draw_links_menu()
 		&& (key_down)
 		&& (menu_delay == 0 && menu_joystick_delay == 0)
 		{
-			if (i < array_length_1d(buttons) - 1)
+			if (i < array_length(buttons) - 1)
 			{
 				menu = buttons[i + 1].menu_string; /* Go to next button */
 			}
@@ -125,7 +125,7 @@ function scr_draw_links_menu()
 		&& (key_up)
 		&& (menu_delay == 0 && menu_joystick_delay == 0)
 		{
-			menu = buttons[array_length_1d(buttons) - 1].menu_string; /* Go to last button */
+			menu = buttons[array_length(buttons) - 1].menu_string; /* Go to last button */
 			menu_delay = 3;
 		}
 		valid_link_count++; /* Increment the count of valid links */

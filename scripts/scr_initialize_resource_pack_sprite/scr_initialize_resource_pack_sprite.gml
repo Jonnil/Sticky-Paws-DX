@@ -17,7 +17,7 @@ function scr_initialize_resource_pack_sprite(sprite_name, resource_sprite_variab
 	/* This loop goes through all possible combinations of sprite names and folders. */
 	/* sprite_names and sprite_folders are arrays that contain the names of the sprites and folders to search through. */
 	
-	for(var i = 0; i < array_length_1d(sprite_names); i++)
+	for(var i = 0; i < array_length(sprite_names); i++)
 	{
 		
 		/* If a sprite is already found, break out of the loop. */

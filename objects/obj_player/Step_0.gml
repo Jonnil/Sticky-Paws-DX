@@ -652,32 +652,68 @@ if (invincible_timer >= 1)
 }
 else
 {
+	
+	#region /* Handle Music Transitions */
+	/* Check the state of invincibility music */
 	if (invincible_timer <= 1)
 	{
-		audio_stop_sound(music_invincible);
-	}
-	if (!audio_is_playing(current_music_playing))
-	{
-		if (!audio_is_playing(snd_hurry_up))
+		if (audio_is_playing(music_invincible))
 		{
-			scr_audio_play(current_music_playing, volume_source.music);
-			if (audio_is_playing(global.loading_music))
+			/* Debug message to confirm stopping invincible music */
+			show_debug_message("Stopping invincible music.");
+			audio_stop_sound(music_invincible);
+		}
+	}
+	
+	/* Check and handle loading music */
+	if (audio_is_playing(global.loading_music))
+	{
+		/* Debug message to confirm that loading music is playing */
+		show_debug_message("Loading music is playing.");
+		
+		/* Check if there is a valid level music to play */
+		if (current_music_playing != noone)
+		{
+			/* Ensure level music starts before stopping loading music */
+			if (!audio_is_playing(current_music_playing))
 			{
-				audio_stop_sound(global.loading_music);
+				/* Debug message to confirm playing level music */
+				show_debug_message("Playing current level music: " + string(current_music_playing));
+				scr_audio_play(current_music_playing, volume_source.music);
+			}
+		}
+		
+		/* Stop the loading music regardless */
+		show_debug_message("Stopping loading music.");
+		audio_stop_sound(global.loading_music);
+	}
+	
+	/* Handle underwater music priority */
+	if (global.music_underwater != noone) /* Ensure underwater music is valid */
+	{
+		if (!audio_is_playing(global.music_underwater))
+		{
+			/* Debug message to confirm underwater music isn't playing */
+			show_debug_message("Underwater music is not playing.");
+			
+			/* Check if hurry-up music is also not playing */
+			if (!audio_is_playing(snd_hurry_up))
+			{
+				/* Debug message to confirm playing underwater music */
+				show_debug_message("Playing underwater music: " + string(global.music_underwater));
+				scr_audio_play(global.music_underwater, volume_source.music);
+				
+				/* Debug message to confirm stopping loading music, if applicable */
+				if (audio_is_playing(global.loading_music))
+				{
+					show_debug_message("Stopping loading music for underwater music.");
+					audio_stop_sound(global.loading_music);
+				}
 			}
 		}
 	}
-	if (!audio_is_playing(global.music_underwater))
-	{
-		if (!audio_is_playing(snd_hurry_up))
-		{
-			scr_audio_play(global.music_underwater, volume_source.music);
-			if (audio_is_playing(global.loading_music))
-			{
-				audio_stop_sound(global.loading_music);
-			}
-		}
-	}
+	#endregion /* Handle Music Transitions END */
+	
 }
 if (invincible_timer >= 50)
 {

@@ -472,6 +472,7 @@ if (os_type == os_switch) {
     debug_text_y = draw_highlighted_text(32, debug_text_y, "switch_account_open", string(global.switch_account_open), c_white, c_red, false);
     debug_text_y = draw_highlighted_text(32, debug_text_y, "switch_account_handle", string(global.switch_account_handle), c_white, c_red, false);
     debug_text_y = draw_highlighted_text(32, debug_text_y, "online_token_validated", string(global.online_token_validated), c_white, c_red, false);
+	debug_text_y = draw_highlighted_text(32, debug_text_y, "online_token_error_message", string(global.online_token_error_message), c_white, c_red, false);
     debug_text_y = draw_highlighted_text(32, debug_text_y, "switch_account_netid", string(global.switch_account_netid), c_white, c_red, false);
     debug_text_y = draw_highlighted_text(32, debug_text_y, "switch_account_is_user_online", string(global.switch_account_is_user_online), c_white, c_red, false);
     debug_text_y = draw_highlighted_text(32, debug_text_y, "switch_account_network_service_available", string(global.switch_account_network_service_available), c_white, c_red, !global.switch_account_network_service_available);

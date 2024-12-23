@@ -1,7 +1,10 @@
-/* THIS IS LOADING JSON FILE */
+#region /* THIS IS LOADING JSON FILE */
 function scr_load_object_placement_json()
 {
+	/* Initialize flag for determining which level type to load */
 	var load_main_game_level = true;
+	
+	/* Check if we are in the main game or creating a level from a template */
 	if (global.character_select_in_this_menu == "main_game" || global.create_level_from_template)
 	{
 		load_main_game_level = true;
@@ -9,12 +12,17 @@ function scr_load_object_placement_json()
 	else
 	{
 		load_main_game_level = false;
+		
+		/* Ensure directories exist for custom levels if level name is set */
 		if (global.level_name != "")
 		{
 			var directories = ["background", "data", "sound", "tilesets"];
-			for(var i = 0; i < array_length_1d(directories); i++)
+			var base_path = global.use_temp_or_working + "custom_levels/" + string(global.level_name) + "/";
+			
+			for (var i = 0; i < array_length(directories); i++)
 			{
-				var dir_path = global.use_temp_or_working + "custom_levels/" + string(global.level_name) + "/" + directories[i];
+				var dir_path = base_path + directories[i];
+				
 				if (!directory_exists(dir_path))
 				{
 					directory_create(dir_path);
@@ -23,7 +31,9 @@ function scr_load_object_placement_json()
 		}
 	}
 	
+	/* Determine file path based on the level type */
 	var file_path = "";
+	
 	if (load_main_game_level)
 	{
 		file_path = "levels/" + string(ds_list_find_value(global.all_loaded_main_levels, global.select_level_index)) + "/data/object_placement_all.json";
@@ -34,10 +44,16 @@ function scr_load_object_placement_json()
 		file_path = global.use_temp_or_working + "custom_levels/" + string(global.level_name) + "/data/object_placement_all.json";
 	}
 	
+	/* Load object placement data if the file exists */
 	if (file_exists(file_path))
 	{
-		var var_struct = {X : 0, Y : 0, O : 0, E : 1, N : 1, H : 1, Q : 0, W : 0, I : 0, L : 0};
+		/* Define object structure */
+		var var_struct = {
+			X: 0, Y: 0, O: 0, E: 1, N: 1, H: 1, Q: 0, W: 0, I: 0, L: 0
+		};
+		
 		/*
+			Object Structure Explanation:
 			X = x position
 			Y = y position
 			O = object
@@ -49,68 +65,91 @@ function scr_load_object_placement_json()
 			I = item inside
 			L = length repetition
 		*/
-		var placed_objects_list = ds_list_create(); /* Only create a DS list if the file exists */
-		var file = file_text_open_read(file_path)
+		
+		/* Create a DS list to hold placed objects */
+		var placed_objects_list = ds_list_create();
+		var file = file_text_open_read(file_path);
 		var json_string = file_text_read_string(file);
 		file_text_close(file); /* Don't commit the save data on Switch, this is only temporary! */
 		
 		var data = json_parse(json_string);
 		
-		for(var i = 0; i < array_length(data); i++)
+		/* Iterate over JSON data to create objects */
+		for (var i = 0; i < array_length(data); i++)
 		{
 			var_struct = data[i];
 			ds_list_add(placed_objects_list, var_struct.O);
 			
-			if variable_struct_exists(var_struct, "L")
+			/* Handle object repetition */
+			if (variable_struct_exists(var_struct, "L"))
 			{
-				for(var j = 0; j <= var_struct.L; j += 1)
+				for (var j = 0; j <= var_struct.L; j++)
 				{
-					new_obj = instance_create_depth(real(var_struct.X) + real(32 * j), real(var_struct.Y), 0, obj_leveleditor_placed_object);
+					var new_obj = instance_create_depth(
+						real(var_struct.X) + (32 * j),
+						real(var_struct.Y),
+						0,
+						obj_leveleditor_placed_object
+					);
+					
 					if (new_obj)
 					{
 						new_obj.object = var_struct.O;
-						
-						if variable_struct_exists(var_struct, "E") new_obj.easy = var_struct.E else new_obj.easy = 1;
-						if variable_struct_exists(var_struct, "N") new_obj.normal = var_struct.N else new_obj.normal = 1;
-						if variable_struct_exists(var_struct, "H") new_obj.hard = var_struct.H else new_obj.hard = 1;
-						if variable_struct_exists(var_struct, "Q") new_obj.second_x = var_struct.Q else new_obj.second_x = 0;
-						if variable_struct_exists(var_struct, "W") new_obj.second_y = var_struct.W else new_obj.second_y = 0;
-						if variable_struct_exists(var_struct, "I") new_obj.item_inside = var_struct.I else new_obj.item_inside = 0;
+						new_obj.easy = variable_struct_exists(var_struct, "E") ? var_struct.E : 1;
+						new_obj.normal = variable_struct_exists(var_struct, "N") ? var_struct.N : 1;
+						new_obj.hard = variable_struct_exists(var_struct, "H") ? var_struct.H : 1;
+						new_obj.second_x = variable_struct_exists(var_struct, "Q") ? var_struct.Q : 0;
+						new_obj.second_y = variable_struct_exists(var_struct, "W") ? var_struct.W : 0;
+						new_obj.item_inside = variable_struct_exists(var_struct, "I") ? var_struct.I : 0;
 					}
 				}
 			}
 			else
 			{
-				new_obj = instance_create_depth(real(var_struct.X), real(var_struct.Y), 0, obj_leveleditor_placed_object);
+				var new_obj = instance_create_depth(
+					real(var_struct.X),
+					real(var_struct.Y),
+					0,
+					obj_leveleditor_placed_object
+				);
+				
 				if (new_obj)
 				{
 					new_obj.object = var_struct.O;
-					
-					if variable_struct_exists(var_struct, "E") new_obj.easy = var_struct.E else new_obj.easy = 1;
-					if variable_struct_exists(var_struct, "N") new_obj.normal = var_struct.N else new_obj.normal = 1;
-					if variable_struct_exists(var_struct, "H") new_obj.hard = var_struct.H else new_obj.hard = 1;
-					if variable_struct_exists(var_struct, "Q") new_obj.second_x = var_struct.Q else new_obj.second_x = 0;
-					if variable_struct_exists(var_struct, "W") new_obj.second_y = var_struct.W else new_obj.second_y = 0;
-					if variable_struct_exists(var_struct, "I") new_obj.item_inside = var_struct.I else new_obj.item_inside = 0;
+					new_obj.easy = variable_struct_exists(var_struct, "E") ? var_struct.E : 1;
+					new_obj.normal = variable_struct_exists(var_struct, "N") ? var_struct.N : 1;
+					new_obj.hard = variable_struct_exists(var_struct, "H") ? var_struct.H : 1;
+					new_obj.second_x = variable_struct_exists(var_struct, "Q") ? var_struct.Q : 0;
+					new_obj.second_y = variable_struct_exists(var_struct, "W") ? var_struct.W : 0;
+					new_obj.item_inside = variable_struct_exists(var_struct, "I") ? var_struct.I : 0;
 				}
 			}
-			/* Reset the var struct variables after creating the object */
-			var_struct.E = 1;var_struct.N = 1;var_struct.H = 1;var_struct.Q = 0;var_struct.W = 0;var_struct.I = 0;var_struct.L = 0;
+			
+			/* Reset the var struct variables after processing each object */
+			var_struct.E = 1;
+			var_struct.N = 1;
+			var_struct.H = 1;
+			var_struct.Q = 0;
+			var_struct.W = 0;
+			var_struct.I = 0;
+			var_struct.L = 0;
 		}
 		
-		#region /* Save unlockable objects, only if the file exists */
-		/* Open the INI file */
-		if (file_exists(game_save_id + "save_file/file" + string(global.file) + ".ini")) /* Check if the file even exists before opening, otherwise game doesn't function properly */
+		/* Save unlockable objects if the file exists */
+		#region /* Save unlockable objects */
+		var save_path = game_save_id + "save_file/file" + string(global.file) + ".ini";
+		if (file_exists(save_path))
 		{
-			ini_open(game_save_id + "save_file/file" + string(global.file) + ".ini");
+			/* Open the INI file */
+			ini_open(save_path);
 			
 			/* Iterate over the ds_list and write each element to the INI file */
-			for(var i = 0; i < ds_list_size(placed_objects_list); i++)
+			for (var i = 0; i < ds_list_size(placed_objects_list); i++)
 			{
 				var value = ds_list_find_value(placed_objects_list, i);
+				/* Only write to the INI file if it exists and the object is not already unlocked */
 				if (!ini_key_exists("Unlock Placable Objects", value))
 				{
-					/* Only write to the INI file if it exists and the object is not already unlocked */
 					ini_write_real("Unlock Placable Objects", value, true);
 				}
 			}
@@ -119,12 +158,13 @@ function scr_load_object_placement_json()
 			ini_close(); /* Don't commit the save data on Switch, this is only temporary! */
 		}
 		ds_list_destroy(placed_objects_list);
-		#endregion /* Save unlockable objects, only if the file exists END */
+		#endregion /* Save unlockable objects END */
 		
 	}
 }
+#endregion /* THIS IS LOADING JSON FILE END */
 
-/* THIS IS SAVING .JSON FILE */
+#region /* THIS IS SAVING .JSON FILE */
 function scr_save_custom_level_json()
 {
 	global.create_level_from_template = false; /* Set this variable to false, so that the level can properly save and load after you have loaded a template level */
@@ -246,7 +286,7 @@ function scr_save_custom_level_json()
 					obj_data.L = string(repeat_length);
 				}
 				
-		        data[array_length_1d(data)] = obj_data;
+		        data[array_length(data)] = obj_data;
 			}
 		}
 		#endregion /* Write all objects to file END */
@@ -262,8 +302,9 @@ function scr_save_custom_level_json()
 	#endregion /* Save Custom Level END */
 	
 }
+#endregion /* THIS IS SAVING .JSON FILE END */
 
-/* THIS IS SAVING ADDITIONAL LEVEL INFORMATION IN A .INI FILE */
+#region /* THIS IS SAVING ADDITIONAL LEVEL INFORMATION IN A .INI FILE */
 function scr_save_level_information()
 {
 	
@@ -323,7 +364,7 @@ function scr_save_level_information()
 			[obj_level_player3_start, "level_player3_start"],
 			[obj_level_player4_start, "level_player4_start"]
 		];
-		for(var i = 0; i < array_length_1d(player_starts); i++)
+		for(var i = 0; i < array_length(player_starts); i++)
 		{
 			var player_start = player_starts[i];
 			ini_write_real("info", player_start[1] + "_x", player_start[0].x);
@@ -490,3 +531,4 @@ function scr_save_level_information()
 	#endregion /* Save Level Information END */
 	
 }
+#endregion /* THIS IS SAVING ADDITIONAL LEVEL INFORMATION IN A .INI FILE END */

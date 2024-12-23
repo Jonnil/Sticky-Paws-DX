@@ -122,6 +122,7 @@ if (image_index > image_number - 2)
 	&& (!gamepad_is_connected(global.player_slot[4]))
 	{
 		if (global.resource_pack_sprite_splash_controller >= 0) /* Check if the controller splash sprite exists before trying to change sprite to it */
+		&& (global.enable_option_for_pc) /* The game telling you that you can use a gamepad should only show up on PC version */
 		{
 			time = 0;
 			sprite_index = global.resource_pack_sprite_splash_controller;

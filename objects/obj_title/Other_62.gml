@@ -164,7 +164,8 @@ if (async_load[? "id"] == global.online_token_validated)
 	}
 	else
 	{
-		global.online_token_validated = response_str; /* Return the error code */
+		global.online_token_validated = false; /* Set it to false, can only be a boolean value */
+		global.online_token_error_message = response_str; /* Return the error code in string value only */
 		show_debug_message("status code failed   global.online_token_validated: " + string(global.online_token_validated));
 	}
 }
