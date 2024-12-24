@@ -196,6 +196,11 @@ function scr_character_portrait_for_player_step(what_player = 1)
 						menu_specific_joystick_delay[what_player] = 30;
 						xx[what_player] = player_display_x[what_player] -32;
 						scr_change_character_portrait();
+						
+						/* Lastly, save the voicepack in config */
+						ini_open(game_save_id + "save_file/config.ini");
+						ini_write_real("config", "voicepack_for_player" + string(what_player), global.voicepack_for_player[what_player]);
+						ini_close(); /* Don't commit the save data on Switch, this is only temporary! */
 					}
 				}
 				#endregion /* Player key left Voice Pack END */
@@ -220,6 +225,11 @@ function scr_character_portrait_for_player_step(what_player = 1)
 							menu_specific_joystick_delay[what_player] = 30;
 							xx[what_player] = player_display_x[what_player] +32;
 							scr_change_character_portrait();
+							
+							/* Lastly, save the voicepack in config */
+							ini_open(game_save_id + "save_file/config.ini");
+							ini_write_real("config", "voicepack_for_player" + string(what_player), global.voicepack_for_player[what_player]);
+							ini_close(); /* Don't commit the save data on Switch, this is only temporary! */
 						}
 					}
 				}

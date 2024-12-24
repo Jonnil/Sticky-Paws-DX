@@ -33,68 +33,19 @@ if (gamepad_button_check_pressed(global.player_slot[1], gp_face1))
 	&& (!show_skip_button)
 	{
 		set_controller_sprites_to_use();
-		
-		if (gamepad_button_check_pressed(global.player_slot[1], gp_face1))
-		|| (gamepad_button_check_pressed(global.player_slot[2], gp_face1))
-		|| (gamepad_button_check_pressed(global.player_slot[3], gp_face1))
-		|| (gamepad_button_check_pressed(global.player_slot[4], gp_face1))
-		{
-			skip_button = gp_face1;
-		}
-		else
-		if (gamepad_button_check_pressed(global.player_slot[1], gp_face2))
-		|| (gamepad_button_check_pressed(global.player_slot[2], gp_face2))
-		|| (gamepad_button_check_pressed(global.player_slot[3], gp_face2))
-		|| (gamepad_button_check_pressed(global.player_slot[4], gp_face2))
-		{
-			skip_button = gp_face2;
-		}
-		if (gamepad_button_check_pressed(global.player_slot[1], gp_start))
-		|| (gamepad_button_check_pressed(global.player_slot[2], gp_start))
-		|| (gamepad_button_check_pressed(global.player_slot[3], gp_start))
-		|| (gamepad_button_check_pressed(global.player_slot[4], gp_start))
-		{
-			skip_button = gp_start;
-		}
-		else
-		if (gamepad_button_check_pressed(global.player_slot[1], gp_select))
-		|| (gamepad_button_check_pressed(global.player_slot[2], gp_select))
-		|| (gamepad_button_check_pressed(global.player_slot[3], gp_select))
-		|| (gamepad_button_check_pressed(global.player_slot[4], gp_select))
-		{
-			skip_button = gp_select;
-		}
-		
-		if (keyboard_check_pressed(vk_enter))
-		{
-			skip_key = vk_enter;
-		}
-		else
-		if (keyboard_check_pressed(vk_escape))
-		{
-			skip_key = vk_escape;
-		}
-		else
-		if (keyboard_check_pressed(vk_space))
-		{
-			skip_key = vk_space;
-		}
-		else
-		if (keyboard_check_pressed(ord("X")))
-		{
-			skip_key = ord("X");
-		}
-		else
-		if (keyboard_check_pressed(ord("Z")))
-		{
-			skip_key = ord("Z");
-		}
 		show_skip_button = true;
 	}
 	else
 	if (can_navigate) /* Can only go to the title screen when everything is loaded */
 	{
-		goto_title_screen = true;
+		if (gamepad_button_check_pressed(global.player_slot[1], skip_button))
+		|| (gamepad_button_check_pressed(global.player_slot[2], skip_button))
+		|| (gamepad_button_check_pressed(global.player_slot[3], skip_button))
+		|| (gamepad_button_check_pressed(global.player_slot[4], skip_button))
+		|| (keyboard_check_pressed(skip_key))
+		{
+			goto_title_screen = true;
+		}
 	}
 }
 #endregion /* Skip company logo screen when pressing skip button END */
@@ -213,34 +164,34 @@ if (!can_navigate)
 				{
 					
 					#region /* Company Splash 1 */
-					if (file_exists("characters/" + string(ds_list_find_value(global.all_loaded_characters, global.narrator)) + "/sound/voicepack0/company_splash.ogg"))
+					if (file_exists("characters/" + string(ds_list_find_value(global.all_loaded_characters, global.narrator)) + "/sound/voicepack" + string(global.voicepack_for_player[1]) + "/company_splash.ogg"))
 					{
-						company_splash_1 = audio_create_stream("characters/" + string(ds_list_find_value(global.all_loaded_characters, global.narrator)) + "/sound/voicepack0/company_splash.ogg");
+						company_splash_1 = audio_create_stream("characters/" + string(ds_list_find_value(global.all_loaded_characters, global.narrator)) + "/sound/voicepack" + string(global.voicepack_for_player[1]) + "/company_splash.ogg");
 					}
 					else
-					if (file_exists("characters/" + string(ds_list_find_value(global.all_loaded_characters, global.narrator)) + "/sound/voicepack0/company_splash_1.ogg"))
+					if (file_exists("characters/" + string(ds_list_find_value(global.all_loaded_characters, global.narrator)) + "/sound/voicepack" + string(global.voicepack_for_player[1]) + "/company_splash_1.ogg"))
 					{
-						company_splash_1 = audio_create_stream("characters/" + string(ds_list_find_value(global.all_loaded_characters, global.narrator)) + "/sound/voicepack0/company_splash_1.ogg");
+						company_splash_1 = audio_create_stream("characters/" + string(ds_list_find_value(global.all_loaded_characters, global.narrator)) + "/sound/voicepack" + string(global.voicepack_for_player[1]) + "/company_splash_1.ogg");
 					}
 					else
-					if (file_exists("characters/" + string(ds_list_find_value(global.all_loaded_characters, global.narrator)) + "/sound/voicepack0/company_splash1.ogg"))
+					if (file_exists("characters/" + string(ds_list_find_value(global.all_loaded_characters, global.narrator)) + "/sound/voicepack" + string(global.voicepack_for_player[1]) + "/company_splash1.ogg"))
 					{
-						company_splash_1 = audio_create_stream("characters/" + string(ds_list_find_value(global.all_loaded_characters, global.narrator)) + "/sound/voicepack0/company_splash1.ogg");
+						company_splash_1 = audio_create_stream("characters/" + string(ds_list_find_value(global.all_loaded_characters, global.narrator)) + "/sound/voicepack" + string(global.voicepack_for_player[1]) + "/company_splash1.ogg");
 					}
 					else
-					if (file_exists(game_save_id + "custom_characters/" + string(ds_list_find_value(global.all_loaded_characters, global.narrator)) + "/sound/voicepack0/company_splash.ogg"))
+					if (file_exists(game_save_id + "custom_characters/" + string(ds_list_find_value(global.all_loaded_characters, global.narrator)) + "/sound/voicepack" + string(global.voicepack_for_player[1]) + "/company_splash.ogg"))
 					{
-						company_splash_1 = audio_create_stream(game_save_id + "custom_characters/" + string(ds_list_find_value(global.all_loaded_characters, global.narrator)) + "/sound/voicepack0/company_splash.ogg");
+						company_splash_1 = audio_create_stream(game_save_id + "custom_characters/" + string(ds_list_find_value(global.all_loaded_characters, global.narrator)) + "/sound/voicepack" + string(global.voicepack_for_player[1]) + "/company_splash.ogg");
 					}
 					else
-					if (file_exists(game_save_id + "custom_characters/" + string(ds_list_find_value(global.all_loaded_characters, global.narrator)) + "/sound/voicepack0/company_splash_1.ogg"))
+					if (file_exists(game_save_id + "custom_characters/" + string(ds_list_find_value(global.all_loaded_characters, global.narrator)) + "/sound/voicepack" + string(global.voicepack_for_player[1]) + "/company_splash_1.ogg"))
 					{
-						company_splash_1 = audio_create_stream(game_save_id + "custom_characters/" + string(ds_list_find_value(global.all_loaded_characters, global.narrator)) + "/sound/voicepack0/company_splash_1.ogg");
+						company_splash_1 = audio_create_stream(game_save_id + "custom_characters/" + string(ds_list_find_value(global.all_loaded_characters, global.narrator)) + "/sound/voicepack" + string(global.voicepack_for_player[1]) + "/company_splash_1.ogg");
 					}
 					else
-					if (file_exists(game_save_id + "custom_characters/" + string(ds_list_find_value(global.all_loaded_characters, global.narrator)) + "/sound/voicepack0/company_splash1.ogg"))
+					if (file_exists(game_save_id + "custom_characters/" + string(ds_list_find_value(global.all_loaded_characters, global.narrator)) + "/sound/voicepack" + string(global.voicepack_for_player[1]) + "/company_splash1.ogg"))
 					{
-						company_splash_1 = audio_create_stream(game_save_id + "custom_characters/" + string(ds_list_find_value(global.all_loaded_characters, global.narrator)) + "/sound/voicepack0/company_splash1.ogg");
+						company_splash_1 = audio_create_stream(game_save_id + "custom_characters/" + string(ds_list_find_value(global.all_loaded_characters, global.narrator)) + "/sound/voicepack" + string(global.voicepack_for_player[1]) + "/company_splash1.ogg");
 					}
 					else
 					{
@@ -249,24 +200,24 @@ if (!can_navigate)
 					#endregion /* Company Splash 1 END */
 					
 					#region /* Company Splash 2 */
-					if (file_exists("characters/" + string(ds_list_find_value(global.all_loaded_characters, global.narrator)) + "/sound/voicepack0/company_splash_2.ogg"))
+					if (file_exists("characters/" + string(ds_list_find_value(global.all_loaded_characters, global.narrator)) + "/sound/voicepack" + string(global.voicepack_for_player[1]) + "/company_splash_2.ogg"))
 					{
-						company_splash_2 = audio_create_stream("characters/" + string(ds_list_find_value(global.all_loaded_characters, global.narrator)) + "/sound/voicepack0/company_splash_2.ogg");
+						company_splash_2 = audio_create_stream("characters/" + string(ds_list_find_value(global.all_loaded_characters, global.narrator)) + "/sound/voicepack" + string(global.voicepack_for_player[1]) + "/company_splash_2.ogg");
 					}
 					else
-					if (file_exists("characters/" + string(ds_list_find_value(global.all_loaded_characters, global.narrator)) + "/sound/voicepack0/company_splash2.ogg"))
+					if (file_exists("characters/" + string(ds_list_find_value(global.all_loaded_characters, global.narrator)) + "/sound/voicepack" + string(global.voicepack_for_player[1]) + "/company_splash2.ogg"))
 					{
-						company_splash_2 = audio_create_stream("characters/" + string(ds_list_find_value(global.all_loaded_characters, global.narrator)) + "/sound/voicepack0/company_splash2.ogg");
+						company_splash_2 = audio_create_stream("characters/" + string(ds_list_find_value(global.all_loaded_characters, global.narrator)) + "/sound/voicepack" + string(global.voicepack_for_player[1]) + "/company_splash2.ogg");
 					}
 					else
-					if (file_exists(game_save_id + "custom_characters/" + string(ds_list_find_value(global.all_loaded_characters, global.narrator)) + "/sound/voicepack0/company_splash_2.ogg"))
+					if (file_exists(game_save_id + "custom_characters/" + string(ds_list_find_value(global.all_loaded_characters, global.narrator)) + "/sound/voicepack" + string(global.voicepack_for_player[1]) + "/company_splash_2.ogg"))
 					{
-						company_splash_2 = audio_create_stream(game_save_id + "custom_characters/" + string(ds_list_find_value(global.all_loaded_characters, global.narrator)) + "/sound/voicepack0/company_splash_2.ogg");
+						company_splash_2 = audio_create_stream(game_save_id + "custom_characters/" + string(ds_list_find_value(global.all_loaded_characters, global.narrator)) + "/sound/voicepack" + string(global.voicepack_for_player[1]) + "/company_splash_2.ogg");
 					}
 					else
-					if (file_exists(game_save_id + "custom_characters/" + string(ds_list_find_value(global.all_loaded_characters, global.narrator)) + "/sound/voicepack0/company_splash2.ogg"))
+					if (file_exists(game_save_id + "custom_characters/" + string(ds_list_find_value(global.all_loaded_characters, global.narrator)) + "/sound/voicepack" + string(global.voicepack_for_player[1]) + "/company_splash2.ogg"))
 					{
-						company_splash_2 = audio_create_stream(game_save_id + "custom_characters/" + string(ds_list_find_value(global.all_loaded_characters, global.narrator)) + "/sound/voicepack0/company_splash2.ogg");
+						company_splash_2 = audio_create_stream(game_save_id + "custom_characters/" + string(ds_list_find_value(global.all_loaded_characters, global.narrator)) + "/sound/voicepack" + string(global.voicepack_for_player[1]) + "/company_splash2.ogg");
 					}
 					else
 					{
@@ -275,24 +226,24 @@ if (!can_navigate)
 					#endregion /* Company Splash 2 END */
 					
 					#region /* Company Splash 3 */
-					if (file_exists("characters/" + string(ds_list_find_value(global.all_loaded_characters, global.narrator)) + "/sound/voicepack0/company_splash_3.ogg"))
+					if (file_exists("characters/" + string(ds_list_find_value(global.all_loaded_characters, global.narrator)) + "/sound/voicepack" + string(global.voicepack_for_player[1]) + "/company_splash_3.ogg"))
 					{
-						company_splash_3 = audio_create_stream("characters/" + string(ds_list_find_value(global.all_loaded_characters, global.narrator)) + "/sound/voicepack0/company_splash_3.ogg");
+						company_splash_3 = audio_create_stream("characters/" + string(ds_list_find_value(global.all_loaded_characters, global.narrator)) + "/sound/voicepack" + string(global.voicepack_for_player[1]) + "/company_splash_3.ogg");
 					}
 					else
-					if (file_exists("characters/" + string(ds_list_find_value(global.all_loaded_characters, global.narrator)) + "/sound/voicepack0/company_splash3.ogg"))
+					if (file_exists("characters/" + string(ds_list_find_value(global.all_loaded_characters, global.narrator)) + "/sound/voicepack" + string(global.voicepack_for_player[1]) + "/company_splash3.ogg"))
 					{
-						company_splash_3 = audio_create_stream("characters/" + string(ds_list_find_value(global.all_loaded_characters, global.narrator)) + "/sound/voicepack0/company_splash3.ogg");
+						company_splash_3 = audio_create_stream("characters/" + string(ds_list_find_value(global.all_loaded_characters, global.narrator)) + "/sound/voicepack" + string(global.voicepack_for_player[1]) + "/company_splash3.ogg");
 					}
 					else
-					if (file_exists(game_save_id + "custom_characters/" + string(ds_list_find_value(global.all_loaded_characters, global.narrator)) + "/sound/voicepack0/company_splash_3.ogg"))
+					if (file_exists(game_save_id + "custom_characters/" + string(ds_list_find_value(global.all_loaded_characters, global.narrator)) + "/sound/voicepack" + string(global.voicepack_for_player[1]) + "/company_splash_3.ogg"))
 					{
-						company_splash_3 = audio_create_stream(game_save_id + "custom_characters/" + string(ds_list_find_value(global.all_loaded_characters, global.narrator)) + "/sound/voicepack0/company_splash_3.ogg");
+						company_splash_3 = audio_create_stream(game_save_id + "custom_characters/" + string(ds_list_find_value(global.all_loaded_characters, global.narrator)) + "/sound/voicepack" + string(global.voicepack_for_player[1]) + "/company_splash_3.ogg");
 					}
 					else
-					if (file_exists(game_save_id + "custom_characters/" + string(ds_list_find_value(global.all_loaded_characters, global.narrator)) + "/sound/voicepack0/company_splash3.ogg"))
+					if (file_exists(game_save_id + "custom_characters/" + string(ds_list_find_value(global.all_loaded_characters, global.narrator)) + "/sound/voicepack" + string(global.voicepack_for_player[1]) + "/company_splash3.ogg"))
 					{
-						company_splash_3 = audio_create_stream(game_save_id + "custom_characters/" + string(ds_list_find_value(global.all_loaded_characters, global.narrator)) + "/sound/voicepack0/company_splash3.ogg");
+						company_splash_3 = audio_create_stream(game_save_id + "custom_characters/" + string(ds_list_find_value(global.all_loaded_characters, global.narrator)) + "/sound/voicepack" + string(global.voicepack_for_player[1]) + "/company_splash3.ogg");
 					}
 					else
 					{
@@ -321,14 +272,14 @@ if (!can_navigate)
 						company_splash = choose(company_splash_1, company_splash_2, company_splash_3);
 					}
 					
-					if (file_exists("characters/" + string(ds_list_find_value(global.all_loaded_characters, global.narrator)) + "/sound/voicepack0/controller_splash.ogg"))
+					if (file_exists("characters/" + string(ds_list_find_value(global.all_loaded_characters, global.narrator)) + "/sound/voicepack" + string(global.voicepack_for_player[1]) + "/controller_splash.ogg"))
 					{
-						controller_splash = audio_create_stream("characters/" + string(ds_list_find_value(global.all_loaded_characters, global.narrator)) + "/sound/voicepack0/controller_splash.ogg");
+						controller_splash = audio_create_stream("characters/" + string(ds_list_find_value(global.all_loaded_characters, global.narrator)) + "/sound/voicepack" + string(global.voicepack_for_player[1]) + "/controller_splash.ogg");
 					}
 					else
-					if (file_exists(game_save_id + "custom_characters/" + string(ds_list_find_value(global.all_loaded_characters, global.narrator)) + "/sound/voicepack0/controller_splash.ogg"))
+					if (file_exists(game_save_id + "custom_characters/" + string(ds_list_find_value(global.all_loaded_characters, global.narrator)) + "/sound/voicepack" + string(global.voicepack_for_player[1]) + "/controller_splash.ogg"))
 					{
-						controller_splash = audio_create_stream(game_save_id + "custom_characters/" + string(ds_list_find_value(global.all_loaded_characters, global.narrator)) + "/sound/voicepack0/controller_splash.ogg");
+						controller_splash = audio_create_stream(game_save_id + "custom_characters/" + string(ds_list_find_value(global.all_loaded_characters, global.narrator)) + "/sound/voicepack" + string(global.voicepack_for_player[1]) + "/controller_splash.ogg");
 					}
 					else
 					{

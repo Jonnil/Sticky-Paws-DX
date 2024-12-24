@@ -686,23 +686,6 @@ if (!global.actually_play_edited_level)
 	
 	global.player_has_entered_goal = false; /* Set this variable after checking for level length warning */
 	
-	valid_languages = noone;
-	for(var i = 1; i < ds_grid_width(global.language_local_data); i ++;)
-	{
-		if (global.language_local_data[# i, 1] != "No") /* If the language should show up in-game or not */
-		{
-			if (os_type == os_switch && global.language_completion[i] >= 100)
-			{
-				valid_languages[i] = i;
-			}
-			else
-			if (os_type != os_switch)
-			{
-				valid_languages[i] = i;
-			}
-		}
-	}
-	
 	scroll_view = false; /* If you can scroll the view or not */
 	create_level_from_template_save_delay = 0; /* Save the level before starting to edit the template level */
 	

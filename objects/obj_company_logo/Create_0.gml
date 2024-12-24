@@ -686,8 +686,6 @@ enum volume_source
 	voice = 6
 }
 
-alarm[0] = 3;
-
 scr_set_font();
 
 #endregion /* Things you shouldn't change, warning, don't change any of these options or you might break the game! END */
@@ -696,3 +694,5 @@ scr_set_font();
 network_set_config(network_config_use_non_blocking_socket, 1);
 
 scr_switch_update_online_status();
+
+scr_config_load(); /* Load Config */

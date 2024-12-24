@@ -181,23 +181,6 @@ level_editor_template_select = false;
 language_index = global.language_localization + 1;
 language_mouse_scroll = 0;
 
-valid_languages = noone;
-for(var i = 1; i < ds_grid_width(global.language_local_data); i ++;)
-{
-	if (global.language_local_data[# i, 1] != "No") /* If the language should show up in-game or not */
-	{
-		if (os_type == os_switch && global.language_completion[i] >= 100)
-		{
-			valid_languages[i] = i;
-		}
-		else
-		if (os_type != os_switch)
-		{
-			valid_languages[i] = i;
-		}
-	}
-}
-
 narrator_name = string(ds_list_find_value(global.all_loaded_characters, global.narrator)); /* Character Name */
 
 #region /* Create directories */
@@ -554,27 +537,27 @@ else
 #region /* Character as Narrator */
 if (global.narrator >= 0)
 {
-	if (file_exists("characters/" + string(ds_list_find_value(global.all_loaded_characters, global.narrator)) + "/sound/voicepack0/game_title.ogg"))
+	if (file_exists("characters/" + string(ds_list_find_value(global.all_loaded_characters, global.narrator)) + "/sound/voicepack" + string(global.voicepack_for_player[1]) + "/game_title.ogg"))
 	{
-		voice_game_title = audio_create_stream("characters/" + string(ds_list_find_value(global.all_loaded_characters, global.narrator)) + "/sound/voicepack0/game_title.ogg");
+		voice_game_title = audio_create_stream("characters/" + string(ds_list_find_value(global.all_loaded_characters, global.narrator)) + "/sound/voicepack" + string(global.voicepack_for_player[1]) + "/game_title.ogg");
 	}
 	else
-	if (file_exists(game_save_id + "custom_characters/" + string(ds_list_find_value(global.all_loaded_characters, global.narrator)) + "/sound/voicepack0/game_title.ogg"))
+	if (file_exists(game_save_id + "custom_characters/" + string(ds_list_find_value(global.all_loaded_characters, global.narrator)) + "/sound/voicepack" + string(global.voicepack_for_player[1]) + "/game_title.ogg"))
 	{
-		voice_game_title = audio_create_stream(game_save_id + "custom_characters/" + string(ds_list_find_value(global.all_loaded_characters, global.narrator)) + "/sound/voicepack0/game_title.ogg");
+		voice_game_title = audio_create_stream(game_save_id + "custom_characters/" + string(ds_list_find_value(global.all_loaded_characters, global.narrator)) + "/sound/voicepack" + string(global.voicepack_for_player[1]) + "/game_title.ogg");
 	}
 	else
 	{
 		voice_game_title = noone;
 	}
-	if (file_exists("characters/" + string(ds_list_find_value(global.all_loaded_characters, global.narrator)) + "/sound/voicepack0/options.ogg"))
+	if (file_exists("characters/" + string(ds_list_find_value(global.all_loaded_characters, global.narrator)) + "/sound/voicepack" + string(global.voicepack_for_player[1]) + "/options.ogg"))
 	{
-		voice_options = audio_create_stream("characters/" + string(ds_list_find_value(global.all_loaded_characters, global.narrator)) + "/sound/voicepack0/options.ogg");
+		voice_options = audio_create_stream("characters/" + string(ds_list_find_value(global.all_loaded_characters, global.narrator)) + "/sound/voicepack" + string(global.voicepack_for_player[1]) + "/options.ogg");
 	}
 	else
-	if (file_exists(game_save_id + "custom_characters/" + string(ds_list_find_value(global.all_loaded_characters, global.narrator)) + "/sound/voicepack0/options.ogg"))
+	if (file_exists(game_save_id + "custom_characters/" + string(ds_list_find_value(global.all_loaded_characters, global.narrator)) + "/sound/voicepack" + string(global.voicepack_for_player[1]) + "/options.ogg"))
 	{
-		voice_options = audio_create_stream(game_save_id + "custom_characters/" + string(ds_list_find_value(global.all_loaded_characters, global.narrator)) + "/sound/voicepack0/options.ogg");
+		voice_options = audio_create_stream(game_save_id + "custom_characters/" + string(ds_list_find_value(global.all_loaded_characters, global.narrator)) + "/sound/voicepack" + string(global.voicepack_for_player[1]) + "/options.ogg");
 	}
 	else
 	{

@@ -22,11 +22,6 @@ function calculate_translation_completion()
 		/* ((Total rows - Empty rows) / Total rows) * 100 to get the percentage of completed entries */
 		global.language_completion[language_id] = 
 			(ds_grid_height(global.language_local_data) - empty_count) / ds_grid_height(global.language_local_data) * 100;
-		
-		/* Display a debug message showing the language name (from the first row of the column) */
-		/* and the calculated completion percentage */
-		show_debug_message(string(global.language_local_data[# language_id, 0]) + 
-			" global.language_completion[" + string(language_id) + "] = " + 
-			string(global.language_completion[language_id]));
 	}
+	scr_get_valid_languages();
 }

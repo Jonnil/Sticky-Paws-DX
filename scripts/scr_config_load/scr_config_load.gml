@@ -117,6 +117,7 @@ function scr_config_load()
 			if (ini_key_exists("config", "vibration_strength" + string(i))){global.vibration_strength[i] = ini_read_real("config", "vibration_strength" + string(i), 0);}
 			if (ini_key_exists("config", "character_index_player" + string(i))){global.character_index[i - 1] = ini_read_real("config", "character_index_player" + string(i), 0);}
 			if (ini_key_exists("config", "skin_for_player" + string(i))){global.actual_skin_for_player[i] = ini_read_real("config", "skin_for_player" + string(i), 0);}
+			if (ini_key_exists("config", "voicepack_for_player" + string(i))){global.voicepack_for_player[i] = ini_read_real("config", "voicepack_for_player" + string(i), 0);}
 			if (ini_key_exists("config", "player" + string(i) + "_name")){global.player_name[i] = ini_read_string("config", "player" + string(i) + "_name", 0);}
 			if (ini_key_exists("player" + string(i) + "_profile" + string(global.player_profile[i] + 1), "player" + string(i) + "_key_dive")){global.player_[inp.key][i][1][action.dive] = ini_read_real("player" + string(i) + "_profile" + string(global.player_profile[i] + 1), "player" + string(i) + "_key_dive", 0);}
 			if (ini_key_exists("player" + string(i) + "_profile" + string(global.player_profile[i] + 1), "player" + string(i) + "_key_jump")){global.player_[inp.key][i][1][action.jump] = ini_read_real("player" + string(i) + "_profile" + string(global.player_profile[i] + 1), "player" + string(i) + "_key_jump", 0);}
