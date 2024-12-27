@@ -302,6 +302,7 @@ global.automatically_pause_when_window_is_unfocused = true; /* Whenever you unfo
 global.automatically_play_downloaded_level = false; /* If the player wants to immediately play the downloaded level, then set this variable to true */
 global.use_temp_or_working = game_save_id; /* When downloading levels from online and temporarily playing the level, you have to use the "temp directory", but normally you need to use the "game save id" or "working directory". On Switch if you don't enable "Cache storage data save area size" in AuthoringEditor, you can't use "cache directory" without crashing the game */
 global.character_select_in_this_menu = "main_game"; /* In what menu character select is going to appear in */
+global.online_level_list_back = ""; /* What menu to go back to when clicking back in online level list */
 global.controls_used_for_navigation = "keyboard"; /* keyboard, mouse, or controller */
 global.create_level_from_template = false; /* If you're currently creating a level from template or not */
 global.custom_background1 = noone;
@@ -314,7 +315,7 @@ global.custom_foreground1_5 = noone;
 global.custom_foreground_secret = noone;
 global.custom_tileset = noone;
 global.selected_font = 0;
-global.selected_online_download_index = 1; /* Game should remember what file you have selected in Online List for later use */
+global.selected_online_download_index = 0; /* Game should remember what file you have selected in Online List for later use */
 global.difficulty = 1; /* Difficulty levels: 0 = easy, 1 = normal (default), 2 = hard */
 global.grid_hsnap = 32; /* Horizontal grid snapping */
 global.grid_vsnap = 32; /* Vertical grid snapping */
@@ -373,6 +374,7 @@ global.show_defeats_counter = true; /* Show a defeats counter or not */
 global.show_ranks = false; /* Show ranks you get at the end of the level */
 global.show_timer = false; /* Show a countup timer or not */
 global.thumbnail_sprite = ds_list_create();
+global.thumbnail_load_queue = []; /* Queue for thumbnails to be loaded */
 
 global.selected_title_background[1] = 0; /* 0 = default */
 global.selected_title_background[2] = -1; /* -1 = nothing */
@@ -649,7 +651,6 @@ else
 #endregion /* Interpolation END */
 
 can_navigate = false;
-global.loading_spinning_angle = 0;
 file_load_timer = 0;
 file_found = "";
 time = 0;

@@ -404,8 +404,7 @@ function scr_draw_menu_search_id(what_kind_of_id = "level")
 		#region /* Draw loading icon when waiting for download */
 		draw_set_halign(fa_center);
 		draw_set_valign(fa_middle);
-		global.loading_spinning_angle -= 10;
-		draw_sprite_ext(spr_loading, 0, get_window_width * 0.5, get_window_height * 0.5 + 64 + 64, 1, 1, global.loading_spinning_angle, c_white, 1);
+		scr_draw_loading(1, get_window_width * 0.5, get_window_height * 0.5 + 64 + 64, "");
 		#endregion /* Draw loading icon when waiting for download END */
 		
 		#endregion /* Draw text explaining to the player that the file is downloading, and a loading icon that is spinning END */

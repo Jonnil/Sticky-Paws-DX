@@ -778,6 +778,7 @@ function scr_select_official_level_menu()
 				
 				/* Update the "first created on version" so it's the version when you create the template level */
 				ini_write_string("info", "first_created_on_version", "v" + scr_get_build_date());
+				ini_write_string("info", "first_created_on_os_type", os_type);
 				ini_write_string("info", "level_name", global.level_name);
 				ini_write_string("info", "level_description", ""); /* Save a blank level description */
 				show_debug_message("Set first_created_on_version to v" + scr_get_build_date());

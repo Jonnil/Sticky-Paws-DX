@@ -137,6 +137,10 @@ if (!global.actually_play_edited_level)
 	{
 		ini_write_real("info", "first_created_on_date_second", date_get_second(date_current_datetime()));
 	}
+	if (!ini_key_exists("info", "first_created_on_os_type"))
+	{
+		ini_write_real("info", "first_created_on_os_type", os_type);
+	}
 	ini_close();
 	#endregion /* Save what date this level was first created in END */
 	

@@ -129,9 +129,8 @@ if (show_loading_icon)
 && (gamepad_button_check_pressed(global.pause_player, gp_select))
 {
 	show_loading_icon = true;
-	global.loading_spinning_angle -= 10;
 	
-	if (menu == "reset_from_checkpoint" && global.loading_spinning_angle < -20)
+	if (menu == "reset_from_checkpoint")
 	{
 		
 		#region /* Restart Level from Checkpoint */
@@ -143,9 +142,7 @@ if (show_loading_icon)
 	}
 	else
 	if (menu == "reset_from_start")
-	&& (global.loading_spinning_angle < -20)
 	|| (menu == "restart")
-	&& (global.loading_spinning_angle < -20)
 	|| (gamepad_button_check(global.pause_player, gp_shoulderlb))
 	&& (gamepad_button_check(global.pause_player, gp_shoulderrb))
 	&& (gamepad_button_check_pressed(global.pause_player, gp_select))

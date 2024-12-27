@@ -277,6 +277,10 @@ function scr_draw_upload_character_menu()
 											{
 												ini_write_string("info", "first_created_on_version", "v" + scr_get_build_date());
 											}
+											if (!ini_key_exists("info", "first_created_on_os_type"))
+											{
+												ini_write_real("info", "first_created_on_os_type", os_type);
+											}
 											menu = "uploading_character"; /* Go to uploading character loading screen */
 											menu_delay = 60 * 3;
 										}

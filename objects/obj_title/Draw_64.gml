@@ -321,6 +321,7 @@ if (!in_settings)
 				global.actually_play_edited_level = false;
 				global.play_edited_level = false;
 				global.character_select_in_this_menu = "online_level_list_title";
+				global.online_level_list_back = "online_level_list_title";
 				scr_load_character_initializing();
 				menu = "load_characters";
 				global.level_editor_level = 1;

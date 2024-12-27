@@ -71,7 +71,7 @@ function scr_switch_update_online_status(show_login_screen = true)
 					show_debug_message("No logged-in account detected. Prompting user to select account...");
 					global.online_token_error_message = "No logged-in account detected.";
 				}
-
+				
 				logged_in_account = switch_accounts_select_account(true, true, false); /* Prompt user for account selection */
 				global.switch_account_network_service_available = switch_accounts_network_service_available(logged_in_account); /* Set global variable for network service availability */
 				show_debug_message("Logged in account: " + string(logged_in_account));

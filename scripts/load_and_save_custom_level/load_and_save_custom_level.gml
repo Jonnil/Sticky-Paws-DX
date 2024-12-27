@@ -355,6 +355,11 @@ function scr_save_level_information()
 		}
 		#endregion /* Save what date this level was first created in END */
 		
+		if (!ini_key_exists("info", "first_created_on_os_type"))
+		{
+			ini_write_real("info", "first_created_on_os_type", os_type);
+		}
+		
 		ini_write_string("info", "level_name", global.level_name);
 		ini_write_string("info", "username", string(global.username));
 		ini_write_real("info", "make_every_tileset_into_default_tileset", global.make_every_tileset_into_default_tileset);

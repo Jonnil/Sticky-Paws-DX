@@ -847,9 +847,5 @@ function scr_character_manage_menu_step()
 		}
 		#endregion /* Back from Copy Characters END */
 		
-		if (!can_navigate) /* When game is loading in assets, display a detailed loading progress, showing exactly what is being loaded in */
-		{
-			global.loading_spinning_angle -= 10;
-		}
 	}
 }
