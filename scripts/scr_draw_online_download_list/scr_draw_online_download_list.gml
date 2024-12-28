@@ -229,9 +229,16 @@ function scr_process_online_download_list_data()
 		{
 			data = json_parse(global.online_download_list); /* When there is data here, then go to the online downloads menu */
 					
-			for(var i = 0; i < array_length(data) + 1; i++;)
+			for(var i = 0; i < array_length(data); i++;)
 			{
 				draw_download_name[i] = "";
+				if (is_array(spr_download_list_thumbnail))
+				{
+					if (i < array_length(spr_download_list_thumbnail)) /* Check if index is within bounds */
+					{
+						scr_delete_sprite_properly(spr_download_list_thumbnail[i]);
+					}
+				}
 				spr_download_list_thumbnail[i] = spr_thumbnail_missing;
 				all_download_id[i] = "";
 			}
@@ -380,6 +387,7 @@ function scr_process_online_download_menu_data()
 				info_queue_http_request = true;
 			}
 		}
+		#endregion /* Get information about currently selected ID. If there is information data, then show info about currently selected ID END */
 		
 		if (is_array(data)
 		&& array_length(data) <= 0)
@@ -388,10 +396,9 @@ function scr_process_online_download_menu_data()
 			scr_draw_text_outlined(display_get_gui_width() * 0.5, display_get_gui_height() * 0.5, l10n_text("There is nothing uploaded yet!"), global.default_text_size * 2, c_menu_outline, c_menu_fill, 1);
 		}
 		
-		/* Write the ID for currently selected level */ draw_set_halign(fa_left);
+		/* Write the ID for currently selected level */
+		draw_set_halign(fa_left);
 		scr_draw_text_outlined(download_online_x + 108, 20 + top_left_of_thumbnail_y + menu_y_offset + 4, string(currently_selected_id), global.default_text_size * 0.75, c_menu_outline, c_lime, 1);
-		
-		#endregion /* Get information about currently selected ID. If there is information data, then show info about currently selected ID END */
 		
 		#region /* Online download list menu navigation when there is data */
 		if (menu == "download_online_0")
@@ -730,10 +737,19 @@ function scr_draw_online_download_list_thumbnail(thumbnail_index, number_of_thum
 				automatically_search_for_id = true; /* Don't set this variable to false yet, it's used in "scr_draw_menu_search_id" to automatically enter the search ID. We need to do the HTTP Request in that script */
 				in_online_download_list_menu = false; /* We are not supposed to show the online download list menu when going to search ID menu */
 				
-				/* Set the correct thumbnail sprite variable */
+				#region /* Set the correct thumbnail sprite variable for download menu */
 				scr_delete_sprite_properly(downloaded_thumbnail_sprite);
-				downloaded_thumbnail_sprite = noone;
-				downloaded_thumbnail_sprite = spr_download_list_thumbnail[global.selected_online_download_index];
+				
+				if (sprite_exists(spr_download_list_thumbnail[global.selected_online_download_index]))
+				&& (spr_download_list_thumbnail[global.selected_online_download_index] != spr_thumbnail_missing)
+				{
+					downloaded_thumbnail_sprite = spr_download_list_thumbnail[global.selected_online_download_index];
+				}
+				else
+				{
+					/* Need to download the thumbnail so it can be displayed in the download menu */
+				}
+				#endregion /* Set the correct thumbnail sprite variable for download menu END */
 				
 				menu = "search_id_ok";
 				#endregion /* Go to download menu END */

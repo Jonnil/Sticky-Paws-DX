@@ -254,7 +254,7 @@ function scr_draw_menu_search_id(what_kind_of_id = "level")
 						}
 					}
 					
-					if (downloaded_thumbnail_sprite > 0)
+					if (sprite_exists(downloaded_thumbnail_sprite))
 					{
 						sprite_set_offset(downloaded_thumbnail_sprite, sprite_get_width(downloaded_thumbnail_sprite) * 0.5, 0);
 					}
@@ -501,7 +501,7 @@ function scr_draw_menu_search_id(what_kind_of_id = "level")
 				{
 					var thumbnail_scale = 2;
 				}
-				if (downloaded_thumbnail_sprite > 0)
+				if (sprite_exists(downloaded_thumbnail_sprite))
 				{
 					draw_sprite_ext(downloaded_thumbnail_sprite, 0, get_window_width * 0.5, 64, 384 / sprite_get_width(downloaded_thumbnail_sprite) * thumbnail_scale, 216 / sprite_get_height(downloaded_thumbnail_sprite) * thumbnail_scale, 0, c_white, 1);
 				}
@@ -517,7 +517,7 @@ function scr_draw_menu_search_id(what_kind_of_id = "level")
 			{
 				
 				#region /* Draw Character Thumbnail */
-				if (downloaded_thumbnail_sprite > 0)
+				if (sprite_exists(downloaded_thumbnail_sprite))
 				{
 					var scale_offset = 1;
 					draw_sprite_ext(downloaded_thumbnail_sprite, 0, get_window_width * 0.5, get_window_height * 0.5 - 100, (392 / sprite_get_width(downloaded_thumbnail_sprite)) * scale_offset, (392 / sprite_get_width(downloaded_thumbnail_sprite)) * scale_offset, 0, c_white, 1);
