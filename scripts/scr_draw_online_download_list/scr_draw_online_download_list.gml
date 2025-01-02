@@ -301,93 +301,11 @@ function scr_process_online_download_menu_data()
 		else
 		{
 			var num_items = 0;
+			show_debug_message("data is not an array! data = " + string(data) + " num_items = " + string(num_items));
 		}
 		
-		#region /* Get information about currently selected ID. If there is information data, then show info about currently selected ID */
-		if (info_queue_index < num_items)
-		&& (is_array(all_download_id))
-		&& (info_queue_http_request)
-		{
-			/* Get level information. The level info should be retrieved only once you select a new ID */
-			info_queue_http_request = false;
-			info_data = undefined;
-			global.online_download_list_info = "";
-			if (os_is_network_connected()) /* Need to check if OS is connected to network before getting online */
-			{
-				global.http_request_info = http_request(
-					"https://" + global.base_url + "/metadata/" + string(content_type) + "s/" + string_upper(all_download_id[info_queue_index]) + "?os_type=" + string(os_type), /* URL */
-					"GET", /* Method */
-					map, /* Header Map */
-					""); /* Body */
-				show_debug_message("http request: " + string_upper(all_download_id[info_queue_index]));
-			}
-		}
-		
-		if (info_data == undefined
-		&& in_online_download_list_menu)
-		&& (!info_queue_http_request)
-		{
-			/* If there is an online download list information loaded, interpret that as a struct using "json parse" */
-			if (global.online_download_list_info != "")
-			&& (global.online_download_list_info != "HTTP request exception")
-			&& (global.online_download_list_info != "Unauthorized")
-			{
-				/* Handle potential JSON parsing error */
-				try
-				{
-					info_data = json_parse(global.online_download_list_info); /* When there is data here, then go to the online downloads menu */
-					info_data = array_create(1, info_data);
-				}
-				catch (e)
-				{
-					show_debug_message("Invalid JSON format: " + global.online_download_list_info);
-					info_data = undefined; /* Handle the error as needed, and set "info data" to a default value */
-				}
-			}
-			
-			/* Check if it's an array */
-			if (is_array(info_data))
-			{
-				/* Get the number of items in the JSON array */
-				var num_info_items = array_length(info_data);
-				for(var i = 0; i < num_info_items; i++;)
-				{
-					/* Fetch the "name" and "thumbnail" properties from the JSON object */
-					var item = info_data[i];
-					
-					if (draw_download_name[info_queue_index] == "")
-					{
-						if (switch_check_profanity(item.name))
-						{
-							draw_download_name[info_queue_index] = string(switch_mask_profanity(item.name));
-						}
-						else
-						{
-							draw_download_name[info_queue_index] = string(item.name);
-						}
-					}
-					show_debug_message("draw_download_name[" + string(info_queue_index) + "] = " + string(draw_download_name[info_queue_index]));
-					
-					if (spr_download_list_thumbnail[info_queue_index] == spr_thumbnail_missing) /* Get the thumbnail data */
-					{
-						var downloaded_thumbnail_path = temp_directory + "thumbnail.png";
-						var buffer = buffer_base64_decode(item.thumbnail);
-						buffer_save(buffer, downloaded_thumbnail_path);
-						spr_download_list_thumbnail[info_queue_index] = sprite_add(downloaded_thumbnail_path, 0, false, true, 0, 0);
-					}
-				}
-			}
-		}
-		
-		if (!info_queue_http_request)
-		{
-			if (draw_download_name[info_queue_index] != "")
-			{
-				info_queue_index ++;
-				info_queue_http_request = true;
-			}
-		}
-		#endregion /* Get information about currently selected ID. If there is information data, then show info about currently selected ID END */
+		/* Get information about currently selected ID. If there is information data, then show info about currently selected ID */
+		scr_download_thumbnails(true, num_items); /* Download all thumbnails */
 		
 		if (is_array(data)
 		&& array_length(data) <= 0)
@@ -747,7 +665,8 @@ function scr_draw_online_download_list_thumbnail(thumbnail_index, number_of_thum
 				}
 				else
 				{
-					/* Need to download the thumbnail so it can be displayed in the download menu */
+					/* Need to set the downloaded_thumbnail_sprite to noone so it can be set in the download menu instead */
+					downloaded_thumbnail_sprite = noone;
 				}
 				#endregion /* Set the correct thumbnail sprite variable for download menu END */
 				
@@ -990,4 +909,105 @@ function scr_fallback_to_previous_menu_state()
 	}
 	#endregion /* If you are no longer in "online download list menu", but somehow still in a menu selection only appearing in this menu, force you out of the menu END */
 	
+}
+
+function scr_download_thumbnails(download_all, what_num_items = 0)
+{
+	/* If you are not downloading all, the set specific ID */
+	if (!download_all)
+	{
+		info_queue_index = global.selected_online_download_index;
+	}
+	
+	/* If there is an index to process and HTTP requests are allowed */
+	if (download_all
+	&& info_queue_index < what_num_items
+	&& info_queue_http_request
+	|| !download_all)
+	&& is_array(all_download_id)
+	{
+		/* Retrieve level information only once per selected ID */
+		info_queue_http_request = false;
+		info_data = undefined;
+		global.online_download_list_info = ""; /* We need to reset the global.online_download_list_info here */
+		
+		/* Check if the system is connected to the network before making an HTTP request */
+		if (os_is_network_connected())
+		{
+			/* Send the HTTP GET request to retrieve metadata for the selected ID */
+			global.http_request_info = http_request(
+				"https://" + global.base_url + "/metadata/" + string(content_type) + "s/" + string_upper(all_download_id[info_queue_index]) + "?os_type=" + string(os_type), /* URL */
+				"GET", /* Method */
+				map, /* Header Map */
+				""); /* Body */
+			show_debug_message("HTTP request sent for: " + string_upper(all_download_id[info_queue_index]));
+		}
+	}
+	
+	/* Process the data if available and valid */
+	if (info_data == undefined
+	&& in_online_download_list_menu
+	&& !info_queue_http_request)
+	{
+		/* Parse the JSON data if it has been loaded successfully */
+		if (global.online_download_list_info != ""
+		&& global.online_download_list_info != "HTTP request exception"
+		&& global.online_download_list_info != "Unauthorized")
+		{
+			/* Handle potential JSON parsing errors */
+			try
+			{
+				info_data = json_parse(global.online_download_list_info);
+				info_data = array_create(1, info_data);
+			}
+			catch (e)
+			{
+				show_debug_message("Failed to get JSON for " + string_upper(all_download_id[info_queue_index]) + " Invalid JSON format: " + string(global.online_download_list_info));
+				info_data = undefined; /* Set info_data to a default value on error */
+			}
+		}
+		
+		/* If parsed data is valid and contains items */
+		if (is_array(info_data))
+		{
+			/* Iterate through the data items */
+			var num_info_items = array_length(info_data);
+			for (var j = 0; j < num_info_items; j++)
+			{
+				var item = info_data[j];
+				
+				/* Retrieve and mask profane names if necessary */
+				if (draw_download_name[info_queue_index] == "")
+				{
+					if (switch_check_profanity(item.name))
+					{
+						draw_download_name[info_queue_index] = string(switch_mask_profanity(item.name));
+					}
+					else
+					{
+						draw_download_name[info_queue_index] = string(item.name);
+					}
+				}
+				
+				show_debug_message("draw_download_name[" + string(i) + "] = " + string(draw_download_name[info_queue_index]));
+				
+				/* Download and set the thumbnail if it's missing */
+				if (spr_download_list_thumbnail[info_queue_index] == spr_thumbnail_missing)
+				{
+					var downloaded_thumbnail_path = temp_directory + "thumbnail_" + string(i) + ".png";
+					var buffer = buffer_base64_decode(item.thumbnail);
+					buffer_save(buffer, downloaded_thumbnail_path);
+					spr_download_list_thumbnail[info_queue_index] = sprite_add(downloaded_thumbnail_path, 0, false, true, 0, 0);
+				}
+			}
+		}
+	}
+	
+	/* Move to the next item if the current one is complete */
+	if (!info_queue_http_request)
+	&& (draw_download_name[info_queue_index] != "")
+	{
+		info_queue_index++;
+		info_queue_http_request = true;
+	}
 }

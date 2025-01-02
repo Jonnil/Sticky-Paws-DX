@@ -503,7 +503,17 @@ function scr_draw_menu_search_id(what_kind_of_id = "level")
 				}
 				if (sprite_exists(downloaded_thumbnail_sprite))
 				{
-					draw_sprite_ext(downloaded_thumbnail_sprite, 0, get_window_width * 0.5, 64, 384 / sprite_get_width(downloaded_thumbnail_sprite) * thumbnail_scale, 216 / sprite_get_height(downloaded_thumbnail_sprite) * thumbnail_scale, 0, c_white, 1);
+					draw_sprite_ext(
+						downloaded_thumbnail_sprite,
+						0,
+						get_window_width * 0.5,
+						64,
+						(384 / sprite_get_width(downloaded_thumbnail_sprite)) * thumbnail_scale,
+						(216 / sprite_get_height(downloaded_thumbnail_sprite)) * thumbnail_scale,
+						0,
+						c_white,
+						1
+					);
 				}
 				else
 				{
@@ -520,7 +530,17 @@ function scr_draw_menu_search_id(what_kind_of_id = "level")
 				if (sprite_exists(downloaded_thumbnail_sprite))
 				{
 					var scale_offset = 1;
-					draw_sprite_ext(downloaded_thumbnail_sprite, 0, get_window_width * 0.5, get_window_height * 0.5 - 100, (392 / sprite_get_width(downloaded_thumbnail_sprite)) * scale_offset, (392 / sprite_get_width(downloaded_thumbnail_sprite)) * scale_offset, 0, c_white, 1);
+					draw_sprite_ext(
+						downloaded_thumbnail_sprite,
+						0,
+						get_window_width * 0.5,
+						get_window_height * 0.5 - 100,
+						(392 / sprite_get_width(downloaded_thumbnail_sprite)) * scale_offset,
+						(392 / sprite_get_width(downloaded_thumbnail_sprite)) * scale_offset,
+						0,
+						c_white,
+						1
+					);
 				}
 				else
 				{
