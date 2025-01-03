@@ -90,7 +90,7 @@ function scr_draw_caution_online()
 							}
 							information_menu_open = "";
 							
-							if (!upload_rules_do_not_show_level) /* If you have not yet agreed to the upload rules for uploading levels */
+							if (!global.upload_rules_do_not_show_level) /* If you have not yet agreed to the upload rules for uploading levels */
 							&& (caution_online_takes_you_to == "level_editor_upload_pressed") /* And you're supposed to go to the upload edit menu */
 							{
 								menu = "upload_rules"; /* Then take you to the upload rules menu */

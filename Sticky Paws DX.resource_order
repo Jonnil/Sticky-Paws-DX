@@ -353,6 +353,7 @@
     {"name":"scr_set_font","order":61,"path":"scripts/scr_set_font/scr_set_font.yy",},
     {"name":"scr_set_length_variable","order":17,"path":"scripts/scr_set_length_variable/scr_set_length_variable.yy",},
     {"name":"scr_set_menu_font_color","order":66,"path":"scripts/scr_set_menu_font_color/scr_set_menu_font_color.yy",},
+    {"name":"scr_set_narrator","order":103,"path":"scripts/scr_set_narrator/scr_set_narrator.yy",},
     {"name":"scr_set_screen_size","order":33,"path":"scripts/scr_set_screen_size/scr_set_screen_size.yy",},
     {"name":"scr_set_show_controls_x","order":84,"path":"scripts/scr_set_show_controls_x/scr_set_show_controls_x.yy",},
     {"name":"scr_set_show_controls_y","order":83,"path":"scripts/scr_set_show_controls_y/scr_set_show_controls_y.yy",},

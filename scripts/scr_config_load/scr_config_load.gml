@@ -27,6 +27,8 @@ function scr_config_load()
 		if (ini_key_exists("config", "assist_enable_enemies")){global.assist_enable_enemies = ini_read_real("config", "assist_enable_enemies", 0);}
 		if (ini_key_exists("config", "assist_enable_spikes")){global.assist_enable_spikes = ini_read_real("config", "assist_enable_spikes", 0);}
 		if (ini_key_exists("config", "narrator")){global.narrator = ini_read_real("config", "narrator", 0);}
+		if (ini_key_exists("config", "narrator_selection")){global.narrator_selection = ini_read_real("config", "narrator_selection", -1);}
+		scr_set_narrator(); /* After getting the narrator selection from ini file, then run this set narrator script, so that the narrator can be set correctly */
 		if (ini_key_exists("config", "show_tutorial_signs")){global.show_tutorial_signs = ini_read_real("config", "show_tutorial_signs", 0);}
 		if (ini_key_exists("config", "show_new_items_notification")){global.show_new_items_notification = ini_read_real("config", "show_new_items_notification", 0);}
 		if (ini_key_exists("config", "hud_hide_time")){global.hud_hide_time = ini_read_real("config", "hud_hide_time", 0);}

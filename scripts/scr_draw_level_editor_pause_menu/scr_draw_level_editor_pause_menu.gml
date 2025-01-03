@@ -529,10 +529,10 @@ function scr_draw_level_editor_pause_menu()
 			}
 			#endregion /* Draw the path for saving full level map END */
 			
-			scr_draw_text_outlined(get_window_width * 0.5, generate_level_map_y_3, l10n_text("With this map, you can then use it in a drawing program,"), global.default_text_size, c_black, c_white, 1);
+			scr_draw_text_outlined(get_window_width * 0.5, generate_level_map_y_3, l10n_text("With this map you can then use it in a drawing program,"), global.default_text_size, c_black, c_white, 1);
 			scr_draw_text_outlined(get_window_width * 0.5, generate_level_map_y_4, l10n_text("as the base to make the background and foreground layers."), global.default_text_size, c_black, c_white, 1);
 			scr_draw_text_outlined(get_window_width * 0.5, generate_level_map_y_5, l10n_text("Do you want to generate a level map?"), global.default_text_size, c_black, c_white, 1);
-			scr_draw_text_outlined(get_window_width * 0.5, generate_level_map_y_6, l10n_text("The level will start for a split second, so a level map can be properly generated"), global.default_text_size, c_black, c_white, 1);
+			scr_draw_text_outlined(get_window_width * 0.5, generate_level_map_y_6, l10n_text("The level will start for a split second so a level map can be properly generated"), global.default_text_size, c_black, c_white, 1);
 			
 			#region /* Warn the player if the level is bigger than 8192 in any direction */
 			var level_width = obj_level_width.x; /* Get level dimensions */

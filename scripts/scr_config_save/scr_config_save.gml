@@ -17,6 +17,7 @@ function scr_config_save()
 	ini_write_real("config", "assist_enable_enemies", global.assist_enable_enemies);
 	ini_write_real("config", "assist_enable_spikes", global.assist_enable_spikes);
 	ini_write_real("config", "narrator", global.narrator);
+	ini_write_real("config", "narrator_selection", global.narrator_selection);
 	ini_write_real("config", "show_tutorial_signs", global.show_tutorial_signs);
 	ini_write_real("config", "show_new_items_notification", global.show_new_items_notification);
 	ini_write_real("config", "hud_hide_time", global.hud_hide_time);

@@ -325,6 +325,7 @@ global.level_editor_level = 0; /* What level is selected in the custom level edi
 global.first_time_opened_level_editor = true; /* If you have never opened the level editor before, then automatically show the level editor help menu */
 global.playing_level_from_beginning = false; /* If you are playtesting a level from beginning, need to remember that */
 global.narrator = 0; /* Select Narrator */
+global.narrator_selection = -1; /* The actual narrator selection, this will include "Match Player 1 Character", so that "global.narrator" can be set to whatever Player 1 has currently selected */
 global.pause = false; /* If game is paused or not */
 global.play_edited_level = false; /* Playtest edited level */
 

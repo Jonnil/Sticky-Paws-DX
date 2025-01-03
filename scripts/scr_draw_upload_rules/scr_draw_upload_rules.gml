@@ -6,6 +6,8 @@ function scr_draw_upload_rules()
 	{
 		var mouse_get_x = device_mouse_x_to_gui(0);
 		var mouse_get_y = device_mouse_y_to_gui(0);
+		var num = 1;
+		var top_rule_y = display_get_gui_height() * 0.5 - (32 * 5);
 		
 		if (variable_instance_exists(self, "show_level_editor_corner_menu"))
 		{
@@ -30,26 +32,35 @@ function scr_draw_upload_rules()
 		{
 			scr_draw_text_outlined(display_get_gui_width() * 0.5, 64, l10n_text("Upload Character Rules"), global.default_text_size * 2, c_black, c_white, 1);
 		}
-		scr_draw_text_outlined(display_get_gui_width() * 0.5, 128, l10n_text("Before uploading user-generated content, you need to agree to the rules"), global.default_text_size, c_black, c_white, 1);
+		scr_draw_text_outlined(display_get_gui_width() * 0.5, 128, l10n_text("Before uploading user-generated content you need to agree to the rules"), global.default_text_size, c_black, c_white, 1);
 		draw_set_halign(fa_left);
-		scr_draw_text_outlined(display_get_gui_width() * 0.5 - 420, (display_get_gui_height() * 0.5) - (32 * 4), "1. " + l10n_text("No intrusion of privacy"), global.default_text_size, c_black, c_white, 1);
-		scr_draw_text_outlined(display_get_gui_width() * 0.5 - 420, (display_get_gui_height() * 0.5) - (32 * 3), "2. " + l10n_text("No display of violence, or physical harm"), global.default_text_size, c_black, c_white, 1);
-		scr_draw_text_outlined(display_get_gui_width() * 0.5 - 420, (display_get_gui_height() * 0.5) - (32 * 2), "3. " + l10n_text("No abuse, harassment, or bullying"), global.default_text_size, c_black, c_white, 1);
-		scr_draw_text_outlined(display_get_gui_width() * 0.5 - 420, (display_get_gui_height() * 0.5) - 32, "4. " + l10n_text("No hateful or discriminatory content"), global.default_text_size, c_black, c_white, 1);
-		scr_draw_text_outlined(display_get_gui_width() * 0.5 - 420, display_get_gui_height() * 0.5, "5. " + l10n_text("No advertising or spamming"), global.default_text_size, c_black, c_white, 1);
-		scr_draw_text_outlined(display_get_gui_width() * 0.5 - 420, (display_get_gui_height() * 0.5) + 32, "6. " + l10n_text("No sexually explicit content"), global.default_text_size, c_black, c_white, 1);
-		scr_draw_text_outlined(display_get_gui_width() * 0.5 - 420, (display_get_gui_height() * 0.5) + (32 * 2), "7. " + l10n_text("No asking for likes"), global.default_text_size, c_black, c_white, 1);
+		
+		#region /* The Rules */
+		scr_draw_text_outlined(display_get_gui_width() * 0.5 - 420, top_rule_y + (32 * num), string(num) + ". " + l10n_text("No intrusion of privacy"), global.default_text_size, c_black, c_white, 1);
+		num ++;
+		scr_draw_text_outlined(display_get_gui_width() * 0.5 - 420, top_rule_y + (32 * num), string(num) + ". " + l10n_text("No display of violence or physical harm"), global.default_text_size, c_black, c_white, 1);
+		num ++;
+		scr_draw_text_outlined(display_get_gui_width() * 0.5 - 420, top_rule_y + (32 * num), string(num) + ". " + l10n_text("No abuse harassment or bullying"), global.default_text_size, c_black, c_white, 1);
+		num ++;
+		scr_draw_text_outlined(display_get_gui_width() * 0.5 - 420, top_rule_y + (32 * num), string(num) + ". " + l10n_text("No hateful or discriminatory content"), global.default_text_size, c_black, c_white, 1);
+		num ++;
+		scr_draw_text_outlined(display_get_gui_width() * 0.5 - 420, top_rule_y + (32 * num), string(num) + ". " + l10n_text("No advertising or spamming"), global.default_text_size, c_black, c_white, 1);
+		num ++;
+		scr_draw_text_outlined(display_get_gui_width() * 0.5 - 420, top_rule_y + (32 * num), string(num) + ". " + l10n_text("No sexually explicit content"), global.default_text_size, c_black, c_white, 1);
+		num ++;
+		/* Like system is currently unused, need to figure out how to best do this without the use of an account system for this game */
+		//scr_draw_text_outlined(display_get_gui_width() * 0.5 - 420, top_rule_y + (32 * num), string(num) + ". " + l10n_text("No asking for likes"), global.default_text_size, c_black, c_white, 1);
+		//num ++;
 		if (content_type == "level")
 		{
-			scr_draw_text_outlined(display_get_gui_width() * 0.5 - 420, (display_get_gui_height() * 0.5) + (32 * 3), "8. " + l10n_text("If your level uses a bug, make sure to tag your level with Bug Showcase"), global.default_text_size, c_black, c_white, 1);
-			scr_draw_text_outlined(display_get_gui_width() * 0.5 - 420, (display_get_gui_height() * 0.5) + (32 * 4), "9. " + l10n_text("No blatant copying of someone else's content"), global.default_text_size, c_black, c_white, 1);
-			scr_draw_text_outlined(display_get_gui_width() * 0.5 - 420, (display_get_gui_height() * 0.5) + (32 * 5), "10. " + l10n_text("No inappropriate content"), global.default_text_size, c_black, c_white, 1);
+			scr_draw_text_outlined(display_get_gui_width() * 0.5 - 420, top_rule_y + (32 * num), string(num) + ". " + l10n_text("If your level uses a bug make sure to tag your level with Bug Showcase"), global.default_text_size, c_black, c_white, 1);
+			num ++;
 		}
-		else
-		{
-			scr_draw_text_outlined(display_get_gui_width() * 0.5 - 420, (display_get_gui_height() * 0.5) + (32 * 3), "8. " + l10n_text("No blatant copying of someone else's content"), global.default_text_size, c_black, c_white, 1);
-			scr_draw_text_outlined(display_get_gui_width() * 0.5 - 420, (display_get_gui_height() * 0.5) + (32 * 4), "9. " + l10n_text("No inappropriate content"), global.default_text_size, c_black, c_white, 1);
-		}
+		scr_draw_text_outlined(display_get_gui_width() * 0.5 - 420, top_rule_y + (32 * num), string(num) + ". " + l10n_text("No blatant copying of someone else's content"), global.default_text_size, c_black, c_white, 1);
+		num ++;
+		scr_draw_text_outlined(display_get_gui_width() * 0.5 - 420, top_rule_y + (32 * num), string(num) + ". " + l10n_text("No inappropriate content"), global.default_text_size, c_black, c_white, 1);
+		#endregion /* The Rules END */
+		
 		draw_set_halign(fa_center);
 		
 		if (content_type == "level")

@@ -2256,28 +2256,34 @@ function scr_option_menu()
 				
 				draw_set_halign(fa_left);
 				draw_set_valign(fa_middle);
-			
-				if (global.narrator = -4)
+				
+				if (global.narrator_selection <= -3)
 				{
+					global.narrator_selection = -2;
 					global.narrator = -1;
 				}
-			
+				
 				if (menu == "select_narrator")
 				{
 					draw_sprite_ext(spr_menu_cursor, menu_cursor_index, 390, narrator_y, 1, 1, 0, c_white, 1);
 				}
-				if (global.narrator <= -1)
+				if (global.narrator_selection <= -2)
 				{
-					scr_draw_text_outlined(file_select_x, narrator_y, l10n_text("Narrator") + ": " + l10n_text("Nobody"), global.default_text_size * 1.05, c_menu_outline, c_menu_fill, 1);
+					scr_draw_text_outlined(file_select_x, narrator_y, l10n_text("Narrator") + ": " + l10n_text("Nobody"), global.default_text_size * 1.1, c_menu_outline, c_menu_fill, 1);
+				}
+				if (global.narrator_selection <= -1)
+				{
+					/* This option makes it so that whatever character is selected for Player 1, the narrator voice will be that same character, and globla.narrator will be changed to match that character slot */
+					scr_draw_text_outlined(file_select_x, narrator_y, l10n_text("Narrator") + ": " + l10n_text("Match Player 1"), global.default_text_size * 1.1, c_menu_outline, c_menu_fill, 1);
 				}
 				else
-				if (global.narrator >= 0)
+				if (global.narrator_selection >= 0)
 				{
 					scr_draw_text_outlined(file_select_x, narrator_y, l10n_text("Narrator") + ": " + string(narrator_name), global.default_text_size * 1.1, c_menu_outline, c_menu_fill, 1);
 				}
 				
 				#region /* Select Narrator Left and Right Key, show underneath text */
-				if (global.narrator >= 0)
+				if (global.narrator_selection >= 0)
 				{
 					draw_sprite_ext(spr_keyboard_keys, vk_left, file_select_x - 32, narrator_y, 0.5, 0.5, 0, c_white, 1);
 					if (point_in_rectangle(mouse_get_x, mouse_get_y, file_select_x - 32 - 16, narrator_y - 16, file_select_x - 32 + 16, narrator_y + 16))
@@ -2292,7 +2298,7 @@ function scr_option_menu()
 						draw_set_alpha(1);
 					}
 				}
-				if (global.narrator < ds_list_size(global.all_loaded_characters) - 1)
+				if (global.narrator_selection < ds_list_size(global.all_loaded_characters) - 1)
 				{
 					draw_sprite_ext(spr_keyboard_keys, vk_right, file_select_x + file_select_right_arrow_x + 100, narrator_y, 0.5, 0.5, 0, c_white, 1);
 					if (point_in_rectangle(mouse_get_x, mouse_get_y, file_select_x + file_select_right_arrow_x + 100 - 16, narrator_y - 16, file_select_x + file_select_right_arrow_x + 100 + 16, narrator_y + 16))
@@ -2320,19 +2326,17 @@ function scr_option_menu()
 				{
 					menu = "select_narrator";
 					if (menu_delay == 0 && menu_joystick_delay == 0)
-					&& (global.narrator > -1)
+					&& (global.narrator_selection > -2)
 					&& (!open_dropdown)
 					{
 						menu_delay = 3;
-						if (global.narrator > -1)
+						if (global.narrator_selection > -2)
 						{
-							global.narrator --;
+							global.narrator_selection --;
 						}
-						else
-						{
-							global.narrator = -1;
-						}
-					
+						
+						scr_set_narrator();
+						
 						#region /* Character Name */
 						if (file_exists("characters/" + string(ds_list_find_value(global.all_loaded_characters, global.narrator)) + "/data/character_config.ini"))
 						|| (file_exists(game_save_id + "custom_characters/" + string(ds_list_find_value(global.all_loaded_characters, global.narrator)) + "/data/character_config.ini"))
@@ -2386,7 +2390,9 @@ function scr_option_menu()
 					&& (!open_dropdown)
 					{
 						menu_delay = 3;
-						global.narrator = clamp(global.narrator + 1, -1, ds_list_size(global.all_loaded_characters) - 1);
+						global.narrator_selection = clamp(global.narrator_selection + 1, -2, ds_list_size(global.all_loaded_characters) - 1);
+						
+						scr_set_narrator();
 						
 						#region /* Character Name */
 						if (file_exists("characters/" + string(ds_list_find_value(global.all_loaded_characters, global.narrator)) + "/data/character_config.ini"))
