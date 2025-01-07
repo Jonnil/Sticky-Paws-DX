@@ -580,7 +580,7 @@ function scr_option_level_editor()
 			draw_menu_checkmark(level_editor_option_x - 90, enable_time_countdown_y, l10n_text("Enable Time Countdown"), "enable_time_countdown", global.enable_time_countdown, false);
 			draw_menu_checkmark(level_editor_option_x - 90, show_new_items_notification_y, l10n_text("Show New Items Notification"), "show_new_items_notification_level_editor", global.show_new_items_notification, true);
 			draw_menu_checkmark(level_editor_option_x - 90, enable_level_length_target_y, l10n_text("Enable Level Length Target"), "enable_level_length_target", global.enable_level_length_target, false, "You get a warning if your level is shorter than desired");
-			draw_menu_checkmark(level_editor_option_x - 90, can_save_length_variable_y, l10n_text("Save Length Variable"), "can_save_length_variable", global.can_save_length_variable, false, l10n_text("This function saves data size slightly but saving takes longer"));
+			draw_menu_checkmark(level_editor_option_x - 90, can_save_length_variable_y, l10n_text("Save Length Variable"), "can_save_length_variable", global.can_save_length_variable, false, l10n_text("This function reduces data size slightly but saving takes longer")); /* Changed from "This function saves data size slightly but saving takes longer" to "This function reduces data size slightly but saving takes longer" for better wording */
 			draw_menu_button(level_editor_option_x, delete_all_objects_y, l10n_text("Delete All Objects"), "delete_all_objects", "delete_all_objects_no", c_red);
 			if (menu == "delete_all_objects")
 			{

@@ -2271,7 +2271,8 @@ function scr_option_menu()
 				{
 					scr_draw_text_outlined(file_select_x, narrator_y, l10n_text("Narrator") + ": " + l10n_text("Nobody"), global.default_text_size * 1.1, c_menu_outline, c_menu_fill, 1);
 				}
-				if (global.narrator_selection <= -1)
+				else
+				if (global.narrator_selection == -1)
 				{
 					/* This option makes it so that whatever character is selected for Player 1, the narrator voice will be that same character, and globla.narrator will be changed to match that character slot */
 					scr_draw_text_outlined(file_select_x, narrator_y, l10n_text("Narrator") + ": " + l10n_text("Match Player 1"), global.default_text_size * 1.1, c_menu_outline, c_menu_fill, 1);
@@ -2283,7 +2284,7 @@ function scr_option_menu()
 				}
 				
 				#region /* Select Narrator Left and Right Key, show underneath text */
-				if (global.narrator_selection >= 0)
+				if (global.narrator_selection >= -1)
 				{
 					draw_sprite_ext(spr_keyboard_keys, vk_left, file_select_x - 32, narrator_y, 0.5, 0.5, 0, c_white, 1);
 					if (point_in_rectangle(mouse_get_x, mouse_get_y, file_select_x - 32 - 16, narrator_y - 16, file_select_x - 32 + 16, narrator_y + 16))

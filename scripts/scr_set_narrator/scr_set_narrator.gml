@@ -1,4 +1,4 @@
-function scr_set_narrator()
+function scr_set_narrator(save = true)
 {
 	/* Narrator set to Nobody */
 	if (global.narrator_selection <= -2)
@@ -18,5 +18,14 @@ function scr_set_narrator()
 	if (global.narrator_selection >= 0)
 	{
 		global.narrator = global.narrator_selection;
+	}
+	
+	if (save)
+	{
+		/* Commit narrator and narrator selection to memory */
+		ini_open(game_save_id + "save_file/config.ini");
+		ini_write_real("config", "narrator", global.narrator);
+		ini_write_real("config", "narrator_selection", global.narrator_selection);
+		ini_close();
 	}
 }

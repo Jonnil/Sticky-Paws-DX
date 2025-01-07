@@ -163,6 +163,8 @@ if (!can_navigate)
 				if (global.narrator >= 0)
 				{
 					
+					show_message("global.narrator: " + string(global.narrator));
+					
 					#region /* Company Splash 1 */
 					if (file_exists("characters/" + string(ds_list_find_value(global.all_loaded_characters, global.narrator)) + "/sound/voicepack" + string(global.voicepack_for_player[1]) + "/company_splash.ogg"))
 					{
