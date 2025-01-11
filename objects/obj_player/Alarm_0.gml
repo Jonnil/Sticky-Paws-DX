@@ -213,34 +213,6 @@ ini_close(); /* Don't commit the save data on Switch, this is only temporary! */
 #endregion /* Sprite variables END */
 
 #region /* Voices */
-/* Set Sound folder */
-var check_sound_folder_exist_1 = string(character_folder) + "\\sound\\voicepack" + string(selected_voicepack); /* This directory is "sound" without a S */
-var check_sound_folder_exist_2 = string(character_folder) + "\\sounds\\voicepack" + string(selected_voicepack); /* This directory is "sounds" with a S */
-var check_sound_folder_exist_3 = string(character_folder) + "\\sound"; /* This directory is "sound" without a S */
-var check_sound_folder_exist_4 = string(character_folder) + "\\sounds"; /* This directory is "sounds" with a S */
-if (directory_exists(check_sound_folder_exist_1))
-{
-	voicepack_folder = "\\sound\\voicepack" + string(selected_voicepack) + "\\";
-}
-else
-if (directory_exists(check_sound_folder_exist_2))
-{
-	voicepack_folder = "\\sounds\\voicepack" + string(selected_voicepack) + "\\";
-}
-else
-if (directory_exists(check_sound_folder_exist_3))
-{
-	voicepack_folder = "\\sound\\";
-}
-else
-if (directory_exists(check_sound_folder_exist_4))
-{
-	voicepack_folder = "\\sounds\\";
-}
-else
-{
-	voicepack_folder = "\\";
-}
 
 #region /* Set each voice variable */
 

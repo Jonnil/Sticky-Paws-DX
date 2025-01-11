@@ -179,7 +179,7 @@ if (display_get_gui_width() >= 488)
 scroll_to = floor(global.select_level_index / row);
 scroll_to_timer = 3;
 level_editor_template_select = false;
-language_index = global.language_localization + 1;
+language_index = global.language_localization;
 language_mouse_scroll = 0;
 
 narrator_name = string(ds_list_find_value(global.all_loaded_characters, global.narrator)); /* Character Name */
@@ -507,7 +507,8 @@ var latest_whats_new_version = ini_read_string("config", "latest_whats_new_versi
 var latest_whats_new_text = ini_read_string("config", "latest_whats_new_text", "");
 ini_close(); /* Don't commit the save data on Switch, this is only temporary! */
 
-if (latest_whats_new_version != "v" + scr_get_build_date() && latest_whats_new_text != global.whats_new)
+if (latest_whats_new_version != "v" + scr_get_build_date()
+&& latest_whats_new_text != global.whats_new)
 {
 	latest_whats_new_read = false; /* The player have not read the latest what's new tab */
 }

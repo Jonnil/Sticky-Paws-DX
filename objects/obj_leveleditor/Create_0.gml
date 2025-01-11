@@ -671,7 +671,7 @@ if (!global.actually_play_edited_level)
 	global.deactivate_timer = 999; /* Don't deactivate all the objects every frame */
 	background_brightness_lerp = 0;
 	background_brightness_menu_lerp = 0;
-	language_index = global.language_localization + 1;
+	language_index = global.language_localization;
 	language_mouse_scroll = 0;
 	
 	#region /* Toggle for menu warning whenever the player plays a level from beginning and finishes the level too fast */

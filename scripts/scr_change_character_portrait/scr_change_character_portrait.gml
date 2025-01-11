@@ -144,6 +144,11 @@ function scr_change_character_skin()
 		{
 			menu_delay = 3;
 			global.voicepack_for_player[i] --;
+			
+			/* Lastly, save the voicepack in config */
+			ini_open(game_save_id + "save_file/config.ini");
+			ini_write_real("config", "voicepack_for_player" + string(i), global.voicepack_for_player[i]);
+			ini_close(); /* Don't commit the save data on Switch, this is only temporary! */
 		}
 		#endregion /* If a unavailable voice pack is selected, then go to the last selectable voice pack for each player END */
 		

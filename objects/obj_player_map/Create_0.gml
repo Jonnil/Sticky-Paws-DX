@@ -70,7 +70,8 @@ for(var i = 1; i <= global.max_players; i += 1)
 		selected_skin = global.skin_for_player[i];
 		break; /* Exit the loop once a valid player is found */
 	}
-	else if (i == global.max_players)
+	else
+	if (i == global.max_players)
 	{
 		/* If no valid player is found, default to player 1 */
 		var fixed_player = 1;
