@@ -419,7 +419,8 @@ global.zoom_world_map = 1; /* Zooming the view in and out, by default it's set t
 global.reset_level_zoom_when_going_back_to_map = false;
 global.reset_world_map_zoom_when_going_back_to_map = false;
 
-global.language_localization = 1;
+global.selected_language_id = 1;
+global.current_language_menu_position = 1;
 global.language_local_data = 0;
 global.translation_debug = false; /* If you can see debug information about translations */
 /* Shows csv cell letter and cell number, to more easily find the cell to translate */
@@ -563,8 +564,8 @@ for(var i = 1; i <= global.max_players; i += 1)
 #region /* Set default language */
 if (file_exists("localization.csv"))
 {
-	if (global.language_localization > ds_grid_width(global.language_local_data))
-	|| (global.language_localization < 0)
+	if (global.selected_language_id > ds_grid_width(global.language_local_data))
+	|| (global.selected_language_id < 0)
 	{
 		scr_set_default_language();
 	}

@@ -257,6 +257,7 @@
     {"name":"scr_get_each_big_collectible_from_main_game","order":93,"path":"scripts/scr_get_each_big_collectible_from_main_game/scr_get_each_big_collectible_from_main_game.yy",},
     {"name":"scr_get_relative_timestamp","order":75,"path":"scripts/scr_get_relative_timestamp/scr_get_relative_timestamp.yy",},
     {"name":"scr_get_rewards_when_jumped_on","order":65,"path":"scripts/scr_get_rewards_when_jumped_on/scr_get_rewards_when_jumped_on.yy",},
+    {"name":"scr_get_sorted_language_position","order":104,"path":"scripts/scr_get_sorted_language_position/scr_get_sorted_language_position.yy",},
     {"name":"scr_get_todays_upload_count","order":13,"path":"scripts/scr_get_todays_upload_count/scr_get_todays_upload_count.yy",},
     {"name":"scr_get_valid_languages","order":102,"path":"scripts/scr_get_valid_languages/scr_get_valid_languages.yy",},
     {"name":"scr_get_voice","order":78,"path":"scripts/scr_get_voice/scr_get_voice.yy",},

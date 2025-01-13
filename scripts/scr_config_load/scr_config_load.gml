@@ -203,7 +203,8 @@ function scr_config_load()
 		if (ini_key_exists("config", "draw_text_outline")){global.draw_text_outline = ini_read_real("config", "draw_text_outline", true);}
 		if (ini_key_exists("config", "resolution_setting")){global.resolution_setting = ini_read_real("config", "resolution_setting", 0);}
 		if (ini_key_exists("config", "gui_scale_modifier")){global.gui_scale_modifier = ini_read_real("config", "gui_scale_modifier", 0);}
-		if (ini_key_exists("config", "language_localization")){global.language_localization = ini_read_real("config", "language_localization", 1);} /* Load language before loading font, as the font is informed by the language selected */
+		if (ini_key_exists("config", "selected_language_id")){global.selected_language_id = ini_read_real("config", "selected_language_id", 1);} /* Load language before loading font, as the font is informed by the language selected */
+		if (ini_key_exists("config", "current_language_menu_position")){global.current_language_menu_position = ini_read_real("config", "current_language_menu_position", 1);} /* Load 'global.current_language_menu_position' before loading font, as the font is informed by the language selected */
 		if (ini_key_exists("config", "select_font")){global.selected_font = ini_read_real("config", "select_font", 0);scr_set_font();} /* Load font after loading language, as the font is informed by the language selected */
 		if (ini_key_exists("config", "show_prompt_when_changing_to_gamepad")){global.show_prompt_when_changing_to_gamepad = ini_read_real("config", "show_prompt_when_changing_to_gamepad", 1);}
 		if (ini_key_exists("config", "show_prompt_when_changing_to_keyboard_and_mouse")){global.show_prompt_when_changing_to_keyboard_and_mouse = ini_read_real("config", "show_prompt_when_changing_to_keyboard_and_mouse", 1);}

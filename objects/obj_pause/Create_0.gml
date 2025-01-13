@@ -153,7 +153,6 @@ menu_y_offset_real = 0; /* This is the real y offset for the menu, used for menu
 menu_cursor_y_position = 0;
 scrolling_menu_with_mousewheel = false;
 background_brightness_menu_lerp = 0;
-language_index = global.language_localization;
 language_mouse_scroll = 0;
 fade_in_pause_alpha = 0.001;
 darken_settings_alpha = 0;

@@ -214,8 +214,8 @@ scr_config_load(); /* Load Config only once in create event, or it will mess up 
 
 if (file_exists("localization.csv"))
 {
-	if (global.language_localization > ds_grid_width(global.language_local_data))
-	|| (global.language_localization < 0)
+	if (global.selected_language_id > ds_grid_width(global.language_local_data))
+	|| (global.selected_language_id < 0)
 	{
 		scr_set_default_language();
 	}

@@ -758,8 +758,8 @@ function scr_option_menu()
 			if (global.settings_sidebar_menu == "storage_settings"){menu = "file_select";}
 			if (global.settings_sidebar_menu == "language_settings")
 			{
-				menu = "Language" + string(language_index);
-				menu_cursor_y_position = language_index * 50;
+				menu = "Language" + string(global.current_language_menu_position);
+				menu_cursor_y_position = global.current_language_menu_position * 50;
 			}
 		}
 		/* When you navigate the sidebar or not */
@@ -1204,7 +1204,7 @@ function scr_option_menu()
 				menu_delay = 3;
 				input_key = false;
 				can_navigate_settings_sidebar = false;
-				menu = "Language" + string(language_index);
+				menu = "Language" + string(global.current_language_menu_position);
 			}
 			#endregion /* Click Language END */
 			
@@ -2161,7 +2161,7 @@ function scr_option_menu()
 				global.hud_hide_time = 3;
 			}
 			
-			if (global.language_localization == 2) /* If you have selected Japanese language, you can't use Open Dyslexic, as it isn't supported */
+			if (global.selected_language_id == 2) /* If you have selected Japanese language, you can't use Open Dyslexic, as it isn't supported */
 			{
 				/* Only include Game Font and Normal Font for Japanese language, as these are the only supported ones*/
 				/* Doesn't include Open Dyslexic, as some languages are not supported */
@@ -2782,9 +2782,9 @@ function scr_option_menu()
 				&& (menu_delay == 0 && menu_joystick_delay == 0)
 				&& (can_select_font)
 				{
-					if (global.language_localization == 2) /* If you have selected Japanese language, you can't use Open Dyslexic, as it isn't supported */
+					if (global.selected_language_id == 2) /* If you have selected Japanese language, you can't use Open Dyslexic, as it isn't supported */
 					&& (global.selected_font < 1) /* If "Global Selected Font" checks for less than 1 here, then you can only select Game font and Normal font */
-					|| (global.language_localization != 2)
+					|| (global.selected_language_id != 2)
 					&& (global.selected_font < 2)
 					{
 						menu_delay = 3;

@@ -179,7 +179,6 @@ if (display_get_gui_width() >= 488)
 scroll_to = floor(global.select_level_index / row);
 scroll_to_timer = 3;
 level_editor_template_select = false;
-language_index = global.language_localization;
 language_mouse_scroll = 0;
 
 narrator_name = string(ds_list_find_value(global.all_loaded_characters, global.narrator)); /* Character Name */
@@ -254,8 +253,8 @@ scr_config_load(); /* Load Config */
 
 if (file_exists("localization.csv"))
 {
-	if (global.language_localization > ds_grid_width(global.language_local_data)
-	|| global.language_localization < 0)
+	if (global.selected_language_id > ds_grid_width(global.language_local_data)
+	|| global.selected_language_id < 0)
 	{
 		scr_set_default_language();
 	}

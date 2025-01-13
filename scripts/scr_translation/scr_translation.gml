@@ -57,13 +57,15 @@ function initialize_translations()
 	}
 }
 
-function l10n_text(key = "") /* The common abbreviation for localization is l10n, where the number 10 refers to the number of letters between the L and the N */
+function l10n_text(key = "")
 {
+	/* The common abbreviation for localization is l10n, where the number 10 refers to the number of letters between the L and the N */
+	/* This is just to make this function name shorter so I don't have to type localization_text over and over. It's too redundant */
 	var text = key;
 	
 	if (global.translations[?key] != undefined)
 	{
-		var localized_text = global.language_local_data[# global.language_localization, global.translations[?key]];
+		var localized_text = global.language_local_data[# global.selected_language_id, global.translations[?key]];
 		
 		if (localized_text != "")
 		{
@@ -86,7 +88,7 @@ function l10n_text(key = "") /* The common abbreviation for localization is l10n
 		if (global.translations[?key] != undefined
 		&& global.language_local_data[# 1, global.translations[?key]] != "")
 		{
-			var letter = string_char_at("ABCDEFGHIJKLMNOPQRSTUVWXYZ", global.language_localization + 2);
+			var letter = string_char_at("ABCDEFGHIJKLMNOPQRSTUVWXYZ", global.selected_language_id + 1);
 			text = string(letter) + string(global.translations[?key] + 1) + " " + string_replace_all(text, "{a}", a) + string(round(random(9)));
 		}
 		else

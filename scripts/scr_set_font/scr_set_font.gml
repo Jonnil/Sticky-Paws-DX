@@ -1,6 +1,6 @@
 function scr_set_font(selected_font_index = global.selected_font)
 {
-	if (global.language_localization == 2) /* If you have selected Japanese language, you can't use certain fonts, as it isn't supported */
+	if (global.selected_language_id == 2) /* If you have selected Japanese language, you can't use certain fonts, as it isn't supported */
 	{
 		selected_font_index = 1; /* The font you can use is "Normal font" */
 	}

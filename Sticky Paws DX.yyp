@@ -2887,6 +2887,7 @@
     {"id":{"name":"scr_get_each_big_collectible_from_main_game","path":"scripts/scr_get_each_big_collectible_from_main_game/scr_get_each_big_collectible_from_main_game.yy",},},
     {"id":{"name":"scr_get_relative_timestamp","path":"scripts/scr_get_relative_timestamp/scr_get_relative_timestamp.yy",},},
     {"id":{"name":"scr_get_rewards_when_jumped_on","path":"scripts/scr_get_rewards_when_jumped_on/scr_get_rewards_when_jumped_on.yy",},},
+    {"id":{"name":"scr_get_sorted_language_position","path":"scripts/scr_get_sorted_language_position/scr_get_sorted_language_position.yy",},},
     {"id":{"name":"scr_get_todays_upload_count","path":"scripts/scr_get_todays_upload_count/scr_get_todays_upload_count.yy",},},
     {"id":{"name":"scr_get_valid_languages","path":"scripts/scr_get_valid_languages/scr_get_valid_languages.yy",},},
     {"id":{"name":"scr_get_voice","path":"scripts/scr_get_voice/scr_get_voice.yy",},},
