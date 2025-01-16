@@ -29,7 +29,7 @@ Level Editor,Level Editor,Nivåredigerare,レベルエディター,Editor de niv
 Options,Options,Alternativ,設定,Opciones,Opcje,,Ayarlar
 Quit,Quit,Avsluta,終了,Salir,Wyjdź,,Çıkış
 Fullscreen,Fullscreen,Fullskärm,フルスクリーン,Pantalla Completa,Pełny ekran,Full screen,Tam ekran
-Made by,Made by,Tillverkad av,作者:,Hecho por,Stworzone przez,Created by,Tarafından yapılmıştır
+Made by,Made by,Tillverkad av,作者,Hecho por,Stworzone przez,Created by,Tarafından yapılmıştır
 Loading,Loading,Läser in,ローディング中,Cargando,Wczytywanie,Loading,Yükleniyor
 Select your character!,Select your character!,Välj din karaktär!,キャラクターを選択してください!,Escoge tu Personaje!,Wybierz postać!,Select the character!,Karakterinizi Seçin!
 Player 1 Join,Player 1 Join,Spelare 1 Gå med,プレイヤー1が参加する,Jugador 1 Unir,Dołącz jako gracz 1,Join as player 1,1. oyuncu olarak katıl
@@ -422,7 +422,7 @@ Build date,Build date,Bygg datum,作成日:,,Data kompilacji,,Yapı tarihi
 is here!,is here!,är här!,が来た！,esta aqui!,jest tutaj!,,burada!
 Changelog History,Changelog History,Ändringslogghistorik,更新履歴ログ,Historia de Cambio,Lista zmian,List of the changes,Değişiklik Günlüğü Geçmişi
 Keep your levels safe!,Keep your levels safe!,Håll dina nivåer säkra!,レベルを安全に保ってください。,,Dbaj o swoje poziomy!,Care about your levels!,Seviyelerinizi güvende tutun!
-To prevent losing your custom levels and characters you should upload content and then save\nyour level IDs and character IDs somewhere safe,To prevent losing your custom levels and characters you should upload content and then save\nyour level IDs and character IDs somewhere safe,För att förhindra att du tappar dina nivåer bör du ladda upp nivåer och sedan spara dina nivå-ID på ett säkert ställe,カスタムレベルとキャラクターが無くせないようにするには、アップロードして、\nレベル ID とキャラクター ID を安全な場所に保存してください。,,By przez nieuwagę nie zapodziać gdzieś swoje biedne poziomy i postacie wyślij je do nas a następnie zapisz\nswoje ID w bezpiecznym miejscu,So you don't accidentally lose your poor levels and characters somewhere send them to us and then write your ID in a secure place,Özel seviyelerinizi ve karakterlerinizi kaybetmemek için içerik yüklemeli ve ardından seviye kimliklerinizi ve karakter kimliklerinizi güvenli bir yere kaydetmelisiniz
+To prevent losing your custom levels and characters you should upload content and then save your level IDs and character IDs somewhere safe,To prevent losing your custom levels and characters you should upload content and then save your level IDs and character IDs somewhere safe,För att förhindra att du tappar dina nivåer bör du ladda upp nivåer och sedan spara dina nivå-ID på ett säkert ställe,カスタムレベルとキャラクターが無くせないようにするには、アップロードして、\nレベル ID とキャラクター ID を安全な場所に保存してください。,,By przez nieuwagę nie zapodziać gdzieś swoje biedne poziomy i postacie wyślij je do nas a następnie zapisz swoje ID w bezpiecznym miejscu,So you don't accidentally lose your poor levels and characters somewhere send them to us and then write your ID in a secure place,Özel seviyelerinizi ve karakterlerinizi kaybetmemek için içerik yüklemeli ve ardından seviye kimliklerinizi ve karakter kimliklerinizi güvenli bir yere kaydetmelisiniz
 The game includes an autosave feature that automatically saves your levels every 5 minutes,The game includes an autosave feature that automatically saves your levels every 5 minutes,Spelet innehåller en autospara-funktion som automatiskt sparar dina nivåer var 5:e minut,5分ごとにレベルがオートセーブされます。,,Ta gra zawiera funkcje autozapisu która zapisuje twoje poziomy co 5 minut,This game has autosave feature that autosave your levels every 5 minutes,"Oyun, seviyelerinizi her 5 dakikada bir otomatik olarak kaydeden bir otomatik kaydetme özelliğine sahiptir"
 It also saves your level every time you playtest,It also saves your level every time you playtest,Det sparar också din nivå varje gång du testar,それに、レベルをテストとき、オートセーブされます。,,Zapisuje je także za każdym razem gdy je testujesz,It saves them every time you test them as well,Ayrıca her oyun testi yaptığınızda seviyenizi kaydeder
 By,By,Av,クリエイター:,,autorstwa,created by,Yazar
@@ -663,3 +663,62 @@ Back to character select,Back to character select,Tillbaka till karaktärval,キ
 Double jump uses jump,Double jump uses jump,Dubbelhopp använder hopp,プジャンプボタンを使ってダブルジャンプする,,Podwójny skok używa klawisza skoku,,Çift zıplama zıplamayı kullanır
 Get Username,Get Username,Få användarnamn,ハンドルネームをゲットする,,,,Kullanıcı Adını Al
 Do not show online caution screen again,Do not show online caution screen again,Visa inte onlinevarningsskärmen igen,オンライン警告画面を再度表示しない,,,,Çevrimiçi uyarı ekranını tekrar gösterme
+Privacy Policy,Privacy Policy,Integritetspolicy,プライバシーポリシー,política de privacidad,Polityka prywatności,,Gizlilik Politikası
+To Top,To Top,Till toppen,トップに,Por encima,Na szczyt,,Zirveye
+Community,Community,Gemenskap,コミュニティ,Comunidad,Wspólnota,,Toplum
+Get the latest updates on the game,Get the latest updates on the game,Få de senaste uppdateringarna i spelet,ゲームの最新の更新を取得します,Obtenga las últimas actualizaciones del juego,Uzyskaj najnowsze aktualizacje gry,,Oyundaki en son güncellemeleri alın
+Share and discover levels,Share and discover levels,Dela och upptäck nivåer,レベルを共有して発見します,Compartir y descubrir niveles,Udostępnij i odkryj poziomy,,Seviyeleri paylaşın ve keşfedin
+Discuss level design,Discuss level design,Diskutera nivådesign,レベルのデザインについて話し合います,Discutir el diseño de nivel,Omów projekt poziomu,,Seviye tasarımını tartışın
+Report bugs and give feedback,Report bugs and give feedback,Rapportera buggar och ge feedback,バグを報告し、フィードバックを提供します,Informar errores y dar comentarios,Zgłoś błędy i podaj opinię,,Hataları bildirin ve geri bildirim verin
+Everyone is welcome from beginners to experts!,Everyone is welcome from beginners to experts!,Alla är välkomna från nybörjare till experter!,初心者から専門家まで誰もが大歓迎です！,¡Todos son bienvenidos de principiantes a expertos!,Wszyscy są mile widziani od początkujących do ekspertów!,,Herkes yeni başlayanlardan uzmanlara hoş geldiniz!
+The Sticky Paws IP and all of its properties belong to Jonnil,The Sticky Paws IP and all of its properties belong to Jonnil,Sticky Paws IP och alla dess egenskaper tillhör Jonnil,Sticky Paws IPとそのすべてのプロパティはJonnilに属します,El Sticky Paws IP y todas sus propiedades pertenecen a Jonnil,Sticky Paws IP i wszystkie jego właściwości należą do Jonnil,,Sticky Paws IP ve tüm özellikleri Jonnil'e ait
+Links,Links,Länkar,リンク,Campo de golf,Spinki do mankietów,,Bağlar
+Change Character,Change Character,Ändra karaktär,文字を変更します,Cambiar carácter,Zmień charakter,,Karakteri Değiştir
+Edit Character,Edit Character,Redigera karaktär,文字を編集します,Editar personaje,Edytuj postać,,Karakteri Düzenle
+Custom Character Guide,Custom Character Guide,Egna karaktärersguide,カスタム文字ガイド,Guía de personajes personalizados,Niestandardowy przewodnik postaci,,Özel Karakter Kılavuzu
+X Offset,X Offset,X offset,Xオフセット,X compensación,X przesunięcie,,X Ofset
+Y Offset,Y Offset,Y offset,yオフセット,Y compensación,Y przesunięcie,,Y Ofset
+Sprite Width,Sprite Width,Spritebredd,スプライト幅,Ancho de sprite,Szerokość duszka,,Sprite genişliği
+Sprite Height,Sprite Height,Spritehöjd,スプライトの高さ,Altura de sprite,Wysokość duszka,,Sprite yüksekliği
+Enter the name of the sprite you want to edit,Enter the name of the sprite you want to edit,Ange namnet på sprite du vill redigera,編集するスプライトの名前を入力してください,Ingrese el nombre del sprite que desea editar,"Wprowadź nazwę duszka, którą chcesz edytować",,Düzenlemek istediğiniz sprite adını girin
+Flip the Sprite,Flip the Sprite,Vänd sprite,スプライトをひっくり返します,Voltea el sprite,Odwróć sprite,,Sprite'i çevirin
+Player,Player,Spelare,プレーヤー,Jugador,Odtwarzacz,,Oyuncu
+Match the System Language,Match the System Language,Matcha systemspråket,システム言語に一致します,Coincidir con el lenguaje del sistema,Dopasuj język systemowy,,Sistem dilini eşleştirin
+Last played level,,,,,,,
+Lives,,,,,,,
+Match Player 1,,,,,,,
+Draw Text Outline,,,,,,,
+Disabling text outline boosts performance but reduces readability,,,,,,,
+Vibration Strength,,,,,,,
+Always Above 1 HP,,,,,,,
+Moonjump,,,,,,,
+Hover When Holding Jump,,,,,,,
+Floor Over Bottomless Pit,,,,,,,
+Loading from server,,,,,,,
+Completed,,,,,,,
+Zero Hits,,,,,,,
+Zero Defeats,,,,,,,
+Played,,,,,,,
+Unplayed,,,,,,,
+Uses Custom Background,,,,,,,
+Email Support,,,,,,,
+second ago,,,,,,,
+seconds ago,,,,,,,
+minute ago,,,,,,,
+minutes ago,,,,,,,
+hour ago,,,,,,,
+hours ago,,,,,,,
+day ago,,,,,,,
+days ago,,,,,,,
+week ago,,,,,,,
+weeks ago,,,,,,,
+month ago,,,,,,,
+months ago,,,,,,,
+year ago,,,,,,,
+years ago,,,,,,,
+Enable Level Length Target,,,,,,,
+You get a warning if your level is shorter than desired,,,,,,,
+Target Length Minutes,,,,,,,
+Changing the theme from this menu will set the default theme taken from official levels,,,,,,,
+Enter level description for,,,,,,,
+Text only available in English,Text only available in English,Text endast tillgänglig på engelska,テキストは英語でのみ利用可能です,Texto solo disponible en inglés,Tekst dostępny tylko w języku angielskim,,Yalnızca İngilizce olarak mevcut olan metin

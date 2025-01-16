@@ -157,7 +157,7 @@ function scr_character_edit_menu_draw()
 			
 			var flip_sprite_menu_x = 32;
 			var flip_sprite_menu_y = sprite_name_y + 42;
-			edit_character_flip_sprite = draw_menu_checkmark(flip_sprite_menu_x, flip_sprite_menu_y, l10n_text("Flip Sprite"), "edit_character_flip_sprite", edit_character_flip_sprite, false);
+			edit_character_flip_sprite = draw_menu_checkmark(flip_sprite_menu_x, flip_sprite_menu_y, l10n_text("Flip the Sprite"), "edit_character_flip_sprite", edit_character_flip_sprite, false);
 		}
 		
 		if (menu == "edit_character_back")
@@ -354,6 +354,11 @@ function scr_character_edit_menu_draw()
 		if (can_input_sprite_name)
 		{
 			edit_character_sprite_name = scr_draw_name_input_screen(edit_character_sprite_name, 100, c_white, 0.5, true, display_get_gui_width() * 0.5, display_get_gui_height() * 0.5, "input_sprite_name_ok", "input_sprite_name_cancel", false, true, false);
+			
+			/* Explain what this "Edit Character Sprite Name" menu actually does, as it's unclear without an explanation */
+			draw_set_halign(fa_center);
+			draw_set_valign(fa_middle);
+			scr_draw_text_outlined(display_get_gui_width() * 0.5, display_get_gui_height() * 0.5 - 64, l10n_text("Enter the name of the sprite you want to edit"), global.default_text_size, c_black, c_white, 1);
 			
 			if (global.clicking_ok_input_screen)
 			{

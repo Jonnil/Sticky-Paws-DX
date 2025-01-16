@@ -720,7 +720,7 @@ function scr_option_level_editor()
 			var background_tiled_y = 47 * 9;
 			
 			draw_set_halign(fa_center);
-			scr_draw_text_outlined(display_get_gui_width() * 0.5, 47 * 2, "Changing the theme from this menu will set the default theme, taken from official levels", global.default_text_size * 0.9, c_black, c_white, 1);
+			scr_draw_text_outlined(display_get_gui_width() * 0.5, 47 * 2, l10n_text("Changing the theme from this menu will set the default theme taken from official levels"), global.default_text_size * 0.9, c_black, c_white, 1);
 			
 			if (!global.can_load_custom_level_assets)
 			{

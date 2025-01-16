@@ -800,6 +800,19 @@ function scr_draw_information_menu()
 			}
 			#endregion /* Link to Privacy Policy Website END */
 			
+			#region /* The Privacy Policy is only written in English, inform the user this whenever you have selected a language beside English */
+			if (global.language_local_data[# global.selected_language_id, 0] != string("English"))
+			{
+				draw_roundrect_color_ext(display_get_gui_width() - 32 - max(string_width(l10n_text("Text only available in English")), string_width("Text only available in English")), display_get_gui_height() - 96, display_get_gui_width() + 32, display_get_gui_height() + 32, 50, 50, c_black, c_black, false);
+				draw_set_halign(fa_right);
+				/* First, display the warning in the selected language */
+				scr_draw_text_outlined(display_get_gui_width() - 32, display_get_gui_height() - 64, l10n_text("Text only available in English"), global.default_text_size, c_black, c_white, 1);
+				/* Second, also display the warning in English, so that this screen can pass lotcheck with an explanation why the text isn't translated, as the people doing the lotcheck can only understand English */
+				scr_draw_text_outlined(display_get_gui_width() - 32, display_get_gui_height() - 32, "Text only available in English", global.default_text_size, c_black, c_white, 1);
+				draw_set_halign(fa_center);
+			}
+			#endregion /* The Privacy Policy is only written in English, inform the user this whenever you have selected a language beside English END */
+			
 			#region /* Navigate the Privacy Policy page */
 			if (key_up)
 			{
@@ -937,10 +950,10 @@ function scr_draw_information_menu()
 			if (global.link_to_changelog_history != "")
 			&& (global.enable_option_for_pc)
 			{
-				draw_menu_button_sprite(spr_menu_button, string_width(l10n_text("Changelog History") + ":"), changelog_history_y - 8, 0, 0, 1.9, 1, 370 * 1.9, 42, string(global.link_to_changelog_history), "changelog_history", "changelog_history");
+				draw_menu_button_sprite(spr_menu_button, string_width(l10n_text("Changelog History") + ":") + 10, changelog_history_y - 8, 0, 0, 1.9, 1, 370 * 1.9, 42, string(global.link_to_changelog_history), "changelog_history", "changelog_history");
 				draw_set_halign(fa_left);
 				scr_draw_text_outlined(32, changelog_history_y + 10, l10n_text("Changelog History") + ":", global.default_text_size, c_black, c_white, 1);
-				if (point_in_rectangle(mouse_get_x, mouse_get_y, string_width(l10n_text("Changelog History") + ":"), changelog_history_y - 8, string_width(l10n_text("Changelog History") + ":") + (370 * 1.9), changelog_history_y + 42 - 8))
+				if (point_in_rectangle(mouse_get_x, mouse_get_y, string_width(l10n_text("Changelog History") + ":") + 10, changelog_history_y - 8, string_width(l10n_text("Changelog History") + ":") + 10 + (370 * 1.9), changelog_history_y + 42 - 8))
 				&& (mouse_check_button_released(mb_left))
 				&& (menu_delay == 0 && menu_joystick_delay == 0)
 				|| (menu == "changelog_history")
@@ -951,6 +964,19 @@ function scr_draw_information_menu()
 					menu_delay = 3;
 				}
 			}
+			
+			#region /* The "What's New" text is only written in English, inform the user this whenever you have selected a language beside English */
+			if (global.language_local_data[# global.selected_language_id, 0] != string("English"))
+			{
+				draw_set_halign(fa_left);
+				draw_set_valign(fa_middle);
+				/* First, display the warning in the selected language */
+				scr_draw_text_outlined(32, whats_new_text_y, l10n_text("Text only available in English"), global.default_text_size, c_black, c_white, 1);
+				/* Second, also display the warning in English, so that this screen can pass lotcheck with an explanation why the text isn't translated, as the people doing the lotcheck can only understand English */
+				scr_draw_text_outlined(32, whats_new_text_y + 32, "Text only available in English", global.default_text_size, c_black, c_white, 1);
+				whats_new_text_y += 96;
+			}
+			#endregion /* The "What's New" text is only written in English, inform the user this whenever you have selected a language beside English END */
 			
 			draw_set_halign(fa_left);
 			draw_set_valign(fa_top);
@@ -964,7 +990,7 @@ function scr_draw_information_menu()
 			scr_draw_text_outlined(display_get_gui_width() * 0.5, 32 * 2, l10n_text("Keep your levels safe!"), global.default_text_size, c_black, c_white, 1);
 			
 			draw_set_halign(fa_left);
-			scr_draw_text_outlined(32, 32 * 4, l10n_text("To prevent losing your custom levels and characters you should upload content and then save\nyour level IDs and character IDs somewhere safe"), global.default_text_size * 0.9, c_black, c_white, 1);
+			draw_text_ext_transformed_color(32, 32 * 4, l10n_text("To prevent losing your custom levels and characters you should upload content and then save your level IDs and character IDs somewhere safe"), -1, display_get_gui_width(), global.default_text_size * 0.9, global.default_text_size * 0.9, 0, c_white, c_white, c_white, c_white, 1);
 			scr_draw_text_outlined(32, 32 * 7, l10n_text("The game includes an autosave feature that automatically saves your level every 5 minutes"), global.default_text_size * 0.9, c_black, c_white, 1);
 			scr_draw_text_outlined(32, 32 * 8, l10n_text("It also saves your level every time you playtest"), global.default_text_size, c_black, c_white, 1);
 			if (global.enable_option_for_pc)

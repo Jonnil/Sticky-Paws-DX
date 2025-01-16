@@ -48,7 +48,7 @@ function scr_option_language_menu()
 		
 		var match_system_language_x = 400;
 		var match_system_language_y = 32;
-		draw_menu_button(match_system_language_x, match_system_language_y, "Match System Language", "match_system_language", "match_system_language");
+		draw_menu_button(match_system_language_x, match_system_language_y, l10n_text("Match the System Language"), "match_system_language", "match_system_language");
 		
 		#region /* Order all of the language options in alphabetical order */
 		/* Get the sorted list of languages */
