@@ -10,6 +10,7 @@ function scr_draw_menu_search_id(what_kind_of_id = "level")
 	var delete_file_after_download = true; /* Should be set to true when creating executable */
 	var back_to_list_x = 0;
 	var back_to_list_y = 0;
+	var back_to_list_button_width = 1.5;
 	var fixed_player = 1;
 	
 	var download_temp_path = temp_directory;
@@ -707,7 +708,7 @@ function scr_draw_menu_search_id(what_kind_of_id = "level")
 					var back_to_list_x = 0;
 					var back_to_list_y = 0;
 				}
-				draw_menu_button(back_to_list_x, back_to_list_y, back_to_list_text, "searched_file_downloaded_back_to_list", "searched_file_downloaded_back_to_list");
+				draw_menu_button_sprite(spr_menu_button, back_to_list_x, back_to_list_y, 0, 0, back_to_list_button_width, 1, 370 * back_to_list_button_width, 42, back_to_list_text, "searched_file_downloaded_back_to_list", "searched_file_downloaded_back_to_list");
 				draw_sprite_ext(spr_icon_back, 0, back_to_list_x + 16, back_to_list_y + 20, 1, 1, 0, c_white, 1);
 			}
 			
@@ -1047,7 +1048,7 @@ function scr_draw_menu_search_id(what_kind_of_id = "level")
 			#endregion /* Click Delete END */
 			
 			#region /* Click back to online level list */
-			if (point_in_rectangle(mouse_get_x, mouse_get_y, back_to_list_x, back_to_list_y, back_to_list_x + 370, back_to_list_y + 41))
+			if (point_in_rectangle(mouse_get_x, mouse_get_y, back_to_list_x, back_to_list_y, back_to_list_x + (370 * back_to_list_button_width), back_to_list_y + 41))
 			&& (global.controls_used_for_navigation == "mouse")
 			&& (mouse_check_button_released(mb_left))
 			&& (menu_delay == 0 && menu_joystick_delay == 0)

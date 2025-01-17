@@ -684,41 +684,41 @@ Enter the name of the sprite you want to edit,Enter the name of the sprite you w
 Flip the Sprite,Flip the Sprite,Vänd sprite,スプライトをひっくり返します,Voltea el sprite,Odwróć sprite,,Sprite'i çevirin
 Player,Player,Spelare,プレーヤー,Jugador,Odtwarzacz,,Oyuncu
 Match the System Language,Match the System Language,Matcha systemspråket,システム言語に一致します,Coincidir con el lenguaje del sistema,Dopasuj język systemowy,,Sistem dilini eşleştirin
-Last played level,,,,,,,
-Lives,,,,,,,
-Match Player 1,,,,,,,
-Draw Text Outline,,,,,,,
-Disabling text outline boosts performance but reduces readability,,,,,,,
-Vibration Strength,,,,,,,
-Always Above 1 HP,,,,,,,
-Moonjump,,,,,,,
-Hover When Holding Jump,,,,,,,
-Floor Over Bottomless Pit,,,,,,,
-Loading from server,,,,,,,
-Completed,,,,,,,
-Zero Hits,,,,,,,
-Zero Defeats,,,,,,,
-Played,,,,,,,
-Unplayed,,,,,,,
-Uses Custom Background,,,,,,,
-Email Support,,,,,,,
-second ago,,,,,,,
-seconds ago,,,,,,,
-minute ago,,,,,,,
-minutes ago,,,,,,,
-hour ago,,,,,,,
-hours ago,,,,,,,
-day ago,,,,,,,
-days ago,,,,,,,
-week ago,,,,,,,
-weeks ago,,,,,,,
-month ago,,,,,,,
-months ago,,,,,,,
-year ago,,,,,,,
-years ago,,,,,,,
-Enable Level Length Target,,,,,,,
-You get a warning if your level is shorter than desired,,,,,,,
-Target Length Minutes,,,,,,,
-Changing the theme from this menu will set the default theme taken from official levels,,,,,,,
-Enter level description for,,,,,,,
+Last played level,Last played level,Senast spelade nivå,最後にプレイしたレベル,Último nivel jugado,Ostatnio grany poziom,,Son oynanan seviye
+Lives,Lives,Liv,人生,Vida,Życie,,Hayat
+Match Player 1,Match Player 1,Matcha spelare 1,マッチプレイヤー1,Jugador del partido 1,Dopasuj gracza 1,,Eşleşen oyuncu 1
+Draw Text Outline,Draw Text Outline,Rita textkontur,テキストのアウトラインを描く,Dibujar el contorno del texto,Narysuj kontur tekstu,,Metin taslağını çiz
+Disabling text outline boosts performance but reduces readability,Disabling text outline boosts performance but reduces readability,Att inaktivera textkontur ökar prestandan men minskar läsbarheten,テキストアウトラインを無効にするとパフォーマンスは向上しますが、読みやすさは低下します。,Deshabilitar el contorno de texto aumenta el rendimiento pero reduce la legibilidad,"Wyłączenie konturu tekstu zwiększa wydajność, ale zmniejsza czytelność",,Metin anahattını devre dışı bırakmak performansı artırır ancak okunabilirliği azaltır
+Vibration Strength,Vibration Strength,Vibrationsstyrka,振動強度,Fuerza de vibración,Siła wibracji,,Titreşim gücü
+Always Above 1 HP,Always Above 1 HP,Alltid över 1 HP,常に1HP以上,Siempre más de 1 HP,Zawsze powyżej 1 HP,,Her zaman 1 HP'nin üzerinde
+Moonjump,Moonjump,Moonjump,ムーンジャンプ,Salto lunar,Skok na Księżyc,,Ay atlayışı
+Hover When Holding Jump,Hover When Holding Jump,Sväva när du håller hoppa,ジャンプしながら浮く,Flotar mientras se mantiene pulsado el salto,Pływaj trzymając skok,,Zıplamayı tutarken yüz
+Floor Over Bottomless Pit,Floor Over Bottomless Pit,Golv över Bottenlös Grop,底なしの穴の上の床,Piso sobre pozo sin fondo,Podłoga nad studnią bez dna,,Dipsiz Kuyu Üzerindeki Zemin
+Loading from server,Loading from server,Laddar från servern,サーバーから読み込み中,Cargando desde el servidor,Ładowanie z serwera,,Sunucudan yükleniyor
+Completed,Completed,Komplett,完了,Completo,Kompletny,,Tamamlamak
+Zero Hits,Zero Hits,Noll träffar,ヒット数ゼロ,Cero impactos,Zero trafień,,Sıfır vuruş
+Zero Defeats,Zero Defeats,Noll dödsfall,死亡者ゼロ,Cero muertes,Zero zgonów,,Sıfır ölüm
+Played,Played,Spelade,プレイした,Jugó,Zagrano,,Oynandı
+Unplayed,Unplayed,Ospelad,未再生,Sin jugar,Nieodtwarzane,,Oynanmamış
+Uses Custom Background,Uses Custom Background,Använder egen bakgrund,独自の背景を使用,Utiliza su propio fondo,Używa własnego tła,,Kendi arka planını kullanır
+Email Support,Email Support,E-postsupport,メールサポート,Soporte por correo electrónico,Wsparcie e-mailowe,,E-posta desteği
+second ago,second ago,sekund sedan,秒前,Hace un segundo,sekundę temu,,saniye önce
+seconds ago,seconds ago,sekunder sedan,秒前,Hace segundos,sekund temu,,saniyeler önce
+minute ago,minute ago,minut sedan,分前,Hace un minuto,minutę temu,,bir dakika önce
+minutes ago,minutes ago,minuter sedan,数分前,Hace minutos,minut temu,,dakikalar önce
+hour ago,hour ago,timme sedan,時間前,Hace una hora,godzinę temu,,bir saat önce
+hours ago,hours ago,timmar sedan,時間前,Hace horas,godzin temu,,saatler önce
+day ago,day ago,dag sedan,日前,Hace un día,dzień temu,,bir gün önce
+days ago,days ago,dagar sedan,日前,Hace días,dni temu,,günler önce
+week ago,week ago,vecka sedan,一週間前,Hace una semana,tydzień temu,,bir hafta önce
+weeks ago,weeks ago,veckor sedan,数週間前,Hace semanas,tygodnie temu,,haftalar önce
+month ago,month ago,månad sedan,か月前,Hace un mes,miesiąc temu,,ay önce
+months ago,months ago,månader sedan,数か月前,Hace meses,miesiące temu,,aylar önce
+year ago,year ago,år sedan,数年前,hace años que,lat temu,,Yıllar önce
+years ago,years ago,år sedan,数年前,hace años que,lat temu,,Yıllar önce
+Enable Level Length Target,Enable Level Length Target,Aktivera nivålängdsmål,レベルの長さのターゲットを有効にする,Habilitar objetivo de longitud de nivel,Włącz docelową długość poziomu,,Seviye uzunluk hedefini etkinleştir
+You get a warning if your level is shorter than desired,You get a warning if your level is shorter than desired,Du får en varning om din nivå är kortare än önskat,レベルが希望よりも短い場合は警告が表示されます。,Recibirás una advertencia si tu nivel es más corto de lo deseado.,"Jeśli poziom będzie krótszy niż oczekiwany, otrzymasz ostrzeżenie.",,Seviyeniz istenilenden kısa ise uyarı alırsınız.
+Target Length Minutes,Target Length Minutes,Mållängd minuter,ゴールの長さ（分）,Minutos de duración del objetivo,Długość celu minut,,Gol uzunluğu dakikaları
+Changing the theme from this menu will set the default theme taken from official levels,Changing the theme from this menu will set the default theme taken from official levels,Om du ändrar temat från den här menyn ställer du in standardtemat från officiella nivåer,このメニューからテーマを変更すると、公式レベルのデフォルトのテーマが設定されます,"Si cambias el tema desde este menú, establecerás el tema predeterminado de los niveles oficiales.","Jeśli zmienisz motyw z tego menu, ustawisz domyślny motyw z oficjalnych poziomów",,"Bu menüden temayı değiştirirseniz, resmi seviyelerden varsayılan temayı ayarlayacaksınız"
+Enter level description for,Enter level description for,Ange nivåbeskrivning för,レベルの説明を入力してください,Introduzca la descripción del nivel para,Wprowadź opis poziomu dla,,Seviye açıklamasını girin
 Text only available in English,Text only available in English,Text endast tillgänglig på engelska,テキストは英語でのみ利用可能です,Texto solo disponible en inglés,Tekst dostępny tylko w języku angielskim,,Yalnızca İngilizce olarak mevcut olan metin
