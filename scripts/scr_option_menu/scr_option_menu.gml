@@ -2161,7 +2161,8 @@ function scr_option_menu()
 				global.hud_hide_time = 3;
 			}
 			
-			if (global.selected_language_id == 2) /* If you have selected Japanese language, you can't use Open Dyslexic, as it isn't supported */
+			/* If you have selected Japanese language, you can't use Open Dyslexic, as it isn't supported */
+			if (global.language_local_data[# global.selected_language_id, 0] == "日本語 (Japanese)")
 			{
 				/* Only include Game Font and Normal Font for Japanese language, as these are the only supported ones*/
 				/* Doesn't include Open Dyslexic, as some languages are not supported */
@@ -2782,9 +2783,11 @@ function scr_option_menu()
 				&& (menu_delay == 0 && menu_joystick_delay == 0)
 				&& (can_select_font)
 				{
-					if (global.selected_language_id == 2) /* If you have selected Japanese language, you can't use Open Dyslexic, as it isn't supported */
-					&& (global.selected_font < 1) /* If "Global Selected Font" checks for less than 1 here, then you can only select Game font and Normal font */
-					|| (global.selected_language_id != 2)
+					/* If you have selected Japanese language, you can't use Open Dyslexic, as it isn't supported */
+					/* If "Global Selected Font" checks for less than 1 here, then you can only select Game font and Normal font */
+					if (global.language_local_data[# global.selected_language_id, 0] == "日本語 (Japanese)")
+					&& (global.selected_font < 1)
+					|| (global.language_local_data[# global.selected_language_id, 0] != "日本語 (Japanese)")
 					&& (global.selected_font < 2)
 					{
 						menu_delay = 3;

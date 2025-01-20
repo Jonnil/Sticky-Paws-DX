@@ -408,11 +408,11 @@ function scr_option_graphics()
 	{
 		draw_menu_button(450, 48, l10n_text("Back"), "customize_button_design_back", "customize_button_design");
 		draw_menu_dropdown(420, 68 * 4, l10n_text("Transparency"), "customize_button_design_transparency", global.button_design_transparency, l10n_text("Opaque"), l10n_text("See Through"), l10n_text("Outlines Only"), l10n_text("Invisible"));
-		scr_set_default_dropdown_description("customize_button_design_transparency", "Opaque");
+		scr_set_default_dropdown_description("customize_button_design_transparency", l10n_text("Opaque"));
 		draw_menu_dropdown(420, 68 * 3, l10n_text("Shape"), "customize_button_design_shape", global.button_design_shape, l10n_text("Rectangle"), l10n_text("Round"));
-		scr_set_default_dropdown_description("customize_button_design_shape", "Round");
+		scr_set_default_dropdown_description("customize_button_design_shape", l10n_text("Round"));
 		draw_menu_dropdown(420, 68 * 2, l10n_text("Color"), "customize_button_design_color", global.button_design_color, l10n_text("Gray"), l10n_text("Black"), l10n_text("Pink"), l10n_text("Blue"));
-		scr_set_default_dropdown_description("customize_button_design_color", "Pink");
+		scr_set_default_dropdown_description("customize_button_design_color", l10n_text("Pink"));
 		
 		if (key_b_pressed)
 		&& (!open_dropdown)

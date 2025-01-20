@@ -87,15 +87,25 @@ if (nearest_level != noone && iris_xscale > 9 && move_delay > 10 && distance_to_
             var total_defeats_text = "";
 			if (global.show_defeats_counter && nearest_level.number_of_defeats > 0)
 			{
-				var total_defeats_text = l10n_text("Total Defeats") + ": " + string(nearest_level.number_of_defeats) + "\n";
+				var total_defeats_text = l10n_text("Total Defeats") + ": " + string(nearest_level.number_of_defeats);
 			}
+			
 			scr_draw_text_outlined(show_level_info_x, show_level_info_y - 150,
-			best_time_text + "\n" +
-			l10n_text("Best Score") + ": " + string(nearest_level.level_score) + "\n" +
-			l10n_text("Times Passed") + ": " + string(nearest_level.number_of_clears) + "\n" +
+			best_time_text,
+			global.default_text_size, c_black, c_white, 1);
+			
+			scr_draw_text_outlined(show_level_info_x, show_level_info_y - 150 + 32,
+			l10n_text("Best Score") + ": " + string(nearest_level.level_score),
+			global.default_text_size, c_black, c_white, 1);
+			
+			scr_draw_text_outlined(show_level_info_x, show_level_info_y - 150 + (32 * 2),
+			l10n_text("Times Passed") + ": " + string(nearest_level.number_of_clears),
+			global.default_text_size, c_black, c_white, 1);
+			
+			scr_draw_text_outlined(show_level_info_x, show_level_info_y - 150 + (32 * 3),
 			total_defeats_text,
 			global.default_text_size, c_black, c_white, 1);
-            
+			
 			for (var i = 1; i <= global.max_big_collectible; i++)
 			{
 				var sprite_to_draw = global.resource_pack_sprite_big_collectible_outline;

@@ -664,7 +664,7 @@ Double jump uses jump,Double jump uses jump,Dubbelhopp använder hopp,プジャ�
 Get Username,Get Username,Få användarnamn,ハンドルネームをゲットする,,,,Kullanıcı Adını Al
 Do not show online caution screen again,Do not show online caution screen again,Visa inte onlinevarningsskärmen igen,オンライン警告画面を再度表示しない,,,,Çevrimiçi uyarı ekranını tekrar gösterme
 Privacy Policy,Privacy Policy,Integritetspolicy,プライバシーポリシー,política de privacidad,Polityka prywatności,,Gizlilik Politikası
-To Top,To Top,Till toppen,トップに,Por encima,Na szczyt,,Zirveye
+To Top,To Top,Till toppen,トップへ,Por encima,Na szczyt,,Zirveye
 Community,Community,Gemenskap,コミュニティ,Comunidad,Wspólnota,,Toplum
 Get the latest updates on the game,Get the latest updates on the game,Få de senaste uppdateringarna i spelet,ゲームの最新の更新を取得します,Obtenga las últimas actualizaciones del juego,Uzyskaj najnowsze aktualizacje gry,,Oyundaki en son güncellemeleri alın
 Share and discover levels,Share and discover levels,Dela och upptäck nivåer,レベルを共有して発見します,Compartir y descubrir niveles,Udostępnij i odkryj poziomy,,Seviyeleri paylaşın ve keşfedin
@@ -705,20 +705,21 @@ Email Support,Email Support,E-postsupport,メールサポート,Soporte por corr
 second ago,second ago,sekund sedan,秒前,Hace un segundo,sekundę temu,,saniye önce
 seconds ago,seconds ago,sekunder sedan,秒前,Hace segundos,sekund temu,,saniyeler önce
 minute ago,minute ago,minut sedan,分前,Hace un minuto,minutę temu,,bir dakika önce
-minutes ago,minutes ago,minuter sedan,数分前,Hace minutos,minut temu,,dakikalar önce
+minutes ago,minutes ago,minuter sedan,分前,Hace minutos,minut temu,,dakikalar önce
 hour ago,hour ago,timme sedan,時間前,Hace una hora,godzinę temu,,bir saat önce
 hours ago,hours ago,timmar sedan,時間前,Hace horas,godzin temu,,saatler önce
 day ago,day ago,dag sedan,日前,Hace un día,dzień temu,,bir gün önce
 days ago,days ago,dagar sedan,日前,Hace días,dni temu,,günler önce
-week ago,week ago,vecka sedan,一週間前,Hace una semana,tydzień temu,,bir hafta önce
-weeks ago,weeks ago,veckor sedan,数週間前,Hace semanas,tygodnie temu,,haftalar önce
+week ago,week ago,vecka sedan,週間前,Hace una semana,tydzień temu,,bir hafta önce
+weeks ago,weeks ago,veckor sedan,週間前,Hace semanas,tygodnie temu,,haftalar önce
 month ago,month ago,månad sedan,か月前,Hace un mes,miesiąc temu,,ay önce
-months ago,months ago,månader sedan,数か月前,Hace meses,miesiące temu,,aylar önce
-year ago,year ago,år sedan,数年前,hace años que,lat temu,,Yıllar önce
-years ago,years ago,år sedan,数年前,hace años que,lat temu,,Yıllar önce
+months ago,months ago,månader sedan,か月前,Hace meses,miesiące temu,,aylar önce
+year ago,year ago,år sedan,年前,hace años que,lat temu,,Yıllar önce
+years ago,years ago,år sedan,年前,hace años que,lat temu,,Yıllar önce
 Enable Level Length Target,Enable Level Length Target,Aktivera nivålängdsmål,レベルの長さのターゲットを有効にする,Habilitar objetivo de longitud de nivel,Włącz docelową długość poziomu,,Seviye uzunluk hedefini etkinleştir
 You get a warning if your level is shorter than desired,You get a warning if your level is shorter than desired,Du får en varning om din nivå är kortare än önskat,レベルが希望よりも短い場合は警告が表示されます。,Recibirás una advertencia si tu nivel es más corto de lo deseado.,"Jeśli poziom będzie krótszy niż oczekiwany, otrzymasz ostrzeżenie.",,Seviyeniz istenilenden kısa ise uyarı alırsınız.
 Target Length Minutes,Target Length Minutes,Mållängd minuter,ゴールの長さ（分）,Minutos de duración del objetivo,Długość celu minut,,Gol uzunluğu dakikaları
 Changing the theme from this menu will set the default theme taken from official levels,Changing the theme from this menu will set the default theme taken from official levels,Om du ändrar temat från den här menyn ställer du in standardtemat från officiella nivåer,このメニューからテーマを変更すると、公式レベルのデフォルトのテーマが設定されます,"Si cambias el tema desde este menú, establecerás el tema predeterminado de los niveles oficiales.","Jeśli zmienisz motyw z tego menu, ustawisz domyślny motyw z oficjalnych poziomów",,"Bu menüden temayı değiştirirseniz, resmi seviyelerden varsayılan temayı ayarlayacaksınız"
 Enter level description for,Enter level description for,Ange nivåbeskrivning för,レベルの説明を入力してください,Introduzca la descripción del nivel para,Wprowadź opis poziomu dla,,Seviye açıklamasını girin
 Text only available in English,Text only available in English,Text endast tillgänglig på engelska,テキストは英語でのみ利用可能です,Texto solo disponible en inglés,Tekst dostępny tylko w języku angielskim,,Yalnızca İngilizce olarak mevcut olan metin
+Default,Default,Standard,デフォルト,Por defecto,Domyślny,,Varsayılan
