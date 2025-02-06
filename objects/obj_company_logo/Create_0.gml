@@ -11,7 +11,7 @@ var character_for_player4 = "catlyn"; /* Player 4 Select Character 4 */
 
 /* Links to websites */
 global.link_to_bug_report_form = "https://www.jonnil.games/sticky-paws-bug-report";
-global.link_to_changelog_history = "https://www.jonnil.games/sticky-paws-changelog"
+global.link_to_changelog_history = "https://www.jonnil.games/sticky-paws-changelog";
 global.link_to_discord = "https://www.jonnil.games/discord";
 global.link_to_gamebanana = "https://gamebanana.com/games/7722";
 global.link_to_instagram = "https://www.instagram.com/jonnilll";
@@ -25,10 +25,34 @@ global.link_to_website_guide_custom_character = "https://www.jonnil.games/sticky
 global.link_to_wiki = ""; //"https://stickypedia.miraheze.org/wiki/Main_Page";
 global.link_to_youtube = "https://www.youtube.com/Jonnilescom";
 global.link_to_privacy_policy = "https://www.jonnil.com/sticky-paws-privacy-policy";
+global.link_to_check_server_status = "";
 global.email_support = "contact@jonnil.games"; /* This is the email address for an email support, which is required by most game platforms. Will show up whenever you report content in the game */
 
+#region /* Retrieve What's New Text */
 /* Update this text explaining what is new in each update */
-global.whats_new = "Biggest Sticky Paws update yet! \n Thank you everyone for supporting my game! \n I've been working very hard on porting this game to Switch. \n Been focusing a lot on making the level editor better, \n and there is now a level sharing feature in-game. \n Please support this game by sharing the game with friends. \n I would greatly appreciate it. \n Have a great time making and playing shared levels! \n \n -Jonnil";
+/* Initialize an empty string to store the text */
+global.whats_new = "";
+
+/* Check if the file exists */
+if (file_exists("whats_new.txt"))
+{
+	/* Open the file for reading */
+	var file = file_text_open_read("whats_new.txt");
+	
+	/* Loop through each line until the end of the file */
+	while (!file_text_eof(file))
+	{
+		/* Read a line and append it to the "global.whats_new" variable */
+		global.whats_new += file_text_read_string(file) + "\n";
+		
+		/* Move to the next line */
+		file_text_readln(file);
+	}
+	
+	/* Close the file */
+	file_text_close(file);
+}
+#endregion /* Retrieve What's New Text END */
 
 /* There needs to be limits to the custom characters and levels. Upload and download limits are important */
 global.max_file_upload_megabytes = 16; /* There needs to be a max file upload size (in megabytes), otherwise people can download files that are too big for their system to handle. Default is 16 MB */
@@ -134,6 +158,7 @@ global.http_request_id = noone;
 global.content_added_today = noone;
 global.online_token_validated = false; /* Can only be a boolean value */
 global.online_token_error_message = ""; /* Can only be a string value */
+global.server_timeout_end = undefined;
 #endregion /* Server stuff END */
 
 #endregion /* Things you could change END */
@@ -173,19 +198,22 @@ global.option_description = ""; /* Description that shows up when changing certa
 global.option_default = -1; /* Show wether the current option selected have a default setting, and tell the player this */
 global.can_save_length_variable = false; /* This function saves object_placement_all.json size, but lags the game. Make this optional and false by default */
 global.can_load_official_and_custom_resources = true; /* For debug, you might not want to load included files, but by default set this to true */
-global.debug_screen = false;
+global.debug_screen = false; /* Toggles the visibility of the debug screen. When set to true, the debug screen appears overlayed on the game. Useful for displaying live debugging information. */
+global.debug_collapsed_sections = ds_map_create(); /* A data structure that tracks which debug sections are collapsed. Each key represents a section name, and its value (true/false) indicates whether the section is currently collapsed. Helps organize and declutter the debug screen for better readability. */
+global.debug_detailed_mode = false; /* Determines whether the debug screen displays detailed variable names or simplified, user-friendly labels. Set to true for detailed mode, showing exact variable names, which is helpful for developers familiar with the codebase. */
 global.show_fps = false; /* Show fps for optimization debug */
 global.show_instance_count = false; /* Show instance count for optimization debug */
 global.show_all_instance_count = false; /* Show all the different instances within a room and how many there are for optimization debug */
 global.enable_transitions = true; /* During transitions when going from one room to another, the game could crash, and you can't see what's going on when the transition animation is playing and making the screen black, so turn off this for debug */
-global.enable_background_layer1 = true;
-global.enable_background_layer2 = true;
-global.enable_background_layer3 = true;
-global.enable_background_layer4 = true;
-global.enable_foreground_layer1 = true;
-global.enable_foreground_layer_1_5 = true;
-global.enable_foreground_layer2 = true;
-global.enable_foreground_layer_secret = true;
+global.enable_background_layer1 = true; /* Toggles the visibility of the first background layer. This layer is typically used for distant scenery or static visuals in the game. */
+global.enable_background_layer2 = true; /* Toggles the visibility of the second background layer. Often used for mid-range background elements, such as buildings or trees. */
+global.enable_background_layer3 = true; /* Toggles the visibility of the third background layer. This layer can represent closer background visuals, adding depth to the scene. */
+global.enable_background_layer4 = true; /* Toggles the visibility of the fourth background layer. Typically used for the closest and most detailed background elements. */
+global.enable_foreground_layer1 = true; /* Toggles the visibility of the first foreground layer. This layer is usually used for objects close to the player but not interactive. */
+global.enable_foreground_layer_1_5 = true; /* Toggles the visibility of an additional foreground layer between layer 1 and layer 2. This provides more granularity in layering for visuals closer to the player. */
+global.enable_foreground_layer2 = true; /* Toggles the visibility of the second foreground layer. Often used for interactive or visually significant foreground elements. */
+global.enable_foreground_layer_secret = true; /* Toggles the visibility of the secret foreground layer. Typically used for hidden or unlockable elements that may only appear in certain conditions. */
+global.open_crash_docs = false;
 #endregion /* Debug toggles END */
 
 /* Equipped Upgrades. All of these should be true so you automatically equip the upgrades so don't change the variables here, but you can unequipp the upgrades in the pause menu */
@@ -197,23 +225,7 @@ global.hud_hide_time = 3;
 
 /* Game Start Event */
 
-#region /* File Handeling */
-
-#region /* Create directory for saving custom levels */
-if (!directory_exists(game_save_id + "\custom_levels"))
-{
-	directory_create(game_save_id + "\custom_levels");
-}
-#endregion /* Create directory for saving custom levels END */
-
-#region /* Create directory for saving custom characters */
-if (!directory_exists(game_save_id + "\custom_characters"))
-{
-	directory_create(game_save_id + "\custom_characters");
-}
-#endregion /* Create directory for saving custom characters END */
-
-#endregion /* File Handeling END */
+scr_create_game_directories();
 
 scr_initialize_object_id_enums(); /* Initialize the object ID enums when the game starts so you never have to initialize the object ID's ever again */
 
@@ -422,7 +434,9 @@ global.reset_world_map_zoom_when_going_back_to_map = false;
 global.selected_language_id = 1;
 global.current_language_menu_position = 1;
 global.language_local_data = 0;
+global.language_column_start = 2; /* Languages start at column 2 (i.e. index 2) */
 global.translation_debug = false; /* If you can see debug information about translations */
+preload_translation_missing_keywords(); /* This cache keeps track of already logged translation keywords to prevent duplicates */
 /* Shows csv cell letter and cell number, to more easily find the cell to translate */
 /* Will be false by defaul and can be enabled or disabled if you click on "Translation Completion" on the language options in-game */
 

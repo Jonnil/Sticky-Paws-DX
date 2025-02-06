@@ -6,22 +6,22 @@ function draw_language_checkmark(x_position, y_position, string_text, menu_index
 	The game keeps track of the language the player has chosen using something called 'global.selected_language_id'.
 	This is basically a number or ID that represents a specific language.
 	Kind of like a label that never changes, no matter where it appears in the game.
-	The game pulls this ID from a list called 'global.valid_languages', which isn’t sorted in any special way.
+	The game pulls this ID from a list called 'global.valid_languages', which isn't sorted in any special way.
 	It just holds all the available language IDs.
 	The point of this ID is to make sure the game knows which translations to use when it displays text.
 	
-	Then there’s 'global.current_language_menu_position', which is a bit different.
-	This variable isn’t about IDs.
-	It’s about the position of the selected language in the menu itself.
+	Then there's 'global.current_language_menu_position', which is a bit different.
+	This variable isn't about IDs.
+	It's about the position of the selected language in the menu itself.
 	The menu shows the languages in alphabetical order, so the positions of the languages in this sorted list might not match their original IDs.
 	This position is used to figure out which language should be highlighted and selected when the menu pops up.
 	
 	When the player opens the language menu, the game looks at the 'global.selected_language_id' and finds its place in the sorted list.
 	It uses this to set 'global.current_language_menu_position' so the right language gets highlighted.
 	If the player picks a new language, the game updates both variables: 'global.current_language_menu_position' changes to the new menu position,
-	and 'global.selected_language_id' gets updated to the new language’s ID from the unsorted list.
+	and 'global.selected_language_id' gets updated to the new language's ID from the unsorted list.
 	
-	Here’s an example to make it clearer.
+	Here's an example to make it clearer.
 	When the game starts, it loads 'global.selected_language_id' from the settings file so it knows which language the player used last time.
 	Then the language menu opens, showing the sorted list of available languages.
 	The game goes through that list, finds the language that matches the saved ID, and highlights it in the menu.

@@ -471,6 +471,9 @@ function scr_select_custom_level_menu()
 			&& (key_a_pressed)
 			&& (menu_delay == 0 && menu_joystick_delay == 0)
 			{
+				caution_online_takes_you_to = "online_download_list_load";
+				caution_online_takes_you_back_to = "online_level_list";
+				
 				if (global.online_enabled)
 				&& (os_is_network_connected())
 				{
@@ -491,16 +494,12 @@ function scr_select_custom_level_menu()
 							else
 							{
 								menu_delay = 3;
-								caution_online_takes_you_to = "online_download_list_load";
-								caution_online_takes_you_back_to = "online_level_list";
 								menu = "caution_online_network_error";
 							}
 						}
 						else
 						{
 							menu_delay = 3;
-							caution_online_takes_you_to = "online_download_list_load";
-							caution_online_takes_you_back_to = "online_level_list";
 							menu = "caution_online_network_error";
 						}
 					}
@@ -513,8 +512,6 @@ function scr_select_custom_level_menu()
 				else
 				{
 					content_type = "level"; /* Need to set the "content type" to "level", so Async - HTTP Event is running correctly */
-					caution_online_takes_you_to = "online_download_list_load";
-					caution_online_takes_you_back_to = "online_level_list";
 					if (os_is_network_connected())
 					{
 						menu = "caution_online_proceed";

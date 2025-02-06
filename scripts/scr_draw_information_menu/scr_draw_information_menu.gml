@@ -594,6 +594,9 @@ function scr_draw_information_menu()
 			&& (key_a_pressed)
 			&& (menu_delay == 0 && menu_joystick_delay == 0)
 			{
+				caution_online_takes_you_to = "online_download_list_load";
+				caution_online_takes_you_back_to = "about_online_level_list";
+				
 				menu_delay = 3;
 				if (global.online_enabled)
 				&& (os_is_network_connected())
@@ -630,16 +633,12 @@ function scr_draw_information_menu()
 							else
 							{
 								menu_delay = 3;
-								caution_online_takes_you_to = "online_download_list_load";
-								caution_online_takes_you_back_to = "about_online_level_list";
 								menu = "caution_online_network_error";
 							}
 						}
 						else
 						{
 							menu_delay = 3;
-							caution_online_takes_you_to = "online_download_list_load";
-							caution_online_takes_you_back_to = "about_online_level_list";
 							menu = "caution_online_network_error";
 						}
 					}
@@ -653,8 +652,6 @@ function scr_draw_information_menu()
 				{
 					information_menu_open = ""; /* Disable information menu so you can't accidentally navigate information menu when navigating online caution menu */
 					content_type = "level"; /* Need to set the "content type" to "level", so Async - HTTP Event is running correctly */
-					caution_online_takes_you_to = "online_download_list_load";
-					caution_online_takes_you_back_to = "about_online_level_list";
 					menu = "caution_online_proceed";
 					menu_delay = 3;
 				}
@@ -756,7 +753,7 @@ function scr_draw_information_menu()
 				    file_text_close(file);
 				}
 				#endregion /* Retrieve Privacy Policy END */
-
+				
 			}
 			
 			draw_set_halign(fa_left);
@@ -926,6 +923,7 @@ function scr_draw_information_menu()
 				latest_whats_new_read = true;
 				ini_open(game_save_id + "save_file/config.ini");
 				ini_write_string("config", "latest_whats_new_version", "v" + scr_get_build_date());
+				ini_key_delete("config", "latest_whats_new_text"); /* Delete the ini key before writing new data to it */
 				ini_write_string("config", "latest_whats_new_text", string(global.whats_new));
 				ini_close(); /* Don't commit the save data on Switch, this is only temporary! */
 			}

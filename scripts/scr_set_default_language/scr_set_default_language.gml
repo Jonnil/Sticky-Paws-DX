@@ -6,11 +6,11 @@ function scr_set_default_language()
 		var switch_languages = switch_language_get_desired_language();
 		var num_languages = ds_grid_width(global.language_local_data);
 		
-		/* Default to the first language (index 1) in case "English" isn’t found */
-		var default_language = 1; 
-
+		/* Default to the starting language column, the first valid language, in case "English" isn't found */
+		var default_language = global.language_column_start;
+		
 		/* Find the actual index of "English" */
-		for (var i = 1; i < num_languages; i ++)
+		for (var i = global.language_column_start; i < num_languages; i ++)
 		{
 			if (global.language_local_data[# i, 0] == string(default_language_name))
 			{

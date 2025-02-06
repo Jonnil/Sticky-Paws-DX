@@ -5,8 +5,8 @@
   "isDnD":false,
   "name":"scr_set_default_language",
   "parent":{
-    "name":"Other",
-    "path":"folders/Scripts/Other.yy",
+    "name":"Translation Scripts",
+    "path":"folders/Scripts/Translation Scripts.yy",
   },
   "resourceType":"GMScript",
   "resourceVersion":"2.0",

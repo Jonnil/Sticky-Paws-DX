@@ -39,6 +39,7 @@ function scr_draw_online_download_list()
 		
 		else
 		{
+			global.server_timeout_end = undefined;
 			scr_process_online_download_menu_data();
 		}
 	}
@@ -195,6 +196,9 @@ function scr_initialize_online_download_menu()
 	
 	/* Draw loading screen when loading download list */
 	scr_draw_loading(1,,,"Loading from server");
+	
+	/* Start the server timeout timer for 15 seconds */
+    scr_server_timeout(15);
 }
 
 function scr_handle_no_network_connection()
@@ -219,6 +223,9 @@ function scr_handle_no_network_connection()
 function scr_process_online_download_list_data()
 {
 	scr_draw_loading(1,,,"Loading from server"); /* Draw loading screen when loading download list */
+	
+	/* Start the server timeout timer for 15 seconds */
+    scr_server_timeout(15);
 	
 	#region /* If there is an online download list loaded, interpret that as a struct using "json parse" */
 	if (global.online_download_list != "")

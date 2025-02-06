@@ -180,40 +180,9 @@ scroll_to = floor(global.select_level_index / row);
 scroll_to_timer = 3;
 level_editor_template_select = false;
 language_mouse_scroll = 0;
-
 narrator_name = string(ds_list_find_value(global.all_loaded_characters, global.narrator)); /* Character Name */
-
-#region /* Create directories */
-if (!directory_exists(game_save_id + "custom_characters"))
-{
-	directory_create(game_save_id + "custom_characters"); /* Create directory for saving custom characters */
-}
-if (!directory_exists(game_save_id + "custom_levels"))
-{
-	directory_create(game_save_id + "custom_levels"); /* Create directory for saving custom levels */
-}
-if (!directory_exists(game_save_id + "custom_resource_pack"))
-{
-	directory_create(game_save_id + "custom_resource_pack"); /* Create directory for saving custom resource_pack */
-}
-if (!directory_exists(game_save_id + "custom_title_background"))
-{
-	directory_create(game_save_id + "custom_title_background"); /* Create directory for saving custom title backgrounds */
-}
-if (!directory_exists(game_save_id + "custom_title_logo"))
-{
-	directory_create(game_save_id + "custom_title_logo"); /* Create directory for saving custom title logos */
-}
-if (!directory_exists(game_save_id + "save_file"))
-{
-	directory_create(game_save_id + "save_file"); /* Create directory for saving files */
-}
-#endregion /* Create directories END */
-
 player_start_game = false; /* Character select Accept Selection */
-
 can_input_level_name = false;
-
 global.player_has_entered_goal = false;
 global.actually_play_edited_level = false;
 global.play_edited_level = false;

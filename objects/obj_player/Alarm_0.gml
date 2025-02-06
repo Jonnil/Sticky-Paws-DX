@@ -82,7 +82,8 @@ if (ini_key_exists("sprite origin points", "climb_under_y_offset"))
 }
 else
 {
-	if (can_save_to_character_config && ds_list_find_value(global.all_loaded_characters, global.character_index[player - 1]) != undefined)
+	if (can_save_to_character_config
+	&& ds_list_find_value(global.all_loaded_characters, global.character_index[player - 1]) != undefined)
 	{
 		ini_write_real("sprite origin points", "climb_under_y_offset", 10);
 	}

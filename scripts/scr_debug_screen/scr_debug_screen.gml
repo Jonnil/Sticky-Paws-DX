@@ -2,9 +2,9 @@ function scr_debug_screen()
 {
 	scr_crash_error_handling(); /* Crash Error Handling should run in every room of the game */
 	
-	/* Toggle debug screen with button press */
+	/* Toggle the debug screen visibility with button press */
 	if (keyboard_check_pressed(vk_f3))
-	|| (debug_mode) /* When creating executable for console, showing debug screen is against guidelines. So button toggle needs to be disabled for console export */
+	|| (debug_mode) /* When creating executable for console, showing debug screen is against guidelines. So button toggle for gamepad needs to be disabled for console export */
 	&& (gamepad_button_check(global.player_slot[1], gp_stickl))
 	&& (gamepad_button_check_pressed(global.player_slot[1], gp_stickr))
 	{
@@ -241,6 +241,7 @@ function scr_debug_screen()
 	}
 	#endregion /* Detect when controllers are disconnected END */
 	
+	#region /* Debug Screen Logic */
 	if (global.debug_screen)
 	{
 		
@@ -254,7 +255,18 @@ function scr_debug_screen()
 		
 		if (keyboard_check_pressed(vk_f2))
 		{
-			scr_save_os_info_ini();
+			/* Pressing F2 logs debug information to a .ini file in the Local AppData folder for this game */
+			/* This captures system and game state data for troubleshooting cases where a visual interface isn't sufficient */
+			scr_save_debug_info_ini();
+		}
+		
+		/* Toggle between detailed and simplified modes */
+		if (keyboard_check_pressed(vk_f4))
+		{
+			global.debug_detailed_mode = !global.debug_detailed_mode;
+			ini_open(game_save_id + "save_file/config.ini");
+			ini_write_real("config", "debug_detailed_mode", global.debug_detailed_mode);
+			ini_close();
 		}
 		
 		var mouse_get_x = device_mouse_x_to_gui(0);
@@ -265,7 +277,8 @@ function scr_debug_screen()
 		var d3d11_y = 64;
 		
 		#region /* Click on FPS to toggle if it should stay on screen even after you close debug screen */
-		if (point_in_rectangle(mouse_get_x, mouse_get_y, 0, fps_y - 15, 370, fps_y + 15) && global.controls_used_for_navigation == "mouse")
+		if (global.controls_used_for_navigation == "mouse"
+		&& point_in_rectangle(mouse_get_x, mouse_get_y, 0, fps_y - 15, 370, fps_y + 15))
 		{
 			draw_set_alpha(0.5);
 			draw_roundrect_color_ext(0, fps_y - 16, 370, fps_y + 16, 50, 50, c_white, c_white, false);
@@ -281,7 +294,8 @@ function scr_debug_screen()
 		#endregion /* Click on FPS to toggle if it should stay on screen even after you close debug screen END */
 		
 		#region /* Click on Instance Count to toggle if it should stay on screen even after you close debug screen */
-		if (point_in_rectangle(mouse_get_x, mouse_get_y, 0, instance_count_y - 15, 370, instance_count_y + 15) && global.controls_used_for_navigation == "mouse")
+		if (global.controls_used_for_navigation == "mouse"
+		&& point_in_rectangle(mouse_get_x, mouse_get_y, 0, instance_count_y - 15, 370, instance_count_y + 15))
 		{
 			draw_set_alpha(0.5);
 			draw_roundrect_color_ext(0, instance_count_y - 16, 370, instance_count_y + 16, 50, 50, c_white, c_white, false);
@@ -297,7 +311,8 @@ function scr_debug_screen()
 		#endregion /* Click on Instance Count to toggle if it should stay on screen even after you close debug screen END */
 		
 		#region /* Click on All Instance Count to toggle if it should stay on screen even after you close debug screen */
-		if (point_in_rectangle(mouse_get_x, mouse_get_y, 0, all_instance_count_y - 15, 370, all_instance_count_y + 15) && global.controls_used_for_navigation == "mouse")
+		if (global.controls_used_for_navigation == "mouse"
+		&& point_in_rectangle(mouse_get_x, mouse_get_y, 0, all_instance_count_y - 15, 370, all_instance_count_y + 15))
 		{
 			draw_set_alpha(0.5);
 			draw_roundrect_color_ext(0, all_instance_count_y - 16, 370, all_instance_count_y + 16, 50, 50, c_white, c_white, false);
@@ -313,7 +328,11 @@ function scr_debug_screen()
 		if (global.controls_used_for_navigation != "gamepad")
 		{
 			draw_set_halign(fa_center);
-			scr_draw_text_outlined(display_get_gui_width() * 0.5, 8, "F3 to toggle debug screen", global.default_text_size * 0.6, c_black, c_white, 1);
+			/* Tell the player what keys to press to navigate debug screen specific functions, only if they are playing on their keyboard */
+			scr_draw_text_outlined(display_get_gui_width() * 0.5, 8, "Press the F2 key to save telemetry information", global.default_text_size * 0.6, c_black, c_white, 1);
+			scr_draw_text_outlined(display_get_gui_width() * 0.5, 8 + 15, "Press the F3 key to toggle debug screen", global.default_text_size * 0.6, c_black, c_white, 1);
+			scr_draw_text_outlined(display_get_gui_width() * 0.5, 8 + (15 * 2), "Press the F4 key to toggle debug detailed mode", global.default_text_size * 0.6, c_black, c_white, 1);
+			scr_draw_text_outlined(display_get_gui_width() * 0.5, 8 + (15 * 3), "Click on the debug headers to collapse sections", global.default_text_size * 0.6, c_black, c_white, 1);
 		}
 		draw_set_halign(fa_left);
 		scr_draw_text_outlined(32, version_y, string(global.game_name) + " v" + scr_get_build_date(), global.default_text_size, c_black, c_white, 1); /* Display the game's name and build version */
@@ -375,120 +394,217 @@ function scr_debug_screen()
 		
 		
 		#region /* Optimized Debug Text */
-draw_set_halign(fa_left);
-draw_set_valign(fa_top);
-var debug_text_y = 170;
-
-// Section Header Function
-function draw_debug_header(text, y) {
-    var line_spacing = 25;
-    draw_set_color(c_yellow);
-    scr_draw_text_outlined(32, y, text, global.default_text_size, c_black, c_yellow);
-    draw_set_color(c_white);
-    return y + line_spacing;
-}
-
-// Highlighted Text Function
-function draw_highlighted_text(x, y, label, value, color_normal, color_alert, alert_condition) {
-    var line_spacing = 25;
-    var color = (alert_condition) ? color_alert : color_normal;
-    scr_draw_text_outlined(x, y, label + ": " + string(value), global.default_text_size, c_black, color);
-    return y + line_spacing;
-}
-
-// System Information
-debug_text_y = draw_debug_header("System Information", debug_text_y);
-debug_text_y = draw_highlighted_text(32, debug_text_y, "current_datetime", string(date_datetime_string(date_current_datetime())), c_white, c_red, false);
-
-debug_text_y += 10; // Small gap
-
-// Player Information
-if (instance_exists(obj_camera)) {
-    debug_text_y = draw_debug_header("Player Information", debug_text_y);
-    for (var i = 1; i <= global.max_players; i++) {
-        if (!is_undefined(obj_camera.player[i]) && obj_camera.player[i] != noone) {
-            debug_text_y = draw_highlighted_text(32, debug_text_y, "player " + string(i), obj_camera.player[i], c_white, c_red, false);
-        }
-    }
-    debug_text_y = draw_highlighted_text(32, debug_text_y, "player_can_play", string(global.player_can_play), c_white, c_red, false);
-    debug_text_y = draw_highlighted_text(32, debug_text_y, "player_slot", string(global.player_slot), c_white, c_red, false);
-}
-
-debug_text_y += 10; // Small gap
-
-// Menu Information
-debug_text_y = draw_debug_header("Menu Information", debug_text_y);
-if (variable_instance_exists(self, "menu") && menu != "") {
-	debug_text_y = draw_highlighted_text(32, debug_text_y, "menu", string(menu), c_white, c_red, menu == 0);
-}
-if (variable_instance_exists(self, "level_editor_menu") && level_editor_menu != "") {
-    debug_text_y = draw_highlighted_text(32, debug_text_y, "level_editor_menu", string(level_editor_menu), c_white, c_red, false);
-}
-if (variable_instance_exists(self, "menu_cursor_y_position") && menu_cursor_y_position != 0) {
-    debug_text_y = draw_highlighted_text(32, debug_text_y, "menu_cursor_y_position", string(menu_cursor_y_position), c_white, c_red, false);
-}
-debug_text_y = draw_highlighted_text(32, debug_text_y, "menu_navigation_speed", string(global.menu_navigation_speed), c_white, c_red, false);
-if (variable_instance_exists(self, "menu_y_offset") && menu_y_offset != 0) {
-    debug_text_y = draw_highlighted_text(32, debug_text_y, "menu_y_offset", string(menu_y_offset), c_white, c_red, false);
-}
-if (variable_instance_exists(self, "menu_y_offset_real") && menu_y_offset_real != 0) {
-    debug_text_y = draw_highlighted_text(32, debug_text_y, "menu_y_offset_real", string(menu_y_offset_real), c_white, c_red, false);
-}
-if (variable_instance_exists(self, "menu_delay") && menu_delay != 0) {
-    debug_text_y = draw_highlighted_text(32, debug_text_y, "menu_delay", string(menu_delay), c_white, c_red, menu_delay > 0);
-}
-if (variable_instance_exists(self, "menu_joystick_delay") && menu_joystick_delay != 0) && gamepad_is_connected(0) {
-    debug_text_y = draw_highlighted_text(32, debug_text_y, "menu_joystick_delay", string(menu_joystick_delay), c_white, c_red, menu_joystick_delay > 0);
-}
-if (variable_instance_exists(self, "in_character_select_menu") && in_character_select_menu != 0) {
-    debug_text_y = draw_highlighted_text(32, debug_text_y, "in_character_select_menu", string(in_character_select_menu), c_white, c_red, false);
-}
-
-debug_text_y += 10; // Small gap
-
-// Gamepad Information
-var gamepad_connected = false;
-for (var g = 0; g < 5; g++) {
-    if (gamepad_get_description(g) != "") {
-        gamepad_connected = true;
-        break;
-    }
-}
-if (gamepad_connected) {
-    debug_text_y = draw_debug_header("Gamepad Information", debug_text_y);
-    for (var g = 0; g < 5; g++) {
-        if (gamepad_get_description(g) != "") {
-            debug_text_y = draw_highlighted_text(32, debug_text_y, "gamepad(" + string(g) + ")", gamepad_get_description(g), c_white, c_red, false);
-        }
-    }
-}
-
-debug_text_y += 10; // Small gap
-
-// Switch-Specific Information
-if (os_type == os_switch) {
-    debug_text_y = draw_debug_header("Nintendo Switch Information", debug_text_y);
-    debug_text_y = draw_highlighted_text(32, debug_text_y, "switch_account_name", string(global.switch_account_name), c_white, c_red, false);
-    debug_text_y = draw_highlighted_text(32, debug_text_y, "switch_account_open", string(global.switch_account_open), c_white, c_red, false);
-    debug_text_y = draw_highlighted_text(32, debug_text_y, "switch_account_handle", string(global.switch_account_handle), c_white, c_red, false);
-    debug_text_y = draw_highlighted_text(32, debug_text_y, "online_token_validated", string(global.online_token_validated), c_white, c_red, false);
-	debug_text_y = draw_highlighted_text(32, debug_text_y, "online_token_error_message", string(global.online_token_error_message), c_white, c_red, false);
-    debug_text_y = draw_highlighted_text(32, debug_text_y, "switch_account_netid", string(global.switch_account_netid), c_white, c_red, false);
-    debug_text_y = draw_highlighted_text(32, debug_text_y, "switch_account_is_user_online", string(global.switch_account_is_user_online), c_white, c_red, false);
-    debug_text_y = draw_highlighted_text(32, debug_text_y, "switch_account_network_service_available", string(global.switch_account_network_service_available), c_white, c_red, !global.switch_account_network_service_available);
-    debug_text_y = draw_highlighted_text(32, debug_text_y, "switch_logged_in", string(global.switch_logged_in), c_white, c_red, !global.switch_logged_in);
-}
-#endregion /* Optimized Debug Text */
-
-
-
-
-
-
-
-
-
-
+		/* Basic text alignment setup */
+		draw_set_halign(fa_left);
+		draw_set_valign(fa_top);
+		
+		var debug_text_y = 170; /* Starting Y position for the debug text */
+		var section_spacing = 30; /* Space between sections for visual clarity */
+		
+		/* Section 1: System Information */
+		/* This section provides general context for debugging, including the current date and time. */
+		debug_text_y = scr_draw_debug_header("System Information", debug_text_y);
+		if (!global.debug_collapsed_sections[? "System Information"])
+		{
+			/* Draw system variables here */
+			debug_text_y = scr_draw_highlighted_text(32, debug_text_y, "current_datetime", string(date_datetime_string(date_current_datetime())), "Current Date/Time", c_white, c_red, false);
+		}
+		
+		debug_text_y += section_spacing; /* Small gap */
+		
+		/* Section 2: Player Information */
+		/* Player-specific information is critical for debugging gameplay issues, so it follows system information. */
+		if (instance_exists(obj_camera))
+		{
+			debug_text_y = scr_draw_debug_header("Player Information", debug_text_y);
+			if (!global.debug_collapsed_sections[? "Player Information"])
+			{
+				/* Draw player variables here */
+				var player_positions = scr_get_player_positions();
+				for (var i = 0; i < array_length(player_positions); i++)
+				{
+					var player_info = player_positions[i];
+					debug_text_y = scr_draw_highlighted_text(
+						32,
+						debug_text_y,
+						"player " + string(player_info.player_pos_id),
+						"(" + string(player_info.player_pos_x) + ", " + string(player_info.player_pos_y) + ")",
+						"Player " + string(player_info.player_pos_id) + " Position",
+						c_white,
+						c_red,
+						false
+					);
+				}
+				debug_text_y = scr_draw_highlighted_text(32, debug_text_y, "player_can_play", string(global.player_can_play), "Player Can Play", c_white, c_red, false);
+				debug_text_y = scr_draw_highlighted_text(32, debug_text_y, "player_slot", string(global.player_slot), "Player Slots", c_white, c_red, false);
+			}
+		}
+		
+		debug_text_y += section_spacing; /* Small gap */
+		
+		/* Section 3: Menu Information */
+		/* This section is next because menus influence navigation and overall usability during debugging. */
+		debug_text_y = scr_draw_debug_header("Menu Information", debug_text_y);
+		if (!global.debug_collapsed_sections[? "Menu Information"])
+		{
+			/* Draw menu variables here */
+			if (variable_instance_exists(self, "menu") && menu != "")
+			{
+				debug_text_y = scr_draw_highlighted_text(32, debug_text_y, "menu", string(menu), "Current Menu", c_white, c_red, menu == 0);
+			}
+			if (variable_instance_exists(self, "level_editor_menu") && level_editor_menu != "")
+			{
+				debug_text_y = scr_draw_highlighted_text(32, debug_text_y, "level_editor_menu", string(level_editor_menu), "Level Editor Menu", c_white, c_red, false);
+			}
+			if (variable_instance_exists(self, "menu_cursor_y_position"))
+			{
+				debug_text_y = scr_draw_highlighted_text(32, debug_text_y, "menu_cursor_y_position", string(menu_cursor_y_position), "Menu Cursor Y Position", c_white, c_red, false);
+			}
+			debug_text_y = scr_draw_highlighted_text(32, debug_text_y, "menu_navigation_speed", string(global.menu_navigation_speed), "Menu Navigation Speed", c_white, c_red, false);
+			if (variable_instance_exists(self, "menu_y_offset"))
+			{
+				debug_text_y = scr_draw_highlighted_text(32, debug_text_y, "menu_y_offset", string(menu_y_offset), "Menu Y Offset", c_white, c_red, false);
+			}
+			if (variable_instance_exists(self, "menu_y_offset_real"))
+			{
+				debug_text_y = scr_draw_highlighted_text(32, debug_text_y, "menu_y_offset_real", string(menu_y_offset_real), "Menu Y Offset (Real)", c_white, c_red, false);
+			}
+			if (variable_instance_exists(self, "menu_delay"))
+			{
+				debug_text_y = scr_draw_highlighted_text(32, debug_text_y, "menu_delay", string(menu_delay), "Menu Delay", c_white, c_red, menu_delay > 0);
+			}
+			if (variable_instance_exists(self, "menu_joystick_delay") && gamepad_is_connected(0))
+			{
+				debug_text_y = scr_draw_highlighted_text(32, debug_text_y, "menu_joystick_delay", string(menu_joystick_delay), "Menu Joystick Delay", c_white, c_red, menu_joystick_delay > 0);
+			}
+			if (variable_instance_exists(self, "in_character_select_menu"))
+			{
+				debug_text_y = scr_draw_highlighted_text(32, debug_text_y, "in_character_select_menu", string(in_character_select_menu), "In Character Select Menu", c_white, c_red, false);
+			}
+		}
+		
+		debug_text_y += section_spacing; /* Small gap */
+		
+		/* Section 4: Gamepad Information */
+		/* Input devices, such as gamepads, directly impact player interaction and follow menu information logically. */
+		var gamepad_connected = false;
+		for (var g = 0; g < 5; g++)
+		{
+			if (gamepad_get_description(g) != "")
+			{
+				gamepad_connected = true;
+				break;
+			}
+		}
+		if (gamepad_connected)
+		{
+			debug_text_y = scr_draw_debug_header("Gamepad Information", debug_text_y);
+			if (!global.debug_collapsed_sections[? "Gamepad Information"])
+			{
+				/* Draw gamepad variables here */
+				for (var g = 0; g < 5; g++)
+				{
+					if (gamepad_get_description(g) != "")
+					{
+						debug_text_y = scr_draw_highlighted_text(32, debug_text_y, "gamepad(" + string(g) + ")", gamepad_get_description(g), "Gamepad " + string(g) + " Description", c_white, c_red, false);
+					}
+				}
+			}
+		}
+		
+		debug_text_y += section_spacing; /* Small gap */
+		
+		/* Section 5: Switch Information */
+		/* Platform-specific information is shown last because it is less universally relevant. */
+		if (os_type == os_switch)
+		{
+			debug_text_y = scr_draw_debug_header("Switch Information", debug_text_y);
+			if (!global.debug_collapsed_sections[? "Switch Information"])
+			{
+				/* Draw switch variables here */
+				debug_text_y = scr_draw_highlighted_text(32, debug_text_y, "switch_account_name", string(global.switch_account_name), "Switch Account Name", c_white, c_red, false);
+				debug_text_y = scr_draw_highlighted_text(32, debug_text_y, "switch_account_open", string(global.switch_account_open), "Switch Account Open", c_white, c_red, false);
+				debug_text_y = scr_draw_highlighted_text(32, debug_text_y, "switch_account_handle", string(global.switch_account_handle), "Switch Account Handle", c_white, c_red, false);
+				debug_text_y = scr_draw_highlighted_text(32, debug_text_y, "online_token_validated", string(global.online_token_validated), "Online Token Validated", c_white, c_red, false);
+				debug_text_y = scr_draw_highlighted_text(32, debug_text_y, "online_token_error_message", string(global.online_token_error_message), "Online Token Error Message", c_white, c_red, false);
+				debug_text_y = scr_draw_highlighted_text(32, debug_text_y, "switch_account_netid", string(global.switch_account_netid), "Switch Account NetID", c_white, c_red, false);
+				debug_text_y = scr_draw_highlighted_text(32, debug_text_y, "switch_account_is_user_online", string(global.switch_account_is_user_online), "Switch User Online", c_white, c_red, false);
+				debug_text_y = scr_draw_highlighted_text(32, debug_text_y, "switch_account_network_service_available", string(global.switch_account_network_service_available), "Switch Network Service Available", c_white, c_red, !global.switch_account_network_service_available);
+				debug_text_y = scr_draw_highlighted_text(32, debug_text_y, "switch_logged_in", string(global.switch_logged_in), "Switch Logged In", c_white, c_red, !global.switch_logged_in);
+			}
+		}
+		#endregion /* Optimized Debug Text */
 		
 	}
+	#endregion /* Debug Screen Logic END */
+	
+}
+
+/* Helper Function: Draw Section Headers */
+function scr_draw_debug_header(section_name, yy)
+{
+	var line_spacing = 25;
+	var debug_header_outline_color = c_black;
+	var debug_header_text_color = c_yellow;
+	
+	if (point_in_rectangle(device_mouse_x_to_gui(0), device_mouse_y_to_gui(0), 32, yy, 400, yy + line_spacing + 10))
+	{
+		/* When hovering mouse over this text, the color change to indicate that it has been highlighted, and can be clicked on */
+		var debug_header_outline_color = c_yellow;
+		var debug_header_text_color = c_black;
+		if (mouse_check_button_released(mb_left))
+		{
+			/* Collapsible section toggle */
+			global.debug_collapsed_sections[? section_name] = !global.debug_collapsed_sections[? section_name];
+		}
+	}
+	
+	if (!global.debug_collapsed_sections[? string(section_name)])
+	{
+		var debug_header_icon = "[+]";
+	}
+	else
+	{
+		debug_header_icon = "[-]";
+	}
+	scr_draw_text_outlined(32, yy, section_name + " " + string(debug_header_icon), global.default_text_size, debug_header_outline_color, debug_header_text_color);
+	return yy + line_spacing; /* Adjust Y for line height */
+}
+
+function scr_draw_highlighted_text(xx, yy, variable_name, value, label_simplified, color_normal, color_alert, alert_condition)
+{
+	var display_label = (global.debug_detailed_mode) ? variable_name : label_simplified;
+	var line_spacing = 25;
+	var color = (alert_condition) ? color_alert : color_normal;
+	scr_draw_text_outlined(xx, yy, display_label + ": " + string(value), global.default_text_size, c_black, color);
+	return yy + line_spacing; /* Adjust Y for line height */
+}
+
+/* Helper Function: Retrieve Player Positions */
+function scr_get_player_positions()
+{
+	var positions = [];
+	
+	/* Ensure obj_camera exists and has the player array */
+	if (instance_exists(obj_camera)
+	&& is_array(obj_camera.player))
+	{
+		for (var i = 1; i <= global.max_players; i++)
+		{
+			/* Ensure the index exists and references a valid instance */
+			if (array_length(obj_camera.player) > i 
+			&& instance_exists(obj_camera.player[i]) 
+			&& obj_camera.player[i] > 0)
+			{
+				array_push(positions,
+				{
+					player_pos_id: i,
+					player_pos_x: obj_camera.player[i].x,
+					player_pos_y: obj_camera.player[i].y
+				});
+			}
+		}
+	}
+	
+	return positions;
 }

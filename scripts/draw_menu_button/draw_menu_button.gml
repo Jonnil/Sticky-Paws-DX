@@ -46,4 +46,15 @@ function draw_menu_button(x_position, y_position, string_text, menu_index, menu_
 	draw_set_halign(fa_center);
 	draw_set_valign(fa_middle);
 	scr_draw_text_outlined(x_position + 185, y_position + 21, string(string_text), global.default_text_size * text_scale, outline_color, fill_color, alpha);
+	
+	if (point_in_button)
+	&& (global.controls_used_for_navigation == "mouse")
+	&& (mouse_check_button_released(mb_left))
+	&& (menu_delay == 0 && menu_joystick_delay == 0)
+	|| (menu == menu_index)
+	&& (key_a_pressed)
+	&& (menu_delay == 0 && menu_joystick_delay == 0)
+	{
+		return true;
+	}
 }

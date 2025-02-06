@@ -270,4 +270,12 @@ function scr_draw_caution_online()
 	}
 	#endregion /* Caution Online Network Service Unavailable END */
 	
+	else
+	if (menu == "server_timeout_retry")
+	|| (menu == "server_timeout_check_status")
+	|| (menu == "server_timeout_back")
+	{
+		scr_draw_server_timeout_error();
+	}
+	
 }

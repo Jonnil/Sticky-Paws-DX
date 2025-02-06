@@ -5,8 +5,8 @@
   "isDnD":false,
   "name":"scr_crash_error_handling",
   "parent":{
-    "name":"Other",
-    "path":"folders/Scripts/Other.yy",
+    "name":"Crash Handling",
+    "path":"folders/Scripts/Crash Handling.yy",
   },
   "resourceType":"GMScript",
   "resourceVersion":"2.0",

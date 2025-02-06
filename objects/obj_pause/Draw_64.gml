@@ -383,6 +383,9 @@ if (!hide_menu_for_clean_screenshots)
 	|| (menu == "caution_online_do_not_show")
 	|| (menu == "caution_online_proceed")
 	|| (menu == "caution_online_network_error")
+	|| (menu == "server_timeout_retry")
+	|| (menu == "server_timeout_check_status")
+	|| (menu == "server_timeout_back")
 	{
 		scr_draw_caution_online();
 	}

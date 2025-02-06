@@ -1,9 +1,9 @@
 {
   "$GMScript":"v1",
-  "%Name":"scr_translation",
+  "%Name":"scr_create_game_directories",
   "isCompatibility":false,
   "isDnD":false,
-  "name":"scr_translation",
+  "name":"scr_create_game_directories",
   "parent":{
     "name":"Other",
     "path":"folders/Scripts/Other.yy",

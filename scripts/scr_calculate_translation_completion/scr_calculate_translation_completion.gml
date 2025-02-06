@@ -1,8 +1,8 @@
 /* Function to calculate the completion percentage of translations for each language */
 function calculate_translation_completion()
 {
-	/* Loop through each language column in the grid, starting from the second column (index 1) */
-	for (var language_id = 1; language_id < ds_grid_width(global.language_local_data); language_id++)
+	/* Loop through each language column in the grid, start at the column defined by global.language_column_start */
+	for (var language_id = global.language_column_start; language_id < ds_grid_width(global.language_local_data); language_id++)
 	{
 		/* Initialize a counter to track the number of empty (untranslated) entries */
 		var empty_count = 0;

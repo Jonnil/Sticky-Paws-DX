@@ -1,7 +1,7 @@
 function scr_switch_update_online_status(show_login_screen = true)
 {
 	
-	#region /* Update Nintendo Switch Online Status */
+	#region /* Update Switch Online Status */
 	if (os_type == os_switch)
 	{
 		/* Check if the system is connected to the network */
@@ -174,10 +174,10 @@ function scr_switch_update_online_status(show_login_screen = true)
 		global.switch_logged_in = true;
 		global.online_token_validated = true;
 		global.online_token_error_message = ""; /* Clear error message */
-		show_debug_message("Running on a platform other than Nintendo Switch. Defaulting online status to true.");
+		show_debug_message("Running on a platform other than Switch. Defaulting online status to true.");
 	}
 
-	#endregion /* Update Nintendo Switch Online Status END */
+	#endregion /* Update Switch Online Status END */
 }
 
 function scr_online_token_is_valid()
