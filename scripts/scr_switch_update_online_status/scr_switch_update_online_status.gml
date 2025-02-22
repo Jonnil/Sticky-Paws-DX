@@ -61,12 +61,14 @@ function scr_switch_update_online_status(show_login_screen = true)
 					show_debug_message("No valid ID Token found AND no logged-in account detected. Prompting user to select account...");
 					global.online_token_error_message = "No valid ID Token and no logged-in account detected.";
 				}
-				else if (!valid_id_token_found)
+				else
+				if (!valid_id_token_found)
 				{
 					show_debug_message("No valid ID Token found. Prompting user to select account...");
 					global.online_token_error_message = "No valid ID Token found.";
 				}
-				else if (is_undefined(logged_in_account))
+				else
+				if (is_undefined(logged_in_account))
 				{
 					show_debug_message("No logged-in account detected. Prompting user to select account...");
 					global.online_token_error_message = "No logged-in account detected.";
@@ -176,13 +178,12 @@ function scr_switch_update_online_status(show_login_screen = true)
 		global.online_token_error_message = ""; /* Clear error message */
 		show_debug_message("Running on a platform other than Switch. Defaulting online status to true.");
 	}
-
 	#endregion /* Update Switch Online Status END */
+	
 }
 
 function scr_online_token_is_valid()
 {
-	
 	/* Static variable to track if a debug message has already been logged */
 	static debug_logged = false;
 	

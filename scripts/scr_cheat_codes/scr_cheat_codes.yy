@@ -1,12 +1,12 @@
 {
   "$GMScript":"v1",
-  "%Name":"scr_debug_screen",
+  "%Name":"scr_cheat_codes",
   "isCompatibility":false,
   "isDnD":false,
-  "name":"scr_debug_screen",
+  "name":"scr_cheat_codes",
   "parent":{
-    "name":"Crash Handling",
-    "path":"folders/Scripts/Crash Handling.yy",
+    "name":"Debug Scripts",
+    "path":"folders/Scripts/Debug Scripts.yy",
   },
   "resourceType":"GMScript",
   "resourceVersion":"2.0",

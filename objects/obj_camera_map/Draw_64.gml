@@ -8,5 +8,4 @@ if (global.controls_used_for_navigation == "mouse")
 }
 #endregion /* Show a pause button on screen when using the mouse END */
 
-scr_debug_screen();
 scr_virtual_keys();

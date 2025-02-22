@@ -25,8 +25,8 @@ function scr_draw_level_editor_placable_object(v_selected_object, v_place_object
 			var hover_offset = 49;
 			
 			/* Hover mouse over object icon and click to select */
-			if (global.controls_used_for_navigation == "mouse" &&
-			point_in_rectangle(device_mouse_x_to_gui(0), device_mouse_y_to_gui(0), (half_gui_width + menu_x_offset) - hover_offset, y_offset - hover_offset, (half_gui_width + menu_x_offset) + hover_offset, y_offset + hover_offset))
+			if (global.controls_used_for_navigation == "mouse"
+			&& point_in_rectangle(device_mouse_x_to_gui(0), device_mouse_y_to_gui(0), (half_gui_width + menu_x_offset) - hover_offset, y_offset - hover_offset, (half_gui_width + menu_x_offset) + hover_offset, y_offset + hover_offset))
 			{
 				draw_set_alpha(selected_menu_alpha * scr_wave(0.25, 0.5, 1));
 				var wave = scr_wave(0, 3, 2);

@@ -108,6 +108,32 @@ function scr_config_load()
 		global.upload_rules_do_not_show_level = ini_read_real("config", "upload_rules_do_not_show_level", false);
 		global.upload_rules_do_not_show_character = ini_read_real("config", "upload_rules_do_not_show_character", false);
 		if (ini_key_exists("config", "debug_detailed_mode")){global.debug_detailed_mode = ini_read_real("config", "debug_detailed_mode", false);}
+		
+		#region /* Debug Collapsed Sections */
+		var section_list = [
+			"Instructions",
+			"System Information",
+			"Player Information",
+			"Menu Information",
+			"Gamepad Information",
+			"Switch Information"
+		];
+		
+		for (var i = 0; i < array_length(section_list); i++)
+		{
+			var key = section_list[i];
+			if (ini_key_exists("debug_collapsed_sections", key))
+			{
+				global.debug_collapsed_sections[? key] = ini_read_real("debug_collapsed_sections", key, false);
+			}
+			else
+			{
+				/* If the key doesn't exist, you can set a default */
+				global.debug_collapsed_sections[? key] = false;
+			}
+		}
+		#endregion /* Debug Collapsed Sections END */
+		
 		if (ini_key_exists("config", "enable_level_length_target")){global.enable_level_length_target = ini_read_real("config", "enable_level_length_target", false);}
 		if (ini_key_exists("config", "target_length_minutes")){global.target_length_minutes = ini_read_real("config", "target_length_minutes", 3);}
 		if (ini_key_exists("config", "first_time_opened_level_editor")){global.first_time_opened_level_editor = ini_read_real("config", "first_time_opened_level_editor", true);}

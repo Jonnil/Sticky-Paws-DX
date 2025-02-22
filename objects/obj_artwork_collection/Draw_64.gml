@@ -388,6 +388,3 @@ if (image_index == 72){current_comment = l10n_text("Artist") + ": red_luigi - St
 if (image_index == 73){current_comment = l10n_text("Artist") + ": Andrea Colunga - Catlyn and her prey";}
 if (image_index == 74){current_comment = l10n_text("Artist") + ": Furret76 - Sticcy pau and cetlun";}
 #endregion /* Comments END */
-
-scr_draw_darken_screen_when_window_is_unfocused();
-scr_draw_cursor_mouse();

@@ -65,6 +65,3 @@ if (global.enable_transitions && iris_xscale < 15)
 	draw_rectangle_color(get_window_width * 0.5 + iris_xscale * 128 - 1, 0, get_window_width * 2, get_window_height * 2, c_black, c_black, c_black, c_black, false);
 	draw_rectangle_color(0, get_window_height * 0.5 + iris_yscale * 128, get_window_width * 2, get_window_height * 2, c_black, c_black, c_black, c_black, false);
 }
-
-scr_draw_darken_screen_when_window_is_unfocused();
-scr_draw_cursor_mouse();

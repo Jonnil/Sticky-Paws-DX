@@ -707,7 +707,8 @@ else
 }
 
 /* Prevent cheating with playtest tools when playing actual level or doing clear check */
-if (global.actually_play_edited_level && !global.debug_screen)
+if (global.actually_play_edited_level
+&& !global.debug_screen)
 || (global.doing_clear_check_level)
 || (global.doing_clear_check_character)
 {

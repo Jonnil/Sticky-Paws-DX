@@ -1,3 +1,4 @@
+/// @function scr_crash_error_handling()
 function scr_crash_error_handling()
 {
 	/* Crash Error Handling should run in every room of the game */
@@ -60,12 +61,43 @@ function scr_crash_error_handling()
 		crash_details += "Crash Log File: " + string_replace(game_save_id, environment_get_variable("USERNAME"), "*") + "crash_logs/" + string(global.game_name) + "_" + save_date + "_crash.txt";
 		#endregion /* Generate Unified Crash Details END */
 		
+		/* Incorporate Debug Info */
+		var debug_info = scr_get_debug_info();
+		
 		#region /* Write Crash Details to File */
 		/* Save the crash details to a log file for debugging purposes */
 		var _f = file_text_open_write(crash_log_filename);
-		file_text_write_string(_f, crash_details);
+		file_text_write_string(_f, crash_details + "\n\n\n" + debug_info);
 		file_text_close(_f);
 		#endregion /* Write Crash Details to File END */
+		
+		#region /* Send Crash Log to Server */
+		if (os_is_network_connected())
+		{
+			/* Construct a JSON payload and send it to your GCP server */
+			var payload_map = ds_map_create();
+			ds_map_add(payload_map, "game_name", global.game_name);
+			ds_map_add(payload_map, "timestamp", date_datetime_string(date_current_datetime()));
+			ds_map_add(payload_map, "crash_details", crash_details);
+			ds_map_add(payload_map, "debug_info", debug_info);
+			var post_data = json_encode(payload_map);
+			ds_map_destroy(payload_map);
+			
+			/* Prepare HTTP header map */
+			var header_map = ds_map_create();
+			ds_map_add(header_map, "Content-Type", "application/json");
+			ds_map_add(header_map, "User-Agent", "gm_crash_logger"); /* Include a user agent */
+			ds_map_add(header_map, "X-API-Key", global.api_key); /* Add an API key for authentication */
+			ds_map_add(header_map, "Host", string(global.base_url)); /* Optional, if needed by your server */
+			
+			/* Construct the endpoint URL */
+			var crash_endpoint = "https://" + string(global.base_url) + "/crashlog";
+			
+			/* Send the HTTP POST request */
+			var request_id = http_request(crash_endpoint, "POST", header_map, post_data);
+			ds_map_destroy(header_map);
+		}
+		#endregion /* Send Crash Log to Server END */
 		
 		#region /* Output Crash Details to Debug Console */
 		/* Print the crash details to the debug console for developers to see immediately */
@@ -87,7 +119,7 @@ function scr_crash_error_handling()
 		/* Prompt to open relevant documentation links, if available */
 		if (array_length(urls_to_open) > 0)
 		{
-			if (global.open_crash_docs) /* Automatically open if enabled through global toggle */
+			if (global.auto_open_crash_docs) /* Automatically open if enabled through global toggle */
 			{
 				for (var i = 0; i < array_length(urls_to_open); i++)
 				{

@@ -6,9 +6,10 @@ function scr_log_missing_translation_keyword(log_translation_key = "")
 	
 	#region /* Check Cache */
 	/* Check if the key already exists in the cache to avoid duplicate logging */
-	/* The cache is initialized during game startup in preload_translation_missing_keywords():
-		global.translation_missing_keywords_cache = ds_map_create(); */
-	if (!ds_map_exists(global.translation_missing_keywords_cache, log_translation_key))
+	/* The cache is initialized during game startup in preload_translation_missing_keywords(): */
+	/* global.translation_missing_keywords_cache = ds_map_create(); */
+	if (log_translation_key != "")
+	&& (!ds_map_exists(global.translation_missing_keywords_cache, log_translation_key))
 	{
 		show_debug_message("log_translation_key is currently holding: " + string(log_translation_key));
 		

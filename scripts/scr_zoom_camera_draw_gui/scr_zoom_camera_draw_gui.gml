@@ -22,6 +22,11 @@ function scr_zoom_camera_draw_gui(width = 10)
 			var what_zoom_value = global.zoom_world_map;
 		}
 		show_zoom_value--;
-		scr_draw_text_outlined(display_get_gui_width() * 0.5, 32, l10n_text("Zoom: ") + string(what_zoom_value), global.default_text_size, c_white, c_black, 1);
+		
+		if (global.debug_screen)
+		{
+			draw_set_halign(fa_left);
+			scr_draw_text_outlined(display_get_gui_width() - 200, 100, l10n_text("Zoom") + ": " + string(what_zoom_value), global.default_text_size, c_black, c_white, 1);
+		}
 	}
 }

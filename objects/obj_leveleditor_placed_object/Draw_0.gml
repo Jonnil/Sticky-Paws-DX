@@ -89,7 +89,7 @@ if (position_meeting(x, y, obj_leveleditor))
 		{
 			if (object == LEVEL_OBJECT_ID.ID_SIGN_READABLE)
 			{
-				var textbox_text = l10n_text("This is a sign. Click on it in the editor to edit text!");
+				var textbox_text = l10n_text("This is a sign");
 			}
 			else
 			{

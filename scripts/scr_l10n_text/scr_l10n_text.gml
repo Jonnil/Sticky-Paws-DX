@@ -6,9 +6,9 @@ function l10n_text(key = "")
 	var text = key;
 	
 	#region /* Check if the translation exists */
-	if (global.translations[?key] != undefined)
+	if (global.translations[? key] != undefined)
 	{
-		var localized_text = global.language_local_data[# global.selected_language_id, global.translations[?key]];
+		var localized_text = global.language_local_data[# global.selected_language_id, global.translations[? key]];
 		
 		if (localized_text != "")
 		{
@@ -17,9 +17,9 @@ function l10n_text(key = "")
 			text = string_replace_all(text, "{a}", a);
 		}
 		else
-		if (global.language_local_data[# global.language_column_start, global.translations[?key]] != "")
+		if (global.language_local_data[# global.language_column_start, global.translations[? key]] != "")
 		{
-			text = global.language_local_data[# global.language_column_start, global.translations[?key]];
+			text = global.language_local_data[# global.language_column_start, global.translations[? key]];
 			var a = argument_count > 1 ? argument[1] : "";
 			text = string_replace_all(text, "{a}", a);
 		}
@@ -30,11 +30,11 @@ function l10n_text(key = "")
 	if (global.translation_debug)
 	{
 		/* In debug mode, make all untranslated text flash random numbers beside the original text, to indicate easier what line is untranslated */
-		if (global.translations[?key] != undefined
-		&& global.language_local_data[# global.language_column_start, global.translations[?key]] != "")
+		if (global.translations[? key] != undefined
+		&& global.language_local_data[# global.language_column_start, global.translations[? key]] != "")
 		{
 			var letter = string_char_at("ABCDEFGHIJKLMNOPQRSTUVWXYZ", global.selected_language_id + 1);
-			text = string(letter) + string(global.translations[?key] + 1) + " " + string_replace_all(text, "{a}", a) + string(round(random(9)));
+			text = string(letter) + string(global.translations[? key] + 1) + " " + string_replace_all(text, "{a}", a) + string(round(random(9)));
 		}
 		else
 		{

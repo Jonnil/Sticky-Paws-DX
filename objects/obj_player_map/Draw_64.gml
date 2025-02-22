@@ -29,7 +29,9 @@ if (common_conditions_met && nearest_level.clear_rate != "closed")
 }
 
 /* Show Clear Level Key in debug */
-if (global.debug_screen && common_conditions_met && nearest_level.clear_rate == "enter")
+if (global.debug_screen
+&& common_conditions_met
+&& nearest_level.clear_rate == "enter")
 {
     draw_set_halign(fa_left);
     draw_set_valign(fa_middle);
@@ -142,7 +144,3 @@ if (iris_yscale <= 0.002 || (brand_new_file && can_enter_level_automatically) ||
     black_screen_at_start_delay++;
     scr_draw_loading(1); /* Draw loading screen when transitioning to other rooms */
 }
-
-/* Draw darken screen and cursor mouse */
-scr_draw_darken_screen_when_window_is_unfocused();
-scr_draw_cursor_mouse();

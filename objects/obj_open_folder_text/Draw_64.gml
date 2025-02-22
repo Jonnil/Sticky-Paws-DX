@@ -69,6 +69,3 @@ if (!close)
 draw_set_halign(fa_center);
 draw_set_valign(fa_middle);
 scr_draw_text_outlined(get_window_width * 0.5, get_window_height * 0.5 - 32, l10n_text("Copied"), global.default_text_size * copied_text_size, c_black, c_lime, 1);
-
-scr_draw_darken_screen_when_window_is_unfocused();
-scr_draw_cursor_mouse();

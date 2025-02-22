@@ -5,8 +5,8 @@
   "isDnD":false,
   "name":"scr_get_relevant_docs",
   "parent":{
-    "name":"Crash Handling",
-    "path":"folders/Scripts/Crash Handling.yy",
+    "name":"Debug Scripts",
+    "path":"folders/Scripts/Debug Scripts.yy",
   },
   "resourceType":"GMScript",
   "resourceVersion":"2.0",

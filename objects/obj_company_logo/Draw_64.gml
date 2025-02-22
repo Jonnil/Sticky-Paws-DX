@@ -81,7 +81,3 @@ if (show_skip_button)
 		draw_sprite_ext(spr_keyboard_keys, skip_key, display_get_gui_width() * 0.5 + 64, display_get_gui_height() - 17, 0.5, 0.5, 0, c_white, show_skip_button_alpha);
 	}
 }
-
-scr_draw_darken_screen_when_window_is_unfocused();
-scr_debug_screen();
-scr_draw_cursor_mouse();

@@ -746,7 +746,7 @@ function scr_draw_menu_search_id(what_kind_of_id = "level")
 				draw_sprite_ext(spr_arrow_swirly, menu_cursor_index, 64, get_window_height - 132 + scr_wave(0, 16, 1), 1, 1, 0, c_white, inform_about_report_feature_alpha);
 				draw_set_halign(fa_left);
 				scr_draw_text_outlined(inform_about_report_feature_x, get_window_height - inform_about_report_feature_y, l10n_text("If you see any inappropriate content when downloading user-generated content online"), global.default_text_size, c_black, c_white, inform_about_report_feature_alpha);
-				scr_draw_text_outlined(inform_about_report_feature_x, get_window_height - inform_about_report_feature_y + 32, l10n_text("Please report it by clicking this button"), global.default_text_size, c_black, c_white, inform_about_report_feature_alpha);
+				scr_draw_text_outlined(inform_about_report_feature_x, get_window_height - inform_about_report_feature_y + 32, l10n_text("Please report it by selecting this button"), global.default_text_size, c_black, c_white, inform_about_report_feature_alpha);
 				draw_set_halign(fa_center);
 				if (inform_about_report_feature_alpha >= 0.99)
 				{

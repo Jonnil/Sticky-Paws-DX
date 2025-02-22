@@ -198,7 +198,7 @@ global.option_description = ""; /* Description that shows up when changing certa
 global.option_default = -1; /* Show wether the current option selected have a default setting, and tell the player this */
 global.can_save_length_variable = false; /* This function saves object_placement_all.json size, but lags the game. Make this optional and false by default */
 global.can_load_official_and_custom_resources = true; /* For debug, you might not want to load included files, but by default set this to true */
-global.debug_screen = false; /* Toggles the visibility of the debug screen. When set to true, the debug screen appears overlayed on the game. Useful for displaying live debugging information. */
+global.debug_screen = false; /* Toggles the visibility of the debug screen. When set to true, the debug screen appears overlayed on the game. Useful for displaying live debugging information */
 global.debug_collapsed_sections = ds_map_create(); /* A data structure that tracks which debug sections are collapsed. Each key represents a section name, and its value (true/false) indicates whether the section is currently collapsed. Helps organize and declutter the debug screen for better readability. */
 global.debug_detailed_mode = false; /* Determines whether the debug screen displays detailed variable names or simplified, user-friendly labels. Set to true for detailed mode, showing exact variable names, which is helpful for developers familiar with the codebase. */
 global.show_fps = false; /* Show fps for optimization debug */
@@ -213,7 +213,7 @@ global.enable_foreground_layer1 = true; /* Toggles the visibility of the first f
 global.enable_foreground_layer_1_5 = true; /* Toggles the visibility of an additional foreground layer between layer 1 and layer 2. This provides more granularity in layering for visuals closer to the player. */
 global.enable_foreground_layer2 = true; /* Toggles the visibility of the second foreground layer. Often used for interactive or visually significant foreground elements. */
 global.enable_foreground_layer_secret = true; /* Toggles the visibility of the secret foreground layer. Typically used for hidden or unlockable elements that may only appear in certain conditions. */
-global.open_crash_docs = false;
+global.auto_open_crash_docs = false;
 #endregion /* Debug toggles END */
 
 /* Equipped Upgrades. All of these should be true so you automatically equip the upgrades so don't change the variables here, but you can unequipp the upgrades in the pause menu */
@@ -713,3 +713,5 @@ network_set_config(network_config_use_non_blocking_socket, 1);
 scr_switch_update_online_status();
 
 scr_config_load(); /* Load Config */
+
+instance_create_depth(x, y, 0, obj_debug_manager);

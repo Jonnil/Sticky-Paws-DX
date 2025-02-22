@@ -121,7 +121,3 @@ if (enable_transitions && (black_screen_gui_alpha > 0.2 || pause_playtest))
 		scr_draw_loading(black_screen_gui_alpha);
 	}
 }
-
-scr_draw_darken_screen_when_window_is_unfocused();
-scr_debug_screen();
-scr_draw_cursor_mouse();

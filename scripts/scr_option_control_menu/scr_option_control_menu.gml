@@ -94,16 +94,16 @@ function scr_option_control_menu()
 	if (global.enable_option_for_pc)
 	&& (global.settings_sidebar_menu == "controller_settings")
 	{
-		var menu_y_always_show_gamepad_buttons = menu_y_down_and_jump_to_groundpound + 64 * 5				+ 48;
+		var menu_y_always_show_gamepad_buttons = menu_y_down_and_jump_to_groundpound + 64 * 5 + 48;
 		if (global.debug_screen)
 		{
-			var menu_y_chosen_controller_used = menu_y_down_and_jump_to_groundpound + 64 * 6				+ 48;
-			var menu_y_vibration_strength = menu_y_down_and_jump_to_groundpound + 64 * 7				+ 78 + 48;
+			var menu_y_chosen_controller_used = menu_y_down_and_jump_to_groundpound + 64 * 6 + 48;
+			var menu_y_vibration_strength = menu_y_down_and_jump_to_groundpound + 64 * 7 + 78 + 48;
 		}
 		else
 		{
 			var menu_y_chosen_controller_used = -999;
-			var menu_y_vibration_strength = menu_y_down_and_jump_to_groundpound + 64 * 6				+ 78;
+			var menu_y_vibration_strength = menu_y_down_and_jump_to_groundpound + 64 * 6 + 78;
 		}
 	}
 	else

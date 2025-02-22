@@ -200,6 +200,3 @@ if (iris_xscale <= 0.01)
 	scr_draw_loading(1);
 }
 #endregion /* Draw loading screen when reloading level END */
-
-scr_draw_darken_screen_when_window_is_unfocused();
-scr_draw_cursor_mouse();

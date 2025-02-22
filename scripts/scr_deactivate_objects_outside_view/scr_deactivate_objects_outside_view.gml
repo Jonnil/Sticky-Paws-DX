@@ -22,45 +22,69 @@ function scr_deactivate_objects_outside_view()
 		
 		if (global.deactivate_timer > 100)
 		{
-			if (global.deactivate_timer < 990) /* When you are forcing the deactivate timer, you only want to update "instance activate region" */
+			/* When you are forcing the deactivate timer, you only want to update "instance activate region" */
+			if (global.deactivate_timer < 990)
 			{
-				instance_deactivate_region(view_left, view_top, view_width, view_height, false, true); /* Deactivate instances outside view first */
+				/* Deactivate instances outside view first */
+				instance_deactivate_region(view_left, view_top, view_width, view_height, false, true);
 			}
 			
-			/* Activate objects that always should be active */
+			#region /* Activate objects that always should be active */
 			if (room == rm_leveleditor)
 			{
-				instance_activate_object(obj_player);
-				instance_activate_object(obj_player_lose);
-				instance_activate_object(obj_foreground1);
-				instance_activate_object(obj_foreground1_5);
-				instance_activate_object(obj_foreground2);
-				instance_activate_object(obj_foreground_secret);
-				instance_activate_object(obj_water_level);
-				instance_activate_object(obj_level_height);
-				instance_activate_object(obj_level_width);
-				instance_activate_object(obj_goal);
-				instance_activate_object(obj_big_collectible_number);
-				instance_activate_object(obj_key_fragment_number);
+				var exclude_list = [
+					obj_player,
+					obj_player_lose,
+					obj_foreground1,
+					obj_foreground1_5,
+					obj_foreground2,
+					obj_foreground_secret,
+					obj_water_level,
+					obj_level_height,
+					obj_level_width,
+					obj_goal,
+					obj_big_collectible_number,
+					obj_key_fragment_number,
+					obj_debug_manager
+				];
+				
+				/* Loop through the exclude list and activate each object */
+				for (var i = 0; i < array_length(exclude_list); i++)
+				{
+					instance_activate_object(exclude_list[i]);
+				}
 			}
 			else
 			if (room == rm_world_map)
 			{
-				instance_activate_object(obj_camera_map);
-				instance_activate_object(obj_level);
-				instance_activate_object(obj_unlock_next_level);
-				instance_activate_object(obj_map_path);
-				instance_activate_object(obj_map_path_turn);
-				instance_activate_object(obj_map_exit);
+				var exclude_list = [
+					obj_camera_map,
+					obj_level,
+					obj_unlock_next_level,
+					obj_map_path,
+					obj_map_path_turn,
+					obj_map_exit,
+					obj_debug_manager
+				];
+				
+				/* Loop through the exclude list and activate each object */
+				for (var i = 0; i < array_length(exclude_list); i++)
+				{
+					instance_activate_object(exclude_list[i]);
+				}
 			}
+			#endregion /* Activate objects that always should be active END */
 			
-			instance_activate_region(view_left, view_top, view_width, view_height, true); /* Always activate within view before reseting deactivate timer */
+			/* Always activate within view before reseting deactivate timer */
+			instance_activate_region(view_left, view_top, view_width, view_height, true);
 			global.deactivate_timer = 0; /* Reset the deactivate timer */
 		}
+		
 		if (global.deactivate_timer % 7 == 0)
 		|| (global.deactivate_timer > 100)
 		{
-			instance_activate_region(view_left, view_top, view_width, view_height, true); /* Always activate within view */
+			/* Always activate within view */
+			instance_activate_region(view_left, view_top, view_width, view_height, true);
 		}
 	}
 }
