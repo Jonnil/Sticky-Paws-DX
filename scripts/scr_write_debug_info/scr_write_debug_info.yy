@@ -1,9 +1,9 @@
 {
   "$GMScript":"v1",
-  "%Name":"scr_save_debug_info_ini",
+  "%Name":"scr_write_debug_info",
   "isCompatibility":false,
   "isDnD":false,
-  "name":"scr_save_debug_info_ini",
+  "name":"scr_write_debug_info",
   "parent":{
     "name":"Debug Scripts",
     "path":"folders/Scripts/Debug Scripts.yy",

@@ -298,33 +298,47 @@ function scr_debug_draw_debug_logic()
 			}
 		}
 		
-		/* Save debug info when F2 is pressed */
+		#region /* Save debug info when F2 is pressed */
 		if (keyboard_check_pressed(vk_f2))
 		{
-			/* Logs debug information to a .ini file in the Local AppData folder for this game */
-			var debug_info = scr_get_debug_info();
-			
-			/* Ensure the debug logs folder exists */
 			var logs_folder = game_save_id + "debug_logs/";
 			if (!directory_exists(logs_folder))
 			{
 				directory_create(logs_folder);
 			}
 			
-			/* Format the date and time to create a unique file name */
-			var save_date = string_replace_all(date_datetime_string(date_current_datetime()), ":", "_");
-			save_date = string_replace_all(save_date, "/", "_");
+			#region /* Save Date */
+			var current_dt = date_current_datetime();
 			
-			/* Include game name in the file name for easier identification */
-			var log_file_path = logs_folder + string(global.game_name) + "_" + save_date + "_debug_info.txt";
+			var year_str  = string(date_get_year(current_dt));
 			
-			var _f = file_text_open_write(log_file_path);
-			file_text_write_string(_f, debug_info);
-			file_text_close(_f);
+			var month_val = date_get_month(current_dt);
+			var month_str = (month_val < 10) ? "0" + string(month_val) : string(month_val);
 			
-			/* Debug Message where the debug information was saved to */
+			var day_val   = date_get_day(current_dt);
+			var day_str   = (day_val < 10) ? "0" + string(day_val) : string(day_val);
+			
+			var hour_val  = date_get_hour(current_dt);
+			var hour_str  = (hour_val < 10) ? "0" + string(hour_val) : string(hour_val);
+			
+			var minute_val = date_get_minute(current_dt);
+			var minute_str = (minute_val < 10) ? "0" + string(minute_val) : string(minute_val);
+			
+			var second_val = date_get_second(current_dt);
+			var second_str = (second_val < 10) ? "0" + string(second_val) : string(second_val);
+			
+			var save_date = year_str + "-" + month_str + "-" + day_str + "_" + hour_str + "." + minute_str + "." + second_str;
+			#endregion /* Save Date END */
+			
+			var log_file_path = logs_folder + "debug_info-" + string(global.game_name) + "_v" + string(scr_get_build_date()) + "_" + save_date + ".ini";
+			
+			ini_open(log_file_path);
+			scr_write_debug_info();
+			ini_close();
+			
 			show_debug_message("Debug information saved to: " + log_file_path);
 		}
+		#endregion /* Save debug info when F2 is pressed END */
 		
 		/* Toggle detailed/simplified debug mode when F4 is pressed */
 		if (keyboard_check_pressed(vk_f4))

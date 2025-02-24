@@ -4,23 +4,44 @@ function scr_crash_error_handling()
 	/* Crash Error Handling should run in every room of the game */
 	exception_unhandled_handler(function(ex)
 	{
+		var game_name = string_replace_all(global.game_name, " ", "_");
 		
 		#region /* Define Crash Logs Folder and File */
-		/* Create a folder to store crash logs if it doesn't already exist */
 		var crash_logs_folder = game_save_id + "crash_logs/";
+		
 		if (!directory_exists(crash_logs_folder))
 		{
 			directory_create(crash_logs_folder);
 		}
 		
-		/* Use the current date and time to generate a unique filename for each crash log */
-		var save_date = string_replace_all(date_datetime_string(date_current_datetime()), ":", "_");
-		save_date = string_replace_all(save_date, "/", "_");
-		var crash_log_filename = crash_logs_folder + string(global.game_name) + "_" + save_date + "_crash.txt";
+		#region /* Save Date */
+		var current_dt = date_current_datetime();
+		
+		var year_str  = string(date_get_year(current_dt));
+		
+		var month_val = date_get_month(current_dt);
+		var month_str = (month_val < 10) ? "0" + string(month_val) : string(month_val);
+		
+		var day_val   = date_get_day(current_dt);
+		var day_str   = (day_val < 10) ? "0" + string(day_val) : string(day_val);
+		
+		var hour_val  = date_get_hour(current_dt);
+		var hour_str  = (hour_val < 10) ? "0" + string(hour_val) : string(hour_val);
+		
+		var minute_val = date_get_minute(current_dt);
+		var minute_str = (minute_val < 10) ? "0" + string(minute_val) : string(minute_val);
+		
+		var second_val = date_get_second(current_dt);
+		var second_str = (second_val < 10) ? "0" + string(second_val) : string(second_val);
+		
+		var save_date = year_str + "-" + month_str + "-" + day_str + "_" + hour_str + "." + minute_str + "." + second_str;
+		#endregion /* Save Date END */
+		
+		/* Filename format .ini */
+		var crash_log_filename = "crash-" + string(game_name) + "_v" + string(scr_get_build_date()) + "_" + save_date + ".ini";
 		#endregion /* Define Crash Logs Folder and File END */
 		
 		#region /* Extract Line Number from Error Message */
-		/* Attempt to extract the line number from the error message */
 		var line_number = -1;
 		var line_start = string_pos("(line ", ex.longMessage);
 		if (line_start > 0)
@@ -36,90 +57,103 @@ function scr_crash_error_handling()
 		#endregion /* Extract Line Number from Error Message END */
 		
 		#region /* Get Documentation Links and Advice */
-		/* Retrieve relevant documentation and debugging advice */
 		var docs_and_urls = scr_get_relevant_docs(string(ex.stacktrace), ex.longMessage);
-		var doc_details = docs_and_urls[0]; /* Relevant documentation and advice details */
-		var urls_to_open = docs_and_urls[1]; /* URLs to open in the browser */
+		var doc_details = docs_and_urls[0];
+		var urls_to_open = docs_and_urls[1];
 		#endregion /* Get Documentation Links and Advice END */
 		
-		#region /* Generate Unified Crash Details */
-		/* Create a detailed and unified crash log message for consistency across outputs */
+		#region /* Write Crash Details and Debug Info to INI File */
+		ini_open(crash_logs_folder + crash_log_filename);
+		
+		#region /* [Crash] section */
+		ini_write_string("Crash", "Game", string(game_name) + "_v" + scr_get_build_date());
+		ini_write_string("Crash", "Timestamp", save_date);
+		ini_write_string("Crash", "Message", ex.message);
+		ini_write_string("Crash", "LongMessage", ex.longMessage);
+		ini_write_string("Crash", "Script", ex.script);
+		
 		var crash_details = 
-			"Game: " + string(global.game_name) + "\n" +
-			"Timestamp: " + date_datetime_string(date_current_datetime()) + "\n\n" +
+			"Game: " + string(game_name) + "_v" + scr_get_build_date() + "\n" +
+			"Timestamp: " + save_date + "\n\n" +
 			"Message: " + ex.message + "\n\n" +
 			"Long Message: " + ex.longMessage + "\n" +
 			"Script: " + ex.script + "\n";
 		
-		if (line_number != -1) 
+		if (line_number != -1)
 		{
+			ini_write_real("Crash", "Line", line_number);
 			crash_details += "Line: " + string(line_number) + "\n\n";
 		}
+		ini_write_string("Crash", "StackTrace", string(ex.stacktrace));
+		ini_write_string("Crash", "Documentation", doc_details);
+		ini_write_string("Crash", "CrashLogFile", string_replace(game_save_id, environment_get_variable("USERNAME"), "*") +
+			"crash_logs/" + string(game_name) + "_" + save_date + "_crash.ini");
 		
 		crash_details += "Stack Trace: " + string(ex.stacktrace) + "\n\n";
 		crash_details += doc_details + "\n";
-		crash_details += "Crash Log File: " + string_replace(game_save_id, environment_get_variable("USERNAME"), "*") + "crash_logs/" + string(global.game_name) + "_" + save_date + "_crash.txt";
-		#endregion /* Generate Unified Crash Details END */
+		#endregion /* [Crash] section END */
 		
-		/* Incorporate Debug Info */
-		var debug_info = scr_get_debug_info();
+		/* [Debug] and additional sections via scr_write_debug_info */
+		scr_write_debug_info();
 		
-		#region /* Write Crash Details to File */
-		/* Save the crash details to a log file for debugging purposes */
-		var _f = file_text_open_write(crash_log_filename);
-		file_text_write_string(_f, crash_details + "\n\n\n" + debug_info);
-		file_text_close(_f);
-		#endregion /* Write Crash Details to File END */
+		ini_close();
+		#endregion /* Write Crash Details and Debug Info to INI File END */
+		
+		#region /* Output Crash Details and Notify User */
+		show_debug_message("--------------------------------------------------------------");
+		show_debug_message("Crash occurred! Details written to: " + crash_logs_folder + crash_log_filename);
+		show_debug_message("");
+		show_debug_message(string(crash_details));
+		show_debug_message("--------------------------------------------------------------");
+		show_message(
+			"Sorry, the game has crashed. Please check the crash log for more details:\n" +
+			string_replace(game_save_id, environment_get_variable("USERNAME"), "*") +
+			"crash_logs/" + crash_log_filename + "\n\n" +
+			string(crash_details)
+		);
+		#endregion /* Output Crash Details and Notify User END */
 		
 		#region /* Send Crash Log to Server */
 		if (os_is_network_connected())
+		&& (file_exists(crash_logs_folder + crash_log_filename))
 		{
-			/* Construct a JSON payload and send it to your GCP server */
+			/* Open the .ini file for reading and read its full contents */
+			var ini_file = file_text_open_read(crash_logs_folder + crash_log_filename);
+			var ini_content = "";
+			while (!file_text_eof(ini_file))
+			{
+				ini_content += file_text_read_string(ini_file) + "\n";
+			}
+			file_text_close(ini_file);
+			
+			/* Create the payload with the full .ini file content */
 			var payload_map = ds_map_create();
-			ds_map_add(payload_map, "game_name", global.game_name);
-			ds_map_add(payload_map, "timestamp", date_datetime_string(date_current_datetime()));
-			ds_map_add(payload_map, "crash_details", crash_details);
-			ds_map_add(payload_map, "debug_info", debug_info);
+			ds_map_add(payload_map, "game_name", game_name);
+			ds_map_add(payload_map, "game_version", "v" + scr_get_build_date());
+			ds_map_add(payload_map, "timestamp", save_date);
+			ds_map_add(payload_map, "ini_content", ini_content);
+			ds_map_add(payload_map, "crash_log_filename", crash_log_filename);
 			var post_data = json_encode(payload_map);
 			ds_map_destroy(payload_map);
 			
-			/* Prepare HTTP header map */
+			/* Prepare HTTP headers */
 			var header_map = ds_map_create();
 			ds_map_add(header_map, "Content-Type", "application/json");
-			ds_map_add(header_map, "User-Agent", "gm_crash_logger"); /* Include a user agent */
-			ds_map_add(header_map, "X-API-Key", global.api_key); /* Add an API key for authentication */
-			ds_map_add(header_map, "Host", string(global.base_url)); /* Optional, if needed by your server */
+			ds_map_add(header_map, "User-Agent", "gm_crash_logger");
+			ds_map_add(header_map, "X-API-Key", global.api_key);
+			ds_map_add(header_map, "Host", string(global.base_url));
 			
-			/* Construct the endpoint URL */
+			/* Send the HTTP POST request with the .ini file content as payload */
 			var crash_endpoint = "https://" + string(global.base_url) + "/crashlog";
-			
-			/* Send the HTTP POST request */
 			var request_id = http_request(crash_endpoint, "POST", header_map, post_data);
 			ds_map_destroy(header_map);
 		}
 		#endregion /* Send Crash Log to Server END */
 		
-		#region /* Output Crash Details to Debug Console */
-		/* Print the crash details to the debug console for developers to see immediately */
-		show_debug_message("--------------------------------------------------------------");
-		show_debug_message(crash_details);
-		show_debug_message("--------------------------------------------------------------");
-		#endregion /* Output Crash Details to Debug Console END */
-		
-		#region /* Show Error Message to Players */
-		/* Display a detailed error message to players, including where to find the crash log */
-		show_message(
-			"Sorry, the game has crashed. Please check the crash log for more details:\n" +
-			string_replace(game_save_id, environment_get_variable("USERNAME"), "*") + "crash_logs/" + string(global.game_name) + "_" + save_date + "_crash.txt\n\n" +
-			crash_details
-		);
-		#endregion /* Show Error Message to Players END */
-		
 		#region /* Ask to Open URLs */
-		/* Prompt to open relevant documentation links, if available */
 		if (array_length(urls_to_open) > 0)
 		{
-			if (global.auto_open_crash_docs) /* Automatically open if enabled through global toggle */
+			if (global.auto_open_crash_docs)
 			{
 				for (var i = 0; i < array_length(urls_to_open); i++)
 				{
@@ -127,7 +161,7 @@ function scr_crash_error_handling()
 				}
 			}
 			else
-			if (show_question("Open relevant documentation links in your browser?")) /* Prompt */
+			if (show_question("Open relevant documentation links in your browser?"))
 			{
 				for (var i = 0; i < array_length(urls_to_open); i++)
 				{
@@ -137,7 +171,6 @@ function scr_crash_error_handling()
 		}
 		#endregion /* Ask to Open URLs END */
 		
-		/* Return a specific exit code for debugging or automated systems to detect the crash */
-		return 1;
+		game_end();
 	});
 }
