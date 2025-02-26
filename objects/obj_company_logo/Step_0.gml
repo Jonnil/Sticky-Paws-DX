@@ -374,3 +374,5 @@ if (load_ok >= 4)
 //	sprite_splash_easteregg_yoffset = lerp(sprite_splash_easteregg_yoffset, - 128, 0.1);
 //}
 #endregion /* Show easter egg on company logo screen when pressing specific button END */
+
+scr_send_pending_crash_logs();

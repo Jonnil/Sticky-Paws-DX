@@ -279,6 +279,7 @@ can_navigate = true;
 menu_y_offset = 0; /* This is the y offset that will have lerping to make the menu scrolling smooth */
 menu_y_offset_real = 0; /* This is the real y offset for the menu, used for menu scrolling */
 menu_cursor_y_position = 0;
+menu_cursor_y_position_end = 0;
 background_brightness_menu_lerp = 0;
 title_x = 0;
 title_y = - 800;

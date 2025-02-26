@@ -2902,6 +2902,7 @@
     {"id":{"name":"scr_get_todays_upload_count","path":"scripts/scr_get_todays_upload_count/scr_get_todays_upload_count.yy",},},
     {"id":{"name":"scr_get_valid_languages","path":"scripts/scr_get_valid_languages/scr_get_valid_languages.yy",},},
     {"id":{"name":"scr_get_voice","path":"scripts/scr_get_voice/scr_get_voice.yy",},},
+    {"id":{"name":"scr_get_wrapped_text_height","path":"scripts/scr_get_wrapped_text_height/scr_get_wrapped_text_height.yy",},},
     {"id":{"name":"scr_initialize_camera","path":"scripts/scr_initialize_camera/scr_initialize_camera.yy",},},
     {"id":{"name":"scr_initialize_character_abilities","path":"scripts/scr_initialize_character_abilities/scr_initialize_character_abilities.yy",},},
     {"id":{"name":"scr_initialize_character_sprite","path":"scripts/scr_initialize_character_sprite/scr_initialize_character_sprite.yy",},},

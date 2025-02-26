@@ -7,7 +7,7 @@ for(var p = 1; p <= global.max_players; p += 1)
 	show_player_controls_y[p] = -64;
 	
 	show_player_controller_cant_use[p] = 0;
-	show_player_controller_cant_use_y[p] = display_get_gui_height() + 64;
+	show_player_controller_cant_use_y[p] = display_get_gui_height() * 2;
 	
 	if (global.character_select_in_this_menu == "level_editor" && global.search_id != "")
 	{
@@ -151,6 +151,7 @@ menu_remap_gamepad_button_number = 0;
 menu_y_offset = 0; /* This is the y offset that will have lerping to make the menu scrolling smooth */
 menu_y_offset_real = 0; /* This is the real y offset for the menu, used for menu scrolling */
 menu_cursor_y_position = 0;
+menu_cursor_y_position_end = 0;
 scrolling_menu_with_mousewheel = false;
 background_brightness_menu_lerp = 0;
 language_mouse_scroll = 0;

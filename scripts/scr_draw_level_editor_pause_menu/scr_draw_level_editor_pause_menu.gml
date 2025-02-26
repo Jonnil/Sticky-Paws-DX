@@ -193,6 +193,7 @@ function scr_draw_level_editor_pause_menu()
 			&& (menu_delay == 0 && menu_joystick_delay == 0)
 			{
 				menu_cursor_y_position = 0; /* Reset so the scrolling menus are back to 0 */
+				menu_cursor_y_position_end = 0;
 				quit_level_editor = 0;
 				can_input_level_name = false;
 				pause = true;
@@ -226,6 +227,7 @@ function scr_draw_level_editor_pause_menu()
 					if (menu_delay == 0 && menu_joystick_delay == 0)
 					{
 						menu_cursor_y_position = 0; /* Reset so the scrolling menus are back to 0 */
+						menu_cursor_y_position_end = 0;
 						quit_level_editor = 0;
 						can_input_level_name = false;
 						pause = true;

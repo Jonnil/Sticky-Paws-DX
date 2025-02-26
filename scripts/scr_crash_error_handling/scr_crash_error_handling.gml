@@ -66,14 +66,16 @@ function scr_crash_error_handling()
 		ini_open(crash_logs_folder + crash_log_filename);
 		
 		#region /* [Crash] section */
-		ini_write_string("Crash", "Game", string(game_name) + "_v" + scr_get_build_date());
+		ini_write_string("Crash", "Game", string(game_name));
+		ini_write_string("Crash", "Version", "v" + scr_get_build_date());
 		ini_write_string("Crash", "Timestamp", save_date);
 		ini_write_string("Crash", "Message", ex.message);
 		ini_write_string("Crash", "LongMessage", ex.longMessage);
 		ini_write_string("Crash", "Script", ex.script);
 		
 		var crash_details = 
-			"Game: " + string(game_name) + "_v" + scr_get_build_date() + "\n" +
+			"Game: " + string(game_name) + "\n" +
+			"Version: " + "v" + scr_get_build_date() + "\n" +
 			"Timestamp: " + save_date + "\n\n" +
 			"Message: " + ex.message + "\n\n" +
 			"Long Message: " + ex.longMessage + "\n" +
@@ -114,7 +116,9 @@ function scr_crash_error_handling()
 		#endregion /* Output Crash Details and Notify User END */
 		
 		#region /* Send Crash Log to Server */
-		if (os_is_network_connected())
+		if (global.online_enabled)
+		&& (global.send_crash_logs)
+		&& (os_is_network_connected())
 		&& (file_exists(crash_logs_folder + crash_log_filename))
 		{
 			/* Open the .ini file for reading and read its full contents */
@@ -147,6 +151,13 @@ function scr_crash_error_handling()
 			var crash_endpoint = "https://" + string(global.base_url) + "/crashlog";
 			var request_id = http_request(crash_endpoint, "POST", header_map, post_data);
 			ds_map_destroy(header_map);
+		}
+		else
+		if (!os_is_network_connected())
+		&& (file_exists(crash_logs_folder + crash_log_filename))
+		{
+			/* Copy the local crash log to the pending folder for online sending when the user is connected again */
+			file_copy(crash_logs_folder + crash_log_filename, game_save_id + "pending_crash_logs/" + crash_log_filename);
 		}
 		#endregion /* Send Crash Log to Server END */
 		

@@ -35,6 +35,7 @@ function scr_option_custom_resources()
 			var custom_title_logo_y = 40 * 13 + menu_y_offset;
 			var custom_title_logo_open_y = 40 * 15 + menu_y_offset;
 			var can_load_custom_level_assets_y = 40 * 16 + 32 + menu_y_offset;
+			menu_cursor_y_position_end = 40 * 16 + 32;
 		}
 		else
 		{
@@ -49,6 +50,7 @@ function scr_option_custom_resources()
 			var custom_title_logo_y = 40 * 9 + menu_y_offset;
 			var custom_title_logo_open_y = 40 * 11 + menu_y_offset;
 			var can_load_custom_level_assets_y = 40 * 12 + 32 + menu_y_offset;
+			menu_cursor_y_position_end = 40 * 12 + 32;
 		}
 		
 		if (key_up)

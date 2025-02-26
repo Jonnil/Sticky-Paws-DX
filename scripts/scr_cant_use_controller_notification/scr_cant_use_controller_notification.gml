@@ -13,7 +13,7 @@ function scr_cant_use_controller_notification()
 		for(var p = 1; p <= global.max_players; p += 1)
 		{
 			show_player_controller_cant_use[p] = 0;
-			show_player_controller_cant_use_y[p] = display_get_gui_height() + 64;
+			show_player_controller_cant_use_y[p] = display_get_gui_height() * 2;
 		}
 	}
 	
@@ -44,7 +44,7 @@ function scr_cant_use_controller_notification()
 			}
 			else
 			{
-				show_player_controller_cant_use_y[i] = lerp(show_player_controller_cant_use_y[i], display_get_gui_height() + 64, 0.1);
+				show_player_controller_cant_use_y[i] = lerp(show_player_controller_cant_use_y[i], display_get_gui_height() * 2, 0.1);
 			}
 			#endregion /* Hide and show controllers that can't be used END */
 			

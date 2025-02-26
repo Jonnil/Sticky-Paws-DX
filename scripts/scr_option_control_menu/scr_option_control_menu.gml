@@ -4157,6 +4157,7 @@ function scr_option_control_menu()
 			else
 			{
 				draw_menu_checkmark(390, menu_y_show_prompt_when_changing_controller + menu_y_offset, l10n_text("Show prompt when changing to keyboard and mouse"), "show_prompt_when_changing_controller", global.show_prompt_when_changing_to_keyboard_and_mouse, true);
+				menu_cursor_y_position_end = menu_y_show_prompt_when_changing_controller;
 			}
 			draw_menu_checkmark(390, menu_y_always_show_gamepad_buttons + menu_y_offset, l10n_text("Always Show Gamepad Buttons"), "always_show_gamepad_buttons", global.always_show_gamepad_buttons, false);
 		}
@@ -4164,6 +4165,7 @@ function scr_option_control_menu()
 		if (global.settings_sidebar_menu == "controller_settings")
 		{
 			draw_menu_slider(420, menu_y_vibration_strength + menu_y_offset, l10n_text("Vibration Strength"), "vibration_strength", global.vibration_strength[what_player]);
+			menu_cursor_y_position_end = menu_y_vibration_strength;
 		}
 		
 		if (global.enable_option_for_pc)

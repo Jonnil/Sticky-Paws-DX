@@ -19,7 +19,9 @@ function draw_menu_slider(x_position, y_position, string_text, menu_index, varia
 		draw_rectangle_color(x_position- 2, y_position- 16 - 2, x_position + 320 + 2, y_position + 16 + 2, c_black, c_black, c_black, c_black, false);
 		
 		#region /* Click to change value */
-		if (mouse_check_button(mb_left))
+		if (global.controls_used_for_navigation == "mouse")
+		&& (mouse_check_button(mb_left))
+		&& (!open_dropdown)
 		{
 			if (point_in_rectangle(mouse_get_x, mouse_get_y, x_position- 32, y_position- 32, x_position + 352, y_position + 32)) /* Within the length of the slider */
 			{
@@ -108,11 +110,13 @@ function draw_menu_slider(x_position, y_position, string_text, menu_index, varia
 	if (point_in_rectangle(mouse_get_x, mouse_get_y, x_position + 32, y_position + 2, x_position + 320, y_position + 41))
 	&& (global.controls_used_for_navigation == "mouse")
 	&& (mouse_check_button_released(mb_left))
+	&& (!open_dropdown)
 	&& (menu != "assist_enable")
 	&& (menu_delay == 0 && menu_joystick_delay == 0)
 	|| (point_in_rectangle(mouse_get_x, mouse_get_y, x_position + 32, y_position + 2, x_position + 320, y_position + 41))
 	&& (global.controls_used_for_navigation == "mouse")
 	&& (mouse_check_button_released(mb_left))
+	&& (!open_dropdown)
 	&& (global.assist_enable)
 	&& (menu == "assist_enable")
 	&& (menu_delay == 0 && menu_joystick_delay == 0)

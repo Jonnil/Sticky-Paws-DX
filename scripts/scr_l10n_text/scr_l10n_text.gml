@@ -49,5 +49,8 @@ function l10n_text(key = "")
 		scr_log_missing_translation_keyword(key); /* Call the log missing translation keyword script */
 	}
 	
+	/* Replace {br} placeholders with actual newlines */
+	text = string_replace_all(text, "{br}", "\n");
+	
 	return text;
 }

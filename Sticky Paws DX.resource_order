@@ -267,6 +267,7 @@
     {"name":"scr_get_todays_upload_count","order":13,"path":"scripts/scr_get_todays_upload_count/scr_get_todays_upload_count.yy",},
     {"name":"scr_get_valid_languages","order":4,"path":"scripts/scr_get_valid_languages/scr_get_valid_languages.yy",},
     {"name":"scr_get_voice","order":78,"path":"scripts/scr_get_voice/scr_get_voice.yy",},
+    {"name":"scr_get_wrapped_text_height","order":105,"path":"scripts/scr_get_wrapped_text_height/scr_get_wrapped_text_height.yy",},
     {"name":"scr_initialize_camera","order":48,"path":"scripts/scr_initialize_camera/scr_initialize_camera.yy",},
     {"name":"scr_initialize_character_abilities","order":15,"path":"scripts/scr_initialize_character_abilities/scr_initialize_character_abilities.yy",},
     {"name":"scr_initialize_character_sprite","order":17,"path":"scripts/scr_initialize_character_sprite/scr_initialize_character_sprite.yy",},

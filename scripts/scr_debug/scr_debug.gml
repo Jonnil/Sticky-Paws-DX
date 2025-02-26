@@ -549,48 +549,61 @@ function scr_debug_draw_optimized_text()
 			
 			if (!global.debug_collapsed_sections[? "Menu Information"])
 			{
+				/* Debug output ordered by overall system state, control settings, then scroll values and delays */
+				
+				/* 1. Overall Menu States */
 				if (variable_instance_exists(self, "menu"))
 				{
-					debug_text_y = scr_draw_highlighted_text(32, debug_text_y, "menu", string(menu), "Current Menu", c_white, c_red, menu == 0);
+				    debug_text_y = scr_draw_highlighted_text(32, debug_text_y, "menu", string(menu), "Current Menu", c_white, c_red, menu == 0);
 				}
 				
 				if (variable_instance_exists(self, "level_editor_menu"))
 				{
-					debug_text_y = scr_draw_highlighted_text(32, debug_text_y, "level_editor_menu", string(level_editor_menu), "Level Editor Menu", c_white, c_red, false);
-				}
-				
-				if (variable_instance_exists(self, "menu_cursor_y_position"))
-				{
-					debug_text_y = scr_draw_highlighted_text(32, debug_text_y, "menu_cursor_y_position", string(menu_cursor_y_position), "Menu Cursor Y Position", c_white, c_red, false);
-				}
-				
-				debug_text_y = scr_draw_highlighted_text(32, debug_text_y, "menu_navigation_speed", string(global.menu_navigation_speed), "Menu Navigation Speed", c_white, c_red, false);
-				
-				if (variable_instance_exists(self, "menu_y_offset"))
-				{
-					debug_text_y = scr_draw_highlighted_text(32, debug_text_y, "menu_y_offset", string(menu_y_offset), "Menu Y Offset", c_white, c_red, false);
-				}
-				
-				if (variable_instance_exists(self, "menu_y_offset_real"))
-				{
-					debug_text_y = scr_draw_highlighted_text(32, debug_text_y, "menu_y_offset_real", string(menu_y_offset_real), "Menu Y Offset (Real)", c_white, c_red, false);
-				}
-				
-				if (variable_instance_exists(self, "menu_delay"))
-				{
-					debug_text_y = scr_draw_highlighted_text(32, debug_text_y, "menu_delay", string(menu_delay), "Menu Delay", c_white, c_red, menu_delay > 0);
-				}
-				
-				if (variable_instance_exists(self, "menu_joystick_delay")
-				&& gamepad_is_connected(0))
-				{
-					debug_text_y = scr_draw_highlighted_text(32, debug_text_y, "menu_joystick_delay", string(menu_joystick_delay), "Menu Joystick Delay", c_white, c_red, menu_joystick_delay > 0);
+				    debug_text_y = scr_draw_highlighted_text(32, debug_text_y, "level_editor_menu", string(level_editor_menu), "Level Editor Menu", c_white, c_red, false);
 				}
 				
 				if (variable_instance_exists(self, "in_character_select_menu"))
 				{
-					debug_text_y = scr_draw_highlighted_text(32, debug_text_y, "in_character_select_menu", string(in_character_select_menu), "In Character Select Menu", c_white, c_red, false);
+				    debug_text_y = scr_draw_highlighted_text(32, debug_text_y, "in_character_select_menu", string(in_character_select_menu), "In Character Select Menu", c_white, c_red, false);
 				}
+				
+				/* 2. Control Settings */
+				debug_text_y = scr_draw_highlighted_text(32, debug_text_y, "controls_used_for_navigation", string(global.controls_used_for_navigation), "Controls Used For Navigation", c_white, c_red, false);
+				
+				if (variable_instance_exists(self, "scrolling_menu_with_mousewheel"))
+				{
+					debug_text_y = scr_draw_highlighted_text(32, debug_text_y, "scrolling_menu_with_mousewheel", string(scrolling_menu_with_mousewheel), "Scrolling Menu With Mousewheel", c_white, c_red, scrolling_menu_with_mousewheel);
+				}
+				
+				/* 3. Navigation & Scrolling Variables */
+				debug_text_y = scr_draw_highlighted_text(32, debug_text_y, "menu_navigation_speed", string(global.menu_navigation_speed), "Menu Navigation Speed", c_white, c_red, false);
+				
+				if (variable_instance_exists(self, "menu_cursor_y_position"))
+				{
+				    debug_text_y = scr_draw_highlighted_text(32, debug_text_y, "menu_cursor_y_position", string(menu_cursor_y_position), "Menu Cursor Y Position", c_white, c_red, false);
+				}
+				
+				if (variable_instance_exists(self, "menu_y_offset"))
+				{
+				    debug_text_y = scr_draw_highlighted_text(32, debug_text_y, "menu_y_offset", string(menu_y_offset), "Menu Y Offset", c_white, c_red, false);
+				}
+				
+				if (variable_instance_exists(self, "menu_y_offset_real"))
+				{
+				    debug_text_y = scr_draw_highlighted_text(32, debug_text_y, "menu_y_offset_real", string(menu_y_offset_real), "Menu Y Offset (Real)", c_white, c_red, false);
+				}
+				
+				/* 4. Delay Values */
+				if (variable_instance_exists(self, "menu_delay"))
+				{
+				    debug_text_y = scr_draw_highlighted_text(32, debug_text_y, "menu_delay", string(menu_delay), "Menu Delay", c_white, c_red, menu_delay > 0);
+				}
+				
+				if (variable_instance_exists(self, "menu_joystick_delay") && gamepad_is_connected(0))
+				{
+				    debug_text_y = scr_draw_highlighted_text(32, debug_text_y, "menu_joystick_delay", string(menu_joystick_delay), "Menu Joystick Delay", c_white, c_red, menu_joystick_delay > 0);
+				}
+				
 			}
 		}
 	}

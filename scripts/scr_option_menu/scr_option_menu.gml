@@ -2051,6 +2051,7 @@ function scr_option_menu()
 			global.assist_normal_arrows = draw_menu_checkmark(450, 332 + (45 * 7) + menu_y_offset, l10n_text("Show Normal Arrows"), "assist_normal_arrows", global.assist_normal_arrows, true);
 			global.assist_enable_enemies = draw_menu_checkmark(450, 332 + (45 * 8) + menu_y_offset, l10n_text("Enable Enemies"), "assist_enable_enemies", global.assist_enable_enemies, true);
 			global.assist_enable_spikes = draw_menu_checkmark(450, 332 + (45 * 9) + menu_y_offset, l10n_text("Enable Spikes"), "assist_enable_spikes", global.assist_enable_spikes, true);
+			menu_cursor_y_position_end = 332 + (45 * 9);
 			
 			#region /* Assist Extra HP */
 			draw_menu_dropdown(450, 262 + menu_y_offset, l10n_text("Extra Health Points"), "assist_extra_hp", global.assist_extra_hp,

@@ -294,6 +294,7 @@ global.menu_button_subimg = 16; /* In the menu button sprites are several sub-im
 global.menu_navigation_speed = 60; /* Make the menu navigation go faster the longer you hold down a direction */
 global.collectible_image_index = 0; /* Make all collectibles animate in sync */
 global.caution_online_do_not_show = false; /* When the game shows the online caution screen, you should be able to disable that screen from showing up again */
+global.send_crash_logs = true;
 global.online_enabled = false; /* You need to accept the online caution screen before you can go online */
 global.report_reason = "";
 global.report_message = "";

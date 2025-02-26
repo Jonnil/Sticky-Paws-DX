@@ -359,6 +359,7 @@ if (!in_settings)
 			#endregion /* Play Options Voice END */
 			
 			menu_cursor_y_position = 0; /* Reset so the scrolling menus are back to 0 */
+			menu_cursor_y_position_end = 0;
 			in_settings = true;
 			can_navigate_settings_sidebar = true;
 			menu = noone;
