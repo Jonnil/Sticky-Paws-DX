@@ -7,13 +7,12 @@ function scr_get_valid_languages()
 	for(var i = global.language_column_start; i < ds_grid_width(global.language_local_data); i ++;)
 	{
 		var language_valid_string = global.language_local_data[# i, 1];
+		var debug_message = "";
 		
-		/* Display a debug message showing the language name from the first row of the column,
-			the calculated completion percentage,
-			and if the language is valid or not */
-		show_debug_message(string(global.language_local_data[# i, 0]) + 
-			" global.language_completion[" + string(i) + "] = " + 
-			string(global.language_completion[i]) + " Valid language: " + string(language_valid_string));
+		/* Display a debug message showing the language name from the first row of the column, the calculated completion percentage, and if the language is valid or not */
+		debug_message += string(global.language_local_data[# i, 0]) +
+			" global.language_completion[" + string(i) + "] = " +
+			string(global.language_completion[i]) + " Valid language: " + string(language_valid_string)
 		
 		/* If the language should show up in-game or not */
 		if (language_valid_string != "No")
@@ -26,7 +25,9 @@ function scr_get_valid_languages()
 				valid_array ++;
 				global.valid_languages[valid_array] = i;
 			}
-			show_debug_message("global.valid_languages[" + string(valid_array) + "] = " + string(i));
+			debug_message += " global.valid_languages[" + string(valid_array) + "] = " + string(i);
 		}
+		
+		show_debug_message(debug_message);
 	}
 }

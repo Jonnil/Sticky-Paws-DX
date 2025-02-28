@@ -12,5 +12,6 @@ debug_target_list = [
 ];
 
 debug_target = noone;
+simulated_fps = 60;
 
 scr_debug_init_cheat_codes();

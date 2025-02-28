@@ -1,18 +1,15 @@
 /// @function scr_send_pending_crash_logs()
 function scr_send_pending_crash_logs()
 {
-	if (global.online_enabled)
+	
+	#region /* Check for Pending Crash Logs */
+	var pending_logs_folder = game_save_id + "pending_crash_logs/";
+	
+	if (directory_exists(pending_logs_folder)) /* If pending crash logs exist */
+	&& (global.online_enabled)
 	&& (global.send_crash_logs)
 	&& (os_is_network_connected())
 	{
-		
-		#region /* Check for Pending Crash Logs */
-		var pending_logs_folder = game_save_id + "pending_crash_logs/";
-		if (!directory_exists(pending_logs_folder))
-		{
-			return; /* Nothing to send */
-		}
-		
 		var filename = file_find_first(pending_logs_folder + "*.*", fa_none);
 		#endregion /* Check for Pending Crash Logs END */
 		
@@ -80,6 +77,6 @@ function scr_send_pending_crash_logs()
 			file_find_close();
 		}
 		#endregion /* Delete Pending Folder If Empty END */
-		
+			
 	}
 }

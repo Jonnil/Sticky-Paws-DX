@@ -57,19 +57,22 @@ function scr_debug_check_cheat_input(input_str)
 /* Prints the current progress for each cheat code to the debug console */
 function scr_debug_print_cheat_progress()
 {
-	for (var i = 0; i < array_length(global.cheat_codes); i++)
+	if (global.debug_screen)
 	{
-		var cheat = global.cheat_codes[i];
-		var progress = cheat.progress;
-		var total = array_length(cheat.code);
-		show_debug_message("Cheat code " + string(i) + ": Progress " + string(progress) + " / " + string(total));
-		if (progress < total)
+		for (var i = 0; i < array_length(global.cheat_codes); i++)
 		{
-			show_debug_message("  Next expected: " + cheat.code[progress]);
-		}
-		else
-		{
-			show_debug_message("  Cheat complete!");
+			var cheat = global.cheat_codes[i];
+			var progress = cheat.progress;
+			var total = array_length(cheat.code);
+			show_debug_message("Cheat code " + string(i) + ": Progress " + string(progress) + " / " + string(total));
+			if (progress < total)
+			{
+				show_debug_message("  Next expected: " + cheat.code[progress]);
+			}
+			else
+			{
+				show_debug_message("  Cheat complete!");
+			}
 		}
 	}
 }

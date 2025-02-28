@@ -3,6 +3,8 @@ scr_set_screen_size();
 scr_character_select_menu_step();
 scr_set_menu_font_color();
 scr_toggle_fullscreen();
+scr_send_pending_crash_logs();
+scr_step_online_download_list();
 
 var fixed_player = 1;
 

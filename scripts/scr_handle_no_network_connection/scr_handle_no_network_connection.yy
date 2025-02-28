@@ -1,9 +1,9 @@
 {
   "$GMScript":"v1",
-  "%Name":"scr_draw_online_download_list",
+  "%Name":"scr_handle_no_network_connection",
   "isCompatibility":false,
   "isDnD":false,
-  "name":"scr_draw_online_download_list",
+  "name":"scr_handle_no_network_connection",
   "parent":{
     "name":"Online Download List Scripts",
     "path":"folders/Scripts/Server Scripts/Online Download List Scripts.yy",

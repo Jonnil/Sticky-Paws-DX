@@ -11,33 +11,61 @@ function scr_log_missing_translation_keyword(log_translation_key = "")
 	if (log_translation_key != "")
 	&& (!ds_map_exists(global.translation_missing_keywords_cache, log_translation_key))
 	{
-		show_debug_message("log_translation_key is currently holding: " + string(log_translation_key));
 		
 		#region /* Validate Input */
 		/* Ensure the provided key is valid (non-empty and defined) */
 		if (log_translation_key == "" || log_translation_key == undefined)
 		{
-			show_debug_message("[TranslationSync] Error: Invalid log_translation_key provided for translation logging.");
+			show_debug_message("[TranslationSync] Error: Invalid log_translation_key provided for translation logging. log_translation_key is currently holding: " + string(log_translation_key));
 			return; /* Exit early since no valid key was provided */
 		}
 		#endregion /* Validate Input END */
 		
-		#region /* Log Missing Keyword Locally */
+		#region /* Log Missing Keyword Locally for CSV */
 		/* Define the file path where missing keywords are logged locally */
 		var file_path = game_save_id + "translation_missing_keywords.txt";
-		var file = file_text_open_append(file_path); /* Open the file in append mode */
-		if (file != -1) /* Ensure the file was successfully opened */
+		var file = file_text_open_append(file_path); // Open the file in append mode */
+		if (file != -1)
 		{
-			file_text_write_string(file, log_translation_key); /* Write the missing keyword */
-			file_text_writeln(file); /* Move to a new line */
-			file_text_close(file); /* Save changes and close the file */
+			/* Build the timestamp string "YYYY-MM-DD hh:mm:ss" using built-in date variables */
+			var year   = string(current_year);
+			
+			var month  = string(current_month);
+			if (current_month < 10) month = "0" + month;
+			
+			var day	= string(current_day);
+			if (current_day < 10) day = "0" + day;
+			
+			var hour   = string(current_hour);
+			if (current_hour < 10) hour = "0" + hour;
+			
+			var minute = string(current_minute);
+			if (current_minute < 10) minute = "0" + minute;
+			
+			var second = string(current_second);
+			if (current_second < 10) second = "0" + second;
+			
+			var formatted_time = year + "-" + month + "-" + day + " " + hour + ":" + minute + ":" + second;
+			
+			/* Ensure the keyword is safe for CSV by wrapping it in quotes and escaping any inner quotes */
+			var safe_keyword   = "\"" + string_replace_all(log_translation_key, "\"", "\"\"") + "\"";
+			/* Wrap the timestamp in quotes as well */
+			var safe_timestamp = "\"" + formatted_time + "\"";
+			
+			/* Build the CSV entry in the format: keyword,timestamp */
+			var log_entry = safe_keyword + "," + safe_timestamp;
+			
+			/* Write the CSV entry to the file and close it */
+			file_text_write_string(file, log_entry);
+			file_text_writeln(file); /* New line for the next entry */
+			file_text_close(file);
 		}
 		else
 		{
-			/* Output a debug message if the file couldn't be opened */
+			/* Debug message if the file couldn't be opened */
 			show_debug_message("[TranslationSync] Error: Unable to open file for logging: " + file_path);
 		}
-		#endregion /* Log Missing Keyword Locally END */
+		#endregion /* Log Missing Keyword Locally for CSV END */
 		
 		#region /* Spawn Object to Handle Server Request */
 		/* Check if the player is connected to the network */
@@ -48,9 +76,8 @@ function scr_log_missing_translation_keyword(log_translation_key = "")
 			var sync_obj = instance_create_depth(x, y, 0, obj_sync_missing_translation);
 			if (instance_exists(sync_obj))
 			{
-				show_debug_message("[Debug] Created sync object successfully.");
 				sync_obj.object_translation_key = log_translation_key;
-				show_debug_message("[Debug] Assigned object_translation_key: " + log_translation_key);
+				show_debug_message("[Debug] Created sync object successfully! Assigned object_translation_key: " + log_translation_key);
 			}
 			else
 			{
@@ -84,13 +111,12 @@ function scr_log_missing_translation_keyword(log_translation_key = "")
 */
 function scr_initialize_sync_translation(sync_translation_key = "")
 {
-	show_debug_message("sync_translation_key is currently holding: " + string(sync_translation_key));
 	
 	#region /* Validate Input */
 	/* Ensure the provided key is valid (non-empty and defined) */
 	if (sync_translation_key == undefined || sync_translation_key == "")
 	{
-		show_debug_message("[TranslationSync] Error: scr_initialize_sync_translation missing required sync_translation_key argument.");
+		show_debug_message("[TranslationSync] Error: scr_initialize_sync_translation missing required sync_translation_key argument. sync_translation_key is currently holding: " + string(sync_translation_key));
 		return false; /* Exit early since no valid key was provided */
 	}
 	#endregion /* Validate Input END */
@@ -158,14 +184,12 @@ function scr_initialize_sync_translation(sync_translation_key = "")
 
 function scr_handle_sync_translation_response(request_id = false, response_translation_key = "")
 {
-	show_debug_message("request_id is currently holding: " + string(request_id));
-	show_debug_message("response_translation_key is currently holding: " + string(response_translation_key));
 	
 	#region /* Validate Input */
 	/* Ensure the provided key is valid */
 	if (response_translation_key == undefined || response_translation_key == "")
 	{
-		show_debug_message("[TranslationSync] Error: scr_handle_sync_translation_response missing required response_translation_key argument.");
+		show_debug_message("[TranslationSync] Error: scr_handle_sync_translation_response missing required response_translation_key argument. request_id is currently holding: " + string(request_id) + " response_translation_key is currently holding: " + string(response_translation_key));
 		return false; /* Exit early */
 	}
 	#endregion /* Validate Input END */

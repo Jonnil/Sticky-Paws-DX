@@ -116,7 +116,8 @@ function scr_config_load()
 			"Player Information",
 			"Menu Information",
 			"Gamepad Information",
-			"Switch Information"
+			"Switch Information",
+			"Online Download Info"
 		];
 		
 		for (var i = 0; i < array_length(section_list); i++)

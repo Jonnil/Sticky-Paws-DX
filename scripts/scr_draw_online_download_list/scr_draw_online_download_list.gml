@@ -1,400 +1,87 @@
+/// @function scr_draw_online_download_list()
+/// @description This script draws the online download list and all its visual elements.
 function scr_draw_online_download_list()
 {
-	var menu_cursor_y_position_start = 114 + (300 * (global.selected_online_download_index));
-	var menu_y_offset_real_start = -(170 * (global.selected_online_download_index));
 	
-	if (menu == "online_download_list_load")
-	{
-		if (os_is_network_connected()) /* Need to check if OS is connected to network before getting online */
-		{
-			/* Initialize download menu with proper offsets */
-			/* Put the scroll position on the selected thumbnail immediately */
-			menu_cursor_y_position = menu_cursor_y_position_start;
-			menu_y_offset_real = menu_y_offset_real_start;
-			menu_y_offset = menu_y_offset_real_start;
-			scr_initialize_online_download_menu();
-		}
-		else
-		if (!os_is_network_connected())
-		{
-			scr_handle_no_network_connection();
-		}
-	}
-	else
+	#region /* Draw Background Overlay */
 	if (in_online_download_list_menu)
 	{
-		/* Draw background overlay */
+		var guiWidth = display_get_gui_width(); /* Cache display width */
 		draw_set_alpha(0.5);
-		draw_rectangle_color(0, 0, display_get_gui_width(), display_get_gui_height(), c_black, c_black, c_black, c_black, false);
+		draw_rectangle_color(0, 0, guiWidth, display_get_gui_height(), c_black, c_black, c_black, c_black, false);
 		draw_set_alpha(1);
 		
-		#region /* If there is no data, then apply the retrieved download data to it */
-		/* Handle data processing */
-		if (data == undefined)
-		&& (in_online_download_list_menu)
+		#region /* Process Data */
+		if (data == undefined && in_online_download_list_menu)
 		{
-			scr_process_online_download_list_data();
+			scr_draw_online_download_list_data();
 		}
-		#endregion /* If there is no data, then apply the retrieved download data to it END */
+		else
+		{
+			scr_draw_online_download_menu_data();
+		}
+		#endregion /* Process Data END */
 		
-		else
-		{
-			global.server_timeout_end = undefined;
-			scr_process_online_download_menu_data();
-		}
 	}
-	else
-	{
-		scr_fallback_to_previous_menu_state();
-	}
-	
-	#region /* Online download list menu navigation even when there isn't any data */
-	/* Get the number of items in the JSON array */
-	var num_items = array_length(data);
-	
-	if (string_copy(menu, 1, string_length("download_online")) == "download_online")
-	{
-		var num_items = array_length(data);
-		
-		if (key_up
-		&& menu_delay == 0
-		&& menu_joystick_delay == 0)
-		{
-			menu_delay = 3;
-			
-			if (menu == "download_online_back"
-			&& is_array(data)
-			&& num_items > 0)
-			{
-				menu = "download_online_" + string(num_items - 1);
-				menu_cursor_y_position = menu_cursor_y_position_start;
-				menu_y_offset = menu_y_offset_real_start - 999;
-				menu_y_offset_real = menu_y_offset_real_start - 999;
-			}
-			else
-			if (menu == "download_online_search_id")
-			{
-				menu = "download_online_back";
-			}
-		}
-		else
-		if (key_down
-		&& menu_delay == 0
-		&& menu_joystick_delay == 0)
-		{
-			menu_delay = 3;
-			
-			if (menu == "download_online_back")
-			{
-				menu = "download_online_search_id";
-			}
-			else
-			if (menu == "download_online_search_id"
-			&& is_array(data)
-			&& num_items > 0)
-			{
-				menu = "download_online_0";
-				menu_y_offset_real = 0;
-				menu_cursor_y_position = 0;
-			}
-		}
-		else
-		if (key_right
-		&& menu_delay == 0
-		&& menu_joystick_delay == 0)
-		{
-			menu_delay = 3;
-			if (menu == "download_online_back")
-			|| (menu == "download_online_search_id")
-			{
-				menu = "download_online_" + string(global.selected_online_download_index);
-			}
-			else
-			if (menu == "download_online_" + string(global.selected_online_download_index)
-			&& content_type == "level")
-			{
-				menu = "download_online_custom_level_assets";
-			}
-		}
-		else
-		if (key_left
-		&& menu_delay == 0
-		&& menu_joystick_delay == 0)
-		{
-			menu_delay = 3;
-			if (menu == "download_online_custom_level_assets")
-			{
-				menu = "download_online_" + string(global.selected_online_download_index);
-			}
-			else
-			if (menu == "download_online_" + string(global.selected_online_download_index))
-			{
-				menu = "download_online_search_id";
-			}
-		}
-	}
-	#endregion /* Online download list menu navigation even when there isn't any data END */
-	
-	/* Debug text: */
-	//draw_set_halign(fa_left);
-	//scr_draw_text_outlined(32, 320 + (32 * 4), "scrolling_menu_with_mousewheel: " + string(scrolling_menu_with_mousewheel));
-	//scr_draw_text_outlined(32, 320 + (32 * 5), "debug online download list info");
-	//scr_draw_text_outlined(32, 320 + (32 * 6), "data: " + string(data));
-	//scr_draw_text_outlined(32, 320 + (32 * 7), "info_data: " + string(info_data));
-	//scr_draw_text_outlined(32, 320 + (32 * 8), "global.online_download_list_info: " + string(global.online_download_list_info));
+	#endregion /* Draw Background Overlay END */
 	
 }
 
 
-
-
-
-
-
-
-
-
-function scr_initialize_online_download_menu()
+/// @function scr_draw_online_download_list_data()
+/// @description Draw the online download list data
+function scr_draw_online_download_list_data()
 {
-	draw_set_alpha(0.5);
-	draw_rectangle_color(0, 0, display_get_gui_width(), display_get_gui_height(), c_black, c_black, c_black, c_black, false);
-	draw_set_alpha(1);
+	scr_draw_loading(1, , , "Loading from server");
 	
-	#region /* Get Online Download List */
-	/* Don't ever change "content type" in this script, so Async - HTTP Event is running correctly */
-	in_online_download_list_load_menu = true; /* Let Async - HTTP Event know that we want to load a onload download list */
+	/* Draw error messages when online download list returns errors */
+	var centerX = display_get_gui_width() * 0.5;
+	var centerY = display_get_gui_height() * 0.5 + 84;
 	
-	info_queue_index = 0;
-	info_queue_http_request = true;
-	
-	finished_level = undefined;
-	zero_defeats_level = undefined;
-	liked_content = undefined;
-	
-	/* Create DS Map to hold the HTTP Header info */
-	map = ds_map_create();
-	
-	/* Add to the header DS Map */
-	ds_map_add(map, "Host", global.base_url);
-	ds_map_add(map, "Content-Type", "application/json");
-	ds_map_add(map, "User-Agent", "gmdownloader");
-	ds_map_add(map, "X-API-Key", global.api_key);
-	
-	/* Send the HTTP GET request to the /content_type endpoint */
-	global.http_request_id = http_request(
-		"https://" + global.base_url + "/" + string(content_type) + "s", /* URL */
-		"GET", /* Method */
-		map, /* Header Map */
-		""); /* Body */
-	ds_map_destroy(map);
-	#endregion /* Get Online Download List END */
-	
-	menu = "download_online_" + string(global.selected_online_download_index);
-	automatically_search_for_id = false;
-	in_online_download_list_menu = true;
-	menu_delay = 3;
-	
-	/* Draw loading screen when loading download list */
-	scr_draw_loading(1,,,"Loading from server");
-	
-	/* Start the server timeout timer for 15 seconds */
-    scr_server_timeout(15);
-}
-
-function scr_handle_no_network_connection()
-{
-	if (content_type == "character")
-	{
-		in_online_download_list_menu = false;
-		caution_online_takes_you_back_to = "download_online_search_id";
-		menu = "no_internet_character";
-	}
-	else
-	if (content_type == "level")
-	{
-		in_online_download_list_menu = false;
-		select_custom_level_menu_open = true;
-		show_level_editor_corner_menu = false;
-		caution_online_takes_you_back_to = "level_editor_upload";
-		menu = "no_internet_level";
-	}
-}
-
-function scr_process_online_download_list_data()
-{
-	scr_draw_loading(1,,,"Loading from server"); /* Draw loading screen when loading download list */
-	
-	/* Start the server timeout timer for 15 seconds */
-    scr_server_timeout(15);
-	
-	#region /* If there is an online download list loaded, interpret that as a struct using "json parse" */
-	if (global.online_download_list != "")
-	&& (global.online_download_list != "HTTP request exception")
-	&& (global.online_download_list != "Unauthorized")
-	{
-		try
-		{
-			data = json_parse(global.online_download_list); /* When there is data here, then go to the online downloads menu */
-					
-			for(var i = 0; i < array_length(data); i++;)
-			{
-				draw_download_name[i] = "";
-				if (is_array(spr_download_list_thumbnail))
-				{
-					if (i < array_length(spr_download_list_thumbnail)) /* Check if index is within bounds */
-					{
-						scr_delete_sprite_properly(spr_download_list_thumbnail[i]);
-					}
-				}
-				spr_download_list_thumbnail[i] = spr_thumbnail_missing;
-				all_download_id[i] = "";
-			}
-		}
-	}
-	else
 	if (global.online_download_list == "HTTP request exception")
 	{
-		scr_draw_text_outlined(display_get_gui_width() * 0.5, display_get_gui_height() * 0.5 + 42 + 42, l10n_text("HTTP request exception"), global.default_text_size, c_white, c_black, 1);
-		scr_draw_text_outlined(display_get_gui_width() * 0.5, display_get_gui_height() * 0.5 + 42 + 42, l10n_text("HTTP request exception"), global.default_text_size, c_white, c_red, scr_wave(0, 1, 1, 0));
+		scr_draw_text_outlined(centerX, centerY, l10n_text("HTTP request exception"), global.default_text_size, c_white, c_black, 1);
+		scr_draw_text_outlined(centerX, centerY, l10n_text("HTTP request exception"), global.default_text_size, c_white, c_red, scr_wave(0, 1, 1, 0));
 	}
 	else
 	if (global.online_download_list == "Unauthorized")
 	{
-		scr_draw_text_outlined(display_get_gui_width() * 0.5, display_get_gui_height() * 0.5 + 42 + 42, l10n_text("Unauthorized"), global.default_text_size, c_white, c_black, 1);
-		scr_draw_text_outlined(display_get_gui_width() * 0.5, display_get_gui_height() * 0.5 + 42 + 42, l10n_text("Unauthorized"), global.default_text_size, c_white, c_red, scr_wave(0, 1, 1, 0));
+		scr_draw_text_outlined(centerX, centerY, l10n_text("Unauthorized"), global.default_text_size, c_white, c_black, 1);
+		scr_draw_text_outlined(centerX, centerY, l10n_text("Unauthorized"), global.default_text_size, c_white, c_red, scr_wave(0, 1, 1, 0));
 	}
-	#endregion /* If there is an online download list loaded, interpret that as a struct using "json parse" END */
-	
 }
 
-function scr_process_online_download_menu_data()
+
+/// @function scr_draw_online_download_menu_data()
+/// @description Draws the online download menu with thumbnails, buttons, and handles navigation when data is available.
+function scr_draw_online_download_menu_data()
 {
-	var download_online_x = display_get_gui_width() * 0.5 - 300;
+	var guiWidth = display_get_gui_width();
 	
-	#region /* If there is data, then show an online downloads menu */
-	if (data != undefined)
-	&& (menu != "search_id_ok")
+	#region /* Show online downloads if data is available */
+	if (data != undefined && (menu != "search_id_ok"))
 	{
-		scr_scroll_menu(300, false);
-		
-		/* Check if it's an array */
 		if (is_array(data))
 		{
-			
-			#region /* Thumbnail for each level / character */
-			/* Get the number of items in the JSON array */
 			var num_items = array_length(data);
 			
-			if (!is_array(finished_level))
-			{
-				finished_level = array_create(num_items, undefined); /* Create finished level array */
-			}
-			if (!is_array(zero_defeats_level))
-			{
-				zero_defeats_level = array_create(num_items, undefined); /* Create zero defeats level array */
-			}
-			if (!is_array(liked_content))
-			{
-				liked_content = array_create(num_items, undefined); /* Create liked content array */
-			}
-			
-			for(var i = 0; i < num_items; i++;)
+			/* Draw each thumbnail (optimized loop through downloads) */
+			for (var i = 0; i < num_items; i++)
 			{
 				scr_draw_online_download_list_thumbnail(i, num_items);
 			}
-			#endregion /* Thumbnail for each level / character END */
-			
-		}
-		else
-		{
-			var num_items = 0;
-			show_debug_message("data is not an array! data = " + string(data) + " num_items = " + string(num_items));
 		}
 		
-		/* Get information about currently selected ID. If there is information data, then show info about currently selected ID */
-		scr_download_thumbnails(true, num_items); /* Download all thumbnails */
-		
-		if (is_array(data)
-		&& array_length(data) <= 0)
+		if (is_array(data) && array_length(data) <= 0)
 		{
 			draw_set_halign(fa_center);
-			scr_draw_text_outlined(display_get_gui_width() * 0.5, display_get_gui_height() * 0.5, l10n_text("There is nothing uploaded yet!"), global.default_text_size * 2, c_menu_outline, c_menu_fill, 1);
+			scr_draw_text_outlined(guiWidth * 0.5, display_get_gui_height() * 0.5, 
+				l10n_text("There is nothing uploaded yet!"), global.default_text_size * 2, c_menu_outline, c_menu_fill, 1);
 		}
-		
-		/* Write the ID for currently selected level */
-		draw_set_halign(fa_left);
-		scr_draw_text_outlined(download_online_x + 108, 20 + top_left_of_thumbnail_y + menu_y_offset + 4, string(currently_selected_id), global.default_text_size * 0.75, c_menu_outline, c_lime, 1);
-		
-		#region /* Online download list menu navigation when there is data */
-		if (menu == "download_online_0")
-		{
-			if (is_array(data))
-			&& (array_length(data) <= 0)
-			{
-				menu = "download_online_back";
-			}
-			if (key_up)
-			&& (menu_delay == 0 && menu_joystick_delay == 0)
-			{
-				menu_delay = 3;
-				menu = "download_online_search_id";
-			}
-			else
-			if (key_down)
-			&& (menu_delay == 0 && menu_joystick_delay == 0)
-			{
-				menu_delay = 3;
-				if (num_items >= 2)
-				{
-					menu = "download_online_1";
-				}
-				else
-				{
-					menu = "download_online_back";
-				}
-			}
-		}
-		else
-		if (menu == "download_online_" + string(global.selected_online_download_index))
-		{
-			if (is_array(data))
-			&& (array_length(data) <= 0)
-			{
-				menu = "download_online_back";
-			}
-			if (key_up)
-			&& (menu_delay == 0 && menu_joystick_delay == 0)
-			{
-				menu_delay = 3;
-				menu = "download_online_" + string(global.selected_online_download_index - 1);
-			}
-			else
-			if (key_down)
-			&& (menu_delay == 0 && menu_joystick_delay == 0)
-			&& (global.selected_online_download_index < num_items - 1)
-			{
-				menu_delay = 3;
-				menu = "download_online_" + string(global.selected_online_download_index + 1);
-			}
-			else
-			if (key_down)
-			&& (menu_delay == 0 && menu_joystick_delay == 0)
-			{
-				menu_delay = 3;
-				menu = "download_online_back";
-			}
-		}
-		#endregion /* Online download list menu navigation when there is data END */
-		
 	}
-	#endregion /* If there is data, then show an online downloads menu END */
+	#endregion /* Show online downloads if data is available END */
 	
-	if (!os_is_network_connected())
-	{
-		scr_handle_no_network_connection();
-	}
-	
-	#region /* Draw the Back and Search ID buttons on top of everything */
+	#region /* Draw Back and Search ID buttons */
 	draw_menu_button(0, 0, l10n_text("Back"), "download_online_back", "");
 	draw_sprite_ext(spr_icon_back, 0, 20, 21, 1, 1, 0, c_white, 1);
 	
@@ -412,214 +99,165 @@ function scr_process_online_download_menu_data()
 			draw_menu_button(0, draw_search_id_y, l10n_text("Search Level ID"), "download_online_search_id", "");
 		}
 		
-		#region /* Draw Search Key */
-		if (gamepad_is_connected(global.player_slot[1]))
-		&& (global.controls_used_for_navigation == "gamepad")
-		|| (global.always_show_gamepad_buttons)
+		#region /* Draw Gamepad Search Key */
+		if (gamepad_is_connected(global.player_slot[1]) &&
+			(global.controls_used_for_navigation == "gamepad") || (global.always_show_gamepad_buttons))
 		{
 			scr_draw_gamepad_buttons(gp_face4, 16, draw_search_id_y + 21, 0.5, c_white, 1, 1, 1, 1);
 		}
-		#endregion /* Draw Search key END */
+		#endregion /* Draw Gamepad Search Key END */
 		
 	}
+	#endregion /* Draw Back and Search ID buttons END */
 	
-	#region /* Pressing the Back button */
-	if (key_b_pressed)
-	|| (menu == "download_online_back")
-	&& (key_a_pressed)
-	|| (menu == "download_online_back")
-	&& (point_in_rectangle(device_mouse_x_to_gui(0), device_mouse_y_to_gui(0), 0, 0, 370, 42))
-	&& (mouse_check_button_released(mb_left))
-	{
-		if (menu_delay == 0 && menu_joystick_delay == 0)
-		{
-			menu_delay = 3;
-			if (content_type == "level")
-			{
-				if (variable_instance_exists(self, "show_level_editor_corner_menu"))
-				{
-					show_level_editor_corner_menu = true;
-				}
-				select_custom_level_menu_open = false;
-				
-				if (global.online_level_list_back == "online_level_list_title")
-				{
-					menu = "online_level_list_title";
-				}
-				else
-				{
-					global.online_level_list_back = "";
-					menu = "load_custom_level"; /* Always reload all custom levels before going to the level select menu, just in case */
-				}
-			}
-			else
-			{
-				menu = "online_character_list";
-			}
-			global.automatically_play_downloaded_level = false;
-			global.use_temp_or_working = game_save_id; /* When downloading levels from online and temporarily playing the level, you have to use the "temp directory", but normally you need to use the "working directory" */
-			global.online_download_list = ""; /* Reset "global online download list" so you can reload online download list next time you go to this menu */
-			data = undefined; /* Reset "data" so you can reload online download list next time you go to this menu */
-			info_data = undefined; /* Don't forget to reset info data too */
-			automatically_search_for_id = false;
-			in_online_download_list_menu = false;
-			in_online_download_list_load_menu = false;
-			keyboard_string = "";
-			search_id = "";
-		}
-	}
-	#endregion /* Pressing the Back button END*/
-	
-	#region /* Pressing the Search ID button */
-	if (menu == "download_online_search_id")
-	&& (key_a_pressed)
-	|| (menu == "download_online_search_id")
-	&& (point_in_rectangle(device_mouse_x_to_gui(0), device_mouse_y_to_gui(0), 0, 42, 370, 42 + 42))
-	&& (mouse_check_button_released(mb_left))
-	|| (gamepad_button_check_pressed(global.player_slot[1], gp_face4))
-	{
-		menu_delay = 3;
-		in_online_download_list_menu = false; /* Get out of the online download list menu */
-		automatically_search_for_id = false; /* Manual search ID */
-		keyboard_string = "";
-		search_id = "";
-		menu = "search_id_ok";
-		select_custom_level_menu_open = false;
-	}
-	#endregion /* Pressing the Search ID button END */
-	
-	#endregion /* Draw the Back and Search ID buttons on top of everything END */
-	
-	#region /* Draw the Load Custom Level Assets */
+	#region /* Draw Load Custom Level Assets Option */
 	if (content_type == "level")
 	{
-		var can_load_custom_level_assets_x = display_get_gui_width() - string_width(l10n_text("Load Custom Level Assets")) - 16;
+		var can_load_custom_level_assets_x = guiWidth - string_width(l10n_text("Load Custom Level Assets")) - 16;
 		var can_load_custom_level_assets_y = 16;
-		global.can_load_custom_level_assets = draw_menu_checkmark(can_load_custom_level_assets_x, can_load_custom_level_assets_y, l10n_text("Load Custom Level Assets"), "download_online_custom_level_assets", global.can_load_custom_level_assets, true,,false);
-		
+		global.can_load_custom_level_assets = draw_menu_checkmark(can_load_custom_level_assets_x, can_load_custom_level_assets_y, l10n_text("Load Custom Level Assets"), "download_online_custom_level_assets", global.can_load_custom_level_assets, true, , false);
 		scr_draw_option_description();
 	}
-	#endregion /* Draw the Load Custom Level Assets END */
+	#endregion /* Draw Load Custom Level Assets Option END */
 	
-	menu_y_offset_real = clamp(menu_y_offset_real, - 250 + window_get_height() - (300 * array_length(data)), 0); /* Dont let "meny y offset" get above 0 */
 }
 
+
+/// @function scr_draw_online_download_list_thumbnail()
+/// @description Draws a single download thumbnail along with its overlay information.
 function scr_draw_online_download_list_thumbnail(thumbnail_index, number_of_thumbnails)
 {
-	var download_online_x = display_get_gui_width() * 0.5 - 300;
-	var download_online_y = 80 + (300 * thumbnail_index); /* The distance between each thumbnail */
+	/* Pre-calculate common GUI and offset values */
+	var guiWidth = display_get_gui_width();
+	var halfWidth = guiWidth * 0.5;
+	var download_online_x = halfWidth - 300;
+	var download_online_y = 80 + (300 * thumbnail_index);
+	var offsetY = menu_y_offset; /* Cache menu_y_offset */
+	var baseY = offsetY + download_online_y;
 	
+	/* Determine if this thumbnail is currently selected */
+	var thumbID = "download_online_" + string(thumbnail_index);
+	var isSelected = (menu == thumbID);
+	
+	#region /* Draw Bottom Line for Last Thumbnail */
 	if (thumbnail_index == number_of_thumbnails - 1)
 	{
-		draw_line_width_color(30, menu_y_offset + download_online_y + 300, display_get_gui_width() - 30, menu_y_offset + download_online_y + 300, 7, c_black, c_black);
-		draw_line_width_color(32, menu_y_offset + download_online_y + 300, display_get_gui_width() - 32, menu_y_offset + download_online_y + 300, 3, c_white, c_white);
+		draw_line_width_color(30, baseY + 300, guiWidth - 30, baseY + 300, 7, c_black, c_black);
+		draw_line_width_color(32, baseY + 300, guiWidth - 32, baseY + 300, 3, c_white, c_white);
 	}
+	#endregion /* Draw Bottom Line for Last Thumbnail END */
 	
-	if (menu == "download_online_" + string(thumbnail_index))
+	#region /* Draw Selection Overlay if Selected */
+	if (isSelected)
 	{
-		var custom_level_select_arrows_moving = scr_wave(10, 0, 1, 0);
-		top_left_of_thumbnail_x = download_online_x + 100 - 4;
-		top_left_of_thumbnail_y = download_online_y - 4;
-		var bottom_right_of_thumbnail_x = download_online_x + 484 + 4;
-		var bottom_right_of_thumbnail_y = download_online_y + menu_y_offset + 216 + 4;
-		var top_left_x_offset = top_left_of_thumbnail_x - custom_level_select_arrows_moving;
-		var top_left_y_offset = top_left_of_thumbnail_y + menu_y_offset - custom_level_select_arrows_moving;
-		var bottom_right_x_offset = bottom_right_of_thumbnail_x + custom_level_select_arrows_moving;
-		var bottom_right_y_offset = bottom_right_of_thumbnail_y + custom_level_select_arrows_moving;
-		var triangle_size = 32 - custom_level_select_arrows_moving;
-		var thumbnail_select_blinking = scr_wave(1, 0, 2, 0);
+		/* Cache wave values to reduce function calls */
+		var waveArrow = scr_wave(10, 0, 1, 0);
+		var waveBlink = scr_wave(1, 0, 2, 0);
 		
-		/* Put a white highlight underneath selected level */
-		draw_set_alpha(scr_wave(0.1, 0.2, 3, 0));
-		draw_roundrect_color_ext(top_left_of_thumbnail_x - 16, top_left_of_thumbnail_y + menu_y_offset - 16, bottom_right_of_thumbnail_x + 16, bottom_right_of_thumbnail_y + 64, 50, 50, c_white, c_white, false);
+		/* Calculate thumbnail boundaries */
+		var topLeftX = download_online_x + 96;  /* (download_online_x + 100 - 4) */
+		var topLeftY = download_online_y - 4;
+		var bottomRightX = download_online_x + 488; /* (download_online_x + 484 + 4) */
+		var bottomRightY = download_online_y + offsetY + 220; /* (download_online_y + menu_y_offset + 216 + 4) */
 		
-		/* Red and yellow rectangle around the selected thumbnail */
+		/* Pre-calculate offsets for triangles */
+		var topLeftXOffset = topLeftX - waveArrow;
+		var topLeftYOffset = topLeftY + offsetY - waveArrow;
+		var bottomRightXOffset = bottomRightX + waveArrow;
+		var bottomRightYOffset = bottomRightY + waveArrow;
+		var triangleSize = 32 - waveArrow;
+		
+		/* Draw a translucent rounded rectangle outline */
+		var alphaWave = scr_wave(0.1, 0.2, 3, 0);
+		draw_set_alpha(alphaWave);
+		draw_roundrect_color_ext(topLeftX - 16, topLeftY + offsetY - 16, bottomRightX + 16, bottomRightY + 64, 50, 50, c_white, c_white, false);
+		
+		/* Reset alpha and draw selection rectangles */
 		draw_set_alpha(1);
-		draw_rectangle_color(top_left_of_thumbnail_x, top_left_of_thumbnail_y + menu_y_offset, bottom_right_of_thumbnail_x, bottom_right_of_thumbnail_y, c_red, c_red, c_red, c_red, false);
-		draw_set_alpha(thumbnail_select_blinking);
-		draw_rectangle_color(top_left_of_thumbnail_x, top_left_of_thumbnail_y + menu_y_offset, bottom_right_of_thumbnail_x, bottom_right_of_thumbnail_y, c_yellow, c_yellow, c_yellow, c_yellow, false);
+		draw_rectangle_color(topLeftX, topLeftY + offsetY, bottomRightX, bottomRightY, c_red, c_red, c_red, c_red, false);
+		draw_set_alpha(waveBlink);
+		draw_rectangle_color(topLeftX, topLeftY + offsetY, bottomRightX, bottomRightY, c_yellow, c_yellow, c_yellow, c_yellow, false);
 		draw_set_alpha(1);
 	}
+	#endregion /* Draw Selection Overlay if Selected END */
 	
-	/* Draw the thumbnails */
+	#region /* Draw Thumbnail Sprite */
 	var draw_thumbnail = spr_download_list_thumbnail[thumbnail_index];
-	if (sprite_exists(draw_thumbnail)) /* Thumbnail sprite needs to exist before trying to display it */
+	if (sprite_exists(draw_thumbnail))
 	{
-		draw_sprite_ext(draw_thumbnail, 0, download_online_x + 100, download_online_y + menu_y_offset, 384 / sprite_get_width(draw_thumbnail), 216 / sprite_get_height(draw_thumbnail), 0, c_white, 1);
+		var scaleX = 384 / sprite_get_width(draw_thumbnail);
+		var scaleY = 216 / sprite_get_height(draw_thumbnail);
+		draw_sprite_ext(draw_thumbnail, 0, download_online_x + 100, download_online_y + offsetY, scaleX, scaleY, 0, c_white, 1);
 	}
+	#endregion /* Draw Thumbnail Sprite END */
 	
-	/* Draw the content name */
+	#region /* Draw Download Name */
 	draw_set_halign(fa_center);
 	draw_set_valign(fa_middle);
-	if (string_width(draw_download_name[thumbnail_index]) > 640)
+	var nameWidth = string_width(draw_download_name[thumbnail_index]);
+	var draw_level_name_scale;
+	if (nameWidth > 640)
 	{
-		var draw_level_name_scale = global.default_text_size * 0.6;
+		draw_level_name_scale = global.default_text_size * 0.6;
 	}
 	else
-	if (string_width(draw_download_name[thumbnail_index]) > 320)
+	if (nameWidth > 320)
 	{
-		var draw_level_name_scale = global.default_text_size * 0.8;
+		draw_level_name_scale = global.default_text_size * 0.8;
 	}
 	else
 	{
-		var draw_level_name_scale = global.default_text_size;
+		draw_level_name_scale = global.default_text_size;
 	}
-	scr_draw_text_outlined(download_online_x + 300, download_online_y + menu_y_offset + 240, string(draw_download_name[thumbnail_index]), draw_level_name_scale, c_menu_outline, c_menu_fill, 1);
+	scr_draw_text_outlined(download_online_x + 300, download_online_y + offsetY + 240, string(draw_download_name[thumbnail_index]), draw_level_name_scale, c_menu_outline, c_menu_fill, 1);
+	#endregion /* Draw Download Name END */
 	
-	/* If thumnail sprite and name is empty, display a loading icon over the empty thumbnail */
-	if (draw_thumbnail == spr_thumbnail_missing
-	&& draw_download_name[thumbnail_index] == "")
+	/* Loading Indicator for Missing Thumbnail */
+	if (draw_thumbnail == spr_thumbnail_missing && draw_download_name[thumbnail_index] == "")
 	{
-		scr_draw_loading(1, download_online_x + 300, download_online_y + menu_y_offset + 100);
+		scr_draw_loading(1, download_online_x + 300, download_online_y + offsetY + 100);
 	}
 	
-	#region /* Draw 4 red small triangles above the level thumbnail to be even more certain what level you are selecting */
-	if (menu == "download_online_" + string(thumbnail_index))
+	#region /* Draw Selection Triangles */
+	if (isSelected)
 	{
-		/* Draw red triangles */
-		draw_triangle_color(top_left_x_offset, top_left_y_offset, top_left_x_offset + triangle_size, top_left_y_offset,
-			top_left_x_offset, top_left_y_offset + triangle_size, c_red, c_red, c_red, false);
+		draw_triangle_color(topLeftXOffset, topLeftYOffset, topLeftXOffset + triangleSize, topLeftYOffset, 
+			topLeftXOffset, topLeftYOffset + triangleSize, c_red, c_red, c_red, false);
+		draw_triangle_color(bottomRightXOffset, bottomRightYOffset, bottomRightXOffset - triangleSize, bottomRightYOffset, 
+			bottomRightXOffset, bottomRightYOffset - triangleSize, c_red, c_red, c_red, false);
+		draw_triangle_color(bottomRightXOffset, topLeftYOffset, bottomRightXOffset - triangleSize, topLeftYOffset, 
+			bottomRightXOffset, topLeftYOffset + triangleSize, c_red, c_red, c_red, false);
+		draw_triangle_color(topLeftXOffset, bottomRightYOffset, topLeftXOffset + triangleSize, bottomRightYOffset, 
+			topLeftXOffset, bottomRightYOffset - triangleSize, c_red, c_red, c_red, false);
 		
-		draw_triangle_color(bottom_right_x_offset, bottom_right_y_offset, bottom_right_x_offset - triangle_size, bottom_right_y_offset,
-			bottom_right_x_offset, bottom_right_y_offset - triangle_size, c_red, c_red, c_red, false);
-		
-		draw_triangle_color(bottom_right_x_offset, top_left_y_offset, bottom_right_x_offset - triangle_size, top_left_y_offset,
-			bottom_right_x_offset, top_left_y_offset + triangle_size, c_red, c_red, c_red, false);
-		
-		draw_triangle_color(top_left_x_offset, bottom_right_y_offset, top_left_x_offset + triangle_size, bottom_right_y_offset,
-			top_left_x_offset, bottom_right_y_offset - triangle_size, c_red, c_red, c_red, false);
-		
-		draw_set_alpha(thumbnail_select_blinking);
-		
-		/* Draw yellow triangles */
-		draw_triangle_color(top_left_x_offset, top_left_y_offset, top_left_x_offset + triangle_size, top_left_y_offset,
-			top_left_x_offset, top_left_y_offset + triangle_size, c_yellow, c_yellow, c_yellow, false);
-		
-		draw_triangle_color(bottom_right_x_offset, bottom_right_y_offset, bottom_right_x_offset - triangle_size, bottom_right_y_offset,
-			bottom_right_x_offset, bottom_right_y_offset - triangle_size, c_yellow, c_yellow, c_yellow, false);
-		
-		draw_triangle_color(bottom_right_x_offset, top_left_y_offset, bottom_right_x_offset - triangle_size, top_left_y_offset,
-			bottom_right_x_offset, top_left_y_offset + triangle_size, c_yellow, c_yellow, c_yellow, false);
-		
-		draw_triangle_color(top_left_x_offset, bottom_right_y_offset, top_left_x_offset + triangle_size, bottom_right_y_offset,
-			top_left_x_offset, bottom_right_y_offset - triangle_size, c_yellow, c_yellow, c_yellow, false);
-		
+		draw_set_alpha(waveBlink);
+		draw_triangle_color(topLeftXOffset, topLeftYOffset, topLeftXOffset + triangleSize, topLeftYOffset, 
+			topLeftXOffset, topLeftYOffset + triangleSize, c_yellow, c_yellow, c_yellow, false);
+		draw_triangle_color(bottomRightXOffset, bottomRightYOffset, bottomRightXOffset - triangleSize, bottomRightYOffset, 
+			bottomRightXOffset, bottomRightYOffset - triangleSize, c_yellow, c_yellow, c_yellow, false);
+		draw_triangle_color(bottomRightXOffset, topLeftYOffset, bottomRightXOffset - triangleSize, topLeftYOffset, 
+			bottomRightXOffset, topLeftYOffset + triangleSize, c_yellow, c_yellow, c_yellow, false);
+		draw_triangle_color(topLeftXOffset, bottomRightYOffset, topLeftXOffset + triangleSize, bottomRightYOffset, 
+			topLeftXOffset, bottomRightYOffset - triangleSize, c_yellow, c_yellow, c_yellow, false);
 		draw_set_alpha(1);
 	}
-	#endregion /* Draw 4 red small triangles above the level thumbnail to be even more certain what level you are selecting END */
+	#endregion /* Draw Selection Triangles END */
 	
-	if (global.controls_used_for_navigation == "mouse")
-	&& (point_in_rectangle(device_mouse_x_to_gui(0), device_mouse_y_to_gui(0), download_online_x + 100 - 16, download_online_y + menu_y_offset - 16, download_online_x + 484 + 16, download_online_y + menu_y_offset + 216 + 62))
-	&& (is_array(data))
-	&& (array_length(data) > 0)
+	#region /* Mouse Navigation */
+	if (global.controls_used_for_navigation == "mouse" &&
+		point_in_rectangle(device_mouse_x_to_gui(0), device_mouse_y_to_gui(0),
+			download_online_x + 100 - 16, download_online_y + offsetY - 16,
+			download_online_x + 484 + 16, download_online_y + offsetY + 216 + 62) &&
+		is_array(data) && (array_length(data) > 0))
 	{
-		if (menu != "download_online_" + string(thumbnail_index))
+		if (!isSelected)
 		{
-			menu = "download_online_" + string(thumbnail_index);
+			menu = thumbID;
 		}
 	}
+	#endregion /* Mouse Navigation END */
 	
-	/* Fetch the "name" and "time_created" properties from the JSON object */
+	#region /* Process Download ID and Time */
 	var item = data[thumbnail_index];
 	var draw_download_id = item.name;
 	draw_download_id = string_replace(draw_download_id, string(content_type) + "s/", "");
@@ -632,9 +270,10 @@ function scr_draw_online_download_list_thumbnail(thumbnail_index, number_of_thum
 		all_download_id[thumbnail_index] = draw_download_id;
 		show_debug_message("all_download_id[" + string(thumbnail_index) + "] = " + string(draw_download_id) + ";");
 	}
+	#endregion /* Process Download ID and Time END */
 	
-	#region /* If you are hovering on thumbnail download button */
-	if (menu == "download_online_" + string(thumbnail_index))
+	#region /* Handle Thumbnail Hover and Download on Selection */
+	if (isSelected)
 	{
 		currently_selected_id = draw_download_id;
 		
@@ -642,64 +281,56 @@ function scr_draw_online_download_list_thumbnail(thumbnail_index, number_of_thum
 		{
 			menu_cursor_y_position = 64 + download_online_y;
 		}
-		var selected_download_c_menu_fill = c_lime; /* Highlight the text in lime green so the player knows they are selecting this download */
+		var selected_download_c_menu_fill = c_lime;
 		global.selected_online_download_index = thumbnail_index;
 		
-		#region /* Download selected file when pressing A */
-		if (key_a_pressed)
-		|| (mouse_check_button_released(mb_left))
-		&& (point_in_rectangle(device_mouse_x_to_gui(0), device_mouse_y_to_gui(0), download_online_x + 100, download_online_y + menu_y_offset, download_online_x + 484, download_online_y + menu_y_offset + 216))
+		if (key_a_pressed || (mouse_check_button_released(mb_left) &&
+			point_in_rectangle(device_mouse_x_to_gui(0), device_mouse_y_to_gui(0),
+				download_online_x + 100, download_online_y + offsetY,
+				download_online_x + 484, download_online_y + offsetY + 216)))
 		{
 			if (menu_delay == 0 && menu_joystick_delay == 0)
 			{
-				
-				#region /* Go to download menu */
-				global.automatically_play_downloaded_level = false; /* You will be taken to a menu showing you different options what you want to do with the downloaded file */
-				global.use_temp_or_working = game_save_id; /* When downloading levels from online and temporarily playing the level, you have to use the "temp directory", but normally you need to use the "working directory" */
+				global.automatically_play_downloaded_level = false;
+				global.use_temp_or_working = game_save_id;
 				global.search_id = string_upper(draw_download_id);
 				keyboard_string = string_upper(draw_download_id);
-				search_id = string_upper(draw_download_id); /* Then need to set search ID */
-				automatically_search_for_id = true; /* Don't set this variable to false yet, it's used in "scr_draw_menu_search_id" to automatically enter the search ID. We need to do the HTTP Request in that script */
-				in_online_download_list_menu = false; /* We are not supposed to show the online download list menu when going to search ID menu */
+				search_id = string_upper(draw_download_id);
+				automatically_search_for_id = true;
+				in_online_download_list_menu = false;
 				
-				#region /* Set the correct thumbnail sprite variable for download menu */
+				#region /* Set Thumbnail for Download Menu */
 				scr_delete_sprite_properly(downloaded_thumbnail_sprite);
-				
-				if (sprite_exists(spr_download_list_thumbnail[global.selected_online_download_index]))
-				&& (spr_download_list_thumbnail[global.selected_online_download_index] != spr_thumbnail_missing)
+				if (sprite_exists(spr_download_list_thumbnail[global.selected_online_download_index]) &&
+					(spr_download_list_thumbnail[global.selected_online_download_index] != spr_thumbnail_missing))
 				{
 					downloaded_thumbnail_sprite = spr_download_list_thumbnail[global.selected_online_download_index];
 				}
 				else
 				{
-					/* Need to set the downloaded_thumbnail_sprite to noone so it can be set in the download menu instead */
 					downloaded_thumbnail_sprite = noone;
 				}
-				#endregion /* Set the correct thumbnail sprite variable for download menu END */
+				#endregion /* Set Thumbnail for Download Menu END */
 				
 				menu = "search_id_ok";
-				#endregion /* Go to download menu END */
-				
 			}
 		}
-		#endregion /* Download selected file when pressing A END */
-		
 	}
-	#endregion /* If you are hovering on thumbnail download button END */
-	
-	if (menu != "download_online_" + string(thumbnail_index))
+	else
 	{
 		var selected_download_c_menu_fill = c_gray;
 	}
+	#endregion /* Handle Thumbnail Hover and Download on Selection END */
 	
-	/* Write the list index to the left of download button */
+	#region /* Display Index and Download ID */
 	draw_set_halign(fa_right);
-	scr_draw_text_outlined(download_online_x + 70, 110 + download_online_y + menu_y_offset, string(thumbnail_index + 1), global.default_text_size * 0.75, c_menu_outline, selected_download_c_menu_fill, 0.5);
+	scr_draw_text_outlined(download_online_x + 70, 110 + download_online_y + offsetY, string(thumbnail_index + 1), global.default_text_size * 0.75, c_menu_outline, selected_download_c_menu_fill, 0.5);
 	
-	/* Write the ID */ draw_set_halign(fa_left);
-	scr_draw_text_outlined(download_online_x + 108, 20 + download_online_y + menu_y_offset, string(draw_download_id), global.default_text_size * 0.75, c_menu_outline, selected_download_c_menu_fill, 1);
+	draw_set_halign(fa_left);
+	scr_draw_text_outlined(download_online_x + 108, 20 + download_online_y + offsetY, string(draw_download_id), global.default_text_size * 0.75, c_menu_outline, selected_download_c_menu_fill, 1);
+	#endregion /* Display Index and Download ID END */
 	
-	#region /* Let player know when you have already beaten a downloaded level */
+	#region /* Display Finished Level Status */
 	if (content_type == "level")
 	{
 		if (is_array(finished_level))
@@ -709,114 +340,96 @@ function scr_draw_online_download_list_thumbnail(thumbnail_index, number_of_thum
 				if (file_exists(game_save_id + "save_file/custom_level_save.ini"))
 				{
 					ini_open(game_save_id + "save_file/custom_level_save.ini");
-					
-					/* See if the online level has already been beaten by you or not */
-					if (ini_key_exists("finished_downloaded_level", draw_download_id))
-					{
-						finished_level[thumbnail_index] = ini_read_real("finished_downloaded_level", draw_download_id, 0);
-					}
-					else
-					{
-						finished_level[thumbnail_index] = 0; /* Overwrite so it's 0 instead of undefined, so you don't check this level ID again */
-					}
-					
-					/* See if the online level has been completed with zero defeats or zero hits */
-					if (ini_key_exists("zero_defeats_downloaded_level", draw_download_id))
-					{
-						zero_defeats_level[thumbnail_index] = ini_read_real("zero_defeats_downloaded_level", draw_download_id, 0);
-					}
-					else
-					{
-						zero_defeats_level[thumbnail_index] = 0; /* Overwrite so it's 0 instead of undefined, so you don't check this level ID again */
-					}
-					
+					finished_level[thumbnail_index] = (ini_key_exists("finished_downloaded_level", draw_download_id)) ?
+						ini_read_real("finished_downloaded_level", draw_download_id, 0) : 0;
+					zero_defeats_level[thumbnail_index] = (ini_key_exists("zero_defeats_downloaded_level", draw_download_id)) ?
+						ini_read_real("zero_defeats_downloaded_level", draw_download_id, 0) : 0;
 					ini_close();
 				}
 				else
 				{
-					finished_level[thumbnail_index] = 0; /* Overwrite so it's 0 instead of undefined, so you don't check this level ID again */
-					zero_defeats_level[thumbnail_index] = 0; /* Overwrite so it's 0 instead of undefined, so you don't check this level ID again */
+					finished_level[thumbnail_index] = 0;
+					zero_defeats_level[thumbnail_index] = 0;
 				}
 			}
 		}
 		
-		#region /* Display finished icon */
+		#region /* Display Finished Icon */
 		if (is_array(finished_level))
 		{
-			if (finished_level[thumbnail_index] == 1) /* Only Played */
+			var played_level_text, played_level_icon, played_level_color;
+			if (finished_level[thumbnail_index] == 1)
 			{
-				/* Player haven't reached the goal */
-				var played_level_text = "Played";
-				var played_level_icon = spr_icon_played;
-				var played_level_color = c_yellow;
+				played_level_text = "Played";
+				played_level_icon = spr_icon_played;
+				played_level_color = c_yellow;
 			}
 			else
-			if (finished_level[thumbnail_index] == 2) /* Played and finished */
+			if (finished_level[thumbnail_index] == 2)
 			{
-				/* Player haven't collected all the big collectibles */
-				var played_level_text = "Finished";
-				var played_level_icon = spr_icon_finished;
-				var played_level_color = c_lime;
+				played_level_text = "Finished";
+				played_level_icon = spr_icon_finished;
+				played_level_color = c_lime;
 			}
 			else
-			if (finished_level[thumbnail_index] == 3) /* Finished and collected every big collectible */
+			if (finished_level[thumbnail_index] == 3)
 			{
-				/* Player have collected all the big collectibles */
-				var played_level_text = "Completed";
-				var played_level_icon = spr_icon_finished;
-				var played_level_color = c_lime;
+				played_level_text = "Completed";
+				played_level_icon = spr_icon_finished;
+				played_level_color = c_lime;
 			}
-			else /* Not played */
+			else
 			{
-				var played_level_text = "Unplayed";
-				var played_level_icon = spr_icon_unplayed;
-				var played_level_color = c_red;
+				played_level_text = "Unplayed";
+				played_level_icon = spr_icon_unplayed;
+				played_level_color = c_red;
 			}
-			if (sprite_exists(played_level_icon)) /* Played Level Icon sprite needs to exist before trying to display it */
+			if (sprite_exists(played_level_icon))
 			{
-				draw_sprite_ext(played_level_icon, 0, download_online_x + 524, 32 + download_online_y + menu_y_offset, 1, 1, 0, c_white, 1);
+				draw_sprite_ext(played_level_icon, 0, download_online_x + 524, 32 + download_online_y + offsetY, 1, 1, 0, c_white, 1);
 			}
-			scr_draw_text_outlined(download_online_x + 548, 32 + download_online_y + menu_y_offset, l10n_text(played_level_text), global.default_text_size, c_menu_outline, played_level_color, 1);
+			scr_draw_text_outlined(download_online_x + 548, 32 + download_online_y + offsetY, l10n_text(played_level_text), global.default_text_size, c_menu_outline, played_level_color, 1);
 		}
-		#endregion /* Display finished icon END */
+		#endregion /* Display Finished Icon END */
 		
-		#region /* Display zero defeats icon */
+		#region /* Display Zero Defeats Icon */
 		if (is_array(zero_defeats_level))
 		{
-			if (zero_defeats_level[thumbnail_index] == 1) /* Zero Defeats */
+			var zero_defeats_level_text, zero_defeats_level_icon, zero_defeats_level_color;
+			if (zero_defeats_level[thumbnail_index] == 1)
 			{
-				var zero_defeats_level_text = "Zero Defeats";
-				var zero_defeats_level_icon = spr_icon_zero_defeats;
-				var zero_defeats_level_color = c_red;
+				zero_defeats_level_text = "Zero Defeats";
+				zero_defeats_level_icon = spr_icon_zero_defeats;
+				zero_defeats_level_color = c_red;
 			}
 			else
-			if (zero_defeats_level[thumbnail_index] == 2) /* Zero Hits */
+			if (zero_defeats_level[thumbnail_index] == 2)
 			{
-				var zero_defeats_level_text = "Zero Hits";
-				var zero_defeats_level_icon = spr_icon_zero_hits;
-				var zero_defeats_level_color = c_lime;
+				zero_defeats_level_text = "Zero Hits";
+				zero_defeats_level_icon = spr_icon_zero_hits;
+				zero_defeats_level_color = c_lime;
 			}
-			else /* No Zero Defeats */
+			else
 			{
-				var zero_defeats_level_text = "";
-				var zero_defeats_level_icon = spr_noone;
-				var zero_defeats_level_color = c_red;
+				zero_defeats_level_text = "";
+				zero_defeats_level_icon = spr_noone;
+				zero_defeats_level_color = c_red;
 			}
 			if (zero_defeats_level_text != "")
 			{
-				if (sprite_exists(zero_defeats_level_icon)) /* Zero Defeats Level Icon sprite needs to exist before trying to display it */
+				if (sprite_exists(zero_defeats_level_icon))
 				{
-					draw_sprite_ext(zero_defeats_level_icon, 0, download_online_x + 524, 64 + download_online_y + menu_y_offset, 1, 1, 0, c_white, 1);
+					draw_sprite_ext(zero_defeats_level_icon, 0, download_online_x + 524, 64 + download_online_y + offsetY, 1, 1, 0, c_white, 1);
 				}
-				scr_draw_text_outlined(download_online_x + 548, 64 + download_online_y + menu_y_offset, l10n_text(zero_defeats_level_text), global.default_text_size, c_menu_outline, zero_defeats_level_color, 1);
+				scr_draw_text_outlined(download_online_x + 548, 64 + download_online_y + offsetY, l10n_text(zero_defeats_level_text), global.default_text_size, c_menu_outline, zero_defeats_level_color, 1);
 			}
 		}
-		#endregion /* Display finished icon END */
+		#endregion /* Display Zero Defeats Icon END */
 		
 	}
-	#endregion /* Let player know when you have already beaten a downloaded level END */
+	#endregion /* Display Finished Level Status END */
 	
-	#region /* Show if you have liked or disliked content */
+	#region /* Display Like/Dislike Status */
 	if (is_array(liked_content))
 	{
 		if (liked_content[thumbnail_index] == undefined)
@@ -824,197 +437,50 @@ function scr_draw_online_download_list_thumbnail(thumbnail_index, number_of_thum
 			if (file_exists(game_save_id + "save_file/custom_" + string(content_type) + "_save.ini"))
 			{
 				ini_open(game_save_id + "save_file/custom_" + string(content_type) + "_save.ini");
-				
-				/* See if the online content has already been liked or disliked by you or not */
-				if (ini_key_exists("liked_downloaded_" + string(content_type), draw_download_id))
-				{
-					liked_content[thumbnail_index] = ini_read_real("liked_downloaded_" + string(content_type), draw_download_id, 0);
-				}
-				else
-				{
-					liked_content[thumbnail_index] = 0; /* Overwrite so it's false instead of undefined, so you don't check this variable again */
-				}
-				
+				liked_content[thumbnail_index] = (ini_key_exists("liked_downloaded_" + string(content_type), draw_download_id)) ?
+					ini_read_real("liked_downloaded_" + string(content_type), draw_download_id, 0) : 0;
 				ini_close();
 			}
 			else
 			{
-				liked_content[thumbnail_index] = 0; /* Overwrite so it's false instead of undefined, so you don't check this variable again */
+				liked_content[thumbnail_index] = 0;
 			}
 		}
 	}
 	if (is_array(liked_content))
 	{
-		if (liked_content[thumbnail_index] == +1) /* You have liked the content */
+		var liked_content_text, liked_content_icon, liked_content_color;
+		if (liked_content[thumbnail_index] == +1)
 		{
-			var liked_content_text = "Liked";
-			var liked_content_icon = spr_icon_liked;
-			var liked_content_color = c_aqua;
+			liked_content_text = "Liked";
+			liked_content_icon = spr_icon_liked;
+			liked_content_color = c_aqua;
 		}
 		else
-		if (liked_content[thumbnail_index] == -1) /* You have disliked the content */
+		if (liked_content[thumbnail_index] == -1)
 		{
-			var liked_content_text = "Disliked";
-			var liked_content_icon = spr_icon_disliked;
-			var liked_content_color = c_red;
+			liked_content_text = "Disliked";
+			liked_content_icon = spr_icon_disliked;
+			liked_content_color = c_red;
 		}
-		else /* Not liked or disliked content */
+		else
 		{
-			var liked_content_text = "";
-			var liked_content_icon = spr_noone;
-			var liked_content_color = c_white;
+			liked_content_text = "";
+			liked_content_icon = spr_noone;
+			liked_content_color = c_white;
 		}
 		if (liked_content_text != "")
 		{
-			if (sprite_exists(liked_content_icon)) /* Liked Content Icon sprite needs to exist before trying to display it */
+			if (sprite_exists(liked_content_icon))
 			{
-				draw_sprite_ext(liked_content_icon, 0, download_online_x + 524, 32 + download_online_y + menu_y_offset, 1, 1, 0, c_white, 1);
+				draw_sprite_ext(liked_content_icon, 0, download_online_x + 524, 32 + download_online_y + offsetY, 1, 1, 0, c_white, 1);
 			}
-			scr_draw_text_outlined(download_online_x + 548, 32 + download_online_y + menu_y_offset, l10n_text(liked_content_text), global.default_text_size, c_menu_outline, liked_content_color, 1);
+			scr_draw_text_outlined(download_online_x + 548, 32 + download_online_y + offsetY, l10n_text(liked_content_text), global.default_text_size, c_menu_outline, liked_content_color, 1);
 		}
 	}
-	#endregion /* Show if you have liked or disliked content END */
+	#endregion /* Display Like/Dislike Status END */
 	
-	/* Write date of upload */
-	scr_draw_text_outlined(download_online_x + 100, 270 + download_online_y + menu_y_offset, string(get_relative_timezone(draw_download_time)), global.default_text_size * 0.75, c_menu_outline, selected_download_c_menu_fill, 1);
+	scr_draw_text_outlined(download_online_x + 100, 270 + download_online_y + offsetY, string(get_relative_timezone(draw_download_time)), global.default_text_size * 0.75, c_menu_outline, selected_download_c_menu_fill, 1);
 	draw_set_halign(fa_right);
-	scr_draw_text_outlined(download_online_x + 490, 270 + download_online_y + menu_y_offset, string(draw_download_time), global.default_text_size * 0.6, c_menu_outline, selected_download_c_menu_fill, 0.9);
-}
-
-function scr_fallback_to_previous_menu_state()
-{
-	
-	#region /* If you are no longer in "online download list menu", but somehow still in a menu selection only appearing in this menu, force you out of the menu */
-	if (!in_online_download_list_menu)
-	&& (menu_delay == 0 && menu_joystick_delay == 0)
-	{
-		if (string_copy(menu, 1, string_length("download_online")) == "download_online")
-		{
-			if (content_type == "level")
-			{
-				if (variable_instance_exists(self, "show_level_editor_corner_menu"))
-				{
-					show_level_editor_corner_menu = true;
-				}
-				menu = "online_level_list";
-				select_custom_level_menu_open = true;
-			}
-			else
-			{
-				menu = "online_character_list";
-			}
-			global.online_download_list = ""; /* Reset "global online download list" so you can reload online download list next time you go to this menu */
-			data = undefined; /* Reset "data" so you can reload online download list next time you go to this menu */
-			info_data = undefined; /* Don't forget to reset info data too */
-			automatically_search_for_id = false;
-			in_online_download_list_menu = false;
-			in_online_download_list_load_menu = false;
-			keyboard_string = "";
-			menu_delay = 3;
-			search_id = "";
-		}
-	}
-	#endregion /* If you are no longer in "online download list menu", but somehow still in a menu selection only appearing in this menu, force you out of the menu END */
-	
-}
-
-function scr_download_thumbnails(download_all, what_num_items = 0)
-{
-	/* If you are not downloading all, the set specific ID */
-	if (!download_all)
-	{
-		info_queue_index = global.selected_online_download_index;
-	}
-	
-	/* If there is an index to process and HTTP requests are allowed */
-	if (download_all
-	&& info_queue_index < what_num_items
-	&& info_queue_http_request
-	|| !download_all)
-	&& is_array(all_download_id)
-	{
-		/* Retrieve level information only once per selected ID */
-		info_queue_http_request = false;
-		info_data = undefined;
-		global.online_download_list_info = ""; /* We need to reset the global.online_download_list_info here */
-		
-		/* Check if the system is connected to the network before making an HTTP request */
-		if (os_is_network_connected())
-		{
-			/* Send the HTTP GET request to retrieve metadata for the selected ID */
-			global.http_request_info = http_request(
-				"https://" + global.base_url + "/metadata/" + string(content_type) + "s/" + string_upper(all_download_id[info_queue_index]) + "?os_type=" + string(os_type), /* URL */
-				"GET", /* Method */
-				map, /* Header Map */
-				""); /* Body */
-			show_debug_message("HTTP request sent for: " + string_upper(all_download_id[info_queue_index]));
-		}
-	}
-	
-	/* Process the data if available and valid */
-	if (info_data == undefined
-	&& in_online_download_list_menu
-	&& !info_queue_http_request)
-	{
-		/* Parse the JSON data if it has been loaded successfully */
-		if (global.online_download_list_info != ""
-		&& global.online_download_list_info != "HTTP request exception"
-		&& global.online_download_list_info != "Unauthorized")
-		{
-			/* Handle potential JSON parsing errors */
-			try
-			{
-				info_data = json_parse(global.online_download_list_info);
-				info_data = array_create(1, info_data);
-			}
-			catch (e)
-			{
-				show_debug_message("Failed to get JSON for " + string_upper(all_download_id[info_queue_index]) + " Invalid JSON format: " + string(global.online_download_list_info));
-				info_data = undefined; /* Set info_data to a default value on error */
-			}
-		}
-		
-		/* If parsed data is valid and contains items */
-		if (is_array(info_data))
-		{
-			/* Iterate through the data items */
-			var num_info_items = array_length(info_data);
-			for (var j = 0; j < num_info_items; j++)
-			{
-				var item = info_data[j];
-				
-				/* Retrieve and mask profane names if necessary */
-				if (draw_download_name[info_queue_index] == "")
-				{
-					if (switch_check_profanity(item.name))
-					{
-						draw_download_name[info_queue_index] = string(switch_mask_profanity(item.name));
-					}
-					else
-					{
-						draw_download_name[info_queue_index] = string(item.name);
-					}
-				}
-				
-				show_debug_message("draw_download_name[" + string(i) + "] = " + string(draw_download_name[info_queue_index]));
-				
-				/* Download and set the thumbnail if it's missing */
-				if (spr_download_list_thumbnail[info_queue_index] == spr_thumbnail_missing)
-				{
-					var downloaded_thumbnail_path = temp_directory + "thumbnail_" + string(i) + ".png";
-					var buffer = buffer_base64_decode(item.thumbnail);
-					buffer_save(buffer, downloaded_thumbnail_path);
-					spr_download_list_thumbnail[info_queue_index] = sprite_add(downloaded_thumbnail_path, 0, false, true, 0, 0);
-				}
-			}
-		}
-	}
-	
-	/* Move to the next item if the current one is complete */
-	if (!info_queue_http_request)
-	&& (draw_download_name[info_queue_index] != "")
-	{
-		info_queue_index++;
-		info_queue_http_request = true;
-	}
+	scr_draw_text_outlined(download_online_x + 490, 270 + download_online_y + offsetY, string(draw_download_time), global.default_text_size * 0.6, c_menu_outline, selected_download_c_menu_fill, 0.9);
 }

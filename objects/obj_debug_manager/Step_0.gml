@@ -26,3 +26,5 @@ for (var i = 0; i < array_length(debug_target_list); i++)
 }
 
 scr_debug_process_cheat_inputs();
+
+check_fps_bug_report();

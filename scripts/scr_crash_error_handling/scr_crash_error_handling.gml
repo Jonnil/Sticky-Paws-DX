@@ -118,8 +118,8 @@ function scr_crash_error_handling()
 		#region /* Send Crash Log to Server */
 		if (global.online_enabled)
 		&& (global.send_crash_logs)
-		&& (os_is_network_connected())
 		&& (file_exists(crash_logs_folder + crash_log_filename))
+		&& (os_is_network_connected())
 		{
 			/* Open the .ini file for reading and read its full contents */
 			var ini_file = file_text_open_read(crash_logs_folder + crash_log_filename);
