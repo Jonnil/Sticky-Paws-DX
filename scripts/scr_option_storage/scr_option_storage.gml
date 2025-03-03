@@ -11,6 +11,10 @@ function scr_load_storage_variables()
 	storage_lives = ini_read_real("Player", "lives", 0);
 	storage_total_big_collectibles = ini_read_real("Player", "total_big_collectibles", 0);
 	storage_number_of_levels_cleared = ini_read_real("Player", "number_of_levels_cleared", 0);
+	if (variable_instance_exists(self, "placable_object_unlock_notify"))
+	{
+		placable_object_unlock_notify = ini_read_real("Player", "placable_object_unlock_notify", 0);
+	}
 	ini_close();
 }
 

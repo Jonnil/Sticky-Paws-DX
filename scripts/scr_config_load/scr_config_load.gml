@@ -136,7 +136,8 @@ function scr_config_load()
 		#endregion /* Debug Collapsed Sections END */
 		
 		if (ini_key_exists("config", "enable_level_length_target")){global.enable_level_length_target = ini_read_real("config", "enable_level_length_target", false);}
-		if (ini_key_exists("config", "target_length_minutes")){global.target_length_minutes = ini_read_real("config", "target_length_minutes", 3);}
+		if (ini_key_exists("config", "target_length_minutes_min")){global.target_length_minutes_min = ini_read_real("config", "target_length_minutes_min", 3);}
+		if (ini_key_exists("config", "target_length_minutes_max")){global.target_length_minutes_max = ini_read_real("config", "target_length_minutes_max", 5);}
 		if (ini_key_exists("config", "first_time_opened_level_editor")){global.first_time_opened_level_editor = ini_read_real("config", "first_time_opened_level_editor", true);}
 		if (ini_key_exists("config", "caution_online_do_not_show")){global.caution_online_do_not_show = ini_read_real("config", "caution_online_do_not_show", false);}
 		if (ini_key_exists("config", "send_crash_logs")){global.send_crash_logs = ini_read_real("config", "send_crash_logs", true);}
@@ -149,15 +150,12 @@ function scr_config_load()
 		if (ini_key_exists("config", "show_timer")){global.show_timer = ini_read_real("config", "show_timer", 0);}
 		if (ini_key_exists("config", "show_defeats_counter")){global.show_defeats_counter = ini_read_real("config", "show_defeats_counter", 1);}
 		if (ini_key_exists("config", "show_ranks")){global.show_ranks = ini_read_real("config", "show_ranks", 0);}
-		if (ini_key_exists("config", "assist_enable")){global.assist_enable = ini_read_real("config", "assist_enable", 0);}
-		if (ini_key_exists("config", "assist_enable_enemies")){global.assist_enable_enemies = ini_read_real("config", "assist_enable_enemies", 0);}
-		if (ini_key_exists("config", "assist_enable_spikes")){global.assist_enable_spikes = ini_read_real("config", "assist_enable_spikes", 0);}
 		if (ini_key_exists("config", "narrator")){global.narrator = ini_read_real("config", "narrator", 0);}
 		if (ini_key_exists("config", "narrator_selection")){global.narrator_selection = ini_read_real("config", "narrator_selection", -1);}
 		scr_set_narrator(false); /* After getting the narrator selection from ini file, then run this set narrator script, so that the narrator can be set correctly. Make sure you aren't writing to ini file in this script */
-		if (ini_key_exists("config", "show_tutorial_signs")){global.show_tutorial_signs = ini_read_real("config", "show_tutorial_signs", 0);}
-		if (ini_key_exists("config", "show_new_items_notification")){global.show_new_items_notification = ini_read_real("config", "show_new_items_notification", 0);}
-		if (ini_key_exists("config", "hud_hide_time")){global.hud_hide_time = ini_read_real("config", "hud_hide_time", 0);}
+		if (ini_key_exists("config", "show_tutorial_signs")){global.show_tutorial_signs = ini_read_real("config", "show_tutorial_signs", 1);}
+		if (ini_key_exists("config", "show_new_items_notification")){global.show_new_items_notification = ini_read_real("config", "show_new_items_notification", 1);}
+		if (ini_key_exists("config", "hud_hide_time")){global.hud_hide_time = ini_read_real("config", "hud_hide_time", 3);}
 		if (ini_key_exists("config", "players_can_collide")){global.players_can_collide = ini_read_real("config", "players_can_collide", 0);}
 		
 		#region /* Assist Settings */
@@ -172,7 +170,51 @@ function scr_config_load()
 		if (ini_key_exists("config", "assist_breathe_underwater")){global.assist_breathe_underwater = ini_read_real("config", "assist_breathe_underwater", 0);}
 		if (ini_key_exists("config", "assist_guiding_arrows")){global.assist_guiding_arrows = ini_read_real("config", "assist_guiding_arrows", 0);}
 		if (ini_key_exists("config", "assist_normal_arrows")){global.assist_normal_arrows = ini_read_real("config", "assist_normal_arrows", 0);}
+		if (ini_key_exists("config", "assist_enable_enemies")){global.assist_enable_enemies = ini_read_real("config", "assist_enable_enemies", 1);}
+		if (ini_key_exists("config", "assist_enable_spikes")){global.assist_enable_spikes = ini_read_real("config", "assist_enable_spikes", 1);}
 		#endregion /* Assist Settings END */
+		
+		#region /* Challenge Mode Settings */
+		if (ini_key_exists("config", "challenge_mode_enable")) { global.challenge_mode_enable = ini_read_real("config", "challenge_mode_enable", 0); }
+		if (ini_key_exists("config", "challenge_one_hit_defeat")) { global.challenge_one_hit_defeat = ini_read_real("config", "challenge_one_hit_defeat", 0); }
+		if (ini_key_exists("config", "challenge_no_health_pickups")) { global.challenge_no_health_pickups = ini_read_real("config", "challenge_no_health_pickups", 0); }
+		if (ini_key_exists("config", "challenge_no_checkpoints")) { global.challenge_no_checkpoints = ini_read_real("config", "challenge_no_checkpoints", 0); }
+		if (ini_key_exists("config", "challenge_limited_lives")) { global.challenge_limited_lives = ini_read_real("config", "challenge_limited_lives", 0); }
+		if (ini_key_exists("config", "challenge_lower_hp")) { global.challenge_lower_hp = ini_read_real("config", "challenge_lower_hp", 0); }
+		if (ini_key_exists("config", "challenge_no_post_hit_invincibility")) { global.challenge_no_post_hit_invincibility = ini_read_real("config", "challenge_no_post_hit_invincibility", 0); }
+		if (ini_key_exists("config", "challenge_stronger_gravity")) { global.challenge_stronger_gravity = ini_read_real("config", "challenge_stronger_gravity", 0); }
+		if (ini_key_exists("config", "challenge_no_coyote_time")) { global.challenge_no_coyote_time = ini_read_real("config", "challenge_no_coyote_time", 0); }
+		if (ini_key_exists("config", "challenge_slippery_physics")) { global.challenge_slippery_physics = ini_read_real("config", "challenge_slippery_physics", 0); }
+		if (ini_key_exists("config", "challenge_smaller_ledge")) { global.challenge_smaller_ledge = ini_read_real("config", "challenge_smaller_ledge", 0); }
+		if (ini_key_exists("config", "challenge_no_midair_control")) { global.challenge_no_midair_control = ini_read_real("config", "challenge_no_midair_control", 0); }
+		if (ini_key_exists("config", "challenge_faster_autoscroll")) { global.challenge_faster_autoscroll = ini_read_real("config", "challenge_faster_autoscroll", 0); }
+		if (ini_key_exists("config", "challenge_spikes_always_kill")) { global.challenge_spikes_always_kill = ini_read_real("config", "challenge_spikes_always_kill", 0); }
+		if (ini_key_exists("config", "challenge_more_bottomless_pits")) { global.challenge_more_bottomless_pits = ini_read_real("config", "challenge_more_bottomless_pits", 0); }
+		if (ini_key_exists("config", "challenge_platforms_crumble")) { global.challenge_platforms_crumble = ini_read_real("config", "challenge_platforms_crumble", 0); }
+		if (ini_key_exists("config", "challenge_extra_enemy_spawns")) { global.challenge_extra_enemy_spawns = ini_read_real("config", "challenge_extra_enemy_spawns", 0); }
+		if (ini_key_exists("config", "challenge_larger_hazard_hitboxes")) { global.challenge_larger_hazard_hitboxes = ini_read_real("config", "challenge_larger_hazard_hitboxes", 0); }
+		if (ini_key_exists("config", "challenge_stronger_enemies")) { global.challenge_stronger_enemies = ini_read_real("config", "challenge_stronger_enemies", 0); }
+		if (ini_key_exists("config", "challenge_faster_enemies")) { global.challenge_faster_enemies = ini_read_real("config", "challenge_faster_enemies", 0); }
+		if (ini_key_exists("config", "challenge_more_aggressive_enemies")) { global.challenge_more_aggressive_enemies = ini_read_real("config", "challenge_more_aggressive_enemies", 0); }
+		if (ini_key_exists("config", "challenge_enemies_respawn_quickly")) { global.challenge_enemies_respawn_quickly = ini_read_real("config", "challenge_enemies_respawn_quickly", 0); }
+		if (ini_key_exists("config", "challenge_enemies_double_damage")) { global.challenge_enemies_double_damage = ini_read_real("config", "challenge_enemies_double_damage", 0); }
+		if (ini_key_exists("config", "challenge_enemy_projectiles_faster")) { global.challenge_enemy_projectiles_faster = ini_read_real("config", "challenge_enemy_projectiles_faster", 0); }
+		if (ini_key_exists("config", "challenge_enemies_no_stun")) { global.challenge_enemies_no_stun = ini_read_real("config", "challenge_enemies_no_stun", 0); }
+		if (ini_key_exists("config", "challenge_permanent_darkness")) { global.challenge_permanent_darkness = ini_read_real("config", "challenge_permanent_darkness", 0); }
+		if (ini_key_exists("config", "challenge_limited_air")) { global.challenge_limited_air = ini_read_real("config", "challenge_limited_air", 0); }
+		if (ini_key_exists("config", "challenge_no_pause")) { global.challenge_no_pause = ini_read_real("config", "challenge_no_pause", 0); }
+		if (ini_key_exists("config", "challenge_game_speed")) { global.challenge_game_speed = ini_read_real("config", "challenge_game_speed", 0); }
+		if (ini_key_exists("config", "challenge_randomized_controls")) { global.challenge_randomized_controls = ini_read_real("config", "challenge_randomized_controls", 0); }
+		if (ini_key_exists("config", "challenge_invisible_elements")) { global.challenge_invisible_elements = ini_read_real("config", "challenge_invisible_elements", 0); }
+		if (ini_key_exists("config", "challenge_strict_time_limits")) { global.challenge_strict_time_limits = ini_read_real("config", "challenge_strict_time_limits", 0); }
+		if (ini_key_exists("config", "challenge_iron_paw_mode")) { global.challenge_iron_paw_mode = ini_read_real("config", "challenge_iron_paw_mode", 0); }
+		if (ini_key_exists("config", "challenge_limited_inputs")) { global.challenge_limited_inputs = ini_read_real("config", "challenge_limited_inputs", 0); }
+		if (ini_key_exists("config", "challenge_pacifist_mode")) { global.challenge_pacifist_mode = ini_read_real("config", "challenge_pacifist_mode", 0); }
+		if (ini_key_exists("config", "challenge_speedrun_mode")) { global.challenge_speedrun_mode = ini_read_real("config", "challenge_speedrun_mode", 0); }
+		if (ini_key_exists("config", "challenge_no_hud_mode")) { global.challenge_no_hud_mode = ini_read_real("config", "challenge_no_hud_mode", 0); }
+		if (ini_key_exists("config", "challenge_perma_death_mode")) { global.challenge_perma_death_mode = ini_read_real("config", "challenge_perma_death_mode", 0); }
+		if (ini_key_exists("config", "challenge_roguelike_mode")) { global.challenge_roguelike_mode = ini_read_real("config", "challenge_roguelike_mode", 0); }
+		#endregion /* Challenge Mode Settings END */
 		
 		#region /* Account Settings */
 		if (ini_key_exists("config", "username")){global.username = ini_read_string("config", "username", "");}
@@ -232,6 +274,7 @@ function scr_config_load()
 		if (ini_key_exists("config", "draw_text_outline")){global.draw_text_outline = ini_read_real("config", "draw_text_outline", true);}
 		if (ini_key_exists("config", "resolution_setting")){global.resolution_setting = ini_read_real("config", "resolution_setting", 0);}
 		if (ini_key_exists("config", "gui_scale_modifier")){global.gui_scale_modifier = ini_read_real("config", "gui_scale_modifier", 0);}
+		if (ini_key_exists("config", "language_auto_update_interval")){global.language_auto_update_interval = ini_read_real("config", "language_auto_update_interval", 0);}
 		if (ini_key_exists("config", "selected_language_id")){global.selected_language_id = ini_read_real("config", "selected_language_id", 1);} /* Load language before loading font, as the font is informed by the language selected */
 		if (ini_key_exists("config", "current_language_menu_position")){global.current_language_menu_position = ini_read_real("config", "current_language_menu_position", 1);} /* Load 'global.current_language_menu_position' before loading font, as the font is informed by the language selected */
 		if (ini_key_exists("config", "select_font")){global.selected_font = ini_read_real("config", "select_font", 0);scr_set_font();} /* Load font after loading language, as the font is informed by the language selected */

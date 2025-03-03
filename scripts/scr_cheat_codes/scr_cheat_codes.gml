@@ -1,16 +1,31 @@
 /// @function scr_debug_init_cheat_codes()
-/* Initializes all cheat codes. Call this in your debug manager's Create event */
+/// @description Initializes all cheat codes. Call this in your debug manager's Create event
 function scr_debug_init_cheat_codes()
 {
+	/* I'm including classic cheat codes from video game history */
+	/* Some consoles like the Sega Genesis have a C button, which modern controllers don't have */
+	/* So I'm mapping the C button from a Sega Genesis controller to the X button on a Xbox controller */
+	
 	global.cheat_codes = [
 		{
-			code: ["UP", "SHOULDERL", "DOWN", "SHOULDERL", "LEFT", "SHOULDERL", "RIGHT", "SHOULDERL", "A+START"],
+			code: ["UP", "X", "DOWN", "x", "LEFT", "x", "RIGHT", "X", "A+START"],
 			progress: 0,
 			hold_required: "",
 			action: function()
 			{
 				global.debug_screen = !global.debug_screen;
 				show_debug_message("Debug mode toggled: " + string(global.debug_screen));
+			}
+		}
+		,
+		{
+			code: ["Up", "Left", "Down", "Right", "Down", "Up", "Up", "Down", "Right", "Right", "B"],
+			progress: 0,
+			hold_required: "",
+			action: function()
+			{
+				scr_unlock_placable_level_objects(true);
+				show_debug_message("Unlocked all objects in level editor");
 			}
 		}
 	];
@@ -83,42 +98,51 @@ function scr_debug_process_cheat_inputs()
 {
 	/* D-Pad */
 	if (gamepad_button_check_pressed(global.player_slot[1], gp_padu))
+	|| (keyboard_check_pressed(vk_up))
 	{
 		scr_debug_check_cheat_input("UP");
 	}
 	if (gamepad_button_check_pressed(global.player_slot[1], gp_padd))
+	|| (keyboard_check_pressed(vk_down))
 	{
 		scr_debug_check_cheat_input("DOWN");
 	}
 	if (gamepad_button_check_pressed(global.player_slot[1], gp_padl))
+	|| (keyboard_check_pressed(vk_left))
 	{
 		scr_debug_check_cheat_input("LEFT");
 	}
 	if (gamepad_button_check_pressed(global.player_slot[1], gp_padr))
+	|| (keyboard_check_pressed(vk_right))
 	{
 		scr_debug_check_cheat_input("RIGHT");
 	}
 	
 	/* Face Buttons */
 	if (gamepad_button_check_released(global.player_slot[1], gp_face1)) /* Needs to be check on released, to make "A + Start" work */
+	|| (keyboard_check_released(ord("A")))
 	{
 		scr_debug_check_cheat_input("A");
 	}
 	if (gamepad_button_check_pressed(global.player_slot[1], gp_face2))
+	|| (keyboard_check_pressed(ord("B")))
 	{
 		scr_debug_check_cheat_input("B");
 	}
 	if (gamepad_button_check_pressed(global.player_slot[1], gp_face3))
+	|| (keyboard_check_pressed(ord("X")))
 	{
 		scr_debug_check_cheat_input("X");
 	}
 	if (gamepad_button_check_pressed(global.player_slot[1], gp_face4))
+	|| (keyboard_check_pressed(ord("Y")))
 	{
 		scr_debug_check_cheat_input("Y");
 	}
 	
 	/* Shoulder Buttons */
 	if (gamepad_button_check_pressed(global.player_slot[1], gp_shoulderl))
+	|| (keyboard_check_pressed(ord("L")))
 	{
 		scr_debug_check_cheat_input("SHOULDERL");
 	}
@@ -127,6 +151,7 @@ function scr_debug_process_cheat_inputs()
 		scr_debug_check_cheat_input("SHOULDERLB");
 	}
 	if (gamepad_button_check_pressed(global.player_slot[1], gp_shoulderr))
+	|| (keyboard_check_pressed(ord("R")))
 	{
 		scr_debug_check_cheat_input("SHOULDERR");
 	}
@@ -140,6 +165,8 @@ function scr_debug_process_cheat_inputs()
 	/* We check this explicitly by testing if both buttons are pressed */
 	if (gamepad_button_check(global.player_slot[1], gp_face1) 
 	&& gamepad_button_check_pressed(global.player_slot[1], gp_start))
+	|| (keyboard_check(ord("A")))
+	|| (keyboard_check_pressed(vk_enter))
 	{
 		/* Here, we send the canonical string for the combination */
 		scr_debug_check_cheat_input("A+START");

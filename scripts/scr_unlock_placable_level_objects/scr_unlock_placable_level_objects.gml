@@ -1,16 +1,27 @@
-function scr_unlock_placable_level_objects()
+/// @function scr_unlock_placable_level_objects(default_unlock)
+/// @description 
+/// Unlocks placeable objects in the level editor based on the game's save data. 
+/// Some objects are always unlocked by default, while others require unlocking 
+/// through gameplay or a daily randomized unlock system.
+/// 
+/// If `default_unlock` is set to `true`, all objects will be unlocked for debugging purposes.
+/// Otherwise, it will load the player's unlocked objects from the save file.
+/// 
+/// The function also handles a "Daily Build" mode where a random selection of 
+/// objects is unlocked each day, ensuring a fresh experience.
+/// 
+/// **Key Features:**
+/// - Loads the date the level was first created to determine daily unlocks.
+/// - Ensures that some core objects are always unlocked.
+/// - Reads unlock data from the save file for persistent progression.
+/// - Supports a debugging mode to unlock all objects instantly.
+/// - Implements a daily randomized unlock system for fresh level editor content.
+/// - Handles paired objects (e.g., unlocking one also unlocks its counterpart).
+///
+/// @param default_unlock Change to true to unlock every object for debugging, otherwise set this to false
+function scr_unlock_placable_level_objects(default_unlock = false)
 {
-	
-	var default_unlock = true; /* Change to true to unlock every object for debugging, otherwise set this to false */
 	var always_unlock = true; /* Some objects should always be unlocked from the start */
-	
-	#region /* Load what date this level was first created in */
-	ini_open(game_save_id + "custom_levels/" + string(global.level_name) + "/data/level_information.ini");
-	var year = ini_read_real("info", "first_created_on_date_year", date_get_year(date_current_datetime()));
-	var month = ini_read_real("info", "first_created_on_date_month", date_get_month(date_current_datetime()));
-	var day = ini_read_real("info", "first_created_on_date_day", date_get_day(date_current_datetime()));
-	ini_close();
-	#endregion /* Load what date this level was first created in END */
 	
 	#region /* All the objects that should be always unlocked in Level Editor */
 	ini_open(game_save_id + "save_file/file" + string(global.file) + ".ini");
@@ -135,6 +146,14 @@ function scr_unlock_placable_level_objects()
 		}
 		
 		#region /* All the objects that should be randomly unlocked in Daily Build */
+		
+		#region /* Load what date this level was first created in */
+		ini_open(game_save_id + "custom_levels/" + string(global.level_name) + "/data/level_information.ini");
+		var year = ini_read_real("info", "first_created_on_date_year", date_get_year(date_current_datetime()));
+		var month = ini_read_real("info", "first_created_on_date_month", date_get_month(date_current_datetime()));
+		var day = ini_read_real("info", "first_created_on_date_day", date_get_day(date_current_datetime()));
+		ini_close();
+		#endregion /* Load what date this level was first created in END */
 		
 		/* First, run code for setting a seed for each day */
 		var seed = string(year) + string(month) + string(day);

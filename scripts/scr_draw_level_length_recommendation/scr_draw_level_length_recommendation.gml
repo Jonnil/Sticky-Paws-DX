@@ -1,7 +1,7 @@
 function scr_draw_level_length_recommendation()
 {
 	
-	#region /* Show short level warning */
+	#region /* Show level length recommendation */
 	if (menu == "level_length_recommendation_ok")
 	|| (menu == "level_length_recommendation_back")
 	{
@@ -19,7 +19,8 @@ function scr_draw_level_length_recommendation()
 		draw_set_alpha(1);
 		
 		if (room == rm_title)
-		|| (variable_instance_exists(self, "pause") && pause)
+		|| (variable_instance_exists(self, "pause")
+		&& pause)
 		{
 			if (variable_instance_exists(self, "show_level_editor_corner_menu"))
 			{
@@ -34,29 +35,45 @@ function scr_draw_level_length_recommendation()
 			var show_back_button = false;
 		}
 		
-		if (global.timeattack_minute < global.target_length_minutes)
+		/* Determine message color based on timeattack minutes relative to minimum and maximum target */
+		if (global.timeattack_minute < global.target_length_minutes_min)
 		{
-			var short_level_color = c_orange;
+			var message_color = c_orange;
+		}
+		else
+		if (global.timeattack_minute > global.target_length_minutes_max)
+		{
+			var message_color = c_red;
 		}
 		else
 		{
-			var short_level_color = c_lime;
+			var message_color = c_lime;
 		}
-		draw_roundrect_color_ext(display_get_gui_width() * 0.5 - 440 - 4, display_get_gui_height() * 0.5 - 64 - 4, display_get_gui_width() * 0.5 + 440 + 4, box_height + 4, 50, 50, short_level_color, short_level_color, false);
+		
+		draw_roundrect_color_ext(display_get_gui_width() * 0.5 - 440 - 4, display_get_gui_height() * 0.5 - 64 - 4, display_get_gui_width() * 0.5 + 440 + 4, box_height + 4, 50, 50, message_color, message_color, false);
 		draw_roundrect_color_ext(display_get_gui_width() * 0.5 - 440, display_get_gui_height() * 0.5 - 64, display_get_gui_width() * 0.5 + 440, box_height, 50, 50, c_black, c_black, false);
 		draw_set_halign(fa_center);
 		draw_set_valign(fa_middle);
-		if (global.timeattack_minute < global.target_length_minutes)
+		
+		/* Display messages based on level length */
+		if (global.timeattack_minute < global.target_length_minutes_min)
 		{
-			scr_draw_text_outlined(display_get_gui_width() * 0.5, display_get_gui_height() * 0.5 - 32, l10n_text("Level is shorter than your level length target"), global.default_text_size, c_black, short_level_color, 1);
-			scr_draw_text_outlined(display_get_gui_width() * 0.5, display_get_gui_height() * 0.5, l10n_text("Your time") + ": " + string(global.timeattack_minute) + ":" + string_replace_all(string_format(global.timeattack_second, 2, 0), " ", "0"), global.default_text_size, c_black, short_level_color, 1);
-			scr_draw_text_outlined(display_get_gui_width() * 0.5, display_get_gui_height() * 0.5 + 32, l10n_text("You have set your minimum") + ": " + string(global.target_length_minutes) + " " + l10n_text("minutes"), global.default_text_size, c_black, short_level_color, 1);
+			scr_draw_text_outlined(display_get_gui_width() * 0.5, display_get_gui_height() * 0.5 - 32, l10n_text("Level is shorter than your desired minimum length"), global.default_text_size, c_black, message_color, 1);
+			scr_draw_text_outlined(display_get_gui_width() * 0.5, display_get_gui_height() * 0.5, l10n_text("Your time") + ": " + string(global.timeattack_minute) + ":" + string_replace_all(string_format(global.timeattack_second, 2, 0), " ", "0"), global.default_text_size, c_black, message_color, 1);
+			scr_draw_text_outlined(display_get_gui_width() * 0.5, display_get_gui_height() * 0.5 + 32, l10n_text("Minimum required") + ": " + string(global.target_length_minutes_min) + " " + l10n_text("minutes"), global.default_text_size, c_black, message_color, 1);
+		}
+		else
+		if (global.timeattack_minute > global.target_length_minutes_max)
+		{
+			scr_draw_text_outlined(display_get_gui_width() * 0.5, display_get_gui_height() * 0.5 - 32, l10n_text("Level is longer than your desired maximum length"), global.default_text_size, c_black, message_color, 1);
+			scr_draw_text_outlined(display_get_gui_width() * 0.5, display_get_gui_height() * 0.5, l10n_text("Your time") + ": " + string(global.timeattack_minute) + ":" + string_replace_all(string_format(global.timeattack_second, 2, 0), " ", "0"), global.default_text_size, c_black, message_color, 1);
+			scr_draw_text_outlined(display_get_gui_width() * 0.5, display_get_gui_height() * 0.5 + 32, l10n_text("Maximum allowed") + ": " + string(global.target_length_minutes_max) + " " + l10n_text("minutes"), global.default_text_size, c_black, message_color, 1);
 		}
 		else
 		{
-			scr_draw_text_outlined(display_get_gui_width() * 0.5, display_get_gui_height() * 0.5 - 32, l10n_text("You hit your length target!"), global.default_text_size, c_black, short_level_color, 1);
-			scr_draw_text_outlined(display_get_gui_width() * 0.5, display_get_gui_height() * 0.5, l10n_text("Your time") + ": " + string(global.timeattack_minute) + ":" + string_replace_all(string_format(global.timeattack_second, 2, 0), " ", "0"), global.default_text_size, c_black, short_level_color, 1);
-			scr_draw_text_outlined(display_get_gui_width() * 0.5, display_get_gui_height() * 0.5 + 32, l10n_text("Your level is longer than") + ": " + string(global.target_length_minutes) + " " + l10n_text("minutes"), global.default_text_size, c_black, short_level_color, 1);
+			scr_draw_text_outlined(display_get_gui_width() * 0.5, display_get_gui_height() * 0.5 - 32, l10n_text("Your level is within the desired range!"), global.default_text_size, c_black, message_color, 1);
+			scr_draw_text_outlined(display_get_gui_width() * 0.5, display_get_gui_height() * 0.5, l10n_text("Your time") + ": " + string(global.timeattack_minute) + ":" + string_replace_all(string_format(global.timeattack_second, 2, 0), " ", "0"), global.default_text_size, c_black, message_color, 1);
+			scr_draw_text_outlined(display_get_gui_width() * 0.5, display_get_gui_height() * 0.5 + 32, l10n_text("Target range") + ": " + string(global.target_length_minutes_min) + " - " + string(global.target_length_minutes_max) + " " + l10n_text("minutes"), global.default_text_size, c_black, message_color, 1);
 		}
 		
 		var button_x = display_get_gui_width() * 0.5 - 185;
@@ -87,15 +104,17 @@ function scr_draw_level_length_recommendation()
 			{
 				if (variable_instance_exists(self, "open_sub_menu"))
 				{
-					open_sub_menu = false; /* Close the the sub menu when uploading level, so it doesn't interfere */
+					open_sub_menu = false; /* Close the sub menu when uploading level, so it doesn't interfere */
 				}
 				open_upload_menu = true;
 				menu = "upload_edit_name";
 			}
 			else
-			if (variable_instance_exists(self, "pause") && pause)
+			if (variable_instance_exists(self, "pause")
+			&& pause)
 			{
 				pressing_play_timer = 0;
+				
 				if (if_clear_checked)
 				{
 					menu = "";
@@ -107,7 +126,9 @@ function scr_draw_level_length_recommendation()
 					menu = "level_editor_upload_pressed";
 				}
 			}
-			if (variable_instance_exists(self, "pause") && !pause)
+			
+			if (variable_instance_exists(self, "pause")
+			&& !pause)
 			{
 				pressing_play_timer = 0;
 				menu = "";
@@ -134,7 +155,8 @@ function scr_draw_level_length_recommendation()
 			}
 			else
 			{
-				if (variable_instance_exists(self, "pause") && pause)
+				if (variable_instance_exists(self, "pause")
+				&& pause)
 				{
 					menu = "level_editor_upload";
 				}
@@ -151,12 +173,13 @@ function scr_draw_level_length_recommendation()
 			menu = "level_length_recommendation_ok";
 		}
 		else
-		if (key_down)
+		if (show_back_button)
+		&& (key_down)
 		&& (menu_delay == 0)
 		{
 			menu = "level_length_recommendation_back";
 		}
 	}
-	#endregion /* Show short level warning END */
+	#endregion /* Show level length recommendation END */
 	
 }

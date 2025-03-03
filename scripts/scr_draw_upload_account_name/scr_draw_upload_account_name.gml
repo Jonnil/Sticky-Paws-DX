@@ -202,7 +202,8 @@ function scr_draw_upload_account_name(what_kind_of_file = "level")
 								
 								#region /* Tell the player before uploading, if the level they clear checked was too short or not */
 								if (global.enable_level_length_target)
-								&& (short_level_minute < global.target_length_minutes)
+								&& (short_level_minute < global.target_length_minutes_min
+								|| short_level_minute > global.target_length_minutes_max)
 								{
 									menu = "level_length_recommendation_back";
 								}

@@ -1,5 +1,5 @@
 global.part_limit --;
-global.part_limit_text_alpha = 1;
+global.part_limit_text_alpha = 3;
 switch(object)
 {
 	case LEVEL_OBJECT_ID.ID_ENEMY_BOWLINGBALL:
@@ -18,7 +18,7 @@ switch(object)
 	case LEVEL_OBJECT_ID.ID_WARP_BOX_ONE_USE:
 	case LEVEL_OBJECT_ID.ID_WARP_BOX_LOCKED:
 	case LEVEL_OBJECT_ID.ID_WARP_BOX_ONE_USE_LOCKED:
-		global.part_limit_entity --;
-		global.part_limit_entity_text_alpha = 1;
+		global.part_limit_entity = clamp(global.part_limit_entity -1, 0, 100);
+		global.part_limit_entity_text_alpha = 3;
 		break;
 }

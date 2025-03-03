@@ -1,9 +1,9 @@
 {
   "$GMScript":"v1",
-  "%Name":"scr_unlock_placable_objects",
+  "%Name":"scr_size_place_object",
   "isCompatibility":false,
   "isDnD":false,
-  "name":"scr_unlock_placable_objects",
+  "name":"scr_size_place_object",
   "parent":{
     "name":"Level Editor",
     "path":"folders/Scripts/Level Editor.yy",

@@ -10,12 +10,18 @@ function preload_translation_missing_keywords()
 	if (file_exists(file_path))
 	{
 		var file = file_text_open_read(file_path);
+		
 		while (!file_text_eof(file))
 		{
-			var keyword = file_text_read_string(file);
-			file_text_readln(file); /* Move to the next line */
-			ds_map_add(global.translation_missing_keywords_cache, keyword, true); /* Add to cache */
+			var line = file_text_readln(file); /* Move to the next line */
+			var fields = string_split(line, ","); /* Split the CSV line by comma */
+			if (array_length(fields) > 0)
+			{
+				var keyword = string_replace_all(fields[0], "\"", ""); /* Remove the surrounding quotes from the keyword field */
+				ds_map_add(global.translation_missing_keywords_cache, keyword, true); /* Add to cache */
+			}
 		}
+		
 		file_text_close(file);
 		
 		/* Debug message to confirm preloaded cache */

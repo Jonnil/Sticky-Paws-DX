@@ -153,9 +153,17 @@ if (hspeed != 0)
 }
 
 #region /* Assist Always Above 1 HP */
-if (global.assist_enable && global.assist_above_1_hp && hp <= 1)
+/* This assist feature allows players to experience the feeling of gaining and losing HP */
+/* However, when enabled, it prevents the player from being defeated at 0 HP */
+/* Players still feel the tension of taking damage without the frustration of dying */
+/* This helps players who struggle with platformers while keeping the game engaging */
+/* The feature is optional and can be disabled for those who prefer a challenge */
+/* Designed to make the game more approachable for a wider audience */
+if (global.assist_enable
+&& global.assist_above_1_hp
+&& hp < 1)
 {
-	hp = 2;
+	hp = 1;
 }
 #endregion /* Assist Always Above 1 HP END */
 

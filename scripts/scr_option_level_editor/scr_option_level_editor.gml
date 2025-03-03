@@ -65,7 +65,8 @@ function scr_option_level_editor()
 		|| (menu == "time_countdown")
 		|| (menu == "show_new_items_notification_level_editor")
 		|| (menu == "enable_level_length_target")
-		|| (menu == "target_length_minutes")
+		|| (menu == "target_length_minutes_min")
+		|| (menu == "target_length_minutes_max")
 		|| (menu == "can_save_length_variable")
 		|| (menu == "select_level_editing_music")
 		|| (menu == "delete_all_objects")
@@ -109,7 +110,8 @@ function scr_option_level_editor()
 					ini_open(game_save_id + "save_file/config.ini");
 					ini_write_real("config", "show_new_items_notification_level_editor", global.show_new_items_notification);
 					ini_write_real("config", "enable_level_length_target", global.enable_level_length_target);
-					ini_write_real("config", "target_length_minutes", global.target_length_minutes);
+					ini_write_real("config", "target_length_minutes_min", global.target_length_minutes_min);
+					ini_write_real("config", "target_length_minutes_max", global.target_length_minutes_max);
 					ini_write_real("config", "can_save_length_variable", global.can_save_length_variable);
 					ini_write_real("config", "select_level_editing_music", global.selected_level_editing_music);
 					ini_close(); /* Don't commit the save data on Switch, this is only temporary! */
@@ -407,7 +409,7 @@ function scr_option_level_editor()
 				{
 					if (global.enable_level_length_target)
 					{
-						menu = "target_length_minutes";
+						menu = "target_length_minutes_min";
 					}
 					else
 					{
@@ -416,14 +418,31 @@ function scr_option_level_editor()
 					menu_delay = 3;
 				}
 			}
-			if (menu == "target_length_minutes")
-			&& (global.enable_level_length_target)
+			if (menu == "target_length_minutes_min")
 			{
 				if (key_up)
 				&& (menu_delay == 0 && menu_joystick_delay == 0)
 				&& (!open_dropdown)
 				{
 					menu = "enable_level_length_target";
+					menu_delay = 3;
+				}
+				else
+				if (key_down)
+				&& (menu_delay == 0 && menu_joystick_delay == 0)
+				&& (!open_dropdown)
+				{
+					menu = "target_length_minutes_max";
+					menu_delay = 3;
+				}
+			}
+			if (menu == "target_length_minutes_max")
+			{
+				if (key_up)
+				&& (menu_delay == 0 && menu_joystick_delay == 0)
+				&& (!open_dropdown)
+				{
+					menu = "target_length_minutes_min";
 					menu_delay = 3;
 				}
 				else
@@ -453,7 +472,7 @@ function scr_option_level_editor()
 				{
 					if (global.enable_level_length_target)
 					{
-						menu = "target_length_minutes";
+						menu = "target_length_minutes_max";
 					}
 					else
 					{
@@ -562,9 +581,9 @@ function scr_option_level_editor()
 			var show_new_items_notification_y = 46 * 8 + menu_y_offset;
 			var enable_level_length_target_y = 46 * 9 + menu_y_offset;
 			var target_length_minutes_y = 46 * 10 + menu_y_offset;
-			var can_save_length_variable_y = 46 * 11 + menu_y_offset;
-			var selected_level_editing_music_y = 46 * 13 - 16 + menu_y_offset;
-			var delete_all_objects_y = 46 * 14 + 20 - 16 + menu_y_offset;
+			var can_save_length_variable_y = 46 * 12 + menu_y_offset;
+			var selected_level_editing_music_y = 46 * 14 - 16 + menu_y_offset;
+			var delete_all_objects_y = 46 * 15 + 20 - 16 + menu_y_offset;
 			
 			draw_menu_button(0, 0, l10n_text("Back"), "back_level_editor_options", "level_editor_options");
 			draw_sprite_ext(spr_icon_back, 0, 20, 21, 1, 1, 0, c_white, 1);
@@ -573,15 +592,42 @@ function scr_option_level_editor()
 			{
 				menu_cursor_y_position = 0;
 			}
-			draw_menu_checkmark(level_editor_option_x - 90, make_every_tileset_into_default_tileset_y, l10n_text("Make every tileset into default tileset"), "make_every_tileset_into_default_tileset", global.make_every_tileset_into_default_tileset, false);
-			draw_menu_checkmark(level_editor_option_x - 90, rain_y, l10n_text("Rain"), "rain", global.effect_rain, false);
-			draw_menu_checkmark(level_editor_option_x - 90, snow_y, l10n_text("Snow"), "snow", global.effect_snow, false);
-			draw_menu_checkmark(level_editor_option_x - 90, wind_y, l10n_text("Wind"), "wind", global.effect_wind, false);
-			draw_menu_checkmark(level_editor_option_x - 90, enable_time_countdown_y, l10n_text("Enable Time Countdown"), "enable_time_countdown", global.enable_time_countdown, false);
-			draw_menu_checkmark(level_editor_option_x - 90, show_new_items_notification_y, l10n_text("Show New Items Notification"), "show_new_items_notification_level_editor", global.show_new_items_notification, true);
-			draw_menu_checkmark(level_editor_option_x - 90, enable_level_length_target_y, l10n_text("Enable Level Length Target"), "enable_level_length_target", global.enable_level_length_target, false, "You get a warning if your level is shorter than desired");
-			draw_menu_checkmark(level_editor_option_x - 90, can_save_length_variable_y, l10n_text("Save Length Variable"), "can_save_length_variable", global.can_save_length_variable, false, l10n_text("This function reduces data size slightly but saving takes longer")); /* Changed from "This function saves data size slightly but saving takes longer" to "This function reduces data size slightly but saving takes longer" for better wording */
-			draw_menu_button(level_editor_option_x, delete_all_objects_y, l10n_text("Delete All Objects"), "delete_all_objects", "delete_all_objects_no", c_red);
+			
+			draw_menu_checkmark(level_editor_option_x - 90, make_every_tileset_into_default_tileset_y, 
+				l10n_text("Make every tileset into default tileset"), "make_every_tileset_into_default_tileset", global.make_every_tileset_into_default_tileset, false, 
+				"Replaces all tilesets in the level with the default tileset");
+			
+			draw_menu_checkmark(level_editor_option_x - 90, rain_y, 
+				l10n_text("Rain"), "rain", global.effect_rain, false, 
+				"Enables rain effects in the level. Purely cosmetic");
+			
+			draw_menu_checkmark(level_editor_option_x - 90, snow_y, 
+				l10n_text("Snow"), "snow", global.effect_snow, false, 
+				"Enables snow effects in the level. Purely cosmetic");
+			
+			draw_menu_checkmark(level_editor_option_x - 90, wind_y, 
+				l10n_text("Wind"), "wind", global.effect_wind, false, 
+				"Enables wind effects in the level. Purely cosmetic");
+			
+			draw_menu_checkmark(level_editor_option_x - 90, enable_time_countdown_y, 
+				l10n_text("Enable Time Countdown"), "enable_time_countdown", global.enable_time_countdown, false, 
+				"Adds a countdown timer to the level requiring completion before time runs out");
+			
+			draw_menu_checkmark(level_editor_option_x - 90, show_new_items_notification_y, 
+				l10n_text("Show New Items Notification"), "show_new_items_notification_level_editor", global.show_new_items_notification, true, 
+				"Notifies you when new items become available in the level editor");
+			
+			draw_menu_checkmark(level_editor_option_x - 90, enable_level_length_target_y, 
+				l10n_text("Enable Level Length Target"), "enable_level_length_target", global.enable_level_length_target, false, 
+				"You get a warning if your level is shorter than your desired length");
+			
+			draw_menu_checkmark(level_editor_option_x - 90, can_save_length_variable_y, 
+				l10n_text("Save Length Variable"), "can_save_length_variable", global.can_save_length_variable, false, 
+				"This function reduces data size slightly but saving takes longer");
+			
+			draw_menu_button(level_editor_option_x, delete_all_objects_y, 
+				l10n_text("Delete All Objects"), "delete_all_objects", "delete_all_objects_no", c_red);
+			
 			if (menu == "delete_all_objects")
 			{
 				menu_cursor_y_position = delete_all_objects_y - menu_y_offset;
@@ -595,7 +641,22 @@ function scr_option_level_editor()
 			}
 			if (global.enable_level_length_target)
 			{
-				global.target_length_minutes = draw_menu_left_right_buttons(level_editor_option_x, target_length_minutes_y, option_level_editor_right_arrow_x, l10n_text("Target Length Minutes"), global.target_length_minutes, "target_length_minutes", 1, false);
+				global.target_length_minutes_min = draw_menu_left_right_buttons(level_editor_option_x, target_length_minutes_y, option_level_editor_right_arrow_x, l10n_text("Target Length Minutes Minimum"), global.target_length_minutes_min, "target_length_minutes_min", 1, false, 0, 60);
+				global.target_length_minutes_max = draw_menu_left_right_buttons(level_editor_option_x, target_length_minutes_y + 42, option_level_editor_right_arrow_x, l10n_text("Target Length Minutes Maximum"), global.target_length_minutes_max, "target_length_minutes_max", 1, false, 0, 60);
+				
+				/* Set the maximum so that it can never be lower than the minimum */
+				if (menu == "target_length_minutes_min")
+				&& (global.target_length_minutes_max < global.target_length_minutes_min)
+				{
+					global.target_length_minutes_max = global.target_length_minutes_min;
+				}
+				
+				/* Set the minimum so that it can never be higher than the maximum */
+				if (menu == "target_length_minutes_max")
+				&& (global.target_length_minutes_min > global.target_length_minutes_max)
+				{
+					global.target_length_minutes_min = global.target_length_minutes_max;
+				}
 			}
 		}
 		else

@@ -66,3 +66,11 @@ if (die_volting == -1 || die_volting == 1)
 	gravity_direction = 270; /* Direction of the gravity */
 	gravity = 0.5; /* The gravity */
 }
+
+/* If enemies are disabled, destroy this object */
+/* This code needs to be run last otherwise the game can crash if other variables aren't initialized first */
+if (global.assist_enable
+&& !global.assist_enable_enemies)
+{
+	instance_destroy();
+}

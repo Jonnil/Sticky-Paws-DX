@@ -250,11 +250,13 @@ function scr_save_level()
 			ini_write_real("rank", "rank_level_score", score);
 		}
 		
-		if (global.level_clear_rate == "clear" && global.doing_clear_check_level)
+		if (global.level_clear_rate == "clear"
+		&& global.doing_clear_check_level)
 		{
 			ini_write_real("info", "clear_check", true); /* If doing a level clear check, and winning the level, then add in level information that you have done a clear check */
 			if (global.enable_level_length_target)
-			&& (global.timeattack_minute < global.target_length_minutes)
+			&& (global.timeattack_minute < global.target_length_minutes_min
+			|| global.timeattack_minute > global.target_length_minutes_max)
 			{
 				global.go_to_menu_when_going_back_to_title = "level_length_recommendation_back";
 			}
@@ -271,7 +273,9 @@ function scr_save_level()
 	/* Only reset the "big collectible already collected" variables in certain cases */
 	if (global.level_clear_rate == "clear")
 	|| (global.quit_level)
-	|| (global.restart_level && global.checkpoint_x == 0 && global.checkpoint_y == 0)
+	|| (global.restart_level
+	&& global.checkpoint_x == 0
+	&& global.checkpoint_y == 0)
 	{
 		for(var i = 1; i <= global.max_big_collectible; i += 1)
 		{

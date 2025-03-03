@@ -1,12 +1,5 @@
 function scr_enemy_initialize_variables()
 {
-	
-	/* If enemies are disabled, destroy this object */
-	if (global.assist_enable && !global.assist_enable_enemies)
-	{
-		instance_destroy();
-	}
-	
 	blind = false; /* Not blind by default */
 	can_die_from_spikes = true;
 	can_turn_around_at_wall = true;

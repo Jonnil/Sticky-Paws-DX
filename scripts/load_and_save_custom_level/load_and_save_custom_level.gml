@@ -151,6 +151,7 @@ function scr_load_object_placement_json()
 				if (!ini_key_exists("Unlock Placable Objects", value))
 				{
 					ini_write_real("Unlock Placable Objects", value, true);
+					ini_write_real("Player", "placable_object_unlock_notify", true);
 				}
 			}
 			
@@ -314,6 +315,8 @@ function scr_save_level_information()
 	{
 		show_debug_message("SAVE LEVEL INFORMATION");
 		ini_open(game_save_id + "custom_levels/" + string(global.level_name) + "/data/level_information.ini");
+		
+		ini_write_real("info", "part_limit_entity", global.part_limit_entity); /* Save how many entity objects have been placed in the level, so you can't lag the game with too many objects with lots of code */
 		
 		#region /* Save what selected object you were using most recent in the specific level */
 		ini_write_real("info", "place_object", place_object);
@@ -523,6 +526,7 @@ function scr_save_level_information()
 		{
 			var value = ds_list_find_value(placed_objects_list, i);
 			ini_write_real("Unlock Placable Objects", value, 2);
+			ini_write_real("Player", "placable_object_unlock_notify", false);
 		}
 		
 		/* Close the INI file */

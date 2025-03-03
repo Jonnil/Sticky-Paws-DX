@@ -488,12 +488,12 @@ if (!global.actually_play_edited_level)
 	add_object(LEVEL_OBJECT_ID.ID_BUSH, spr_bush, 0, spr_wall, 1, 0, c_white, 1, "", noone, true, 0);
 	
 	#region /* Signs */
-	add_object(LEVEL_OBJECT_ID.ID_SIGN_CROUCH, spr_sign_crouch, 0, spr_wall, 1, 0, c_white, 1, "", noone, true, 0);
-	add_object(LEVEL_OBJECT_ID.ID_SIGN_DIVE, spr_sign_dive, 0, spr_wall, 1, 0, c_white, 1, "", noone, true, 0);
-	add_object(LEVEL_OBJECT_ID.ID_SIGN_GROUND_POUND, spr_sign_ground_pound, 0, spr_wall, 1, 0, c_white, 1, "", noone, true, 0);
-	add_object(LEVEL_OBJECT_ID.ID_SIGN_ROPE_SPIN, spr_sign_rope_spin, 0, spr_wall, 1, 0, c_white, 1, "", noone, true, 0);
-	add_object(LEVEL_OBJECT_ID.ID_SIGN_WALL_JUMP, spr_sign_wall_jump, 0, spr_wall, 1, 0, c_white, 1, "", noone, true, 0);
-	add_object(LEVEL_OBJECT_ID.ID_SIGN_RUN, spr_sign_run, 0, spr_wall, 1, 0, c_white, 1, "", noone, true, 0);
+	add_object(LEVEL_OBJECT_ID.ID_SIGN_CROUCH, spr_sign_crouch, 0, spr_wall, 1, 0, c_white, 1, "", noone, false, 0);
+	add_object(LEVEL_OBJECT_ID.ID_SIGN_DIVE, spr_sign_dive, 0, spr_wall, 1, 0, c_white, 1, "", noone, false, 0);
+	add_object(LEVEL_OBJECT_ID.ID_SIGN_GROUND_POUND, spr_sign_ground_pound, 0, spr_wall, 1, 0, c_white, 1, "", noone, false, 0);
+	add_object(LEVEL_OBJECT_ID.ID_SIGN_ROPE_SPIN, spr_sign_rope_spin, 0, spr_wall, 1, 0, c_white, 1, "", noone, false, 0);
+	add_object(LEVEL_OBJECT_ID.ID_SIGN_WALL_JUMP, spr_sign_wall_jump, 0, spr_wall, 1, 0, c_white, 1, "", noone, false, 0);
+	add_object(LEVEL_OBJECT_ID.ID_SIGN_RUN, spr_sign_run, 0, spr_wall, 1, 0, c_white, 1, "", noone, false, 0);
 	#endregion /* Signs END */
 	
 	add_object(LEVEL_OBJECT_ID.ID_BOSS, spr_boss_stand, 0, spr_wall, 1, 0, c_white, 1, "", noone, true, 0);
@@ -674,7 +674,8 @@ if (!global.actually_play_edited_level)
 	language_mouse_scroll = 0;
 	
 	#region /* Toggle for menu warning whenever the player plays a level from beginning and finishes the level too fast */
-	if (global.playing_level_from_beginning && global.player_has_entered_goal)
+	if (global.playing_level_from_beginning
+	&& global.player_has_entered_goal)
 	{
 		ini_open(game_save_id + "custom_levels/" + string(global.level_name) + "/data/level_information.ini");
 		ini_write_real("info", "clear_check", true); /* If doing a level clear check, and winning the level, then add in level information that you have done a clear check */
@@ -694,23 +695,6 @@ if (!global.actually_play_edited_level)
 	
 	darken_settings_alpha = 0;
 	darken_settings_sidebar_alpha = 0;
-	accessibility_settings_y = 40;
-	game_text_y = 40 * 2;
-	game_settings_y = 40 * 3;
-	multiplayer_settings_y = 40 * 4;
-	controls_text_y = 40 * 5;
-	keyboard_and_mouse_settings_y = 40 * 6;
-	controller_settings_y = 40 * 7;
-	touch_settings_y = 40 * 8;
-	general_text_y = 40 * 9;
-	account_settings_y = 40 * 10;
-	video_settings_y = 40 * 11;
-	audio_settings_y = 40 * 12;
-	custom_resources_settings_y = 40 * 13;
-	storage_settings_y = 40 * 14;
-	language_settings_y = 40 * 15;
-	broadcast_settings_y = 40 * 16;
-	how_to_play_y = 40 * 17;
 	left_sidebar_x = -400;
 	
 	play_level_icon_x = 32;
@@ -827,6 +811,7 @@ if (!global.actually_play_edited_level)
 
 #region /* Load what selected object you were using most recent in the specific level */
 ini_open(game_save_id + "custom_levels/" + string(global.level_name) + "/data/level_information.ini");
+global.part_limit_entity = ini_read_real("info", "part_limit_entity", 0);
 place_object = ini_read_real("info", "place_object", 1);
 selected_object = ini_read_real("info", "selected_object", 0);
 select_object_menu_actual_x = ini_read_real("info", "select_object_menu_actual_x", 0);

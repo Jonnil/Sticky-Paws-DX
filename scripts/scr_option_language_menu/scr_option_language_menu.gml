@@ -1,40 +1,37 @@
+/// @function scr_option_language_menu()
+/// @description Let me explain how the language selection system works in a more casual way, like we're just chatting about it.
+///	The game keeps track of the language the player has chosen using something called 'global.selected_language_id'.
+///	This is basically a number or ID that represents a specific language.
+///	Kind of like a label that never changes, no matter where it appears in the game.
+///	The game pulls this ID from a list called 'global.valid_languages', which isn't sorted in any special way.
+///	It just holds all the available language IDs.
+///	The point of this ID is to make sure the game knows which translations to use when it displays text.
+///	
+///	Then there's 'global.current_language_menu_position', which is a bit different.
+///	This variable isn't about IDs.
+///	It's about the position of the selected language in the menu itself.
+///	The menu shows the languages in alphabetical order, so the positions of the languages in this sorted list might not match their original IDs.
+///	This position is used to figure out which language should be highlighted and selected when the menu pops up.
+///	
+///	When the player opens the language menu, the game looks at the 'global.selected_language_id' and finds its place in the sorted list.
+///	It uses this to set 'global.current_language_menu_position' so the right language gets highlighted.
+///	If the player picks a new language, the game updates both variables: 'global.current_language_menu_position' changes to the new menu position,
+///	and 'global.selected_language_id' gets updated to the new language's ID from the unsorted list.
+///	
+///	Here's an example to make it clearer.
+///	When the game starts, it loads 'global.selected_language_id' from the settings file so it knows which language the player used last time.
+///	Then the language menu opens, showing the sorted list of available languages.
+///	The game goes through that list, finds the language that matches the saved ID, and highlights it in the menu.
+///	
+///	If the player decides to switch to a different language, the position in the menu ('global.current_language_menu_position') updates to the new selection,
+///	and 'global.selected_language_id' updates to the corresponding language ID from the unsorted list.
+///	When the player confirms the choice, the game saves this new ID to the settings file, so the next time they play, the game will remember their new language.
+///	
+///	So, to sum up: 'global.selected_language_id' is the ID that tells the game which translations to use,
+///	and 'global.current_language_menu_position' is the index of the language in the sorted menu list that makes sure the right language gets highlighted when the menu appears.
+///	They work together to make the language selection feel seamless and intuitive.
 function scr_option_language_menu()
 {
-	/*
-	Let me explain how the language selection system works in a more casual way, like we're just chatting about it.
-	
-	The game keeps track of the language the player has chosen using something called 'global.selected_language_id'.
-	This is basically a number or ID that represents a specific language.
-	Kind of like a label that never changes, no matter where it appears in the game.
-	The game pulls this ID from a list called 'global.valid_languages', which isn't sorted in any special way.
-	It just holds all the available language IDs.
-	The point of this ID is to make sure the game knows which translations to use when it displays text.
-	
-	Then there's 'global.current_language_menu_position', which is a bit different.
-	This variable isn't about IDs.
-	It's about the position of the selected language in the menu itself.
-	The menu shows the languages in alphabetical order, so the positions of the languages in this sorted list might not match their original IDs.
-	This position is used to figure out which language should be highlighted and selected when the menu pops up.
-	
-	When the player opens the language menu, the game looks at the 'global.selected_language_id' and finds its place in the sorted list.
-	It uses this to set 'global.current_language_menu_position' so the right language gets highlighted.
-	If the player picks a new language, the game updates both variables: 'global.current_language_menu_position' changes to the new menu position,
-	and 'global.selected_language_id' gets updated to the new language's ID from the unsorted list.
-	
-	Here's an example to make it clearer.
-	When the game starts, it loads 'global.selected_language_id' from the settings file so it knows which language the player used last time.
-	Then the language menu opens, showing the sorted list of available languages.
-	The game goes through that list, finds the language that matches the saved ID, and highlights it in the menu.
-	
-	If the player decides to switch to a different language, the position in the menu ('global.current_language_menu_position') updates to the new selection,
-	and 'global.selected_language_id' updates to the corresponding language ID from the unsorted list.
-	When the player confirms the choice, the game saves this new ID to the settings file, so the next time they play, the game will remember their new language.
-	
-	So, to sum up: 'global.selected_language_id' is the ID that tells the game which translations to use,
-	and 'global.current_language_menu_position' is the index of the language in the sorted menu list that makes sure the right language gets highlighted when the menu appears.
-	They work together to make the language selection feel seamless and intuitive.
-	*/
-	
 	#region /* Language Options */
 	if (global.settings_sidebar_menu == "language_settings")
 	{
@@ -112,7 +109,7 @@ function scr_option_language_menu()
 			}
 			if (mouse_check_button_released(mb_left))
 			{
-			    global.translation_debug = !global.translation_debug;
+				global.translation_debug = !global.translation_debug;
 			}
 		}
 		
@@ -131,13 +128,36 @@ function scr_option_language_menu()
 		
 		scr_draw_text_outlined(get_window_width - 32, get_window_height - 32, l10n_text("Language translations may not be 100% accurate"), global.default_text_size * 0.75, c_menu_outline, c_gray, 1);
 		
+		#region /* Language Pack Update Options */
+		/* Determine vertical position based on the end of the language list */
+		var language_list_end_y = 84 + (array_length(temp_languages) * 52);
+		
+		/* --- Manual update button --- */
+		var check_updates_button_y = language_list_end_y + 20;
+		draw_menu_button(match_system_language_x, check_updates_button_y, l10n_text("Check for language pack updates"), "check_updates", "check_updates");
+		
+		/* --- Automatic update dropdown using your existing function --- */
+		var auto_update_dropdown_y = check_updates_button_y + 50;
+		global.language_auto_update_interval = draw_menu_dropdown(
+			match_system_language_x,
+			auto_update_dropdown_y,
+			l10n_text("Check for language pack updates automatically"),
+			"language_auto_update",
+			global.language_auto_update_interval,
+			l10n_text("Never"),
+			l10n_text("On Startup"),
+			l10n_text("Each Week"),
+			l10n_text("Each Month"),
+			l10n_text("Each Year")
+		);
+		#endregion /* Language Pack Update Options END */
+		
 		#region /* Language Menu Navigation */
 		if (menu_delay == 0 && menu_joystick_delay == 0)
 		&& (can_navigate)
 		&& (global.settings_sidebar_menu = "language_settings")
 		{
-			if (key_up)
-			&& (!open_dropdown)
+			if (key_up && (!open_dropdown))
 			{
 				menu_delay = 3;
 				if (global.current_language_menu_position <= 1)
@@ -151,9 +171,7 @@ function scr_option_language_menu()
 					menu_cursor_y_position = global.current_language_menu_position * 50;
 				}
 			}
-			else
-			if (key_down)
-			&& (!open_dropdown)
+			else if (key_down && (!open_dropdown))
 			{
 				menu_delay = 3;
 				if (menu == "match_system_language")
@@ -168,8 +186,7 @@ function scr_option_language_menu()
 					menu_cursor_y_position = global.current_language_menu_position * 50;
 				}
 			}
-			else
-			if (key_a_pressed
+			else if (key_a_pressed
 			|| mouse_check_button_released(mb_left)
 			&& point_in_rectangle(device_mouse_x_to_gui(0), device_mouse_y_to_gui(0), match_system_language_x, match_system_language_y, match_system_language_x + 370, match_system_language_y + 42))
 			&& (!open_dropdown)

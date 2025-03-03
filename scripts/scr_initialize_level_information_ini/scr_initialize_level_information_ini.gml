@@ -57,6 +57,7 @@ function scr_initialize_level_information_ini()
 		global.effect_rain = get_custom_level_information_real("info", "rain", false);
 		global.effect_snow = get_custom_level_information_real("info", "snow", false);
 		global.effect_wind = get_custom_level_information_real("info", "wind", false);
+		global.part_limit_entity = get_custom_level_information_real("info", "part_limit_entity", 0);
 		autoscroll_speed_x = get_custom_level_information_real("info", "autoscroll_speed_x", 0);
 		autoscroll_speed_y = get_custom_level_information_real("info", "autoscroll_speed_y", 0);
 		

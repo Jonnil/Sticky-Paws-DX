@@ -29,6 +29,9 @@ if (vspeed >= 16)
 }
 #endregion /* Gravity END */
 
+/* If enemies are disabled, the bullets stops firing */
+/* This makies some platforming challenges impossible if the bullets are used as platforms */
+
 #region /* Stop firing if enemies are disabled, or you have finished the level */
 if (global.assist_enable)
 && (!global.assist_enable_enemies)

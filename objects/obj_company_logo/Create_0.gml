@@ -432,6 +432,7 @@ global.zoom_world_map = 1; /* Zooming the view in and out, by default it's set t
 global.reset_level_zoom_when_going_back_to_map = false;
 global.reset_world_map_zoom_when_going_back_to_map = false;
 
+global.language_auto_update_interval = 0; /* 0 = Never. 1 = On Startup. 2 = Each Week. 3 = Each Month. 4 = Each Year */
 global.selected_language_id = 1;
 global.current_language_menu_position = 1;
 global.language_local_data = 0;
@@ -484,6 +485,48 @@ global.assist_enable_enemies = true; /* Option to enable or disable all enemies 
 global.assist_enable_spikes = true; /* Option to enable or disable all enemies in the game, the player can change this themselves in assist settings. Default: true */
 #endregion /* Assist Settings END */
 
+#region /* Challenge Mode Settings */
+global.challenge_mode_enable = false;
+global.challenge_one_hit_defeat = false;
+global.challenge_no_health_pickups = false;
+global.challenge_no_checkpoints = false;
+global.challenge_limited_lives = false;
+global.challenge_lower_hp = false;
+global.challenge_no_post_hit_invincibility = false;
+global.challenge_stronger_gravity = false;
+global.challenge_no_coyote_time = false;
+global.challenge_slippery_physics = false;
+global.challenge_smaller_ledge = false;
+global.challenge_no_midair_control = false;
+global.challenge_faster_autoscroll = false;
+global.challenge_spikes_always_kill = false;
+global.challenge_more_bottomless_pits = false;
+global.challenge_platforms_crumble = false;
+global.challenge_extra_enemy_spawns = false;
+global.challenge_larger_hazard_hitboxes = false;
+global.challenge_stronger_enemies = false;
+global.challenge_faster_enemies = false;
+global.challenge_more_aggressive_enemies = false;
+global.challenge_enemies_respawn_quickly = false;
+global.challenge_enemies_double_damage = false;
+global.challenge_enemy_projectiles_faster = false;
+global.challenge_enemies_no_stun = false;
+global.challenge_permanent_darkness = false;
+global.challenge_limited_air = false;
+global.challenge_no_pause = false;
+global.challenge_game_speed = false;
+global.challenge_randomized_controls = false;
+global.challenge_invisible_elements = false;
+global.challenge_strict_time_limits = false;
+global.challenge_iron_paw_mode = false;
+global.challenge_limited_inputs = false;
+global.challenge_pacifist_mode = false;
+global.challenge_speedrun_mode = false;
+global.challenge_no_hud_mode = false;
+global.challenge_perma_death_mode = false;
+global.challenge_roguelike_mode = false;
+#endregion /* Challenge Mode Settings END */
+
 global.checkpoint_x = false;
 global.checkpoint_y = false;
 global.enable_time_countdown = false; /* If timer should be enabled in specific level, default should be "false" so most levels don't have a countdown */
@@ -500,7 +543,8 @@ global.timeattack_minute = 0;
 global.timeattack_realmillisecond = 0;
 global.timeattack_realmillisecond_real = 0;
 global.enable_level_length_target = false;
-global.target_length_minutes = 3;
+global.target_length_minutes_min = 3;
+global.target_length_minutes_max = 5;
 
 #region /* Checkpoint Timer */
 global.checkpoint_millisecond = 0;

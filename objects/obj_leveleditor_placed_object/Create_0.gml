@@ -44,6 +44,6 @@ if (!global.actually_play_edited_level)
 	
 	alarm[0] = 1;
 	global.part_limit ++;
-	global.part_limit_text_alpha = 1;
+	global.part_limit_text_alpha = 3;
 	first_created = false;
 }

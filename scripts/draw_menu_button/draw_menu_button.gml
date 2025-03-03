@@ -9,14 +9,25 @@ function draw_menu_button(x_position, y_position, string_text, menu_index, menu_
 	var not_open_dropdown = !open_dropdown;
 	var is_same_menu = (menu == menu_index);
 	
-	if ((point_in_button && using_mouse && not_open_dropdown) || (is_same_menu && !using_mouse && not_open_dropdown))
+	if ((point_in_button
+	&& using_mouse
+	&& not_open_dropdown)
+	|| (is_same_menu
+	&& !using_mouse
+	&& not_open_dropdown))
 	{
 		if (menu_delay == 0 && menu_joystick_delay == 0) /* Only change menu when "menu delay" is 0, otherwise there could be weird menu bugs that happen when you hover over a button when game needs to load code */
 		{
 			menu = menu_index;
 		}
 		
-		if (mouse_check_button_released(mb_left) && menu_takes_you_to != false && menu_takes_you_to != noone && menu_takes_you_to != "" && menu_takes_you_to != menu_index && menu_delay == 0 && menu_joystick_delay == 0)
+		if (mouse_check_button_released(mb_left)
+		&& menu_takes_you_to != false
+		&& menu_takes_you_to != noone
+		&& menu_takes_you_to != ""
+		&& menu_takes_you_to != menu_index
+		&& menu_delay == 0
+		&& menu_joystick_delay == 0)
 		{
 			menu_delay = 3;
 			menu = menu_takes_you_to;
@@ -38,7 +49,8 @@ function draw_menu_button(x_position, y_position, string_text, menu_index, menu_
 	var text_scale = (string_width(string_text) >= 360) ? 0.7 : 1;
 	
 	draw_sprite_ext(spr_menu_button, global.menu_button_subimg, x_position, y_position + 21, 1, 1, 0, actual_highlight_color, alpha);
-	if (highlight_color != c_lime && actual_highlight_color == c_white)
+	if (highlight_color != c_lime
+	&& actual_highlight_color == c_white)
 	{
 		draw_sprite_ext(spr_menu_button, global.menu_button_subimg, x_position, y_position + 21, 1, 1, 0, highlight_color, 0.1 * alpha);
 	}
@@ -47,13 +59,22 @@ function draw_menu_button(x_position, y_position, string_text, menu_index, menu_
 	draw_set_valign(fa_middle);
 	scr_draw_text_outlined(x_position + 185, y_position + 21, string(string_text), global.default_text_size * text_scale, outline_color, fill_color, alpha);
 	
-	if (point_in_button)
-	&& (global.controls_used_for_navigation == "mouse")
-	&& (mouse_check_button_released(mb_left))
-	&& (menu_delay == 0 && menu_joystick_delay == 0)
-	|| (menu == menu_index)
-	&& (key_a_pressed)
-	&& (menu_delay == 0 && menu_joystick_delay == 0)
+	if (point_in_button
+	&& global.controls_used_for_navigation == "mouse"
+	&& mouse_check_button_released(mb_left)
+	&& menu_delay == 0 && menu_joystick_delay == 0)
+	
+	|| (instance_exists(obj_leveleditor)
+	&& menu == menu_index
+	&& obj_leveleditor.key_a_pressed
+	&& menu_delay == 0
+	&& menu_joystick_delay == 0)
+	
+	|| (variable_instance_exists(self, "key_a_pressed")
+	&& menu == menu_index
+	&& key_a_pressed
+	&& menu_delay == 0
+	&& menu_joystick_delay == 0)
 	{
 		return true;
 	}

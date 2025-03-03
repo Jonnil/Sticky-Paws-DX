@@ -222,22 +222,6 @@ if (!global.actually_play_edited_level)
 			case LEVEL_OBJECT_ID.ID_WARP_BOX_LOCKED:
 			case LEVEL_OBJECT_ID.ID_WARP_BOX_ONE_USE_LOCKED:
 				draw_leveleditor_arrow = true;
-			case LEVEL_OBJECT_ID.ID_ENEMY_BOWLINGBALL:
-			case LEVEL_OBJECT_ID.ID_ENEMY_BOWLINGBALL_BLIND:
-			case LEVEL_OBJECT_ID.ID_BASIC_ENEMY:
-			case LEVEL_OBJECT_ID.ID_BASIC_ENEMY_BLIND:
-			case LEVEL_OBJECT_ID.ID_BIG_STATIONARY_ENEMY:
-			case LEVEL_OBJECT_ID.ID_ENEMY_VENGEFUL_SPIRIT:
-			case LEVEL_OBJECT_ID.ID_BOSS:
-				if (!first_created)
-				{
-					global.part_limit_entity ++;
-					global.part_limit_entity_text_alpha = 1;
-				}
-				if (global.part_limit_entity > 100)
-				{
-					instance_destroy();
-				}
 				break;
 			case LEVEL_OBJECT_ID.ID_ENEMY_BOWLINGBALL_BLIND_COIL_SPRING:
 			case LEVEL_OBJECT_ID.ID_ENEMY_BOWLINGBALL_COIL_SPRING:
@@ -245,15 +229,6 @@ if (!global.actually_play_edited_level)
 			case LEVEL_OBJECT_ID.ID_BASIC_ENEMY_COIL_SPRING:
 			case LEVEL_OBJECT_ID.ID_BIG_STATIONARY_ENEMY_COIL_SPRING:
 				draw_enemy_with_spring = true;
-				if (!first_created)
-				{
-					global.part_limit_entity ++;
-					global.part_limit_entity_text_alpha = 1;
-				}
-				if (global.part_limit_entity > 100)
-				{
-					instance_destroy();
-				}
 				break;
 		}
 	}

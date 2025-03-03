@@ -46,7 +46,8 @@ function scr_draw_level_editor_placable_object(v_selected_object, v_place_object
 			}
 			
 			/* If you have recently unlocked a new object, indicate that to the player */
-			if (unlocked_object[v_place_object_id] == 1 && global.show_new_items_notification)
+			if (unlocked_object[v_place_object_id] == 1
+			&& global.show_new_items_notification)
 			{
 				draw_circle_color(half_gui_width + menu_x_offset + 16, y_offset - 16, 3 + scr_wave(0, 3, 1, 0), c_red, c_red, false);
 			}

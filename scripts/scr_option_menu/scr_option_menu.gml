@@ -34,76 +34,77 @@ function scr_option_menu()
 	draw_set_valign(fa_middle);
 	#endregion /* Set Font END */
 	
+	#region /* Menu navigation tabs y positions */
+	var accessibility_settings_y = 40;
+	var challenge_mode_settings_y = accessibility_settings_y + 40;
+	if (global.enable_how_to_play_settings)
+	{
+		var how_to_play_y = challenge_mode_settings_y + 40;
+		var game_text_y = how_to_play_y + 40;
+	}
+	else
+	{
+		var how_to_play_y = -999;
+		var game_text_y = challenge_mode_settings_y + 40;
+	}
+	var game_settings_y = game_text_y + 40;
+	if (global.enable_multiplayer_settings)
+	{
+		var multiplayer_settings_y = game_settings_y + 40;
+		var controls_text_y = multiplayer_settings_y + 40;
+	}
+	else
+	{
+		var multiplayer_settings_y = -999;
+		var controls_text_y = game_settings_y + 40;
+	}
+	if (global.enable_keyboard_and_mouse_settings)
+	{
+		var keyboard_and_mouse_settings_y = controls_text_y + 40;
+		var controller_settings_y = keyboard_and_mouse_settings_y + 40;
+	}
+	else
+	{
+		keyboard_and_mouse_settings_y = -999;
+		var controller_settings_y = controls_text_y + 40;
+	}
+	if (global.enable_touch_settings)
+	{
+		var touch_settings_y = controller_settings_y + 40;
+		var general_text_y = touch_settings_y + 40;
+	}
+	else
+	{
+		var touch_settings_y = -999;
+		var general_text_y = controller_settings_y + 40;
+	}
+	if (global.enable_account_settings)
+	{
+		var account_settings_y = general_text_y + 40;
+		var video_settings_y = account_settings_y + 40;
+	}
+	else
+	{
+		var account_settings_y = -999;
+		var video_settings_y = general_text_y + 40;
+	}
+	var audio_settings_y = video_settings_y + 40;
+	var custom_resources_settings_y = audio_settings_y + 40;
+	var storage_settings_y = custom_resources_settings_y + 40;
+	var language_settings_y = storage_settings_y + 40;
+	if (global.enable_broadcast_settings)
+	{
+		var broadcast_settings_y = language_settings_y + 40;
+	}
+	else
+	{
+		var broadcast_settings_y = -999;
+	}
+	#endregion /* Menu navigation tabs y positions END */
+	
 	#region /* Tabs Graphics */
 	if (left_sidebar_x > -400)
 	{
-		
-		#region /* Menu navigation tabs y positions */
-		accessibility_settings_y = 40;
-		if (global.enable_how_to_play_settings)
-		{
-			how_to_play_y = accessibility_settings_y + 40;
-			game_text_y = how_to_play_y + 40;
-		}
-		else
-		{
-			how_to_play_y = -999;
-			game_text_y = accessibility_settings_y + 40;
-		}
-		game_settings_y = game_text_y + 40;
-		if (global.enable_multiplayer_settings)
-		{
-			multiplayer_settings_y = game_settings_y + 40;
-			controls_text_y = multiplayer_settings_y + 40;
-		}
-		else
-		{
-			multiplayer_settings_y = -999;
-			controls_text_y = game_settings_y + 40;
-		}
-		if (global.enable_keyboard_and_mouse_settings)
-		{
-			keyboard_and_mouse_settings_y = controls_text_y + 40;
-			controller_settings_y = keyboard_and_mouse_settings_y + 40;
-		}
-		else
-		{
-			keyboard_and_mouse_settings_y = -999;
-			controller_settings_y = controls_text_y + 40;
-		}
-		if (global.enable_touch_settings)
-		{
-			touch_settings_y = controller_settings_y + 40;
-			general_text_y = touch_settings_y + 40;
-		}
-		else
-		{
-			touch_settings_y = -999;
-			general_text_y = controller_settings_y + 40;
-		}
-		if (global.enable_account_settings)
-		{
-			account_settings_y = general_text_y + 40;
-			video_settings_y = account_settings_y + 40;
-		}
-		else
-		{
-			account_settings_y = -999;
-			video_settings_y = general_text_y + 40;
-		}
-		audio_settings_y = video_settings_y + 40;
-		custom_resources_settings_y = audio_settings_y + 40;
-		storage_settings_y = custom_resources_settings_y + 40;
-		language_settings_y = storage_settings_y + 40;
-		if (global.enable_broadcast_settings)
-		{
-			broadcast_settings_y = language_settings_y + 40;
-		}
-		else
-		{
-			broadcast_settings_y = -999;
-		}
-		#endregion /* Menu navigation tabs y positions END */
 		
 		#region /* Accessibility Settings */
 		if (global.settings_sidebar_menu == "accessibility_settings")
@@ -137,6 +138,39 @@ function scr_option_menu()
 			scr_draw_text_outlined(left_sidebar_x + 40 + text_x_offset, 20 + accessibility_settings_y, l10n_text("Accessibility"), global.default_text_size, c_white, c_black, 1);
 		}
 		#endregion /* Accessibility Settings END */
+		
+		#region /* Challenge Settings */
+		if (global.settings_sidebar_menu == "challenge_mode_settings")
+		{
+			if (point_in_rectangle(mouse_get_x, mouse_get_y, 0, challenge_mode_settings_y, 370, challenge_mode_settings_y + 39))
+			&& (global.controls_used_for_navigation == "mouse")
+			{
+				draw_sprite_ext(spr_menu_button, global.menu_button_subimg, left_sidebar_x, 20 + challenge_mode_settings_y, 1, 1, 0, c_green, 1);
+			}
+			else
+			{
+				draw_sprite_ext(spr_menu_button, global.menu_button_subimg, left_sidebar_x, 20 + challenge_mode_settings_y, 1, 1, 0, c_gray, 1);
+			}
+			/* Button Hightlighted */
+			
+			draw_sprite_ext(spr_icon_challenge_mode, 1, left_sidebar_x + 20 + icon_x_offset, 20 + challenge_mode_settings_y, 1, 1, 0, c_white, 1); /* Settings Icon */
+			scr_draw_text_outlined(left_sidebar_x + 40 + text_x_offset, 20 + challenge_mode_settings_y, l10n_text("Challenge Mode"), global.default_text_size * 1.05, c_black, c_white, 1);
+		}
+		else
+		{
+			if (point_in_rectangle(mouse_get_x, mouse_get_y, 0, challenge_mode_settings_y, 370,(challenge_mode_settings_y + 40) - 1))
+			&& (global.controls_used_for_navigation == "mouse")
+			{
+				draw_sprite_ext(spr_menu_button, global.menu_button_subimg, left_sidebar_x, 20 + challenge_mode_settings_y, 1, 1, 0, c_lime, 1);
+			}
+			else
+			{
+				draw_sprite_ext(spr_menu_button, global.menu_button_subimg, left_sidebar_x, 20 + challenge_mode_settings_y, 1, 1, 0, c_white, 1);
+			}
+			draw_sprite_ext(spr_icon_challenge_mode, 1, left_sidebar_x + 20 + icon_x_offset, 20 + challenge_mode_settings_y, 0.9, 0.9, 0, c_white, 1); /* Settings Icon */
+			scr_draw_text_outlined(left_sidebar_x + 40 + text_x_offset, 20 + challenge_mode_settings_y, l10n_text("Challenge Mode"), global.default_text_size, c_white, c_black, 1);
+		}
+		#endregion /* Challenge Settings END */
 		
 		#region /* My Game Settings */
 		scr_draw_text_outlined(left_sidebar_x + 20 + text_x_offset, 20 + (game_text_y), l10n_text("Game"), global.default_text_size * 0.5, c_black, c_white, 1);
@@ -711,6 +745,7 @@ function scr_option_menu()
 			menu_delay = 3;
 			can_navigate_settings_sidebar = false;
 			if (global.settings_sidebar_menu == "accessibility_settings"){menu = "assist_enable";}
+			if (global.settings_sidebar_menu == "challenge_mode_settings"){menu = "challenge_mode_enable";}
 			if (global.settings_sidebar_menu == "game_settings")
 			{
 				menu = "difficulty_settings";
@@ -837,6 +872,37 @@ function scr_option_menu()
 			can_navigate_settings_sidebar = true;
 		}
 		#endregion /* Accessibility END */
+		
+		else
+		
+		#region /* Click Challenge Mode */
+		if (point_in_rectangle(mouse_get_x, mouse_get_y, 0, challenge_mode_settings_y, 370,(challenge_mode_settings_y + 40) - 1))
+		&& (global.controls_used_for_navigation == "mouse")
+		&& (global.settings_sidebar_menu == "challenge_mode_settings")
+		&& (mouse_check_button_released(mb_left))
+		&& (menu_delay == 0 && menu_joystick_delay == 0)
+		{
+			global.settings_sidebar_menu = "challenge_mode_settings";
+			menu_delay = 3;
+			input_key = false;
+			can_navigate_settings_sidebar = false;
+			menu = "challenge_mode_enable";
+		}
+		#endregion /* Click Challenge Mode END */
+		
+		else
+		
+		#region /* Challenge Mode */
+		if (point_in_rectangle(mouse_get_x, mouse_get_y, 0, challenge_mode_settings_y, 370,(challenge_mode_settings_y + 40) - 1))
+		&& (global.controls_used_for_navigation == "mouse")
+		&& (mouse_check_button(mb_left))
+		&& (menu_delay == 0 && menu_joystick_delay == 0)
+		{
+			global.settings_sidebar_menu = "challenge_mode_settings";
+			input_key = false;
+			can_navigate_settings_sidebar = true;
+		}
+		#endregion /* Challenge Mode END */
 		
 		else
 		
@@ -1305,6 +1371,27 @@ function scr_option_menu()
 				&& (can_navigate_settings_sidebar)
 				&& (menu_delay == 0 && menu_joystick_delay == 0)
 				{
+					global.settings_sidebar_menu = "challenge_mode_settings";
+					menu_delay = 3;
+				}
+			}
+			#endregion /* Accessibility Settings END */
+			
+			#region /* Chellenge Mode Settings */
+			if (global.settings_sidebar_menu == "challenge_mode_settings")
+			{
+				if (key_up)
+				&& (can_navigate_settings_sidebar)
+				&& (menu_delay == 0 && menu_joystick_delay == 0)
+				{
+					global.settings_sidebar_menu = "accessibility_settings";
+					menu_delay = 3;
+				}
+				else
+				if (key_down)
+				&& (can_navigate_settings_sidebar)
+				&& (menu_delay == 0 && menu_joystick_delay == 0)
+				{
 					if (global.enable_how_to_play_settings)
 					{
 						global.settings_sidebar_menu = "how_to_play";
@@ -1316,8 +1403,8 @@ function scr_option_menu()
 					menu_delay = 3;
 				}
 			}
-			#endregion /* Accessibility Settings END */
-		
+			#endregion /* Challenge Mode Settings END */
+			
 			#region /* How to play Settings */
 			if (global.enable_how_to_play_settings)
 			{
@@ -1327,7 +1414,7 @@ function scr_option_menu()
 					&& (can_navigate_settings_sidebar)
 					&& (menu_delay == 0 && menu_joystick_delay == 0)
 					{
-						global.settings_sidebar_menu = "accessibility_settings";
+						global.settings_sidebar_menu = "challenge_mode_settings";
 						menu_delay = 3;
 					}
 					else
@@ -1357,7 +1444,7 @@ function scr_option_menu()
 					}
 					else
 					{
-						global.settings_sidebar_menu = "accessibility_settings";
+						global.settings_sidebar_menu = "challenge_mode_settings";
 					}
 					menu_delay = 3;
 				}
@@ -2034,91 +2121,21 @@ function scr_option_menu()
 		draw_set_halign(fa_left);
 		draw_set_valign(fa_middle);
 
-		#region /* Assist Settings */
-		if (global.settings_sidebar_menu == "accessibility_settings")
-		{
-			global.assist_enable = draw_menu_checkmark(450, 50 + menu_y_offset, l10n_text("Enable Assist Mode"), "assist_enable", global.assist_enable, false);
-			scr_draw_text_outlined(450, 100 + menu_y_offset, l10n_text("The game is meant to be played without Assist Mode"), global.default_text_size * 0.75, c_menu_outline, c_menu_fill, 1);
-			scr_draw_text_outlined(450, 132 + menu_y_offset, l10n_text("Only enable this if you cannot enjoy the game without extra help"), global.default_text_size * 0.75, c_menu_outline, c_menu_fill, 1);
-			
-			global.assist_above_1_hp = draw_menu_checkmark(450, 332 + menu_y_offset, l10n_text("Always Above 1 HP"), "assist_above_1_hp", global.assist_above_1_hp, false);
-			global.assist_invincibility = draw_menu_checkmark(450, 332 + (45) + menu_y_offset, l10n_text("Invincible"), "assist_invincibility", global.assist_invincibility, false);
-			global.assist_moonjump = draw_menu_checkmark(450, 332 + (45 * 2) + menu_y_offset, l10n_text("Moonjump"), "assist_moonjump", global.assist_moonjump, false);
-			global.assist_hover_when_holding_jump = draw_menu_checkmark(450, 332 + (45 * 3) + menu_y_offset, l10n_text("Hover When Holding Jump"), "assist_hover_when_holding_jump", global.assist_hover_when_holding_jump, false);
-			global.assist_floor_over_bottomless_pit = draw_menu_checkmark(450, 332 + (45 * 4) + menu_y_offset, l10n_text("Floor Over Bottomless Pit"), "assist_floor_over_bottomless_pit", global.assist_floor_over_bottomless_pit, false);
-			global.assist_breathe_underwater = draw_menu_checkmark(450, 332 + (45 * 5) + menu_y_offset, l10n_text("Breathe Underwater"), "assist_breathe_underwater", global.assist_breathe_underwater, false);
-			global.assist_guiding_arrows = draw_menu_checkmark(450, 332 + (45 * 6) + menu_y_offset, l10n_text("Show Assist Arrows"), "assist_guiding_arrows", global.assist_guiding_arrows, false);
-			global.assist_normal_arrows = draw_menu_checkmark(450, 332 + (45 * 7) + menu_y_offset, l10n_text("Show Normal Arrows"), "assist_normal_arrows", global.assist_normal_arrows, true);
-			global.assist_enable_enemies = draw_menu_checkmark(450, 332 + (45 * 8) + menu_y_offset, l10n_text("Enable Enemies"), "assist_enable_enemies", global.assist_enable_enemies, true);
-			global.assist_enable_spikes = draw_menu_checkmark(450, 332 + (45 * 9) + menu_y_offset, l10n_text("Enable Spikes"), "assist_enable_spikes", global.assist_enable_spikes, true);
-			menu_cursor_y_position_end = 332 + (45 * 9);
-			
-			#region /* Assist Extra HP */
-			draw_menu_dropdown(450, 262 + menu_y_offset, l10n_text("Extra Health Points"), "assist_extra_hp", global.assist_extra_hp,
-			l10n_text("None"),
-			"+1",
-			"+2",
-			"+3",
-			"+4",
-			"+5",
-			"+6",
-			"+7",
-			"+8",
-			"+9");
-			scr_set_default_dropdown_description("assist_extra_hp", "None");
-			#endregion /* Assist Extra HP END */
-			
-			#region /* Assist item appear */
-			draw_menu_dropdown(450, 182 + menu_y_offset, l10n_text("Assist Item"), "assist_item_appear", global.assist_item_appear,
-			l10n_text("Always Appear"),
-			l10n_text("Appear after 1 defeat on a level"),
-			l10n_text("Appear after 2 defeats on a level"),
-			l10n_text("Appear after 3 defeats on a level"),
-			l10n_text("Appear after 4 defeats on a level"),
-			l10n_text("Appear after 5 defeats on a level"),
-			l10n_text("Appear after 6 defeats on a level"),
-			l10n_text("Appear after 7 defeats on a level"),
-			l10n_text("Appear after 8 defeats on a level"),
-			l10n_text("Appear after 9 defeats on a level"),
-			l10n_text("Never Appear"));
-			scr_set_default_dropdown_description("assist_item_appear", "Never Appear");
-			#endregion /* Assist item appear END */
-			
-			#region /* Make sure you can't navigate the assist menu unless you have enabled assist mode */
-			if (!global.assist_enable)
-			{
-				if (menu == "assist_above_1_hp")
-				|| (menu == "assist_invincibility")
-				|| (menu == "assist_moonjump")
-				|| (menu == "assist_hover_when_holding_jump")
-				|| (menu == "assist_floor_over_bottomless_pit")
-				|| (menu == "assist_breathe_underwater")
-				|| (menu == "assist_guiding_arrows")
-				|| (menu == "assist_normal_arrows")
-				|| (menu == "assist_extra_hp")
-				|| (menu == "assist_item_appear")
-				{
-					menu = "assist_enable";
-				}
-				open_dropdown = false;
-				draw_set_alpha(0.5);
-				draw_rectangle_color(left_sidebar_x + 370, 157 + menu_y_offset, get_window_width, get_window_height, c_black, c_black, c_black, c_black, false);
-				draw_set_alpha(1);
-			}
-			#endregion /* Make sure you can't navigate the assist menu unless you have enabled assist mode END */
-			
-		}
-		#endregion /* Assist Settings END */
+		scr_option_assist_settings();
+		
+		scr_option_challenge_mode_settings();
 		
 		#region /* My Game Settings */
 		
 		#region /* Game Settings */
-		if (global.settings_sidebar_menu == "game_settings") {
+		if (global.settings_sidebar_menu == "game_settings")
+		{
 			difficulty_settings_y = 48;
 			automatically_pause_when_window_is_unfocused_settings_y = 48 * 2;
 			show_timer_settings_y = 48 * 3;
 			show_defeats_counter_settings_y = 48 * 4;
-			if (global.enable_ranks) {
+			if (global.enable_ranks)
+			{
 				show_ranks_settings_y = 48 * 5;
 				show_tutorial_signs_y = 48 * 6;
 				players_can_collide_y = 48 * 7;
@@ -2127,7 +2144,8 @@ function scr_option_menu()
 				selected_font_y = 48 * 10 + 32;
 				debug_screen_y = 48 * 11 + 32;
 			}
-			else {
+			else
+			{
 				show_ranks_settings_y = -9999;
 				show_tutorial_signs_y = 48 * 5;
 				players_can_collide_y = 48 * 6;
@@ -2141,20 +2159,35 @@ function scr_option_menu()
 			
 			if (global.enable_option_for_pc)
 			{
-				global.automatically_pause_when_window_is_unfocused = draw_menu_checkmark(380, automatically_pause_when_window_is_unfocused_settings_y, l10n_text("Automatically pause when the game is unfocused"), "automatically_pause_when_window_is_unfocused_settings", global.automatically_pause_when_window_is_unfocused, true); /* Automatically Pause When Window Is Unfocused */
+				global.automatically_pause_when_window_is_unfocused = draw_menu_checkmark(380, automatically_pause_when_window_is_unfocused_settings_y, l10n_text("Automatically pause when the game is unfocused"), "automatically_pause_when_window_is_unfocused_settings", global.automatically_pause_when_window_is_unfocused, true, 
+					"Pauses the game when the window loses focus");
 			}
-			global.show_timer = draw_menu_checkmark(380, show_timer_settings_y, l10n_text("Show Timer"), "show_timer_settings", global.show_timer, false); /* Show Timer */
-			global.show_defeats_counter = draw_menu_checkmark(380, show_defeats_counter_settings_y, l10n_text("Show Defeats Counter"), "show_defeats_counter_settings", global.show_defeats_counter, true); /* Show Defeats Counter */
+			
+			global.show_timer = draw_menu_checkmark(380, show_timer_settings_y, l10n_text("Show Timer"), "show_timer_settings", global.show_timer, false, 
+				"Displays a timer while playing");
+			
+			global.show_defeats_counter = draw_menu_checkmark(380, show_defeats_counter_settings_y, l10n_text("Show Defeats Counter"), "show_defeats_counter_settings", global.show_defeats_counter, true, 
+				"Keeps track of how many times you've been defeated");
+			
 			if (global.enable_ranks)
 			{
-				global.show_defeats_counter = draw_menu_checkmark(380, show_ranks_settings_y, l10n_text("Show Ranks"), "show_ranks_settings", global.show_ranks, false); /* Show Ranks */
+				global.show_ranks = draw_menu_checkmark(380, show_ranks_settings_y, l10n_text("Show Ranks"), "show_ranks_settings", global.show_ranks, false, 
+					"Displays rank information based on performance");
 			}
-			global.show_tutorial_signs = draw_menu_checkmark(380, show_tutorial_signs_y, l10n_text("Show Tutorial Signs"), "show_tutorial_signs", global.show_tutorial_signs, true); /* Show Tutorial Signs */
-			global.players_can_collide = draw_menu_checkmark(380, players_can_collide_y, l10n_text("Players Can Collide"), "players_can_collide", global.players_can_collide, false); /* Show Tutorial Signs */
-			global.show_new_items_notification = draw_menu_checkmark(380, show_new_items_notification_y, l10n_text("Show New Items Notification"), "show_new_items_notification", global.show_new_items_notification, true); /* Show new items notification in level editor */
+			
+			global.show_tutorial_signs = draw_menu_checkmark(380, show_tutorial_signs_y, l10n_text("Show Tutorial Signs"), "show_tutorial_signs", global.show_tutorial_signs, true, 
+				"Shows tutorial signs with helpful gameplay tips");
+			
+			global.players_can_collide = draw_menu_checkmark(380, players_can_collide_y, l10n_text("Players Can Collide"), "players_can_collide", global.players_can_collide, false, 
+				"Allows players to collide with each other in multiplayer mode");
+			
+			global.show_new_items_notification = draw_menu_checkmark(380, show_new_items_notification_y, l10n_text("Show New Items Notification"), "show_new_items_notification", global.show_new_items_notification, true, 
+				"Notifies you when new items become available in the level editor");
+			
 			if (global.enable_option_for_pc)
 			{
-				global.debug_screen = draw_menu_checkmark(380, debug_screen_y, l10n_text("Debug Screen"), "debug_screen", global.debug_screen, false);
+				global.debug_screen = draw_menu_checkmark(380, debug_screen_y, l10n_text("Debug Screen"), "debug_screen", global.debug_screen, false, 
+					"Displays debug information for development and troubleshooting");
 			}
 			
 			if (global.hud_hide_time > 10)
@@ -2870,342 +2903,6 @@ function scr_option_menu()
 				}
 			}
 			#endregion /* Players can collide END */
-			
-			else
-			
-			#region /* Assist Enable Navigation */
-			if (menu == "assist_enable")
-			&& (global.assist_enable)
-			{
-				if (key_up)
-				&& (menu_delay == 0 && menu_joystick_delay == 0)
-				&& (!open_dropdown)
-				{
-					menu = "assist_enable_spikes";
-					menu_delay = 3;
-				}
-				else
-				if (key_down)
-				&& (menu_delay == 0 && menu_joystick_delay == 0)
-				&& (!open_dropdown)
-				{
-					menu = "assist_item_appear";
-					menu_delay = 3;
-				}
-			}
-			#endregion /* Assist Enable Navigation END */
-	
-			else
-	
-			#region /* Assist Item Appear Navigation */
-			if (menu == "assist_item_appear")
-			{
-				if (key_up)
-				&& (menu_delay == 0 && menu_joystick_delay == 0)
-				&& (!open_dropdown)
-				{
-					menu = "assist_enable";
-					menu_delay = 3;
-				}
-				else
-				if (key_down)
-				&& (menu_delay == 0 && menu_joystick_delay == 0)
-				&& (!open_dropdown)
-				{
-					menu = "assist_extra_hp";
-					menu_delay = 3;
-				}
-				else
-				if (key_up)
-				&& (menu_delay == 0 && menu_joystick_delay == 0)
-				&& (open_dropdown)
-				&& (global.assist_item_appear > 0)
-				{
-					global.assist_item_appear --;
-					menu_delay = 3;
-				}
-				else
-				if (key_down)
-				&& (menu_delay == 0 && menu_joystick_delay == 0)
-				&& (open_dropdown)
-				&& (global.assist_item_appear < 10)
-				{
-					global.assist_item_appear ++;
-					menu_delay = 3;
-				}
-			}
-			#endregion /* Assist Item Appear Navigation END */
-			
-			else
-			
-			#region /* Assist Extra HP Navigation */
-			if (menu == "assist_extra_hp")
-			{
-				if (key_up)
-				&& (menu_delay == 0 && menu_joystick_delay == 0)
-				&& (!open_dropdown)
-				{
-					menu_delay = 3;
-					menu = "assist_item_appear";
-				}
-				else
-				if (key_down)
-				&& (menu_delay == 0 && menu_joystick_delay == 0)
-				&& (!open_dropdown)
-				{
-					menu_delay = 3;
-					menu = "assist_above_1_hp";
-				}
-				else
-				if (key_up)
-				&& (menu_delay == 0 && menu_joystick_delay == 0)
-				&& (open_dropdown)
-				&& (global.assist_extra_hp > 0)
-				{
-					menu_delay = 3;
-					global.assist_extra_hp --;
-				}
-				else
-				if (key_down)
-				&& (menu_delay == 0 && menu_joystick_delay == 0)
-				&& (open_dropdown)
-				&& (global.assist_extra_hp < 9)
-				{
-					menu_delay = 3;
-					global.assist_extra_hp ++;
-				}
-			}
-			#endregion /* Assist Extra HP Navigation END */
-			
-			else
-			
-			#region /* Assist Above 1 HP Navigation */
-			if (menu == "assist_above_1_hp")
-			{
-				if (key_up)
-				&& (menu_delay == 0 && menu_joystick_delay == 0)
-				&& (!open_dropdown)
-				{
-					menu = "assist_extra_hp";
-					menu_delay = 3;
-				}
-				else
-				if (key_down)
-				&& (menu_delay == 0 && menu_joystick_delay == 0)
-				&& (!open_dropdown)
-				{
-					menu = "assist_invincibility";
-					menu_delay = 3;
-				}
-			}
-			#endregion /* Assist Above 1 HP Navigation END */
-			
-			else
-			
-			#region /* Assist Invincibility Navigation */
-			if (menu == "assist_invincibility")
-			{
-				if (key_up)
-				&& (menu_delay == 0 && menu_joystick_delay == 0)
-				&& (!open_dropdown)
-				{
-					menu = "assist_above_1_hp";
-					menu_delay = 3;
-				}
-				else
-				if (key_down)
-				&& (menu_delay == 0 && menu_joystick_delay == 0)
-				&& (!open_dropdown)
-				{
-					menu = "assist_moonjump";
-					menu_delay = 3;
-				}
-			}
-			#endregion /* Assist Invincibility Navigation END */
-			
-			else
-			
-			#region /* Assist Moonjump Navigation */
-			if (menu == "assist_moonjump")
-			{
-				if (key_up)
-				&& (menu_delay == 0 && menu_joystick_delay == 0)
-				&& (!open_dropdown)
-				{
-					menu = "assist_invincibility";
-					menu_delay = 3;
-				}
-				else
-				if (key_down)
-				&& (menu_delay == 0 && menu_joystick_delay == 0)
-				&& (!open_dropdown)
-				{
-					menu = "assist_hover_when_holding_jump";
-					menu_delay = 3;
-				}
-			}
-			#endregion /* Assist Moonjump Navigation END */
-			
-			else
-			
-			#region /* Assist Hover When Holding Jump Navigation */
-			if (menu == "assist_hover_when_holding_jump")
-			{
-				if (key_up)
-				&& (menu_delay == 0 && menu_joystick_delay == 0)
-				&& (!open_dropdown)
-				{
-					menu = "assist_moonjump";
-					menu_delay = 3;
-				}
-				else
-				if (key_down)
-				&& (menu_delay == 0 && menu_joystick_delay == 0)
-				&& (!open_dropdown)
-				{
-					menu = "assist_floor_over_bottomless_pit";
-					menu_delay = 3;
-				}
-			}
-			#endregion /* Assist Hover When Holding Jump Navigation END */
-			
-			else
-			
-			#region /* Assist Floor Over Bottomless Pit Navigation */
-			if (menu == "assist_floor_over_bottomless_pit")
-			{
-				if (key_up)
-				&& (menu_delay == 0 && menu_joystick_delay == 0)
-				&& (!open_dropdown)
-				{
-					menu = "assist_hover_when_holding_jump";
-					menu_delay = 3;
-				}
-				else
-				if (key_down)
-				&& (menu_delay == 0 && menu_joystick_delay == 0)
-				&& (!open_dropdown)
-				{
-					menu = "assist_breathe_underwater";
-					menu_delay = 3;
-				}
-			}
-			#endregion /* Assist Floor Over Bottomless Pit Navigation END */
-			
-			else
-			
-			#region /* Assist Breathe Underwater Navigation */
-			if (menu == "assist_breathe_underwater")
-			{
-				if (key_up)
-				&& (menu_delay == 0 && menu_joystick_delay == 0)
-				&& (!open_dropdown)
-				{
-					menu = "assist_floor_over_bottomless_pit";
-					menu_delay = 3;
-				}
-				else
-				if (key_down)
-				&& (menu_delay == 0 && menu_joystick_delay == 0)
-				&& (!open_dropdown)
-				{
-					menu = "assist_guiding_arrows";
-					menu_delay = 3;
-				}
-			}
-			#endregion /* Assist Breathe Underwater Navigation END */
-	
-			else
-	
-			#region /* Assist Guiding Arrows Navigation */
-			if (menu == "assist_guiding_arrows")
-			{
-				if (key_up)
-				&& (menu_delay == 0 && menu_joystick_delay == 0)
-				&& (!open_dropdown)
-				{
-					menu = "assist_breathe_underwater";
-					menu_delay = 3;
-				}
-				else
-				if (key_down)
-				&& (menu_delay == 0 && menu_joystick_delay == 0)
-				&& (!open_dropdown)
-				{
-					menu = "assist_normal_arrows";
-					menu_delay = 3;
-				}
-			}
-			#endregion /* Assist Guiding Arrows Navigation END */
-	
-			else
-	
-			#region /* Assist Normal Arrows Navigation */
-			if (menu == "assist_normal_arrows")
-			{
-				if (key_up)
-				&& (menu_delay == 0 && menu_joystick_delay == 0)
-				&& (!open_dropdown)
-				{
-					menu = "assist_guiding_arrows";
-					menu_delay = 3;
-				}
-				else
-				if (key_down)
-				&& (menu_delay == 0 && menu_joystick_delay == 0)
-				&& (!open_dropdown)
-				{
-					menu = "assist_enable_enemies";
-					menu_delay = 3;
-				}
-			}
-			#endregion /* Assist Normal Arrows Navigation END */
-		
-			else
-		
-			#region /* Assist Enable Enemies Navigation */
-			if (menu == "assist_enable_enemies")
-			{
-				if (key_up)
-				&& (!open_dropdown)
-				&& (menu_delay == 0 && menu_joystick_delay == 0)
-				{
-					menu_delay = 3;
-					menu = "assist_normal_arrows";
-				}
-				else
-				if (key_down)
-				&& (!open_dropdown)
-				&& (menu_delay == 0 && menu_joystick_delay == 0)
-				{
-					menu_delay = 3;
-					menu = "assist_enable_spikes";
-				}
-			}
-			#endregion /* Assist Enable Enemies Navigation END */
-		
-			else
-		
-			#region /* Assist Enable Spikes Navigation */
-			if (menu == "assist_enable_spikes")
-			{
-				if (key_up)
-				&& (!open_dropdown)
-				&& (menu_delay == 0 && menu_joystick_delay == 0)
-				{
-					menu_delay = 3;
-					menu = "assist_enable_enemies";
-				}
-				else
-				if (key_down)
-				&& (!open_dropdown)
-				&& (menu_delay == 0 && menu_joystick_delay == 0)
-				{
-					menu_delay = 3;
-					menu = "assist_enable";
-				}
-			}
-			#endregion /* Assist Enable Spikes Navigation END */
 			
 			else
 			

@@ -217,15 +217,15 @@ function scr_draw_upload_level_menu()
 									if (os_is_network_connected()) /* Check if you're even connected to the internet */
 									{
 										scr_load_level_tags(upload_level_path);
-											
+										
 										ini_open(game_save_id + "custom_levels/" + string(global.level_name) + "/data/level_information.ini");
 										var short_level_minute = ini_read_real("rank", "rank_timeattack_minute", 0);
 										development_stage_index = ini_read_real("info", "development_stage_index", 1);
 										visibility_index = ini_read_real("info", "visibility_index", 0);
 										ini_close(); /* Don't commit the save data on Switch, this is only temporary! */
-											
+										
 										menu_delay = 3;
-											
+										
 										#region /* Tell the player before uploading, if the level they clear checked was too short or not */
 										if (global.enable_level_length_target)
 										&& (short_level_minute < global.target_length_minutes)
@@ -237,7 +237,7 @@ function scr_draw_upload_level_menu()
 											menu = "upload_edit_name"; /* Go to the menu where you can edit things about the custom level before uploading it*/
 										}
 										#endregion /* Tell the player before uploading, if the level they clear checked was too short or not END */
-											
+										
 										if (variable_instance_exists(self, "show_level_editor_corner_menu"))
 										{
 											show_level_editor_corner_menu = false;

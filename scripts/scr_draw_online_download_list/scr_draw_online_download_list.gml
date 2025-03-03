@@ -12,7 +12,8 @@ function scr_draw_online_download_list()
 		draw_set_alpha(1);
 		
 		#region /* Process Data */
-		if (data == undefined && in_online_download_list_menu)
+		if (data == undefined
+		&& in_online_download_list_menu)
 		{
 			scr_draw_online_download_list_data();
 		}
@@ -59,7 +60,8 @@ function scr_draw_online_download_menu_data()
 	var guiWidth = display_get_gui_width();
 	
 	#region /* Show online downloads if data is available */
-	if (data != undefined && (menu != "search_id_ok"))
+	if (data != undefined
+	&& (menu != "search_id_ok"))
 	{
 		if (is_array(data))
 		{
@@ -72,7 +74,8 @@ function scr_draw_online_download_menu_data()
 			}
 		}
 		
-		if (is_array(data) && array_length(data) <= 0)
+		if (is_array(data)
+		&& array_length(data) <= 0)
 		{
 			draw_set_halign(fa_center);
 			scr_draw_text_outlined(guiWidth * 0.5, display_get_gui_height() * 0.5, 
@@ -100,8 +103,9 @@ function scr_draw_online_download_menu_data()
 		}
 		
 		#region /* Draw Gamepad Search Key */
-		if (gamepad_is_connected(global.player_slot[1]) &&
-			(global.controls_used_for_navigation == "gamepad") || (global.always_show_gamepad_buttons))
+		if (gamepad_is_connected(global.player_slot[1])
+			&& (global.controls_used_for_navigation == "gamepad")
+			|| (global.always_show_gamepad_buttons))
 		{
 			scr_draw_gamepad_buttons(gp_face4, 16, draw_search_id_y + 21, 0.5, c_white, 1, 1, 1, 1);
 		}
@@ -213,7 +217,8 @@ function scr_draw_online_download_list_thumbnail(thumbnail_index, number_of_thum
 	#endregion /* Draw Download Name END */
 	
 	/* Loading Indicator for Missing Thumbnail */
-	if (draw_thumbnail == spr_thumbnail_missing && draw_download_name[thumbnail_index] == "")
+	if (draw_thumbnail == spr_thumbnail_missing
+	&& draw_download_name[thumbnail_index] == "")
 	{
 		scr_draw_loading(1, download_online_x + 300, download_online_y + offsetY + 100);
 	}
@@ -244,11 +249,12 @@ function scr_draw_online_download_list_thumbnail(thumbnail_index, number_of_thum
 	#endregion /* Draw Selection Triangles END */
 	
 	#region /* Mouse Navigation */
-	if (global.controls_used_for_navigation == "mouse" &&
-		point_in_rectangle(device_mouse_x_to_gui(0), device_mouse_y_to_gui(0),
+	if (global.controls_used_for_navigation == "mouse"
+		&& point_in_rectangle(device_mouse_x_to_gui(0), device_mouse_y_to_gui(0),
 			download_online_x + 100 - 16, download_online_y + offsetY - 16,
-			download_online_x + 484 + 16, download_online_y + offsetY + 216 + 62) &&
-		is_array(data) && (array_length(data) > 0))
+			download_online_x + 484 + 16, download_online_y + offsetY + 216 + 62)
+		&& is_array(data)
+		&& (array_length(data) > 0))
 	{
 		if (!isSelected)
 		{
@@ -284,12 +290,14 @@ function scr_draw_online_download_list_thumbnail(thumbnail_index, number_of_thum
 		var selected_download_c_menu_fill = c_lime;
 		global.selected_online_download_index = thumbnail_index;
 		
-		if (key_a_pressed || (mouse_check_button_released(mb_left) &&
-			point_in_rectangle(device_mouse_x_to_gui(0), device_mouse_y_to_gui(0),
+		if (key_a_pressed
+		|| (mouse_check_button_released(mb_left)
+			&& point_in_rectangle(device_mouse_x_to_gui(0), device_mouse_y_to_gui(0),
 				download_online_x + 100, download_online_y + offsetY,
 				download_online_x + 484, download_online_y + offsetY + 216)))
 		{
-			if (menu_delay == 0 && menu_joystick_delay == 0)
+			if (menu_delay == 0
+			&& menu_joystick_delay == 0)
 			{
 				global.automatically_play_downloaded_level = false;
 				global.use_temp_or_working = game_save_id;
@@ -301,8 +309,8 @@ function scr_draw_online_download_list_thumbnail(thumbnail_index, number_of_thum
 				
 				#region /* Set Thumbnail for Download Menu */
 				scr_delete_sprite_properly(downloaded_thumbnail_sprite);
-				if (sprite_exists(spr_download_list_thumbnail[global.selected_online_download_index]) &&
-					(spr_download_list_thumbnail[global.selected_online_download_index] != spr_thumbnail_missing))
+				if (sprite_exists(spr_download_list_thumbnail[global.selected_online_download_index])
+					&& (spr_download_list_thumbnail[global.selected_online_download_index] != spr_thumbnail_missing))
 				{
 					downloaded_thumbnail_sprite = spr_download_list_thumbnail[global.selected_online_download_index];
 				}

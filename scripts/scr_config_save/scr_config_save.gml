@@ -13,9 +13,6 @@ function scr_config_save()
 	ini_write_real("config", "show_timer", global.show_timer);
 	ini_write_real("config", "show_defeats_counter", global.show_defeats_counter);
 	ini_write_real("config", "show_ranks", global.show_ranks);
-	ini_write_real("config", "assist_enable", global.assist_enable);
-	ini_write_real("config", "assist_enable_enemies", global.assist_enable_enemies);
-	ini_write_real("config", "assist_enable_spikes", global.assist_enable_spikes);
 	ini_write_real("config", "narrator", global.narrator);
 	ini_write_real("config", "narrator_selection", global.narrator_selection);
 	ini_write_real("config", "show_tutorial_signs", global.show_tutorial_signs);
@@ -36,7 +33,51 @@ function scr_config_save()
 	ini_write_real("config", "assist_breathe_underwater", global.assist_breathe_underwater);
 	ini_write_real("config", "assist_guiding_arrows", global.assist_guiding_arrows);
 	ini_write_real("config", "assist_normal_arrows", global.assist_normal_arrows);
+	ini_write_real("config", "assist_enable_enemies", global.assist_enable_enemies);
+	ini_write_real("config", "assist_enable_spikes", global.assist_enable_spikes);
 	#endregion /* Assist Settings END */
+	
+	#region /* Challenge Mode Settings */
+	ini_write_real("config", "challenge_mode_enable", global.challenge_mode_enable);
+	ini_write_real("config", "challenge_one_hit_defeat", global.challenge_one_hit_defeat);
+	ini_write_real("config", "challenge_no_health_pickups", global.challenge_no_health_pickups);
+	ini_write_real("config", "challenge_no_checkpoints", global.challenge_no_checkpoints);
+	ini_write_real("config", "challenge_limited_lives", global.challenge_limited_lives);
+	ini_write_real("config", "challenge_lower_hp", global.challenge_lower_hp);
+	ini_write_real("config", "challenge_no_post_hit_invincibility", global.challenge_no_post_hit_invincibility);
+	ini_write_real("config", "challenge_stronger_gravity", global.challenge_stronger_gravity);
+	ini_write_real("config", "challenge_no_coyote_time", global.challenge_no_coyote_time);
+	ini_write_real("config", "challenge_slippery_physics", global.challenge_slippery_physics);
+	ini_write_real("config", "challenge_smaller_ledge", global.challenge_smaller_ledge);
+	ini_write_real("config", "challenge_no_midair_control", global.challenge_no_midair_control);
+	ini_write_real("config", "challenge_faster_autoscroll", global.challenge_faster_autoscroll);
+	ini_write_real("config", "challenge_spikes_always_kill", global.challenge_spikes_always_kill);
+	ini_write_real("config", "challenge_more_bottomless_pits", global.challenge_more_bottomless_pits);
+	ini_write_real("config", "challenge_platforms_crumble", global.challenge_platforms_crumble);
+	ini_write_real("config", "challenge_extra_enemy_spawns", global.challenge_extra_enemy_spawns);
+	ini_write_real("config", "challenge_larger_hazard_hitboxes", global.challenge_larger_hazard_hitboxes);
+	ini_write_real("config", "challenge_stronger_enemies", global.challenge_stronger_enemies);
+	ini_write_real("config", "challenge_faster_enemies", global.challenge_faster_enemies);
+	ini_write_real("config", "challenge_more_aggressive_enemies", global.challenge_more_aggressive_enemies);
+	ini_write_real("config", "challenge_enemies_respawn_quickly", global.challenge_enemies_respawn_quickly);
+	ini_write_real("config", "challenge_enemies_double_damage", global.challenge_enemies_double_damage);
+	ini_write_real("config", "challenge_enemy_projectiles_faster", global.challenge_enemy_projectiles_faster);
+	ini_write_real("config", "challenge_enemies_no_stun", global.challenge_enemies_no_stun);
+	ini_write_real("config", "challenge_permanent_darkness", global.challenge_permanent_darkness);
+	ini_write_real("config", "challenge_limited_air", global.challenge_limited_air);
+	ini_write_real("config", "challenge_no_pause", global.challenge_no_pause);
+	ini_write_real("config", "challenge_game_speed", global.challenge_game_speed);
+	ini_write_real("config", "challenge_randomized_controls", global.challenge_randomized_controls);
+	ini_write_real("config", "challenge_invisible_elements", global.challenge_invisible_elements);
+	ini_write_real("config", "challenge_strict_time_limits", global.challenge_strict_time_limits);
+	ini_write_real("config", "challenge_iron_paw_mode", global.challenge_iron_paw_mode);
+	ini_write_real("config", "challenge_limited_inputs", global.challenge_limited_inputs);
+	ini_write_real("config", "challenge_pacifist_mode", global.challenge_pacifist_mode);
+	ini_write_real("config", "challenge_speedrun_mode", global.challenge_speedrun_mode);
+	ini_write_real("config", "challenge_no_hud_mode", global.challenge_no_hud_mode);
+	ini_write_real("config", "challenge_perma_death_mode", global.challenge_perma_death_mode);
+	ini_write_real("config", "challenge_roguelike_mode", global.challenge_roguelike_mode);
+	#endregion /* Challenge Mode Settings END */
 	
 	ini_write_real("config", "fullscreen_mode", window_get_fullscreen());
 	ini_write_real("config", "interpolate", global.interpolate);
@@ -106,6 +147,7 @@ function scr_config_save()
 	ini_write_real("config", "show_prompt_when_changing_to_gamepad", global.show_prompt_when_changing_to_gamepad);
 	ini_write_real("config", "show_prompt_when_changing_to_keyboard_and_mouse", global.show_prompt_when_changing_to_keyboard_and_mouse);
 	ini_write_real("config", "always_show_gamepad_buttons", global.always_show_gamepad_buttons);
+	ini_write_real("config", "language_auto_update_interval", global.language_auto_update_interval);
 	
 	for(var i = 1; i <= global.max_players; i += 1)
 	{

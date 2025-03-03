@@ -291,22 +291,6 @@ voice_select_character = noone;
 
 darken_settings_alpha = 0;
 darken_settings_sidebar_alpha = 0;
-accessibility_settings_y = 40;
-game_text_y = 40 * 2;
-game_settings_y = 40 * 3;
-multiplayer_settings_y = 40 * 4;
-controls_text_y = 40 * 5;
-keyboard_and_mouse_settings_y = 40 * 6;
-controller_settings_y = 40 * 7;
-touch_settings_y = 40 * 8;
-general_text_y = 40 * 9;
-account_settings_y = 40 * 10;
-video_settings_y = 40 * 11;
-audio_settings_y = 40 * 12;
-custom_resources_settings_y = 40 * 13;
-storage_settings_y = 40 * 14;
-language_settings_y = 40 * 15;
-broadcast_settings_y = 40 * 16;
 how_to_play_y = 40 * 17;
 left_sidebar_x = -400;
 iris_xscale = 0;
@@ -474,6 +458,10 @@ if (global.reset_world_map_zoom_when_going_back_to_map)
 ini_open(game_save_id + "save_file/config.ini");
 var latest_whats_new_version = ini_read_string("config", "latest_whats_new_version", "");
 var latest_whats_new_text = ini_read_string("config", "latest_whats_new_text", "");
+ini_close(); /* Don't commit the save data on Switch, this is only temporary! */
+
+ini_open(game_save_id + "save_file/file" + string(global.file) + ".ini");
+placable_object_unlock_notify = ini_read_real("Player", "placable_object_unlock_notify", 0);
 ini_close(); /* Don't commit the save data on Switch, this is only temporary! */
 
 if (latest_whats_new_version != "v" + scr_get_build_date()

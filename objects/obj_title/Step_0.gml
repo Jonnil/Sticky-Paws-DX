@@ -240,7 +240,8 @@ if (iris_xscale <= 0.01)
 	else
 	
 	#region /* Load File */
-	if (menu == "select_character" || menu == "back_from_character_select")
+	if (menu == "select_character"
+	|| menu == "back_from_character_select")
 	{
 		/* Save what characters are selected */
 		ini_open(game_save_id + "save_file/config.ini");
