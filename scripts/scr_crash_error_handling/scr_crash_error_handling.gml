@@ -88,7 +88,7 @@ function scr_crash_error_handling()
 		}
 		ini_write_string("Crash", "StackTrace", string(ex.stacktrace));
 		ini_write_string("Crash", "Documentation", doc_details);
-		ini_write_string("Crash", "CrashLogFile", string_replace(game_save_id, environment_get_variable("USERNAME"), "*") +
+		ini_write_string("Crash", "CrashLogFile", string_replace(game_save_id, environment_get_variable("USERNAME"), "<redacted-username>") +
 			"crash_logs/" + string(game_name) + "_" + save_date + "_crash.ini");
 		
 		crash_details += "Stack Trace: " + string(ex.stacktrace) + "\n\n";
@@ -109,7 +109,7 @@ function scr_crash_error_handling()
 		show_debug_message("--------------------------------------------------------------");
 		show_message(
 			"Sorry, the game has crashed. Please check the crash log for more details:\n" +
-			string_replace(game_save_id, environment_get_variable("USERNAME"), "*") +
+			string_replace(game_save_id, environment_get_variable("USERNAME"), "<redacted-username>") +
 			"crash_logs/" + crash_log_filename + "\n\n" +
 			string(crash_details)
 		);

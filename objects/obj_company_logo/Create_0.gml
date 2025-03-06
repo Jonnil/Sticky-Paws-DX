@@ -432,6 +432,9 @@ global.zoom_world_map = 1; /* Zooming the view in and out, by default it's set t
 global.reset_level_zoom_when_going_back_to_map = false;
 global.reset_world_map_zoom_when_going_back_to_map = false;
 
+global.language_http_request_id = false;
+global.language_file_requests = false;
+global.language_update_in_progress = false;
 global.language_auto_update_interval = 0; /* 0 = Never. 1 = On Startup. 2 = Each Week. 3 = Each Month. 4 = Each Year */
 global.selected_language_id = 1;
 global.current_language_menu_position = 1;
@@ -760,3 +763,5 @@ scr_switch_update_online_status();
 scr_config_load(); /* Load Config */
 
 instance_create_depth(x, y, 0, obj_debug_manager);
+
+scr_language_pack_update(false);

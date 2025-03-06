@@ -59,7 +59,7 @@ function scr_option_storage()
 			draw_set_valign(fa_middle);
 			if (global.enable_option_for_pc)
 			{
-				var file_path_text = string_replace_all(string_replace_all(game_save_id, environment_get_variable("USERNAME"), "*") + "save_file\\file" + string(global.file) + ".ini", "\\", "/")
+				var file_path_text = string_replace_all(string_replace_all(game_save_id, environment_get_variable("USERNAME"), "<redacted-username>") + "save_file\\file" + string(global.file) + ".ini", "\\", "/")
 				scr_draw_text_outlined(file_select_x, file_path_y, string(file_path_text), global.default_text_size, c_menu_outline, c_dkgray, 1);
 			}
 			#endregion /* File path END */

@@ -99,7 +99,7 @@ function scr_option_account()
 					scr_draw_text_outlined(display_get_gui_width() * 0.5, display_get_gui_height() * 0.5 - (32 * 2), l10n_text("Your device name is the name displayed here"));
 					draw_sprite_ext(spr_arrow_swirly, menu_cursor_index, display_get_gui_width() * 0.5 - 130, display_get_gui_height() * 0.5 - 15, 0.5, 0.5, 0, c_white, 1);
 					draw_set_halign(fa_left);
-					scr_draw_text_outlined(display_get_gui_width() * 0.5 - 285, display_get_gui_height() * 0.5 + 32, string_replace(game_save_id, environment_get_variable("USERNAME"), "*"));
+					scr_draw_text_outlined(display_get_gui_width() * 0.5 - 285, display_get_gui_height() * 0.5 + 32, string_replace(game_save_id, environment_get_variable("USERNAME"), "<redacted-username>"));
 				}
 				var change_username_ok_x = display_get_gui_width() * 0.5 - 185;
 				var change_username_ok_y = display_get_gui_height() * 0.5 + (32 * 2);

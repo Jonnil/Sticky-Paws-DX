@@ -169,3 +169,5 @@ if (async_load[? "id"] == global.online_token_validated)
 		show_debug_message("status code failed   global.online_token_validated: " + string(global.online_token_validated));
 	}
 }
+
+scr_handle_language_pack_http(async_load);

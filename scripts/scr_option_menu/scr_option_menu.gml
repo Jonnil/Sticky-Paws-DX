@@ -744,12 +744,21 @@ function scr_option_menu()
 		{
 			menu_delay = 3;
 			can_navigate_settings_sidebar = false;
-			if (global.settings_sidebar_menu == "accessibility_settings"){menu = "assist_enable";}
-			if (global.settings_sidebar_menu == "challenge_mode_settings"){menu = "challenge_mode_enable";}
+			if (global.settings_sidebar_menu == "accessibility_settings")
+			{
+				menu = "assist_enable";
+			}
+			else
+			if (global.settings_sidebar_menu == "challenge_mode_settings")
+			{
+				menu = "challenge_mode_enable";
+			}
+			else
 			if (global.settings_sidebar_menu == "game_settings")
 			{
 				menu = "difficulty_settings";
 			}
+			else
 			if (global.settings_sidebar_menu == "keyboard_and_mouse_settings")
 			|| (global.settings_sidebar_menu == "controller_settings")
 			{
@@ -764,7 +773,12 @@ function scr_option_menu()
 					ini_close(); /* Don't commit the save data on Switch, this is only temporary! */
 				}
 			}
-			if (global.settings_sidebar_menu == "account_settings"){menu = "change_username";}
+			else
+			if (global.settings_sidebar_menu == "account_settings")
+			{
+				menu = "change_username";
+			}
+			else
 			if (global.settings_sidebar_menu == "video_settings")
 			{
 				if (!window_get_fullscreen())
@@ -776,7 +790,12 @@ function scr_option_menu()
 					menu = "gui_scale_modifier";
 				}
 			}
-			if (global.settings_sidebar_menu == "audio_settings"){menu = "volume_main";}
+			else
+			if (global.settings_sidebar_menu == "audio_settings")
+			{
+				menu = "volume_main";
+			}
+			else
 			if (global.settings_sidebar_menu == "custom_resources_settings")
 			{
 				if (ds_list_size(global.all_loaded_resource_pack) >= 2)
@@ -790,7 +809,12 @@ function scr_option_menu()
 					menu = "title_background";
 				}
 			}
-			if (global.settings_sidebar_menu == "storage_settings"){menu = "file_select";}
+			else
+			if (global.settings_sidebar_menu == "storage_settings")
+			{
+				menu = "file_select";
+			}
+			else
 			if (global.settings_sidebar_menu == "language_settings")
 			{
 				menu = "Language" + string(global.current_language_menu_position);
