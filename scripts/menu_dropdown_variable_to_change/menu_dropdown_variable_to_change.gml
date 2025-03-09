@@ -155,4 +155,10 @@ function menu_dropdown_variable_to_change(variable_to_change, change_to_value)
 		ini_write_real("info", "visibility_index", visibility_index);
 		ini_close(); /* Don't commit the save data on Switch, this is only temporary! */
 	}
+	else
+	if (menu == "language_auto_update")
+	&& (variable_to_change == global.language_auto_update_interval)
+	{
+		global.language_auto_update_interval = change_to_value;
+	}
 }

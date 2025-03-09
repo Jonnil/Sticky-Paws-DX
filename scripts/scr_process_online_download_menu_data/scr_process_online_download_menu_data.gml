@@ -40,7 +40,8 @@ function scr_process_online_download_menu_data()
 	}
 	#endregion /* Show online downloads if data is available END */
 	
-	if (!os_is_network_connected())
+	if (!global.online_token_validated
+	|| !os_is_network_connected())
 	{
 		scr_handle_no_network_connection();
 	}

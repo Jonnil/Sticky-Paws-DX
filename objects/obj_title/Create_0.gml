@@ -220,14 +220,7 @@ global.always_show_level_editor_buttons = true; /* If level editor buttons shoul
 
 scr_config_load(); /* Load Config */
 
-if (file_exists("localization.csv"))
-{
-	if (global.selected_language_id > ds_grid_width(global.language_local_data)
-	|| global.selected_language_id < 0)
-	{
-		scr_set_default_language();
-	}
-}
+scr_set_default_language(false);
 
 lives = 5; /* Starting lives */
 
@@ -291,7 +284,6 @@ voice_select_character = noone;
 
 darken_settings_alpha = 0;
 darken_settings_sidebar_alpha = 0;
-how_to_play_y = 40 * 17;
 left_sidebar_x = -400;
 iris_xscale = 0;
 iris_yscale = 0;

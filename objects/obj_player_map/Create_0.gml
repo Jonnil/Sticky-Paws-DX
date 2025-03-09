@@ -212,14 +212,7 @@ sprite_walk = noone;
 
 scr_config_load(); /* Load Config only once in create event, or it will mess up the options menu navigation */
 
-if (file_exists("localization.csv"))
-{
-	if (global.selected_language_id > ds_grid_width(global.language_local_data))
-	|| (global.selected_language_id < 0)
-	{
-		scr_set_default_language();
-	}
-}
+scr_set_default_language(false);
 
 /* Make number of level cleared 1 because of the level intro */
 ini_open(game_save_id + "save_file/file" + string(global.file) + ".ini");

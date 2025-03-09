@@ -202,7 +202,7 @@ if (!in_settings)
 			draw_set_halign(fa_left);
 			scr_draw_text_outlined(display_get_gui_width() * 0.5 + 185 + 25, level_editor_y + 21,
 				l10n_text("New Objects Unlocked!"),
-				global.default_text_size + scr_wave(0, 0.1, 1), c_black, c_lime, 1);
+				global.default_text_size * 0.5 + scr_wave(0, 0.1, 1), c_black, c_lime, 1);
 			draw_set_halign(fa_center);
 		}
 		
@@ -212,7 +212,9 @@ if (!in_settings)
 			if (levels_added_today_text != "")
 			{
 				draw_set_halign(fa_left);
-				scr_draw_text_outlined(display_get_gui_width() * 0.5 + 185 + 25, online_level_list_title_y + 21, string(levels_added_today_text), global.default_text_size + scr_wave(0, 0.1, 1), c_black, c_lime, 1);
+				scr_draw_text_outlined(display_get_gui_width() * 0.5 + 185 + 25, online_level_list_title_y + 21,
+					string(levels_added_today_text),
+					global.default_text_size * 0.5 + scr_wave(0, 0.1, 1), c_black, c_lime, 1);
 				draw_set_halign(fa_center);
 			}
 		}

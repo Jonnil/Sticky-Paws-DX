@@ -522,7 +522,7 @@ function scr_draw_level_editor_pause_menu()
 			{
 				scr_draw_text_outlined(get_window_width * 0.5, generate_level_map_y_1, l10n_text("A map of the whole level will be generated and saved in"), global.default_text_size, c_black, c_white, 1);
 				var full_level_map_size = (get_window_width <= 1350) ? 0.75 : 1;
-				var file_path_text = string_replace_all(string_replace_all(game_save_id, environment_get_variable("USERNAME"), "<redacted-username>") + "\custom_levels\\full_level_map_" + string(global.level_name) + ".png", "\\", "/");
+				var file_path_text = string_replace_all(string_replace_all(game_save_id, environment_get_variable("USERNAME"), "*") + "\custom_levels\\full_level_map_" + string(global.level_name) + ".png", "\\", "/");
 				scr_draw_text_outlined(get_window_width * 0.5, generate_level_map_y_2, string(file_path_text), global.default_text_size * full_level_map_size, c_black, c_white, 1);
 			}
 			else

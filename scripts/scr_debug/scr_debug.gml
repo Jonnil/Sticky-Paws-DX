@@ -304,30 +304,7 @@ function scr_debug_draw_debug_logic()
 				directory_create(logs_folder);
 			}
 			
-			#region /* Save Date */
-			var current_dt = date_current_datetime();
-			
-			var year_str  = string(date_get_year(current_dt));
-			
-			var month_val = date_get_month(current_dt);
-			var month_str = (month_val < 10) ? "0" + string(month_val) : string(month_val);
-			
-			var day_val   = date_get_day(current_dt);
-			var day_str   = (day_val < 10) ? "0" + string(day_val) : string(day_val);
-			
-			var hour_val  = date_get_hour(current_dt);
-			var hour_str  = (hour_val < 10) ? "0" + string(hour_val) : string(hour_val);
-			
-			var minute_val = date_get_minute(current_dt);
-			var minute_str = (minute_val < 10) ? "0" + string(minute_val) : string(minute_val);
-			
-			var second_val = date_get_second(current_dt);
-			var second_str = (second_val < 10) ? "0" + string(second_val) : string(second_val);
-			
-			var save_date = year_str + "-" + month_str + "-" + day_str + "_" + hour_str + "." + minute_str + "." + second_str;
-			#endregion /* Save Date END */
-			
-			var log_file_path = logs_folder + "debug_info-" + string(global.game_name) + "_v" + string(scr_get_build_date()) + "_" + save_date + ".ini";
+			var log_file_path = logs_folder + "debug_info-" + string(global.game_name) + "_v" + string(scr_get_build_date()) + "_" + scr_format_timestamp(date_current_datetime()) + ".ini";
 			
 			ini_open(log_file_path);
 			scr_write_debug_info();
@@ -493,7 +470,7 @@ function scr_debug_draw_optimized_text()
 	if (!global.debug_collapsed_sections[? "System Information"])
 	{
 		debug_text_y = scr_draw_highlighted_text(32, debug_text_y,
-							"current_datetime", string(date_datetime_string(date_current_datetime())),
+							"current_datetime", string(scr_format_timestamp(date_current_datetime())),
 							"Current Date/Time", c_white, c_red, false);
 	}
 	#endregion /* Section 1: System Information END */

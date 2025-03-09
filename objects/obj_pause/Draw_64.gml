@@ -130,7 +130,7 @@ if (!hide_menu_for_clean_screenshots)
 		if (global.pause_room == rm_leveleditor)
 		{
 			draw_set_halign(fa_left);
-			draw_set_valign(fa_center);
+			draw_set_valign(fa_middle);
 			scr_draw_text_outlined(32, 320,
 			string(display_level_name) + "\n" +
 			string(display_level_author) + "\n" +

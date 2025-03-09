@@ -147,7 +147,7 @@ function scr_config_save()
 	ini_write_real("config", "show_prompt_when_changing_to_gamepad", global.show_prompt_when_changing_to_gamepad);
 	ini_write_real("config", "show_prompt_when_changing_to_keyboard_and_mouse", global.show_prompt_when_changing_to_keyboard_and_mouse);
 	ini_write_real("config", "always_show_gamepad_buttons", global.always_show_gamepad_buttons);
-	ini_write_real("config", "language_auto_update_interval", global.language_auto_update_interval);
+	ini_write_real("language_updates", "language_auto_update_interval", global.language_auto_update_interval);
 	
 	for(var i = 1; i <= global.max_players; i += 1)
 	{

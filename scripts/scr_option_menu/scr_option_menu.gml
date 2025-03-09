@@ -517,36 +517,33 @@ function scr_option_menu()
 		#endregion /* Storage Settings END */
 		
 		#region /* Language Settings */
-		if (global.enable_language_settings)
+		if (global.settings_sidebar_menu == "language_settings")
 		{
-			if (global.settings_sidebar_menu == "language_settings")
+			if (point_in_rectangle(mouse_get_x, mouse_get_y, 0, language_settings_y, 370, language_settings_y + 40 - 1))
+			&& (global.controls_used_for_navigation == "mouse")
 			{
-				if (point_in_rectangle(mouse_get_x, mouse_get_y, 0, language_settings_y, 370, language_settings_y + 40 - 1))
-				&& (global.controls_used_for_navigation == "mouse")
-				{
-					draw_sprite_ext(spr_menu_button, global.menu_button_subimg, left_sidebar_x, 20 +language_settings_y, 1, 1, 0, c_green, 1);
-				}
-				else
-				{
-					draw_sprite_ext(spr_menu_button, global.menu_button_subimg, left_sidebar_x, 20 +language_settings_y, 1, 1, 0, c_gray, 1);
-				}
-				draw_sprite_ext(spr_settings_icon, 12, left_sidebar_x + 20 + icon_x_offset, 20 +language_settings_y, 1, 1, 0, c_white, 1); /* Settings Icon */
-				scr_draw_text_outlined(left_sidebar_x + 40 + text_x_offset, 20 +language_settings_y, l10n_text("Language"), global.default_text_size * 1.05, c_black, c_white, 1);
+				draw_sprite_ext(spr_menu_button, global.menu_button_subimg, left_sidebar_x, 20 +language_settings_y, 1, 1, 0, c_green, 1);
 			}
 			else
 			{
-				if (point_in_rectangle(mouse_get_x, mouse_get_y, 0, language_settings_y, 370, language_settings_y + 40 - 1))
-				&& (global.controls_used_for_navigation == "mouse")
-				{
-					draw_sprite_ext(spr_menu_button, global.menu_button_subimg, left_sidebar_x, 20 +language_settings_y, 1, 1, 0, c_lime, 1);
-				}
-				else
-				{
-					draw_sprite_ext(spr_menu_button, global.menu_button_subimg, left_sidebar_x, 20 +language_settings_y, 1, 1, 0, c_white, 1);
-				}
-				draw_sprite_ext(spr_settings_icon, 12, left_sidebar_x + 20 + icon_x_offset, 20 +language_settings_y, 0.9, 0.9, 0, c_white, 1); /* Settings Icon */
-				scr_draw_text_outlined(left_sidebar_x + 40 + text_x_offset, 20 +language_settings_y, l10n_text("Language"), global.default_text_size, c_white, c_black, 1);
+				draw_sprite_ext(spr_menu_button, global.menu_button_subimg, left_sidebar_x, 20 +language_settings_y, 1, 1, 0, c_gray, 1);
 			}
+			draw_sprite_ext(spr_settings_icon, 12, left_sidebar_x + 20 + icon_x_offset, 20 +language_settings_y, 1, 1, 0, c_white, 1); /* Settings Icon */
+			scr_draw_text_outlined(left_sidebar_x + 40 + text_x_offset, 20 +language_settings_y, l10n_text("Language"), global.default_text_size * 1.05, c_black, c_white, 1);
+		}
+		else
+		{
+			if (point_in_rectangle(mouse_get_x, mouse_get_y, 0, language_settings_y, 370, language_settings_y + 40 - 1))
+			&& (global.controls_used_for_navigation == "mouse")
+			{
+				draw_sprite_ext(spr_menu_button, global.menu_button_subimg, left_sidebar_x, 20 +language_settings_y, 1, 1, 0, c_lime, 1);
+			}
+			else
+			{
+				draw_sprite_ext(spr_menu_button, global.menu_button_subimg, left_sidebar_x, 20 +language_settings_y, 1, 1, 0, c_white, 1);
+			}
+			draw_sprite_ext(spr_settings_icon, 12, left_sidebar_x + 20 + icon_x_offset, 20 +language_settings_y, 0.9, 0.9, 0, c_white, 1); /* Settings Icon */
+			scr_draw_text_outlined(left_sidebar_x + 40 + text_x_offset, 20 +language_settings_y, l10n_text("Language"), global.default_text_size, c_white, c_black, 1);
 		}
 		#endregion /* Language Settings END */
 		
@@ -1279,39 +1276,34 @@ function scr_option_menu()
 			#endregion /* Storage END */
 			
 		}
-	
-		if (global.enable_language_settings)
+		
+		#region /* Click Language */
+		if (point_in_rectangle(mouse_get_x, mouse_get_y, 0, language_settings_y, 370, language_settings_y + 40 - 1))
+		&& (global.controls_used_for_navigation == "mouse")
+		&& (global.settings_sidebar_menu == "language_settings")
+		&& (mouse_check_button_released(mb_left))
+		&& (menu_delay == 0 && menu_joystick_delay == 0)
 		{
-			
-			#region /* Click Language */
-			if (point_in_rectangle(mouse_get_x, mouse_get_y, 0, language_settings_y, 370, language_settings_y + 40 - 1))
-			&& (global.controls_used_for_navigation == "mouse")
-			&& (global.settings_sidebar_menu == "language_settings")
-			&& (mouse_check_button_released(mb_left))
-			&& (menu_delay == 0 && menu_joystick_delay == 0)
-			{
-				global.settings_sidebar_menu = "language_settings";
-				menu_delay = 3;
-				input_key = false;
-				can_navigate_settings_sidebar = false;
-				menu = "Language" + string(global.current_language_menu_position);
-			}
-			#endregion /* Click Language END */
-			
-			#region /* Language */
-			if (point_in_rectangle(mouse_get_x, mouse_get_y, 0, language_settings_y, 370, language_settings_y + 40 - 1))
-			&& (global.controls_used_for_navigation == "mouse")
-			&& (mouse_check_button(mb_left))
-			&& (menu_delay == 0 && menu_joystick_delay == 0)
-			{
-				global.settings_sidebar_menu = "language_settings";
-				input_key = false;
-				can_navigate_settings_sidebar = true;
-			}
-			#endregion /* Language END */
-			
+			global.settings_sidebar_menu = "language_settings";
+			menu_delay = 3;
+			input_key = false;
+			can_navigate_settings_sidebar = false;
+			menu = "Language" + string(global.current_language_menu_position);
 		}
-	
+		#endregion /* Click Language END */
+		
+		#region /* Language */
+		if (point_in_rectangle(mouse_get_x, mouse_get_y, 0, language_settings_y, 370, language_settings_y + 40 - 1))
+		&& (global.controls_used_for_navigation == "mouse")
+		&& (mouse_check_button(mb_left))
+		&& (menu_delay == 0 && menu_joystick_delay == 0)
+		{
+			global.settings_sidebar_menu = "language_settings";
+			input_key = false;
+			can_navigate_settings_sidebar = true;
+		}
+		#endregion /* Language END */
+		
 		if (global.enable_broadcast_settings)
 		{
 			
@@ -1845,28 +1837,8 @@ function scr_option_menu()
 						scr_load_storage_variables();
 					}
 					else
-					if (global.enable_language_settings)
 					{
 						global.settings_sidebar_menu = "language_settings";
-					}
-					else
-					if (global.enable_broadcast_settings)
-					{
-						global.settings_sidebar_menu = "broadcast_settings";
-					}
-					else
-					if (global.enable_how_to_play_settings)
-					{
-						global.settings_sidebar_menu = "how_to_play_settings";
-					}
-					else
-					if (global.enable_add_ons_settings)
-					{
-						global.settings_sidebar_menu = "resource_pack_settings";
-					}
-					else
-					{
-						global.settings_sidebar_menu = "settings_back";
 					}
 					menu_delay = 3;
 				}
@@ -1896,28 +1868,8 @@ function scr_option_menu()
 							scr_load_storage_variables();
 						}
 						else
-						if (global.enable_language_settings)
 						{
 							global.settings_sidebar_menu = "language_settings";
-						}
-						else
-						if (global.enable_broadcast_settings)
-						{
-							global.settings_sidebar_menu = "broadcast_settings";
-						}
-						else
-						if (global.enable_how_to_play_settings)
-						{
-							global.settings_sidebar_menu = "how_to_play_settings";
-						}
-						else
-						if (global.enable_add_ons_settings)
-						{
-							global.settings_sidebar_menu = "resource_pack_settings";
-						}
-						else
-						{
-							global.settings_sidebar_menu = "settings_back";
 						}
 						menu_delay = 3;
 					}
@@ -1949,29 +1901,7 @@ function scr_option_menu()
 					&& (can_navigate_settings_sidebar)
 					&& (menu_delay == 0 && menu_joystick_delay == 0)
 					{
-						if (global.enable_language_settings)
-						{
-							global.settings_sidebar_menu = "language_settings";
-						}
-						else
-						if (global.enable_broadcast_settings)
-						{
-							global.settings_sidebar_menu = "broadcast_settings";
-						}
-						else
-						if (global.enable_how_to_play_settings)
-						{
-							global.settings_sidebar_menu = "how_to_play_settings";
-						}
-						else
-						if (global.enable_add_ons_settings)
-						{
-							global.settings_sidebar_menu = "resource_pack_settings";
-						}
-						else
-						{
-							global.settings_sidebar_menu = "settings_back";
-						}
+						global.settings_sidebar_menu = "language_settings";
 						menu_delay = 3;
 					}
 				}
@@ -1979,38 +1909,35 @@ function scr_option_menu()
 			#endregion /* Storage Settings END */
 	
 			#region /* Language Settings */
-			if (global.enable_language_settings)
+			if (global.settings_sidebar_menu == "language_settings")
 			{
-				if (global.settings_sidebar_menu == "language_settings")
+				if (key_up)
+				&& (can_navigate_settings_sidebar)
+				&& (menu_delay == 0 && menu_joystick_delay == 0)
 				{
-					if (key_up)
-					&& (can_navigate_settings_sidebar)
-					&& (menu_delay == 0 && menu_joystick_delay == 0)
+					global.settings_sidebar_menu = "storage_settings";
+					scr_load_storage_variables();
+					menu_delay = 3;
+				}
+				else
+				if (key_down)
+				&& (can_navigate_settings_sidebar)
+				&& (menu_delay == 0 && menu_joystick_delay == 0)
+				{
+					if (global.enable_broadcast_settings)
 					{
-						global.settings_sidebar_menu = "storage_settings";
-						scr_load_storage_variables();
-						menu_delay = 3;
+						global.settings_sidebar_menu = "broadcast_settings";
 					}
 					else
-					if (key_down)
-					&& (can_navigate_settings_sidebar)
-					&& (menu_delay == 0 && menu_joystick_delay == 0)
+					if (global.enable_add_ons_settings)
 					{
-						if (global.enable_broadcast_settings)
-						{
-							global.settings_sidebar_menu = "broadcast_settings";
-						}
-						else
-						if (global.enable_add_ons_settings)
-						{
-							global.settings_sidebar_menu = "resource_pack_settings";
-						}
-						else
-						{
-							global.settings_sidebar_menu = "settings_back";
-						}
-						menu_delay = 3;
+						global.settings_sidebar_menu = "resource_pack_settings";
 					}
+					else
+					{
+						global.settings_sidebar_menu = "settings_back";
+					}
+					menu_delay = 3;
 				}
 			}
 			#endregion /* Language Settings END */
@@ -2104,24 +2031,8 @@ function scr_option_menu()
 						global.settings_sidebar_menu = "broadcast_settings";
 					}
 					else
-					if (global.enable_language_settings)
 					{
 						global.settings_sidebar_menu = "language_settings";
-					}
-					else
-					if (global.enable_storage_settings)
-					{
-						global.settings_sidebar_menu = "storage_settings";
-						scr_load_storage_variables();
-					}
-					else
-					if (global.enable_custom_resources_settings)
-					{
-						global.settings_sidebar_menu = "custom_resources_settings";
-					}
-					else
-					{
-						global.settings_sidebar_menu = "audio_settings";
 					}
 					menu_delay = 3;
 				}
@@ -2219,19 +2130,29 @@ function scr_option_menu()
 				global.hud_hide_time = 3;
 			}
 			
-			/* If you have selected Japanese language, you can't use Open Dyslexic, as it isn't supported */
-			if (global.language_local_data[# global.selected_language_id, 0] == "日本語 (Japanese)")
+			// Safely get the language string from the grid:
+			var lang = "";
+			if (variable_global_exists("language_local_data") && global.language_local_data != undefined && global.language_local_data != 0 &&
+				ds_grid_width(global.language_local_data) > global.selected_language_id)
 			{
-				/* Only include Game Font and Normal Font for Japanese language, as these are the only supported ones*/
-				/* Doesn't include Open Dyslexic, as some languages are not supported */
+				lang = global.language_local_data[# global.selected_language_id, 0];
+			} else {
+				lang = "";
+			}
+			
+			if (lang == "日本語 (Japanese)")
+			{
+				// Only include Game Font and Normal Font for Japanese language; Open Dyslexic isn't supported.
 				var can_select_font = false;
 			}
 			else
 			{
-				draw_menu_dropdown(380, selected_font_y, l10n_text("Selected Font"), "select_font", global.selected_font, l10n_text("Game Font"), l10n_text("Normal Font"), l10n_text("Open Dyslexic")); /* Includes Open Dyslexic */
+				draw_menu_dropdown(380, selected_font_y, l10n_text("Selected Font"), "select_font", global.selected_font,
+					l10n_text("Game Font"), l10n_text("Normal Font"), l10n_text("Open Dyslexic")); // Includes Open Dyslexic
 				scr_set_default_dropdown_description("select_font", "Game Font");
 				var can_select_font = true;
 			}
+			
 			draw_menu_dropdown(380, hud_hide_time_y, l10n_text("HUD hide timer"), "hud_hide_time", global.hud_hide_time, l10n_text("Never Show"), l10n_text("After 1 Second"), l10n_text("After 2 Seconds"), l10n_text("After 3 Seconds"), l10n_text("After 4 Seconds"), l10n_text("After 5 Seconds"), l10n_text("After 6 Seconds"), l10n_text("After 7 Seconds"), l10n_text("After 8 Seconds"), l10n_text("After 9 Seconds"), l10n_text("Always Show"));
 			scr_set_default_dropdown_description("hud_hide_time", "After 3 Seconds");
 			
@@ -2841,15 +2762,23 @@ function scr_option_menu()
 				&& (menu_delay == 0 && menu_joystick_delay == 0)
 				&& (can_select_font)
 				{
-					/* If you have selected Japanese language, you can't use Open Dyslexic, as it isn't supported */
-					/* If "Global Selected Font" checks for less than 1 here, then you can only select Game font and Normal font */
-					if (global.language_local_data[# global.selected_language_id, 0] == "日本語 (Japanese)")
-					&& (global.selected_font < 1)
-					|| (global.language_local_data[# global.selected_language_id, 0] != "日本語 (Japanese)")
-					&& (global.selected_font < 2)
+					// Safely get the language string from the grid:
+					var lang = "";
+					if (variable_global_exists("language_local_data") && global.language_local_data != undefined && global.language_local_data != 0 &&
+						ds_grid_width(global.language_local_data) > global.selected_language_id)
+					{
+						lang = global.language_local_data[# global.selected_language_id, 0];
+					} else {
+						lang = ""; // fallback if grid is missing or not large enough
+					}
+					
+					// If you have selected Japanese language, you can't use Open Dyslexic.
+					// If "Global Selected Font" checks for less than 1 here, then you can only select Game Font and Normal Font.
+					if ((lang == "日本語 (Japanese)" && global.selected_font < 1) ||
+						(lang != "日本語 (Japanese)" && global.selected_font < 2))
 					{
 						menu_delay = 3;
-						global.selected_font ++;
+						global.selected_font++;
 						scr_set_font();
 					}
 				}

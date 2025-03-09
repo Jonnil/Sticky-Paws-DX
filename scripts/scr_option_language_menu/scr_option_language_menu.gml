@@ -40,6 +40,36 @@ function scr_option_language_menu()
 		var mouse_get_x = device_mouse_x_to_gui(0);
 		var mouse_get_y = device_mouse_y_to_gui(0);
 		
+		// Ensure the global.valid_languages array exists and is properly defined.
+		if (variable_global_exists("valid_languages") && is_array(global.valid_languages))
+		{
+			var validCount = array_length(global.valid_languages);
+			for (var i = 0; i < validCount; i++)
+			{
+				if (is_undefined(global.valid_languages[i]))
+				{
+					global.valid_languages[i] = 0;
+				}
+			}
+		}
+		else
+		{
+			// If valid_languages doesn't exist, initialize it as an empty array.
+			global.valid_languages = [];
+		}
+		
+		// Ensure the global.language_completion array exists.
+		if (variable_global_exists("language_completion")
+		&& is_undefined(global.language_completion))
+		{
+			global.language_completion = [];
+			// Initialize each language's completion to 0.
+			for (var j = 0; j < array_length(global.valid_languages); j++)
+			{
+				global.language_completion[j] = 0;
+			}
+		}
+		
 		draw_set_halign(fa_left);
 		draw_set_valign(fa_middle);
 		
@@ -52,28 +82,39 @@ function scr_option_language_menu()
 		var temp_languages = scr_get_sorted_language_list();
 		
 		/* Draw the sorted languages */
-		for (var i = 0; i < array_length(temp_languages); i ++)
+		for (var i = 0; i < array_length(temp_languages); i++)
 		{
 			var language_info = temp_languages[i];
 			var unsorted_language_index = language_info.index;
 			var language_name = language_info.name;
 			
-			if (global.language_completion[unsorted_language_index] < 100)
-			{
-				draw_set_halign(fa_right);
-				draw_set_valign(fa_middle);
-				scr_draw_text_outlined(
-					448 * 2,
-					52 * i + 84 + 16,
-					string(global.language_completion[unsorted_language_index]) + "%",
-					global.default_text_size * 0.75,
-					c_menu_outline,
-					make_color_hsv(global.language_completion[unsorted_language_index] * 0.5, 255, 255),
-					1
-				);
-			}
-			
 			draw_language_checkmark(400, 52 * i + 84, language_name, "Language" + string(i + 1), unsorted_language_index);
+			
+			#region /* Ensure language_completion is defined for this index; if not, default to 0. Draw above checkmarks */
+			if (variable_global_exists("language_completion"))
+			{
+				if (is_undefined(global.language_completion[unsorted_language_index]))
+				{
+					global.language_completion[unsorted_language_index] = 0;
+				}
+				
+				if (global.language_completion[unsorted_language_index] < 100)
+				{
+					draw_set_halign(fa_right);
+					draw_set_valign(fa_middle);
+					scr_draw_text_outlined(
+						448 * 2,
+						52 * i + 84 + 16,
+						string(global.language_completion[unsorted_language_index]) + "%",
+						global.default_text_size * 0.75,
+						c_menu_outline,
+						make_color_hsv(global.language_completion[unsorted_language_index] * 0.75, 255, 255),
+						1
+					);
+				}
+			}
+			#endregion /* Ensure language_completion is defined for this index; if not, default to 0. Draw above checkmarks END */
+			
 		}
 		#endregion /* Order all of the language options in alphabetical order END */
 		
@@ -81,50 +122,75 @@ function scr_option_language_menu()
 		draw_set_valign(fa_middle);
 		scr_draw_text_outlined(get_window_width - 32, 64, l10n_text("Translator") + ":", global.default_text_size * 1.5, c_menu_outline, c_menu_fill, 1);
 		scr_draw_text_outlined(get_window_width - 32, 114, l10n_text("Translator name"), global.default_text_size * 1.5, c_menu_outline, c_menu_fill, 1);
-		if (global.language_completion[global.selected_language_id] < 100)
-		{
-			var translation_completion_outline_color = c_menu_outline;
-			var translation_completion_fill_color = make_color_hsv(global.language_completion[global.selected_language_id] * 0.5, 255, 255);
-		}
-		else
-		{
-			var translation_completion_outline_color = c_menu_outline;
-			var translation_completion_fill_color = c_gray;
-		}
 		
-		#region /* Clicking on language completion text enables and disables the translation debug mode */
-		if (point_in_rectangle(mouse_get_x, mouse_get_y, get_window_width - 32 - string_width(l10n_text("Translation completion") + ": " + string(global.language_completion[global.selected_language_id]) + "%"), 164 - 32, get_window_width - 32, 164 + 32))
-		&& (global.controls_used_for_navigation == "mouse")
-		&& (global.enable_option_for_pc)
+		/* Ensure language_completion is defined for the selected language */
+		if (variable_global_exists("language_completion"))
 		{
+			if (is_undefined(global.language_completion[global.selected_language_id]))
+			{
+				global.language_completion[global.selected_language_id] = 0;
+			}
+			
 			if (global.language_completion[global.selected_language_id] < 100)
 			{
-				var translation_completion_outline_color = c_menu_fill;
-				var translation_completion_fill_color = make_color_hsv(global.language_completion[global.selected_language_id] * 0.5, 255, 255);
+				var translation_completion_outline_color = c_menu_outline;
+				var translation_completion_fill_color = make_color_hsv(global.language_completion[global.selected_language_id] * 0.75, 255, 255);
 			}
 			else
 			{
-				var translation_completion_outline_color = c_menu_fill;
+				var translation_completion_outline_color = c_menu_outline;
 				var translation_completion_fill_color = c_gray;
 			}
-			if (mouse_check_button_released(mb_left))
+			
+			#region /* Clicking on language completion text enables and disables the translation debug mode */
+			if (point_in_rectangle(mouse_get_x, mouse_get_y, get_window_width - 32 - string_width(l10n_text("Translation completion") + ": " + string(global.language_completion[global.selected_language_id]) + "%") * 0.5, 164 - 32, get_window_width - 32, 164 + 32))
+			&& (global.controls_used_for_navigation == "mouse")
+			&& (global.enable_option_for_pc)
 			{
-				global.translation_debug = !global.translation_debug;
+				if (global.language_completion[global.selected_language_id] < 100)
+				{
+					var translation_completion_outline_color = c_menu_fill;
+					var translation_completion_fill_color = make_color_hsv(global.language_completion[global.selected_language_id] * 0.75, 255, 255);
+				}
+				else
+				{
+					var translation_completion_outline_color = c_menu_fill;
+					var translation_completion_fill_color = c_gray;
+				}
+				
+				if (mouse_check_button_released(mb_left)
+				&& global.language_completion[global.selected_language_id] < 100)
+				{
+					global.translation_debug = !global.translation_debug;
+				}
 			}
+			#endregion /* Clicking on language completion text enables and disables the translation debug mode END */
 		}
 		
-		if (os_type != os_switch) /* Switch version can only contain languages that have been 100% translated according to guidelines */
+		if (variable_global_exists("language_completion")
+		&& os_type != os_switch) /* Switch version can only contain languages that have been 100% translated according to guidelines */
 		{
-			scr_draw_text_outlined(get_window_width - 32, 164, l10n_text("Translation completion") + ": " + string(global.language_completion[global.selected_language_id]) + "%", global.default_text_size, translation_completion_outline_color, translation_completion_fill_color, 1);
+			if (global.language_completion[global.selected_language_id] < 100)
+			{
+				scr_draw_text_outlined(get_window_width - 32, 164, l10n_text("Translation completion") + ": " + string(global.language_completion[global.selected_language_id]) + "%", global.default_text_size * 0.6, translation_completion_outline_color, translation_completion_fill_color, 1);
+				scr_draw_text_outlined(get_window_width - 32, 164 + 32, l10n_text("Some strings may appear in English"), global.default_text_size * 0.5, c_menu_outline, translation_completion_fill_color, 1);
+			}
 		}
 		
 		if (global.translation_debug)
 		{
-			scr_draw_text_outlined(get_window_width - 32, 164 + 32, "Translation debug: enabled", global.default_text_size * 0.8, c_menu_outline, c_menu_fill, 1);
-			scr_draw_text_outlined(get_window_width - 32, 164 + 32 + 64, "When missing keywords are found, look in\n" + string_replace(game_save_id, environment_get_variable("USERNAME"), "<redacted-username>") + "translation_missing_keywords.txt", global.default_text_size * 0.8, c_menu_outline, c_menu_fill, 1);
-			scr_draw_text_outlined(get_window_width - 32, 164 + 32 + (64 * 2), "selected_language_id: " + string(global.selected_language_id) + " current_language_menu_position: " + string(global.current_language_menu_position), global.default_text_size * 0.8, c_menu_outline, c_menu_fill, 1);
+			draw_set_valign(fa_top);
+			scr_draw_text_outlined(get_window_width - 32, 164 + 64,
+				"Translation debug: enabled" + "\n" +
+				"When missing keywords are found, look in\n" + string_replace(game_save_id, environment_get_variable("USERNAME"), "*") + "translation_missing_keywords.txt" + "\n" +
+				"selected_language_id: " + string(global.selected_language_id) + " current_language_menu_position: " + string(global.current_language_menu_position) + "\n" +
+				"language_local_data: " + string(global.language_local_data),
+				global.default_text_size * 0.5,
+				c_menu_outline,
+				c_menu_fill,
+				1);
+			draw_set_valign(fa_middle);
 		}
-		#endregion /* Clicking on language completion text enables and disables the translation debug mode END */
 		
 		scr_draw_text_outlined(get_window_width - 32, get_window_height - 32, l10n_text("Language translations may not be 100% accurate"), global.default_text_size * 0.75, c_menu_outline, c_gray, 1);
 		
@@ -140,7 +206,7 @@ function scr_option_language_menu()
 		
 		/* --- Automatic update dropdown using your existing function --- */
 		var auto_update_dropdown_y = check_updates_button_y + 100;
-		global.language_auto_update_interval = draw_menu_dropdown(
+		draw_menu_dropdown(
 			match_system_language_x,
 			auto_update_dropdown_y,
 			l10n_text("Check for language pack updates automatically"),
@@ -152,25 +218,75 @@ function scr_option_language_menu()
 			l10n_text("Each Month"),
 			l10n_text("Each Year")
 		);
+		scr_set_default_dropdown_description("language_auto_update", l10n_text("On Startup"));
 		#endregion /* Language Pack Update Options END */
 		
-		#region /* Language Menu Navigation */
-		if (menu_delay == 0 && menu_joystick_delay == 0)
-		&& (can_navigate)
-		&& (global.settings_sidebar_menu = "language_settings")
+		#region /* Display language pack update status at the bottom-center of the screen */
+		if (global.language_update_status_message != "")
 		{
-			if (open_dropdown)
-			&& (menu == "language_auto_update")
+			scr_draw_text_outlined(
+				get_window_width * 0.5,
+				get_window_height - 64,
+				global.language_update_status_message,
+				global.default_text_size * 0.75,
+				c_menu_outline,
+				global.language_update_status_color,
+				1
+			);
+		}
+		#endregion /* Display language pack update status at the bottom-center of the screen END */
+		
+		#region /* Display last updated language pack timestamp, if any */
+		if (global.language_last_update_string != "")
+		{
+			/* Get the relative time string from the UTC ISO-8601 timestamp */
+			var relative_time = get_relative_timezone(global.language_last_update_string, timezone_local);
+			
+			/* Create two lines: one for the raw timestamp, one for the relative time */
+			var raw_text = l10n_text("Last Updated") + ": " + global.language_last_update_string;
+			var rel_text = "(" + relative_time + ")";
+			
+			/* Draw the raw timestamp on the first line */
+			draw_set_halign(fa_left);
+			scr_draw_text_outlined(
+				match_system_language_x + 400,
+				check_updates_button_y + 10,
+				raw_text,
+				global.default_text_size * 0.75,
+				c_menu_outline,
+				global.language_update_status_color,
+				1
+			);
+			
+			/* Draw the relative time on a second line just below */
+			scr_draw_text_outlined(
+				match_system_language_x + 400,
+				check_updates_button_y + 10 + 20,  /* adjust vertical offset as needed */
+				rel_text,
+				global.default_text_size * 0.75,
+				c_menu_outline,
+				global.language_update_status_color,
+				1
+			);
+			
+			/* Reset horizontal alignment if needed */
+			draw_set_halign(fa_center);
+		}
+		#endregion /* Display last updated language pack timestamp, if any END */
+		
+		#region /* Language Menu Navigation */
+		if (menu_delay == 0 && menu_joystick_delay == 0
+		&& (can_navigate)
+		&& (global.settings_sidebar_menu = "language_settings"))
+		{
+			if (open_dropdown && (menu == "language_auto_update"))
 			{
-				if (key_up && !key_down)
-				&& (global.language_auto_update_interval > 0)
+				if (key_up && !key_down && (global.language_auto_update_interval > 0))
 				{
 					menu_delay = 3;
 					global.language_auto_update_interval --;
 				}
-				else
-				if (key_down && !key_up)
-				&& (global.language_auto_update_interval < 4)
+				else if (key_down && !key_up && (global.language_auto_update_interval < 4))
 				{
 					menu_delay = 3;
 					global.language_auto_update_interval ++;
@@ -184,28 +300,24 @@ function scr_option_language_menu()
 				{
 					menu = "language_auto_update";
 				}
-				else
-				if (menu == "language_check_updates")
+				else if (menu == "language_check_updates")
 				{
-					global.current_language_menu_position = max(global.current_language_menu_position - 1, 1)
+					global.current_language_menu_position = max(global.current_language_menu_position - 1, 1);
 					menu = "Language" + string(array_length(global.valid_languages) - 1);
 					global.current_language_menu_position = array_length(global.valid_languages) - 1;
 					menu_cursor_y_position = global.current_language_menu_position * 50;
 				}
-				else
-				if (menu == "language_auto_update")
+				else if (menu == "language_auto_update")
 				{
 					menu = "language_check_updates";
 				}
-				else
-				if (global.current_language_menu_position <= 1)
+				else if (global.current_language_menu_position <= 1)
 				{
 					menu = "match_system_language";
 				}
-				else
-				if (global.current_language_menu_position < array_length(global.valid_languages))
+				else if (global.current_language_menu_position < array_length(global.valid_languages))
 				{
-					global.current_language_menu_position = max(global.current_language_menu_position - 1, 1)
+					global.current_language_menu_position = max(global.current_language_menu_position - 1, 1);
 					menu = "Language" + string(global.current_language_menu_position);
 					menu_cursor_y_position = global.current_language_menu_position * 50;
 				}
@@ -218,25 +330,21 @@ function scr_option_language_menu()
 					menu = "Language1";
 					global.current_language_menu_position = 1;
 				}
-				else
-				if (menu == "language_check_updates")
+				else if (menu == "language_check_updates")
 				{
 					menu = "language_auto_update";
 				}
-				else
-				if (menu == "language_auto_update")
+				else if (menu == "language_auto_update")
 				{
 					menu = "match_system_language";
 				}
-				else
-				if (global.current_language_menu_position < array_length(global.valid_languages) - 1)
+				else if (global.current_language_menu_position < array_length(global.valid_languages) - 1)
 				{
-					global.current_language_menu_position = min(global.current_language_menu_position + 1, array_length(global.valid_languages) - 1)
+					global.current_language_menu_position = min(global.current_language_menu_position + 1, array_length(global.valid_languages) - 1);
 					menu = "Language" + string(global.current_language_menu_position);
 					menu_cursor_y_position = global.current_language_menu_position * 50;
 				}
-				else
-				if (global.current_language_menu_position >= array_length(global.valid_languages) - 1)
+				else if (global.current_language_menu_position >= array_length(global.valid_languages) - 1)
 				{
 					menu = "language_check_updates";
 				}
@@ -248,11 +356,11 @@ function scr_option_language_menu()
 			&& (menu == "match_system_language")
 			{
 				menu_delay = 3;
-				scr_set_default_language();
+				scr_set_default_language(true);
 				
 				ini_open(game_save_id + "save_file/config.ini");
-				ini_write_real("config", "selected_language_id", global.selected_language_id);
-				ini_write_real("config", "current_language_menu_position", global.current_language_menu_position);
+				ini_write_real("language_updates", "selected_language_id", global.selected_language_id);
+				ini_write_real("language_updates", "current_language_menu_position", global.current_language_menu_position);
 				ini_close();
 				
 				scr_set_font();
@@ -268,8 +376,7 @@ function scr_option_language_menu()
 				/* Force to update language pack when you click this button */
 				scr_language_pack_update(true);
 			}
-			else if (key_a_pressed
-			&& menu == "language_auto_update")
+			else if (key_a_pressed && menu == "language_auto_update")
 			{
 				open_dropdown = !open_dropdown;
 			}

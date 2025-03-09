@@ -1,0 +1,1 @@
+scr_handle_language_pack_http(async_load);

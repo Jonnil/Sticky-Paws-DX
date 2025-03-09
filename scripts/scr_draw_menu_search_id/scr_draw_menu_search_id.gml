@@ -164,7 +164,8 @@ function scr_draw_menu_search_id(what_kind_of_id = "level")
 		}
 		#endregion /* Press Enter to search for the inputted ID END */
 		
-		if (!os_is_network_connected())
+		if (!global.online_token_validated
+		|| !os_is_network_connected())
 		{
 			if (content_type == "character")
 			{
@@ -432,7 +433,8 @@ function scr_draw_menu_search_id(what_kind_of_id = "level")
 		}
 		#endregion /* You can always cancel searching if game can't find file on server END */
 		
-		if (!os_is_network_connected())
+		if (!global.online_token_validated
+		|| !os_is_network_connected())
 		{
 			if (content_type == "character")
 			{

@@ -12,7 +12,15 @@ function scr_draw_no_internet_menu()
 		draw_set_halign(fa_center);
 		draw_set_valign(fa_middle);
 		/* Don't draw a level thumbnail here, to make it more obvious that there was an error connecting to the internet, because every other screen have a level thumbnail visible usually */
-		scr_draw_text_outlined(get_window_width * 0.5, get_window_height * 0.5, l10n_text("No Internet connection"), global.default_text_size * 1.9, c_black, c_white, 1);
+		
+		if (!os_is_network_connected())
+		{
+			scr_draw_text_outlined(get_window_width * 0.5, get_window_height * 0.5, l10n_text("No Internet connection"), global.default_text_size * 1.9, c_black, c_white, 1);
+		}
+		if (!global.online_token_validated)
+		{
+			scr_draw_text_outlined(get_window_width * 0.5, get_window_height * 0.5 + 42, l10n_text("Online Token Invalid"), global.default_text_size * 1.9, c_black, c_white, 1);
+		}
 		
 		var ok_y = get_window_height * 0.5 + 42 + 42 + 42;
 		
@@ -81,11 +89,19 @@ function scr_draw_no_internet_menu()
 		draw_rectangle_color(0, 0, get_window_width, get_window_height, c_black, c_black, c_black, c_black, false);
 		draw_set_alpha(1);
 		/* Don't draw a character thumbnail here, to make it more obvious that there was an error connecting to the internet, because every other screen have a character thumbnail visible usually */
-		scr_draw_text_outlined(get_window_width * 0.5, get_window_height * 0.5, l10n_text("No Internet connection"), global.default_text_size * 1.9, c_black, c_white, 1);
+		
+		if (!os_is_network_connected())
+		{
+			scr_draw_text_outlined(get_window_width * 0.5, get_window_height * 0.5, l10n_text("No Internet connection"), global.default_text_size * 1.9, c_black, c_white, 1);
+		}
+		if (!global.online_token_validated)
+		{
+			scr_draw_text_outlined(get_window_width * 0.5, get_window_height * 0.5 + 42, l10n_text("Online Token Invalid"), global.default_text_size * 1.9, c_black, c_white, 1);
+		}
 		
 		var ok_y = get_window_height * 0.5 + 42 + 42 + 42;
 		
-		#region /* Character Uploaded OK */
+		#region /* OK Button */
 		if (point_in_rectangle(mouse_get_x, mouse_get_y, get_window_width * 0.5 - 370, ok_y - 42, get_window_width * 0.5 + 370, ok_y + 42))
 		&& (global.controls_used_for_navigation == "mouse")
 		{
@@ -113,7 +129,7 @@ function scr_draw_no_internet_menu()
 				draw_sprite_ext(spr_icon_back, 0, get_window_width * 0.5 - 370 + 32, ok_y, 1, 1, 0, c_white, 1);
 			}
 		}
-		#endregion /* Character Uploaded OK END */
+		#endregion /* OK Button END */
 		
 		#region /* Return to game */
 		if (point_in_rectangle(mouse_get_x, mouse_get_y, get_window_width * 0.5 - 370, ok_y - 42, get_window_width * 0.5 + 370, ok_y + 42))

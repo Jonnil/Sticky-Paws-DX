@@ -45,7 +45,7 @@ if (os_type == os_linux)
 draw_set_halign(fa_center);
 
 var open_folder_string_text = string_replace_all(string(open_folder_string), "\\", "/");
-open_folder_string_text = string_replace_all(open_folder_string_text, environment_get_variable("USERNAME"), "<redacted-username>");
+open_folder_string_text = string_replace_all(open_folder_string_text, environment_get_variable("USERNAME"), "*");
 
 if (get_window_width <= 1350)
 {

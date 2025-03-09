@@ -19,7 +19,7 @@ function scr_get_todays_upload_count()
 		ds_map_add(map, "User-Agent", "gmdownloader");
 		ds_map_add(map, "X-API-Key", global.api_key);
 		
-		/* Send the HTTP GET request to the /level endpoint */
+		/* Send the HTTP GET request to the /today endpoint */
 		global.content_added_today = http_request("https://" + global.base_url + "/today" + "?date_get_timezone_local_offset=" + string(scr_date_get_timezone_local_offset()), "GET", map, "");
 		ds_map_destroy(map);
 	}

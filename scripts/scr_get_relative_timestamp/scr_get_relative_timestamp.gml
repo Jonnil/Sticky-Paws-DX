@@ -1,9 +1,11 @@
-/* Calculates the relative time from a UTC ISO-8601 datetime string
+/* @function get_relative_timezone(datetime, what_timezone)
+@description Calculates the relative time from a UTC ISO-8601 datetime string
 @param {string} datetime - The UTC ISO-8601 datetime string
+@param {string} what_timezone - What timezone you want to use
 @returns {string} - The relative time string */
-function get_relative_timezone(datetime)
+function get_relative_timezone(datetime, what_timezone = timezone_utc)
 {
-	date_set_timezone(timezone_utc);
+	date_set_timezone(what_timezone);
 	var dt = string_split(datetime, " ");
 	var d = string_split(dt[0], "-");
 	var t = string_split(dt[1], ":");

@@ -4,7 +4,7 @@ function scr_write_debug_info()
 {
 	/* [Log Metadata] */
 	ini_write_string("Log Metadata", "Game Name", string(global.game_name));
-	ini_write_string("Log Metadata", "Timestamp", date_datetime_string(date_current_datetime()));
+	ini_write_string("Log Metadata", "Timestamp", scr_format_timestamp(date_current_datetime()));
 	ini_write_real("Log Metadata", "Session Duration", current_time / 1000);
 	
 	/* [OS Info] */

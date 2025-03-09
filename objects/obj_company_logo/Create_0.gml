@@ -24,7 +24,7 @@ global.link_to_website_guide = "https://www.jonnil.games/sticky-paws-guide";
 global.link_to_website_guide_custom_character = "https://www.jonnil.games/sticky-paws-custom-character";
 global.link_to_wiki = ""; //"https://stickypedia.miraheze.org/wiki/Main_Page";
 global.link_to_youtube = "https://www.youtube.com/Jonnilescom";
-global.link_to_privacy_policy = "https://www.jonnil.com/sticky-paws-privacy-policy";
+global.link_to_privacy_policy = "https://www.jonnil.games/sticky-paws-privacy-policy";
 global.link_to_check_server_status = "";
 global.email_support = "contact@jonnil.games"; /* This is the email address for an email support, which is required by most game platforms. Will show up whenever you report content in the game */
 
@@ -68,7 +68,6 @@ global.enable_touch_settings = false; /* Enable Touch settings */
 global.enable_account_settings = true; /* Enable Profile settings */
 global.enable_custom_resources_settings = true; /* Enable Custom Resources settings */
 global.enable_storage_settings = true; /* Enable Storage settings */
-global.enable_language_settings = true; /* Enable Language settings */
 global.enable_broadcast_settings = false; /* Enable Broadcast settings */
 global.enable_add_ons_settings = false; /* Enable Add-ons settings */
 global.enable_ranks = false; /* Enable the option to show ranks in the game */
@@ -153,6 +152,8 @@ ds_list_add(global.all_loaded_main_levels, "intro", "level1", "level2", "level3"
 #region /* Server stuff */
 global.base_url = "sticky-paws.uc.r.appspot.com";
 global.api_key = "eMCnsR7k2dq_jGHijae6_3tazPYp!UUL";
+/* Ensure your Google Sheet is published to the web as CSV */
+global.google_sheet_language_url = "https://docs.google.com/spreadsheets/d/e/2PACX-1vTrxRvkYTC9qwzNyEwWeYeBFpIwK9wa4ZERhpP7_pAhYPdcLOFzpvFmgKO_dJZj_F-U0NIuLE50J3CD/pub?output=csv";
 global.http_request_info = noone;
 global.http_request_id = noone;
 global.content_added_today = noone;
@@ -434,9 +435,11 @@ global.reset_world_map_zoom_when_going_back_to_map = false;
 
 global.language_http_request_id = false;
 global.language_file_requests = false;
-global.language_update_in_progress = false;
-global.language_auto_update_interval = 0; /* 0 = Never. 1 = On Startup. 2 = Each Week. 3 = Each Month. 4 = Each Year */
-global.selected_language_id = 1;
+global.language_last_update_string = "";
+global.language_update_status_message = "";
+global.language_update_status_color = c_white;
+global.language_auto_update_interval = 1; /* 0 = Never. 1 = On Startup. 2 = Each Week. 3 = Each Month. 4 = Each Year */
+global.selected_language_id = 2; /* 2 Should be the English language by default */
 global.current_language_menu_position = 1;
 global.language_local_data = 0;
 global.language_column_start = 2; /* Languages start at column 2 (i.e. index 2) */
@@ -623,17 +626,6 @@ for(var i = 1; i <= global.max_players; i += 1)
 }
 #endregion /* Set controls END */
 
-#region /* Set default language */
-if (file_exists("localization.csv"))
-{
-	if (global.selected_language_id > ds_grid_width(global.language_local_data))
-	|| (global.selected_language_id < 0)
-	{
-		scr_set_default_language();
-	}
-}
-#endregion /* Set default language END */
-
 #region /* Resource Packs (put this code after the "scr config load" so the right sprites can load) */
 global.resource_pack_sprite_logo_youtube = spr_noone;
 global.resource_pack_sprite_logo_discord = spr_noone;
@@ -764,4 +756,4 @@ scr_config_load(); /* Load Config */
 
 instance_create_depth(x, y, 0, obj_debug_manager);
 
-scr_language_pack_update(false);
+alarm[0] = 60;

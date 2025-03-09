@@ -113,12 +113,12 @@ function draw_language_checkmark(x_position, y_position, string_text, menu_index
 	&& (menu_delay == 0 && menu_joystick_delay == 0)
 	{
 		menu_delay = 3;
-		global.selected_language_id = valid_language_index;
+		global.selected_language_id = max(valid_language_index, 2);
 		global.current_language_menu_position = real(string_delete(menu_index, 1, 8));
 		
 		ini_open(game_save_id + "save_file/config.ini");
-		ini_write_real("config", "selected_language_id", global.selected_language_id);
-		ini_write_real("config", "current_language_menu_position", global.current_language_menu_position);
+		ini_write_real("language_updates", "selected_language_id", global.selected_language_id);
+		ini_write_real("language_updates", "current_language_menu_position", global.current_language_menu_position);
 		ini_close();
 		
 		menu = menu_index;

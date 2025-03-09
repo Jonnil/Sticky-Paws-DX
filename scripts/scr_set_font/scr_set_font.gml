@@ -1,9 +1,17 @@
 function scr_set_font(selected_font_index = global.selected_font)
 {
-	/* If you have selected Japanese language, you can't use certain fonts, as it isn't supported */
-	if (global.language_local_data[# global.selected_language_id, 0] == "日本語 (Japanese)")
+	/* Only try to check the language if the DS grid is valid and has enough columns */
+	if (global.language_local_data != 0
+	&& ds_grid_width(global.language_local_data) > global.selected_language_id)
 	{
-		selected_font_index = 1; /* The font you can use is "Normal font" */
+		if (global.language_local_data[# global.selected_language_id, 0] == "日本語 (Japanese)")
+		{
+			selected_font_index = 1; /* Use the "Normal font" for Japanese */
+		}
+	}
+	else
+	{
+		show_debug_message("[scr_set_font] Warning: language_local_data is not loaded or selected_language_id is invalid. Using default font index " + string(selected_font_index));
 	}
 	
 	var font_files = [
