@@ -4,7 +4,7 @@ function scr_download_language_packs()
 {
 	
 	/* Start Download Process */
-	global.language_update_status_message = l10n_text("Fetching latest language pack data from server...");
+	global.language_update_status_message = "Fetching latest language pack data from server...";
 	if (variable_instance_exists(self, "c_menu_fill"))
 	{
 		global.language_update_status_color = c_menu_fill;
@@ -20,7 +20,7 @@ function scr_download_language_packs()
 	|| !os_is_network_connected())
 	{
 		show_debug_message("[scr_download_language_packs] Error: No network connection.");
-		global.language_update_status_message = l10n_text("Network error: Unable to connect to server for language updates.");
+		global.language_update_status_message = "Network error: Unable to connect to server for language updates.";
 		global.language_update_status_color = c_red;
 		return;
 	}
@@ -35,7 +35,7 @@ function scr_download_language_packs()
 	if (global.language_http_request_id == -1)
 	{
 		show_debug_message("[scr_download_language_packs] Error: HTTP request initiation failed.");
-		global.language_update_status_message = l10n_text("HTTP error: Unable to start language pack update.");
+		global.language_update_status_message = "HTTP error: Unable to start language pack update.";
 		global.language_update_status_color = c_red;
 		return;
 	}

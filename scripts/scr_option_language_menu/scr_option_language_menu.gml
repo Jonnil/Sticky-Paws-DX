@@ -75,7 +75,14 @@ function scr_option_language_menu()
 		
 		var match_system_language_x = 400;
 		var match_system_language_y = 32;
-		draw_menu_button(match_system_language_x, match_system_language_y, l10n_text("Match the System Language"), "match_system_language", "match_system_language");
+		
+		draw_menu_button(
+			match_system_language_x,
+			match_system_language_y,
+			l10n_text("Match the System Language"),
+			"match_system_language",
+			"match_system_language"
+		);
 		
 		#region /* Order all of the language options in alphabetical order */
 		/* Get the sorted list of languages */
@@ -202,7 +209,23 @@ function scr_option_language_menu()
 		
 		/* --- Manual update button --- */
 		var check_updates_button_y = language_list_end_y + 40;
-		draw_menu_button(match_system_language_x, check_updates_button_y, l10n_text("Check for language pack updates"), "language_check_updates", "language_check_updates");
+		var check_updates_button_scale = 1.5;
+		var check_updates_button_width = 370 * check_updates_button_scale;
+		
+		draw_menu_button_sprite(
+			spr_menu_button,
+			match_system_language_x,
+			check_updates_button_y,
+			0,
+			0,
+			check_updates_button_scale,
+			1,
+			check_updates_button_width,
+			42,
+			l10n_text("Check for language pack updates"),
+			"language_check_updates",
+			"language_check_updates"
+		);
 		
 		/* --- Automatic update dropdown using your existing function --- */
 		var auto_update_dropdown_y = check_updates_button_y + 100;
@@ -227,7 +250,7 @@ function scr_option_language_menu()
 			scr_draw_text_outlined(
 				get_window_width * 0.5,
 				get_window_height - 64,
-				global.language_update_status_message,
+				l10n_text(global.language_update_status_message),
 				global.default_text_size * 0.75,
 				c_menu_outline,
 				global.language_update_status_color,
@@ -243,26 +266,18 @@ function scr_option_language_menu()
 			var relative_time = get_relative_timezone(global.language_last_update_string, timezone_local);
 			
 			/* Create two lines: one for the raw timestamp, one for the relative time */
-			var raw_text = l10n_text("Last Updated") + ": " + global.language_last_update_string;
-			var rel_text = "(" + relative_time + ")";
+			var last_updated_text = l10n_text("Last Updated") + ":\n" +
+			global.language_last_update_string + "\n" +
+			"(" + relative_time + ")";
 			
-			/* Draw the raw timestamp on the first line */
+			/* Draw the timestamp when the language pack was last updated*/
 			draw_set_halign(fa_left);
-			scr_draw_text_outlined(
-				match_system_language_x + 400,
-				check_updates_button_y + 10,
-				raw_text,
-				global.default_text_size * 0.75,
-				c_menu_outline,
-				global.language_update_status_color,
-				1
-			);
+			draw_set_valign(fa_top);
 			
-			/* Draw the relative time on a second line just below */
 			scr_draw_text_outlined(
-				match_system_language_x + 400,
-				check_updates_button_y + 10 + 20,  /* adjust vertical offset as needed */
-				rel_text,
+				match_system_language_x + check_updates_button_width + 35,
+				check_updates_button_y - 15,
+				last_updated_text,
 				global.default_text_size * 0.75,
 				c_menu_outline,
 				global.language_update_status_color,
@@ -271,6 +286,7 @@ function scr_option_language_menu()
 			
 			/* Reset horizontal alignment if needed */
 			draw_set_halign(fa_center);
+			draw_set_valign(fa_middle);
 		}
 		#endregion /* Display last updated language pack timestamp, if any END */
 		
@@ -367,7 +383,7 @@ function scr_option_language_menu()
 			}
 			else if (key_a_pressed
 			|| mouse_check_button_released(mb_left)
-			&& point_in_rectangle(device_mouse_x_to_gui(0), device_mouse_y_to_gui(0), match_system_language_x, check_updates_button_y, match_system_language_x + 370, check_updates_button_y + 42))
+			&& point_in_rectangle(device_mouse_x_to_gui(0), device_mouse_y_to_gui(0), match_system_language_x, check_updates_button_y, match_system_language_x + (check_updates_button_width), check_updates_button_y + 42))
 			&& (!open_dropdown)
 			&& (menu == "language_check_updates")
 			{
