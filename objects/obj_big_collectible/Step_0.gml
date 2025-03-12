@@ -121,7 +121,8 @@ if (collect_big_collectible)
 			{
 				var save_path = game_save_id + "save_file/file" + string(global.file) + ".ini"
 			}
-			else if (global.character_select_in_this_menu == "level_editor")
+			else
+			if (global.character_select_in_this_menu == "level_editor")
 			{
 				var save_path = game_save_id + "save_file/custom_level_save.ini";
 			}

@@ -2,12 +2,14 @@ function scr_draw_option_description()
 {
 	/* Description that shows up when changing certain options */
 	var text_fill = c_white;
+	
 	if (global.option_default == 1)
 	{
 		var option_default = l10n_text("On by default");
 		text_fill = c_lime;
 	}
-	else if (global.option_default == 0)
+	else
+	if (global.option_default == 0)
 	{
 		var option_default = l10n_text("Off by default");
 	}
@@ -17,15 +19,20 @@ function scr_draw_option_description()
 	}
 	
 	var option_description_text = "";
-	if (global.option_description != "" && global.option_default == -2)
+	
+	if (global.option_description != ""
+	&& global.option_default == -2)
 	{
 		option_description_text = l10n_text("Default") + ": " + string(global.option_description);
 	}
-	else if (global.option_description != "" && option_default != "")
+	else
+	if (global.option_description != ""
+	&& option_default != "")
 	{
 		option_description_text = string(global.option_description) + " - " + string(option_default);
 	}
-	else if (global.option_description != "")
+	else
+	if (global.option_description != "")
 	{
 		option_description_text = string(global.option_description);
 	}

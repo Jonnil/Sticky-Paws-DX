@@ -74,5 +74,8 @@ function scr_process_language_file(lang_name, file_data)
 		{
 			show_debug_message("[scr_process_language_file] Selected language ID is still valid (" + string(global.selected_language_id) + ").");
 		}
+		
+		/* Re-calculate the translation completion after you have finished downloading the new language pack */
+		scr_calculate_translation_completion();
 	}
 }

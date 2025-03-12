@@ -1,0 +1,13 @@
+{
+  "$GMScript":"v1",
+  "%Name":"rgb_to_hsv",
+  "isCompatibility":false,
+  "isDnD":false,
+  "name":"rgb_to_hsv",
+  "parent":{
+    "name":"Other",
+    "path":"folders/Scripts/Other.yy",
+  },
+  "resourceType":"GMScript",
+  "resourceVersion":"2.0",
+}

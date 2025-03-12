@@ -492,6 +492,7 @@ global.assist_enable_spikes = true; /* Option to enable or disable all enemies i
 #endregion /* Assist Settings END */
 
 #region /* Challenge Mode Settings */
+global.challenge_mode_score_multiplier = 1;
 global.challenge_mode_enable = false;
 global.challenge_one_hit_defeat = false;
 global.challenge_no_health_pickups = false;
@@ -757,3 +758,26 @@ scr_config_load(); /* Load Config */
 instance_create_depth(x, y, 0, obj_debug_manager);
 
 alarm[0] = 60;
+
+global.ps_above = part_system_create();
+part_system_depth(global.ps_above, +10); /* Set its depth */
+
+global.pt_flare_particles = part_type_create();
+
+/* Choose a sphere shape, then scale it to be a thin horizontal line */
+part_type_shape(global.pt_flare_particles, pt_shape_sphere);
+part_type_size(global.pt_flare_particles, 0.30, 0.30, 0, 0);
+part_type_scale(global.pt_flare_particles, 3, 1);  /* Makes it 3 times wider than its height */
+
+/* Orientation is initially set but will be updated per particle spawn */
+part_type_orientation(global.pt_flare_particles, 0, 0, 0, 0, 0);
+
+/* Set alpha to fade out: start at 0, then 0.05, and end at 0 */
+part_type_alpha3(global.pt_flare_particles, 0, 0.05, 0);
+
+/* Blending mode, life span, and speed/direction settings */
+part_type_blend(global.pt_flare_particles, 1);
+part_type_life(global.pt_flare_particles, 30, 30);
+part_type_speed(global.pt_flare_particles, 0, 0, 0, 0);
+part_type_direction(global.pt_flare_particles, 0, 360, 0, 0);
+part_type_gravity(global.pt_flare_particles, 0, 0);

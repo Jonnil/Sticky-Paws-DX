@@ -1,9 +1,9 @@
-/// @function scr_format_timestamp(date_value)
+/// @function scr_format_timestamp(date_value, what_timezone)
 /// @description Returns a string in the format "YYYY-MM-DD hh:mm:ss".
-function scr_format_timestamp(_date_value)
+function scr_format_timestamp(_date_value, what_timezone = timezone_local)
 {
 	/* Set the timezone explicityl */
-	date_set_timezone(timezone_local);
+	date_set_timezone(what_timezone);
 	
 	/* Extract date/time components */
 	var yy		= date_get_year(_date_value);

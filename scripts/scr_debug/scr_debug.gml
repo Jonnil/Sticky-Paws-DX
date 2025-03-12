@@ -539,6 +539,16 @@ function scr_debug_draw_optimized_text()
 					debug_text_y = scr_draw_highlighted_text(32, debug_text_y, "in_character_select_menu", string(in_character_select_menu), "In Character Select Menu", c_white, c_red, false);
 				}
 				
+				if (variable_instance_exists(self, "in_settings"))
+				{
+					debug_text_y = scr_draw_highlighted_text(32, debug_text_y, "in_settings", string(in_settings), "In Settings Menu", c_white, c_red, false);
+				}
+				
+				if (variable_instance_exists(self, "can_navigate_settings_sidebar"))
+				{
+					debug_text_y = scr_draw_highlighted_text(32, debug_text_y, "can_navigate_settings_sidebar", string(can_navigate_settings_sidebar), "Can Navigate Settings Sidebar", c_white, c_red, false);
+				}
+				
 				/* 2. Control Settings */
 				debug_text_y = scr_draw_highlighted_text(32, debug_text_y, "controls_used_for_navigation", string(global.controls_used_for_navigation), "Controls Used For Navigation", c_white, c_red, false);
 				

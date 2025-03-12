@@ -1,7 +1,6 @@
 /* ________________________________Create Event________________________________ */
 
 #region /* Debug toggles */
-can_create_speed_lines = true;
 can_create_follow_mouse = true;
 can_collide_with_wall = true; /* For debug purposes, you can disable collision with walls */
 #endregion /* Debug toggles END */
@@ -205,6 +204,7 @@ in_water = false; /* If the player is in water or not, instead of checking for t
 in_breathable_water = false; /* If the water is breathable or not */
 invincible_timer = 0;
 invincible_blend = c_white; /* When invincible, player should cycles through the colors of the rainbow, and the after images need to take from this variable */
+saturated_player_color = c_white;
 jump = 0;
 jump_transition_to_fall_animation = 0;
 last_standing_x = x;

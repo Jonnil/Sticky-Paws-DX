@@ -116,6 +116,12 @@ function scr_draw_level_hud()
 			draw_set_halign(fa_right);
 			draw_set_valign(fa_middle);
 			scr_draw_text_outlined(window_width - 200, hud_show_score_y, l10n_text("Score") + "\n" + string(score), global.default_text_size, c_white, c_black, 1);
+			
+			if (global.challenge_mode_enable)
+			{
+				/* Display the current Challenge Mode score multiplier */
+				scr_draw_text_outlined(window_width - 400, hud_show_score_y, l10n_text("Score Multiplier") + ":" + string_format(global.challenge_mode_score_multiplier, 1, 1) + "x", global.default_text_size, c_white, c_black, 1);
+			}
 		}
 		
 		#region /* Time Countdown */

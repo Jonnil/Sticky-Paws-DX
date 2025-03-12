@@ -483,3 +483,18 @@ selected_voicepack = global.voicepack_for_player[player];
 selected_skin = global.skin_for_player[player];
 
 #endregion /* Initialize Custom Character END */
+
+/* Get the original player color from your global array */
+var orig_color = global.player_color[player];
+
+/* Extract the RGB components */
+var r = color_get_red(orig_color);
+var g = color_get_green(orig_color);
+var b = color_get_blue(orig_color);
+
+/* Convert the original color to HSV */
+var hsv = rgb_to_hsv(r, g, b);
+var h = hsv[0];
+
+/* Create the new color with fixed saturation */
+saturated_player_color = make_color_hsv(h, 64, 255);

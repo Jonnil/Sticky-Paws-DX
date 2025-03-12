@@ -88,7 +88,13 @@ if (floor(random(10)) == 0)
 && (y < camera_get_view_y(view_camera[view_current]) + camera_get_view_height(view_camera[view_current]))
 && (y > camera_get_view_y(view_camera[view_current]))
 {
-	effect_create_below(ef_star, x + random_range(- 16, + 16), y + random_range(- 16, + 16), 0, c_white);
+	effect_create_below(
+		ef_star,
+		x + random_range(- 16, + 16),
+		y + random_range(- 16, + 16),
+		0,
+		c_white
+	);
 }
 
 #region /* Expanding Ring Effect */

@@ -177,6 +177,8 @@ function scr_unlock_placable_level_objects(default_unlock = false)
 		}
 		
 		/* Unlock the selected items */
+		ini_open(game_save_id + "save_file/file" + string(global.file) + ".ini");
+		
 		for (var j = 0; j < ds_list_size(unlocked_items); j++)
 		{
 			var item_to_unlock = ds_list_find_value(unlocked_items, j);
@@ -196,6 +198,7 @@ function scr_unlock_placable_level_objects(default_unlock = false)
 		}
 		#endregion /* Some objects work in pairs, so if one of the objects are unlocked that has a pair, then unlock the other one as well END */
 		
+		ini_close();
 		ds_list_destroy(unlocked_items); /* Clean up */
 		
 		#endregion /* Select random items and unlcok the selected items END */

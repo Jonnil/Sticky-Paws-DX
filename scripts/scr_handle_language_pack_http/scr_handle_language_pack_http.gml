@@ -34,7 +34,7 @@ function scr_handle_language_pack_http(_async_map)
 		|| status == 200))
 		{
 			show_debug_message("[scr_handle_language_pack_http] Error: Manifest request returned status " + string(status));
-			global.language_update_status_message = "Manifest error: Server responded with status " + string(status) + ". Please try again.";
+			global.language_update_status_message = "Manifest error: Server responded with incorrect status. Please try again";
 			global.language_update_status_color = c_red;
 			return;
 		}
@@ -54,18 +54,27 @@ function scr_handle_language_pack_http(_async_map)
 			show_debug_message("[scr_handle_language_pack_http] Detected CSV manifest. language_last_update_string = " + string(global.language_last_update_string) + " language_last_update_real = " + string(date_current_datetime()));
 			scr_process_language_file("all", result);
 			
-			global.language_update_status_message = "Language pack update complete: CSV manifest applied.";
+			global.language_update_status_message = "Your translations are now up to date!";
 			global.language_update_status_color = c_lime;
 			return;
 		}
 		else
 		{
+			/* Before calling json_parse, ensure the result looks like valid JSON: */
+			if (string_copy(result, 1, 1) != "{" && string_copy(result, 1, 1) != "[")
+			{
+				show_debug_message("[scr_handle_language_pack_http] Error: Result is not valid JSON: " + result);
+				global.language_update_status_message = "Manifest error: Received unexpected data format";
+				global.language_update_status_color = c_red;
+				return;
+			}
+			
 			var json_data = json_parse(result);
 			
 			if (is_undefined(json_data))
 			{
 				show_debug_message("[scr_handle_language_pack_http] Error: Failed to parse JSON manifest.");
-				global.language_update_status_message = "Manifest error: Could not parse JSON data.";
+				global.language_update_status_message = "Manifest error: Could not parse data";
 				global.language_update_status_color = c_red;
 				return;
 			}
@@ -73,7 +82,7 @@ function scr_handle_language_pack_http(_async_map)
 			if (!json_data.languages)
 			{
 				show_debug_message("[scr_handle_language_pack_http] Error: JSON manifest missing 'languages' array.");
-				global.language_update_status_message = "Manifest error: No languages found in update manifest.";
+				global.language_update_status_message = "Manifest error: No languages found in update manifest";
 				global.language_update_status_color = c_red;
 				return;
 			}
@@ -83,12 +92,13 @@ function scr_handle_language_pack_http(_async_map)
 			if (array_length(languages_array) == 0)
 			{
 				show_debug_message("[scr_handle_language_pack_http] Warning: No languages in JSON manifest.");
-				global.language_update_status_message = "Manifest warning: No languages available in update.";
+				global.language_update_status_message = "Manifest warning: No languages available in update";
 				global.language_update_status_color = c_red;
 				return;
 			}
 			
-			if (!variable_global_exists("language_file_requests") || global.language_file_requests == undefined)
+			if (!variable_global_exists("language_file_requests")
+			|| global.language_file_requests == undefined)
 			{
 				global.language_file_requests = ds_map_create();
 			}
@@ -134,7 +144,7 @@ function scr_handle_language_pack_http(_async_map)
 		{
 			show_debug_message("[scr_handle_language_pack_http] Error: Download for language '" + lang_name + "' failed with status " + string(status));
 			ds_map_delete(global.language_file_requests, string(req_id));
-			global.language_update_status_message = "Error: Failed to download language file for " + lang_name + ".";
+			global.language_update_status_message = "Error: Failed to download language file";
 			global.language_update_status_color = c_red;
 			return;
 		}
@@ -157,7 +167,7 @@ function scr_handle_language_pack_http(_async_map)
 			ini_write_string("language_updates", "language_last_update_string", global.language_last_update_string);
 			ini_close();
 			
-			global.language_update_status_message = "Language pack update complete: All files updated.";
+			global.language_update_status_message = "Your translations are now up to date!";
 			global.language_update_status_color = c_green;
 			show_debug_message("[scr_handle_language_pack_http] All language files downloaded successfully! language_last_update_string = " + string(global.language_last_update_string) + " language_last_update_real = " + string(date_current_datetime()));
 		}

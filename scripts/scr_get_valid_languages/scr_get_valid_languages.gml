@@ -33,10 +33,22 @@ function scr_get_valid_languages()
 	/* Loop through each language column, starting at the column defined by global.language_column_start */
 	for (var i = global.language_column_start; i < grid_w; i++)
 	{
+		/* Retrieve the language header and the validity string */
+		var language_name = global.language_local_data[# i, 0];
 		var language_valid_string = global.language_local_data[# i, 1];
+		var comp = global.language_completion[i]; /* Now safe to access because we ensured the array is sized */
 		
-		/* Now safe to access because we ensured the array is sized */
-		var comp = global.language_completion[i];
+		/* Skip this column if either the language name or the valid string is undefined or empty */
+		if (is_undefined(language_name) || language_name == "" || language_name == "undefined")
+		{
+			show_debug_message("[scr_get_valid_languages] Skipping language column " + string(i) + " due to undefined or empty language name.");
+			continue;
+		}
+		if (is_undefined(language_valid_string) || language_valid_string == "" || language_valid_string == "undefined")
+		{
+			show_debug_message("[scr_get_valid_languages] Skipping language column " + string(i) + " due to undefined or empty valid string.");
+			continue;
+		}
 		
 		var debug_message = string(global.language_local_data[# i, 0]) +
 			" global.language_completion[" + string(i) + "] = " +

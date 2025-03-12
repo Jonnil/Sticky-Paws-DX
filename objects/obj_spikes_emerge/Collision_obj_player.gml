@@ -20,25 +20,7 @@ if (image_angle == 0)
 	{
 		with(other)
 		{
-			if (invincible_timer == 0)
-			{
-				if (have_heart_balloon)
-				{
-					have_heart_balloon = false;
-					
-					#region /* Save heart balloon to be false */
-					ini_open(game_save_id + "save_file/file" + string(global.file) + ".ini");
-					ini_write_real("Player", "player" + string(player) + "_have_heart_balloon", false);
-					ini_close(); /* Don't commit the save data on Switch, this is only temporary! */
-					#endregion /* Save heart balloon to be false END */
-					
-				}
-				else
-				{
-					hp --;
-				}
-				taken_damage = 200; /* Invincibility frames */
-			}
+			scr_gamepad_vibration(player, 1, 10);
 		}
 	}
 }

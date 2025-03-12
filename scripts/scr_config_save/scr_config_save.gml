@@ -38,6 +38,7 @@ function scr_config_save()
 	#endregion /* Assist Settings END */
 	
 	#region /* Challenge Mode Settings */
+	ini_write_real("config", "challenge_mode_score_multiplier", global.challenge_mode_score_multiplier);
 	ini_write_real("config", "challenge_mode_enable", global.challenge_mode_enable);
 	ini_write_real("config", "challenge_one_hit_defeat", global.challenge_one_hit_defeat);
 	ini_write_real("config", "challenge_no_health_pickups", global.challenge_no_health_pickups);

@@ -2651,7 +2651,7 @@
   "isEcma":false,
   "LibraryEmitters":[],
   "MetaData":{
-    "IDEVersion":"2024.1300.0.743",
+    "IDEVersion":"2024.1300.0.768",
   },
   "name":"Sticky Paws DX",
   "resources":[
@@ -2816,6 +2816,7 @@
     {"id":{"name":"instance_nth_nearest","path":"scripts/instance_nth_nearest/instance_nth_nearest.yy",},},
     {"id":{"name":"load_and_save_custom_level","path":"scripts/load_and_save_custom_level/load_and_save_custom_level.yy",},},
     {"id":{"name":"menu_dropdown_variable_to_change","path":"scripts/menu_dropdown_variable_to_change/menu_dropdown_variable_to_change.yy",},},
+    {"id":{"name":"rgb_to_hsv","path":"scripts/rgb_to_hsv/rgb_to_hsv.yy",},},
     {"id":{"name":"scr_add_object","path":"scripts/scr_add_object/scr_add_object.yy",},},
     {"id":{"name":"scr_audio_play","path":"scripts/scr_audio_play/scr_audio_play.yy",},},
     {"id":{"name":"scr_automatic_screenshot","path":"scripts/scr_automatic_screenshot/scr_automatic_screenshot.yy",},},
@@ -2982,6 +2983,7 @@
     {"id":{"name":"scr_player_move_spring","path":"scripts/scr_player_move_spring/scr_player_move_spring.yy",},},
     {"id":{"name":"scr_player_move_sprint","path":"scripts/scr_player_move_sprint/scr_player_move_sprint.yy",},},
     {"id":{"name":"scr_player_move_swimming_in_water","path":"scripts/scr_player_move_swimming_in_water/scr_player_move_swimming_in_water.yy",},},
+    {"id":{"name":"scr_player_move_take_damage","path":"scripts/scr_player_move_take_damage/scr_player_move_take_damage.yy",},},
     {"id":{"name":"scr_player_move_throw_items_in_hands","path":"scripts/scr_player_move_throw_items_in_hands/scr_player_move_throw_items_in_hands.yy",},},
     {"id":{"name":"scr_player_move_tongue","path":"scripts/scr_player_move_tongue/scr_player_move_tongue.yy",},},
     {"id":{"name":"scr_player_move_triple_jump","path":"scripts/scr_player_move_triple_jump/scr_player_move_triple_jump.yy",},},
@@ -3216,6 +3218,7 @@
     {"id":{"name":"spr_icon_cogwheel","path":"sprites/spr_icon_cogwheel/spr_icon_cogwheel.yy",},},
     {"id":{"name":"spr_icon_daily_build","path":"sprites/spr_icon_daily_build/spr_icon_daily_build.yy",},},
     {"id":{"name":"spr_icon_delete","path":"sprites/spr_icon_delete/spr_icon_delete.yy",},},
+    {"id":{"name":"spr_icon_dropdown_menu","path":"sprites/spr_icon_dropdown_menu/spr_icon_dropdown_menu.yy",},},
     {"id":{"name":"spr_icon_exclamation","path":"sprites/spr_icon_exclamation/spr_icon_exclamation.yy",},},
     {"id":{"name":"spr_icon_featured","path":"sprites/spr_icon_featured/spr_icon_featured.yy",},},
     {"id":{"name":"spr_icon_finished","path":"sprites/spr_icon_finished/spr_icon_finished.yy",},},

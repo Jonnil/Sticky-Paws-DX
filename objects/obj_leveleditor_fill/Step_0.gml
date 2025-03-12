@@ -29,21 +29,24 @@ else
                     fill_mode_type = "fill";
                 }
             }
-            else if (free_left && (delay == 3))
+            else
+			if (free_left && (delay == 3))
             {
                 with (instance_create_depth(x - 32, y, 0, obj_leveleditor_fill))
                 {
                     fill_mode_type = "horizontal";
                 }
             }
-            else if (free_right && (delay == 4))
+            else
+			if (free_right && (delay == 4))
             {
                 with (instance_create_depth(x + 32, y, 0, obj_leveleditor_fill))
                 {
                     fill_mode_type = "horizontal";
                 }
             }
-            else if (free_up && (delay == 5))
+            else
+			if (free_up && (delay == 5))
             {
                 with (instance_create_depth(x, y - 32, 0, obj_leveleditor_fill))
                 {
@@ -51,7 +54,8 @@ else
                 }
             }
         }
-        else if (fill_mode_type == "horizontal")
+        else
+		if (fill_mode_type == "horizontal")
         {
             if (free_left)
             {
@@ -68,7 +72,8 @@ else
                 }
             }
         }
-        else if (fill_mode_type == "vertical")
+        else
+		if (fill_mode_type == "vertical")
         {
             if (free_up)
             {
@@ -126,7 +131,10 @@ else
         }
 
         // Destroy this fill object when the delay threshold is met.
-        if ((fill_mode_type == "fill" && delay >= 5) || (fill_mode_type != "fill" && delay >= 1))
+        if ((fill_mode_type == "fill"
+		&& delay >= 5)
+		|| (fill_mode_type != "fill"
+		&& delay >= 1))
         {
             instance_destroy();
         }

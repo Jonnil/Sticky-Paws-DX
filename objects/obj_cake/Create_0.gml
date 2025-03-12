@@ -1,3 +1,4 @@
+depth = +10;
 attach_player = false;
 cutscene = 0;
 image_speed = 0.3;

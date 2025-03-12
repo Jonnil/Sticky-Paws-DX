@@ -185,13 +185,23 @@ if (key_jump_hold)
 #endregion /* Assist Hover When Holding Jump END */
 
 #region /* Playtest Invincibility */
-if (global.playtest_invincibility || global.assist_enable && global.assist_invincibility || assist_item)
+if (global.playtest_invincibility
+|| global.assist_enable
+&& global.assist_invincibility
+|| assist_item)
 {
-	chain_reaction = 0; /* You can never get chain reactions when you have assist invincibility */
+	/* You can never get chain reactions when you have assist invincibility */
+	chain_reaction = 0;
 	invincible_timer = true;
 	if (floor(random(10)) == 0)
 	{
-		effect_create_above(ef_star, random_range(bbox_left - 8, bbox_right + 8), random_range(bbox_top - 8, bbox_bottom + 8), 0, c_white);
+		effect_create_above(
+			ef_star,
+			random_range(bbox_left - 8, bbox_right + 8),
+			random_range(bbox_top - 8, bbox_bottom + 8),
+			0,
+			saturated_player_color
+		);
 	}
 }
 #endregion /* Playtest Invincibility END */
@@ -393,25 +403,7 @@ if (collision_rectangle(bbox_left - 1, bbox_top - 1, bbox_right + 1, bbox_bottom
 || (collision_rectangle(bbox_left - 1, bbox_top - 1, bbox_right + 1, bbox_top + 1, obj_spikes_emerge, false, true) && instance_nearest(x, bbox_bottom, obj_spikes_emerge).image_angle == 180 && instance_nearest(x, bbox_bottom, obj_spikes_emerge).sprite_index == spr_spikes_emerge)
 || (collision_rectangle(bbox_right - 1, bbox_top - 1, bbox_right + 1, bbox_bottom + 1, obj_spikes_emerge, false, true) && instance_nearest(x, bbox_bottom, obj_spikes_emerge).image_angle == 270 && instance_nearest(x, bbox_bottom, obj_spikes_emerge).sprite_index == spr_spikes_emerge)
 {
-	if (taken_damage < 1 && invincible_timer == 0)
-	{
-		if (have_heart_balloon)
-		{
-			have_heart_balloon = false;
-			
-			#region /* Save heart balloon to be false */
-			ini_open(game_save_id + "save_file/file" + string(global.file) + ".ini");
-			ini_write_real("Player", "player" + string(player) + "_have_heart_balloon", false);
-			ini_close(); /* Don't commit the save data on Switch, this is only temporary! */
-			#endregion /* Save heart balloon to be false END */
-			
-		}
-		else
-		{
-			hp --;
-		}
-		taken_damage = 200; /* Invincibility frames */
-	}
+	scr_player_move_take_damage()
 }
 #endregion /* If you touch spikes, take damage END */
 
@@ -2155,19 +2147,6 @@ else
 	spark2_effect = false;
 }
 #endregion /* Running Sparks Effect END */
-
-#region /* Speedlines Effect */
-if (can_create_speed_lines)
-&& (image_alpha > 0)
-{
-	if (invincible_timer >= 2)
-	|| (vspeed < 0)
-	|| (vspeed > 0)
-	{
-		instance_create_depth(xx, yy, 0, obj_speedline);
-	}
-}
-#endregion /* Speedlines Effect END */
 
 if (on_ground)
 {

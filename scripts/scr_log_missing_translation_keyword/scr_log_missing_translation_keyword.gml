@@ -23,8 +23,23 @@ function scr_log_missing_translation_keyword(log_translation_key = "")
 		
 		#region /* Log Missing Keyword Locally for CSV */
 		/* Define the file path where missing keywords are logged locally */
-		var file_path = game_save_id + "translation_missing_keywords.txt";
-		var file = file_text_open_append(file_path); // Open the file in append mode */
+		
+		/* Build the timestamp string "YYYY-MM-DD" using built-in date variables for the filename, don't include time, only include date */
+		var year   = string(current_year);
+			
+		var month  = string(current_month);
+		if (current_month < 10) month = "0" + month;
+			
+		var day	= string(current_day);
+		if (current_day < 10) day = "0" + day;
+		
+		var game_name = string_replace_all(global.game_name, " ", "_");
+		var save_date = string(year) + "-" + string(month) + "-" + string(day);
+		
+		var translation_missing_keywords_filename = "translation_missing_keywords-" + string(game_name) + "_v" + string(scr_get_build_date()) + "_" + save_date + ".txt";
+		var translation_missing_keywords_file_path = game_save_id + "translation_missing_keywords/" + string(translation_missing_keywords_filename);
+		
+		var file = file_text_open_append(translation_missing_keywords_file_path); /* Open the file in append mode */
 		if (file != -1)
 		{
 			/* Build the timestamp string "YYYY-MM-DD hh:mm:ss" using built-in date variables */
@@ -63,7 +78,7 @@ function scr_log_missing_translation_keyword(log_translation_key = "")
 		else
 		{
 			/* Debug message if the file couldn't be opened */
-			show_debug_message("[TranslationSync] Error: Unable to open file for logging: " + file_path);
+			show_debug_message("[TranslationSync] Error: Unable to open file for logging: " + translation_missing_keywords_file_path);
 		}
 		#endregion /* Log Missing Keyword Locally for CSV END */
 		

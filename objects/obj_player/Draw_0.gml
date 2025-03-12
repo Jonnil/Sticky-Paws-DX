@@ -204,7 +204,13 @@ if (invincible_timer >= 1)
 {
 	if (floor(random(10)) == 0)
 	{
-		effect_create_above(ef_star, x + random_range(- 50, + 50), y+ random_range(- 50, + 50), 0, c_white);
+		effect_create_above(
+			ef_star,
+			x + random_range(- 50, + 50),
+			y + random_range(- 50, + 50),
+			0,
+			saturated_player_color
+		);
 	}
 }
 #endregion /* Invincible END */

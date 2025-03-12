@@ -175,6 +175,7 @@ function scr_config_load()
 		#endregion /* Assist Settings END */
 		
 		#region /* Challenge Mode Settings */
+		if (ini_key_exists("config", "challenge_mode_score_multiplier")) { global.challenge_mode_score_multiplier = ini_read_real("config", "challenge_mode_score_multiplier", 1); }
 		if (ini_key_exists("config", "challenge_mode_enable")) { global.challenge_mode_enable = ini_read_real("config", "challenge_mode_enable", 0); }
 		if (ini_key_exists("config", "challenge_one_hit_defeat")) { global.challenge_one_hit_defeat = ini_read_real("config", "challenge_one_hit_defeat", 0); }
 		if (ini_key_exists("config", "challenge_no_health_pickups")) { global.challenge_no_health_pickups = ini_read_real("config", "challenge_no_health_pickups", 0); }

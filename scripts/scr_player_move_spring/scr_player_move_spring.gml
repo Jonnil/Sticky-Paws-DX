@@ -106,10 +106,19 @@ function scr_player_move_spring()
 		#endregion /* Make the cahracter face wherever you're going END */
 		
 		star_image_index ++;
-		if (star_image_index == 5) {
-			effect_create_above(ef_star, x + random_range(-32, +32), y + random_range(-32, +32), 0, c_white);
+		
+		if (star_image_index == 5)
+		{
+			effect_create_above(
+				ef_star,
+				x + random_range(-32, +32),
+				y + random_range(-32, +32),
+				0,
+				saturated_player_color
+			);
 			star_image_index = 0;
 		}
+		
 		image_speed = 0.5;
 	}
 	#endregion /* Spring END */
