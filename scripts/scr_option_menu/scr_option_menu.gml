@@ -36,7 +36,14 @@ function scr_option_menu()
 	
 	#region /* Menu navigation tabs y positions */
 	var accessibility_settings_y = 40;
-	var challenge_mode_settings_y = accessibility_settings_y + 40;
+	if (global.enable_challenge_mode_settings)
+	{
+		var challenge_mode_settings_y = accessibility_settings_y + 40;
+	}
+	else
+	{
+		var challenge_mode_settings_y = accessibility_settings_y;
+	}
 	if (global.enable_how_to_play_settings)
 	{
 		var how_to_play_y = challenge_mode_settings_y + 40;
@@ -140,35 +147,38 @@ function scr_option_menu()
 		#endregion /* Accessibility Settings END */
 		
 		#region /* Challenge Settings */
-		if (global.settings_sidebar_menu == "challenge_mode_settings")
+		if (global.enable_challenge_mode_settings)
 		{
-			if (point_in_rectangle(mouse_get_x, mouse_get_y, 0, challenge_mode_settings_y, 370, challenge_mode_settings_y + 39))
-			&& (global.controls_used_for_navigation == "mouse")
+			if (global.settings_sidebar_menu == "challenge_mode_settings")
 			{
-				draw_sprite_ext(spr_menu_button, global.menu_button_subimg, left_sidebar_x, 20 + challenge_mode_settings_y, 1, 1, 0, c_green, 1);
+				if (point_in_rectangle(mouse_get_x, mouse_get_y, 0, challenge_mode_settings_y, 370, challenge_mode_settings_y + 39))
+				&& (global.controls_used_for_navigation == "mouse")
+				{
+					draw_sprite_ext(spr_menu_button, global.menu_button_subimg, left_sidebar_x, 20 + challenge_mode_settings_y, 1, 1, 0, c_green, 1);
+				}
+				else
+				{
+					draw_sprite_ext(spr_menu_button, global.menu_button_subimg, left_sidebar_x, 20 + challenge_mode_settings_y, 1, 1, 0, c_gray, 1);
+				}
+				/* Button Hightlighted */
+				
+				draw_sprite_ext(spr_icon_challenge_mode, 1, left_sidebar_x + 20 + icon_x_offset, 20 + challenge_mode_settings_y, 1, 1, 0, c_white, 1); /* Settings Icon */
+				scr_draw_text_outlined(left_sidebar_x + 40 + text_x_offset, 20 + challenge_mode_settings_y, l10n_text("Challenge Mode"), global.default_text_size * 1.05, c_black, c_white, 1);
 			}
 			else
 			{
-				draw_sprite_ext(spr_menu_button, global.menu_button_subimg, left_sidebar_x, 20 + challenge_mode_settings_y, 1, 1, 0, c_gray, 1);
+				if (point_in_rectangle(mouse_get_x, mouse_get_y, 0, challenge_mode_settings_y, 370,(challenge_mode_settings_y + 40) - 1))
+				&& (global.controls_used_for_navigation == "mouse")
+				{
+					draw_sprite_ext(spr_menu_button, global.menu_button_subimg, left_sidebar_x, 20 + challenge_mode_settings_y, 1, 1, 0, c_lime, 1);
+				}
+				else
+				{
+					draw_sprite_ext(spr_menu_button, global.menu_button_subimg, left_sidebar_x, 20 + challenge_mode_settings_y, 1, 1, 0, c_white, 1);
+				}
+				draw_sprite_ext(spr_icon_challenge_mode, 1, left_sidebar_x + 20 + icon_x_offset, 20 + challenge_mode_settings_y, 0.9, 0.9, 0, c_white, 1); /* Settings Icon */
+				scr_draw_text_outlined(left_sidebar_x + 40 + text_x_offset, 20 + challenge_mode_settings_y, l10n_text("Challenge Mode"), global.default_text_size, c_white, c_black, 1);
 			}
-			/* Button Hightlighted */
-			
-			draw_sprite_ext(spr_icon_challenge_mode, 1, left_sidebar_x + 20 + icon_x_offset, 20 + challenge_mode_settings_y, 1, 1, 0, c_white, 1); /* Settings Icon */
-			scr_draw_text_outlined(left_sidebar_x + 40 + text_x_offset, 20 + challenge_mode_settings_y, l10n_text("Challenge Mode"), global.default_text_size * 1.05, c_black, c_white, 1);
-		}
-		else
-		{
-			if (point_in_rectangle(mouse_get_x, mouse_get_y, 0, challenge_mode_settings_y, 370,(challenge_mode_settings_y + 40) - 1))
-			&& (global.controls_used_for_navigation == "mouse")
-			{
-				draw_sprite_ext(spr_menu_button, global.menu_button_subimg, left_sidebar_x, 20 + challenge_mode_settings_y, 1, 1, 0, c_lime, 1);
-			}
-			else
-			{
-				draw_sprite_ext(spr_menu_button, global.menu_button_subimg, left_sidebar_x, 20 + challenge_mode_settings_y, 1, 1, 0, c_white, 1);
-			}
-			draw_sprite_ext(spr_icon_challenge_mode, 1, left_sidebar_x + 20 + icon_x_offset, 20 + challenge_mode_settings_y, 0.9, 0.9, 0, c_white, 1); /* Settings Icon */
-			scr_draw_text_outlined(left_sidebar_x + 40 + text_x_offset, 20 + challenge_mode_settings_y, l10n_text("Challenge Mode"), global.default_text_size, c_white, c_black, 1);
 		}
 		#endregion /* Challenge Settings END */
 		
@@ -747,6 +757,7 @@ function scr_option_menu()
 			}
 			else
 			if (global.settings_sidebar_menu == "challenge_mode_settings")
+			&& (global.enable_challenge_mode_settings)
 			{
 				menu = "challenge_mode_enable";
 			}
@@ -897,7 +908,8 @@ function scr_option_menu()
 		else
 		
 		#region /* Click Challenge Mode */
-		if (point_in_rectangle(mouse_get_x, mouse_get_y, 0, challenge_mode_settings_y, 370,(challenge_mode_settings_y + 40) - 1))
+		if (global.enable_challenge_mode_settings)
+		&& (point_in_rectangle(mouse_get_x, mouse_get_y, 0, challenge_mode_settings_y, 370,(challenge_mode_settings_y + 40) - 1))
 		&& (global.controls_used_for_navigation == "mouse")
 		&& (global.settings_sidebar_menu == "challenge_mode_settings")
 		&& (mouse_check_button_released(mb_left))
@@ -914,7 +926,8 @@ function scr_option_menu()
 		else
 		
 		#region /* Challenge Mode */
-		if (point_in_rectangle(mouse_get_x, mouse_get_y, 0, challenge_mode_settings_y, 370,(challenge_mode_settings_y + 40) - 1))
+		if (global.enable_challenge_mode_settings)
+		&& (point_in_rectangle(mouse_get_x, mouse_get_y, 0, challenge_mode_settings_y, 370,(challenge_mode_settings_y + 40) - 1))
 		&& (global.controls_used_for_navigation == "mouse")
 		&& (mouse_check_button(mb_left))
 		&& (menu_delay == 0 && menu_joystick_delay == 0)
@@ -1387,7 +1400,19 @@ function scr_option_menu()
 				&& (can_navigate_settings_sidebar)
 				&& (menu_delay == 0 && menu_joystick_delay == 0)
 				{
-					global.settings_sidebar_menu = "challenge_mode_settings";
+					if (global.enable_challenge_mode_settings)
+					{
+						global.settings_sidebar_menu = "challenge_mode_settings";
+					}
+					else
+					if (global.enable_how_to_play_settings)
+					{
+						global.settings_sidebar_menu = "how_to_play";
+					}
+					else
+					{
+						global.settings_sidebar_menu = "game_settings";
+					}
 					menu_delay = 3;
 				}
 			}
@@ -1430,7 +1455,14 @@ function scr_option_menu()
 					&& (can_navigate_settings_sidebar)
 					&& (menu_delay == 0 && menu_joystick_delay == 0)
 					{
-						global.settings_sidebar_menu = "challenge_mode_settings";
+						if (global.enable_challenge_mode_settings)
+						{
+							global.settings_sidebar_menu = "challenge_mode_settings";
+						}
+						else
+						{
+							global.settings_sidebar_menu = "accessibility_settings";
+						}
 						menu_delay = 3;
 					}
 					else
@@ -1438,7 +1470,14 @@ function scr_option_menu()
 					&& (can_navigate_settings_sidebar)
 					&& (menu_delay == 0 && menu_joystick_delay == 0)
 					{
-						global.settings_sidebar_menu = "game_settings";
+						if (global.enable_challenge_mode_settings)
+						{
+							global.settings_sidebar_menu = "game_settings";
+						}
+						else
+						{
+							global.settings_sidebar_menu = "accessibility_settings";
+						}
 						menu_delay = 3;
 					}
 				}
@@ -1459,8 +1498,13 @@ function scr_option_menu()
 						global.settings_sidebar_menu = "how_to_play";
 					}
 					else
+					if (global.enable_challenge_mode_settings)
 					{
 						global.settings_sidebar_menu = "challenge_mode_settings";
+					}
+					else
+					{
+						global.settings_sidebar_menu = "accessibility_settings";
 					}
 					menu_delay = 3;
 				}
@@ -2058,7 +2102,10 @@ function scr_option_menu()
 
 		scr_option_assist_settings();
 		
-		scr_option_challenge_mode_settings();
+		if (global.enable_challenge_mode_settings)
+		{
+			scr_option_challenge_mode_settings();
+		}
 		
 		#region /* My Game Settings */
 		

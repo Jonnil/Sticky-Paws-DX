@@ -72,6 +72,7 @@ global.enable_broadcast_settings = false; /* Enable Broadcast settings */
 global.enable_add_ons_settings = false; /* Enable Add-ons settings */
 global.enable_ranks = false; /* Enable the option to show ranks in the game */
 global.enable_difficutly_layers_in_level_editor = false; /* If you can change difficulty layers in level editor. You need to unlock this feature first by using the difficulty settings */
+global.enable_challenge_mode_settings = false; /* Enable Challenge Mode settings */
 
 #region /* If you're playing on mobile, then some things should show up that is not on PC */
 if (os_type == os_android)
