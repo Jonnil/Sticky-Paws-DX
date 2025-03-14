@@ -121,6 +121,7 @@ if (os_type == os_switch)
 	global.enable_option_for_pc = false; /* Enable if options related to gamepad, but only intended for when playing with gamepad on PC should show up */
 	global.enable_keyboard_and_mouse_settings = false; /* Enable Keyboard and Mouse settings */
 	global.always_show_gamepad_buttons = true;
+	global.enable_translation_file_logging = false;
 }
 else
 {
@@ -132,6 +133,7 @@ else
 	global.enable_option_for_pc = true; /* Enable if options related to gamepad, but only intended for when playing with gamepad on PC should show up */
 	global.enable_keyboard_and_mouse_settings = true; /* Enable Keyboard and Mouse settings */
 	global.always_show_gamepad_buttons = false; /* You can force to show gamepad buttons, even if playing with keyboard, mouse or touch controls. Default = false */
+	global.enable_translation_file_logging = false;
 }
 #endregion /* If you're playing on console, then some things should not show up that is for PC END */
 

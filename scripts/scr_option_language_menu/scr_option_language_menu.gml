@@ -493,6 +493,7 @@ function scr_option_language_menu()
 			&& (!open_dropdown)
 			&& (menu == "language_check_updates")
 			{
+				show_debug_message("[scr_option_language_menu] Force to update language pack when you click the 'Update Translations Now' button");
 				menu_delay = 3;
 				
 				/* Force to update language pack when you click this button */

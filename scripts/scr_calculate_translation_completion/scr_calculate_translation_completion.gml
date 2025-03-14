@@ -29,7 +29,7 @@ function calculate_translation_completion()
 	for (var language_id = global.language_column_start; language_id < grid_width; language_id++)
 	{
 		var empty_count = 0;
-		/* Loop through each translation entry (skip the header row at index 0) */
+		/* Loop through each translation entry, skip the header row at index 0 */
 		for (var row_index = 1; row_index < grid_height; row_index++)
 		{
 			if (global.language_local_data[# language_id, row_index] == "")

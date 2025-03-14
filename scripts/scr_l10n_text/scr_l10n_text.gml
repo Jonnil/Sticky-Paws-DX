@@ -4,31 +4,48 @@
 /// it will attempt to initialize the translations first.
 function l10n_text(key = "")
 {
+	/* Toggle for debug messages in this function */
+	var debug_enabled = false;
+	
+	if (debug_enabled)
+	{
+		show_debug_message("[l10n_text] Called with key: " + string(key));
+	}
+	
 	var text = key;
 	
-	/* Ensure that both the translations DS map and the CSV grid exist */
+	/* 1. Check if translation data is loaded */
 	if (!variable_global_exists("translations")
 	|| global.translations == 0
 	|| !variable_global_exists("language_local_data")
 	|| global.language_local_data == 0)
 	{
+		/* Always show this debug message when translation date is not loaded */
 		show_debug_message("[l10n_text] Translations data not loaded. Initializing translations...");
+		
 		scr_initialize_translations();
 		
-		/* If still not loaded, return the key */
+		/* Check again after attempting to load */
 		if (!variable_global_exists("translations")
 		|| global.translations == 0
 		|| !variable_global_exists("language_local_data")
 		|| global.language_local_data == 0)
 		{
-			show_debug_message("[l10n_text] ERROR: Translations data is still not available!");
+			/* Always show this debug message when translation data is still not available */
+			show_debug_message("[l10n_text] ERROR: Translations data is still not available! Returning key as fallback.");
+			
 			return key;
 		}
 	}
 	
-	/* Check if a translation exists for the given key */
+	/* 2. Look up the key in the translations DS map */
 	if (global.translations[? key] != undefined)
 	{
+		if (debug_enabled)
+		{
+			show_debug_message("[l10n_text] Found translation entry for key: " + string(key));
+		}
+		
 		var row = global.translations[? key];
 		var col = global.selected_language_id;
 		
@@ -36,28 +53,61 @@ function l10n_text(key = "")
 		if (col >= ds_grid_width(global.language_local_data)
 		|| col < global.language_column_start)
 		{
-			col = global.language_column_start; /* Fallback to the default language column */
-			show_debug_message("[l10n_text] Warning: selected_language_id out of bounds. Resetting to default column " + string(col));
+			/* Always show this debug message when selected_language_id out of bounds */
+			show_debug_message("[l10n_text] Warning: selected_language_id out of bounds. Resetting to default column: " + string(global.language_column_start));
+			
+			col = global.language_column_start;
 		}
 		
 		var localized_text = global.language_local_data[# col, row];
 		
+		if (debug_enabled)
+		{
+			show_debug_message("[l10n_text] localized_text from grid: " + string(localized_text));
+		}
+		
+		/* 3. If localized_text is valid, replace placeholders */
 		if (localized_text != "")
 		{
 			text = localized_text;
 			var a = argument_count > 1 ? argument[1] : "";
 			text = string_replace_all(text, "{a}", a);
+			
+			if (debug_enabled)
+			{
+				show_debug_message("[l10n_text] Replaced {a} with '" + string(a) + "'. Final text: " + text);
+			}
 		}
+		/* 4. Fallback to default column text if the localized_text is empty */
 		else
 		if (global.language_local_data[# global.language_column_start, row] != "")
 		{
+			if (debug_enabled)
+			{
+				show_debug_message("[l10n_text] localized_text is empty for the current column, using default column.");
+			}
+			
 			text = global.language_local_data[# global.language_column_start, row];
 			var a = argument_count > 1 ? argument[1] : "";
 			text = string_replace_all(text, "{a}", a);
+			
+			if (debug_enabled)
+			{
+				show_debug_message("[l10n_text] Replaced {a} with '" + string(a) + "'. Final fallback text: " + text);
+			}
+		}
+	}
+	else
+	{
+		/* Key not found in translations */
+		if (debug_enabled)
+		{
+			show_debug_message("[l10n_text] No translation found for key: " + string(key));
 		}
 	}
 	
-	/* Translation debugging: append additional info if enabled */
+	/* 5. Handle extra debugging if global.translation_debug is enabled */
+	/* (this is separate from our new debug_enabled check) */
 	if (global.translation_debug)
 	{
 		if (global.translations[? key] != undefined
@@ -68,18 +118,27 @@ function l10n_text(key = "")
 		}
 		else
 		{
-			text = "A? " + key + string(round(random(9))); /* Indicate missing keyword */
+			text = "A? " + key + string(round(random(9)));
 		}
 	}
 	
-	/* If no translation was found, log the missing keyword */
+	/* 6. If the key is missing from translations, log it */
 	if (global.translations[? key] == undefined)
 	{
+		if (debug_enabled)
+		{
+			show_debug_message("[l10n_text] Logging missing translation keyword: " + string(key));
+		}
 		scr_log_missing_translation_keyword(key);
 	}
 	
-	/* Replace {br} placeholders with actual newlines */
+	/* 7. Replace {br} placeholders with newlines */
 	text = string_replace_all(text, "{br}", "\n");
+	
+	if (debug_enabled)
+	{
+		show_debug_message("[l10n_text] Returning final text: " + text);
+	}
 	
 	return text;
 }

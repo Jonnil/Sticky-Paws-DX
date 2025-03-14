@@ -2,7 +2,6 @@
 /// @description Downloads new or updated language packs from your published Google Sheet.
 function scr_download_language_packs()
 {
-	
 	/* Start Download Process */
 	global.language_update_status_message = "Fetching latest language pack data from server...";
 	if (variable_instance_exists(self, "c_menu_fill"))
@@ -16,8 +15,12 @@ function scr_download_language_packs()
 	show_debug_message("[scr_download_language_packs] Initiating language pack download process from Google Sheet.");
 	
 	#region /* Check Network Connection */
-	if (!global.online_token_validated
-	|| !os_is_network_connected())
+	/* Now we check if a network connection IS available */
+	if (os_is_network_connected())
+	{
+		show_debug_message("[scr_download_language_packs] Network connection detected.");
+	}
+	else
 	{
 		show_debug_message("[scr_download_language_packs] Error: No network connection.");
 		global.language_update_status_message = "Network error: Unable to connect to server for language updates.";
@@ -25,7 +28,7 @@ function scr_download_language_packs()
 		return;
 	}
 	#endregion /* Check Network Connection END */
-
+	
 	/* Define Endpoint URL */
 	var url = global.google_sheet_language_url;
 	show_debug_message("[scr_download_language_packs] Download URL set to: " + url);

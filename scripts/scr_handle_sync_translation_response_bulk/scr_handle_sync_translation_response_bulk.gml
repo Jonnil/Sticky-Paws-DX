@@ -9,12 +9,12 @@ function scr_handle_sync_translation_response_bulk(request_id, translation_keys)
 		var status_code = async_load[? "status"];
 		if (status_code == 0)
 		{
-			show_debug_message("[TranslationSync] Bulk sync success. Clearing local queue now.");
+			show_debug_message("[scr_handle_sync_translation_response_bulk] Bulk sync success. Clearing local queue now.");
 			ds_list_clear(global.missing_translation_queue);
 		}
 		else
 		{
-			show_debug_message("[TranslationSync] Bulk sync error. status=" + string(status_code) 
+			show_debug_message("[scr_handle_sync_translation_response_bulk] Bulk sync error. status=" + string(status_code) 
 				+ " => Keeping local queue to retry later.");
 		}
 		instance_destroy();

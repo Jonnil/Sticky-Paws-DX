@@ -33,6 +33,6 @@ function scr_check_daily_translation_flush()
 		ini_open(game_save_id + "save_file/config.ini");
 		ini_write_real("translation_sync", "last_flush_time", global.last_missing_flush_time);
 		ini_close();
-		show_debug_message("[TranslationSync] Daily flush complete. New flush time: " + string(global.last_missing_flush_time));
+		show_debug_message("[scr_check_daily_translation_flush] Daily flush complete. New flush time: " + string(global.last_missing_flush_time));
 	}
 }

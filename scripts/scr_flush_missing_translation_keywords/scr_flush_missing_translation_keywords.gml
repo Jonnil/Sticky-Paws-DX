@@ -6,19 +6,19 @@ function scr_flush_missing_translation_keywords()
 	/* Safety checks */
 	if (!variable_global_exists("missing_translation_queue"))
 	{
-		show_debug_message("[TranslationSync] Warning: missing_translation_queue doesn't exist. Nothing to flush.");
+		show_debug_message("[scr_flush_missing_translation_keywords] Warning: missing_translation_queue doesn't exist. Nothing to flush.");
 		return;
 	}
 	if (ds_list_size(global.missing_translation_queue) == 0)
 	{
-		show_debug_message("[TranslationSync] No missing translation keys to flush.");
+		show_debug_message("[scr_flush_missing_translation_keywords] No missing translation keys to flush.");
 		return;
 	}
 	
 	/* If no network, skip */
 	if (!os_is_network_connected())
 	{
-		show_debug_message("[TranslationSync] Not connected to network. Will not flush missing keys now.");
+		show_debug_message("[scr_flush_missing_translation_keywords] Not connected to network. Will not flush missing keys now.");
 		return;
 	}
 	
@@ -50,7 +50,7 @@ function scr_flush_missing_translation_keywords()
 	
 	if (request_id == -1)
 	{
-		show_debug_message("[TranslationSync] Bulk flush failed to initiate HTTP request. Keeping queue.");
+		show_debug_message("[scr_flush_missing_translation_keywords] Bulk flush failed to initiate HTTP request. Keeping queue.");
 		return;
 	}
 	
@@ -60,11 +60,11 @@ function scr_flush_missing_translation_keywords()
 	{
 		batch_obj.request_id = request_id;
 		batch_obj.queued_keys = missing_keys_array; /* store for reference */
-		show_debug_message("[TranslationSync] Bulk flush request sent. Request ID: " + string(request_id));
+		show_debug_message("[scr_flush_missing_translation_keywords] Bulk flush request sent. Request ID: " + string(request_id));
 	}
 	else
 	{
-		show_debug_message("[TranslationSync] Error: failed to create obj_sync_missing_translation_batch. Keeping queue.");
+		show_debug_message("[scr_flush_missing_translation_keywords] Error: failed to create obj_sync_missing_translation_batch. Keeping queue.");
 	}
 }
 #endregion /* Script: scr_flush_missing_translation_keywords END */
