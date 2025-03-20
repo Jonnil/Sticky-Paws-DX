@@ -62,13 +62,13 @@ function scr_get_valid_languages()
 		/* Check if the language should show up in-game */
 		if (language_valid_string != "No")
 		{
-			//if ((os_type == os_switch
-			//&& comp >= 100)
-			//|| (os_type != os_switch))
-			//{
+			if ((os_type == os_switch
+			&& comp >= 100)
+			|| (os_type != os_switch))
+			{
 				valid_array++;
 				global.valid_languages[valid_array] = i;
-			//}
+			}
 			debug_message += " global.valid_languages[" + string(valid_array) + "] = " + string(i);
 		}
 		
