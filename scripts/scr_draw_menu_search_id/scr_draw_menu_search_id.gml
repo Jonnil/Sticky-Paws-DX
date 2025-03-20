@@ -138,18 +138,23 @@ function scr_draw_menu_search_id(what_kind_of_id = "level")
 					search_for_id_still = true; /* Turn this on when you want to search for ID */
 					
 					/* Create DS Map to hold the HTTP Header info */
-					map = ds_map_create();
+					var id_search_request_headers = ds_map_create();
 					
 					/* Add to the header DS Map */
-					ds_map_add(map, "Host", global.base_url);
-					ds_map_add(map, "Content-Type", "application/json");
-					ds_map_add(map, "User-Agent", "gmdownloader");
-					ds_map_add(map, "X-API-Key", global.api_key);
+					ds_map_add(id_search_request_headers, "Host", global.base_url);
+					ds_map_add(id_search_request_headers, "Content-Type", "application/json");
+					ds_map_add(id_search_request_headers, "User-Agent", "gmdownloader");
+					ds_map_add(id_search_request_headers, "X-API-Key", global.api_key);
 					
 					/* Send the HTTP GET request to the /download endpoint */
 					global.search_id = string_upper(search_id);
-					global.http_request_id = http_request("https://" + global.base_url + "/download/" + string(content_type_add_s) + "/" + global.search_id, "GET", map, "")
-					ds_map_destroy(map);
+					global.http_request_id = http_request(
+						"https://" + global.base_url + "/download/" + string(content_type_add_s) + "/" + global.search_id,
+						"GET",
+						id_search_request_headers,
+						""
+					);
+					ds_map_destroy(id_search_request_headers);
 					
 					automatically_search_for_id = false;
 					in_online_download_list_menu = false;

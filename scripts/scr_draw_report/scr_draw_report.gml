@@ -56,17 +56,18 @@ function scr_draw_report()
 						#region /* Actually upload the report to the server */
 						
 						/* Create DS Map to hold the HTTP Header info */
-						map = ds_map_create();
+						var report_upload_headers = ds_map_create();
 						
 						/* Add to the header DS Map */
-						ds_map_add(map, "Host", global.base_url);
+						ds_map_add(report_upload_headers, "Host", global.base_url);
 						var boundary = "----GMBoundary";
-						ds_map_add(map, "Content-Type", "multipart/form-data; boundary=" + boundary);
-						ds_map_add(map, "User-Agent", "gmuploader");
-						ds_map_add(map, "X-API-Key", global.api_key);
+						ds_map_add(report_upload_headers, "Content-Type", "multipart/form-data; boundary=" + boundary);
+						ds_map_add(report_upload_headers, "User-Agent", "gmuploader");
+						ds_map_add(report_upload_headers, "X-API-Key", global.api_key);
 						
 						/* If there is a report message, save that in data_send */
-						if (global.report_message != undefined && global.report_message != "") 
+						if (global.report_message != undefined
+						&& global.report_message != "") 
 						{
 							data_send = string(global.report_message);
 						}
@@ -85,11 +86,16 @@ function scr_draw_report()
 						post_data += "--" + boundary + "--";
 						
 						/* Add the Content-Length header to the map */
-						ds_map_add(map, "Content-Length", string(string_length(post_data)));
-						global.http_request_id = http_request("https://" + global.base_url + "/report/" + string(content_type) + "s/" + string(global.search_id), "POST", map, post_data);
+						ds_map_add(report_upload_headers, "Content-Length", string(string_length(post_data)));
+						global.http_request_id = http_request(
+							"https://" + global.base_url + "/report/" + string(content_type) + "s/" + string(global.search_id),
+							"POST",
+							report_upload_headers,
+							post_data
+						);
 						
 						/* Cleans up! */
-						ds_map_destroy(map);
+						ds_map_destroy(report_upload_headers);
 						#endregion /* Actually upload the level to the server END */
 						
 						search_for_id_still = false;

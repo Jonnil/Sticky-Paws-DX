@@ -10,6 +10,7 @@ function scr_debug_toggle_screen()
 	if (keyboard_check_pressed(vk_f3))
 	{
 		global.debug_screen = !global.debug_screen;
+		global.debug_mode_activated_once = true;
 	}
 }
 

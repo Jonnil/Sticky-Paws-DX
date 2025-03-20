@@ -25,7 +25,7 @@ function scr_process_language_file(lang_name, file_data)
 	}
 	else
 	{
-		show_debug_message("[scr_process_language_file] Error: cannot open " + file_path + " for writing");
+		show_debug_message("[scr_process_language_file] Error: cannot open " + file_path + " for writing\n");
 		return;
 	}
 	
@@ -36,21 +36,23 @@ function scr_process_language_file(lang_name, file_data)
 	{
 		show_debug_message("[scr_process_language_file] Found " + string(array_length(lines)) + " lines in CSV.");
 		
-		for (var i = 0; i < array_length(lines); i++)
+		if (global.translation_debug)
 		{
-			var this_line = string_trim(lines[i]);
-			
-			if (this_line == "")
+			for (var i = 0; i < array_length(lines); i++)
 			{
-				continue; /* skip empty lines */
-			}
-			
-			var columns = string_split(this_line, ",");
-			
-			if (global.translation_debug
-			&& (array_length(columns) > 1))
-			{
-				show_debug_message("[scr_process_language_file] Line " + string(i) + ": code=" + columns[0] + " text=" + columns[1]);
+				var this_line = string_trim(lines[i]);
+				
+				if (this_line == "")
+				{
+					continue; /* skip empty lines */
+				}
+				
+				var columns = string_split(this_line, ",");
+				
+				if (array_length(columns) > 1)
+				{
+					show_debug_message("[scr_process_language_file] Line " + string(i) + ": code=" + columns[0] + " text=" + columns[1]);
+				}
 			}
 		}
 	}
@@ -72,10 +74,11 @@ function scr_process_language_file(lang_name, file_data)
 		}
 		else
 		{
-			show_debug_message("[scr_process_language_file] Selected language ID is still valid (" + string(global.selected_language_id) + ").");
+			show_debug_message("[scr_process_language_file] Selected language ID is still valid (" + string(global.selected_language_id) + ").\n");
 		}
 		
 		/* Re-calculate the translation completion after you have finished downloading the new language pack */
+		scr_initialize_translations();
 		scr_calculate_translation_completion();
 	}
 }

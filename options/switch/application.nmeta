@@ -85,6 +85,7 @@
       <Organization>USK</Organization>
       <Age>0</Age>
     </Rating>
+    <AccessibleUrlsFilePath>allowed_urls.txt</AccessibleUrlsFilePath>
     <LegalInformationFilePath>legal_info_0100c8201aa36000_1e4b.zip</LegalInformationFilePath>
     <VideoCapture>Enable</VideoCapture>
     <RuntimeAddOnContentInstall>Deny</RuntimeAddOnContentInstall>

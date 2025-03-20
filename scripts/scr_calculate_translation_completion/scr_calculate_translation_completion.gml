@@ -8,6 +8,7 @@ function calculate_translation_completion()
 	{
 		show_debug_message("[calculate_translation_completion] language_local_data not loaded. Reinitializing...");
 		scr_initialize_translations();
+		
 		if (global.language_local_data == 0)
 		{
 			show_debug_message("[calculate_translation_completion] ERROR: Failed to load language_local_data.");

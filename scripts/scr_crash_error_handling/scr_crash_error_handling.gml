@@ -100,6 +100,7 @@ function scr_crash_error_handling()
 		scr_write_debug_info();
 		
 		ini_close();
+		switch_save_data_commit();
 		#endregion /* Write Crash Details and Debug Info to INI File END */
 		
 		#region /* Output Crash Details and Notify User */
@@ -116,52 +117,7 @@ function scr_crash_error_handling()
 		);
 		#endregion /* Output Crash Details and Notify User END */
 		
-		#region /* Send Crash Log to Server */
-		if (global.online_enabled)
-		&& (global.send_crash_logs)
-		&& (file_exists(crash_logs_folder + crash_log_filename))
-		&& (os_is_network_connected())
-		{
-			/* Open the .ini file for reading and read its full contents */
-			var ini_file = file_text_open_read(crash_logs_folder + crash_log_filename);
-			var ini_content = "";
-			while (!file_text_eof(ini_file))
-			{
-				ini_content += file_text_read_string(ini_file) + "\n";
-			}
-			file_text_close(ini_file);
-			
-			/* Create the payload with the full .ini file content */
-			var payload_map = ds_map_create();
-			ds_map_add(payload_map, "game_name", game_name);
-			ds_map_add(payload_map, "game_version", "v" + scr_get_build_date());
-			ds_map_add(payload_map, "timestamp", save_date);
-			ds_map_add(payload_map, "ini_content", ini_content);
-			ds_map_add(payload_map, "crash_log_filename", crash_log_filename);
-			var post_data = json_encode(payload_map);
-			ds_map_destroy(payload_map);
-			
-			/* Prepare HTTP headers */
-			var header_map = ds_map_create();
-			ds_map_add(header_map, "Content-Type", "application/json");
-			ds_map_add(header_map, "User-Agent", "gm_crash_logger");
-			ds_map_add(header_map, "X-API-Key", global.api_key);
-			ds_map_add(header_map, "Host", string(global.base_url));
-			
-			/* Send the HTTP POST request with the .ini file content as payload */
-			var crash_endpoint = "https://" + string(global.base_url) + "/crashlog";
-			var request_id = http_request(crash_endpoint, "POST", header_map, post_data);
-			ds_map_destroy(header_map);
-		}
-		else
-		if (!global.online_token_validated
-		|| !os_is_network_connected())
-		&& (file_exists(crash_logs_folder + crash_log_filename))
-		{
-			/* Copy the local crash log to the pending folder for online sending when the user is connected again */
-			file_copy(crash_logs_folder + crash_log_filename, game_save_id + "pending_crash_logs/" + crash_log_filename);
-		}
-		#endregion /* Send Crash Log to Server END */
+		scr_save_crash_log(crash_logs_folder, crash_log_filename, game_name, save_date); /* Send Crash Log to Server */
 		
 		#region /* Ask to Open URLs */
 		if (array_length(urls_to_open) > 0)
@@ -184,6 +140,5 @@ function scr_crash_error_handling()
 		}
 		#endregion /* Ask to Open URLs END */
 		
-		game_end();
 	});
 }

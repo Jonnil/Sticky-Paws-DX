@@ -3,7 +3,6 @@ scr_set_screen_size();
 scr_character_select_menu_step();
 scr_set_menu_font_color();
 scr_toggle_fullscreen();
-scr_send_pending_crash_logs();
 scr_step_online_download_list();
 
 var fixed_player = 1;
@@ -263,7 +262,7 @@ if (iris_xscale <= 0.01)
 		ini_open(game_save_id + "save_file/file" + string(global.file) + ".ini");
 		lives = ini_read_real("Player", "lives", 5);
 		ini_close(); /* Don't commit the save data on Switch, this is only temporary! */
-		room_goto(rm_world_map);
+		room_goto(rm_world);
 	}
 	#endregion /* Load File END */
 

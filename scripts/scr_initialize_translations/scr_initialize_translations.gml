@@ -73,6 +73,7 @@ function scr_initialize_translations()
 	
 	/* Now load whichever CSV we decided on: */
 	var translations_map = scr_language_load_csv_into_memory(final_path_to_use);
+	
 	if (translations_map == -1)
 	{
 		/* Something went wrong loading the CSV */

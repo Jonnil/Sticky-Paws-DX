@@ -55,7 +55,7 @@ function scr_deactivate_objects_outside_view()
 				}
 			}
 			else
-			if (room == rm_world_map)
+			if (room == rm_world)
 			{
 				var exclude_list = [
 					obj_camera_map,

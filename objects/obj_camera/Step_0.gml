@@ -400,7 +400,7 @@ if (global.hud_hide_time > 0)
 	*/
 	
 	#region /* Show Lives y position */
-	if (room == rm_world_map)
+	if (room == rm_world)
 	{
 		hud_show_lives_y = 32;
 	}

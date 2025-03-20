@@ -1,0 +1,1 @@
+scr_send_pending_crash_logs_async_http(true);

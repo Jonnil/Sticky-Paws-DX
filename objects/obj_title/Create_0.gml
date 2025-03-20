@@ -428,7 +428,7 @@ if (layer_background_get_sprite(layer_background_get_id(layer_get_id("Background
 #endregion /* Custom Title Screen Background */
 
 #region /* Reset level zoom */
-if (global.reset_level_zoom_when_going_back_to_map)
+if (global.reset_level_zoom_on_return)
 {
 	global.zoom_level = global.default_zoom_level;
 	ini_open("save_file/config.ini");
@@ -438,11 +438,11 @@ if (global.reset_level_zoom_when_going_back_to_map)
 #endregion /* Reset level zoom END */
 
 #region /* Reset world map zoom */
-if (global.reset_world_map_zoom_when_going_back_to_map)
+if (global.reset_world_zoom_on_return)
 {
-	global.zoom_world_map = global.default_zoom_world_map;
+	global.zoom_world = global.default_zoom_world;
 	ini_open("save_file/config.ini");
-	ini_write_real("config", "zoom_world_map", global.default_zoom_world_map);
+	ini_write_real("config", "zoom_world", global.default_zoom_world);
 	ini_close(); /* Don't commit the save data on Switch, this is only temporary! */
 }
 #endregion /* Reset world map zoom END */

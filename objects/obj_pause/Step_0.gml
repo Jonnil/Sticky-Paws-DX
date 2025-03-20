@@ -235,9 +235,9 @@ if (keyboard_check_pressed(vk_escape))
 if (!hide_menu_for_clean_screenshots)
 {
 	if (!show_loading_icon)
-	&& (room == rm_world_map
+	&& (room == rm_world
 	|| room == rm_leveleditor
-	|| global.pause_room == rm_world_map
+	|| global.pause_room == rm_world
 	|| global.pause_room == rm_leveleditor)
 	{
 		
@@ -678,7 +678,7 @@ if (!hide_menu_for_clean_screenshots)
 		{
 			if (key_a_pressed)
 			&& (menu_delay == 0 && menu_joystick_delay == 0)
-			|| (global.pause_room == rm_world_map)
+			|| (global.pause_room == rm_world)
 			&& (mouse_check_button_released(mb_left))
 			&& (point_in_rectangle(mouse_get_x, mouse_get_y, get_window_width * 0.5 - 185, quit_y, get_window_width * 0.5 + 185, quit_y + 42))
 			&& (menu_delay == 0 && menu_joystick_delay == 0)
@@ -692,7 +692,7 @@ if (!hide_menu_for_clean_screenshots)
 				&& (global.character_select_in_this_menu == "main_game")
 				{
 					menu_delay = 3;
-					menu = "quit_to_map";
+					menu = "quit_to_world";
 				}
 				else
 				{
@@ -780,7 +780,7 @@ if (!hide_menu_for_clean_screenshots)
 		else
 		
 		#region /* Quit to Map */
-		if (menu == "quit_to_map")
+		if (menu == "quit_to_world")
 		&& (!global.goal_active)
 		&& (global.pause_room == rm_leveleditor)
 		{
@@ -805,7 +805,7 @@ if (!hide_menu_for_clean_screenshots)
 				#endregion /* Reset timer back to zero END */
 			
 				global.quit_level = true;
-				global.quit_to_map = true;
+				global.quit_to_world = true;
 				audio_stop_all();
 				global.pause = false;
 				#endregion /* Return to Map END */
@@ -841,7 +841,7 @@ if (!hide_menu_for_clean_screenshots)
 			&& (mouse_check_button_released(mb_left))
 			&& (point_in_rectangle(mouse_get_x, mouse_get_y, get_window_width * 0.5 - 185, get_window_height * 0.5 + 2 + 42, get_window_width * 0.5 + 185, get_window_height * 0.5 + 41 + 42))
 			&& (menu_delay == 0 && menu_joystick_delay == 0)
-			|| (global.pause_room == rm_world_map)
+			|| (global.pause_room == rm_world)
 			&& (mouse_check_button_released(mb_left))
 			&& (point_in_rectangle(mouse_get_x, mouse_get_y, get_window_width * 0.5 - 185, get_window_height * 0.5 + 2, get_window_width * 0.5 + 185, get_window_height * 0.5 + 41))
 			&& (menu_delay == 0 && menu_joystick_delay == 0)
@@ -875,7 +875,7 @@ if (!hide_menu_for_clean_screenshots)
 				if (global.pause_room == rm_leveleditor)
 				&& (global.character_select_in_this_menu == "main_game")
 				{
-					menu = "quit_to_map";
+					menu = "quit_to_world";
 				}
 				else
 				{
@@ -913,7 +913,7 @@ if (!hide_menu_for_clean_screenshots)
 			&& (mouse_check_button_released(mb_left))
 			&& (point_in_rectangle(mouse_get_x, mouse_get_y, get_window_width * 0.5 - 185, get_window_height * 0.5 + 2 + 42 + 42, get_window_width * 0.5 + 185, get_window_height * 0.5 + 41 + 42 + 42))
 			&& (menu_delay == 0 && menu_joystick_delay == 0)
-			|| (global.pause_room == rm_world_map)
+			|| (global.pause_room == rm_world)
 			&& (global.enable_option_for_pc)
 			&& (mouse_check_button_released(mb_left))
 			&& (point_in_rectangle(mouse_get_x, mouse_get_y, get_window_width * 0.5 - 185, get_window_height * 0.5 + 2 + 42, get_window_width * 0.5 + 185, get_window_height * 0.5 + 41 + 42))
@@ -984,7 +984,7 @@ if (!hide_menu_for_clean_screenshots)
 				if (global.pause_room == rm_leveleditor)
 				&& (global.character_select_in_this_menu == "main_game")
 				{
-					menu = "quit_to_map";
+					menu = "quit_to_world";
 				}
 				else
 				{
@@ -1038,7 +1038,7 @@ if (!hide_menu_for_clean_screenshots)
 				menu = "restart";
 			}
 			else
-			if (menu == "quit_to_map")
+			if (menu == "quit_to_world")
 			|| (menu == "quit_to_title")
 			|| (menu == "quit_to_desktop")
 			|| (menu == "quit_nevermind")

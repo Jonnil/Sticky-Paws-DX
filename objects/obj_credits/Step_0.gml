@@ -64,7 +64,7 @@ if (iris_xscale <= 0.01) {
 	else {
 		global.level_clear_rate = "clear";
 		scr_save_level();
-		room_goto(rm_world_map);
+		room_goto(rm_world);
 	}
 }
 

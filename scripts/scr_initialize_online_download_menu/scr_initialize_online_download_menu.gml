@@ -15,14 +15,20 @@ function scr_initialize_online_download_menu()
 	zero_defeats_level = undefined;
 	liked_content = undefined;
 	
-	var map = ds_map_create();
-	ds_map_add(map, "Host", global.base_url);
-	ds_map_add(map, "Content-Type", "application/json");
-	ds_map_add(map, "User-Agent", "gmdownloader");
-	ds_map_add(map, "X-API-Key", global.api_key);
+	var online_download_request_headers = ds_map_create();
+	ds_map_add(online_download_request_headers, "Host", global.base_url);
+	ds_map_add(online_download_request_headers, "Content-Type", "application/json");
+	ds_map_add(online_download_request_headers, "User-Agent", "gmdownloader");
+	ds_map_add(online_download_request_headers, "X-API-Key", global.api_key);
 	
-	global.http_request_id = http_request("https://" + global.base_url + "/" + string(content_type) + "s", "GET", map, "");
-	ds_map_destroy(map);
+	global.http_request_id = http_request(
+		"https://" + global.base_url + "/" + string(content_type) + "s",
+		"GET",
+		online_download_request_headers,
+		""
+	);
+	global.online_download_request_headers = online_download_request_headers;
+	ds_map_destroy(online_download_request_headers);
 	#endregion /* Get Online Download List END */
 	
 	menu = "download_online_" + string(global.selected_online_download_index);

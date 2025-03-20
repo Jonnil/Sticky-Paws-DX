@@ -14,6 +14,7 @@ function scr_debug_init_cheat_codes()
 			action: function()
 			{
 				global.debug_screen = !global.debug_screen;
+				global.debug_mode_activated_once = true;
 				show_debug_message("Debug mode toggled: " + string(global.debug_screen));
 			}
 		}

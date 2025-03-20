@@ -7,12 +7,16 @@ function scr_set_default_language(force_default_language = false)
 	/* If no translation data is loaded, try to initialize it */
 	if (global.language_local_data == 0)
 	{
-		show_debug_message("[scr_set_default_language] No language data found. Reinitializing...");
+		if (global.translation_debug)
+		{
+			show_debug_message("[scr_set_default_language] No language data found. Reinitializing...");
+		}
+		
 		scr_initialize_translations();
 		
 		if (global.language_local_data == 0)
 		{
-			show_debug_message("[scr_set_default_language] ERROR: Unable to load language data.");
+			show_debug_message("[scr_set_default_language] ERROR: Unable to load language data.\n");
 			return;
 		}
 	}
@@ -38,10 +42,18 @@ function scr_set_default_language(force_default_language = false)
 			}
 		}
 		global.selected_language_id = max(default_language, 2);
-		show_debug_message("[scr_set_default_language] Invalid selected_language_id. Reset to column: " + string(default_language));
+		
+		if (global.translation_debug)
+		{
+			show_debug_message("[scr_set_default_language] Invalid selected_language_id. Reset to column: " + string(default_language));
+		}
 	}
 	
 	/* Update the current menu position for highlighting */
 	global.current_language_menu_position = scr_get_sorted_language_position(global.selected_language_id);
-	show_debug_message("[scr_set_default_language] Current language set to column: " + string(global.selected_language_id));
+	
+	if (global.translation_debug)
+	{
+		show_debug_message("[scr_set_default_language] Current language set to column: " + string(global.selected_language_id) + "\n");
+	}
 }

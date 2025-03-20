@@ -155,8 +155,15 @@ ds_list_add(global.all_loaded_main_levels, "intro", "level1", "level2", "level3"
 #region /* Server stuff */
 global.base_url = "sticky-paws.uc.r.appspot.com";
 global.api_key = "eMCnsR7k2dq_jGHijae6_3tazPYp!UUL";
-/* Ensure your Google Sheet is published to the web as CSV */
-global.google_sheet_language_url = "https://docs.google.com/spreadsheets/d/e/2PACX-1vTrxRvkYTC9qwzNyEwWeYeBFpIwK9wa4ZERhpP7_pAhYPdcLOFzpvFmgKO_dJZj_F-U0NIuLE50J3CD/pub?output=csv";
+
+#region /* Ensure your Google Sheet is published to the web as CSV */
+global.google_sheet_language_id = "2PACX-1vTrxRvkYTC9qwzNyEwWeYeBFpIwK9wa4ZERhpP7_pAhYPdcLOFzpvFmgKO_dJZj_F-U0NIuLE50J3CD"; /* In that particular "Publish to the web" URL, the DOC_ID is the portion right after /spreadsheets/d/e/ and before /pub */
+
+global.google_sheet_language_url = "https://docs.google.com/spreadsheets/d/e/" + string(global.google_sheet_language_id) + "/pub?gid=159041004&single=true&output=csv"; /* This one works on PC */
+//global.google_sheet_language_url = "https://docs.google.com/spreadsheets/d/" + string(global.google_sheet_language_id) + "/export?format=csv"
+//global.google_sheet_language_url = "https://doc-04-3g-sheets.googleusercontent.com/pub/54bogvaave6cua4cdnls17ksc4/f3nml7vvup2emrba3vd9ipi404/1742166965000/113505071816264220762/*/e@" + string(global.google_sheet_language_id) + "?output=csv";
+#endregion /* Ensure your Google Sheet is published to the web as CSV END */
+
 global.http_request_info = noone;
 global.http_request_id = noone;
 global.content_added_today = noone;
@@ -203,6 +210,7 @@ global.option_default = -1; /* Show wether the current option selected have a de
 global.can_save_length_variable = false; /* This function saves object_placement_all.json size, but lags the game. Make this optional and false by default */
 global.can_load_official_and_custom_resources = true; /* For debug, you might not want to load included files, but by default set this to true */
 global.debug_screen = false; /* Toggles the visibility of the debug screen. When set to true, the debug screen appears overlayed on the game. Useful for displaying live debugging information */
+global.debug_mode_activated_once = false; /* If debug mode has been activated at any point during the level, don't save fastest time and score */
 global.debug_collapsed_sections = ds_map_create(); /* A data structure that tracks which debug sections are collapsed. Each key represents a section name, and its value (true/false) indicates whether the section is currently collapsed. Helps organize and declutter the debug screen for better readability. */
 global.debug_detailed_mode = false; /* Determines whether the debug screen displays detailed variable names or simplified, user-friendly labels. Set to true for detailed mode, showing exact variable names, which is helpful for developers familiar with the codebase. */
 global.show_fps = false; /* Show fps for optimization debug */
@@ -299,6 +307,7 @@ global.menu_navigation_speed = 60; /* Make the menu navigation go faster the lon
 global.collectible_image_index = 0; /* Make all collectibles animate in sync */
 global.caution_online_do_not_show = false; /* When the game shows the online caution screen, you should be able to disable that screen from showing up again */
 global.send_crash_logs = true;
+global.crash_requests = ds_map_create();
 global.online_enabled = false; /* You need to accept the online caution screen before you can go online */
 global.report_reason = "";
 global.report_message = "";
@@ -428,13 +437,13 @@ switch (os_get_language())
 }
 #endregion /* Select title logo depending on what language the OS is set to END */
 
-global.default_zoom_level = 1; /* if reset_level_zoom_when_going_back_to_map = true, then set zoom to this number */
-global.default_zoom_world_map = 1; /* if reset_world_map_zoom_when_going_back_to_map = true, then set zoom to this number */
+global.default_zoom_level = 1; /* if "reset level zoom on return" is true, then set zoom to this number */
+global.default_zoom_world = 1; /* if "reset world zoom on return" is true, then set zoom to this number */
 
 global.zoom_level = 1; /* Zooming the view in and out, by default it's set to 1 */
-global.zoom_world_map = 1; /* Zooming the view in and out, by default it's set to 1 */
-global.reset_level_zoom_when_going_back_to_map = false;
-global.reset_world_map_zoom_when_going_back_to_map = false;
+global.zoom_world = 1; /* Zooming the view in and out, by default it's set to 1 */
+global.reset_level_zoom_on_return = false;
+global.reset_world_zoom_on_return = false;
 
 global.language_http_request_id = false;
 global.language_file_requests = false;
@@ -586,7 +595,7 @@ global.show_collision_mask = false;
 global.pause_screenshot = noone;
 global.restart_level = false;
 global.quit_level = false;
-global.quit_to_map = false;
+global.quit_to_world = false;
 global.quit_to_title = false;
 global.full_level_map_screenshot = false;
 global.appear_block_timer = 0;

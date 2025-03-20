@@ -2112,29 +2112,30 @@ function scr_option_menu()
 		#region /* Game Settings */
 		if (global.settings_sidebar_menu == "game_settings")
 		{
-			difficulty_settings_y = 48;
-			automatically_pause_when_window_is_unfocused_settings_y = 48 * 2;
-			show_timer_settings_y = 48 * 3;
-			show_defeats_counter_settings_y = 48 * 4;
+			var difficulty_settings_y = 48;
+			var automatically_pause_when_window_is_unfocused_settings_y = 48 * 2;
+			var show_timer_settings_y = 48 * 3;
+			var show_defeats_counter_settings_y = 48 * 4;
+			
 			if (global.enable_ranks)
 			{
-				show_ranks_settings_y = 48 * 5;
-				show_tutorial_signs_y = 48 * 6;
-				players_can_collide_y = 48 * 7;
-				show_new_items_notification_y = 48 * 8;
-				hud_hide_time_y = 48 * 9 + 16;
-				selected_font_y = 48 * 10 + 32;
-				debug_screen_y = 48 * 11 + 32;
+				var show_ranks_settings_y = 48 * 5;
+				var show_tutorial_signs_y = 48 * 6;
+				var players_can_collide_y = 48 * 7;
+				var show_new_items_notification_y = 48 * 8;
+				var hud_hide_time_y = 48 * 9 + 16;
+				var selected_font_y = 48 * 10 + 32;
+				var debug_screen_y = 48 * 11 + 32;
 			}
 			else
 			{
-				show_ranks_settings_y = -9999;
-				show_tutorial_signs_y = 48 * 5;
-				players_can_collide_y = 48 * 6;
-				show_new_items_notification_y = 48 * 7;
-				hud_hide_time_y = 48 * 8 + 16;
-				selected_font_y = 48 * 9 + 32;
-				debug_screen_y = 48 * 10 + 32;
+				var show_ranks_settings_y = -9999;
+				var show_tutorial_signs_y = 48 * 5;
+				var players_can_collide_y = 48 * 6;
+				var show_new_items_notification_y = 48 * 7;
+				var hud_hide_time_y = 48 * 8 + 16;
+				var selected_font_y = 48 * 9 + 32;
+				var debug_screen_y = 48 * 10 + 32;
 			}
 			draw_set_halign(fa_left);
 			draw_set_valign(fa_middle);
@@ -2142,34 +2143,39 @@ function scr_option_menu()
 			if (global.enable_option_for_pc)
 			{
 				global.automatically_pause_when_window_is_unfocused = draw_menu_checkmark(380, automatically_pause_when_window_is_unfocused_settings_y, l10n_text("Automatically pause when the game is unfocused"), "automatically_pause_when_window_is_unfocused_settings", global.automatically_pause_when_window_is_unfocused, true, 
-					"Pauses the game when the window loses focus");
+					l10n_text("Pauses the game when the window loses focus"));
 			}
 			
 			global.show_timer = draw_menu_checkmark(380, show_timer_settings_y, l10n_text("Show Timer"), "show_timer_settings", global.show_timer, false, 
-				"Displays a timer while playing");
+				l10n_text("Displays a timer while playing"));
 			
 			global.show_defeats_counter = draw_menu_checkmark(380, show_defeats_counter_settings_y, l10n_text("Show Defeats Counter"), "show_defeats_counter_settings", global.show_defeats_counter, true, 
-				"Keeps track of how many times you've been defeated");
+				l10n_text("Keeps track of how many times you've been defeated"));
 			
 			if (global.enable_ranks)
 			{
 				global.show_ranks = draw_menu_checkmark(380, show_ranks_settings_y, l10n_text("Show Ranks"), "show_ranks_settings", global.show_ranks, false, 
-					"Displays rank information based on performance");
+					l10n_text("Displays rank information based on performance"));
 			}
 			
 			global.show_tutorial_signs = draw_menu_checkmark(380, show_tutorial_signs_y, l10n_text("Show Tutorial Signs"), "show_tutorial_signs", global.show_tutorial_signs, true, 
-				"Shows tutorial signs with helpful gameplay tips");
+				l10n_text("Shows tutorial signs with helpful gameplay tips"));
 			
 			global.players_can_collide = draw_menu_checkmark(380, players_can_collide_y, l10n_text("Players Can Collide"), "players_can_collide", global.players_can_collide, false, 
-				"Allows players to collide with each other in multiplayer mode");
+				l10n_text("Allows players to collide with each other in multiplayer mode"));
 			
 			global.show_new_items_notification = draw_menu_checkmark(380, show_new_items_notification_y, l10n_text("Show New Items Notification"), "show_new_items_notification", global.show_new_items_notification, true, 
-				"Notifies you when new items become available in the level editor");
+				l10n_text("Notifies you when new items become available in the level editor"));
 			
 			if (global.enable_option_for_pc)
 			{
 				global.debug_screen = draw_menu_checkmark(380, debug_screen_y, l10n_text("Debug Screen"), "debug_screen", global.debug_screen, false, 
-					"Displays debug information for development and troubleshooting");
+					l10n_text("Displays debug information for development and troubleshooting"));
+				
+				if (global.debug_screen)
+				{
+					global.debug_mode_activated_once = true;
+				}
 			}
 			
 			if (global.hud_hide_time > 10)
@@ -2177,25 +2183,30 @@ function scr_option_menu()
 				global.hud_hide_time = 3;
 			}
 			
-			// Safely get the language string from the grid:
+			/* Safely get the language string from the grid: */
 			var lang = "";
-			if (variable_global_exists("language_local_data") && global.language_local_data != undefined && global.language_local_data != 0 &&
-				ds_grid_width(global.language_local_data) > global.selected_language_id)
+			
+			if (variable_global_exists("language_local_data")
+			&& global.language_local_data != undefined
+			&& global.language_local_data != 0
+			&& ds_grid_width(global.language_local_data) > global.selected_language_id)
 			{
 				lang = global.language_local_data[# global.selected_language_id, 0];
-			} else {
+			}
+			else
+			{
 				lang = "";
 			}
 			
 			if (lang == "日本語 (Japanese)")
 			{
-				// Only include Game Font and Normal Font for Japanese language; Open Dyslexic isn't supported.
+				/* Only include Game Font and Normal Font for Japanese language; Open Dyslexic isn't supported */
 				var can_select_font = false;
 			}
 			else
 			{
 				draw_menu_dropdown(380, selected_font_y, l10n_text("Selected Font"), "select_font", global.selected_font,
-					l10n_text("Game Font"), l10n_text("Normal Font"), l10n_text("Open Dyslexic")); // Includes Open Dyslexic
+					l10n_text("Game Font"), l10n_text("Normal Font"), l10n_text("Open Dyslexic")); /* Includes Open Dyslexic */
 				scr_set_default_dropdown_description("select_font", "Game Font");
 				var can_select_font = true;
 			}

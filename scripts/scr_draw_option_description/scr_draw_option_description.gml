@@ -20,14 +20,12 @@ function scr_draw_option_description()
 	
 	var option_description_text = "";
 	
-	if (global.option_description != ""
-	&& global.option_default == -2)
+	if (global.option_description != "" && global.option_default == -2)
 	{
 		option_description_text = l10n_text("Default") + ": " + string(global.option_description);
 	}
 	else
-	if (global.option_description != ""
-	&& option_default != "")
+	if (global.option_description != "" && option_default != "")
 	{
 		option_description_text = string(global.option_description) + " - " + string(option_default);
 	}
@@ -45,12 +43,25 @@ function scr_draw_option_description()
 	{
 		draw_set_alpha(1);
 		
+		/* Ensure the GUI width is valid; if not, use a default value */
+		var gui_width = display_get_gui_width();
+		
+		if (gui_width <= 0)
+		{
+			gui_width = 1280; /* Default width if GUI width is unavailable */
+			
+			if (global.debug_screen)
+			{
+				show_debug_message("[scr_draw_option_description] WARNING: display_get_gui_width() returned 0. Using default width of 1280.");
+			}
+		}
+		
 		/* Wrap text at 98% of the screen width */
-		var max_text_width = display_get_gui_width() * 0.98;
+		var max_text_width = gui_width * 0.98;
 		var padding = 20; /* Extra padding around text */
 		
 		/* Use a scale factor for text. If not set, default to 1 */
-		var scale = (global.default_text_size != undefined) ? global.default_text_size * 0.9 : 1;
+		var scale = (global.default_text_size != undefined && global.default_text_size > 0) ? global.default_text_size * 0.9 : 1;
 		var line_sep = 32; /* Vertical separation between lines */
 		
 		/* Get the wrapped text height using our helper function with scaling */
@@ -58,7 +69,26 @@ function scr_draw_option_description()
 		
 		/* Compute natural (scaled) width of the text */
 		var natural_width = string_width(option_description_text) * scale;
+		
+		if (natural_width <= 0)
+		{
+			if (global.debug_screen)
+			{
+				show_debug_message("[scr_draw_option_description] WARNING: Computed natural width is 0. Using max_text_width as fallback.");
+			}
+			natural_width = max_text_width;
+		}
+		
 		var text_width = (natural_width < max_text_width) ? natural_width : max_text_width;
+		
+		if (text_width <= 0)
+		{
+			if (global.debug_screen)
+			{
+				show_debug_message("[scr_draw_option_description] ERROR: Final computed text width is 0. Aborting drawing of option description.");
+			}
+			return;
+		}
 		
 		/* 
 		   Position the black box:
@@ -67,13 +97,13 @@ function scr_draw_option_description()
 		   - Compute the top of the box as the bottom minus the text height and one padding value.
 		*/
 		var rect_bottom = display_get_gui_height() - 10;
-		var rect_top = rect_bottom - (max(32, text_height * 0.8))- padding;
+		var rect_top = rect_bottom - (max(32, text_height * 0.8)) - padding;
 		
 		/* Draw a rounded rectangle that hugs the text */
 		draw_roundrect_color_ext(
-			(display_get_gui_width() - text_width) * 0.5 - padding, 
+			(gui_width - text_width) * 0.5 - padding, 
 			rect_top, 
-			(display_get_gui_width() + text_width) * 0.5 + padding, 
+			(gui_width + text_width) * 0.5 + padding, 
 			rect_bottom, 
 			50, 50, c_black, c_black, false
 		);
@@ -86,7 +116,7 @@ function scr_draw_option_description()
 		   The bottom of the text is aligned at (rect_bottom - padding), hugging the bottom.
 		*/
 		draw_text_ext_transformed(
-			display_get_gui_width() * 0.5, 
+			gui_width * 0.5, 
 			rect_bottom - padding, 
 			option_description_text, 
 			line_sep, 

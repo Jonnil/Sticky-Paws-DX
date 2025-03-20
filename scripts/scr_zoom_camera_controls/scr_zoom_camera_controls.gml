@@ -37,7 +37,7 @@ function scr_zoom_camera_controls()
 		var zoom_maximum = base_zoom_maximum; /* Use the base maximum zoom if both room width and height are equal to or greater than the screen resolution */
 	}
 	
-	var zoom_variable = room == rm_world_map ? global.zoom_world_map : global.zoom_level;
+	var zoom_variable = room == rm_world ? global.zoom_world : global.zoom_level;
 	zoom_variable = clamp(zoom_variable, zoom_minimum, zoom_maximum);
 	
 	zoom_lerp = lerp(zoom_lerp, zoom_variable, 0.1);
@@ -54,9 +54,9 @@ function scr_zoom_camera_controls()
 		global.deactivate_timer = 999; /* Force update deactivate region */
 		if (zoom_variable > zoom_minimum)
 		{
-			if (room == rm_world_map)
+			if (room == rm_world)
 			{
-				global.zoom_world_map -= zoom_speed;
+				global.zoom_world -= zoom_speed;
 			}
 			else
 			{
@@ -75,9 +75,9 @@ function scr_zoom_camera_controls()
 		global.deactivate_timer = 999; /* Force update deactivate region */
 		if (zoom_variable < zoom_maximum)
 		{
-			if (room == rm_world_map)
+			if (room == rm_world)
 			{
-				global.zoom_world_map += zoom_speed;
+				global.zoom_world += zoom_speed;
 			}
 			else
 			{

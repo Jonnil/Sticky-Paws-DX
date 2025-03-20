@@ -19,7 +19,7 @@ function scr_zoom_camera_draw_gui(width = 10)
 		}
 		else
 		{
-			var what_zoom_value = global.zoom_world_map;
+			var what_zoom_value = global.zoom_world;
 		}
 		show_zoom_value--;
 		

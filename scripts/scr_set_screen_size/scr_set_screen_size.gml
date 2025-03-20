@@ -52,7 +52,7 @@ function scr_set_screen_size()
 	
 	camera_set_view_size(current_camera, window_width, window_height);
 	
-	if (global.play_edited_level || room == rm_world_map)
+	if (global.play_edited_level || room == rm_world)
 	{
 		camera_set_view_speed(current_camera, -1, -1);
 	}

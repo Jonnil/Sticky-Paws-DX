@@ -19,8 +19,8 @@ if (global.character_for_player[player] != custom_character)
 	
 	default_xscale = 1;
 	default_yscale = 1;
-	sprite_map = noone;
-	sprite_map_enter_level = noone;
+	sprite_world = noone;
+	sprite_world_enter_level = noone;
 	sprite_idle = noone;
 	sprite_walk = noone;
 	alarm[0] = 1;

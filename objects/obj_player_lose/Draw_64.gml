@@ -170,7 +170,7 @@ if (lives <= 0)
 				else
 				{
 					global.quit_level = true; /* Quit level and go to map screen */
-					room_goto(rm_world_map);
+					room_goto(rm_world);
 				}
 			}
 			else

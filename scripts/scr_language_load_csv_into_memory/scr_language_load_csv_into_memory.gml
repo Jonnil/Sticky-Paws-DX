@@ -8,7 +8,7 @@ function scr_language_load_csv_into_memory(_path)
 	
 	if (is_undefined(global.language_local_data))
 	{
-		show_debug_message("[scr_language_load_csv_into_memory] Error: load_csv returned undefined for " + _path);
+		show_debug_message("[scr_language_load_csv_into_memory] Error: load_csv returned undefined for " + _path + "\n");
 		return -1;
 	}
 	

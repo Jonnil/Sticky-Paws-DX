@@ -35,7 +35,7 @@ else
 	yy = y;
 }
 
-zoom_lerp = global.zoom_world_map;
+zoom_lerp = global.zoom_world;
 zoom_border_lerp = 0;
 show_zoom_value = 0;
 

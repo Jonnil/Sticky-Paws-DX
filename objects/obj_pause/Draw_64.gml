@@ -119,7 +119,7 @@ if (!hide_menu_for_clean_screenshots)
 	|| (menu == "quit")
 	|| (menu == "report")
 	|| (menu == "reset_from_checkpoint" || menu == "reset_from_start" || menu == "restart_nevermind")
-	|| (menu == "quit_to_map" || menu == "quit_to_title" || menu == "quit_to_desktop" || menu == "quit_nevermind")
+	|| (menu == "quit_to_world" || menu == "quit_to_title" || menu == "quit_to_desktop" || menu == "quit_nevermind")
 	{
 		if (global.title_logo_index >= 0)
 		{
@@ -185,7 +185,7 @@ if (!hide_menu_for_clean_screenshots)
 	|| (menu == "quit")
 	|| (menu == "report")
 	|| (menu == "reset_from_checkpoint" || menu == "reset_from_start" || menu == "restart_nevermind")
-	|| (menu == "quit_to_map" || menu == "quit_to_title" || menu == "quit_to_desktop" || menu == "quit_nevermind")
+	|| (menu == "quit_to_world" || menu == "quit_to_title" || menu == "quit_to_desktop" || menu == "quit_nevermind")
 	{
 		draw_sprite_ext(spr_pause_text, image_index, get_window_width * 0.5, 200, 1, 1, 0, c_white, scr_wave(0, 1, 4.5, 0) * fade_in_pause_alpha);
 	}
@@ -193,9 +193,9 @@ if (!hide_menu_for_clean_screenshots)
 	
 	/* PAUSE LEVEL SELECT / LEVEL EDITOR MENU */
 	if (!show_loading_icon)
-	&& (room == rm_world_map
+	&& (room == rm_world
 	|| room == rm_leveleditor
-	|| global.pause_room == rm_world_map
+	|| global.pause_room == rm_world
 	|| global.pause_room == rm_leveleditor)
 	{
 		if (menu == "continue")
@@ -240,7 +240,7 @@ if (!hide_menu_for_clean_screenshots)
 					{
 						scr_draw_circular_bar(get_window_width * 0.5 - 185 + 16, restart_y + 21, holding_key_timer, 60, c_red, 20, 1, 6); /* Draw a circular bar that fills when holding reset from checkpoint key */
 					}
-					draw_menu_button(get_window_width * 0.5 - 185, quit_y, l10n_text("Quit"), "quit", "quit_to_map", c_red, fade_in_pause_alpha);
+					draw_menu_button(get_window_width * 0.5 - 185, quit_y, l10n_text("Quit"), "quit", "quit_to_world", c_red, fade_in_pause_alpha);
 				}
 			}
 			else
@@ -290,9 +290,9 @@ if (!hide_menu_for_clean_screenshots)
 		else
 		if (global.pause_room == rm_leveleditor)
 		&& (global.character_select_in_this_menu == "main_game")
-		&& (menu == "quit_to_map" || menu == "quit_to_title" || menu == "quit_to_desktop" || menu == "quit_nevermind")
+		&& (menu == "quit_to_world" || menu == "quit_to_title" || menu == "quit_to_desktop" || menu == "quit_nevermind")
 		{
-			draw_menu_button(get_window_width * 0.5 - 185, get_window_height * 0.5, l10n_text("Quit to Map"), "quit_to_map", "quit_to_map", c_lime, fade_in_pause_alpha);
+			draw_menu_button(get_window_width * 0.5 - 185, get_window_height * 0.5, l10n_text("Quit to Map"), "quit_to_world", "quit_to_world", c_lime, fade_in_pause_alpha);
 			draw_menu_button(get_window_width * 0.5 - 185, get_window_height * 0.5 + 42, l10n_text(string(quit_to_title_name)), "quit_to_title", "quit_to_title", c_lime, fade_in_pause_alpha);
 			if (global.enable_option_for_pc)
 			{
@@ -321,7 +321,7 @@ if (!hide_menu_for_clean_screenshots)
 			}
 		}
 		else
-		if (global.pause_room == rm_world_map)
+		if (global.pause_room == rm_world)
 		&& (menu == "quit_to_title" || menu == "quit_to_desktop" || menu == "quit_nevermind")
 		{
 			draw_menu_button(get_window_width * 0.5 - 185, get_window_height * 0.5, l10n_text(string(quit_to_title_name)), "quit_to_title", "quit_to_title", c_lime, fade_in_pause_alpha);
@@ -335,7 +335,7 @@ if (!hide_menu_for_clean_screenshots)
 				quit_nevermind_y = get_window_height * 0.5 + 42;
 			}
 		}
-		if (menu == "quit_to_map" || menu == "quit_to_title" || menu == "quit_to_desktop" || menu == "quit_nevermind")
+		if (menu == "quit_to_world" || menu == "quit_to_title" || menu == "quit_to_desktop" || menu == "quit_nevermind")
 		{
 			draw_menu_button(get_window_width * 0.5 - 185, quit_nevermind_y, l10n_text("Nevermind"), "quit_nevermind", "quit_nevermind", c_lime, fade_in_pause_alpha);
 			draw_sprite_ext(spr_icon_back, 0, get_window_width * 0.5 - 185 + 20, quit_nevermind_y + 21, 1, 1, 0, c_white, 1 * fade_in_pause_alpha);

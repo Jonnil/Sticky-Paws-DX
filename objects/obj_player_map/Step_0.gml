@@ -150,14 +150,14 @@ if (!can_move && entering_level && delay >= 60 && iris_yscale <= 0.001 && !globa
 /* Set sprite index */
 if (entering_level)
 {
-	if (sprite_map_enter_level > noone) sprite_index = sprite_map_enter_level;
-	else if (sprite_map > noone) sprite_index = sprite_map;
+	if (sprite_world_enter_level > noone) sprite_index = sprite_world_enter_level;
+	else if (sprite_world > noone) sprite_index = sprite_world;
 	else if (sprite_idle > noone) sprite_index = sprite_idle;
 	else if (sprite_walk > noone) sprite_index = sprite_walk;
 }
 else
 {
-	if (sprite_map > noone) sprite_index = sprite_map;
+	if (sprite_world > noone) sprite_index = sprite_world;
 	else if (sprite_walk > noone && speed > 0) sprite_index = sprite_walk;
 	else if (sprite_idle > noone) sprite_index = sprite_idle;
 	else if (sprite_walk > noone) sprite_index = sprite_walk;

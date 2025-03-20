@@ -13,9 +13,9 @@ ini_close(); /* Don't commit the save data on Switch, this is only temporary! */
 
 #region /* Sprite variables */
 ini_open(string(character_folder) + "/data/sprite_origin_point.ini");
-sprite_map = scr_initialize_character_sprite("map", sprite_map);
-sprite_map_enter_level = scr_initialize_character_sprite("map_enter_level", sprite_map_enter_level);
-sprite_map_enter_level = scr_initialize_character_sprite("map_enter", sprite_map_enter_level);
+sprite_world = scr_initialize_character_sprite("map", sprite_world);
+sprite_world_enter_level = scr_initialize_character_sprite("map_enter_level", sprite_world_enter_level);
+sprite_world_enter_level = scr_initialize_character_sprite("map_enter", sprite_world_enter_level);
 sprite_idle = scr_initialize_character_sprite("idle", sprite_idle);
 sprite_idle = scr_initialize_character_sprite("stand", sprite_idle);
 sprite_walk = scr_initialize_character_sprite("walk", sprite_walk);
@@ -24,9 +24,9 @@ ini_close(); /* Don't commit the save data on Switch, this is only temporary! */
 
 #endregion /* Play as Custom Character END */
 
-if (sprite_map > noone)
+if (sprite_world > noone)
 {
-	sprite_index = sprite_map;
+	sprite_index = sprite_world;
 }
 else
 if (sprite_idle > noone)

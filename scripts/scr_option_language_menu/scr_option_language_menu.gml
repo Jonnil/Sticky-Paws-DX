@@ -162,7 +162,14 @@ function scr_option_language_menu()
 				}
 				
 				#region /* Clicking on language completion text enables and disables the translation debug mode */
-				if (point_in_rectangle(mouse_get_x, mouse_get_y, get_window_width - 32 - string_width(l10n_text("Translation completion") + ": " + string(global.language_completion[global.selected_language_id]) + "%") * 0.5, 164 - 32, get_window_width - 32, 164 + 32))
+				if (point_in_rectangle(
+					mouse_get_x,
+					mouse_get_y,
+					get_window_width - 32 - string_width(l10n_text("Translation completion") + ": " + string(global.language_completion[global.selected_language_id]) + "%") * 0.8,
+					164 - 32,
+					get_window_width - 32,
+					164 + 32
+				))
 				&& (global.controls_used_for_navigation == "mouse")
 				&& (global.enable_option_for_pc)
 				{
@@ -191,8 +198,8 @@ function scr_option_language_menu()
 			{
 				if (global.language_completion[global.selected_language_id] < 100)
 				{
-					scr_draw_text_outlined(get_window_width - 32, 164, l10n_text("Translation completion") + ": " + string(global.language_completion[global.selected_language_id]) + "%", global.default_text_size * 0.6, translation_completion_outline_color, translation_completion_fill_color, 1);
-					scr_draw_text_outlined(get_window_width - 32, 164 + 32, l10n_text("Some strings may appear in English"), global.default_text_size * 0.5, c_menu_outline, translation_completion_fill_color, 1);
+					scr_draw_text_outlined(get_window_width - 32, 164, l10n_text("Translation completion") + ": " + string(global.language_completion[global.selected_language_id]) + "%", global.default_text_size * 0.9, translation_completion_outline_color, translation_completion_fill_color, 1);
+					scr_draw_text_outlined(get_window_width - 32, 164 + 32, l10n_text("Some strings may appear in English"), global.default_text_size * 0.8, c_menu_outline, translation_completion_fill_color, 1);
 				}
 			}
 			
@@ -201,7 +208,7 @@ function scr_option_language_menu()
 				draw_set_valign(fa_top);
 				scr_draw_text_outlined(get_window_width - 32, 164 + 64,
 					"Translation debug: enabled" + "\n" +
-					"When missing keywords are found, look in\n" + string_replace(game_save_id, environment_get_variable("USERNAME"), "*") + "translation_missing_keywords.txt" + "\n" +
+					"When missing keywords are found, look in\n" + string_replace(game_save_id, environment_get_variable("USERNAME"), "*") + "translation_missing_keywords" + "\n" +
 					"selected_language_id: " + string(global.selected_language_id) + " current_language_menu_position: " + string(global.current_language_menu_position) + "\n" +
 					"language_local_data: " + string(global.language_local_data),
 					global.default_text_size * 0.5,
@@ -274,19 +281,51 @@ function scr_option_language_menu()
 			}
 			
 			#region /* Display language pack update status below the language auto update dropdown */
-			if (global.language_update_status_message != "")
+			/* Basic status message (translated) */
+			var base_msg = l10n_text(global.language_update_status_message);
+			
+			/* Build extra update details */
+			var update_details = "";
+			
+			/* If the translation data is loaded, add info about the number of translation strings and columns */
+			if (global.language_local_data != 0)
 			{
-				draw_set_halign(fa_left);
-				scr_draw_text_outlined(
-					language_buttons_x,
-					auto_update_dropdown_y + 64,
-					l10n_text(global.language_update_status_message),
-					global.default_text_size * 0.75,
-					c_menu_outline,
-					global.language_update_status_color,
-					1
-				);
+				var line_count = ds_grid_height(global.language_local_data);
+				var col_count = ds_grid_width(global.language_local_data);
+				update_details = l10n_text("Translations updated: ") + string(line_count) + " lines, " + string(col_count) + " columns.";
 			}
+			
+			/* If in debug mode, show the current HTTP request ID */
+			if (global.translation_debug)
+			{
+				update_details += "\n" + l10n_text("HTTP Request ID: ") + string(global.language_http_request_id);
+			}
+			
+			/* Last updated information: raw timestamp and relative time */
+			var last_updated = "";
+			if (global.language_last_update_string != "")
+			{
+				var rel_time = get_relative_timezone(global.language_last_update_string, timezone_local);
+				last_updated = l10n_text("Last Updated: ") + global.language_last_update_string + " (" + rel_time + ")";
+			}
+			
+			/* Combine all parts into a final message */
+			var combined_message = base_msg;
+			if (update_details != "") combined_message += "\n" + update_details;
+			if (last_updated != "") combined_message += "\n" + last_updated;
+			
+			/* Draw the combined status text */
+			draw_set_halign(fa_left);
+			draw_set_valign(fa_top);
+			scr_draw_text_outlined(
+				language_buttons_x, 
+				auto_update_dropdown_y + 64,
+				combined_message,
+				global.default_text_size * 0.75,
+				c_menu_outline,
+				global.language_update_status_color,
+				1
+			);
 			#endregion /* Display language pack update status below the language auto update dropdown END */
 			
 			/* --- Automatic update dropdown using your existing function --- */
@@ -310,37 +349,6 @@ function scr_option_language_menu()
 				);
 			}
 			#endregion /* Language Pack Update Options END */
-			
-			#region /* Display last updated language pack timestamp, if any */
-			if (global.language_last_update_string != "")
-			{
-				/* Get the relative time string from the UTC ISO-8601 timestamp */
-				var relative_time = get_relative_timezone(global.language_last_update_string, timezone_local);
-			
-				/* Create two lines: one for the raw timestamp, one for the relative time */
-				var last_updated_text = l10n_text("Last Updated") + ":\n" +
-				global.language_last_update_string + "\n" +
-				"(" + relative_time + ")";
-			
-				/* Draw the timestamp when the language pack was last updated*/
-				draw_set_halign(fa_left);
-				draw_set_valign(fa_top);
-			
-				scr_draw_text_outlined(
-					language_buttons_x + check_updates_button_width + 35,
-					check_updates_button_y - 15,
-					last_updated_text,
-					global.default_text_size * 0.75,
-					c_menu_outline,
-					global.language_update_status_color,
-					1
-				);
-			
-				/* Reset horizontal alignment if needed */
-				draw_set_halign(fa_center);
-				draw_set_valign(fa_middle);
-			}
-			#endregion /* Display last updated language pack timestamp, if any END */
 			
 		}
 		#endregion /* Advanced Language Options END */

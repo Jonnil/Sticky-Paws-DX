@@ -4,7 +4,7 @@ function scr_get_valid_languages()
 	if (global.language_local_data == 0
 	|| ds_grid_width(global.language_local_data) <= global.language_column_start)
 	{
-		show_debug_message("[scr_get_valid_languages] ERROR: language_local_data is not loaded or has no valid language columns.");
+		show_debug_message("[scr_get_valid_languages] ERROR: language_local_data is not loaded or has no valid language columns.\n");
 		return;
 	}
 	
@@ -39,12 +39,17 @@ function scr_get_valid_languages()
 		var comp = global.language_completion[i]; /* Now safe to access because we ensured the array is sized */
 		
 		/* Skip this column if either the language name or the valid string is undefined or empty */
-		if (is_undefined(language_name) || language_name == "" || language_name == "undefined")
+		if (is_undefined(language_name)
+		|| language_name == ""
+		|| language_name == "undefined")
 		{
 			show_debug_message("[scr_get_valid_languages] Skipping language column " + string(i) + " due to undefined or empty language name.");
 			continue;
 		}
-		if (is_undefined(language_valid_string) || language_valid_string == "" || language_valid_string == "undefined")
+		
+		if (is_undefined(language_valid_string)
+		|| language_valid_string == ""
+		|| language_valid_string == "undefined")
 		{
 			show_debug_message("[scr_get_valid_languages] Skipping language column " + string(i) + " due to undefined or empty valid string.");
 			continue;
@@ -57,16 +62,21 @@ function scr_get_valid_languages()
 		/* Check if the language should show up in-game */
 		if (language_valid_string != "No")
 		{
-			if ((os_type == os_switch
-			&& comp >= 100)
-			|| (os_type != os_switch))
-			{
+			//if ((os_type == os_switch
+			//&& comp >= 100)
+			//|| (os_type != os_switch))
+			//{
 				valid_array++;
 				global.valid_languages[valid_array] = i;
-			}
+			//}
 			debug_message += " global.valid_languages[" + string(valid_array) + "] = " + string(i);
 		}
 		
-		show_debug_message(debug_message);
+		if (global.translation_debug)
+		{
+			show_debug_message("[scr_get_valid_languages] " + debug_message);
+		}
 	}
+	
+	show_debug_message("");
 }

@@ -1,0 +1,5 @@
+https://docs.google.com
+https://doc-04-3g-sheets.googleusercontent.com
+https://*.googleusercontent.com
+https://accounts.google.com
+https://sticky-paws.uc.r.appspot.com

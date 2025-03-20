@@ -5,7 +5,7 @@ if (current_file != global.file)
 	current_file = global.file;
 	room_persistent = false; /* Turn OFF Room Persistency */
 	global.quit_level = true;
-	global.quit_to_map = true;
+	global.quit_to_world = true;
 }
 #endregion /* When changing file, you should restart the room so the right save data can load END */
 

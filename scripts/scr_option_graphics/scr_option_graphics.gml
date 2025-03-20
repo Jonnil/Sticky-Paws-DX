@@ -17,8 +17,8 @@ function scr_option_graphics()
 	&& (menu != "enable_foreground_layer_1_5")
 	&& (menu != "enable_foreground_layer2")
 	&& (menu != "enable_foreground_layer_secret")
-	&& (menu != "reset_level_zoom_when_going_back_to_map")
-	&& (menu != "reset_world_map_zoom_when_going_back_to_map")
+	&& (menu != "reset_level_zoom_on_return")
+	&& (menu != "reset_world_zoom_on_return")
 	&& (menu != "draw_text_outline")
 	&& (menu != "customize_button_design")
 	&& (menu != "customize_button_design_back")
@@ -401,8 +401,8 @@ function scr_option_graphics()
 	&& (menu != "enable_foreground_layer_1_5")
 	&& (menu != "enable_foreground_layer2")
 	&& (menu != "enable_foreground_layer_secret")
-	&& (menu != "reset_level_zoom_when_going_back_to_map")
-	&& (menu != "reset_world_map_zoom_when_going_back_to_map")
+	&& (menu != "reset_level_zoom_on_return")
+	&& (menu != "reset_world_zoom_on_return")
 	&& (menu != "draw_text_outline")
 	&& (menu != "customize_button_design")
 	{
@@ -642,9 +642,9 @@ function scr_option_graphics()
 		var enable_foreground_layer_1_5_y = enable_foreground_layer1_y + 48;
 		var enable_foreground_layer2_y = enable_foreground_layer_1_5_y + 48;
 		var enable_foreground_layer_secret_y = enable_foreground_layer2_y + 48;
-		var reset_level_zoom_when_going_back_to_map_y = enable_foreground_layer_secret_y + 48;
-		var reset_world_map_zoom_when_going_back_to_map_y = reset_level_zoom_when_going_back_to_map_y + 48;
-		var draw_text_outline_y = reset_world_map_zoom_when_going_back_to_map_y + 48;
+		var reset_level_zoom_on_return_y = enable_foreground_layer_secret_y + 48;
+		var reset_world_zoom_on_return_y = reset_level_zoom_on_return_y + 48;
+		var draw_text_outline_y = reset_world_zoom_on_return_y + 48;
 		var customize_button_design_y = draw_text_outline_y + 48 + 10;
 		
 		draw_set_halign(fa_left);
@@ -664,8 +664,8 @@ function scr_option_graphics()
 		draw_menu_checkmark(386, enable_foreground_layer_1_5_y + menu_y_offset, l10n_text("Enable Foreground Layer 1.5"), "enable_foreground_layer_1_5", global.enable_foreground_layer_1_5, true);
 		draw_menu_checkmark(386, enable_foreground_layer2_y + menu_y_offset, l10n_text("Enable Foreground Layer 2"), "enable_foreground_layer2", global.enable_foreground_layer2, true);
 		draw_menu_checkmark(386, enable_foreground_layer_secret_y + menu_y_offset, l10n_text("Enable Foreground Layer Secret"), "enable_foreground_layer_secret", global.enable_foreground_layer_secret, true);
-		draw_menu_checkmark(386, reset_level_zoom_when_going_back_to_map_y + menu_y_offset, l10n_text("Reset Level Zoom When Going Back To Map"), "reset_level_zoom_when_going_back_to_map", global.reset_level_zoom_when_going_back_to_map, false);
-		draw_menu_checkmark(386, reset_world_map_zoom_when_going_back_to_map_y + menu_y_offset, l10n_text("Reset World Map Zoom When Going Back To Map"), "reset_world_map_zoom_when_going_back_to_map", global.reset_world_map_zoom_when_going_back_to_map, false);
+		draw_menu_checkmark(386, reset_level_zoom_on_return_y + menu_y_offset, l10n_text("Reset Level Zoom When Going Back To Map"), "reset_level_zoom_on_return", global.reset_level_zoom_on_return, false);
+		draw_menu_checkmark(386, reset_world_zoom_on_return_y + menu_y_offset, l10n_text("Reset World Map Zoom When Going Back To Map"), "reset_world_zoom_on_return", global.reset_world_zoom_on_return, false);
 		draw_menu_checkmark(386, draw_text_outline_y + menu_y_offset, l10n_text("Draw Text Outline"), "draw_text_outline", global.draw_text_outline, true, l10n_text("Disabling text outline boosts performance but reduces readability"));
 		draw_menu_button(420, customize_button_design_y + menu_y_offset, l10n_text("Customize Button Design"), "customize_button_design", "customize_button_design_color");
 		
@@ -944,7 +944,7 @@ function scr_option_graphics()
 			&& (menu_delay == 0 && menu_joystick_delay == 0)
 			{
 				menu_delay = 3;
-				menu = "reset_level_zoom_when_going_back_to_map";
+				menu = "reset_level_zoom_on_return";
 			}
 		}
 		#endregion /* Enable Backgrounds and Foregrounds END */
@@ -952,7 +952,7 @@ function scr_option_graphics()
 		else
 		
 		#region /* Reset level zoom when going back to map */
-		if (menu == "reset_level_zoom_when_going_back_to_map")
+		if (menu == "reset_level_zoom_on_return")
 		&& (!open_dropdown)
 		{
 			if (key_up)
@@ -966,7 +966,7 @@ function scr_option_graphics()
 			&& (menu_delay == 0 && menu_joystick_delay == 0)
 			{
 				menu_delay = 3;
-				menu = "reset_world_map_zoom_when_going_back_to_map";
+				menu = "reset_world_zoom_on_return";
 			}
 		}
 		#endregion / Reset level zoom when going back to map END */
@@ -974,14 +974,14 @@ function scr_option_graphics()
 		else
 		
 		#region /* Reset world map zoom when going back to map */
-		if (menu == "reset_world_map_zoom_when_going_back_to_map")
+		if (menu == "reset_world_zoom_on_return")
 		&& (!open_dropdown)
 		{
 			if (key_up)
 			&& (menu_delay == 0 && menu_joystick_delay == 0)
 			{
 				menu_delay = 3;
-				menu = "reset_level_zoom_when_going_back_to_map";
+				menu = "reset_level_zoom_on_return";
 			}
 			else
 			if (key_down)
@@ -1003,7 +1003,7 @@ function scr_option_graphics()
 			&& (menu_delay == 0 && menu_joystick_delay == 0)
 			{
 				menu_delay = 3;
-				menu = "reset_world_map_zoom_when_going_back_to_map";
+				menu = "reset_world_zoom_on_return";
 			}
 			else
 			if (key_down)
@@ -1069,9 +1069,9 @@ function scr_option_graphics()
 			}
 			if (menu == "enable_foreground_layer_secret"){global.enable_foreground_layer_secret = !global.enable_foreground_layer_secret;
 			}
-			if (menu == "reset_level_zoom_when_going_back_to_map"){global.reset_level_zoom_when_going_back_to_map = !global.reset_level_zoom_when_going_back_to_map;
+			if (menu == "reset_level_zoom_on_return"){global.reset_level_zoom_on_return = !global.reset_level_zoom_on_return;
 			}
-			if (menu == "reset_world_map_zoom_when_going_back_to_map"){global.reset_world_map_zoom_when_going_back_to_map = !global.reset_world_map_zoom_when_going_back_to_map;
+			if (menu == "reset_world_zoom_on_return"){global.reset_world_zoom_on_return = !global.reset_world_zoom_on_return;
 			}
 			if (menu == "draw_text_outline"){global.draw_text_outline = !global.draw_text_outline;
 			}

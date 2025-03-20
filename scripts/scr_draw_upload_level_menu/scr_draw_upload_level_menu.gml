@@ -1723,14 +1723,14 @@ function scr_draw_upload_level_menu()
 									file_name = filename_name(game_save_id + string(file));
 									
 									/* Create DS Map to hold the HTTP Header info */
-									map = ds_map_create();
+									var level_upload_headers = ds_map_create();
 									
 									/* Add to the header DS Map */
-									ds_map_add(map, "Host", global.base_url);
+									ds_map_add(level_upload_headers, "Host", global.base_url);
 									var boundary = "----GMBoundary";
-									ds_map_add(map, "Content-Type", "multipart/form-data; boundary=" + boundary);
-									ds_map_add(map, "User-Agent", "gmuploader");
-									ds_map_add(map, "X-API-Key", global.api_key);
+									ds_map_add(level_upload_headers, "Content-Type", "multipart/form-data; boundary=" + boundary);
+									ds_map_add(level_upload_headers, "User-Agent", "gmuploader");
+									ds_map_add(level_upload_headers, "X-API-Key", global.api_key);
 									
 									/* Loads the file into a buffer */
 									send_buffer = buffer_create(1, buffer_grow, 1);
@@ -1752,12 +1752,17 @@ function scr_draw_upload_level_menu()
 									post_data += "--" + boundary + "--";
 									
 									/* Add the Content-Length header to the map */
-									ds_map_add(map, "Content-Length", string(string_length(post_data)));
-									global.http_request_id = http_request("https://" + global.base_url + "/upload", "POST", map, post_data);
+									ds_map_add(level_upload_headers, "Content-Length", string(string_length(post_data)));
+									global.http_request_id = http_request(
+										"https://" + global.base_url + "/upload",
+										"POST",
+										level_upload_headers,
+										post_data
+									);
 									
 									/* Cleans up! */
 									buffer_delete(send_buffer);
-									ds_map_destroy(map);
+									ds_map_destroy(level_upload_headers);
 									
 									/* Delete some leftover files and folders */
 									if (destroy_zip_after_uploading)

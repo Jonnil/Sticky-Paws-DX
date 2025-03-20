@@ -119,7 +119,7 @@ if (goal && global.time_countdown_bonus <= 0 && instance_exists(obj_camera) && o
 			}
 			else
 			{
-				room_goto(rm_world_map); /* Go back to world map if finishing the level and playing normally */
+				room_goto(rm_world); /* Go back to world map if finishing the level and playing normally */
 			}
 		}
 	}

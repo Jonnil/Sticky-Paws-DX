@@ -92,7 +92,7 @@ layer_depth("WindParticles", -99);
 mask_index = spr_wall; /* Mask index should be set to the size of a wall, only in Create Event */
 global.player_has_entered_goal = false;
 global.quit_level = false;
-global.quit_to_map = false;
+global.quit_to_world = false;
 
 #region /* Reset timer back to zero */
 global.timeattack_realmillisecond = 0;
@@ -204,8 +204,8 @@ iris_yscale = 0;
 iris_zoom = 0;
 
 index = 0;
-sprite_map = noone;
-sprite_map_enter_level = noone;
+sprite_world = noone;
+sprite_world_enter_level = noone;
 sprite_idle = noone;
 sprite_walk = noone;
 #endregion /* Play as custom character END */
@@ -223,7 +223,7 @@ if (ini_read_real("Player", "number_of_levels_cleared", 1) < 1)
 ini_close(); /* Don't commit the save data on Switch, this is only temporary! */
 
 #region /* Reset level zoom */
-if (global.reset_level_zoom_when_going_back_to_map)
+if (global.reset_level_zoom_on_return)
 {
 	global.zoom_level = global.default_zoom_level;
 	ini_open("save_file/config.ini");
@@ -233,20 +233,20 @@ if (global.reset_level_zoom_when_going_back_to_map)
 #endregion /* Reset level zoom END */
 
 #region /* Reset world map zoom */
-if (global.reset_world_map_zoom_when_going_back_to_map)
+if (global.reset_world_zoom_on_return)
 {
-	global.zoom_world_map = global.default_zoom_world_map;
-	zoom_lerp = global.default_zoom_world_map;
+	global.zoom_world = global.default_zoom_world;
+	zoom_lerp = global.default_zoom_world;
 	zoom_border_lerp = 0;
 	ini_open("save_file/config.ini");
-	ini_write_real("config", "zoom_world_map", global.default_zoom_world_map);
+	ini_write_real("config", "zoom_world", global.default_zoom_world);
 	ini_close(); /* Don't commit the save data on Switch, this is only temporary! */
 }
 #endregion /* Reset world map zoom END */
 
 else
 {
-	zoom_lerp = global.zoom_world_map;
+	zoom_lerp = global.zoom_world;
 	zoom_border_lerp = 0;
 }
 

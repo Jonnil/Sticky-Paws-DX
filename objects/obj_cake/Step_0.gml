@@ -34,7 +34,7 @@ else
 	has_gravity = true;
 }
 
-if (room == rm_world_map)
+if (room == rm_world)
 {
 	visible = global.win;
 }

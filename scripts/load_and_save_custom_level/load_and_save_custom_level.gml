@@ -5,7 +5,8 @@ function scr_load_object_placement_json()
 	var load_main_game_level = true;
 	
 	/* Check if we are in the main game or creating a level from a template */
-	if (global.character_select_in_this_menu == "main_game" || global.create_level_from_template)
+	if (global.character_select_in_this_menu == "main_game"
+	|| global.create_level_from_template)
 	{
 		load_main_game_level = true;
 	}
@@ -161,6 +162,11 @@ function scr_load_object_placement_json()
 		ds_list_destroy(placed_objects_list);
 		#endregion /* Save unlockable objects END */
 		
+	}
+	
+	if (global.debug_screen)
+	{
+		global.debug_mode_activated_once = true;
 	}
 }
 #endregion /* THIS IS LOADING JSON FILE END */
