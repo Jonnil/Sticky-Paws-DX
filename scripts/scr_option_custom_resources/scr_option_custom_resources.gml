@@ -55,9 +55,11 @@ function scr_option_custom_resources()
 		
 		if (key_up)
 		&& (!can_navigate_settings_sidebar)
-		&& (menu_delay == 0 && menu_joystick_delay == 0)
+		&& (menu_delay == 0
+		&& menu_joystick_delay == 0)
 		{
 			menu_delay = 3;
+			
 			if (menu == "resource_pack")
 			{
 				menu = "can_load_custom_level_assets";
@@ -156,9 +158,11 @@ function scr_option_custom_resources()
 		else
 		if (key_down)
 		&& (!can_navigate_settings_sidebar)
-		&& (menu_delay == 0 && menu_joystick_delay == 0)
+		&& (menu_delay == 0
+		&& menu_joystick_delay == 0)
 		{
 			menu_delay = 3;
+			
 			if (menu == "resource_pack")
 			{
 				if (global.enable_open_custom_folder)
@@ -269,12 +273,14 @@ function scr_option_custom_resources()
 			draw_set_valign(fa_middle);
 			
 			scr_draw_text_outlined(resource_pack_x, 20 + (resource_pack_y), l10n_text("Resource Pack") + ": " + string(global.selected_resource_pack + 1) + "/" + string(ds_list_size(global.all_loaded_resource_pack)), global.default_text_size * 1.1, c_menu_outline, c_menu_fill, 1);
-			/* Draw text of what the file is called */ scr_draw_text_outlined(resource_pack_x, 20 + (resource_pack_y + 40), string(ds_list_find_value(global.all_loaded_resource_pack, global.selected_resource_pack)), global.default_text_size * 1.1, c_menu_outline, c_dkgray, 1);
+			/* Draw text of what the file is called */
+			scr_draw_text_outlined(resource_pack_x, 20 + (resource_pack_y + 40), string(ds_list_find_value(global.all_loaded_resource_pack, global.selected_resource_pack)), global.default_text_size * 1.1, c_menu_outline, c_dkgray, 1);
 			
 			if (global.selected_resource_pack > 0)
 			&& (global.pause_room != rm_leveleditor)
 			{
 				draw_sprite_ext(spr_keyboard_keys, vk_left, resource_pack_x - 32, 20 + (resource_pack_y), 0.5, 0.5, 0, c_white, 1);
+				
 				if (point_in_rectangle(mouse_get_x, mouse_get_y, resource_pack_x - 32 - 16, 20 + (resource_pack_y) - 16, resource_pack_x - 32 + 16, 20 + (resource_pack_y) + 16))
 				&& (global.controls_used_for_navigation == "mouse")
 				{
@@ -293,6 +299,7 @@ function scr_option_custom_resources()
 			&& (global.pause_room != rm_leveleditor)
 			{
 				draw_sprite_ext(spr_keyboard_keys, vk_right, resource_pack_x +resource_pack_right_arrow_x, 20 + (resource_pack_y), 0.5, 0.5, 0, c_white, 1);
+				
 				if (point_in_rectangle(mouse_get_x, mouse_get_y, resource_pack_x +resource_pack_right_arrow_x - 16, 20 + (resource_pack_y) - 16, resource_pack_x +resource_pack_right_arrow_x + 16, 20 + (resource_pack_y) + 16))
 				&& (global.controls_used_for_navigation == "mouse")
 				{
@@ -319,7 +326,9 @@ function scr_option_custom_resources()
 			{
 				menu = "resource_pack";
 				menu_cursor_y_position = 0;
-				if (menu_delay == 0 && menu_joystick_delay == 0)
+				
+				if (menu_delay == 0
+				&& menu_joystick_delay == 0)
 				&& (!can_navigate_settings_sidebar)
 				&& (global.selected_resource_pack > 0)
 				&& (global.pause_room != rm_leveleditor)
@@ -342,7 +351,8 @@ function scr_option_custom_resources()
 				menu = "resource_pack";
 				menu_cursor_y_position = 0;
 				
-				if (menu_delay == 0 && menu_joystick_delay == 0)
+				if (menu_delay == 0
+				&& menu_joystick_delay == 0)
 				&& (!can_navigate_settings_sidebar)
 				&& (file_exists(game_save_id + "custom_resource_pack/" + string(ds_list_find_value(global.all_loaded_resource_pack, global.selected_resource_pack + 1)) + "/data/sprite_origin_point.ini"))
 				&& (global.pause_room != rm_leveleditor)
@@ -411,9 +421,11 @@ function scr_option_custom_resources()
 		draw_set_halign(fa_left);
 		draw_set_valign(fa_middle);
 		scr_draw_text_outlined(resource_pack_x, 20 + (custom_title_layer_y), l10n_text("Background Layer") + ": " + string(title_bg_layer), global.default_text_size, c_menu_outline, c_menu_fill, 1);
+		
 		if (title_bg_layer > 1)
 		{
 			draw_sprite_ext(spr_keyboard_keys, vk_left, resource_pack_x - 32, 20 + (custom_title_layer_y), 0.5, 0.5, 0, c_white, 1);
+			
 			if (point_in_rectangle(mouse_get_x, mouse_get_y, resource_pack_x - 32 - 16, 20 + (custom_title_layer_y) - 16, resource_pack_x - 32 + 16, 20 + (custom_title_layer_y) + 16))
 			&& (global.controls_used_for_navigation == "mouse")
 			{
@@ -425,9 +437,11 @@ function scr_option_custom_resources()
 				draw_set_alpha(1);
 			}
 		}
+		
 		if (title_bg_layer < title_bg_layer_max)
 		{
 			draw_sprite_ext(spr_keyboard_keys, vk_right, resource_pack_x +resource_pack_right_arrow_x, 20 + (custom_title_layer_y), 0.5, 0.5, 0, c_white, 1);
+			
 			if (point_in_rectangle(mouse_get_x, mouse_get_y, resource_pack_x +resource_pack_right_arrow_x - 16, 20 + (custom_title_layer_y) - 16, resource_pack_x +resource_pack_right_arrow_x + 16, 20 + (custom_title_layer_y) + 16))
 			&& (global.controls_used_for_navigation == "mouse")
 			{
@@ -439,10 +453,12 @@ function scr_option_custom_resources()
 				draw_set_alpha(1);
 			}
 		}
+		
 		if (menu == "title_background_layer")
 		{
 			draw_sprite(spr_menu_cursor, menu_cursor_index, resource_pack_x - 32 - 32, 20 + (custom_title_layer_y));
 		}
+		
 		if (key_left)
 		&& (menu == "title_background_layer")
 		|| (mouse_check_button_released(mb_left))
@@ -451,12 +467,16 @@ function scr_option_custom_resources()
 		{
 			menu = "title_background_layer";
 			menu_cursor_y_position = custom_title_layer_y;
-			if (menu_delay == 0 && menu_joystick_delay == 0)
+			
+			if (menu_delay == 0
+			&& menu_joystick_delay == 0)
 			&& (!can_navigate_settings_sidebar)
 			&& (title_bg_layer > 1)
 			{
 				menu_delay = 3;
+				
 				if (keyboard_check(vk_control))
+				|| (gamepad_button_check(global.player_slot[1], gp_face3))
 				{
 					title_bg_layer -= 10;
 				}
@@ -466,6 +486,7 @@ function scr_option_custom_resources()
 				}
 			}
 		}
+		
 		if (key_right)
 		&& (menu == "title_background_layer")
 		|| (mouse_check_button_released(mb_left))
@@ -474,12 +495,16 @@ function scr_option_custom_resources()
 		{
 			menu = "title_background_layer";
 			menu_cursor_y_position = custom_title_layer_y;
-			if (menu_delay == 0 && menu_joystick_delay == 0)
+			
+			if (menu_delay == 0
+			&& menu_joystick_delay == 0)
 			&& (!can_navigate_settings_sidebar)
 			&& (title_bg_layer < title_bg_layer_max)
 			{
 				menu_delay = 3;
+				
 				if (keyboard_check(vk_control))
+				|| (gamepad_button_check(global.player_slot[1], gp_face3))
 				{
 					title_bg_layer += 10;
 				}
@@ -513,6 +538,7 @@ function scr_option_custom_resources()
 		if (global.selected_title_background[title_bg_layer] > -1)
 		{
 			draw_sprite_ext(spr_keyboard_keys, vk_left, resource_pack_x - 32, 20 + (custom_title_background_y), 0.5, 0.5, 0, c_white, 1);
+			
 			if (point_in_rectangle(mouse_get_x, mouse_get_y, resource_pack_x - 32 - 16, 20 + (custom_title_background_y) - 16, resource_pack_x - 32 + 16, 20 + (custom_title_background_y) + 16))
 			&& (global.controls_used_for_navigation == "mouse")
 			{
@@ -523,6 +549,7 @@ function scr_option_custom_resources()
 				draw_set_alpha(1);
 			}
 		}
+		
 		if (file_exists("title_background/" + string(ds_list_find_value(global.all_loaded_title_backgrounds, global.selected_title_background[title_bg_layer] + 1))))
 		&& (ds_list_find_value(global.all_loaded_title_backgrounds, global.selected_title_background[title_bg_layer] + 1) != undefined)
 		&& (ds_list_find_value(global.all_loaded_title_backgrounds, global.selected_title_background[title_bg_layer] + 1) != "")
@@ -531,6 +558,7 @@ function scr_option_custom_resources()
 		&& (ds_list_find_value(global.all_loaded_title_backgrounds, global.selected_title_background[title_bg_layer] + 1) != "")
 		{
 			draw_sprite_ext(spr_keyboard_keys, vk_right, resource_pack_x +resource_pack_right_arrow_x, 20 + (custom_title_background_y), 0.5, 0.5, 0, c_white, 1);
+			
 			if (point_in_rectangle(mouse_get_x, mouse_get_y, resource_pack_x +resource_pack_right_arrow_x - 16, 20 + (custom_title_background_y) - 16, resource_pack_x +resource_pack_right_arrow_x + 16, 20 + (custom_title_background_y) + 16))
 			&& (global.controls_used_for_navigation == "mouse")
 			{
@@ -541,10 +569,12 @@ function scr_option_custom_resources()
 				draw_set_alpha(1);
 			}
 		}
+		
 		if (menu == "title_background")
 		{
 			draw_sprite(spr_menu_cursor, menu_cursor_index, resource_pack_x - 32 - 32, 20 + (custom_title_background_y));
 		}
+		
 		if (key_left)
 		&& (menu == "title_background")
 		|| (mouse_check_button_released(mb_left))
@@ -552,12 +582,16 @@ function scr_option_custom_resources()
 		&& (global.controls_used_for_navigation == "mouse")
 		{
 			menu = "title_background";
-			if (menu_delay == 0 && menu_joystick_delay == 0)
+			
+			if (menu_delay == 0
+			&& menu_joystick_delay == 0)
 			&& (!can_navigate_settings_sidebar)
 			&& (global.selected_title_background[title_bg_layer] > -1)
 			{
 				menu_delay = 3;
+				
 				if (keyboard_check(vk_control))
+				|| (gamepad_button_check(global.player_slot[1], gp_face3))
 				{
 					global.selected_title_background[title_bg_layer] -= 10;
 				}
@@ -572,27 +606,35 @@ function scr_option_custom_resources()
 				ini_open(game_save_id + "save_file/config.ini");
 				ini_write_real("config", "select_title_background" + string(title_bg_layer), global.selected_title_background[title_bg_layer]);
 				ini_close(); /* Don't commit the save data on Switch, this is only temporary! */
-				if (file_exists("title_background/" + string(ds_list_find_value(global.all_loaded_title_backgrounds, global.selected_title_background[title_bg_layer]))))
+				
+				if (variable_instance_exists(self, "title_screen_background"))
+				&& (variable_instance_exists(self, "title_bg_layer"))
 				{
-					scr_delete_sprite_properly(title_screen_background[title_bg_layer]);
-					title_screen_background[title_bg_layer] = sprite_add("title_background/" + string(ds_list_find_value(global.all_loaded_title_backgrounds, global.selected_title_background[title_bg_layer])), 0, false, false, 0, 0);
-					layer_background_visible(layer_background_get_id(layer_get_id("Background" + string(title_bg_layer))), true);
-				}
-				else
-				if (file_exists(game_save_id + "custom_title_background/" + string(ds_list_find_value(global.all_loaded_title_backgrounds, global.selected_title_background[title_bg_layer]))))
-				{
-					scr_delete_sprite_properly(title_screen_background[title_bg_layer]);
-					title_screen_background[title_bg_layer] = sprite_add(game_save_id + "custom_title_background/" + string(ds_list_find_value(global.all_loaded_title_backgrounds, global.selected_title_background[title_bg_layer])), 0, false, false, 0, 0);
-					layer_background_visible(layer_background_get_id(layer_get_id("Background" + string(title_bg_layer))), true);
-				}
-				else
-				{
-					title_screen_background[title_bg_layer] = spr_noone;
-					layer_background_visible(layer_background_get_id(layer_get_id("Background" + string(title_bg_layer))), false);
+					if (file_exists("title_background/" + string(ds_list_find_value(global.all_loaded_title_backgrounds, global.selected_title_background[title_bg_layer]))))
+					{
+						scr_delete_sprite_properly(title_screen_background[title_bg_layer]);
+						title_screen_background[title_bg_layer] = sprite_add("title_background/" + string(ds_list_find_value(global.all_loaded_title_backgrounds, global.selected_title_background[title_bg_layer])), 0, false, false, 0, 0);
+						layer_background_visible(layer_background_get_id(layer_get_id("Background" + string(title_bg_layer))), true);
+					}
+					else
+					if (file_exists(game_save_id + "custom_title_background/" + string(ds_list_find_value(global.all_loaded_title_backgrounds, global.selected_title_background[title_bg_layer]))))
+					{
+						scr_delete_sprite_properly(title_screen_background[title_bg_layer]);
+						title_screen_background[title_bg_layer] = sprite_add(game_save_id + "custom_title_background/" + string(ds_list_find_value(global.all_loaded_title_backgrounds, global.selected_title_background[title_bg_layer])), 0, false, false, 0, 0);
+						layer_background_visible(layer_background_get_id(layer_get_id("Background" + string(title_bg_layer))), true);
+					}
+					else
+					{
+						title_screen_background[title_bg_layer] = spr_noone;
+						layer_background_visible(layer_background_get_id(layer_get_id("Background" + string(title_bg_layer))), false);
+					}
 				}
 			}
-			if (layer_background_get_sprite(layer_background_get_id(layer_get_id("Background" + string(title_bg_layer)))) != title_screen_background[title_bg_layer])
-			&& (room == rm_title)
+			
+			if (room == rm_title)
+			&& (variable_instance_exists(self, "title_screen_background"))
+			&& (variable_instance_exists(self, "title_bg_layer"))
+			&& (layer_background_get_sprite(layer_background_get_id(layer_get_id("Background" + string(title_bg_layer)))) != title_screen_background[title_bg_layer])
 			{
 				layer_background_sprite(layer_background_get_id(layer_get_id("Background" + string(title_bg_layer))), title_screen_background[title_bg_layer]);
 			}
@@ -604,12 +646,14 @@ function scr_option_custom_resources()
 		&& (global.controls_used_for_navigation == "mouse")
 		{
 			menu = "title_background";
-			if (menu_delay == 0 && menu_joystick_delay == 0)
+			if (menu_delay == 0
+			&& menu_joystick_delay == 0)
 			&& (!can_navigate_settings_sidebar)
 			&& (file_exists("title_background/" + string(ds_list_find_value(global.all_loaded_title_backgrounds, global.selected_title_background[title_bg_layer] + 1))))
 			&& (ds_list_find_value(global.all_loaded_title_backgrounds, global.selected_title_background[title_bg_layer] + 1) != undefined)
 			&& (ds_list_find_value(global.all_loaded_title_backgrounds, global.selected_title_background[title_bg_layer] + 1) != "")
-			|| (menu_delay == 0 && menu_joystick_delay == 0)
+			|| (menu_delay == 0
+			&& menu_joystick_delay == 0)
 			&& (!can_navigate_settings_sidebar)
 			&& (file_exists(game_save_id + "custom_title_background/" + string(ds_list_find_value(global.all_loaded_title_backgrounds, global.selected_title_background[title_bg_layer] + 1))))
 			&& (ds_list_find_value(global.all_loaded_title_backgrounds, global.selected_title_background[title_bg_layer] + 1) != undefined)
@@ -617,6 +661,7 @@ function scr_option_custom_resources()
 			{
 				menu_delay = 3;
 				if (keyboard_check(vk_control))
+				|| (gamepad_button_check(global.player_slot[1], gp_face3))
 				{
 					global.selected_title_background[title_bg_layer] += 10;
 					if (ds_list_find_value(global.all_loaded_title_backgrounds, global.selected_title_background[title_bg_layer]) = undefined)
@@ -637,27 +682,35 @@ function scr_option_custom_resources()
 				ini_open(game_save_id + "save_file/config.ini");
 				ini_write_real("config", "select_title_background" + string(title_bg_layer), global.selected_title_background[title_bg_layer]);
 				ini_close(); /* Don't commit the save data on Switch, this is only temporary! */
-				if (file_exists("title_background/" + string(ds_list_find_value(global.all_loaded_title_backgrounds, global.selected_title_background[title_bg_layer]))))
+				
+				if (variable_instance_exists(self, "title_screen_background"))
+				&& (variable_instance_exists(self, "title_bg_layer"))
 				{
-					scr_delete_sprite_properly(title_screen_background[title_bg_layer]);
-					title_screen_background[title_bg_layer] = sprite_add("title_background/" + string(ds_list_find_value(global.all_loaded_title_backgrounds, global.selected_title_background[title_bg_layer])), 0, false, false, 0, 0);
-					layer_background_visible(layer_background_get_id(layer_get_id("Background" + string(title_bg_layer))), true);
-				}
-				else
-				if (file_exists(game_save_id + "custom_title_background/" + string(ds_list_find_value(global.all_loaded_title_backgrounds, global.selected_title_background[title_bg_layer]))))
-				{
-					scr_delete_sprite_properly(title_screen_background[title_bg_layer]);
-					title_screen_background[title_bg_layer] = sprite_add(game_save_id + "custom_title_background/" + string(ds_list_find_value(global.all_loaded_title_backgrounds, global.selected_title_background[title_bg_layer])), 0, false, false, 0, 0);
-					layer_background_visible(layer_background_get_id(layer_get_id("Background" + string(title_bg_layer))), true);
-				}
-				else
-				{
-					title_screen_background[title_bg_layer] = spr_noone;
-					layer_background_visible(layer_background_get_id(layer_get_id("Background" + string(title_bg_layer))), false);
+					if (file_exists("title_background/" + string(ds_list_find_value(global.all_loaded_title_backgrounds, global.selected_title_background[title_bg_layer]))))
+					{
+						scr_delete_sprite_properly(title_screen_background[title_bg_layer]);
+						title_screen_background[title_bg_layer] = sprite_add("title_background/" + string(ds_list_find_value(global.all_loaded_title_backgrounds, global.selected_title_background[title_bg_layer])), 0, false, false, 0, 0);
+						layer_background_visible(layer_background_get_id(layer_get_id("Background" + string(title_bg_layer))), true);
+					}
+					else
+					if (file_exists(game_save_id + "custom_title_background/" + string(ds_list_find_value(global.all_loaded_title_backgrounds, global.selected_title_background[title_bg_layer]))))
+					{
+						scr_delete_sprite_properly(title_screen_background[title_bg_layer]);
+						title_screen_background[title_bg_layer] = sprite_add(game_save_id + "custom_title_background/" + string(ds_list_find_value(global.all_loaded_title_backgrounds, global.selected_title_background[title_bg_layer])), 0, false, false, 0, 0);
+						layer_background_visible(layer_background_get_id(layer_get_id("Background" + string(title_bg_layer))), true);
+					}
+					else
+					{
+						title_screen_background[title_bg_layer] = spr_noone;
+						layer_background_visible(layer_background_get_id(layer_get_id("Background" + string(title_bg_layer))), false);
+					}
 				}
 			}
-			if (layer_background_get_sprite(layer_background_get_id(layer_get_id("Background" + string(title_bg_layer)))) != title_screen_background[title_bg_layer])
-			&& (room == rm_title)
+			
+			if (room == rm_title)
+			&& (variable_instance_exists(self, "title_screen_background"))
+			&& (variable_instance_exists(self, "title_bg_layer"))
+			&& (layer_background_get_sprite(layer_background_get_id(layer_get_id("Background" + string(title_bg_layer)))) != title_screen_background[title_bg_layer])
 			{
 				layer_background_sprite(layer_background_get_id(layer_get_id("Background" + string(title_bg_layer))), title_screen_background[title_bg_layer]);
 			}
@@ -671,9 +724,11 @@ function scr_option_custom_resources()
 		draw_set_halign(fa_left);
 		draw_set_valign(fa_middle);
 		scr_draw_text_outlined(resource_pack_x, 20 + (custom_title_background_scale_y), l10n_text("Background Scale") + ": " + string(global.title_background_scale[title_bg_layer]), global.default_text_size * 1.1, c_menu_outline, c_menu_fill, 1);
+		
 		if (global.title_background_scale[title_bg_layer] > scale_increment)
 		{
 			draw_sprite_ext(spr_keyboard_keys, vk_left, resource_pack_x - 32, 20 + (custom_title_background_scale_y), 0.5, 0.5, 0, c_white, 1);
+			
 			if (point_in_rectangle(mouse_get_x, mouse_get_y, resource_pack_x - 32 - 16, 20 + (custom_title_background_scale_y) - 16, resource_pack_x - 32 + 16, 20 + (custom_title_background_scale_y) + 16))
 			&& (global.controls_used_for_navigation == "mouse")
 			{
@@ -685,6 +740,7 @@ function scr_option_custom_resources()
 			}
 		}
 		draw_sprite_ext(spr_keyboard_keys, vk_right, resource_pack_x +resource_pack_right_arrow_x, 20 + (custom_title_background_scale_y), 0.5, 0.5, 0, c_white, 1);
+		
 		if (point_in_rectangle(mouse_get_x, mouse_get_y, resource_pack_x +resource_pack_right_arrow_x - 16, 20 + (custom_title_background_scale_y) - 16, resource_pack_x +resource_pack_right_arrow_x + 16, 20 + (custom_title_background_scale_y) + 16))
 		&& (global.controls_used_for_navigation == "mouse")
 		{
@@ -694,10 +750,12 @@ function scr_option_custom_resources()
 			draw_rectangle_color(resource_pack_x +resource_pack_right_arrow_x - 16, 20 + (custom_title_background_scale_y) - 16, resource_pack_x +resource_pack_right_arrow_x + 16, 20 + (custom_title_background_scale_y) + 16, c_white, c_white, c_white, c_white, false);
 			draw_set_alpha(1);
 		}
+		
 		if (menu == "title_background_scale")
 		{
 			draw_sprite(spr_menu_cursor, menu_cursor_index, resource_pack_x - 32 - 32, 20 + (custom_title_background_scale_y));
 		}
+		
 		if (key_left)
 		&& (menu == "title_background_scale")
 		|| (mouse_check_button_released(mb_left))
@@ -705,12 +763,16 @@ function scr_option_custom_resources()
 		&& (global.controls_used_for_navigation == "mouse")
 		{
 			menu = "title_background_scale";
-			if (menu_delay == 0 && menu_joystick_delay == 0)
+			
+			if (menu_delay == 0
+			&& menu_joystick_delay == 0)
 			&& (!can_navigate_settings_sidebar)
 			&& (global.title_background_scale[title_bg_layer] > scale_increment)
 			{
 				menu_delay = 3;
+				
 				if (keyboard_check(vk_control))
+				|| (gamepad_button_check(global.player_slot[1], gp_face3))
 				{
 					global.title_background_scale[title_bg_layer] -= (scale_increment * 10);
 				}
@@ -723,6 +785,7 @@ function scr_option_custom_resources()
 				ini_close(); /* Don't commit the save data on Switch, this is only temporary! */
 			}
 		}
+		
 		if (key_right)
 		&& (menu == "title_background_scale")
 		|| (mouse_check_button_released(mb_left))
@@ -730,11 +793,15 @@ function scr_option_custom_resources()
 		&& (global.controls_used_for_navigation == "mouse")
 		{
 			menu = "title_background_scale";
-			if (menu_delay == 0 && menu_joystick_delay == 0)
+			
+			if (menu_delay == 0
+			&& menu_joystick_delay == 0)
 			&& (!can_navigate_settings_sidebar)
 			{
 				menu_delay = 3;
+				
 				if (keyboard_check(vk_control))
+				|| (gamepad_button_check(global.player_slot[1], gp_face3))
 				{
 					global.title_background_scale[title_bg_layer] += (scale_increment * 10);
 				}
@@ -747,6 +814,7 @@ function scr_option_custom_resources()
 				ini_close(); /* Don't commit the save data on Switch, this is only temporary! */
 			}
 		}
+		
 		if (global.title_background_scale[title_bg_layer] <= 0)
 		{
 			global.title_background_scale[title_bg_layer] = 0.01;
@@ -762,6 +830,7 @@ function scr_option_custom_resources()
 		if (global.background_layer_x_scroll[title_bg_layer] > - 10)
 		{
 			draw_sprite_ext(spr_keyboard_keys, vk_left, resource_pack_x - 32, 20 + (background_layer_x_scroll_y), 0.5, 0.5, 0, c_white, 1);
+			
 			if (point_in_rectangle(mouse_get_x, mouse_get_y, resource_pack_x - 32 - 16, 20 + (background_layer_x_scroll_y) - 16, resource_pack_x - 32 + 16, 20 + (background_layer_x_scroll_y) + 16))
 			&& (global.controls_used_for_navigation == "mouse")
 			{
@@ -776,6 +845,7 @@ function scr_option_custom_resources()
 		if (global.background_layer_x_scroll[title_bg_layer] < + 10)
 		{
 			draw_sprite_ext(spr_keyboard_keys, vk_right, resource_pack_x +resource_pack_right_arrow_x, 20 + (background_layer_x_scroll_y), 0.5, 0.5, 0, c_white, 1);
+			
 			if (point_in_rectangle(mouse_get_x, mouse_get_y, resource_pack_x +resource_pack_right_arrow_x - 16, 20 + (background_layer_x_scroll_y) - 16, resource_pack_x +resource_pack_right_arrow_x + 16, 20 + (background_layer_x_scroll_y) + 16))
 			&& (global.controls_used_for_navigation == "mouse")
 			{
@@ -791,6 +861,7 @@ function scr_option_custom_resources()
 		{
 			draw_sprite(spr_menu_cursor, menu_cursor_index, resource_pack_x - 32 - 32, 20 + (background_layer_x_scroll_y));
 		}
+		
 		if (key_left)
 		&& (menu == "background_layer_x_scroll")
 		|| (mouse_check_button_released(mb_left))
@@ -798,12 +869,16 @@ function scr_option_custom_resources()
 		&& (global.controls_used_for_navigation == "mouse")
 		{
 			menu = "background_layer_x_scroll";
-			if (menu_delay == 0 && menu_joystick_delay == 0)
+			
+			if (menu_delay == 0
+			&& menu_joystick_delay == 0)
 			&& (!can_navigate_settings_sidebar)
 			&& (global.background_layer_x_scroll[title_bg_layer] > - 10)
 			{
 				menu_delay = 3;
+				
 				if (keyboard_check(vk_control))
+				|| (gamepad_button_check(global.player_slot[1], gp_face3))
 				{
 					global.background_layer_x_scroll[title_bg_layer] -= (scale_increment * 10);
 				}
@@ -813,6 +888,7 @@ function scr_option_custom_resources()
 				}
 			}
 		}
+		
 		if (key_right)
 		&& (menu == "background_layer_x_scroll")
 		|| (mouse_check_button_released(mb_left))
@@ -820,12 +896,16 @@ function scr_option_custom_resources()
 		&& (global.controls_used_for_navigation == "mouse")
 		{
 			menu = "background_layer_x_scroll";
-			if (menu_delay == 0 && menu_joystick_delay == 0)
+			
+			if (menu_delay == 0
+			&& menu_joystick_delay == 0)
 			&& (!can_navigate_settings_sidebar)
 			&& (global.background_layer_x_scroll[title_bg_layer] < + 10)
 			{
 				menu_delay = 3;
+				
 				if (keyboard_check(vk_control))
+				|| (gamepad_button_check(global.player_slot[1], gp_face3))
 				{
 					global.background_layer_x_scroll[title_bg_layer] += (scale_increment * 10);
 				}
@@ -846,6 +926,7 @@ function scr_option_custom_resources()
 		if (global.background_layer_y_scroll[title_bg_layer] > - 10)
 		{
 			draw_sprite_ext(spr_keyboard_keys, vk_left, resource_pack_x - 32, 20 + (background_layer_y_scroll_y), 0.5, 0.5, 0, c_white, 1);
+			
 			if (point_in_rectangle(mouse_get_x, mouse_get_y, resource_pack_x - 32 - 16, 20 + (background_layer_y_scroll_y) - 16, resource_pack_x - 32 + 16, 20 + (background_layer_y_scroll_y) + 16))
 			&& (global.controls_used_for_navigation == "mouse")
 			{
@@ -860,6 +941,7 @@ function scr_option_custom_resources()
 		if (global.background_layer_y_scroll[title_bg_layer] < + 10)
 		{
 			draw_sprite_ext(spr_keyboard_keys, vk_right, resource_pack_x +resource_pack_right_arrow_x, 20 + (background_layer_y_scroll_y), 0.5, 0.5, 0, c_white, 1);
+			
 			if (point_in_rectangle(mouse_get_x, mouse_get_y, resource_pack_x +resource_pack_right_arrow_x - 16, 20 + (background_layer_y_scroll_y) - 16, resource_pack_x +resource_pack_right_arrow_x + 16, 20 + (background_layer_y_scroll_y) + 16))
 			&& (global.controls_used_for_navigation == "mouse")
 			{
@@ -875,6 +957,7 @@ function scr_option_custom_resources()
 		{
 			draw_sprite(spr_menu_cursor, menu_cursor_index, resource_pack_x - 32 - 32, 20 + (background_layer_y_scroll_y));
 		}
+		
 		if (key_left)
 		&& (menu == "background_layer_y_scroll")
 		|| (mouse_check_button_released(mb_left))
@@ -882,12 +965,16 @@ function scr_option_custom_resources()
 		&& (global.controls_used_for_navigation == "mouse")
 		{
 			menu = "background_layer_y_scroll";
-			if (menu_delay == 0 && menu_joystick_delay == 0)
+			
+			if (menu_delay == 0
+			&& menu_joystick_delay == 0)
 			&& (!can_navigate_settings_sidebar)
 			&& (global.background_layer_y_scroll[title_bg_layer] > - 10)
 			{
 				menu_delay = 3;
+				
 				if (keyboard_check(vk_control))
+				|| (gamepad_button_check(global.player_slot[1], gp_face3))
 				{
 					global.background_layer_y_scroll[title_bg_layer] -= (scale_increment * 10);
 				}
@@ -897,6 +984,7 @@ function scr_option_custom_resources()
 				}
 			}
 		}
+		
 		if (key_right)
 		&& (menu == "background_layer_y_scroll")
 		|| (mouse_check_button_released(mb_left))
@@ -904,12 +992,16 @@ function scr_option_custom_resources()
 		&& (global.controls_used_for_navigation == "mouse")
 		{
 			menu = "background_layer_y_scroll";
-			if (menu_delay == 0 && menu_joystick_delay == 0)
+			
+			if (menu_delay == 0
+			&& menu_joystick_delay == 0)
 			&& (!can_navigate_settings_sidebar)
 			&& (global.background_layer_y_scroll[title_bg_layer] < + 10)
 			{
 				menu_delay = 3;
+				
 				if (keyboard_check(vk_control))
+				|| (gamepad_button_check(global.player_slot[1], gp_face3))
 				{
 					global.background_layer_y_scroll[title_bg_layer] += (scale_increment * 10);
 				}
@@ -925,14 +1017,17 @@ function scr_option_custom_resources()
 		{
 			global.background_layer_x_scroll[title_bg_layer] = + 10;
 		}
+		
 		if (global.background_layer_x_scroll[title_bg_layer] < - 10)
 		{
 			global.background_layer_x_scroll[title_bg_layer] = - 10;
 		}
+		
 		if (global.background_layer_y_scroll[title_bg_layer] > + 10)
 		{
 			global.background_layer_y_scroll[title_bg_layer] = + 10;
 		}
+		
 		if (global.background_layer_y_scroll[title_bg_layer] < - 10)
 		{
 			global.background_layer_y_scroll[title_bg_layer] = - 10;
@@ -958,18 +1053,22 @@ function scr_option_custom_resources()
 		
 		draw_set_halign(fa_left);
 		draw_set_valign(fa_middle);
+		
 		if (global.selected_title_logo >= 0)
 		{
 			scr_draw_text_outlined(resource_pack_x, 20 + (custom_title_logo_y), l10n_text("Title Logo") + ": " + string(global.selected_title_logo + 1) + "/" + string(ds_list_size(global.all_loaded_title_logo) + add_number), global.default_text_size * 1.1, c_menu_outline, c_menu_fill, 1);
-			/* Draw text of what the file is called */ scr_draw_text_outlined(resource_pack_x, 20 + (custom_title_logo_y + 40), string(ds_list_find_value(global.all_loaded_title_logo, global.selected_title_logo)), global.default_text_size * 1.1, c_menu_outline, c_dkgray, 1);
+			/* Draw text of what the file is called */
+			scr_draw_text_outlined(resource_pack_x, 20 + (custom_title_logo_y + 40), string(ds_list_find_value(global.all_loaded_title_logo, global.selected_title_logo)), global.default_text_size * 1.1, c_menu_outline, c_dkgray, 1);
 		}
 		else
 		{
 			scr_draw_text_outlined(resource_pack_x, 20 + (custom_title_logo_y), l10n_text("Title Logo") + ": " + l10n_text("None"), global.default_text_size * 1.05, c_menu_outline, c_menu_fill, 1);
 		}
+		
 		if (global.selected_title_logo > -1)
 		{
 			draw_sprite_ext(spr_keyboard_keys, vk_left, resource_pack_x - 32, 20 + (custom_title_logo_y), 0.5, 0.5, 0, c_white, 1);
+			
 			if (point_in_rectangle(mouse_get_x, mouse_get_y, resource_pack_x - 32 - 16, 20 + (custom_title_logo_y) - 16, resource_pack_x - 32 + 16, 20 + (custom_title_logo_y) + 16))
 			&& (global.controls_used_for_navigation == "mouse")
 			{
@@ -980,6 +1079,7 @@ function scr_option_custom_resources()
 				draw_set_alpha(1);
 			}
 		}
+		
 		if (file_exists("title_logo/" + string(ds_list_find_value(global.all_loaded_title_logo, global.selected_title_logo + 1))))
 		&& (ds_list_find_value(global.all_loaded_title_logo, global.selected_title_logo + 1) != undefined)
 		&& (ds_list_find_value(global.all_loaded_title_logo, global.selected_title_logo + 1) != "")
@@ -989,6 +1089,7 @@ function scr_option_custom_resources()
 		|| (global.selected_title_logo <= -1)
 		{
 			draw_sprite_ext(spr_keyboard_keys, vk_right, resource_pack_x +resource_pack_right_arrow_x, 20 + (custom_title_logo_y), 0.5, 0.5, 0, c_white, 1);
+			
 			if (point_in_rectangle(mouse_get_x, mouse_get_y, resource_pack_x +resource_pack_right_arrow_x - 16, 20 + (custom_title_logo_y) - 16, resource_pack_x +resource_pack_right_arrow_x + 16, 20 + (custom_title_logo_y) + 16))
 			&& (global.controls_used_for_navigation == "mouse")
 			{
@@ -999,10 +1100,12 @@ function scr_option_custom_resources()
 				draw_set_alpha(1);
 			}
 		}
+		
 		if (menu == "title_logo")
 		{
 			draw_sprite(spr_menu_cursor, menu_cursor_index, resource_pack_x - 32 - 32, 20 + (custom_title_logo_y));
 		}
+		
 		if (key_left)
 		&& (menu == "title_logo")
 		|| (mouse_check_button_released(mb_left))
@@ -1010,7 +1113,9 @@ function scr_option_custom_resources()
 		&& (global.controls_used_for_navigation == "mouse")
 		{
 			menu = "title_logo";
-			if (menu_delay == 0 && menu_joystick_delay == 0)
+			
+			if (menu_delay == 0
+			&& menu_joystick_delay == 0)
 			&& (!can_navigate_settings_sidebar)
 			&& (global.selected_title_logo > -1)
 			{
@@ -1019,6 +1124,7 @@ function scr_option_custom_resources()
 				ini_open(game_save_id + "save_file/config.ini");
 				ini_write_real("config", "select_title_logo", global.selected_title_logo);
 				ini_close(); /* Don't commit the save data on Switch, this is only temporary! */
+				
 				if (file_exists("title_logo/" + string(ds_list_find_value(global.all_loaded_title_logo, global.selected_title_logo))))
 				&& (global.selected_title_logo >= 0)
 				{
@@ -1040,6 +1146,7 @@ function scr_option_custom_resources()
 				}
 			}
 		}
+		
 		if (key_right)
 		&& (menu == "title_logo")
 		|| (mouse_check_button_released(mb_left))
@@ -1047,12 +1154,15 @@ function scr_option_custom_resources()
 		&& (global.controls_used_for_navigation == "mouse")
 		{
 			menu = "title_logo";
-			if (menu_delay == 0 && menu_joystick_delay == 0)
+			
+			if (menu_delay == 0
+			&& menu_joystick_delay == 0)
 			&& (!can_navigate_settings_sidebar)
 			&& (file_exists("title_logo/" + string(ds_list_find_value(global.all_loaded_title_logo, global.selected_title_logo + 1))))
 			&& (ds_list_find_value(global.all_loaded_title_logo, global.selected_title_logo + 1) != undefined)
 			&& (ds_list_find_value(global.all_loaded_title_logo, global.selected_title_logo + 1) != "")
-			|| (menu_delay == 0 && menu_joystick_delay == 0)
+			|| (menu_delay == 0
+			&& menu_joystick_delay == 0)
 			&& (!can_navigate_settings_sidebar)
 			&& (file_exists(game_save_id + "custom_title_logo/" + string(ds_list_find_value(global.all_loaded_title_logo, global.selected_title_logo + 1))))
 			&& (ds_list_find_value(global.all_loaded_title_logo, global.selected_title_logo + 1) != undefined)
@@ -1064,6 +1174,7 @@ function scr_option_custom_resources()
 				ini_open(game_save_id + "save_file/config.ini");
 				ini_write_real("config", "select_title_logo", global.selected_title_logo);
 				ini_close(); /* Don't commit the save data on Switch, this is only temporary! */
+				
 				if (file_exists("title_logo/" + string(ds_list_find_value(global.all_loaded_title_logo, global.selected_title_logo))))
 				&& (global.selected_title_logo >= 0)
 				{
@@ -1096,10 +1207,12 @@ function scr_option_custom_resources()
 		if (point_in_rectangle(mouse_get_x, mouse_get_y, resource_pack_x, 20 + (open_resource_pack_y) + 2, resource_pack_x + 371, 20 + (open_resource_pack_y) + 41))
 		&& (global.controls_used_for_navigation == "mouse")
 		&& (mouse_check_button_released(mb_left))
-		&& (menu_delay == 0 && menu_joystick_delay == 0)
+		&& (menu_delay == 0
+		&& menu_joystick_delay == 0)
 		|| (menu == "open_resource_pack_folder")
 		&& (key_a_pressed)
-		&& (menu_delay == 0 && menu_joystick_delay == 0)
+		&& (menu_delay == 0
+		&& menu_joystick_delay == 0)
 		{
 			menu_delay = 3;
 			scr_open_folder(game_save_id + "\custom_resource_pack")
@@ -1108,10 +1221,12 @@ function scr_option_custom_resources()
 		if (point_in_rectangle(mouse_get_x, mouse_get_y, resource_pack_x, 20 + (custom_title_background_open_y) + 2, resource_pack_x + 371, 20 + (custom_title_background_open_y) + 41))
 		&& (global.controls_used_for_navigation == "mouse")
 		&& (mouse_check_button_released(mb_left))
-		&& (menu_delay == 0 && menu_joystick_delay == 0)
+		&& (menu_delay == 0
+		&& menu_joystick_delay == 0)
 		|| (menu == "open_title_background_folder")
 		&& (key_a_pressed)
-		&& (menu_delay == 0 && menu_joystick_delay == 0)
+		&& (menu_delay == 0
+		&& menu_joystick_delay == 0)
 		{
 			menu_delay = 3;
 			scr_open_folder(game_save_id + "\custom_title_background")
@@ -1120,10 +1235,12 @@ function scr_option_custom_resources()
 		if (point_in_rectangle(mouse_get_x, mouse_get_y, resource_pack_x, 20 + (custom_title_logo_open_y) + 2, resource_pack_x + 371, 20 + (custom_title_logo_open_y) + 41))
 		&& (global.controls_used_for_navigation == "mouse")
 		&& (mouse_check_button_released(mb_left))
-		&& (menu_delay == 0 && menu_joystick_delay == 0)
+		&& (menu_delay == 0
+		&& menu_joystick_delay == 0)
 		|| (menu == "open_title_logo_folder")
 		&& (key_a_pressed)
-		&& (menu_delay == 0 && menu_joystick_delay == 0)
+		&& (menu_delay == 0
+		&& menu_joystick_delay == 0)
 		{
 			menu_delay = 3;
 			scr_open_folder(game_save_id + "\custom_title_logo")
@@ -1134,12 +1251,14 @@ function scr_option_custom_resources()
 		if (point_in_rectangle(mouse_get_x, mouse_get_y, resource_pack_x - 64, can_load_custom_level_assets_y - 6, resource_pack_x - 64 + 646, can_load_custom_level_assets_y + 38))
 		&& (global.controls_used_for_navigation == "mouse")
 		&& (mouse_check_button_released(mb_left))
-		&& (menu_delay == 0 && menu_joystick_delay == 0)
+		&& (menu_delay == 0
+		&& menu_joystick_delay == 0)
 		|| (menu == "can_load_custom_level_assets")
 		&& (key_a_pressed)
-		&& (menu_delay == 0 && menu_joystick_delay == 0)
+		&& (menu_delay == 0
+		&& menu_joystick_delay == 0)
 		{
-			global.can_load_custom_level_assets = not global.can_load_custom_level_assets;
+			global.can_load_custom_level_assets = !global.can_load_custom_level_assets;
 			ini_open(game_save_id + "save_file/config.ini");
 			ini_write_real("config", "can_load_custom_level_assets", global.can_load_custom_level_assets);
 			ini_close();

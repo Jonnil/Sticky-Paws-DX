@@ -29,7 +29,7 @@
       <IconPath>Japanese.bmp</IconPath>
     </Icon>
     <ReleaseVersion>0</ReleaseVersion>
-    <DisplayVersion>2025.1.20</DisplayVersion>
+    <DisplayVersion>2025.3.21</DisplayVersion>
     <StartupUserAccount>Required</StartupUserAccount>
     <UserAccountSwitchLock>Disable</UserAccountSwitchLock>
     <ParentalControl>FreeCommunication</ParentalControl>
@@ -85,7 +85,6 @@
       <Organization>USK</Organization>
       <Age>0</Age>
     </Rating>
-    <AccessibleUrlsFilePath>allowed_urls.txt</AccessibleUrlsFilePath>
     <LegalInformationFilePath>legal_info_0100c8201aa36000_1e4b.zip</LegalInformationFilePath>
     <VideoCapture>Enable</VideoCapture>
     <RuntimeAddOnContentInstall>Deny</RuntimeAddOnContentInstall>

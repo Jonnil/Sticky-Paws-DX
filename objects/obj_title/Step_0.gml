@@ -212,7 +212,12 @@ if (iris_xscale <= 0.01)
 					audio_stop_sound(title_music);
 				}
 			}
-			scr_delete_sprite_properly(title_screen_background[title_bg_layer]);
+			
+			if (variable_instance_exists(self, "title_screen_background"))
+			&& (variable_instance_exists(self, "title_bg_layer"))
+			{
+				scr_delete_sprite_properly(title_screen_background[title_bg_layer]);
+			}
 			if (ds_list_find_value(global.all_loaded_custom_levels, global.select_level_index) != undefined) /* Don't set "global level name" to "ds list find value" if it's undefined */
 			&& (!global.create_level_from_template)
 			&& (global.select_level_index > 0) /* Don't update if you're selecting "create from scratch" */
@@ -257,7 +262,12 @@ if (iris_xscale <= 0.01)
 				audio_stop_sound(title_music);
 			}
 		}
-		scr_delete_sprite_properly(title_screen_background[title_bg_layer]);
+		
+		if (variable_instance_exists(self, "title_screen_background"))
+		&& (variable_instance_exists(self, "title_bg_layer"))
+		{
+			scr_delete_sprite_properly(title_screen_background[title_bg_layer]);
+		}
 		scr_config_save();
 		ini_open(game_save_id + "save_file/file" + string(global.file) + ".ini");
 		lives = ini_read_real("Player", "lives", 5);

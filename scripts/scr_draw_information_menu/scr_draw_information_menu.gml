@@ -991,6 +991,7 @@ function scr_draw_information_menu()
 			draw_text_ext_transformed_color(32, 32 * 4, l10n_text("To prevent losing your custom levels and characters you should upload content and then save your level IDs and character IDs somewhere safe"), -1, display_get_gui_width(), global.default_text_size * 0.9, global.default_text_size * 0.9, 0, c_white, c_white, c_white, c_white, 1);
 			scr_draw_text_outlined(32, 32 * 7, l10n_text("The game includes an autosave feature that automatically saves your level every 5 minutes"), global.default_text_size * 0.9, c_black, c_white, 1);
 			scr_draw_text_outlined(32, 32 * 8, l10n_text("It also saves your level every time you playtest"), global.default_text_size, c_black, c_white, 1);
+			
 			if (global.enable_option_for_pc)
 			{
 				scr_draw_text_outlined(32, 32 * 10, l10n_text("Your custom levels are saved in this folder") + ":", global.default_text_size, c_black, c_white, 1);
