@@ -226,6 +226,7 @@ global.enable_foreground_layer_1_5 = true; /* Toggles the visibility of an addit
 global.enable_foreground_layer2 = true; /* Toggles the visibility of the second foreground layer. Often used for interactive or visually significant foreground elements. */
 global.enable_foreground_layer_secret = true; /* Toggles the visibility of the secret foreground layer. Typically used for hidden or unlockable elements that may only appear in certain conditions. */
 global.auto_open_crash_docs = false;
+global.debug_force_network = true; /* Default: False */
 #endregion /* Debug toggles END */
 
 /* Equipped Upgrades. All of these should be true so you automatically equip the upgrades so don't change the variables here, but you can unequipp the upgrades in the pause menu */
@@ -762,8 +763,6 @@ scr_set_font();
 
 /* Set network settings before starting game */
 network_set_config(network_config_use_non_blocking_socket, 1);
-
-scr_switch_update_online_status();
 
 scr_config_load(); /* Load Config */
 

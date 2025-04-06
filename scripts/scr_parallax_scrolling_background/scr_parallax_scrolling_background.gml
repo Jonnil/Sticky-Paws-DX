@@ -7,7 +7,8 @@ function scr_parallax_scrolling_background()
     var view_y = camera_get_view_y(current_view_camera);
 	
     #region /* Parallax Scrolling Background */
-    for (var i = 1; i <= 4; i++) {
+    for (var i = 1; i <= 4; i++)
+	{
         var layer_name = "Background_" + string(i);
         var layer_id = layer_get_id(layer_name);
         var x_parallax = custom_background_x_parallax[i];

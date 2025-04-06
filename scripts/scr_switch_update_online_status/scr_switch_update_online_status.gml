@@ -5,7 +5,7 @@ function scr_switch_update_online_status(show_login_screen = true)
 	if (os_type == os_switch)
 	{
 		/* Check if the system is connected to the network */
-		if (os_is_network_connected(network_connect_passive))
+		if (check_network_connection(network_connect_passive))
 		{
 			/* Retrieve the number of available accounts on the system */
 			var switch_accounts_num = switch_accounts_get_accounts();
@@ -53,7 +53,8 @@ function scr_switch_update_online_status(show_login_screen = true)
 			#endregion /* Iterate through accounts to find an open user with network service available END */
 			
 			#region /* If no valid ID token is found or no account is logged in, prompt the user */
-			if ((!valid_id_token_found || is_undefined(logged_in_account)) 
+			if ((!valid_id_token_found
+			|| is_undefined(logged_in_account)) 
 			&& show_login_screen)
 			{
 				if (!valid_id_token_found && is_undefined(logged_in_account))

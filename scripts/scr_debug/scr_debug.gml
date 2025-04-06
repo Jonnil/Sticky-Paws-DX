@@ -544,6 +544,11 @@ function scr_debug_draw_optimized_text()
 					debug_text_y = scr_draw_highlighted_text(32, debug_text_y, "in_settings", string(in_settings), "In Settings Menu", c_white, c_red, false);
 				}
 				
+				if (variable_instance_exists(self, "in_online_download_list_menu"))
+				{
+					debug_text_y = scr_draw_highlighted_text(32, debug_text_y, "in_online_download_list_menu", string(in_online_download_list_menu), "In Online Download List Menu", c_white, c_red, false);
+				}
+				
 				if (variable_instance_exists(self, "can_navigate_settings_sidebar"))
 				{
 					debug_text_y = scr_draw_highlighted_text(32, debug_text_y, "can_navigate_settings_sidebar", string(can_navigate_settings_sidebar), "Can Navigate Settings Sidebar", c_white, c_red, false);
@@ -664,6 +669,7 @@ function scr_debug_draw_optimized_text()
 					debug_text_y = scr_draw_highlighted_text(32, debug_text_y, "online_enabled", string(global.online_enabled), "Online Enabled", c_white, c_red, false);
 					debug_text_y = scr_draw_highlighted_text(32, debug_text_y, "online_token_validated", string(global.online_token_validated), "Online Token Validated", c_white, c_red, false);
 					debug_text_y = scr_draw_highlighted_text(32, debug_text_y, "online_token_error_message", string(global.online_token_error_message), "Online Token Error Message", c_white, c_red, false);
+					debug_text_y = scr_draw_highlighted_text(32, debug_text_y, "thumbnail_sprite", string(global.thumbnail_sprite), "Thumbnail Sprite", c_white, c_red, false);
 					
 					/* Download Menu Info */
 					debug_text_y = scr_draw_highlighted_text(32, debug_text_y, "selected_online_download_index", string(global.selected_online_download_index), "Selected Online Download Index", c_white, c_red, false);

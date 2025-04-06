@@ -9,7 +9,7 @@ function scr_initialize_online_download_menu()
 	#region /* Get Online Download List */
 	in_online_download_list_load_menu = true;
 	info_queue_index = 0;
-	info_queue_http_request = true;
+	info_queue_http_request = true; show_debug_message("[scr_initialize_online_download_menu] 'info_queue_http_request' is set to true\n");
 	
 	finished_level = undefined;
 	zero_defeats_level = undefined;
@@ -33,7 +33,7 @@ function scr_initialize_online_download_menu()
 	
 	menu = "download_online_" + string(global.selected_online_download_index);
 	automatically_search_for_id = false;
-	in_online_download_list_menu = true;
+	in_online_download_list_menu = true; show_debug_message("[scr_initialize_online_download_menu] 'In online download list menu' is set to true\n");
 	menu_delay = 3;
 	
 	scr_draw_loading(1, , , "Loading from server");

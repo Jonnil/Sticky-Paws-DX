@@ -213,7 +213,7 @@ function scr_character_select_menu_draw()
 					caution_online_takes_you_back_to = "online_character_list";
 					
 					if (global.online_enabled)
-					&& (os_is_network_connected())
+					&& (check_network_connection(network_connect_active))
 					{
 						scr_switch_update_online_status();
 						
@@ -249,15 +249,8 @@ function scr_character_select_menu_draw()
 					}
 					else
 					{
-						content_type = "character"; /* Need to set the "content type" to "level", so Async - HTTP Event is running correctly */
-						if (os_is_network_connected())
-						{
-							menu = "caution_online_proceed";
-						}
-						else
-						{
-							menu = "no_internet_character";
-						}
+						content_type = "character"; /* Need to set the "content type" to "character", so Async - HTTP Event is running correctly */
+						scr_handle_no_network_connection("scr_character_select_menu_draw", "online_character_list");
 						menu_delay = 3;
 					}
 				}

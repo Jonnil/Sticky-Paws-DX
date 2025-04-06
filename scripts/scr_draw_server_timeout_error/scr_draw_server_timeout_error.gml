@@ -45,7 +45,7 @@ function scr_draw_server_timeout_error()
 		/* Reset timeout flag */
 		global.server_timeout_end = undefined;
 		/* Reinitialize the online download menu to resend the specific HTTP request */
-		in_online_download_list_menu = true;
+		in_online_download_list_menu = true; show_debug_message("[scr_draw_server_timeout_error] 'In online download list menu' is set to true\n");
 		scr_initialize_online_download_menu();
 	}
 	if (global.link_to_check_server_status != "")

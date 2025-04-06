@@ -24,7 +24,7 @@ function scr_write_debug_info()
 	ini_write_string("OS State", "os_device", string(os_device));
 	ini_write_string("OS State", "os_type", string(os_type));
 	ini_write_string("OS State", "os_is_paused", string(os_is_paused()));
-	ini_write_string("OS State", "os_is_network_connected", string(os_is_network_connected()));
+	ini_write_string("OS State", "os_is_network_connected", string(os_is_network_connected(network_connect_passive)));
 	ini_write_string("OS State", "os_get_config", string(os_get_config()));
 	ini_write_string("OS State", "os_get_language", string(os_get_language()));
 	ini_write_string("OS State", "os_get_region", string(os_get_region()));

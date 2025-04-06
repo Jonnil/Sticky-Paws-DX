@@ -5,21 +5,30 @@ function scr_process_online_download_list_data()
 	scr_draw_loading(1, , , "Loading from server");
 	scr_server_timeout(15);
 	
+	show_debug_message("[scr_process_online_download_list_data] Starting processing online download list data. Raw online download list: " + string(global.online_download_list));
+	
 	#region /* Interpret the online download list as JSON */
 	if (global.online_download_list != ""
 	&& global.online_download_list != "HTTP request exception"
 	&& global.online_download_list != "Unauthorized")
 	{
+		show_debug_message("[scr_process_online_download_list_data] Valid online download list received. Attempting to parse JSON...");
+		
 		try
 		{
-			data = json_parse(global.online_download_list);
-			for (var i = 0; i < array_length(data); i++;)
+			online_content_data = json_parse(global.online_download_list);
+			show_debug_message("[scr_process_online_download_list_data] JSON parsed successfully. Number of items: " + string(array_length(online_content_data)));
+			
+			for (var i = 0; i < array_length(online_content_data); i++;)
 			{
+				show_debug_message("[scr_process_online_download_list_data] Initializing item " + string(i));
 				draw_download_name[i] = "";
+				
 				if (is_array(spr_download_list_thumbnail))
 				{
 					if (i < array_length(spr_download_list_thumbnail))
 					{
+						show_debug_message("[scr_process_online_download_list_data] Deleting existing sprite for thumbnail index " + string(i));
 						scr_delete_sprite_properly(spr_download_list_thumbnail[i]);
 					}
 				}
@@ -27,10 +36,16 @@ function scr_process_online_download_list_data()
 				all_download_id[i] = "";
 			}
 		}
+		catch (e)
+		{
+			show_debug_message("[scr_process_online_download_list_data] ERROR: Exception occurred while parsing JSON. " + string(e));
+		}
 	}
 	else
 	if (global.online_download_list == "HTTP request exception")
 	{
+		show_debug_message("[scr_process_online_download_list_data] ERROR: Received 'HTTP request exception' from server.");
+		
 		scr_draw_text_outlined(display_get_gui_width() * 0.5, display_get_gui_height() * 0.5 + 84, 
 			l10n_text("HTTP request exception"), global.default_text_size, c_white, c_black, 1);
 		scr_draw_text_outlined(display_get_gui_width() * 0.5, display_get_gui_height() * 0.5 + 84, 
@@ -39,6 +54,8 @@ function scr_process_online_download_list_data()
 	else
 	if (global.online_download_list == "Unauthorized")
 	{
+		show_debug_message("[scr_process_online_download_list_data] ERROR: Received 'Unauthorized' response from server.");
+		
 		scr_draw_text_outlined(display_get_gui_width() * 0.5, display_get_gui_height() * 0.5 + 84, 
 			l10n_text("Unauthorized"), global.default_text_size, c_white, c_black, 1);
 		scr_draw_text_outlined(display_get_gui_width() * 0.5, display_get_gui_height() * 0.5 + 84, 

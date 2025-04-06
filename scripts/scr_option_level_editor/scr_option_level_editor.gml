@@ -3836,7 +3836,7 @@ function scr_option_level_editor()
 			file_found = "";
 			file_load_timer = 0;
 			level_find_pos = 0;
-			ds_list_clear(global.thumbnail_sprite);
+			ds_list_clear(global.thumbnail_sprite); show_debug_message("[scr_option_level_editor] ds_list_clear(global.thumbnail sprite)");
 			menu_delay = 3;
 			menu = "load2_official_level_to_take_from";
 		}
@@ -4032,9 +4032,12 @@ function scr_option_level_editor()
 			if (menu == "remove_theme_are_you_sure_yes")
 			{
 				if (key_a_pressed
-				|| (global.controls_used_for_navigation == "mouse" && mouse_check_button_released(mb_left) && point_in_rectangle(device_mouse_x_to_gui(0), device_mouse_y_to_gui(0),
+				|| (global.controls_used_for_navigation == "mouse"
+				&& mouse_check_button_released(mb_left)
+				&& point_in_rectangle(device_mouse_x_to_gui(0), device_mouse_y_to_gui(0),
 				display_get_gui_width() * 0.5 - 185, remove_theme_are_you_sure_yes_y, display_get_gui_width() * 0.5 + 185, remove_theme_are_you_sure_yes_y + 42)))
-				&& (menu_delay == 0 && menu_joystick_delay == 0)
+				&& (menu_delay == 0
+				&& menu_joystick_delay == 0)
 				&& (!open_dropdown)
 				{
 					

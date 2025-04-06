@@ -2822,18 +2822,23 @@ function scr_option_menu()
 				{
 					// Safely get the language string from the grid:
 					var lang = "";
-					if (variable_global_exists("language_local_data") && global.language_local_data != undefined && global.language_local_data != 0 &&
-						ds_grid_width(global.language_local_data) > global.selected_language_id)
+					
+					if (variable_global_exists("language_local_data")
+					&& global.language_local_data != undefined
+					&& global.language_local_data != 0
+					&& ds_grid_width(global.language_local_data) > global.selected_language_id)
 					{
 						lang = global.language_local_data[# global.selected_language_id, 0];
-					} else {
-						lang = ""; // fallback if grid is missing or not large enough
+					}
+					else
+					{
+						lang = ""; /* fallback if grid is missing or not large enough */
 					}
 					
-					// If you have selected Japanese language, you can't use Open Dyslexic.
-					// If "Global Selected Font" checks for less than 1 here, then you can only select Game Font and Normal Font.
-					if ((lang == "日本語 (Japanese)" && global.selected_font < 1) ||
-						(lang != "日本語 (Japanese)" && global.selected_font < 2))
+					/* If you have selected Japanese language, you can't use Open Dyslexic
+					If "Global Selected Font" checks for less than 1 here, then you can only select Game Font and Normal Font */
+					if ((lang == "日本語 (Japanese)" && global.selected_font < 1)
+					|| (lang != "日本語 (Japanese)" && global.selected_font < 2))
 					{
 						menu_delay = 3;
 						global.selected_font++;

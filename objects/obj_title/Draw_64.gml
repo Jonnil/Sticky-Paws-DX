@@ -478,7 +478,9 @@ else
 if (select_custom_level_menu_open)
 {
 	level_editor_template_select = false;
-	if (menu != "no_internet_level")
+	
+	if (menu != "network_error")
+	&& (menu != "network_error_main_menu")
 	{
 		scr_select_custom_level_menu();
 		scr_custom_level_select_with_the_mouse(global.all_loaded_custom_levels);
@@ -506,8 +508,15 @@ if (menu == "search_id_ok")
 || (menu == "play_from_temp")
 || (menu == "download_to_working")
 {
-	scr_draw_menu_search_id(content_type); /* Display the search for ID screen */
+	in_online_search_id = true;
 }
+else
+{
+	in_online_search_id = false;
+}
+
+scr_draw_menu_search_id(content_type); /* Display the search for ID screen */
+
 if (menu == "report_back")
 || (menu == "report_next")
 || (menu == "report_reason_back")
@@ -846,7 +855,7 @@ if (global.enable_transitions)
 }
 #endregion /* Draw Iris Transitions END */
 
-scr_draw_no_internet_menu();
+scr_draw_network_error_menu();
 scr_draw_level_length_recommendation();
 
 scr_cant_use_controller_notification();

@@ -245,7 +245,7 @@
     {"name":"scr_draw_mouse_cursor_sprite","order":15,"path":"scripts/scr_draw_mouse_cursor_sprite/scr_draw_mouse_cursor_sprite.yy",},
     {"name":"scr_draw_name_box","order":14,"path":"scripts/scr_draw_name_box/scr_draw_name_box.yy",},
     {"name":"scr_draw_name_input_screen","order":13,"path":"scripts/scr_draw_name_input_screen/scr_draw_name_input_screen.yy",},
-    {"name":"scr_draw_no_internet_menu","order":15,"path":"scripts/scr_draw_no_internet_menu/scr_draw_no_internet_menu.yy",},
+    {"name":"scr_draw_network_error_menu","order":15,"path":"scripts/scr_draw_network_error_menu/scr_draw_network_error_menu.yy",},
     {"name":"scr_draw_online_download_list_thumbnail","order":9,"path":"scripts/scr_draw_online_download_list_thumbnail/scr_draw_online_download_list_thumbnail.yy",},
     {"name":"scr_draw_option_description","order":30,"path":"scripts/scr_draw_option_description/scr_draw_option_description.yy",},
     {"name":"scr_draw_pie","order":9,"path":"scripts/scr_draw_pie/scr_draw_pie.yy",},

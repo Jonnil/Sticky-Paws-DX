@@ -4,8 +4,6 @@ function scr_option_account()
 	#region /* Account Settings */
 	if (global.settings_sidebar_menu == "account_settings")
 	{
-		var get_device_username_text = l10n_text("bruh");
-		
 		draw_set_halign(fa_left);
 		draw_set_valign(fa_middle);
 		
@@ -13,12 +11,12 @@ function scr_option_account()
 		
 		if (environment_get_variable("USERNAME") != "")
 		{
-			//get_device_username_text = l10n_text("Get Device Username");
+			get_device_username_text = l10n_text("Get Device Username");
 		}
 		else
 		if (os_type == os_switch)
 		{
-			//get_device_username_text = l10n_text("Get Username");
+			get_device_username_text = l10n_text("Get Username");
 		}
 		
 		var change_username_x = 410;
@@ -29,22 +27,22 @@ function scr_option_account()
 		{
 			draw_set_halign(fa_right);
 			
-			//scr_draw_text_outlined(display_get_gui_width() - 8, 40, l10n_text("Setup your Account here"), global.default_text_size * 0.9, c_menu_outline, c_menu_fill, 1);
-			//scr_draw_text_outlined(display_get_gui_width() - 8, 40 * 2, l10n_text("This is used for uploading levels"), global.default_text_size * 0.9, c_menu_outline, c_menu_fill, 1);
+			scr_draw_text_outlined(display_get_gui_width() - 8, 40, l10n_text("Setup your Account here"), global.default_text_size * 0.9, c_menu_outline, c_menu_fill, 1);
+			scr_draw_text_outlined(display_get_gui_width() - 8, 40 * 2, l10n_text("This is used for uploading levels"), global.default_text_size * 0.9, c_menu_outline, c_menu_fill, 1);
 			
 			draw_set_halign(fa_center);
 			if (menu != "change_username_ok")
 			&& (menu != "change_username_cancel")
 			{
-				//draw_menu_button(change_username_x, change_username_y, l10n_text("Change Username"), "change_username");
+				draw_menu_button(change_username_x, change_username_y, l10n_text("Change Username"), "change_username");
 				
 				if (get_device_username_text != "")
 				{
 					draw_menu_button(change_username_x, change_username_y + 50, get_device_username_text, "get_device_name");
 				}
 				
-				//global.caution_online_do_not_show = draw_menu_checkmark(change_username_x, change_username_y + 100, l10n_text("Do not show online caution screen again"), "caution_online_toggle", global.caution_online_do_not_show, false);
-				//global.send_crash_logs = draw_menu_checkmark(change_username_x, change_username_y + 150, l10n_text("Automatically send crash logs to server"), "send_crash_logs_toggle", global.send_crash_logs, true, l10n_text("Automatically Send Crash Logs Description"));
+				global.caution_online_do_not_show = draw_menu_checkmark(change_username_x, change_username_y + 100, l10n_text("Do not show online caution screen again"), "caution_online_toggle", global.caution_online_do_not_show, false);
+				global.send_crash_logs = draw_menu_checkmark(change_username_x, change_username_y + 150, l10n_text("Automatically send crash logs to server"), "send_crash_logs_toggle", global.send_crash_logs, true, l10n_text("Automatically Send Crash Logs Description"));
 				
 				if (global.controls_used_for_navigation == "mouse")
 				&& (mouse_check_button_released(mb_left))
@@ -99,11 +97,11 @@ function scr_option_account()
 				draw_set_halign(fa_center);
 				draw_set_valign(fa_middle);
 				
-				//scr_draw_text_outlined(display_get_gui_width() * 0.5, display_get_gui_height() * 0.5 - (32 * 3), l10n_text("Are you sure you want to set your username to device name?"));
+				scr_draw_text_outlined(display_get_gui_width() * 0.5, display_get_gui_height() * 0.5 - (32 * 3), l10n_text("Are you sure you want to set your username to device name?"));
 				
 				if (global.enable_option_for_pc)
 				{
-					//scr_draw_text_outlined(display_get_gui_width() * 0.5, display_get_gui_height() * 0.5 - (32 * 2), l10n_text("Your device name is the name displayed here"));
+					scr_draw_text_outlined(display_get_gui_width() * 0.5, display_get_gui_height() * 0.5 - (32 * 2), l10n_text("Your device name is the name displayed here"));
 					draw_sprite_ext(spr_arrow_swirly, menu_cursor_index, display_get_gui_width() * 0.5 - 130, display_get_gui_height() * 0.5 - 15, 0.5, 0.5, 0, c_white, 1);
 					draw_set_halign(fa_left);
 					scr_draw_text_outlined(display_get_gui_width() * 0.5 - 285, display_get_gui_height() * 0.5 + 32, string_replace(game_save_id, environment_get_variable("USERNAME"), "*"));
@@ -112,8 +110,8 @@ function scr_option_account()
 				var change_username_ok_y = display_get_gui_height() * 0.5 + (32 * 2);
 				var change_username_cancel_y = display_get_gui_height() * 0.5 + (32 * 3) + 11;
 				
-				//draw_menu_button(change_username_ok_x, change_username_ok_y, l10n_text("Yes"), "get_device_name_ok", "get_device_name_ok");
-				//draw_menu_button(change_username_ok_x, change_username_cancel_y, l10n_text("No"), "get_device_name_cancel", "get_device_name", c_red);
+				draw_menu_button(change_username_ok_x, change_username_ok_y, l10n_text("Yes"), "get_device_name_ok", "get_device_name_ok");
+				draw_menu_button(change_username_ok_x, change_username_cancel_y, l10n_text("No"), "get_device_name_cancel", "get_device_name", c_red);
 				
 				if (key_up)
 				&& (menu_delay == 0 && menu_joystick_delay == 0)
@@ -206,12 +204,12 @@ function scr_option_account()
 			draw_set_valign(fa_middle);
 			if (global.username != "")
 			{
-				//scr_draw_text_outlined(change_username_x, change_username_y - 40, l10n_text("Account name") + ": " + string(global.username), global.default_text_size, c_menu_outline, c_menu_fill, 1);
+				scr_draw_text_outlined(change_username_x, change_username_y - 40, l10n_text("Account name") + ": " + string(global.username), global.default_text_size, c_menu_outline, c_menu_fill, 1);
 			}
 			else
 			{
-				//scr_draw_text_outlined(change_username_x, change_username_y - 40, l10n_text("No username!"), global.default_text_size, c_menu_outline, c_menu_fill, 1);
-				//scr_draw_text_outlined(change_username_x, change_username_y - 40, l10n_text("No username!"), global.default_text_size, c_menu_outline, c_red, scr_wave(0, 1, 1, 0));
+				scr_draw_text_outlined(change_username_x, change_username_y - 40, l10n_text("No username!"), global.default_text_size, c_menu_outline, c_menu_fill, 1);
+				scr_draw_text_outlined(change_username_x, change_username_y - 40, l10n_text("No username!"), global.default_text_size, c_menu_outline, c_red, scr_wave(0, 1, 1, 0));
 			}
 		}
 		#endregion /* Draw the username text above everything END */

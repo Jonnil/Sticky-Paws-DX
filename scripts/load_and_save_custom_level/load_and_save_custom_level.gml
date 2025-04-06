@@ -73,12 +73,12 @@ function scr_load_object_placement_json()
 		var json_string = file_text_read_string(file);
 		file_text_close(file); /* Don't commit the save data on Switch, this is only temporary! */
 		
-		var data = json_parse(json_string);
+		var online_content_metadata = json_parse(json_string); /* Parse the JSON response containing metadata for each available online content */
 		
 		/* Iterate over JSON data to create objects */
-		for (var i = 0; i < array_length(data); i++)
+		for (var i = 0; i < array_length(online_content_metadata); i++)
 		{
-			var_struct = data[i];
+			var_struct = online_content_metadata[i];
 			ds_list_add(placed_objects_list, var_struct.O);
 			
 			/* Handle object repetition */
@@ -205,7 +205,7 @@ function scr_save_custom_level_json()
 			file = file_text_open_write(custom_levels_path + "/data/object_placement_all.json"); /* Open file for writing */
 		}
 		
-		var data = [];
+		var online_content_metadata = [];
 		
 		if (global.can_save_length_variable && instance_exists(obj_level_width))
 		{
@@ -293,12 +293,12 @@ function scr_save_custom_level_json()
 					obj_data.L = string(repeat_length);
 				}
 				
-		        data[array_length(data)] = obj_data;
+		        online_content_metadata[array_length(online_content_metadata)] = obj_data;
 			}
 		}
 		#endregion /* Write all objects to file END */
 		
-		var json_string = json_stringify(data);
+		var json_string = json_stringify(online_content_metadata);
 		show_debug_message("SAVE OBJECT PLACEMENT");
 		file_text_write_string(file, json_string); /* Write string with wall information to file and start a new line */
 		file_text_close(file); /* Don't commit the save data on Switch, this is only temporary! The commit happens in "scr save level information" */

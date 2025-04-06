@@ -34,7 +34,7 @@ function scr_handle_language_pack_http(_async_map, var_handle_redirects = true)
 		message_result = result;
 	}
 	
-	show_debug_message("[scr_handle_language_pack_http] HTTP status: " + string(status) + ", result: " + message_result + "\n");
+	show_debug_message("[scr_handle_language_pack_http] HTTP status: " + string(status) + "\n");
 	
 	#region /* ---------- Handle Manifest Download ---------- */
 	if (req_id == global.language_http_request_id)

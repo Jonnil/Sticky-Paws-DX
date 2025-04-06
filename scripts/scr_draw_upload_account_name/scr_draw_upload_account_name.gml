@@ -179,7 +179,8 @@ function scr_draw_upload_account_name(what_kind_of_file = "level")
 				
 			menu_delay = 3;
 			input_key = false;
-			if (os_is_network_connected())
+			
+			if (check_network_connection(network_connect_active))
 			{
 				scr_switch_update_online_status();
 				
@@ -233,7 +234,7 @@ function scr_draw_upload_account_name(what_kind_of_file = "level")
 			}
 			else
 			{
-				menu = "no_internet_" + string(what_kind_of_file);
+				scr_handle_no_network_connection("scr_draw_upload_account_name");
 			}
 		}
 		#endregion /* Pressing Change Username OK END */

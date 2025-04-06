@@ -38,10 +38,16 @@ scr_delete_sprite_properly(global.custom_foreground1);
 scr_delete_sprite_properly(global.custom_foreground1_5);
 scr_delete_sprite_properly(global.custom_foreground2);
 scr_delete_sprite_properly(global.custom_foreground_secret);
+
 in_character_select_menu = false;
+in_edit_character_menu = false;
+in_online_download_list_menu = false; /* If you are in the online download list menu or not */
+in_online_download_list_load_menu = false; /* If you are loading online download list or not */
+in_online_search_id = false;
+in_settings = false;
+
 caution_online_takes_you_to = "";
 caution_online_takes_you_back_to = "";
-in_edit_character_menu = false;
 loading_assets = false;
 allowed_to_load_template_level = false;
 downloaded_level_is_daily_build = false;
@@ -121,13 +127,14 @@ content_type = "level"; /* What kind of ID you are searching for. Either "level"
 downloaded_character_name = ""; /* After loading the downloaded custom character, save the character name for later use */
 global.online_download_list = ""; /* Get the uploaded online levels as a list */
 global.online_download_list_info = ""; /* Get the uploaded online level thumbnails as a list */
-data = undefined; /* The uploaded online levels will be json parsed into this variable */
-info_data = undefined; /* The uploaded online levels information will be json parsed into this variable */
+online_content_data = undefined; /* The uploaded online content will be json parsed into this variable */
+info_data = undefined; /* The uploaded online content information will be json parsed into this variable */
 automatically_search_for_id = false; /* When downloading from online download list, you want to automatically search for the selected ID */
-in_online_download_list_menu = false; /* If you are in the online download list menu or not */
-in_online_download_list_load_menu = false; /* If you are loading online download list or not */
 currently_selected_id = ""; /* In the online list, what level/character are you currently selecting? */
 old_currently_selected_id = ""; /* this is just to compare to "currently selected id" once it changes, so that information about that specific id only have to load once */
+
+info_queue_index = 0;
+info_queue_http_request = false;
 
 load_from_where = "characters";
 can_save_to_character_config = false; /* Only turn true when playing as custom character */
@@ -261,7 +268,6 @@ black_screen_at_start_delay = 0;
 remap_y_pos = 0;
 version_y_pos = 0;
 menu_cursor_index = 0;
-in_settings = false;
 old_selected_resource_pack = global.selected_resource_pack;
 can_navigate_settings_sidebar = false;
 navigate_slider = false;

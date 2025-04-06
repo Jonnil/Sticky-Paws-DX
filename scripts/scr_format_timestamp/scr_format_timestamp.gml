@@ -21,19 +21,6 @@ function scr_format_timestamp(_date_value, what_timezone = timezone_local)
 	var sMin  = (minute < 10) ? ("0" + string(minute)) : string(minute);
 	var sSec  = (sec < 10) ? ("0" + string(sec)) : string(sec);
 	
-	if (global.debug_screen)
-	{
-		show_debug_message(
-			"[scr_format_timestamp] _date_value = " + string(_date_value) + "\n" +
-			"[scr_format_timestamp] yy = " + string(yy) + "\n" +
-			"[scr_format_timestamp] mm = " + string(mm) + "\n" +
-			"[scr_format_timestamp] dd = " + string(dd) + "\n" +
-			"[scr_format_timestamp] hour = " + string(hour) + "\n" +
-			"[scr_format_timestamp] minute = " + string(minute) + "\n" +
-			"[scr_format_timestamp] sec = " + string(sec) + "\n"
-		);
-	}
-	
 	/* Build final string: "YYYY-MM-DD hh:mm:ss" */
 	return sYY + "-" + sMM + "-" + sDD + " " + sHour + ":" + sMin + ":" + sSec;
 }

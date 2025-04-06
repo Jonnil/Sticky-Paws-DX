@@ -12,7 +12,7 @@ function scr_draw_online_download_list()
 		draw_set_alpha(1);
 		
 		#region /* Process Data */
-		if (data == undefined
+		if (online_content_data == undefined
 		&& in_online_download_list_menu)
 		{
 			scr_draw_online_download_list_data();
@@ -60,12 +60,12 @@ function scr_draw_online_download_menu_data()
 	var guiWidth = display_get_gui_width();
 	
 	#region /* Show online downloads if data is available */
-	if (data != undefined
+	if (online_content_data != undefined
 	&& (menu != "search_id_ok"))
 	{
-		if (is_array(data))
+		if (is_array(online_content_data))
 		{
-			var num_items = array_length(data);
+			var num_items = array_length(online_content_data);
 			
 			/* Draw each thumbnail (optimized loop through downloads) */
 			for (var i = 0; i < num_items; i++)
@@ -74,8 +74,8 @@ function scr_draw_online_download_menu_data()
 			}
 		}
 		
-		if (is_array(data)
-		&& array_length(data) <= 0)
+		if (is_array(online_content_data)
+		&& array_length(online_content_data) <= 0)
 		{
 			draw_set_halign(fa_center);
 			scr_draw_text_outlined(guiWidth * 0.5, display_get_gui_height() * 0.5, 

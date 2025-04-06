@@ -1,3 +1,6 @@
+/* Update online status first */
+scr_switch_update_online_status();
+
 /* Get the os type name for debugging */
 scr_debug_os_type();
 

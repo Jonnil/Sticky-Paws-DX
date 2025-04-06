@@ -18,7 +18,8 @@ if (async_load[? "id"] == global.http_request_id)
 		var download_temp_path = temp_directory;
 		
 		#region /* Handle file saving and menu updates based on content_type */
-		if (response_json != undefined && !in_online_download_list_load_menu)
+		if (response_json != undefined
+		&& !in_online_download_list_load_menu)
 		{
 			/* Check if the response JSON has a valid name */
 			if (response_json[? "name"] != undefined)
@@ -61,6 +62,8 @@ if (async_load[? "id"] == global.http_request_info)
 	/* Get the status code and response body */
 	var status_code = async_load[? "http_status"];
 	var response_str = async_load[? "result"];
+	
+	show_debug_message("[obj_title Async - HTTP] menu: " + string(menu) + ", status_code = " + string(status_code));
 	
 	/* Check if the response status is 200 (OK) */
 	if (status_code == 200)

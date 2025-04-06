@@ -572,8 +572,9 @@ function scr_character_manage_menu_step()
 				ini_close(); /* Don't commit the save data on Switch, this is only temporary! */
 				
 				menu_delay = 3;
+				
 				if (global.online_enabled)
-				&& (os_is_network_connected())
+				&& (check_network_connection(network_connect_active))
 				{
 					scr_switch_update_online_status();
 					
@@ -638,15 +639,8 @@ function scr_character_manage_menu_step()
 				else
 				{
 					caution_online_takes_you_to = "upload_yes_character";
-					caution_online_takes_you_back_to = "click_upload_character";
-					if (os_is_network_connected())
-					{
-						menu = "caution_online_proceed";
-					}
-					else
-					{
-						menu = "no_internet_character";
-					}
+					
+					scr_handle_no_network_connection("scr_character_manage_menu_step", "click_upload_character");
 				}
 			}
 		}

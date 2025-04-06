@@ -190,7 +190,7 @@ function scr_character_select_menu_step()
 							caution_online_takes_you_back_to = "online_level_list_title";
 							
 							if (global.online_enabled)
-							&& (os_is_network_connected())
+							&& (check_network_connection(network_connect_active))
 							{
 								scr_switch_update_online_status();
 								
@@ -229,15 +229,7 @@ function scr_character_select_menu_step()
 							else
 							{
 								content_type = "level"; /* Need to set the "content type" to "level", so Async - HTTP Event is running correctly */
-								if (os_is_network_connected())
-								{
-									menu = "caution_online_proceed";
-								}
-								else
-								{
-									caution_online_takes_you_back_to = "online_level_list_title";
-									menu = "no_internet_level";
-								}
+								scr_handle_no_network_connection("scr_character_select_menu_step", "select_character");
 								menu_delay = 3;
 							}
 							in_character_select_menu = false;
@@ -567,7 +559,8 @@ function scr_character_select_menu_step()
 			|| (point_in_rectangle(mouse_get_x, mouse_get_y, 0, 0, 370, 42))
 			&& (mouse_check_button_released(mb_left))
 			{
-				if (menu_delay == 0 && menu_joystick_delay == 0)
+				if (menu_delay == 0
+				&& menu_joystick_delay == 0)
 				{
 					menu_delay = 3;
 					image_alpha = 1;
@@ -580,6 +573,7 @@ function scr_character_select_menu_step()
 						player_menu[i] = "select_character";
 						xx[i] = player_display_x[i];
 					}
+					
 					if (room == rm_title)
 					{
 						if (global.character_select_in_this_menu == "main_game")

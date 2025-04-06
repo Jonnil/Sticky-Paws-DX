@@ -81,6 +81,7 @@ function scr_debug_print_cheat_progress()
 			var progress = cheat.progress;
 			var total = array_length(cheat.code);
 			show_debug_message("Cheat code " + string(i) + ": Progress " + string(progress) + " / " + string(total));
+			
 			if (progress < total)
 			{
 				show_debug_message("  Next expected: " + cheat.code[progress]);

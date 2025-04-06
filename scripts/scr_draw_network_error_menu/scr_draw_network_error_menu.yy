@@ -1,9 +1,9 @@
 {
   "$GMScript":"v1",
-  "%Name":"scr_draw_no_internet_menu",
+  "%Name":"scr_draw_network_error_menu",
   "isCompatibility":false,
   "isDnD":false,
-  "name":"scr_draw_no_internet_menu",
+  "name":"scr_draw_network_error_menu",
   "parent":{
     "name":"Server Scripts",
     "path":"folders/Scripts/Server Scripts.yy",

@@ -7,7 +7,8 @@ function scr_draw_information_menu()
 	#region /* Information menu */
 	if (information_menu_open != "")
 	{
-		if (information_menu_open != "credits" && instance_exists(obj_credits))
+		if (information_menu_open != "credits"
+		&& instance_exists(obj_credits))
 		{
 			instance_destroy(obj_credits);
 		}
@@ -431,6 +432,7 @@ function scr_draw_information_menu()
 			
 			/* About tab button */
 			draw_menu_button_sprite(spr_menu_button, 0, 0, 0, 0, 0.5, 1, 185, 42, l10n_text("About"), "about", "about", false);
+			
 			if (point_in_rectangle(mouse_get_x, mouse_get_y, 0, 0, 185, 42))
 			&& (mouse_check_button_released(mb_left))
 			&& (menu_delay == 0 && menu_joystick_delay == 0)
@@ -452,6 +454,7 @@ function scr_draw_information_menu()
 				var whats_new_alpha = 1;
 			}
 			draw_menu_button_sprite(spr_menu_button, 185, 0, 0, 0, 0.5, 1, 185, 42, l10n_text("What's New?"), "whats_new", "whats_new", false,,whats_new_alpha);
+			
 			if (point_in_rectangle(mouse_get_x, mouse_get_y, 185, 0, 185 * 2, 42))
 			&& (mouse_check_button_released(mb_left))
 			&& (menu_delay == 0 && menu_joystick_delay == 0)
@@ -465,6 +468,7 @@ function scr_draw_information_menu()
 			
 			/* Backups tab button */
 			draw_menu_button_sprite(spr_menu_button, 185 * 2, 0, 0, 0, 0.5, 1, 185, 42, l10n_text("Backups"), "backups", "backups", false);
+			
 			if (point_in_rectangle(mouse_get_x, mouse_get_y, 185 * 2, 0, 185 * 3, 42))
 			&& (mouse_check_button_released(mb_left))
 			&& (menu_delay == 0 && menu_joystick_delay == 0)
@@ -480,6 +484,7 @@ function scr_draw_information_menu()
 			if (global.enable_option_for_pc)
 			{
 				draw_menu_button_sprite(spr_menu_button, 185 * 3, 0, 0, 0, 0.5, 1, 185, 42, l10n_text("Community"), "community", "community", false);
+				
 				if (point_in_rectangle(mouse_get_x, mouse_get_y, 185 * 3, 0, 185 * 4, 42))
 				&& (mouse_check_button_released(mb_left))
 				&& (menu_delay == 0 && menu_joystick_delay == 0)
@@ -499,6 +504,7 @@ function scr_draw_information_menu()
 			
 			/* Credits tab button */
 			draw_menu_button_sprite(spr_menu_button, credits_y, 0, 0, 0, 0.5, 1, 185, 42, l10n_text("Credits"), "credits", "credits", false);
+			
 			if (point_in_rectangle(mouse_get_x, mouse_get_y, credits_y, 0, credits_y + 185, 42))
 			&& (mouse_check_button_released(mb_left))
 			&& (menu_delay == 0 && menu_joystick_delay == 0)
@@ -529,6 +535,7 @@ function scr_draw_information_menu()
 			/* Back from Information Menu */
 			draw_menu_button(display_get_gui_width() - 370, display_get_gui_height() - 42, l10n_text("Back"), "information_back", "information_back");
 			draw_sprite_ext(spr_icon_back, 0, display_get_gui_width() - 354, display_get_gui_height() - 21, 1, 1, 0, c_white, 1);
+			
 			if (point_in_rectangle(mouse_get_x, mouse_get_y, display_get_gui_width() - 370, display_get_gui_height() - 42, display_get_gui_width(), display_get_gui_height()))
 			&& (mouse_check_button_released(mb_left))
 			&& (menu_delay == 0 && menu_joystick_delay == 0)
@@ -559,6 +566,7 @@ function scr_draw_information_menu()
 			var check_out_website_y = 42 * 6;
 			var check_out_guide_y = 42 * 8;
 			var check_out_update_schedule_y = 42 * 10;
+			
 			if (global.enable_option_for_pc)
 			{
 				var privacy_policy_y = 42 * 12;
@@ -598,9 +606,10 @@ function scr_draw_information_menu()
 				caution_online_takes_you_back_to = "about_online_level_list";
 				
 				menu_delay = 3;
+				
 				if (global.online_enabled)
-				&& (os_is_network_connected())
 				&& (global.free_communication_available)
+				&& (check_network_connection(network_connect_active))
 				{
 					scr_switch_update_online_status();
 					
@@ -652,7 +661,7 @@ function scr_draw_information_menu()
 				{
 					information_menu_open = ""; /* Disable information menu so you can't accidentally navigate information menu when navigating online caution menu */
 					content_type = "level"; /* Need to set the "content type" to "level", so Async - HTTP Event is running correctly */
-					menu = "caution_online_proceed";
+					scr_handle_no_network_connection("scr_draw_information_menu");
 					menu_delay = 3;
 				}
 			}

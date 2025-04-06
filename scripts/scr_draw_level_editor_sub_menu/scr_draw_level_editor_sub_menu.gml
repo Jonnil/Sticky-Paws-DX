@@ -1,4 +1,6 @@
-function scr_draw_level_editor_sub_menu(xx = 394 * (global.select_level_index - column * row) + 100 - 3 + thumbnail_x_offset, yy)
+/// @desc  scr_draw_level_editor_sub_menu(xx)
+/// @param {real} [xx]=0
+function scr_draw_level_editor_sub_menu(xx = 0)
 {
 	var get_window_height = display_get_gui_height();
 	var mouse_get_x = device_mouse_x_to_gui(0);
@@ -596,13 +598,14 @@ function scr_draw_level_editor_sub_menu(xx = 394 * (global.select_level_index - 
 			if (menu == "level_editor_create_from_template")
 			{
 				scr_switch_expand_save_data(); /* Expand the save data before editing level name */
+				
 				if (global.save_data_size_is_sufficient)
 				{
 					creating_daily_build = false; /* Disable Daily Build */
 					file_found = "";
 					file_load_timer = 0;
 					level_find_pos = 0;
-					ds_list_clear(global.thumbnail_sprite);
+					ds_list_clear(global.thumbnail_sprite); show_debug_message("[scr_draw_level_editor_sub_menu] ds_list_clear(global.thumbnail sprite)");
 					menu_delay = 3;
 					menu = "load_official_level_template";
 				}

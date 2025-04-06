@@ -20,7 +20,7 @@ function scr_download_language_packs()
 	show_debug_message("[scr_download_language_packs] Initiating language pack download process from Google Sheet.");
 	
 	#region /* Check Network Connection */
-	if (os_is_network_connected())
+	if (check_network_connection(network_connect_passive))
 	{
 		show_debug_message("[scr_download_language_packs] Network connection detected.");
 	}

@@ -262,7 +262,7 @@ function scr_draw_upload_character_menu()
 					{
 						if (global.username != "") /* Check if there is an username or not */
 						{
-							if (os_is_network_connected())
+							if (check_network_connection(network_connect_active))
 							{
 								scr_switch_update_online_status();
 								
@@ -303,8 +303,7 @@ function scr_draw_upload_character_menu()
 							else
 							{
 								menu_delay = 3;
-								caution_online_takes_you_back_to = "download_online_search_id";
-								menu = "no_internet_character";
+								scr_handle_no_network_connection("scr_draw_upload_character_menu", "download_online_search_id");
 							}
 						}
 						else
@@ -703,7 +702,7 @@ function scr_draw_upload_character_menu()
 				scr_switch_expand_save_data(); /* Expand the save data before upload */
 				if (global.save_data_size_is_sufficient)
 				{
-					if (os_is_network_connected()) /* Need to check if OS is connected to network before getting online */
+					if (check_network_connection(network_connect_active)) /* Need to check if OS is connected to network before getting online */
 					{
 						scr_switch_update_online_status();
 						
@@ -794,8 +793,7 @@ function scr_draw_upload_character_menu()
 					else
 					{
 						menu_delay = 3;
-						caution_online_takes_you_back_to = "download_online_search_id";
-						menu = "no_internet_character";
+						scr_handle_no_network_connection("scr_draw_upload_character_menu", "download_online_search_id");
 					}
 				}
 			}

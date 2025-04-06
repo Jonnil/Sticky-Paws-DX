@@ -49,11 +49,6 @@ function scr_draw_option_description()
 		if (gui_width <= 0)
 		{
 			gui_width = 1280; /* Default width if GUI width is unavailable */
-			
-			if (global.debug_screen)
-			{
-				show_debug_message("[scr_draw_option_description] WARNING: display_get_gui_width() returned 0. Using default width of 1280.");
-			}
 		}
 		
 		/* Wrap text at 98% of the screen width */

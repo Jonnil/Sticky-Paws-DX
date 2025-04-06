@@ -47,7 +47,7 @@ function scr_draw_caution_online()
 				ini_close(); /* Don't commit the save data on Switch, this is only temporary! */
 			}
 			
-			if (os_is_network_connected()) /* Need to check if you are connected to the internet before proceeding to online content */
+			if (check_network_connection(network_connect_active)) /* Need to check if you are connected to the internet before proceeding to online content */
 			{
 				scr_switch_update_online_status();
 				
@@ -63,6 +63,7 @@ function scr_draw_caution_online()
 								select_custom_level_menu_open = false;
 								global.selected_online_download_index = 0;
 							}
+							
 							if (caution_online_takes_you_to == "search_id_ok")
 							{
 								keyboard_string = "";
@@ -75,6 +76,7 @@ function scr_draw_caution_online()
 							global.online_enabled = true;
 							
 							var no_players_can_play = true;
+							
 							for(var i = 1; i <= global.max_players; i += 1)
 							{
 							    if (global.player_can_play[i])
@@ -83,6 +85,7 @@ function scr_draw_caution_online()
 							        break; /* exit the loop if any player can play */
 							    }
 							}
+							
 							if (no_players_can_play)
 							|| (global.playergame <= 0)
 							{
@@ -119,20 +122,18 @@ function scr_draw_caution_online()
 			else
 			{
 				/* No Internet Connection */
+				in_online_download_list_menu = false; show_debug_message("[scr_draw_caution_online] 'In online download list menu' is set to false");
+				
 				if (content_type == "character")
 				{
-					in_online_download_list_menu = false;
-					caution_online_takes_you_back_to = "download_online_search_id";
-					menu = "no_internet_character";
+					scr_handle_no_network_connection("scr_draw_caution_online", "download_online_search_id");
 				}
 				else
 				if (content_type == "level")
 				{
-					in_online_download_list_menu = false;
 					select_custom_level_menu_open = true;
 					show_level_editor_corner_menu = false;
-					caution_online_takes_you_back_to = "level_editor_upload";
-					menu = "no_internet_level";
+					scr_handle_no_network_connection("scr_draw_caution_online", "level_editor_upload");
 				}
 			}
 			menu_delay = 3;

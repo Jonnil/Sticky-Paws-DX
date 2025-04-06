@@ -169,14 +169,17 @@ if (doing_clear_check_timer_thumbnail == 2)
 	}
 	
 	#region /* Limit so cursor and view can't go outside room */
-	if (cam_width < 1920 || cam_height < 1080)
+	if (cam_width < 1920
+	|| cam_height < 1080)
 	{
 		camera_set_view_size(view_camera[view_current], 1920, 1080);
 	}
+	
 	scr_set_screen_size();
 	
 	/* Limit view inside room when saving screenshot */
-	if (instance_exists(obj_level_width) && instance_exists(obj_level_height))
+	if (instance_exists(obj_level_width)
+	&& instance_exists(obj_level_height))
 	{
 		camera_set_view_pos(view_camera[view_current],
 		max(0, min(cam_x, obj_level_width.x - cam_width)),
@@ -205,6 +208,7 @@ if (doing_clear_check_timer == 1) /* Save the level before starting clear check 
 	show_debug_message("Save the level before starting clear check");
 	scr_save_custom_level_json();
 }
+
 if (doing_clear_check_timer == 3) /* Spawn the objects before starting clear check */
 {
 	show_debug_message("Spawn the objects before starting clear check ");
@@ -213,6 +217,7 @@ if (doing_clear_check_timer == 3) /* Spawn the objects before starting clear che
 		alarm[1] = 1;
 	}
 }
+
 if (doing_clear_check_timer == 5) /* Start the clear check */
 {
 	show_debug_message("Start the clear check");

@@ -66,7 +66,7 @@ function scr_handle_redirect(html_result, async_map)
 		
 		if (new_request_id == -1)
 		{
-			show_debug_message("[scr_handle_redirect] ERROR: http_request() failed for the redirect URL.");
+			show_debug_message("[scr_handle_redirect] ERROR: http request failed for the redirect URL.");
 			return -1;
 		}
 		else
