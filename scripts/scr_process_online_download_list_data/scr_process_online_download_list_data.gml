@@ -21,8 +21,9 @@ function scr_process_online_download_list_data()
 			
 			for (var i = 0; i < array_length(online_content_data); i++;)
 			{
-				show_debug_message("[scr_process_online_download_list_data] Initializing item " + string(i));
 				draw_download_name[i] = "";
+				
+				show_debug_message("[scr_process_online_download_list_data] Initializing item " + string(i) + ", draw_download_name[" + string(i) + "] = ''");
 				
 				if (is_array(spr_download_list_thumbnail))
 				{

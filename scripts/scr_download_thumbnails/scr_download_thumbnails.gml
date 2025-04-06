@@ -29,7 +29,7 @@ function scr_download_thumbnails(download_all, what_num_items = 0)
 		)
 		&& is_array(all_download_id)
 	)
-	&& (string_upper(all_download_id[info_queue_index]) != "") /* Make sure that the 'Download ID' string isn't empty */
+	&& (string(all_download_id[info_queue_index]) != "") /* Make sure that the 'Download ID' string isn't empty */
 	{
 		show_debug_message("[scr_download_thumbnails] Condition met for HTTP request. download_all: " + string(download_all)
 							+ ", info_queue_index: " + string(info_queue_index)
@@ -46,7 +46,7 @@ function scr_download_thumbnails(download_all, what_num_items = 0)
 		global.online_download_list_info = "";
 		
 		/* Only send the HTTP request if the device is connected to the network. */
-		if (check_network_connection(network_connect_active))
+		if (scr_check_network_connection(network_connect_active))
 		{
 			show_debug_message("[scr_download_thumbnails] Network active. Sending HTTP request for item: " + string_upper(all_download_id[info_queue_index]));
 			
@@ -167,17 +167,18 @@ function scr_download_thumbnails(download_all, what_num_items = 0)
 				}
 			}
 		}
-		//else
-		//{
-		//	show_debug_message("[scr_download_thumbnails] info_data is not a valid array for item: " + string_upper(all_download_id[info_queue_index]));
-		//}
 	}
 	
 	/* Final check: if there is no pending HTTP request and the current item's download name has been set,
 	then move to the next item in the queue. */
-	if (!info_queue_http_request
-	&& is_array(draw_download_name)
-	&& draw_download_name[info_queue_index] != "")
+	if (
+		!info_queue_http_request &&
+		is_array(draw_download_name) &&
+		is_array(all_download_id) &&
+		info_queue_index < array_length(draw_download_name) &&
+		info_queue_index < array_length(all_download_id) &&
+		draw_download_name[info_queue_index] != ""
+	)
 	{
 		show_debug_message("[scr_download_thumbnails] Finished processing item: " + string_upper(all_download_id[info_queue_index])
 							+ ". Moving to next item.");
@@ -185,6 +186,24 @@ function scr_download_thumbnails(download_all, what_num_items = 0)
 		/* Increment the queue index to process the next thumbnail. */
 		info_queue_index++;
 		/* Allow a new HTTP request for the next item. */
-		info_queue_http_request = true; show_debug_message("[scr_download_thumbnails] 'info_queue_http_request' is set to true. Allow a new HTTP request for the next item\n");
+		info_queue_http_request = true;
+		show_debug_message("[scr_download_thumbnails] 'info_queue_http_request' is set to true. Allow a new HTTP request for the next item\n");
 	}
+	//else
+	//{
+	//	/* Debug messages checking what if checks are failing or not */
+	//	var current_name = "undefined";
+	    
+	//	if (is_array(draw_download_name)
+	//	&& info_queue_index < array_length(draw_download_name))
+	//	{
+	//        current_name = draw_download_name[info_queue_index];
+	//    }
+		
+	//    show_debug_message("[scr_download_thumbnails] Final check did not pass. " +
+	//        "info_queue_http_request: " + string(info_queue_http_request) +
+	//        ", draw_download_name[info_queue_index]: " + current_name +
+	//        ", info_queue_index: " + string(info_queue_index) +
+	//        ", array_length(draw_download_name): " + (is_array(draw_download_name) ? string(array_length(draw_download_name)) : "not an array") + "\n");
+	//}
 }

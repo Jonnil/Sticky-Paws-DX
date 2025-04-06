@@ -101,6 +101,7 @@ function scr_draw_menu_search_id(what_kind_of_id = "level")
 			#region /* Press Escape to back out from Search ID menu */
 			if (global.clicking_cancel_input_screen)
 			&& (scr_online_token_is_valid() == true)
+			&& (menu_delay == 0 && menu_joystick_delay == 0)
 			{
 				show_level_editor_corner_menu = true;
 				search_for_id_still = false;
@@ -110,10 +111,11 @@ function scr_draw_menu_search_id(what_kind_of_id = "level")
 				menu = "online_download_list_load"; /* Go back to online level list */
 			}
 			#endregion /* Press Escape to back out from Search ID menu END */
-		
+			
 			#region /* If game is retrieving a level ID over id_max_length, then show download failed and why */
 			if (automatically_search_for_id)
 			&& (search_for_id_still)
+			&& (menu_delay == 0 && menu_joystick_delay == 0)
 			{
 				if (string_length(search_id) < id_max_length)
 				|| (string_length(search_id) > id_max_length)
@@ -123,64 +125,67 @@ function scr_draw_menu_search_id(what_kind_of_id = "level")
 				}
 			}
 			#endregion /* If game is retrieving a level ID over id_max_length, then show download failed and why */
-		
+			
 			#region /* Press Enter to search for the inputted ID */
 			if (menu_delay == 0 && menu_joystick_delay == 0)
 			&& (keyboard_string != "")
 			&& (string_length(search_id) == id_max_length)
 			&& (search_id != undefined)
-			&& (check_network_connection(network_connect_active)) /* Need to check if OS is connected to network before getting online */
 			{
 				if (global.clicking_ok_input_screen)
 				|| (automatically_search_for_id) /* If you enter this menu from "online level list menu", automatically enter the search ID and search for the level */
 				{
-					scr_switch_expand_save_data(); /* Expand the save data before download */
-					
-					if (global.save_data_size_is_sufficient)
+					if (scr_check_network_connection(network_connect_active)) /* Need to check if OS is connected to network before getting online */
 					{
-						search_for_id_still = true; /* Turn this on when you want to search for ID */
-					
-						/* Create DS Map to hold the HTTP Header info */
-						var id_search_request_headers = ds_map_create();
-					
-						/* Add to the header DS Map */
-						ds_map_add(id_search_request_headers, "Host", global.base_url);
-						ds_map_add(id_search_request_headers, "Content-Type", "application/json");
-						ds_map_add(id_search_request_headers, "User-Agent", "gmdownloader");
-						ds_map_add(id_search_request_headers, "X-API-Key", global.api_key);
-					
-						/* Send the HTTP GET request to the /download endpoint */
-						global.search_id = string_upper(search_id);
-						global.http_request_id = http_request(
-							"https://" + global.base_url + "/download/" + string(content_type_add_s) + "/" + global.search_id,
-							"GET",
-							id_search_request_headers,
-							""
-						);
-						ds_map_destroy(id_search_request_headers);
-					
-						automatically_search_for_id = false;
-						in_online_download_list_menu = false; show_debug_message("[scr_draw_menu_search_id] 'In online download list menu' is set to false");
-						global.online_download_list = ""; /* Reset "global online download list" so you can reload online download list next time you go to this menu */
-						global.level_description = ""; /* Reset the description to be empty */
-						online_content_data = undefined; show_debug_message("[scr_draw_menu_search_id] 'online content data' is set to undefined"); /* Reset "online content data" so you can reload online level list next time you go to this menu */
-						info_data = undefined; /* Don't forget to reset info data too */
-						menu = "searching_for_id";
-						menu_delay = 3;
+						scr_switch_expand_save_data(); /* Expand the save data before download */
+						
+						if (global.save_data_size_is_sufficient)
+						{
+							search_for_id_still = true; /* Turn this on when you want to search for ID */
+							
+							/* Create DS Map to hold the HTTP Header info */
+							var id_search_request_headers = ds_map_create();
+							
+							/* Add to the header DS Map */
+							ds_map_add(id_search_request_headers, "Host", global.base_url);
+							ds_map_add(id_search_request_headers, "Content-Type", "application/json");
+							ds_map_add(id_search_request_headers, "User-Agent", "gmdownloader");
+							ds_map_add(id_search_request_headers, "X-API-Key", global.api_key);
+							
+							/* Send the HTTP GET request to the /download endpoint */
+							global.search_id = string_upper(search_id);
+							global.http_request_id = http_request(
+								"https://" + global.base_url + "/download/" + string(content_type_add_s) + "/" + global.search_id,
+								"GET",
+								id_search_request_headers,
+								""
+							);
+							ds_map_destroy(id_search_request_headers);
+							
+							automatically_search_for_id = false;
+							in_online_download_list_menu = false; show_debug_message("[scr_draw_menu_search_id] 'In online download list menu' is set to false");
+							global.online_download_list = ""; /* Reset "global online download list" so you can reload online download list next time you go to this menu */
+							global.level_description = ""; /* Reset the description to be empty */
+							online_content_data = undefined; show_debug_message("[scr_draw_menu_search_id] 'online content data' is set to undefined"); /* Reset "online content data" so you can reload online level list next time you go to this menu */
+							info_data = undefined; /* Don't forget to reset info data too */
+							menu = "searching_for_id";
+							menu_delay = 3;
+						}
+					}
+					else
+					{
+						scr_handle_no_network_connection("scr_draw_menu_search_id");
 					}
 				}
-			}
-			else
-			{
-				scr_handle_no_network_connection("scr_draw_menu_search_id");
 			}
 			#endregion /* Press Enter to search for the inputted ID END */
 		
 			if (!global.online_token_validated
-			|| !check_network_connection(network_connect_active))
+			|| !scr_check_network_connection(network_connect_active))
+			&& (menu_delay == 0 && menu_joystick_delay == 0)
 			{
 				in_online_download_list_menu = false; show_debug_message("[scr_draw_menu_search_id] 'In online download list menu' is set to false");
-			
+				
 				if (content_type == "character")
 				{
 					scr_handle_no_network_connection("scr_draw_menu_search_id", "download_online_search_id");
@@ -196,7 +201,7 @@ function scr_draw_menu_search_id(what_kind_of_id = "level")
 					menu_delay = 3;
 				}
 			}
-		
+			
 		}
 		#endregion /* Search ID menu END */
 	
@@ -204,6 +209,7 @@ function scr_draw_menu_search_id(what_kind_of_id = "level")
 	
 		#region /* Searching for ID menu */
 		if (menu == "searching_for_id")
+		&& (menu_delay == 0 && menu_joystick_delay == 0)
 		{
 			var downloaded_zip_file_path = download_temp_path + "downloaded_" + string(what_kind_of_id) + "/" + string_upper(search_id) + ".zip";
 		
@@ -211,6 +217,7 @@ function scr_draw_menu_search_id(what_kind_of_id = "level")
 			if (file_exists(downloaded_zip_file_path)) /* Find if a new "zip" file has been downloaded */
 			{
 				scr_switch_expand_save_data(); /* Expand the save data before unzipping file */
+				
 				if (global.save_data_size_is_sufficient)
 				{
 					/* First, unzip the downloaded file */
@@ -444,7 +451,7 @@ function scr_draw_menu_search_id(what_kind_of_id = "level")
 			#endregion /* You can always cancel searching if game can't find file on server END */
 		
 			if (!global.online_token_validated
-			|| !check_network_connection(network_connect_active))
+			|| !scr_check_network_connection(network_connect_active))
 			{
 				in_online_download_list_menu = false; show_debug_message("[scr_draw_menu_search_id] 'In online download list menu' is set to false");
 			
@@ -1098,13 +1105,15 @@ function scr_draw_menu_search_id(what_kind_of_id = "level")
 					menu_delay = 3;
 				}
 				#endregion /* Click Report END */
-			
+				
 				if (key_down)
+				&& (!key_up)
 				&& (menu_delay == 0 && menu_joystick_delay == 0)
 				&& (what_kind_of_id == "level")
 				&& (!inform_about_report_feature)
 				{
 					menu_delay = 3;
+					
 					if (menu == "searched_file_downloaded_back_to_list")
 					{
 						if (file_exists(game_save_id + "custom_levels/" + string(global.level_name) + "/data/level_information.ini"))
@@ -1168,11 +1177,13 @@ function scr_draw_menu_search_id(what_kind_of_id = "level")
 				}
 				else
 				if (key_up)
+				&& (!key_down)
 				&& (menu_delay == 0 && menu_joystick_delay == 0)
 				&& (what_kind_of_id == "level")
 				&& (!inform_about_report_feature)
 				{
 					menu_delay = 3;
+					
 					if (menu == "searched_file_downloaded_back_to_list")
 					{
 						menu = "searched_file_downloaded_report";
@@ -1234,6 +1245,7 @@ function scr_draw_menu_search_id(what_kind_of_id = "level")
 				}
 				else
 				if (key_down)
+				&& (!key_up)
 				&& (menu_delay == 0 && menu_joystick_delay == 0)
 				&& (what_kind_of_id == "character")
 				&& (!inform_about_report_feature)
@@ -1256,6 +1268,7 @@ function scr_draw_menu_search_id(what_kind_of_id = "level")
 				}
 				else
 				if (key_up)
+				&& (!key_down)
 				&& (menu_delay == 0 && menu_joystick_delay == 0)
 				&& (what_kind_of_id == "character")
 				&& (!inform_about_report_feature)
@@ -1422,6 +1435,7 @@ function scr_draw_menu_search_id(what_kind_of_id = "level")
 			#endregion /* Click back to online list END */
 		
 			if (key_down)
+			&& (!key_up)
 			&& (menu_delay == 0 && menu_joystick_delay == 0)
 			{
 				if (menu == "searched_file_downloaded_deleted_download_again")
@@ -1437,6 +1451,7 @@ function scr_draw_menu_search_id(what_kind_of_id = "level")
 			}
 			else
 			if (key_up)
+			&& (!key_down)
 			&& (menu_delay == 0 && menu_joystick_delay == 0)
 			{
 				if (menu == "searched_file_downloaded_deleted_download_again")

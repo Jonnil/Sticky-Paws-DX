@@ -110,7 +110,7 @@ function scr_draw_upload_level_menu()
 			&& (menu_delay == 0 && menu_joystick_delay == 0)
 			{
 				if (global.online_enabled)
-				&& (check_network_connection(network_connect_active))
+				&& (scr_check_network_connection(network_connect_active))
 				{
 					scr_switch_update_online_status();
 					
@@ -190,7 +190,7 @@ function scr_draw_upload_level_menu()
 		if (global.free_communication_available)
 		{
 			if (global.online_enabled)
-			&& (check_network_connection(network_connect_active)) /* Check if you're even connected to the internet */
+			&& (scr_check_network_connection(network_connect_active)) /* Check if you're even connected to the internet */
 			{
 				scr_switch_update_online_status();
 				
@@ -1689,7 +1689,7 @@ function scr_draw_upload_level_menu()
 				scr_switch_expand_save_data(); /* Expand the save data before upload */
 				if (global.save_data_size_is_sufficient)
 				{
-					if (check_network_connection(network_connect_active)) /* Need to check if OS is connected to network before getting online */
+					if (scr_check_network_connection(network_connect_active)) /* Need to check if OS is connected to network before getting online */
 					{
 						scr_switch_update_online_status();
 						

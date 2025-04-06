@@ -396,19 +396,21 @@ function scr_character_portrait_for_player_step(what_player = 1)
 		{
 			if (menu_delay == 0 && menu_joystick_delay == 0 && menu_specific_joystick_delay[what_player] == 0)
 			{
-				menu_delay = 3;
 				menu_specific_joystick_delay[what_player] = 30;
+				
 				if (player_menu[what_player] == "select_character")
 				&& (what_player == 1)
 				{
 					if (global.free_communication_available)
 					&& (room == rm_title) /* Can only access online in title screen */
 					{
+						menu_delay = 3;
 						player_menu[what_player] = "online_character_list";
 						menu = "online_character_list";
 					}
 					else
 					{
+						menu_delay = 3;
 						player_menu[what_player] = "manage_character";
 						menu = "manage_character";
 					}
@@ -449,8 +451,8 @@ function scr_character_portrait_for_player_step(what_player = 1)
 			if (menu_delay == 0 && menu_joystick_delay == 0 && menu_specific_joystick_delay[what_player] == 0)
 			&& (player_accept_selection[what_player] == 0)
 			{
-				menu_delay = 3;
 				menu_specific_joystick_delay[what_player] = 30;
+				
 				if (player_menu[what_player] == "select_character")
 				{
 					if (character_portrait_for_player_dir_exists_1[what_player])

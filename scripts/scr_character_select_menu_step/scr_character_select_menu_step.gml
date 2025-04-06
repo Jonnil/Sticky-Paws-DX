@@ -190,7 +190,7 @@ function scr_character_select_menu_step()
 							caution_online_takes_you_back_to = "online_level_list_title";
 							
 							if (global.online_enabled)
-							&& (check_network_connection(network_connect_active))
+							&& (scr_check_network_connection(network_connect_active))
 							{
 								scr_switch_update_online_status();
 								
@@ -338,6 +338,7 @@ function scr_character_select_menu_step()
 			
 			#region /* Key Up */
 			if (key_up)
+			&& (!key_down)
 			&& (menu_specific_joystick_delay[fixed_player] <= 0)
 			{
 				if (menu_delay == 0 && menu_joystick_delay == 0)
@@ -364,6 +365,7 @@ function scr_character_select_menu_step()
 			
 			#region /* Key Down */
 			if (key_down)
+			&& (!key_up)
 			&& (menu_specific_joystick_delay[fixed_player] <= 0)
 			{
 				if (menu_delay == 0 && menu_joystick_delay == 0)

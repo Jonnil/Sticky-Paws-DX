@@ -38,7 +38,7 @@ if (global.go_to_menu_when_going_back_to_title == "online_download_list_load")
 || (global.automatically_play_downloaded_level)
 && (menu_delay == 0)
 {
-	if (scr_online_token_is_valid() == true)
+	if (scr_online_token_is_valid())
 	{
 		directory_destroy(temp_directory + "custom_levels/" + global.level_name); /* Delete the temporary downloaded level */
 		global.use_temp_or_working = game_save_id; /* When downloading levels from online and temporarily playing the level, you have to use the "temp directory", but normally you need to use the "working directory" */
@@ -268,6 +268,7 @@ if (iris_xscale <= 0.01)
 		{
 			scr_delete_sprite_properly(title_screen_background[title_bg_layer]);
 		}
+		
 		scr_config_save();
 		ini_open(game_save_id + "save_file/file" + string(global.file) + ".ini");
 		lives = ini_read_real("Player", "lives", 5);

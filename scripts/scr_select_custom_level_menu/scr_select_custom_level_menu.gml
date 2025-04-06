@@ -497,7 +497,7 @@ function scr_select_custom_level_menu()
 					caution_online_takes_you_back_to = "online_level_list";
 				
 					if (global.online_enabled)
-					&& (check_network_connection(network_connect_active))
+					&& (scr_check_network_connection(network_connect_active))
 					{
 						scr_switch_update_online_status();
 					

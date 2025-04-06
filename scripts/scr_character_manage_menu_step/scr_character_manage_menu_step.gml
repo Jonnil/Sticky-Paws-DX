@@ -574,7 +574,7 @@ function scr_character_manage_menu_step()
 				menu_delay = 3;
 				
 				if (global.online_enabled)
-				&& (check_network_connection(network_connect_active))
+				&& (scr_check_network_connection(network_connect_active))
 				{
 					scr_switch_update_online_status();
 					

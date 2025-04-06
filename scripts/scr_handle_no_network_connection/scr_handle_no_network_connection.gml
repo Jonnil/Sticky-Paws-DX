@@ -8,10 +8,10 @@ function scr_handle_no_network_connection(what_script = "scr_handle_no_network_c
 	/* If network is available, proceed to online caution screen */
 	if (menu_delay == 0
 	&& menu_joystick_delay == 0)
-	&& (check_network_connection(network_connect_passive))
+	&& (scr_check_network_connection(network_connect_passive))
 	{
 		menu_delay = 3;
-		menu = "caution_online_proceed";
+		menu = caution_online_takes_you_to;
 		return;
 	}
 	
@@ -38,9 +38,9 @@ function scr_handle_no_network_connection(what_script = "scr_handle_no_network_c
 	}
 }
 
-/// @function check_network_connection(connect_mode)
+/// @function scr_check_network_connection(connect_mode)
 /// @description Wrapper function for network connectivity with debug override.
-function check_network_connection(connect_mode)
+function scr_check_network_connection(connect_mode)
 {
 	/* Use a global flag for debug purposes so it can be toggled easily */
 	/* Set global.debug_force_network = true to enable forcing the network state */

@@ -609,7 +609,7 @@ function scr_draw_information_menu()
 				
 				if (global.online_enabled)
 				&& (global.free_communication_available)
-				&& (check_network_connection(network_connect_active))
+				&& (scr_check_network_connection(network_connect_active))
 				{
 					scr_switch_update_online_status();
 					

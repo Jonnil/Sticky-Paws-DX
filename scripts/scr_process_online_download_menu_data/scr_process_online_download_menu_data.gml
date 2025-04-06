@@ -44,7 +44,7 @@ function scr_process_online_download_menu_data()
 	&& menu_joystick_delay == 0)
 	{
 		if (!global.online_token_validated
-		|| !check_network_connection(network_connect_passive))
+		|| !scr_check_network_connection(network_connect_passive))
 		{
 			in_online_download_list_menu = false; show_debug_message("[scr_process_online_download_menu_data] 'In online download list menu' is set to false when we are no longer in the error menu, but we still have no internet connection\n");
 			
@@ -129,6 +129,7 @@ function scr_process_online_download_menu_data()
 			automatically_search_for_id = false;
 			keyboard_string = "";
 			search_id = "";
+			caution_online_takes_you_to = "search_id_ok"
 			menu = "search_id_ok";
 			select_custom_level_menu_open = false;
 		}

@@ -19,7 +19,7 @@ function scr_flush_missing_translation_keywords()
 		}
 		
 		/* If no network, skip */
-		if (!check_network_connection(network_connect_passive))
+		if (!scr_check_network_connection(network_connect_passive))
 		{
 			show_debug_message("[scr_flush_missing_translation_keywords] Not connected to network. Will not flush missing keys now.");
 			return;

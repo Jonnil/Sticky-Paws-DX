@@ -5,7 +5,7 @@ function scr_switch_update_online_status(show_login_screen = true)
 	if (os_type == os_switch)
 	{
 		/* Check if the system is connected to the network */
-		if (check_network_connection(network_connect_passive))
+		if (scr_check_network_connection(network_connect_passive))
 		{
 			/* Retrieve the number of available accounts on the system */
 			var switch_accounts_num = switch_accounts_get_accounts();

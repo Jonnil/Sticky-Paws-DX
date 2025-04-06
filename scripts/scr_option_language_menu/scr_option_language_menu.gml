@@ -504,7 +504,7 @@ function scr_option_language_menu()
 				show_debug_message("[scr_option_language_menu] Force to update language pack when you click the 'Update Translations Now' button");
 				menu_delay = 3;
 				
-				if (check_network_connection(network_connect_active)) /* Force to update language pack when you click this button. Ask the player to connect to the internet */
+				if (scr_check_network_connection(network_connect_active)) /* Force to update language pack when you click this button. Ask the player to connect to the internet */
 				{
 					scr_language_pack_update(true);
 				}

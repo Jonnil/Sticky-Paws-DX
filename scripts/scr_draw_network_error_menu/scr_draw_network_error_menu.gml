@@ -22,7 +22,7 @@ function scr_draw_network_error_menu()
 		/* Determine the error message based on connection status */
 		var error_text = "";
 		
-		if (!check_network_connection(network_connect_passive))
+		if (!scr_check_network_connection(network_connect_passive))
 		{
 			error_text = l10n_text("No Internet Connection Detected");
 		}
@@ -123,7 +123,7 @@ function scr_draw_network_error_menu()
 			menu_delay = 3;
 			
 			/* Recheck connection: if restored, proceed to online features; otherwise, remain on error screen */
-			if (check_network_connection(network_connect_passive)
+			if (scr_check_network_connection(network_connect_passive)
 			&& global.online_enabled
 			&& global.online_token_validated)
 			{
@@ -133,7 +133,7 @@ function scr_draw_network_error_menu()
 			{
 				scr_switch_update_online_status();
 				
-				if (check_network_connection(network_connect_active))
+				if (scr_check_network_connection(network_connect_active))
 				{
 					retry_successful = true;
 				}
@@ -185,6 +185,7 @@ function scr_draw_network_error_menu()
 			{
 				show_debug_message("[scr_handle_no_network_connection] If you are in any download_online menu, then you need to turn on in_online_download_list_menu again");
 				in_online_download_list_menu = true; show_debug_message("[scr_handle_no_network_connection] 'In online download list menu' is set to true");
+				scr_initialize_online_download_menu();
 			}
 			
 			show_debug_message("[scr_handle_no_network_connection] menu = " + string(caution_online_takes_you_back_to) + ", caution_online_takes_you_back_to = " + string(caution_online_takes_you_back_to) + "\n");

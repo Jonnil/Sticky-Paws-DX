@@ -262,7 +262,7 @@ function scr_draw_upload_character_menu()
 					{
 						if (global.username != "") /* Check if there is an username or not */
 						{
-							if (check_network_connection(network_connect_active))
+							if (scr_check_network_connection(network_connect_active))
 							{
 								scr_switch_update_online_status();
 								
@@ -702,7 +702,7 @@ function scr_draw_upload_character_menu()
 				scr_switch_expand_save_data(); /* Expand the save data before upload */
 				if (global.save_data_size_is_sufficient)
 				{
-					if (check_network_connection(network_connect_active)) /* Need to check if OS is connected to network before getting online */
+					if (scr_check_network_connection(network_connect_active)) /* Need to check if OS is connected to network before getting online */
 					{
 						scr_switch_update_online_status();
 						

@@ -38,6 +38,7 @@ function scr_draw_caution_online()
 		&& (key_a_pressed)
 		&& (menu_delay == 0 && menu_joystick_delay == 0)
 		{
+			menu_delay = 3;
 			
 			/* If you have enabled "do not show", then save that regardless if you have a internet connection or not */
 			if (global.caution_online_do_not_show)
@@ -47,7 +48,7 @@ function scr_draw_caution_online()
 				ini_close(); /* Don't commit the save data on Switch, this is only temporary! */
 			}
 			
-			if (check_network_connection(network_connect_active)) /* Need to check if you are connected to the internet before proceeding to online content */
+			if (scr_check_network_connection(network_connect_active)) /* Need to check if you are connected to the internet before proceeding to online content */
 			{
 				scr_switch_update_online_status();
 				
@@ -57,22 +58,26 @@ function scr_draw_caution_online()
 					{
 						if (scr_online_token_is_valid() == true)
 						{
+							show_debug_message("[scr_draw_caution_online] Online token is valid. Token Validity: " + string(scr_online_token_is_valid()) + ", caution_online_takes_you_to: " + string(caution_online_takes_you_to) + ", current menu: " + string(menu));
+							
 							if (caution_online_takes_you_to == "online_download_list_load")
 							{
+								show_debug_message("[scr_draw_caution_online] Transitioning to online download list load menu. Selected index: " + string(global.selected_online_download_index) + ", content_type: " + string(content_type));
 								/* Go to online level list, so you can browse all uploaded levels, instead of just searching for specific levels */
 								select_custom_level_menu_open = false;
 								global.selected_online_download_index = 0;
 							}
-							
+							else
 							if (caution_online_takes_you_to == "search_id_ok")
 							{
+								show_debug_message("[scr_draw_caution_online] Transitioning to search ID OK menu. content_type: " + string(content_type) + ", keyboard_string: " + string(keyboard_string) + ", search_id: " + string(search_id));
 								keyboard_string = "";
 								search_id = "";
 								content_type = "character";
 								menu = "search_id_ok";
 								select_custom_level_menu_open = false;
-								menu_delay = 3;
 							}
+							
 							global.online_enabled = true;
 							
 							var no_players_can_play = true;
@@ -115,7 +120,6 @@ function scr_draw_caution_online()
 				}
 				else
 				{
-					menu_delay = 3;
 					menu = "caution_online_proceed";
 				}
 			}
@@ -136,7 +140,6 @@ function scr_draw_caution_online()
 					scr_handle_no_network_connection("scr_draw_caution_online", "level_editor_upload");
 				}
 			}
-			menu_delay = 3;
 		}
 		
 		if (point_in_rectangle(mouse_get_x, mouse_get_y, 0, 0, 370, 41))
@@ -149,6 +152,8 @@ function scr_draw_caution_online()
 		|| (key_b_pressed)
 		&& (menu_delay == 0 && menu_joystick_delay == 0)
 		{
+			menu_delay = 3;
+			
 			if (variable_instance_exists(self, "show_level_editor_corner_menu"))
 			{
 				show_level_editor_corner_menu = true;
@@ -157,7 +162,6 @@ function scr_draw_caution_online()
 			{
 				information_menu_open = "about"; /* Go back to the about page on information menu when going back from online caution menu */
 			}
-			menu_delay = 3;
 			menu = caution_online_takes_you_back_to;
 		}
 		

@@ -213,7 +213,7 @@ function scr_character_select_menu_draw()
 					caution_online_takes_you_back_to = "online_character_list";
 					
 					if (global.online_enabled)
-					&& (check_network_connection(network_connect_active))
+					&& (scr_check_network_connection(network_connect_active))
 					{
 						scr_switch_update_online_status();
 						

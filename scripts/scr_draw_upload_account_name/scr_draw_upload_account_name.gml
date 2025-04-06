@@ -180,7 +180,7 @@ function scr_draw_upload_account_name(what_kind_of_file = "level")
 			menu_delay = 3;
 			input_key = false;
 			
-			if (check_network_connection(network_connect_active))
+			if (scr_check_network_connection(network_connect_active))
 			{
 				scr_switch_update_online_status();
 				

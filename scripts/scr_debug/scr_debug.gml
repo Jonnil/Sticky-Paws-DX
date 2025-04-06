@@ -658,9 +658,9 @@ function scr_debug_draw_optimized_text()
 		with (debug_target)
 		{
 			/* Only show online download info if these online download dependent variables are used */
-			if (variable_instance_exists(self, "data") && data != undefined)
-			&& (variable_instance_exists(self, "info_data") && info_data != undefined)
-			{
+			//if (variable_instance_exists(self, "data") && data != undefined)
+			//&& (variable_instance_exists(self, "info_data") && info_data != undefined)
+			//{
 				debug_text_y = scr_draw_debug_header("Online Download Info", 32, debug_text_y);
 				
 				if (!global.debug_collapsed_sections[? "Online Download Info"])
@@ -670,12 +670,16 @@ function scr_debug_draw_optimized_text()
 					debug_text_y = scr_draw_highlighted_text(32, debug_text_y, "online_token_validated", string(global.online_token_validated), "Online Token Validated", c_white, c_red, false);
 					debug_text_y = scr_draw_highlighted_text(32, debug_text_y, "online_token_error_message", string(global.online_token_error_message), "Online Token Error Message", c_white, c_red, false);
 					debug_text_y = scr_draw_highlighted_text(32, debug_text_y, "thumbnail_sprite", string(global.thumbnail_sprite), "Thumbnail Sprite", c_white, c_red, false);
+					if (variable_instance_exists(self, "info_queue_index"))
+					{
+						debug_text_y = scr_draw_highlighted_text(32, debug_text_y, "info_queue_index", string(info_queue_index), "Info Queue Index", c_white, c_red, false);
+					}
 					
 					/* Download Menu Info */
 					debug_text_y = scr_draw_highlighted_text(32, debug_text_y, "selected_online_download_index", string(global.selected_online_download_index), "Selected Online Download Index", c_white, c_red, false);
 					debug_text_y = scr_draw_highlighted_text(32, debug_text_y, "automatically_play_downloaded_level", string(global.automatically_play_downloaded_level), "Automatically Play Downloaded Level", c_white, c_red, false);
 				}
-			}
+			//}
 		}
 	}
 	#endregion /* Section 6: Online Download Info END */

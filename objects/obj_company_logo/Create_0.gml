@@ -226,7 +226,7 @@ global.enable_foreground_layer_1_5 = true; /* Toggles the visibility of an addit
 global.enable_foreground_layer2 = true; /* Toggles the visibility of the second foreground layer. Often used for interactive or visually significant foreground elements. */
 global.enable_foreground_layer_secret = true; /* Toggles the visibility of the secret foreground layer. Typically used for hidden or unlockable elements that may only appear in certain conditions. */
 global.auto_open_crash_docs = false;
-global.debug_force_network = true; /* Default: False */
+global.debug_force_network = false; /* Default: False */
 #endregion /* Debug toggles END */
 
 /* Equipped Upgrades. All of these should be true so you automatically equip the upgrades so don't change the variables here, but you can unequipp the upgrades in the pause menu */

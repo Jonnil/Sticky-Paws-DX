@@ -6,7 +6,7 @@ function scr_step_online_download_list()
 	#region /* Initialization: Begin loading the online download list if requested */
 	if (menu == "online_download_list_load")
 	{
-		if (check_network_connection(network_connect_active))
+		if (scr_check_network_connection(network_connect_active))
 		{
 			var menu_cursor_y_position_start = 114 + (300 * (global.selected_online_download_index));
 			var menu_y_offset_real_start = -(170 * (global.selected_online_download_index));
@@ -290,6 +290,7 @@ function scr_step_online_download_list()
 			automatically_search_for_id = false;
 			keyboard_string = "";
 			search_id = "";
+			caution_online_takes_you_to = "search_id_ok"
 			menu = "search_id_ok";
 			select_custom_level_menu_open = false;
 		}
