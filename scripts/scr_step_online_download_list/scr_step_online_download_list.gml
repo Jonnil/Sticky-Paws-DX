@@ -32,7 +32,7 @@ function scr_step_online_download_list()
 			{
 				select_custom_level_menu_open = true;
 				show_level_editor_corner_menu = false;
-				caution_online_takes_you_back_to = "level_editor_upload";
+				caution_online_takes_you_back_to = "level_editor_upload"; show_debug_message("[scr_step_online_download_list] caution_online_takes_you_back_to = level_editor_upload");
 			}
 			
 			scr_handle_no_network_connection("scr_step_online_download_list", "online_download_list_load");

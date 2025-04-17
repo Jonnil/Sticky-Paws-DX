@@ -197,7 +197,7 @@ function scr_draw_menu_search_id(what_kind_of_id = "level")
 					select_custom_level_menu_open = true;
 					show_level_editor_corner_menu = false;
 					open_sub_menu = false;
-					scr_handle_no_network_connection("scr_draw_menu_search_id", "level_editor_upload");
+					scr_handle_no_network_connection("scr_draw_menu_search_id"); /* Make sure you don't set specific retry menu here */
 					menu_delay = 3;
 				}
 			}
@@ -229,7 +229,7 @@ function scr_draw_menu_search_id(what_kind_of_id = "level")
 				
 					/* Important that you retrieve the correct level name, one time it retrieved "undefined.zip" by mistake */
 					var downloaded_file_name = string(file_find_first(download_temp_path + "downloaded_" + string(what_kind_of_id) + "/*", fa_directory)); /* After deleting the zip file left after unzipping, get the name of the directory that is left in the download folder */
-					show_debug_message("[scr_draw_menu_search_id] downloaded_file_name = " + string(downloaded_file_name));
+					show_debug_message("[scr_draw_menu_search_id] downloaded_file_name = " + string(downloaded_file_name) + "\n");
 				
 					/* Copy the downloaded file lastly */
 					if (what_kind_of_id == "level")
@@ -280,6 +280,8 @@ function scr_draw_menu_search_id(what_kind_of_id = "level")
 					
 						if (file_exists(download_temp_path + "custom_levels/" + string(global.level_name) + "/data/level_information.ini"))
 						{
+							
+							#region /* Load level info before anything */
 							ini_open(download_temp_path + "custom_levels/" + string(global.level_name) + "/data/level_information.ini");
 							level_has_custom_background = ini_read_real("info", "level_has_custom_background", false); /* Show if level uses custom backgrounds */
 							downloaded_level_is_daily_build = ini_read_real("info", "if_daily_build", false);
@@ -287,12 +289,13 @@ function scr_draw_menu_search_id(what_kind_of_id = "level")
 							masked_username = ini_read_string("info", "username", "");
 							development_stage_index = ini_read_string("info", "development_stage_index", 1);
 							downloaded_content_is_unlisted = ini_read_string("info", "visibility_index", 0);
-						
+							
 							#region /* Show what version of the game the level was first created in */
 							/* This should make it easier to port old levels to new game versions */
 							/* Showing the original version number makes it easier to pinpoint what changes happened from one version to another */
 							made_in_what_version_text = "";
 							first_created_on_version = "";
+							
 							if (ini_key_exists("info", "first_created_on_version"))
 							{
 								if (string_digits(ini_read_string("info", "first_created_on_version", "v" + scr_get_build_date())) < string_digits(scr_get_build_date()))
@@ -304,12 +307,13 @@ function scr_draw_menu_search_id(what_kind_of_id = "level")
 								{
 									made_in_what_version_text = l10n_text("Level made in new version");
 								}
+								
 								first_created_on_version = ini_read_string("info", "first_created_on_version", "v" + scr_get_build_date());	
 							}
 							#endregion /* Show what version of the game the level was first created in END */
-						
+							
 							ini_close();
-						
+							
 							if (switch_check_profanity(global.level_description))
 							{
 								global.level_description = string(switch_mask_profanity(global.level_description));
@@ -318,6 +322,8 @@ function scr_draw_menu_search_id(what_kind_of_id = "level")
 							{
 								masked_username = string(switch_mask_profanity(masked_username));
 							}
+							#endregion /* Load level info before anything END */
+							
 						}
 						if (file_exists(game_save_id + "custom_levels/" + string(global.level_name) + "/data/level_information.ini"))
 						{
@@ -464,7 +470,7 @@ function scr_draw_menu_search_id(what_kind_of_id = "level")
 				{
 					select_custom_level_menu_open = true;
 					show_level_editor_corner_menu = false;
-					scr_handle_no_network_connection("scr_draw_menu_search_id", "level_editor_upload");
+					scr_handle_no_network_connection("scr_draw_menu_search_id"); /* Make sure you don't set specific retry menu here */
 				}
 			}
 		
@@ -632,9 +638,9 @@ function scr_draw_menu_search_id(what_kind_of_id = "level")
 						draw_menu_button(get_window_width * 0.5 - 185, searched_file_play_y, l10n_text("Play"), "searched_file_downloaded_play", "searched_file_downloaded_play");
 						draw_menu_button(get_window_width * 0.5 - 185, searched_file_make_y, l10n_text("Make"), "searched_file_downloaded_make", "searched_file_downloaded_make");
 					}
-				
+					
 					else
-				
+					
 					/* Level is only downloaded to temp directory, now you get to choose if you want to play from temp directory or if you want to download to working directory */
 					if (file_exists(download_temp_path + "custom_levels/" + string(global.level_name) + "/data/level_information.ini"))
 					&& (!inform_about_report_feature)
@@ -645,8 +651,8 @@ function scr_draw_menu_search_id(what_kind_of_id = "level")
 							draw_menu_button(get_window_width * 0.5 - 185, searched_file_make_y, l10n_text("Download to Level Select"), "download_to_working", "download_to_working");
 						}
 					}
-				
-					var back_to_list_text = l10n_text("Back to online level list");
+					
+					var back_to_list_text = l10n_text("Back"); /* Back to online level list */
 					var searched_file_downloaded_back_text = l10n_text("Back to custom level select");
 				}
 				else
@@ -654,13 +660,13 @@ function scr_draw_menu_search_id(what_kind_of_id = "level")
 				{
 					/* Draw Character Name */ draw_set_halign(fa_center); scr_draw_text_outlined(get_window_width * 0.5, draw_name_y, string(downloaded_character_name), global.default_text_size * 1.9, c_black, c_white, 1);
 				
-					var back_to_list_text = l10n_text("Back to online character list");
+					var back_to_list_text = l10n_text("Back"); /* Back to online character list */
 					var searched_file_downloaded_back_text = l10n_text("Back to character select");
 				}
-			
+				
 				draw_set_halign(fa_center);
 				draw_set_valign(fa_middle);
-			
+				
 				/* Draw if level was made with Daily Build */
 				if (downloaded_level_is_daily_build)
 				{

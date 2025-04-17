@@ -39,3 +39,12 @@ if (global.debug_screen)
 	/* Show the menu variable and timestamp in the debug console */
 	show_debug_message("[obj_debug_manager " + string(now) + "] menu = " + string(debug_target.menu));
 }
+
+/* First update the language pack */
+scr_language_pack_update(false);
+
+/* If there are missing translation keywords that have not yet been sent, do that now */
+scr_check_daily_translation_flush();
+
+/* Upload any pending crash logs to the server */
+scr_send_pending_crash_logs();

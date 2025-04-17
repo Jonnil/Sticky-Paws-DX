@@ -15,24 +15,20 @@ function l10n_text(key = "")
 	var text = key;
 	
 	/* 1. Check if translation data is loaded */
-	if (!variable_global_exists("translations")
-	|| global.translations == 0
-	|| !variable_global_exists("language_local_data")
+	if (global.translations == 0
 	|| global.language_local_data == 0)
 	{
 		/* Always show this debug message when translation date is not loaded */
-		show_debug_message("[l10n_text] Translations data not loaded. Initializing translations...");
+		show_debug_message("[l10n_text] Translations data not loaded. Initializing translations... - global.translations = " + string(global.translations) + ", global.language_local_data = " + string(global.language_local_data));
 		
 		scr_initialize_translations();
 		
 		/* Check again after attempting to load */
-		if (!variable_global_exists("translations")
-		|| global.translations == 0
-		|| !variable_global_exists("language_local_data")
+		if (global.translations == 0
 		|| global.language_local_data == 0)
 		{
 			/* Always show this debug message when translation data is still not available */
-			show_debug_message("[l10n_text] ERROR: Translations data is still not available! Returning key as fallback.");
+			show_debug_message("[l10n_text] ERROR: Translations data is still not available! Returning key as fallback. - global.translations = " + string(global.translations) + ", global.language_local_data = " + string(global.language_local_data));
 			
 			return key;
 		}

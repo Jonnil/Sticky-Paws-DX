@@ -36,17 +36,26 @@ function scr_save_level()
 		{
 			ini_write_real(level_name, "number_of_clears", ini_read_real(level_name, "number_of_clears", 0) + 1); /* Increase how many times you've played this specific level */
 			
-			if (!global.debug_mode_activated_once)
+			if (global.increase_number_of_levels_cleared
+			&& ini_key_exists(level_name, "clear_rate")
+			&& ini_read_string(level_name, "clear_rate", "closed") != "clear")
 			{
-				if (global.increase_number_of_levels_cleared
-				&& ini_key_exists(level_name, "clear_rate")
-				&& ini_read_string(level_name, "clear_rate", "closed") != "clear")
-				{
-					ini_write_real("Player", "number_of_levels_cleared", ini_read_real("Player", "number_of_levels_cleared", 1) + 1); /* Increase how many levels in total you have cleared */
-				}
-				ini_write_string(level_name, "clear_rate", "clear"); /* Make the level clear after checking number of levels cleared */
+				ini_write_real("Player", "number_of_levels_cleared", ini_read_real("Player", "number_of_levels_cleared", 1) + 1); /* Increase how many levels in total you have cleared */
 			}
+			ini_write_string(level_name, "clear_rate", "clear"); /* Make the level clear after checking number of levels cleared */
 		}
+		
+		/* Make it known if the level was cleared with debug mode or not */
+		if (global.debug_mode_activated_once)
+		|| (global.debug_screen)
+		{
+			ini_write_real(level_name, "cleared_with_debug", true);
+		}
+		else
+		{
+			ini_write_real(level_name, "cleared_with_debug", false);
+		}
+		
 		ini_write_string("Player", "last_played_level_name", global.level_name);
 		ini_write_real("Player", "current_month", current_month);
 		ini_write_real("Player", "current_day", current_day);

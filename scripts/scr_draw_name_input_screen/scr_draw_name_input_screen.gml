@@ -58,6 +58,7 @@ function scr_draw_name_input_screen(what_string /* What string to edit */, max_c
 	if (global.keyboard_virtual_timer == 3)
 	{
 		steam_utils_enable_callbacks();
+		
 		if (variable_instance_exists(self, "remember_keyboard_string"))
 		{
 			remember_keyboard_string = string(what_string); /* In case you want to click "Cancel", revert back to whatever was already written before entering name input screen */
@@ -71,10 +72,12 @@ function scr_draw_name_input_screen(what_string /* What string to edit */, max_c
 	&& (global.keyboard_virtual_timer >= 5)
 	{
 		menu_delay = 3;
+		
 		if (os_type == os_switch)
 		{
 			what_string_async = get_string_async("", "");
 		}
+		
 		keyboard_virtual_show(kbv_type_default, kbv_returnkey_default, kbv_autocapitalize_characters, false);
 		
 		steam_show_floating_gamepad_text_input(steam_floating_gamepad_text_input_mode_single_line, window_get_x(), window_get_y() * 0.5, window_get_width(), window_get_height() * 0.5);
@@ -151,6 +154,7 @@ function scr_draw_name_input_screen(what_string /* What string to edit */, max_c
 	#region /* Show how many characters a name has and what the max amount of characters is */
 	draw_set_halign(fa_right);
 	draw_set_valign(fa_middle);
+	
 	if (string_length(what_string) >= max_char)
 	{
 		scr_draw_text_outlined(xx + 150, yy + 32, string(max_char) + "/" + string(max_char), global.default_text_size, c_black, c_white, 1);
@@ -198,6 +202,7 @@ function scr_draw_name_input_screen(what_string /* What string to edit */, max_c
 		|| (gamepad_button_check_pressed(global.player_slot[4], global.player_[inp.gp][4][2][action.back]))
 		{
 			menu_delay = 3;
+			
 			if (variable_instance_exists(self, "remember_keyboard_string"))
 			{
 				what_string = remember_keyboard_string;
@@ -231,6 +236,7 @@ function scr_draw_name_input_screen(what_string /* What string to edit */, max_c
 		|| (!max_char_needed)
 		{
 			draw_menu_button(xx + buttons_x, yy + buttons_ok_y, l10n_text("OK"), ok_menu_string, ok_menu_string);
+			
 			if (menu != cancel_menu_string)
 			{
 				if (gamepad_is_connected(global.player_slot[1]))
@@ -282,9 +288,11 @@ function scr_draw_name_input_screen(what_string /* What string to edit */, max_c
 			
 		}
 	}
+	
 	draw_menu_button(xx + buttons_x, yy + buttons_cancel_y, l10n_text("Cancel"), cancel_menu_string, cancel_menu_string);
 	
 	draw_sprite_ext(spr_icon_back, 0, xx + buttons_x + 55, yy + buttons_cancel_y + 21, 1, 1, 0, c_white, 1);
+	
 	if (menu != cancel_menu_string)
 	{
 		if (gamepad_is_connected(global.player_slot[1]))
@@ -315,6 +323,7 @@ function scr_draw_name_input_screen(what_string /* What string to edit */, max_c
 	#endregion /* OK and Cancel buttons under name input END */
 	
 	var string_previous = keyboard_string;
+	
 	if (string_length(keyboard_string) > max_char)
 	{
 		keyboard_string = string_copy(string_previous, 1, max_char);

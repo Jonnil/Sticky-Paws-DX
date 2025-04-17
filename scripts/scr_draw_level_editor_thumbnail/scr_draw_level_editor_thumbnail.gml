@@ -1,3 +1,6 @@
+/// @desc Draw the level editor thumbnail
+/// @param {id.dslist<string>} [load_what_levels]=global.all_loaded_custom_levels Description
+/// @param {bool} [show_first_thumbnail_name]=false Description
 function scr_draw_level_editor_thumbnail(load_what_levels = global.all_loaded_custom_levels, show_first_thumbnail_name = false)
 {
 	var custom_level_select_blinking = 0;
@@ -34,6 +37,7 @@ function scr_draw_level_editor_thumbnail(load_what_levels = global.all_loaded_cu
 	for(var i = 0; i < ds_list_size(global.thumbnail_sprite); i += 1)
 	{
 		column = floor(i / row);
+		
 		if (ds_list_find_value(global.thumbnail_sprite, i) > 0)
 		{
 			draw_sprite_ext(
@@ -88,6 +92,7 @@ function scr_draw_level_editor_thumbnail(load_what_levels = global.all_loaded_cu
 				{
 					var draw_level_name_scale = global.default_text_size;
 				}
+				
 				scr_draw_text_outlined(394 * (i - column * row) + 100 + 192 + thumbnail_x_offset, 226 * (column - scroll) + 450, string(thumbnail_level_name[i]), draw_level_name_scale, c_black, c_white, 1);
 			}
 			else
@@ -106,11 +111,13 @@ function scr_draw_level_editor_thumbnail(load_what_levels = global.all_loaded_cu
 				{
 					var draw_level_name_scale = global.default_text_size;
 				}
+				
 				scr_draw_text_outlined(394 * (i - column * row) + 100 + 192 + thumbnail_x_offset, 226 * (column - scroll) + 450, string(ds_list_find_value(load_what_levels, i)), global.default_text_size * 0.8, c_black, c_white, 1);
 			}
 			
 			#region /* Draw if level have been Clear Checked on top of level thumbnail */
-			clear_check = false;
+			var clear_check = false;
+			
 			if (room == rm_title)
 			{
 				if (variable_instance_exists(self, "thumbnail_clear_check"))
@@ -127,7 +134,7 @@ function scr_draw_level_editor_thumbnail(load_what_levels = global.all_loaded_cu
 				&& (i < array_length(thumbnail_level_id))
 				&& (i < array_length(thumbnail_level_unlisted))
 				{
-					var clear_check = thumbnail_clear_check[i];
+					clear_check = thumbnail_clear_check[i];
 					var var_level_id = thumbnail_level_id[i];
 					var var_level_unlisted = thumbnail_level_unlisted[i];
 					var level_id_text = "";
@@ -139,13 +146,15 @@ function scr_draw_level_editor_thumbnail(load_what_levels = global.all_loaded_cu
 					{
 						if (global.select_level_index == i)
 						{
-							var level_id_text = string(var_level_id);
-							var level_unlisted_text = l10n_text("Unlisted");
+							level_id_text = string(var_level_id);
+							level_unlisted_text = l10n_text("Unlisted");
+							
 							if (room == rm_title)
 							{
 								global.search_id = string(var_level_id); /* Set the global search id for future use within the level editor */
 							}
 						}
+						
 						var icon_scale = scr_wave(0.9, 1, 1, 0);
 					}
 					else
@@ -160,11 +169,13 @@ function scr_draw_level_editor_thumbnail(load_what_levels = global.all_loaded_cu
 						if (global.select_level_index == i)
 						{
 							var clear_check_text = l10n_text("Clear Checked");
+							
 							if (room == rm_title)
 							{
 								global.search_id = string(var_level_id); /* Set the global search id for future use within the level editor */
 							}
 						}
+						
 						var icon_scale = scr_wave(0.9, 1, 1, 0);
 					}
 					
@@ -217,6 +228,7 @@ function scr_draw_level_editor_thumbnail(load_what_levels = global.all_loaded_cu
 					{
 						var icon_scale = scr_wave(0.9, 1, 1, 0);
 						var draw_x = 394 * (i - column * row) + 140 + thumbnail_x_offset;
+						
 						if (clear_check)
 						{
 							var daily_build_draw_y = clear_check_draw_y + 32;
@@ -230,12 +242,14 @@ function scr_draw_level_editor_thumbnail(load_what_levels = global.all_loaded_cu
 						{
 							var daily_build_draw_y = 226 * (column - scroll) + 274;
 						}
+						
 						if (global.select_level_index == i)
 						{
 							draw_set_halign(fa_left);
 							draw_set_valign(fa_middle);
 							scr_draw_text_outlined(draw_x, daily_build_draw_y, l10n_text("Daily Build"), global.default_text_size * scr_wave(1, 1.1, 1, 0), c_white, c_black, 1);
 						}
+						
 						draw_sprite_ext(spr_icon_daily_build, 1, draw_x - 20, daily_build_draw_y, icon_scale, icon_scale, 0, c_white, 1);
 					}
 				}
@@ -255,6 +269,7 @@ function scr_draw_level_editor_thumbnail(load_what_levels = global.all_loaded_cu
 					{
 						var icon_scale = scr_wave(0.9, 1, 1, 0);
 						var draw_x = 394 * (i - column * row) + 140 + thumbnail_x_offset;
+						
 						if (thumbnail_daily_build[i])
 						{
 							var has_custom_background_draw_y = daily_build_draw_y + 32;
@@ -273,12 +288,14 @@ function scr_draw_level_editor_thumbnail(load_what_levels = global.all_loaded_cu
 						{
 							var has_custom_background_draw_y = 226 * (column - scroll) + 274;
 						}
+						
 						if (global.select_level_index == i)
 						{
 							draw_set_halign(fa_left);
 							draw_set_valign(fa_middle);
 							scr_draw_text_outlined(draw_x, has_custom_background_draw_y, l10n_text("Custom BG"), global.default_text_size * scr_wave(1, 1.1, 1, 0), c_white, c_black, 1);
 						}
+						
 						draw_sprite_ext(spr_icon_pen, 1, draw_x - 20, has_custom_background_draw_y, icon_scale, icon_scale, 0, c_white, 1);
 					}
 				}

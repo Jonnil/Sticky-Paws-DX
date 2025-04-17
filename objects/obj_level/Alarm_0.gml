@@ -9,6 +9,7 @@ if (file_exists(game_save_id + "save_file/file" + string(global.file) + ".ini"))
 	ini_open(game_save_id + "save_file/file" + string(global.file) + ".ini");
 	
 	clear_rate = ini_read_string(level_name, "clear_rate", "closed");
+	cleared_with_debug = ini_read_real(level_name, "cleared_with_debug", false);
 	number_of_defeats = ini_read_real(level_name, "number_of_defeats", 0);
 	number_of_clears = ini_read_real(level_name, "number_of_clears", 0);
 	for(var i = 1; i <= global.max_big_collectible; i += 1)

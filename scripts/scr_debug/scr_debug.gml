@@ -8,6 +8,9 @@ function scr_debug_toggle_screen()
 {
 	/* Use parentheses to group conditions for clarity */
 	if (keyboard_check_pressed(vk_f3))
+	|| (GM_build_type == "run"
+	&& gamepad_button_check(global.player_slot[1], gp_stickl)
+	&& gamepad_button_check_pressed(global.player_slot[1], gp_stickr))
 	{
 		global.debug_screen = !global.debug_screen;
 		global.debug_mode_activated_once = true;
@@ -304,7 +307,7 @@ function scr_debug_draw_debug_logic()
 				directory_create(logs_folder);
 			}
 			
-			var log_file_path = logs_folder + "debug_info-" + string(global.game_name) + "_v" + string(scr_get_build_date()) + "_" + scr_format_timestamp(date_current_datetime()) + ".ini";
+			var log_file_path = logs_folder + "debug_info-" + string(global.game_name) + "_v" + string(scr_get_build_date()) + "_" + scr_format_timestamp(date_current_datetime()) + "_" + string(scr_os_type_to_string(true, true)) + ".ini";
 			
 			ini_open(log_file_path);
 			scr_write_debug_info();
@@ -472,6 +475,10 @@ function scr_debug_draw_optimized_text()
 		debug_text_y = scr_draw_highlighted_text(32, debug_text_y,
 							"current_datetime", string(scr_format_timestamp(date_current_datetime())),
 							"Current Date/Time", c_white, c_red, false);
+		
+		debug_text_y = scr_draw_highlighted_text(32, debug_text_y,
+							"current_level_clear_rate", string(global.current_level_clear_rate),
+							"Current Level Clear Rate", c_white, c_red, false);
 	}
 	#endregion /* Section 1: System Information END */
 	

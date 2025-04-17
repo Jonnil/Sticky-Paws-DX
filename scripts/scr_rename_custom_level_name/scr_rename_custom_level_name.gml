@@ -7,22 +7,24 @@ function scr_rename_custom_level_name()
 	ini_close(); /* Don't commit the save data on Switch, this is only temporary! */
 	
 	/* For actual folder name, replace illegal characters with underscore only for naming folder */
-	var folder_name = global.level_name;
-	folder_name = scr_replace_illegal_characters(folder_name);
+	var folder_name = scr_sanitize_alphanumeric(global.level_name);
 	
 	/* To rename the level, need to copy level files into new named folder */
 	scr_copy_move_files(
 	game_save_id + "custom_levels/" + string(ds_list_find_value(global.all_loaded_custom_levels, global.select_level_index)),
-	game_save_id + "custom_levels/" + folder_name, true); /* Need to write the entire path here instead of using variable, because the level name changes mid-code */
+	game_save_id + "custom_levels/" + string(folder_name), true); /* Need to write the entire path here instead of using variable, because the level name changes mid-code */
 	
 	if (global.level_name != "")
 	{
-		ini_open(game_save_id + "custom_levels/" + folder_name + "/data/level_information.ini");
-		ini_write_string("info", "level_name", global.level_name); /* Write the actual unfiltered level name you typed */
+		ini_open(game_save_id + "custom_levels/" + string(folder_name) + "/data/level_information.ini");
+		show_debug_message("[scr_rename_custom_level_name] Global Level Name: " + string(global.level_name));
+		ini_write_string("info", "level_name", string(global.level_name)); /* Write the actual unfiltered level name you typed */
+		
 		if (creating_daily_build)
 		{
 			ini_write_real("info", "if_daily_build", true);
 		}
+		
 		ini_close(); /* Don't commit the save data on Switch, this is only temporary! */
 		thumbnail_level_name[global.select_level_index] = global.level_name;
 	}

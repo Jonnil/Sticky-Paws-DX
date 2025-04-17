@@ -15,10 +15,7 @@ function scr_raycast(xx = x, yy = y, dir = 90, length = 380, per_pixel = 16, obj
 {
 	
 	/* Precise Mode required when you use collision mask shapes except the square on the objects */
-	if (precise_mode == undefined)
-	{
-		precise_mode = false;
-	}
+	precise_mode ??= false;
 	
 	/* tilemap_layer_name is optional */
 	if (tilemap_layer_name == undefined || tilemap_layer_name == noone)

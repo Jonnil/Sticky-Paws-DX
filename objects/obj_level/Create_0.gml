@@ -11,6 +11,7 @@ checkpoint_minute = 0;
 checkpoint_realmillisecond = 0;
 checkpoint_second = 0;
 clear_rate = "closed";
+cleared_with_debug = false;
 enter_blink = 0;
 image_speed = 0;
 increase_number_of_levels_cleared = true;

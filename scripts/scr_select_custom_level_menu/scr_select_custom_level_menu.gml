@@ -3,12 +3,12 @@ function scr_select_custom_level_menu()
 	if (!in_online_download_list_menu)
 	&& (!in_online_search_id)
 	{
-	
+	    
 		var get_window_height = display_get_gui_height();
 		var get_window_width = display_get_gui_width();
 		var mouse_get_x = device_mouse_x_to_gui(0);
 		var mouse_get_y = device_mouse_y_to_gui(0);
-	
+	    
 		if (ds_list_size(global.all_loaded_custom_levels) - 1 >= global.max_custom_levels)
 		{
 			var max_custom_levels_reached = true;
@@ -17,9 +17,9 @@ function scr_select_custom_level_menu()
 		{
 			var max_custom_levels_reached = false;
 		}
-	
+	    
 		scroll = lerp(scroll, scroll_to, 0.15)
-	
+	    
 		if (have_downloaded_from_server)
 		{
 			/* If you are downloading a new level, the game needs to reload all custom levels when going back to back to level select, so you can select the new downloaded level */
@@ -32,43 +32,43 @@ function scr_select_custom_level_menu()
 			menu = "load_custom_level";
 			have_downloaded_from_server = false;
 		}
-	
-	
-	
+	    
+	    
+	    
 		#region /* If there isn't any thumbnails loaded at all, then that is a mistake, so go back so you could reload the custom levels and the thumbnails should be corrected */
 		/* When retrying to connect to online download list whenever a network error occurs, this code should not run */
 		/* We are reworking how downloading thumbnails work a bit, so we might not even need thos code even. I have commented it out for now */
-		//if (ds_list_size(global.thumbnail_sprite) <= 0)
-		//&& (menu != "load_official_level_template")
-		//&& (menu != "level_editor_create_from_template")
-		//&& (menu != "network_error")
-		//&& (menu != "network_error_main_menu")
-		//&& (menu_delay == 0
-		//&& menu_joystick_delay == 0)
-		//{
-		//	can_input_level_name = false;
-		//	menu_delay = 3;
-		//	open_sub_menu = false;
-		//	show_level_editor_corner_menu = true;
-		//	can_navigate = true;
-		//	select_custom_level_menu_open = false;
-		//	level_editor_template_select = false;
-		//	in_online_download_list_menu = false; show_debug_message("[scr_select_custom_level_menu] 'In online download list menu' is set to false. If there isn't any thumbnails loaded at all, then that is a mistake, so go back so you could reload the custom levels and the thumbnails should be corrected");
-		//	in_online_download_list_load_menu = false;
-		//	global.select_level_index = 0;
-		//	show_debug_message("[scr_select_custom_level_menu] WARNING: No Thumbnails! ds_list_size(global.thumbnail_sprite) = " + string(ds_list_size(global.thumbnail_sprite)) + ". Previous menu was: " + string(menu) + ", menu is redirected to level_editor\n");
-		//	menu = "level_editor"; /* Go back to level editor button if there isn't any loaded thumbnails at all */
-		//}
+		if (ds_list_size(global.thumbnail_sprite) <= 0)
+		&& (menu != "load_official_level_template")
+		&& (menu != "level_editor_create_from_template")
+		&& (menu != "network_error")
+		&& (menu != "network_error_main_menu")
+		&& (menu_delay == 0
+		&& menu_joystick_delay == 0)
+		{
+			can_input_level_name = false;
+			menu_delay = 3;
+			open_sub_menu = false;
+			show_level_editor_corner_menu = true;
+			can_navigate = true;
+			select_custom_level_menu_open = false;
+			level_editor_template_select = false;
+			in_online_download_list_menu = false; show_debug_message("[scr_select_custom_level_menu] 'In online download list menu' is set to false. If there isn't any thumbnails loaded at all, then that is a mistake, so go back so you could reload the custom levels and the thumbnails should be corrected");
+			in_online_download_list_load_menu = false;
+			global.select_level_index = 0;
+			show_debug_message("[scr_select_custom_level_menu] WARNING: No Thumbnails! ds_list_size(global.thumbnail_sprite) = " + string(ds_list_size(global.thumbnail_sprite)) + ". Previous menu was: " + string(menu) + ", menu is redirected to level_editor\n");
+			menu = "level_editor"; /* Go back to level editor button if there isn't any loaded thumbnails at all */
+		}
 		#endregion /* If there isn't any thumbnails loaded at all, then that is a mistake, so go back so you could reload the custom levels and the thumbnails should be corrected END */
-	
-	
-	
+	    
+	    
+	    
 		/* Never have the select level index under 0, if it does, set it to 0 */
 		if (global.select_level_index <= -1)
 		{
 			global.select_level_index = 0;
 		}
-	
+	    
 		if (global.select_level_index >= 1)
 		&& (ds_list_find_value(global.all_loaded_custom_levels, global.select_level_index) != undefined) /* Can only open sub menu if there actually is a level existing */
 		{
@@ -749,32 +749,36 @@ function scr_select_custom_level_menu()
 						{
 						
 							#region /* When creating a level from scratch, not editing level name of already existing level, run this code */
-							var folder_name = global.level_name;
-							folder_name = scr_replace_illegal_characters(folder_name);
-						
+							var folder_name = scr_sanitize_alphanumeric(global.level_name);
+							
 							if (global.level_name != "")
 							{
-								ini_open(game_save_id + "custom_levels/" + folder_name + "/data/level_information.ini");
-								ini_write_string("info", "level_name", global.level_name);
+								ini_open(game_save_id + "custom_levels/" + string(folder_name) + "/data/level_information.ini");
+								show_debug_message("[scr_select_custom_level_menu] Global Level Name: " + string(global.level_name));
+								ini_write_string("info", "level_name", string(global.level_name));
 								ini_write_string("info", "level_description", ""); /* Save a blank level description */
+								
 								if (creating_daily_build)
 								{
 									ini_write_real("info", "if_daily_build", true);
 								}
+								
 								ini_close(); /* Don't commit the save data on Switch, this is only temporary! */
 							}
-						
+							
 							global.level_name = folder_name; /* Set the global level name to the filtered level name, because it will be reading filtered folder names */
-						
+							
 							can_navigate = false;
 							menu_delay = 9999;
+							
 							if (instance_exists(obj_camera))
 							{
 								obj_camera.iris_zoom = 0;
 							}
 							#endregion /* When creating a level from scratch, not editing level name of already existing level, run this code END */
-						
+							
 						}
+						
 						global.doing_clear_check_level = false;
 						global.actually_play_edited_level = false;
 						global.play_edited_level = false;
@@ -789,18 +793,21 @@ function scr_select_custom_level_menu()
 				}
 			}
 			#endregion /* Press Enter to confirm a new level name END */
-		
+			
 			#region /* Press Escape to cancel a new level name */
 			if (can_input_level_name)
 			&& (menu_delay == 0 && menu_joystick_delay == 0)
 			&& (global.clicking_cancel_input_screen)
 			{
 				menu_delay = 3;
+				
 				if (instance_exists(obj_camera))
 				{
 					obj_camera.iris_zoom = 0;
 				}
+				
 				can_input_level_name = false;
+				
 				if (level_editor_edit_name)
 				{
 					menu = "level_editor_edit_name";
@@ -812,10 +819,10 @@ function scr_select_custom_level_menu()
 				}
 			}
 			#endregion /* Press Escape to cancel a new level name END */
-		
+			
 		}
 		#endregion /* Input Level Name END */
-	
+		
 		#region /* Edit level description */
 		if (menu == "level_editor_enter_description_ok")
 		|| (menu == "level_editor_enter_description_cancel")
@@ -830,7 +837,7 @@ function scr_select_custom_level_menu()
 			{
 				var draw_description_input_screen_y = get_window_height * 0.5;
 			}
-		
+			
 			if (can_input_level_name)
 			{
 				show_level_editor_corner_menu = false;
@@ -839,9 +846,9 @@ function scr_select_custom_level_menu()
 				draw_set_valign(fa_middle);
 				scr_draw_text_outlined(get_window_width * 0.5, draw_description_input_screen_y - 96, l10n_text("Enter level description for") + " " + string(thumbnail_level_name[global.select_level_index]), global.default_text_size, c_black, c_white, 1);
 			}
-		
+			
 			#region /* Input Level Description */
-		
+			
 			#region /* Press Enter to make new description */
 			if (can_input_level_name)
 			&& (menu_delay == 0 && menu_joystick_delay == 0)
@@ -856,11 +863,11 @@ function scr_select_custom_level_menu()
 						can_navigate = true;
 						show_level_editor_corner_menu = true;
 						menu_delay = 3;
-					
+						
 						ini_open(game_save_id + "custom_levels/" + string(global.level_name) + "/data/level_information.ini");
 						ini_write_string("info", "level_description", string(global.level_description)); /* Save description */
 						ini_close(); /* Don't commit the save data on Switch, this is only temporary! */
-					
+						
 						if (variable_instance_exists(self, "thumbnail_level_description"))
 						{
 							if (is_array(thumbnail_level_description))
@@ -871,7 +878,7 @@ function scr_select_custom_level_menu()
 								thumbnail_level_description[global.select_level_index] = string(global.level_description);
 							}
 						}
-					
+						
 						menu = "level_editor_enter_description";
 						level_editor_edit_name = false;
 					}
@@ -887,6 +894,7 @@ function scr_select_custom_level_menu()
 					{
 						can_navigate = false;
 						menu_delay = 9999;
+						
 						if (instance_exists(obj_camera))
 						{
 							obj_camera.iris_zoom = 0;
@@ -899,18 +907,21 @@ function scr_select_custom_level_menu()
 				}
 			}
 			#endregion /* Press Enter to make new description END */
-		
+			
 			#region /* Press Escape to back out from level from scratch menu */
 			if (can_input_level_name)
 			&& (menu_delay == 0 && menu_joystick_delay == 0)
 			&& (global.clicking_cancel_input_screen)
 			{
 				menu_delay = 3;
+				
 				if (instance_exists(obj_camera))
 				{
 					obj_camera.iris_zoom = 0;
 				}
+				
 				can_input_level_name = false;
+				
 				if (level_editor_edit_name)
 				{
 					menu = "level_editor_enter_description";
@@ -922,21 +933,22 @@ function scr_select_custom_level_menu()
 				}
 			}
 			#endregion /* Press Escape to back out from level from scratch menu END */
-	
+			
 			#endregion /* Input Level Description END */
-		
+			
 		}
 		#endregion /* Edit level description END */
-	
+		
 		draw_set_halign(fa_center);
 		draw_set_valign(fa_middle);
 		scr_draw_text_outlined(display_get_gui_width() * 0.5, 16, string(ds_list_size(global.all_loaded_custom_levels) - 1) + " " + l10n_text("Levels"), global.default_text_size, c_menu_outline, c_menu_fill, 1);
+		
 		if (ds_list_size(global.all_loaded_custom_levels) - 1 >= global.max_custom_levels)
 		{
 			scr_draw_text_outlined(display_get_gui_width() * 0.5, 42, l10n_text("There are too many levels stored! Delete some levels"), global.default_text_size * 0.75, c_menu_outline, c_menu_fill, 1);
 			scr_draw_text_outlined(display_get_gui_width() * 0.5, 42, l10n_text("There are too many levels stored! Delete some levels"), global.default_text_size * 0.75, c_menu_outline, c_red, scr_wave(0, 1, 1, 0));
 		}
-	
+		
 		/* Display the total custom level folder size in MB */
 		if (custom_levels_folder_megabytes > 1)
 		{
@@ -945,13 +957,12 @@ function scr_select_custom_level_menu()
 			scr_draw_text_outlined(display_get_gui_width() * 0.5, 32, l10n_text("Custom level folder size") + ": " + string(custom_levels_folder_megabytes) + " MB", global.default_text_size, c_menu_outline, c_menu_fill, 1);
 		}
 		#endregion /* Draw above everything else END */
-	
+		
 		/* When you first enter the level select screen, it doesn't always scroll correctly. Make sure that for several frames, the "scroll to" variable is forced to correct value */
 		if (scroll_to_timer > 0)
 		{
 			scroll_to = floor(global.select_level_index / row);
 			scroll_to_timer --;
 		}
-	
 	}
 }

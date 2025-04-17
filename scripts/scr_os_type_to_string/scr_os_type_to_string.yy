@@ -1,12 +1,12 @@
 {
   "$GMScript":"v1",
-  "%Name":"scr_debug_os_type",
+  "%Name":"scr_os_type_to_string",
   "isCompatibility":false,
   "isDnD":false,
-  "name":"scr_debug_os_type",
+  "name":"scr_os_type_to_string",
   "parent":{
-    "name":"Debug Scripts",
-    "path":"folders/Scripts/Debug Scripts.yy",
+    "name":"Other",
+    "path":"folders/Scripts/Other.yy",
   },
   "resourceType":"GMScript",
   "resourceVersion":"2.0",

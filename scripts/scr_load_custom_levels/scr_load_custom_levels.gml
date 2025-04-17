@@ -42,6 +42,7 @@ function scr_load_custom_levels()
 					thumbnail_level_id[i] = string(ini_read_string("info", "level_id", ""));
 					thumbnail_level_unlisted[i] = string(ini_read_real("info", "visibility_index", 0));
 					thumbnail_custom_background[i] = ini_read_real("info", "level_has_custom_background", false);
+					
 					if (switch_check_profanity(string(ini_read_string("info", "level_name", ""))))
 					{
 						thumbnail_level_name[i] = string(switch_mask_profanity(ini_read_string("info", "level_name", "")));
@@ -50,6 +51,7 @@ function scr_load_custom_levels()
 					{
 						thumbnail_level_name[i] = string(ini_read_string("info", "level_name", ""));
 					}
+					
 					if (switch_check_profanity(string(ini_read_string("info", "level_description", ""))))
 					{
 						thumbnail_level_description[i] = string(switch_mask_profanity(ini_read_string("info", "level_description", "")));
@@ -58,6 +60,7 @@ function scr_load_custom_levels()
 					{
 						thumbnail_level_description[i] = string(ini_read_string("info", "level_description", ""));
 					}
+					
 					if (switch_check_profanity(string(ini_read_string("info", "username", ""))))
 					{
 						thumbnail_level_username[i] = string(switch_mask_profanity(ini_read_string("info", "username", "")));
@@ -66,6 +69,7 @@ function scr_load_custom_levels()
 					{
 						thumbnail_level_username[i] = string(ini_read_string("info", "username", ""));
 					}
+					
 					ini_close(); /* Don't commit the save data on Switch, this is only temporary! */
 				}
 			}

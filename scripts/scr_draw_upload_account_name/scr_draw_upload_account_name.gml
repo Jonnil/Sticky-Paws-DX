@@ -199,7 +199,7 @@ function scr_draw_upload_account_name(what_kind_of_file = "level")
 							{
 								ini_open(game_save_id + "custom_levels/" + string(global.level_name) + "/data/level_information.ini");
 								var short_level_minute = ini_read_real("rank", "rank_timeattack_minute", 0);
-								ini_close(); /* Don't commit the save data on Switch, this is only temporary! */
+								ini_close(); /* Commit save data later on in this code */
 								
 								#region /* Tell the player before uploading, if the level they clear checked was too short or not */
 								if (global.enable_level_length_target)
@@ -215,6 +215,7 @@ function scr_draw_upload_account_name(what_kind_of_file = "level")
 								#endregion /* Tell the player before uploading, if the level they clear checked was too short or not END */
 								
 							}
+							switch_save_data_commit(); /* Commit save data! */
 						}
 						else
 						{

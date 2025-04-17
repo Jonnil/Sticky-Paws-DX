@@ -1,17 +1,8 @@
 /* Update online status first */
-scr_switch_update_online_status();
+scr_switch_update_online_status(false);
 
 /* Get the os type name for debugging */
-scr_debug_os_type();
-
-/* First update the language pack */
-scr_language_pack_update(false);
+show_debug_message("[Debug OS Type] Current OS type: " + string(scr_os_type_to_string(false, true)) + "\n");
 
 /* Then set default language */
 scr_set_default_language(false);
-
-/* If there are missing translation keywords that have not yet been sent, do that now */
-scr_check_daily_translation_flush();
-
-/* Upload any pending crash logs to the server */
-scr_send_pending_crash_logs();

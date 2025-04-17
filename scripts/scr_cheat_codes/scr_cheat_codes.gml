@@ -8,7 +8,7 @@ function scr_debug_init_cheat_codes()
 	
 	global.cheat_codes = [
 		{
-			code: ["UP", "X", "DOWN", "x", "LEFT", "x", "RIGHT", "X", "A+START"],
+			code: ["UP", "X", "DOWN", "X", "LEFT", "X", "RIGHT", "X", "A+START"],
 			progress: 0,
 			hold_required: "",
 			action: function()
@@ -20,7 +20,7 @@ function scr_debug_init_cheat_codes()
 		}
 		,
 		{
-			code: ["Up", "Left", "Down", "Right", "Down", "Up", "Up", "Down", "Right", "Right", "B"],
+			code: ["UP", "LEFT", "DOWN", "RIGHT", "DOWN", "UP", "UP", "DOWN", "RIGHT", "RIGHT", "B"],
 			progress: 0,
 			hold_required: "",
 			action: function()
@@ -48,7 +48,7 @@ function scr_debug_check_cheat_input(input_str)
 			continue; /* Skip processing this cheat code for this input */
 		}
 		
-		if (input_str == cheat.code[cheat.progress])
+		if (input_str == string_upper(cheat.code[cheat.progress]))
 		{
 			cheat.progress++; /* Advance progress if input is correct */
 			
@@ -80,15 +80,15 @@ function scr_debug_print_cheat_progress()
 			var cheat = global.cheat_codes[i];
 			var progress = cheat.progress;
 			var total = array_length(cheat.code);
-			show_debug_message("Cheat code " + string(i) + ": Progress " + string(progress) + " / " + string(total));
+			show_debug_message("[scr_debug_print_cheat_progress] Cheat code " + string(i) + ": Progress " + string(progress) + " / " + string(total));
 			
 			if (progress < total)
 			{
-				show_debug_message("  Next expected: " + cheat.code[progress]);
+				show_debug_message("[scr_debug_print_cheat_progress]  Next expected: " + cheat.code[progress]);
 			}
 			else
 			{
-				show_debug_message("  Cheat complete!");
+				show_debug_message("[scr_debug_print_cheat_progress]  Cheat complete!");
 			}
 		}
 	}
@@ -104,21 +104,25 @@ function scr_debug_process_cheat_inputs()
 	{
 		scr_debug_check_cheat_input("UP");
 	}
+	else
 	if (gamepad_button_check_pressed(global.player_slot[1], gp_padd))
 	|| (keyboard_check_pressed(vk_down))
 	{
 		scr_debug_check_cheat_input("DOWN");
 	}
+	else
 	if (gamepad_button_check_pressed(global.player_slot[1], gp_padl))
 	|| (keyboard_check_pressed(vk_left))
 	{
 		scr_debug_check_cheat_input("LEFT");
 	}
+	else
 	if (gamepad_button_check_pressed(global.player_slot[1], gp_padr))
 	|| (keyboard_check_pressed(vk_right))
 	{
 		scr_debug_check_cheat_input("RIGHT");
 	}
+	else
 	
 	/* Face Buttons */
 	if (gamepad_button_check_released(global.player_slot[1], gp_face1)) /* Needs to be check on released, to make "A + Start" work */
@@ -126,21 +130,25 @@ function scr_debug_process_cheat_inputs()
 	{
 		scr_debug_check_cheat_input("A");
 	}
+	else
 	if (gamepad_button_check_pressed(global.player_slot[1], gp_face2))
 	|| (keyboard_check_pressed(ord("B")))
 	{
 		scr_debug_check_cheat_input("B");
 	}
+	else
 	if (gamepad_button_check_pressed(global.player_slot[1], gp_face3))
 	|| (keyboard_check_pressed(ord("X")))
 	{
 		scr_debug_check_cheat_input("X");
 	}
+	else
 	if (gamepad_button_check_pressed(global.player_slot[1], gp_face4))
 	|| (keyboard_check_pressed(ord("Y")))
 	{
 		scr_debug_check_cheat_input("Y");
 	}
+	else
 	
 	/* Shoulder Buttons */
 	if (gamepad_button_check_pressed(global.player_slot[1], gp_shoulderl))
@@ -148,15 +156,18 @@ function scr_debug_process_cheat_inputs()
 	{
 		scr_debug_check_cheat_input("SHOULDERL");
 	}
+	else
 	if (gamepad_button_check_pressed(global.player_slot[1], gp_shoulderlb))
 	{
 		scr_debug_check_cheat_input("SHOULDERLB");
 	}
+	else
 	if (gamepad_button_check_pressed(global.player_slot[1], gp_shoulderr))
 	|| (keyboard_check_pressed(ord("R")))
 	{
 		scr_debug_check_cheat_input("SHOULDERR");
 	}
+	else
 	if (gamepad_button_check_pressed(global.player_slot[1], gp_shoulderrb))
 	{
 		scr_debug_check_cheat_input("SHOULDERRB");

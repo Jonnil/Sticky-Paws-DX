@@ -125,7 +125,7 @@ if (os_type == os_switch)
 }
 else
 {
-	global.free_communication_available = true; /* If free communication is disabled, you shouldn't be able to upload or download custom content. Set this to true when done debugging. Free communication is basically what determines if you are using parental controls or not */
+	global.free_communication_available = true; /* If free communication is disabled, you shouldn't be able to upload or download custom content. Set this to true by default on PC. Free communication is basically what determines if you are using parental controls or not */
 	global.can_load_photographic_images = true; /* Default: true. There are no guidelines preventing other platfroms to view photographic images in UGC */
 	global.show_prompt_when_changing_to_gamepad = true;
 	global.show_prompt_when_changing_to_keyboard_and_mouse = true;
@@ -205,10 +205,12 @@ display_yoffset = 0;
 #region /* Debug toggles */
 /* There are more debug toggles in different objects, so click ctrl + shift + F and search "Debug toggles" to find the other debug toggles */
 /* Most of these can be toggled on or off within the games settings, so you don't have to change these settings here */
+
 global.option_description = ""; /* Description that shows up when changing certain options. Should describe what the option does */
 global.option_default = -1; /* Show wether the current option selected have a default setting, and tell the player this */
 global.can_save_length_variable = false; /* This function saves object_placement_all.json size, but lags the game. Make this optional and false by default */
 global.can_load_official_and_custom_resources = true; /* For debug, you might not want to load included files, but by default set this to true */
+
 global.debug_screen = false; /* Toggles the visibility of the debug screen. When set to true, the debug screen appears overlayed on the game. Useful for displaying live debugging information */
 global.debug_mode_activated_once = false; /* If debug mode has been activated at any point during the level, don't save fastest time and score */
 global.debug_collapsed_sections = ds_map_create(); /* A data structure that tracks which debug sections are collapsed. Each key represents a section name, and its value (true/false) indicates whether the section is currently collapsed. Helps organize and declutter the debug screen for better readability. */
@@ -226,7 +228,20 @@ global.enable_foreground_layer_1_5 = true; /* Toggles the visibility of an addit
 global.enable_foreground_layer2 = true; /* Toggles the visibility of the second foreground layer. Often used for interactive or visually significant foreground elements. */
 global.enable_foreground_layer_secret = true; /* Toggles the visibility of the secret foreground layer. Typically used for hidden or unlockable elements that may only appear in certain conditions. */
 global.auto_open_crash_docs = false;
-global.debug_force_network = false; /* Default: False */
+global.debug_force_network_error = false; /* Default false for release */
+
+if (GM_build_type == "run")
+{
+	/* Enable useful debug tools when testing inside the IDE */
+	global.debug_screen = false;
+	global.debug_force_network_error = false;
+	
+	show_debug_message("[Debug] GM_build_type is 'run'. Enabling development debug toggles.");
+}
+else
+{
+	show_debug_message("[Debug] GM_build_type is 'exe'. Debug toggles are set to safe defaults.");
+}
 #endregion /* Debug toggles END */
 
 /* Equipped Upgrades. All of these should be true so you automatically equip the upgrades so don't change the variables here, but you can unequipp the upgrades in the pause menu */
@@ -606,6 +621,7 @@ global.fullscreen_key = vk_f11;
 global.level_name = ""; /* In the level editor, the name of the currently selected level will be stored here */
 global.level_name = ""; /* The actual level path name will be store here, without being censored */
 global.level_description = ""; /* In the level editor, the description of the currently selected level will be stored here */
+global.creating_zip_file_description = "";
 
 #region /* Set controls */
 enum action

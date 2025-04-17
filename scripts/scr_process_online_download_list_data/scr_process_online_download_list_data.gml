@@ -5,8 +5,6 @@ function scr_process_online_download_list_data()
 	scr_draw_loading(1, , , "Loading from server");
 	scr_server_timeout(15);
 	
-	show_debug_message("[scr_process_online_download_list_data] Starting processing online download list data. Raw online download list: " + string(global.online_download_list));
-	
 	#region /* Interpret the online download list as JSON */
 	if (global.online_download_list != ""
 	&& global.online_download_list != "HTTP request exception"

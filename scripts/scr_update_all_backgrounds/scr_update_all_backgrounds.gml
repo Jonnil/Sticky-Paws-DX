@@ -80,27 +80,30 @@ function load_sprite_with_fallback(filename_prefix, default_filename, index, use
 	var file_formats = ["png", "bmp", "gif", "jpg", "jpeg"];
 	var loaded = false;
 	
-	if (use_photographic_images == false && global.can_load_custom_level_assets)
+	if (use_photographic_images == false
+	&& global.can_load_custom_level_assets)
 	{
 		for (var i = 0; i < array_length(file_formats); i++)
 		{
 			var file_path = string(global.path_to_use) + filename_prefix + "." + file_formats[i];
+			
 			if (file_exists(file_path))
 			{
 				show_debug_message(string(filename_prefix) + " updated from custom");
-				return sprite_add(file_path, 0, false, false, 0, 0);
 				loaded = true;
-				break;
+				return sprite_add(file_path, 0, false, false, 0, 0);
 			}
 		}
-			
+		
 		/* If no custom sprite, use default */
-		if (!loaded && default_filename != "" && file_exists("levels/" + string(default_filename) + "/background/" + filename_prefix + ".png"))
+		if (!loaded
+		&& default_filename != ""
+		&& file_exists("levels/" + string(default_filename) + "/background/" + filename_prefix + ".png"))
 		{
 			show_debug_message(string(filename_prefix) + " updated to default");
 			return sprite_add("levels/" + string(default_filename) + "/background/" + filename_prefix + ".png", 0, false, false, 0, 0);
 		}
-			
+		
 		/* If still not loaded, assign 'noone' */
 		if (!loaded)
 		{
@@ -109,7 +112,8 @@ function load_sprite_with_fallback(filename_prefix, default_filename, index, use
 		}
 	}
 	else
-	if (default_filename != "" && file_exists("levels/" + string(default_filename) + "/background/" + filename_prefix + ".png"))
+	if (default_filename != ""
+	&& file_exists("levels/" + string(default_filename) + "/background/" + filename_prefix + ".png"))
 	{
 		show_debug_message(string(filename_prefix) + " updated to default");
 		return sprite_add("levels/" + string(default_filename) + "/background/" + filename_prefix + ".png", 0, false, false, 0, 0);

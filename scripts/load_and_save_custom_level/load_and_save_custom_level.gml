@@ -369,7 +369,8 @@ function scr_save_level_information()
 			ini_write_real("info", "first_created_on_os_type", os_type);
 		}
 		
-		ini_write_string("info", "level_name", global.level_name);
+		show_debug_message("[scr_save_level_information] Global Level Name: " + string(global.level_name));
+		ini_write_string("info", "level_name", string(global.level_name));
 		ini_write_string("info", "username", string(global.username));
 		ini_write_real("info", "make_every_tileset_into_default_tileset", global.make_every_tileset_into_default_tileset);
 		
@@ -407,6 +408,7 @@ function scr_save_level_information()
 		ini_key_delete("rank", "rank_timeattack_minute");
 		ini_key_delete("rank", "rank_timeattack_realmillisecond");
 		ini_key_delete("rank", "rank_level_score");
+		ini_key_delete("rank", "rank_current_attempt_minute");
 		#endregion /* Reset Fastest Time and Score END */
 		
 		#region /* Save Custom Background Settings */

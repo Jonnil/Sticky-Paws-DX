@@ -22,26 +22,44 @@ function scr_draw_network_error_menu()
 		/* Determine the error message based on connection status */
 		var error_text = "";
 		
-		if (!scr_check_network_connection(network_connect_passive))
+		if (!os_is_network_connected(network_connect_passive))
 		{
-			error_text = l10n_text("No Internet Connection Detected");
+			error_text += l10n_text("No Internet Connection Detected") + "\n";
 		}
-		else
+		
 		if (!global.online_token_validated)
-		|| (!global.online_enabled)
 		{
-			error_text = l10n_text("Invalid Online Credentials");
+			error_text += l10n_text("Invalid Online Token") + "\n";
 		}
-		else
+		
+		if (!global.online_enabled)
 		{
-			error_text = l10n_text("Network Error Encountered");
+			error_text += l10n_text("Invalid Online Credentials") + "\n";
+		}
+		
+		if (error_text == "")
+		{
+			error_text += l10n_text("Network Error Encountered") + "\n";
 		}
 		
 		/* Display the error message and instructions */
+		draw_set_halign(fa_center);
+		draw_set_valign(fa_bottom);
 		scr_draw_text_outlined(center_x, center_y - 120, error_text,
-							   global.default_text_size * 1.9, c_black, c_white, 1);
+								global.default_text_size * 1.5, c_black, c_white, 1);
+		
+		draw_set_halign(fa_center);
+		draw_set_valign(fa_middle);
 		scr_draw_text_outlined(center_x, center_y - 70, l10n_text("Please check your network settings or credentials"),
-							   global.default_text_size, c_black, c_white, 1);
+								global.default_text_size, c_black, c_white, 1);
+		
+		if (global.debug_force_network_error)
+		{
+			scr_draw_text_outlined(center_x, center_y - 20, "Debug Force Network Error is Enabled",
+									global.default_text_size, c_black, c_white, 1);
+			scr_draw_text_outlined(center_x, center_y - 20, "Debug Force Network Error is Enabled",
+									global.default_text_size, c_black, c_red, scr_wave(1, 0, 1));
+		}
 		
 		/* Calculate positions for the two buttons: Retry and Main Menu (Offline Mode) */
 		var retry_button_y = center_y + 20;
@@ -122,10 +140,10 @@ function scr_draw_network_error_menu()
 		{
 			menu_delay = 3;
 			
-			/* Recheck connection: if restored, proceed to online features; otherwise, remain on error screen */
-			if (scr_check_network_connection(network_connect_passive)
-			&& global.online_enabled
-			&& global.online_token_validated)
+			#region /* Recheck connection: if restored, proceed to online features; otherwise, remain on error screen */
+			if (global.online_enabled
+			&& global.online_token_validated
+			&& scr_check_network_connection(network_connect_passive))
 			{
 				retry_successful = true;
 			}
@@ -139,12 +157,15 @@ function scr_draw_network_error_menu()
 				}
 				else
 				{
-					menu = "network_error";
+					retry_successful = true;
+					//menu = "network_error";
 					/* Optionally prompt for credentials or open network settings: */
 					/* scr_open_network_settings(); */
 					/* Stay on error screen until the connection is fixed */
 				}
 			}
+			#endregion /* Recheck connection: if restored, proceed to online features; otherwise, remain on error screen END */
+			
 		}
 		else
 		if (mainmenu_clicked)
@@ -157,6 +178,13 @@ function scr_draw_network_error_menu()
 			global.go_to_menu_when_going_back_to_title = "";
 			
 			menu_delay = 3;
+			
+			/* If you are not currently at the title screen when clicking "Main Game", then go to the title screen */
+			if (room != rm_title)
+			{
+				room_goto(rm_title);
+			}
+			
 			menu = "main_game"; /* Switch to offline/main menu to let the user access non-network features */
 		}
 		

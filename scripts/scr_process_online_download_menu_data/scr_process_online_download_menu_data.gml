@@ -32,7 +32,7 @@ function scr_process_online_download_menu_data()
 		else
 		{
 			var num_items = 0;
-			show_debug_message("[scr_process_online_download_menu_data] data is not an array! online_content_data = " + string(online_content_data) + " num_items = " + string(num_items));
+			show_debug_message("[scr_process_online_download_menu_data] data is not an array! num_items = " + string(num_items));
 		}
 	}
 	#endregion /* Show online downloads if data is available END */
@@ -43,7 +43,8 @@ function scr_process_online_download_menu_data()
 	&& (menu_delay == 0
 	&& menu_joystick_delay == 0)
 	{
-		if (!global.online_token_validated
+		if (!global.online_enabled
+		|| !global.online_token_validated
 		|| !scr_check_network_connection(network_connect_passive))
 		{
 			in_online_download_list_menu = false; show_debug_message("[scr_process_online_download_menu_data] 'In online download list menu' is set to false when we are no longer in the error menu, but we still have no internet connection\n");
@@ -57,7 +58,7 @@ function scr_process_online_download_menu_data()
 			{
 				select_custom_level_menu_open = true;
 				show_level_editor_corner_menu = false;
-				caution_online_takes_you_back_to = "level_editor_upload";
+				caution_online_takes_you_back_to = "level_editor_upload"; show_debug_message("[scr_process_online_download_menu_data] caution_online_takes_you_back_to = level_editor_upload");
 			}
 			
 			caution_online_takes_you_back_to = menu;

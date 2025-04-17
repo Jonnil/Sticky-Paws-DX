@@ -417,6 +417,7 @@ function scr_draw_level_editor_pause_menu()
 			#region /* If menu is on upload */
 			draw_menu_button(get_window_width * 0.5 - 185, get_window_height * 0.5 + 42 + 42, l10n_text("Upload"), "level_editor_upload", "level_editor_upload");
 			draw_sprite_ext(spr_icon_upload, 0, get_window_width * 0.5 - 185 + 16, get_window_height * 0.5 + 42 + 42 + 21, 1, 1, 0, c_white, 1);
+			
 			if (menu == "level_editor_upload")
 			&& (!can_input_level_name)
 			{
@@ -735,4 +736,5 @@ function scr_draw_level_editor_pause_menu()
 	}
 	#endregion /* Draw Level Editor Pause Menu END */
 	
+	scr_draw_network_error_menu();
 }

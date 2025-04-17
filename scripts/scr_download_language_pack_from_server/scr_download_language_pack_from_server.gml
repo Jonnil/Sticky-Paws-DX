@@ -5,7 +5,9 @@
 function scr_download_language_pack_from_server()
 {
 	/* 1) Check for a network connection */
-	if (!scr_check_network_connection(network_connect_passive))
+	if (!global.online_enabled
+	|| !global.online_token_validated
+	|| !scr_check_network_connection(network_connect_passive))
 	{
 		show_debug_message("[scr_download_language_pack_from_server] ERROR: No network connection. Aborting language pack download.");
 		global.language_update_status_message = "Network error: Unable to connect to server for language update.";
