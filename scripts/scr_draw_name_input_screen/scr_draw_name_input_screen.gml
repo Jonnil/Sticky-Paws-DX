@@ -175,13 +175,15 @@ function scr_draw_name_input_screen(what_string /* What string to edit */, max_c
 	}
 	
 	#region /* Clicking the Cancel button */
-	if (menu_delay == 0 && menu_joystick_delay == 0)
+	if (menu_delay == 0
+	&& menu_joystick_delay == 0)
 	{
 		if (mouse_check_button_released(mb_left))
 		&& (point_in_rectangle(device_mouse_x_to_gui(0), device_mouse_y_to_gui(0), xx + buttons_x, yy + buttons_cancel_y, xx + buttons_x + 370, yy + buttons_cancel_y + 41))
 		&& (menu == cancel_menu_string)
 		|| (keyboard_check_pressed(vk_escape))
-		|| (keyboard_check_pressed(vk_enter) && menu == cancel_menu_string)
+		|| (keyboard_check_pressed(vk_enter)
+		&& menu == cancel_menu_string)
 		
 		|| (gamepad_button_check_pressed(global.player_slot[1], global.player_[inp.gp][1][1][action.accept]) && menu == cancel_menu_string)
 		|| (gamepad_button_check_pressed(global.player_slot[1], global.player_[inp.gp][1][2][action.accept]) && menu == cancel_menu_string)
@@ -252,7 +254,8 @@ function scr_draw_name_input_screen(what_string /* What string to edit */, max_c
 			}
 			
 			#region /* Clicking the OK button */
-			if (menu_delay == 0 && menu_joystick_delay == 0)
+			if (menu_delay == 0
+			&& menu_joystick_delay == 0)
 			&& (menu == ok_menu_string)
 			{
 				if (mouse_check_button_released(mb_left))
@@ -329,7 +332,8 @@ function scr_draw_name_input_screen(what_string /* What string to edit */, max_c
 		keyboard_string = string_copy(string_previous, 1, max_char);
 	}
 	
-	if (menu_delay == 0 && menu_joystick_delay == 0)
+	if (menu_delay == 0
+	&& menu_joystick_delay == 0)
 	&& (use_script_navigation_code)
 	{
 		if (keyboard_check_pressed(vk_up)
@@ -357,6 +361,9 @@ function scr_draw_name_input_screen(what_string /* What string to edit */, max_c
 	}
 	
 	what_string = keyboard_string; /* Set this variable to keyboard string */
+	
+	/* Remove any quotation marks right before returning, as they make most strings invalid */
+	keyboard_string = string_replace_all(keyboard_string, "\"", "'");
 	
 	return(keyboard_string);
 }

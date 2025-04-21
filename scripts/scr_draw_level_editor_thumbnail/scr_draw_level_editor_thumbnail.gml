@@ -34,29 +34,43 @@ function scr_draw_level_editor_thumbnail(load_what_levels = global.all_loaded_cu
 	#endregion /* Red rectangle behind the level thumbnail to indicate what level you are selecting END */
 	
 	#region /* Draw Thumbnail */
-	for(var i = 0; i < ds_list_size(global.thumbnail_sprite); i += 1)
+	var list_size = ds_list_size(global.thumbnail_sprite);
+	
+	for (var i = 0; i < list_size; i++)
 	{
-		column = floor(i / row);
+		/* 1) Single lookup */
+		var spr = ds_list_find_value(global.thumbnail_sprite, i);
 		
-		if (ds_list_find_value(global.thumbnail_sprite, i) > 0)
+		/* 2) Guard against invalid sprite IDs */
+		if (!sprite_exists(spr))
 		{
-			draw_sprite_ext(
-				ds_list_find_value(global.thumbnail_sprite, i),
-				0,
-				394 * (i - column * row) + 100 + thumbnail_x_offset,
-				226 * (column - scroll) + 250,
-				384 / sprite_get_width(ds_list_find_value(global.thumbnail_sprite, i)),
-				216 / sprite_get_height(ds_list_find_value(global.thumbnail_sprite, i)),
-				0,
-				c_white,
-				1
-			);
+			continue;
 		}
 		
-		if (i == ds_list_size(global.thumbnail_sprite) - 1)
+		/* 3) Calculate grid cell */
+		column = floor(i / row); /* The variable 'column' is being used elsewhere in other scripts */
+		var cell_x = 394 * (i - column * row) + 100 + thumbnail_x_offset;
+		var cell_y = 226 * (column - scroll)	+ 250;
+		
+		/* 4) Fetch dimensions once */
+		var w = sprite_get_width(spr);
+		var h = sprite_get_height(spr);
+		
+		/* 5) Draw thumbnail */
+		draw_sprite_ext(
+			spr, 0,
+			cell_x, cell_y,
+			384 / w,
+			216 / h,
+			0, c_white, 1
+		);
+		
+		/* 6) Draw separator line after the last thumbnail */
+		if (i == list_size - 1)
 		{
-			draw_line_width_color(30, 226 * (column - scroll) + 500, display_get_gui_width() - 30, 226 * (column - scroll) + 500, 7, c_black, c_black);
-			draw_line_width_color(32, 226 * (column - scroll) + 500, display_get_gui_width() - 32, 226 * (column - scroll) + 500, 3, c_white, c_white);
+			var line_y = 226 * (column - scroll) + 500;
+			draw_line_width_color(30, line_y, display_get_gui_width() - 30, line_y, 7, c_black, c_black);
+			draw_line_width_color(32, line_y, display_get_gui_width() - 32, line_y, 3, c_white, c_white);
 		}
 		
 		if (!show_first_thumbnail_name)

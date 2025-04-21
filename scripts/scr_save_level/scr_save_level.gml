@@ -1,11 +1,6 @@
 /* Save Level Information like if you have cleared the level or if you have a checkpoint */
 function scr_save_level()
 {
-	if (global.debug_screen)
-	{
-		global.debug_mode_activated_once = true;
-	}
-	
 	var level_name = global.level_name; /* Before getting the level id, we need to get the level name, as the level name is needed so we know what level to look for level id */
 	
 	ini_open(global.use_temp_or_working + "custom_levels/" + string(level_name) + "/data/level_information.ini");
@@ -47,7 +42,6 @@ function scr_save_level()
 		
 		/* Make it known if the level was cleared with debug mode or not */
 		if (global.debug_mode_activated_once)
-		|| (global.debug_screen)
 		{
 			ini_write_real(level_name, "cleared_with_debug", true);
 		}

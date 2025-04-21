@@ -145,6 +145,8 @@ if (async_load[? "id"] == global.online_token_validated)
 		buffer_delete(buffer);
 		
 		show_debug_message("status code == 200   global.online_token_validated: " + string(global.online_token_validated));
+		
+		scr_get_todays_upload_count(); /* Update the todays upload count whenever you first go online */
 	}
 	else
 	{

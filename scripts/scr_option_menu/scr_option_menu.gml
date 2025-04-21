@@ -2171,11 +2171,6 @@ function scr_option_menu()
 			{
 				global.debug_screen = draw_menu_checkmark(380, debug_screen_y, l10n_text("Debug Screen"), "debug_screen", global.debug_screen, false, 
 					l10n_text("Displays debug information for development and troubleshooting"));
-				
-				if (global.debug_screen)
-				{
-					global.debug_mode_activated_once = true;
-				}
 			}
 			
 			if (global.hud_hide_time > 10)

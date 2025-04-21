@@ -50,7 +50,7 @@ image_speed = 0;
 depth = -10000;
 
 #region /* Draw Dark Background */
-draw_set_alpha(0.9);
+draw_set_alpha(0.75);
 draw_rectangle_colour(0, 0, get_window_width * 2, get_window_height * 2, c_black, c_black, c_black, c_black, false);
 draw_set_alpha(1);
 #endregion /* Draw Dark Background END */

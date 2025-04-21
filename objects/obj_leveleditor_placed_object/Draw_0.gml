@@ -99,7 +99,7 @@ if (position_meeting(x, y, obj_leveleditor))
 		
 		if (textbox_text != "")
 		{
-			draw_set_alpha(0.9);
+			draw_set_alpha(0.75);
 			draw_roundrect_color_ext(x_adjusted - (string_width_ext(textbox_text, 40, 1000) * 0.41) - 8, yy - string_height_ext(textbox_text, 40, 1000), x_adjusted + (string_width_ext(textbox_text, 40, 1000) * 0.41) + 8, yy + 8, 50, 50, c_black, c_black, false);
 			draw_triangle_color(xx - 8, yy + 8, xx + 8, yy + 8, xx, yy + 32, c_black, c_black, c_black, false);
 			draw_set_alpha(1);

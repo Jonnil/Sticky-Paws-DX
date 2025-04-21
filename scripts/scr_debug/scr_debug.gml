@@ -13,7 +13,7 @@ function scr_debug_toggle_screen()
 	&& gamepad_button_check_pressed(global.player_slot[1], gp_stickr))
 	{
 		global.debug_screen = !global.debug_screen;
-		global.debug_mode_activated_once = true;
+		show_debug_message("[scr_debug_toggle_screen] 'debug screen' is set to: " + string(global.debug_screen));
 	}
 }
 
@@ -92,6 +92,7 @@ function scr_debug_draw_all_instance_count()
 		{
 			draw_sprite_ext(spr_lock_icon, 0, 16, all_instance_count_y, 1, 1, 0, c_white, 1);
 		}
+		
 		/* NOTE: Looping over a fixed range (0-99) assumes your object IDs fall within this range */
 		for (var i = 0; i < 100; ++i)
 		{

@@ -90,7 +90,7 @@ function scr_character_select_menu_draw()
 			}
 			
 			var player_starts_the_game_text = l10n_text("Player " + string(what_player) + " starts the game");
-			draw_set_alpha(0.9);
+			draw_set_alpha(0.75);
 			draw_roundrect_color_ext(get_window_width * 0.5 - (string_width(player_starts_the_game_text) * 0.5), play_the_game_text_y_lerp + 32, get_window_width * 0.5 + (string_width(player_starts_the_game_text) * 0.5), play_the_game_text_y_lerp + 64, 50, 50, c_black, c_black, false);
 			draw_set_alpha(1);
 			scr_draw_text_outlined(get_window_width * 0.5, play_the_game_text_y_lerp + 45, string(player_starts_the_game_text), global.default_text_size, c_black, global.player_color[what_player], 1);
@@ -215,8 +215,6 @@ function scr_character_select_menu_draw()
 					if (global.online_enabled)
 					&& (scr_check_network_connection(network_connect_active))
 					{
-						scr_switch_update_online_status();
-						
 						if (global.switch_logged_in)
 						{
 							if (global.switch_account_network_service_available) /* Need to make sure that network service is available before going online */

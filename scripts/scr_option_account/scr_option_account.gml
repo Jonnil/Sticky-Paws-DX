@@ -91,7 +91,7 @@ function scr_option_account()
 			if (menu == "get_device_name_ok")
 			|| (menu == "get_device_name_cancel")
 			{
-				draw_set_alpha(0.9);
+				draw_set_alpha(0.75);
 				draw_rectangle_color(0, 0, display_get_gui_width(), display_get_gui_height(), c_black, c_black, c_black, c_black, false);
 				draw_set_alpha(1);
 				draw_set_halign(fa_center);

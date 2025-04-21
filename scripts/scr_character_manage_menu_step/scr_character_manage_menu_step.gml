@@ -576,8 +576,6 @@ function scr_character_manage_menu_step()
 				if (global.online_enabled)
 				&& (scr_check_network_connection(network_connect_active))
 				{
-					scr_switch_update_online_status();
-					
 					if (global.switch_logged_in)
 					{
 						if (global.switch_account_network_service_available) /* Need to make sure that network service is available before going online */

@@ -3,8 +3,9 @@
 function scr_check_network_connection(connect_mode)
 {
 	
-	#region /* Check if debug override is enabled to simulate network errors */
+	#region /* Check if debug override is enabled to simulate network errors (Only in test run mode) */
 	if (global.debug_force_network_error)
+	&& (GM_build_type == "run") /* Only enable debug features in test run, and not executable */
 	{
 		show_debug_message("[scr_check_network_connection] Debug override enabled: 'global.debug_force_network_error': " + string(global.debug_force_network_error));
 		
@@ -26,9 +27,9 @@ function scr_check_network_connection(connect_mode)
 		show_debug_message("[scr_check_network_connection] Returning debug_state: " + string(debug_state));
 		return debug_state;
 	}
-	#endregion /* Check if debug override is enabled to simulate network errors END */
+	#endregion /* Check if debug override is enabled to simulate network errors (Only in test run mode) END */
 	
-	/* If online token has not been validated, update online status. */
+	#region /* If online token has not been validated, update online status */
 	if (!global.online_token_validated)
 	{
 		show_debug_message("[scr_check_network_connection] Online token not validated. Calling 'scr switch update online status(false)'...");
@@ -46,10 +47,11 @@ function scr_check_network_connection(connect_mode)
 		scr_switch_update_online_status(true); /* Show the login screen for Switch if there isn't any online token validated */
 		show_debug_message("[scr_check_network_connection] After update, global.online_token_validated = " + string(global.online_token_validated));
 	}
+	#endregion /* If online token has not been validated, update online status END */
 	
 	var actual_network_status = os_is_network_connected(connect_mode);
 	
-	if (global.online_token_validated
+	if (global.online_token_validated /* Online Token must be validated before player is able to go online */
 	&& actual_network_status)
 	{
 		return true;

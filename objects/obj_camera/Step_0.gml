@@ -688,6 +688,11 @@ if (global.character_select_in_this_menu == "main_game")
 	|| (gamepad_button_check_pressed(global.player_slot[1], invincibility_button))
 	{
 		global.playtest_invincibility = !global.playtest_invincibility;
+		
+		if (global.playtest_invincibility)
+		{
+			global.debug_mode_activated_once = true;
+		}
 	}
 	
 	/* Press Moonjump button */
@@ -698,6 +703,11 @@ if (global.character_select_in_this_menu == "main_game")
 	|| (gamepad_button_check_pressed(global.player_slot[1], moonjump_button))
 	{
 		global.playtest_moonjump = !global.playtest_moonjump;
+		
+		if (global.playtest_moonjump)
+		{
+			global.debug_mode_activated_once = true;
+		}
 	}
 	
 }
@@ -714,6 +724,7 @@ if (global.actually_play_edited_level
 {
 	global.playtest_invincibility = false;
 	global.playtest_moonjump = false;
+	global.debug_mode_activated_once = false;
 }
 
 #region /* Time Countdown */

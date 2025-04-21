@@ -1,5 +1,19 @@
 #region /* Essential code that needs to be initialized */
 ini_open(game_save_id + "custom_levels/" + string(global.level_name) + "/data/level_information.ini");
+
+var level_name_ini = ini_read_string("info", "level_name", "");
+
+#region /* Name displayed masked if includes profanity */
+if (switch_check_profanity(level_name_ini))
+{
+	masked_level_name = switch_mask_profanity(level_name_ini);
+}
+else
+{
+	masked_level_name = level_name_ini;
+}
+#endregion /* Name displayed masked if includes profanity END */
+
 global.level_description = ini_read_string("info", "level_description", "");
 ini_close();
 
@@ -154,22 +168,27 @@ if (!global.actually_play_edited_level)
 	&& (file_exists(level_information_ini_path))
 	{
 		ini_open(level_information_ini_path);
+		
 		if (ini_key_exists("info", "clear_check"))
 		{
 			if_clear_checked = ini_read_string("info", "clear_check", false); /* Draw if level have been Clear Checked on top of screen */
 		}
+		
 		if (ini_key_exists("info", "if_daily_build"))
 		{
 			if_daily_build = ini_read_string("info", "if_daily_build", false); /* Draw if level have been created in Daily Build on top of screen */
 		}
+		
 		if (ini_key_exists("info", "level_has_custom_background"))
 		{
 			level_has_custom_background = ini_read_string("info", "level_has_custom_background", false); /* Draw if level uses Custom Background on top of screen */
 		}
+		
 		if (ini_key_exists("info", "level_id"))
 		{
 			level_id = ini_read_string("info", "level_id", ""); /* Draw the Level ID on top of screen */
 		}
+		
 		if (ini_key_exists("info", "first_created_on_version"))
 		{
 			if (string_digits(ini_read_string("info", "first_created_on_version", "v" + scr_get_build_date())) < string_digits(scr_get_build_date()))
@@ -181,8 +200,10 @@ if (!global.actually_play_edited_level)
 			{
 				made_in_what_version_text = l10n_text("Level made in new version");
 			}
+			
 			first_created_on_version = ini_read_string("info", "first_created_on_version", "v" + scr_get_build_date());	
 		}
+		
 		ini_close(); /* Don't commit the save data on Switch, this is only temporary! */
 	}
 	#endregion /* Show what version of the game the level was first created in END */
@@ -661,6 +682,7 @@ if (!global.actually_play_edited_level)
 	menu_cursor_index = 0;
 	in_settings = false;
 	old_selected_resource_pack = global.selected_resource_pack;
+	old_level_index = ds_list_find_value(global.all_loaded_custom_levels, global.select_level_index);
 	can_navigate_settings_sidebar = false;
 	navigate_slider = false;
 	menu = "continue";
@@ -716,17 +738,6 @@ if (!global.actually_play_edited_level)
 	zoom_reset_button_x = display_get_gui_width() - 160;
 	zoom_in_button_x = display_get_gui_width() - 96;
 	help_button_x = display_get_gui_width() - 32;
-	
-	#region /* Name displayed masked if includes profanity */
-	if (switch_check_profanity(global.level_name))
-	{
-		level_name_masked = switch_mask_profanity(global.level_name);
-	}
-	else
-	{
-		level_name_masked = global.level_name;
-	}
-	#endregion /* Name displayed masked if includes profanity END */
 	
 	#region /* Options */
 	can_navigate = false;

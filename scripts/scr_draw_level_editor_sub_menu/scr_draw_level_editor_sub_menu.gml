@@ -498,11 +498,15 @@ function scr_draw_level_editor_sub_menu(xx = 0)
 				can_navigate = true;
 				global.doing_clear_check_level = false;
 				global.actually_play_edited_level = false;
+				
+				old_level_index = ds_list_find_value(global.all_loaded_custom_levels, global.select_level_index);
+				
 				if (ds_list_find_value(global.all_loaded_custom_levels, global.select_level_index) != undefined) /* Don't set "global level name" to "ds list find value" if it's undefined */
 				{
 					global.level_name = string(ds_list_find_value(global.all_loaded_custom_levels, global.select_level_index)); /* Set the "level name" to the selected level, so when you exit the level editor, the cursor will remember to appear on the level you selected */
 					keyboard_string = string(ds_list_find_value(global.all_loaded_custom_levels, global.select_level_index));
 				}
+				
 				old_level_name = global.level_name; /* Need to remember original name of level, so that renaming level doesn't actually happen if you haven't edited the name */
 				global.play_edited_level = false;
 				menu_delay = 3;
@@ -605,7 +609,7 @@ function scr_draw_level_editor_sub_menu(xx = 0)
 					file_found = "";
 					file_load_timer = 0;
 					level_find_pos = 0;
-					ds_list_clear(global.thumbnail_sprite); show_debug_message("[scr_draw_level_editor_sub_menu] ds_list_clear(global.thumbnail sprite)");
+					scr_clear_thumbnail_sprites();
 					menu_delay = 3;
 					menu = "load_official_level_template";
 				}

@@ -28,7 +28,7 @@ function scr_draw_report()
 	{
 		
 		#region /* Opaque transparent black rectangle over whole screen, but underneath text */
-		draw_set_alpha(0.9);
+		draw_set_alpha(0.75);
 		draw_rectangle_color(- 32, - 32, display_get_gui_width() + 32, display_get_gui_height() + 32, c_black, c_black, c_black, c_black, false);
 		draw_set_alpha(1);
 		#endregion /* Opaque transparent black rectangle over whole screen, but underneath text END */
@@ -44,8 +44,6 @@ function scr_draw_report()
 	{
 		if (scr_check_network_connection(network_connect_active)) /* Need to check if OS is connected to network before getting online */
 		{
-			scr_switch_update_online_status();
-			
 			if (global.switch_logged_in)
 			{
 				if (global.switch_account_network_service_available) /* Need to make sure that network service is available before going online */
@@ -789,8 +787,6 @@ function scr_draw_report()
 				
 				if (scr_check_network_connection(network_connect_active))
 				{
-					scr_switch_update_online_status();
-					
 					if (global.switch_logged_in)
 					{
 						if (global.switch_account_network_service_available) /* Need to make sure that network service is available before going online */

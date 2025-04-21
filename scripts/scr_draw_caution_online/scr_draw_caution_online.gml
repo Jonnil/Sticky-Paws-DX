@@ -5,7 +5,7 @@ function scr_draw_caution_online()
 	var mouse_get_y = device_mouse_y_to_gui(0);
 	
 	#region /* Opaque transparent black rectangle over whole screen, but underneath text */
-	draw_set_alpha(0.9);
+	draw_set_alpha(0.75);
 	draw_rectangle_color(- 32, - 32, display_get_gui_width() + 32, display_get_gui_height() + 32, c_black, c_black, c_black, c_black, false);
 	draw_set_alpha(1);
 	draw_roundrect_color_ext(display_get_gui_width() * 0.5 - 600, display_get_gui_height() * 0.5 - 200, display_get_gui_width() * 0.5 + 600, display_get_gui_height() * 0.5 + 200, 50, 50, c_black, c_black, false);
@@ -50,8 +50,6 @@ function scr_draw_caution_online()
 			
 			if (scr_check_network_connection(network_connect_active)) /* Need to check if you are connected to the internet before proceeding to online content */
 			{
-				scr_switch_update_online_status();
-				
 				if (global.switch_logged_in)
 				{
 					if (global.switch_account_network_service_available) /* Need to make sure that network service is available before going online */

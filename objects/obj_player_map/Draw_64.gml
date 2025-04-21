@@ -81,7 +81,7 @@ if (nearest_level != noone && iris_xscale > 9 && move_delay > 10 && distance_to_
 		{
             draw_set_halign(fa_center);
             draw_set_valign(fa_top);
-            draw_set_alpha(0.9);
+            draw_set_alpha(0.75);
             draw_roundrect_color_ext(show_level_info_x - 160, show_level_info_y - abs(show_big_collectibles_y) - 16, show_level_info_x + 160, show_level_info_y + total_defeats_y + 24, 50, 50, c_black, c_black, false);
             draw_set_alpha(1);
 			

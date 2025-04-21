@@ -15,7 +15,7 @@ function scr_draw_level_editor_pause_menu()
 		}
 		else
 		{
-			draw_set_alpha(0.9);
+			draw_set_alpha(0.75);
 		}
 		draw_rectangle_color(0, 0, room_width, room_height, c_black, c_black, c_black, c_black, false);
 		draw_set_alpha(1);
@@ -134,7 +134,7 @@ function scr_draw_level_editor_pause_menu()
 			#region /* Show text in bottom right of screen what the current custom level name is. This will make it less confusing what level you are editing */
 			draw_set_halign(fa_right);
 			draw_set_valign(fa_middle);
-			scr_draw_text_outlined(display_get_gui_width() - 16, display_get_gui_height() - 16, string(level_name_masked), global.default_text_size, c_black, c_white, 1);
+			scr_draw_text_outlined(display_get_gui_width() - 16, display_get_gui_height() - 16, string(masked_level_name), global.default_text_size, c_black, c_white, 1);
 			#endregion /* Show text in bottom right of screen what the current custom level name is. This will make it less confusing what level you are editing END */
 			
 			in_settings = false;

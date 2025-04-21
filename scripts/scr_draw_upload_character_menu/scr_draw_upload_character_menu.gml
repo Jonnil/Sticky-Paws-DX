@@ -31,7 +31,7 @@ function scr_draw_upload_character_menu()
 	{
 		draw_set_halign(fa_center);
 		draw_set_valign(fa_middle);
-		draw_set_alpha(0.9);
+		draw_set_alpha(0.75);
 		draw_rectangle_color(0, 0, get_window_width, get_window_height, c_black, c_black, c_black, c_black, false);
 		draw_set_alpha(1);
 		
@@ -61,7 +61,7 @@ function scr_draw_upload_character_menu()
 		var upload_clear_check_character_again_y = display_get_gui_height() - (48 * 2);
 		var upload_clear_check_character_open_character_folder_y = display_get_gui_height() - 48;
 		
-		draw_set_alpha(0.9);
+		draw_set_alpha(0.75);
 		draw_roundrect_color_ext(get_window_width * 0.5 - message_x_offset, upload_name_question_y - 32, get_window_width * 0.5 + message_x_offset, upload_name_question_y + 64, 50, 50, c_black, c_black, false);
 		draw_set_alpha(1);
 		scr_draw_text_outlined(get_window_width * 0.5, upload_name_question_y, l10n_text("Upload") + " " + string(character_name) + "?", global.default_text_size * 1.9, c_black, c_white, 1);
@@ -264,8 +264,6 @@ function scr_draw_upload_character_menu()
 						{
 							if (scr_check_network_connection(network_connect_active))
 							{
-								scr_switch_update_online_status();
-								
 								if (global.switch_logged_in)
 								{
 									if (global.switch_account_network_service_available) /* Need to make sure that network service is available before going online */
@@ -438,7 +436,7 @@ function scr_draw_upload_character_menu()
 		var do_a_clear_check_character_yes_y = 532;
 		if (!global.doing_clear_check_character)
 		{
-			draw_set_alpha(0.9);
+			draw_set_alpha(0.75);
 			draw_roundrect_color_ext(get_window_width * 0.5 - message_x_offset - 74, do_a_clear_check_character_y - 48, get_window_width * 0.5 + message_x_offset + 74, do_a_clear_check_character_y + 64, 50, 50, c_black, c_black, false);
 			draw_set_alpha(1);
 			scr_draw_text_outlined(get_window_width * 0.5, do_a_clear_check_character_y - 16, l10n_text("Do a clear check?"), global.default_text_size * 1.9, c_black, c_white, 1);
@@ -646,7 +644,7 @@ function scr_draw_upload_character_menu()
 		content_type = "character"; /* Set "content type" to be correct for what kind of files you're uploading, before uploading the files to the server */
 		var uploading_character_message_y = 532;
 		
-		draw_set_alpha(0.9);
+		draw_set_alpha(0.75);
 		draw_roundrect_color_ext(get_window_width * 0.5 - message_x_offset, uploading_character_message_y - 32, get_window_width * 0.5 + message_x_offset, uploading_character_message_y + 32, 50, 50, c_black, c_black, false);
 		draw_set_alpha(1);
 		scr_draw_text_outlined(get_window_width * 0.5, uploading_character_message_y, l10n_text("Uploading") + " " + string(character_name) + "...", global.default_text_size * 1.9, c_black, c_white, 1);
@@ -710,8 +708,6 @@ function scr_draw_upload_character_menu()
 				{
 					if (scr_check_network_connection(network_connect_active)) /* Need to check if OS is connected to network before getting online */
 					{
-						scr_switch_update_online_status();
-						
 						if (global.switch_logged_in)
 						{
 							if (global.switch_account_network_service_available) /* Need to make sure that network service is available before going online */
@@ -819,7 +815,7 @@ function scr_draw_upload_character_menu()
 	#region /* Error Character Too Big */
 	if (menu == "error_character_too_big")
 	{
-		draw_set_alpha(0.9);
+		draw_set_alpha(0.75);
 		draw_rectangle_color(0, 0, get_window_width, get_window_height, c_black, c_black, c_black, c_black, false);
 		draw_set_alpha(1);
 		scr_draw_text_outlined(get_window_width * 0.5, get_window_height * 0.5 - 42, l10n_text("Character Too Big"), global.default_text_size * 2, c_black, c_white, 1);
@@ -892,7 +888,7 @@ function scr_draw_upload_character_menu()
 		var uploaded_character_message_y = 432;
 		var ok_y = uploaded_character_message_y + 168;
 		
-		draw_set_alpha(0.9);
+		draw_set_alpha(0.75);
 		draw_roundrect_color_ext(get_window_width * 0.5 - message_x_offset, uploaded_character_message_y - 32, get_window_width * 0.5 + message_x_offset, uploaded_character_message_y + 128, 50, 50, c_black, c_black, false);
 		draw_set_alpha(1);
 		scr_draw_text_outlined(get_window_width * 0.5, uploaded_character_message_y, string(character_name) + " " + l10n_text("Uploaded"), global.default_text_size * 1.9, c_black, c_white, 1);

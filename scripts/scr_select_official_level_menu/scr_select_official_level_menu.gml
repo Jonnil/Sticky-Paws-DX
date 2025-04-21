@@ -586,6 +586,7 @@ function scr_select_official_level_menu()
 			if (global.clicking_ok_input_screen)
 			{
 				scr_switch_expand_save_data(); /* Expand the save data before making new template level */
+				
 				if (global.save_data_size_is_sufficient)
 				{
 					show_debug_message("There is sufficient save data");
@@ -596,7 +597,7 @@ function scr_select_official_level_menu()
 					menu_delay = 9999;
 				
 					/* For actual folder name, replace illegal characters with underscore only for naming folder */
-					var folder_name = scr_sanitize_alphanumeric(global.level_name);
+					var folder_name = scr_get_unique_folder_name(game_save_id + "custom_levels/", global.level_name);
 					
 					#region /* Create directories */
 					directory_create(game_save_id + "custom_levels/" + string(folder_name));
@@ -782,14 +783,14 @@ function scr_select_official_level_menu()
 					/* Update the "first created on version" so it's the version when you create the template level */
 					ini_write_string("info", "first_created_on_version", "v" + scr_get_build_date());
 					ini_write_string("info", "first_created_on_os_type", os_type);
-					show_debug_message("[scr_select_official_level_menu] Global Level Name: " + string(global.level_name));
+					show_debug_message("[scr_select_official_level_menu] Save level name to custom level as: " + string(global.level_name));
 					ini_write_string("info", "level_name", string(global.level_name));
 					ini_write_string("info", "level_description", ""); /* Save a blank level description */
 					show_debug_message("Set first_created_on_version to v" + scr_get_build_date());
 					
 					ini_close(); /* Don't commit the save data on Switch, this is only temporary! */
 					
-					global.level_name = folder_name; /* Set the global level name to the filtered level name, because it will be reading filtered folder names */
+					global.level_name = string(folder_name); /* Set the global level name to the filtered level name, because it will be reading filtered folder names */
 					
 					allowed_to_load_template_level = true;
 					

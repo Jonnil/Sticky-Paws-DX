@@ -149,6 +149,7 @@ downloaded_thumbnail_sprite = noone; /* When downloading a level, you want to sh
 level_editor_edit_name = false; /* If you are editing an already made level's name or not */
 old_level_name = ""; /* Need to remember original name of level, so that renaming level doesn't actually happen if you haven't edited the name */
 old_level_description = ""; /* Need to remember original description of level, so that renaming level doesn't actually happen if you haven't edited the description */
+old_level_index = ds_list_find_value(global.all_loaded_custom_levels, global.select_level_index);
 show_level_editor_corner_menu = true; /* If the top-left corner menu should be shown and navigatable or not. In some cases like uploading a level, the menu should not show up */
 show_delete_button = true; /* If delete custom level buttons should show up or not. Sometimes you don't want it to show up when the feature is unavailable */
 file_found = "";

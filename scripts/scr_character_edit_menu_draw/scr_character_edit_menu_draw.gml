@@ -398,7 +398,7 @@ function scr_character_edit_menu_draw()
 		|| (menu == "sprite_not_exist_guide")
 		{
 			/* When the sprite doesn't exist when you search for it, warn the player of this, and the player has to click "ok" */
-			draw_set_alpha(0.9);
+			draw_set_alpha(0.75);
 			draw_rectangle_color(0, 0, display_get_gui_width(), display_get_gui_height(), c_black, c_black, c_black, c_black, false);
 			draw_set_alpha(1);
 			

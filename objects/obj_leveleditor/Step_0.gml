@@ -444,6 +444,7 @@ if (!global.actually_play_edited_level)
 		instance_activate_object(obj_level_width);
 		instance_activate_object(obj_water_level_height);
 		instance_activate_object(obj_background_brightness_gameplay);
+		instance_activate_object(obj_debug_manager);
 		#endregion /* Activate objects that always should be active END */
 		
 		if (instance_exists(obj_leveleditor_placed_object))
@@ -2562,3 +2563,5 @@ if (!global.actually_play_edited_level && quit_level_editor == 0)
 	#endregion /* Click icon at bottom of screen END */
 	
 }
+
+scr_load_custom_levels();

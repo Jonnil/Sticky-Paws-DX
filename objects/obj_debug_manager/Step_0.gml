@@ -30,7 +30,8 @@ scr_debug_process_cheat_inputs();
 check_fps_bug_report();
 
 if (global.debug_screen)
-&& (keyboard_check(vk_control) || keyboard_check(vk_shift))
+&& (keyboard_check(vk_control)
+|| keyboard_check(vk_shift))
 && (keyboard_check(ord("M")))
 {
 	/* Grab the current date/time as a string */

@@ -15,7 +15,7 @@ function scr_draw_network_error_menu()
 		var mouse_get_y	= device_mouse_y_to_gui(0);
 		
 		/* Add a semi-transparent dark overlay */
-		draw_set_alpha(0.9);
+		draw_set_alpha(0.75);
 		draw_rectangle_color(0, 0, window_width, window_height, c_black, c_black, c_black, c_black, false);
 		draw_set_alpha(1);
 		

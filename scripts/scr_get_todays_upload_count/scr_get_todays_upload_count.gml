@@ -1,7 +1,5 @@
 function scr_get_todays_upload_count()
 {
-	scr_switch_update_online_status(false);
-	
 	if (global.online_enabled
 	&& global.online_token_validated
 	&& global.switch_logged_in

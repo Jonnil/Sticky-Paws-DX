@@ -69,3 +69,8 @@ if (!close)
 draw_set_halign(fa_center);
 draw_set_valign(fa_middle);
 scr_draw_text_outlined(get_window_width * 0.5, get_window_height * 0.5 - 32, l10n_text("Copied"), global.default_text_size * copied_text_size, c_black, c_lime, 1);
+
+if (global.controls_used_for_navigation == "mouse")
+{
+	draw_sprite_ext(spr_cursor, 0, device_mouse_x_to_gui(0), device_mouse_y_to_gui(0), 1, 1, 0, c_white, 1);
+}

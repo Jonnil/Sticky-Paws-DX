@@ -1,0 +1,13 @@
+{
+  "$GMScript":"v1",
+  "%Name":"scr_clear_thumbnail_sprites",
+  "isCompatibility":false,
+  "isDnD":false,
+  "name":"scr_clear_thumbnail_sprites",
+  "parent":{
+    "name":"Other",
+    "path":"folders/Scripts/Other.yy",
+  },
+  "resourceType":"GMScript",
+  "resourceVersion":"2.0",
+}

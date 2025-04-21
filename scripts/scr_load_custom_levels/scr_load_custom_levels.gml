@@ -34,7 +34,7 @@ function scr_load_custom_levels()
 			&& (is_array(thumbnail_custom_background))
 			&& (array_length(thumbnail_custom_background) > 0)
 			{
-				for(i = 1; i < ds_list_size(global.thumbnail_sprite); i += 1)
+				for(var i = 1; i < ds_list_size(global.thumbnail_sprite); i += 1)
 				{
 					ini_open(game_save_id + "custom_levels/" + string(ds_list_find_value(global.all_loaded_custom_levels, i)) + "/data/level_information.ini");
 					thumbnail_clear_check[i] = ini_read_real("info", "clear_check", false);
@@ -52,6 +52,8 @@ function scr_load_custom_levels()
 						thumbnail_level_name[i] = string(ini_read_string("info", "level_name", ""));
 					}
 					
+					show_debug_message("[scr_load_custom_levels] thumbnail level name [" + string(i) + "] = " + string(thumbnail_level_name[i]) + " - ini level name: " + string(ini_read_string("info", "level_name", "")));
+					
 					if (switch_check_profanity(string(ini_read_string("info", "level_description", ""))))
 					{
 						thumbnail_level_description[i] = string(switch_mask_profanity(ini_read_string("info", "level_description", "")));
@@ -60,6 +62,8 @@ function scr_load_custom_levels()
 					{
 						thumbnail_level_description[i] = string(ini_read_string("info", "level_description", ""));
 					}
+					
+					show_debug_message("[scr_load_custom_levels] thumbnail level description [" + string(i) + "] = " + string(thumbnail_level_description[i]) + " - ini level description: " + string(ini_read_string("info", "level_description", "")));
 					
 					if (switch_check_profanity(string(ini_read_string("info", "username", ""))))
 					{
@@ -70,6 +74,8 @@ function scr_load_custom_levels()
 						thumbnail_level_username[i] = string(ini_read_string("info", "username", ""));
 					}
 					
+					show_debug_message("[scr_load_custom_levels] thumbnail level username [" + string(i) + "] = " + string(thumbnail_level_username[i]) + " - ini username: " + string(ini_read_string("info", "username", "")));
+					
 					ini_close(); /* Don't commit the save data on Switch, this is only temporary! */
 				}
 			}
@@ -78,7 +84,6 @@ function scr_load_custom_levels()
 			{
 				show_level_editor_corner_menu = true;
 				select_custom_level_menu_open = false;
-				i = 0;
 				file_found = "";
 				menu = "load_custom_level"; /* If all custom levels are not loaded, then reload all custom levels before going to the level select menu */
 				menu_delay = 3;
@@ -109,7 +114,6 @@ function scr_load_custom_levels()
 				/* Go to the custom level select menu */
 				can_navigate = true;
 				file_load_timer = 0;
-				i = 0;
 				file_found = "";
 				menu = "level_editor_play";
 				menu_delay = 3;

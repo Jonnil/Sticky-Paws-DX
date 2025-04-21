@@ -10,7 +10,7 @@ function scr_draw_upload_account_name(what_kind_of_file = "level")
 	|| (menu == "question_upload_" + string(what_kind_of_file) + "_edit_username_ok")
 	|| (menu == "question_upload_" + string(what_kind_of_file) + "_edit_username_cancel")
 	{
-		draw_set_alpha(0.9);
+		draw_set_alpha(0.75);
 		draw_rectangle_color(0, 0, get_window_width, get_window_height, c_black, c_black, c_black, c_black, false);
 		draw_set_alpha(1);
 		
@@ -158,7 +158,7 @@ function scr_draw_upload_account_name(what_kind_of_file = "level")
 	if (menu == "upload_" + string(what_kind_of_file) + "_edit_username_ok")
 	|| (menu == "upload_" + string(what_kind_of_file) + "_edit_username_cancel")
 	{
-		draw_set_alpha(0.9);
+		draw_set_alpha(0.75);
 		draw_rectangle_color(0, 0, get_window_width, get_window_height, c_black, c_black, c_black, c_black, false);
 		draw_set_alpha(1);
 		
@@ -182,8 +182,6 @@ function scr_draw_upload_account_name(what_kind_of_file = "level")
 			
 			if (scr_check_network_connection(network_connect_active))
 			{
-				scr_switch_update_online_status();
-				
 				if (global.switch_logged_in)
 				{
 					if (global.switch_account_network_service_available) /* Need to make sure that network service is available before going online */

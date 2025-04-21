@@ -14,8 +14,7 @@ function scr_debug_init_cheat_codes()
 			action: function()
 			{
 				global.debug_screen = !global.debug_screen;
-				global.debug_mode_activated_once = true;
-				show_debug_message("Debug mode toggled: " + string(global.debug_screen));
+				show_debug_message("[scr_debug_init_cheat_codes] Debug mode toggled: " + string(global.debug_screen));
 			}
 		}
 		,
@@ -26,7 +25,7 @@ function scr_debug_init_cheat_codes()
 			action: function()
 			{
 				scr_unlock_placable_level_objects(true);
-				show_debug_message("Unlocked all objects in level editor");
+				show_debug_message("[scr_debug_init_cheat_codes] Unlocked all objects in level editor");
 			}
 		}
 	];

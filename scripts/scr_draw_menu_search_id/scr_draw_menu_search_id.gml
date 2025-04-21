@@ -56,7 +56,7 @@ function scr_draw_menu_search_id(what_kind_of_id = "level")
 			{
 			
 				#region /* Opaque transparent black rectangle over whole screen, but underneath text */
-				draw_set_alpha(0.9);
+				draw_set_alpha(0.75);
 				draw_rectangle_color(- 32, - 32, get_window_width + 32, get_window_height + 32, c_black, c_black, c_black, c_black, false);
 				draw_set_alpha(1);
 				#endregion /* Opaque transparent black rectangle over whole screen, but underneath text END */
@@ -412,7 +412,7 @@ function scr_draw_menu_search_id(what_kind_of_id = "level")
 			#region /* Draw text explaining to the player that the file is downloading, and a loading icon that is spinning */
 		
 			#region /* Opaque transparent black rectangle over whole screen, but underneath name input screen */
-			draw_set_alpha(0.9);
+			draw_set_alpha(0.75);
 			draw_rectangle_color(- 32, - 32, get_window_width + 32, get_window_height + 32, c_black, c_black, c_black, c_black, false);
 			draw_set_alpha(1);
 			#endregion /* Opaque transparent black rectangle over whole screen, but underneath name input screen END */
@@ -492,7 +492,7 @@ function scr_draw_menu_search_id(what_kind_of_id = "level")
 		{
 		
 			#region /* Opaque transparent black rectangle over whole screen, but underneath text */
-			draw_set_alpha(0.9);
+			draw_set_alpha(0.75);
 			draw_rectangle_color(- 32, - 32, get_window_width + 32, get_window_height + 32, c_black, c_black, c_black, c_black, false);
 			draw_set_alpha(1);
 			#endregion /* Opaque transparent black rectangle over whole screen, but underneath text END */
@@ -1357,7 +1357,7 @@ function scr_draw_menu_search_id(what_kind_of_id = "level")
 		|| (menu == "searched_file_downloaded_deleted_back_to_list")
 		{
 			#region /* Opaque transparent black rectangle over whole screen, but underneath text */
-			draw_set_alpha(0.9);
+			draw_set_alpha(0.75);
 			draw_rectangle_color(- 32, - 32, get_window_width + 32, get_window_height + 32, c_black, c_black, c_black, c_black, false);
 			draw_set_alpha(1);
 			#endregion /* Opaque transparent black rectangle over whole screen, but underneath text END */
@@ -1481,7 +1481,7 @@ function scr_draw_menu_search_id(what_kind_of_id = "level")
 		if (menu == "searched_file_downloaded_failed")
 		{
 			#region /* Opaque transparent black rectangle over whole screen, but underneath text */
-			draw_set_alpha(0.9);
+			draw_set_alpha(0.75);
 			draw_rectangle_color(- 32, - 32, get_window_width + 32, get_window_height + 32, c_black, c_black, c_black, c_black, false);
 			draw_set_alpha(1);
 			#endregion /* Opaque transparent black rectangle over whole screen, but underneath text END */

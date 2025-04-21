@@ -3836,7 +3836,7 @@ function scr_option_level_editor()
 			file_found = "";
 			file_load_timer = 0;
 			level_find_pos = 0;
-			ds_list_clear(global.thumbnail_sprite); show_debug_message("[scr_option_level_editor] ds_list_clear(global.thumbnail sprite)");
+			scr_clear_thumbnail_sprites();
 			menu_delay = 3;
 			menu = "load2_official_level_to_take_from";
 		}

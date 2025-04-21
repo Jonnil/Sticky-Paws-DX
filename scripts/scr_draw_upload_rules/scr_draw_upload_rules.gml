@@ -15,7 +15,7 @@ function scr_draw_upload_rules()
 		}
 		
 		#region /* Opaque transparent black rectangle over whole screen, but underneath text */
-		draw_set_alpha(0.9);
+		draw_set_alpha(0.75);
 		draw_rectangle_color(- 32, - 32, display_get_gui_width() + 32, display_get_gui_height() + 32, c_black, c_black, c_black, c_black, false);
 		draw_set_alpha(1);
 		#endregion /* Opaque transparent black rectangle over whole screen, but underneath text END */

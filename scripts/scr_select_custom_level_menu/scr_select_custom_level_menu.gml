@@ -499,8 +499,6 @@ function scr_select_custom_level_menu()
 					if (global.online_enabled)
 					&& (scr_check_network_connection(network_connect_active))
 					{
-						scr_switch_update_online_status();
-					
 						if (global.switch_logged_in)
 						{
 							if (global.switch_account_network_service_available) /* Need to make sure that network service is available before going online */
@@ -680,13 +678,16 @@ function scr_select_custom_level_menu()
 				draw_set_halign(fa_center);
 				scr_draw_text_outlined(get_window_width * 0.5, get_window_height - 42, string(thumbnail_level_description[global.select_level_index]), global.default_text_size, c_black, c_white, 1);
 			}
+			
 			draw_set_halign(fa_right);
+			
 			if (is_array(thumbnail_level_username))
 			&& (array_length(thumbnail_level_username) > 0)
 			&& (global.select_level_index >= 0)
 			&& (global.select_level_index < array_length(thumbnail_level_username))
 			&& (thumbnail_level_username[global.select_level_index] != "")
 			{
+				draw_set_valign(fa_middle);
 				scr_draw_text_outlined(display_get_gui_width() - 32, display_get_gui_height() - 32, l10n_text("By") + ": " + string(thumbnail_level_username[global.select_level_index]), global.default_text_size, c_black, c_white, 1);
 			}
 		}
@@ -712,10 +713,14 @@ function scr_select_custom_level_menu()
 			}
 		
 			show_level_editor_corner_menu = false;
+			
 			if (can_input_level_name)
 			{
 				global.level_name = scr_draw_name_input_screen(global.level_name, 32, c_black, 1, false, 394 * (global.select_level_index - column * row) + 300 + thumbnail_x_offset, draw_name_input_screen_y, "level_editor_enter_name_ok", "level_editor_enter_name_cancel", false, true, false);
-				if (creating_daily_build) {
+				
+				if (variable_instance_exists(self, "creating_daily_build")
+				&& creating_daily_build)
+				{
 					scr_draw_text_outlined(display_get_gui_width() * 0.5, 64, l10n_text("Daily Build"), global.default_text_size * 2, c_black, c_white, 1);
 					scr_draw_text_outlined(display_get_gui_width() * 0.5, 128, l10n_text("The Daily Build features different items every day"), global.default_text_size, c_black, c_white, 1);
 				}
@@ -749,16 +754,17 @@ function scr_select_custom_level_menu()
 						{
 						
 							#region /* When creating a level from scratch, not editing level name of already existing level, run this code */
-							var folder_name = scr_sanitize_alphanumeric(global.level_name);
+							var folder_name = scr_get_unique_folder_name(game_save_id + "custom_levels/", global.level_name);
 							
 							if (global.level_name != "")
 							{
 								ini_open(game_save_id + "custom_levels/" + string(folder_name) + "/data/level_information.ini");
-								show_debug_message("[scr_select_custom_level_menu] Global Level Name: " + string(global.level_name));
+								show_debug_message("[scr_select_custom_level_menu] Save level name to custom level as: " + string(global.level_name));
 								ini_write_string("info", "level_name", string(global.level_name));
 								ini_write_string("info", "level_description", ""); /* Save a blank level description */
 								
-								if (creating_daily_build)
+								if (variable_instance_exists(self, "creating_daily_build")
+								&& creating_daily_build)
 								{
 									ini_write_real("info", "if_daily_build", true);
 								}
