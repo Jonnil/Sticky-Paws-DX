@@ -502,6 +502,7 @@ function scr_select_official_level_menu()
 			scr_load_custom_level_initializing();
 			global.select_level_index = 0;
 			scroll_to = floor(global.select_level_index / row);
+			
 			if (room == rm_title)
 			{
 				menu = "load_custom_level";

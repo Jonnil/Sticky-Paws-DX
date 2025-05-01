@@ -656,7 +656,8 @@ if (global.character_select_in_this_menu == "main_game")
 			score = 0;
 			
 			#region /* Save Level Information when in level editor */
-			if (global.level_name != "" && !global.actually_play_edited_level)
+			if (global.level_name != ""
+			&& !global.actually_play_edited_level)
 			{
 				ini_open(game_save_id + "custom_levels/" + string(global.level_name) + "/data/level_information.ini");
 				ini_write_real("info", "view_xview", camera_get_view_x(view_camera[view_current]));

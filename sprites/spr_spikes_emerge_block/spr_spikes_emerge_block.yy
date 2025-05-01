@@ -1,5 +1,5 @@
 {
-  "$GMSprite":"",
+  "$GMSprite":"v1",
   "%Name":"spr_spikes_emerge_block",
   "bboxMode":2,
   "bbox_bottom":46,

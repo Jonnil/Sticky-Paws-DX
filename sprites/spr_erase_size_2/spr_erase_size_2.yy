@@ -1,5 +1,5 @@
 {
-  "$GMSprite":"",
+  "$GMSprite":"v1",
   "%Name":"spr_erase_size_2",
   "bboxMode":0,
   "bbox_bottom":127,

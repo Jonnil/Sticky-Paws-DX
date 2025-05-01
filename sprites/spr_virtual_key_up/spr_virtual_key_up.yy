@@ -1,5 +1,5 @@
 {
-  "$GMSprite":"",
+  "$GMSprite":"v1",
   "%Name":"spr_virtual_key_up",
   "bboxMode":0,
   "bbox_bottom":127,

@@ -1,5 +1,5 @@
 {
-  "$GMSprite":"",
+  "$GMSprite":"v1",
   "%Name":"spr_rotate_arrow",
   "bboxMode":0,
   "bbox_bottom":64,

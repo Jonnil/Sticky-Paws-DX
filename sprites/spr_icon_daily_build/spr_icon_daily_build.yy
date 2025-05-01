@@ -1,5 +1,5 @@
 {
-  "$GMSprite":"",
+  "$GMSprite":"v1",
   "%Name":"spr_icon_daily_build",
   "bboxMode":0,
   "bbox_bottom":34,

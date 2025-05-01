@@ -1,5 +1,5 @@
 {
-  "$GMSprite":"",
+  "$GMSprite":"v1",
   "%Name":"spr_thumbnail_missing",
   "bboxMode":0,
   "bbox_bottom":215,

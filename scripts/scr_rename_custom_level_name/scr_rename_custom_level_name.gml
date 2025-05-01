@@ -38,8 +38,8 @@ function scr_rename_custom_level_name()
 			global.level_name = switch_mask_profanity(global.level_name);
 		}
 		
-		show_debug_message("[scr_rename_custom_level_name] Save level name to custom level as: " + string(global.level_name));
-		masked_level_name = global.level_name;
+		show_debug_message("[scr_rename_custom_level_name] Save level name to custom level as 'global level name' : " + string(global.level_name));
+		masked_level_name = string(global.level_name);
 		ini_write_string("info", "level_name", string(global.level_name)); /* Write the actual unfiltered level name you typed */
 		
 		if (variable_instance_exists(self, "creating_daily_build")
@@ -52,7 +52,7 @@ function scr_rename_custom_level_name()
 		
 		if (variable_instance_exists(self, "thumbnail_level_name"))
 		{
-			thumbnail_level_name[global.select_level_index] = global.level_name;
+			thumbnail_level_name[global.select_level_index] = string(global.level_name);
 		}
 	}
 	

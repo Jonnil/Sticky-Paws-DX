@@ -1,5 +1,5 @@
 {
-  "$GMSprite":"",
+  "$GMSprite":"v1",
   "%Name":"spr_map_tree_yawn",
   "bboxMode":0,
   "bbox_bottom":63,

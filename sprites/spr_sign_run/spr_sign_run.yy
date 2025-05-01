@@ -1,5 +1,5 @@
 {
-  "$GMSprite":"",
+  "$GMSprite":"v1",
   "%Name":"spr_sign_run",
   "bboxMode":0,
   "bbox_bottom":138,

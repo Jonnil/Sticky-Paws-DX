@@ -1,5 +1,5 @@
 {
-  "$GMSound":"",
+  "$GMSound":"v1",
   "%Name":"snd_skidding_ice",
   "audioGroupId":{
     "name":"audiogroup_default",
@@ -10,6 +10,7 @@
   "compression":0,
   "conversionMode":0,
   "duration":11.556188,
+  "exportDir":"",
   "name":"snd_skidding_ice",
   "parent":{
     "name":"Sounds",

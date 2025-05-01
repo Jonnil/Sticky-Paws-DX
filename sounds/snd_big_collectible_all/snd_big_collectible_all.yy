@@ -1,5 +1,5 @@
 {
-  "$GMSound":"",
+  "$GMSound":"v1",
   "%Name":"snd_big_collectible_all",
   "audioGroupId":{
     "name":"audiogroup_default",
@@ -10,6 +10,7 @@
   "compression":0,
   "conversionMode":0,
   "duration":1.137778,
+  "exportDir":"",
   "name":"snd_big_collectible_all",
   "parent":{
     "name":"Sounds",

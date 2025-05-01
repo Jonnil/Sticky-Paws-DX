@@ -1,5 +1,5 @@
 {
-  "$GMSprite":"",
+  "$GMSprite":"v1",
   "%Name":"spr_warp_box_one_use_locked",
   "bboxMode":0,
   "bbox_bottom":33,

@@ -18,7 +18,7 @@ function scr_select_custom_level_menu()
 			var max_custom_levels_reached = false;
 		}
 	    
-		scroll = lerp(scroll, scroll_to, 0.15)
+		scroll = lerp(scroll, scroll_to, 0.15);
 	    
 		if (have_downloaded_from_server)
 		{
@@ -738,13 +738,15 @@ function scr_select_custom_level_menu()
 					scr_switch_expand_save_data(); /* Expand the save data before editing level name */
 					if (global.save_data_size_is_sufficient)
 					{
-						if (level_editor_edit_name && global.level_name != old_level_name)
+						if (level_editor_edit_name
+						&& global.level_name != old_level_name)
 						{
 							global.go_to_menu_when_going_back_to_title = "level_editor_edit_name";
 							scr_rename_custom_level_name();
 						}
 						else
-						if (level_editor_edit_name && global.level_name == old_level_name)
+						if (level_editor_edit_name
+						&& global.level_name == old_level_name)
 						{
 							menu = "level_editor_edit_name";
 							level_editor_edit_name = false;

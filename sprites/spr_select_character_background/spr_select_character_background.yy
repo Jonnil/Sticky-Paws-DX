@@ -1,5 +1,5 @@
 {
-  "$GMSprite":"",
+  "$GMSprite":"v1",
   "%Name":"spr_select_character_background",
   "bboxMode":0,
   "bbox_bottom":567,

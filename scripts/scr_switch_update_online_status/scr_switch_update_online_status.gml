@@ -1,5 +1,6 @@
 function scr_switch_update_online_status(show_login_screen = true)
 {
+	
 	#region /* Update Switch Online Status */
 	if (os_type == os_switch)
 	{
@@ -35,19 +36,33 @@ function scr_switch_update_online_status(show_login_screen = true)
 					var id_token = switch_accounts_get_online_token(i);
 					show_debug_message("[scr_switch_update_online_status] Retrieved ID Token for account " + string(i) + ": " + string(id_token));
 					
+					/* Debug Token Info */
+					global.online_token_source	= l10n_text("Switch Account Services");
+					global.online_token_present	= (id_token != "" 
+												&& id_token != undefined 
+												&& id_token != false);
+					
 					/* Validate token */
-					if (id_token != ""
-					&& id_token != undefined
-					&& id_token != false)
+					if (global.online_token_present)
 					{
 						show_debug_message("[scr_switch_update_online_status] Valid ID Token found for account index: " + string(i));
 						valid_id_token_found = true;
+						
+						/* Debug Token Info */
+						global.online_token_expired				= false;
+						global.online_current_attempt_result	= l10n_text("Valid ID Token");
+						
 						break; /* We only need one valid token */
 					}
 					else
 					{
 						show_debug_message("[scr_switch_update_online_status] Invalid ID Token for account index: " + string(i));
 						logged_in_account = undefined; /* Reset if token is invalid */
+						
+						/* Debug Token Info */
+						global.online_token_expired				= false;  
+						global.online_current_attempt_result	= l10n_text("Invalid ID Token");
+						
 						global.online_token_error_message = "ID Token retrieval failed/invalid for account index: " + string(i);
 					}
 				}
@@ -102,7 +117,7 @@ function scr_switch_update_online_status(show_login_screen = true)
 					global.online_token_error_message = ""; /* Clear error message on success */
 				}
 			}
-			#endregion
+			#endregion /* Prompt user if needed END */
 			
 			/* Update global switch login status */
 			global.switch_logged_in = !is_undefined(logged_in_account);
@@ -110,6 +125,7 @@ function scr_switch_update_online_status(show_login_screen = true)
 			
 			if (global.switch_logged_in)
 			{
+				
 				#region /* Process all accounts for detailed info and token validation */
 				for (var i = 0; i < switch_accounts_num; ++i)
 				{
@@ -157,7 +173,7 @@ function scr_switch_update_online_status(show_login_screen = true)
 						show_debug_message("[scr_switch_update_online_status] Skipping token validation for account " + string(i) + " (Account closed or offline).");
 					}
 				}
-				#endregion
+				#endregion /* Process all accounts for detailed info and token validation END */
 			}
 			else
 			{
@@ -174,6 +190,10 @@ function scr_switch_update_online_status(show_login_screen = true)
 			global.online_token_validated = false;
 			global.switch_account_network_service_available = false;
 			global.online_token_error_message = "System is not connected to the network.";
+			
+			/* Debug Online Info */
+			global.online_current_attempt_result	= l10n_text("No network connection");
+			
 			show_debug_message("[scr_switch_update_online_status] Network connection FAIL (passive check). Global login flags set to false.");
 		}
 	}

@@ -1,5 +1,5 @@
 {
-  "$GMSprite":"",
+  "$GMSprite":"v1",
   "%Name":"spr_wall_gravel",
   "bboxMode":0,
   "bbox_bottom":31,

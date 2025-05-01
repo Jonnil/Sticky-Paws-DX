@@ -173,10 +173,12 @@ function scr_character_select_menu_step()
 						{
 							global.select_level_index = 0;
 							scr_load_custom_level_initializing();
+							
 							for(var i = 1; i <= global.max_players; i += 1)
 							{
 								can_input_player_name[i] = 2;
 							}
+							
 							can_navigate = true;
 							menu_delay = 3;
 							open_sub_menu = false;

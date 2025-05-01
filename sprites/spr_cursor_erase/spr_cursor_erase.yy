@@ -1,5 +1,5 @@
 {
-  "$GMSprite":"",
+  "$GMSprite":"v1",
   "%Name":"spr_cursor_erase",
   "bboxMode":0,
   "bbox_bottom":21,

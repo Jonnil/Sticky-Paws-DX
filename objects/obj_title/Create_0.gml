@@ -237,10 +237,12 @@ if (global.character_select_in_this_menu == "level_editor")
 {
 	scr_load_custom_level_initializing();
 	
-	for(var p = 1; p <= global.max_players; p += 1) {
+	for(var p = 1; p <= global.max_players; p += 1)
+	{
 		can_input_player_name[p] = false;
 		player_accept_selection[p] = false;
 	}
+	
 	can_navigate = true;
 	open_sub_menu = false;
 	menu = "load_custom_level";

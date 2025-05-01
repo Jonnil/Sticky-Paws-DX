@@ -1,5 +1,5 @@
 {
-  "$GMSprite":"",
+  "$GMSprite":"v1",
   "%Name":"spr_falling_block_long",
   "bboxMode":2,
   "bbox_bottom":17,

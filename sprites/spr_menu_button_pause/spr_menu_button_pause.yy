@@ -1,5 +1,5 @@
 {
-  "$GMSprite":"",
+  "$GMSprite":"v1",
   "%Name":"spr_menu_button_pause",
   "bboxMode":0,
   "bbox_bottom":63,

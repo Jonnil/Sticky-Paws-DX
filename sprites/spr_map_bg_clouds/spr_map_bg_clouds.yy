@@ -1,5 +1,5 @@
 {
-  "$GMSprite":"",
+  "$GMSprite":"v1",
   "%Name":"spr_map_bg_clouds",
   "bboxMode":0,
   "bbox_bottom":380,

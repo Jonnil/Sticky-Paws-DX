@@ -1,5 +1,5 @@
 {
-  "$GMSound":"",
+  "$GMSound":"v1",
   "%Name":"snd_skiddingvertical",
   "audioGroupId":{
     "name":"audiogroup_default",
@@ -10,6 +10,7 @@
   "compression":0,
   "conversionMode":0,
   "duration":19.512688,
+  "exportDir":"",
   "name":"snd_skiddingvertical",
   "parent":{
     "name":"Sounds",

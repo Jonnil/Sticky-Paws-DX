@@ -12,16 +12,16 @@ function scr_draw_menu_search_id(what_kind_of_id = "level")
 		var delete_file_after_download = true; /* Should be set to true when creating executable */
 		var back_to_list_x = 0;
 		var back_to_list_y = 0;
-		var back_to_list_button_width = 1.5;
+		var back_to_list_button_width = 1;
 		var fixed_player = 1;
-	
+		
 		var download_temp_path = temp_directory;
-	
+		
 		#region /* Search ID menu */
 		if (menu == "search_id_ok")
 		|| (menu == "search_id_cancel")
 		{
-		
+			
 			#region /* Set name input screen to always be above the virtual keyboard */
 			if (keyboard_virtual_status()
 			&& keyboard_virtual_height() != 0
@@ -34,13 +34,14 @@ function scr_draw_menu_search_id(what_kind_of_id = "level")
 				var draw_name_input_screen_y = get_window_height * 0.5;
 			}
 			#endregion /* Set name input screen to always be above the virtual keyboard END */
-		
+			
 			if (!in_online_download_list_menu)
 			&& (!automatically_search_for_id)
 			{
 				search_id = scr_draw_name_input_screen(search_id, id_max_length, c_black, 1, false, get_window_width * 0.5, draw_name_input_screen_y, "search_id_ok", "search_id_cancel", true, false, true);
 				draw_set_halign(fa_center);
 				draw_set_valign(fa_middle);
+				
 				if (what_kind_of_id == "level")
 				{
 					var please_enter_what = l10n_text("Please enter a level ID");
@@ -50,19 +51,20 @@ function scr_draw_menu_search_id(what_kind_of_id = "level")
 				{
 					var please_enter_what = l10n_text("Please enter a character ID");
 				}
+				
 				scr_draw_text_outlined(get_window_width * 0.5, draw_name_input_screen_y - 64, string(please_enter_what), global.default_text_size * 2, c_black, c_white, 1)
 			}
 			else
 			{
-			
+				
 				#region /* Opaque transparent black rectangle over whole screen, but underneath text */
 				draw_set_alpha(0.75);
 				draw_rectangle_color(- 32, - 32, get_window_width + 32, get_window_height + 32, c_black, c_black, c_black, c_black, false);
 				draw_set_alpha(1);
 				#endregion /* Opaque transparent black rectangle over whole screen, but underneath text END */
-			
+				
 			}
-		
+			
 			#region /* Search ID Button Navigation */
 			if (menu_delay == 0 && menu_joystick_delay == 0)
 			{
@@ -97,7 +99,7 @@ function scr_draw_menu_search_id(what_kind_of_id = "level")
 				}
 			}
 			#endregion /* Search ID Button Navigation END */
-		
+			
 			#region /* Press Escape to back out from Search ID menu */
 			if (global.clicking_cancel_input_screen)
 			&& (scr_online_token_is_valid() == true)

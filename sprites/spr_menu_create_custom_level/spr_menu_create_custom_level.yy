@@ -1,5 +1,5 @@
 {
-  "$GMSprite":"",
+  "$GMSprite":"v1",
   "%Name":"spr_menu_create_custom_level",
   "bboxMode":0,
   "bbox_bottom":215,

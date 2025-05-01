@@ -2,7 +2,7 @@
   "$GMProject":"v1",
   "%Name":"Sticky Paws DX",
   "AudioGroups":[
-    {"$GMAudioGroup":"","%Name":"audiogroup_default","name":"audiogroup_default","resourceType":"GMAudioGroup","resourceVersion":"2.0","targets":-1,},
+    {"$GMAudioGroup":"v1","%Name":"audiogroup_default","exportDir":"","name":"audiogroup_default","resourceType":"GMAudioGroup","resourceVersion":"2.0","targets":-1,},
   ],
   "configs":{
     "children":[],
@@ -2653,7 +2653,7 @@
   "isEcma":false,
   "LibraryEmitters":[],
   "MetaData":{
-    "IDEVersion":"2024.1300.0.785",
+    "IDEVersion":"2024.1400.0.795",
   },
   "name":"Sticky Paws DX",
   "resources":[
@@ -2908,6 +2908,7 @@
     {"id":{"name":"scr_format_timestamp","path":"scripts/scr_format_timestamp/scr_format_timestamp.yy",},},
     {"id":{"name":"scr_gamepad_vibration","path":"scripts/scr_gamepad_vibration/scr_gamepad_vibration.yy",},},
     {"id":{"name":"scr_generate_id","path":"scripts/scr_generate_id/scr_generate_id.yy",},},
+    {"id":{"name":"scr_generate_network_error_code","path":"scripts/scr_generate_network_error_code/scr_generate_network_error_code.yy",},},
     {"id":{"name":"scr_get_1up_when_collect_basic_collectibles","path":"scripts/scr_get_1up_when_collect_basic_collectibles/scr_get_1up_when_collect_basic_collectibles.yy",},},
     {"id":{"name":"scr_get_build_date","path":"scripts/scr_get_build_date/scr_get_build_date.yy",},},
     {"id":{"name":"scr_get_each_big_collectible_from_main_game","path":"scripts/scr_get_each_big_collectible_from_main_game/scr_get_each_big_collectible_from_main_game.yy",},},

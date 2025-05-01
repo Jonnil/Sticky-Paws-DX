@@ -1,5 +1,5 @@
 {
-  "$GMSprite":"",
+  "$GMSprite":"v1",
   "%Name":"spr_skid_dust",
   "bboxMode":0,
   "bbox_bottom":30,

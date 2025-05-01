@@ -1,5 +1,5 @@
 {
-  "$GMSprite":"",
+  "$GMSprite":"v1",
   "%Name":"spr_icon_played",
   "bboxMode":0,
   "bbox_bottom":34,

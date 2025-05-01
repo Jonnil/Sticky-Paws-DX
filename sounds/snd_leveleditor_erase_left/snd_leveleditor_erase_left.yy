@@ -1,5 +1,5 @@
 {
-  "$GMSound":"",
+  "$GMSound":"v1",
   "%Name":"snd_leveleditor_erase_left",
   "audioGroupId":{
     "name":"audiogroup_default",
@@ -10,6 +10,7 @@
   "compression":0,
   "conversionMode":0,
   "duration":3.169524,
+  "exportDir":"",
   "name":"snd_leveleditor_erase_left",
   "parent":{
     "name":"Sounds",

@@ -1,5 +1,5 @@
 {
-  "$GMSprite":"",
+  "$GMSprite":"v1",
   "%Name":"spr_wall_climb_panel",
   "bboxMode":0,
   "bbox_bottom":31,

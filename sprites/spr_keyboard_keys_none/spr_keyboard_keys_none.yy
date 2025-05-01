@@ -1,5 +1,5 @@
 {
-  "$GMSprite":"",
+  "$GMSprite":"v1",
   "%Name":"spr_keyboard_keys_none",
   "bboxMode":0,
   "bbox_bottom":57,

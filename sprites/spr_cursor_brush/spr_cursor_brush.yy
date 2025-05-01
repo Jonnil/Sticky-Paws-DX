@@ -1,5 +1,5 @@
 {
-  "$GMSprite":"",
+  "$GMSprite":"v1",
   "%Name":"spr_cursor_brush",
   "bboxMode":0,
   "bbox_bottom":19,

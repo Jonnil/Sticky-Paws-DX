@@ -270,6 +270,7 @@
     {"name":"scr_format_timestamp","order":106,"path":"scripts/scr_format_timestamp/scr_format_timestamp.yy",},
     {"name":"scr_gamepad_vibration","order":13,"path":"scripts/scr_gamepad_vibration/scr_gamepad_vibration.yy",},
     {"name":"scr_generate_id","order":7,"path":"scripts/scr_generate_id/scr_generate_id.yy",},
+    {"name":"scr_generate_network_error_code","order":30,"path":"scripts/scr_generate_network_error_code/scr_generate_network_error_code.yy",},
     {"name":"scr_get_1up_when_collect_basic_collectibles","order":63,"path":"scripts/scr_get_1up_when_collect_basic_collectibles/scr_get_1up_when_collect_basic_collectibles.yy",},
     {"name":"scr_get_build_date","order":14,"path":"scripts/scr_get_build_date/scr_get_build_date.yy",},
     {"name":"scr_get_each_big_collectible_from_main_game","order":93,"path":"scripts/scr_get_each_big_collectible_from_main_game/scr_get_each_big_collectible_from_main_game.yy",},

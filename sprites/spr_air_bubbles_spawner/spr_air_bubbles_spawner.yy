@@ -1,5 +1,5 @@
 {
-  "$GMSprite":"",
+  "$GMSprite":"v1",
   "%Name":"spr_air_bubbles_spawner",
   "bboxMode":0,
   "bbox_bottom":18,

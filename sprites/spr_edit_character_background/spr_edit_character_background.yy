@@ -1,5 +1,5 @@
 {
-  "$GMSprite":"",
+  "$GMSprite":"v1",
   "%Name":"spr_edit_character_background",
   "bboxMode":0,
   "bbox_bottom":1006,

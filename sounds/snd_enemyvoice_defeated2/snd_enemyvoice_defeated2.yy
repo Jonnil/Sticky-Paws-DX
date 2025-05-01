@@ -1,5 +1,5 @@
 {
-  "$GMSound":"",
+  "$GMSound":"v1",
   "%Name":"snd_enemyvoice_defeated2",
   "audioGroupId":{
     "name":"audiogroup_default",
@@ -10,6 +10,7 @@
   "compression":0,
   "conversionMode":0,
   "duration":0.313469,
+  "exportDir":"",
   "name":"snd_enemyvoice_defeated2",
   "parent":{
     "name":"Sounds",

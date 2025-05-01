@@ -1,5 +1,5 @@
 {
-  "$GMSprite":"",
+  "$GMSprite":"v1",
   "%Name":"spr_virtual_key_groundpound",
   "bboxMode":0,
   "bbox_bottom":255,

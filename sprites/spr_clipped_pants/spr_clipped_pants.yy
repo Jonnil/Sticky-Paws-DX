@@ -1,5 +1,5 @@
 {
-  "$GMSprite":"",
+  "$GMSprite":"v1",
   "%Name":"spr_clipped_pants",
   "bboxMode":0,
   "bbox_bottom":62,

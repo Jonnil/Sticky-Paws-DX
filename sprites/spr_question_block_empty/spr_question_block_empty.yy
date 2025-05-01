@@ -1,5 +1,5 @@
 {
-  "$GMSprite":"",
+  "$GMSprite":"v1",
   "%Name":"spr_question_block_empty",
   "bboxMode":0,
   "bbox_bottom":35,

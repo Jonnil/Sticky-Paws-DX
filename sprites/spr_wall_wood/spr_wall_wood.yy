@@ -1,5 +1,5 @@
 {
-  "$GMSprite":"",
+  "$GMSprite":"v1",
   "%Name":"spr_wall_wood",
   "bboxMode":0,
   "bbox_bottom":31,

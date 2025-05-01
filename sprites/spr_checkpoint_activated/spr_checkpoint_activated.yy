@@ -1,5 +1,5 @@
 {
-  "$GMSprite":"",
+  "$GMSprite":"v1",
   "%Name":"spr_checkpoint_activated",
   "bboxMode":0,
   "bbox_bottom":89,

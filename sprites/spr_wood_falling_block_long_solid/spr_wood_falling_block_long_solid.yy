@@ -1,5 +1,5 @@
 {
-  "$GMSprite":"",
+  "$GMSprite":"v1",
   "%Name":"spr_wood_falling_block_long_solid",
   "bboxMode":2,
   "bbox_bottom":33,

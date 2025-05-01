@@ -1,5 +1,5 @@
 {
-  "$GMSound":"",
+  "$GMSound":"v1",
   "%Name":"snd_boss_voice_laugh",
   "audioGroupId":{
     "name":"audiogroup_default",
@@ -10,6 +10,7 @@
   "compression":0,
   "conversionMode":0,
   "duration":0.789479,
+  "exportDir":"",
   "name":"snd_boss_voice_laugh",
   "parent":{
     "name":"Sounds",

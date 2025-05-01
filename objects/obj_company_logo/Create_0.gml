@@ -234,7 +234,7 @@ if (GM_build_type == "run")
 {
 	/* Enable useful debug tools when testing inside the IDE */
 	global.debug_screen = false;
-	global.debug_force_network_error = false;
+	global.debug_force_network_error = true;
 	
 	show_debug_message("[Debug] GM_build_type is 'run'. Enabling development debug toggles.");
 }
@@ -325,6 +325,20 @@ global.caution_online_do_not_show = false; /* When the game shows the online cau
 global.send_crash_logs = true;
 global.crash_requests = ds_map_create();
 global.online_enabled = false; /* You need to accept the online caution screen before you can go online */
+
+/* Initialize our debug tracking variables */
+global.online_last_successful_check		= "Never";
+global.connected_server					= global.base_url;	/* Which server we're talking to */
+global.online_environment				= "SD1/SP1";		/* Lotcheck slot */
+global.online_token_source				= "";				/* e.g. "Switch Account Services" */
+global.online_token_present				= false;			/* Did we actually get back a token? */
+global.online_token_expired				= false;			/* Set true if you detect an expiry */
+global.online_retry_attempts			= 0;				/* Count of retry‐loops */
+global.online_current_attempt_result	= "";				/* Last high-level failure reason */
+global.online_error_code				= "";				/* Your NWT-### code */
+
+scr_init_nwt_flags();
+
 global.report_reason = "";
 global.report_message = "";
 global.clicking_cancel_input_screen = false;

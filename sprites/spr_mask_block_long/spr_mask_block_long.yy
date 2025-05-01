@@ -1,5 +1,5 @@
 {
-  "$GMSprite":"",
+  "$GMSprite":"v1",
   "%Name":"spr_mask_block_long",
   "bboxMode":2,
   "bbox_bottom":31,

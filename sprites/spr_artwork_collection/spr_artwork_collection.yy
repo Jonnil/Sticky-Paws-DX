@@ -1,5 +1,5 @@
 {
-  "$GMSprite":"",
+  "$GMSprite":"v1",
   "%Name":"spr_artwork_collection",
   "bboxMode":0,
   "bbox_bottom":25,

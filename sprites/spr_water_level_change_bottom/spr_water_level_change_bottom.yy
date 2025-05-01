@@ -1,5 +1,5 @@
 {
-  "$GMSprite":"",
+  "$GMSprite":"v1",
   "%Name":"spr_water_level_change_bottom",
   "bboxMode":0,
   "bbox_bottom":31,

@@ -1,5 +1,5 @@
 {
-  "$GMSprite":"",
+  "$GMSprite":"v1",
   "%Name":"spr_virtual_joystick_stick",
   "bboxMode":0,
   "bbox_bottom":149,

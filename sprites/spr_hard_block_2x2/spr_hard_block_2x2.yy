@@ -1,5 +1,5 @@
 {
-  "$GMSprite":"",
+  "$GMSprite":"v1",
   "%Name":"spr_hard_block_2x2",
   "bboxMode":0,
   "bbox_bottom":63,

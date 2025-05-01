@@ -1,5 +1,5 @@
 {
-  "$GMSprite":"",
+  "$GMSprite":"v1",
   "%Name":"spr_lava_surface",
   "bboxMode":0,
   "bbox_bottom":33,

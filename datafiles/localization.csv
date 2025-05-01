@@ -10,7 +10,7 @@ Multiplayer,,Multiplayer,Flerspelare,マルチプレイヤー,Multijugador,Tryb 
 Controls,,Controls,Kontroller,操作,Control,Sterowanie,,Kontrol
 Keyboard & Mouse,,Keyboard & Mouse,Tangentbord och mus,キーボード ＆ マウス,Teclado y Ratón,Klawiatura i mysz,Keyboard and mouse,Klavye ve Fare
 Controller,,Controller,Kontroller,コントローラー,Controlador,Kontroler,,Kontrolör
-Touch,,Touch,Rör,タッチ,Control táctil,Dotyk,,Dokun
+Touch,,Touch,Touch,タッチ,Control táctil,Dotyk,,Dokun
 General,,General,Allmän,一般設定,General,Ogólne,,Genel
 Profile,,Profile,Profil,プロフィール,Perfíl ,Profil,,Profil
 Video,,Video,Video,ビデオ,Video,Grafika,Graphics,Grafik
@@ -74,7 +74,7 @@ as the base to make the background and foreground layers.,,as the base to make t
 Do you want to generate a level map?,,Do you want to generate a level map?,Vill du skapa en nivåkarta?,レベル マップを生成しますか?,Quieres generar un maoa de nivel?,Czy chcesz wygenerować mapę tego poziomu?,Do you want to generate this level's map?,Bir seviye haritası oluşturmak ister misiniz?
 Yes,,Yes,Ja,はい,Si,Tak,,Evet
 No,,No,Nej,いいえ,No,Nie,,Hayır
-ARE YOU SURE YOU WANT TO QUIT?,,ARE YOU SURE YOU WANT TO QUIT?,ÄR DU SÄKER PÅ ATT DU VILL SLUTA?,本当に終了したいですか,ESTAS SEGURO QUE QUIERES SALIR?,CZY NA PEWNO CHCESZ WYJŚĆ Z GRY,DO YOU REALLY WANT TO QUIT THE GAME?,Bırakmak istediğinizden emin misiniz?
+ARE YOU SURE YOU WANT TO QUIT?,,ARE YOU SURE YOU WANT TO QUIT?,ÄR DU SÄKER PÅ ATT DU VILL AVSLUTA?,本当に終了したいですか,ESTAS SEGURO QUE QUIERES SALIR?,CZY NA PEWNO CHCESZ WYJŚĆ Z GRY,DO YOU REALLY WANT TO QUIT THE GAME?,Bırakmak istediğinizden emin misiniz?
 YES,,YES,JA,はい,SI,TAK,QUIT,EVET
 NO,,NO,NEJ,いいえ,NO,jednak nie,maybe not,HAYIR
 Enable Assist Mode,,Enable Assist Mode,Aktivera hjälpläge,アシストモードをオンにする,Activa Modo Asistido,Aktywuj tryb asysty,Activate Assist Mode,Yardım Modunu Etkinleştir
@@ -422,7 +422,7 @@ Build date,,Build date,Bygg datum,作成日:,,Data kompilacji,,Yapı tarihi
 is here!,,is here!,är här!,が来た！,esta aqui!,jest tutaj!,,burada!
 Changelog History,,Changelog History,Ändringslogghistorik,更新履歴ログ,Historia de Cambio,Lista zmian,List of the changes,Değişiklik Günlüğü Geçmişi
 Keep your levels safe!,,Keep your levels safe!,Håll dina nivåer säkra!,レベルを安全に保ってください。,,Dbaj o swoje poziomy!,Care about your levels!,Seviyelerinizi güvende tutun!
-To prevent losing your custom levels and characters you should upload content and then save your level IDs and character IDs somewhere safe,,To prevent losing your custom levels and characters you should upload content and then save your level IDs and character IDs somewhere safe,För att förhindra att du tappar dina nivåer bör du ladda upp nivåer och sedan spara dina nivå-ID på ett säkert ställe,カスタムレベルとキャラクターが無くせないようにするには、アップロードして、\nレベル ID とキャラクター ID を安全な場所に保存してください。,,By przez nieuwagę nie zapodziać gdzieś swoje biedne poziomy i postacie wyślij je do nas a następnie zapisz swoje ID w bezpiecznym miejscu,So you don't accidentally lose your poor levels and characters somewhere send them to us and then write your ID in a secure place,Özel seviyelerinizi ve karakterlerinizi kaybetmemek için içerik yüklemeli ve ardından seviye kimliklerinizi ve karakter kimliklerinizi güvenli bir yere kaydetmelisiniz
+To prevent losing your custom levels and characters you should upload content and then save your level IDs and character IDs somewhere safe,,To prevent losing your custom levels and characters you should upload content and then save your level IDs and character IDs somewhere safe,För att förhindra att du tappar dina nivåer bör du ladda upp nivåer och sedan spara dina nivå-ID på ett säkert ställe,カスタムレベルとキャラクターが無くせないようにするには、アップロードして、{br}レベル ID とキャラクター ID を安全な場所に保存してください。,,By przez nieuwagę nie zapodziać gdzieś swoje biedne poziomy i postacie wyślij je do nas a następnie zapisz swoje ID w bezpiecznym miejscu,So you don't accidentally lose your poor levels and characters somewhere send them to us and then write your ID in a secure place,Özel seviyelerinizi ve karakterlerinizi kaybetmemek için içerik yüklemeli ve ardından seviye kimliklerinizi ve karakter kimliklerinizi güvenli bir yere kaydetmelisiniz
 The game includes an autosave feature that automatically saves your levels every 5 minutes,,The game includes an autosave feature that automatically saves your levels every 5 minutes,Spelet innehåller en autospara-funktion som automatiskt sparar dina nivåer var 5:e minut,5分ごとにレベルがオートセーブされます。,,Ta gra zawiera funkcje autozapisu która zapisuje twoje poziomy co 5 minut,This game has autosave feature that autosave your levels every 5 minutes,"Oyun, seviyelerinizi her 5 dakikada bir otomatik olarak kaydeden bir otomatik kaydetme özelliğine sahiptir"
 It also saves your level every time you playtest,,It also saves your level every time you playtest,Det sparar också din nivå varje gång du testar,それに、レベルをテストとき、オートセーブされます。,,Zapisuje je także za każdym razem gdy je testujesz,It saves them every time you test them as well,Ayrıca her oyun testi yaptığınızda seviyenizi kaydeder
 By,,By,Av,クリエイター:,,autorstwa,created by,Yazar
@@ -474,19 +474,19 @@ Air Bubbles,,Air Bubbles,Luftbubblor,エアバブル,,Bąbelki,,Hava Kabarcıkla
 Clipped Clothes,,Clipped Clothes,Kläder som torkar,掛けている服,,Zawieszone ubrania,,Kesilmiş Giysiler
 Bucket,,Bucket,Hink,バケツ,,Wiadro,,Kova
 Artwork Collection,,Artwork Collection,Konstverk samling,アートワークコレクション,,Kolekcja dzieł sztuki,Work of art collection,Sanat Eserleri Koleksiyonu
-Can be destroyed by the player jumping underneath them if there is no items inside,,Can be destroyed by the player jumping underneath them if there is no items inside,Kan förstöras av spelaren som hoppar under dem om det inte finns några föremål inuti,中に何もないなら、下側でジャンプしたら、壊れます。,,Można je zniszczyć gdy nic w nich nie ma a gracz pod nie skoczy.,Can be destroyed when they're empty and the player jumps under them\nClick on a placed Lamp block to set what's inside,"İçerisinde eşya yoksa, oyuncunun altlarına atlayarak yok edilebilirler."
-Can't be destroyed by player jumping underneath them,,Can't be destroyed by player jumping underneath them,Kan inte förstöras av spelare som hoppar under dem,プレイヤーが下からジャンプしても壊れません,,Gdy gracz na nie skoczy nie zniszczą się,When the player jumps under them they won't be destroyed!\nJump under a placed ? Block to set what's inside,Altlarına atlayan bir oyuncu tarafından yok edilemezler
+Can be destroyed by the player jumping underneath them if there is no items inside,,Can be destroyed by the player jumping underneath them if there is no items inside,Kan förstöras av spelaren som hoppar under dem om det inte finns några föremål inuti,中に何もないなら、下側でジャンプしたら、壊れます。,,Można je zniszczyć gdy nic w nich nie ma a gracz pod nie skoczy.,Can be destroyed when they're empty and the player jumps under them{br}Click on a placed Lamp block to set what's inside,"İçerisinde eşya yoksa, oyuncunun altlarına atlayarak yok edilebilirler."
+Can't be destroyed by player jumping underneath them,,Can't be destroyed by player jumping underneath them,Kan inte förstöras av spelare som hoppar under dem,プレイヤーが下からジャンプしても壊れません,,Gdy gracz na nie skoczy nie zniszczą się,When the player jumps under them they won't be destroyed!{br}Jump under a placed ? Block to set what's inside,Altlarına atlayan bir oyuncu tarafından yok edilemezler
 Falls shortly after you stand on them for too long,,Falls shortly after you stand on them for too long,Faller kort efter att du stått på dem för länge,長時間立ったら、落ちます,,Gdy stoisz za długo spadną pod twoim ciężarem,You wait too long and they fall under your weight,Üzerlerinde çok uzun süre durduktan sonra düşer
 This block dissapears when Mousette is defeated,,This block dissapears when Mousette is defeated,Detta block försvinner när Mousette besegras,ラッタリーは倒すとき、このブロックは消えます,,Ten klocek znika gdy Mousette jest pokonana,,Bu blok Mousette yenildiğinde kaybolur
-This block is only solid when it can see its prey,,This block is only solid when it can see its prey,Detta block är bara solid när det kan se sitt byte,このブロックは獲物が見えるときだけ固まります,,Ten klocek jest obecny tylko gdy widzi swą ofiarę,,This block is only solid when it can see its prey
+This block is only solid when it can see its prey,,This block is only solid when it can see its prey,Detta block är bara solid när det kan se sitt byte,このブロックは獲物が見えるときだけ固まります,,Ten klocek jest obecny tylko gdy widzi swą ofiarę,,Bu blok yalnızca avını görebildiği zaman katıdır
 Teach the player what abilities they have,,Teach the player what abilities they have,Lär spelaren vilka förmågor de har,プレイヤーにどんな能力があるのか​​を教えます,,Naucz graczy jakie umiejętności mają,,Oyuncuya hangi yeteneklere sahip olduğunu öğretin
-One of the most fundemental objects to include in a level!\nFish usually come in small groups and can also be used to indicate a path,,"One of the most fundemental objects to include in a level!\nFish usually come in small groups, and can also be used to indicate a path","Ett av de mest grundläggande objekten att inkludera i en nivå!\nFisk kommer vanligtvis i små grupper, och kan också användas för att visa en väg",おいしそうね！魚は道案内や報酬として使うことができます,,"Jedna z najważniejszych rzeczy w poziomie!\nRybki zwykle są w małych ławicach , i mogą być też użyte by oznaczyć ścieżkę",,Bir seviyeye dahil edilecek en temel nesnelerden biri!\nBalıklar genellikle küçük gruplar halinde gelir ve bir yolu belirtmek için de kullanılabilir
+One of the most fundamental objects to include in a level! Fish usually come in small groups and can also be used to indicate a path,,"One of the most fundamental objects to include in a level!{br}Fish usually come in small groups, and can also be used to indicate a path","Ett av de mest grundläggande objekten att inkludera i en nivå!{br}Fisk kommer vanligtvis i små grupper, och kan också användas för att visa en väg",おいしそうね！魚は道案内や報酬として使うことができます,,"Jedna z najważniejszych rzeczy w poziomie!{br}Rybki zwykle są w małych ławicach , i mogą być też użyte by oznaczyć ścieżkę",,Bir seviyeye dahil edilecek en temel nesnelerden biri!{br}Balıklar genellikle küçük gruplar halinde gelir ve bir yolu belirtmek için de kullanılabilir
 A collectible that can be a good way to make your level more fun,,A collectible that can be a good way to make your level more fun,Ett samlarobjekt som kan vara ett bra sätt att göra din nivå roligare,もっとレベルを楽しくなれためのコレクションアイテム,,Znajdźka może być dobrym sposobem by uczynić grę fajniejszą,,Seviyenizi daha eğlenceli hale getirmenin iyi bir yolu olabilecek bir koleksiyon parçası
 When a character doesn't have the wall jump ability lets even these characters wall jump,,When a character doesn't have the wall jump ability lets even these characters wall jump,När en karaktär inte har förmågan att vägghoppa kan även dessa karaktärer vägghoppa,カベキック能力がないキャラクターとしてもこのカベでカベキックます,,Gdy postać nie ma możliwości wall jump pozwala nawet jej odbijać się od ścian,When the character has no walljumping skill it lets even those to bounce off them,Bir karakterin duvardan atlama yeteneği yoksa bu karakterler bile duvardan atlayabilir
 When a character doesn't have the wall climb ability lets even these characters wall climb,,When a character doesn't have the wall climb ability lets even these characters wall climb,När en karaktär inte har förmågan att väggklättra kan även dessa karaktärer väggklättra,カベ登り能力がないキャラクターとしてもこのカベを登られます,,"Po tym każdy się wdrapie, nawet jeśli nie umie","Everyone can climb this, even if they can't",Bir karakterin duvar tırmanma yeteneği yoksa bu karakterler bile duvar tırmanabilir
 Some characters needs air when swimming underwater,,Some characters needs air when swimming underwater,Vissa karaktärer behöver luft när de simmar under vattnet,一部のキャラクターは水中で空気を必要とします,,NIektóre postaci nie oddychają pod wodą więc trochę powietrza może się sprzydać,Some characters don't breathe underwater so they might need a little air,Bazı karakterler su altında yüzerken havaya ihtiyaç duyarlar
 Let clothes drop into the bucket to get rewards,,Let clothes drop into the bucket to get rewards,Låt kläderna falla ner i hinken för att få belöningar,服がバケツに落ちたら、何かがもらえるかもしれない,,Złap ubrania do wiaderka a nagroda będzie wielka,Catch the clothes to a bucket and the price will be a big one,Ödül kazanmak için kostümünün kovaya düşmesine izin verin
-This rat stole your cake! Let the player try to catch them before the end of the level\nThe player will chase this rat until the very end of the game,,This rat stole your cake! Let the player try to catch them before the end of the level\nThe player will chase this rat until the very end of the game,Den här råttan stal din tårta! Låt spelaren försöka fånga dem innan nivån är slut\nSpelaren kommer att jaga denna råtta till slutet av spelet,この奴がケーキをぬすんだ！逃がさないで！,,To gryzoń który ukradł twoje ciasto! Niech gracz spróbuje go złapać\n(uwaga: będzie uciekał do końca poziomu a złapanie go jest prawie niemożliwe),This rodent has your cake! Let your player catch it\n(warning: it will run until the end of the level and catching it is almostimpossible),Bu fare pastanızı çaldı! Oyuncunun seviyenin sonundan önce onları yakalamaya çalışmasına izin verin\nOyuncu oyunun sonuna kadar bu fareyi kovalayacak
+This rat stole your cake! Let the player try to catch them before the end of the level. The player will chase this rat until the very end of the game,,This rat stole your cake! Let the player try to catch them before the end of the level{br}The player will chase this rat until the very end of the game,Den här råttan stal din tårta! Låt spelaren försöka fånga dem innan nivån är slut{br}Spelaren kommer att jaga denna råtta till slutet av spelet,この奴がケーキをぬすんだ！逃がさないで！,,To gryzoń który ukradł twoje ciasto! Niech gracz spróbuje go złapać{br}(uwaga: będzie uciekał do końca poziomu a złapanie go jest prawie niemożliwe),This rodent has your cake! Let your player catch it{br}(warning: it will run until the end of the level and catching it is almostimpossible),Bu fare pastanızı çaldı! Oyuncunun seviyenin sonundan önce onları yakalamaya çalışmasına izin verin{br}Oyuncu oyunun sonuna kadar bu fareyi kovalayacak
 Quit to Level Select,,Quit to Level Select,Avsluta till nivåväljaren,レベルセレクトへ終了して,,Wyjdź do Wyboru poziomów,,Seviye Seçimine Çık
 Click to Focus,,Click to Focus,Klicka för att fokusera,クリックしてフォーカス,,Naciśnij by wrócić do gry,Cick to return to the game,Odaklanmak İçin Tıkla
 Loaded Resource Packs,,Loaded Resource Packs,Laddade resurspaket,ロードされたリソースパック,,Wczytano paczki rozszerzeń,,Yüklenen Kaynak Paketleri
@@ -625,7 +625,7 @@ Background 4 x scale,,Background 4 x scale,Bakgrund 4 x skala,バックグラウ
 Click on the placed sign in the editor to edit what it should say!,,Click on the placed sign in the editor to edit what it should say!,Klicka på den placerade skylten i editorn för att redigera vad där ska stå!,看板をエディタでクリックしてテキストを編集します,,,,Düzenleyicideki yerleştirilmiş işarete tıklayarak ne söylemesi gerektiğini düzenleyin!
 Change Water Level Fast,,Change Water Level Fast,Byt vattennivå snabbt,はやく水位を変更する,,,,Su Seviyesini Hızlı Değiştir
 Lava,,Lava,Lava,溶岩,,,,Lav
-Instantly teleports you to another area\nRegular Warp Boxes can be used many times\nBroken Warp Boxes disappears after one use,,Instantly teleports you to another area\nRegular Warp Boxes can be used many times\nBroken Warp Boxes disappears after one use,Teleporterar dig direkt till ett annat område\nVanliga varpboxar kan användas många gånger\nTrasiga varpboxar försvinner efter en användning,別の所へテレポートする\n普通のワープボックスは何度もつかいますけど\n壊れたワープボックスは一回後消えます,,,,Anında sizi başka bir alana ışınlar\nNormal Warp Kutuları birçok kez kullanılabilir\nKırık Warp Kutuları bir kullanımdan sonra kaybolur
+Instantly teleports you to another area. Regular Warp Boxes can be used many times. Broken Warp Boxes disappears after one use,,Instantly teleports you to another area{br}Regular Warp Boxes can be used many times{br}Broken Warp Boxes disappears after one use,Teleporterar dig direkt till ett annat område{br}Vanliga varpboxar kan användas många gånger{br}Trasiga varpboxar försvinner efter en användning,別の所へテレポートする{br}普通のワープボックスは何度もつかいますけど{br}壊れたワープボックスは一回後消えます,,,,Anında sizi başka bir alana ışınlar{br}Normal Warp Kutuları birçok kez kullanılabilir{br}Kırık Warp Kutuları bir kullanımdan sonra kaybolur
 Press and hold to start from the beginning,,Press and hold to start from the beginning,Tryck och håll ned för att börja från början,押し続け、初めからスタート,,,,Baştan başlamak için basılı tutun
 Edit Level,,Edit Level,Redigera nivå,レベルを編集する,,,,Seviyeyi Düzenle
 This is a sign,,This is a sign,Detta är en skylt,これは看板です,,Jestem znak,I am a sign,Bu bir işarettir
@@ -638,7 +638,7 @@ Best,,Best,Bäst,ベスト,,Najlepszy,,En İyi
 Clear,,Clear,Klar,クレア,,Ukończony,,Temizle
 Check out the guide,,Check out the guide,Kolla guiden,ガイドを見て,,Sprawdź tutorial,,Rehbere göz atın
 Check out the update schedule,,Check out the update schedule,Kolla uppdateringsschemat,アップデートスケジュールを見て,,Sprawdź harmonogram aktualizacji,,Güncelleme programına göz atın
-To prevent losing your custom levels and characters you should upload content and then save\nyour level IDs and character IDs somewhere safe,,To prevent losing your custom levels and characters you should upload content and then save\nyour level IDs and character IDs somewhere safe,För att förhindra att du förlorar dina egna nivåer och karaktärer bör du ladda upp det online och sedan spara\ndina nivå-IDn och karaktär-IDn på ett säkert ställe,カスタムレベルやキャラクターが失われないようにするには、アップロードして、\nレベルIDやキャラクターIDを安全な場所に保存するほうがいいです,,"Aby zapobiec stracie swojego poziomu i postaci, możesz wysłać je do nas a następnie zapisać\nich ID w bezpiecznym miejscu",,Özel seviyelerinizi ve karakterlerinizi kaybetmemek için içerik yüklemeli ve ardından seviye kimliklerinizi ve karakter kimliklerinizi güvenli bir yere kaydetmelisiniz
+To prevent losing your custom levels and characters you should upload content and then save your level IDs and character IDs somewhere safe,,To prevent losing your custom levels and characters you should upload content and then save{br}your level IDs and character IDs somewhere safe,För att förhindra att du förlorar dina egna nivåer och karaktärer bör du ladda upp det online och sedan spara{br}dina nivå-IDn och karaktär-IDn på ett säkert ställe,カスタムレベルやキャラクターが失われないようにするには、アップロードして、{br}レベルIDやキャラクターIDを安全な場所に保存するほうがいいです,,"Aby zapobiec stracie swojego poziomu i postaci, możesz wysłać je do nas a następnie zapisać{br}ich ID w bezpiecznym miejscu",,Özel seviyelerinizi ve karakterlerinizi kaybetmemek için içerik yüklemeli ve ardından seviye kimliklerinizi ve karakter kimliklerinizi güvenli bir yere kaydetmelisiniz
 The game includes an autosave feature that automatically saves your level every 5 minutes,,The game includes an autosave feature that automatically saves your level every 5 minutes,Spelet innehåller en autosave-funktion som automatiskt sparar din nivå var 5e minut,5分ごとに、レベルをオートセーブしますから、安心して,,,,"Oyun, seviyenizi her 5 dakikada bir otomatik olarak kaydeden bir otomatik kaydetme özelliğine sahiptir"
 Your custom levels are saved in this folder,,Your custom levels are saved in this folder,Dina egna nivåer sparas i den här mappen,カスタムレベルはこのフォルダにセーブします,,Twoje poziomy są zapisywane w tym folderze,,Özel seviyeleriniz bu klasöre kaydedilir
 Your custom characters are saved in this folder,,Your custom characters are saved in this folder,Dina egna karaktärer sparas i den här mappen,カスタムキャラクターはこのフォルダにセーブします,,Twoje postacie są zapisywane w tym folderze,,Özel karakterleriniz bu klasöre kaydedilir
@@ -723,19 +723,132 @@ Changing the theme from this menu will set the default theme taken from official
 Enter level description for,,Enter level description for,Ange nivåbeskrivning för,レベルの説明を入力してください,Introduzca la descripción del nivel para,Wprowadź opis poziomu dla,,Seviye açıklamasını girin
 Text only available in English,,Text only available in English,Text endast tillgänglig på engelska,テキストは英語だけです。すみません、でも見てください。超長いよ！それとめっちゃ複雑な言葉を使って。俺はまだただの日本語ビギナーので、理解してください。,Texto solo disponible en inglés,Tekst dostępny tylko w języku angielskim,,Yalnızca İngilizce olarak mevcut olan metin
 Default,,Default,Standard,デフォルト,Por defecto,Domyślny,,Varsayılan
-No username!,2025-02-04 14:44:27,No username!,,コメント無し,,,,
-Loading Character,2025-02-04 14:49:56,Loading Character,,キャラクターローディング中,,,,
-Server Timeout,2025-02-04 16:04:30,Server Timeout,,サーバータイムアウト,,,,
-Retry,2025-02-04 16:04:31,Retry,,リトライ,,,,
-The server did not respond in time,2025-02-04 16:04:32,The server did not respond in time,,,,,,
-Please check your internet connection or try again later,2025-02-04 16:04:32,Please check your internet connection or try again later,,,,,,
-This could be due to a lost connection server maintenance or high traffic,2025-02-04 18:39:33,"This could be due to a lost connection, server maintenance, or high traffic",,,,,,
-Tried to connect for 15 seconds before timeout,2025-02-04 19:13:15,Tried to connect for 15 seconds before timeout,,,,,,
-Check Server Status,2025-02-04 19:13:15,Check Server Status,,,,,,
-A sign that displays custom text allowing you to guide players provide hints or add story elements to your level,,"A sign that displays custom text, allowing you to guide players, provide hints, or add story elements to your level",,,,,,
-If you see any inappropriate content when downloading user-generated content online,,If you see any inappropriate content when downloading user-generated content online,,,,,,
-Please report it by selecting this button,,Please report it by selecting this button,,,,,,
-I understand,,I understand,,分かります,,,,
-Player 1 can't control menu,2025-02-19 15:02:14,Player 1 can't control menu,,,,,,
-Zoom,2025-02-20 09:39:00,Zoom,,,,,,
-Automatically Send Crash Logs Description,,"Automatically Send Crash Logs {br}{br}When enabled, your game will automatically send detailed crash logs to our server whenever a crash occurs. These logs include technical details such as error messages, stack traces, and diagnostic information that help our development team quickly identify and fix issues. No personal or sensitive data is transmitted. The information is solely used for improving game stability and performance. This feature is enabled by default to ensure we capture as many crash logs as possible, which helps us provide a better and more reliable gaming experience for everyone. You can disable this option at any time if you prefer not to send crash logs",,,,,,
+No username!,2025-02-04 14:44:27,No username!,Inget användarnamn!,コメント無し,,,,
+Loading Character,2025-02-04 14:49:56,Loading Character,Laddar karaktär,キャラクターローディング中,,,,
+Server Timeout,2025-02-04 16:04:30,Server Timeout,Server timeout,サーバータイムアウト,,,,
+Retry,2025-02-04 16:04:31,Retry,Försök igen,リトライ,,,,
+The server did not respond in time,2025-02-04 16:04:32,The server did not respond in time,Servern svarade inte i tid,,,,,
+Please check your internet connection or try again later,2025-02-04 16:04:32,Please check your internet connection or try again later,Kontrollera din internetanslutning eller försök igen senare,,,,,
+This could be due to a lost connection server maintenance or high traffic,2025-02-04 18:39:33,"This could be due to a lost connection, server maintenance, or high traffic","Detta kan bero på en förlorad anslutning, serverunderhåll eller hög trafik",,,,,
+Tried to connect for 15 seconds before timeout,2025-02-04 19:13:15,Tried to connect for 15 seconds before timeout,Försökte ansluta i 15 sekunder innan timeout,,,,,
+Check Server Status,2025-02-04 19:13:15,Check Server Status,Kontrollera serverstatus,,,,,
+A sign that displays custom text allowing you to guide players provide hints or add story elements to your level,,"A sign that displays custom text, allowing you to guide players, provide hints, or add story elements to your level","En skylt som visar anpassad text, vilket låter dig guida spelare, ge tips eller lägga till berättelseelement i din nivå",,,,,
+If you see any inappropriate content when downloading user-generated content online,,If you see any inappropriate content when downloading user-generated content online,Om du ser olämpligt innehåll när du laddar ner användargenererat innehåll online,,,,,
+Please report it by selecting this button,,Please report it by selecting this button,Rapportera det genom att välja denna knapp,,,,,
+I understand,,I understand,Jag förstår,分かります,,,,
+Player 1 can't control menu,2025-02-19 15:02:14,Player 1 can't control menu,Spelare 1 kan inte styra menyn,,,,,
+Zoom,2025-02-20 09:39:00,Zoom,Zoom,,,,,
+Automatically Send Crash Logs Description,,"Automatically Send Crash Logs {br}{br}When enabled, your game automatically sends crash logs to our server, including error messages, stack traces, and diagnostic data. No personal information is collected, these logs help improve game stability. This feature is on by default but can be disabled anytime.
+
+
+
+
+","Skicka kraschloggar automatiskt {br}{br}När det är aktiverat skickar spelet automatiskt kraschloggar till vår server, inklusive felmeddelanden, stackspår och diagnostisk data. Ingen personlig information samlas in – loggarna hjälper oss att förbättra spelets stabilitet. Denna funktion är på som standard men kan stängas av när som helst
+
+
+
+
+
+
+
+",,,,,
+New Objects Unlocked!,2025-03-06 04:13:37,New Objects Unlocked!,Nya objekt upplåsta!,,,,,
+The game is meant to be played without Challenge Mode,2025-03-06 04:13:39,The game is meant to be played without Challenge Mode,Spelet är tänkt att spelas utan utmaningsläge,,,,,
+Enable Challenge Mode,2025-03-06 04:13:39,Enable Challenge Mode,Aktivera utmaningsläge,,,,,
+One-Hit Defeat,2025-03-06 04:13:40,One-Hit Defeat,En-träffs nederlag,,,,,
+Survivability & Damage Increases,2025-03-06 04:13:40,Survivability & Damage Increases,Ökad överlevnad & skada,,,,,
+No Health Pickups,2025-03-06 04:13:41,No Health Pickups,Inga hälsopickups,,,,,
+Stronger Gravity,2025-03-06 04:13:45,Stronger Gravity,Starkare gravitation,,,,,
+Slippery Physics,2025-03-06 04:13:46,Slippery Physics,Hal fysik,,,,,
+Smaller Ledge Grab Zone,2025-03-06 04:13:46,Smaller Ledge Grab Zone,Mindre kantgreppszon,,,,,
+No Midair Control,2025-03-06 04:13:47,No Midair Control,Ingen luftkontroll,,,,,
+Faster Auto-Scrolling,2025-03-06 04:13:47,Faster Auto-Scrolling,Snabbare autoscrolling,,,,,
+More Hazardous Environment,2025-03-06 04:13:48,More Hazardous Environment,Farligare miljö,,,,,
+Spikes Always Kill,2025-03-06 04:13:48,Spikes Always Kill,Spikar dödar alltid,,,,,
+More Bottomless Pits,2025-03-06 04:13:48,More Bottomless Pits,Fler bottenlösa hål,,,,,
+Falling Platforms Crumble Faster,2025-03-06 04:13:49,Falling Platforms Crumble Faster,Fallande plattformar rasar snabbare,,,,,
+Enemies Appear More,2025-03-06 04:13:52,Enemies Appear More,Fler fiender dyker upp,,,,,
+Larger Hazard Hitboxes,2025-03-06 04:13:52,Larger Hazard Hitboxes,Större träffzoner för faror,,,,,
+Enemy & Combat Enhancements,2025-03-06 04:13:53,Enemy & Combat Enhancements,Fiende- och stridsförbättringar,,,,,
+Stronger Enemies,2025-03-06 04:13:53,Stronger Enemies,Starkare fiender,,,,,
+Faster Enemies,2025-03-06 04:13:54,Faster Enemies,Snabbare fiender,,,,,
+More Aggressive Enemies,2025-03-06 04:13:54,More Aggressive Enemies,Mer aggressiva fiender,,,,,
+Enemies Respawn Quickly,2025-03-06 04:13:54,Enemies Respawn Quickly,Fiender återuppstår snabbt,,,,,
+Enemies Deal Double Damage,2025-03-06 04:13:55,Enemies Deal Double Damage,Fiender gör dubbel skada,,,,,
+Enemy Projectiles Faster,2025-03-06 04:13:55,Enemy Projectiles Faster,Fiendeprojektiler är snabbare,,,,,
+Enemies Can't Be Stunned,2025-03-06 04:13:56,Enemies Can't Be Stunned,Fiender kan inte bli bedövade,,,,,
+Extra Difficulty Modifiers,2025-03-06 04:13:56,Extra Difficulty Modifiers,Extra svårighetsmodifierare,,,,,
+Permanent Darkness,2025-03-06 04:13:56,Permanent Darkness,Permanent mörker,,,,,
+Limited Air Supply,2025-03-06 04:13:57,Limited Air Supply,Begränsad lufttillgång,,,,,
+No Pause Feature,2025-03-06 04:13:57,No Pause Feature,Ingen pausfunktion,,,,,
+Faster Game Speed,2025-03-06 04:13:58,Faster Game Speed,Snabbare spelfart,,,,,
+Randomized Controls,2025-03-06 04:13:58,Randomized Controls,Slumpmässiga kontroller,,,,,
+Invisible Enemies/Platforms,2025-03-06 04:13:59,Invisible Enemies/Platforms,Osynliga fiender/plattformar,,,,,
+Strict Time Limits,2025-03-06 04:13:59,Strict Time Limits,Strikta tidsgränser,,,,,
+Bonus Challenge Ideas,2025-03-06 04:13:59,Bonus Challenge Ideas,Bonusutmaningar,,,,,
+Iron Paw Mode,2025-03-06 04:14:00,Iron Paw Mode,Järnklo-läge,,,,,
+Limited Inputs Mode,2025-03-06 04:14:00,Limited Inputs Mode,Begränsat inmatningsläge,,,,,
+Pacifist Mode,2025-03-06 04:14:01,Pacifist Mode,Pacifistläge,,,,,
+Speedrun Mode,2025-03-06 04:14:01,Speedrun Mode,Speedrun-läge,,,,,
+No HUD Mode,2025-03-06 04:14:02,No HUD Mode,Inget HUD-läge,,,,,
+Perma-Death Mode,2025-03-06 04:14:02,Perma-Death Mode,Permanent död-läge,,,,,
+Roguelike Mode,2025-03-06 04:14:02,Roguelike Mode,Roguelike-läge,,,,,
+No Coyote Time,2025-03-06 04:14:15,No Coyote Time,"Ingen ""coyote time""",,,,,
+Language Pack Updates,2025-03-06 04:20:19,Language Pack Updates,Språkpaketsuppdateringar,,,,,
+On Startup,2025-03-06 04:20:21,On Startup,Vid uppstart,,,,,
+Check for language pack updates automatically,2025-03-06 04:20:22,Check for language pack updates automatically,Kontrollera automatiskt efter språkpaketsuppdateringar,,,,,
+Automatically send crash logs to server,2025-03-06 04:46:12,Automatically send crash logs to server,Skicka automatiskt kraschloggar till servern,,,,,
+Check for language pack updates,2025-03-06 04:20:19,Check for language pack updates,Kontrollera språkpaketsuppdateringar,,,,,
+Language pack is up-to-date.,2025-03-08 23:31:59,Language pack is up-to-date.,Språkpaketet är uppdaterat.,,,,,
+Fetching latest language pack data from server...,2025-03-08 23:50:41,Fetching latest language pack data from server...,Hämtar senaste språkpaketsdata från servern...,,,,,
+Language pack update complete: CSV manifest applied.,2025-03-08 23:50:42,Language pack update complete: CSV manifest applied.,Språkpaketsuppdatering slutförd: CSV-manifest tillämpat.,,,,,
+Some strings may appear in English,2025-03-09 01:06:17,Some strings may appear in English,Vissa texter kan visas på engelska,,,,,
+Last Updated,2025-03-09 01:56:31,Last Updated,Senast uppdaterad,,,,,
+Watch Tutorial,2025-03-09 03:46:05,Watch Tutorial,Se handledning,,,,,
+Can be destroyed by player jumping underneath them if there is no items inside,2025-03-09 03:46:13,Can be destroyed by player jumping underneath them if there is no items inside,"Kan förstöras om spelaren hoppar under dem, om de inte innehåller något",,,,,
+Can be destroyed and will fall over if nothing is supporting them underneath,2025-03-09 03:46:16,Can be destroyed and will fall over if nothing is supporting them underneath,Kan förstöras och faller om inget stödjer dem underifrån,,,,,
+This block disappears when Mousette is defeated,2025-03-09 03:46:19,This block disappears when Mousette is defeated,Detta block försvinner när Mousette besegras,,,,,
+"This rat stole your cake! Let the player try to catch them before the end of the level
+The player will chase this rat until the very end of the game",2025-03-09 03:46:24,"This rat stole your cake! Let the player try to catch them before the end of the level
+The player will chase this rat until the very end of the game",Denna råtta stal din tårta! Låt spelaren försöka fånga den innan nivån är slut. Spelaren kommer att jaga denna råtta ända till spelets slut.,,,,,
+"One of the most fundamental objects to include in a level!
+Fish usually come in small groups and can also be used to indicate a path",2025-03-09 03:46:25,"One of the most fundamental objects to include in a level!
+Fish usually come in small groups and can also be used to indicate a path",Ett av de mest grundläggande objekten att inkludera i en nivå! Fiskar kommer oftast i små grupper och kan också användas för att indikera en väg.,,,,,
+If a player passes a Checkpoint they can restart from that point if they lose a life,2025-03-09 03:46:40,If a player passes a Checkpoint they can restart from that point if they lose a life,Om en spelare passerar en kontrollpunkt kan de starta om från den punkten om de förlorar ett liv,,,,,
+"Walls that players can pass through via a certain direction but not the opposite direction
+Their direction can be changed",2025-03-09 03:46:48,"Walls that players can pass through via a certain direction but not the opposite direction
+Their direction can be changed",Väggar som spelare kan passera genom från en viss riktning men inte den motsatta. Deras riktning kan ändras.,,,,,
+Uncover items hidden in the ground when you ground-pound this bump,2025-03-09 03:46:48,Uncover items hidden in the ground when you ground-pound this bump,Avslöja föremål dolda i marken när du gör ett marknedslag på denna bula,,,,,
+Players can knock these clothes down to fall into buckets to uncover items,2025-03-09 03:46:56,Players can knock these clothes down to fall into buckets to uncover items,Spelare kan slå ner dessa kläder i hinkar för att avslöja föremål,,,,,
+Test Mode,2025-03-09 03:47:31,Test Mode,Testläge,,,,,
+Unlisted,2025-03-10 00:14:18,Unlisted,Olistad,,,,,
+Custom BG,2025-03-10 00:14:18,Custom BG,Egen Bakgrund,,,,,
+Create Daily Build,2025-03-10 00:14:26,Create Daily Build,Skapa en Daglig Bygg,,,,,
+Daily Build,2025-03-10 00:14:27,Daily Build,Daglig Bygg,,,,,
+The Daily Build features different items every day,2025-03-10 00:14:28,The Daily Build features different items every day,Daglig Bygg har olika objekt varje dag,,,,,
+Standard,2025-03-10 00:27:00,Standard,Standard,,,,,
+Featured,2025-03-10 00:27:19,Featured,Dagens objekt,,,,,
+These are the featured items for today,2025-03-10 00:27:19,These are the featured items for today,Dessa är objekten du kan välja för dagens bygg,,,,,
+Can't interact with the sides of black walls,2025-03-10 00:27:19,Can't interact with the sides of black walls,Kan inte använda dig av sidorna av svarta väggar,,,,,
+Appear Block 1,2025-03-10 00:27:26,Appear Block 1,Komma fram block 1,,,,,
+Appear Block 2,2025-03-10 00:27:26,Appear Block 2,Komma fram block 2,,,,,
+Appear Block 3,2025-03-10 00:27:26,Appear Block 3,Komma fram block 3,,,,,
+Appear Block 4,2025-03-10 00:27:26,Appear Block 4,Komma fram block 4,,,,,
+Appear Block 5,2025-03-10 00:27:26,Appear Block 5,Komma fram block 5,,,,,
+This block appears and disappears in cycles,2025-03-10 00:27:27,This block appears and disappears in cycles,Detta block kommer fram och försvinner i omgångar,,,,,
+Heart Balloon,2025-03-10 00:30:41,Heart Balloon,Hjärt ballong,,,,,
+Instant Falling Block Long,2025-03-10 00:30:46,Instant Falling Block Long,Omedelbar fallande block lång,,,,,
+Bullet Rat Left,2025-03-10 00:31:04,Bullet Rat Left,Skott råtta vänster,,,,,
+Bullet Rat Right,2025-03-10 00:31:05,Bullet Rat Right,Skott råtta höger,,,,,
+Vengeful Rat Spirit,2025-03-10 00:31:05,Vengeful Rat Spirit,Hämndlysten råttande,,,,,
+Instantly teleports you to another area. Regular Warp Boxes can be used many times. Broken Warp Boxes disappears after one use,2025-03-10 00:31:10,Instantly teleports you to another area{br}Regular Warp Boxes can be used many times{br}Broken Warp Boxes disappears after one use,Teleporterar dig omedelbart till ett annat område{br}Vanliga Warp Boxes kan användas många gånger{br}Broken Warp Boxes försvinner efter en användning,,,,,
+These items are always unlocked,2025-03-10 00:27:00,These items are always unlocked,Dessa föremål är alltid upplåsta,,,,,
+Switch (console),2025-03-10 22:15:04,Switch,Switch,,,,,
+Score Multiplier,2025-03-11 00:15:34,Score Multiplier,Poängmultiplikator,,,,,
+Advanced Language Options,2025-03-12 01:13:01,Advanced Language Options,Avancerade språkalternativ,,,,,
+Controls how often the game automatically updates translations. Default: At Launch. This ensures your game text is always as up-to-date as possible,2025-03-12 02:31:47,Controls how often the game automatically updates translations. Default: At Launch. This ensures your game text is always as up-to-date as possible,Styr hur ofta spelet automatiskt uppdaterar översättningar. Standard: Vid start. Detta säkerställer att din speltext alltid är så uppdaterad som möjligt,,,,,
+Challenge Mode,2025-03-12 03:08:59,Challenge Mode,Utmaningsläge,,,,,
+Your translations are now up to date!,2025-03-12 03:09:05,Your translations are now up to date!,Dina översättningar är nu uppdaterade!,,,,,
+Monthly,2025-03-12 03:09:05,Monthly,Månadsvis,,,,,
+At Launch,2025-03-12 03:09:06,At Launch,Vid start,,,,,
+Automatic Translation Updates,2025-03-12 03:09:06,Automatic Translation Updates,Automatiska översättningsuppdateringar,,,,,

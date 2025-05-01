@@ -1,5 +1,5 @@
 {
-  "$GMSprite":"",
+  "$GMSprite":"v1",
   "%Name":"spr_cursor_fill_full",
   "bboxMode":0,
   "bbox_bottom":19,

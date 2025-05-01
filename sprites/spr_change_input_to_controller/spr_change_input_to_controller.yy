@@ -1,5 +1,5 @@
 {
-  "$GMSprite":"",
+  "$GMSprite":"v1",
   "%Name":"spr_change_input_to_controller",
   "bboxMode":0,
   "bbox_bottom":138,

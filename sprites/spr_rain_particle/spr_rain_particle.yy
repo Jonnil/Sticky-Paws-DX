@@ -1,5 +1,5 @@
 {
-  "$GMSprite":"",
+  "$GMSprite":"v1",
   "%Name":"spr_rain_particle",
   "bboxMode":0,
   "bbox_bottom":14,

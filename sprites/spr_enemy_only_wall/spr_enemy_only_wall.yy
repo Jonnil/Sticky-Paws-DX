@@ -1,5 +1,5 @@
 {
-  "$GMSprite":"",
+  "$GMSprite":"v1",
   "%Name":"spr_enemy_only_wall",
   "bboxMode":0,
   "bbox_bottom":32,

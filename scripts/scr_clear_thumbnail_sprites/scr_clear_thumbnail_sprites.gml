@@ -7,26 +7,26 @@ function scr_clear_thumbnail_sprites()
 	
 	/* Need to fix this, because it does delete the thumbnails, but suddenly all of my actual levels also dissapeared, and even the "Create New Level" sprite dissapeared! */
 	
-	//for (var i = 0; i < count; i++)
-	//{
-	//	var spr = ds_list_find_value(global.thumbnail_sprite, i);
+	for (var i = 1; i < count; i++) /* Don't delete index 0, start from 1. Index 0 is reserved for "Create Custom Level" button sprite */
+	{
+		var spr = ds_list_find_value(global.thumbnail_sprite, i);
 		
-	//	if (sprite_exists(spr))
-	//	{
-	//		scr_delete_sprite_properly(spr);
-	//		show_debug_message(
-	//			"[scr_clear_thumbnail_sprites] Deleted thumbnail sprite ID: " 
-	//			+ string(spr)
-	//		);
-	//	}
-	//	else
-	//	{
-	//		show_debug_message(
-	//			"[scr_clear_thumbnail_sprites] Skipped invalid sprite ID: " 
-	//			+ string(spr)
-	//		);
-	//	}
-	//}
+		if (sprite_exists(spr))
+		{
+			scr_delete_sprite_properly(spr);
+			show_debug_message(
+				"[scr_clear_thumbnail_sprites] Deleted thumbnail sprite ID: " 
+				+ string(spr)
+			);
+		}
+		else
+		{
+			show_debug_message(
+				"[scr_clear_thumbnail_sprites] Skipped invalid sprite ID: " 
+				+ string(spr)
+			);
+		}
+	}
 	
 	/* 2. Clear the ds_list itself */
 	ds_list_clear(global.thumbnail_sprite);

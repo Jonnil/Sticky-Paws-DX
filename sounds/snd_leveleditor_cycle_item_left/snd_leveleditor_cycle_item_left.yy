@@ -1,5 +1,5 @@
 {
-  "$GMSound":"",
+  "$GMSound":"v1",
   "%Name":"snd_leveleditor_cycle_item_left",
   "audioGroupId":{
     "name":"audiogroup_default",
@@ -10,6 +10,7 @@
   "compression":0,
   "conversionMode":0,
   "duration":0.09288,
+  "exportDir":"",
   "name":"snd_leveleditor_cycle_item_left",
   "parent":{
     "name":"Sounds",

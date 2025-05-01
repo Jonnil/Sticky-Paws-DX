@@ -1,5 +1,5 @@
 {
-  "$GMSprite":"",
+  "$GMSprite":"v1",
   "%Name":"spr_leveleditor_icon_empty",
   "bboxMode":0,
   "bbox_bottom":63,

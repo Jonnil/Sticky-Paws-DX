@@ -1,5 +1,5 @@
 {
-  "$GMSprite":"",
+  "$GMSprite":"v1",
   "%Name":"spr_loading",
   "bboxMode":0,
   "bbox_bottom":60,

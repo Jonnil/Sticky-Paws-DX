@@ -31,6 +31,7 @@ function scr_option_account()
 			scr_draw_text_outlined(display_get_gui_width() - 8, 40 * 2, l10n_text("This is used for uploading levels"), global.default_text_size * 0.9, c_menu_outline, c_menu_fill, 1);
 			
 			draw_set_halign(fa_center);
+			
 			if (menu != "change_username_ok")
 			&& (menu != "change_username_cancel")
 			{
@@ -137,10 +138,12 @@ function scr_option_account()
 				&& (menu_delay == 0 && menu_joystick_delay == 0)
 				{
 					menu_delay = 3;
+					
 					with(instance_create_depth(change_username_x + 128, change_username_y + 50, 0, obj_score_up))
 					{
 						score_up = "Copied"; /* Show that you have copied the device username */
 					}
+					
 					if (os_type == os_switch)
 					{
 						var selected_switch_account = switch_accounts_select_account(true, false, true);
@@ -219,8 +222,11 @@ function scr_option_account()
 		|| (menu == "change_username_cancel")
 		{
 			global.username = scr_draw_name_input_screen(global.username, 32, c_white, 0.9, true, change_username_x + 185, change_username_y + 21, "change_username_ok", "change_username_cancel", false, true, false);
-			if (global.clicking_ok_input_screen || global.clicking_cancel_input_screen)
-			&& (menu_delay == 0 && menu_joystick_delay == 0)
+			
+			if (global.clicking_ok_input_screen
+			|| global.clicking_cancel_input_screen)
+			&& (menu_delay == 0
+			&& menu_joystick_delay == 0)
 			{
 				/* Save username to config file */
 				ini_open(game_save_id + "save_file/config.ini");

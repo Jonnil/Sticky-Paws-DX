@@ -1,5 +1,5 @@
 {
-  "$GMSound":"",
+  "$GMSound":"v1",
   "%Name":"snd_boss_defeated",
   "audioGroupId":{
     "name":"audiogroup_default",
@@ -10,6 +10,7 @@
   "compression":0,
   "conversionMode":0,
   "duration":1.532521,
+  "exportDir":"",
   "name":"snd_boss_defeated",
   "parent":{
     "name":"Sounds",

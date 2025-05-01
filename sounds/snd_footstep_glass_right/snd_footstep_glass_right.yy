@@ -1,5 +1,5 @@
 {
-  "$GMSound":"",
+  "$GMSound":"v1",
   "%Name":"snd_footstep_glass_right",
   "audioGroupId":{
     "name":"audiogroup_default",
@@ -10,6 +10,7 @@
   "compression":0,
   "conversionMode":0,
   "duration":0.15675,
+  "exportDir":"",
   "name":"snd_footstep_glass_right",
   "parent":{
     "name":"Sounds",

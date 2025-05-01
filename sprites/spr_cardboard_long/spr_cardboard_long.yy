@@ -1,5 +1,5 @@
 {
-  "$GMSprite":"",
+  "$GMSprite":"v1",
   "%Name":"spr_cardboard_long",
   "bboxMode":2,
   "bbox_bottom":34,

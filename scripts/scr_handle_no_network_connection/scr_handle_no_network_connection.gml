@@ -49,6 +49,13 @@ function scr_handle_no_network_connection(what_script = "scr_handle_no_network_c
 	/* No network: switch to the network error menu */
 	show_debug_message("[scr_handle_no_network_connection] No network available. Switching to 'network_error' menu.");
 	menu_delay = 3;
+	
+	ini_open("save_file/config.ini");
+	global.online_last_successful_check = ini_read_string("config", "online_last_successful_check", "Never");
+	ini_close(); /* Don't commit the save data on Switch, this is only temporary! */
+	
+	global.online_error_code = scr_generate_network_error_code();
+	
 	menu = "network_error";
 	
 	show_debug_message("[scr_handle_no_network_connection] Exiting function. Final menu: " + string(menu) + "\n");
