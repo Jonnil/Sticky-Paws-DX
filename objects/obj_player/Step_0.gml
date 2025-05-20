@@ -8,13 +8,6 @@ if (speed > 0)
 }
 #endregion /* Only update audio listener position and velocity when the player is moving END */
 
-if (keyboard_check_pressed(vk_f12))
-{
-    // This will intentionally crash the game:
-    "I am not a function"();
-}
-
-
 scr_player_move_save_whole_level_as_screenshot();
 scr_start_intro_animations();
 scr_player_move_restart();

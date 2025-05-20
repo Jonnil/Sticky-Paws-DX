@@ -5,6 +5,7 @@ function scr_init_nwt_flags()
 	global.nwt_flag_list = ds_list_create();
 	
 	/* prefix "!" means "error when this var is TRUE", otherwise it means "error when this var is FALSE" */
+	/* But if we are to automatically retrieve all global variables, then we can't possibly know that */
 	ds_list_add(global.nwt_flag_list, "!online_token_expired");
 	ds_list_add(global.nwt_flag_list, "online_token_present");
 	ds_list_add(global.nwt_flag_list, "online_token_validated");
@@ -14,14 +15,33 @@ function scr_init_nwt_flags()
 	ds_list_add(global.nwt_flag_list, "switch_account_open");
 	ds_list_add(global.nwt_flag_list, "switch_account_is_user_online");
 	
-	/* ...add more ds_list_add calls here as you introduce new flags... */
+	/* Find all relevant Boolean Global Variables */
+	var keys = struct_get_names(global);
+	var count = array_length(keys);
+	
+	for (var i = 0; i < count; i++)
+	{
+		var var_name = keys[i];
+		var val = variable_global_get(var_name);
+		
+		//if (is_real(val))
+		//{
+		//	ini_write_real("Global Variables", var_name, real(val));
+		//}
+		//else
+		//{
+		//	ini_write_string("Global Variables", var_name, string(val));
+		//}
+	}
+	
+	/* This will try and find all Boolean Global Variable flags that exist in the game automatically and execture the ds_list_add calls here */
 }
 
 /// @function scr_generate_network_error_code
 /// @description Pack as many booleans into one unique NWT-### via bitmask + DS list
 function scr_generate_network_error_code()
 {
-	/* Build the mask dynamically from global.nwt_flag_list */
+	/* Build the mask dynamically from 'global nwt flag list' */
 	var mask		= 0;
 	var flag_count	= ds_list_size(global.nwt_flag_list);
 	

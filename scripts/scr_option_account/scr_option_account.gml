@@ -146,8 +146,23 @@ function scr_option_account()
 					
 					if (os_type == os_switch)
 					{
-						var selected_switch_account = switch_accounts_select_account(true, false, true);
-						global.username = switch_accounts_get_nickname(selected_switch_account);
+						/* Open whichever account was pre-selected by your .nmeta at launch. Try the console's preselected account */
+						var current_switch_account = switch_accounts_open_preselected_user();
+						
+						if (current_switch_account != -1)
+						{
+							global.username = switch_accounts_get_nickname(current_switch_account);
+						}
+						else
+						{
+							/* If no user, then let the player select themselves, without logging out the user. Force a selection if none was open */
+							var selected_switch_account = switch_accounts_select_account(
+								true, /* isSinglePlayer */
+								false, /* showOnlineCapableOnly */
+								false /* canSkip = false, this means the user must pick one */
+							);
+							global.username = switch_accounts_get_nickname(selected_switch_account);
+						}
 					}
 					else
 					{

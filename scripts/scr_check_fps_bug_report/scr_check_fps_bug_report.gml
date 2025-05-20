@@ -1,7 +1,7 @@
-/// @function check_fps_bug_report(simulated_fps)
+/// @function scr_check_fps_bug_report(simulated_fps)
 /// @description Monitors FPS and accumulates the duration that FPS remains below an acceptable threshold. When FPS recovers, if the low-FPS period was significant, a report is output.
 /// @param simulated_fps Optional: Use this value as the current FPS for testing; defaults to fps_real.
-function check_fps_bug_report(simulated_fps = fps_real)
+function scr_check_fps_bug_report(simulated_fps = fps_real)
 {
 	/* Configurable parameters (all local) */
 	var acceptable_fps_threshold = 50;		/* FPS value below which performance is considered low */
@@ -19,7 +19,7 @@ function check_fps_bug_report(simulated_fps = fps_real)
 	lowest_detected_fps: the lowest FPS encountered during the current low-FPS event */
 	static accumulated_low_fps_duration = 0;
 	static low_fps_active = false;
-	static lowest_detected_fps = 9999; // Initialize with a high value
+	static lowest_detected_fps = 9999; /* Initialize with a high value */
 	
 	if (current_fps < acceptable_fps_threshold)
 	{

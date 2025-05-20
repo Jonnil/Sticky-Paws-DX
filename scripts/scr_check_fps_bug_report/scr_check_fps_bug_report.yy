@@ -1,9 +1,9 @@
 {
   "$GMScript":"v1",
-  "%Name":"check_fps_bug_report",
+  "%Name":"scr_check_fps_bug_report",
   "isCompatibility":false,
   "isDnD":false,
-  "name":"check_fps_bug_report",
+  "name":"scr_check_fps_bug_report",
   "parent":{
     "name":"Debug Scripts",
     "path":"folders/Scripts/Debug Scripts.yy",
