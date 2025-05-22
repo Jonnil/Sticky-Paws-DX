@@ -1,5 +1,5 @@
 {
-  "$GMSprite":"v1",
+  "$GMSprite":"v2",
   "%Name":"spr_sign_crouch",
   "bboxMode":0,
   "bbox_bottom":138,
@@ -12,7 +12,7 @@
   "edgeFiltering":false,
   "For3D":false,
   "frames":[
-    {"$GMSpriteFrame":"","%Name":"70b0fd38-3932-432b-988f-3e4e2300412e","name":"70b0fd38-3932-432b-988f-3e4e2300412e","resourceType":"GMSpriteFrame","resourceVersion":"2.0",},
+    {"$GMSpriteFrame":"v1","%Name":"70b0fd38-3932-432b-988f-3e4e2300412e","name":"70b0fd38-3932-432b-988f-3e4e2300412e","resourceType":"GMSpriteFrame","resourceVersion":"2.0",},
   ],
   "gridX":0,
   "gridY":0,

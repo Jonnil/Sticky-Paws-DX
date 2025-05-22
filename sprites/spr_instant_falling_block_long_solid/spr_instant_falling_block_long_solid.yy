@@ -1,5 +1,5 @@
 {
-  "$GMSprite":"v1",
+  "$GMSprite":"v2",
   "%Name":"spr_instant_falling_block_long_solid",
   "bboxMode":2,
   "bbox_bottom":33,
@@ -12,7 +12,7 @@
   "edgeFiltering":false,
   "For3D":false,
   "frames":[
-    {"$GMSpriteFrame":"","%Name":"b57f939e-50d7-422e-aa30-b04b17efd0e4","name":"b57f939e-50d7-422e-aa30-b04b17efd0e4","resourceType":"GMSpriteFrame","resourceVersion":"2.0",},
+    {"$GMSpriteFrame":"v1","%Name":"b57f939e-50d7-422e-aa30-b04b17efd0e4","name":"b57f939e-50d7-422e-aa30-b04b17efd0e4","resourceType":"GMSpriteFrame","resourceVersion":"2.0",},
   ],
   "gridX":0,
   "gridY":0,

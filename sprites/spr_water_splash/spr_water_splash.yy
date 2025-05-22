@@ -1,5 +1,5 @@
 {
-  "$GMSprite":"v1",
+  "$GMSprite":"v2",
   "%Name":"spr_water_splash",
   "bboxMode":0,
   "bbox_bottom":120,
@@ -12,7 +12,7 @@
   "edgeFiltering":false,
   "For3D":false,
   "frames":[
-    {"$GMSpriteFrame":"","%Name":"c40c511b-ec8d-4de3-8e09-cacf36ab020f","name":"c40c511b-ec8d-4de3-8e09-cacf36ab020f","resourceType":"GMSpriteFrame","resourceVersion":"2.0",},
+    {"$GMSpriteFrame":"v1","%Name":"c40c511b-ec8d-4de3-8e09-cacf36ab020f","name":"c40c511b-ec8d-4de3-8e09-cacf36ab020f","resourceType":"GMSpriteFrame","resourceVersion":"2.0",},
   ],
   "gridX":0,
   "gridY":0,

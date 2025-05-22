@@ -1,5 +1,5 @@
 {
-  "$GMSprite":"v1",
+  "$GMSprite":"v2",
   "%Name":"spr_falling_block_spawner_mask",
   "bboxMode":0,
   "bbox_bottom":67,
@@ -12,7 +12,7 @@
   "edgeFiltering":false,
   "For3D":false,
   "frames":[
-    {"$GMSpriteFrame":"","%Name":"155e31c0-4acc-4ca2-899b-eacf3408ec16","name":"155e31c0-4acc-4ca2-899b-eacf3408ec16","resourceType":"GMSpriteFrame","resourceVersion":"2.0",},
+    {"$GMSpriteFrame":"v1","%Name":"155e31c0-4acc-4ca2-899b-eacf3408ec16","name":"155e31c0-4acc-4ca2-899b-eacf3408ec16","resourceType":"GMSpriteFrame","resourceVersion":"2.0",},
   ],
   "gridX":0,
   "gridY":0,

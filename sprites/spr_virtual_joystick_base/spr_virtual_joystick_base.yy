@@ -1,5 +1,5 @@
 {
-  "$GMSprite":"v1",
+  "$GMSprite":"v2",
   "%Name":"spr_virtual_joystick_base",
   "bboxMode":0,
   "bbox_bottom":299,
@@ -12,7 +12,7 @@
   "edgeFiltering":false,
   "For3D":false,
   "frames":[
-    {"$GMSpriteFrame":"","%Name":"4788bd95-aed5-47ad-afc8-b80f4dc603cf","name":"4788bd95-aed5-47ad-afc8-b80f4dc603cf","resourceType":"GMSpriteFrame","resourceVersion":"2.0",},
+    {"$GMSpriteFrame":"v1","%Name":"4788bd95-aed5-47ad-afc8-b80f4dc603cf","name":"4788bd95-aed5-47ad-afc8-b80f4dc603cf","resourceType":"GMSpriteFrame","resourceVersion":"2.0",},
   ],
   "gridX":0,
   "gridY":0,

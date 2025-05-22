@@ -1,5 +1,5 @@
 {
-  "$GMSprite":"v1",
+  "$GMSprite":"v2",
   "%Name":"spr_map_tiny_catlyn",
   "bboxMode":0,
   "bbox_bottom":17,
@@ -12,7 +12,7 @@
   "edgeFiltering":false,
   "For3D":false,
   "frames":[
-    {"$GMSpriteFrame":"","%Name":"e08af0f9-fe6e-4b87-a9a0-cebea7915d6a","name":"e08af0f9-fe6e-4b87-a9a0-cebea7915d6a","resourceType":"GMSpriteFrame","resourceVersion":"2.0",},
+    {"$GMSpriteFrame":"v1","%Name":"e08af0f9-fe6e-4b87-a9a0-cebea7915d6a","name":"e08af0f9-fe6e-4b87-a9a0-cebea7915d6a","resourceType":"GMSpriteFrame","resourceVersion":"2.0",},
   ],
   "gridX":0,
   "gridY":0,
