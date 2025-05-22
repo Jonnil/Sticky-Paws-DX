@@ -1,5 +1,3 @@
-show_debug_log(true);
-
 #region /* Things you could change */
 global.max_players = 4; /* How many players you want to be able to play */
 global.company_name = "Jonnil"; /* String of what the company is called */

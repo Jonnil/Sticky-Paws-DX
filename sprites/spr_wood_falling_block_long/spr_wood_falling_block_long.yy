@@ -1,5 +1,5 @@
 {
-  "$GMSprite":"v1",
+  "$GMSprite":"v2",
   "%Name":"spr_wood_falling_block_long",
   "bboxMode":2,
   "bbox_bottom":17,
@@ -12,7 +12,7 @@
   "edgeFiltering":false,
   "For3D":false,
   "frames":[
-    {"$GMSpriteFrame":"","%Name":"dfcb916b-02a0-4190-a86e-a0c7fa4cf153","name":"dfcb916b-02a0-4190-a86e-a0c7fa4cf153","resourceType":"GMSpriteFrame","resourceVersion":"2.0",},
+    {"$GMSpriteFrame":"v1","%Name":"dfcb916b-02a0-4190-a86e-a0c7fa4cf153","name":"dfcb916b-02a0-4190-a86e-a0c7fa4cf153","resourceType":"GMSpriteFrame","resourceVersion":"2.0",},
   ],
   "gridX":0,
   "gridY":0,

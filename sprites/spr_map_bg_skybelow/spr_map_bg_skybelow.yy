@@ -1,5 +1,5 @@
 {
-  "$GMSprite":"v1",
+  "$GMSprite":"v2",
   "%Name":"spr_map_bg_skybelow",
   "bboxMode":0,
   "bbox_bottom":1357,
@@ -12,7 +12,7 @@
   "edgeFiltering":false,
   "For3D":false,
   "frames":[
-    {"$GMSpriteFrame":"","%Name":"4a8a3088-9a63-4289-977b-12982be8639a","name":"4a8a3088-9a63-4289-977b-12982be8639a","resourceType":"GMSpriteFrame","resourceVersion":"2.0",},
+    {"$GMSpriteFrame":"v1","%Name":"4a8a3088-9a63-4289-977b-12982be8639a","name":"4a8a3088-9a63-4289-977b-12982be8639a","resourceType":"GMSpriteFrame","resourceVersion":"2.0",},
   ],
   "gridX":0,
   "gridY":0,

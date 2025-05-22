@@ -1,5 +1,5 @@
 {
-  "$GMSprite":"v1",
+  "$GMSprite":"v2",
   "%Name":"spr_icon_gamepad",
   "bboxMode":0,
   "bbox_bottom":29,
@@ -12,7 +12,7 @@
   "edgeFiltering":false,
   "For3D":false,
   "frames":[
-    {"$GMSpriteFrame":"","%Name":"13d8aa03-60d4-47d2-9f4d-d125f327ea1d","name":"13d8aa03-60d4-47d2-9f4d-d125f327ea1d","resourceType":"GMSpriteFrame","resourceVersion":"2.0",},
+    {"$GMSpriteFrame":"v1","%Name":"13d8aa03-60d4-47d2-9f4d-d125f327ea1d","name":"13d8aa03-60d4-47d2-9f4d-d125f327ea1d","resourceType":"GMSpriteFrame","resourceVersion":"2.0",},
   ],
   "gridX":0,
   "gridY":0,

@@ -1,5 +1,5 @@
 {
-  "$GMSprite":"v1",
+  "$GMSprite":"v2",
   "%Name":"spr_chair_and_table",
   "bboxMode":2,
   "bbox_bottom":51,
@@ -12,7 +12,7 @@
   "edgeFiltering":false,
   "For3D":false,
   "frames":[
-    {"$GMSpriteFrame":"","%Name":"b06c52d0-87a6-44ea-b6aa-d841b9650ee6","name":"b06c52d0-87a6-44ea-b6aa-d841b9650ee6","resourceType":"GMSpriteFrame","resourceVersion":"2.0",},
+    {"$GMSpriteFrame":"v1","%Name":"b06c52d0-87a6-44ea-b6aa-d841b9650ee6","name":"b06c52d0-87a6-44ea-b6aa-d841b9650ee6","resourceType":"GMSpriteFrame","resourceVersion":"2.0",},
   ],
   "gridX":0,
   "gridY":0,

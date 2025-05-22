@@ -1,5 +1,5 @@
 {
-  "$GMSprite":"v1",
+  "$GMSprite":"v2",
   "%Name":"spr_stone_falling_block_solid",
   "bboxMode":2,
   "bbox_bottom":32,
@@ -12,7 +12,7 @@
   "edgeFiltering":false,
   "For3D":false,
   "frames":[
-    {"$GMSpriteFrame":"","%Name":"aa9a55ef-3c88-42ec-9eaf-258f1818468a","name":"aa9a55ef-3c88-42ec-9eaf-258f1818468a","resourceType":"GMSpriteFrame","resourceVersion":"2.0",},
+    {"$GMSpriteFrame":"v1","%Name":"aa9a55ef-3c88-42ec-9eaf-258f1818468a","name":"aa9a55ef-3c88-42ec-9eaf-258f1818468a","resourceType":"GMSpriteFrame","resourceVersion":"2.0",},
   ],
   "gridX":0,
   "gridY":0,

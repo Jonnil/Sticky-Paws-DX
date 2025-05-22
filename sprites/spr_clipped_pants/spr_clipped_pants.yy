@@ -1,5 +1,5 @@
 {
-  "$GMSprite":"v1",
+  "$GMSprite":"v2",
   "%Name":"spr_clipped_pants",
   "bboxMode":0,
   "bbox_bottom":62,
@@ -12,8 +12,8 @@
   "edgeFiltering":false,
   "For3D":false,
   "frames":[
-    {"$GMSpriteFrame":"","%Name":"d895b8da-66e8-4a17-aa63-304c4faed4c3","name":"d895b8da-66e8-4a17-aa63-304c4faed4c3","resourceType":"GMSpriteFrame","resourceVersion":"2.0",},
-    {"$GMSpriteFrame":"","%Name":"d7e9e6ec-973b-4db5-9f91-7a70ee203c9a","name":"d7e9e6ec-973b-4db5-9f91-7a70ee203c9a","resourceType":"GMSpriteFrame","resourceVersion":"2.0",},
+    {"$GMSpriteFrame":"v1","%Name":"d895b8da-66e8-4a17-aa63-304c4faed4c3","name":"d895b8da-66e8-4a17-aa63-304c4faed4c3","resourceType":"GMSpriteFrame","resourceVersion":"2.0",},
+    {"$GMSpriteFrame":"v1","%Name":"d7e9e6ec-973b-4db5-9f91-7a70ee203c9a","name":"d7e9e6ec-973b-4db5-9f91-7a70ee203c9a","resourceType":"GMSpriteFrame","resourceVersion":"2.0",},
   ],
   "gridX":0,
   "gridY":0,

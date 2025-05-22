@@ -1,5 +1,5 @@
 {
-  "$GMSprite":"v1",
+  "$GMSprite":"v2",
   "%Name":"spr_boss_smash_against_wall",
   "bboxMode":0,
   "bbox_bottom":260,
@@ -12,7 +12,7 @@
   "edgeFiltering":false,
   "For3D":false,
   "frames":[
-    {"$GMSpriteFrame":"","%Name":"0b4ef425-d637-45f9-907b-2327bfd48ddd","name":"0b4ef425-d637-45f9-907b-2327bfd48ddd","resourceType":"GMSpriteFrame","resourceVersion":"2.0",},
+    {"$GMSpriteFrame":"v1","%Name":"0b4ef425-d637-45f9-907b-2327bfd48ddd","name":"0b4ef425-d637-45f9-907b-2327bfd48ddd","resourceType":"GMSpriteFrame","resourceVersion":"2.0",},
   ],
   "gridX":0,
   "gridY":0,

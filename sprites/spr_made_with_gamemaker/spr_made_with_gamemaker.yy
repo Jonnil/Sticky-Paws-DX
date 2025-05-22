@@ -1,5 +1,5 @@
 {
-  "$GMSprite":"v1",
+  "$GMSprite":"v2",
   "%Name":"spr_made_with_gamemaker",
   "bboxMode":0,
   "bbox_bottom":375,
@@ -12,9 +12,9 @@
   "edgeFiltering":false,
   "For3D":false,
   "frames":[
-    {"$GMSpriteFrame":"","%Name":"cdd68c5f-716e-438f-bb5c-24a12704ac1e","name":"cdd68c5f-716e-438f-bb5c-24a12704ac1e","resourceType":"GMSpriteFrame","resourceVersion":"2.0",},
-    {"$GMSpriteFrame":"","%Name":"0d14d2c3-0669-46ce-b213-3a896cc2a67d","name":"0d14d2c3-0669-46ce-b213-3a896cc2a67d","resourceType":"GMSpriteFrame","resourceVersion":"2.0",},
-    {"$GMSpriteFrame":"","%Name":"96f8b487-5760-4eff-ab66-46bf1e6a7c4c","name":"96f8b487-5760-4eff-ab66-46bf1e6a7c4c","resourceType":"GMSpriteFrame","resourceVersion":"2.0",},
+    {"$GMSpriteFrame":"v1","%Name":"cdd68c5f-716e-438f-bb5c-24a12704ac1e","name":"cdd68c5f-716e-438f-bb5c-24a12704ac1e","resourceType":"GMSpriteFrame","resourceVersion":"2.0",},
+    {"$GMSpriteFrame":"v1","%Name":"0d14d2c3-0669-46ce-b213-3a896cc2a67d","name":"0d14d2c3-0669-46ce-b213-3a896cc2a67d","resourceType":"GMSpriteFrame","resourceVersion":"2.0",},
+    {"$GMSpriteFrame":"v1","%Name":"96f8b487-5760-4eff-ab66-46bf1e6a7c4c","name":"96f8b487-5760-4eff-ab66-46bf1e6a7c4c","resourceType":"GMSpriteFrame","resourceVersion":"2.0",},
   ],
   "gridX":0,
   "gridY":0,

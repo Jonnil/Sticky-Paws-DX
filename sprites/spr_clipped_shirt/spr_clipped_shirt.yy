@@ -1,5 +1,5 @@
 {
-  "$GMSprite":"v1",
+  "$GMSprite":"v2",
   "%Name":"spr_clipped_shirt",
   "bboxMode":0,
   "bbox_bottom":61,
@@ -12,8 +12,8 @@
   "edgeFiltering":false,
   "For3D":false,
   "frames":[
-    {"$GMSpriteFrame":"","%Name":"535649f9-6a4a-4a45-9f18-4690875dd0ae","name":"535649f9-6a4a-4a45-9f18-4690875dd0ae","resourceType":"GMSpriteFrame","resourceVersion":"2.0",},
-    {"$GMSpriteFrame":"","%Name":"7cc168af-034a-49b9-a4e1-05256dfc95ea","name":"7cc168af-034a-49b9-a4e1-05256dfc95ea","resourceType":"GMSpriteFrame","resourceVersion":"2.0",},
+    {"$GMSpriteFrame":"v1","%Name":"535649f9-6a4a-4a45-9f18-4690875dd0ae","name":"535649f9-6a4a-4a45-9f18-4690875dd0ae","resourceType":"GMSpriteFrame","resourceVersion":"2.0",},
+    {"$GMSpriteFrame":"v1","%Name":"7cc168af-034a-49b9-a4e1-05256dfc95ea","name":"7cc168af-034a-49b9-a4e1-05256dfc95ea","resourceType":"GMSpriteFrame","resourceVersion":"2.0",},
   ],
   "gridX":0,
   "gridY":0,
