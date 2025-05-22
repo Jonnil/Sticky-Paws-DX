@@ -411,6 +411,7 @@
     {"name":"scr_step_online_download_list","order":1,"path":"scripts/scr_step_online_download_list/scr_step_online_download_list.yy",},
     {"name":"scr_switch_expand_save_data","order":73,"path":"scripts/scr_switch_expand_save_data/scr_switch_expand_save_data.yy",},
     {"name":"scr_switch_update_online_status","order":14,"path":"scripts/scr_switch_update_online_status/scr_switch_update_online_status.yy",},
+    {"name":"scr_to_base64","order":111,"path":"scripts/scr_to_base64/scr_to_base64.yy",},
     {"name":"scr_toggle_fullscreen","order":35,"path":"scripts/scr_toggle_fullscreen/scr_toggle_fullscreen.yy",},
     {"name":"scr_unlock_placable_level_objects","order":25,"path":"scripts/scr_unlock_placable_level_objects/scr_unlock_placable_level_objects.yy",},
     {"name":"scr_unzip_all","order":37,"path":"scripts/scr_unzip_all/scr_unzip_all.yy",},

@@ -1,5 +1,3 @@
-show_debug_log(true);
-
 #region /* Things you could change */
 global.max_players = 4; /* How many players you want to be able to play */
 global.company_name = "Jonnil"; /* String of what the company is called */
@@ -338,8 +336,6 @@ global.online_token_expired				= false;			/* Set true if you detect an expiry */
 global.online_retry_attempts			= 0;				/* Count of retry‐loops */
 global.online_current_attempt_result	= "";				/* Last high-level failure reason */
 global.online_error_code				= "";				/* Your NWT-### code */
-
-scr_init_nwt_flags();
 
 global.report_reason = "";
 global.report_message = "";

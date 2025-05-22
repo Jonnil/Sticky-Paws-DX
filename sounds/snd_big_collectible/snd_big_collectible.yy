@@ -9,7 +9,7 @@
   "bitRate":128,
   "compression":0,
   "conversionMode":0,
-  "duration":0.835918,
+  "duration":0.83591837,
   "exportDir":"",
   "name":"snd_big_collectible",
   "parent":{

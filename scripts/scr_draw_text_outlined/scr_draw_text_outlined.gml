@@ -10,7 +10,8 @@
 function scr_draw_text_outlined(x_position = x, y_position = y, string_text = "", text_size = global.default_text_size, outline_color = c_black, text_color = c_white, img_alpha = 1)
 {
 	/* Draw outline of text if enabled and outline color is valid */
-	if (global.draw_text_outline && outline_color != noone)
+	if (global.draw_text_outline
+	&& outline_color != noone)
 	{
 		/* Cache the text size multiplier to avoid recalculating it for each offset */
 		var ts = text_size;
