@@ -1,9 +1,9 @@
 {
   "$GMScript":"v1",
-  "%Name":"scr_to_base64",
+  "%Name":"scr_flags_to_base64",
   "isCompatibility":false,
   "isDnD":false,
-  "name":"scr_to_base64",
+  "name":"scr_flags_to_base64",
   "parent":{
     "name":"Other",
     "path":"folders/Scripts/Other.yy",

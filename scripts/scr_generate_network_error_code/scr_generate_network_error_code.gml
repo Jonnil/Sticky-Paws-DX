@@ -12,15 +12,17 @@ function scr_init_bool_globals()
 	global.bool_flag_list = ds_list_create();
 	
 	/* Get every field name in the global struct */
-	var names	= struct_get_names(global);
-	var cnt		= array_length(names);
+	var names = struct_get_names(global);
+	/* Ensure stable, alphabetical ordering so bit‐indices never shift (true = ascending) */
+	array_sort(names, true);
+	var cnt = array_length(names);
 	
 	for (var i = 0; i < cnt; i++)
 	{
 		var fname = names[i];
 		
 		/* Skip our own list, or any non-boolean
-		struct_get_names(global) returns *every* field on the global struct,
+		'struct get names(global)' returns *every* field on the global struct,
 		including our own bool_flag_list, so skip that one! */
 		if (fname == "bool_flag_list")
 		{
@@ -72,42 +74,22 @@ function scr_export_bool_globals()
 	/* Close (and flush) the file */
 	ini_close();
 	
-	show_debug_message("[scr_export_bool_globals] Bool‐global dump written to: " + string(ini_path));
+	show_debug_message("[scr_export_bool_globals] Bool‐global dump written to: " + string(ini_path) + "\n");
 }
 
 /// @function scr_generate_network_error_code
-/// @description Pack as many booleans into one unique NWT-### via bitmask + DS list
+/// @description Packs all false bools into a Base-64 string via scr_flags_to_base64
 function scr_generate_network_error_code()
 {
-	/* (Re)build our list & dump it */
+	/* 1) Re‐discover your Boolean globals */
 	scr_init_bool_globals();
+	
+	/* 2) Dump them for logging/debugging */
 	scr_export_bool_globals();
 	
-	/* Build the mask dynamically from our boolean-flag list */
-	var mask		= 0;
-	var flag_count	= ds_list_size(global.bool_flag_list);
-	show_debug_message("[scr_generate_network_error_code] found " + string(flag_count) + " flags");
+	/* 3) Encode every flag into Base-64 (6 flags per character) */
+	var code = scr_flags_to_base64();
 	
-	for (var i = 0; i < flag_count; i++)
-	{
-		/* Grab the name, fetch its value (defaults to false) */
-		var name = global.bool_flag_list[| i];
-		var val  = variable_global_exists(name)
-					? variable_global_get(name)
-					: false;
-		show_debug_message("[scr_generate_network_error_code] flag[" + string(i) + "] = " + string(name) + " to " + string(val));
-		
-		/* If the flag is false => "error" => set the bit */
-		if (!val)
-		{
-			mask |= (1 << i);
-			show_debug_message("[scr_generate_network_error_code] to bit " + string(i) + " set; new mask = " + string(mask));
-		}
-	}
-	
-	/* Encode in Base-64 instead of decimal, so that error codes are shorter */
-	show_debug_message("[scr_generate_network_error_code] raw mask = " + string(mask));
-	var shortMask = scr_to_base64(mask);
-	show_debug_message("[scr_generate_network_error_code] base64 mask = " + string(shortMask));
-	return "NWT-" + string(shortMask);
+	/* 4) Prefix and return */
+	return "NWT-" + string(code);
 }
