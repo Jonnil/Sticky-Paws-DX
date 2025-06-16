@@ -37,8 +37,8 @@ function scr_switch_update_online_status(show_login_screen = true)
 					show_debug_message("[scr_switch_update_online_status] Retrieved ID Token for account " + string(i) + ": " + string(id_token));
 					
 					/* Debug Token Info */
-					global.online_token_source	= l10n_text("Switch Account Services");
-					global.online_token_present	= (id_token != "" 
+					global.online_token_source = l10n_text("Switch Account Services");
+					global.online_token_present = (id_token != "" 
 												&& id_token != undefined 
 												&& id_token != false);
 					
@@ -49,8 +49,8 @@ function scr_switch_update_online_status(show_login_screen = true)
 						valid_id_token_found = true;
 						
 						/* Debug Token Info */
-						global.online_token_expired				= false;
-						global.online_current_attempt_result	= l10n_text("Valid ID Token");
+						global.online_token_expired = false;
+						global.online_current_attempt_result = l10n_text("Valid ID Token");
 						
 						break; /* We only need one valid token */
 					}
@@ -60,8 +60,8 @@ function scr_switch_update_online_status(show_login_screen = true)
 						logged_in_account = undefined; /* Reset if token is invalid */
 						
 						/* Debug Token Info */
-						global.online_token_expired				= false;  
-						global.online_current_attempt_result	= l10n_text("Invalid ID Token");
+						global.online_token_expired = false;  
+						global.online_current_attempt_result = l10n_text("Invalid ID Token");
 						
 						global.online_token_error_message = "ID Token retrieval failed/invalid for account index: " + string(i);
 					}
@@ -71,7 +71,7 @@ function scr_switch_update_online_status(show_login_screen = true)
 					show_debug_message("[scr_switch_update_online_status] Account index " + string(i) + " is not open or network service unavailable.");
 				}
 			}
-			#endregion
+			#endregion /* Iterate through accounts to find a valid open account with network service END */
 			
 			#region /* Prompt user if needed */
 			if ((!valid_id_token_found
@@ -99,6 +99,7 @@ function scr_switch_update_online_status(show_login_screen = true)
 				
 				logged_in_account = switch_accounts_select_account(true, true, false);
 				show_debug_message("[scr_switch_update_online_status] User selected account: " + string(logged_in_account));
+				
 				global.switch_account_network_service_available = switch_accounts_network_service_available(logged_in_account);
 				show_debug_message("[scr_switch_update_online_status] Post-selection network service availability: " + string(global.switch_account_network_service_available));
 				
@@ -192,7 +193,7 @@ function scr_switch_update_online_status(show_login_screen = true)
 			global.online_token_error_message = "System is not connected to the network.";
 			
 			/* Debug Online Info */
-			global.online_current_attempt_result	= l10n_text("No network connection");
+			global.online_current_attempt_result = l10n_text("No network connection");
 			
 			show_debug_message("[scr_switch_update_online_status] Network connection FAIL (passive check). Global login flags set to false.");
 		}
@@ -206,7 +207,7 @@ function scr_switch_update_online_status(show_login_screen = true)
 		global.online_token_error_message = "";
 		show_debug_message("[scr_switch_update_online_status] Non-Switch platform detected. Forcing online status to TRUE.");
 	}
-	#endregion
+	#endregion /* Update Switch Online Status END */
 	
 }
 

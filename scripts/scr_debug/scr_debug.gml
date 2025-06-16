@@ -15,6 +15,12 @@ function scr_debug_toggle_screen()
 		global.debug_screen = !global.debug_screen;
 		show_debug_message("[scr_debug_toggle_screen] 'debug screen' is set to: " + string(global.debug_screen));
 	}
+	
+	if (GM_build_type == "run"
+	&& keyboard_check_pressed(vk_f4))
+	{
+		global.intentionally_crash = intentionally_crash; /* Will intentionally crash the game */
+	}
 }
 
 ///////////////////////////////////////////////////////////////
@@ -36,6 +42,7 @@ function scr_debug_draw_fps()
 		{
 			draw_sprite_ext(spr_lock_icon, 0, 16, fps_y, 1, 1, 0, c_white, 1);
 		}
+		
 		draw_set_halign(fa_left);
 		draw_set_valign(fa_middle);
 		
@@ -73,6 +80,7 @@ function scr_debug_draw_instance_count()
 		{
 			draw_sprite_ext(spr_lock_icon, 0, 16, instance_count_y, 1, 1, 0, c_white, 1);
 		}
+		
 		draw_set_halign(fa_left);
 		draw_set_valign(fa_middle);
 		scr_draw_text_outlined(32, instance_count_y, "Instance Count: " + string(instance_count), global.default_text_size, c_black, c_white, 1);
@@ -116,6 +124,7 @@ function scr_debug_handle_controller_ports()
 {
 	/* Count how many players are active based on the "player_can_play" flags */
 	global.playergame = 0;
+	
 	for (var i = 1; i <= global.max_players; i += 1)
 	{
 		if (global.player_can_play[i])
@@ -253,6 +262,7 @@ function scr_debug_detect_controller_disconnections()
 			{
 				switch_controller_support_show();
 			}
+			
 			var time_source = time_source_create(time_source_game, 2, time_source_units_frames, function()
 			{
 				set_controller_sprites_to_use();

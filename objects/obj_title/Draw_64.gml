@@ -480,6 +480,7 @@ if (select_custom_level_menu_open)
 	level_editor_template_select = false;
 	
 	if (menu != "network_error")
+	&& (menu != "network_error_copy_error_code")
 	&& (menu != "network_error_main_menu")
 	{
 		scr_select_custom_level_menu();

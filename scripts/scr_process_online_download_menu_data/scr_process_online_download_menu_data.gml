@@ -39,6 +39,7 @@ function scr_process_online_download_menu_data()
 	
 	#region /* Only run this code if we are still not in the network error menu */
 	if (menu != "network_error")
+	&& (menu != "network_error_copy_error_code")
 	&& (menu != "network_error_main_menu")
 	&& (menu_delay == 0
 	&& menu_joystick_delay == 0)

@@ -218,6 +218,7 @@ function scr_draw_caution_online()
 		if (!global.switch_account_network_service_available)
 		{
 			scr_draw_text_outlined(display_get_gui_width() * 0.5, display_get_gui_height() * 0.5 - 128, l10n_text("Network Service is Unavailable!"), global.default_text_size * 2, c_black, c_white, 1);
+			
 			if (os_type == os_switch)
 			{
 				scr_draw_text_outlined(display_get_gui_width() * 0.5, display_get_gui_height() * 0.5 - 32, l10n_text("Please connect your account"), global.default_text_size, c_black, c_white, 1);

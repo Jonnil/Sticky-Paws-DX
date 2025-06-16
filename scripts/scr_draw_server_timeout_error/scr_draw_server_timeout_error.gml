@@ -30,12 +30,16 @@ function scr_draw_server_timeout_error()
 	var retry_clicked = draw_menu_button(button_x, button_y, l10n_text("Retry"), "server_timeout_retry", "server_timeout_retry");
 	draw_sprite_ext(spr_icon_retry, 0, button_x + 20, button_y + 21, 1, 1, 0, c_white, 1);
 	button_y += 45;
+	
+	var check_status_clicked = false;
+	
 	if (global.link_to_check_server_status != "")
 	{
-		var check_status_clicked  = draw_menu_button(button_x, button_y, l10n_text("Check Server Status"), "server_timeout_check_status", "server_timeout_check_status");
+		check_status_clicked = draw_menu_button(button_x, button_y, l10n_text("Check Server Status"), "server_timeout_check_status", "server_timeout_check_status");
 		draw_sprite_ext(spr_icon_antenna, 0, button_x + 20, button_y + 21, 1, 1, 0, c_white, 1);
 		button_y += 45;
 	}
+	
 	var back_clicked  = draw_menu_button(button_x, button_y, l10n_text("Back"), "server_timeout_back", "server_timeout_back");
 	draw_sprite_ext(spr_icon_back, 0, button_x + 20, button_y + 21, 1, 1, 0, c_white, 1);
 	
@@ -48,11 +52,13 @@ function scr_draw_server_timeout_error()
 		in_online_download_list_menu = true; show_debug_message("[scr_draw_server_timeout_error] 'In online download list menu' is set to true\n");
 		scr_initialize_online_download_menu();
 	}
+	
 	if (global.link_to_check_server_status != "")
 	&& (check_status_clicked)
 	{
 		url_open(global.link_to_check_server_status);
 	}
+	
 	if (back_clicked)
 	|| (key_b_pressed)
 	&& (menu_delay == 0 && menu_joystick_delay == 0)

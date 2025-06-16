@@ -23,104 +23,80 @@ function scr_draw_network_error_menu()
 		draw_set_alpha(1);
 		
 		#region /* Extra debug messages in top-left corner of screen */
-		if (keyboard_check_pressed(vk_f1))
-		|| (gamepad_button_check_pressed(global.player_slot[1], gp_face3))
+		/* First build up your text in a variable */
+		var debug_text = "";
+		
+		/* Time when network error happened */
+		if (variable_global_exists("online_last_successful_check"))
+		&& (variable_instance_exists(self, "time_of_network_error"))
+		&& (time_of_network_error != "")
 		{
-			network_error_debug_toggle = !network_error_debug_toggle;
+			debug_text += l10n_text("Time of network error") + ": "
+				+ string(time_of_network_error)
+				+ "\n";
 		}
 		
-		if (network_error_debug_toggle)
+		/* Last Successful Check */
+		if (variable_global_exists("online_last_successful_check"))
+		&& (global.online_last_successful_check != "")
 		{
-			/* First build up your text in a variable */
-			var debug_text = "";
-			
-			/* Last check */
-			if (variable_global_exists("online_last_successful_check"))
-			&& (global.online_last_successful_check != "")
-			{
-				debug_text += l10n_text("Last Successful Check") + ": "
-					+ string(global.online_last_successful_check)
-					+ "\n";
-			}
-			
-			/* Retry Attempts */
-			if (variable_global_exists("online_retry_attempts"))
-			{
-				debug_text += l10n_text("Retry Attempts") + ": "
-					+ string(global.online_retry_attempts)
-					+ "\n";
-			}
-			
-			/* Separator Line */
-			debug_text += "\n";
-			
-			/* Token source */
-			if (variable_global_exists("online_token_source"))
-			&& (global.online_token_source != "")
-			{
-				debug_text += l10n_text("Token Source") + ": " + string(global.online_token_source) + "\n";
-			}
-			
-			///* Environment */
-			//if (variable_global_exists("online_environment")
-			//&& global.online_environment != "")
-			//{
-			//	debug_text += l10n_text("Environment") + ": " + global.online_environment + "\n";
-			//}
-			
-			/* Token Present */
-			if (variable_global_exists("online_token_present"))
-			&& (!global.online_token_present)
-			{
-				debug_text += l10n_text("Token Present") + ": "
-					+ (global.online_token_present ? "Yes" : "No")
-					+ "\n";
-			}
-			
-			/* Token Expired */
-			if (variable_global_exists("online_token_expired"))
-			&& (global.online_token_expired)
-			{
-				debug_text += l10n_text("Token Expired") + ": " 
-					+ (global.online_token_expired ? "Yes" : "No")
-					+ "\n";
-			}
-			
-			/* Current Attempt Result */
-			if (variable_global_exists("online_current_attempt_result")
-			&& global.online_current_attempt_result != "" )
-			{
-				debug_text += l10n_text("Attempt Result") + ": "
-					+ string(global.online_current_attempt_result)
-					+ "\n";
-			}
-			
-			/* Then draw it once */
-			draw_set_halign(fa_left);
-			draw_set_valign(fa_top);
-			scr_draw_text_outlined(
-				8, 8,
-				string(debug_text),
-				global.default_text_size * 0.75,
-				c_black, c_white, 1
-			);
+			debug_text += l10n_text("Last Successful Check") + ": "
+				+ string(global.online_last_successful_check)
+				+ "\n";
 		}
-		else
+			
+		/* Retry Attempts */
+		if (variable_global_exists("online_retry_attempts"))
 		{
-			if (global.controls_used_for_navigation == "gamepad")
-			{
-				scr_draw_gamepad_buttons(gp_face3, 20, 24, 0.5, c_white, 1, 1, 1, 1)
-			}
-			else
-			{
-				draw_sprite_ext(spr_keyboard_keys, vk_f1, 20, 24, 0.5, 0.5, 0, c_white, 1);
-			}
-			
-			draw_set_halign(fa_left);
-			draw_set_valign(fa_top);
-			scr_draw_text_outlined(42, 8, l10n_text("More Info"),
-									global.default_text_size, c_black, c_white, 1);
+			debug_text += l10n_text("Retry Attempts") + ": "
+				+ string(global.online_retry_attempts)
+				+ "\n";
 		}
+			
+		/* Separator Line */
+		debug_text += "\n";
+			
+		/* Token source */
+		if (variable_global_exists("online_token_source"))
+		&& (global.online_token_source != "")
+		{
+			debug_text += l10n_text("Token Source") + ": " + string(global.online_token_source) + "\n";
+		}
+			
+		///* Environment */
+		//if (variable_global_exists("online_environment")
+		//&& global.online_environment != "")
+		//{
+		//	debug_text += l10n_text("Environment") + ": " + global.online_environment + "\n";
+		//}
+			
+		/* Token Present */
+		if (variable_global_exists("online_token_present"))
+		&& (!global.online_token_present)
+		{
+			debug_text += l10n_text("Token Present") + ": "
+				+ (global.online_token_present ? "Yes" : "No")
+				+ "\n";
+		}
+		
+		/* Current Attempt Result */
+		if (variable_global_exists("online_current_attempt_result")
+		&& global.online_current_attempt_result != "" )
+		{
+			debug_text += l10n_text("Attempt Result") + ": "
+				+ string(global.online_current_attempt_result)
+				+ "\n";
+		}
+			
+		/* Then draw it once */
+		draw_set_halign(fa_left);
+		draw_set_valign(fa_top);
+		scr_draw_text_outlined(
+			8, 16,
+			string(debug_text),
+			global.default_text_size * 0.75,
+			c_black, c_white, 1
+		);
 		#endregion /* Extra debug messages in top-left corner of screen END */
 		
 		/* Determine the error message based on connection status */
@@ -131,6 +107,11 @@ function scr_draw_network_error_menu()
 			error_text += l10n_text("No Internet Connection Detected") + "\n";
 		}
 		
+		if (global.online_token_expired)
+		{
+			error_text += l10n_text("Online Token Expired") + "\n";
+		}
+		else
 		if (!global.online_token_validated)
 		{
 			error_text += l10n_text("Invalid Online Token") + "\n";
@@ -139,6 +120,11 @@ function scr_draw_network_error_menu()
 		if (!global.online_enabled)
 		{
 			error_text += l10n_text("Invalid Online Credentials") + "\n";
+		}
+		
+		if (global.online_token_error_message != "")
+		{
+			error_text += l10n_text(global.online_token_error_message) + "\n";
 		}
 		
 		if (error_text == "")
@@ -284,6 +270,7 @@ function scr_draw_network_error_menu()
 			
 			if (copy_hover
 			&& mouse_check_button_released(mb_left))
+			&& (global.enable_option_for_pc)
 			{
 				copy_clicked = true;
 			}
@@ -307,6 +294,7 @@ function scr_draw_network_error_menu()
 					}
 					else
 					if (menu == "network_error_copy_error_code")
+					&& (global.enable_option_for_pc)
 					{
 						copy_clicked = true;
 					}
@@ -353,6 +341,7 @@ function scr_draw_network_error_menu()
 		}
 		else
 		if (copy_clicked)
+		&& (global.enable_option_for_pc)
 		{
 			menu_delay = 3;
 			

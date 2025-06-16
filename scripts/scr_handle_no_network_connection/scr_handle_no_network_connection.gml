@@ -56,6 +56,9 @@ function scr_handle_no_network_connection(what_script = "scr_handle_no_network_c
 	
 	global.online_error_code = scr_generate_network_error_code();
 	
+	var ts = scr_format_timestamp(date_current_datetime());
+	time_of_network_error = string(ts);
+	
 	menu = "network_error";
 	
 	show_debug_message("[scr_handle_no_network_connection] Exiting function. Final menu: " + string(menu) + "\n");

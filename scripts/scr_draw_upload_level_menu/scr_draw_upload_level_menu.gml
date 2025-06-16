@@ -56,6 +56,7 @@ function scr_draw_upload_level_menu()
 	|| (menu == "level_uploaded")
 	|| (menu == "level_uploaded_discord")
 	|| (menu == "network_error")
+	|| (menu == "network_error_copy_error_code")
 	|| (menu == "network_error_main_menu")
 	
 	|| (menu == "level_uses_photographic_images_checkbox")

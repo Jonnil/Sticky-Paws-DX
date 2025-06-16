@@ -8,6 +8,7 @@ function scr_fallback_to_previous_menu_state()
 	&& (menu_delay == 0
 	&& menu_joystick_delay == 0))
 	&& (menu != "network_error")
+	&& (menu != "network_error_copy_error_code")
 	&& (menu != "network_error_main_menu")
 	{
 		if (string_copy(menu, 1, string_length("download_online")) == "download_online")

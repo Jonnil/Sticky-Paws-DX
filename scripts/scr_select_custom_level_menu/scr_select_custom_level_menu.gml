@@ -42,6 +42,7 @@ function scr_select_custom_level_menu()
 		&& (menu != "load_official_level_template")
 		&& (menu != "level_editor_create_from_template")
 		&& (menu != "network_error")
+		&& (menu != "network_error_copy_error_code")
 		&& (menu != "network_error_main_menu")
 		&& (menu_delay == 0
 		&& menu_joystick_delay == 0)
