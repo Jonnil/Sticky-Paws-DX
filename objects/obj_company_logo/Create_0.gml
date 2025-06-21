@@ -87,11 +87,9 @@ else
 #endregion /* If you're playing on mobile, then some things should show up that is not on PC END */
 
 global.switch_account_name = noone;
-global.switch_account_open = noone;
 global.switch_account_handle = noone;
 
 global.switch_account_netid = noone;
-global.switch_account_is_user_online = noone;
 global.switch_account_network_service_available = false;
 global.switch_logged_in = noone;
 

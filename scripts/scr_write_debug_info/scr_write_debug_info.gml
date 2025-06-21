@@ -96,7 +96,6 @@ function scr_write_debug_info()
 	if (os_type == os_switch)
 	{
 		ini_write_string("Switch Info", "account_name", string(global.switch_account_name));
-		ini_write_string("Switch Info", "is_user_online", string(global.switch_account_is_user_online));
 		ini_write_string("Switch Info", "network_service_available", string(global.switch_account_network_service_available));
 		ini_write_string("Switch Info", "online_token_error", string(global.online_token_error_message));
 	}

@@ -7,28 +7,22 @@ function scr_switch_update_online_status(show_login_screen = true)
 		show_debug_message("[scr_switch_update_online_status] OS type is SWITCH. Starting update sequence...");
 		
 		/* Check network connection (passive mode) */
-		if (os_is_network_connected(network_connect_passive)) /* Need to use 'os is network connected' specifically here */
+		if (true) /* Need to use 'os is network connected(network connect passive)' specifically here, or some other method when on Nintendo Switch */
 		{
 			show_debug_message("[scr_switch_update_online_status] Network connection PASS (passive check).");
 			
-			/* Get total number of accounts on the Switch */
-			var switch_accounts_num = switch_accounts_get_accounts();
-			show_debug_message("[scr_switch_update_online_status] Total Switch accounts available: " + string(switch_accounts_num));
-			
 			var preselected_user_index = switch_accounts_open_preselected_user();
 			show_debug_message("[scr_switch_update_online_status] Switch Accounts Open Preselected User: " + string(preselected_user_index));
-			switch_accounts_open_user(preselected_user_index);
 			var valid_id_token_found = false;
 			global.online_token_error_message = ""; /* Reset error message */
 			
 			#region /* Iterate through accounts to find a valid open account with network service */
 			show_debug_message("[scr_switch_update_online_status] Checking account index: " + string(preselected_user_index));
 			
-			if (switch_accounts_is_user_open(preselected_user_index)
-			&& switch_accounts_network_service_available(preselected_user_index))
+			if (switch_accounts_login_user(preselected_user_index))
 			{
 				show_debug_message("[scr_switch_update_online_status] Account " + string(preselected_user_index) + " is open and has network service available.");
-				global.switch_account_network_service_available = switch_accounts_network_service_available(preselected_user_index);
+				global.switch_account_network_service_available = true;
 				show_debug_message("[scr_switch_update_online_status] Global switch_account_network_service_available set to: " + string(global.switch_account_network_service_available));
 				
 				/* Retrieve the ID token for this account */
@@ -92,7 +86,6 @@ function scr_switch_update_online_status(show_login_screen = true)
 					global.online_token_error_message = "No logged-in account detected.";
 				}
 				
-				preselected_user_index = switch_accounts_open_preselected_user(); //switch_accounts_select_account(true, true, false);
 				switch_accounts_open_user(preselected_user_index);
 				show_debug_message("[scr_switch_update_online_status] User selected account: " + string(preselected_user_index));
 				
@@ -124,53 +117,46 @@ function scr_switch_update_online_status(show_login_screen = true)
 			{
 				
 				#region /* Process all accounts for detailed info and token validation */
-				//for (var i = 0; i < switch_accounts_num; ++i)
-				//{
-					global.switch_account_open[preselected_user_index] = switch_accounts_is_user_open(preselected_user_index);
-					global.switch_account_is_user_online[preselected_user_index] = switch_accounts_is_user_online(preselected_user_index);
-					show_debug_message("[scr_switch_update_online_status] Account " + string(preselected_user_index) + " open: " + string(global.switch_account_open[preselected_user_index]) + ", online: " + string(global.switch_account_is_user_online[preselected_user_index]));
+				if (switch_accounts_is_user_open(preselected_user_index)
+				&& switch_accounts_is_user_online(preselected_user_index))
+				{
+					show_debug_message("[scr_switch_update_online_status] Validating token for account " + string(preselected_user_index) + ". Current global.online_token_validated: " + string(global.online_token_validated));
 					
-					if (global.switch_account_open[preselected_user_index]
-					&& global.switch_account_is_user_online[preselected_user_index])
+					if (!global.online_token_validated)
 					{
-						show_debug_message("[scr_switch_update_online_status] Validating token for account " + string(preselected_user_index) + ". Current global.online_token_validated: " + string(global.online_token_validated));
+						show_debug_message("[scr_switch_update_online_status] Token validation required for account " + string(preselected_user_index));
+						global.online_token_error_message = "Token validation required for account " + string(preselected_user_index);
 						
-						if (!global.online_token_validated)
-						{
-							show_debug_message("[scr_switch_update_online_status] Token validation required for account " + string(preselected_user_index));
-							global.online_token_error_message = "Token validation required for account " + string(preselected_user_index);
-							
-							var token_validation_headers = ds_map_create();
-							var id_token = switch_accounts_get_online_token(preselected_user_index);
-							show_debug_message("[scr_switch_update_online_status] Retrieved token for validation from account " + string(preselected_user_index) + ": " + string(id_token));
-							
-							//ds_map_add(token_validation_headers, "Host", global.base_url);
-							ds_map_add(token_validation_headers, "Content-Type", "application/json");
-							ds_map_add(token_validation_headers, "User-Agent", "gmdownloader");
-							ds_map_add(token_validation_headers, "X-API-Key", global.api_key);
-							
-							global.online_token_request = http_request(
-								"https://" + global.base_url + "/validate_token?id_token=" + string(id_token),
-								"GET",
-								token_validation_headers,
-								""
-							);
-							show_debug_message("[scr_switch_update_online_status] Sent token validation request for account " + string(preselected_user_index) + ". HTTP request ID: " + string(global.online_token_validated));
-							
-							ds_map_destroy(token_validation_headers);
-						}
-						else
-						{
-							global.online_token_error_message = "";
-							show_debug_message("[scr_switch_update_online_status] Token already validated for account " + string(preselected_user_index) + ". Skipping validation.");
-						}
+						var token_validation_headers = ds_map_create();
+						var id_token = switch_accounts_get_online_token(preselected_user_index);
+						show_debug_message("[scr_switch_update_online_status] Retrieved token for validation from account " + string(preselected_user_index) + ": " + string(id_token));
+						
+						ds_map_add(token_validation_headers, "Content-Type", "application/json");
+						ds_map_add(token_validation_headers, "User-Agent", "gmdownloader");
+						ds_map_add(token_validation_headers, "X-API-Key", global.api_key);
+						
+						global.online_token_request = http_request(
+							"https://" + global.base_url + "/validate_token?id_token=" + string(id_token),
+							"GET",
+							token_validation_headers,
+							""
+						);
+						show_debug_message("[scr_switch_update_online_status] Sent token validation request for account " + string(preselected_user_index) + ". HTTP request ID: " + string(global.online_token_validated));
+						
+						ds_map_destroy(token_validation_headers);
 					}
 					else
 					{
-						show_debug_message("[scr_switch_update_online_status] Skipping token validation for account " + string(preselected_user_index) + " (Account closed or offline).");
+						global.online_token_error_message = "";
+						show_debug_message("[scr_switch_update_online_status] Token already validated for account " + string(preselected_user_index) + ". Skipping validation.");
 					}
-				//}
+				}
+				else
+				{
+					show_debug_message("[scr_switch_update_online_status] Skipping token validation for account " + string(preselected_user_index) + " (Account closed or offline).");
+				}
 				#endregion /* Process all accounts for detailed info and token validation END */
+				
 			}
 			else
 			{

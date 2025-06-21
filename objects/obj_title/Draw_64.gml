@@ -576,6 +576,7 @@ if (menu == "online_download_list_load")
 	draw_set_alpha(1);
 	
 	scr_draw_loading(1, , , "Loading from server");
+	scr_server_timeout(15);
 }
 
 scr_draw_online_download_list();

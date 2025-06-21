@@ -1,6 +1,7 @@
 /// @function scr_crash_error_handling()
 function scr_crash_error_handling()
 {
+	if (os_type == os_switch) exit; /* Retrieve Crash Reports from CRPORTAL instead */
 	
 	/* Crash Error Handling should run in every room of the game */
 	exception_unhandled_handler(function(ex)
