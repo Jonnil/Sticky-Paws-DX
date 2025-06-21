@@ -188,31 +188,23 @@ function scr_character_select_menu_step()
 						else
 						if (global.character_select_in_this_menu == "online_level_list_title")
 						{
+							scr_check_network_connection(network_connect_active);
 							caution_online_takes_you_to = "online_download_list_load";
 							caution_online_takes_you_back_to = "online_level_list_title";
 							
 							if (global.online_enabled)
-							&& (scr_check_network_connection(network_connect_active))
 							{
 								if (global.switch_logged_in)
 								{
 									if (global.switch_account_network_service_available) /* Need to make sure that network service is available before going online */
 									{
-										if (scr_online_token_is_valid() == true)
-										{
-											show_debug_message("GOING TO ONLINE DOWNLOAD LIST LOAD MENU");
-											menu_delay = 3;
-											/* Go to online level list, so you can browse all uploaded levels, instead of just searching for specific levels */
-											select_custom_level_menu_open = false;
-											content_type = "level"; /* Need to set the "content type" to "level", so Async - HTTP Event is running correctly */
-											global.selected_online_download_index = 0;
-											menu = "online_download_list_load";
-										}
-										else
-										{
-											menu_delay = 3;
-											menu = "caution_online_network_error";
-										}
+										show_debug_message("GOING TO ONLINE DOWNLOAD LIST LOAD MENU");
+										menu_delay = 3;
+										/* Go to online level list, so you can browse all uploaded levels, instead of just searching for specific levels */
+										select_custom_level_menu_open = false;
+										content_type = "level"; /* Need to set the "content type" to "level", so Async - HTTP Event is running correctly */
+										global.selected_online_download_index = 0;
+										menu = "online_download_list_load";
 									}
 									else
 									{
@@ -232,6 +224,7 @@ function scr_character_select_menu_step()
 								scr_handle_no_network_connection("scr_character_select_menu_step", "select_character");
 								menu_delay = 3;
 							}
+							
 							in_character_select_menu = false;
 						}
 					}

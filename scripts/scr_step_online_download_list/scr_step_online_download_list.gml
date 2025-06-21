@@ -5,6 +5,7 @@ function scr_step_online_download_list()
 	
 	#region /* Initialization: Begin loading the online download list if requested */
 	if (menu == "online_download_list_load")
+	&& (global.online_token_validated)
 	{
 		if (scr_check_network_connection(network_connect_active))
 		{

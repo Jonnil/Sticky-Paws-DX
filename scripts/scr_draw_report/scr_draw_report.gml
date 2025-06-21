@@ -57,7 +57,7 @@ function scr_draw_report()
 						var report_upload_headers = ds_map_create();
 						
 						/* Add to the header DS Map */
-						ds_map_add(report_upload_headers, "Host", global.base_url);
+						//ds_map_add(report_upload_headers, "Host", global.base_url);
 						var boundary = "----GMBoundary";
 						ds_map_add(report_upload_headers, "Content-Type", "multipart/form-data; boundary=" + boundary);
 						ds_map_add(report_upload_headers, "User-Agent", "gmuploader");

@@ -2928,6 +2928,7 @@
     {"id":{"name":"scr_handle_no_network_connection","path":"scripts/scr_handle_no_network_connection/scr_handle_no_network_connection.yy",},},
     {"id":{"name":"scr_handle_redirect","path":"scripts/scr_handle_redirect/scr_handle_redirect.yy",},},
     {"id":{"name":"scr_handle_sync_translation_response_bulk","path":"scripts/scr_handle_sync_translation_response_bulk/scr_handle_sync_translation_response_bulk.yy",},},
+    {"id":{"name":"scr_handle_token_validated","path":"scripts/scr_handle_token_validated/scr_handle_token_validated.yy",},},
     {"id":{"name":"scr_initialize_camera","path":"scripts/scr_initialize_camera/scr_initialize_camera.yy",},},
     {"id":{"name":"scr_initialize_character_abilities","path":"scripts/scr_initialize_character_abilities/scr_initialize_character_abilities.yy",},},
     {"id":{"name":"scr_initialize_character_sprite","path":"scripts/scr_initialize_character_sprite/scr_initialize_character_sprite.yy",},},

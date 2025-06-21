@@ -149,7 +149,7 @@ function scr_draw_menu_search_id(what_kind_of_id = "level")
 							var id_search_request_headers = ds_map_create();
 							
 							/* Add to the header DS Map */
-							ds_map_add(id_search_request_headers, "Host", global.base_url);
+							//ds_map_add(id_search_request_headers, "Host", global.base_url);
 							ds_map_add(id_search_request_headers, "Content-Type", "application/json");
 							ds_map_add(id_search_request_headers, "User-Agent", "gmdownloader");
 							ds_map_add(id_search_request_headers, "X-API-Key", global.api_key);
@@ -1512,7 +1512,7 @@ function scr_draw_menu_search_id(what_kind_of_id = "level")
 			}
 			draw_menu_button(get_window_width * 0.5 - 185, downloaded_message_y + 50, l10n_text("OK"), "searched_file_downloaded_failed", "searched_file_downloaded_failed");
 			draw_sprite_ext(spr_icon_back, 0, get_window_width * 0.5 - 185 + 16, downloaded_message_y + 50 + 20, 1, 1, 0, c_white, 1);
-		
+			
 			if (point_in_rectangle(mouse_get_x, mouse_get_y, get_window_width * 0.5 - 185, downloaded_message_y + 50, get_window_width * 0.5 + 185, downloaded_message_y + 50 + 41))
 			&& (global.controls_used_for_navigation == "mouse")
 			&& (mouse_check_button_released(mb_left))

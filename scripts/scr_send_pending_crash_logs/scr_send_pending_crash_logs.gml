@@ -81,7 +81,7 @@ function scr_send_pending_crash_logs()
 				ds_map_add(header_map, "Content-Type", "application/json");
 				ds_map_add(header_map, "User-Agent", "gm_crash_logger");
 				ds_map_add(header_map, "X-API-Key", global.api_key);
-				ds_map_add(header_map, "Host", string(global.base_url));
+				//ds_map_add(header_map, "Host", string(global.base_url));
 				
 				var crash_endpoint = "https://" + string(global.base_url) + "/crashlog";
 				show_debug_message("[scr_send_pending_crash_logs] Sending crash log to endpoint: " + crash_endpoint);

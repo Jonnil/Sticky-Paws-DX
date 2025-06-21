@@ -16,7 +16,7 @@ function scr_initialize_online_download_menu()
 	liked_content = undefined;
 	
 	var online_download_request_headers = ds_map_create();
-	ds_map_add(online_download_request_headers, "Host", global.base_url);
+	//ds_map_add(online_download_request_headers, "Host", global.base_url);
 	ds_map_add(online_download_request_headers, "Content-Type", "application/json");
 	ds_map_add(online_download_request_headers, "User-Agent", "gmdownloader");
 	ds_map_add(online_download_request_headers, "X-API-Key", global.api_key);

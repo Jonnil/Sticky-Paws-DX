@@ -568,6 +568,16 @@ if (in_character_select_menu)
 	scr_character_select_menu_draw();
 }
 
+if (menu == "online_download_list_load")
+{
+	var guiWidth = display_get_gui_width(); /* Cache display width */
+	draw_set_alpha(0.5);
+	draw_rectangle_color(0, 0, guiWidth, display_get_gui_height(), c_black, c_black, c_black, c_black, false);
+	draw_set_alpha(1);
+	
+	scr_draw_loading(1, , , "Loading from server");
+}
+
 scr_draw_online_download_list();
 
 #region /* Menu Navigation */

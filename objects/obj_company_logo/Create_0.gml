@@ -167,6 +167,8 @@ global.http_request_info = noone;
 global.http_request_id = noone;
 global.content_added_today = noone;
 global.online_token_validated = false; /* Can only be a boolean value */
+global.online_token_request = -1; /* HTTP request handle */
+global.language_http_request_id = -1;
 global.online_token_error_message = ""; /* Can only be a string value */
 global.server_timeout_end = undefined;
 #endregion /* Server stuff END */
@@ -233,7 +235,7 @@ if (GM_build_type == "run")
 {
 	/* Enable useful debug tools when testing inside the IDE */
 	global.debug_screen = false;
-	global.debug_force_network_error = true;
+	global.debug_force_network_error = false;
 	//show_debug_log(true);
 	
 	
@@ -475,7 +477,6 @@ global.zoom_world = 1; /* Zooming the view in and out, by default it's set to 1 
 global.reset_level_zoom_on_return = false;
 global.reset_world_zoom_on_return = false;
 
-global.language_http_request_id = false;
 global.language_file_requests = false;
 global.language_last_update_string = "";
 global.language_update_status_message = "";

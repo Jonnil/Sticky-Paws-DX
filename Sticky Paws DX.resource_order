@@ -290,6 +290,7 @@
     {"name":"scr_handle_no_network_connection","order":3,"path":"scripts/scr_handle_no_network_connection/scr_handle_no_network_connection.yy",},
     {"name":"scr_handle_redirect","order":26,"path":"scripts/scr_handle_redirect/scr_handle_redirect.yy",},
     {"name":"scr_handle_sync_translation_response_bulk","order":12,"path":"scripts/scr_handle_sync_translation_response_bulk/scr_handle_sync_translation_response_bulk.yy",},
+    {"name":"scr_handle_token_validated","order":31,"path":"scripts/scr_handle_token_validated/scr_handle_token_validated.yy",},
     {"name":"scr_initialize_camera","order":48,"path":"scripts/scr_initialize_camera/scr_initialize_camera.yy",},
     {"name":"scr_initialize_character_abilities","order":15,"path":"scripts/scr_initialize_character_abilities/scr_initialize_character_abilities.yy",},
     {"name":"scr_initialize_character_sprite","order":17,"path":"scripts/scr_initialize_character_sprite/scr_initialize_character_sprite.yy",},
