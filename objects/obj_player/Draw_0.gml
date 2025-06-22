@@ -87,14 +87,17 @@ if (draw_arrow_outside_view_alpha > 0.01)
 #region /* Draw Self */
 
 #region /* Draw intro animation sprites (cutscene) if intro is playing */
-if (intro_animation != "" && intro_animation_sprite > 0)
+if (intro_animation != ""
+&& intro_animation_sprite > 0)
 {
 	sprite_index = intro_animation_sprite;
 }
 #endregion /* Draw intro animation sprites (cutscene) if intro is playing END */
 
 #region /* Make it obvious if you take damage */
-if (taken_damage == 199 && !die && hp >= 1)
+if (taken_damage == 199
+&& !die
+&& hp >= 1)
 {
 	scr_audio_play(snd_lose, volume_source.sound); /* Play a sound effect when you get hit */
 	scr_audio_play(voice_damage, volume_source.voice); /* Play a voice effect when you get hit */
@@ -315,8 +318,8 @@ if (allow_homing_attack)
 	&& (instance_nearest(x, y, obj_enemy).bbox_bottom > y)
 	&& (!instance_nearest(x, y, obj_enemy).die)
 	{
-		aim_image_index ++;
-		draw_sprite_ext(spr_aim, aim_image_index, instance_nearest(x, y, obj_enemy).x, instance_nearest(x, y, obj_enemy).y, 1, 1, 0, c_white, 1);
+		aim_index ++;
+		draw_sprite_ext(spr_aim, aim_index, instance_nearest(x, y, obj_enemy).x, instance_nearest(x, y, obj_enemy).y, 1, 1, 0, c_white, 1);
 	}
 	#endregion /* Homing Enemy END */
 	
@@ -333,14 +336,14 @@ if (allow_homing_attack)
 	&& (distance_to_object(obj_spring) < homing_attack_distance)
 	&& (instance_nearest(x, y, obj_spring).bbox_bottom > y)
 	{
-		aim_image_index ++;
-		draw_sprite_ext(spr_aim, aim_image_index, instance_nearest(x, y, obj_spring).x, instance_nearest(x, y, obj_spring).y, 1, 1, 0, c_white, 1);
+		aim_index ++;
+		draw_sprite_ext(spr_aim, aim_index, instance_nearest(x, y, obj_spring).x, instance_nearest(x, y, obj_spring).y, 1, 1, 0, c_white, 1);
 	}
 	#endregion /* Homing Spring END */
 	
 	else
 	{
-		aim_image_index = 0;
+		aim_index = 0;
 	}
 }
 #endregion /* Homing Attack END */

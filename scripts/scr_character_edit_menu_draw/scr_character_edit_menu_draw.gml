@@ -16,7 +16,7 @@ function scr_character_edit_menu_draw()
 			edit_character_flip_sprite = false;
 			edit_character_sprite_index = spr_noone;
 			edit_character_mask_index = spr_noone;
-			edit_character_image_index = 0;
+			edit_character_index = 0;
 			edit_character_sprite_name = "idle";
 			what_character_name = string(ds_list_find_value(global.all_loaded_characters, global.character_index[0]));
 			can_input_sprite_name = false;
@@ -216,7 +216,7 @@ function scr_character_edit_menu_draw()
 			if (!edit_character_flip_sprite)
 			{
 			    /* Draw the sprite normally */
-			    draw_sprite_ext(edit_character_sprite_index, edit_character_image_index, draw_x, draw_y, xscale, yscale, 0, c_white, 1);
+			    draw_sprite_ext(edit_character_sprite_index, edit_character_index, draw_x, draw_y, xscale, yscale, 0, c_white, 1);
 				
 			    /* Calculate the center of the crosshair (centered relative to the sprite origin) */
 			    crosshair_center_x = draw_x - (spr_origin_x * xscale) + (sprite_get_width(edit_character_sprite_index) * 0.5 * xscale);
@@ -224,7 +224,7 @@ function scr_character_edit_menu_draw()
 			else
 			{
 			    /* Draw the sprite flipped horizontally */
-			    draw_sprite_ext(edit_character_sprite_index, edit_character_image_index, draw_x, draw_y, -xscale, yscale, 0, c_white, 1);
+			    draw_sprite_ext(edit_character_sprite_index, edit_character_index, draw_x, draw_y, -xscale, yscale, 0, c_white, 1);
 				
 			    /* Calculate the center of the crosshair when flipped */
 			    crosshair_center_x = draw_x + (spr_origin_x * xscale) - (sprite_get_width(edit_character_sprite_index) * 0.5 * xscale);
@@ -233,7 +233,7 @@ function scr_character_edit_menu_draw()
 			/* Draw the mask above the character sprite */
 			if (sprite_exists(edit_character_mask_index)) /* Check if the mask exists */
 			{
-			    draw_sprite_ext(edit_character_mask_index, edit_character_image_index, draw_x, draw_y, xscale, yscale, 0, c_white, 0.5);
+			    draw_sprite_ext(edit_character_mask_index, edit_character_index, draw_x, draw_y, xscale, yscale, 0, c_white, 0.5);
 			}
 			
 			/* Draw the floor */

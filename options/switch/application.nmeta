@@ -34,7 +34,6 @@
     <UserAccountSwitchLock>Disable</UserAccountSwitchLock>
     <ParentalControl>FreeCommunication</ParentalControl>
     <SupportedLanguage>AmericanEnglish</SupportedLanguage>
-    <SupportedLanguage>Japanese</SupportedLanguage>
     <Screenshot>Allow</Screenshot>
     <DataLossConfirmation>None</DataLossConfirmation>
     <UserAccountSaveDataSize>0x0000000003000000</UserAccountSaveDataSize>
@@ -85,7 +84,7 @@
       <Organization>USK</Organization>
       <Age>0</Age>
     </Rating>
-    <LegalInformationFilePath>legal_info_0100c8201aa36000_e0b9_hac.zip</LegalInformationFilePath>
+    <LegalInformationFilePath>legal_info_0100c8201aa36000_b500_hac.zip</LegalInformationFilePath>
     <VideoCapture>Enable</VideoCapture>
     <RuntimeAddOnContentInstall>Deny</RuntimeAddOnContentInstall>
     <CrashReport>Allow</CrashReport>

@@ -6,7 +6,7 @@ if (bulk_number != 1)
 	}
 }
 
-image_index = global.collectible_image_index;
+image_index = global.collectible_index;
 
 #region /* Bounce up */
 if (bounce_up)

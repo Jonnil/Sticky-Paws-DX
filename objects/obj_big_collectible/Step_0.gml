@@ -5,7 +5,7 @@ if (global.big_collectible[big_collectible])
 	image_blend = c_gray;
 }
 
-image_index = global.collectible_image_index;
+image_index = global.collectible_index;
 
 if (follow_player)
 && (place_meeting(x, y + 16, obj_wall))

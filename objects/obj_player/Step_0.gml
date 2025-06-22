@@ -1254,7 +1254,8 @@ if (in_water && !climb)
 	else
 	
 	#region /* Swimming Sprites */
-	if (!on_ground && !crouch)
+	if (!on_ground
+	&& !crouch)
 	{
 		/* Don't have skidding animations underwater */
 	
@@ -1263,6 +1264,7 @@ if (in_water && !climb)
 		{
 			image_index = 0;
 		}
+		
 		if (image_index > image_number - 1)
 		{
 			image_speed = 0;
@@ -1271,6 +1273,7 @@ if (in_water && !climb)
 		{
 			image_speed = 0.3;
 		}
+		
 		if (vspeed > 0)
 		{
 			if (sprite_swim_fall > noone){sprite_index = sprite_swim_fall;}else
@@ -1286,6 +1289,7 @@ if (in_water && !climb)
 			if (sprite_idle > noone) && (typeof(sprite_idle) != "undefined"){sprite_index = sprite_idle;}else
 			if (sprite_walk > noone){sprite_index = sprite_walk;}
 		}
+		
 		if (sprite_mask >= 0)
 		{
 			mask_index = sprite_mask;

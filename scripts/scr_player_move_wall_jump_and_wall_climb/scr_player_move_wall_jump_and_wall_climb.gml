@@ -4,12 +4,20 @@ function scr_player_move_wall_jump_and_wall_climb()
 	var wall_collision_right = place_meeting(x + 1, y, obj_wall) && !place_meeting(x + 1, y, obj_black_wall);
 	
 	#region /* Wall Jump and Wall Climb */
-	if (can_move && taken_damage <= taken_damage_freezetime && hold_item_in_hands == "")
-	&& ((allow_wall_jump && can_wall_jump && wall_jump_setting >= 1) ||
-	(place_meeting(x, y, obj_wall_jump_panel)) ||
-	(place_meeting(x, y, obj_wall_climb_panel)))
+	if (can_move
+	&& taken_damage <= taken_damage_freezetime
+	&& hold_item_in_hands == "")
+	&& ((allow_wall_jump
+	&& can_wall_jump
+	&& wall_jump_setting >= 1)
+	|| (place_meeting(x, y, obj_wall_jump_panel))
+	|| (place_meeting(x, y, obj_wall_climb_panel)))
 	{
-		if (!on_ground && !climb && !horizontal_rope_climb && vspeed >= 0 && !place_meeting(x, y + 32, obj_wall))
+		if (!on_ground
+		&& !climb
+		&& !horizontal_rope_climb
+		&& vspeed >= 0
+		&& !place_meeting(x, y + 32, obj_wall))
 		{
 			if ((key_left_hold && !key_right_hold && wall_jump_setting >= 1 && wall_collision_left) ||
 			(!key_right_hold && !dive && wall_jump_setting == 1 && image_xscale < 0 && wall_collision_left) ||
@@ -232,7 +240,6 @@ function scr_player_move_wall_jump_and_wall_climb()
 					scr_audio_play(snd_wallkick, volume_source.sound);
 					scr_audio_play(voice_wallkick, volume_source.voice);
 					
-					image_index = 0;
 					image_index = 0;
 					vspeed = -normal_jump_height;
 					

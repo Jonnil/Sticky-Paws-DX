@@ -76,7 +76,7 @@ look_up_start_animation = true;
 on_ground = false;
 pressing_opposite_direction_to_drop_off_from_wall = 0;
 roll = false;
-star_image_index = 0;
+star_index = 0;
 stick_to_wall = false;
 wall_climb_slippy = 0; /* How much you slip off Ice Blocks when you climb them */
 wall_jump = false;
@@ -175,7 +175,7 @@ xx_heart = x;
 yy_heart = y;
 #endregion /* Heart balloon starting point END */
 
-aim_image_index = 0;
+aim_index = 0;
 angle = 0;
 basic_collectibles = 0;
 burnt = false;

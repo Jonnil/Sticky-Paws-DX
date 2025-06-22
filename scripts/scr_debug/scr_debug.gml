@@ -16,11 +16,11 @@ function scr_debug_toggle_screen()
 		show_debug_message("[scr_debug_toggle_screen] 'debug screen' is set to: " + string(global.debug_screen));
 	}
 	
-	if (GM_build_type == "run"
-	&& keyboard_check_pressed(vk_f4))
-	{
-		global.intentionally_crash = intentionally_crash; /* Will intentionally crash the game */
-	}
+	//if (GM_build_type == "run"
+	//&& keyboard_check_pressed(vk_f4))
+	//{
+	//	global.intentionally_crash = intentionally_crash; /* Will intentionally crash the game */
+	//}
 }
 
 ///////////////////////////////////////////////////////////////
@@ -517,9 +517,24 @@ function scr_debug_draw_optimized_text()
 									string(player_info.player_speed),
 									player_label_simplified + " Speed", c_white, c_red, false);
 				
+				debug_text_y = scr_draw_highlighted_text(32, debug_text_y, player_variable_name + " image_index",
+									string(player_info.player_image_index),
+									player_label_simplified + " Image Index", c_white, c_red, false);
+				
+				debug_text_y = scr_draw_highlighted_text(32, debug_text_y, player_variable_name + " image_speed",
+									string(player_info.player_image_speed),
+									player_label_simplified + " Image Speed", c_white, c_red, false);
+				
 				debug_text_y = scr_draw_highlighted_text(32, debug_text_y, player_variable_name + " on_ground",
 									string(player_info.player_on_ground),
 									player_label_simplified + " On Ground", c_white, c_red, false);
+				
+				//if (player_info.player_cutscene_time != 0)
+				//{
+					debug_text_y = scr_draw_highlighted_text(32, debug_text_y, player_variable_name + " cutscene_time",
+									string(player_info.player_cutscene_time),
+									player_label_simplified + " Cutscene Time", c_white, c_red, false);
+				//}
 			}
 			debug_text_y = scr_draw_highlighted_text(32, debug_text_y, "player_can_play", string(global.player_can_play), "Player Can Play", c_white, c_red, false);
 			debug_text_y = scr_draw_highlighted_text(32, debug_text_y, "player_slot", string(global.player_slot), "Player Slots", c_white, c_red, false);
@@ -765,10 +780,14 @@ function scr_get_player_positions()
 					player_pos_x: obj_camera.player[i].x,
 					player_pos_y: obj_camera.player[i].y,
 					player_speed: obj_camera.player[i].speed,
-					player_on_ground: obj_camera.player[i].on_ground
+					player_image_index: obj_camera.player[i].image_index,
+					player_image_speed: obj_camera.player[i].image_speed,
+					player_on_ground: obj_camera.player[i].on_ground,
+					player_cutscene_time: obj_camera.player[i].cutscene_time
 				});
 			}
 		}
 	}
+	
 	return positions;
 }

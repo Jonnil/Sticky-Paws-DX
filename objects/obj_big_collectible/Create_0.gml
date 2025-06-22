@@ -1,6 +1,6 @@
 depth = +10;
 sprite_index = global.resource_pack_sprite_big_collectible;
-image_index = global.collectible_image_index;
+image_index = global.collectible_index;
 image_speed = 0.25;
 bounce_up = false;
 delay = 0;

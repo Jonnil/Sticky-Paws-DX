@@ -30,6 +30,7 @@ function scr_player_move_ground_pound()
 					stick_to_wall = false;
 					move_towards_spring_endpoint = false;
 					wall_jump = 0;
+					
 					if (image_xscale > 0)
 					{
 						angle = +360;
@@ -38,10 +39,12 @@ function scr_player_move_ground_pound()
 					{
 						angle = -360;
 					}
+					
 					image_index = 0;
 					scr_audio_play(snd_rolling, volume_source.sound);
 					hspeed = 0;
 					speed_max = 1;
+					
 					if (image_index > image_number - 1)
 					{
 						image_speed = 0;
@@ -55,6 +58,7 @@ function scr_player_move_ground_pound()
 				}
 			}
 		}
+		
 		if (ground_pound == 1)
 		{
 			if (ground_pound_cooldown > 0)
@@ -62,6 +66,7 @@ function scr_player_move_ground_pound()
 			{
 				ground_pound_cooldown -= 0.5;
 			}
+			
 			if (key_crouch_pressed)
 			&& (ground_pound_cooldown == 0)
 			{
@@ -69,6 +74,7 @@ function scr_player_move_ground_pound()
 				image_speed = 0;
 				vspeed = +16;
 			}
+			
 			if (vspeed > 8)
 			{
 				vspeed = +24;
@@ -83,6 +89,7 @@ function scr_player_move_ground_pound()
 					image_xscale = 0.75; /* Make the blockbreak hitbox smaller than a block so you don't accidentally break unintended blocks around you */
 					image_yscale = 0.75; /* But not too small so you can't hit the blocks you intend to break */
 				}
+				
 				scr_gamepad_vibration(player, 0.5, 10);
 				effect_create_above(ef_smoke, x, bbox_bottom, 2, c_white);
 				
@@ -109,6 +116,7 @@ function scr_player_move_ground_pound()
 				{
 					shake = 10;
 				}
+				
 				scr_audio_play(snd_hipattack, volume_source.sound);
 			}
 			#endregion /* If touching the ground when doing a ground pound END */
@@ -133,6 +141,7 @@ function scr_player_move_ground_pound()
 			{
 				speed_max = 0;
 				hspeed = 0;
+				
 				if (allow_ground_pound_jump)
 				&& (key_jump_hold)
 				{
@@ -143,6 +152,7 @@ function scr_player_move_ground_pound()
 					midair_jumps_left = clamp(midair_jumps_left - 1, 0, number_of_jumps);
 					speed_max = 4;
 					vspeed = -higher_jump_height;
+					
 					if (image_xscale > 0)
 					{
 						angle = -360;
@@ -153,6 +163,7 @@ function scr_player_move_ground_pound()
 					}
 				}
 			}
+			
 			if (image_index > image_number - 1)
 			{
 				speed_max = 4;
@@ -170,6 +181,7 @@ function scr_player_move_ground_pound()
 			{
 				speed_max = 4;
 			}
+			
 			if (image_index > image_number - 1)
 			|| (vspeed > 0)
 			{
@@ -177,6 +189,7 @@ function scr_player_move_ground_pound()
 			}
 		}
 	}
+	
 	if (can_ground_pound == 0)
 	&& (!key_down)
 	{

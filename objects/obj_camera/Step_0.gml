@@ -56,7 +56,7 @@ if (global.appear_block_timer > 60 * 5)
 	global.appear_block_timer = 0;
 }
 
-global.collectible_image_index = image_index; /* Make all the collectibles animate in sync */
+global.collectible_index = image_index; /* Make all the collectibles animate in sync */
 
 var get_room_speed = 60;
 

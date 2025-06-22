@@ -105,9 +105,9 @@ function scr_player_move_spring()
 		}
 		#endregion /* Make the cahracter face wherever you're going END */
 		
-		star_image_index ++;
+		star_index ++;
 		
-		if (star_image_index == 5)
+		if (star_index == 5)
 		{
 			effect_create_above(
 				ef_star,
@@ -116,7 +116,7 @@ function scr_player_move_spring()
 				0,
 				saturated_player_color
 			);
-			star_image_index = 0;
+			star_index = 0;
 		}
 		
 		image_speed = 0.5;
