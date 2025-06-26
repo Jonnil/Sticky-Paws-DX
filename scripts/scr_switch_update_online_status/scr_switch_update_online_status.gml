@@ -4,10 +4,12 @@ function scr_switch_update_online_status(show_login_screen = true)
 	#region /* Update Switch Online Status */
 	if (os_type == os_switch)
 	{
-		show_debug_message("[scr_switch_update_online_status] OS type is SWITCH. Starting update sequence...");
+		//show_debug_message("[scr_switch_update_online_status] OS type is SWITCH. Starting update sequence...");
 		
 		/* Check network connection (passive mode) */
-		if (true) /* Need to use 'os is network connected(network connect passive)' specifically here, or some other method when on Nintendo Switch */
+		if (global.online_enabled)
+		&& (!global.online_token_validated)
+		&& (os_is_network_connected(network_connect_passive))
 		{
 			show_debug_message("[scr_switch_update_online_status] Network connection PASS (passive check).");
 			
@@ -168,6 +170,11 @@ function scr_switch_update_online_status(show_login_screen = true)
 			}
 		}
 		else
+		if (global.online_token_validated)
+		{
+			/* Do nothing, everything is working correctly if token is already validated */
+		}
+		else
 		{
 			global.switch_logged_in = false;
 			global.online_token_validated = false;
@@ -182,12 +189,11 @@ function scr_switch_update_online_status(show_login_screen = true)
 	}
 	else
 	{
-		/* If not on Switch, force online status */
+		/* If not on Switch, force online status to TRUE */
 		global.switch_account_network_service_available = true;
 		global.switch_logged_in = true;
 		global.online_token_validated = true;
 		global.online_token_error_message = "";
-		show_debug_message("[scr_switch_update_online_status] Non-Switch platform detected. Forcing online status to TRUE.");
 	}
 	#endregion /* Update Switch Online Status END */
 	

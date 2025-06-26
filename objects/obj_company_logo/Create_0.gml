@@ -798,6 +798,7 @@ scr_config_load(); /* Load Config */
 instance_create_depth(x, y, 0, obj_debug_manager);
 
 alarm[0] = 60;
+alarm[1] = 60;
 
 global.ps_above = part_system_create();
 part_system_depth(global.ps_above, +10); /* Set its depth */

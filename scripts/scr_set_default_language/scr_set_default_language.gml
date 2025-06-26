@@ -41,6 +41,7 @@ function scr_set_default_language(force_default_language = false)
 				break;
 			}
 		}
+		
 		global.selected_language_id = max(default_language, 2);
 		
 		if (global.translation_debug)

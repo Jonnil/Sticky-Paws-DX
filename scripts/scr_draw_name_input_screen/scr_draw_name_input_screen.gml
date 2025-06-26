@@ -3,6 +3,8 @@ function scr_draw_name_input_screen(what_string /* What string to edit */, max_c
 	var buttons_x = -185;
 	var buttons_ok_y = +54;
 	var buttons_cancel_y = buttons_ok_y + 42;
+	var width = 150;
+	var extra_height = 16;
 	
 	#region /* Opaque transparent black rectangle over whole screen, but underneath name input screen */
 	draw_set_alpha(0.5);
@@ -44,11 +46,11 @@ function scr_draw_name_input_screen(what_string /* What string to edit */, max_c
 	
 	if (string_width_ext(keyboard_string, 40, 1000) < 300)
 	{
-		var width = 150;
+		width = 150;
 	}
 	else
 	{
-		var width = string_width_ext(keyboard_string, 40, 1000) * 0.5;
+		width = string_width_ext(keyboard_string, 40, 1000) * 0.5;
 	}
 	
 	if (global.keyboard_virtual_timer < 6)
@@ -64,6 +66,7 @@ function scr_draw_name_input_screen(what_string /* What string to edit */, max_c
 			remember_keyboard_string = string(what_string); /* In case you want to click "Cancel", revert back to whatever was already written before entering name input screen */
 		}
 	}
+	
 	if (global.keyboard_virtual_timer == 4)
 	|| (point_in_rectangle(device_mouse_x_to_gui(0), device_mouse_y_to_gui(0), xx - width, yy - 16, xx + width, yy + 16))
 	&& (mouse_check_button_released(mb_left))
@@ -77,20 +80,22 @@ function scr_draw_name_input_screen(what_string /* What string to edit */, max_c
 		{
 			what_string_async = get_string_async("", "");
 		}
-		
-		keyboard_virtual_show(kbv_type_default, kbv_returnkey_default, kbv_autocapitalize_characters, false);
-		
-		steam_show_floating_gamepad_text_input(steam_floating_gamepad_text_input_mode_single_line, window_get_x(), window_get_y() * 0.5, window_get_width(), window_get_height() * 0.5);
+		else
+		{
+			keyboard_virtual_show(kbv_type_default, kbv_returnkey_default, kbv_autocapitalize_characters, false);
+			
+			steam_show_floating_gamepad_text_input(steam_floating_gamepad_text_input_mode_single_line, window_get_x(), window_get_y() * 0.5, window_get_width(), window_get_height() * 0.5);
+		}
 	}
 	
 	#region /* Box where name is written on */
 	if (string_height_ext(keyboard_string, 40, 1000) > 0)
 	{
-		var extra_height = string_height_ext(keyboard_string, 40, 1000) - 25;
+		extra_height = string_height_ext(keyboard_string, 40, 1000) - 25;
 	}
 	else
 	{
-		var extra_height = 16;
+		extra_height = 16;
 	}
 	draw_rectangle_color(xx - width, yy - extra_height, xx + width, yy + 16, box_color, box_color, box_color, box_color, false); /* Rectangle where text is written on */
 	draw_set_alpha(black_rec_alpha);

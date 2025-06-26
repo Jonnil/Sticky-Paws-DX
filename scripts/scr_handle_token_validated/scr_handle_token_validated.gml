@@ -2,6 +2,8 @@ function scr_handle_token_validated()
 {
 	/* Check if the current request "online_token_validated" matches the one we sent */
 	if (async_load[? "id"] == global.online_token_request)
+	&& (global.online_enabled)
+	&& (!global.online_token_validated)
 	{
 		/* Get the status code and response body */
 		var status_code = async_load[? "http_status"];

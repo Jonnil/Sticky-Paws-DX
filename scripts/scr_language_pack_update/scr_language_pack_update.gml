@@ -9,6 +9,7 @@ function scr_language_pack_update(forced = false)
 	if (!downloaded_language_pack_update)
 	{
 		if (global.online_enabled 
+		&& global.online_token_validated
 		&& os_is_network_connected(network_connect_passive))
 		{
 			/* 1. Read the langauge last update time from config.ini */

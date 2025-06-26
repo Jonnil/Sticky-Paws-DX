@@ -144,7 +144,7 @@ function scr_load_custom_levels()
 					&& variable_instance_exists(self, "row"))
 					{
 						show_debug_message("[scr_load_custom_levels][scroll_to_after_rename] 'row' exists: " + string(row));
-						scroll_to = floor(global.select_level_index / row);
+						scroll_to = max(0, floor(global.select_level_index / row));
 						show_debug_message("[scr_load_custom_levels][scroll_to_after_rename] Computed scroll_to: " + string(scroll_to));
 					}
 					else
@@ -192,7 +192,7 @@ function scr_load_custom_levels()
 					&& variable_instance_exists(self, "row"))
 					{
 						show_debug_message("[scr_load_custom_levels][scroll_to_after_rename] 'row' exists: " + string(row));
-						scroll_to = floor(global.select_level_index / row);
+						scroll_to = max(0, floor(global.select_level_index / row));
 						show_debug_message("[scr_load_custom_levels][scroll_to_after_rename] Computed scroll_to: " + string(scroll_to));
 					}
 					else
