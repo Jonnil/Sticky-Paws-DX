@@ -496,7 +496,7 @@ function scr_select_custom_level_menu()
 				{
 					caution_online_takes_you_to = "online_download_list_load";
 					caution_online_takes_you_back_to = "online_level_list";
-				
+					
 					if (global.online_enabled)
 					&& (scr_check_network_connection(network_connect_active))
 					{

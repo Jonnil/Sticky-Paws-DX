@@ -139,9 +139,8 @@ function scr_config_load()
 		if (ini_key_exists("config", "target_length_minutes_min")){global.target_length_minutes_min = ini_read_real("config", "target_length_minutes_min", 3);}
 		if (ini_key_exists("config", "target_length_minutes_max")){global.target_length_minutes_max = ini_read_real("config", "target_length_minutes_max", 5);}
 		if (ini_key_exists("config", "first_time_opened_level_editor")){global.first_time_opened_level_editor = ini_read_real("config", "first_time_opened_level_editor", true);}
-		if (ini_key_exists("config", "caution_online_do_not_show")){global.caution_online_do_not_show = ini_read_real("config", "caution_online_do_not_show", false);}
+		if (ini_key_exists("config", "caution_online_do_not_show")){global.caution_online_do_not_show = ini_read_real("config", "caution_online_do_not_show", false); global.online_enabled = global.caution_online_do_not_show}
 		if (ini_key_exists("config", "send_crash_logs")){global.send_crash_logs = ini_read_real("config", "send_crash_logs", true);}
-		if (ini_key_exists("config", "caution_online_do_not_show")){global.online_enabled = ini_read_real("config", "caution_online_do_not_show", false);}
 		if (ini_key_exists("config", "always_show_level_editor_buttons")){global.always_show_level_editor_buttons = ini_read_real("config", "always_show_level_editor_buttons", true);}
 		if (ini_key_exists("config", "current_file")){global.file = ini_read_real("config", "current_file", 0);}
 		if (ini_key_exists("config", "difficulty")){global.difficulty = ini_read_real("config", "difficulty", 0);}

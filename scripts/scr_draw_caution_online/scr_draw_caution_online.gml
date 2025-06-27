@@ -239,7 +239,7 @@ function scr_draw_caution_online()
 		if (global.switch_account_network_service_available)
 		&& (global.online_token_validated)
 		{
-			scr_draw_loading();
+			scr_draw_loading(1);
 		}
 		
 		if (caution_online_takes_you_to != "")

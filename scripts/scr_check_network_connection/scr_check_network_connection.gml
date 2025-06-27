@@ -72,7 +72,21 @@ function scr_check_network_connection(connect_mode)
 	}
 	else
 	{
-		global.online_current_attempt_result = l10n_text("Token not validated or network down");
+		if (!global.online_token_validated)
+		&& (!actual_network_status)
+		{
+			global.online_current_attempt_result = l10n_text("Token not validated AND network down");
+		}
+		else
+		if (!global.online_token_validated)
+		{
+			global.online_current_attempt_result = l10n_text("Token not validated");
+		}
+		else
+		if (!actual_network_status)
+		{
+			global.online_current_attempt_result = l10n_text("Network down");
+		}
 		
 		show_debug_message("[scr_check_network_connection] Returning FALSE (online_token_validated: "
 			+ string(global.online_token_validated)

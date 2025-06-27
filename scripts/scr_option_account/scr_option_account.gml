@@ -43,7 +43,11 @@ function scr_option_account()
 				}
 				
 				global.caution_online_do_not_show = draw_menu_checkmark(change_username_x, change_username_y + 100, l10n_text("Do not show online caution screen again"), "caution_online_toggle", global.caution_online_do_not_show, false);
-				global.send_crash_logs = draw_menu_checkmark(change_username_x, change_username_y + 150, l10n_text("Automatically send crash logs to server"), "send_crash_logs_toggle", global.send_crash_logs, true, l10n_text("Automatically Send Crash Logs Description"));
+				
+				if (os_type != os_switch)
+				{
+					global.send_crash_logs = draw_menu_checkmark(change_username_x, change_username_y + 150, l10n_text("Automatically send crash logs to server"), "send_crash_logs_toggle", global.send_crash_logs, true, l10n_text("Automatically Send Crash Logs Description"));
+				}
 				
 				if (global.controls_used_for_navigation == "mouse")
 				&& (mouse_check_button_released(mb_left))
@@ -67,9 +71,14 @@ function scr_option_account()
 				&& (key_a_pressed)
 				&& (menu_delay == 0 && menu_joystick_delay == 0)
 				{
-					ini_open(game_save_id + "save_file/config.ini");
-					ini_write_string("config", "send_crash_logs", global.send_crash_logs);
-					ini_close(); /* Don't commit the save data on Switch, this is only temporary! */
+					if (os_type != os_switch)
+					{
+						menu_delay = 3;
+						
+						ini_open(game_save_id + "save_file/config.ini");
+						ini_write_string("config", "send_crash_logs", global.send_crash_logs);
+						ini_close(); /* Don't commit the save data on Switch, this is only temporary! */
+					}
 				}
 			}
 		}
@@ -260,9 +269,17 @@ function scr_option_account()
 		&& (!input_key)
 		{
 			menu_delay = 3;
+			
 			if (menu == "change_username")
 			{
-				menu = "send_crash_logs_toggle";
+				if (os_type != os_switch)
+				{
+					menu = "send_crash_logs_toggle";
+				}
+				else
+				{
+					menu = "caution_online_toggle";
+				}
 			}
 			else
 			if (menu == "get_device_name")
@@ -312,7 +329,14 @@ function scr_option_account()
 			else
 			if (menu == "caution_online_toggle")
 			{
-				menu = "send_crash_logs_toggle";
+				if (os_type != os_switch)
+				{
+					menu = "send_crash_logs_toggle";
+				}
+				else
+				{
+					menu = "change_username";
+				}
 			}
 			else
 			if (menu == "send_crash_logs_toggle")
