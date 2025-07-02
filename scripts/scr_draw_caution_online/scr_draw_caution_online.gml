@@ -1,5 +1,6 @@
 function scr_draw_caution_online()
 {
+	static online_enabled_auto = false;
 	var fixed_player = 1;
 	var mouse_get_x = device_mouse_x_to_gui(0);
 	var mouse_get_y = device_mouse_y_to_gui(0);
@@ -37,8 +38,14 @@ function scr_draw_caution_online()
 		|| (menu == "caution_online_proceed")
 		&& (key_a_pressed)
 		&& (menu_delay == 0 && menu_joystick_delay == 0)
+		|| (online_enabled_auto)
+		&& (global.online_token_validated)
+		&& (menu_delay == 0 && menu_joystick_delay == 0)
 		{
 			menu_delay = 3;
+			
+			global.online_enabled = true;
+			online_enabled_auto = true;
 			
 			/* If you have enabled "do not show", then save that regardless if you have a internet connection or not */
 			if (global.caution_online_do_not_show)
@@ -48,6 +55,28 @@ function scr_draw_caution_online()
 				ini_close(); /* Don't commit the save data on Switch, this is only temporary! */
 			}
 			
+			if (!os_is_network_connected(network_connect_passive))
+			{
+				scr_draw_loading(1,,,l10n_text("Looking for Network"));
+				
+				menu = "network_error_main_menu";
+			}
+			else
+			if (!global.online_token_validated)
+			{
+				static switch_update_online_status = false;
+				
+				scr_draw_loading(1,,,l10n_text("Looking for Token"));
+				
+				menu = "network_error_main_menu";
+				
+				if (!switch_update_online_status)
+				{
+					switch_update_online_status = true;
+					scr_switch_update_online_status(true);
+				}
+			}
+			else
 			if (scr_check_network_connection(network_connect_active)) /* Need to check if you are connected to the internet before proceeding to online content */
 			{
 				if (global.switch_logged_in)
@@ -75,8 +104,6 @@ function scr_draw_caution_online()
 								menu = "search_id_ok";
 								select_custom_level_menu_open = false;
 							}
-							
-							global.online_enabled = true;
 							
 							var no_players_can_play = true;
 							

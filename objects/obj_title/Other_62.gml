@@ -33,7 +33,7 @@ if (async_load[? "id"] == global.http_request_id)
 		var buffer = buffer_base64_decode(file_data_base64);
 		show_debug_message("[HTTP Request ID Callback] Buffer created from base64 data.");
 		
-		var download_temp_path = temp_directory;
+		var download_temp_path = temp_directory; /* Use "temp directory" here */
 		show_debug_message("[HTTP Request ID Callback] Using temporary directory: " + download_temp_path);
 		
 		#region /* Handle file saving and menu updates based on content_type */
@@ -76,10 +76,19 @@ if (async_load[? "id"] == global.http_request_id)
 		{
 			show_debug_message("[HTTP Request ID Callback] Saving buffer to file at: " + file_save_location);
 			buffer_save(buffer, file_save_location);
+			
+			if (file_exists(file_save_location))
+			{
+				show_debug_message("[HTTP Request ID Callback] Successfully saved buffer to file at: " + file_save_location);
+			}
+			else
+			{
+				show_debug_message("[HTTP Request ID Callback] ERROR: Couldn't save buffer to file at: " + file_save_location);
+			}
 		}
 		else
 		{
-			show_debug_message("[HTTP Request ID Callback] No valid file_save_location determined; skipping file save.");
+			show_debug_message("[HTTP Request ID Callback] No valid file_save_location determined; skipping file save. Attempted to create a file on: " + string(file_save_location));
 		}
 		
 		/* Free the buffer memory */

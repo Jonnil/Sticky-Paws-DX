@@ -19,6 +19,7 @@ function scr_draw_network_error_menu()
 		var retry_successful = false;
 		var copy_clicked = false;
 		var mainmenu_clicked = false;
+		static switch_update_online_status = false;
 		
 		/* Calculate positions for the buttons */
 		var retry_button_y = center_y + 100 + 20;
@@ -33,6 +34,11 @@ function scr_draw_network_error_menu()
 		var retry_x	= center_x - 185; /* Top button: Retry */
 		var copy_error_code_x = center_x - 185; /* Middle button: Retry */
 		var mainmenu_x = center_x - 185; /* Bottom button: Main Menu */
+		
+		/* Add a semi-transparent dark overlay */
+		draw_set_alpha(0.75);
+		draw_rectangle_color(0, 0, window_width, window_height, c_black, c_black, c_black, c_black, false);
+		draw_set_alpha(1);
 		
 		/* Draw Main Menu Button (Offline Mode) */
 		draw_menu_button(mainmenu_x, mainmenu_button_y, l10n_text("Main Menu"), "network_error_main_menu", "network_error_main_menu");
@@ -65,11 +71,108 @@ function scr_draw_network_error_menu()
 			}
 		}
 		
-		if (!os_is_network_connected(network_connect_passive))
+		if (!global.online_enabled)
+		&& (menu_delay == 0 && menu_joystick_delay == 0)
 		{
-			scr_draw_loading(1);
+			show_debug_message("[scr_draw_network_error_menu] menu = 'caution_online_proceed'\n");
+			menu = "caution_online_proceed";
+		}
+		else
+		if (!os_is_network_connected(network_connect_passive))
+		&& (menu_delay == 0 && menu_joystick_delay == 0)
+		{
+			scr_draw_loading(1,,,l10n_text("Looking for Network"));
 			
 			menu = "network_error_main_menu";
+		}
+		else
+		if (!global.online_token_validated)
+		&& (menu_delay == 0 && menu_joystick_delay == 0)
+		{
+			scr_draw_loading(1,,,l10n_text("Looking for Token"));
+			
+			menu = "network_error_main_menu";
+			
+			if (!switch_update_online_status)
+			{
+				switch_update_online_status = true;
+				scr_switch_update_online_status(true);
+			}
+		}
+		else
+		if (scr_check_network_connection(network_connect_active)) /* Need to check if you are connected to the internet before proceeding to online content */
+		&& (menu_delay == 0 && menu_joystick_delay == 0)
+		{
+			if (global.switch_logged_in)
+			{
+				if (global.switch_account_network_service_available) /* Need to make sure that network service is available before going online */
+				{
+					if (scr_online_token_is_valid() == true)
+					{
+						show_debug_message("[scr_draw_caution_online] Online token is valid. Token Validity: " + string(scr_online_token_is_valid()) + ", caution_online_takes_you_to: " + string(caution_online_takes_you_to) + ", current menu: " + string(menu));
+						
+						if (caution_online_takes_you_to == "online_download_list_load")
+						{
+							show_debug_message("[scr_draw_caution_online] Transitioning to online download list load menu. Selected index: " + string(global.selected_online_download_index) + ", content_type: " + string(content_type));
+							/* Go to online level list, so you can browse all uploaded levels, instead of just searching for specific levels */
+							select_custom_level_menu_open = false;
+							global.selected_online_download_index = 0;
+						}
+						else
+						if (caution_online_takes_you_to == "search_id_ok")
+						{
+							show_debug_message("[scr_draw_caution_online] Transitioning to search ID OK menu. content_type: " + string(content_type) + ", keyboard_string: " + string(keyboard_string) + ", search_id: " + string(search_id));
+							keyboard_string = "";
+							search_id = "";
+							content_type = "character";
+							menu = "search_id_ok";
+							select_custom_level_menu_open = false;
+						}
+						
+						global.online_enabled = true;
+						
+						var no_players_can_play = true;
+						
+						for(var i = 1; i <= global.max_players; i += 1)
+						{
+							if (global.player_can_play[i])
+							{
+							    no_players_can_play = false;
+							    break; /* exit the loop if any player can play */
+							}
+						}
+						
+						if (no_players_can_play)
+						|| (global.playergame <= 0)
+						{
+							global.player_can_play[fixed_player] = true;
+						}
+						information_menu_open = "";
+						
+						if (!global.upload_rules_do_not_show_level) /* If you have not yet agreed to the upload rules for uploading levels */
+						&& (caution_online_takes_you_to == "level_editor_upload_pressed") /* And you're supposed to go to the upload edit menu */
+						{
+							menu = "upload_rules"; /* Then take you to the upload rules menu */
+						}
+						else
+						{
+							menu = caution_online_takes_you_to; /* You go to the menu you're supposed to go to from beginning */
+						}
+					}
+					else
+					{
+						menu = "caution_online_network_error";
+					}
+				}
+				else
+				{
+					menu = "caution_online_network_error";
+				}
+			}
+			else
+			{
+				menu = "caution_online_proceed";
+			}
 		}
 		else
 		{
@@ -113,11 +216,6 @@ function scr_draw_network_error_menu()
 			}
 			
 			in_settings = false;
-			
-			/* Add a semi-transparent dark overlay */
-			draw_set_alpha(0.75);
-			draw_rectangle_color(0, 0, window_width, window_height, c_black, c_black, c_black, c_black, false);
-			draw_set_alpha(1);
 			
 			#region /* Extra debug messages in top-left corner of screen */
 			/* First build up your text in a variable */
@@ -380,15 +478,16 @@ function scr_draw_network_error_menu()
 		else
 		if (mainmenu_clicked)
 		{
+			switch_update_online_status = false;
 			in_character_select_menu = false;
 			in_edit_character_menu = false;
 			in_online_download_list_menu = false; show_debug_message("[scr_draw_network_error_menu] 'In online download list menu' is set to false");
 			in_online_download_list_load_menu = false;
 			in_settings = false;
 			global.go_to_menu_when_going_back_to_title = "";
-				
+			
 			menu_delay = 3;
-				
+			
 			/* If you are not currently at the title screen when clicking "Main Game", then go to the title screen */
 			if (room != rm_title)
 			{

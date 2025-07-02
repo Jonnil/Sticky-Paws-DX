@@ -7,8 +7,8 @@ function scr_switch_update_online_status(show_login_screen = true)
 		//show_debug_message("[scr_switch_update_online_status] OS type is SWITCH. Starting update sequence...");
 		
 		/* Check network connection (passive mode) */
-		if (global.online_enabled)
-		&& (!global.online_token_validated)
+		//if (global.online_enabled)
+		if (!global.online_token_validated)
 		&& (os_is_network_connected(network_connect_passive))
 		{
 			show_debug_message("[scr_switch_update_online_status] Network connection PASS (passive check).");
@@ -143,6 +143,7 @@ function scr_switch_update_online_status(show_login_screen = true)
 							token_validation_headers,
 							""
 						);
+						
 						show_debug_message("[scr_switch_update_online_status] Sent token validation request for account " + string(preselected_user_index) + ". HTTP request ID: " + string(global.online_token_validated));
 						
 						ds_map_destroy(token_validation_headers);

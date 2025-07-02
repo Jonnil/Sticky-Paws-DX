@@ -1,5 +1,8 @@
 /* Update online status first */
-scr_switch_update_online_status(false);
+if (global.online_enabled)
+{
+	scr_switch_update_online_status(false);
+}
 
 if (!global.online_token_validated)
 {
