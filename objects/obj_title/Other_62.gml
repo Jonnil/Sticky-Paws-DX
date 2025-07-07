@@ -72,6 +72,7 @@ if (async_load[? "id"] == global.http_request_id)
 		}
 		#endregion /* End file saving and menu updates block */
 		
+		#region /* Save HTTP Buffer to File */
 		if (file_save_location != "")
 		{
 			show_debug_message("[HTTP Request ID Callback] Saving buffer to file at: " + file_save_location);
@@ -88,8 +89,9 @@ if (async_load[? "id"] == global.http_request_id)
 		}
 		else
 		{
-			show_debug_message("[HTTP Request ID Callback] No valid file_save_location determined; skipping file save. Attempted to create a file on: " + string(file_save_location));
+			show_debug_message("[HTTP Request ID Callback] No valid file_save_location determined, skipping file save. Attempted to create a file on: " + string(file_save_location));
 		}
+		#endregion /* Save HTTP Buffer to File END */
 		
 		/* Free the buffer memory */
 		buffer_delete(buffer);

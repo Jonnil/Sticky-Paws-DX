@@ -4,10 +4,10 @@ function scr_initialize_level_information_ini()
 	#region /* Initialize level_information.ini */
 	if (global.character_select_in_this_menu == "main_game")
 	&& (file_exists("levels/" + string(ds_list_find_value(global.all_loaded_main_levels, global.select_level_index)) + "/data/level_information.ini"))
-	|| (global.character_select_in_this_menu == "level_editor")
-	&& (file_exists(global.use_temp_or_working + "custom_levels/" + string(global.level_name) + "/data/level_information.ini"))
+	|| (file_exists(global.use_temp_or_working + "custom_levels/" + string(global.level_name) + "/data/level_information.ini"))
 	{
 		can_save_to_level_information = false;
+		
 		if (global.create_level_from_template)
 		|| (global.character_select_in_this_menu == "main_game")
 		{
@@ -19,7 +19,9 @@ function scr_initialize_level_information_ini()
 			ini_open(global.use_temp_or_working + "custom_levels/" + string(global.level_name) + "/data/level_information.ini");
 			can_save_to_level_information = true;
 		}
-		for (var i = 1; i <= 4; i++) {
+		
+		for (var i = 1; i <= 4; i++)
+		{
 			custom_background_y_offset[i] = get_custom_level_information_real("Custom Backgrounds", "custom_background" + string(i) + "_y_offset", 0);
 			custom_background_x_offset[i] = get_custom_level_information_real("Custom Backgrounds", "custom_background" + string(i) + "_x_offset", 0);
 		}
