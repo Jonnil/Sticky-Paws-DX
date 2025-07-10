@@ -48,6 +48,7 @@ if (async_load[? "id"] == global.http_request_id)
 			if (response_json[? "name"] != undefined)
 			{
 				file_save_location = download_temp_path + "downloaded_" + string(content_type) + "/" + string(response_json[? "name"]) + ".zip";
+				file_save_location = normalize_path_seps(file_save_location);
 				show_debug_message("[HTTP Request ID Callback] Determined file save location: " + file_save_location);
 			}
 			else

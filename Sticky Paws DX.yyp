@@ -2962,6 +2962,7 @@
     {"id":{"name":"scr_menu_navigation_initialization","path":"scripts/scr_menu_navigation_initialization/scr_menu_navigation_initialization.yy",},},
     {"id":{"name":"scr_menu_navigation_with_joystick_delay","path":"scripts/scr_menu_navigation_with_joystick_delay/scr_menu_navigation_with_joystick_delay.yy",},},
     {"id":{"name":"scr_modify_objects_in_level_editor","path":"scripts/scr_modify_objects_in_level_editor/scr_modify_objects_in_level_editor.yy",},},
+    {"id":{"name":"scr_normalize_path_seps","path":"scripts/scr_normalize_path_seps/scr_normalize_path_seps.yy",},},
     {"id":{"name":"scr_open_folder","path":"scripts/scr_open_folder/scr_open_folder.yy",},},
     {"id":{"name":"scr_option_account","path":"scripts/scr_option_account/scr_option_account.yy",},},
     {"id":{"name":"scr_option_assist_settings","path":"scripts/scr_option_assist_settings/scr_option_assist_settings.yy",},},

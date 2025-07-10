@@ -15,7 +15,7 @@ layer_background_sprite(layer_background_get_id(layer_get_id("Background_4")), g
 
 scr_make_background_visible();
 
-room_speed = global.max_fps; /* Room Speed is max fps */
+game_set_speed(global.max_fps, gamespeed_fps); /* Room Speed is max fps */
 
 scr_initialize_camera();
 

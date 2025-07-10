@@ -1,5 +1,8 @@
 function scr_file_copy_dir(source, target)
 {
+	source = normalize_path_seps(source);
+	target = normalize_path_seps(target);
+	
 	show_debug_message("[scr_file_copy_dir] Called with source: " + string(source) + ", target: " + string(target));
 	
 	/* Create target directory if it doesn't exist */
@@ -14,10 +17,10 @@ function scr_file_copy_dir(source, target)
 	}
 	
 	var file_count = 0;
-	show_debug_message("[scr_file_copy_dir] Beginning file iteration in source directory: " + source + "/*.*");
+	show_debug_message("[scr_file_copy_dir] Beginning file iteration in source directory: " + normalize_path_seps(source + "/*.*"));
 	
 	/* Begin file iteration */
-	var fname = file_find_first(source + "/*.*", 0);
+	var fname = file_find_first(normalize_path_seps(source + "/*.*"), 0);
 	
 	if (fname == "")
 	{
@@ -36,8 +39,8 @@ function scr_file_copy_dir(source, target)
 			continue;
 		}
 		
-		var from = source + "/" + fname;
-		var to = target + "/" + fname;
+		var from = normalize_path_seps(source + "/" + fname);
+		var to = normalize_path_seps(target + "/" + fname);
 		
 		show_debug_message("[scr_file_copy_dir] Attempting to copy file from: " + string(from) + " to: " + string(to));
 		

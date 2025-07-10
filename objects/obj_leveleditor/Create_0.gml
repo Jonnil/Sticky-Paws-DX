@@ -631,7 +631,7 @@ if (!global.actually_play_edited_level)
 	navigate_camera_with_arrowkeys = false;
 	pressing_play_timer = 0; /* You have to hold down the play button for some time before you play the level from the beginning */
 	frames_until_playtest_from_start = 50;
-	room_speed = global.max_fps; /* Set correct fps */
+	game_set_speed(global.max_fps, gamespeed_fps); /* Set correct fps */
 	place_object_delay_timer = 0; /* Delay for when you can place objects, when using a touch screen to place objects, the cursor doesn't have enough time to update where new position of you touching the screen is, so you accidentally place objects where cursor was last positioned */
 	show_level_editor_corner_menu = true;
 	controller_x = mouse_x;

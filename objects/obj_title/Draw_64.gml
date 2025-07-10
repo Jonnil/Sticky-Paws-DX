@@ -19,7 +19,7 @@ draw_set_valign(fa_middle);
 
 /* Title Screen */
 
-room_speed = global.max_fps; /* Room Speed END */
+game_set_speed(global.max_fps, gamespeed_fps); /* Room Speed END */
 
 #region /* Change title screen during specific times and dates */
 if (current_month == 12)

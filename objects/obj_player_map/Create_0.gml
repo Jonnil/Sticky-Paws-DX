@@ -10,7 +10,7 @@ can_show_arrows = 0;
 show_arrows_alpha = 0;
 at_least_one_big_collectible = false;
 
-room_speed = global.max_fps;
+game_set_speed(global.max_fps, gamespeed_fps);
 character_folder = "";
 skin_folder = "";
 can_save_to_character_config = false;

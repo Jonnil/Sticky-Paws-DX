@@ -297,7 +297,7 @@ if (!global.actually_play_edited_level)
 			{
 				key_double_tap_direction = "right";
 			}
-			key_double_tap_timer = room_speed * 0.2; /* Set a time window for the double-tap */
+			key_double_tap_timer = 12; /* Set a time window for the double-tap */
 		}
 		else
 		if (gamepad_axis_value(global.player_slot[1], gp_axislh) == 0)

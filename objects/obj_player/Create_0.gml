@@ -5,7 +5,7 @@ can_create_follow_mouse = true;
 can_collide_with_wall = true; /* For debug purposes, you can disable collision with walls */
 #endregion /* Debug toggles END */
 
-room_speed = global.max_fps; /* Room Speed */
+game_set_speed(global.max_fps, gamespeed_fps); /* Room Speed */
 /*direction = point_direction(scr_x_to_gui(x), scr_y_to_gui(y), device_mouse_x_to_gui(0), device_mouse_y_to_gui(0));*/
 
 #region /* Create object that always follows mouse */
