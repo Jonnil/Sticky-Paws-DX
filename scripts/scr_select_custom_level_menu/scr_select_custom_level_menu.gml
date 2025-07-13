@@ -591,6 +591,8 @@ function scr_select_custom_level_menu()
 			|| (point_in_rectangle(mouse_get_x, mouse_get_y, 0, 0, 370, 42))
 			&& (mouse_check_button_released(mb_left))
 			{
+				global.level_name = "";
+				global.select_level_index = 0;
 				can_input_level_name = false;
 				menu_delay = 3;
 				open_sub_menu = false;
@@ -599,7 +601,6 @@ function scr_select_custom_level_menu()
 				can_navigate = true;
 				select_custom_level_menu_open = false;
 				level_editor_template_select = false;
-				global.select_level_index = 0;
 				show_debug_message("[scr_select_custom_level_menu] Clicking Back Button. menu = level_editor");
 				menu = "level_editor";
 			}

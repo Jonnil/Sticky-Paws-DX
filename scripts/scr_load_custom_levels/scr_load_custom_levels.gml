@@ -111,7 +111,7 @@ function scr_load_custom_levels()
 			if (global.level_name != "")
 			{
 				global.select_level_index = ds_list_find_index(global.all_loaded_custom_levels, global.level_name);
-				show_debug_message("[scr_load_custom_levels] select_level_index set to " + string(global.select_level_index));
+				show_debug_message("[scr_load_custom_levels] select_level_index set to " + string(global.select_level_index) + ", level_name was set to " + string(global.level_name));
 			}
 			
 			if (global.go_to_menu_when_going_back_to_title != "online_download_list_load"

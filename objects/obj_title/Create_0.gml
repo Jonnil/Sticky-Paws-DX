@@ -45,6 +45,7 @@ in_online_download_list_menu = false; /* If you are in the online download list 
 in_online_download_list_load_menu = false; /* If you are loading online download list or not */
 in_online_search_id = false;
 in_settings = false;
+target_length_confirmed = false;
 
 caution_online_takes_you_to = "";
 caution_online_takes_you_back_to = "";

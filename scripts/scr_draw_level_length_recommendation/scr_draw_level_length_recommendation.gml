@@ -18,6 +18,8 @@ function scr_draw_level_length_recommendation()
 		draw_rectangle_color(0, 0, display_get_gui_width(), display_get_gui_height(), c_black, c_black, c_black, c_black, false);
 		draw_set_alpha(1);
 		
+		var show_back_button = true;
+		
 		if (room == rm_title)
 		|| (variable_instance_exists(self, "pause")
 		&& pause)
@@ -27,12 +29,12 @@ function scr_draw_level_length_recommendation()
 				show_level_editor_corner_menu = false;
 			}
 			var box_height = display_get_gui_height() * 0.5 + 64 + 64 + 42;
-			var show_back_button = true;
+			show_back_button = true;
 		}
 		else
 		{
 			var box_height = display_get_gui_height() * 0.5 + 64 + 64;
-			var show_back_button = false;
+			show_back_button = false;
 		}
 		
 		/* Determine message color based on timeattack minutes relative to minimum and maximum target */
@@ -94,7 +96,10 @@ function scr_draw_level_length_recommendation()
 		&& (key_a_pressed
 		|| mouse_check_button_released(mb_left)
 		&& point_in_rectangle(device_mouse_x_to_gui(0), device_mouse_y_to_gui(0), button_x, ok_y, button_x + 370, ok_y + 41))
+		&& (menu_delay == 0)
 		{
+			target_length_confirmed = true;
+			
 			menu_delay = 10;
 			global.timeattack_millisecond = 0;
 			global.timeattack_minute = 0;
@@ -106,6 +111,7 @@ function scr_draw_level_length_recommendation()
 				{
 					open_sub_menu = false; /* Close the sub menu when uploading level, so it doesn't interfere */
 				}
+				
 				open_upload_menu = true;
 				menu = "upload_edit_name";
 			}
@@ -139,7 +145,10 @@ function scr_draw_level_length_recommendation()
 		&& (key_a_pressed
 		|| mouse_check_button_released(mb_left)
 		&& point_in_rectangle(device_mouse_x_to_gui(0), device_mouse_y_to_gui(0), button_x, back_y, button_x + 370, back_y + 41))
+		&& (menu_delay == 0)
 		{
+			target_length_confirmed = true;
+			
 			menu_delay = 10;
 			global.timeattack_millisecond = 0;
 			global.timeattack_minute = 0;

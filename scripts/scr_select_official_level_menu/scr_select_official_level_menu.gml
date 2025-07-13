@@ -493,6 +493,8 @@ function scr_select_official_level_menu()
 		|| (point_in_rectangle(mouse_get_x, mouse_get_y, 0, 0, 320, 42))
 		&& (mouse_check_button_released(mb_left))
 		{
+			global.level_name = "";
+			global.select_level_index = 0;
 			can_input_level_name = false;
 			menu_delay = 3;
 			open_sub_menu = false;
@@ -500,7 +502,6 @@ function scr_select_official_level_menu()
 			select_custom_level_menu_open = false;
 			level_editor_template_select = false;
 			scr_load_custom_level_initializing();
-			global.select_level_index = 0;
 			scroll_to = floor(global.select_level_index / row);
 			
 			if (room == rm_title)

@@ -143,6 +143,7 @@ can_navigate = true;
 remap_y_pos = 0;
 menu_cursor_index = 0;
 in_settings = false;
+target_length_confirmed = false;
 old_selected_resource_pack = global.selected_resource_pack;
 can_navigate_settings_sidebar = false;
 navigate_slider = false;

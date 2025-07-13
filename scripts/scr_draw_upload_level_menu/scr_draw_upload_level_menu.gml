@@ -89,6 +89,7 @@ function scr_draw_upload_level_menu()
 		{
 			show_level_editor_corner_menu = true;
 		}
+		
 		can_input_level_name = false;
 		
 		if (room == rm_title)
@@ -101,9 +102,12 @@ function scr_draw_upload_level_menu()
 		&& (global.controls_used_for_navigation == "mouse")
 		|| (key_a_pressed)
 		{
-			if (ds_list_find_value(global.all_loaded_custom_levels, global.select_level_index) != undefined) /* Don't set "global level name" to "ds list find value" if it's undefined */
+			/* If Global Level Name is set incorrectly for whatever reason, then set the level name to something that makes sense */
+			if (global.level_name == "") /* Important that we only update the level name if it hasn't been already set */
+			&& (ds_list_find_value(global.all_loaded_custom_levels, global.select_level_index) != undefined) /* Don't set "global level name" to "ds list find value" if it's undefined */
 			{
-				global.level_name = string(ds_list_find_value(global.all_loaded_custom_levels, global.select_level_index)); /* Set the "level name" to the selected level, so when you exit the level editor, the cursor will remember to appear on the level you selected */
+				/* Set the "level name" to the selected level, so when you exit the level editor, the cursor will remember to appear on the level you selected */
+				global.level_name = string(ds_list_find_value(global.all_loaded_custom_levels, global.select_level_index));
 			}
 			
 			#region /* Load level info before anything */
@@ -248,115 +252,125 @@ function scr_draw_upload_level_menu()
 		{
 			show_level_editor_corner_menu = false;
 		}
+		
 		can_input_level_name = false;
 		
-		if (global.free_communication_available)
+		if (if_clear_checked)
 		{
-			if (global.online_enabled)
-			&& (scr_check_network_connection(network_connect_active)) /* Check if you're even connected to the internet */
+			if (global.free_communication_available)
 			{
-				if (global.switch_logged_in)
+				if (global.online_enabled)
+				&& (scr_check_network_connection(network_connect_active)) /* Check if you're even connected to the internet */
 				{
-					if (global.switch_account_network_service_available) /* Need to make sure that network service is available before going online */
+					if (global.switch_logged_in)
 					{
-						if (scr_online_token_is_valid() == true)
+						if (global.switch_account_network_service_available) /* Need to make sure that network service is available before going online */
 						{
-							global.actually_play_edited_level = false;
-							global.play_edited_level = false;
-							menu_delay = 3;
-							ini_open(upload_level_path + "/data/level_information.ini");
-							
-							if (ini_read_real("info", "clear_check", false) == true)
+							if (scr_online_token_is_valid() == true)
 							{
-								if (global.username != "") /* Check if there is an username or not */
+								global.actually_play_edited_level = false;
+								global.play_edited_level = false;
+								menu_delay = 3;
+								ini_open(upload_level_path + "/data/level_information.ini");
+							
+								if (ini_read_real("info", "clear_check", false) == true)
 								{
-									scr_load_level_tags(upload_level_path);
-									
-									ini_open(game_save_id + "custom_levels/" + string(global.level_name) + "/data/level_information.ini");
-									var short_level_minute = ini_read_real("rank", "rank_timeattack_minute", 0);
-									development_stage_index = ini_read_real("info", "development_stage_index", 1);
-									visibility_index = ini_read_real("info", "visibility_index", 0);
-									ini_close(); /* Don't commit the save data on Switch, this is only temporary! */
-										
-									menu_delay = 3;
-									
-									#region /* Tell the player before uploading, if the level they clear checked was too short or not */
-									if (global.enable_level_length_target)
-									&& (short_level_minute < global.target_length_minutes_min
-									|| short_level_minute > global.target_length_minutes_max)
+									if (global.username != "") /* Check if there is an username or not */
 									{
-										menu = "level_length_recommendation_back";
+										scr_load_level_tags(upload_level_path);
+									
+										ini_open(game_save_id + "custom_levels/" + string(global.level_name) + "/data/level_information.ini");
+										var short_level_minute = ini_read_real("rank", "rank_timeattack_minute", 0);
+										development_stage_index = ini_read_real("info", "development_stage_index", 1);
+										visibility_index = ini_read_real("info", "visibility_index", 0);
+										ini_close(); /* Don't commit the save data on Switch, this is only temporary! */
+										
+										menu_delay = 3;
+									
+										#region /* Tell the player before uploading, if the level they clear checked was too short or not */
+										if (global.enable_level_length_target)
+										&& (short_level_minute < global.target_length_minutes_min
+										|| short_level_minute > global.target_length_minutes_max)
+										&& (!target_length_confirmed)
+										{
+											menu = "level_length_recommendation_back";
+										}
+										else
+										{
+											menu = "upload_edit_name"; /* Go to the menu where you can edit things about the custom level before uploading it*/
+										}
+										#endregion /* Tell the player before uploading, if the level they clear checked was too short or not END */
+									
+										if (variable_instance_exists(self, "show_level_editor_corner_menu"))
+										{
+											show_level_editor_corner_menu = false;
+										}
 									}
 									else
 									{
-										menu = "upload_edit_name"; /* Go to the menu where you can edit things about the custom level before uploading it*/
-									}
-									#endregion /* Tell the player before uploading, if the level they clear checked was too short or not END */
-									
-									if (variable_instance_exists(self, "show_level_editor_corner_menu"))
-									{
-										show_level_editor_corner_menu = false;
+										keyboard_string = "";
+										menu_delay = 3;
+										menu = "question_upload_level_edit_username_ok"; /* If there isn't an username, have the player make an username */
+										if (variable_instance_exists(self, "show_level_editor_corner_menu"))
+										{
+											show_level_editor_corner_menu = false;
+										}
 									}
 								}
 								else
 								{
-									keyboard_string = "";
 									menu_delay = 3;
-									menu = "question_upload_level_edit_username_ok"; /* If there isn't an username, have the player make an username */
+									menu = "clear_check_yes";
 									if (variable_instance_exists(self, "show_level_editor_corner_menu"))
 									{
 										show_level_editor_corner_menu = false;
 									}
 								}
+								ini_close(); /* Don't commit the save data on Switch, this is only temporary! */
 							}
 							else
 							{
 								menu_delay = 3;
-								menu = "clear_check_yes";
-								if (variable_instance_exists(self, "show_level_editor_corner_menu"))
-								{
-									show_level_editor_corner_menu = false;
-								}
+								caution_online_takes_you_to = "level_editor_upload_pressed";
+								caution_online_takes_you_back_to = "level_editor_upload"; show_debug_message("5 [scr_draw_upload_level_menu] caution_online_takes_you_back_to = level_editor_upload");
+								menu = "caution_online_network_error";
 							}
-							ini_close(); /* Don't commit the save data on Switch, this is only temporary! */
 						}
 						else
 						{
 							menu_delay = 3;
 							caution_online_takes_you_to = "level_editor_upload_pressed";
-							caution_online_takes_you_back_to = "level_editor_upload"; show_debug_message("5 [scr_draw_upload_level_menu] caution_online_takes_you_back_to = level_editor_upload");
+							caution_online_takes_you_back_to = "level_editor_upload"; show_debug_message("6 [scr_draw_upload_level_menu] caution_online_takes_you_back_to = level_editor_upload");
 							menu = "caution_online_network_error";
 						}
 					}
 					else
 					{
 						menu_delay = 3;
-						caution_online_takes_you_to = "level_editor_upload_pressed";
-						caution_online_takes_you_back_to = "level_editor_upload"; show_debug_message("6 [scr_draw_upload_level_menu] caution_online_takes_you_back_to = level_editor_upload");
-						menu = "caution_online_network_error";
+						menu = "level_editor_upload";
 					}
 				}
 				else
 				{
+					if (variable_instance_exists(self, "open_sub_menu"))
+					{
+						open_sub_menu = true; /* Open the sub menu when not in uploading level menu */
+					}
+				
+					if (variable_instance_exists(self, "show_level_editor_corner_menu"))
+					{
+						show_level_editor_corner_menu = false;
+					}
+				
 					menu_delay = 3;
-					menu = "level_editor_upload";
+					scr_handle_no_network_connection("scr_draw_upload_level_menu", "level_editor_upload");
 				}
 			}
-			else
-			{
-				if (variable_instance_exists(self, "open_sub_menu"))
-				{
-					open_sub_menu = true; /* Open the sub menu when not in uploading level menu */
-				}
-				
-				if (variable_instance_exists(self, "show_level_editor_corner_menu"))
-				{
-					show_level_editor_corner_menu = false;
-				}
-				
-				menu_delay = 3;
-				scr_handle_no_network_connection("scr_draw_upload_level_menu", "level_editor_upload");
-			}
+		}
+		else
+		{
+			menu_delay = 3;
+			menu = "clear_check_yes";
 		}
 	}
 	#endregion /* Pressed the Upload button END */
@@ -506,6 +520,7 @@ function scr_draw_upload_level_menu()
 				{
 					show_level_editor_corner_menu = true;
 				}
+				
 				menu = "level_editor_upload"; /* Return to previous menu */
 			}
 		}
@@ -551,6 +566,7 @@ function scr_draw_upload_level_menu()
 				global.actually_play_edited_level = false; /* Don't turn this variable on yet, let the level editor do this itself, so that the correct functions can run when in level editor */
 				global.play_edited_level = false;
 				can_navigate = false;
+				
 				if (room != rm_leveleditor)
 				{
 					menu_delay = 9999;
@@ -1208,6 +1224,7 @@ function scr_draw_upload_level_menu()
 					if (global.enable_level_length_target)
 					&& (short_level_minute < global.target_length_minutes_min
 					|| short_level_minute > global.target_length_minutes_max)
+					&& (!target_length_confirmed)
 					{
 						menu = "level_length_recommendation_back";
 					}
@@ -1274,6 +1291,7 @@ function scr_draw_upload_level_menu()
 				if (global.enable_level_length_target)
 				&& (short_level_minute < global.target_length_minutes_min
 				|| short_level_minute > global.target_length_minutes_max)
+				&& (!target_length_confirmed)
 				{
 					menu = "level_length_recommendation_back";
 				}

@@ -490,6 +490,14 @@ function scr_debug_draw_optimized_text()
 		debug_text_y = scr_draw_highlighted_text(32, debug_text_y,
 							"current_level_clear_rate", string(global.current_level_clear_rate),
 							"Current Level Clear Rate", c_white, c_red, false);
+		
+		debug_text_y = scr_draw_highlighted_text(32, debug_text_y,
+							"doing_clear_check_character", string(global.doing_clear_check_character),
+							"Doing Clear Check Character", c_white, c_red, false);
+		
+		debug_text_y = scr_draw_highlighted_text(32, debug_text_y,
+							"doing_clear_check_level", string(global.doing_clear_check_level),
+							"Doing Clear Check Level", c_white, c_red, false);
 	}
 	#endregion /* Section 1: System Information END */
 	

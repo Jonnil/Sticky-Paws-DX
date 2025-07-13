@@ -681,6 +681,7 @@ if (!global.actually_play_edited_level)
 	menu_joystick_delay = 0;
 	menu_cursor_index = 0;
 	in_settings = false;
+	target_length_confirmed = false;
 	old_selected_resource_pack = global.selected_resource_pack;
 	old_level_index = ds_list_find_value(global.all_loaded_custom_levels, global.select_level_index);
 	can_navigate_settings_sidebar = false;
@@ -703,6 +704,7 @@ if (!global.actually_play_edited_level)
 		ini_write_real("info", "clear_check", true); /* If doing a level clear check, and winning the level, then add in level information that you have done a clear check */
 		ini_close(); /* Don't commit the save data on Switch, this is only temporary! */
 		if_clear_checked = true;
+		
 		if (global.enable_level_length_target)
 		{
 			menu = "level_length_recommendation_ok";
