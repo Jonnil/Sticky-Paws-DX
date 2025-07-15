@@ -15,6 +15,8 @@ function scr_process_online_download_list_data()
 		try
 		{
 			online_content_data = json_parse(global.online_download_list);
+			var total = array_length(online_content_data);
+			global.download_total_pages = ceil(total / global.download_items_per_page);
 			show_debug_message("[scr_process_online_download_list_data] JSON parsed successfully. Number of items: " + string(array_length(online_content_data)));
 			
 			for (var i = 0; i < array_length(online_content_data); i++;)

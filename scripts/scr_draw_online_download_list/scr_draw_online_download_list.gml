@@ -66,11 +66,18 @@ function scr_draw_online_download_menu_data()
 		if (is_array(online_content_data))
 		{
 			var num_items = array_length(online_content_data);
+			/* Figure out our slice */
+			var perPage		= global.download_items_per_page;
+			var page		= clamp(global.download_current_page, 0, global.download_total_pages - 1);
+			var start_idx	= page * perPage;
+			var end_idx		= min(start_idx + perPage - 1, array_length(online_content_data) - 1);
+			var page_count	= end_idx - start_idx + 1;
 			
-			/* Draw each thumbnail (optimized loop through downloads) */
-			for (var i = 0; i < num_items; i++)
+			/* Draw each thumbnail, optimized loop through downloads. Draw only that page's thumbnails */
+			for (var slot = 0; slot < page_count; slot++)
 			{
-				scr_draw_online_download_list_thumbnail(i, num_items);
+				var actual = start_idx + slot;
+				scr_draw_online_download_list_thumbnail(actual, page_count);
 			}
 		}
 		
@@ -104,8 +111,8 @@ function scr_draw_online_download_menu_data()
 		
 		#region /* Draw Gamepad Search Key */
 		if (gamepad_is_connected(global.player_slot[1])
-			&& (global.controls_used_for_navigation == "gamepad")
-			|| (global.always_show_gamepad_buttons))
+		&& (global.controls_used_for_navigation == "gamepad")
+		|| (global.always_show_gamepad_buttons))
 		{
 			scr_draw_gamepad_buttons(gp_face4, 16, draw_search_id_y + 21, 0.5, c_white, 1, 1, 1, 1);
 		}

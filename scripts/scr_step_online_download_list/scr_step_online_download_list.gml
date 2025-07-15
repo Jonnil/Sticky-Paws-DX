@@ -2,6 +2,7 @@
 /// @description This script handles non-drawing logic for the online download list, including network checks, menu initialization, and input handling for navigation and selection */
 function scr_step_online_download_list()
 {
+	var page_count = 0;
 	
 	#region /* Initialization: Begin loading the online download list if requested */
 	if (menu == "online_download_list_load")
@@ -57,6 +58,13 @@ function scr_step_online_download_list()
 	if (string_copy(menu, 1, string_length("download_online")) == "download_online")
 	{
 		var num_items = array_length(online_content_data);
+		
+		/* Pagination slice calculation */
+		var perPage		= global.download_items_per_page;
+		var page		= clamp(global.download_current_page, 0, global.download_total_pages - 1);
+		var start_idx	= page * perPage;
+		var end_idx		= min(start_idx + perPage - 1, array_length(online_content_data) - 1);
+		var page_count	= end_idx - start_idx + 1;
 		
 		#region /* Combined Navigation with keyboard/joystick when data is present */
 		if (online_content_data != undefined
@@ -330,5 +338,5 @@ function scr_step_online_download_list()
 	}
 	
 	/* Always make sure to download thumbnails when able to */
-	scr_download_thumbnails(true, array_length(online_content_data));
+	scr_download_thumbnails(true, page_count);
 }
