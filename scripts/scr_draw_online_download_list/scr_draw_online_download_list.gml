@@ -79,6 +79,48 @@ function scr_draw_online_download_menu_data()
 				var actual = start_idx + slot;
 				scr_draw_online_download_list_thumbnail(actual, page_count);
 			}
+			
+			var x_prev = 0;
+			var y_prev = 240;
+			var x_label = 10;
+			var y_label = 200;
+			var x_next = 0;
+			var y_next = 240 + 42;
+			
+			/* Draw Prev button if not on first page */
+			if (global.download_current_page > 0)
+			{
+				draw_menu_button_sprite(spr_menu_button, x_prev, y_prev,,, 0.5, 1, 185, 42, l10n_text("Previous"), "page_prev", "page_prev");
+				
+				if (menu == "page_prev"
+				&& key_a_pressed
+				&& menu_delay == 0)
+				{
+				    global.download_current_page = max(0, global.download_current_page - 1);
+				    menu_delay = 3;
+				}
+			}
+			
+			/* Draw Next button if not on last page */
+			if (global.download_current_page < global.download_total_pages - 1)
+			{
+				draw_menu_button_sprite(spr_menu_button, x_next, y_next,,, 0.5, 1, 185, 42, l10n_text("Next"), "page_next", "page_next");
+				
+				if (menu == "page_next"
+				&& key_a_pressed
+				&& menu_delay == 0)
+				{
+					global.download_current_page = min(global.download_total_pages - 1,
+														global.download_current_page + 1);
+					menu_delay = 3;
+				}
+			}
+			
+			/* Show Page X of Y */
+			draw_set_halign(fa_left);
+			draw_text(x_label, y_label,
+				string(global.download_current_page + 1)
+				+ " / " + string(global.download_total_pages));
 		}
 		
 		if (is_array(online_content_data)
