@@ -23,12 +23,13 @@ function scr_download_thumbnails(download_all, what_num_items = 0)
 	if (
 		(
 			(download_all
-			&& info_queue_index < what_num_items
+			//&& info_queue_index < what_num_items
 			&& info_queue_http_request)
 			|| (!download_all)
 		)
 		&& is_array(all_download_id)
 	)
+	&& (info_queue_index < array_length(all_download_id)) /* Make sure index is in bounds */
 	&& (string(all_download_id[info_queue_index]) != "") /* Make sure that the 'Download ID' string isn't empty */
 	{
 		show_debug_message("[scr_download_thumbnails] Condition met for HTTP request. download_all: " + string(download_all)
