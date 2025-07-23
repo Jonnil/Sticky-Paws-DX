@@ -131,6 +131,7 @@ global.online_download_list_info = ""; /* Get the uploaded online level thumbnai
 global.download_items_per_page = 10; /* How many items per "page" */
 global.download_current_page = 0; /* Which page we’re on (0‑based) */
 global.download_total_pages = 0;
+global.download_offset = 0;
 online_content_data = undefined; /* The uploaded online content will be json parsed into this variable */
 info_data = undefined; /* The uploaded online content information will be json parsed into this variable */
 automatically_search_for_id = false; /* When downloading from online download list, you want to automatically search for the selected ID */

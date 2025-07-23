@@ -95,7 +95,7 @@ function scr_draw_online_download_list_thumbnail(thumbnail_index, number_of_thum
 		#endregion /* Draw Selection Overlay if Selected END */
 		
 		#region /* Draw Thumbnail Sprite */
-		var draw_thumbnail = spr_download_list_thumbnail[thumbnail_index];
+		var draw_thumbnail = spr_download_list_thumbnail[slot];
 		
 		if (sprite_exists(draw_thumbnail))
 		&& (can_draw_thumbnail)
@@ -111,7 +111,7 @@ function scr_draw_online_download_list_thumbnail(thumbnail_index, number_of_thum
 		{
 			draw_set_halign(fa_center);
 			draw_set_valign(fa_middle);
-			var nameWidth = string_width(draw_download_name[thumbnail_index]);
+			var nameWidth = string_width(draw_download_name[slot]);
 			var draw_level_name_scale;
 			
 			if (nameWidth > 640)
@@ -128,13 +128,13 @@ function scr_draw_online_download_list_thumbnail(thumbnail_index, number_of_thum
 				draw_level_name_scale = global.default_text_size;
 			}
 			
-			scr_draw_text_outlined(download_online_x + 300, download_online_y + offsetY + 240, string(draw_download_name[thumbnail_index]), draw_level_name_scale, c_menu_outline, c_menu_fill, 1);
+			scr_draw_text_outlined(download_online_x + 300, download_online_y + offsetY + 240, string(draw_download_name[slot]), draw_level_name_scale, c_menu_outline, c_menu_fill, 1);
 		}
 		#endregion /* Draw Download Name END */
 		
 		/* Loading Indicator for Missing Thumbnail */
 		if (draw_thumbnail == spr_thumbnail_missing
-		&& draw_download_name[thumbnail_index] == "")
+		&& draw_download_name[slot] == "")
 		&& (can_draw_thumbnail)
 		{
 			scr_draw_loading(1, download_online_x + 300, download_online_y + offsetY + 100);
@@ -189,10 +189,10 @@ function scr_draw_online_download_list_thumbnail(thumbnail_index, number_of_thum
 		var draw_download_time = string_replace(item.time_created, "T", " ");
 		draw_download_time = string_replace(draw_download_time, "Z", "");
 		
-		if (all_download_id[thumbnail_index] == "")
+		if (all_download_id[slot] == "")
 		{
-			all_download_id[thumbnail_index] = draw_download_id;
-			show_debug_message("[scr_draw_online_download_list_thumbnail] all_download_id[" + string(thumbnail_index) + "] = " + string(draw_download_id) + ";");
+			all_download_id[slot] = draw_download_id;
+			show_debug_message("[scr_draw_online_download_list_thumbnail] all_download_id[" + string(slot) + "] = " + string(draw_download_id) + ";");
 		}
 		#endregion /* Process Download ID and Time END */
 		
@@ -283,21 +283,21 @@ function scr_draw_online_download_list_thumbnail(thumbnail_index, number_of_thum
 		{
 			if (is_array(finished_level))
 			{
-				if (finished_level[thumbnail_index] == undefined)
+				if (finished_level[slot] == undefined)
 				{
 					if (file_exists(game_save_id + "save_file/custom_level_save.ini"))
 					{
 						ini_open(game_save_id + "save_file/custom_level_save.ini");
-						finished_level[thumbnail_index] = (ini_key_exists("finished_downloaded_level", draw_download_id)) ?
+						finished_level[slot] = (ini_key_exists("finished_downloaded_level", draw_download_id)) ?
 							ini_read_real("finished_downloaded_level", draw_download_id, 0) : 0;
-						zero_defeats_level[thumbnail_index] = (ini_key_exists("zero_defeats_downloaded_level", draw_download_id)) ?
+						zero_defeats_level[slot] = (ini_key_exists("zero_defeats_downloaded_level", draw_download_id)) ?
 							ini_read_real("zero_defeats_downloaded_level", draw_download_id, 0) : 0;
 						ini_close();
 					}
 					else
 					{
-						finished_level[thumbnail_index] = 0;
-						zero_defeats_level[thumbnail_index] = 0;
+						finished_level[slot] = 0;
+						zero_defeats_level[slot] = 0;
 					}
 				}
 			}
@@ -307,21 +307,21 @@ function scr_draw_online_download_list_thumbnail(thumbnail_index, number_of_thum
 			{
 				var played_level_text, played_level_icon, played_level_color;
 				
-				if (finished_level[thumbnail_index] == 1)
+				if (finished_level[slot] == 1)
 				{
 					played_level_text = "Played";
 					played_level_icon = spr_icon_played;
 					played_level_color = c_yellow;
 				}
 				else
-				if (finished_level[thumbnail_index] == 2)
+				if (finished_level[slot] == 2)
 				{
 					played_level_text = "Finished";
 					played_level_icon = spr_icon_finished;
 					played_level_color = c_green;
 				}
 				else
-				if (finished_level[thumbnail_index] == 3)
+				if (finished_level[slot] == 3)
 				{
 					played_level_text = "Completed";
 					played_level_icon = spr_icon_finished;
@@ -348,14 +348,14 @@ function scr_draw_online_download_list_thumbnail(thumbnail_index, number_of_thum
 			{
 				var zero_defeats_level_text, zero_defeats_level_icon, zero_defeats_level_color;
 				
-				if (zero_defeats_level[thumbnail_index] == 1)
+				if (zero_defeats_level[slot] == 1)
 				{
 					zero_defeats_level_text = "Zero Defeats";
 					zero_defeats_level_icon = spr_icon_zero_defeats;
 					zero_defeats_level_color = c_red;
 				}
 				else
-				if (zero_defeats_level[thumbnail_index] == 2)
+				if (zero_defeats_level[slot] == 2)
 				{
 					zero_defeats_level_text = "Zero Hits";
 					zero_defeats_level_icon = spr_icon_zero_hits;
@@ -393,18 +393,18 @@ function scr_draw_online_download_list_thumbnail(thumbnail_index, number_of_thum
 		#region /* Display Like/Dislike Status */
 		if (is_array(liked_content))
 		{
-			if (liked_content[thumbnail_index] == undefined)
+			if (liked_content[slot] == undefined)
 			{
 				if (file_exists(game_save_id + "save_file/custom_" + string(content_type) + "_save.ini"))
 				{
 					ini_open(game_save_id + "save_file/custom_" + string(content_type) + "_save.ini");
-					liked_content[thumbnail_index] = (ini_key_exists("liked_downloaded_" + string(content_type), draw_download_id)) ?
+					liked_content[slot] = (ini_key_exists("liked_downloaded_" + string(content_type), draw_download_id)) ?
 						ini_read_real("liked_downloaded_" + string(content_type), draw_download_id, 0) : 0;
 					ini_close();
 				}
 				else
 				{
-					liked_content[thumbnail_index] = 0;
+					liked_content[slot] = 0;
 				}
 			}
 		}
@@ -414,14 +414,14 @@ function scr_draw_online_download_list_thumbnail(thumbnail_index, number_of_thum
 		{
 			var liked_content_text, liked_content_icon, liked_content_color;
 			
-			if (liked_content[thumbnail_index] == +1)
+			if (liked_content[slot] == +1)
 			{
 				liked_content_text = "Liked";
 				liked_content_icon = spr_icon_liked;
 				liked_content_color = c_aqua;
 			}
 			else
-			if (liked_content[thumbnail_index] == -1)
+			if (liked_content[slot] == -1)
 			{
 				liked_content_text = "Disliked";
 				liked_content_icon = spr_icon_disliked;

@@ -90,28 +90,44 @@ function scr_draw_online_download_menu_data()
 			/* Draw Prev button if not on first page */
 			if (global.download_current_page > 0)
 			{
-				draw_menu_button_sprite(spr_menu_button, x_prev, y_prev,,, 0.5, 1, 185, 42, l10n_text("Previous"), "page_prev", "page_prev");
+				draw_menu_button_sprite(spr_menu_button, x_prev, y_prev,,, 0.5, 1, 185, 42, l10n_text("Previous"), "download_online_page_prev", "download_online_page_prev");
 				
-				if (menu == "page_prev"
+				if (menu == "download_online_page_prev"
 				&& key_a_pressed
-				&& menu_delay == 0)
+				&& menu_delay == 0
+				&& global.download_current_page > 0)
 				{
-				    global.download_current_page = max(0, global.download_current_page - 1);
-				    menu_delay = 3;
+					global.download_current_page = max(0, global.download_current_page - 1);
+					
+					global.selected_online_download_index -= global.download_items_per_page;
+					
+					show_debug_message("[Pagination] Moved PREV from page "
+						+ string(global.download_current_page + 1) + " to " + string(global.download_current_page)
+						+ "; selected_index now " + string(global.selected_online_download_index));
+					
+					menu_delay = 3;
 				}
 			}
 			
 			/* Draw Next button if not on last page */
 			if (global.download_current_page < global.download_total_pages - 1)
 			{
-				draw_menu_button_sprite(spr_menu_button, x_next, y_next,,, 0.5, 1, 185, 42, l10n_text("Next"), "page_next", "page_next");
+				draw_menu_button_sprite(spr_menu_button, x_next, y_next,,, 0.5, 1, 185, 42, l10n_text("Next"), "download_online_page_next", "download_online_page_next");
 				
-				if (menu == "page_next"
+				if (menu == "download_online_page_next"
 				&& key_a_pressed
-				&& menu_delay == 0)
+				&& menu_delay == 0
+				&& global.download_current_page < global.download_total_pages)
 				{
 					global.download_current_page = min(global.download_total_pages - 1,
 														global.download_current_page + 1);
+					
+					global.selected_online_download_index += global.download_items_per_page;
+					
+					show_debug_message("[Pagination] Moved NEXT from page "
+			            + string(global.download_current_page - 1) + " to " + string(global.download_current_page)
+			            + "; selected_index now " + string(global.selected_online_download_index));
+					
 					menu_delay = 3;
 				}
 			}
