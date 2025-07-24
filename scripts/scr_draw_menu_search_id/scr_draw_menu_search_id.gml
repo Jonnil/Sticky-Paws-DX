@@ -148,7 +148,6 @@ function scr_draw_menu_search_id(what_kind_of_id = "level")
 							var id_search_request_headers = ds_map_create();
 							
 							/* Add to the header DS Map */
-							//ds_map_add(id_search_request_headers, "Host", global.base_url);
 							ds_map_add(id_search_request_headers, "Content-Type", "application/json");
 							ds_map_add(id_search_request_headers, "User-Agent", "gmdownloader");
 							ds_map_add(id_search_request_headers, "X-API-Key", global.api_key);

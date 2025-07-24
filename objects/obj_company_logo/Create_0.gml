@@ -372,6 +372,11 @@ global.custom_foreground_secret = noone;
 global.custom_tileset = noone;
 global.selected_font = 0;
 global.selected_online_download_index = 0; /* Game should remember what file you have selected in Online List for later use */
+global.download_items_per_page = 10; /* How many items per "page" */
+global.download_current_page = 0; /* Which page we’re on (0‑based) */
+global.download_total_pages = 0;
+global.download_offset = 0;
+global.spr_download_list_thumbnail = noone;
 global.difficulty = 1; /* Difficulty levels: 0 = easy, 1 = normal (default), 2 = hard */
 global.grid_hsnap = 32; /* Horizontal grid snapping */
 global.grid_vsnap = 32; /* Vertical grid snapping */

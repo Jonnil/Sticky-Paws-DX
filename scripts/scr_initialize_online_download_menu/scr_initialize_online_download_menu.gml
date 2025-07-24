@@ -8,7 +8,8 @@ function scr_initialize_online_download_menu()
 	
 	#region /* Get Online Download List */
 	in_online_download_list_load_menu = true;
-	info_queue_index = 0;
+	var page_offset = global.download_current_page * global.download_items_per_page;
+	info_queue_index = page_offset;
 	info_queue_http_request = true; show_debug_message("[scr_initialize_online_download_menu] 'info_queue_http_request' is set to true\n");
 	
 	finished_level = undefined;
@@ -16,7 +17,6 @@ function scr_initialize_online_download_menu()
 	liked_content = undefined;
 	
 	var online_download_request_headers = ds_map_create();
-	//ds_map_add(online_download_request_headers, "Host", global.base_url);
 	ds_map_add(online_download_request_headers, "Content-Type", "application/json");
 	ds_map_add(online_download_request_headers, "User-Agent", "gmdownloader");
 	ds_map_add(online_download_request_headers, "X-API-Key", global.api_key);

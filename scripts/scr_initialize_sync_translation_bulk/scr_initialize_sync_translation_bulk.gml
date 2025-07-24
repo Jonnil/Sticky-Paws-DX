@@ -17,7 +17,6 @@ function scr_initialize_sync_translation_bulk(translation_keys)
 		ds_map_add(header_map, "Content-Type", "application/json");
 		ds_map_add(header_map, "User-Agent", "gm_translation_logger");
 		ds_map_add(header_map, "X-API-Key", global.api_key);
-		//ds_map_add(header_map, "Host", string(global.base_url));
 		
 		/* Prepare the JSON payload */
 		var payload_map = ds_map_create();

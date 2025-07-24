@@ -25,15 +25,20 @@ function scr_process_online_download_list_data()
 				
 				show_debug_message("[scr_process_online_download_list_data] Initializing item " + string(i) + ", draw_download_name[" + string(i) + "] = ''");
 				
-				if (is_array(spr_download_list_thumbnail))
+				if (global.spr_download_list_thumbnail[i] == noone)
 				{
-					if (i < array_length(spr_download_list_thumbnail))
+					if (is_array(global.spr_download_list_thumbnail))
 					{
-						show_debug_message("[scr_process_online_download_list_data] Deleting existing sprite for thumbnail index " + string(i));
-						scr_delete_sprite_properly(spr_download_list_thumbnail[i]);
+						if (i < array_length(global.spr_download_list_thumbnail))
+						{
+							show_debug_message("[scr_process_online_download_list_data] Deleting existing sprite for thumbnail index " + string(i));
+							scr_delete_sprite_properly(global.spr_download_list_thumbnail[i]);
+						}
 					}
+					
+					global.spr_download_list_thumbnail[i] = spr_thumbnail_missing;
 				}
-				spr_download_list_thumbnail[i] = spr_thumbnail_missing;
+				
 				all_download_id[i] = "";
 			}
 		}

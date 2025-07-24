@@ -13,7 +13,6 @@ function scr_get_todays_upload_count()
 		var todays_upload_count_headers = ds_map_create();
 		
 		/* Add to the header DS Map */
-		//ds_map_add(todays_upload_count_headers, "Host", global.base_url);
 		ds_map_add(todays_upload_count_headers, "Content-Type", "application/json");
 		ds_map_add(todays_upload_count_headers, "User-Agent", "gmdownloader");
 		ds_map_add(todays_upload_count_headers, "X-API-Key", global.api_key);

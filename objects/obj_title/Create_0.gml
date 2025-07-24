@@ -57,7 +57,6 @@ masked_character_name = "";
 masked_level_name = "";
 draw_download_name = "";
 all_download_id = "";
-spr_download_list_thumbnail = noone;
 top_left_of_thumbnail_x = 0;
 top_left_of_thumbnail_y = 0;
 load_ok = 0;
@@ -128,17 +127,14 @@ content_type = "level"; /* What kind of ID you are searching for. Either "level"
 downloaded_character_name = ""; /* After loading the downloaded custom character, save the character name for later use */
 global.online_download_list = ""; /* Get the uploaded online levels as a list */
 global.online_download_list_info = ""; /* Get the uploaded online level thumbnails as a list */
-global.download_items_per_page = 10; /* How many items per "page" */
-global.download_current_page = 0; /* Which page we’re on (0‑based) */
-global.download_total_pages = 0;
-global.download_offset = 0;
 online_content_data = undefined; /* The uploaded online content will be json parsed into this variable */
 info_data = undefined; /* The uploaded online content information will be json parsed into this variable */
 automatically_search_for_id = false; /* When downloading from online download list, you want to automatically search for the selected ID */
 currently_selected_id = ""; /* In the online list, what level/character are you currently selecting? */
 old_currently_selected_id = ""; /* this is just to compare to "currently selected id" once it changes, so that information about that specific id only have to load once */
 
-info_queue_index = 0;
+var page_offset = global.download_current_page * global.download_items_per_page;
+info_queue_index = page_offset;
 info_queue_http_request = false;
 
 load_from_where = "characters";

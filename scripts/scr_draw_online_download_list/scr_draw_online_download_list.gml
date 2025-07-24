@@ -101,6 +101,9 @@ function scr_draw_online_download_menu_data()
 					
 					global.selected_online_download_index -= global.download_items_per_page;
 					
+					var page_offset = global.download_current_page * global.download_items_per_page;
+					info_queue_index = page_offset;
+					
 					show_debug_message("[Pagination] Moved PREV from page "
 						+ string(global.download_current_page + 1) + " to " + string(global.download_current_page)
 						+ "; selected_index now " + string(global.selected_online_download_index));
@@ -123,6 +126,9 @@ function scr_draw_online_download_menu_data()
 														global.download_current_page + 1);
 					
 					global.selected_online_download_index += global.download_items_per_page;
+					
+					var page_offset = global.download_current_page * global.download_items_per_page;
+					info_queue_index = page_offset;
 					
 					show_debug_message("[Pagination] Moved NEXT from page "
 			            + string(global.download_current_page - 1) + " to " + string(global.download_current_page)

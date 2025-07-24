@@ -95,7 +95,18 @@ function scr_draw_online_download_list_thumbnail(thumbnail_index, number_of_thum
 		#endregion /* Draw Selection Overlay if Selected END */
 		
 		#region /* Draw Thumbnail Sprite */
-		var draw_thumbnail = spr_download_list_thumbnail[thumbnail_index];
+		/* Only try to pull from it if it really is an array, and index is in range */
+		if (is_array(global.spr_download_list_thumbnail)
+		&& thumbnail_index >= 0
+		&& thumbnail_index < array_length(global.spr_download_list_thumbnail))
+		{
+			var draw_thumbnail = global.spr_download_list_thumbnail[thumbnail_index];
+		}
+		else
+		{
+			/* Fallback: use your "missing" sprite */
+			var draw_thumbnail = spr_thumbnail_missing;
+		}
 		
 		if (sprite_exists(draw_thumbnail))
 		&& (can_draw_thumbnail)
@@ -189,10 +200,15 @@ function scr_draw_online_download_list_thumbnail(thumbnail_index, number_of_thum
 		var draw_download_time = string_replace(item.time_created, "T", " ");
 		draw_download_time = string_replace(draw_download_time, "Z", "");
 		
-		if (all_download_id[thumbnail_index] == "")
+		if (is_array(all_download_id)
+		&& thumbnail_index >= 0
+		&& thumbnail_index < array_length(all_download_id))
 		{
-			all_download_id[thumbnail_index] = draw_download_id;
-			show_debug_message("[scr_draw_online_download_list_thumbnail] all_download_id[" + string(thumbnail_index) + "] = " + string(draw_download_id) + ";");
+			if (all_download_id[thumbnail_index] == "")
+			{
+				all_download_id[thumbnail_index] = draw_download_id;
+				show_debug_message("[scr_draw_online_download_list_thumbnail] all_download_id[" + string(thumbnail_index) + "] = " + string(draw_download_id) + ";");
+			}
 		}
 		#endregion /* Process Download ID and Time END */
 		
@@ -229,10 +245,10 @@ function scr_draw_online_download_list_thumbnail(thumbnail_index, number_of_thum
 					#region /* Set Thumbnail for Download Menu */
 					scr_delete_sprite_properly(downloaded_thumbnail_sprite);
 					
-					if (sprite_exists(spr_download_list_thumbnail[global.selected_online_download_index])
-					&& (spr_download_list_thumbnail[global.selected_online_download_index] != spr_thumbnail_missing))
+					if (sprite_exists(global.spr_download_list_thumbnail[global.selected_online_download_index])
+					&& (global.spr_download_list_thumbnail[global.selected_online_download_index] != spr_thumbnail_missing))
 					{
-						downloaded_thumbnail_sprite = spr_download_list_thumbnail[global.selected_online_download_index];
+						downloaded_thumbnail_sprite = global.spr_download_list_thumbnail[global.selected_online_download_index];
 					}
 					else
 					{

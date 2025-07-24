@@ -23,7 +23,6 @@ function scr_download_thumbnails(download_all, what_num_items = 0)
 	if (
 		(
 			(download_all
-			//&& info_queue_index < what_num_items
 			&& info_queue_http_request)
 			|| (!download_all)
 		)
@@ -147,7 +146,7 @@ function scr_download_thumbnails(download_all, what_num_items = 0)
 				show_debug_message("[scr_download_thumbnails] draw_download_name[" + string(info_queue_index) + "] = " + string(draw_download_name[info_queue_index]));
 				
 				/* Check if the thumbnail sprite is still missing. */
-				if (spr_download_list_thumbnail[info_queue_index] == spr_thumbnail_missing)
+				if (global.spr_download_list_thumbnail[info_queue_index] == spr_thumbnail_missing)
 				{
 					/* Build the file path where the thumbnail image will be saved. */
 					var downloaded_thumbnail_path = temp_directory + "thumbnail_" + string(info_queue_index) + ".png";
@@ -162,7 +161,7 @@ function scr_download_thumbnails(download_all, what_num_items = 0)
 					buffer_save(buffer, downloaded_thumbnail_path);
 					
 					/* Create a sprite from the saved thumbnail image file. */
-					spr_download_list_thumbnail[info_queue_index] = sprite_add(downloaded_thumbnail_path, 0, false, true, 0, 0);
+					global.spr_download_list_thumbnail[info_queue_index] = sprite_add(downloaded_thumbnail_path, 0, false, true, 0, 0);
 					
 					show_debug_message("[scr_download_thumbnails] Thumbnail sprite created for item: " + string_upper(all_download_id[info_queue_index]));
 				}
