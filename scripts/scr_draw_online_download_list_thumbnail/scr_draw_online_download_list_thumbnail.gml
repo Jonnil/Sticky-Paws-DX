@@ -29,7 +29,8 @@ function scr_draw_online_download_list_thumbnail(thumbnail_index, number_of_thum
 		var download_online_y = 80 + (300 * slot); /* Use 'slot' here instead of thumbnail_index */
 		var offsetY = menu_y_offset; /* Cache menu_y_offset */
 		var baseY = offsetY + download_online_y;
-		var can_draw_thumbnail = true;
+		var can_thumbnail = true;
+		var draw_thumbnail = spr_thumbnail_missing; /* Fallback: use your "missing" sprite */
 		
 		if (global.debug_screen)
 		{
@@ -42,7 +43,7 @@ function scr_draw_online_download_list_thumbnail(thumbnail_index, number_of_thum
 		if ((baseY + 300 < 0)
 		|| (baseY > display_get_gui_height()))
 		{
-			can_draw_thumbnail = false;
+			can_thumbnail = false;
 		}
 		
 		/* Determine if this thumbnail is currently selected */
@@ -52,7 +53,7 @@ function scr_draw_online_download_list_thumbnail(thumbnail_index, number_of_thum
 		#region /* Draw Bottom Line for Last Thumbnail */
 		
 		if (slot == page_count - 1
-		&& can_draw_thumbnail)
+		&& can_thumbnail)
 		{
 			draw_line_width_color(30, baseY + 300, guiWidth - 30, baseY + 300, 7, c_black, c_black);
 			draw_line_width_color(32, baseY + 300, guiWidth - 32, baseY + 300, 3, c_white, c_white);
@@ -61,7 +62,7 @@ function scr_draw_online_download_list_thumbnail(thumbnail_index, number_of_thum
 		
 		#region /* Draw Selection Overlay if Selected */
 		if (isSelected)
-		&& (can_draw_thumbnail)
+		&& (can_thumbnail)
 		{
 			/* Cache wave values to reduce function calls */
 			var waveArrow = scr_wave(10, 0, 1, 0);
@@ -100,16 +101,12 @@ function scr_draw_online_download_list_thumbnail(thumbnail_index, number_of_thum
 		&& thumbnail_index >= 0
 		&& thumbnail_index < array_length(global.spr_download_list_thumbnail))
 		{
-			var draw_thumbnail = global.spr_download_list_thumbnail[thumbnail_index];
-		}
-		else
-		{
-			/* Fallback: use your "missing" sprite */
-			var draw_thumbnail = spr_thumbnail_missing;
+			draw_thumbnail = global.spr_download_list_thumbnail[thumbnail_index];
+			//show_debug_message("[scr_draw_online_download_list_thumbnail] draw_thumbnail = global.spr_download_list_thumbnail[" + string(thumbnail_index) + "] (" + string(global.spr_download_list_thumbnail[thumbnail_index]) + ")");
 		}
 		
 		if (sprite_exists(draw_thumbnail))
-		&& (can_draw_thumbnail)
+		&& (can_thumbnail)
 		{
 			var scaleX = 384 / sprite_get_width(draw_thumbnail);
 			var scaleY = 216 / sprite_get_height(draw_thumbnail);
@@ -118,7 +115,10 @@ function scr_draw_online_download_list_thumbnail(thumbnail_index, number_of_thum
 		#endregion /* Draw Thumbnail Sprite END */
 		
 		#region /* Draw Download Name */
-		if (can_draw_thumbnail)
+		if (is_array(draw_download_name)
+		&& thumbnail_index >= 0
+		&& thumbnail_index < array_length(draw_download_name)
+		&& can_thumbnail)
 		{
 			draw_set_halign(fa_center);
 			draw_set_valign(fa_middle);
@@ -140,20 +140,19 @@ function scr_draw_online_download_list_thumbnail(thumbnail_index, number_of_thum
 			}
 			
 			scr_draw_text_outlined(download_online_x + 300, download_online_y + offsetY + 240, string(draw_download_name[thumbnail_index]), draw_level_name_scale, c_menu_outline, c_menu_fill, 1);
+			
+			/* Loading Indicator for Missing Thumbnail */
+			if (draw_thumbnail == spr_thumbnail_missing
+			&& draw_download_name[thumbnail_index] == "")
+			{
+				scr_draw_loading(1, download_online_x + 300, download_online_y + offsetY + 100);
+			}
 		}
 		#endregion /* Draw Download Name END */
 		
-		/* Loading Indicator for Missing Thumbnail */
-		if (draw_thumbnail == spr_thumbnail_missing
-		&& draw_download_name[thumbnail_index] == "")
-		&& (can_draw_thumbnail)
-		{
-			scr_draw_loading(1, download_online_x + 300, download_online_y + offsetY + 100);
-		}
-		
 		#region /* Draw Selection Triangles */
 		if (isSelected)
-		&& (can_draw_thumbnail)
+		&& (can_thumbnail)
 		{
 			draw_triangle_color(topLeftXOffset, topLeftYOffset, topLeftXOffset + triangleSize, topLeftYOffset, 
 				topLeftXOffset, topLeftYOffset + triangleSize, c_red, c_red, c_red, false);
@@ -245,10 +244,17 @@ function scr_draw_online_download_list_thumbnail(thumbnail_index, number_of_thum
 					#region /* Set Thumbnail for Download Menu */
 					scr_delete_sprite_properly(downloaded_thumbnail_sprite);
 					
-					if (sprite_exists(global.spr_download_list_thumbnail[global.selected_online_download_index])
-					&& (global.spr_download_list_thumbnail[global.selected_online_download_index] != spr_thumbnail_missing))
+					/* Before you do the 'sprite exists' check, compute your index */
+					var idx = global.selected_online_download_index;
+					
+					/* Make sure the thumbnail array exists and idx is valid */
+					if (is_array(global.spr_download_list_thumbnail)
+					&& idx >= 0
+					&& idx < array_length(global.spr_download_list_thumbnail)
+					&& sprite_exists(global.spr_download_list_thumbnail[idx])
+					&& global.spr_download_list_thumbnail[idx] != spr_thumbnail_missing)
 					{
-						downloaded_thumbnail_sprite = global.spr_download_list_thumbnail[global.selected_online_download_index];
+						downloaded_thumbnail_sprite = global.spr_download_list_thumbnail[idx];
 					}
 					else
 					{
@@ -267,7 +273,7 @@ function scr_draw_online_download_list_thumbnail(thumbnail_index, number_of_thum
 		#endregion /* Handle Thumbnail Hover and Download on Selection END */
 		
 		#region /* Display Index and Download ID */
-		if (can_draw_thumbnail)
+		if (can_thumbnail)
 		{
 			draw_set_halign(fa_right);
 			scr_draw_text_outlined(
@@ -295,7 +301,7 @@ function scr_draw_online_download_list_thumbnail(thumbnail_index, number_of_thum
 		
 		#region /* Display Finished Level Status */
 		if (content_type == "level")
-		&& (can_draw_thumbnail)
+		&& (can_thumbnail)
 		{
 			if (is_array(finished_level))
 			{
@@ -426,7 +432,7 @@ function scr_draw_online_download_list_thumbnail(thumbnail_index, number_of_thum
 		}
 		
 		if (is_array(liked_content))
-		&& (can_draw_thumbnail)
+		&& (can_thumbnail)
 		{
 			var liked_content_text, liked_content_icon, liked_content_color;
 			
@@ -461,7 +467,7 @@ function scr_draw_online_download_list_thumbnail(thumbnail_index, number_of_thum
 		}
 		#endregion /* Display Like/Dislike Status END */
 		
-		if (can_draw_thumbnail)
+		if (can_thumbnail)
 		{
 			scr_draw_text_outlined(
 				download_online_x + 100,

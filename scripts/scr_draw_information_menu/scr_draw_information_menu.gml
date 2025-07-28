@@ -621,6 +621,7 @@ function scr_draw_information_menu()
 								select_custom_level_menu_open = false;
 								content_type = "level"; /* Need to set the "content type" to "level", so Async - HTTP Event is running correctly */
 								global.selected_online_download_index = 0;
+								global.download_current_page = 0;
 								menu = "online_download_list_load";
 								information_menu_open = "";
 								var any_player_can_play = false;

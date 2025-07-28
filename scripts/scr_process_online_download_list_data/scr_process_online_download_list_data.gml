@@ -25,19 +25,18 @@ function scr_process_online_download_list_data()
 				
 				show_debug_message("[scr_process_online_download_list_data] Initializing item " + string(i) + ", draw_download_name[" + string(i) + "] = ''");
 				
-				if (global.spr_download_list_thumbnail[i] == noone)
+				if (is_array(global.spr_download_list_thumbnail))
+				//&& (global.spr_download_list_thumbnail[i] != spr_thumbnail_missing) /* Never delete the actual missing thumbnail sprite. WARNING: THIS LINE BREAKS THE THUMBNAIL LOADING FOR SOME REASON */
 				{
-					if (is_array(global.spr_download_list_thumbnail))
+					if (i < array_length(global.spr_download_list_thumbnail))
 					{
-						if (i < array_length(global.spr_download_list_thumbnail))
-						{
-							show_debug_message("[scr_process_online_download_list_data] Deleting existing sprite for thumbnail index " + string(i));
-							scr_delete_sprite_properly(global.spr_download_list_thumbnail[i]);
-						}
+						scr_delete_sprite_properly(global.spr_download_list_thumbnail[i]);
+						show_debug_message("[scr_process_online_download_list_data] Deleting existing sprite for thumbnail index " + string(i));
 					}
-					
-					global.spr_download_list_thumbnail[i] = spr_thumbnail_missing;
 				}
+				
+				global.spr_download_list_thumbnail[i] = spr_thumbnail_missing;
+				show_debug_message("[scr_process_online_download_list_data] Setting thumbnail " + string(i) + " to spr_thumbnail_missing");
 				
 				all_download_id[i] = "";
 			}

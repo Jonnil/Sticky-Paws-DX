@@ -35,6 +35,9 @@ function scr_draw_online_download_list_data()
 {
 	scr_draw_loading(1, , , "Loading from server");
 	
+	var page_offset = global.download_current_page * global.download_items_per_page;
+	info_queue_index = page_offset;
+	
 	/* Draw error messages when online download list returns errors */
 	var centerX = display_get_gui_width() * 0.5;
 	var centerY = display_get_gui_height() * 0.5 + 84;

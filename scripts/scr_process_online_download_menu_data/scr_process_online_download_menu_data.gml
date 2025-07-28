@@ -80,6 +80,7 @@ function scr_process_online_download_menu_data()
 		&& menu_joystick_delay == 0)
 		{
 			menu_delay = 3;
+			
 			if (content_type == "level")
 			{
 				if (variable_instance_exists(self, "show_level_editor_corner_menu"))
@@ -111,6 +112,8 @@ function scr_process_online_download_menu_data()
 			in_online_download_list_load_menu = false;
 			keyboard_string = "";
 			search_id = "";
+			var page_offset = global.download_current_page * global.download_items_per_page;
+			info_queue_index = page_offset;
 		}
 	}
 	#endregion /* Handle Back Button Input END */

@@ -93,6 +93,7 @@ function scr_draw_caution_online()
 								/* Go to online level list, so you can browse all uploaded levels, instead of just searching for specific levels */
 								select_custom_level_menu_open = false;
 								global.selected_online_download_index = 0;
+								global.download_current_page = 0;
 							}
 							else
 							if (caution_online_takes_you_to == "search_id_ok")

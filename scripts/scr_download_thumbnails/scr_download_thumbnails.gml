@@ -131,7 +131,7 @@ function scr_download_thumbnails(download_all, what_num_items = 0)
 						draw_download_name[info_queue_index] = string(switch_mask_profanity(item.name));
 						
 						show_debug_message("[scr_download_thumbnails] Profanity detected and masked for item: " + string_upper(all_download_id[info_queue_index])
-											+ ". New name: " + draw_download_name[info_queue_index]);
+											+ ". New name: " + string(draw_download_name[info_queue_index]));
 					}
 					else
 					{
@@ -139,20 +139,23 @@ function scr_download_thumbnails(download_all, what_num_items = 0)
 						draw_download_name[info_queue_index] = string(item.name);
 						
 						show_debug_message("[scr_download_thumbnails] Set download name for item: " + string_upper(all_download_id[info_queue_index])
-											+ " to: " + draw_download_name[info_queue_index]);
+											+ " to: " + string(draw_download_name[info_queue_index]));
 					}
 				}
 				
 				show_debug_message("[scr_download_thumbnails] draw_download_name[" + string(info_queue_index) + "] = " + string(draw_download_name[info_queue_index]));
 				
 				/* Check if the thumbnail sprite is still missing. */
-				if (global.spr_download_list_thumbnail[info_queue_index] == spr_thumbnail_missing)
+				if (is_array(global.spr_download_list_thumbnail) /* Only index if it’s a real array and the index is valid */
+				&& info_queue_index >= 0
+				&& info_queue_index < array_length(global.spr_download_list_thumbnail)
+				&& global.spr_download_list_thumbnail[info_queue_index] == spr_thumbnail_missing)
 				{
 					/* Build the file path where the thumbnail image will be saved. */
 					var downloaded_thumbnail_path = temp_directory + "thumbnail_" + string(info_queue_index) + ".png";
 					
 					show_debug_message("[scr_download_thumbnails] Downloading thumbnail for item: " + string_upper(all_download_id[info_queue_index])
-										+ " to path: " + downloaded_thumbnail_path);
+										+ " to path: " + string(downloaded_thumbnail_path));
 					
 					/* Decode the base64 thumbnail data from the JSON item. */
 					var buffer = buffer_base64_decode(item.thumbnail);

@@ -404,6 +404,7 @@ function scr_draw_menu_search_id(what_kind_of_id = "level")
 								masked_username = string(switch_mask_profanity(masked_username));
 							}
 						}
+						
 						have_downloaded_from_server = true;
 						menu = "searched_file_downloaded_back_to_list"; /* Go to the screen where you see the file has been downloaded */
 					}
@@ -1122,6 +1123,9 @@ function scr_draw_menu_search_id(what_kind_of_id = "level")
 						/* Don't set the "select level index" or "level name" here, because we want it saved still */
 						menu = "online_download_list_load"; /* Go back to online level list */
 						menu_delay = 3;
+						
+						var page_offset = global.download_current_page * global.download_items_per_page;
+						info_queue_index = page_offset;
 					}
 				}
 				#endregion /* Click back to online level list END */
