@@ -1,3 +1,9 @@
+if (async_load[? "status"] == 1)
+{
+	show_debug_message("EXIT EARLYYYYYYYY");
+	exit;
+}
+
 /* Check if the current request ID matches the one we sent */
 if (async_load[? "id"] == global.http_request_id)
 {

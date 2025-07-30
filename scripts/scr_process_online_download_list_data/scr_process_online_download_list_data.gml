@@ -26,7 +26,6 @@ function scr_process_online_download_list_data()
 				show_debug_message("[scr_process_online_download_list_data] Initializing item " + string(i) + ", draw_download_name[" + string(i) + "] = ''");
 				
 				if (is_array(global.spr_download_list_thumbnail))
-				//&& (global.spr_download_list_thumbnail[i] != spr_thumbnail_missing) /* Never delete the actual missing thumbnail sprite. WARNING: THIS LINE BREAKS THE THUMBNAIL LOADING FOR SOME REASON */
 				{
 					if (i < array_length(global.spr_download_list_thumbnail))
 					{
