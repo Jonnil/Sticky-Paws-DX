@@ -15,6 +15,17 @@ function scr_fallback_to_previous_menu_state()
 		{
 			show_debug_message("[scr_fallback_to_previous_menu_state] Force fallback if not in online download list")
 			
+			global.online_download_list = "";
+			//online_content_data = undefined; show_debug_message("[scr_fallback_to_previous_menu_state] 'online content data' is set to undefined");
+			//info_data = undefined;
+			automatically_search_for_id = false;
+			in_online_download_list_menu = false; show_debug_message("[scr_fallback_to_previous_menu_state] 'In online download list menu' is set to false\n");
+			in_online_download_list_load_menu = false;
+			keyboard_string = "";
+			menu_delay = 3;
+			search_id = "";
+			
+			/* Change menu state last */
 			if (content_type == "level")
 			{
 				if (variable_instance_exists(self, "show_level_editor_corner_menu"))
@@ -28,15 +39,6 @@ function scr_fallback_to_previous_menu_state()
 			{
 				menu = "online_character_list";
 			}
-			global.online_download_list = "";
-			online_content_data = undefined; show_debug_message("[scr_fallback_to_previous_menu_state] 'online content data' is set to undefined");
-			info_data = undefined;
-			automatically_search_for_id = false;
-			in_online_download_list_menu = false; show_debug_message("[scr_fallback_to_previous_menu_state] 'In online download list menu' is set to false\n");
-			in_online_download_list_load_menu = false;
-			keyboard_string = "";
-			menu_delay = 3;
-			search_id = "";
 		}
 	}
 	#endregion /* Force fallback if not in online download list END */

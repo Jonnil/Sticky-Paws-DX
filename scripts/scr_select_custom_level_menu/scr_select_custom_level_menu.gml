@@ -58,6 +58,7 @@ function scr_select_custom_level_menu()
 			in_online_download_list_load_menu = false;
 			global.select_level_index = 0;
 			show_debug_message("[scr_select_custom_level_menu] WARNING: No Thumbnails! ds_list_size(global.thumbnail_sprite) = " + string(ds_list_size(global.thumbnail_sprite)) + ". Previous menu was: " + string(menu) + ", menu is redirected to level_editor\n");
+			
 			menu = "level_editor"; /* Go back to level editor button if there isn't any loaded thumbnails at all */
 		}
 		#endregion /* If there isn't any thumbnails loaded at all, then that is a mistake, so go back so you could reload the custom levels and the thumbnails should be corrected END */

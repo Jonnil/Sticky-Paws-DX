@@ -169,6 +169,10 @@ global.online_token_request = -1; /* HTTP request handle */
 global.language_http_request_id = -1;
 global.online_token_error_message = ""; /* Can only be a string value */
 global.server_timeout_end = undefined;
+global.online_list_loaded = false;
+global.force_online_list_refresh = false;
+global.online_content_data = undefined; /* The uploaded online content will be json parsed into this variable */
+global.info_data = undefined; /* The uploaded online content information will be json parsed into this variable */
 #endregion /* Server stuff END */
 
 #endregion /* Things you could change END */

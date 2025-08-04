@@ -575,7 +575,7 @@ if (menu == "online_download_list_load")
 	draw_rectangle_color(0, 0, guiWidth, display_get_gui_height(), c_black, c_black, c_black, c_black, false);
 	draw_set_alpha(1);
 	
-	scr_draw_loading(1, , , "Loading from server");
+	scr_draw_loading(1, , , "Loading from server 1");
 	scr_server_timeout(15);
 }
 

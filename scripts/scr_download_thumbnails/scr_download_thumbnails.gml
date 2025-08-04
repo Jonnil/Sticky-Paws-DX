@@ -40,9 +40,9 @@ function scr_download_thumbnails(download_all, what_num_items = 0)
 		/* Reset any previous metadata. */
 		caution_online_takes_you_back_to = "download_online_" + string(global.selected_online_download_index)
 		
-		show_debug_message("[scr_download_thumbnails] Resetting metadata. info_data = undefined. menu = " + string(menu) + ", caution_online_takes_you_back_to = " + string(caution_online_takes_you_back_to));
+		show_debug_message("[scr_download_thumbnails] Resetting metadata. global.info_data = undefined. menu = " + string(menu) + ", caution_online_takes_you_back_to = " + string(caution_online_takes_you_back_to));
 		
-		info_data = undefined;
+		global.info_data = undefined;
 		global.online_download_list_info = "";
 		
 		/* Only send the HTTP request if the device is connected to the network. */
@@ -81,7 +81,7 @@ function scr_download_thumbnails(download_all, what_num_items = 0)
 	- We haven't processed the info yet (info data is undefined)
 	- We don't HAVE to be in the online download list menu, this should be able to download in the background when able to
 	- No HTTP request is currently pending (info queue http request is false) */
-	if (info_data == undefined
+	if (global.info_data == undefined
 	&& !info_queue_http_request)
 	{
 		/* Check that the server response (global online download list info) is valid.
@@ -94,9 +94,9 @@ function scr_download_thumbnails(download_all, what_num_items = 0)
 			{
 				show_debug_message("[scr_download_thumbnails] Attempting to parse JSON for item: " + string_upper(all_download_id[info_queue_index]));
 				/* Attempt to parse the JSON response into info_data. */
-				info_data = json_parse(global.online_download_list_info);
+				global.info_data = json_parse(global.online_download_list_info);
 				/* Convert the parsed JSON into an array for uniform processing. */
-				info_data = array_create(1, info_data);
+				global.info_data = array_create(1, global.info_data);
 				show_debug_message("[scr_download_thumbnails] JSON parsed successfully for item: " + string_upper(all_download_id[info_queue_index]));
 			}
 			catch (e)
@@ -105,21 +105,21 @@ function scr_download_thumbnails(download_all, what_num_items = 0)
 				show_debug_message("[scr_download_thumbnails] Failed to get JSON for " + string_upper(all_download_id[info_queue_index]) +
 								   " Invalid JSON format: " + string(global.online_download_list_info));
 				
-				info_data = undefined;
+				global.info_data = undefined;
 			}
 		}
 		
 		/* If info_data is now a valid array, process each item in the array. */
-		if (is_array(info_data))
+		if (is_array(global.info_data))
 		{
-			var num_info_items = array_length(info_data);
+			var num_info_items = array_length(global.info_data);
 			
 			show_debug_message("[scr_download_thumbnails] Processing " + string(num_info_items)
 								+ " info items for item: " + string_upper(all_download_id[info_queue_index]));
 			
 			for (var j = 0; j < num_info_items; j++)
 			{
-				var item = info_data[j];
+				var item = global.info_data[j];
 				
 				/* If no display name has been set for this download item, set it now. */
 				if (draw_download_name[info_queue_index] == "")

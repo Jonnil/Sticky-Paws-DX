@@ -20,6 +20,8 @@ function scr_draw_menu_search_id(what_kind_of_id = "level")
 		var downloaded_folder_path = normalize_path_seps(download_temp_path + "downloaded_" + string(what_kind_of_id));
 		var downloaded_zip_file_path = normalize_path_seps(downloaded_folder_path + "/" + string_upper(search_id) + ".zip");
 		
+		var please_enter_what = l10n_text("Please enter a level ID");
+		
 		#region /* Search ID menu */
 		if (menu == "search_id_ok")
 		|| (menu == "search_id_cancel")
@@ -41,14 +43,9 @@ function scr_draw_menu_search_id(what_kind_of_id = "level")
 				draw_set_halign(fa_center);
 				draw_set_valign(fa_middle);
 				
-				if (what_kind_of_id == "level")
-				{
-					var please_enter_what = l10n_text("Please enter a level ID");
-				}
-				else
 				if (what_kind_of_id == "character")
 				{
-					var please_enter_what = l10n_text("Please enter a character ID");
+					please_enter_what = l10n_text("Please enter a character ID");
 				}
 				
 				scr_draw_text_outlined(get_window_width * 0.5, draw_name_input_screen_y - 64, string(please_enter_what), global.default_text_size * 2, c_black, c_white, 1)
@@ -65,7 +62,8 @@ function scr_draw_menu_search_id(what_kind_of_id = "level")
 			}
 			
 			#region /* Search ID Button Navigation */
-			if (menu_delay == 0 && menu_joystick_delay == 0)
+			if (menu_delay == 0
+			&& menu_joystick_delay == 0)
 			{
 				if (menu == "search_id_ok")
 				{
@@ -166,8 +164,8 @@ function scr_draw_menu_search_id(what_kind_of_id = "level")
 							in_online_download_list_menu = false; show_debug_message("[scr_draw_menu_search_id] 'In online download list menu' is set to false");
 							global.online_download_list = ""; /* Reset "global online download list" so you can reload online download list next time you go to this menu */
 							global.level_description = ""; /* Reset the description to be empty */
-							online_content_data = undefined; show_debug_message("[scr_draw_menu_search_id] 'online content data' is set to undefined"); /* Reset "online content data" so you can reload online level list next time you go to this menu */
-							info_data = undefined; /* Don't forget to reset info data too */
+							//online_content_data = undefined; show_debug_message("[scr_draw_menu_search_id] 'online content data' is set to undefined"); /* Reset "online content data" so you can reload online level list next time you go to this menu */
+							//info_data = undefined; /* Don't forget to reset info data too */
 							menu = "searching_for_id";
 							menu_delay = 3;
 						}
@@ -204,9 +202,9 @@ function scr_draw_menu_search_id(what_kind_of_id = "level")
 			
 		}
 		#endregion /* Search ID menu END */
-	
+		
 		else
-	
+		
 		#region /* Searching for ID menu */
 		if (menu == "searching_for_id")
 		&& (menu_delay == 0 && menu_joystick_delay == 0)

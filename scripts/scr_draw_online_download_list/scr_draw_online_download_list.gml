@@ -12,7 +12,7 @@ function scr_draw_online_download_list()
 		draw_set_alpha(1);
 		
 		#region /* Process Data */
-		if (online_content_data == undefined
+		if (global.online_content_data == undefined
 		&& in_online_download_list_menu)
 		{
 			scr_draw_online_download_list_data();
@@ -33,7 +33,7 @@ function scr_draw_online_download_list()
 /// @description Draw the online download list data
 function scr_draw_online_download_list_data()
 {
-	scr_draw_loading(1, , , "Loading from server");
+	scr_draw_loading(1, , , "Loading from server 2");
 	
 	var page_offset = global.download_current_page * global.download_items_per_page;
 	info_queue_index = page_offset;
@@ -63,17 +63,17 @@ function scr_draw_online_download_menu_data()
 	var guiWidth = display_get_gui_width();
 	
 	#region /* Show online downloads if data is available */
-	if (online_content_data != undefined
+	if (global.online_content_data != undefined
 	&& (menu != "search_id_ok"))
 	{
-		if (is_array(online_content_data))
+		if (is_array(global.online_content_data))
 		{
-			var num_items = array_length(online_content_data);
+			var num_items = array_length(global.online_content_data);
 			/* Figure out our slice */
 			var perPage		= global.download_items_per_page;
 			var page		= clamp(global.download_current_page, 0, global.download_total_pages - 1);
 			var start_idx	= page * perPage;
-			var end_idx		= min(start_idx + perPage - 1, array_length(online_content_data) - 1);
+			var end_idx		= min(start_idx + perPage - 1, array_length(global.online_content_data) - 1);
 			var page_count	= end_idx - start_idx + 1;
 			
 			/* Draw each thumbnail, optimized loop through downloads. Draw only that page's thumbnails */
@@ -148,8 +148,8 @@ function scr_draw_online_download_menu_data()
 				+ " / " + string(global.download_total_pages));
 		}
 		
-		if (is_array(online_content_data)
-		&& array_length(online_content_data) <= 0)
+		if (is_array(global.online_content_data)
+		&& array_length(global.online_content_data) <= 0)
 		{
 			draw_set_halign(fa_center);
 			scr_draw_text_outlined(guiWidth * 0.5, display_get_gui_height() * 0.5, 

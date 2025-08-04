@@ -58,17 +58,17 @@ function scr_step_online_download_list()
 	#region /* Input Handling: Navigation for the online download list menu */
 	if (string_copy(menu, 1, string_length("download_online")) == "download_online")
 	{
-		var num_items = array_length(online_content_data);
+		var num_items = array_length(global.online_content_data);
 		
 		/* Pagination slice calculation */
 		var perPage		= global.download_items_per_page;
 		var page		= clamp(global.download_current_page, 0, global.download_total_pages - 1);
 		var start_idx	= page * perPage;
-		var end_idx		= min(start_idx + perPage - 1, array_length(online_content_data) - 1);
+		var end_idx		= min(start_idx + perPage - 1, array_length(global.online_content_data) - 1);
 		page_count	= end_idx - start_idx + 1;
 		
 		#region /* Combined Navigation with keyboard/joystick when data is present */
-		if (online_content_data != undefined
+		if (global.online_content_data != undefined
 		&& (menu != "search_id_ok"))
 		{
 			
@@ -91,8 +91,8 @@ function scr_step_online_download_list()
 						menu = "download_online_page_prev";
 					}
 					else
-					if (is_array(online_content_data)
-					&& (array_length(online_content_data) <= 0))
+					if (is_array(global.online_content_data)
+					&& (array_length(global.online_content_data) <= 0))
 					{
 						menu = "download_online_back";
 					}
@@ -104,8 +104,8 @@ function scr_step_online_download_list()
 				else
 				if (menu == "download_online_" + string(global.selected_online_download_index))
 				{
-					if (is_array(online_content_data)
-					&& (array_length(online_content_data) <= 0))
+					if (is_array(global.online_content_data)
+					&& (array_length(global.online_content_data) <= 0))
 					{
 						menu = "download_online_back";
 					}
@@ -117,8 +117,8 @@ function scr_step_online_download_list()
 				else
 				if (menu == "download_online_back")
 				{
-					if (is_array(online_content_data)
-					&& (array_length(online_content_data) > 0))
+					if (is_array(global.online_content_data)
+					&& (array_length(global.online_content_data) > 0))
 					{
 						menu = "download_online_" + string(end_idx);
 						var menu_cursor_y_position_start = 114 + (300 * (end_idx));
@@ -164,14 +164,14 @@ function scr_step_online_download_list()
 				
 				if (menu == "download_online_" + string(start_idx))
 				{
-					if (is_array(online_content_data)
-					&& (array_length(online_content_data) <= 0))
+					if (is_array(global.online_content_data)
+					&& (array_length(global.online_content_data) <= 0))
 					{
 						menu = "download_online_back";
 					}
 					else
 					{
-						if (array_length(online_content_data) >= 2)
+						if (array_length(global.online_content_data) >= 2)
 						{
 							menu = "download_online_" + string(start_idx + 1);
 						}
@@ -184,14 +184,14 @@ function scr_step_online_download_list()
 				else
 				if (menu == "download_online_" + string(global.selected_online_download_index))
 				{
-					if (is_array(online_content_data)
-					&& (array_length(online_content_data) <= 0))
+					if (is_array(global.online_content_data)
+					&& (array_length(global.online_content_data) <= 0))
 					|| (menu == "download_online_" + string(end_idx))
 					{
 						menu = "download_online_back";
 					}
 					else
-					if (global.selected_online_download_index < array_length(online_content_data) - 1)
+					if (global.selected_online_download_index < array_length(global.online_content_data) - 1)
 					{
 						menu = "download_online_" + string(global.selected_online_download_index + 1);
 					}
@@ -218,8 +218,8 @@ function scr_step_online_download_list()
 						menu = "download_online_page_next";
 					}
 					else
-					if (is_array(online_content_data)
-					&& (array_length(online_content_data) > 0))
+					if (is_array(global.online_content_data)
+					&& (array_length(global.online_content_data) > 0))
 					{
 						menu = "download_online_" + string(start_idx);
 						menu_y_offset_real = 0;
@@ -229,8 +229,8 @@ function scr_step_online_download_list()
 				else
 				if (menu == "download_online_page_next")
 				{
-					if (is_array(online_content_data)
-					&& (array_length(online_content_data) > 0))
+					if (is_array(global.online_content_data)
+					&& (array_length(global.online_content_data) > 0))
 					{
 						menu = "download_online_" + string(start_idx);
 						menu_y_offset_real = 0;
@@ -245,8 +245,8 @@ function scr_step_online_download_list()
 						menu = "download_online_page_next";
 					}
 					else
-					if (is_array(online_content_data)
-					&& (array_length(online_content_data) > 0))
+					if (is_array(global.online_content_data)
+					&& (array_length(global.online_content_data) > 0))
 					{
 						menu = "download_online_" + string(start_idx);
 						menu_y_offset_real = 0;
@@ -329,6 +329,18 @@ function scr_step_online_download_list()
 			{
 				menu_delay = 3;
 				
+				global.automatically_play_downloaded_level = false;
+				global.use_temp_or_working = game_save_id;
+				global.online_download_list = "";
+				//online_content_data = undefined; show_debug_message("[scr_step_online_download_list] 'online content data' is set to undefined");
+				//info_data = undefined;
+				automatically_search_for_id = false;
+				in_online_download_list_menu = false; show_debug_message("[scr_step_online_download_list] 'In online download list menu' is set to false");
+				in_online_download_list_load_menu = false;
+				keyboard_string = "";
+				search_id = "";
+				
+				/* Change menu state last */
 				if (content_type == "level")
 				{
 					if (variable_instance_exists(self, "show_level_editor_corner_menu"))
@@ -351,17 +363,6 @@ function scr_step_online_download_list()
 				{
 					menu = "online_character_list";
 				}
-				
-				global.automatically_play_downloaded_level = false;
-				global.use_temp_or_working = game_save_id;
-				global.online_download_list = "";
-				online_content_data = undefined; show_debug_message("[scr_step_online_download_list] 'online content data' is set to undefined");
-				info_data = undefined;
-				automatically_search_for_id = false;
-				in_online_download_list_menu = false; show_debug_message("[scr_step_online_download_list] 'In online download list menu' is set to false");
-				in_online_download_list_load_menu = false;
-				keyboard_string = "";
-				search_id = "";
 			}
 		}
 		#endregion /* Input Handling: Pressing the Back button END */
@@ -392,7 +393,7 @@ function scr_step_online_download_list()
 	{
 		
 		#region /* Process Data */
-		if (online_content_data == undefined
+		if (global.online_content_data == undefined
 		&& in_online_download_list_menu)
 		{
 			scr_process_online_download_list_data();

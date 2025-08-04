@@ -1,6 +1,5 @@
 if (async_load[? "status"] == 1)
 {
-	show_debug_message("EXIT EARLYYYYYYYY");
 	exit;
 }
 
@@ -44,6 +43,8 @@ if (async_load[? "id"] == global.http_request_id)
 		
 		#region /* Handle file saving and menu updates based on content_type */
 		var file_save_location = "";
+		
+		show_debug_message("[HTTP Request ID Callback] response_json = " + string(response_json) + ", in_online_download_list_load_menu = " + string(in_online_download_list_load_menu));
 		
 		if (response_json != undefined
 		&& !in_online_download_list_load_menu)

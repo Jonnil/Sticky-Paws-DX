@@ -21,8 +21,8 @@ function scr_server_timeout(timeout_seconds = 15)
 		
 		/* Clear any data that was supposed to be loaded */
 		in_online_download_list_menu = false; show_debug_message("[scr_server_timeout] 'In online download list menu' is set to false");
-		online_content_data = undefined; show_debug_message("[scr_server_timeout] 'online content data' is set to undefined");
-		info_data = undefined;
+		//online_content_data = undefined; show_debug_message("[scr_server_timeout] 'online content data' is set to undefined");
+		//info_data = undefined;
 		
 		/* Reset the timeout variable so subsequent requests can start a new timer */
 		global.server_timeout_end = undefined;

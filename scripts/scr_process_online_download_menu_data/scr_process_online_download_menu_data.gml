@@ -2,27 +2,32 @@
 /// @description Processes the online download menu with thumbnails, buttons, and handles navigation when data is available.
 function scr_process_online_download_menu_data()
 {
-	var num_items = array_length(online_content_data);
+	var num_items = array_length(global.online_content_data);
 	
 	#region /* Show online downloads if data is available */
-	if (online_content_data != undefined
+	if (global.online_content_data != undefined
 	&& (menu != "search_id_ok"))
 	{
 		scr_scroll_menu(300, false);
 		
-		if (is_array(online_content_data))
+		if (is_array(global.online_content_data))
 		{
 			
 			#region /* Set level data for each download */
-			if (!is_array(finished_level))
+			if (!variable_instance_exists(id, "finished_level")
+			|| !is_array(finished_level))
 			{
 				finished_level = array_create(num_items, undefined);
 			}
-			if (!is_array(zero_defeats_level))
+			
+			if (!variable_instance_exists(id, "zero_defeats_level")
+			|| !is_array(zero_defeats_level))
 			{
 				zero_defeats_level = array_create(num_items, undefined);
 			}
-			if (!is_array(liked_content))
+			
+			if (!variable_instance_exists(id, "liked_content")
+			|| !is_array(liked_content))
 			{
 				liked_content = array_create(num_items, undefined);
 			}
@@ -31,7 +36,7 @@ function scr_process_online_download_menu_data()
 		}
 		else
 		{
-			var num_items = 0;
+			num_items = 0;
 			show_debug_message("[scr_process_online_download_menu_data] data is not an array! num_items = " + string(num_items));
 		}
 	}
@@ -81,6 +86,23 @@ function scr_process_online_download_menu_data()
 		{
 			menu_delay = 3;
 			
+			/* Safe resets that don't affect thumbnail cache */
+			global.automatically_play_downloaded_level = false;
+			global.use_temp_or_working = game_save_id;
+			
+			/* Reset only UI/input state */
+			automatically_search_for_id = false;
+			in_online_download_list_menu = false; 
+			show_debug_message("[scr_process_online_download_menu_data] 'In online download list menu' is set to false when clicking Back\n");
+			in_online_download_list_load_menu = false;
+			keyboard_string = "";
+			search_id = "";
+			
+			/* Paging variables, make sure scroll/page position restores correctly */
+			var page_offset = global.download_current_page * global.download_items_per_page;
+			info_queue_index = page_offset;
+			
+			/* Change menu state last */
 			if (content_type == "level")
 			{
 				if (variable_instance_exists(self, "show_level_editor_corner_menu"))
@@ -102,18 +124,6 @@ function scr_process_online_download_menu_data()
 			{
 				menu = "online_character_list";
 			}
-			global.automatically_play_downloaded_level = false;
-			global.use_temp_or_working = game_save_id;
-			global.online_download_list = "";
-			online_content_data = undefined; show_debug_message("[scr_process_online_download_menu_data] 'online content data' is set to undefined");
-			info_data = undefined;
-			automatically_search_for_id = false;
-			in_online_download_list_menu = false; show_debug_message("[scr_process_online_download_menu_data] 'In online download list menu' is set to false when we click the back button in online list\n");
-			in_online_download_list_load_menu = false;
-			keyboard_string = "";
-			search_id = "";
-			var page_offset = global.download_current_page * global.download_items_per_page;
-			info_queue_index = page_offset;
 		}
 	}
 	#endregion /* Handle Back Button Input END */
@@ -141,5 +151,5 @@ function scr_process_online_download_menu_data()
 	}
 	#endregion /* Handle Search ID Button Input END */
 	
-	menu_y_offset_real = clamp(menu_y_offset_real, -250 + window_get_height() - (300 * array_length(online_content_data)), 0);
+	menu_y_offset_real = clamp(menu_y_offset_real, -250 + window_get_height() - (300 * array_length(global.online_content_data)), 0);
 }
