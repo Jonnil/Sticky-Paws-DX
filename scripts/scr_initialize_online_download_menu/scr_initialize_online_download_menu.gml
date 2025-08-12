@@ -2,23 +2,37 @@
 /// @description Initializes the online download menu by setting HTTP headers, starting the request (only once), and drawing a loading screen.
 function scr_initialize_online_download_menu()
 {
+	/* Always start with a clean state for this flag to avoid stale routing on callbacks */
+	in_online_download_list_load_menu = false;
+	
 	/* If we've already loaded the list this session, just reopen the menu */
 	if (is_array(global.online_content_data)
 	&& array_length(global.online_content_data) > 0)
 	{
-		/* Restore menu state without network */
-		in_online_download_list_load_menu = true;
+		
+		#region /* Cached list path (no network) */
+		/* Restore menu state without network.
+		   IMPORTANT FIX: Do NOT mark "loading list" when using cache. */
+		in_online_download_list_load_menu = false; /* <-- fix */
 		in_online_download_list_menu = true;
+		
 		var page_offset = global.download_current_page * global.download_items_per_page;
 		info_queue_index = page_offset;
+		
+		/* Ensure we aren't waiting on any HTTP in this path */
+		info_queue_http_request = false;
+		
 		menu = "download_online_" + string(global.selected_online_download_index);
 		automatically_search_for_id = false;
 		menu_delay = 3;
-		show_debug_message("[scr_initialize_online_download_menu] Cached data found – skipping HTTP request\n");
-		return; 
+		
+		show_debug_message("[scr_initialize_online_download_menu] Cached data found – skipping HTTP request. "
+		+ "in_online_download_list_load_menu set to false\n");
+		return;
+		#endregion /* Cached list path (no network) END */
 	}
 	
-	/* First-time load,or after a refresh, show loading overlay */
+	/* First-time load, or after a refresh, show loading overlay */
 	draw_set_alpha(0.5);
 	draw_rectangle_color(
 		0, 0, display_get_gui_width(), display_get_gui_height(),
@@ -26,8 +40,10 @@ function scr_initialize_online_download_menu()
 	);
 	draw_set_alpha(1);
 	
+	#region /* Server load path */
 	/* Mark that we’re actively loading from server */
 	in_online_download_list_load_menu = true;
+	
 	var page_offset = global.download_current_page * global.download_items_per_page;
 	info_queue_index = page_offset;
 	info_queue_http_request = true;
@@ -66,4 +82,6 @@ function scr_initialize_online_download_menu()
 	/* Draw the spinner/text and set up timeout */
 	scr_draw_loading(1, , , "Loading from server 3");
 	scr_server_timeout(15);
+	#endregion /* Server load path END */
+	
 }
