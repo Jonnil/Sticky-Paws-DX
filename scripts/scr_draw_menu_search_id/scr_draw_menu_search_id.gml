@@ -15,6 +15,7 @@ function scr_draw_menu_search_id(what_kind_of_id = "level")
 		var back_to_list_button_width = 1;
 		var fixed_player = 1;
 		var draw_name_input_screen_y = get_window_height * 0.5;
+		var thumbnail_scale = 1;
 		
 		var download_temp_path = temp_directory;
 		var downloaded_folder_path = normalize_path_seps(download_temp_path + "downloaded_" + string(what_kind_of_id));
@@ -273,11 +274,6 @@ function scr_draw_menu_search_id(what_kind_of_id = "level")
 							}
 						}
 						
-						if (sprite_exists(downloaded_thumbnail_sprite))
-						{
-							sprite_set_offset(downloaded_thumbnail_sprite, sprite_get_width(downloaded_thumbnail_sprite) * 0.5, 0);
-						}
-						
 						if (file_exists(normalize_path_seps(download_temp_path + "custom_levels/" + string(global.level_name) + "/data/level_information.ini")))
 						{
 							
@@ -522,11 +518,11 @@ function scr_draw_menu_search_id(what_kind_of_id = "level")
 					#region /* Draw Level Thumbnail */
 					if (get_window_height <= 720)
 					{
-						var thumbnail_scale = 1.1;
+						thumbnail_scale = 1.1;
 					}
 					else
 					{
-						var thumbnail_scale = 2;
+						thumbnail_scale = 2;
 					}
 					
 					if (sprite_exists(downloaded_thumbnail_sprite))
@@ -534,7 +530,7 @@ function scr_draw_menu_search_id(what_kind_of_id = "level")
 						draw_sprite_ext(
 							downloaded_thumbnail_sprite,
 							0,
-							get_window_width * 0.5,
+							get_window_width * 0.5 - 350,
 							64,
 							(384 / sprite_get_width(downloaded_thumbnail_sprite)) * thumbnail_scale,
 							(216 / sprite_get_height(downloaded_thumbnail_sprite)) * thumbnail_scale,
@@ -561,7 +557,7 @@ function scr_draw_menu_search_id(what_kind_of_id = "level")
 						draw_sprite_ext(
 							downloaded_thumbnail_sprite,
 							0,
-							get_window_width * 0.5,
+							get_window_width * 0.5 - 350,
 							get_window_height * 0.5 - 100,
 							(392 / sprite_get_width(downloaded_thumbnail_sprite)) * scale_offset,
 							(392 / sprite_get_width(downloaded_thumbnail_sprite)) * scale_offset,

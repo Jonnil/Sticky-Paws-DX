@@ -35,7 +35,8 @@ function scr_draw_online_download_list_thumbnail(thumbnail_index, number_of_thum
 		if (global.debug_screen)
 		{
 			draw_set_halign(fa_right);
-			scr_draw_text_outlined(download_online_x, baseY + 100, "baseY = " + string(baseY))
+			scr_draw_text_outlined(download_online_x, baseY + 100, "baseY = " + string(baseY) + "\n" +
+			"draw_thumbnail = global.spr_download_list_thumbnail[" + string(thumbnail_index) + "]\n(" + string(global.spr_download_list_thumbnail[thumbnail_index]) + ")", 0.5)
 		}
 		
 		/* Only draw if the thumbnail is within the visible GUI view */
@@ -102,7 +103,6 @@ function scr_draw_online_download_list_thumbnail(thumbnail_index, number_of_thum
 		&& thumbnail_index < array_length(global.spr_download_list_thumbnail))
 		{
 			draw_thumbnail = global.spr_download_list_thumbnail[thumbnail_index];
-			//show_debug_message("[scr_draw_online_download_list_thumbnail] draw_thumbnail = global.spr_download_list_thumbnail[" + string(thumbnail_index) + "] (" + string(global.spr_download_list_thumbnail[thumbnail_index]) + ")");
 		}
 		
 		if (sprite_exists(draw_thumbnail))
@@ -462,6 +462,7 @@ function scr_draw_online_download_list_thumbnail(thumbnail_index, number_of_thum
 				{
 					draw_sprite_ext(liked_content_icon, 0, download_online_x + 524, 32 + download_online_y + offsetY, 1, 1, 0, c_white, 1);
 				}
+				
 				scr_draw_text_outlined(download_online_x + 548, 32 + download_online_y + offsetY, l10n_text(liked_content_text), global.default_text_size, c_menu_outline, liked_content_color, 1);
 			}
 		}
