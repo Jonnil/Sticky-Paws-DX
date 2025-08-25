@@ -96,7 +96,9 @@ function scr_draw_online_download_menu_data()
 				draw_menu_button_sprite(spr_menu_button, x_prev, y_prev,,, 0.5, 1, 185, 42, l10n_text("Previous"), "download_online_page_prev", "download_online_page_prev");
 				
 				if (menu == "download_online_page_prev"
-				&& key_a_pressed
+				&& (key_a_pressed
+				|| mouse_check_button_released(mb_left)
+				&& (point_in_rectangle(device_mouse_x_to_gui(0), device_mouse_y_to_gui(0), x_prev, y_prev, x_prev + 185, y_prev + 42)))
 				&& menu_delay == 0
 				&& global.download_current_page > 0)
 				{
@@ -121,7 +123,9 @@ function scr_draw_online_download_menu_data()
 				draw_menu_button_sprite(spr_menu_button, x_next, y_next,,, 0.5, 1, 185, 42, l10n_text("Next"), "download_online_page_next", "download_online_page_next");
 				
 				if (menu == "download_online_page_next"
-				&& key_a_pressed
+				&& (key_a_pressed
+				|| mouse_check_button_released(mb_left)
+				&& (point_in_rectangle(device_mouse_x_to_gui(0), device_mouse_y_to_gui(0), x_next, y_next, x_next + 185, y_next + 42)))
 				&& menu_delay == 0
 				&& global.download_current_page < global.download_total_pages)
 				{
@@ -143,9 +147,9 @@ function scr_draw_online_download_menu_data()
 			
 			/* Show Page X of Y */
 			draw_set_halign(fa_left);
-			draw_text(x_label, y_label,
+			scr_draw_text_outlined(x_label, y_label,
 				string(global.download_current_page + 1)
-				+ " / " + string(global.download_total_pages));
+				+ " / " + string(global.download_total_pages), global.default_text_size, c_menu_outline, c_menu_fill, 1);
 		}
 		
 		if (is_array(global.online_content_data)

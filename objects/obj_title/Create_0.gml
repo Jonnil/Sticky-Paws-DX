@@ -55,7 +55,6 @@ downloaded_level_is_daily_build = false;
 masked_username = "";
 masked_character_name = "";
 masked_level_name = "";
-draw_download_name = "";
 all_download_id = "";
 top_left_of_thumbnail_x = 0;
 top_left_of_thumbnail_y = 0;

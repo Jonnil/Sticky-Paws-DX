@@ -122,28 +122,28 @@ function scr_download_thumbnails(download_all, what_num_items = 0)
 				var item = global.info_data[j];
 				
 				/* If no display name has been set for this download item, set it now. */
-				if (draw_download_name[info_queue_index] == "")
+				if (global.draw_download_name[info_queue_index] == "")
 				{
 					/* Check the item's name for profanity. */
 					if (switch_check_profanity(item.name))
 					{
 						/* Mask any profanity found in the name. */
-						draw_download_name[info_queue_index] = string(switch_mask_profanity(item.name));
+						global.draw_download_name[info_queue_index] = string(switch_mask_profanity(item.name));
 						
 						show_debug_message("[scr_download_thumbnails] Profanity detected and masked for item: " + string_upper(all_download_id[info_queue_index])
-											+ ". New name: " + string(draw_download_name[info_queue_index]));
+											+ ". New name: " + string(global.draw_download_name[info_queue_index]));
 					}
 					else
 					{
 						/* Otherwise, use the item's name as is. */
-						draw_download_name[info_queue_index] = string(item.name);
+						global.draw_download_name[info_queue_index] = string(item.name);
 						
 						show_debug_message("[scr_download_thumbnails] Set download name for item: " + string_upper(all_download_id[info_queue_index])
-											+ " to: " + string(draw_download_name[info_queue_index]));
+											+ " to: " + string(global.draw_download_name[info_queue_index]));
 					}
 				}
 				
-				show_debug_message("[scr_download_thumbnails] draw_download_name[" + string(info_queue_index) + "] = " + string(draw_download_name[info_queue_index]));
+				show_debug_message("[scr_download_thumbnails] global.draw_download_name[" + string(info_queue_index) + "] = " + string(global.draw_download_name[info_queue_index]));
 				
 				/* Check if the thumbnail sprite is still missing. */
 				if (is_array(global.spr_download_list_thumbnail) /* Only index if it’s a real array and the index is valid */
@@ -176,11 +176,11 @@ function scr_download_thumbnails(download_all, what_num_items = 0)
 	then move to the next item in the queue. */
 	if (
 		!info_queue_http_request &&
-		is_array(draw_download_name) &&
+		is_array(global.draw_download_name) &&
 		is_array(all_download_id) &&
-		info_queue_index < array_length(draw_download_name) &&
+		info_queue_index < array_length(global.draw_download_name) &&
 		info_queue_index < array_length(all_download_id) &&
-		draw_download_name[info_queue_index] != ""
+		global.draw_download_name[info_queue_index] != ""
 	)
 	{
 		show_debug_message("[scr_download_thumbnails] Finished processing item: " + string_upper(all_download_id[info_queue_index])
@@ -197,16 +197,16 @@ function scr_download_thumbnails(download_all, what_num_items = 0)
 	//	/* Debug messages checking what if checks are failing or not */
 	//	var current_name = "undefined";
 	    
-	//	if (is_array(draw_download_name)
-	//	&& info_queue_index < array_length(draw_download_name))
+	//	if (is_array(global.draw_download_name)
+	//	&& info_queue_index < array_length(global.draw_download_name))
 	//	{
-	//        current_name = draw_download_name[info_queue_index];
+	//        current_name = global.draw_download_name[info_queue_index];
 	//    }
 		
 	//    show_debug_message("[scr_download_thumbnails] Final check did not pass. " +
 	//        "info_queue_http_request: " + string(info_queue_http_request) +
-	//        ", draw_download_name[info_queue_index]: " + current_name +
+	//        ", global.draw_download_name[info_queue_index]: " + current_name +
 	//        ", info_queue_index: " + string(info_queue_index) +
-	//        ", array_length(draw_download_name): " + (is_array(draw_download_name) ? string(array_length(draw_download_name)) : "not an array") + "\n");
+	//        ", array_length(global.draw_download_name): " + (is_array(global.draw_download_name) ? string(array_length(global.draw_download_name)) : "not an array") + "\n");
 	//}
 }

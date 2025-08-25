@@ -115,14 +115,14 @@ function scr_draw_online_download_list_thumbnail(thumbnail_index, number_of_thum
 		#endregion /* Draw Thumbnail Sprite END */
 		
 		#region /* Draw Download Name */
-		if (is_array(draw_download_name)
+		if (is_array(global.draw_download_name)
 		&& thumbnail_index >= 0
-		&& thumbnail_index < array_length(draw_download_name)
+		&& thumbnail_index < array_length(global.draw_download_name)
 		&& can_thumbnail)
 		{
 			draw_set_halign(fa_center);
 			draw_set_valign(fa_middle);
-			var nameWidth = string_width(draw_download_name[thumbnail_index]);
+			var nameWidth = string_width(global.draw_download_name[thumbnail_index]);
 			var draw_level_name_scale;
 			
 			if (nameWidth > 640)
@@ -139,11 +139,11 @@ function scr_draw_online_download_list_thumbnail(thumbnail_index, number_of_thum
 				draw_level_name_scale = global.default_text_size;
 			}
 			
-			scr_draw_text_outlined(download_online_x + 300, download_online_y + offsetY + 240, string(draw_download_name[thumbnail_index]), draw_level_name_scale, c_menu_outline, c_menu_fill, 1);
+			scr_draw_text_outlined(download_online_x + 300, download_online_y + offsetY + 240, string(global.draw_download_name[thumbnail_index]), draw_level_name_scale, c_menu_outline, c_menu_fill, 1);
 			
 			/* Loading Indicator for Missing Thumbnail */
 			if (draw_thumbnail == spr_thumbnail_missing
-			&& draw_download_name[thumbnail_index] == "")
+			&& global.draw_download_name[thumbnail_index] == "")
 			{
 				scr_draw_loading(1, download_online_x + 300, download_online_y + offsetY + 100);
 			}
@@ -242,8 +242,6 @@ function scr_draw_online_download_list_thumbnail(thumbnail_index, number_of_thum
 					in_online_download_list_menu = false; show_debug_message("[scr_draw_online_download_list_thumbnail] 'In online download list menu' is set to false");
 					
 					#region /* Set Thumbnail for Download Menu */
-					scr_delete_sprite_properly(downloaded_thumbnail_sprite);
-					
 					/* Before you do the 'sprite exists' check, compute your index */
 					var idx = global.selected_online_download_index;
 					

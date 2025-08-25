@@ -33,7 +33,7 @@ function scr_process_online_download_list_data()
 			for (var i = 0; i < total; i++)
 			{
 				/* Clear any previous display name */
-				draw_download_name[i] = "";
+				global.draw_download_name[i] = "";
 				
 				/* --- Thumbnail setup --- */
 				/* If we're forcing a full refresh, delete & reset */

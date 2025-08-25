@@ -173,6 +173,7 @@ global.online_list_loaded = false;
 global.force_online_list_refresh = false;
 global.online_content_data = undefined; /* The uploaded online content will be json parsed into this variable */
 global.info_data = undefined; /* The uploaded online content information will be json parsed into this variable */
+global.draw_download_name = "";
 #endregion /* Server stuff END */
 
 #endregion /* Things you could change END */

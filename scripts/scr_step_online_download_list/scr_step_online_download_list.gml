@@ -11,13 +11,35 @@ function scr_step_online_download_list()
 	{
 		if (scr_check_network_connection(network_connect_active))
 		{
-			var menu_cursor_y_position_start = 114 + (300 * (global.selected_online_download_index));
-			var menu_y_offset_real_start = -(170 * (global.selected_online_download_index));
+			
+			#region /* Pagination-aware initial cursor/offset setup */
+			var per_page = global.download_items_per_page;
+			var current_page = clamp(global.download_current_page, 0, max(0, global.download_total_pages - 1));
+			var page_offset = current_page * per_page;
+			
+			/* Determine how many items are actually on this page (handles short last page) */
+			var current_page_visible_item_count = per_page;
+			
+			if (is_array(global.online_content_data))
+			{
+				var num_items = array_length(global.online_content_data);
+				var current_page_first_global_index = page_offset;
+				var current_page_last_global_index = min(current_page_first_global_index + per_page - 1, max(0, num_items - 1));
+				current_page_visible_item_count = max(0, current_page_last_global_index - current_page_first_global_index + 1);
+			}
+			
+			/* Index relative to the current page */
+			var local_index = global.selected_online_download_index - page_offset;
+			local_index = clamp(local_index, 0, max(0, current_page_visible_item_count - 1));
+			
+			var menu_cursor_y_position_start = 114 + (300 * (local_index));
+			var menu_y_offset_real_start = -(170 * (local_index));
 			
 			/* Set up initial cursor/offset values */
 			menu_cursor_y_position = menu_cursor_y_position_start;
 			menu_y_offset_real = menu_y_offset_real_start;
 			menu_y_offset = menu_y_offset_real_start;
+			#endregion /* Pagination-aware initial cursor/offset setup END */
 			
 			/* Initialize the online download menu (draw helper remains in draw script) */
 			scr_initialize_online_download_menu();
