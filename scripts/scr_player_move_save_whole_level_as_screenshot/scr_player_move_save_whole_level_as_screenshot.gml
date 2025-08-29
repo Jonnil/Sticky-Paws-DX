@@ -49,8 +49,15 @@ function scr_player_move_save_whole_level_as_screenshot()
 		}
 		if (full_level_map_screenshot_timer == 15)
 		{
+			var flattened_surface = surface_create(new_width, new_height);
+			surface_set_target(flattened_surface);
+			draw_clear_alpha(c_black, 1);
+			gpu_set_colorwriteenable(true, true, true, false);
+			draw_surface(application_surface, 0, 0);
+			gpu_set_colorwriteenable(true, true, true, true);
+			surface_reset_target();
 			var custom_level_map_sprite;
-			custom_level_map_sprite = sprite_create_from_surface(application_surface, 0, 0, new_width, new_height, false, false, 0, 0);
+			custom_level_map_sprite = sprite_create_from_surface(flattened_surface, 0, 0, new_width, new_height, false, false, 0, 0);
 			if (global.select_level_index <= 0)
 			|| (global.create_level_from_template >= 2)
 			{
@@ -61,6 +68,7 @@ function scr_player_move_save_whole_level_as_screenshot()
 				sprite_save(custom_level_map_sprite, 0, game_save_id + "custom_levels/" + string(ds_list_find_value(global.all_loaded_custom_levels, global.select_level_index)) + "/full_level_map_" + string(global.level_name) + ".png");
 			}
 			scr_delete_sprite_properly(custom_level_map_sprite);
+			surface_free(flattened_surface);
 		}
 		if (full_level_map_screenshot_timer >= 20)
 		{

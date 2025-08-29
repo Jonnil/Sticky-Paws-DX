@@ -9,7 +9,10 @@ function scr_automatic_screenshot()
 	/* Try and prevent the screenshot to capture outside the level */
 	var screenshot = surface_create(min(1920, display_get_gui_width()), min(1080, display_get_gui_height()));
 	surface_set_target(screenshot);
+	draw_clear_alpha(c_black, 1);
+	gpu_set_colorwriteenable(true, true, true, false);
 	draw_surface(application_surface, 0, 0);
+	gpu_set_colorwriteenable(true, true, true, true);
 	surface_reset_target();
 	
 	/* Step 2: Create a new surface with smaller dimensions */
@@ -19,7 +22,10 @@ function scr_automatic_screenshot()
 	
 	/* Step 3: Draw the fullscreen screenshot onto the smaller surface */
 	surface_set_target(thumbnail_surface);
+	draw_clear_alpha(c_black, 1);
+	gpu_set_colorwriteenable(true, true, true, false);
 	draw_surface_stretched(screenshot, 0, 0, thumbnail_width, thumbnail_height);
+	gpu_set_colorwriteenable(true, true, true, true);
 	surface_reset_target();
 	
 	/* Step 4: Create a sprite from the smaller surface */
