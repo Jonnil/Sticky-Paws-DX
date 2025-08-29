@@ -9,7 +9,7 @@ function scr_download_language_pack_from_server()
 	|| !global.online_token_validated
 	|| !scr_check_network_connection(network_connect_passive))
 	{
-		show_debug_message("[scr_download_language_pack_from_server] ERROR: No network connection. Aborting language pack download.");
+			scr_log("ERROR", "HTTP.LANG", "network_unavailable", "action=abort_download");
 		global.language_update_status_message = "Network error: Unable to connect to server for language update.";
 		global.language_update_status_color = c_red;
 		return;
@@ -17,7 +17,7 @@ function scr_download_language_pack_from_server()
 	
 	/* 2) Build the endpoint URL. Adjust the path if needed */
 	var endpoint = "https://" + string(global.base_url) + "/download_language_file";
-	show_debug_message("[scr_download_language_pack_from_server] Download URL set to: " + endpoint);
+		scr_log("DEBUG", "HTTP.LANG", "download_url", endpoint);
 	
 	/* 3) Create a header map for the HTTP GET request */
 	var header_map = ds_map_create();
@@ -34,7 +34,7 @@ function scr_download_language_pack_from_server()
 		header_str += key + ": " + ds_map_find_value(header_map, key) + ", ";
 		key = ds_map_find_next(header_map, key);
 	}
-	show_debug_message("[scr_download_language_pack_from_server] Using headers: " + header_str);
+		scr_log("DEBUG", "HTTP.LANG", "http_request_headers", header_str);
 	
 	/* 5) Initiate the asynchronous HTTP GET request */
 	global.language_http_request_id = http_request(endpoint, "GET", header_map, "");
@@ -42,11 +42,11 @@ function scr_download_language_pack_from_server()
 	
 	if (global.language_http_request_id == -1)
 	{
-		show_debug_message("[scr_download_language_pack_from_server] ERROR: HTTP request initiation failed.");
+			scr_log("ERROR", "HTTP.LANG", "http_request_failed");
 		global.language_update_status_message = "HTTP error: Unable to initiate language pack download.";
 		global.language_update_status_color = c_red;
 		return;
 	}
 	
-	show_debug_message("[scr_download_language_pack_from_server] HTTP request initiated successfully. Request ID: " + string(global.language_http_request_id) + "\n");
+		scr_log("INFO", "HTTP.LANG", "http_request_started", "request_id=" + string(global.language_http_request_id));
 }

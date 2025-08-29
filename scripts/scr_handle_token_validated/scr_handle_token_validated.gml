@@ -23,7 +23,7 @@ function scr_handle_token_validated()
 			/* Free the buffer memory */
 			buffer_delete(buffer);
 			
-			show_debug_message("status code == 200   global.online_token_validated: " + string(global.online_token_validated));
+				scr_log("INFO", "HTTP.AUTH", "token_validated", "http_status=200, validated=" + string(global.online_token_validated));
 			
 			scr_get_todays_upload_count(); /* Update the todays upload count whenever you first go online */
 		}
@@ -31,7 +31,7 @@ function scr_handle_token_validated()
 		{
 			global.online_token_validated = false; /* Set it to false, can only be a boolean value */
 			global.online_token_error_message = response_str; /* Return the error code in string value only */
-			show_debug_message("status code failed   global.online_token_validated: " + string(global.online_token_validated));
+				scr_log("ERROR", "HTTP.AUTH", "token_validation_failed", "validated=" + string(global.online_token_validated));
 		}
 	}
 }

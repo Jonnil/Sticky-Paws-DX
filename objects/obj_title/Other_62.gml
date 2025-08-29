@@ -10,31 +10,30 @@ if (async_load[? "status"] == 1)
 
 if (async_load[? "id"] == global.http_request_id)
 {
-	show_debug_message("[HTTP Request ID Callback] Request ID matched: received " 
-		+ string(async_load[? "id"]) + " vs global.http_request_id (" 
-		+ string(global.http_request_id) + ")");
+	scr_log("INFO", "HTTP.PRIMARY", "request_id_matched",
+		"request_id=" + string(async_load[? "id"]) + ", expected=" + string(global.http_request_id));
 	
 	/* Read status + body */
 	var status_code = async_load[? "http_status"];
 	var response_str = async_load[? "result"];
 	
-	show_debug_message("[HTTP Request ID Callback] Status code: " + string(status_code));
-	show_debug_message("[HTTP Request ID Callback] Response string: " + string(response_str));
+	scr_log("INFO", "HTTP.PRIMARY", "http_status", "http_status=" + string(status_code));
+	scr_log("DEBUG", "HTTP.PRIMARY", "response_received", "len=" + string(string_length(response_str)));
 	
 	if (status_code == 200)
 	{
-		show_debug_message("[HTTP Request ID Callback] HTTP status 200 OK. Processing response...");
+		scr_log("INFO", "HTTP.PRIMARY", "status_ok", "http_status=200");
 		
 		/* -------- Parse JSON safely -------- */
 		var response_json = json_decode(response_str);
 		
 		if (response_json != undefined)
 		{
-			show_debug_message("[HTTP Request ID Callback] JSON decoded successfully.");
+			scr_log("DEBUG", "HTTP.PRIMARY", "json_ok", "decoded=true");
 		}
 		else
 		{
-			show_debug_message("[HTTP Request ID Callback] ERROR: JSON decoding failed.");
+			scr_log("ERROR", "HTTP.PRIMARY", "json_decode_failed", "reason=invalid_json");
 			exit; /* Nothing more we can do */
 		}
 		
@@ -48,10 +47,10 @@ if (async_load[? "id"] == global.http_request_id)
 		&& is_string(response_json[? "data"])
 		&& string_length(response_json[? "data"]) > 0;
 		
-		show_debug_message("[HTTP Request ID Callback] response_json OK, "
-		+ "in_online_download_list_load_menu = " + string(in_online_download_list_load_menu)
-		+ ", has_name = " + string(_has_name)
-		+ ", has_base64 = " + string(_has_base64));
+		scr_log("DEBUG", "HTTP.PRIMARY", "payload_flags",
+			"list_menu=" + string(in_online_download_list_load_menu) +
+			", has_name=" + string(_has_name) +
+			", has_base64=" + string(_has_base64));
 		
 		/* Buffer is created only if we actually have base64 payload */
 		var buffer = -1;
@@ -76,13 +75,13 @@ if (async_load[? "id"] == global.http_request_id)
 			if (_has_base64)
 			{
 				var file_data_base64 = response_json[? "data"];
-				show_debug_message("[HTTP Request ID Callback] Extracted base64 data from JSON.");
+				scr_log("DEBUG", "HTTP.PRIMARY", "base64_present", "true");
 				buffer = buffer_base64_decode(file_data_base64);
-				show_debug_message("[HTTP Request ID Callback] Buffer created from base64 data.");
+				scr_log("DEBUG", "HTTP.PRIMARY", "buffer_created");
 			}
 			else
 			{
-				show_debug_message("[HTTP Request ID Callback] WARNING: No base64 'data' field present for file payload.");
+				scr_log("WARN", "HTTP.PRIMARY", "missing_base64_data");
 			}
 			
 			/* Build filename */
@@ -104,20 +103,20 @@ if (async_load[? "id"] == global.http_request_id)
 			if (!directory_exists(_base_dir))
 			{
 				directory_create(_base_dir);
-				show_debug_message("[HTTP Request ID Callback] Created directory: " + _base_dir);
+					scr_log("INFO", "HTTP.PRIMARY", "dir_created", "path=" + _base_dir);
 			}
 			
 			file_save_location = normalize_path_seps(_base_dir + _fname);
-			show_debug_message("[HTTP Request ID Callback] Determined file save location: " + file_save_location);
+				scr_log("DEBUG", "HTTP.PRIMARY", "file_save_location", "path=" + file_save_location);
 		}
 		else
 		{
 			/* Treat as LIST payload */
 			_treat_as_file = false;
-			show_debug_message("[HTTP Request ID Callback] Handling online download LIST data...");
+				scr_log("INFO", "HTTP.PRIMARY", "handling_list_payload");
 			global.online_download_list = response_str; /* keep as string if other code expects it */
 			in_online_download_list_load_menu = false;  /* clear stale flag so the next download works */
-			show_debug_message("[HTTP Request ID Callback] global.online_download_list updated.");
+				scr_log("DEBUG", "HTTP.PRIMARY", "list_updated");
 		}
 		#endregion /* Decide route: FILE vs LIST END */
 		
@@ -128,12 +127,12 @@ if (async_load[? "id"] == global.http_request_id)
 			if (file_save_location != ""
 			&& buffer != -1)
 			{
-				show_debug_message("[HTTP Request ID Callback] Saving buffer to file at: " + file_save_location);
+					scr_log("INFO", "HTTP.PRIMARY", "save_start", "path=" + file_save_location);
 				buffer_save(buffer, file_save_location);
 				
 				if (file_exists(file_save_location))
 				{
-					show_debug_message("[HTTP Request ID Callback] Successfully saved buffer to file at: " + file_save_location);
+						scr_log("INFO", "HTTP.PRIMARY", "save_ok", "path=" + file_save_location);
 					
 					/* Advance UI state (do NOT change menu) */
 					search_for_id_still = false;
@@ -143,7 +142,7 @@ if (async_load[? "id"] == global.http_request_id)
 				}
 				else
 				{
-					show_debug_message("[HTTP Request ID Callback] ERROR: Couldn't save buffer to file at: " + file_save_location);
+						scr_log("ERROR", "HTTP.PRIMARY", "save_failed", "path=" + file_save_location);
 					
 					if (search_for_id_still)
 					{
@@ -153,8 +152,7 @@ if (async_load[? "id"] == global.http_request_id)
 			}
 			else
 			{
-				show_debug_message("[HTTP Request ID Callback] No valid file_save_location or no buffer; skipping file save. "
-				+ "Attempted path: " + string(file_save_location));
+					scr_log("WARN", "HTTP.PRIMARY", "save_skipped", "path=" + string(file_save_location));
 				
 				if (search_for_id_still)
 				{
@@ -169,12 +167,12 @@ if (async_load[? "id"] == global.http_request_id)
 		if (buffer != -1)
 		{
 			buffer_delete(buffer);
-			show_debug_message("[HTTP Request ID Callback] Buffer memory freed.");
+				scr_log("DEBUG", "HTTP.PRIMARY", "buffer_freed");
 		}
 	}
 	else
 	{
-		show_debug_message("[HTTP Request ID Callback] ERROR: HTTP status code is not 200. Actual status: " + string(status_code));
+	scr_log("ERROR", "HTTP.PRIMARY", "non_200", "http_status=" + string(status_code));
 	}
 }
 else
@@ -189,8 +187,7 @@ else
 
 	if (!(_is_language_manifest || _is_info || _is_content_today || _is_token || _is_lang_file))
 	{
-		show_debug_message("[HTTP Request ID Callback] Request ID mismatch: received " 
-			+ string(_rid) + ", expected " + string(global.http_request_id));
+		scr_log("WARN", "HTTP.PRIMARY", "request_id_mismatch", "request_id=" + string(_rid) + ", expected=" + string(global.http_request_id));
 	}
 }
 
@@ -203,8 +200,8 @@ if (async_load[? "id"] == global.http_request_info)
 	var status_code = async_load[? "http_status"];
 	var response_str = async_load[? "result"];
 	
-	show_debug_message("[obj_title Async - HTTP] menu: " + string(menu) 
-		+ ", status_code = " + string(status_code));
+	scr_log("INFO", "HTTP.INFO", "secondary_request",
+		"menu=" + string(menu) + ", http_status=" + string(status_code));
 	
 	if (status_code == 200)
 	{
@@ -220,7 +217,7 @@ if (async_load[? "id"] == global.http_request_info)
 			if (_has_base64)
 			{
 				var buffer = buffer_base64_decode(response_json[? "data"]);
-				global.online_download_list_info = response_str;
+					global.online_download_list_info = response_str;
 				buffer_delete(buffer);
 			}
 			else

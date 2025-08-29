@@ -17,18 +17,18 @@ function scr_download_language_packs()
 	/* Before anything else, we need to check that the certification file exists */
 	scr_check_cert();
 	
-	show_debug_message("[scr_download_language_packs] Initiating language pack download process from Google Sheet.");
+	scr_log("INFO", "HTTP.LANG", "download_start", "source=google_sheet");
 	
 	#region /* Check Network Connection */
 	if (global.online_enabled
 	&& global.online_token_validated
 	&& scr_check_network_connection(network_connect_passive))
 	{
-		show_debug_message("[scr_download_language_packs] Network connection detected.");
+		scr_log("INFO", "HTTP.LANG", "network_ok");
 	}
 	else
 	{
-		show_debug_message("[scr_download_language_packs] Error: No network connection.");
+		scr_log("ERROR", "HTTP.LANG", "network_unavailable");
 		global.language_update_status_message = "Network error: Unable to connect to server for language updates.";
 		global.language_update_status_color = c_red;
 		return;
@@ -37,18 +37,18 @@ function scr_download_language_packs()
 	
 	/* Define Endpoint URL */
 	var url = global.google_sheet_language_url;
-	show_debug_message("[scr_download_language_packs] Download URL set to: global.google_sheet_language_url = " + string(url));
+	scr_log("DEBUG", "HTTP.LANG", "download_url", string(url));
 	
 	/* Debug checks for malformed URL */
 	if (string_pos("*", url) > 0)
 	{
-		show_debug_message("[scr_download_language_packs] WARNING: The URL contains a wildcard '*' character, which may indicate a malformed URL.");
+		scr_log("WARN", "HTTP.LANG", "url_contains_wildcard");
 	}
 	
 	if (string_pos("http://", url) != 1
 	&& string_pos("https://", url) != 1)
 	{
-		show_debug_message("[scr_download_language_packs] WARNING: The URL does not start with 'http://' or 'https://'. It may be missing the correct scheme.");
+		scr_log("WARN", "HTTP.LANG", "url_missing_scheme");
 	}
 	
 	#region /* Initiate Asynchronous HTTP Request using http_request */
@@ -66,7 +66,7 @@ function scr_download_language_packs()
 		header_str += key + ": " + ds_map_find_value(header_map, key) + ", ";
 		key = ds_map_find_next(header_map, key);
 	}
-	show_debug_message("[scr_download_language_packs] Initiating HTTP GET request using http_request with headers: " + header_str);
+	scr_log("DEBUG", "HTTP.LANG", "http_request_init", header_str);
 	
 	global.language_http_request_id = http_request(url, "GET", header_map, "");
 	
@@ -74,12 +74,12 @@ function scr_download_language_packs()
 	
 	if (global.language_http_request_id == -1)
 	{
-		show_debug_message("[scr_download_language_packs] Error: HTTP request initiation failed.");
+		scr_log("ERROR", "HTTP.LANG", "http_request_failed");
 		global.language_update_status_message = "HTTP error: Unable to start language pack update.";
 		global.language_update_status_color = c_red;
 		return;
 	}
-	show_debug_message("[scr_download_language_packs] HTTP request initiated successfully. Request ID: " + string(global.language_http_request_id) + "\n");
+	scr_log("INFO", "HTTP.LANG", "http_request_started", "request_id=" + string(global.language_http_request_id));
 	#endregion /* Initiate Asynchronous HTTP Request END */
 	
 }

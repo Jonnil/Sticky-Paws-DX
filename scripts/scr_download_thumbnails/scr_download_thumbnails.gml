@@ -10,7 +10,7 @@ function scr_download_thumbnails(download_all, what_num_items = 0)
 	if (!download_all)
 	{
 		info_queue_index = global.selected_online_download_index;
-		show_debug_message("[scr_download_thumbnails] Single download mode: info_queue_index set to " + string(info_queue_index));
+		scr_log("INFO", "THUMBNAILS", "single_download_mode", "info_queue_index=" + string(info_queue_index));
 	}
 	
 	/* The following complex conditional determines whether to send a new HTTP request to download thumbnail metadata.
@@ -31,16 +31,16 @@ function scr_download_thumbnails(download_all, what_num_items = 0)
 	&& (info_queue_index < array_length(all_download_id)) /* Make sure index is in bounds */
 	&& (string(all_download_id[info_queue_index]) != "") /* Make sure that the 'Download ID' string isn't empty */
 	{
-		show_debug_message("[scr_download_thumbnails] Condition met for HTTP request. download_all: " + string(download_all)
-							+ ", info_queue_index: " + string(info_queue_index)
-							+ ", what_num_items: " + string(what_num_items));
+		scr_log("DEBUG", "THUMBNAILS", "begin_http_request",
+			"download_all=" + string(download_all) + ", info_queue_index=" + string(info_queue_index) + ", what_num_items=" + string(what_num_items));
 		
 		/* Prevent additional HTTP requests until the current one is finished. */
-		info_queue_http_request = false; show_debug_message("[scr_download_thumbnails] 'info_queue_http_request' is set to false. Prevent additional HTTP requests until the current one is finished");
+		info_queue_http_request = false; scr_log("DEBUG", "THUMBNAILS", "queue_http_lock", "info_queue_http_request=false");
 		/* Reset any previous metadata. */
 		caution_online_takes_you_back_to = "download_online_" + string(global.selected_online_download_index)
 		
-		show_debug_message("[scr_download_thumbnails] Resetting metadata. global.info_data = undefined. menu = " + string(menu) + ", caution_online_takes_you_back_to = " + string(caution_online_takes_you_back_to));
+		scr_log("DEBUG", "THUMBNAILS", "reset_metadata",
+			"menu=" + string(menu) + ", back_to=" + string(caution_online_takes_you_back_to));
 		
 		global.info_data = undefined;
 		global.online_download_list_info = "";
@@ -48,7 +48,7 @@ function scr_download_thumbnails(download_all, what_num_items = 0)
 		/* Only send the HTTP request if the device is connected to the network. */
 		if (scr_check_network_connection(network_connect_active))
 		{
-			show_debug_message("[scr_download_thumbnails] Network active. Sending HTTP request for item: " + string_upper(all_download_id[info_queue_index]));
+			scr_log("INFO", "THUMBNAILS", "http_request_start", "download_id=" + string_upper(all_download_id[info_queue_index]));
 			
 			/* Construct and send an HTTP GET request to fetch metadata.
 			URL format: "https://<base_url>/metadata/<content_type>s/<downloadID>?os_type=<os_type>" */
@@ -70,22 +70,39 @@ function scr_download_thumbnails(download_all, what_num_items = 0)
         );
         ds_map_destroy(info_headers);
 			
-			show_debug_message("[scr_download_thumbnails] HTTP request sent for: " + string(all_download_id[info_queue_index]));
-			show_debug_message("[scr_download_thumbnails] 'global.http_request_info' : " + string(global.http_request_info));
-			show_debug_message("[scr_download_thumbnails] Request URL (http_request_content_url): " + string(http_request_content_url));
+			scr_log("DEBUG", "THUMBNAILS", "http_request_sent",
+				"download_id=" + string(all_download_id[info_queue_index]) + ", request_id=" + string(global.http_request_info));
+			scr_log("TRACE", "THUMBNAILS", "request_url", http_request_content_url);
 		}
 		else
 		{
-			show_debug_message("[scr_download_thumbnails] No network connection detected. Cannot send HTTP request for item: " + string_upper(all_download_id[info_queue_index]));
+				scr_log("ERROR", "THUMBNAILS", "network_unavailable", "download_id=" + string_upper(all_download_id[info_queue_index]));
 			in_online_download_list_menu = false;
-			show_debug_message("[scr_download_thumbnails] 'In online download list menu' is set to false when we are about to handle no network connection\n");
+				scr_log("DEBUG", "THUMBNAILS", "set_flag", "in_online_download_list_menu=false");
 			scr_handle_no_network_connection("scr_download_thumbnails", "download_online_" + string(global.selected_online_download_index));
 		}
 	}
-	else
-	{
-		show_debug_message("[scr_download_thumbnails IMPORTANT] info_queue_http_request = " + string(info_queue_http_request) + ", info_queue_index = " + string(info_queue_index));
-	}
+    else
+    {
+        // Rate‑limit identical skip logs to avoid spamming the console
+        if (!variable_global_exists("thumb_skip_log_key"))
+        {
+            global.thumb_skip_log_key = "";
+            global.thumb_skip_log_time = 0;
+        }
+
+        var _key = string(info_queue_http_request) + ":" + string(info_queue_index);
+        var _now = get_timer(); // microseconds since game start
+
+        // Log only if the state changed or at least 1 second passed
+        if ((_key != global.thumb_skip_log_key) || (_now - global.thumb_skip_log_time > 1000000))
+        {
+            scr_log("DEBUG", "THUMBNAILS", "skip_http_request",
+                "info_queue_http_request=" + string(info_queue_http_request) + ", info_queue_index=" + string(info_queue_index));
+            global.thumb_skip_log_key = _key;
+            global.thumb_skip_log_time = _now;
+        }
+    }
 	
 	/* Once an HTTP response is received, info_data is still undefined until processed.
 	This block checks that:
@@ -103,18 +120,17 @@ function scr_download_thumbnails(download_all, what_num_items = 0)
 		{
 			try
 			{
-				show_debug_message("[scr_download_thumbnails] Attempting to parse JSON for item: " + string_upper(all_download_id[info_queue_index]));
+					scr_log("DEBUG", "THUMBNAILS", "parse_json_start", "download_id=" + string_upper(all_download_id[info_queue_index]));
 				/* Attempt to parse the JSON response into info_data. */
 				global.info_data = json_parse(global.online_download_list_info);
 				/* Convert the parsed JSON into an array for uniform processing. */
 				global.info_data = array_create(1, global.info_data);
-				show_debug_message("[scr_download_thumbnails] JSON parsed successfully for item: " + string_upper(all_download_id[info_queue_index]));
+					scr_log("DEBUG", "THUMBNAILS", "parse_json_ok", "download_id=" + string_upper(all_download_id[info_queue_index]));
 			}
 			catch (e)
 			{
 				/* Log an error if JSON parsing fails and reset info_data. */
-				show_debug_message("[scr_download_thumbnails] Failed to get JSON for " + string_upper(all_download_id[info_queue_index]) +
-								   " Invalid JSON format: " + string(global.online_download_list_info));
+					scr_log("ERROR", "THUMBNAILS", "parse_json_failed", "download_id=" + string_upper(all_download_id[info_queue_index]));
 				
 				global.info_data = undefined;
 			}
@@ -125,8 +141,8 @@ function scr_download_thumbnails(download_all, what_num_items = 0)
 		{
 			var num_info_items = array_length(global.info_data);
 			
-			show_debug_message("[scr_download_thumbnails] Processing " + string(num_info_items)
-								+ " info items for item: " + string_upper(all_download_id[info_queue_index]));
+				scr_log("DEBUG", "THUMBNAILS", "process_info_items",
+					"count=" + string(num_info_items) + ", download_id=" + string_upper(all_download_id[info_queue_index]));
 			
 			for (var j = 0; j < num_info_items; j++)
 			{
@@ -141,20 +157,21 @@ function scr_download_thumbnails(download_all, what_num_items = 0)
 						/* Mask any profanity found in the name. */
 						global.draw_download_name[info_queue_index] = string(switch_mask_profanity(item.name));
 						
-						show_debug_message("[scr_download_thumbnails] Profanity detected and masked for item: " + string_upper(all_download_id[info_queue_index])
-											+ ". New name: " + string(global.draw_download_name[info_queue_index]));
+							scr_log("WARN", "THUMBNAILS", "name_masked_for_profanity",
+								"download_id=" + string_upper(all_download_id[info_queue_index]) + ", new_name=" + string(global.draw_download_name[info_queue_index]));
 					}
 					else
 					{
 						/* Otherwise, use the item's name as is. */
 						global.draw_download_name[info_queue_index] = string(item.name);
 						
-						show_debug_message("[scr_download_thumbnails] Set download name for item: " + string_upper(all_download_id[info_queue_index])
-											+ " to: " + string(global.draw_download_name[info_queue_index]));
+							scr_log("INFO", "THUMBNAILS", "set_download_name",
+								"download_id=" + string_upper(all_download_id[info_queue_index]) + ", name=" + string(global.draw_download_name[info_queue_index]));
 					}
 				}
 				
-				show_debug_message("[scr_download_thumbnails] global.draw_download_name[" + string(info_queue_index) + "] = " + string(global.draw_download_name[info_queue_index]));
+					scr_log("TRACE", "THUMBNAILS", "name_slot",
+						"index=" + string(info_queue_index) + ", name=" + string(global.draw_download_name[info_queue_index]));
 				
 				/* Check if the thumbnail sprite is still missing. */
 				if (is_array(global.spr_download_list_thumbnail) /* Only index if it’s a real array and the index is valid */
@@ -165,8 +182,8 @@ function scr_download_thumbnails(download_all, what_num_items = 0)
 					/* Build the file path where the thumbnail image will be saved. */
 					var downloaded_thumbnail_path = temp_directory + "thumbnail_" + string(info_queue_index) + ".png";
 					
-					show_debug_message("[scr_download_thumbnails] Downloading thumbnail for item: " + string_upper(all_download_id[info_queue_index])
-										+ " to path: " + string(downloaded_thumbnail_path));
+		scr_log("INFO", "THUMBNAILS", "thumbnail_decode_save",
+			"download_id=" + string_upper(all_download_id[info_queue_index]) + ", path=" + string(downloaded_thumbnail_path));
 					
 					/* Decode the base64 thumbnail data from the JSON item. */
 					var buffer = buffer_base64_decode(item.thumbnail);
@@ -177,7 +194,7 @@ function scr_download_thumbnails(download_all, what_num_items = 0)
 					/* Create a sprite from the saved thumbnail image file. */
 					global.spr_download_list_thumbnail[info_queue_index] = sprite_add(downloaded_thumbnail_path, 0, false, true, 0, 0);
 					
-					show_debug_message("[scr_download_thumbnails] Thumbnail sprite created for item: " + string_upper(all_download_id[info_queue_index]));
+					scr_log("INFO", "THUMBNAILS", "thumbnail_sprite_created", "download_id=" + string_upper(all_download_id[info_queue_index]));
 				}
 			}
 		}
@@ -194,14 +211,13 @@ function scr_download_thumbnails(download_all, what_num_items = 0)
 		global.draw_download_name[info_queue_index] != ""
 	)
 	{
-		show_debug_message("[scr_download_thumbnails] Finished processing item: " + string_upper(all_download_id[info_queue_index])
-							+ ". Moving to next item.");
+		scr_log("INFO", "THUMBNAILS", "item_processed", "download_id=" + string_upper(all_download_id[info_queue_index]) + ", action=advance");
 		
 		/* Increment the queue index to process the next thumbnail. */
 		info_queue_index++;
 		/* Allow a new HTTP request for the next item. */
 		info_queue_http_request = true;
-		show_debug_message("[scr_download_thumbnails] 'info_queue_http_request' is set to true. Allow a new HTTP request for the next item\n");
+		scr_log("DEBUG", "THUMBNAILS", "queue_http_unlock", "info_queue_http_request=true");
 	}
 	//else
 	//{

@@ -40,7 +40,7 @@ function scr_handle_language_pack_http(_async_map, var_handle_redirects = true)
 			message_result = result;
 		}
 		
-			show_debug_message("[scr_handle_language_pack_http] HTTP status: " + string(http_status) + "\n");
+			scr_log("INFO", "HTTP.LANG", "http_status", "http_status=" + string(http_status));
 		
 		#region /* ---------- Handle Manifest Download ---------- */
 		if (req_id == global.language_http_request_id)
@@ -51,28 +51,28 @@ function scr_handle_language_pack_http(_async_map, var_handle_redirects = true)
 				|| (http_status >= 300
 				&& http_status < 400))
 				{
-				show_debug_message("[scr_handle_language_pack_http] var_handle_redirects = " + string(var_handle_redirects));
+					scr_log("DEBUG", "HTTP.LANG", "handle_redirects", "enabled=" + string(var_handle_redirects));
 				
 				if (var_handle_redirects)
 				{
 					/* Attempt the redirect */
 					var new_request_id = scr_handle_redirect(result, _async_map);
-						show_debug_message("[scr_handle_language_pack_http] http_status = " + string(http_status) + 
-										   ", string_pos(\"<HTML\", result) = " + string(string_pos("<HTML", result)) + 
-										   ", new_request_id = " + string(new_request_id));
+						scr_log("DEBUG", "HTTP.LANG", "redirect_attempt",
+							"http_status=" + string(http_status) +
+							", html_marker_pos=" + string(string_pos("<HTML", result)) +
+							", new_request_id=" + string(new_request_id));
 					
 					if (new_request_id != -1)
 					{
 						/* If redirect was valid, store the new ID and wait for next async */
 						global.language_http_request_id = new_request_id;
-						show_debug_message("[scr_handle_language_pack_http] global.language_http_request_id = new_request_id (" 
-											+ string(new_request_id) + ")");
+						scr_log("INFO", "HTTP.LANG", "follow_redirect", "request_id=" + string(new_request_id));
 						return;
 					}
 					else
 					{
 						/* FALLBACK: If redirect was invalid, call scr_download_language_pack_from_server() */
-						show_debug_message("[scr_handle_language_pack_http] ERROR: Redirect invalid. Falling back to scr_download_language_pack_from_server().");
+						scr_log("WARN", "HTTP.LANG", "redirect_invalid_fallback", "action=scr_download_language_pack_from_server");
 						scr_download_language_pack_from_server();
 						return;
 					}
@@ -82,8 +82,8 @@ function scr_handle_language_pack_http(_async_map, var_handle_redirects = true)
 				if (!(http_status == 0
 				|| http_status == 200))
 				{
-					show_debug_message("[scr_handle_language_pack_http] Error: Manifest request returned status " + string(http_status));
-				show_debug_message("[scr_handle_language_pack_http] NOTE: A 400-level error may indicate a malformed URL or missing/incorrect request headers.\n");
+					scr_log("ERROR", "HTTP.LANG", "manifest_bad_status", "http_status=" + string(http_status));
+					scr_log("DEBUG", "HTTP.LANG", "hint", "4xx_may_indicate_malformed_url_or_headers");
 				global.language_update_status_message = "Manifest error: Server responded with incorrect status. Please try again";
 				global.language_update_status_color = c_red;
 				return;
@@ -96,8 +96,10 @@ function scr_handle_language_pack_http(_async_map, var_handle_redirects = true)
 			ini_write_string("language_updates", "language_last_update_string", global.language_last_update_string);
 			ini_close();
 			
-				show_debug_message("[scr_handle_language_pack_http] HTTP status: " + string(http_status) + ", Processing CSV manifest. language_last_update_string = " 
-					+ string(global.language_last_update_string) + " language_last_update_real = " + string(date_current_datetime()) + "\n");
+				scr_log("INFO", "HTTP.LANG", "manifest_processed",
+					"http_status=" + string(http_status) +
+					", last_update_string=" + string(global.language_last_update_string) +
+					", last_update_real=" + string(date_current_datetime()));
 			
 			scr_process_language_file("all", result);
 			
@@ -134,8 +136,8 @@ function scr_handle_language_pack_http(_async_map, var_handle_redirects = true)
 				if (!(http_status == 0
 				|| http_status == 200))
 				{
-					show_debug_message("[scr_handle_language_pack_http] Error: Download for language '" + lang_name + "' failed with status " + string(http_status));
-				show_debug_message("[scr_handle_language_pack_http] NOTE: A non-200 status might result from a malformed URL or missing/incorrect request headers.\n");
+					scr_log("ERROR", "HTTP.LANG", "language_file_bad_status", "lang=" + lang_name + ", http_status=" + string(http_status));
+					scr_log("DEBUG", "HTTP.LANG", "hint", "non_200_might_indicate_malformed_url_or_headers");
 				ds_map_delete(global.language_file_requests, string(req_id));
 				global.language_update_status_message = "Error: Failed to download language file";
 				global.language_update_status_color = c_red;
@@ -143,7 +145,7 @@ function scr_handle_language_pack_http(_async_map, var_handle_redirects = true)
 			}
 			
 			scr_process_language_file(lang_name, result);
-				show_debug_message("[scr_handle_language_pack_http] HTTP status: " + string(http_status) + ", Successfully processed language file for '" + lang_name + "'.");
+				scr_log("INFO", "HTTP.LANG", "language_file_processed", "lang=" + lang_name + ", http_status=" + string(http_status));
 			ds_map_delete(global.language_file_requests, string(req_id));
 			
 			if (ds_map_size(global.language_file_requests) == 0)
@@ -159,8 +161,9 @@ function scr_handle_language_pack_http(_async_map, var_handle_redirects = true)
 				
 				global.language_update_status_message = "Your translations are now up to date!";
 				global.language_update_status_color = c_green;
-				show_debug_message("[scr_handle_language_pack_http] All language files downloaded successfully! language_last_update_string = " 
-					+ string(global.language_last_update_string) + " language_last_update_real = " + string(date_current_datetime()) + "\n");
+				scr_log("INFO", "HTTP.LANG", "all_language_files_downloaded",
+					"last_update_string=" + string(global.language_last_update_string) +
+					", last_update_real=" + string(date_current_datetime()));
 			}
 		}
 		#endregion /* ---------- Handle Individual Language File Downloads ---------- END */

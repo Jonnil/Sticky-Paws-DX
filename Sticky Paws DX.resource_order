@@ -287,6 +287,8 @@
     {"name":"scr_get_wrapped_text_height","order":105,"path":"scripts/scr_get_wrapped_text_height/scr_get_wrapped_text_height.yy",},
     {"name":"scr_handle_content_added_today_http","order":24,"path":"scripts/scr_handle_content_added_today_http/scr_handle_content_added_today_http.yy",},
     {"name":"scr_handle_language_pack_http","order":23,"path":"scripts/scr_handle_language_pack_http/scr_handle_language_pack_http.yy",},
+    {"name":"scr_log","order":1,"path":"scripts/scr_log/scr_log.yy",},
+    {"name":"scr_debug_message","order":2,"path":"scripts/scr_debug_message/scr_debug_message.yy",},
     {"name":"scr_handle_no_network_connection","order":3,"path":"scripts/scr_handle_no_network_connection/scr_handle_no_network_connection.yy",},
     {"name":"scr_handle_redirect","order":26,"path":"scripts/scr_handle_redirect/scr_handle_redirect.yy",},
     {"name":"scr_handle_sync_translation_response_bulk","order":12,"path":"scripts/scr_handle_sync_translation_response_bulk/scr_handle_sync_translation_response_bulk.yy",},
