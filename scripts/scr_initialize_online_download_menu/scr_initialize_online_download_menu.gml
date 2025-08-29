@@ -16,11 +16,75 @@ function scr_initialize_online_download_menu()
 		in_online_download_list_load_menu = false; /* <-- fix */
 		in_online_download_list_menu = true;
 		
-		var page_offset = global.download_current_page * global.download_items_per_page;
-		info_queue_index = page_offset;
-		
-		/* Ensure we aren't waiting on any HTTP in this path */
-		info_queue_http_request = true;
+        var page_offset = global.download_current_page * global.download_items_per_page;
+        info_queue_index = page_offset;
+        
+        /* Ensure we aren't waiting on any HTTP in this path */
+        info_queue_http_request = true;
+
+        /* Best‑practice: ensure core arrays exist when reopening from cache */
+        if (is_array(global.online_content_data))
+        {
+            var _total = array_length(global.online_content_data);
+
+            /* 1) Ensure all_download_id is an array (used to kick off per‑item requests) */
+            if (!is_array(all_download_id) || array_length(all_download_id) < _total)
+            {
+                var _new_ids = array_create(_total, "");
+                if (is_array(all_download_id))
+                {
+                    var _old_n = array_length(all_download_id);
+                    for (var i = 0; i < min(_old_n, _total); i++)
+                    {
+                        _new_ids[i] = all_download_id[i];
+                    }
+                }
+                all_download_id = _new_ids;
+            }
+
+            /* 2) Ensure draw_download_name exists so the pipeline can advance */
+            if (!is_array(global.draw_download_name) || array_length(global.draw_download_name) < _total)
+            {
+                var _new_names = array_create(_total, "");
+                if (is_array(global.draw_download_name))
+                {
+                    var _old_m = array_length(global.draw_download_name);
+                    for (var j = 0; j < min(_old_m, _total); j++)
+                    {
+                        _new_names[j] = global.draw_download_name[j];
+                    }
+                }
+                global.draw_download_name = _new_names;
+            }
+
+            /* 3) Ensure thumbnail sprite array exists without clobbering cache */
+            if (!is_array(global.spr_download_list_thumbnail) || array_length(global.spr_download_list_thumbnail) < _total)
+            {
+                var _new_thumbs = array_create(_total, spr_thumbnail_missing);
+                if (is_array(global.spr_download_list_thumbnail))
+                {
+                    var _old_t = array_length(global.spr_download_list_thumbnail);
+                    for (var k = 0; k < min(_old_t, _total); k++)
+                    {
+                        _new_thumbs[k] = global.spr_download_list_thumbnail[k];
+                    }
+                }
+                global.spr_download_list_thumbnail = _new_thumbs;
+            }
+
+            /* 4) Prepopulate all_download_id from list data so downloads can start immediately */
+            for (var a = 0; a < _total; a++)
+            {
+                if (all_download_id[a] == "")
+                {
+                    var _item = global.online_content_data[a];
+                    var _id = _item.name;
+                    _id = string_replace(_id, string(content_type) + "s/", "");
+                    _id = string_replace(_id, ".zip", "");
+                    all_download_id[a] = _id;
+                }
+            }
+        }
 		
 		menu = "download_online_" + string(global.selected_online_download_index);
 		automatically_search_for_id = false;
@@ -54,20 +118,34 @@ function scr_initialize_online_download_menu()
 	zero_defeats_level	= undefined;
 	liked_content		= undefined;
 	
-	/* Build headers and send request */
-	var online_download_request_headers = ds_map_create();
-	ds_map_add(online_download_request_headers, "Content-Type", "application/json");
-	ds_map_add(online_download_request_headers, "User-Agent", "gmdownloader");
-	ds_map_add(online_download_request_headers, "X-API-Key", global.api_key);
-	
-	global.http_request_id = http_request(
-		"https://" + global.base_url + "/" + string(content_type) + "s",
-		"GET",
-		online_download_request_headers,
-		""
-	);
-	global.online_download_request_headers = online_download_request_headers;
-	ds_map_destroy(online_download_request_headers);
+    /* Build headers (persist for reuse by per-item info requests) */
+    if (!variable_global_exists("online_download_request_headers"))
+    {
+        global.online_download_request_headers = ds_map_create();
+    }
+    else
+    {
+        if (global.online_download_request_headers == noone)
+        {
+            global.online_download_request_headers = ds_map_create();
+        }
+        else
+        {
+            /* Clear any old values to avoid stale keys */
+            ds_map_clear(global.online_download_request_headers);
+        }
+    }
+
+    ds_map_add(global.online_download_request_headers, "Content-Type", "application/json");
+    ds_map_add(global.online_download_request_headers, "User-Agent", "gmdownloader");
+    ds_map_add(global.online_download_request_headers, "X-API-Key", global.api_key);
+
+    global.http_request_id = http_request(
+        "https://" + global.base_url + "/" + string(content_type) + "s",
+        "GET",
+        global.online_download_request_headers,
+        ""
+    );
 	
 	/* Flag that content is now "loaded" once the JSON arrives and is parsed in your response handler, after parsing JSON:
 		global.online_list_loaded = true; */

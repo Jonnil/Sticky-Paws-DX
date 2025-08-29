@@ -442,7 +442,5 @@ function scr_step_online_download_list()
 		scr_fallback_to_previous_menu_state();
 	}
 	
-	/* Always make sure to download thumbnails when able to */
-	global.download_offset = start_idx;
-	scr_download_thumbnails(true, page_count);
+    /* Thumbnails are downloaded while the list is open (handled above). */
 }

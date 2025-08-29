@@ -56,12 +56,19 @@ function scr_download_thumbnails(download_all, what_num_items = 0)
 				string_upper(all_download_id[info_queue_index]) +
 				"?os_type=" + string(os_type)
 			
-			global.http_request_info = http_request(
-				http_request_content_url,
-				"GET",
-				global.online_download_request_headers, /* Need to retrieve the header information from "scr initialize online download menu" */
-				""
-			);
+        /* Build request-scoped headers for robustness */
+        var info_headers = ds_map_create();
+        ds_map_add(info_headers, "Content-Type", "application/json");
+        ds_map_add(info_headers, "User-Agent", "gmdownloader");
+        ds_map_add(info_headers, "X-API-Key", global.api_key);
+
+        global.http_request_info = http_request(
+            http_request_content_url,
+            "GET",
+            info_headers,
+            ""
+        );
+        ds_map_destroy(info_headers);
 			
 			show_debug_message("[scr_download_thumbnails] HTTP request sent for: " + string(all_download_id[info_queue_index]));
 			show_debug_message("[scr_download_thumbnails] 'global.http_request_info' : " + string(global.http_request_info));
