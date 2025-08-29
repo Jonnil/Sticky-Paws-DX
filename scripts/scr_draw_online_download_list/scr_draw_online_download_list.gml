@@ -108,6 +108,7 @@ function scr_draw_online_download_menu_data()
 					
 					var page_offset = global.download_current_page * global.download_items_per_page;
 					info_queue_index = page_offset;
+					info_queue_http_request = true; /* re-enable downloader for the new page */
 					
 					show_debug_message("[Pagination] Moved PREV from page "
 						+ string(global.download_current_page + 1) + " to " + string(global.download_current_page)
@@ -136,6 +137,7 @@ function scr_draw_online_download_menu_data()
 					
 					var page_offset = global.download_current_page * global.download_items_per_page;
 					info_queue_index = page_offset;
+					info_queue_http_request = true; /* re-enable downloader for the new page */
 					
 					show_debug_message("[Pagination] Moved NEXT from page "
 			            + string(global.download_current_page - 1) + " to " + string(global.download_current_page)

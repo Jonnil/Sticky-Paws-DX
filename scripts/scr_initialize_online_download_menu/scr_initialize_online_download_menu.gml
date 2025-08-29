@@ -20,7 +20,7 @@ function scr_initialize_online_download_menu()
 		info_queue_index = page_offset;
 		
 		/* Ensure we aren't waiting on any HTTP in this path */
-		info_queue_http_request = false;
+		info_queue_http_request = true;
 		
 		menu = "download_online_" + string(global.selected_online_download_index);
 		automatically_search_for_id = false;

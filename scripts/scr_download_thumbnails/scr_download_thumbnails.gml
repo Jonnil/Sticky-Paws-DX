@@ -75,6 +75,10 @@ function scr_download_thumbnails(download_all, what_num_items = 0)
 			scr_handle_no_network_connection("scr_download_thumbnails", "download_online_" + string(global.selected_online_download_index));
 		}
 	}
+	else
+	{
+		show_debug_message("[scr_download_thumbnails IMPORTANT] info_queue_http_request = " + string(info_queue_http_request) + ", info_queue_index = " + string(info_queue_index));
+	}
 	
 	/* Once an HTTP response is received, info_data is still undefined until processed.
 	This block checks that:

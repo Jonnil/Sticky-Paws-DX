@@ -413,6 +413,8 @@ function scr_step_online_download_list()
 	
 	if (in_online_download_list_menu)
 	{
+		/* Keep the thumbnail pipeline alive while the list is open */
+		scr_download_thumbnails(true);
 		
 		#region /* Process Data */
 		if (global.online_content_data == undefined
