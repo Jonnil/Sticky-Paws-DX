@@ -179,8 +179,19 @@ if (async_load[? "id"] == global.http_request_id)
 }
 else
 {
-	show_debug_message("[HTTP Request ID Callback] Request ID mismatch: received " 
-		+ string(async_load[? "id"]) + ", expected " + string(global.http_request_id));
+	/* Avoid noisy logs for other legitimate async requests handled elsewhere */
+	var _rid = async_load[? "id"];
+	var _is_language_manifest = (variable_global_exists("language_http_request_id") && _rid == global.language_http_request_id);
+	var _is_info              = (variable_global_exists("http_request_info") && _rid == global.http_request_info);
+	var _is_content_today     = (variable_global_exists("content_added_today") && _rid == global.content_added_today);
+	var _is_token             = (variable_global_exists("online_token_request") && _rid == global.online_token_request);
+	var _is_lang_file         = (variable_global_exists("language_file_requests") && ds_map_exists(global.language_file_requests, string(_rid)));
+
+	if (!(_is_language_manifest || _is_info || _is_content_today || _is_token || _is_lang_file))
+	{
+		show_debug_message("[HTTP Request ID Callback] Request ID mismatch: received " 
+			+ string(_rid) + ", expected " + string(global.http_request_id));
+	}
 }
 
 /* ------------------------------------------------------------- */
