@@ -89,6 +89,8 @@ release/
 Release/
 releases/
 Releases/
+tmp/
+Tmp/
 
 # Packaged builds/artifacts
 *.exe
@@ -127,3 +129,4 @@ Releases/
 *~
 .Trash-*/
 .nfs*
+
