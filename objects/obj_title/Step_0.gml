@@ -23,11 +23,11 @@ if (global.go_to_menu_when_going_back_to_title == "upload_yes_character")
 		ini_close(); /* Don't commit the save data on Switch, this is only temporary! */
 	}
 	select_custom_level_menu_open = false;
-	
+
 	ini_open(game_save_id + "custom_characters/" + string(ds_list_find_value(global.all_loaded_characters, global.character_index[fixed_player - 1])) + "/data/character_config.ini");
 	visibility_index = ini_read_real("info", "visibility_index", 0);
 	ini_close();
-	
+
 	menu = "upload_yes_character";
 	global.go_to_menu_when_going_back_to_title = "";
 	global.doing_clear_check_character = false;
@@ -117,19 +117,19 @@ scr_load_custom_levels();
 if (menu == "load_official_level_template")
 {
 	/* Load official level data */
-	file_load_timer ++;
-	
+	file_load_timer++;
+
 	if (file_load_timer > 1)
 	{
 		file_found = ds_list_find_value(global.all_loaded_main_levels, level_find_pos)
-		level_find_pos ++;
-		
+		level_find_pos++;
+
 		if (file_found = ds_list_find_value(global.all_loaded_main_levels, ds_list_size(global.all_loaded_main_levels) - 1))
 		{
 			file_found = ds_list_find_value(global.all_loaded_main_levels, ds_list_size(global.all_loaded_main_levels) - 1)
-			
+
 			#region /* Update Thumbnail */
-			
+
 			/* PNG Official Thumbnail */
 			if (file_exists("levels/" + file_found + "/thumbnail.png"))
 			{
@@ -146,7 +146,7 @@ if (menu == "load_official_level_template")
 				ds_list_add(global.thumbnail_sprite, spr_thumbnail_missing)
 			}
 			#endregion /* Update Thumbnail END */
-			
+
 			select_custom_level_menu_open = false;
 			level_editor_template_select = true;
 			file_load_timer = 0; /* Important that you reset this value back to 0, otherwise the menu will not work properly as it still thinks game is loading levels */
@@ -155,7 +155,7 @@ if (menu == "load_official_level_template")
 		}
 		else
 		{
-			
+
 			#region /* Update Thumbnail */
 			/* PNG Official Thumbnail */
 			if (file_exists("levels/" + file_found + "/thumbnail.png"))
@@ -173,7 +173,7 @@ if (menu == "load_official_level_template")
 				ds_list_add(global.thumbnail_sprite, spr_thumbnail_missing)
 			}
 			#endregion /* Update Thumbnail END */
-			
+
 			file_load_timer = 0; /* 0 not 1. So it doesn't do the "file find first" code which it does at 1 */
 		}
 	}
@@ -185,7 +185,7 @@ if (iris_xscale <= 0.01)
 && (menu_delay > 999) /* Make sure you can only start the game when the menu delay is set to over 999, as that's when the iris xscale is set to zoom in */
 && (!can_navigate)
 {
-	
+
 	#region /* Play or Make Level Editor */
 	if (menu != "select_character")
 	&& (menu != "back_from_character_select")
@@ -204,7 +204,7 @@ if (iris_xscale <= 0.01)
 				ini_write_real("config", "character_index_player" + string(p), global.character_index[p - 1]);
 			}
 			ini_close(); /* Don't commit the save data on Switch, this is only temporary! */
-			
+
 			if (title_music > noone)
 			{
 				if (audio_is_playing(title_music))
@@ -212,7 +212,7 @@ if (iris_xscale <= 0.01)
 					audio_stop_sound(title_music);
 				}
 			}
-			
+
 			if (variable_instance_exists(self, "title_screen_background"))
 			&& (variable_instance_exists(self, "title_bg_layer"))
 			{
@@ -228,21 +228,21 @@ if (iris_xscale <= 0.01)
 			scr_update_all_backgrounds();
 			global.part_limit = 0; /* How many objects are currently placed in the level editor */
 			global.part_limit_entity = 0; /* How many entities are currently placed in the level editor */
-			
+
 			var time_source = time_source_create(time_source_game, 10, time_source_units_frames, function(){
 				room_goto(rm_leveleditor); /* Go to level editor, either in editing mode or to play normally */
 			}, [], 1);
 			time_source_start(time_source);
-			
+
 			/* The variables "doing clear check", "actually play edited level", and "play edited level" should be set before doing "menu delay = 9999" to zoom the iris xscale */
-			
+
 			loading_assets = true;
 		}
 	}
 	#endregion /* Play or Make Level Editor END */
-	
+
 	else
-	
+
 	#region /* Load File */
 	if (menu == "select_character"
 	|| menu == "back_from_character_select")
@@ -254,7 +254,7 @@ if (iris_xscale <= 0.01)
 			ini_write_real("config", "character_index_player" + string(p), global.character_index[p - 1]);
 		}
 		ini_close(); /* Don't commit the save data on Switch, this is only temporary! */
-		
+
 		if (title_music > noone)
 		{
 			if (audio_is_playing(title_music))
@@ -262,13 +262,13 @@ if (iris_xscale <= 0.01)
 				audio_stop_sound(title_music);
 			}
 		}
-		
+
 		if (variable_instance_exists(self, "title_screen_background"))
 		&& (variable_instance_exists(self, "title_bg_layer"))
 		{
 			scr_delete_sprite_properly(title_screen_background[title_bg_layer]);
 		}
-		
+
 		scr_config_save();
 		ini_open(game_save_id + "save_file/file" + string(global.file) + ".ini");
 		lives = ini_read_real("Player", "lives", 5);
@@ -283,6 +283,6 @@ if (iris_xscale <= 0.01)
 #region /* Menu Navigation Delay */
 if (menu_delay > 0)
 {
-	menu_delay --;
+	menu_delay--;
 }
 #endregion /* Menu Navigation Delay END */

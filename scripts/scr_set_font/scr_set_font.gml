@@ -13,16 +13,16 @@ function scr_set_font(selected_font_index = global.selected_font)
 	{
 		show_debug_message("[scr_set_font] Warning: language_local_data is not loaded or selected_language_id is invalid. Using default font index " + string(selected_font_index));
 	}
-	
+
 	var font_files = [
 		"font_game.ttf",
 		"font_normal.ttc",
 		"font_open_dyslexic.otf"
 	];
-	
+
 	var font_sizes = [34, 24, 24];
 	var fonts = array_create(array_length(font_files), noone);
-	
+
 	if (file_exists(font_files[selected_font_index]))
 	{
 		if (fonts[selected_font_index] != noone)

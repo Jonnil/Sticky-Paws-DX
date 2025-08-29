@@ -5,7 +5,7 @@ look_outward = 17;
 same_object = obj_ground;
 
 ground_surface = 0;
-/* 
+/*
 0 = default
 1 = dirt
 2 = glass

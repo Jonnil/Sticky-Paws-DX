@@ -11,15 +11,15 @@ function scr_deactivate_objects_outside_view()
 		var view_x_center = camera_get_view_x(view_camera_current) + (camera_get_view_width(view_camera_current) * 0.5);
 		var view_y_center = camera_get_view_y(view_camera_current) + (camera_get_view_height(view_camera_current) * 0.5);
 		var view_distance_from_center = 1074; /* How many pixels from view center objects should deactivate. Needs to be enought to not cause problems */
-		
+
 		/* Using the "min" and "max" function, it will either read the distance from center if that's the bigger number, or if the actual view is bigger it will read that number instead */
 		var view_left = min(view_x_center - view_distance_from_center, camera_get_view_x(view_camera_current) - 64);
 		var view_top = min(view_y_center - view_distance_from_center, camera_get_view_y(view_camera_current) - 64);
 		var view_width = max(view_distance_from_center * 2, camera_get_view_width(view_camera_current) + 128);
 		var view_height = max(view_distance_from_center * 2, camera_get_view_height(view_camera_current) + 128);
-		
-		global.deactivate_timer ++;
-		
+
+		global.deactivate_timer++;
+
 		if (global.deactivate_timer > 100)
 		{
 			/* When you are forcing the deactivate timer, you only want to update "instance activate region" */
@@ -28,7 +28,7 @@ function scr_deactivate_objects_outside_view()
 				/* Deactivate instances outside view first */
 				instance_deactivate_region(view_left, view_top, view_width, view_height, false, true);
 			}
-			
+
 			#region /* Activate objects that always should be active */
 			if (room == rm_leveleditor)
 			{
@@ -47,7 +47,7 @@ function scr_deactivate_objects_outside_view()
 					obj_key_fragment_number,
 					obj_debug_manager
 				];
-				
+
 				/* Loop through the exclude list and activate each object */
 				for (var i = 0; i < array_length(exclude_list); i++)
 				{
@@ -66,7 +66,7 @@ function scr_deactivate_objects_outside_view()
 					obj_map_exit,
 					obj_debug_manager
 				];
-				
+
 				/* Loop through the exclude list and activate each object */
 				for (var i = 0; i < array_length(exclude_list); i++)
 				{
@@ -74,12 +74,12 @@ function scr_deactivate_objects_outside_view()
 				}
 			}
 			#endregion /* Activate objects that always should be active END */
-			
+
 			/* Always activate within view before reseting deactivate timer */
 			instance_activate_region(view_left, view_top, view_width, view_height, true);
 			global.deactivate_timer = 0; /* Reset the deactivate timer */
 		}
-		
+
 		if (global.deactivate_timer % 7 == 0)
 		|| (global.deactivate_timer > 100)
 		{

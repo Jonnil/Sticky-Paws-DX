@@ -4,7 +4,7 @@ function scr_character_select_player_navigation(what_player = 1)
 	var get_window_width = display_get_gui_width();
 	var mouse_get_x = device_mouse_x_to_gui(0);
 	var mouse_get_y = device_mouse_y_to_gui(0);
-	
+
 	var player_key_left = global.player_[inp.key][what_player][1][action.left];
 	var player_key_right = global.player_[inp.key][what_player][1][action.right];
 	var player_key2_left = global.player_[inp.key][what_player][2][action.left];
@@ -13,7 +13,7 @@ function scr_character_select_player_navigation(what_player = 1)
 	var player_key_down = global.player_[inp.key][what_player][1][action.down];
 	var player_key2_up = global.player_[inp.key][what_player][2][action.up];
 	var player_key2_down = global.player_[inp.key][what_player][2][action.down];
-	
+
 	#region /* If player is player 1, set all the other player variables to values beside current player */
 	if (what_player == 1)
 	{
@@ -22,7 +22,7 @@ function scr_character_select_player_navigation(what_player = 1)
 		var can_input_player_name4 = can_input_player_name[4];
 	}
 	#endregion /* If player is player 1, set all the other player variables to values beside current player END */
-	
+
 	#region /* If player is player 2, set all the other player variables to values beside current player */
 	if (what_player == 2)
 	{
@@ -31,7 +31,7 @@ function scr_character_select_player_navigation(what_player = 1)
 		var can_input_player_name4 = can_input_player_name[4];
 	}
 	#endregion /* If player is player 2, set all the variables to Player variables END */
-	
+
 	#region /* If player is player 3, set all the other player variables to values beside current player */
 	if (what_player == 3)
 	{
@@ -40,7 +40,7 @@ function scr_character_select_player_navigation(what_player = 1)
 		var can_input_player_name4 = can_input_player_name[4];
 	}
 	#endregion /* If player is player 3, set all the other player variables to values beside current player END */
-	
+
 	#region /* If player is player 4, set all the other player variables to values beside current player */
 	if (what_player == 4)
 	{
@@ -49,7 +49,7 @@ function scr_character_select_player_navigation(what_player = 1)
 		var can_input_player_name4 = can_input_player_name[3];
 	}
 	#endregion /* If player is player 4, set all the other player variables to values beside current player END */
-	
+
 	#region /* Player Menu Navigation */
 	if (player_menu[what_player] == "select_character")
 	{
@@ -59,7 +59,7 @@ function scr_character_select_player_navigation(what_player = 1)
 			menu = "select_character";
 		}
 		/* Navigate Character Selection */
-		
+
 		#region /* Player */
 		if (menu_specific_joystick_delay[what_player] <= 0)
 		&& (!input_key)
@@ -67,9 +67,9 @@ function scr_character_select_player_navigation(what_player = 1)
 		&& (!player_accept_selection[what_player])
 		&& (ds_list_size(global.all_loaded_characters) >= 2) /* If there are more than 1 character */
 		{
-			
+
 			#region /* Player change portrait when clicking left or right */
-			
+
 			#region /* Player Key Left (change portrait sprites) */
 			if (keyboard_check_pressed(player_key_left))
 			|| (keyboard_check_pressed(player_key2_left))
@@ -82,7 +82,7 @@ function scr_character_select_player_navigation(what_player = 1)
 			get_window_height * 0.5 + 16))
 			&& (mouse_check_button_released(mb_left))
 			{
-				
+
 				if (menu_delay == 0 && menu_joystick_delay == 0)
 				{
 					menu_delay = 3;
@@ -92,23 +92,23 @@ function scr_character_select_player_navigation(what_player = 1)
 					}
 					if (global.character_index[what_player - 1] > 0)
 					{
-						global.character_index[what_player - 1] --;
+						global.character_index[what_player - 1]--;
 					}
 					else
 					{
 						global.character_index[what_player - 1] = ds_list_size(global.all_loaded_characters) - 1;
 					}
-					
+
 					global.character_for_player[what_player] = ds_list_find_value(global.all_loaded_characters, global.character_index[what_player - 1])
 					xx_delay[what_player] = -1;
-					
+
 					global.skin_for_player[what_player] = global.actual_skin_for_player[what_player]; /* Update "skin for player" to what it should actually be when selecting a new character before setting a sprite */
-					
+
 					scr_change_character_portrait();
 				}
 			}
 			#endregion /* Player Key Left (change portrait sprites) END */
-			
+
 			#region /* Player Key Right (change portrait sprites) */
 			if (keyboard_check_pressed(player_key_right))
 			|| (keyboard_check_pressed(player_key2_right))
@@ -121,7 +121,7 @@ function scr_character_select_player_navigation(what_player = 1)
 			get_window_height * 0.5 + 16))
 			&& (mouse_check_button_released(mb_left))
 			{
-				
+
 				if (menu_delay == 0 && menu_joystick_delay == 0)
 				{
 					menu_delay = 3;
@@ -137,22 +137,22 @@ function scr_character_select_player_navigation(what_player = 1)
 					{
 						global.character_index[what_player - 1] = 0;
 					}
-					
+
 					global.character_for_player[what_player] = ds_list_find_value(global.all_loaded_characters, global.character_index[what_player - 1])
 					xx_delay[what_player] = +1;
-					
+
 					global.skin_for_player[what_player] = global.actual_skin_for_player[what_player]; /* Update "skin for player" to what it should actually be when selecting a new character before setting a sprite */
-					
+
 					scr_change_character_portrait();
 				}
 			}
 			#endregion /* Player Key Right (change portrait sprites) END */
-			
+
 			#endregion /* Player change portrait when clicking left or right END */
-			
+
 		}
 		#endregion /* Player END */
-		
+
 	}
 	else
 	if (player_menu[what_player] == "select_name")
@@ -162,7 +162,7 @@ function scr_character_select_player_navigation(what_player = 1)
 		{
 			menu = "select_character";
 		}
-		
+
 		#region /* Player key up */
 		if (keyboard_check_pressed(player_key_up))
 		|| (keyboard_check_pressed(player_key2_up))
@@ -193,7 +193,7 @@ function scr_character_select_player_navigation(what_player = 1)
 			}
 		}
 		#endregion /* Player key up END */
-		
+
 		#region /* Click on name to input name */
 		if (player_start_game /* Make sure that the "start game" button isn't overlapping the "name input" buttons */
 		&& !point_in_rectangle(mouse_get_x, mouse_get_y, 0, play_the_game_text_y_lerp - 32, get_window_width, play_the_game_text_y_lerp + 32)
@@ -220,10 +220,10 @@ function scr_character_select_player_navigation(what_player = 1)
 			}
 		}
 		#endregion /* Click on name to input name END */
-		
+
 	}
 	#endregion /* Player Menu Navigation END */
-	
+
 	/* Reset "menu specific joystick delay" to 0 if you aren't moving joystick at all */
 	if (gamepad_axis_value(global.player_slot[what_player], gp_axislh) > -0.3)
 	&& (gamepad_axis_value(global.player_slot[what_player], gp_axislh) < +0.3)
@@ -232,5 +232,5 @@ function scr_character_select_player_navigation(what_player = 1)
 	{
 		menu_specific_joystick_delay[what_player] = 0;
 	}
-	
+
 }

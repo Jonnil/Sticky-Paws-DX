@@ -1,19 +1,19 @@
 function scr_player_move_lose()
 {
-	
+
 	#region /* Die */
 	if (die)
 	&& (!goal)
 	{
 		scr_gamepad_vibration(player, 1, 30);
-		
+
 		#region /* Update Checkpoint Time */
 		global.checkpoint_millisecond = global.timeattack_millisecond;
 		global.checkpoint_second = global.timeattack_second;
 		global.checkpoint_minute = global.timeattack_minute;
 		global.checkpoint_realmillisecond = global.timeattack_realmillisecond;
 		#endregion /* Update Checkpoint Time END */
-		
+
 		#region /* Update Level Editor Checkpoint Time */
 		if (room == rm_leveleditor)
 		&& (global.actually_play_edited_level)
@@ -27,7 +27,7 @@ function scr_player_move_lose()
 			ini_close(); /* Don't commit the save data on Switch, this is only temporary! */
 		}
 		#endregion /* Update Level Editor Checkpoint Time END */
-		
+
 		if (instance_number(obj_player) <= 1)
 		{
 			if (global.music != noone)
@@ -49,7 +49,7 @@ function scr_player_move_lose()
 		speed = 0;
 		invincible_timer = false;
 		scr_audio_play(snd_lose, volume_source.sound);
-		
+
 		#region /* Turn into obj_player_lose */
 		with(instance_create_depth(x, y, 0, obj_player_lose))
 		{
@@ -89,16 +89,16 @@ function scr_player_move_lose()
 			image_xscale = instance_nearest_player.image_xscale;
 		}
 		#endregion /* Turn into obj_player_lose END */
-		
+
 		#region /* Stop invincibility music if you're the last player dying */
 		if (instance_number(obj_player) == 1)
 		{
 			audio_stop_sound(music_invincible);
 		}
 		#endregion /* Stop invincibility music if you're the last player dying END */
-		
+
 		instance_destroy();
 	}
 	#endregion /* Die END */
-	
+
 }

@@ -2,7 +2,7 @@ function scr_character_select_menu_step()
 {
 	no_players_are_inputting_names = true;
 	name_y = 292; /* Where name input box for players are placed on screen */
-	
+
 	if (menu == "select_character")
 	|| (menu == "back_from_character_select")
 	|| (menu == "manage_character")
@@ -11,12 +11,12 @@ function scr_character_select_menu_step()
 	|| (menu == "input_name_cancel")
 	{
 		var fixed_player = 1;
-		
+
 		for(var i = 1; i <= global.max_players; i += 1)
 		{
 			no_players_are_inputting_names = no_players_are_inputting_names && !can_input_player_name[i];
 		}
-		
+
 		if (variable_instance_exists(self, "have_downloaded_from_server"))
 		&& (have_downloaded_from_server)
 		{
@@ -32,12 +32,12 @@ function scr_character_select_menu_step()
 			menu_specific_joystick_delay[fixed_player] = 30;
 			have_downloaded_from_server = false;
 		}
-		
+
 		var get_window_height = display_get_gui_height();
 		var get_window_width = display_get_gui_width();
 		var mouse_get_x = device_mouse_x_to_gui(0);
 		var mouse_get_y = device_mouse_y_to_gui(0);
-		
+
 		for(var i = 1; i <= global.max_players; i += 1)
 		{
 			/* Player Key Accept Pressed */ player_key_a_pressed[i] = (gamepad_button_check_pressed(global.player_slot[i], global.player_[inp.gp][i][1][action.accept]))
@@ -49,13 +49,13 @@ function scr_character_select_menu_step()
 			|| (keyboard_check_pressed(global.player_[inp.key][i][1][action.back]))
 			|| (keyboard_check_pressed(global.player_[inp.key][i][2][action.back]))
 			|| (keyboard_check_pressed(vk_escape));
-			
+
 			if (can_input_player_name[i] == 2)
 			&& (menu_delay == 0 && menu_joystick_delay == 0)
 			{
 				can_input_player_name[i] = false;
 			}
-			
+
 			#region /* If any "character index" is set to -1, reset it to 0 */
 			if (global.character_index[i - 1] <= -1)
 			{
@@ -70,9 +70,9 @@ function scr_character_select_menu_step()
 				ini_close(); /* Don't commit the save data on Switch, this is only temporary! */
 			}
 			#endregion /* If any "character index" is set to -1, reset it to 0 END */
-			
+
 		}
-		
+
 		#region /* When you are ready to start game, and you're using mouse, and you aren't hovering mouse over the other buttons, then take you to "select character" menu */
 		if (player_start_game)
 		&& (global.controls_used_for_navigation == "mouse")
@@ -83,7 +83,7 @@ function scr_character_select_menu_step()
 			menu = "select_character";
 		}
 		#endregion /* When you are ready to start game, and you're using mouse, and you aren't hovering mouse over the other buttons, then take you to "select character" menu END */
-		
+
 		#region /* Lerp Play the game text */
 		if (player_start_game)
 		&& (no_players_are_inputting_names)
@@ -100,9 +100,9 @@ function scr_character_select_menu_step()
 		}
 		play_the_game_text_y_lerp = lerp(play_the_game_text_y_lerp, play_the_game_text_y, 0.2);
 		#endregion /* Lerp Play the game text END */
-		
+
 		arrow_offset = 125;
-		
+
 		#region /* Start Game (run this code further up so that it takes priority) */
 		if (player_accept_selection[1] == 1)
 		&& (player_accept_selection[2] != 0)
@@ -112,7 +112,7 @@ function scr_character_select_menu_step()
 		&& (player_menu[1] != "back_from_character_select")
 		&& (player_menu[1] != "manage_character")
 		&& (player_menu[1] != "online_character_list")
-		
+
 		|| (player_accept_selection[1] == -1)
 		&& (player_accept_selection[2] == 1)
 		&& (player_accept_selection[3] != 0)
@@ -121,7 +121,7 @@ function scr_character_select_menu_step()
 		&& (player_menu[2] != "back_from_character_select")
 		&& (player_menu[2] != "manage_character")
 		&& (player_menu[2] != "online_character_list")
-		
+
 		|| (player_accept_selection[1] == -1)
 		&& (player_accept_selection[2] == -1)
 		&& (player_accept_selection[3] == 1)
@@ -130,7 +130,7 @@ function scr_character_select_menu_step()
 		&& (player_menu[3] != "back_from_character_select")
 		&& (player_menu[3] != "manage_character")
 		&& (player_menu[3] != "online_character_list")
-		
+
 		|| (player_accept_selection[1] == -1)
 		&& (player_accept_selection[2] == -1)
 		&& (player_accept_selection[3] == -1)
@@ -139,7 +139,7 @@ function scr_character_select_menu_step()
 		&& (player_menu[4] != "back_from_character_select")
 		&& (player_menu[4] != "manage_character")
 		&& (player_menu[4] != "online_character_list")
-		
+
 		|| (player_start_game)
 		&& (point_in_rectangle(mouse_get_x, mouse_get_y, 0, play_the_game_text_y_lerp - 32, get_window_width, play_the_game_text_y_lerp + 32))
 		&& (mouse_check_button_released(mb_left))
@@ -173,12 +173,12 @@ function scr_character_select_menu_step()
 						{
 							global.select_level_index = 0;
 							scr_load_custom_level_initializing();
-							
+
 							for(var i = 1; i <= global.max_players; i += 1)
 							{
 								can_input_player_name[i] = 2;
 							}
-							
+
 							can_navigate = true;
 							menu_delay = 3;
 							open_sub_menu = false;
@@ -191,7 +191,7 @@ function scr_character_select_menu_step()
 							scr_check_network_connection(network_connect_active);
 							caution_online_takes_you_to = "online_download_list_load";
 							caution_online_takes_you_back_to = "online_level_list_title";
-							
+
 							if (global.online_enabled)
 							{
 								if (global.switch_logged_in)
@@ -225,7 +225,7 @@ function scr_character_select_menu_step()
 								scr_handle_no_network_connection("scr_character_select_menu_step", "select_character");
 								menu_delay = 3;
 							}
-							
+
 							in_character_select_menu = false;
 						}
 					}
@@ -236,11 +236,11 @@ function scr_character_select_menu_step()
 						var no_players_can_play = true;
 						for(var i = 1; i <= global.max_players; i += 1)
 						{
-						    if (global.player_can_play[i])
+							if (global.player_can_play[i])
 							{
-						        no_players_can_play = false;
-						        break; /* exit the loop if any player can play */
-						    }
+								no_players_can_play = false;
+								break; /* exit the loop if any player can play */
+							}
 						}
 						if (no_players_can_play)
 						|| (global.playergame <= 0) /* At least one player needs to be playing the game */
@@ -254,7 +254,7 @@ function scr_character_select_menu_step()
 								player_accept_selection[i] = 0;
 							}
 						}
-						
+
 						#region /* Return to game */
 						audio_resume_all();
 						if (global.music != noone)
@@ -275,33 +275,33 @@ function scr_character_select_menu_step()
 						}
 						global.pause = false;
 						#endregion /* Return to game END */
-						
+
 					}
 				}
 			}
 		}
 		#endregion /* Start Game (run this code further up so that it takes priority) END */
-		
+
 		#region /* This is running step functions of character portrait for player */
 		for(var i = 1; i <= global.max_players; i += 1)
 		{
 			scr_character_portrait_for_player_step(i);
 		}
 		#endregion /* This is running step functions of character portrait for player END */
-		
+
 		image_alpha = 0;
-		
+
 		#region /* All code before menu navigation code */
 		for(var i = 1; i <= global.max_players; i += 1)
 		{
 			/* Player positions for each character display */
 			var normalized_position = (i - 0.5) / (global.max_players); /* Normalized position between 0 and 1 */
 			player_display_x[i] = normalized_position * display_get_gui_width() - (display_get_gui_width() * 0.5); /* Now player_display_x array contains evenly distributed positions based on the screen width */
-			
+
 			xx[i] = lerp(xx[i], player_display_x[i], 0.1);
 			player_scale[i] = 0.85; /* Player scale for each character display */
 		}
-		
+
 		#region /* Press enter when done typing on name input screen */
 		for(var i = 1; i <= global.max_players; i += 1)
 		{
@@ -316,20 +316,20 @@ function scr_character_select_menu_step()
 			}
 		}
 		#endregion /* Press enter when done typing on name input screen END */
-		
+
 		#endregion /* All code before menu navigation code END */
-		
+
 		#region /* Menu Navigation */
 		if (no_players_are_inputting_names)
 		{
-			
+
 			for(var i = 1; i <= global.max_players; i += 1)
 			{
 				scr_character_select_player_navigation(i);
 			}
-			
+
 			#region /* The buttons in the top left corner of character select screen */
-			
+
 			#region /* Key Up */
 			if (key_up)
 			&& (!key_down)
@@ -354,9 +354,9 @@ function scr_character_select_menu_step()
 				}
 			}
 			#endregion /* Key Up END */
-			
+
 			else
-			
+
 			#region /* Key Down */
 			if (key_down)
 			&& (!key_up)
@@ -398,18 +398,18 @@ function scr_character_select_menu_step()
 				}
 			}
 			#endregion /* Key Down END */
-			
+
 			#endregion /* The buttons in the top left corner of character select screen END */
-			
+
 		}
 		#endregion /* Menu Navigation END */
-		
+
 		#region /* Accept and Back */
 		if (no_players_are_inputting_names)
 		{
-			
+
 			#region /* Accept */
-			
+
 			#region /* Select the character */
 			for(var i = 1; i <= global.max_players; i += 1)
 			{
@@ -431,7 +431,7 @@ function scr_character_select_menu_step()
 						player_accept_selection[i] = 1;
 						player_automatically_join[i] = false;
 						global.player_can_play[i] = true;
-						
+
 						#region /* When selecting character, make the character say their own name */
 						audio_stop_sound(voice_select_character);
 						if (global.narrator >= 0) /* Only play voice if narrator is turned on */
@@ -486,15 +486,15 @@ function scr_character_select_menu_step()
 							scr_audio_play(voice_select_character, volume_source.voice);
 						}
 						#endregion /* When selecting character, make the character say their own name END */
-					
+
 					}
 				}
 			}
 			#endregion /* Select the character END */
-			
+
 			#region /* If all players has selected a character, be able to start game */
 			var all_players_selected = true;
-			
+
 			for(var i = 1; i <= global.max_players; i += 1)
 			{
 				if (player_accept_selection[i] == 0)
@@ -503,7 +503,7 @@ function scr_character_select_menu_step()
 					break;  /* Exit the loop early if any player is selected */
 				}
 			}
-			
+
 			player_start_game = false;
 			for(var i = 1; i <= global.max_players; i += 1)
 			{
@@ -518,11 +518,11 @@ function scr_character_select_menu_step()
 				}
 			}
 			#endregion /* If all players has selected a character, be able to start game END */
-			
+
 			#endregion /* Accept END */
-			
+
 			#region /* Back / Cancel Selection */
-			
+
 			#region /* Player Back / Cancel Selection */
 			for(var i = 1; i <= global.max_players; i += 1)
 			{
@@ -541,12 +541,12 @@ function scr_character_select_menu_step()
 				}
 			}
 			#endregion /* Player Back / Cancel Selection END */
-			
+
 			for(var i = 1; i <= global.max_players; i += 1)
 			{
 				var player_key_a_pressed_back_from_character_select = player_key_a_pressed[i] && player_menu[i] == "back_from_character_select";
 			}
-			
+
 			if (player_key_b_pressed[fixed_player])
 			&& (player_accept_selection[fixed_player] <= -1)
 			|| (player_key_a_pressed[fixed_player])
@@ -569,7 +569,7 @@ function scr_character_select_menu_step()
 						player_menu[i] = "select_character";
 						xx[i] = player_display_x[i];
 					}
-					
+
 					if (room == rm_title)
 					{
 						if (global.character_select_in_this_menu == "main_game")
@@ -592,11 +592,11 @@ function scr_character_select_menu_step()
 						var no_players_can_play = true;
 						for(var i = 1; i <= global.max_players; i += 1)
 						{
-						    if (global.player_can_play[i])
+							if (global.player_can_play[i])
 							{
-						        no_players_can_play = false;
-						        break; /* exit the loop if any player can play */
-						    }
+								no_players_can_play = false;
+								break; /* exit the loop if any player can play */
+							}
 						}
 						if (no_players_can_play)
 						|| (global.playergame <= 0) /* At least one player needs to be playing the game */
@@ -618,12 +618,12 @@ function scr_character_select_menu_step()
 				}
 			}
 			#endregion /* Back / Cancel Selection END */
-			
+
 		}
 		#endregion /* Accept and Back END */
-		
+
 		menu_delay = clamp(menu_delay - 1, 0, +infinity);
-		
+
 		#region /* Menu navigation with joystick */
 		for(var i = 1; i <= global.max_players; i += 1)
 		{
@@ -644,15 +644,15 @@ function scr_character_select_menu_step()
 			}
 			if (menu_specific_joystick_delay[i] > 0)
 			{
-				menu_specific_joystick_delay[i] --;
+				menu_specific_joystick_delay[i]--;
 			}
 		}
 		#endregion /* Menu navigation with joystick END */
-		
+
 		#region /* If players haven't joined the game */
 		if (no_players_are_inputting_names)
 		{
-			
+
 			#region /* Player Join */
 			for(var i = 1; i <= global.max_players; i += 1)
 			{
@@ -686,18 +686,18 @@ function scr_character_select_menu_step()
 				}
 			}
 			#endregion /* Player Join END */
-			
+
 		}
 		#endregion /* If players haven't joined the game END */
-		
+
 	}
 	else
-	
+
 	#region /* Step Manage Characters Menu */
 	{
 		play_the_game_text_y_lerp = display_get_gui_height() + 100;
 		scr_character_manage_menu_step();
 	}
 	#endregion /* Step Manage Characters Menu END */
-	
+
 }

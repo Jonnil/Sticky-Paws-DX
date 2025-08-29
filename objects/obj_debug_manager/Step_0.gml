@@ -36,7 +36,7 @@ if (global.debug_screen)
 {
 	/* Grab the current date/time as a string */
 	var now = date_current_datetime();
-	
+
 	/* Show the menu variable and timestamp in the debug console */
 	show_debug_message("[obj_debug_manager " + string(now) + "] menu = " + string(debug_target.menu));
 }

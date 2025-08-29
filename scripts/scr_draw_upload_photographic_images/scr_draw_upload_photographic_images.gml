@@ -1,6 +1,6 @@
 function scr_draw_upload_photographic_images()
 {
-	
+
 	#region /* Ask if level uses photographic images if custom assets are detected */
 	/* Switch have guidelines to not share photographic images in UGC */
 	if (menu == "level_uses_photographic_images_checkbox")
@@ -18,7 +18,7 @@ function scr_draw_upload_photographic_images()
 	{
 		var get_window_height = display_get_gui_height();
 		var get_window_width = display_get_gui_width();
-		
+
 		var background1_exists = false;
 		var background2_exists = false;
 		var background3_exists = false;
@@ -27,7 +27,7 @@ function scr_draw_upload_photographic_images()
 		var foreground1_5_exists = false;
 		var foreground2_exists = false;
 		var foreground_secret_exists = false;
-		
+
 		if (file_exists(game_save_id + "custom_levels/" + string(global.level_name) + "/background/background1.png"))
 		|| (file_exists(game_save_id + "custom_levels/" + string(global.level_name) + "/background/background1.bmp"))
 		|| (file_exists(game_save_id + "custom_levels/" + string(global.level_name) + "/background/background1.gif"))
@@ -92,16 +92,16 @@ function scr_draw_upload_photographic_images()
 		{
 			var foreground_secret_exists = true;
 		}
-		
+
 		scr_draw_text_outlined(get_window_width * 0.5, 32 + 32, l10n_text("Does your level use photographic images for the custom background assets?"), global.default_text_size, c_black, c_white, 1);
 		level_uses_photographic_images = draw_menu_checkmark(get_window_width * 0.5 - 300, 64 + 32, l10n_text("Level uses photographic images"), "level_uses_photographic_images_checkbox", level_uses_photographic_images, false);
 		if (level_uses_photographic_images)
 		{
 			draw_set_halign(fa_center);
 			scr_draw_text_outlined(get_window_width * 0.5, 96 + 32 + 32, l10n_text("What background layer uses a photographic image?"), global.default_text_size, c_black, c_white, 1);
-			
+
 			var checkmark_offset = 96 + 32;
-			
+
 			if (background1_exists)
 			{
 				background1_uses_photographic_image = draw_menu_checkmark(get_window_width * 0.5 - 300, 64 + checkmark_offset, l10n_text("Background 1"), "background1_uses_photographic_image", background1_uses_photographic_image, false);
@@ -147,9 +147,9 @@ function scr_draw_upload_photographic_images()
 		var confirm_x = get_window_width * 0.5 - 185;
 		var confirm_y = get_window_height - 64;
 		draw_menu_button(confirm_x, confirm_y, l10n_text("Confirm"), "level_uses_photographic_images_confirm", "level_uses_photographic_images_confirm");
-		
+
 		#region /* Navigation */
-		
+
 		#region /* Navigation Up */
 		if (key_up)
 		&& (menu_delay == 0 && menu_joystick_delay == 0)
@@ -415,9 +415,9 @@ function scr_draw_upload_photographic_images()
 			}
 		}
 		#endregion /* Navigation Up END */
-		
+
 		else
-		
+
 		#region /* Navigation Down */
 		if (key_down)
 		&& (menu_delay == 0 && menu_joystick_delay == 0)
@@ -717,9 +717,9 @@ function scr_draw_upload_photographic_images()
 			}
 		}
 		#endregion /* Navigation Down END */
-		
+
 		else
-		
+
 		#region /* Click Confirm */
 		if (key_a_pressed
 		|| global.controls_used_for_navigation == "mouse"
@@ -729,7 +729,7 @@ function scr_draw_upload_photographic_images()
 		&& (menu == "level_uses_photographic_images_confirm")
 		{
 			menu_delay = 3;
-			
+
 			if (!level_uses_photographic_images)
 			{
 				background1_uses_photographic_image = false;
@@ -742,7 +742,7 @@ function scr_draw_upload_photographic_images()
 				foreground_secret_uses_photographic_image = false;
 				thumbnail_uses_photographic_image = false;
 			}
-			
+
 			#region /* Save to the level all the custom backgrounds that use photographic images */
 			ini_open(game_save_id + "custom_levels/" + string(global.level_name) + "/data/level_information.ini");
 			ini_write_real("Custom Backgrounds", "background1_uses_photographic_image", background1_uses_photographic_image);
@@ -756,14 +756,14 @@ function scr_draw_upload_photographic_images()
 			ini_write_real("Custom Backgrounds", "thumbnail_uses_photographic_image", thumbnail_uses_photographic_image);
 			ini_close();
 			#endregion /* Save to the level all the custom backgrounds that use photographic images END */
-			
+
 			menu = "upload_yes";
 		}
 		#endregion /* Click Confirm END */
-		
+
 		draw_menu_button(0, 0, l10n_text("Back"), "level_uses_photographic_images_back", "edit_ok");
 		draw_sprite_ext(spr_icon_back, 0, 16, 21, 1, 1, 0, c_white, 1);
-		
+
 		if (point_in_rectangle(device_mouse_x_to_gui(0), device_mouse_y_to_gui(0), display_get_gui_width() * 0.5 - 185, 0, display_get_gui_width() * 0.5 - 185 + 370, 41))
 		&& (global.controls_used_for_navigation == "mouse")
 		&& (mouse_check_button_released(mb_left))
@@ -775,10 +775,10 @@ function scr_draw_upload_photographic_images()
 			menu = "edit_ok";
 			menu_delay = 3;
 		}
-		
+
 		#endregion /* Navigation END */
-		
+
 	}
 	#endregion /* Ask if level uses photographic images if custom assets are detected END */
-	
+
 }

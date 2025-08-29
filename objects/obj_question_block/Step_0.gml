@@ -119,24 +119,24 @@ if (instance_exists(obj_player))
 		&& (!place_meeting(x, y - 1, obj_wall))
 		&& (instance_nearest(x, y, obj_player).ground_pound == 1)
 		&& (can_be_ground_pounded)
-		
+
 		|| (position_meeting(x, bbox_bottom + 1, obj_player)) /* Has to be position_meeting, otherwise there are specific situations where you can break a block from above just by crouching */
 		&& (!position_meeting(x, bbox_bottom + 1, obj_wall))
 		&& (can_be_hit_from_below)
-		
+
 		|| (position_meeting(bbox_left + 9, bbox_bottom + 1, obj_player)) /* Has to be position_meeting, otherwise there are specific situations where you can break a block from above just by crouching */
 		&& (!position_meeting(x, bbox_bottom + 1, obj_wall))
 		&& (can_be_hit_from_below)
-		
+
 		|| (position_meeting(bbox_right - 9, bbox_bottom + 1, obj_player)) /* Has to be position_meeting, otherwise there are specific situations where you can break a block from above just by crouching */
 		&& (!position_meeting(x, bbox_bottom + 1, obj_wall))
 		&& (can_be_hit_from_below)
-		
+
 		|| (place_meeting(bbox_left - 4, y, obj_player))
 		&& (!place_meeting(x - 4, y, obj_wall))
 		&& (instance_nearest(x, y, obj_player).dive)
 		&& (can_be_hit_from_below)
-		
+
 		|| (place_meeting(bbox_right + 4, y, obj_player))
 		&& (!place_meeting(x + 4, y, obj_wall))
 		&& (instance_nearest(x, y, obj_player).dive)
@@ -171,10 +171,10 @@ if (instance_exists(obj_enemy_bowlingball))
 	{
 		if (place_meeting(x - 10, y, obj_enemy_bowlingball))
 		&& (instance_nearest(x, y, obj_enemy_bowlingball).sliding_along_ground <> 0)
-		
+
 		|| (place_meeting(x + 10, y, obj_enemy_bowlingball))
 		&& (instance_nearest(x, y, obj_enemy_bowlingball).sliding_along_ground <> 0)
-		
+
 		|| (place_meeting(x, y + 1, obj_enemy_bowlingball))
 		&& (instance_nearest(x, y, obj_enemy_bowlingball).vspeed <= 0)
 		&& (can_be_hit_from_below)
@@ -184,7 +184,7 @@ if (instance_exists(obj_enemy_bowlingball))
 				bounce_up = true;
 			}
 			scr_audio_play(snd_bump, volume_source.sound);
-			
+
 			if (instance_nearest(x, y, obj_enemy_bowlingball).vspeed <= 0)
 			{
 				instance_nearest(x, y, obj_enemy_bowlingball).vspeed = 0;

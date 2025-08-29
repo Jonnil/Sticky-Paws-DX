@@ -85,7 +85,7 @@ var can_toggle_fullscreen = (os_type != os_ios)
 if (can_toggle_fullscreen)
 {
 	scr_draw_fullscreen_button(-74, display_get_gui_height() - 65 + version_y_pos, "fullscreen_mode_title");
-	
+
 	if (window_get_fullscreen())
 	{
 		var fullscreen_text = l10n_text("Windowed");
@@ -94,7 +94,7 @@ if (can_toggle_fullscreen)
 	{
 		var fullscreen_text = l10n_text("Fullscreen");
 	}
-	
+
 	if (global.controls_used_for_navigation == "mouse")
 	&& (mouse_check_button_released(mb_left))
 	&& (point_in_rectangle(mouse_get_x, mouse_get_y, 0, display_get_gui_height() - 65 + version_y_pos - 6, -74 + string_width(fullscreen_text) + 100, display_get_gui_height() - 65 + version_y_pos + 32 + 6))
@@ -192,8 +192,8 @@ if (!in_settings)
 	menu == "quit" ||
 	menu == "information" ||
 	menu == "fullscreen_mode_title")
-    {
-		
+	{
+
 		draw_menu_button(display_get_gui_width() * 0.5 - 185, main_game_y, l10n_text("Main Game"), "main_game", "main_game");
 		draw_menu_button(display_get_gui_width() * 0.5 - 185, level_editor_y, l10n_text("Level Editor"), "level_editor", "level_editor");
 		if (placable_object_unlock_notify)
@@ -205,7 +205,7 @@ if (!in_settings)
 				global.default_text_size * 0.5 + scr_wave(0, 0.1, 1), c_black, c_lime, 1);
 			draw_set_halign(fa_center);
 		}
-		
+
 		if (global.free_communication_available)
 		{
 			draw_menu_button(display_get_gui_width() * 0.5 - 185, online_level_list_title_y, l10n_text("Online Level List"), "online_level_list_title", "online_level_list_title");
@@ -218,12 +218,12 @@ if (!in_settings)
 				draw_set_halign(fa_center);
 			}
 		}
-		
+
 		select_custom_level_menu_open = false;
 		can_input_level_name = false;
-		
+
 		#region /* Click on menu buttons */
-		
+
 		#region /* Click Main Game */
 		if (point_in_rectangle(mouse_get_x, mouse_get_y, display_get_gui_width() * 0.5 - 185, main_game_y, display_get_gui_width() * 0.5 + 185, main_game_y + 41))
 		&& (mouse_check_button_released(mb_left))
@@ -253,9 +253,9 @@ if (!in_settings)
 			menu = "load_characters";
 		}
 		#endregion /* Click Main Game END */
-		
+
 		else
-		
+
 		#region /* Click Level Editor */
 		if (point_in_rectangle(mouse_get_x, mouse_get_y, display_get_gui_width() * 0.5 - 185, level_editor_y, display_get_gui_width() * 0.5 + 185, level_editor_y + 41))
 		&& (mouse_check_button_released(mb_left))
@@ -277,7 +277,7 @@ if (!in_settings)
 				player_accept_selection[i] = - 1;
 			}
 			in_settings = false;
-			
+
 			#region /* Select Level Editor */
 			if (menu == "level_editor")
 			&& (menu_delay == 0 && menu_joystick_delay == 0)
@@ -293,12 +293,12 @@ if (!in_settings)
 				global.level_editor_level = 1;
 			}
 			#endregion /* Select Level Editor END */
-			
+
 		}
 		#endregion /* Click Level Editor END */
-		
+
 		else
-		
+
 		#region /* Click Online Level List Title */
 		if (point_in_rectangle(mouse_get_x, mouse_get_y, display_get_gui_width() * 0.5 - 185, online_level_list_title_y, display_get_gui_width() * 0.5 + 185, online_level_list_title_y + 41))
 		&& (mouse_check_button_released(mb_left))
@@ -322,7 +322,7 @@ if (!in_settings)
 				player_accept_selection[i] = - 1;
 			}
 			in_settings = false;
-			
+
 			#region /* Go to character select before going to online level list */
 			if (menu == "online_level_list_title")
 			&& (menu_delay == 0 && menu_joystick_delay == 0)
@@ -339,12 +339,12 @@ if (!in_settings)
 				global.level_editor_level = 1;
 			}
 			#endregion /* Go to character select before going to online level list END */
-			
+
 		}
 		#endregion /* Click Online Level List Title END */
-		
+
 		else
-		
+
 		#region /* Click Options */
 		if (global.enable_option_for_pc)
 		&& (point_in_rectangle(mouse_get_x, mouse_get_y, display_get_gui_width() * 0.5 - 185, option_and_quit_y + 2, display_get_gui_width() * 0.5, option_and_quit_y + 41))
@@ -361,7 +361,7 @@ if (!in_settings)
 		&& (menu_delay == 0 && menu_joystick_delay == 0)
 		&& (!in_settings)
 		{
-			
+
 			#region /* Play Options Voice */
 			if (voice_options > noone)
 			{
@@ -369,7 +369,7 @@ if (!in_settings)
 				scr_audio_play(voice_options, volume_source.voice);
 			}
 			#endregion /* Play Options Voice END */
-			
+
 			menu_cursor_y_position = 0; /* Reset so the scrolling menus are back to 0 */
 			menu_cursor_y_position_end = 0;
 			in_settings = true;
@@ -379,9 +379,9 @@ if (!in_settings)
 			scr_load_storage_variables();
 		}
 		#endregion /* Click Options END */
-		
+
 		else
-		
+
 		#region /* Click Quit */
 		if (point_in_rectangle(mouse_get_x, mouse_get_y, display_get_gui_width() * 0.5, option_and_quit_y + 2, display_get_gui_width() * 0.5 + 185, option_and_quit_y + 42))
 		&& (mouse_check_button_released(mb_left))
@@ -399,14 +399,14 @@ if (!in_settings)
 			menu_delay = 3;
 		}
 		#endregion /* Click Quit END */
-		
+
 		#endregion /* Click on menu buttons END */
-		
+
 		if (menu == "main_game")
 		{
 			global.character_select_in_this_menu = "main_game";
 		}
-		
+
 		if (menu == "level_editor")
 		{
 			if (global.level_editor_level > 0)
@@ -415,7 +415,7 @@ if (!in_settings)
 			}
 			global.character_select_in_this_menu = "level_editor"; /* No custom level is selected before you go into the level editor */
 		}
-		
+
 		if (global.enable_option_for_pc)
 		{
 			draw_menu_button_sprite(spr_menu_button, display_get_gui_width() * 0.5 - 185, option_and_quit_y, 0, 0, 0.5, 1, 185, 42, l10n_text("Options"), "options", "options", true);
@@ -431,7 +431,7 @@ if (!in_settings)
 			draw_menu_button(display_get_gui_width() * 0.5 - 185, option_and_quit_y, l10n_text("Options"), "options", "options");
 		}
 		draw_sprite_ext(spr_icon_cogwheel, 0, display_get_gui_width() * 0.5 - 185 + 8, option_and_quit_y + 21, 1, 1, 0, c_white, 1);
-		
+
 		/* Information button */
 		if (!latest_whats_new_read)
 		{
@@ -478,7 +478,7 @@ else
 if (select_custom_level_menu_open)
 {
 	level_editor_template_select = false;
-	
+
 	if (menu != "network_error")
 	&& (menu != "network_error_copy_error_code")
 	&& (menu != "network_error_main_menu")
@@ -574,7 +574,7 @@ if (menu == "online_download_list_load")
 	draw_set_alpha(0.5);
 	draw_rectangle_color(0, 0, guiWidth, display_get_gui_height(), c_black, c_black, c_black, c_black, false);
 	draw_set_alpha(1);
-	
+
 	scr_draw_loading(1, , , "Loading from server 1");
 	scr_server_timeout(15);
 }
@@ -586,13 +586,13 @@ if (!input_key)
 && (can_navigate)
 && (menu_delay == 0 && menu_joystick_delay == 0)
 {
-	
+
 	/* Level Editor Menu */
 	if (global.level_editor_level<= 0)
 	{
 		global.level_editor_level = 1;
 	}
-	
+
 	#region /* Navigate Main Menu */
 	if (menu == "main_game")
 	{
@@ -784,7 +784,7 @@ if (menu == "quit")
 if (black_screen_at_start_delay < 1)
 {
 	draw_rectangle_color(0, 0, display_get_gui_width() * 3, display_get_gui_height() * 3, c_black, c_black, c_black, c_black, false);
-	black_screen_at_start_delay ++;
+	black_screen_at_start_delay++;
 }
 #endregion /* Have a black screen at the first frame so transitions look natural END */
 

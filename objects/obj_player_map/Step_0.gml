@@ -36,7 +36,7 @@ if (stop_at_level && nearest_level == noone) /* Only get info from levels when y
 		var time_second = string_replace_all(string_format(nearest_level.timeattack_second, 2, 0), " ", "0");
 		var time_millisecond = string_replace_all(string_format(nearest_level.timeattack_millisecond, 2, 0), " ", "0");
 		best_time_text = l10n_text("Best Time") + ": " + string(time_minute) + ":" + time_second + "." + time_millisecond;
-		
+
 	}
 	else
 	{
@@ -242,7 +242,7 @@ if (can_move && !global.quit_level)
 		var mouse_dir = point_direction(x, y, mouse_x, mouse_y);
 		var mouse_dist = distance_to_point(mouse_x, mouse_y);
 		var mouse_not_on_pause_button = !point_in_rectangle(mouse_get_x, mouse_get_y, display_get_gui_width() - 185, 0, display_get_gui_width(), 42);
-		
+
 		if (key_up || mouse_check_button_released(mb_left) && mouse_dir > 45 && mouse_dir < 135 && mouse_dist > 16 && mouse_dist < 100 && mouse_not_on_pause_button)
 		{
 			if (!position_meeting(x, y - 32, obj_wall))
@@ -328,8 +328,8 @@ if (menu_cursor_index > 4)
 
 if (menu_delay > 0)
 {
-	menu_delay --;
+	menu_delay--;
 }
 
 scr_deactivate_objects_outside_view(); /* This function needs to be at the very end of the step event */
-global.deactivate_timer ++;
+global.deactivate_timer++;

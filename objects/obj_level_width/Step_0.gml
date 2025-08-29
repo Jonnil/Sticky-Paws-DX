@@ -36,7 +36,7 @@ if (instance_exists(obj_leveleditor))
 			}
 		}
 	}
-	
+
 	#region /* Drag the object */
 	if (drag_object)
 	&& (instance_exists(obj_leveleditor))
@@ -45,7 +45,7 @@ if (instance_exists(obj_leveleditor))
 		x = obj_leveleditor.x;
 	}
 	#endregion /* Drag the object END */
-	
+
 	#region /* Release the object */
 	if (mouse_check_button_released(mb_left))
 	|| (obj_leveleditor.key_a_released)
@@ -58,13 +58,13 @@ if (instance_exists(obj_leveleditor))
 		}
 	}
 	#endregion /* Release the object END */
-	
+
 }
 #endregion /* Drag Object END */
 
 if (drag_release_timer > 0)
 {
-	drag_release_timer --;
+	drag_release_timer--;
 }
 else
 {

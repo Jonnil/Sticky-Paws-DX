@@ -18,7 +18,7 @@ if (global.character_select_in_this_menu == "main_game")
 	{
 		ini_open(global.use_temp_or_working + "custom_levels/" + string(global.level_name) + "/data/level_information.ini");
 	}
-	
+
 	#region /* Custom Foreground x and y offset points */
 	#region /* Custom Foreground secret y offset point */
 	if (ini_key_exists("Custom Backgrounds", "custom_foreground_secret_y_offset"))
@@ -35,7 +35,7 @@ if (global.character_select_in_this_menu == "main_game")
 		y = 0;
 	}
 	#endregion /* Custom Foreground secret y offset point END */
-	
+
 	#region /* Custom Foreground secret x offset point */
 	if (ini_key_exists("Custom Backgrounds", "custom_foreground_secret_x_offset"))
 	{
@@ -52,7 +52,7 @@ if (global.character_select_in_this_menu == "main_game")
 	}
 	#endregion /* Custom Foreground secret x offset point END */
 	#endregion /* Custom Foreground secret x and y offset points END */
-	
+
 	#region /* Custom Foreground Secret depth */
 	if (ini_key_exists("Custom Backgrounds", "custom_foreground_secret_depth"))
 	{
@@ -68,7 +68,7 @@ if (global.character_select_in_this_menu == "main_game")
 		depth = -20;
 	}
 	#endregion /* Custom Foreground Secret depth END */
-	
+
 	ini_close(); /* Don't commit the save data on Switch, this is only temporary! */
 }
 else

@@ -2,7 +2,7 @@ function scr_set_length_variable()
 {
 	if (global.can_save_length_variable) /* This function saves object_placement_all.json size, but lags the game. Make this optional and false by default */
 	{
-		
+
 		#region /* Set length variable */
 		var placed_object = obj_leveleditor_placed_object;
 		if (mask_index == spr_wall) /* Only objects with wall mask should be checked */
@@ -72,6 +72,6 @@ function scr_set_length_variable()
 			repeat_length = 0;
 		}
 		#endregion /* Set length variable END */
-		
+
 	}
 }

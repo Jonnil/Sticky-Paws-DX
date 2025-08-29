@@ -1,7 +1,7 @@
 if (instance_exists(obj_player))
 {
-	timer ++;
-	
+	timer++;
+
 	if (timer > 10)
 	{
 		if (place_meeting(x, y, obj_player))
@@ -23,7 +23,7 @@ if (instance_exists(obj_player))
 		move_towards_point(instance_nearest(x, y, obj_player).x, instance_nearest(x, y, obj_player).y, 32);
 		obj_player.rope_swing = false;
 	}
-	
+
 	#region /* Make tongue homing toward closest object */
 	if (timer < 25)
 	&& (instance_exists(obj_ring))
@@ -32,19 +32,19 @@ if (instance_exists(obj_player))
 		move_towards_point(instance_nearest(x, y, obj_ring).x, instance_nearest(x, y, obj_ring).y, speed);
 	}
 	#endregion /* Make tongue homing toward closest object END */
-	
+
 	/* Match movement with player movement */
 	if (!obj_player.rope_swing)
 	{
 		hspeed += obj_player.hspeed /8;
 		vspeed += obj_player.vspeed /8;
 	}
-	
+
 	/* Stick to wall */
-	
+
 	if (timer < 25)
 	{
-		
+
 		#region /* Can't interact with black wall */
 		if (position_meeting(x, y, obj_black_wall))
 		{
@@ -53,12 +53,12 @@ if (instance_exists(obj_player))
 				timer = 15;
 				speed = 0;
 			}
-			timer ++;
+			timer++;
 		}
 		#endregion /* Can't interact with black wall END */
-		
+
 		else
-		
+
 		#region /* rope_swing on things */
 		if (position_meeting(x, y, obj_wall))
 		|| (position_meeting(x, y, obj_ring))
@@ -71,9 +71,9 @@ if (instance_exists(obj_player))
 			}
 		}
 		#endregion /* rope_swing on things END */
-		
+
 		else
-		
+
 		#region /* Fly toward enemy */
 		if (instance_number(obj_enemy) > 0)
 		&& (place_meeting(x, y, obj_enemy))
@@ -96,9 +96,9 @@ if (instance_exists(obj_player))
 			}
 		}
 		#endregion /* Fly toward enemy END */
-		
+
 	}
-	
+
 	if (instance_nearest(x, y, obj_player).climb)
 	|| (instance_nearest(x, y, obj_player).horizontal_rope_climb)
 	{

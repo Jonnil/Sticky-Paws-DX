@@ -22,15 +22,15 @@ function scr_option_storage()
 {
 	var get_window_height = display_get_gui_height();
 	var get_window_width = display_get_gui_width();
-	
+
 	#region /* Storage Settings */
 	if (global.settings_sidebar_menu == "storage_settings")
 	{
-		
+
 		#region /* Storage variables */
 		var mouse_get_x = device_mouse_x_to_gui(0);
 		var mouse_get_y = device_mouse_y_to_gui(0);
-		
+
 		var file_select_x = 400;
 		var file_select_right_arrow_x = 400;
 		var file_y = 20 + (40 * 1);
@@ -44,16 +44,16 @@ function scr_option_storage()
 		var lives_y = 20 + (40 * 9);
 		var total_big_collectibles_y = 20 + (40 * 10);
 		var number_of_levels_passed_y = 20 + (40 * 11);
-		
+
 		draw_set_halign(fa_left);
 		draw_set_valign(fa_middle);
 		scr_draw_text_outlined(file_select_x + 50, file_y, l10n_text("File") + ": " + string(global.file), global.default_text_size, c_menu_outline, c_menu_fill, 1);
 		#endregion /* Storage variables END */
-		
+
 		#region /* Display save file data */
 		if (file_exists(game_save_id + "save_file/file" + string(global.file) + ".ini"))
 		{
-			
+
 			#region /* File path */
 			draw_set_halign(fa_left);
 			draw_set_valign(fa_middle);
@@ -63,7 +63,7 @@ function scr_option_storage()
 				scr_draw_text_outlined(file_select_x, file_path_y, string(file_path_text), global.default_text_size, c_menu_outline, c_dkgray, 1);
 			}
 			#endregion /* File path END */
-			
+
 			#region /* File date */
 			if (storage_year != 0)
 			{
@@ -76,7 +76,7 @@ function scr_option_storage()
 				string(string_replace_all(string_format(storage_minute, 2, 0), " ", "0")) + ":" +
 				string(string_replace_all(string_format(storage_second, 2, 0), " ", "0"))
 				,global.default_text_size, c_menu_outline, c_menu_fill, 1);
-				
+
 				if (storage_month == current_month)
 				&& (storage_day == current_day)
 				&& (storage_year == current_year)
@@ -85,20 +85,20 @@ function scr_option_storage()
 				}
 			}
 			#endregion /* File date END */
-			
+
 			if (storage_last_played_level_name != "")
 			{
 				scr_draw_text_outlined(file_select_x, last_played_level_name_y, l10n_text("Last played level") + ": " + string(storage_last_played_level_name), global.default_text_size, c_menu_outline, c_menu_fill, 1);
 			}
-			
+
 			scr_draw_text_outlined(file_select_x, lives_y, l10n_text("Lives") + ": " + string(storage_lives), global.default_text_size, c_menu_outline, c_menu_fill, 1);
-			
+
 			draw_sprite_ext(global.resource_pack_sprite_big_collectible, 0, file_select_x + 16, total_big_collectibles_y, 0.5, 0.5, 0, c_white, 1);
 			scr_draw_text_outlined(file_select_x + 48, total_big_collectibles_y, string(storage_total_big_collectibles) + "/" + "50", global.default_text_size, c_menu_outline, c_menu_fill, 1);
 			scr_draw_text_outlined(file_select_x, number_of_levels_passed_y, l10n_text("Number of levels passed") + ": " + string(storage_number_of_levels_cleared), global.default_text_size, c_menu_outline, c_menu_fill, 1);
 		}
 		#endregion /* Display save file data END */
-		
+
 		if (menu != "file_delete_yes")
 		&& (menu != "file_delete_no")
 		{
@@ -107,13 +107,13 @@ function scr_option_storage()
 				draw_menu_button(file_select_x, delete_file_y, l10n_text("Delete File"), "file_delete", "file_delete_no", c_red);
 				draw_sprite_ext(spr_icon_delete, 0, file_select_x + 16, delete_file_y + 21, 1, 1, 0, c_white, 1);
 			}
-			
+
 			if (global.enable_open_custom_folder)
 			{
 				draw_menu_button(file_select_x, open_save_file_folder_y, l10n_text("Open Save File Folder"), "open_save_file_folder", "open_save_file_folder");
 				draw_sprite_ext(spr_icon_folder, 0, file_select_x + 16, open_save_file_folder_y + 21, 1, 1, 0, c_white, 1);
 			}
-			
+
 			if (point_in_rectangle(mouse_get_x, mouse_get_y, file_select_x, open_save_file_folder_y + 2, file_select_x + 371, open_save_file_folder_y + 41))
 			&& (global.controls_used_for_navigation == "mouse")
 			&& (mouse_check_button_released(mb_left))
@@ -140,7 +140,7 @@ function scr_option_storage()
 			draw_sprite_ext(spr_icon_delete, 0, get_window_width * 0.5 - 370 - 32 + 16, get_window_height * 0.5 + 21, 1, 1, 0, c_white, 1);
 			draw_menu_button(get_window_width * 0.5 + 32, get_window_height * 0.5, l10n_text("No"), "file_delete_no", "file_delete");
 			draw_sprite_ext(spr_icon_back, 0, get_window_width * 0.5 + 32 + 16, get_window_height * 0.5 + 21, 1, 1, 0, c_white, 1);
-			
+
 			if (key_left)
 			&& (menu_delay == 0 && menu_joystick_delay == 0)
 			|| (key_right)
@@ -158,12 +158,12 @@ function scr_option_storage()
 				}
 			}
 		}
-		
+
 		if (global.file < 1)
 		{
 			global.file = 1; /* Don't let file go less than 1 */
 		}
-		
+
 		if (global.file > 1)
 		&& (menu != "file_delete_no")
 		&& (menu != "file_delete_yes")
@@ -178,7 +178,7 @@ function scr_option_storage()
 				draw_set_alpha(1);
 			}
 		}
-		
+
 		if (menu != "file_delete_no")
 		&& (menu != "file_delete_yes")
 		&& (file_exists(game_save_id + "save_file/file" + string(global.file) + ".ini")
@@ -194,7 +194,7 @@ function scr_option_storage()
 				draw_set_alpha(1);
 			}
 		}
-		
+
 		if (menu == "file_delete")
 		&& (key_a_pressed)
 		&& (menu_delay == 0 && menu_joystick_delay == 0)
@@ -203,7 +203,7 @@ function scr_option_storage()
 			menu = "file_delete_no";
 			menu_delay = 3;
 		}
-		
+
 		if (menu == "file_delete_no")
 		&& (key_a_pressed)
 		&& (menu_delay == 0 && menu_joystick_delay == 0)
@@ -217,9 +217,9 @@ function scr_option_storage()
 			can_navigate_settings_sidebar = false;
 			menu = "file_delete";
 			menu_delay = 3;
-			
+
 		}
-		
+
 		if (menu == "file_delete_yes")
 		&& (key_a_pressed)
 		&& (menu_delay == 0 && menu_joystick_delay == 0)
@@ -234,7 +234,7 @@ function scr_option_storage()
 			file_delete(game_save_id + "save_file/file" + string(global.file) + ".ini");
 			menu_delay = 3;
 		}
-		
+
 		if (key_up)
 		&& (menu != "file_delete_yes")
 		&& (menu != "file_delete_no")
@@ -315,12 +315,12 @@ function scr_option_storage()
 				menu = "file_select";
 			}
 		}
-		
+
 		if (menu == "file_select")
 		{
 			draw_sprite(spr_menu_cursor, menu_cursor_index, file_select_x - 32 - 32 + 50, file_y);
 		}
-		
+
 		if (key_left)
 		&& (menu == "file_select")
 		&& (!can_navigate_settings_sidebar)
@@ -335,7 +335,7 @@ function scr_option_storage()
 			if (menu_delay == 0 && menu_joystick_delay == 0)
 			&& (global.file > 1)
 			{
-				global.file --;
+				global.file--;
 				menu_delay = 3;
 				scr_load_storage_variables();
 			}
@@ -357,7 +357,7 @@ function scr_option_storage()
 				menu = "file_select";
 				if (menu_delay == 0 && menu_joystick_delay == 0)
 				{
-					global.file ++;
+					global.file++;
 					menu_delay = 3;
 					scr_load_storage_variables();
 				}
@@ -365,5 +365,5 @@ function scr_option_storage()
 		}
 	}
 	#endregion /* Storage Settings END */
-	
+
 }

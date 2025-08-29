@@ -87,7 +87,7 @@ if (global.character_select_in_this_menu == "main_game")
 && (file_exists(game_save_id + "save_file/file" + string(global.file) + ".ini"))
 {
 	var level_name = string(ds_list_find_value(global.all_loaded_main_levels, global.select_level_index));
-	
+
 	ini_open(game_save_id + "save_file/file" + string(global.file) + ".ini");
 	timeattack_record_millisecond = ini_read_real(level_name, "timeattack_millisecond", 0);
 	timeattack_record_second = ini_read_real(level_name, "timeattack_second", 0);
@@ -117,7 +117,7 @@ if (global.character_select_in_this_menu == "main_game")
 	{
 		ini_open(global.use_temp_or_working + "custom_levels/" + string(global.level_name) + "/data/level_information.ini");
 	}
-	
+
 	if (ini_key_exists("info", "make_every_tileset_into_default_tileset"))
 	{
 		global.make_every_tileset_into_default_tileset = ini_read_real("info", "make_every_tileset_into_default_tileset", false);

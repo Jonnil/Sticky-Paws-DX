@@ -98,7 +98,7 @@ if (floor(random(10)) == 0)
 }
 
 #region /* Expanding Ring Effect */
-effect_time ++;
+effect_time++;
 if (effect_time > 60)
 && (x < camera_get_view_x(view_camera[view_current]) + camera_get_view_width(view_camera[view_current]))
 && (x > camera_get_view_x(view_camera[view_current]))

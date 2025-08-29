@@ -2,7 +2,7 @@ function scr_option_control_menu()
 {
 	var mouse_get_x = device_mouse_x_to_gui(0);
 	var what_player = remapping_player + 1;
-	
+
 	#region /* Buttons positions */
 	if (allow_player_dive[what_player])
 	{
@@ -22,7 +22,7 @@ function scr_option_control_menu()
 	var menu_y_remap_key_right = menu_y_remap_key_crouch + 64 * 5;
 	var menu_y_remap_key_down = menu_y_remap_key_crouch + 64 * 6;
 	var menu_y_remap_key_up = menu_y_remap_key_crouch + 64 * 7;
-	
+
 	if (allow_player_tongue[what_player])
 	{
 		var menu_y_remap_key_tongue = menu_y_remap_key_crouch + 64 * 8;
@@ -81,16 +81,16 @@ function scr_option_control_menu()
 	var menu_y_wall_jump_setting = menu_y_down_and_jump_to_groundpound + 64;
 	var menu_y_drop_down_from_rope = menu_y_down_and_jump_to_groundpound + 64 * 2 + 16;
 	var menu_y_show_controls = menu_y_down_and_jump_to_groundpound + 64 * 3 + 32;
-	
+
 	if (global.enable_option_for_pc)
 	{
-		var menu_y_show_prompt_when_changing_controller = menu_y_down_and_jump_to_groundpound + 64 * 4				+ 48;
+		var menu_y_show_prompt_when_changing_controller = menu_y_down_and_jump_to_groundpound + 64 * 4                + 48;
 	}
 	else
 	{
 		var menu_y_show_prompt_when_changing_controller = -999;
 	}
-	
+
 	if (global.enable_option_for_pc)
 	&& (global.settings_sidebar_menu == "controller_settings")
 	{
@@ -113,41 +113,41 @@ function scr_option_control_menu()
 		var menu_y_vibration_strength = menu_y_show_controls + 94;
 	}
 	#endregion /* Buttons positions END */
-	
+
 	#region /* Controls Options */
 	if (global.settings_sidebar_menu == "keyboard_and_mouse_settings")
 	|| (global.settings_sidebar_menu == "controller_settings")
 	{
-		
+
 		#region /* Show sprite of the character you have currently selected for current player you are remapping */
 		if (global.sprite_select_player[what_player] > noone)
 		{
 			draw_sprite_ext(global.sprite_select_player[what_player], 0, display_get_gui_width() - 100, 100, 100 / sprite_get_width(global.sprite_select_player[what_player]), 100 / sprite_get_width(global.sprite_select_player[what_player]), 0, c_white, 1);
 		}
 		#endregion /* Show sprite of the character you have currently selected for current player you are remapping END */
-		
+
 		draw_set_halign(fa_left);
 		draw_set_valign(fa_middle);
-		
+
 		#region /* Remap Keyboard and Mouse or Gamepad */
-		
+
 		#region /* Show what key is used */
-		
+
 			image_speed = 0;
 			key1_x = 800;
 			key2_x = 1000;
-			
+
 			#region /* Show the keys for every player */
-			
+
 			#region /* Remapping Player 1 Key Variables */
 			for(var i = 1; i <= global.max_players; i += 1)
 			{
-				if (remapping_player == i -	1)
+				if (remapping_player == i -    1)
 				{
 					var selected_remapping_player = i;
 				}
 			}
-			
+
 			if (remapping_player == 1)
 			{
 				var selected_remapping_player = 2;
@@ -177,7 +177,7 @@ function scr_option_control_menu()
 				var other2_remapping_player = 3;
 				var other3_remapping_player = 4;
 			}
-			
+
 			if (global.settings_sidebar_menu == "keyboard_and_mouse_settings")
 			{
 				var keyboard_or_gamepad = inp.key;
@@ -186,7 +186,7 @@ function scr_option_control_menu()
 			{
 				var keyboard_or_gamepad = inp.gp;
 			}
-			
+
 			/* global.player_[keyboard/gamepad][player][key1/key2][action] */
 			var remapping_player_key_dive = global.player_[keyboard_or_gamepad][selected_remapping_player][1][action.dive];
 			var remapping_player_key_jump = global.player_[keyboard_or_gamepad][selected_remapping_player][1][action.jump];
@@ -204,7 +204,7 @@ function scr_option_control_menu()
 			var remapping_player_key_zoom_out = global.player_[keyboard_or_gamepad][selected_remapping_player][1][action.zoom_out];
 			var remapping_player_key_accept = global.player_[keyboard_or_gamepad][selected_remapping_player][1][action.accept];
 			var remapping_player_key_back = global.player_[keyboard_or_gamepad][selected_remapping_player][1][action.back];
-			
+
 			var remapping_player_key2_dive = global.player_[keyboard_or_gamepad][selected_remapping_player][2][action.dive];
 			var remapping_player_key2_jump = global.player_[keyboard_or_gamepad][selected_remapping_player][2][action.jump];
 			var remapping_player_key2_double_jump = global.player_[keyboard_or_gamepad][selected_remapping_player][2][action.double_jump];
@@ -221,7 +221,7 @@ function scr_option_control_menu()
 			var remapping_player_key2_zoom_out = global.player_[keyboard_or_gamepad][selected_remapping_player][2][action.zoom_out];
 			var remapping_player_key2_accept = global.player_[keyboard_or_gamepad][selected_remapping_player][2][action.accept];
 			var remapping_player_key2_back = global.player_[keyboard_or_gamepad][selected_remapping_player][2][action.back];
-			
+
 			#region /* Other player's keys */
 			var remapping_other1_player_key_dive = global.player_[keyboard_or_gamepad][other1_remapping_player][1][action.dive];
 			var remapping_other1_player_key_jump = global.player_[keyboard_or_gamepad][other1_remapping_player][1][action.jump];
@@ -237,7 +237,7 @@ function scr_option_control_menu()
 			var remapping_other1_player_key_tongue = global.player_[keyboard_or_gamepad][other1_remapping_player][1][action.tongue];
 			var remapping_other1_player_key_zoom_in = global.player_[keyboard_or_gamepad][other1_remapping_player][1][action.zoom_in];
 			var remapping_other1_player_key_zoom_out = global.player_[keyboard_or_gamepad][other1_remapping_player][1][action.zoom_out];
-			
+
 			var remapping_other1_player_key2_dive = global.player_[keyboard_or_gamepad][other1_remapping_player][2][action.dive];
 			var remapping_other1_player_key2_jump = global.player_[keyboard_or_gamepad][other1_remapping_player][2][action.jump];
 			var remapping_other1_player_key2_double_jump = global.player_[keyboard_or_gamepad][other1_remapping_player][2][action.double_jump];
@@ -252,7 +252,7 @@ function scr_option_control_menu()
 			var remapping_other1_player_key2_tongue = global.player_[keyboard_or_gamepad][other1_remapping_player][2][action.tongue];
 			var remapping_other1_player_key2_zoom_in = global.player_[keyboard_or_gamepad][other1_remapping_player][2][action.zoom_in];
 			var remapping_other1_player_key2_zoom_out = global.player_[keyboard_or_gamepad][other1_remapping_player][2][action.zoom_out];
-			
+
 			var remapping_other2_player_key_dive = global.player_[keyboard_or_gamepad][other2_remapping_player][1][action.dive];
 			var remapping_other2_player_key_jump = global.player_[keyboard_or_gamepad][other2_remapping_player][1][action.jump];
 			var remapping_other2_player_key_double_jump = global.player_[keyboard_or_gamepad][other2_remapping_player][1][action.double_jump];
@@ -267,7 +267,7 @@ function scr_option_control_menu()
 			var remapping_other2_player_key_tongue = global.player_[keyboard_or_gamepad][other2_remapping_player][1][action.tongue];
 			var remapping_other2_player_key_zoom_in = global.player_[keyboard_or_gamepad][other2_remapping_player][1][action.zoom_in];
 			var remapping_other2_player_key_zoom_out = global.player_[keyboard_or_gamepad][other2_remapping_player][1][action.zoom_out];
-			
+
 			var remapping_other2_player_key2_dive = global.player_[keyboard_or_gamepad][other2_remapping_player][2][action.dive];
 			var remapping_other2_player_key2_jump = global.player_[keyboard_or_gamepad][other2_remapping_player][2][action.jump];
 			var remapping_other2_player_key2_double_jump = global.player_[keyboard_or_gamepad][other2_remapping_player][2][action.double_jump];
@@ -282,7 +282,7 @@ function scr_option_control_menu()
 			var remapping_other2_player_key2_tongue = global.player_[keyboard_or_gamepad][other2_remapping_player][2][action.tongue];
 			var remapping_other2_player_key2_zoom_in = global.player_[keyboard_or_gamepad][other2_remapping_player][2][action.zoom_in];
 			var remapping_other2_player_key2_zoom_out = global.player_[keyboard_or_gamepad][other2_remapping_player][2][action.zoom_out];
-			
+
 			var remapping_other3_player_key_dive = global.player_[keyboard_or_gamepad][other3_remapping_player][1][action.dive];
 			var remapping_other3_player_key_jump = global.player_[keyboard_or_gamepad][other3_remapping_player][1][action.jump];
 			var remapping_other3_player_key_double_jump = global.player_[keyboard_or_gamepad][other3_remapping_player][1][action.double_jump];
@@ -297,7 +297,7 @@ function scr_option_control_menu()
 			var remapping_other3_player_key_tongue = global.player_[keyboard_or_gamepad][other3_remapping_player][1][action.tongue];
 			var remapping_other3_player_key_zoom_in = global.player_[keyboard_or_gamepad][other3_remapping_player][1][action.zoom_in];
 			var remapping_other3_player_key_zoom_out = global.player_[keyboard_or_gamepad][other3_remapping_player][1][action.zoom_out];
-			
+
 			var remapping_other3_player_key2_dive = global.player_[keyboard_or_gamepad][other3_remapping_player][2][action.dive];
 			var remapping_other3_player_key2_jump = global.player_[keyboard_or_gamepad][other3_remapping_player][2][action.jump];
 			var remapping_other3_player_key2_double_jump = global.player_[keyboard_or_gamepad][other3_remapping_player][2][action.double_jump];
@@ -313,13 +313,13 @@ function scr_option_control_menu()
 			var remapping_other3_player_key2_zoom_in = global.player_[keyboard_or_gamepad][other3_remapping_player][2][action.zoom_in];
 			var remapping_other3_player_key2_zoom_out = global.player_[keyboard_or_gamepad][other3_remapping_player][2][action.zoom_out];
 			#endregion /* Other player's keys END */
-			
+
 			#endregion /* Remapping Player Key Variables END */
-			
+
 			#region /* Make keys red if in conflict with other keys */
-			
+
 			#region /* Key 1 Conflicts */
-			
+
 			#region /* Dive Conflict */
 			if (remapping_player_key_dive = remapping_player_key_jump)
 			|| (remapping_player_key_dive = remapping_player_key_crouch)
@@ -333,7 +333,7 @@ function scr_option_control_menu()
 			|| (remapping_player_key_dive = remapping_player_key_tongue)
 			|| (remapping_player_key_dive = remapping_player_key_zoom_in)
 			|| (remapping_player_key_dive = remapping_player_key_zoom_out)
-			
+
 			|| (remapping_player_key_dive = remapping_player_key2_dive)
 			|| (remapping_player_key_dive = remapping_player_key2_jump)
 			|| (remapping_player_key_dive = remapping_player_key2_crouch)
@@ -368,7 +368,7 @@ function scr_option_control_menu()
 			|| (remapping_player_key_dive = remapping_other1_player_key_tongue)
 			|| (remapping_player_key_dive = remapping_other1_player_key_zoom_in)
 			|| (remapping_player_key_dive = remapping_other1_player_key_zoom_out)
-			
+
 			|| (remapping_player_key_dive = remapping_other1_player_key2_dive)
 			|| (remapping_player_key_dive = remapping_other1_player_key2_jump)
 			|| (remapping_player_key_dive = remapping_other1_player_key2_crouch)
@@ -382,7 +382,7 @@ function scr_option_control_menu()
 			|| (remapping_player_key_dive = remapping_other1_player_key2_tongue)
 			|| (remapping_player_key_dive = remapping_other1_player_key2_zoom_in)
 			|| (remapping_player_key_dive = remapping_other1_player_key2_zoom_out)
-			
+
 			|| (remapping_player_key_dive = remapping_other2_player_key_dive)
 			|| (remapping_player_key_dive = remapping_other2_player_key_jump)
 			|| (remapping_player_key_dive = remapping_other2_player_key_crouch)
@@ -396,7 +396,7 @@ function scr_option_control_menu()
 			|| (remapping_player_key_dive = remapping_other2_player_key_tongue)
 			|| (remapping_player_key_dive = remapping_other2_player_key_zoom_in)
 			|| (remapping_player_key_dive = remapping_other2_player_key_zoom_out)
-			
+
 			|| (remapping_player_key_dive = remapping_other2_player_key2_dive)
 			|| (remapping_player_key_dive = remapping_other2_player_key2_jump)
 			|| (remapping_player_key_dive = remapping_other2_player_key2_crouch)
@@ -410,7 +410,7 @@ function scr_option_control_menu()
 			|| (remapping_player_key_dive = remapping_other2_player_key2_tongue)
 			|| (remapping_player_key_dive = remapping_other2_player_key2_zoom_in)
 			|| (remapping_player_key_dive = remapping_other2_player_key2_zoom_out)
-			
+
 			|| (remapping_player_key_dive = remapping_other3_player_key_dive)
 			|| (remapping_player_key_dive = remapping_other3_player_key_jump)
 			|| (remapping_player_key_dive = remapping_other3_player_key_crouch)
@@ -424,7 +424,7 @@ function scr_option_control_menu()
 			|| (remapping_player_key_dive = remapping_other3_player_key_tongue)
 			|| (remapping_player_key_dive = remapping_other3_player_key_zoom_in)
 			|| (remapping_player_key_dive = remapping_other3_player_key_zoom_out)
-			
+
 			|| (remapping_player_key_dive = remapping_other3_player_key2_dive)
 			|| (remapping_player_key_dive = remapping_other3_player_key2_jump)
 			|| (remapping_player_key_dive = remapping_other3_player_key2_crouch)
@@ -448,7 +448,7 @@ function scr_option_control_menu()
 				}
 			}
 			#endregion /* Dive Conflict END */
-			
+
 			#region /* Jump Conflict */
 			if (remapping_player_key_jump = remapping_player_key_dive)
 			|| (remapping_player_key_jump = remapping_player_key_crouch)
@@ -462,7 +462,7 @@ function scr_option_control_menu()
 			|| (remapping_player_key_jump = remapping_player_key_tongue)
 			|| (remapping_player_key_jump = remapping_player_key_zoom_in)
 			|| (remapping_player_key_jump = remapping_player_key_zoom_out)
-			
+
 			|| (remapping_player_key_jump = remapping_player_key2_dive)
 			|| (remapping_player_key_jump = remapping_player_key2_jump)
 			|| (remapping_player_key_jump = remapping_player_key2_crouch)
@@ -497,7 +497,7 @@ function scr_option_control_menu()
 			|| (remapping_player_key_jump = remapping_other1_player_key_tongue)
 			|| (remapping_player_key_jump = remapping_other1_player_key_zoom_in)
 			|| (remapping_player_key_jump = remapping_other1_player_key_zoom_out)
-			
+
 			|| (remapping_player_key_jump = remapping_other1_player_key2_dive)
 			|| (remapping_player_key_jump = remapping_other1_player_key2_jump)
 			|| (remapping_player_key_jump = remapping_other1_player_key2_crouch)
@@ -511,7 +511,7 @@ function scr_option_control_menu()
 			|| (remapping_player_key_jump = remapping_other1_player_key2_tongue)
 			|| (remapping_player_key_jump = remapping_other1_player_key2_zoom_in)
 			|| (remapping_player_key_jump = remapping_other1_player_key2_zoom_out)
-			
+
 			|| (remapping_player_key_jump = remapping_other2_player_key_dive)
 			|| (remapping_player_key_jump = remapping_other2_player_key_jump)
 			|| (remapping_player_key_jump = remapping_other2_player_key_crouch)
@@ -525,7 +525,7 @@ function scr_option_control_menu()
 			|| (remapping_player_key_jump = remapping_other2_player_key_tongue)
 			|| (remapping_player_key_jump = remapping_other2_player_key_zoom_in)
 			|| (remapping_player_key_jump = remapping_other2_player_key_zoom_out)
-			
+
 			|| (remapping_player_key_jump = remapping_other2_player_key2_dive)
 			|| (remapping_player_key_jump = remapping_other2_player_key2_jump)
 			|| (remapping_player_key_jump = remapping_other2_player_key2_crouch)
@@ -539,7 +539,7 @@ function scr_option_control_menu()
 			|| (remapping_player_key_jump = remapping_other2_player_key2_tongue)
 			|| (remapping_player_key_jump = remapping_other2_player_key2_zoom_in)
 			|| (remapping_player_key_jump = remapping_other2_player_key2_zoom_out)
-			
+
 			|| (remapping_player_key_jump = remapping_other3_player_key_dive)
 			|| (remapping_player_key_jump = remapping_other3_player_key_jump)
 			|| (remapping_player_key_jump = remapping_other3_player_key_crouch)
@@ -553,7 +553,7 @@ function scr_option_control_menu()
 			|| (remapping_player_key_jump = remapping_other3_player_key_tongue)
 			|| (remapping_player_key_jump = remapping_other3_player_key_zoom_in)
 			|| (remapping_player_key_jump = remapping_other3_player_key_zoom_out)
-			
+
 			|| (remapping_player_key_jump = remapping_other3_player_key2_dive)
 			|| (remapping_player_key_jump = remapping_other3_player_key2_jump)
 			|| (remapping_player_key_jump = remapping_other3_player_key2_crouch)
@@ -577,7 +577,7 @@ function scr_option_control_menu()
 				}
 			}
 			#endregion /* Jump Conflict END */
-			
+
 			#region /* Crouch Conflict */
 			if (remapping_player_key_crouch = remapping_player_key_dive)
 			|| (remapping_player_key_crouch = remapping_player_key_jump)
@@ -591,7 +591,7 @@ function scr_option_control_menu()
 			|| (remapping_player_key_crouch = remapping_player_key_tongue)
 			|| (remapping_player_key_crouch = remapping_player_key_zoom_in)
 			|| (remapping_player_key_crouch = remapping_player_key_zoom_out)
-			
+
 			|| (remapping_player_key_crouch = remapping_player_key2_dive)
 			|| (remapping_player_key_crouch = remapping_player_key2_jump)
 			|| (remapping_player_key_crouch = remapping_player_key2_crouch)
@@ -626,7 +626,7 @@ function scr_option_control_menu()
 			|| (remapping_player_key_crouch = remapping_other1_player_key_tongue)
 			|| (remapping_player_key_crouch = remapping_other1_player_key_zoom_in)
 			|| (remapping_player_key_crouch = remapping_other1_player_key_zoom_out)
-			
+
 			|| (remapping_player_key_crouch = remapping_other1_player_key2_dive)
 			|| (remapping_player_key_crouch = remapping_other1_player_key2_jump)
 			|| (remapping_player_key_crouch = remapping_other1_player_key2_crouch)
@@ -640,7 +640,7 @@ function scr_option_control_menu()
 			|| (remapping_player_key_crouch = remapping_other1_player_key2_tongue)
 			|| (remapping_player_key_crouch = remapping_other1_player_key2_zoom_in)
 			|| (remapping_player_key_crouch = remapping_other1_player_key2_zoom_out)
-			
+
 			|| (remapping_player_key_crouch = remapping_other2_player_key_dive)
 			|| (remapping_player_key_crouch = remapping_other2_player_key_jump)
 			|| (remapping_player_key_crouch = remapping_other2_player_key_crouch)
@@ -654,7 +654,7 @@ function scr_option_control_menu()
 			|| (remapping_player_key_crouch = remapping_other2_player_key_tongue)
 			|| (remapping_player_key_crouch = remapping_other2_player_key_zoom_in)
 			|| (remapping_player_key_crouch = remapping_other2_player_key_zoom_out)
-			
+
 			|| (remapping_player_key_crouch = remapping_other2_player_key2_dive)
 			|| (remapping_player_key_crouch = remapping_other2_player_key2_jump)
 			|| (remapping_player_key_crouch = remapping_other2_player_key2_crouch)
@@ -668,7 +668,7 @@ function scr_option_control_menu()
 			|| (remapping_player_key_crouch = remapping_other2_player_key2_tongue)
 			|| (remapping_player_key_crouch = remapping_other2_player_key2_zoom_in)
 			|| (remapping_player_key_crouch = remapping_other2_player_key2_zoom_out)
-			
+
 			|| (remapping_player_key_crouch = remapping_other3_player_key_dive)
 			|| (remapping_player_key_crouch = remapping_other3_player_key_jump)
 			|| (remapping_player_key_crouch = remapping_other3_player_key_crouch)
@@ -682,7 +682,7 @@ function scr_option_control_menu()
 			|| (remapping_player_key_crouch = remapping_other3_player_key_tongue)
 			|| (remapping_player_key_crouch = remapping_other3_player_key_zoom_in)
 			|| (remapping_player_key_crouch = remapping_other3_player_key_zoom_out)
-			
+
 			|| (remapping_player_key_crouch = remapping_other3_player_key2_dive)
 			|| (remapping_player_key_crouch = remapping_other3_player_key2_jump)
 			|| (remapping_player_key_crouch = remapping_other3_player_key2_crouch)
@@ -706,7 +706,7 @@ function scr_option_control_menu()
 				}
 			}
 			#endregion /* Crouch Conflict END */
-			
+
 			#region /* Crouch Toggle Conflict */
 			if (remapping_player_key_crouch_toggle = remapping_player_key_dive)
 			|| (remapping_player_key_crouch_toggle = remapping_player_key_jump)
@@ -720,7 +720,7 @@ function scr_option_control_menu()
 			|| (remapping_player_key_crouch_toggle = remapping_player_key_tongue)
 			|| (remapping_player_key_crouch_toggle = remapping_player_key_zoom_in)
 			|| (remapping_player_key_crouch_toggle = remapping_player_key_zoom_out)
-			
+
 			|| (remapping_player_key_crouch_toggle = remapping_player_key2_dive)
 			|| (remapping_player_key_crouch_toggle = remapping_player_key2_jump)
 			|| (remapping_player_key_crouch_toggle = remapping_player_key2_crouch)
@@ -755,7 +755,7 @@ function scr_option_control_menu()
 			|| (remapping_player_key_crouch_toggle = remapping_other1_player_key_tongue)
 			|| (remapping_player_key_crouch_toggle = remapping_other1_player_key_zoom_in)
 			|| (remapping_player_key_crouch_toggle = remapping_other1_player_key_zoom_out)
-			
+
 			|| (remapping_player_key_crouch_toggle = remapping_other1_player_key2_dive)
 			|| (remapping_player_key_crouch_toggle = remapping_other1_player_key2_jump)
 			|| (remapping_player_key_crouch_toggle = remapping_other1_player_key2_crouch)
@@ -769,7 +769,7 @@ function scr_option_control_menu()
 			|| (remapping_player_key_crouch_toggle = remapping_other1_player_key2_tongue)
 			|| (remapping_player_key_crouch_toggle = remapping_other1_player_key2_zoom_in)
 			|| (remapping_player_key_crouch_toggle = remapping_other1_player_key2_zoom_out)
-			
+
 			|| (remapping_player_key_crouch_toggle = remapping_other2_player_key_dive)
 			|| (remapping_player_key_crouch_toggle = remapping_other2_player_key_jump)
 			|| (remapping_player_key_crouch_toggle = remapping_other2_player_key_crouch)
@@ -783,7 +783,7 @@ function scr_option_control_menu()
 			|| (remapping_player_key_crouch_toggle = remapping_other2_player_key_tongue)
 			|| (remapping_player_key_crouch_toggle = remapping_other2_player_key_zoom_in)
 			|| (remapping_player_key_crouch_toggle = remapping_other2_player_key_zoom_out)
-			
+
 			|| (remapping_player_key_crouch_toggle = remapping_other2_player_key2_dive)
 			|| (remapping_player_key_crouch_toggle = remapping_other2_player_key2_jump)
 			|| (remapping_player_key_crouch_toggle = remapping_other2_player_key2_crouch)
@@ -797,7 +797,7 @@ function scr_option_control_menu()
 			|| (remapping_player_key_crouch_toggle = remapping_other2_player_key2_tongue)
 			|| (remapping_player_key_crouch_toggle = remapping_other2_player_key2_zoom_in)
 			|| (remapping_player_key_crouch_toggle = remapping_other2_player_key2_zoom_out)
-			
+
 			|| (remapping_player_key_crouch_toggle = remapping_other3_player_key_dive)
 			|| (remapping_player_key_crouch_toggle = remapping_other3_player_key_jump)
 			|| (remapping_player_key_crouch_toggle = remapping_other3_player_key_crouch)
@@ -811,7 +811,7 @@ function scr_option_control_menu()
 			|| (remapping_player_key_crouch_toggle = remapping_other3_player_key_tongue)
 			|| (remapping_player_key_crouch_toggle = remapping_other3_player_key_zoom_in)
 			|| (remapping_player_key_crouch_toggle = remapping_other3_player_key_zoom_out)
-			
+
 			|| (remapping_player_key_crouch_toggle = remapping_other3_player_key2_dive)
 			|| (remapping_player_key_crouch_toggle = remapping_other3_player_key2_jump)
 			|| (remapping_player_key_crouch_toggle = remapping_other3_player_key2_crouch)
@@ -835,7 +835,7 @@ function scr_option_control_menu()
 				}
 			}
 			#endregion /* Crouch Toggle Conflict END */
-			
+
 			#region /* Run Conflict */
 			if (remapping_player_key_run = remapping_player_key_dive)
 			|| (remapping_player_key_run = remapping_player_key_jump)
@@ -849,7 +849,7 @@ function scr_option_control_menu()
 			|| (remapping_player_key_run = remapping_player_key_tongue)
 			|| (remapping_player_key_run = remapping_player_key_zoom_in)
 			|| (remapping_player_key_run = remapping_player_key_zoom_out)
-			
+
 			|| (remapping_player_key_run = remapping_player_key2_dive)
 			|| (remapping_player_key_run = remapping_player_key2_jump)
 			|| (remapping_player_key_run = remapping_player_key2_crouch)
@@ -884,7 +884,7 @@ function scr_option_control_menu()
 			|| (remapping_player_key_run = remapping_other1_player_key_tongue)
 			|| (remapping_player_key_run = remapping_other1_player_key_zoom_in)
 			|| (remapping_player_key_run = remapping_other1_player_key_zoom_out)
-			
+
 			|| (remapping_player_key_run = remapping_other1_player_key2_dive)
 			|| (remapping_player_key_run = remapping_other1_player_key2_jump)
 			|| (remapping_player_key_run = remapping_other1_player_key2_crouch)
@@ -898,7 +898,7 @@ function scr_option_control_menu()
 			|| (remapping_player_key_run = remapping_other1_player_key2_tongue)
 			|| (remapping_player_key_run = remapping_other1_player_key2_zoom_in)
 			|| (remapping_player_key_run = remapping_other1_player_key2_zoom_out)
-			
+
 			|| (remapping_player_key_run = remapping_other2_player_key_dive)
 			|| (remapping_player_key_run = remapping_other2_player_key_jump)
 			|| (remapping_player_key_run = remapping_other2_player_key_crouch)
@@ -912,7 +912,7 @@ function scr_option_control_menu()
 			|| (remapping_player_key_run = remapping_other2_player_key_tongue)
 			|| (remapping_player_key_run = remapping_other2_player_key_zoom_in)
 			|| (remapping_player_key_run = remapping_other2_player_key_zoom_out)
-			
+
 			|| (remapping_player_key_run = remapping_other2_player_key2_dive)
 			|| (remapping_player_key_run = remapping_other2_player_key2_jump)
 			|| (remapping_player_key_run = remapping_other2_player_key2_crouch)
@@ -926,7 +926,7 @@ function scr_option_control_menu()
 			|| (remapping_player_key_run = remapping_other2_player_key2_tongue)
 			|| (remapping_player_key_run = remapping_other2_player_key2_zoom_in)
 			|| (remapping_player_key_run = remapping_other2_player_key2_zoom_out)
-			
+
 			|| (remapping_player_key_run = remapping_other3_player_key_dive)
 			|| (remapping_player_key_run = remapping_other3_player_key_jump)
 			|| (remapping_player_key_run = remapping_other3_player_key_crouch)
@@ -940,7 +940,7 @@ function scr_option_control_menu()
 			|| (remapping_player_key_run = remapping_other3_player_key_tongue)
 			|| (remapping_player_key_run = remapping_other3_player_key_zoom_in)
 			|| (remapping_player_key_run = remapping_other3_player_key_zoom_out)
-			
+
 			|| (remapping_player_key_run = remapping_other3_player_key2_dive)
 			|| (remapping_player_key_run = remapping_other3_player_key2_jump)
 			|| (remapping_player_key_run = remapping_other3_player_key2_crouch)
@@ -964,7 +964,7 @@ function scr_option_control_menu()
 				}
 			}
 			#endregion /* Run Conflict END */
-			
+
 			#region /* Run Toggle Conflict */
 			if (remapping_player_key_run_toggle = remapping_player_key_dive)
 			|| (remapping_player_key_run_toggle = remapping_player_key_jump)
@@ -978,7 +978,7 @@ function scr_option_control_menu()
 			|| (remapping_player_key_run_toggle = remapping_player_key_tongue)
 			|| (remapping_player_key_run_toggle = remapping_player_key_zoom_in)
 			|| (remapping_player_key_run_toggle = remapping_player_key_zoom_out)
-			
+
 			|| (remapping_player_key_run_toggle = remapping_player_key2_dive)
 			|| (remapping_player_key_run_toggle = remapping_player_key2_jump)
 			|| (remapping_player_key_run_toggle = remapping_player_key2_crouch)
@@ -1013,7 +1013,7 @@ function scr_option_control_menu()
 			|| (remapping_player_key_run_toggle = remapping_other1_player_key_tongue)
 			|| (remapping_player_key_run_toggle = remapping_other1_player_key_zoom_in)
 			|| (remapping_player_key_run_toggle = remapping_other1_player_key_zoom_out)
-			
+
 			|| (remapping_player_key_run_toggle = remapping_other1_player_key2_dive)
 			|| (remapping_player_key_run_toggle = remapping_other1_player_key2_jump)
 			|| (remapping_player_key_run_toggle = remapping_other1_player_key2_crouch)
@@ -1027,7 +1027,7 @@ function scr_option_control_menu()
 			|| (remapping_player_key_run_toggle = remapping_other1_player_key2_tongue)
 			|| (remapping_player_key_run_toggle = remapping_other1_player_key2_zoom_in)
 			|| (remapping_player_key_run_toggle = remapping_other1_player_key2_zoom_out)
-			
+
 			|| (remapping_player_key_run_toggle = remapping_other2_player_key_dive)
 			|| (remapping_player_key_run_toggle = remapping_other2_player_key_jump)
 			|| (remapping_player_key_run_toggle = remapping_other2_player_key_crouch)
@@ -1041,7 +1041,7 @@ function scr_option_control_menu()
 			|| (remapping_player_key_run_toggle = remapping_other2_player_key_tongue)
 			|| (remapping_player_key_run_toggle = remapping_other2_player_key_zoom_in)
 			|| (remapping_player_key_run_toggle = remapping_other2_player_key_zoom_out)
-			
+
 			|| (remapping_player_key_run_toggle = remapping_other2_player_key2_dive)
 			|| (remapping_player_key_run_toggle = remapping_other2_player_key2_jump)
 			|| (remapping_player_key_run_toggle = remapping_other2_player_key2_crouch)
@@ -1055,7 +1055,7 @@ function scr_option_control_menu()
 			|| (remapping_player_key_run_toggle = remapping_other2_player_key2_tongue)
 			|| (remapping_player_key_run_toggle = remapping_other2_player_key2_zoom_in)
 			|| (remapping_player_key_run_toggle = remapping_other2_player_key2_zoom_out)
-			
+
 			|| (remapping_player_key_run_toggle = remapping_other3_player_key_dive)
 			|| (remapping_player_key_run_toggle = remapping_other3_player_key_jump)
 			|| (remapping_player_key_run_toggle = remapping_other3_player_key_crouch)
@@ -1069,7 +1069,7 @@ function scr_option_control_menu()
 			|| (remapping_player_key_run_toggle = remapping_other3_player_key_tongue)
 			|| (remapping_player_key_run_toggle = remapping_other3_player_key_zoom_in)
 			|| (remapping_player_key_run_toggle = remapping_other3_player_key_zoom_out)
-			
+
 			|| (remapping_player_key_run_toggle = remapping_other3_player_key2_dive)
 			|| (remapping_player_key_run_toggle = remapping_other3_player_key2_jump)
 			|| (remapping_player_key_run_toggle = remapping_other3_player_key2_crouch)
@@ -1093,7 +1093,7 @@ function scr_option_control_menu()
 				}
 			}
 			#endregion /* Run Toggle Conflict END */
-			
+
 			#region /* Left Conflict */
 			if (remapping_player_key_left = remapping_player_key_dive)
 			|| (remapping_player_key_left = remapping_player_key_jump)
@@ -1107,7 +1107,7 @@ function scr_option_control_menu()
 			|| (remapping_player_key_left = remapping_player_key_tongue)
 			|| (remapping_player_key_left = remapping_player_key_zoom_in)
 			|| (remapping_player_key_left = remapping_player_key_zoom_out)
-			
+
 			|| (remapping_player_key_left = remapping_player_key2_dive)
 			|| (remapping_player_key_left = remapping_player_key2_jump)
 			|| (remapping_player_key_left = remapping_player_key2_crouch)
@@ -1142,7 +1142,7 @@ function scr_option_control_menu()
 			|| (remapping_player_key_left = remapping_other1_player_key_tongue)
 			|| (remapping_player_key_left = remapping_other1_player_key_zoom_in)
 			|| (remapping_player_key_left = remapping_other1_player_key_zoom_out)
-			
+
 			|| (remapping_player_key_left = remapping_other1_player_key2_dive)
 			|| (remapping_player_key_left = remapping_other1_player_key2_jump)
 			|| (remapping_player_key_left = remapping_other1_player_key2_crouch)
@@ -1156,7 +1156,7 @@ function scr_option_control_menu()
 			|| (remapping_player_key_left = remapping_other1_player_key2_tongue)
 			|| (remapping_player_key_left = remapping_other1_player_key2_zoom_in)
 			|| (remapping_player_key_left = remapping_other1_player_key2_zoom_out)
-			
+
 			|| (remapping_player_key_left = remapping_other2_player_key_dive)
 			|| (remapping_player_key_left = remapping_other2_player_key_jump)
 			|| (remapping_player_key_left = remapping_other2_player_key_crouch)
@@ -1170,7 +1170,7 @@ function scr_option_control_menu()
 			|| (remapping_player_key_left = remapping_other2_player_key_tongue)
 			|| (remapping_player_key_left = remapping_other2_player_key_zoom_in)
 			|| (remapping_player_key_left = remapping_other2_player_key_zoom_out)
-			
+
 			|| (remapping_player_key_left = remapping_other2_player_key2_dive)
 			|| (remapping_player_key_left = remapping_other2_player_key2_jump)
 			|| (remapping_player_key_left = remapping_other2_player_key2_crouch)
@@ -1184,7 +1184,7 @@ function scr_option_control_menu()
 			|| (remapping_player_key_left = remapping_other2_player_key2_tongue)
 			|| (remapping_player_key_left = remapping_other2_player_key2_zoom_in)
 			|| (remapping_player_key_left = remapping_other2_player_key2_zoom_out)
-			
+
 			|| (remapping_player_key_left = remapping_other3_player_key_dive)
 			|| (remapping_player_key_left = remapping_other3_player_key_jump)
 			|| (remapping_player_key_left = remapping_other3_player_key_crouch)
@@ -1198,7 +1198,7 @@ function scr_option_control_menu()
 			|| (remapping_player_key_left = remapping_other3_player_key_tongue)
 			|| (remapping_player_key_left = remapping_other3_player_key_zoom_in)
 			|| (remapping_player_key_left = remapping_other3_player_key_zoom_out)
-			
+
 			|| (remapping_player_key_left = remapping_other3_player_key2_dive)
 			|| (remapping_player_key_left = remapping_other3_player_key2_jump)
 			|| (remapping_player_key_left = remapping_other3_player_key2_crouch)
@@ -1222,7 +1222,7 @@ function scr_option_control_menu()
 				}
 			}
 			#endregion /* Left Conflict END */
-			
+
 			#region /* Right Conflict */
 			if (remapping_player_key_right = remapping_player_key_dive)
 			|| (remapping_player_key_right = remapping_player_key_jump)
@@ -1236,7 +1236,7 @@ function scr_option_control_menu()
 			|| (remapping_player_key_right = remapping_player_key_tongue)
 			|| (remapping_player_key_right = remapping_player_key_zoom_in)
 			|| (remapping_player_key_right = remapping_player_key_zoom_out)
-			
+
 			|| (remapping_player_key_right = remapping_player_key2_dive)
 			|| (remapping_player_key_right = remapping_player_key2_jump)
 			|| (remapping_player_key_right = remapping_player_key2_crouch)
@@ -1271,7 +1271,7 @@ function scr_option_control_menu()
 			|| (remapping_player_key_right = remapping_other1_player_key_tongue)
 			|| (remapping_player_key_right = remapping_other1_player_key_zoom_in)
 			|| (remapping_player_key_right = remapping_other1_player_key_zoom_out)
-			
+
 			|| (remapping_player_key_right = remapping_other1_player_key2_dive)
 			|| (remapping_player_key_right = remapping_other1_player_key2_jump)
 			|| (remapping_player_key_right = remapping_other1_player_key2_crouch)
@@ -1285,7 +1285,7 @@ function scr_option_control_menu()
 			|| (remapping_player_key_right = remapping_other1_player_key2_tongue)
 			|| (remapping_player_key_right = remapping_other1_player_key2_zoom_in)
 			|| (remapping_player_key_right = remapping_other1_player_key2_zoom_out)
-			
+
 			|| (remapping_player_key_right = remapping_other2_player_key_dive)
 			|| (remapping_player_key_right = remapping_other2_player_key_jump)
 			|| (remapping_player_key_right = remapping_other2_player_key_crouch)
@@ -1299,7 +1299,7 @@ function scr_option_control_menu()
 			|| (remapping_player_key_right = remapping_other2_player_key_tongue)
 			|| (remapping_player_key_right = remapping_other2_player_key_zoom_in)
 			|| (remapping_player_key_right = remapping_other2_player_key_zoom_out)
-			
+
 			|| (remapping_player_key_right = remapping_other2_player_key2_dive)
 			|| (remapping_player_key_right = remapping_other2_player_key2_jump)
 			|| (remapping_player_key_right = remapping_other2_player_key2_crouch)
@@ -1313,7 +1313,7 @@ function scr_option_control_menu()
 			|| (remapping_player_key_right = remapping_other2_player_key2_tongue)
 			|| (remapping_player_key_right = remapping_other2_player_key2_zoom_in)
 			|| (remapping_player_key_right = remapping_other2_player_key2_zoom_out)
-			
+
 			|| (remapping_player_key_right = remapping_other3_player_key_dive)
 			|| (remapping_player_key_right = remapping_other3_player_key_jump)
 			|| (remapping_player_key_right = remapping_other3_player_key_crouch)
@@ -1327,7 +1327,7 @@ function scr_option_control_menu()
 			|| (remapping_player_key_right = remapping_other3_player_key_tongue)
 			|| (remapping_player_key_right = remapping_other3_player_key_zoom_in)
 			|| (remapping_player_key_right = remapping_other3_player_key_zoom_out)
-			
+
 			|| (remapping_player_key_right = remapping_other3_player_key2_dive)
 			|| (remapping_player_key_right = remapping_other3_player_key2_jump)
 			|| (remapping_player_key_right = remapping_other3_player_key2_crouch)
@@ -1351,7 +1351,7 @@ function scr_option_control_menu()
 				}
 			}
 			#endregion /* Right Conflict END */
-			
+
 			#region /* Down Conflict */
 			if (remapping_player_key_down = remapping_player_key_dive)
 			|| (remapping_player_key_down = remapping_player_key_jump)
@@ -1365,7 +1365,7 @@ function scr_option_control_menu()
 			|| (remapping_player_key_down = remapping_player_key_tongue)
 			|| (remapping_player_key_down = remapping_player_key_zoom_in)
 			|| (remapping_player_key_down = remapping_player_key_zoom_out)
-			
+
 			|| (remapping_player_key_down = remapping_player_key2_dive)
 			|| (remapping_player_key_down = remapping_player_key2_jump)
 			|| (remapping_player_key_down = remapping_player_key2_crouch)
@@ -1400,7 +1400,7 @@ function scr_option_control_menu()
 			|| (remapping_player_key_down = remapping_other1_player_key_tongue)
 			|| (remapping_player_key_down = remapping_other1_player_key_zoom_in)
 			|| (remapping_player_key_down = remapping_other1_player_key_zoom_out)
-			
+
 			|| (remapping_player_key_down = remapping_other1_player_key2_dive)
 			|| (remapping_player_key_down = remapping_other1_player_key2_jump)
 			|| (remapping_player_key_down = remapping_other1_player_key2_crouch)
@@ -1414,7 +1414,7 @@ function scr_option_control_menu()
 			|| (remapping_player_key_down = remapping_other1_player_key2_tongue)
 			|| (remapping_player_key_down = remapping_other1_player_key2_zoom_in)
 			|| (remapping_player_key_down = remapping_other1_player_key2_zoom_out)
-			
+
 			|| (remapping_player_key_down = remapping_other2_player_key_dive)
 			|| (remapping_player_key_down = remapping_other2_player_key_jump)
 			|| (remapping_player_key_down = remapping_other2_player_key_crouch)
@@ -1428,7 +1428,7 @@ function scr_option_control_menu()
 			|| (remapping_player_key_down = remapping_other2_player_key_tongue)
 			|| (remapping_player_key_down = remapping_other2_player_key_zoom_in)
 			|| (remapping_player_key_down = remapping_other2_player_key_zoom_out)
-			
+
 			|| (remapping_player_key_down = remapping_other2_player_key2_dive)
 			|| (remapping_player_key_down = remapping_other2_player_key2_jump)
 			|| (remapping_player_key_down = remapping_other2_player_key2_crouch)
@@ -1442,7 +1442,7 @@ function scr_option_control_menu()
 			|| (remapping_player_key_down = remapping_other2_player_key2_tongue)
 			|| (remapping_player_key_down = remapping_other2_player_key2_zoom_in)
 			|| (remapping_player_key_down = remapping_other2_player_key2_zoom_out)
-			
+
 			|| (remapping_player_key_down = remapping_other3_player_key_dive)
 			|| (remapping_player_key_down = remapping_other3_player_key_jump)
 			|| (remapping_player_key_down = remapping_other3_player_key_crouch)
@@ -1456,7 +1456,7 @@ function scr_option_control_menu()
 			|| (remapping_player_key_down = remapping_other3_player_key_tongue)
 			|| (remapping_player_key_down = remapping_other3_player_key_zoom_in)
 			|| (remapping_player_key_down = remapping_other3_player_key_zoom_out)
-			
+
 			|| (remapping_player_key_down = remapping_other3_player_key2_dive)
 			|| (remapping_player_key_down = remapping_other3_player_key2_jump)
 			|| (remapping_player_key_down = remapping_other3_player_key2_crouch)
@@ -1480,7 +1480,7 @@ function scr_option_control_menu()
 				}
 			}
 			#endregion /* Down Conflict END */
-			
+
 			#region /* Up Conflict */
 			if (remapping_player_key_up = remapping_player_key_dive)
 			|| (remapping_player_key_up = remapping_player_key_jump)
@@ -1494,7 +1494,7 @@ function scr_option_control_menu()
 			|| (remapping_player_key_up = remapping_player_key_tongue)
 			|| (remapping_player_key_up = remapping_player_key_zoom_in)
 			|| (remapping_player_key_up = remapping_player_key_zoom_out)
-			
+
 			|| (remapping_player_key_up = remapping_player_key2_dive)
 			|| (remapping_player_key_up = remapping_player_key2_jump)
 			|| (remapping_player_key_up = remapping_player_key2_crouch)
@@ -1529,7 +1529,7 @@ function scr_option_control_menu()
 			|| (remapping_player_key_up = remapping_other1_player_key_tongue)
 			|| (remapping_player_key_up = remapping_other1_player_key_zoom_in)
 			|| (remapping_player_key_up = remapping_other1_player_key_zoom_out)
-			
+
 			|| (remapping_player_key_up = remapping_other1_player_key2_dive)
 			|| (remapping_player_key_up = remapping_other1_player_key2_jump)
 			|| (remapping_player_key_up = remapping_other1_player_key2_crouch)
@@ -1543,7 +1543,7 @@ function scr_option_control_menu()
 			|| (remapping_player_key_up = remapping_other1_player_key2_tongue)
 			|| (remapping_player_key_up = remapping_other1_player_key2_zoom_in)
 			|| (remapping_player_key_up = remapping_other1_player_key2_zoom_out)
-			
+
 			|| (remapping_player_key_up = remapping_other2_player_key_dive)
 			|| (remapping_player_key_up = remapping_other2_player_key_jump)
 			|| (remapping_player_key_up = remapping_other2_player_key_crouch)
@@ -1557,7 +1557,7 @@ function scr_option_control_menu()
 			|| (remapping_player_key_up = remapping_other2_player_key_tongue)
 			|| (remapping_player_key_up = remapping_other2_player_key_zoom_in)
 			|| (remapping_player_key_up = remapping_other2_player_key_zoom_out)
-			
+
 			|| (remapping_player_key_up = remapping_other2_player_key2_dive)
 			|| (remapping_player_key_up = remapping_other2_player_key2_jump)
 			|| (remapping_player_key_up = remapping_other2_player_key2_crouch)
@@ -1571,7 +1571,7 @@ function scr_option_control_menu()
 			|| (remapping_player_key_up = remapping_other2_player_key2_tongue)
 			|| (remapping_player_key_up = remapping_other2_player_key2_zoom_in)
 			|| (remapping_player_key_up = remapping_other2_player_key2_zoom_out)
-			
+
 			|| (remapping_player_key_up = remapping_other3_player_key_dive)
 			|| (remapping_player_key_up = remapping_other3_player_key_jump)
 			|| (remapping_player_key_up = remapping_other3_player_key_crouch)
@@ -1585,7 +1585,7 @@ function scr_option_control_menu()
 			|| (remapping_player_key_up = remapping_other3_player_key_tongue)
 			|| (remapping_player_key_up = remapping_other3_player_key_zoom_in)
 			|| (remapping_player_key_up = remapping_other3_player_key_zoom_out)
-			
+
 			|| (remapping_player_key_up = remapping_other3_player_key2_dive)
 			|| (remapping_player_key_up = remapping_other3_player_key2_jump)
 			|| (remapping_player_key_up = remapping_other3_player_key2_crouch)
@@ -1609,7 +1609,7 @@ function scr_option_control_menu()
 				}
 			}
 			#endregion /* Up Conflict END */
-			
+
 			#region /* Tongue Conflict */
 			if (remapping_player_key_tongue = remapping_player_key_dive)
 			|| (remapping_player_key_tongue = remapping_player_key_jump)
@@ -1623,7 +1623,7 @@ function scr_option_control_menu()
 			|| (remapping_player_key_tongue = remapping_player_key_up)
 			|| (remapping_player_key_tongue = remapping_player_key_zoom_in)
 			|| (remapping_player_key_tongue = remapping_player_key_zoom_out)
-			
+
 			|| (remapping_player_key_tongue = remapping_player_key2_dive)
 			|| (remapping_player_key_tongue = remapping_player_key2_jump)
 			|| (remapping_player_key_tongue = remapping_player_key2_crouch)
@@ -1658,7 +1658,7 @@ function scr_option_control_menu()
 			|| (remapping_player_key_tongue = remapping_other1_player_key_tongue)
 			|| (remapping_player_key_tongue = remapping_other1_player_key_zoom_in)
 			|| (remapping_player_key_tongue = remapping_other1_player_key_zoom_out)
-			
+
 			|| (remapping_player_key_tongue = remapping_other1_player_key2_dive)
 			|| (remapping_player_key_tongue = remapping_other1_player_key2_jump)
 			|| (remapping_player_key_tongue = remapping_other1_player_key2_crouch)
@@ -1672,7 +1672,7 @@ function scr_option_control_menu()
 			|| (remapping_player_key_tongue = remapping_other1_player_key2_tongue)
 			|| (remapping_player_key_tongue = remapping_other1_player_key2_zoom_in)
 			|| (remapping_player_key_tongue = remapping_other1_player_key2_zoom_out)
-			
+
 			|| (remapping_player_key_tongue = remapping_other2_player_key_dive)
 			|| (remapping_player_key_tongue = remapping_other2_player_key_jump)
 			|| (remapping_player_key_tongue = remapping_other2_player_key_crouch)
@@ -1686,7 +1686,7 @@ function scr_option_control_menu()
 			|| (remapping_player_key_tongue = remapping_other2_player_key_tongue)
 			|| (remapping_player_key_tongue = remapping_other2_player_key_zoom_in)
 			|| (remapping_player_key_tongue = remapping_other2_player_key_zoom_out)
-			
+
 			|| (remapping_player_key_tongue = remapping_other2_player_key2_dive)
 			|| (remapping_player_key_tongue = remapping_other2_player_key2_jump)
 			|| (remapping_player_key_tongue = remapping_other2_player_key2_crouch)
@@ -1700,7 +1700,7 @@ function scr_option_control_menu()
 			|| (remapping_player_key_tongue = remapping_other2_player_key2_tongue)
 			|| (remapping_player_key_tongue = remapping_other2_player_key2_zoom_in)
 			|| (remapping_player_key_tongue = remapping_other2_player_key2_zoom_out)
-			
+
 			|| (remapping_player_key_tongue = remapping_other3_player_key_dive)
 			|| (remapping_player_key_tongue = remapping_other3_player_key_jump)
 			|| (remapping_player_key_tongue = remapping_other3_player_key_crouch)
@@ -1714,7 +1714,7 @@ function scr_option_control_menu()
 			|| (remapping_player_key_tongue = remapping_other3_player_key_tongue)
 			|| (remapping_player_key_tongue = remapping_other3_player_key_zoom_in)
 			|| (remapping_player_key_tongue = remapping_other3_player_key_zoom_out)
-			
+
 			|| (remapping_player_key_tongue = remapping_other3_player_key2_dive)
 			|| (remapping_player_key_tongue = remapping_other3_player_key2_jump)
 			|| (remapping_player_key_tongue = remapping_other3_player_key2_crouch)
@@ -1738,7 +1738,7 @@ function scr_option_control_menu()
 				}
 			}
 			#endregion /* Tongue Conflict END */
-			
+
 			#region /* Zoom In Conflict */
 			if (remapping_player_key_zoom_in = remapping_player_key_dive)
 			|| (remapping_player_key_zoom_in = remapping_player_key_jump)
@@ -1752,7 +1752,7 @@ function scr_option_control_menu()
 			|| (remapping_player_key_zoom_in = remapping_player_key_up)
 			|| (remapping_player_key_zoom_in = remapping_player_key_tongue)
 			|| (remapping_player_key_zoom_in = remapping_player_key_zoom_out)
-			
+
 			|| (remapping_player_key_zoom_in = remapping_player_key2_dive)
 			|| (remapping_player_key_zoom_in = remapping_player_key2_jump)
 			|| (remapping_player_key_zoom_in = remapping_player_key2_crouch)
@@ -1787,7 +1787,7 @@ function scr_option_control_menu()
 			|| (remapping_player_key_zoom_in = remapping_other1_player_key_tongue)
 			|| (remapping_player_key_zoom_in = remapping_other1_player_key_zoom_in)
 			|| (remapping_player_key_zoom_in = remapping_other1_player_key_zoom_out)
-			
+
 			|| (remapping_player_key_zoom_in = remapping_other1_player_key2_dive)
 			|| (remapping_player_key_zoom_in = remapping_other1_player_key2_jump)
 			|| (remapping_player_key_zoom_in = remapping_other1_player_key2_crouch)
@@ -1801,7 +1801,7 @@ function scr_option_control_menu()
 			|| (remapping_player_key_zoom_in = remapping_other1_player_key2_tongue)
 			|| (remapping_player_key_zoom_in = remapping_other1_player_key2_zoom_in)
 			|| (remapping_player_key_zoom_in = remapping_other1_player_key2_zoom_out)
-			
+
 			|| (remapping_player_key_zoom_in = remapping_other2_player_key_dive)
 			|| (remapping_player_key_zoom_in = remapping_other2_player_key_jump)
 			|| (remapping_player_key_zoom_in = remapping_other2_player_key_crouch)
@@ -1815,7 +1815,7 @@ function scr_option_control_menu()
 			|| (remapping_player_key_zoom_in = remapping_other2_player_key_tongue)
 			|| (remapping_player_key_zoom_in = remapping_other2_player_key_zoom_in)
 			|| (remapping_player_key_zoom_in = remapping_other2_player_key_zoom_out)
-			
+
 			|| (remapping_player_key_zoom_in = remapping_other2_player_key2_dive)
 			|| (remapping_player_key_zoom_in = remapping_other2_player_key2_jump)
 			|| (remapping_player_key_zoom_in = remapping_other2_player_key2_crouch)
@@ -1829,7 +1829,7 @@ function scr_option_control_menu()
 			|| (remapping_player_key_zoom_in = remapping_other2_player_key2_tongue)
 			|| (remapping_player_key_zoom_in = remapping_other2_player_key2_zoom_in)
 			|| (remapping_player_key_zoom_in = remapping_other2_player_key2_zoom_out)
-			
+
 			|| (remapping_player_key_zoom_in = remapping_other3_player_key_dive)
 			|| (remapping_player_key_zoom_in = remapping_other3_player_key_jump)
 			|| (remapping_player_key_zoom_in = remapping_other3_player_key_crouch)
@@ -1843,7 +1843,7 @@ function scr_option_control_menu()
 			|| (remapping_player_key_zoom_in = remapping_other3_player_key_tongue)
 			|| (remapping_player_key_zoom_in = remapping_other3_player_key_zoom_in)
 			|| (remapping_player_key_zoom_in = remapping_other3_player_key_zoom_out)
-			
+
 			|| (remapping_player_key_zoom_in = remapping_other3_player_key2_dive)
 			|| (remapping_player_key_zoom_in = remapping_other3_player_key2_jump)
 			|| (remapping_player_key_zoom_in = remapping_other3_player_key2_crouch)
@@ -1867,7 +1867,7 @@ function scr_option_control_menu()
 				}
 			}
 			#endregion /* Zoom In Conflict END */
-			
+
 			#region /* Zoom Out Conflict */
 			if (remapping_player_key_zoom_out = remapping_player_key_dive)
 			|| (remapping_player_key_zoom_out = remapping_player_key_jump)
@@ -1881,7 +1881,7 @@ function scr_option_control_menu()
 			|| (remapping_player_key_zoom_out = remapping_player_key_up)
 			|| (remapping_player_key_zoom_out = remapping_player_key_tongue)
 			|| (remapping_player_key_zoom_out = remapping_player_key_zoom_in)
-			
+
 			|| (remapping_player_key_zoom_out = remapping_player_key2_dive)
 			|| (remapping_player_key_zoom_out = remapping_player_key2_jump)
 			|| (remapping_player_key_zoom_out = remapping_player_key2_crouch)
@@ -1916,7 +1916,7 @@ function scr_option_control_menu()
 			|| (remapping_player_key_zoom_out = remapping_other1_player_key_tongue)
 			|| (remapping_player_key_zoom_out = remapping_other1_player_key_zoom_in)
 			|| (remapping_player_key_zoom_out = remapping_other1_player_key_zoom_out)
-			
+
 			|| (remapping_player_key_zoom_out = remapping_other1_player_key2_dive)
 			|| (remapping_player_key_zoom_out = remapping_other1_player_key2_jump)
 			|| (remapping_player_key_zoom_out = remapping_other1_player_key2_crouch)
@@ -1930,7 +1930,7 @@ function scr_option_control_menu()
 			|| (remapping_player_key_zoom_out = remapping_other1_player_key2_tongue)
 			|| (remapping_player_key_zoom_out = remapping_other1_player_key2_zoom_in)
 			|| (remapping_player_key_zoom_out = remapping_other1_player_key2_zoom_out)
-			
+
 			|| (remapping_player_key_zoom_out = remapping_other2_player_key_dive)
 			|| (remapping_player_key_zoom_out = remapping_other2_player_key_jump)
 			|| (remapping_player_key_zoom_out = remapping_other2_player_key_crouch)
@@ -1944,7 +1944,7 @@ function scr_option_control_menu()
 			|| (remapping_player_key_zoom_out = remapping_other2_player_key_tongue)
 			|| (remapping_player_key_zoom_out = remapping_other2_player_key_zoom_in)
 			|| (remapping_player_key_zoom_out = remapping_other2_player_key_zoom_out)
-			
+
 			|| (remapping_player_key_zoom_out = remapping_other2_player_key2_dive)
 			|| (remapping_player_key_zoom_out = remapping_other2_player_key2_jump)
 			|| (remapping_player_key_zoom_out = remapping_other2_player_key2_crouch)
@@ -1958,7 +1958,7 @@ function scr_option_control_menu()
 			|| (remapping_player_key_zoom_out = remapping_other2_player_key2_tongue)
 			|| (remapping_player_key_zoom_out = remapping_other2_player_key2_zoom_in)
 			|| (remapping_player_key_zoom_out = remapping_other2_player_key2_zoom_out)
-			
+
 			|| (remapping_player_key_zoom_out = remapping_other3_player_key_dive)
 			|| (remapping_player_key_zoom_out = remapping_other3_player_key_jump)
 			|| (remapping_player_key_zoom_out = remapping_other3_player_key_crouch)
@@ -1972,7 +1972,7 @@ function scr_option_control_menu()
 			|| (remapping_player_key_zoom_out = remapping_other3_player_key_tongue)
 			|| (remapping_player_key_zoom_out = remapping_other3_player_key_zoom_in)
 			|| (remapping_player_key_zoom_out = remapping_other3_player_key_zoom_out)
-			
+
 			|| (remapping_player_key_zoom_out = remapping_other3_player_key2_dive)
 			|| (remapping_player_key_zoom_out = remapping_other3_player_key2_jump)
 			|| (remapping_player_key_zoom_out = remapping_other3_player_key2_crouch)
@@ -1996,11 +1996,11 @@ function scr_option_control_menu()
 				}
 			}
 			#endregion /* Zoom Out Conflict END */
-			
+
 			#endregion /* Key 1 Conflicts END */
-			
+
 			#region /* Key 2 Conflicts */
-			
+
 			#region /* Dive 2 Conflict */
 			if (remapping_player_key2_dive = remapping_player_key_dive)
 			|| (remapping_player_key2_dive = remapping_player_key_jump)
@@ -2015,7 +2015,7 @@ function scr_option_control_menu()
 			|| (remapping_player_key2_dive = remapping_player_key_tongue)
 			|| (remapping_player_key2_dive = remapping_player_key_zoom_in)
 			|| (remapping_player_key2_dive = remapping_player_key_zoom_out)
-			
+
 			|| (remapping_player_key2_dive = remapping_player_key2_jump)
 			|| (remapping_player_key2_dive = remapping_player_key2_crouch)
 			|| (remapping_player_key2_dive = remapping_player_key2_crouch_toggle)
@@ -2049,7 +2049,7 @@ function scr_option_control_menu()
 			|| (remapping_player_key2_dive = remapping_other1_player_key_tongue)
 			|| (remapping_player_key2_dive = remapping_other1_player_key_zoom_in)
 			|| (remapping_player_key2_dive = remapping_other1_player_key_zoom_out)
-			
+
 			|| (remapping_player_key2_dive = remapping_other1_player_key2_dive)
 			|| (remapping_player_key2_dive = remapping_other1_player_key2_jump)
 			|| (remapping_player_key2_dive = remapping_other1_player_key2_crouch)
@@ -2063,7 +2063,7 @@ function scr_option_control_menu()
 			|| (remapping_player_key2_dive = remapping_other1_player_key2_tongue)
 			|| (remapping_player_key2_dive = remapping_other1_player_key2_zoom_in)
 			|| (remapping_player_key2_dive = remapping_other1_player_key2_zoom_out)
-			
+
 			|| (remapping_player_key2_dive = remapping_other2_player_key_dive)
 			|| (remapping_player_key2_dive = remapping_other2_player_key_jump)
 			|| (remapping_player_key2_dive = remapping_other2_player_key_crouch)
@@ -2077,7 +2077,7 @@ function scr_option_control_menu()
 			|| (remapping_player_key2_dive = remapping_other2_player_key_tongue)
 			|| (remapping_player_key2_dive = remapping_other2_player_key_zoom_in)
 			|| (remapping_player_key2_dive = remapping_other2_player_key_zoom_out)
-			
+
 			|| (remapping_player_key2_dive = remapping_other2_player_key2_dive)
 			|| (remapping_player_key2_dive = remapping_other2_player_key2_jump)
 			|| (remapping_player_key2_dive = remapping_other2_player_key2_crouch)
@@ -2091,7 +2091,7 @@ function scr_option_control_menu()
 			|| (remapping_player_key2_dive = remapping_other2_player_key2_tongue)
 			|| (remapping_player_key2_dive = remapping_other2_player_key2_zoom_in)
 			|| (remapping_player_key2_dive = remapping_other2_player_key2_zoom_out)
-			
+
 			|| (remapping_player_key2_dive = remapping_other3_player_key_dive)
 			|| (remapping_player_key2_dive = remapping_other3_player_key_jump)
 			|| (remapping_player_key2_dive = remapping_other3_player_key_crouch)
@@ -2105,7 +2105,7 @@ function scr_option_control_menu()
 			|| (remapping_player_key2_dive = remapping_other3_player_key_tongue)
 			|| (remapping_player_key2_dive = remapping_other3_player_key_zoom_in)
 			|| (remapping_player_key2_dive = remapping_other3_player_key_zoom_out)
-			
+
 			|| (remapping_player_key2_dive = remapping_other3_player_key2_dive)
 			|| (remapping_player_key2_dive = remapping_other3_player_key2_jump)
 			|| (remapping_player_key2_dive = remapping_other3_player_key2_crouch)
@@ -2129,7 +2129,7 @@ function scr_option_control_menu()
 				}
 			}
 			#endregion /* Dive 2 Conflict END */
-			
+
 			#region /* Jump 2 Conflict */
 			if (remapping_player_key2_jump = remapping_player_key_dive)
 			|| (remapping_player_key2_jump = remapping_player_key_jump)
@@ -2144,7 +2144,7 @@ function scr_option_control_menu()
 			|| (remapping_player_key2_jump = remapping_player_key_tongue)
 			|| (remapping_player_key2_jump = remapping_player_key_zoom_in)
 			|| (remapping_player_key2_jump = remapping_player_key_zoom_out)
-			
+
 			|| (remapping_player_key2_jump = remapping_player_key2_dive)
 			|| (remapping_player_key2_jump = remapping_player_key2_crouch)
 			|| (remapping_player_key2_jump = remapping_player_key2_crouch_toggle)
@@ -2178,7 +2178,7 @@ function scr_option_control_menu()
 			|| (remapping_player_key2_jump = remapping_other1_player_key_tongue)
 			|| (remapping_player_key2_jump = remapping_other1_player_key_zoom_in)
 			|| (remapping_player_key2_jump = remapping_other1_player_key_zoom_out)
-			
+
 			|| (remapping_player_key2_jump = remapping_other1_player_key2_dive)
 			|| (remapping_player_key2_jump = remapping_other1_player_key2_jump)
 			|| (remapping_player_key2_jump = remapping_other1_player_key2_crouch)
@@ -2192,7 +2192,7 @@ function scr_option_control_menu()
 			|| (remapping_player_key2_jump = remapping_other1_player_key2_tongue)
 			|| (remapping_player_key2_jump = remapping_other1_player_key2_zoom_in)
 			|| (remapping_player_key2_jump = remapping_other1_player_key2_zoom_out)
-			
+
 			|| (remapping_player_key2_jump = remapping_other2_player_key_dive)
 			|| (remapping_player_key2_jump = remapping_other2_player_key_jump)
 			|| (remapping_player_key2_jump = remapping_other2_player_key_crouch)
@@ -2206,7 +2206,7 @@ function scr_option_control_menu()
 			|| (remapping_player_key2_jump = remapping_other2_player_key_tongue)
 			|| (remapping_player_key2_jump = remapping_other2_player_key_zoom_in)
 			|| (remapping_player_key2_jump = remapping_other2_player_key_zoom_out)
-			
+
 			|| (remapping_player_key2_jump = remapping_other2_player_key2_dive)
 			|| (remapping_player_key2_jump = remapping_other2_player_key2_jump)
 			|| (remapping_player_key2_jump = remapping_other2_player_key2_crouch)
@@ -2220,7 +2220,7 @@ function scr_option_control_menu()
 			|| (remapping_player_key2_jump = remapping_other2_player_key2_tongue)
 			|| (remapping_player_key2_jump = remapping_other2_player_key2_zoom_in)
 			|| (remapping_player_key2_jump = remapping_other2_player_key2_zoom_out)
-			
+
 			|| (remapping_player_key2_jump = remapping_other3_player_key_dive)
 			|| (remapping_player_key2_jump = remapping_other3_player_key_jump)
 			|| (remapping_player_key2_jump = remapping_other3_player_key_crouch)
@@ -2234,7 +2234,7 @@ function scr_option_control_menu()
 			|| (remapping_player_key2_jump = remapping_other3_player_key_tongue)
 			|| (remapping_player_key2_jump = remapping_other3_player_key_zoom_in)
 			|| (remapping_player_key2_jump = remapping_other3_player_key_zoom_out)
-			
+
 			|| (remapping_player_key2_jump = remapping_other3_player_key2_dive)
 			|| (remapping_player_key2_jump = remapping_other3_player_key2_jump)
 			|| (remapping_player_key2_jump = remapping_other3_player_key2_crouch)
@@ -2258,7 +2258,7 @@ function scr_option_control_menu()
 				}
 			}
 			#endregion /* Jump 2 Conflict END */
-			
+
 			#region /* Crouch 2 Conflict */
 			if (remapping_player_key2_crouch = remapping_player_key_dive)
 			|| (remapping_player_key2_crouch = remapping_player_key_jump)
@@ -2273,7 +2273,7 @@ function scr_option_control_menu()
 			|| (remapping_player_key2_crouch = remapping_player_key_tongue)
 			|| (remapping_player_key2_crouch = remapping_player_key_zoom_in)
 			|| (remapping_player_key2_crouch = remapping_player_key_zoom_out)
-			
+
 			|| (remapping_player_key2_crouch = remapping_player_key2_dive)
 			|| (remapping_player_key2_crouch = remapping_player_key2_jump)
 			|| (remapping_player_key2_crouch = remapping_player_key2_crouch_toggle)
@@ -2307,7 +2307,7 @@ function scr_option_control_menu()
 			|| (remapping_player_key2_crouch = remapping_other1_player_key_tongue)
 			|| (remapping_player_key2_crouch = remapping_other1_player_key_zoom_in)
 			|| (remapping_player_key2_crouch = remapping_other1_player_key_zoom_out)
-			
+
 			|| (remapping_player_key2_crouch = remapping_other1_player_key2_dive)
 			|| (remapping_player_key2_crouch = remapping_other1_player_key2_jump)
 			|| (remapping_player_key2_crouch = remapping_other1_player_key2_crouch)
@@ -2321,7 +2321,7 @@ function scr_option_control_menu()
 			|| (remapping_player_key2_crouch = remapping_other1_player_key2_tongue)
 			|| (remapping_player_key2_crouch = remapping_other1_player_key2_zoom_in)
 			|| (remapping_player_key2_crouch = remapping_other1_player_key2_zoom_out)
-			
+
 			|| (remapping_player_key2_crouch = remapping_other2_player_key_dive)
 			|| (remapping_player_key2_crouch = remapping_other2_player_key_jump)
 			|| (remapping_player_key2_crouch = remapping_other2_player_key_crouch)
@@ -2335,7 +2335,7 @@ function scr_option_control_menu()
 			|| (remapping_player_key2_crouch = remapping_other2_player_key_tongue)
 			|| (remapping_player_key2_crouch = remapping_other2_player_key_zoom_in)
 			|| (remapping_player_key2_crouch = remapping_other2_player_key_zoom_out)
-			
+
 			|| (remapping_player_key2_crouch = remapping_other2_player_key2_dive)
 			|| (remapping_player_key2_crouch = remapping_other2_player_key2_jump)
 			|| (remapping_player_key2_crouch = remapping_other2_player_key2_crouch)
@@ -2349,7 +2349,7 @@ function scr_option_control_menu()
 			|| (remapping_player_key2_crouch = remapping_other2_player_key2_tongue)
 			|| (remapping_player_key2_crouch = remapping_other2_player_key2_zoom_in)
 			|| (remapping_player_key2_crouch = remapping_other2_player_key2_zoom_out)
-			
+
 			|| (remapping_player_key2_crouch = remapping_other3_player_key_dive)
 			|| (remapping_player_key2_crouch = remapping_other3_player_key_jump)
 			|| (remapping_player_key2_crouch = remapping_other3_player_key_crouch)
@@ -2363,7 +2363,7 @@ function scr_option_control_menu()
 			|| (remapping_player_key2_crouch = remapping_other3_player_key_tongue)
 			|| (remapping_player_key2_crouch = remapping_other3_player_key_zoom_in)
 			|| (remapping_player_key2_crouch = remapping_other3_player_key_zoom_out)
-			
+
 			|| (remapping_player_key2_crouch = remapping_other3_player_key2_dive)
 			|| (remapping_player_key2_crouch = remapping_other3_player_key2_jump)
 			|| (remapping_player_key2_crouch = remapping_other3_player_key2_crouch)
@@ -2387,7 +2387,7 @@ function scr_option_control_menu()
 				}
 			}
 			#endregion /* Crouch 2 Conflict END */
-			
+
 			#region /* Crouch Toggle 2 Conflict */
 			if (remapping_player_key2_crouch_toggle = remapping_player_key_dive)
 			|| (remapping_player_key2_crouch_toggle = remapping_player_key_jump)
@@ -2402,7 +2402,7 @@ function scr_option_control_menu()
 			|| (remapping_player_key2_crouch_toggle = remapping_player_key_tongue)
 			|| (remapping_player_key2_crouch_toggle = remapping_player_key_zoom_in)
 			|| (remapping_player_key2_crouch_toggle = remapping_player_key_zoom_out)
-			
+
 			|| (remapping_player_key2_crouch_toggle = remapping_player_key2_dive)
 			|| (remapping_player_key2_crouch_toggle = remapping_player_key2_jump)
 			|| (remapping_player_key2_crouch_toggle = remapping_player_key2_crouch)
@@ -2436,7 +2436,7 @@ function scr_option_control_menu()
 			|| (remapping_player_key2_crouch_toggle = remapping_other1_player_key_tongue)
 			|| (remapping_player_key2_crouch_toggle = remapping_other1_player_key_zoom_in)
 			|| (remapping_player_key2_crouch_toggle = remapping_other1_player_key_zoom_out)
-			
+
 			|| (remapping_player_key2_crouch_toggle = remapping_other1_player_key2_dive)
 			|| (remapping_player_key2_crouch_toggle = remapping_other1_player_key2_jump)
 			|| (remapping_player_key2_crouch_toggle = remapping_other1_player_key2_crouch)
@@ -2450,7 +2450,7 @@ function scr_option_control_menu()
 			|| (remapping_player_key2_crouch_toggle = remapping_other1_player_key2_tongue)
 			|| (remapping_player_key2_crouch_toggle = remapping_other1_player_key2_zoom_in)
 			|| (remapping_player_key2_crouch_toggle = remapping_other1_player_key2_zoom_out)
-			
+
 			|| (remapping_player_key2_crouch_toggle = remapping_other2_player_key_dive)
 			|| (remapping_player_key2_crouch_toggle = remapping_other2_player_key_jump)
 			|| (remapping_player_key2_crouch_toggle = remapping_other2_player_key_crouch)
@@ -2464,7 +2464,7 @@ function scr_option_control_menu()
 			|| (remapping_player_key2_crouch_toggle = remapping_other2_player_key_tongue)
 			|| (remapping_player_key2_crouch_toggle = remapping_other2_player_key_zoom_in)
 			|| (remapping_player_key2_crouch_toggle = remapping_other2_player_key_zoom_out)
-			
+
 			|| (remapping_player_key2_crouch_toggle = remapping_other2_player_key2_dive)
 			|| (remapping_player_key2_crouch_toggle = remapping_other2_player_key2_jump)
 			|| (remapping_player_key2_crouch_toggle = remapping_other2_player_key2_crouch)
@@ -2478,7 +2478,7 @@ function scr_option_control_menu()
 			|| (remapping_player_key2_crouch_toggle = remapping_other2_player_key2_tongue)
 			|| (remapping_player_key2_crouch_toggle = remapping_other2_player_key2_zoom_in)
 			|| (remapping_player_key2_crouch_toggle = remapping_other2_player_key2_zoom_out)
-			
+
 			|| (remapping_player_key2_crouch_toggle = remapping_other3_player_key_dive)
 			|| (remapping_player_key2_crouch_toggle = remapping_other3_player_key_jump)
 			|| (remapping_player_key2_crouch_toggle = remapping_other3_player_key_crouch)
@@ -2492,7 +2492,7 @@ function scr_option_control_menu()
 			|| (remapping_player_key2_crouch_toggle = remapping_other3_player_key_tongue)
 			|| (remapping_player_key2_crouch_toggle = remapping_other3_player_key_zoom_in)
 			|| (remapping_player_key2_crouch_toggle = remapping_other3_player_key_zoom_out)
-			
+
 			|| (remapping_player_key2_crouch_toggle = remapping_other3_player_key2_dive)
 			|| (remapping_player_key2_crouch_toggle = remapping_other3_player_key2_jump)
 			|| (remapping_player_key2_crouch_toggle = remapping_other3_player_key2_crouch)
@@ -2516,7 +2516,7 @@ function scr_option_control_menu()
 				}
 			}
 			#endregion /* Crouch Toggle 2 Conflict END */
-			
+
 			#region /* Run 2 Conflict */
 			if (remapping_player_key2_run = remapping_player_key_dive)
 			|| (remapping_player_key2_run = remapping_player_key_jump)
@@ -2531,7 +2531,7 @@ function scr_option_control_menu()
 			|| (remapping_player_key2_run = remapping_player_key_tongue)
 			|| (remapping_player_key2_run = remapping_player_key_zoom_in)
 			|| (remapping_player_key2_run = remapping_player_key_zoom_out)
-			
+
 			|| (remapping_player_key2_run = remapping_player_key2_dive)
 			|| (remapping_player_key2_run = remapping_player_key2_jump)
 			|| (remapping_player_key2_run = remapping_player_key2_crouch)
@@ -2565,7 +2565,7 @@ function scr_option_control_menu()
 			|| (remapping_player_key2_run = remapping_other1_player_key_tongue)
 			|| (remapping_player_key2_run = remapping_other1_player_key_zoom_in)
 			|| (remapping_player_key2_run = remapping_other1_player_key_zoom_out)
-			
+
 			|| (remapping_player_key2_run = remapping_other1_player_key2_dive)
 			|| (remapping_player_key2_run = remapping_other1_player_key2_jump)
 			|| (remapping_player_key2_run = remapping_other1_player_key2_crouch)
@@ -2579,7 +2579,7 @@ function scr_option_control_menu()
 			|| (remapping_player_key2_run = remapping_other1_player_key2_tongue)
 			|| (remapping_player_key2_run = remapping_other1_player_key2_zoom_in)
 			|| (remapping_player_key2_run = remapping_other1_player_key2_zoom_out)
-			
+
 			|| (remapping_player_key2_run = remapping_other2_player_key_dive)
 			|| (remapping_player_key2_run = remapping_other2_player_key_jump)
 			|| (remapping_player_key2_run = remapping_other2_player_key_crouch)
@@ -2593,7 +2593,7 @@ function scr_option_control_menu()
 			|| (remapping_player_key2_run = remapping_other2_player_key_tongue)
 			|| (remapping_player_key2_run = remapping_other2_player_key_zoom_in)
 			|| (remapping_player_key2_run = remapping_other2_player_key_zoom_out)
-			
+
 			|| (remapping_player_key2_run = remapping_other2_player_key2_dive)
 			|| (remapping_player_key2_run = remapping_other2_player_key2_jump)
 			|| (remapping_player_key2_run = remapping_other2_player_key2_crouch)
@@ -2607,7 +2607,7 @@ function scr_option_control_menu()
 			|| (remapping_player_key2_run = remapping_other2_player_key2_tongue)
 			|| (remapping_player_key2_run = remapping_other2_player_key2_zoom_in)
 			|| (remapping_player_key2_run = remapping_other2_player_key2_zoom_out)
-			
+
 			|| (remapping_player_key2_run = remapping_other3_player_key_dive)
 			|| (remapping_player_key2_run = remapping_other3_player_key_jump)
 			|| (remapping_player_key2_run = remapping_other3_player_key_crouch)
@@ -2621,7 +2621,7 @@ function scr_option_control_menu()
 			|| (remapping_player_key2_run = remapping_other3_player_key_tongue)
 			|| (remapping_player_key2_run = remapping_other3_player_key_zoom_in)
 			|| (remapping_player_key2_run = remapping_other3_player_key_zoom_out)
-			
+
 			|| (remapping_player_key2_run = remapping_other3_player_key2_dive)
 			|| (remapping_player_key2_run = remapping_other3_player_key2_jump)
 			|| (remapping_player_key2_run = remapping_other3_player_key2_crouch)
@@ -2645,7 +2645,7 @@ function scr_option_control_menu()
 				}
 			}
 			#endregion /* Run 2 Conflict END */
-			
+
 			#region /* Run Toggle 2 Conflict */
 			if (remapping_player_key2_run_toggle = remapping_player_key_dive)
 			|| (remapping_player_key2_run_toggle = remapping_player_key_jump)
@@ -2660,7 +2660,7 @@ function scr_option_control_menu()
 			|| (remapping_player_key2_run_toggle = remapping_player_key_tongue)
 			|| (remapping_player_key2_run_toggle = remapping_player_key_zoom_in)
 			|| (remapping_player_key2_run_toggle = remapping_player_key_zoom_out)
-			
+
 			|| (remapping_player_key2_run_toggle = remapping_player_key2_dive)
 			|| (remapping_player_key2_run_toggle = remapping_player_key2_jump)
 			|| (remapping_player_key2_run_toggle = remapping_player_key2_crouch)
@@ -2694,7 +2694,7 @@ function scr_option_control_menu()
 			|| (remapping_player_key2_run_toggle = remapping_other1_player_key_tongue)
 			|| (remapping_player_key2_run_toggle = remapping_other1_player_key_zoom_in)
 			|| (remapping_player_key2_run_toggle = remapping_other1_player_key_zoom_out)
-			
+
 			|| (remapping_player_key2_run_toggle = remapping_other1_player_key2_dive)
 			|| (remapping_player_key2_run_toggle = remapping_other1_player_key2_jump)
 			|| (remapping_player_key2_run_toggle = remapping_other1_player_key2_crouch)
@@ -2708,7 +2708,7 @@ function scr_option_control_menu()
 			|| (remapping_player_key2_run_toggle = remapping_other1_player_key2_tongue)
 			|| (remapping_player_key2_run_toggle = remapping_other1_player_key2_zoom_in)
 			|| (remapping_player_key2_run_toggle = remapping_other1_player_key2_zoom_out)
-			
+
 			|| (remapping_player_key2_run_toggle = remapping_other2_player_key_dive)
 			|| (remapping_player_key2_run_toggle = remapping_other2_player_key_jump)
 			|| (remapping_player_key2_run_toggle = remapping_other2_player_key_crouch)
@@ -2722,7 +2722,7 @@ function scr_option_control_menu()
 			|| (remapping_player_key2_run_toggle = remapping_other2_player_key_tongue)
 			|| (remapping_player_key2_run_toggle = remapping_other2_player_key_zoom_in)
 			|| (remapping_player_key2_run_toggle = remapping_other2_player_key_zoom_out)
-			
+
 			|| (remapping_player_key2_run_toggle = remapping_other2_player_key2_dive)
 			|| (remapping_player_key2_run_toggle = remapping_other2_player_key2_jump)
 			|| (remapping_player_key2_run_toggle = remapping_other2_player_key2_crouch)
@@ -2736,7 +2736,7 @@ function scr_option_control_menu()
 			|| (remapping_player_key2_run_toggle = remapping_other2_player_key2_tongue)
 			|| (remapping_player_key2_run_toggle = remapping_other2_player_key2_zoom_in)
 			|| (remapping_player_key2_run_toggle = remapping_other2_player_key2_zoom_out)
-			
+
 			|| (remapping_player_key2_run_toggle = remapping_other3_player_key_dive)
 			|| (remapping_player_key2_run_toggle = remapping_other3_player_key_jump)
 			|| (remapping_player_key2_run_toggle = remapping_other3_player_key_crouch)
@@ -2750,7 +2750,7 @@ function scr_option_control_menu()
 			|| (remapping_player_key2_run_toggle = remapping_other3_player_key_tongue)
 			|| (remapping_player_key2_run_toggle = remapping_other3_player_key_zoom_in)
 			|| (remapping_player_key2_run_toggle = remapping_other3_player_key_zoom_out)
-			
+
 			|| (remapping_player_key2_run_toggle = remapping_other3_player_key2_dive)
 			|| (remapping_player_key2_run_toggle = remapping_other3_player_key2_jump)
 			|| (remapping_player_key2_run_toggle = remapping_other3_player_key2_crouch)
@@ -2774,7 +2774,7 @@ function scr_option_control_menu()
 				}
 			}
 			#endregion /* Run Toggle 2 Conflict END */
-			
+
 			#region /* Left 2 Conflict */
 			if (remapping_player_key2_left = remapping_player_key_dive)
 			|| (remapping_player_key2_left = remapping_player_key_jump)
@@ -2789,7 +2789,7 @@ function scr_option_control_menu()
 			|| (remapping_player_key2_left = remapping_player_key_tongue)
 			|| (remapping_player_key2_left = remapping_player_key_zoom_in)
 			|| (remapping_player_key2_left = remapping_player_key_zoom_out)
-			
+
 			|| (remapping_player_key2_left = remapping_player_key2_dive)
 			|| (remapping_player_key2_left = remapping_player_key2_jump)
 			|| (remapping_player_key2_left = remapping_player_key2_crouch)
@@ -2823,7 +2823,7 @@ function scr_option_control_menu()
 			|| (remapping_player_key2_left = remapping_other1_player_key_tongue)
 			|| (remapping_player_key2_left = remapping_other1_player_key_zoom_in)
 			|| (remapping_player_key2_left = remapping_other1_player_key_zoom_out)
-			
+
 			|| (remapping_player_key2_left = remapping_other1_player_key2_dive)
 			|| (remapping_player_key2_left = remapping_other1_player_key2_jump)
 			|| (remapping_player_key2_left = remapping_other1_player_key2_crouch)
@@ -2837,7 +2837,7 @@ function scr_option_control_menu()
 			|| (remapping_player_key2_left = remapping_other1_player_key2_tongue)
 			|| (remapping_player_key2_left = remapping_other1_player_key2_zoom_in)
 			|| (remapping_player_key2_left = remapping_other1_player_key2_zoom_out)
-			
+
 			|| (remapping_player_key2_left = remapping_other2_player_key_dive)
 			|| (remapping_player_key2_left = remapping_other2_player_key_jump)
 			|| (remapping_player_key2_left = remapping_other2_player_key_crouch)
@@ -2851,7 +2851,7 @@ function scr_option_control_menu()
 			|| (remapping_player_key2_left = remapping_other2_player_key_tongue)
 			|| (remapping_player_key2_left = remapping_other2_player_key_zoom_in)
 			|| (remapping_player_key2_left = remapping_other2_player_key_zoom_out)
-			
+
 			|| (remapping_player_key2_left = remapping_other2_player_key2_dive)
 			|| (remapping_player_key2_left = remapping_other2_player_key2_jump)
 			|| (remapping_player_key2_left = remapping_other2_player_key2_crouch)
@@ -2865,7 +2865,7 @@ function scr_option_control_menu()
 			|| (remapping_player_key2_left = remapping_other2_player_key2_tongue)
 			|| (remapping_player_key2_left = remapping_other2_player_key2_zoom_in)
 			|| (remapping_player_key2_left = remapping_other2_player_key2_zoom_out)
-			
+
 			|| (remapping_player_key2_left = remapping_other3_player_key_dive)
 			|| (remapping_player_key2_left = remapping_other3_player_key_jump)
 			|| (remapping_player_key2_left = remapping_other3_player_key_crouch)
@@ -2879,7 +2879,7 @@ function scr_option_control_menu()
 			|| (remapping_player_key2_left = remapping_other3_player_key_tongue)
 			|| (remapping_player_key2_left = remapping_other3_player_key_zoom_in)
 			|| (remapping_player_key2_left = remapping_other3_player_key_zoom_out)
-			
+
 			|| (remapping_player_key2_left = remapping_other3_player_key2_dive)
 			|| (remapping_player_key2_left = remapping_other3_player_key2_jump)
 			|| (remapping_player_key2_left = remapping_other3_player_key2_crouch)
@@ -2903,7 +2903,7 @@ function scr_option_control_menu()
 				}
 			}
 			#endregion /* Left 2 Conflict END */
-			
+
 			#region /* Right 2 Conflict */
 			if (remapping_player_key2_right = remapping_player_key_dive)
 			|| (remapping_player_key2_right = remapping_player_key_jump)
@@ -2918,7 +2918,7 @@ function scr_option_control_menu()
 			|| (remapping_player_key2_right = remapping_player_key_tongue)
 			|| (remapping_player_key2_right = remapping_player_key_zoom_in)
 			|| (remapping_player_key2_right = remapping_player_key_zoom_out)
-			
+
 			|| (remapping_player_key2_right = remapping_player_key2_dive)
 			|| (remapping_player_key2_right = remapping_player_key2_jump)
 			|| (remapping_player_key2_right = remapping_player_key2_crouch)
@@ -2952,7 +2952,7 @@ function scr_option_control_menu()
 			|| (remapping_player_key2_right = remapping_other1_player_key_tongue)
 			|| (remapping_player_key2_right = remapping_other1_player_key_zoom_in)
 			|| (remapping_player_key2_right = remapping_other1_player_key_zoom_out)
-			
+
 			|| (remapping_player_key2_right = remapping_other1_player_key2_dive)
 			|| (remapping_player_key2_right = remapping_other1_player_key2_jump)
 			|| (remapping_player_key2_right = remapping_other1_player_key2_crouch)
@@ -2966,7 +2966,7 @@ function scr_option_control_menu()
 			|| (remapping_player_key2_right = remapping_other1_player_key2_tongue)
 			|| (remapping_player_key2_right = remapping_other1_player_key2_zoom_in)
 			|| (remapping_player_key2_right = remapping_other1_player_key2_zoom_out)
-			
+
 			|| (remapping_player_key2_right = remapping_other2_player_key_dive)
 			|| (remapping_player_key2_right = remapping_other2_player_key_jump)
 			|| (remapping_player_key2_right = remapping_other2_player_key_crouch)
@@ -2980,7 +2980,7 @@ function scr_option_control_menu()
 			|| (remapping_player_key2_right = remapping_other2_player_key_tongue)
 			|| (remapping_player_key2_right = remapping_other2_player_key_zoom_in)
 			|| (remapping_player_key2_right = remapping_other2_player_key_zoom_out)
-			
+
 			|| (remapping_player_key2_right = remapping_other2_player_key2_dive)
 			|| (remapping_player_key2_right = remapping_other2_player_key2_jump)
 			|| (remapping_player_key2_right = remapping_other2_player_key2_crouch)
@@ -2994,7 +2994,7 @@ function scr_option_control_menu()
 			|| (remapping_player_key2_right = remapping_other2_player_key2_tongue)
 			|| (remapping_player_key2_right = remapping_other2_player_key2_zoom_in)
 			|| (remapping_player_key2_right = remapping_other2_player_key2_zoom_out)
-			
+
 			|| (remapping_player_key2_right = remapping_other3_player_key_dive)
 			|| (remapping_player_key2_right = remapping_other3_player_key_jump)
 			|| (remapping_player_key2_right = remapping_other3_player_key_crouch)
@@ -3008,7 +3008,7 @@ function scr_option_control_menu()
 			|| (remapping_player_key2_right = remapping_other3_player_key_tongue)
 			|| (remapping_player_key2_right = remapping_other3_player_key_zoom_in)
 			|| (remapping_player_key2_right = remapping_other3_player_key_zoom_out)
-			
+
 			|| (remapping_player_key2_right = remapping_other3_player_key2_dive)
 			|| (remapping_player_key2_right = remapping_other3_player_key2_jump)
 			|| (remapping_player_key2_right = remapping_other3_player_key2_crouch)
@@ -3032,7 +3032,7 @@ function scr_option_control_menu()
 				}
 			}
 			#endregion /* Right 2 Conflict END */
-			
+
 			#region /* Down 2 Conflict */
 			if (remapping_player_key2_down = remapping_player_key_dive)
 			|| (remapping_player_key2_down = remapping_player_key_jump)
@@ -3047,7 +3047,7 @@ function scr_option_control_menu()
 			|| (remapping_player_key2_down = remapping_player_key_tongue)
 			|| (remapping_player_key2_down = remapping_player_key_zoom_in)
 			|| (remapping_player_key2_down = remapping_player_key_zoom_out)
-			
+
 			|| (remapping_player_key2_down = remapping_player_key2_dive)
 			|| (remapping_player_key2_down = remapping_player_key2_jump)
 			|| (remapping_player_key2_down = remapping_player_key2_crouch)
@@ -3081,7 +3081,7 @@ function scr_option_control_menu()
 			|| (remapping_player_key2_down = remapping_other1_player_key_tongue)
 			|| (remapping_player_key2_down = remapping_other1_player_key_zoom_in)
 			|| (remapping_player_key2_down = remapping_other1_player_key_zoom_out)
-			
+
 			|| (remapping_player_key2_down = remapping_other1_player_key2_dive)
 			|| (remapping_player_key2_down = remapping_other1_player_key2_jump)
 			|| (remapping_player_key2_down = remapping_other1_player_key2_crouch)
@@ -3095,7 +3095,7 @@ function scr_option_control_menu()
 			|| (remapping_player_key2_down = remapping_other1_player_key2_tongue)
 			|| (remapping_player_key2_down = remapping_other1_player_key2_zoom_in)
 			|| (remapping_player_key2_down = remapping_other1_player_key2_zoom_out)
-			
+
 			|| (remapping_player_key2_down = remapping_other2_player_key_dive)
 			|| (remapping_player_key2_down = remapping_other2_player_key_jump)
 			|| (remapping_player_key2_down = remapping_other2_player_key_crouch)
@@ -3109,7 +3109,7 @@ function scr_option_control_menu()
 			|| (remapping_player_key2_down = remapping_other2_player_key_tongue)
 			|| (remapping_player_key2_down = remapping_other2_player_key_zoom_in)
 			|| (remapping_player_key2_down = remapping_other2_player_key_zoom_out)
-			
+
 			|| (remapping_player_key2_down = remapping_other2_player_key2_dive)
 			|| (remapping_player_key2_down = remapping_other2_player_key2_jump)
 			|| (remapping_player_key2_down = remapping_other2_player_key2_crouch)
@@ -3123,7 +3123,7 @@ function scr_option_control_menu()
 			|| (remapping_player_key2_down = remapping_other2_player_key2_tongue)
 			|| (remapping_player_key2_down = remapping_other2_player_key2_zoom_in)
 			|| (remapping_player_key2_down = remapping_other2_player_key2_zoom_out)
-			
+
 			|| (remapping_player_key2_down = remapping_other3_player_key_dive)
 			|| (remapping_player_key2_down = remapping_other3_player_key_jump)
 			|| (remapping_player_key2_down = remapping_other3_player_key_crouch)
@@ -3137,7 +3137,7 @@ function scr_option_control_menu()
 			|| (remapping_player_key2_down = remapping_other3_player_key_tongue)
 			|| (remapping_player_key2_down = remapping_other3_player_key_zoom_in)
 			|| (remapping_player_key2_down = remapping_other3_player_key_zoom_out)
-			
+
 			|| (remapping_player_key2_down = remapping_other3_player_key2_dive)
 			|| (remapping_player_key2_down = remapping_other3_player_key2_jump)
 			|| (remapping_player_key2_down = remapping_other3_player_key2_crouch)
@@ -3161,7 +3161,7 @@ function scr_option_control_menu()
 				}
 			}
 			#endregion /* Down 2 Conflict END */
-			
+
 			#region /* Up 2 Conflict */
 			if (remapping_player_key2_up = remapping_player_key_dive)
 			|| (remapping_player_key2_up = remapping_player_key_jump)
@@ -3176,7 +3176,7 @@ function scr_option_control_menu()
 			|| (remapping_player_key2_up = remapping_player_key_tongue)
 			|| (remapping_player_key2_up = remapping_player_key_zoom_in)
 			|| (remapping_player_key2_up = remapping_player_key_zoom_out)
-			
+
 			|| (remapping_player_key2_up = remapping_player_key2_dive)
 			|| (remapping_player_key2_up = remapping_player_key2_jump)
 			|| (remapping_player_key2_up = remapping_player_key2_crouch)
@@ -3210,7 +3210,7 @@ function scr_option_control_menu()
 			|| (remapping_player_key2_up = remapping_other1_player_key_tongue)
 			|| (remapping_player_key2_up = remapping_other1_player_key_zoom_in)
 			|| (remapping_player_key2_up = remapping_other1_player_key_zoom_out)
-			
+
 			|| (remapping_player_key2_up = remapping_other1_player_key2_dive)
 			|| (remapping_player_key2_up = remapping_other1_player_key2_jump)
 			|| (remapping_player_key2_up = remapping_other1_player_key2_crouch)
@@ -3224,7 +3224,7 @@ function scr_option_control_menu()
 			|| (remapping_player_key2_up = remapping_other1_player_key2_tongue)
 			|| (remapping_player_key2_up = remapping_other1_player_key2_zoom_in)
 			|| (remapping_player_key2_up = remapping_other1_player_key2_zoom_out)
-			
+
 			|| (remapping_player_key2_up = remapping_other2_player_key_dive)
 			|| (remapping_player_key2_up = remapping_other2_player_key_jump)
 			|| (remapping_player_key2_up = remapping_other2_player_key_crouch)
@@ -3238,7 +3238,7 @@ function scr_option_control_menu()
 			|| (remapping_player_key2_up = remapping_other2_player_key_tongue)
 			|| (remapping_player_key2_up = remapping_other2_player_key_zoom_in)
 			|| (remapping_player_key2_up = remapping_other2_player_key_zoom_out)
-			
+
 			|| (remapping_player_key2_up = remapping_other2_player_key2_dive)
 			|| (remapping_player_key2_up = remapping_other2_player_key2_jump)
 			|| (remapping_player_key2_up = remapping_other2_player_key2_crouch)
@@ -3252,7 +3252,7 @@ function scr_option_control_menu()
 			|| (remapping_player_key2_up = remapping_other2_player_key2_tongue)
 			|| (remapping_player_key2_up = remapping_other2_player_key2_zoom_in)
 			|| (remapping_player_key2_up = remapping_other2_player_key2_zoom_out)
-			
+
 			|| (remapping_player_key2_up = remapping_other3_player_key_dive)
 			|| (remapping_player_key2_up = remapping_other3_player_key_jump)
 			|| (remapping_player_key2_up = remapping_other3_player_key_crouch)
@@ -3266,7 +3266,7 @@ function scr_option_control_menu()
 			|| (remapping_player_key2_up = remapping_other3_player_key_tongue)
 			|| (remapping_player_key2_up = remapping_other3_player_key_zoom_in)
 			|| (remapping_player_key2_up = remapping_other3_player_key_zoom_out)
-			
+
 			|| (remapping_player_key2_up = remapping_other3_player_key2_dive)
 			|| (remapping_player_key2_up = remapping_other3_player_key2_jump)
 			|| (remapping_player_key2_up = remapping_other3_player_key2_crouch)
@@ -3290,7 +3290,7 @@ function scr_option_control_menu()
 				}
 			}
 			#endregion /* Up 2 Conflict END */
-			
+
 			#region /* Tongue 2 Conflict */
 			if (remapping_player_key2_tongue = remapping_player_key_dive)
 			|| (remapping_player_key2_tongue = remapping_player_key_jump)
@@ -3305,7 +3305,7 @@ function scr_option_control_menu()
 			|| (remapping_player_key2_tongue = remapping_player_key_tongue)
 			|| (remapping_player_key2_tongue = remapping_player_key_zoom_in)
 			|| (remapping_player_key2_tongue = remapping_player_key_zoom_out)
-			
+
 			|| (remapping_player_key2_tongue = remapping_player_key2_dive)
 			|| (remapping_player_key2_tongue = remapping_player_key2_jump)
 			|| (remapping_player_key2_tongue = remapping_player_key2_crouch)
@@ -3339,7 +3339,7 @@ function scr_option_control_menu()
 			|| (remapping_player_key2_tongue = remapping_other1_player_key_tongue)
 			|| (remapping_player_key2_tongue = remapping_other1_player_key_zoom_in)
 			|| (remapping_player_key2_tongue = remapping_other1_player_key_zoom_out)
-			
+
 			|| (remapping_player_key2_tongue = remapping_other1_player_key2_dive)
 			|| (remapping_player_key2_tongue = remapping_other1_player_key2_jump)
 			|| (remapping_player_key2_tongue = remapping_other1_player_key2_crouch)
@@ -3353,7 +3353,7 @@ function scr_option_control_menu()
 			|| (remapping_player_key2_tongue = remapping_other1_player_key2_tongue)
 			|| (remapping_player_key2_tongue = remapping_other1_player_key2_zoom_in)
 			|| (remapping_player_key2_tongue = remapping_other1_player_key2_zoom_out)
-			
+
 			|| (remapping_player_key2_tongue = remapping_other2_player_key_dive)
 			|| (remapping_player_key2_tongue = remapping_other2_player_key_jump)
 			|| (remapping_player_key2_tongue = remapping_other2_player_key_crouch)
@@ -3367,7 +3367,7 @@ function scr_option_control_menu()
 			|| (remapping_player_key2_tongue = remapping_other2_player_key_tongue)
 			|| (remapping_player_key2_tongue = remapping_other2_player_key_zoom_in)
 			|| (remapping_player_key2_tongue = remapping_other2_player_key_zoom_out)
-			
+
 			|| (remapping_player_key2_tongue = remapping_other2_player_key2_dive)
 			|| (remapping_player_key2_tongue = remapping_other2_player_key2_jump)
 			|| (remapping_player_key2_tongue = remapping_other2_player_key2_crouch)
@@ -3381,7 +3381,7 @@ function scr_option_control_menu()
 			|| (remapping_player_key2_tongue = remapping_other2_player_key2_tongue)
 			|| (remapping_player_key2_tongue = remapping_other2_player_key2_zoom_in)
 			|| (remapping_player_key2_tongue = remapping_other2_player_key2_zoom_out)
-			
+
 			|| (remapping_player_key2_tongue = remapping_other3_player_key_dive)
 			|| (remapping_player_key2_tongue = remapping_other3_player_key_jump)
 			|| (remapping_player_key2_tongue = remapping_other3_player_key_crouch)
@@ -3395,7 +3395,7 @@ function scr_option_control_menu()
 			|| (remapping_player_key2_tongue = remapping_other3_player_key_tongue)
 			|| (remapping_player_key2_tongue = remapping_other3_player_key_zoom_in)
 			|| (remapping_player_key2_tongue = remapping_other3_player_key_zoom_out)
-			
+
 			|| (remapping_player_key2_tongue = remapping_other3_player_key2_dive)
 			|| (remapping_player_key2_tongue = remapping_other3_player_key2_jump)
 			|| (remapping_player_key2_tongue = remapping_other3_player_key2_crouch)
@@ -3419,7 +3419,7 @@ function scr_option_control_menu()
 				}
 			}
 			#endregion /* Tongue 2 Conflict END */
-			
+
 			#region /* Zoom In 2 Conflict */
 			if (remapping_player_key2_zoom_in = remapping_player_key_dive)
 			|| (remapping_player_key2_zoom_in = remapping_player_key_jump)
@@ -3434,7 +3434,7 @@ function scr_option_control_menu()
 			|| (remapping_player_key2_zoom_in = remapping_player_key_tongue)
 			|| (remapping_player_key2_zoom_in = remapping_player_key_zoom_in)
 			|| (remapping_player_key2_zoom_in = remapping_player_key_zoom_out)
-			
+
 			|| (remapping_player_key2_zoom_in = remapping_player_key2_dive)
 			|| (remapping_player_key2_zoom_in = remapping_player_key2_jump)
 			|| (remapping_player_key2_zoom_in = remapping_player_key2_crouch)
@@ -3468,7 +3468,7 @@ function scr_option_control_menu()
 			|| (remapping_player_key2_zoom_in = remapping_other1_player_key_tongue)
 			|| (remapping_player_key2_zoom_in = remapping_other1_player_key_zoom_in)
 			|| (remapping_player_key2_zoom_in = remapping_other1_player_key_zoom_out)
-			
+
 			|| (remapping_player_key2_zoom_in = remapping_other1_player_key2_dive)
 			|| (remapping_player_key2_zoom_in = remapping_other1_player_key2_jump)
 			|| (remapping_player_key2_zoom_in = remapping_other1_player_key2_crouch)
@@ -3482,7 +3482,7 @@ function scr_option_control_menu()
 			|| (remapping_player_key2_zoom_in = remapping_other1_player_key2_tongue)
 			|| (remapping_player_key2_zoom_in = remapping_other1_player_key2_zoom_in)
 			|| (remapping_player_key2_zoom_in = remapping_other1_player_key2_zoom_out)
-			
+
 			|| (remapping_player_key2_zoom_in = remapping_other2_player_key_dive)
 			|| (remapping_player_key2_zoom_in = remapping_other2_player_key_jump)
 			|| (remapping_player_key2_zoom_in = remapping_other2_player_key_crouch)
@@ -3496,7 +3496,7 @@ function scr_option_control_menu()
 			|| (remapping_player_key2_zoom_in = remapping_other2_player_key_tongue)
 			|| (remapping_player_key2_zoom_in = remapping_other2_player_key_zoom_in)
 			|| (remapping_player_key2_zoom_in = remapping_other2_player_key_zoom_out)
-			
+
 			|| (remapping_player_key2_zoom_in = remapping_other2_player_key2_dive)
 			|| (remapping_player_key2_zoom_in = remapping_other2_player_key2_jump)
 			|| (remapping_player_key2_zoom_in = remapping_other2_player_key2_crouch)
@@ -3510,7 +3510,7 @@ function scr_option_control_menu()
 			|| (remapping_player_key2_zoom_in = remapping_other2_player_key2_tongue)
 			|| (remapping_player_key2_zoom_in = remapping_other2_player_key2_zoom_in)
 			|| (remapping_player_key2_zoom_in = remapping_other2_player_key2_zoom_out)
-			
+
 			|| (remapping_player_key2_zoom_in = remapping_other3_player_key_dive)
 			|| (remapping_player_key2_zoom_in = remapping_other3_player_key_jump)
 			|| (remapping_player_key2_zoom_in = remapping_other3_player_key_crouch)
@@ -3524,7 +3524,7 @@ function scr_option_control_menu()
 			|| (remapping_player_key2_zoom_in = remapping_other3_player_key_tongue)
 			|| (remapping_player_key2_zoom_in = remapping_other3_player_key_zoom_in)
 			|| (remapping_player_key2_zoom_in = remapping_other3_player_key_zoom_out)
-			
+
 			|| (remapping_player_key2_zoom_in = remapping_other3_player_key2_dive)
 			|| (remapping_player_key2_zoom_in = remapping_other3_player_key2_jump)
 			|| (remapping_player_key2_zoom_in = remapping_other3_player_key2_crouch)
@@ -3548,7 +3548,7 @@ function scr_option_control_menu()
 				}
 			}
 			#endregion /* Zoom In 2 Conflict END */
-			
+
 			#region /* Zoom Out 2 Conflict */
 			if (remapping_player_key2_zoom_out = remapping_player_key_dive)
 			|| (remapping_player_key2_zoom_out = remapping_player_key_jump)
@@ -3563,7 +3563,7 @@ function scr_option_control_menu()
 			|| (remapping_player_key2_zoom_out = remapping_player_key_tongue)
 			|| (remapping_player_key2_zoom_out = remapping_player_key_zoom_in)
 			|| (remapping_player_key2_zoom_out = remapping_player_key_zoom_out)
-			
+
 			|| (remapping_player_key2_zoom_out = remapping_player_key2_dive)
 			|| (remapping_player_key2_zoom_out = remapping_player_key2_jump)
 			|| (remapping_player_key2_zoom_out = remapping_player_key2_crouch)
@@ -3597,7 +3597,7 @@ function scr_option_control_menu()
 			|| (remapping_player_key2_zoom_out = remapping_other1_player_key_tongue)
 			|| (remapping_player_key2_zoom_out = remapping_other1_player_key_zoom_in)
 			|| (remapping_player_key2_zoom_out = remapping_other1_player_key_zoom_out)
-			
+
 			|| (remapping_player_key2_zoom_out = remapping_other1_player_key2_dive)
 			|| (remapping_player_key2_zoom_out = remapping_other1_player_key2_jump)
 			|| (remapping_player_key2_zoom_out = remapping_other1_player_key2_crouch)
@@ -3611,7 +3611,7 @@ function scr_option_control_menu()
 			|| (remapping_player_key2_zoom_out = remapping_other1_player_key2_tongue)
 			|| (remapping_player_key2_zoom_out = remapping_other1_player_key2_zoom_in)
 			|| (remapping_player_key2_zoom_out = remapping_other1_player_key2_zoom_out)
-			
+
 			|| (remapping_player_key2_zoom_out = remapping_other2_player_key_dive)
 			|| (remapping_player_key2_zoom_out = remapping_other2_player_key_jump)
 			|| (remapping_player_key2_zoom_out = remapping_other2_player_key_crouch)
@@ -3625,7 +3625,7 @@ function scr_option_control_menu()
 			|| (remapping_player_key2_zoom_out = remapping_other2_player_key_tongue)
 			|| (remapping_player_key2_zoom_out = remapping_other2_player_key_zoom_in)
 			|| (remapping_player_key2_zoom_out = remapping_other2_player_key_zoom_out)
-			
+
 			|| (remapping_player_key2_zoom_out = remapping_other2_player_key2_dive)
 			|| (remapping_player_key2_zoom_out = remapping_other2_player_key2_jump)
 			|| (remapping_player_key2_zoom_out = remapping_other2_player_key2_crouch)
@@ -3639,7 +3639,7 @@ function scr_option_control_menu()
 			|| (remapping_player_key2_zoom_out = remapping_other2_player_key2_tongue)
 			|| (remapping_player_key2_zoom_out = remapping_other2_player_key2_zoom_in)
 			|| (remapping_player_key2_zoom_out = remapping_other2_player_key2_zoom_out)
-			
+
 			|| (remapping_player_key2_zoom_out = remapping_other3_player_key_dive)
 			|| (remapping_player_key2_zoom_out = remapping_other3_player_key_jump)
 			|| (remapping_player_key2_zoom_out = remapping_other3_player_key_crouch)
@@ -3653,7 +3653,7 @@ function scr_option_control_menu()
 			|| (remapping_player_key2_zoom_out = remapping_other3_player_key_tongue)
 			|| (remapping_player_key2_zoom_out = remapping_other3_player_key_zoom_in)
 			|| (remapping_player_key2_zoom_out = remapping_other3_player_key_zoom_out)
-			
+
 			|| (remapping_player_key2_zoom_out = remapping_other3_player_key2_dive)
 			|| (remapping_player_key2_zoom_out = remapping_other3_player_key2_jump)
 			|| (remapping_player_key2_zoom_out = remapping_other3_player_key2_crouch)
@@ -3677,11 +3677,11 @@ function scr_option_control_menu()
 				}
 			}
 			#endregion /* Zoom Out 2 Conflict END */
-			
+
 			#endregion /* Key 2 Conflicts END */
-			
+
 			#endregion /* Make keys red if in conflict with other keys END */
-			
+
 			scr_draw_remap_key("remap_key_dive", l10n_text("Dive"), remapping_player_key_dive, remapping_player_key2_dive, key1_x, menu_y_remap_key_dive);
 			scr_draw_remap_key("remap_key_jump", l10n_text("Jump"), remapping_player_key_jump, remapping_player_key2_jump, key1_x, menu_y_remap_key_jump);
 			if (allow_player_double_jump[what_player] >= 3)
@@ -3710,17 +3710,17 @@ function scr_option_control_menu()
 			scr_draw_remap_key("remap_key_zoom_out", l10n_text("Zoom Out"), remapping_player_key_zoom_out, remapping_player_key2_zoom_out, key1_x, menu_y_remap_key_zoom_out);
 			scr_draw_remap_key("remap_key_accept", l10n_text("Accept"), remapping_player_key_accept, remapping_player_key2_accept, key1_x, menu_y_remap_key_accept);
 			scr_draw_remap_key("remap_key_back", l10n_text("Back"), remapping_player_key_back, remapping_player_key2_back, key1_x, menu_y_remap_key_back);
-			
+
 			#endregion /* Show the keys for every player END */
-			
+
 		#endregion /* Show what key is used END */
-		
+
 		scr_option_reset_controls_to_default_settings(430, menu_y_remap_reset);
-		
+
 		#region /* Keyboards Controls Remapping Navigation */
 		if (menu_delay == 0 && menu_joystick_delay == 0)
 		{
-			
+
 			#region /* Remap key dive */
 			if (menu == "remap_key_dive")
 			&& (!can_remap_key)
@@ -3739,9 +3739,9 @@ function scr_option_control_menu()
 				}
 			}
 			#endregion /* Remap key dive END */
-			
+
 			else
-			
+
 			#region /* Remap key jump */
 			if (menu == "remap_key_jump")
 			&& (!can_remap_key)
@@ -3767,9 +3767,9 @@ function scr_option_control_menu()
 				}
 			}
 			#endregion /* Remap key jump END */
-			
+
 			else
-			
+
 			#region /* Remap key crouch */
 			if (menu == "remap_key_crouch")
 			&& (!can_remap_key)
@@ -3788,9 +3788,9 @@ function scr_option_control_menu()
 				}
 			}
 			#endregion /* Remap key crouch END */
-			
+
 			else
-			
+
 			#region /* Remap key crouch toggle */
 			if (menu == "remap_key_crouch_toggle")
 			&& (!can_remap_key)
@@ -3809,9 +3809,9 @@ function scr_option_control_menu()
 				}
 			}
 			#endregion /* Remap key crouch toggle END */
-			
+
 			else
-			
+
 			#region /* Remap key run */
 			if (menu == "remap_key_run")
 			&& (!can_remap_key)
@@ -3830,9 +3830,9 @@ function scr_option_control_menu()
 				}
 			}
 			#endregion /* Remap key run END */
-			
+
 			else
-			
+
 			#region /* Remap key run toggle */
 			if (menu == "remap_key_run_toggle")
 			&& (!can_remap_key)
@@ -3851,9 +3851,9 @@ function scr_option_control_menu()
 				}
 			}
 			#endregion /* Remap key run toggle END */
-			
+
 			else
-			
+
 			#region /* Remap key left */
 			if (menu == "remap_key_left")
 			&& (!can_remap_key)
@@ -3872,9 +3872,9 @@ function scr_option_control_menu()
 				}
 			}
 			#endregion /* Remap key left END */
-			
+
 			else
-			
+
 			#region /* Remap key right */
 			if (menu == "remap_key_right")
 			&& (!can_remap_key)
@@ -3893,9 +3893,9 @@ function scr_option_control_menu()
 				}
 			}
 			#endregion /* Remap key right END */
-			
+
 			else
-			
+
 			#region /* Remap key down */
 			if (menu == "remap_key_down")
 			&& (!can_remap_key)
@@ -3914,9 +3914,9 @@ function scr_option_control_menu()
 				}
 			}
 			#endregion /* Remap key down END */
-			
+
 			else
-			
+
 			#region /* Remap key up */
 			if (menu == "remap_key_up")
 			&& (!can_remap_key)
@@ -3942,9 +3942,9 @@ function scr_option_control_menu()
 				}
 			}
 			#endregion /* Remap key up END */
-			
+
 			else
-			
+
 			#region /* Remap Key Tongue */
 			if (menu == "remap_key_tongue")
 			&& (!can_remap_key)
@@ -3963,9 +3963,9 @@ function scr_option_control_menu()
 				}
 			}
 			#endregion /* Remap Key Tongue END */
-			
+
 			else
-			
+
 			#region /* Remap Key Zoom In */
 			if (menu == "remap_key_zoom_in")
 			&& (!can_remap_key)
@@ -3991,9 +3991,9 @@ function scr_option_control_menu()
 				}
 			}
 			#endregion /* Remap Key Zoom In END */
-			
+
 			else
-			
+
 			#region /* Remap Key Zoom Out */
 			if (menu == "remap_key_zoom_out")
 			&& (!can_remap_key)
@@ -4012,9 +4012,9 @@ function scr_option_control_menu()
 				}
 			}
 			#endregion /* Remap Key Zoom Out END */
-			
+
 			else
-			
+
 			#region /* Remap Key Accept */
 			if (menu == "remap_key_accept")
 			&& (!can_remap_key)
@@ -4033,9 +4033,9 @@ function scr_option_control_menu()
 				}
 			}
 			#endregion /* Remap Key Accept END */
-			
+
 			else
-			
+
 			#region /* Remap Key Back */
 			if (menu == "remap_key_back")
 			&& (!can_remap_key)
@@ -4054,9 +4054,9 @@ function scr_option_control_menu()
 				}
 			}
 			#endregion /* Remap Key Back END */
-			
+
 			else
-			
+
 			#region /* Remap reset */
 			if (menu == "remap_reset")
 			&& (!can_remap_key)
@@ -4075,7 +4075,7 @@ function scr_option_control_menu()
 				}
 			}
 			#endregion /* Remap reset END */
-			
+
 			#region /* Menu remap key number */
 			if (menu == "remap_key_dive")
 			|| (menu == "remap_key_jump")
@@ -4115,13 +4115,13 @@ function scr_option_control_menu()
 				}
 			}
 			#endregion /* Menu remap key number */
-			
+
 		}
-		
+
 		#endregion /* Keyboards Controls Remapping Navigation END */
-		
+
 		#endregion /* Remap Keyboard and Mouse or Gamepad END */
-		
+
 		#region /* Controls checkmarks and dropdown menu settings */
 		draw_menu_checkmark(390, menu_y_up_is_also_jump + menu_y_offset, l10n_text("Up is also jump"), "up_is_also_jump", global.player_up_is_also_jump[what_player], false);
 		draw_menu_checkmark(390, menu_y_double_jump_uses_jump_key + menu_y_offset, l10n_text("Double jump uses jump"), "double_jump_uses_jump_key", global.player_double_jump_uses_jump_key[what_player], true);
@@ -4161,13 +4161,13 @@ function scr_option_control_menu()
 			}
 			draw_menu_checkmark(390, menu_y_always_show_gamepad_buttons + menu_y_offset, l10n_text("Always Show Gamepad Buttons"), "always_show_gamepad_buttons", global.always_show_gamepad_buttons, false);
 		}
-		
+
 		if (global.settings_sidebar_menu == "controller_settings")
 		{
 			draw_menu_slider(420, menu_y_vibration_strength + menu_y_offset, l10n_text("Vibration Strength"), "vibration_strength", global.vibration_strength[what_player]);
 			menu_cursor_y_position_end = menu_y_vibration_strength;
 		}
-		
+
 		if (global.enable_option_for_pc)
 		&& (global.settings_sidebar_menu == "controller_settings")
 		&& (global.debug_screen)
@@ -4178,7 +4178,7 @@ function scr_option_control_menu()
 				scr_draw_text_outlined(420, menu_y_chosen_controller_used + menu_y_offset + 70, string(gamepad_get_description(remapping_player)), global.default_text_size, c_menu_outline, c_menu_fill, 1);
 				draw_set_halign(fa_center);
 			}
-			
+
 			draw_menu_dropdown(390, menu_y_chosen_controller_used + menu_y_offset, l10n_text("Chosen Controller Used"), "chosen_controller_used", global.chosen_controller_used[what_player],
 			l10n_text("Auto Detect"),
 			l10n_text("Xbox One"),
@@ -4211,14 +4211,14 @@ function scr_option_control_menu()
 		l10n_text("Only Jump"),
 		l10n_text("Down + Jump"));
 		scr_set_default_dropdown_description("drop_from_rope", "Down or Jump");
-		
+
 		draw_menu_dropdown(390, menu_y_wall_jump_setting + menu_y_offset, l10n_text("Wall Jump"), "wall_jump_setting", global.player_wall_jump_setting[what_player],
 		l10n_text("Off"),
 		l10n_text("When touching wall"),
 		l10n_text("When holding towards the wall"));
 		scr_set_default_dropdown_description("wall_jump_setting", "When touching wall");
 		#endregion /* Controls checkmarks and dropdown menu settings END */
-		
+
 		/* Have multiple remapping profiles that players can save and change to easily */
 		remapping_player = clamp(remapping_player, 0, global.max_players - 1);
 		var remapping_profile = global.player_profile[what_player];
@@ -4230,7 +4230,7 @@ function scr_option_control_menu()
 		scr_set_default_dropdown_description("remap_select_profile", "Profile 1");
 		remapping_player = draw_menu_left_right_buttons(490, 50 + menu_y_offset, 250, l10n_text("Player"), remapping_player, "remap_select_player", 1, false, +1, global.max_players - 1);
 		remapping_player = clamp(remapping_player, 0, global.max_players - 1);
-		
+
 		if (menu == "remap_select_player") /* Update the character select sprites whenever you change which player to remap */
 		{
 			if (key_left)
@@ -4255,17 +4255,17 @@ function scr_option_control_menu()
 				menu_delay = 3;
 			}
 		}
-		
+
 		#region /* Show the player when they can input a gamepad button to remap controls */
 		if (input_key)
 		{
 			draw_set_alpha(1);
 			draw_roundrect_color_ext(display_get_gui_width() * 0.5 - 350, 12, display_get_gui_width() * 0.5 + 350, 84, 50, 50, c_black, c_black, false);
-			
+
 			/* Text saying input gamepad button now for player */
 			draw_set_halign(fa_center);
 			scr_draw_text_outlined(display_get_gui_width() * 0.5, 32, l10n_text("INPUT NOW FOR PLAYER " + string(what_player)), global.default_text_size, c_menu_outline, c_menu_fill, 1);
-			
+
 			scr_draw_text_outlined(display_get_gui_width() * 0.5 - 10, 64, l10n_text("Buttons can be disabled using"), global.default_text_size, c_menu_outline, c_menu_fill, 1);
 			if (global.controls_used_for_navigation == "gamepad" || global.always_show_gamepad_buttons)
 			{
@@ -4277,12 +4277,12 @@ function scr_option_control_menu()
 			}
 		}
 		#endregion /* Show the player when they can input a gamepad button to remap controls END */
-		
+
 		#region /* Menu Navigation */
 		if (menu_delay == 0 && menu_joystick_delay == 0)
 		&& (can_navigate)
 		{
-			
+
 			#region /* Remap Select Player Navigation */
 			if (menu == "remap_select_player")
 			{
@@ -4313,9 +4313,9 @@ function scr_option_control_menu()
 				}
 			}
 			#endregion /* Remap Select Player Navigation END */
-			
+
 			else
-			
+
 			#region /* Remap Select Profile Navigation */
 			if (menu == "remap_select_profile")
 			{
@@ -4341,12 +4341,12 @@ function scr_option_control_menu()
 						var key_or_gamepad = 0;
 					}
 					scr_save_player_control_profile(remapping_player + 1, key_or_gamepad);
-					
+
 					if (key_up && global.player_profile[what_player] > 0) {
-						global.player_profile[what_player] --;
+						global.player_profile[what_player]--;
 					}
 					else if (key_down && global.player_profile[what_player] < 3) {
-						global.player_profile[what_player] ++;
+						global.player_profile[what_player]++;
 					}
 					scr_set_default_remapping_player_gamepad(what_player, false);
 					scr_set_default_remapping_player_keyboard(what_player, false);
@@ -4354,9 +4354,9 @@ function scr_option_control_menu()
 				}
 			}
 			#endregion /* Remap Select Profile Navigation END */
-			
+
 			else
-			
+
 			#region /* Up Key is Jump Key Navigation */
 			if (menu == "up_is_also_jump")
 			{
@@ -4381,9 +4381,9 @@ function scr_option_control_menu()
 				}
 			}
 			#endregion /* Up Key is Jump Key Navigation END */
-			
+
 			else
-			
+
 			#region /* Double Jump Uses Jump Key Navigation */
 			if (menu == "double_jump_uses_jump_key")
 			{
@@ -4408,9 +4408,9 @@ function scr_option_control_menu()
 				}
 			}
 			#endregion /* Double Jump Uses Jump Key Navigation END */
-			
+
 			else
-			
+
 			#region /* Remap key double jump */
 			if (menu == "remap_key_double_jump")
 			&& (!can_remap_key)
@@ -4429,9 +4429,9 @@ function scr_option_control_menu()
 				}
 			}
 			#endregion /* Remap key double jump END */
-			
+
 			else
-			
+
 			#region /* Down Key is Crouch Key Navigation */
 			if (menu == "down_is_also_crouch")
 			{
@@ -4462,9 +4462,9 @@ function scr_option_control_menu()
 				}
 			}
 			#endregion /* Up Key is Jump Key Navigation END */
-			
+
 			else
-			
+
 			#region /* Double Tap To Run Navigation */
 			if (menu == "double_tap_to_run")
 			{
@@ -4481,9 +4481,9 @@ function scr_option_control_menu()
 				}
 			}
 			#endregion /* Double Tap To Run Navigation END */
-			
+
 			else
-			
+
 			#region /* Always Run Navigation */
 			if (menu == "always_run")
 			{
@@ -4507,9 +4507,9 @@ function scr_option_control_menu()
 				}
 			}
 			#endregion /* Always Run Navigation END */
-			
+
 			else
-			
+
 			#region /* Double tap to dive Navigation */
 			if (menu == "double_tap_to_dive")
 			{
@@ -4533,9 +4533,9 @@ function scr_option_control_menu()
 				}
 			}
 			#endregion /* Double tap to dive Navigation END */
-			
+
 			else
-			
+
 			#region /* Cancel dive by pressing the jump or dive key Navigation */
 			if (menu == "cancel_dive_by_jump_or_dive")
 			{
@@ -4566,9 +4566,9 @@ function scr_option_control_menu()
 				}
 			}
 			#endregion /* Cancel dive by pressing the jump or dive key Navigation END */
-			
+
 			else
-			
+
 			#region /* Cancel dive by pressing the opposite direction Navigation */
 			if (menu == "cancel_dive_by_pressing_opposite_direction")
 			{
@@ -4592,9 +4592,9 @@ function scr_option_control_menu()
 				}
 			}
 			#endregion /* Cancel dive by pressing the opposite direction Navigation END */
-			
+
 			else
-			
+
 			#region /* Down + Jump to Ground Pound Navigation */
 			if (menu == "down_and_jump_to_groundpound")
 			{
@@ -4618,9 +4618,9 @@ function scr_option_control_menu()
 				}
 			}
 			#endregion /* Down + Jump to Ground Pound Navigation END */
-			
+
 			else
-			
+
 			#region /* Navigate Wall Jump Setting */
 			if (menu == "wall_jump_setting")
 			{
@@ -4642,7 +4642,7 @@ function scr_option_control_menu()
 				&& (open_dropdown)
 				&& (global.player_wall_jump_setting[what_player] > 0)
 				{
-					global.player_wall_jump_setting[what_player] --;
+					global.player_wall_jump_setting[what_player]--;
 					menu_delay = 3;
 				}
 				else
@@ -4650,14 +4650,14 @@ function scr_option_control_menu()
 				&& (open_dropdown)
 				&& (global.player_wall_jump_setting[what_player] < 2)
 				{
-					global.player_wall_jump_setting[what_player] ++;
+					global.player_wall_jump_setting[what_player]++;
 					menu_delay = 3;
 				}
 			}
 			#endregion /* Navigate Wall Jump Setting END */
-			
+
 			else
-			
+
 			#region /* Navigate Drop From Rope Setting */
 			if (menu == "drop_from_rope")
 			{
@@ -4679,7 +4679,7 @@ function scr_option_control_menu()
 				&& (open_dropdown)
 				&& (global.player_drop_from_rope[what_player] > 0)
 				{
-					global.player_drop_from_rope[what_player] --;
+					global.player_drop_from_rope[what_player]--;
 					menu_delay = 3;
 				}
 				else
@@ -4687,14 +4687,14 @@ function scr_option_control_menu()
 				&& (open_dropdown)
 				&& (global.player_drop_from_rope[what_player] < 4)
 				{
-					global.player_drop_from_rope[what_player] ++;
+					global.player_drop_from_rope[what_player]++;
 					menu_delay = 3;
 				}
 			}
 			#endregion /* Navigate Drop From Rope Setting END */
-			
+
 			else
-			
+
 			#region /* Navigate Show Controls Settings */
 			if (menu == "show_controls")
 			{
@@ -4728,7 +4728,7 @@ function scr_option_control_menu()
 				&& (open_dropdown)
 				&& (global.player_show_controls[what_player] > 0)
 				{
-					global.player_show_controls[what_player] --;
+					global.player_show_controls[what_player]--;
 					menu_delay = 3;
 				}
 				else
@@ -4736,14 +4736,14 @@ function scr_option_control_menu()
 				&& (open_dropdown)
 				&& (global.player_show_controls[what_player] < 10)
 				{
-					global.player_show_controls[what_player] ++;
+					global.player_show_controls[what_player]++;
 					menu_delay = 3;
 				}
 			}
 			#endregion /* Navigate Show Controls Settings END */
-			
+
 			else
-			
+
 			#region /* Show prompt when changing controller Navigation */
 			if (menu == "show_prompt_when_changing_controller")
 			{
@@ -4773,9 +4773,9 @@ function scr_option_control_menu()
 				}
 			}
 			#endregion /* Show prompt when changing controller Navigation END */
-			
+
 			else
-			
+
 			#region /* Always Show Gamepad Buttons Navigation */
 			if (menu == "always_show_gamepad_buttons")
 			{
@@ -4813,9 +4813,9 @@ function scr_option_control_menu()
 				}
 			}
 			#endregion /* Always Show Gamepad Buttons Navigation END */
-			
+
 			else
-			
+
 			#region /* Navigate Chosen Controller Used Settings */
 			if (menu == "chosen_controller_used")
 			{
@@ -4858,7 +4858,7 @@ function scr_option_control_menu()
 				&& (global.chosen_controller_used[what_player] > 0)
 				&& (global.debug_screen)
 				{
-					global.chosen_controller_used[what_player] --;
+					global.chosen_controller_used[what_player]--;
 					menu_delay = 3;
 					set_controller_sprites_to_use();
 				}
@@ -4868,15 +4868,15 @@ function scr_option_control_menu()
 				&& (global.chosen_controller_used[what_player] < 5)
 				&& (global.debug_screen)
 				{
-					global.chosen_controller_used[what_player] ++;
+					global.chosen_controller_used[what_player]++;
 					menu_delay = 3;
 					set_controller_sprites_to_use();
 				}
 			}
 			#endregion /* Navigate Show Controls Settings END */
-			
+
 			else
-			
+
 			#region /* Navigate Vibration Strength Settings */
 			if (menu == "vibration_strength")
 			{
@@ -4942,9 +4942,9 @@ function scr_option_control_menu()
 				}
 			}
 			#endregion /* Navigate Vibration Strength Settings END */
-			
+
 		}
-		
+
 		#region /* Accept */
 		if (key_a_pressed || mouse_check_button_released(mb_left) && mouse_get_x > 370)
 		&& (menu_delay == 0 && menu_joystick_delay == 0)
@@ -4990,10 +4990,10 @@ function scr_option_control_menu()
 			}
 		}
 		#endregion /* Accept END */
-		
+
 		#endregion /* Menu Navigation END */
-		
+
 	}
 	#endregion /* Controls Options END */
-	
+
 }

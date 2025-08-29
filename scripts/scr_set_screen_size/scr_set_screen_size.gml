@@ -2,7 +2,7 @@ function scr_set_screen_size()
 {
 	var window_width = window_get_width();
 	var window_height = window_get_height();
-	
+
 	#region /* Set GUI size */
 	switch (global.gui_scale_modifier)
 	{
@@ -16,7 +16,7 @@ function scr_set_screen_size()
 			/* 1024 x 576 */ if (window_get_width() >= 1024 - 40 && window_get_height() >= 576 - 40){global.gui_width = window_width * 1.1; global.gui_height = window_height * 1.1; break;}else
 			/* 960 x 540 */ if (window_get_width() >= 960 - 40 && window_get_height() >= 540 - 40){global.gui_width = window_width * 1.2; global.gui_height = window_height * 1.2; break;}else
 			/* Lower than 540p, like 480 x 270 */ {global.gui_width = window_width * 2.5; global.gui_height = window_height * 2.5; break;}
-		
+
 		/* GUI Scale Fixed */
 		case 1: global.gui_width = window_width * 0.6; global.gui_height = window_height * 0.6; break;
 		case 2: global.gui_width = window_width * 0.7; global.gui_height = window_height * 0.7; break;
@@ -36,12 +36,12 @@ function scr_set_screen_size()
 		display_set_gui_size(global.gui_width, global.gui_height);
 	}
 	#endregion /* Set GUI size END */
-	
+
 	if (global.gui_scale != -1)
 	{
 		display_set_gui_maximise(global.gui_scale, global.gui_scale, 0, 0);
 	}
-	
+
 	#region /* Set screen size */
 	var current_camera = view_camera[view_current];
 	if (camera_get_view_border_x(current_camera) != camera_get_view_width(current_camera))
@@ -49,9 +49,9 @@ function scr_set_screen_size()
 	{
 		camera_set_view_border(current_camera, camera_get_view_width(current_camera), camera_get_view_height(current_camera));
 	}
-	
+
 	camera_set_view_size(current_camera, window_width, window_height);
-	
+
 	if (global.play_edited_level || room == rm_world)
 	{
 		camera_set_view_speed(current_camera, -1, -1);
@@ -60,8 +60,8 @@ function scr_set_screen_size()
 	{
 		camera_set_view_speed(current_camera, 0, 0);
 	}
-	
+
 	if (camera_get_view_target(current_camera) != self){camera_set_view_target(current_camera, self);}
 	#endregion /* Set screen size END */
-	
+
 }

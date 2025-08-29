@@ -1,4 +1,4 @@
-global.part_limit --;
+global.part_limit--;
 global.part_limit_text_alpha = 3;
 switch(object)
 {

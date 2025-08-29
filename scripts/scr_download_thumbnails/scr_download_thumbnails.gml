@@ -12,7 +12,7 @@ function scr_download_thumbnails(download_all, what_num_items = 0)
 		info_queue_index = global.selected_online_download_index;
 		scr_log("INFO", "THUMBNAILS", "single_download_mode", "info_queue_index=" + string(info_queue_index));
 	}
-	
+
 	/* The following complex conditional determines whether to send a new HTTP request to download thumbnail metadata.
 	It checks two scenarios:
 	Scenario 1: "Download All" mode is active.
@@ -33,43 +33,43 @@ function scr_download_thumbnails(download_all, what_num_items = 0)
 	{
 		scr_log("DEBUG", "THUMBNAILS", "begin_http_request",
 			"download_all=" + string(download_all) + ", info_queue_index=" + string(info_queue_index) + ", what_num_items=" + string(what_num_items));
-		
+
 		/* Prevent additional HTTP requests until the current one is finished. */
 		info_queue_http_request = false; scr_log("DEBUG", "THUMBNAILS", "queue_http_lock", "info_queue_http_request=false");
 		/* Reset any previous metadata. */
 		caution_online_takes_you_back_to = "download_online_" + string(global.selected_online_download_index)
-		
+
 		scr_log("DEBUG", "THUMBNAILS", "reset_metadata",
 			"menu=" + string(menu) + ", back_to=" + string(caution_online_takes_you_back_to));
-		
+
 		global.info_data = undefined;
 		global.online_download_list_info = "";
-		
+
 		/* Only send the HTTP request if the device is connected to the network. */
 		if (scr_check_network_connection(network_connect_active))
 		{
 			scr_log("INFO", "THUMBNAILS", "http_request_start", "download_id=" + string_upper(all_download_id[info_queue_index]));
-			
+
 			/* Construct and send an HTTP GET request to fetch metadata.
 			URL format: "https://<base_url>/metadata/<content_type>s/<downloadID>?os_type=<os_type>" */
 			var http_request_content_url = "https://" + global.base_url + "/metadata/" + string(content_type) + "s/" +
 				string_upper(all_download_id[info_queue_index]) +
 				"?os_type=" + string(os_type)
-			
-        /* Build request-scoped headers for robustness */
-        var info_headers = ds_map_create();
-        ds_map_add(info_headers, "Content-Type", "application/json");
-        ds_map_add(info_headers, "User-Agent", "gmdownloader");
-        ds_map_add(info_headers, "X-API-Key", global.api_key);
 
-        global.http_request_info = http_request(
-            http_request_content_url,
-            "GET",
-            info_headers,
-            ""
-        );
-        ds_map_destroy(info_headers);
-			
+		/* Build request-scoped headers for robustness */
+		var info_headers = ds_map_create();
+		ds_map_add(info_headers, "Content-Type", "application/json");
+		ds_map_add(info_headers, "User-Agent", "gmdownloader");
+		ds_map_add(info_headers, "X-API-Key", global.api_key);
+
+		global.http_request_info = http_request(
+			http_request_content_url,
+			"GET",
+			info_headers,
+			""
+		);
+		ds_map_destroy(info_headers);
+
 			scr_log("DEBUG", "THUMBNAILS", "http_request_sent",
 				"download_id=" + string(all_download_id[info_queue_index]) + ", request_id=" + string(global.http_request_info));
 			scr_log("TRACE", "THUMBNAILS", "request_url", http_request_content_url);
@@ -82,28 +82,28 @@ function scr_download_thumbnails(download_all, what_num_items = 0)
 			scr_handle_no_network_connection("scr_download_thumbnails", "download_online_" + string(global.selected_online_download_index));
 		}
 	}
-    else
-    {
-        // Rate‑limit identical skip logs to avoid spamming the console
-        if (!variable_global_exists("thumb_skip_log_key"))
-        {
-            global.thumb_skip_log_key = "";
-            global.thumb_skip_log_time = 0;
-        }
+	else
+	{
+		// Rate‑limit identical skip logs to avoid spamming the console
+		if (!variable_global_exists("thumb_skip_log_key"))
+		{
+			global.thumb_skip_log_key = "";
+			global.thumb_skip_log_time = 0;
+		}
 
-        var _key = string(info_queue_http_request) + ":" + string(info_queue_index);
-        var _now = get_timer(); // microseconds since game start
+		var _key = string(info_queue_http_request) + ":" + string(info_queue_index);
+		var _now = get_timer(); // microseconds since game start
 
-        // Log only if the state changed or at least 1 second passed
-        if ((_key != global.thumb_skip_log_key) || (_now - global.thumb_skip_log_time > 1000000))
-        {
-            scr_log("DEBUG", "THUMBNAILS", "skip_http_request",
-                "info_queue_http_request=" + string(info_queue_http_request) + ", info_queue_index=" + string(info_queue_index));
-            global.thumb_skip_log_key = _key;
-            global.thumb_skip_log_time = _now;
-        }
-    }
-	
+		// Log only if the state changed or at least 1 second passed
+		if ((_key != global.thumb_skip_log_key) || (_now - global.thumb_skip_log_time > 1000000))
+		{
+			scr_log("DEBUG", "THUMBNAILS", "skip_http_request",
+				"info_queue_http_request=" + string(info_queue_http_request) + ", info_queue_index=" + string(info_queue_index));
+			global.thumb_skip_log_key = _key;
+			global.thumb_skip_log_time = _now;
+		}
+	}
+
 	/* Once an HTTP response is received, info_data is still undefined until processed.
 	This block checks that:
 	- We haven't processed the info yet (info data is undefined)
@@ -131,23 +131,23 @@ function scr_download_thumbnails(download_all, what_num_items = 0)
 			{
 				/* Log an error if JSON parsing fails and reset info_data. */
 					scr_log("ERROR", "THUMBNAILS", "parse_json_failed", "download_id=" + string_upper(all_download_id[info_queue_index]));
-				
+
 				global.info_data = undefined;
 			}
 		}
-		
+
 		/* If info_data is now a valid array, process each item in the array. */
 		if (is_array(global.info_data))
 		{
 			var num_info_items = array_length(global.info_data);
-			
+
 				scr_log("DEBUG", "THUMBNAILS", "process_info_items",
 					"count=" + string(num_info_items) + ", download_id=" + string_upper(all_download_id[info_queue_index]));
-			
+
 			for (var j = 0; j < num_info_items; j++)
 			{
 				var item = global.info_data[j];
-				
+
 				/* If no display name has been set for this download item, set it now. */
 				if (global.draw_download_name[info_queue_index] == "")
 				{
@@ -156,7 +156,7 @@ function scr_download_thumbnails(download_all, what_num_items = 0)
 					{
 						/* Mask any profanity found in the name. */
 						global.draw_download_name[info_queue_index] = string(switch_mask_profanity(item.name));
-						
+
 							scr_log("WARN", "THUMBNAILS", "name_masked_for_profanity",
 								"download_id=" + string_upper(all_download_id[info_queue_index]) + ", new_name=" + string(global.draw_download_name[info_queue_index]));
 					}
@@ -164,15 +164,15 @@ function scr_download_thumbnails(download_all, what_num_items = 0)
 					{
 						/* Otherwise, use the item's name as is. */
 						global.draw_download_name[info_queue_index] = string(item.name);
-						
+
 							scr_log("INFO", "THUMBNAILS", "set_download_name",
 								"download_id=" + string_upper(all_download_id[info_queue_index]) + ", name=" + string(global.draw_download_name[info_queue_index]));
 					}
 				}
-				
+
 					scr_log("TRACE", "THUMBNAILS", "name_slot",
 						"index=" + string(info_queue_index) + ", name=" + string(global.draw_download_name[info_queue_index]));
-				
+
 				/* Check if the thumbnail sprite is still missing. */
 				if (is_array(global.spr_download_list_thumbnail) /* Only index if it’s a real array and the index is valid */
 				&& info_queue_index >= 0
@@ -181,25 +181,25 @@ function scr_download_thumbnails(download_all, what_num_items = 0)
 				{
 					/* Build the file path where the thumbnail image will be saved. */
 					var downloaded_thumbnail_path = temp_directory + "thumbnail_" + string(info_queue_index) + ".png";
-					
+
 		scr_log("INFO", "THUMBNAILS", "thumbnail_decode_save",
 			"download_id=" + string_upper(all_download_id[info_queue_index]) + ", path=" + string(downloaded_thumbnail_path));
-					
+
 					/* Decode the base64 thumbnail data from the JSON item. */
 					var buffer = buffer_base64_decode(item.thumbnail);
-					
+
 					/* Save the decoded image buffer to a file. Otherwise the thumbnails will show up as blank */
 					buffer_save(buffer, downloaded_thumbnail_path);
-					
+
 					/* Create a sprite from the saved thumbnail image file. */
 					global.spr_download_list_thumbnail[info_queue_index] = sprite_add(downloaded_thumbnail_path, 0, false, true, 0, 0);
-					
+
 					scr_log("INFO", "THUMBNAILS", "thumbnail_sprite_created", "download_id=" + string_upper(all_download_id[info_queue_index]));
 				}
 			}
 		}
 	}
-	
+
 	/* Final check: if there is no pending HTTP request and the current item's download name has been set,
 	then move to the next item in the queue. */
 	if (
@@ -212,7 +212,7 @@ function scr_download_thumbnails(download_all, what_num_items = 0)
 	)
 	{
 		scr_log("INFO", "THUMBNAILS", "item_processed", "download_id=" + string_upper(all_download_id[info_queue_index]) + ", action=advance");
-		
+
 		/* Increment the queue index to process the next thumbnail. */
 		info_queue_index++;
 		/* Allow a new HTTP request for the next item. */
@@ -221,15 +221,15 @@ function scr_download_thumbnails(download_all, what_num_items = 0)
 	}
 	//else
 	//{
-	//	/* Debug messages checking what if checks are failing or not */
-	//	var current_name = "undefined";
-	    
-	//	if (is_array(global.draw_download_name)
-	//	&& info_queue_index < array_length(global.draw_download_name))
-	//	{
+	//    /* Debug messages checking what if checks are failing or not */
+	//    var current_name = "undefined";
+
+	//    if (is_array(global.draw_download_name)
+	//    && info_queue_index < array_length(global.draw_download_name))
+	//    {
 	//        current_name = global.draw_download_name[info_queue_index];
 	//    }
-		
+
 	//    show_debug_message("[scr_download_thumbnails] Final check did not pass. " +
 	//        "info_queue_http_request: " + string(info_queue_http_request) +
 	//        ", global.draw_download_name[info_queue_index]: " + current_name +

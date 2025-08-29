@@ -1,6 +1,6 @@
 function scr_change_character_portrait()
 {
-	
+
 	#region /* Change Character Skin */
 	for(var i = 1; i <= global.max_players; i += 1)
 	{
@@ -53,7 +53,7 @@ function scr_change_character_portrait()
 		{
 			character_portrait_for_player_dir_exists_4[what_player] = false;
 		}
-		
+
 		#region /* Player character select portrait sprite */
 		scr_delete_sprite_properly(global.sprite_select_player[what_player]);
 		global.sprite_select_player[what_player] = spr_noone;
@@ -65,7 +65,7 @@ function scr_change_character_portrait()
 		global.sprite_select_player[what_player] = scr_initialize_character_sprite("character_select_portrait", global.sprite_select_player[what_player], character_folder[what_player]);
 		ini_close(); /* Don't commit the save data on Switch, this is only temporary! */
 		#endregion /* Player character select portrait sprite END */
-		
+
 		if (xx_delay[what_player] == -1)
 		{
 			xx[what_player] = player_display_x[what_player] - 32;
@@ -78,25 +78,25 @@ function scr_change_character_portrait()
 		xx_delay[what_player] = 0;
 	}
 	#endregion /* Change Character Portrait END */
-	
+
 	scr_change_character_skin();
 }
 
 function scr_change_character_skin()
 {
-	
+
 	#region /* Change Character Skin */
 	for(var i = 1; i <= global.max_players; i += 1)
 	{
-		
+
 		#region /* If a unavailable skin is selected, then go to the last selectable skin for each player */
 		if (!file_exists("characters/" + string(ds_list_find_value(global.all_loaded_characters, global.character_index[i - 1])) + "/sprites/skin" + string(global.skin_for_player[i]) + "/mask.png"))
 		&& (!file_exists(game_save_id + "custom_characters/" + string(ds_list_find_value(global.all_loaded_characters, global.character_index[i - 1])) + "/sprites/skin" + string(global.skin_for_player[i]) + "/mask.png"))
 		&& (global.skin_for_player[i] > 0)
 		{
 			menu_delay = 3;
-			global.skin_for_player[i] --;
-			
+			global.skin_for_player[i]--;
+
 			#region /* Player character select portrait sprite */
 			if (file_exists("characters/" + string(ds_list_find_value(global.all_loaded_characters, global.character_index[i - 1])) + "/sprites/skin" + string(global.skin_for_player[i]) + "/mask.png"))
 			|| (file_exists(game_save_id + "custom_characters/" + string(ds_list_find_value(global.all_loaded_characters, global.character_index[i - 1])) + "/sprites/skin" + string(global.skin_for_player[i]) + "/mask.png"))
@@ -109,7 +109,7 @@ function scr_change_character_skin()
 				{
 					character_folder[i] = game_save_id + "custom_characters/" + string(ds_list_find_value(global.all_loaded_characters, global.character_index[i - 1]));
 				}
-				
+
 				if (file_exists(string(character_folder[i]) + "/sprites/skin" + string(global.skin_for_player[i]) + "/mask.png"))
 				{
 					skin_folder = "/skin" + string(global.skin_for_player[i]) + "/";
@@ -133,26 +133,26 @@ function scr_change_character_skin()
 				scr_change_character_skin(); /* Do this code again */
 			}
 			#endregion /* Player character select portrait sprite END */
-			
+
 		}
 		#endregion /* If a unavailable skin is selected, then go to the last selectable skin for each player END */
-		
+
 		#region /* If a unavailable voice pack is selected, then go to the last selectable voice pack for each player */
 		if (!file_exists("characters/" + string(ds_list_find_value(global.all_loaded_characters, global.character_index[i - 1])) + "/sound/voicepack" + string(global.voicepack_for_player[i]) + "/jump.ogg")
 		&& !file_exists(game_save_id + "custom_characters/" + string(ds_list_find_value(global.all_loaded_characters, global.character_index[i - 1])) + "/sound/voicepack" + string(global.voicepack_for_player[i]) + "/jump.ogg")
 		&& global.voicepack_for_player[i] > 0)
 		{
 			menu_delay = 3;
-			global.voicepack_for_player[i] --;
-			
+			global.voicepack_for_player[i]--;
+
 			/* Lastly, save the voicepack in config */
 			ini_open(game_save_id + "save_file/config.ini");
 			ini_write_real("config", "voicepack_for_player" + string(i), global.voicepack_for_player[i]);
 			ini_close(); /* Don't commit the save data on Switch, this is only temporary! */
 		}
 		#endregion /* If a unavailable voice pack is selected, then go to the last selectable voice pack for each player END */
-		
+
 	}
 	#endregion /* Change Character Skin END */
-	
+
 }

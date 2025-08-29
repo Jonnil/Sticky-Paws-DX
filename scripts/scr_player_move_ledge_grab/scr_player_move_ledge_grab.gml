@@ -1,6 +1,6 @@
 function scr_player_move_ledge_grab()
 {
-	
+
 	#region /* Ledge Grab */
 	if (allow_ledge_grab)
 	{
@@ -37,21 +37,21 @@ function scr_player_move_ledge_grab()
 					gravity = 0;
 					hspeed = 0;
 					vspeed = 0;
-				
+
 					#region /* Move against the ledge */
 					while(!place_meeting(x + hspeed_dir, y, obj_wall))
 					{
 						x += hspeed_dir;
 					}
 					#endregion /* Move against the ledge END */
-				
+
 					#region /* Make sure we are the right height */
 					while(position_meeting(x + (17 * hspeed_dir), bbox_top + 1, obj_wall))
 					{
-						y --;
+						y--;
 					}
 					#endregion /* Make sure we are the right height END */
-				
+
 					ledge_grab_jump = false; /* Make sure player doesn't move forward when first grabbing a ledge */
 					ledge_grab = true; /* Set this variable to true so the game knows you are currently grabbing a ledge*/
 					ledge_grab_delay = 0; /* Reset the grabbing ledge delay */
@@ -70,7 +70,7 @@ function scr_player_move_ledge_grab()
 			{
 				if (ledge_grab_delay < 10) /* If variable is below 10, then increase it, so that there is a delay before you can climb up or jump off */
 				{
-					ledge_grab_delay ++;
+					ledge_grab_delay++;
 				}
 				gravity = 0;
 				hspeed = 0;
@@ -173,7 +173,7 @@ function scr_player_move_ledge_grab()
 	#region /* Delay before you can do another ledge grab */
 	if (ledge_grab_delay >= 11)
 	{
-		ledge_grab_delay ++;
+		ledge_grab_delay++;
 		if (ledge_grab_delay >= 13)
 		{
 			ledge_grab = false; /* The game recognizes that you are no longer grabbing a ledge after 1 frame when jumping up or down from ledge, so you don't accidentally do another action you didn't mean to do */
@@ -210,5 +210,5 @@ function scr_player_move_ledge_grab()
 		}
 	}
 	#endregion /* Ledge grab jump / Get up over ledge END */
-	
+
 }

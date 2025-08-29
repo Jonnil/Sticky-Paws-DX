@@ -9,12 +9,12 @@ function scr_draw_show_controls_key(show_controls_name = "", gp_button = noone, 
 	{
 		var real_yy = yy;
 	}
-	
+
 	var draw_text_show_controls = false;
-	
+
 	var show_controls_button = (gp_button != noone) ? gp_button : gp_button2;
 	var show_controls_key = (player_key != noone) ? player_key : player_key2;
-	
+
 	if (show_controls_button != noone) && (global.controls_used_for_navigation == "gamepad" && gp_is_connected || global.always_show_gamepad_buttons)
 	{
 		draw_text_show_controls = true;
@@ -26,7 +26,7 @@ function scr_draw_show_controls_key(show_controls_name = "", gp_button = noone, 
 		draw_text_show_controls = true;
 		draw_sprite_ext(spr_keyboard_keys, show_controls_key, player_show_key_x, real_yy, 0.5, 0.5, 0, c_white, alpha);
 	}
-	
+
 	if (draw_text_show_controls)
 	{
 		scr_draw_text_outlined(player_show_key_x + 22, real_yy, l10n_text(show_controls_name), global.default_text_size, c_black, global.player_color[what_player], alpha);
@@ -40,31 +40,31 @@ function scr_draw_show_controls(what_player = 1, yy = show_player_controls_y[wha
 	/* The players that knows how to control the game, should turn off the "show controls" themselves if they want to */
 	/* This should hopefully give everyone the best opportunity to learn the controls */
 	/* Go to "scr set default remapping player" and check that "player show controls" is set to 1 by default */
-	
+
 	var get_window_height = display_get_gui_height();
 	var gamepad_player_is_connected = gamepad_is_connected(what_player - 1);
-	
+
 	#region /* Set correct variables for players */
 	var gp_button_dive = global.player_[inp.gp][what_player][1][action.dive];
 	var gp_button2_dive = global.player_[inp.gp][what_player][2][action.dive];
 	var player_key_dive = global.player_[inp.key][what_player][1][action.dive];
 	var player_key2_dive = global.player_[inp.key][what_player][2][action.dive];
-	
+
 	var gp_button_jump = global.player_[inp.gp][what_player][1][action.jump];
 	var gp_button2_jump = global.player_[inp.gp][what_player][2][action.jump];
 	var player_key_jump = global.player_[inp.key][what_player][1][action.jump];
 	var player_key2_jump = global.player_[inp.key][what_player][2][action.jump];
-	
+
 	var gp_button_accept = global.player_[inp.gp][what_player][1][action.accept];
 	var gp_button2_accept = global.player_[inp.gp][what_player][2][action.accept];
 	var player_key_accept = global.player_[inp.key][what_player][1][action.accept];
 	var player_key2_accept = global.player_[inp.key][what_player][2][action.accept];
-	
+
 	var gp_button_crouch = global.player_[inp.gp][what_player][1][action.crouch];
 	var gp_button2_crouch = global.player_[inp.gp][what_player][2][action.crouch];
 	var player_key_crouch = global.player_[inp.key][what_player][1][action.crouch];
 	var player_key2_crouch = global.player_[inp.key][what_player][2][action.crouch];
-	
+
 	/* If crouch buttons are not found, find crouch toggle buttons instead */
 	if (gp_button_crouch == noone)
 	{
@@ -82,12 +82,12 @@ function scr_draw_show_controls(what_player = 1, yy = show_player_controls_y[wha
 	{
 		var player_key2_crouch = global.player_[inp.key][what_player][2][action.crouch_toggle];
 	}
-	
+
 	var gp_button_run = global.player_[inp.gp][what_player][1][action.run];
 	var gp_button2_run = global.player_[inp.gp][what_player][2][action.run];
 	var player_key_run = global.player_[inp.key][what_player][1][action.run];
 	var player_key2_run = global.player_[inp.key][what_player][2][action.run];
-	
+
 	/* If run buttons are not found, find run toggle buttons instead */
 	if (gp_button_run == noone)
 	{
@@ -105,28 +105,28 @@ function scr_draw_show_controls(what_player = 1, yy = show_player_controls_y[wha
 	{
 		var player_key2_run = global.player_[inp.key][what_player][2][action.run_toggle];
 	}
-	
+
 	var gp_button_left = global.player_[inp.gp][what_player][1][action.left];
 	var gp_button2_left = global.player_[inp.gp][what_player][2][action.left];
 	var player_key_left = global.player_[inp.key][what_player][1][action.left];
 	var player_key2_left = global.player_[inp.key][what_player][2][action.left];
-	
+
 	var gp_button_right = global.player_[inp.gp][what_player][1][action.right];
 	var gp_button2_right = global.player_[inp.gp][what_player][2][action.right];
 	var player_key_right = global.player_[inp.key][what_player][1][action.right];
 	var player_key2_right = global.player_[inp.key][what_player][2][action.right];
-	
+
 	var gp_button_down = global.player_[inp.gp][what_player][1][action.down];
 	var gp_button2_down = global.player_[inp.gp][what_player][2][action.down];
 	var player_key_down = global.player_[inp.key][what_player][1][action.down];
 	var player_key2_down = global.player_[inp.key][what_player][2][action.down];
-	
+
 	var gp_button_up = global.player_[inp.gp][what_player][1][action.up];
 	var gp_button2_up = global.player_[inp.gp][what_player][2][action.up];
 	var player_key_up = global.player_[inp.key][what_player][1][action.up];
 	var player_key2_up = global.player_[inp.key][what_player][2][action.up];
 	#endregion /* Set correct variables for players END */
-	
+
 	#region /* Show Controls for Player */
 	draw_set_halign(fa_left);
 	draw_set_valign(fa_middle);
@@ -147,5 +147,5 @@ function scr_draw_show_controls(what_player = 1, yy = show_player_controls_y[wha
 		scr_draw_show_controls_key("Join Game", gp_button_accept, gp_button2_accept, player_key_accept, player_key2_accept, 32, what_player, yy, alpha, gamepad_player_is_connected, get_window_height);
 	}
 	#endregion /* Show Controls for Player END */
-	
+
 }

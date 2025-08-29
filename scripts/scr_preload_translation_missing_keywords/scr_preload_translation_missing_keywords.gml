@@ -6,14 +6,14 @@ function preload_translation_missing_keywords()
 		/* Initialize Missing Translation Queue and Cache */
 		global.missing_translation_queue = ds_list_create();
 		global.missing_translation_cache = ds_map_create();
-		
+
 		/* Define the folder and file pattern */
 		var folder_path = game_save_id + "translation_missing_keywords/";
 		var pattern = "translation_missing_keywords-*.txt";
-		
+
 		var latest_file = "";
 		var latest_date = "";
-		
+
 		/* Use file_find_first with attribute 0 (fa_none) */
 		var file_name = file_find_first(folder_path + pattern, 0);
 		while (file_name != "")
@@ -22,28 +22,28 @@ function preload_translation_missing_keywords()
 			/* "translation_missing_keywords-{game_name}_v{build_date}_{YYYY-MM-DD}.txt" */
 			/* Use string_last_pos() to find the position of the last underscore */
 			var last_underscore = string_last_pos("_", file_name);
-			
+
 			/* Find the position of ".txt" (we assume it exists) */
 			var dot_index = string_pos(".txt", file_name);
 			if (dot_index == 0)
 			{
 				dot_index = string_length(file_name) + 1;
 			}
-			
+
 			/* Extract the date substring from after the last underscore until before ".txt" */
 			var date_str = string_copy(file_name, last_underscore + 1, dot_index - last_underscore - 1);
-			
+
 			/* Compare lexicographically; since the format is YYYY-MM-DD, higher string is later */
 			if (date_str > latest_date)
 			{
 				latest_date = date_str;
 				latest_file = file_name;
 			}
-			
+
 			file_name = file_find_next();
 		}
 		file_find_close();
-		
+
 		/* If a file was found, load its contents into the cache */
 		if (latest_file != "")
 		{

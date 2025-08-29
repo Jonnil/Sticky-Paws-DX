@@ -1,6 +1,6 @@
 image_speed = 0.5;
 
-time ++;
+time++;
 if (time > 180)
 {
 	if (place_meeting(x, y, obj_water))
@@ -29,7 +29,7 @@ if (place_meeting(x, y, obj_water))
 }
 if (!position_meeting(x, bbox_bottom + 1, obj_wall))
 {
-	y ++;
+	y++;
 }
 
 if (place_meeting(x, y, obj_water))

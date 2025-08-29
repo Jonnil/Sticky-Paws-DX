@@ -10,7 +10,7 @@ if (!open_door)
 		|| (!player_need_to_be_on_ground_to_enter)
 		{
 			if (!door_need_to_be_on_ground_to_enter) /* The door can be in the air and player can still enter */
-			
+
 			|| (door_need_to_be_on_ground_to_enter) /* The door must sit on ground too before a player can enter */
 			&& (position_meeting(x, bbox_bottom + 1, obj_wall)
 			|| position_meeting(bbox_left - 1, bbox_bottom + 1, obj_wall)
@@ -25,13 +25,13 @@ if (!open_door)
 				{
 					with(obj_key_follow)
 					{
-						what_key --;
+						what_key--;
 						if (what_key <= 1)
 						{
 							nearest_key = noone;
 						}
 					}
-					
+
 					if (sprite_index == spr_door_locked)
 					{
 						sprite_index = spr_door;
@@ -46,10 +46,10 @@ if (!open_door)
 					{
 						sprite_index = spr_warp_box_one_use;
 					}
-					other.keys --;
+					other.keys--;
 					locked_door = false;
 					open_door = true;
-					
+
 					/* Lastly, destroy the key being used */
 					with (instance_nearest(x, y, obj_key_follow))
 					{

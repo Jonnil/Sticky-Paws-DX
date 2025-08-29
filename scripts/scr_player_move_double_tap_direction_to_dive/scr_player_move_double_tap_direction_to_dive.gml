@@ -1,10 +1,10 @@
 function scr_player_move_double_tap_direction_to_dive()
 {
-	
+
 	#region /* Double-tap direction to dive*/
 	if (double_tap_to_dive)
 	{
-	
+
 		#region /* Double tap left direction to dive */
 		if (key_left_pressed)
 		{
@@ -22,9 +22,9 @@ function scr_player_move_double_tap_direction_to_dive()
 			}
 		}
 		#endregion /* Double tap left direction to dive END */
-		
+
 		else
-		
+
 		#region /* Double tap right direction to dive */
 		if (key_right_pressed)
 		{
@@ -42,7 +42,7 @@ function scr_player_move_double_tap_direction_to_dive()
 			}
 		}
 		#endregion /* Double tap right direction to dive END */
-	
+
 		else
 		if (!key_left_hold)
 		&& (!key_right_hold)
@@ -71,7 +71,7 @@ function scr_player_move_double_tap_direction_to_dive()
 	}
 	if (double_tap_dive_timer > 0)
 	{
-		double_tap_dive_timer --;
+		double_tap_dive_timer--;
 	}
 	if (double_tap_dive_timer <= 0)
 	{
@@ -81,5 +81,5 @@ function scr_player_move_double_tap_direction_to_dive()
 		double_tap_right_dive = 0;
 	}
 	#endregion /* Double-tap direction to dive END */
-	
+
 }

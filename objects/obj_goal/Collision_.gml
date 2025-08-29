@@ -5,18 +5,18 @@ if(goal=false)
 	{
 		global.trigger_ending=true;
 	}
-	
+
 	#region/*Stop Music*/
-	
+
 	audio_stop_sound(global.music);
 	audio_stop_sound(global.music_underwater);
 	global.music=noone;
 	global.music_underwater=noone;
-	
+
 	#endregion/*Stop Music END*/
-	
+
 	#region/*Trigger demo ending if demo mode is on*/
-	
+
 	if(global.demo=true)
 	{
 		if(asset_get_type("room_level1")==asset_room)
@@ -51,13 +51,13 @@ if(goal=false)
 			global.trigger_demo_ending=500;
 		}
 	}
-	
+
 	#endregion/*Trigger demo ending if demo mode is on END*/
-	
+
 	global.player_has_entered_goal=true;
-	
+
 	#region/*Steam Achievment, Clear stage 1 (or 2)*/
-	
+
 	if(global.current_level=1)
 	or(global.current_level=2)
 	{
@@ -66,23 +66,23 @@ if(goal=false)
 			steam_set_achievement("CLEAR_FIRST_STAGE");
 		}
 	}
-	
+
 	#endregion/*Steam Achievment, Clear stage 1 (or 2) END*/
 
 	#region/*Save Level Editor Checkpoint*/
-	
+
 	if(asset_get_type("room_leveleditor")==asset_room)
 	and(room=room_leveleditor)
 	and(global.actually_play_edited_level=true)
 	{
-		
+
 		#region/*Create directory for saving custom levels*/
 		if(!directory_exists(working_directory+"\Custom Levels"))
 		{
 			directory_create(working_directory+"\Custom Levels");
 		}
 		#endregion/*Create directory for saving custom levels END*/
-		
+
 		ini_open(working_directory+"\Custom Levels\CustomLevelSavefile.ini");
 		ini_write_real("Level"+string(global.level_editor_level),"x_checkpoint",0);
 		ini_write_real("Level"+string(global.level_editor_level),"y_checkpoint",0);
@@ -92,8 +92,8 @@ if(goal=false)
 		ini_write_real("Level"+string(global.level_editor_level),"checkpoint_realmillisecond",0);
 		ini_close();
 	}
-	
+
 	#endregion/*Save Level Editor Checkpoint END*/
-	
+
 	goal=true;
 }

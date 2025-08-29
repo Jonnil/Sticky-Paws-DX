@@ -20,10 +20,10 @@ if (sprite_exists(global.pause_screenshot))
 {
 	var spr_width = sprite_get_width(global.pause_screenshot);
 	var spr_height = sprite_get_height(global.pause_screenshot);
-	
+
 	var scale_x = get_window_width / spr_width;
 	var scale_y = get_window_height / spr_height;
-	
+
 	draw_sprite_ext(global.pause_screenshot, 0, 0, 0, scale_x, scale_y, 0, c_white, 1);
 }
 #endregion /* Pause Screenshot END */
@@ -83,13 +83,13 @@ if (!hide_menu_for_clean_screenshots)
 	{
 		/* Show Controls when pausing the game, so player can always know how to control the game at any point they pause */
 		if (os_type != os_ios && os_type != os_android) {
-		    for (var i = 1; i <= global.max_players; i++) {
-		        if (global.player_can_play[i]) {
-		            scr_draw_show_controls(i,, 1, 1);
-		        }
-		    }
+			for (var i = 1; i <= global.max_players; i++) {
+				if (global.player_can_play[i]) {
+					scr_draw_show_controls(i,, 1, 1);
+				}
+			}
 		}
-		
+
 		var hide_menu_for_clean_screenshots_y = get_window_height - 32 - show_player_controls_y[1] - 8;
 		if (global.controls_used_for_navigation == "gamepad")
 		|| (global.always_show_gamepad_buttons)
@@ -109,7 +109,7 @@ if (!hide_menu_for_clean_screenshots)
 
 if (!hide_menu_for_clean_screenshots)
 {
-	
+
 	#region /* Games Logo in top left corner */
 	if (menu == "continue") /* Can only hide menu when on these buttons specifically */
 	|| (menu == "change_character")
@@ -125,7 +125,7 @@ if (!hide_menu_for_clean_screenshots)
 		{
 			draw_sprite_ext(global.title_logo_index, 0, 160, scr_wave(70, 80, 4.5, 0), (402 / sprite_get_height(global.title_logo_index)) * 0.3, (402 / sprite_get_height(global.title_logo_index)) * 0.3, 0, c_white, 1 * fade_in_pause_alpha);
 		}
-		
+
 		#region /* Display level information */
 		if (global.pause_room == rm_leveleditor)
 		{
@@ -137,28 +137,28 @@ if (!hide_menu_for_clean_screenshots)
 			string(display_level_id) + "\n"
 			, global.default_text_size * 0.75, c_black, c_white, 1 * fade_in_pause_alpha);
 			scr_draw_level_tags(32, 420, false, fa_left, false, global.default_text_size * 0.75, 1 * fade_in_pause_alpha);
-			
+
 			if (display_level_author != "")
 			{
 				draw_sprite_ext(spr_icon_person, 0, 16, 320, 1, 1, 0, c_white, 1);
 			}
-			
+
 			hud_show_big_collectibles_y = lerp(hud_show_big_collectibles_y, 160, 0.1);
 		}
 		#endregion /* Display level information END */
-		
+
 	}
 	else
 	{
 		hud_show_big_collectibles_y = lerp(hud_show_big_collectibles_y, 0, 0.1);
 	}
 	#endregion /* Games Logo in top left corner END */
-	
+
 	if (!in_settings)
 	{
 		draw_set_halign(fa_center);
 		draw_set_valign(fa_middle);
-		
+
 		for(var i = 1; i <= global.max_players; i += 1)
 		{
 			if (i == 1)
@@ -172,11 +172,11 @@ if (!hide_menu_for_clean_screenshots)
 		}
 	}
 	#endregion /* Which player is controlling the pause menu? END */
-	
+
 	#region /* Pause Text */
 	draw_set_halign(fa_center);
 	draw_set_valign(fa_middle);
-	
+
 	if (menu == "continue")
 	|| (menu == "change_character")
 	|| (menu == "edit_level")
@@ -190,7 +190,7 @@ if (!hide_menu_for_clean_screenshots)
 		draw_sprite_ext(spr_pause_text, image_index, get_window_width * 0.5, 200, 1, 1, 0, c_white, scr_wave(0, 1, 4.5, 0) * fade_in_pause_alpha);
 	}
 	#endregion /* Pause Text END */
-	
+
 	/* PAUSE LEVEL SELECT / LEVEL EDITOR MENU */
 	if (!show_loading_icon)
 	&& (room == rm_world
@@ -208,10 +208,10 @@ if (!hide_menu_for_clean_screenshots)
 		{
 			draw_menu_button(get_window_width * 0.5 - 185, continue_y, l10n_text("Continue"), "continue", "continue", c_lime, fade_in_pause_alpha);
 			draw_sprite_ext(spr_icon_back, 0, get_window_width * 0.5 - 185 + 20, continue_y + 21, 1, 1, 0, c_white, 1 * fade_in_pause_alpha);
-			
+
 			draw_menu_button(get_window_width * 0.5 - 185, change_character_y, l10n_text("Change Character"), "change_character", "load_characters", c_lime, fade_in_pause_alpha);
 			draw_sprite_ext(spr_icon_change_character, 0, get_window_width * 0.5 - 185 + 20, change_character_y + 21, 1, 1, 0, c_white, 1 * fade_in_pause_alpha);
-			
+
 			if (global.character_select_in_this_menu == "level_editor")
 			&& (!file_exists(game_save_id + "custom_levels/" + string(global.level_name) + "/data/level_information.ini"))
 			&& (ds_list_size(global.all_loaded_custom_levels) - 1 < global.max_custom_levels) /* Don't let player download levels if they have reached the max amount of levels stored */
@@ -224,7 +224,7 @@ if (!hide_menu_for_clean_screenshots)
 			{
 				draw_menu_button(get_window_width * 0.5 - 185, edit_level_y, l10n_text("Edit Level"), "edit_level", "edit_level", c_lime, fade_in_pause_alpha);
 			}
-			
+
 			if (room == rm_leveleditor)
 			|| (global.pause_room == rm_leveleditor)
 			{
@@ -263,7 +263,7 @@ if (!hide_menu_for_clean_screenshots)
 		else
 		if (menu == "reset_from_checkpoint" || menu == "reset_from_start" || menu == "restart_nevermind")
 		{
-			
+
 			if (global.controls_used_for_navigation == "gamepad")
 			{
 				/* Tell the player the shortcut to quick restart */
@@ -273,9 +273,9 @@ if (!hide_menu_for_clean_screenshots)
 				scr_draw_text_outlined(get_window_width * 0.5 - 42, get_window_height * 0.5 - 32, "+", global.default_text_size, c_black, c_white, 1);
 				scr_draw_gamepad_buttons(gp_shoulderrb, get_window_width * 0.5, get_window_height * 0.5 - 32, 1, c_white, 1, 0.75, 0.75, 1);
 				scr_draw_text_outlined(get_window_width * 0.5 + 42, get_window_height * 0.5 - 32, "+", global.default_text_size, c_black, c_white, 1);
-				scr_draw_gamepad_buttons(gp_select,	get_window_width * 0.5 + 82, get_window_height * 0.5 - 32, 1, c_white, 1, 0.75, 0.75, 1);
+				scr_draw_gamepad_buttons(gp_select,    get_window_width * 0.5 + 82, get_window_height * 0.5 - 32, 1, c_white, 1, 0.75, 0.75, 1);
 			}
-			
+
 			draw_menu_button(get_window_width * 0.5 - 185, get_window_height * 0.5, l10n_text("Reset from Checkpoint"), "reset_from_checkpoint", "reset_from_checkpoint", c_lime, fade_in_pause_alpha);
 			if (holding_key_timer > 0 && menu == "reset_from_checkpoint") {
 				scr_draw_circular_bar(get_window_width * 0.5 - 185 + 16, get_window_height * 0.5 + 21, holding_key_timer, 60, c_red, 20, 1, 6); /* Draw a circular bar that fills when holding reset from checkpoint key */
@@ -368,17 +368,17 @@ if (!hide_menu_for_clean_screenshots)
 		}
 	}
 	/* PAUSE LEVEL EDITOR MENU */
-	
+
 	#region /* Show loading icon and reset level */
 	if (show_loading_icon)
 	{
 		scr_draw_loading(1 * fade_in_pause_alpha);
 	}
 	#endregion /* Show loading icon and reset level END */
-	
+
 	scr_option_menu(); /* Options */
 	scr_character_select_menu_draw();
-	
+
 	if (menu == "caution_online_back")
 	|| (menu == "caution_online_do_not_show")
 	|| (menu == "caution_online_proceed")
@@ -395,8 +395,8 @@ if (!hide_menu_for_clean_screenshots)
 	{
 		scr_draw_upload_rules();
 	}
-	
+
 	scr_cant_use_controller_notification();
-	
+
 	scr_quit_to_desktop_menu("quit_to_desktop");
 }

@@ -3,7 +3,7 @@ function scr_start_intro_animations()
 	/* Start Intro Animations */
 	if (!spawned_from_checkpoint) /* Ensure not in the middle of a level by touching a checkpoint */
 	{
-		
+
 		/* Check intro animations */
 		if (intro_animation == "cake_stolen"
 		|| intro_animation == "ending")
@@ -12,13 +12,13 @@ function scr_start_intro_animations()
 			crouch = false;
 			ground_pound = false;
 			cutscene_time++; /* Increase cutscene time only here */
-			
+
 			if (cutscene_time == 1)
 			{
 				image_index = 1;
 				image_speed = 0.25;
 			}
-			
+
 			/* Handle different intro animations */
 			switch (intro_animation)
 			{
@@ -29,7 +29,7 @@ function scr_start_intro_animations()
 					intro_animation_ending();
 					break;
 			}
-			
+
 			if (intro_animation_sprite == noone)
 			{
 				intro_animation_sprite = sprite_idle;
@@ -99,20 +99,20 @@ function intro_animation_ending()
 		intro_animation_sprite = sprite_run;
 		hspeed = 0;
 		instance_create_depth(1697, 745, 0, obj_catlyn_working);
-		
+
 		if (instance_exists(obj_goal))
 		{
 			with (instance_create_depth(instance_nearest(x, y, obj_goal).x, instance_nearest(x, y, obj_goal).bbox_bottom, 0, obj_chair_and_table))
 			{
 				ending = true;
 			}
-			
+
 			with(obj_goal)
 			{
 				instance_destroy();
 			}
 		}
-		
+
 		with (instance_create_depth(-16, y, 0, obj_cake_stealing_enemy))
 		{
 			time = 60 * 2;
@@ -141,44 +141,44 @@ function intro_animation_ending_chair()
 	{
 		x = instance_nearest(x, y, obj_chair_and_table).x;
 	}
-	
+
 	if (!place_meeting(x, y + 1, obj_wall))
 	{
 		y++;
 	}
-	
+
 	image_xscale = +1;
 	can_move = false;
 	crouch = false;
 	ground_pound = false;
 	cutscene_time++;
 	image_speed = 0.25;
-	
+
 	if (instance_exists(obj_chair_and_table))
 	{
 		with (instance_nearest(x, y, obj_cake))
 		{
 			attach_player = false;
-			
+
 			if (instance_exists(obj_chair_and_table))
 			{
 				x = instance_nearest(x, y, obj_chair_and_table).x + 23;
 			}
 		}
 	}
-	
+
 	if (cutscene_time == 1)
 	{
 		image_index = 0;
 		image_speed = 0.25;
 	}
-	
+
 	if (cutscene_time <= 240)
 	{
 		intro_animation_sprite = sprite_sitting_down_to_eat;
-		
+
 		image_speed = 0.25;
-		
+
 		if (image_index > image_number - 1)
 		{
 			cutscene_time = 250;
@@ -190,7 +190,7 @@ function intro_animation_ending_chair()
 		{
 			instance_create_depth(x, y, 0, obj_credits);
 		}
-		
+
 		intro_animation_sprite = sprite_sitting_eating;
 		intro_animation = "ending_chair_eating";
 	}

@@ -1,10 +1,10 @@
 if (!global.actually_play_edited_level)
 && (!global.play_edited_level)
 {
-	
+
 	if (quit_level_editor == 0)
 	{
-		
+
 		#region /* Show a pause button on screen when using the mouse */
 		if (!pause && !in_modify_object_menu && global.controls_used_for_navigation == "mouse")
 		{
@@ -12,18 +12,18 @@ if (!global.actually_play_edited_level)
 			draw_menu_button_sprite(spr_menu_button, display_get_gui_width() - 185, pause_button_y,,, 0.5, 1, 185, 42, l10n_text("Pause"), "pause", "pause");
 		}
 		#endregion /* Show a pause button on screen when using the mouse END */
-		
+
 		scr_draw_list_of_placable_objects(); /* List of Placable Objects */
-		
+
 		/* Draw a cursor in the center of the screen, so level designer can visually see where the center of the screen is */
 		if (!modify_object_menu)
 		{
 			draw_circle_color(display_get_gui_width() * 0.5, display_get_gui_height() * 0.5, 3, c_black, c_white, false);
 		}
-		
+
 		if (selected_menu_alpha < 0.1)
 		{
-			
+
 			#region /* At top of screen, show part limit */
 			if (global.part_limit >= 4000)
 			{
@@ -40,7 +40,7 @@ if (!global.actually_play_edited_level)
 				scr_draw_text_outlined(display_get_gui_width() * 0.5, 80, l10n_text("Part Limit") + ": " + string(global.part_limit) + "/4000", global.default_text_size, c_black, c_white, global.part_limit_text_alpha);
 			}
 			#endregion /* At top of screen, show part limit END */
-			
+
 			#region /* At top of screen, show entity limit */
 			if (global.part_limit_entity >= 100)
 			{
@@ -57,14 +57,14 @@ if (!global.actually_play_edited_level)
 				scr_draw_text_outlined(display_get_gui_width() * 0.5, 112, l10n_text("Entity Limit") + ": " + string(global.part_limit_entity) + "/100", global.default_text_size, c_black, c_white, global.part_limit_entity_text_alpha);
 			}
 			#endregion /* At top of screen, show entity limit END */
-			
+
 		}
 		else
 		{
 			global.part_limit_text_alpha = 0;
 			global.part_limit_entity_text_alpha = 0;
 		}
-		
+
 		if (erase_mode)
 		{
 			var width = 10;
@@ -75,11 +75,11 @@ if (!global.actually_play_edited_level)
 			draw_rectangle_color(0, get_window_height - width, display_get_gui_width(), display_get_gui_height(), c_blue, c_blue, c_blue, c_blue, false); /* Bottom */
 			draw_set_alpha(1);
 		}
-		
+
 		scr_draw_level_editor_pause_menu(); /* Draw Level Editor Pause Menu */
-		
+
 		scr_draw_all_level_editor_icon(); /* Draw All Level Editor Icons */
-		
+
 		#region /* Show Tooltip when hovering over icon, this code needs to be after the show icon code so it appears above the icon */
 		if (global.controls_used_for_navigation == "mouse")
 		&& (show_tooltip >= 50)
@@ -101,21 +101,21 @@ if (!global.actually_play_edited_level)
 			show_tooltip = 0;
 		}
 		#endregion /* Show Tooltip when hovering over icon, this code needs to be after the show icon code so it appears above the icon END */
-		
+
 		#region /* Click icon at top of screen */
-		
+
 		#region /* Object Categories Icons */
 		var icon_object_category_terrain_x = display_get_gui_width() * 0.5 - 64 - 64;
 		var icon_object_category_decoration_x = display_get_gui_width() * 0.5 - 64;
 		var icon_object_category_item_x = display_get_gui_width() * 0.5;
 		var icon_object_category_enemy_x = display_get_gui_width() * 0.5 + 64;
 		var icon_object_category_gizmo_x = display_get_gui_width() * 0.5 + 64 + 64;
-		
+
 		var icon_object_category_daily_build_standard_x = display_get_gui_width() * 0.5 - 32;
 		var icon_object_category_daily_build_featured_x = display_get_gui_width() * 0.5 + 32;
-		
+
 		var category_title = "";
-		
+
 		if (!if_daily_build)
 		{
 			if (current_object_category == "terrain")
@@ -174,7 +174,7 @@ if (!global.actually_play_edited_level)
 				draw_sprite_ext(spr_spring, 3, icon_object_category_gizmo_x, 32 + icon_at_top_y, 1, 1, 0, c_gray, 1);
 			}
 		}
-		
+
 		if (if_daily_build)
 		{
 			if (current_object_category == "daily_build_standard")
@@ -204,13 +204,13 @@ if (!global.actually_play_edited_level)
 				draw_sprite_ext(spr_icon_featured, 0, icon_object_category_daily_build_featured_x, 32 + icon_at_top_y, 0.75, 0.75, 0, c_gray, 1);
 			}
 		}
-		
+
 		if (selected_menu_alpha > 0)
 		{
 			draw_set_halign(fa_right);
 			scr_draw_text_outlined(icon_object_category_terrain_x - 42, 32, string(category_title), global.default_text_size, c_black, c_white, selected_menu_alpha);
 		}
-		
+
 		#region /* Navigate Category Icons */
 		if (!if_daily_build)
 		{
@@ -358,9 +358,9 @@ if (!global.actually_play_edited_level)
 			}
 		}
 		#endregion /* Navigate Category Icons END */
-		
+
 		#endregion /* Object Categories Icons END */
-		
+
 		#region /* Click Toggle Grid */
 		if (global.controls_used_for_navigation == "mouse")
 		&& (point_in_rectangle(cursor_x, cursor_y, grid_button_x - 32, - 64 + 1, grid_button_x + 32, + 64))
@@ -371,12 +371,12 @@ if (!global.actually_play_edited_level)
 		{
 			tooltip = "Toggle Grid";
 			show_tooltip += 2;
-			
+
 			draw_sprite_ext(spr_menu_cursor, menu_cursor_index, grid_button_x, icon_at_top_y + 80, 1, 1, 90, c_white, 1);
 			draw_set_alpha(0.5);
 			draw_rectangle_color(grid_button_x - 32, - 64, grid_button_x + 32, + 64, c_white, c_white, c_white, c_white, false);
 			draw_set_alpha(1);
-			
+
 			if (mouse_check_button_pressed(mb_left))
 			|| (level_editor_menu == "grid")
 			&& (key_a_pressed)
@@ -385,7 +385,7 @@ if (!global.actually_play_edited_level)
 			}
 		}
 		#endregion /* Click Toggle Grid END */
-		
+
 		#region /* Click Zoom Out */
 		if (keyboard_check(global.player_[inp.key][1][1][action.zoom_out]))
 		&& (!keyboard_check(global.player_[inp.key][1][1][action.zoom_in]))
@@ -432,12 +432,12 @@ if (!global.actually_play_edited_level)
 		{
 			tooltip = "Zoom Out";
 			show_tooltip += 2;
-			
+
 			draw_sprite_ext(spr_menu_cursor, menu_cursor_index, zoom_out_button_x, icon_at_top_y + 80, 1, 1, 90, c_white, 1);
 			draw_set_alpha(0.5);
 			draw_rectangle_color(zoom_out_button_x - 32, - 64, zoom_out_button_x + 32, + 64, c_white, c_white, c_white, c_white, false);
 			draw_set_alpha(1);
-			
+
 			if (mouse_check_button(mb_left))
 			|| (level_editor_menu == "zoom_out")
 			&& (key_a_hold)
@@ -454,7 +454,7 @@ if (!global.actually_play_edited_level)
 			zoom_out = false;
 		}
 		#endregion /* Click Zoom Out END */
-		
+
 		#region /* Click Reset Zoom */
 		if (keyboard_check(vk_control))
 		&& (keyboard_check(vk_enter))
@@ -477,12 +477,12 @@ if (!global.actually_play_edited_level)
 		{
 			tooltip = "Reset Zoom";
 			show_tooltip += 2;
-			
+
 			draw_sprite_ext(spr_menu_cursor, menu_cursor_index, zoom_reset_button_x, icon_at_top_y + 80, 1, 1, 90, c_white, 1);
 			draw_set_alpha(0.5);
 			draw_rectangle_color(zoom_reset_button_x - 32, - 64, zoom_reset_button_x + 32, + 64, c_white, c_white, c_white, c_white, false);
 			draw_set_alpha(1);
-			
+
 			if (keyboard_check(vk_control))
 			&& (keyboard_check(vk_enter))
 			&& (!keyboard_check(187))
@@ -503,7 +503,7 @@ if (!global.actually_play_edited_level)
 			zoom_reset = false;
 		}
 		#endregion /* Click Reset Zoom END */
-		
+
 		#region /* Click Zoom In */
 		if (keyboard_check(global.player_[inp.key][1][1][action.zoom_in]))
 		&& (!keyboard_check(global.player_[inp.key][1][1][action.zoom_out]))
@@ -550,12 +550,12 @@ if (!global.actually_play_edited_level)
 		{
 			tooltip = "Zoom In";
 			show_tooltip += 2;
-			
+
 			draw_sprite_ext(spr_menu_cursor, menu_cursor_index, zoom_in_button_x, icon_at_top_y + 80, 1, 1, 90, c_white, 1);
 			draw_set_alpha(0.5);
 			draw_rectangle_color(zoom_in_button_x - 32, - 64, zoom_in_button_x + 32, + 64, c_white, c_white, c_white, c_white, false);
 			draw_set_alpha(1);
-			
+
 			if (mouse_check_button(mb_left))
 			|| (level_editor_menu == "zoom_in")
 			&& (key_a_hold)
@@ -572,7 +572,7 @@ if (!global.actually_play_edited_level)
 			zoom_in = false;
 		}
 		#endregion /* Click Zoom In END */
-		
+
 		#region /* Click Help Button */
 		if (global.first_time_opened_level_editor) /* When you have created a new level, open the help menu */
 		&& (!pause)
@@ -618,7 +618,7 @@ if (!global.actually_play_edited_level)
 			modify_object_menu = false;
 			tooltip = "Help";
 			show_tooltip += 2;
-			
+
 			if (welcome_to_level_editor == 0)
 			{
 				draw_sprite_ext(spr_menu_cursor, menu_cursor_index, help_button_x, icon_at_top_y + 80, 1, 1, 90, c_white, 1);
@@ -626,7 +626,7 @@ if (!global.actually_play_edited_level)
 			draw_set_alpha(0.5);
 			draw_rectangle_color(help_button_x - 32, - 64, help_button_x + 32, + 64, c_white, c_white, c_white, c_white, false);
 			draw_set_alpha(1);
-			
+
 			if (mouse_check_button_pressed(mb_left))
 			&& (menu_delay == 0 && menu_joystick_delay == 0)
 			|| (level_editor_menu == "help")
@@ -640,9 +640,9 @@ if (!global.actually_play_edited_level)
 			}
 		}
 		#endregion /* Click Help Button END */
-		
+
 		#endregion /* Click icon at top of screen END */
-		
+
 		#region /* Autosave Warning Text */
 		draw_set_halign(fa_center);
 		var autosave_text = "";
@@ -694,11 +694,11 @@ if (!global.actually_play_edited_level)
 			}
 		}
 		#endregion /* Autosave Warning Text END */
-		
+
 		scr_draw_welcome_to_level_editor_menu(); /* Welcome to Level Editor screen */
-		
+
 		scr_draw_level_length_recommendation();
-		
+
 		#region /* Object Specific Help */
 		/* At the bottom of the screen, you can view help for specific objects that you have currently selected */
 		if (object_help_description != "")
@@ -716,7 +716,7 @@ if (!global.actually_play_edited_level)
 			draw_set_alpha(object_help_description_alpha * 0.9);
 			draw_roundrect_color_ext(display_get_gui_width() * 0.5 - (string_width(object_help_description) * 0.43), display_get_gui_height() - 34 - string_height(l10n_text(object_help_description)), display_get_gui_width() * 0.5 + (string_width(object_help_description) * 0.43), display_get_gui_height() - 4, 50, 50, c_black, c_black, false);
 			draw_set_alpha(1);
-			
+
 			draw_set_halign(fa_center);
 			draw_set_valign(fa_top);
 			scr_draw_text_outlined(display_get_gui_width() * 0.5, display_get_gui_height() - 28 - string_height(l10n_text(object_help_description)), l10n_text(current_object_name) + ":", global.default_text_size * 0.9, c_black, c_white, object_help_description_alpha);
@@ -724,7 +724,7 @@ if (!global.actually_play_edited_level)
 			draw_set_valign(fa_middle);
 		}
 		#endregion /* Object Specific Help END */
-		
+
 		if (global.controls_used_for_navigation != "gamepad")
 		&& (!navigate_camera_with_arrowkeys)
 		&& (!modify_object_menu)

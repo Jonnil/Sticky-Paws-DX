@@ -2,15 +2,15 @@ function draw_menu_button_sprite(spr_index, x_position, y_position, x_origin_off
 {
 	var mouse_get_x = device_mouse_x_to_gui(0);
 	var mouse_get_y = device_mouse_y_to_gui(0);
-	
+
 	var var_text_size = 1;
 	if (string_width(string(string_text)) > (spr_width + 173))
 	{
 		var var_text_size = 0.7;
 	}
-	
+
 	#region /* Button */
-	
+
 	if (point_in_rectangle(mouse_get_x, mouse_get_y, x_position, y_position + 2, x_position + spr_width - 1, y_position + spr_height))
 	&& (global.controls_used_for_navigation == "mouse")
 	&& (menu_delay == 0 && menu_joystick_delay == 0)
@@ -56,11 +56,11 @@ function draw_menu_button_sprite(spr_index, x_position, y_position, x_origin_off
 		var outline_color = c_white;
 		var fill_color = c_black;
 	}
-	
+
 	draw_set_halign(fa_center);
 	draw_set_valign(fa_middle);
 	scr_draw_text_outlined(x_position + (spr_width * 0.5), y_position + (spr_height * 0.5), string(string_text), global.default_text_size * var_text_size, outline_color, fill_color, 1); /* Black text inside the menu button */
-	
+
 	#region /* Clicking the menu button */
 	if (point_in_rectangle(mouse_get_x, mouse_get_y, x_position, y_position + 2, x_position + spr_width - 1, y_position + spr_height) && menu_delay == 0 && menu_joystick_delay == 0)
 	{
@@ -77,7 +77,7 @@ function draw_menu_button_sprite(spr_index, x_position, y_position, x_origin_off
 		}
 	}
 	#endregion /* Clicking the menu button END */
-	
+
 	#endregion /* Button END */
-	
+
 }

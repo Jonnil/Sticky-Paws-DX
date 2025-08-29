@@ -127,10 +127,10 @@ have_heart_balloon = false; /* If you have the heart balloon upgrade or not. You
 #region /* Load Game */
 if (file_exists(game_save_id + "save_file/file" + string(global.file) + ".ini")) {
 	ini_open(game_save_id + "save_file/file" + string(global.file) + ".ini");
-	
+
 	brand_new_file = ini_read_real("Player", "brand_new_file", true);
 	total_big_collectibles = ini_read_real("Player", "total_big_collectibles", 0);
-	
+
 	#region /* Load Player Position */
 	if (ini_read_real("Player", "player_x", 0) > 0)
 	&& (ini_read_real("Player", "player_y", 0) > 0)
@@ -147,10 +147,10 @@ if (file_exists(game_save_id + "save_file/file" + string(global.file) + ".ini"))
 		}
 	}
 	#endregion /* Load Player Position END */
-	
+
 	xx_heart = x;
 	yy_heart = y - 64;
-	
+
 	#region /* Have Heart Balloon */
 	if (ini_key_exists("Player", "player" + string(player) + "_have_heart_balloon"))
 	{
@@ -162,7 +162,7 @@ if (file_exists(game_save_id + "save_file/file" + string(global.file) + ".ini"))
 		have_heart_balloon = false; /* If you have the heart balloon upgrade or not. You start without it */
 	}
 	#endregion /* Have Heart Balloon END */
-	
+
 	ini_close(); /* Don't commit the save data on Switch, this is only temporary! */
 	move_snap(32, 32);
 }
@@ -284,11 +284,11 @@ global.goal_active = false;
 /* Give player lives if they get a game over */
 if (lives <= 0)
 {
-    lives = 5 * global.playergame;
-    if (global.character_select_in_this_menu == "main_game")
+	lives = 5 * global.playergame;
+	if (global.character_select_in_this_menu == "main_game")
 	{
-        ini_open(game_save_id + "save_file/file" + string(global.file) + ".ini");
-        ini_write_real("Player", "lives", lives);
-        ini_close(); /* Don't commit the save data on Switch, this is only temporary! */
-    }
+		ini_open(game_save_id + "save_file/file" + string(global.file) + ".ini");
+		ini_write_real("Player", "lives", lives);
+		ini_close(); /* Don't commit the save data on Switch, this is only temporary! */
+	}
 }

@@ -5,7 +5,7 @@ function scr_option_menu()
 	var mouse_get_x = device_mouse_x_to_gui(0);
 	var mouse_get_y = device_mouse_y_to_gui(0);
 	var fixed_player = 1;
-	
+
 	#region /* Background Brightness in Menus Options */
 	if (background_brightness_menu_lerp < 0)
 	{
@@ -21,19 +21,19 @@ function scr_option_menu()
 		draw_set_alpha(1);
 	}
 	#endregion /* Background Brightness in Menus Options END */
-	
+
 	#region /* Black Background behind sidebar */
 	draw_set_alpha(1);
 	draw_rectangle_color(left_sidebar_x + 0, 0, left_sidebar_x + 370, get_window_height, c_black, c_black, c_black, c_black, false);
 	#endregion /* Black Background behind sidebar END */
-	
+
 	#region /* Set Font */
 	var text_x_offset = 0;
 	var icon_x_offset = 0;
 	draw_set_halign(fa_left);
 	draw_set_valign(fa_middle);
 	#endregion /* Set Font END */
-	
+
 	#region /* Menu navigation tabs y positions */
 	var accessibility_settings_y = 40;
 	if (global.enable_challenge_mode_settings)
@@ -108,11 +108,11 @@ function scr_option_menu()
 		var broadcast_settings_y = -999;
 	}
 	#endregion /* Menu navigation tabs y positions END */
-	
+
 	#region /* Tabs Graphics */
 	if (left_sidebar_x > -400)
 	{
-		
+
 		#region /* Accessibility Settings */
 		if (global.settings_sidebar_menu == "accessibility_settings")
 		{
@@ -126,7 +126,7 @@ function scr_option_menu()
 				draw_sprite_ext(spr_menu_button, global.menu_button_subimg, left_sidebar_x, 20 + accessibility_settings_y, 1, 1, 0, c_gray, 1);
 			}
 			/* Button Hightlighted */
-			
+
 			draw_sprite_ext(spr_settings_icon, 1, left_sidebar_x + 20 + icon_x_offset, 20 + accessibility_settings_y, 1, 1, 0, c_white, 1); /* Settings Icon */
 			scr_draw_text_outlined(left_sidebar_x + 40 + text_x_offset, 20 + accessibility_settings_y, l10n_text("Accessibility"), global.default_text_size * 1.05, c_black, c_white, 1);
 		}
@@ -145,7 +145,7 @@ function scr_option_menu()
 			scr_draw_text_outlined(left_sidebar_x + 40 + text_x_offset, 20 + accessibility_settings_y, l10n_text("Accessibility"), global.default_text_size, c_white, c_black, 1);
 		}
 		#endregion /* Accessibility Settings END */
-		
+
 		#region /* Challenge Settings */
 		if (global.enable_challenge_mode_settings)
 		{
@@ -161,7 +161,7 @@ function scr_option_menu()
 					draw_sprite_ext(spr_menu_button, global.menu_button_subimg, left_sidebar_x, 20 + challenge_mode_settings_y, 1, 1, 0, c_gray, 1);
 				}
 				/* Button Hightlighted */
-				
+
 				draw_sprite_ext(spr_icon_challenge_mode, 1, left_sidebar_x + 20 + icon_x_offset, 20 + challenge_mode_settings_y, 1, 1, 0, c_white, 1); /* Settings Icon */
 				scr_draw_text_outlined(left_sidebar_x + 40 + text_x_offset, 20 + challenge_mode_settings_y, l10n_text("Challenge Mode"), global.default_text_size * 1.05, c_black, c_white, 1);
 			}
@@ -181,10 +181,10 @@ function scr_option_menu()
 			}
 		}
 		#endregion /* Challenge Settings END */
-		
+
 		#region /* My Game Settings */
 		scr_draw_text_outlined(left_sidebar_x + 20 + text_x_offset, 20 + (game_text_y), l10n_text("Game"), global.default_text_size * 0.5, c_black, c_white, 1);
-		
+
 		#region /* Game Settings */
 		if (global.settings_sidebar_menu == "game_settings")
 		{
@@ -215,7 +215,7 @@ function scr_option_menu()
 			scr_draw_text_outlined(left_sidebar_x + 40 + text_x_offset, 20 + game_settings_y, l10n_text("Game"), global.default_text_size, c_white, c_black, 1);
 		}
 		#endregion /* Game Settings END */
-		
+
 		#region /* Multiplayer Settings */
 		if (global.enable_multiplayer_settings)
 		{
@@ -249,12 +249,12 @@ function scr_option_menu()
 			}
 		}
 		#endregion /* Multiplayer Settings END */
-		
+
 		#endregion /* My Game Settings END */
-		
+
 		#region /* Controls Settings */
 		scr_draw_text_outlined(left_sidebar_x + 20 + text_x_offset, 20 + (controls_text_y), l10n_text("Controls"), global.default_text_size * 0.5, c_black, c_white, 1);
-		
+
 		#region /* Keyboard and Mouse Settings */
 		if (global.enable_keyboard_and_mouse_settings)
 		{
@@ -288,7 +288,7 @@ function scr_option_menu()
 			}
 		}
 		#endregion /* Keyboard and Mouse Settings */
-		
+
 		#region /* Controller Settings */
 		if (global.enable_controller_settings)
 		{
@@ -322,7 +322,7 @@ function scr_option_menu()
 			}
 		}
 		#endregion /* Controller Settings END */
-		
+
 		#region /* Touch Settings */
 		if (global.enable_touch_settings)
 		{
@@ -356,12 +356,12 @@ function scr_option_menu()
 			}
 		}
 		#endregion /* Touch Settings END */
-		
+
 		#endregion /* Controls Settings END */
-		
+
 		#region /* General Settings */
 		scr_draw_text_outlined(left_sidebar_x + 20 + text_x_offset, 20 + general_text_y, l10n_text("General"), global.default_text_size * 0.5, c_black, c_white, 1);
-		
+
 		#region /* Account Settings */
 		if (global.enable_account_settings)
 		{
@@ -395,7 +395,7 @@ function scr_option_menu()
 			}
 		}
 		#endregion /* Account Settings END */
-		
+
 		#region /* Video Settings */
 		if (global.settings_sidebar_menu == "video_settings")
 		{
@@ -426,7 +426,7 @@ function scr_option_menu()
 			scr_draw_text_outlined(left_sidebar_x + 40 + text_x_offset, 20 + video_settings_y, l10n_text("Video"), global.default_text_size, c_white, c_black, 1);
 		}
 		#endregion /* Video Settings END */
-		
+
 		#region /* Audio Settings */
 		if (global.settings_sidebar_menu == "audio_settings")
 		{
@@ -457,7 +457,7 @@ function scr_option_menu()
 			scr_draw_text_outlined(left_sidebar_x + 40 + text_x_offset, 20 + audio_settings_y, l10n_text("Audio"), global.default_text_size, c_white, c_black, 1);
 		}
 		#endregion /* Audio Settings END */
-		
+
 		#region /* Custom Resources Settings */
 		if (global.enable_custom_resources_settings)
 		{
@@ -491,7 +491,7 @@ function scr_option_menu()
 			}
 		}
 		#endregion /* Custom Resources Settings END */
-		
+
 		#region /* Storage Settings */
 		if (global.enable_storage_settings)
 		{
@@ -525,7 +525,7 @@ function scr_option_menu()
 			}
 		}
 		#endregion /* Storage Settings END */
-		
+
 		#region /* Language Settings */
 		if (global.settings_sidebar_menu == "language_settings")
 		{
@@ -556,7 +556,7 @@ function scr_option_menu()
 			scr_draw_text_outlined(left_sidebar_x + 40 + text_x_offset, 20 +language_settings_y, l10n_text("Language"), global.default_text_size, c_white, c_black, 1);
 		}
 		#endregion /* Language Settings END */
-		
+
 		#region /* Broadcast Settings */
 		if (global.enable_broadcast_settings)
 		{
@@ -590,7 +590,7 @@ function scr_option_menu()
 			}
 		}
 		#endregion /* Broadcast Settings END */
-		
+
 		#region /* How to play Settings */
 		if (global.enable_how_to_play_settings)
 		{
@@ -624,12 +624,12 @@ function scr_option_menu()
 			}
 		}
 		#endregion /* General Settings END */
-		
+
 		#region /* Add-Ons Settings */
 		if (global.enable_add_ons_settings)
 		{
 			scr_draw_text_outlined(left_sidebar_x + 20 + text_x_offset, 20 + (40 * 18), l10n_text("Add-Ons"), global.default_text_size * 0.5, c_black, c_white, 1);
-			
+
 			if (global.settings_sidebar_menu == "resource_pack_settings")
 			{draw_sprite_ext(spr_menu_button, global.menu_button_subimg, left_sidebar_x, 20 + (40 * 19), 1, 1, 0, c_gray, 1); /* Button Hightlighted */
 			draw_sprite_ext(spr_settings_icon, 15, left_sidebar_x + 20 + icon_x_offset, 20 + (40 * 19), 1, 1, 0, c_white, 1); /* Settings Icon */
@@ -637,7 +637,7 @@ function scr_option_menu()
 			}else{draw_sprite_ext(spr_menu_button, global.menu_button_subimg, left_sidebar_x, 20 + (40 * 19), 1, 1, 0, c_white, 1); /* Button Not Selected */
 			draw_sprite_ext(spr_settings_icon, 15, left_sidebar_x + 20 + icon_x_offset, 20 + (40 * 19), 0.9, 0.9, 0, c_white, 1); /* Settings Icon */
 			scr_draw_text_outlined(left_sidebar_x + 40 + text_x_offset, 20 + (40 * 19), l10n_text("Resource Packs"), global.default_text_size, c_white, c_black, 1);}
-			
+
 			if (global.settings_sidebar_menu == "behavior_packs_settings")
 			{draw_sprite_ext(spr_menu_button, global.menu_button_subimg, left_sidebar_x, 20 + (40 * 20), 1, 1, 0, c_gray, 1); /* Button Hightlighted */
 			draw_sprite_ext(spr_settings_icon, 16, left_sidebar_x + 20 + icon_x_offset, 20 + (40 * 20), 1, 1, 0, c_white, 1); /* Settings Icon */
@@ -647,7 +647,7 @@ function scr_option_menu()
 			scr_draw_text_outlined(left_sidebar_x + 40 + text_x_offset, 20 + (40 * 20), l10n_text("Behavior Packs"), global.default_text_size, c_white, c_black, 1);}
 		}
 		#endregion /* Add-Ons Settings END */
-		
+
 		#region /* The "Back" button should always appear at the top of the screen */
 		if (global.settings_sidebar_menu == "settings_back")
 		{
@@ -661,7 +661,7 @@ function scr_option_menu()
 				draw_sprite_ext(spr_menu_button, global.menu_button_subimg, left_sidebar_x, 20, 1, 1, 0, c_gray, 1);
 			}
 			/* Button Hightlighted */
-			
+
 			draw_sprite_ext(spr_icon_back, 0, left_sidebar_x + 20 + icon_x_offset, 20, 1, 1, 0, c_white, 1); /* Settings Icon */
 			scr_draw_text_outlined(left_sidebar_x + 40 + text_x_offset, 20, l10n_text("Back"), global.default_text_size * 1.05, c_black, c_white, 1);
 		}
@@ -677,25 +677,25 @@ function scr_option_menu()
 				draw_sprite_ext(spr_menu_button, global.menu_button_subimg, left_sidebar_x, 20, 1, 1, 0, c_white, 1);
 			}
 			/* Button Not Selected */
-			
+
 			draw_sprite_ext(spr_icon_back, 0, left_sidebar_x + 20 + icon_x_offset, 20, 0.9, 0.9, 0, c_white, 1); /* Settings Icon */
 			scr_draw_text_outlined(left_sidebar_x + 40 + text_x_offset, 20, l10n_text("Back"), global.default_text_size, c_white, c_black, 1);
 		}
 		#endregion /* The "Back" button should always appear at the top of the screen END */
-		
+
 		#endregion /* Settings Sidebar END */
-		
+
 		draw_set_alpha(darken_settings_sidebar_alpha);
 		draw_rectangle_color(left_sidebar_x, 0, left_sidebar_x + 370, get_window_height, c_black, c_black, c_black, c_black, false);
 		draw_set_alpha(1);
-		
+
 	}
 	#endregion /* Tabs Graphics END */
-	
+
 	if (in_settings)
 	{
 		scr_scroll_menu();
-		
+
 		#region /* Go back out of setting menu */
 		if (key_a_pressed)
 		&& (menu_delay == 0 && menu_joystick_delay == 0)
@@ -721,7 +721,7 @@ function scr_option_menu()
 			menu_delay = 3;
 		}
 		#endregion /* Go back out of setting menu END */
-	
+
 		if (key_b_pressed)
 		&& (!can_navigate_settings_sidebar)
 		&& (menu_delay == 0 && menu_joystick_delay == 0)
@@ -830,15 +830,15 @@ function scr_option_menu()
 			}
 		}
 		/* When you navigate the sidebar or not */
-	
+
 		/* Main Settings on left sidebar */
-	
+
 		background_brightness_menu_lerp = lerp(background_brightness_menu_lerp, global.background_brightness_menu, 0.1); /* Background Brightness in Menus Options END */
-	
+
 		left_sidebar_x = lerp(left_sidebar_x, 0, 0.1);
-	
+
 		#region /* Menu navigation with mouse */
-	
+
 		#region /* Click Back */
 		if (point_in_rectangle(mouse_get_x, mouse_get_y, 0, 0, 370, 40 - 1))
 		&& (global.controls_used_for_navigation == "mouse")
@@ -859,9 +859,9 @@ function scr_option_menu()
 			menu_delay = 3;
 		}
 		#endregion /* Click Back END */
-	
+
 		else
-		
+
 		#region /* Back */
 		if (point_in_rectangle(mouse_get_x, mouse_get_y, 0, 0, 370, 40 - 1))
 		&& (global.controls_used_for_navigation == "mouse")
@@ -873,9 +873,9 @@ function scr_option_menu()
 			can_navigate_settings_sidebar = true;
 		}
 		#endregion /* Back END */
-		
+
 		else
-	
+
 		#region /* Click Accessibility */
 		if (point_in_rectangle(mouse_get_x, mouse_get_y, 0, accessibility_settings_y, 370,(accessibility_settings_y + 40) - 1))
 		&& (global.controls_used_for_navigation == "mouse")
@@ -890,9 +890,9 @@ function scr_option_menu()
 			menu = "assist_enable";
 		}
 		#endregion /* Click Accessibility END */
-		
+
 		else
-		
+
 		#region /* Accessibility */
 		if (point_in_rectangle(mouse_get_x, mouse_get_y, 0, accessibility_settings_y, 370,(accessibility_settings_y + 40) - 1))
 		&& (global.controls_used_for_navigation == "mouse")
@@ -904,9 +904,9 @@ function scr_option_menu()
 			can_navigate_settings_sidebar = true;
 		}
 		#endregion /* Accessibility END */
-		
+
 		else
-		
+
 		#region /* Click Challenge Mode */
 		if (global.enable_challenge_mode_settings)
 		&& (point_in_rectangle(mouse_get_x, mouse_get_y, 0, challenge_mode_settings_y, 370,(challenge_mode_settings_y + 40) - 1))
@@ -922,9 +922,9 @@ function scr_option_menu()
 			menu = "challenge_mode_enable";
 		}
 		#endregion /* Click Challenge Mode END */
-		
+
 		else
-		
+
 		#region /* Challenge Mode */
 		if (global.enable_challenge_mode_settings)
 		&& (point_in_rectangle(mouse_get_x, mouse_get_y, 0, challenge_mode_settings_y, 370,(challenge_mode_settings_y + 40) - 1))
@@ -937,9 +937,9 @@ function scr_option_menu()
 			can_navigate_settings_sidebar = true;
 		}
 		#endregion /* Challenge Mode END */
-		
+
 		else
-		
+
 		#region /* Click Game */
 		if (point_in_rectangle(mouse_get_x, mouse_get_y, 0, game_settings_y, 370,(game_settings_y + 40) - 1))
 		&& (global.controls_used_for_navigation == "mouse")
@@ -954,7 +954,7 @@ function scr_option_menu()
 			menu = "difficulty_settings";
 		}
 		#endregion /* Click Game END */
-		
+
 		#region /* Game */
 		if (point_in_rectangle(mouse_get_x, mouse_get_y, 0, game_settings_y, 370,(game_settings_y + 40) - 1))
 		&& (global.controls_used_for_navigation == "mouse")
@@ -966,10 +966,10 @@ function scr_option_menu()
 			can_navigate_settings_sidebar = true;
 		}
 		#endregion /* Game END */
-		
+
 		if (global.enable_multiplayer_settings)
 		{
-			
+
 			#region /* Click Multiplayer */
 			if (point_in_rectangle(mouse_get_x, mouse_get_y, 0, multiplayer_settings_y, 370, multiplayer_settings_y + 40 - 1))
 			&& (global.controls_used_for_navigation == "mouse")
@@ -983,7 +983,7 @@ function scr_option_menu()
 				can_navigate_settings_sidebar = false;
 			}
 			#endregion /* Click Multiplayer END */
-			
+
 			#region /* Multiplayer */
 			if (point_in_rectangle(mouse_get_x, mouse_get_y, 0, multiplayer_settings_y, 370, multiplayer_settings_y + 40 - 1))
 			&& (global.controls_used_for_navigation == "mouse")
@@ -995,9 +995,9 @@ function scr_option_menu()
 				can_navigate_settings_sidebar = true;
 			}
 			#endregion /* Multiplayer END */
-			
+
 		}
-	
+
 		#region /* Click Keyboard and Mouse */
 		if (point_in_rectangle(mouse_get_x, mouse_get_y, 0, keyboard_and_mouse_settings_y, 370, keyboard_and_mouse_settings_y + 40 - 1))
 		&& (global.controls_used_for_navigation == "mouse")
@@ -1025,7 +1025,7 @@ function scr_option_menu()
 			}
 		}
 		#endregion /* Click Keyboard and Mouse END */
-		
+
 		#region /* Keyboard and Mouse */
 		if (point_in_rectangle(mouse_get_x, mouse_get_y, 0, keyboard_and_mouse_settings_y, 370, keyboard_and_mouse_settings_y + 40 - 1))
 		&& (global.controls_used_for_navigation == "mouse")
@@ -1041,10 +1041,10 @@ function scr_option_menu()
 			can_navigate_settings_sidebar = true;
 		}
 		#endregion /* Keyboard and Mouse END */
-		
+
 		if (global.enable_controller_settings)
 		{
-			
+
 			#region /* Click Controller */
 			if (point_in_rectangle(mouse_get_x, mouse_get_y, 0, controller_settings_y, 370, controller_settings_y + 40 - 1))
 			&& (global.controls_used_for_navigation == "mouse")
@@ -1072,7 +1072,7 @@ function scr_option_menu()
 				}
 			}
 			#endregion /* Click Controller END */
-			
+
 			#region /* Controller */
 			if (point_in_rectangle(mouse_get_x, mouse_get_y, 0, controller_settings_y, 370, controller_settings_y + 40 - 1))
 			&& (global.controls_used_for_navigation == "mouse")
@@ -1088,12 +1088,12 @@ function scr_option_menu()
 				can_navigate_settings_sidebar = true;
 			}
 			#endregion /* Controller END */
-			
+
 		}
-	
+
 		if (global.enable_touch_settings)
 		{
-			
+
 			#region /* Click Touch */
 			if (point_in_rectangle(mouse_get_x, mouse_get_y, 0, touch_settings_y, 370, touch_settings_y + 40 - 1))
 			&& (global.controls_used_for_navigation == "mouse")
@@ -1107,7 +1107,7 @@ function scr_option_menu()
 				can_navigate_settings_sidebar = false;
 			}
 			#endregion /* Click Touch END */
-			
+
 			#region /* Touch */
 			if (point_in_rectangle(mouse_get_x, mouse_get_y, 0, touch_settings_y, 370, touch_settings_y + 40 - 1))
 			&& (global.controls_used_for_navigation == "mouse")
@@ -1119,12 +1119,12 @@ function scr_option_menu()
 				can_navigate_settings_sidebar = true;
 			}
 			#endregion /* Touch END */
-			
+
 		}
-	
+
 		if (global.enable_account_settings)
 		{
-			
+
 			#region /* Click Account */
 			if (point_in_rectangle(mouse_get_x, mouse_get_y, 0, account_settings_y, 370, account_settings_y + 40 - 1))
 			&& (global.controls_used_for_navigation == "mouse")
@@ -1139,7 +1139,7 @@ function scr_option_menu()
 				menu = "change_username";
 			}
 			#endregion /* Click Account END */
-			
+
 			#region /* Profile */
 			if (point_in_rectangle(mouse_get_x, mouse_get_y, 0, account_settings_y, 370, account_settings_y + 40 - 1))
 			&& (global.controls_used_for_navigation == "mouse")
@@ -1151,9 +1151,9 @@ function scr_option_menu()
 				can_navigate_settings_sidebar = true;
 			}
 			#endregion /* Profile END */
-			
+
 		}
-		
+
 		#region /* Click Video */
 		if (point_in_rectangle(mouse_get_x, mouse_get_y, 0, video_settings_y, 370, video_settings_y + 40 - 1))
 		&& (global.controls_used_for_navigation == "mouse")
@@ -1175,7 +1175,7 @@ function scr_option_menu()
 			}
 		}
 		#endregion /* Click Video END */
-		
+
 		#region /* Video */
 		if (point_in_rectangle(mouse_get_x, mouse_get_y, 0, video_settings_y, 370, video_settings_y + 40 - 1))
 		&& (global.controls_used_for_navigation == "mouse")
@@ -1187,7 +1187,7 @@ function scr_option_menu()
 			can_navigate_settings_sidebar = true;
 		}
 		#endregion /* Video END */
-		
+
 		#region /* Click Audio */
 		if (point_in_rectangle(mouse_get_x, mouse_get_y, 0, audio_settings_y, 370, audio_settings_y + 40 - 1))
 		&& (global.controls_used_for_navigation == "mouse")
@@ -1202,7 +1202,7 @@ function scr_option_menu()
 			menu = "volume_main";
 		}
 		#endregion /* Click Audio END */
-		
+
 		#region /* Audio */
 		if (point_in_rectangle(mouse_get_x, mouse_get_y, 0, audio_settings_y, 370, audio_settings_y + 40 - 1))
 		&& (global.controls_used_for_navigation == "mouse")
@@ -1214,10 +1214,10 @@ function scr_option_menu()
 			can_navigate_settings_sidebar = true;
 		}
 		#endregion /* Audio END */
-		
+
 		if (global.enable_custom_resources_settings)
 		{
-			
+
 			#region /* Click Custom Resources */
 			if (point_in_rectangle(mouse_get_x, mouse_get_y, 0, custom_resources_settings_y, 370, custom_resources_settings_y + 40 - 1))
 			&& (global.controls_used_for_navigation == "mouse")
@@ -1241,7 +1241,7 @@ function scr_option_menu()
 				}
 			}
 			#endregion /* Click Custom Resources END */
-			
+
 			#region /* Custom Resources */
 			if (point_in_rectangle(mouse_get_x, mouse_get_y, 0, custom_resources_settings_y, 370, custom_resources_settings_y + 40 - 1))
 			&& (global.controls_used_for_navigation == "mouse")
@@ -1253,12 +1253,12 @@ function scr_option_menu()
 				can_navigate_settings_sidebar = true;
 			}
 			#endregion /* Custom Resources END */
-			
+
 		}
-	
+
 		if (global.enable_storage_settings)
 		{
-			
+
 			#region /* Click Storage */
 			if (point_in_rectangle(mouse_get_x, mouse_get_y, 0, storage_settings_y, 370, storage_settings_y + 40 - 1))
 			&& (global.controls_used_for_navigation == "mouse")
@@ -1274,7 +1274,7 @@ function scr_option_menu()
 				scr_load_storage_variables();
 			}
 			#endregion /* Click Storage END */
-			
+
 			#region /* Storage */
 			if (point_in_rectangle(mouse_get_x, mouse_get_y, 0, storage_settings_y, 370, storage_settings_y + 40 - 1))
 			&& (global.controls_used_for_navigation == "mouse")
@@ -1287,9 +1287,9 @@ function scr_option_menu()
 				scr_load_storage_variables();
 			}
 			#endregion /* Storage END */
-			
+
 		}
-		
+
 		#region /* Click Language */
 		if (point_in_rectangle(mouse_get_x, mouse_get_y, 0, language_settings_y, 370, language_settings_y + 40 - 1))
 		&& (global.controls_used_for_navigation == "mouse")
@@ -1304,7 +1304,7 @@ function scr_option_menu()
 			menu = "Language" + string(global.current_language_menu_position);
 		}
 		#endregion /* Click Language END */
-		
+
 		#region /* Language */
 		if (point_in_rectangle(mouse_get_x, mouse_get_y, 0, language_settings_y, 370, language_settings_y + 40 - 1))
 		&& (global.controls_used_for_navigation == "mouse")
@@ -1316,10 +1316,10 @@ function scr_option_menu()
 			can_navigate_settings_sidebar = true;
 		}
 		#endregion /* Language END */
-		
+
 		if (global.enable_broadcast_settings)
 		{
-			
+
 			#region /* Click Broadcast */
 			if (point_in_rectangle(mouse_get_x, mouse_get_y, 0, broadcast_settings_y, 370, broadcast_settings_y + 40 - 1))
 			&& (global.controls_used_for_navigation == "mouse")
@@ -1333,7 +1333,7 @@ function scr_option_menu()
 				can_navigate_settings_sidebar = false;
 			}
 			#endregion /* Click Broadcast END */
-			
+
 			#region /* Broadcast */
 			if (point_in_rectangle(mouse_get_x, mouse_get_y, 0, broadcast_settings_y, 370, broadcast_settings_y + 40 - 1))
 			&& (global.controls_used_for_navigation == "mouse")
@@ -1345,12 +1345,12 @@ function scr_option_menu()
 				can_navigate_settings_sidebar = true;
 			}
 			#endregion /* Broadcast END */
-			
+
 		}
-	
+
 		if (global.enable_how_to_play_settings)
 		{
-			
+
 			#region /* Click How to Play */
 			if (point_in_rectangle(mouse_get_x, mouse_get_y, 0, how_to_play_y, 370, how_to_play_y + 40 - 1))
 			&& (global.controls_used_for_navigation == "mouse")
@@ -1364,7 +1364,7 @@ function scr_option_menu()
 				can_navigate_settings_sidebar = false;
 			}
 			#endregion /* Click How to Play END */
-			
+
 			#region /* How to Play */
 			if (point_in_rectangle(mouse_get_x, mouse_get_y, 0, how_to_play_y, 370, how_to_play_y + 40 - 1))
 			&& (global.controls_used_for_navigation == "mouse")
@@ -1376,15 +1376,15 @@ function scr_option_menu()
 				can_navigate_settings_sidebar = true;
 			}
 			#endregion /* How to Play END */
-			
+
 		}
-	
+
 		#endregion /* Menu navigation with mouse END */
-	
+
 		#region /* Settings Sidebar Navigation */
 		if (menu_delay == 0 && menu_joystick_delay == 0)
 		{
-			
+
 			#region /* Accessibility Settings */
 			if (global.settings_sidebar_menu == "accessibility_settings")
 			{
@@ -1417,7 +1417,7 @@ function scr_option_menu()
 				}
 			}
 			#endregion /* Accessibility Settings END */
-			
+
 			#region /* Chellenge Mode Settings */
 			if (global.settings_sidebar_menu == "challenge_mode_settings")
 			{
@@ -1445,7 +1445,7 @@ function scr_option_menu()
 				}
 			}
 			#endregion /* Challenge Mode Settings END */
-			
+
 			#region /* How to play Settings */
 			if (global.enable_how_to_play_settings)
 			{
@@ -1483,9 +1483,9 @@ function scr_option_menu()
 				}
 			}
 			#endregion /* How to play Settings END */
-		
+
 			#region /* My Game Settings */
-		
+
 			#region /* Game Settings */
 			if (global.settings_sidebar_menu == "game_settings")
 			{
@@ -1553,7 +1553,7 @@ function scr_option_menu()
 				}
 			}
 			#endregion /* Game Settings END */
-	
+
 			#region /* Multiplayer Settings */
 			if (global.enable_multiplayer_settings)
 			{
@@ -1607,11 +1607,11 @@ function scr_option_menu()
 				}
 			}
 			#endregion /* Multiplayer Settings END */
-	
+
 			#endregion /* My Game Settings END */
-		
+
 			#region /* Controls Settings */
-	
+
 			#region /* Keyboard and Mouse Settings */
 			if (global.settings_sidebar_menu == "keyboard_and_mouse_settings")
 			{
@@ -1660,7 +1660,7 @@ function scr_option_menu()
 				}
 			}
 			#endregion /* Keyboard and Mouse Settings */
-	
+
 			#region /* Controller Settings */
 			if (global.enable_controller_settings)
 			{
@@ -1714,7 +1714,7 @@ function scr_option_menu()
 				}
 			}
 			#endregion /* Controller Settings END */
-	
+
 			#region /* Touch Settings */
 			if (global.enable_touch_settings)
 			{
@@ -1760,11 +1760,11 @@ function scr_option_menu()
 				}
 			}
 			#endregion /* Touch Settings END */
-	
+
 			#endregion /* Controls Settings END */
-		
+
 			#region /* General Settings */
-	
+
 			#region /* Account Settings */
 			if (global.enable_account_settings)
 			{
@@ -1808,7 +1808,7 @@ function scr_option_menu()
 				}
 			}
 			#endregion /* Account Settings END */
-	
+
 			#region /* Video Settings */
 			if (global.settings_sidebar_menu == "video_settings")
 			{
@@ -1854,7 +1854,7 @@ function scr_option_menu()
 				}
 			}
 			#endregion /* Video Settings END */
-			
+
 			#region /* Audio Settings */
 			if (global.settings_sidebar_menu == "audio_settings")
 			{
@@ -1888,7 +1888,7 @@ function scr_option_menu()
 				}
 			}
 			#endregion /* Audio Settings END */
-	
+
 			#region /* Custom Resources Settings */
 			if (global.enable_custom_resources_settings)
 			{
@@ -1920,7 +1920,7 @@ function scr_option_menu()
 				}
 			}
 			#endregion /* Custom Resources Settings END */
-	
+
 			#region /* Storage Settings */
 			if (global.enable_storage_settings)
 			{
@@ -1951,7 +1951,7 @@ function scr_option_menu()
 				}
 			}
 			#endregion /* Storage Settings END */
-	
+
 			#region /* Language Settings */
 			if (global.settings_sidebar_menu == "language_settings")
 			{
@@ -1985,7 +1985,7 @@ function scr_option_menu()
 				}
 			}
 			#endregion /* Language Settings END */
-	
+
 			#region /* Broadcast Settings */
 			if (global.enable_broadcast_settings)
 			{
@@ -2009,7 +2009,7 @@ function scr_option_menu()
 				}
 			}
 			#endregion /* Broadcast Settings END */
-		
+
 			#region /* Add-Ons Settings */
 			if (global.enable_add_ons_settings)
 			{
@@ -2031,7 +2031,7 @@ function scr_option_menu()
 						menu_delay = 3;
 					}
 				}
-		
+
 				if (global.settings_sidebar_menu == "behavior_packs_settings")
 				{
 					if (key_up)
@@ -2090,25 +2090,25 @@ function scr_option_menu()
 				}
 			}
 			#endregion /* The "Back" button should always appear at the top of the screen END */
-	
+
 			#endregion /* General Settings END */
-		
+
 		}
-	
+
 		#endregion /* Settings Sidebar Navigation END */
-	
+
 		draw_set_halign(fa_left);
 		draw_set_valign(fa_middle);
 
 		scr_option_assist_settings();
-		
+
 		if (global.enable_challenge_mode_settings)
 		{
 			scr_option_challenge_mode_settings();
 		}
-		
+
 		#region /* My Game Settings */
-		
+
 		#region /* Game Settings */
 		if (global.settings_sidebar_menu == "game_settings")
 		{
@@ -2116,7 +2116,7 @@ function scr_option_menu()
 			var automatically_pause_when_window_is_unfocused_settings_y = 48 * 2;
 			var show_timer_settings_y = 48 * 3;
 			var show_defeats_counter_settings_y = 48 * 4;
-			
+
 			if (global.enable_ranks)
 			{
 				var show_ranks_settings_y = 48 * 5;
@@ -2139,48 +2139,48 @@ function scr_option_menu()
 			}
 			draw_set_halign(fa_left);
 			draw_set_valign(fa_middle);
-			
+
 			if (global.enable_option_for_pc)
 			{
-				global.automatically_pause_when_window_is_unfocused = draw_menu_checkmark(380, automatically_pause_when_window_is_unfocused_settings_y, l10n_text("Automatically pause when the game is unfocused"), "automatically_pause_when_window_is_unfocused_settings", global.automatically_pause_when_window_is_unfocused, true, 
+				global.automatically_pause_when_window_is_unfocused = draw_menu_checkmark(380, automatically_pause_when_window_is_unfocused_settings_y, l10n_text("Automatically pause when the game is unfocused"), "automatically_pause_when_window_is_unfocused_settings", global.automatically_pause_when_window_is_unfocused, true,
 					l10n_text("Pauses the game when the window loses focus"));
 			}
-			
-			global.show_timer = draw_menu_checkmark(380, show_timer_settings_y, l10n_text("Show Timer"), "show_timer_settings", global.show_timer, false, 
+
+			global.show_timer = draw_menu_checkmark(380, show_timer_settings_y, l10n_text("Show Timer"), "show_timer_settings", global.show_timer, false,
 				l10n_text("Displays a timer while playing"));
-			
-			global.show_defeats_counter = draw_menu_checkmark(380, show_defeats_counter_settings_y, l10n_text("Show Defeats Counter"), "show_defeats_counter_settings", global.show_defeats_counter, true, 
+
+			global.show_defeats_counter = draw_menu_checkmark(380, show_defeats_counter_settings_y, l10n_text("Show Defeats Counter"), "show_defeats_counter_settings", global.show_defeats_counter, true,
 				l10n_text("Keeps track of how many times you've been defeated"));
-			
+
 			if (global.enable_ranks)
 			{
-				global.show_ranks = draw_menu_checkmark(380, show_ranks_settings_y, l10n_text("Show Ranks"), "show_ranks_settings", global.show_ranks, false, 
+				global.show_ranks = draw_menu_checkmark(380, show_ranks_settings_y, l10n_text("Show Ranks"), "show_ranks_settings", global.show_ranks, false,
 					l10n_text("Displays rank information based on performance"));
 			}
-			
-			global.show_tutorial_signs = draw_menu_checkmark(380, show_tutorial_signs_y, l10n_text("Show Tutorial Signs"), "show_tutorial_signs", global.show_tutorial_signs, true, 
+
+			global.show_tutorial_signs = draw_menu_checkmark(380, show_tutorial_signs_y, l10n_text("Show Tutorial Signs"), "show_tutorial_signs", global.show_tutorial_signs, true,
 				l10n_text("Shows tutorial signs with helpful gameplay tips"));
-			
-			global.players_can_collide = draw_menu_checkmark(380, players_can_collide_y, l10n_text("Players Can Collide"), "players_can_collide", global.players_can_collide, false, 
+
+			global.players_can_collide = draw_menu_checkmark(380, players_can_collide_y, l10n_text("Players Can Collide"), "players_can_collide", global.players_can_collide, false,
 				l10n_text("Allows players to collide with each other in multiplayer mode"));
-			
-			global.show_new_items_notification = draw_menu_checkmark(380, show_new_items_notification_y, l10n_text("Show New Items Notification"), "show_new_items_notification", global.show_new_items_notification, true, 
+
+			global.show_new_items_notification = draw_menu_checkmark(380, show_new_items_notification_y, l10n_text("Show New Items Notification"), "show_new_items_notification", global.show_new_items_notification, true,
 				l10n_text("Notifies you when new items become available in the level editor"));
-			
+
 			if (global.enable_option_for_pc)
 			{
-				global.debug_screen = draw_menu_checkmark(380, debug_screen_y, l10n_text("Debug Screen"), "debug_screen", global.debug_screen, false, 
+				global.debug_screen = draw_menu_checkmark(380, debug_screen_y, l10n_text("Debug Screen"), "debug_screen", global.debug_screen, false,
 					l10n_text("Displays debug information for development and troubleshooting"));
 			}
-			
+
 			if (global.hud_hide_time > 10)
 			{
 				global.hud_hide_time = 3;
 			}
-			
+
 			/* Safely get the language string from the grid: */
 			var lang = "";
-			
+
 			if (variable_global_exists("language_local_data")
 			&& global.language_local_data != undefined
 			&& global.language_local_data != 0
@@ -2192,7 +2192,7 @@ function scr_option_menu()
 			{
 				lang = "";
 			}
-			
+
 			if (lang == "日本語 (Japanese)")
 			{
 				/* Only include Game Font and Normal Font for Japanese language; Open Dyslexic isn't supported */
@@ -2205,15 +2205,15 @@ function scr_option_menu()
 				scr_set_default_dropdown_description("select_font", "Game Font");
 				var can_select_font = true;
 			}
-			
+
 			draw_menu_dropdown(380, hud_hide_time_y, l10n_text("HUD hide timer"), "hud_hide_time", global.hud_hide_time, l10n_text("Never Show"), l10n_text("After 1 Second"), l10n_text("After 2 Seconds"), l10n_text("After 3 Seconds"), l10n_text("After 4 Seconds"), l10n_text("After 5 Seconds"), l10n_text("After 6 Seconds"), l10n_text("After 7 Seconds"), l10n_text("After 8 Seconds"), l10n_text("After 9 Seconds"), l10n_text("Always Show"));
 			scr_set_default_dropdown_description("hud_hide_time", "After 3 Seconds");
-			
+
 			draw_menu_dropdown(380, difficulty_settings_y, l10n_text("Level Layout Difficulty"), "difficulty_settings", global.difficulty, l10n_text("Easy"), l10n_text("Normal"), l10n_text("Hard")); /* Difficulty Settings */
 			scr_set_default_dropdown_description("difficulty_settings", "Normal");
 		}
 		#endregion /* Game Settings END */
-	
+
 		#region /* Multiplayer Settings */
 		if (global.settings_sidebar_menu == "multiplayer_settings")
 		{
@@ -2221,19 +2221,19 @@ function scr_option_menu()
 			scr_draw_text_outlined(410, 20 + (40 * 3), "Change how multiplayer works here", global.default_text_size * 1.1, c_menu_outline, c_menu_fill, 1);
 		}
 		#endregion /* Multiplayer Settings END */
-		
+
 		#endregion /* My Game Settings */
-		
+
 		scr_option_control_menu();
-		
+
 		#region /* General Settings */
-		
+
 		scr_option_account();
-		
+
 		#region /* Graphics Settings */
 		scr_option_graphics();
 		#endregion /* Graphics Settings END */
-		
+
 		#region /* Audio Settings */
 		if (global.settings_sidebar_menu == "audio_settings")
 		{
@@ -2247,7 +2247,7 @@ function scr_option_menu()
 			var number_of_audio_channels_y = 96 + 8 + (64 * 7) - 20 + menu_y_offset;
 			var narrator_y = 96 + 8 + (64 * 8) - 10 + menu_y_offset;
 			var default_audio_settings_y = 96 + (64 * 8) + 20 + menu_y_offset;
-			
+
 			#region /* Make volumes stay between 0 and 1 */
 			global.volume_main = clamp(global.volume_main, 0, 1);
 			global.volume_music = clamp(global.volume_music, 0, 1);
@@ -2258,7 +2258,7 @@ function scr_option_menu()
 			global.volume_voice = clamp(global.volume_voice, 0, 1);
 			global.verbosity_slider = clamp(global.verbosity_slider, 0, 1);
 			#endregion /* Make volumes stay between 0 and 1 END */
-			
+
 			#region /* Draw volume slider bars that represent how much volume each channel have */
 			draw_menu_slider(410, volume_main_y, l10n_text("Main Volume"), "volume_main", global.volume_main, c_red);
 			draw_line_width_color(410, volume_main_y + 32, 820, volume_main_y + 32, 3, c_white, c_white);
@@ -2268,34 +2268,34 @@ function scr_option_menu()
 			draw_menu_slider(410, volume_ambient_y, l10n_text("Ambient Volume"), "volume_ambient", global.volume_ambient, c_lime);
 			draw_menu_slider(410, volume_footstep_y, l10n_text("Footstep Volume"), "volume_footstep", global.volume_footstep, c_lime);
 			draw_menu_slider(410, volume_voice_y, l10n_text("Voices Volume"), "volume_voices", global.volume_voice, c_aqua);
-			
+
 			#region /* Verbosity Bar */
 			if (global.enable_verbosity_slider)
 			{
 				draw_menu_slider(410, 96 + (64 * 7), l10n_text("Voices Volume"), "volume_voices", global.volume_voice, c_aqua);
 			}
 			#endregion /* Verbosity Bar END */
-			
+
 			#endregion /* Draw volume slider bars that represent how much volume each channel have END */
-			
+
 			draw_set_halign(fa_left);
 			draw_set_valign(fa_middle);
-			
+
 			#region /* Select Narrator */
 			if (global.enable_narrator)
 			{
 				var file_select_x = 450;
 				var file_select_right_arrow_x = 400;
-				
+
 				draw_set_halign(fa_left);
 				draw_set_valign(fa_middle);
-				
+
 				if (global.narrator_selection <= -3)
 				{
 					global.narrator_selection = -2;
 					global.narrator = -1;
 				}
-				
+
 				if (menu == "select_narrator")
 				{
 					draw_sprite_ext(spr_menu_cursor, menu_cursor_index, 390, narrator_y, 1, 1, 0, c_white, 1);
@@ -2315,7 +2315,7 @@ function scr_option_menu()
 				{
 					scr_draw_text_outlined(file_select_x, narrator_y, l10n_text("Narrator") + ": " + string(narrator_name), global.default_text_size * 1.1, c_menu_outline, c_menu_fill, 1);
 				}
-				
+
 				#region /* Select Narrator Left and Right Key, show underneath text */
 				if (global.narrator_selection >= -1)
 				{
@@ -2348,9 +2348,9 @@ function scr_option_menu()
 					}
 				}
 				#endregion /* Select Narrator Left and Right Key, show underneath text END */
-				
+
 				#region /* Player 1 change portrait when clicking left or right */
-				
+
 				#region /* Player 1 Key Left (change portrait sprites) */
 				if (key_left)
 				&& (menu == "select_narrator")
@@ -2366,11 +2366,11 @@ function scr_option_menu()
 						menu_delay = 3;
 						if (global.narrator_selection > -2)
 						{
-							global.narrator_selection --;
+							global.narrator_selection--;
 						}
-						
+
 						scr_set_narrator();
-						
+
 						#region /* Character Name */
 						if (file_exists("characters/" + string(ds_list_find_value(global.all_loaded_characters, global.narrator)) + "/data/character_config.ini"))
 						|| (file_exists(game_save_id + "custom_characters/" + string(ds_list_find_value(global.all_loaded_characters, global.narrator)) + "/data/character_config.ini"))
@@ -2383,11 +2383,11 @@ function scr_option_menu()
 							{
 								ini_open(game_save_id + "custom_characters/" + string(ds_list_find_value(global.all_loaded_characters, global.narrator)) + "/data/character_config.ini");
 							}
-						
+
 							#region /* Character Name */
 							narrator_name = string(ds_list_find_value(global.all_loaded_characters, global.narrator));
 							#endregion /* Character Name END */
-						
+
 							ini_close(); /* Don't commit the save data on Switch, this is only temporary! */
 						}
 						else
@@ -2395,7 +2395,7 @@ function scr_option_menu()
 							narrator_name = string(global.narrator + 1);
 						}
 						#endregion /* Character Name END */
-						
+
 						#region /* Player 1 character select portrait sprite */
 						scr_delete_sprite_properly(global.sprite_select_player[fixed_player]);
 						global.sprite_select_player[fixed_player] = spr_noone;
@@ -2406,12 +2406,12 @@ function scr_option_menu()
 						global.sprite_select_player[fixed_player] = scr_initialize_character_sprite("character_select_portrait", global.sprite_select_player[fixed_player]);
 						ini_close(); /* Don't commit the save data on Switch, this is only temporary! */
 						#endregion /* Player 1 character select portrait sprite END */
-						
+
 					}
 					open_dropdown = false;
 				}
 				#endregion /* Player 1 Key Left (change portrait sprites) END */
-				
+
 				#region /* Player 1 Key Right (change portrait sprites) */
 				if (key_right)
 				&& (menu == "select_narrator")
@@ -2425,9 +2425,9 @@ function scr_option_menu()
 					{
 						menu_delay = 3;
 						global.narrator_selection = clamp(global.narrator_selection + 1, -2, ds_list_size(global.all_loaded_characters) - 1);
-						
+
 						scr_set_narrator();
-						
+
 						#region /* Character Name */
 						if (file_exists("characters/" + string(ds_list_find_value(global.all_loaded_characters, global.narrator)) + "/data/character_config.ini"))
 						|| (file_exists(game_save_id + "custom_characters/" + string(ds_list_find_value(global.all_loaded_characters, global.narrator)) + "/data/character_config.ini"))
@@ -2440,11 +2440,11 @@ function scr_option_menu()
 							{
 								ini_open(game_save_id + "custom_characters/" + string(ds_list_find_value(global.all_loaded_characters, global.narrator)) + "/data/character_config.ini");
 							}
-						
+
 							#region /* Character Name */
 							narrator_name = string(ds_list_find_value(global.all_loaded_characters, global.narrator));
 							#endregion /* Character Name END */
-						
+
 							ini_close(); /* Don't commit the save data on Switch, this is only temporary! */
 						}
 						else
@@ -2452,7 +2452,7 @@ function scr_option_menu()
 							narrator_name = string(global.narrator + 1);
 						}
 						#endregion /* Character Name END */
-						
+
 						#region /* Player 1 character select portrait sprite */
 						scr_delete_sprite_properly(global.sprite_select_player[fixed_player]);
 						global.sprite_select_player[fixed_player] = spr_noone;
@@ -2464,20 +2464,20 @@ function scr_option_menu()
 						global.sprite_select_player[fixed_player] = scr_initialize_character_sprite("character_select_portrait", global.sprite_select_player[fixed_player]);
 						ini_close(); /* Don't commit the save data on Switch, this is only temporary! */
 						#endregion /* Player 1 character select portrait sprite END */
-						
+
 					}
 					open_dropdown = false;
 				}
 				#endregion /* Player 1 Key Right (change portrait sprites) END */
-				
+
 				#endregion /* Player 1 change portrait when clicking left or right END */
-				
+
 			}
 			#endregion /* Select Narrator END */
-			
+
 			#region /* Reset to Default Audio Settings */
 			draw_menu_button(430, default_audio_settings_y, l10n_text("Default Settings"), "default_audio_settings", "default_audio_settings");
-			
+
 			if (menu == "default_audio_settings")
 			{
 				if (key_a_pressed)
@@ -2492,18 +2492,18 @@ function scr_option_menu()
 				}
 			}
 			#endregion /* Reset to Default Audio Settings END */
-			
+
 			draw_menu_dropdown(390, number_of_audio_channels_y, l10n_text("Number of Audio Channels"), "number_of_audio_channels", global.number_of_audio_channels, "32", "64", "96", "128", "160", "192", "224", "256"); /* Dropdown menus should be drawn last so they are above everything else when you open them */
 			scr_set_default_dropdown_description("number_of_audio_channels", "128");
 		}
 		#endregion /* Audio Settings END */
-		
+
 		scr_option_language_menu(); /* Language Options */
-		
+
 		scr_option_custom_resources(); /* Custom Resources Settings */
-		
+
 		scr_option_storage(); /* Storage Settings */
-		
+
 		#region /* Broadcast Settings */
 		if (global.settings_sidebar_menu == "broadcast_settings")
 		{
@@ -2512,7 +2512,7 @@ function scr_option_menu()
 			scr_draw_text_outlined(410, 20 + (40 * 3), "Connect your Twitch account \n and earn in-game rewards \n as you stream the game :)", global.default_text_size * 1.1, c_menu_outline, c_menu_fill, 1);
 		}
 		#endregion /* Broadcast Settings END */
-		
+
 		#region /* How to Play */
 		if (global.settings_sidebar_menu == "how_to_play")
 		{
@@ -2521,20 +2521,20 @@ function scr_option_menu()
 			scr_draw_text_outlined(410, 20 + (40 * 3), "Control frog. \n Frog jump. \n Frog tongue. \n Frog happy.", global.default_text_size * 1.1, c_menu_outline, c_menu_fill, 1);
 		}
 		#endregion /* How to Play END */
-	
+
 		#endregion /* General Settings END */
-	
+
 		draw_set_alpha(darken_settings_alpha);
 		draw_rectangle_color(left_sidebar_x + 370, 0, get_window_width, get_window_height, c_black, c_black, c_black, c_black, false);
 		draw_set_alpha(1);
-	
+
 		#region /* Menu Navigation */
 		if (menu_delay == 0 && menu_joystick_delay == 0)
 		&& (can_navigate)
 		{
-			
+
 			#region /* Options Menu */
-			
+
 			#region /* Difficulty Settings Navigation */
 			if (menu == "difficulty_settings")
 			{
@@ -2544,7 +2544,7 @@ function scr_option_menu()
 				&& (global.difficulty > 0)
 				{
 					menu_delay = 3;
-					global.difficulty --;
+					global.difficulty--;
 				}
 				else
 				if (key_down)
@@ -2553,7 +2553,7 @@ function scr_option_menu()
 				&& (global.difficulty < 2)
 				{
 					menu_delay = 3;
-					global.difficulty ++;
+					global.difficulty++;
 				}
 				else
 				if (key_up)
@@ -2592,9 +2592,9 @@ function scr_option_menu()
 				}
 			}
 			#endregion /* Difficulty Settings Navigation END */
-	
+
 			else
-	
+
 			#region /* Navigate Game Settings */
 			if (menu == "automatically_pause_when_window_is_unfocused_settings")
 			{
@@ -2756,7 +2756,7 @@ function scr_option_menu()
 				&& (global.hud_hide_time > 0)
 				{
 					menu_delay = 3;
-					global.hud_hide_time --;
+					global.hud_hide_time--;
 				}
 				else
 				if (key_down)
@@ -2765,7 +2765,7 @@ function scr_option_menu()
 				&& (global.hud_hide_time < 10)
 				{
 					menu_delay = 3;
-					global.hud_hide_time ++;
+					global.hud_hide_time++;
 				}
 				else
 				if (key_up)
@@ -2806,7 +2806,7 @@ function scr_option_menu()
 				&& (can_select_font)
 				{
 					menu_delay = 3;
-					global.selected_font --;
+					global.selected_font--;
 					scr_set_font();
 				}
 				else
@@ -2817,7 +2817,7 @@ function scr_option_menu()
 				{
 					// Safely get the language string from the grid:
 					var lang = "";
-					
+
 					if (variable_global_exists("language_local_data")
 					&& global.language_local_data != undefined
 					&& global.language_local_data != 0
@@ -2829,7 +2829,7 @@ function scr_option_menu()
 					{
 						lang = ""; /* fallback if grid is missing or not large enough */
 					}
-					
+
 					/* If you have selected Japanese language, you can't use Open Dyslexic
 					If "Global Selected Font" checks for less than 1 here, then you can only select Game Font and Normal Font */
 					if ((lang == "日本語 (Japanese)" && global.selected_font < 1)
@@ -2891,9 +2891,9 @@ function scr_option_menu()
 				}
 			}
 			#endregion /* Navigate Game Settings END */
-			
+
 			else
-			
+
 			#region /* Players can collide */
 			if (menu == "players_can_collide")
 			{
@@ -2914,9 +2914,9 @@ function scr_option_menu()
 				}
 			}
 			#endregion /* Players can collide END */
-			
+
 			else
-			
+
 			#region /* Main Volume Navigation */
 			if (menu == "volume_main")
 			{
@@ -2975,9 +2975,9 @@ function scr_option_menu()
 				}
 			}
 			#endregion /* Main Volume Navigation END */
-		
+
 			else
-		
+
 			#region /* Music Volume Navigation */
 			if (menu == "volume_music")
 			{
@@ -3035,9 +3035,9 @@ function scr_option_menu()
 				}
 			}
 			#endregion /* Music Volume Navigation END */
-			
+
 			else
-			
+
 			#region /* Melody Volume Navigation */
 			if (menu == "volume_melody")
 			{
@@ -3096,9 +3096,9 @@ function scr_option_menu()
 				}
 			}
 			#endregion /* Melody Volume Navigation END */
-			
+
 			else
-			
+
 			#region /* Sound Volume Navigation */
 			if (menu == "volume_sound")
 			{
@@ -3157,9 +3157,9 @@ function scr_option_menu()
 				}
 			}
 			#endregion /* Sound Volume Navigation END */
-	
+
 			else
-	
+
 			#region /* Ambient Volume Navigation */
 			if (menu == "volume_ambient")
 			{
@@ -3218,9 +3218,9 @@ function scr_option_menu()
 				}
 			}
 			#endregion /* Ambient Volume Navigation END */
-		
+
 			else
-		
+
 			#region /* Footstep Volume Navigation */
 			if (menu == "volume_footstep")
 			{
@@ -3279,9 +3279,9 @@ function scr_option_menu()
 				}
 			}
 			#endregion /* Footstep Volume Navigation END */
-		
+
 			else
-		
+
 			#region /* Voices Volume Navigation */
 			if (menu == "volume_voices")
 			{
@@ -3342,7 +3342,7 @@ function scr_option_menu()
 			#endregion /* Voices Volume Navigation END */
 
 			else
-	
+
 			#region /* Number of Audio Channels Navigation */
 			if (menu == "number_of_audio_channels")
 			{
@@ -3381,7 +3381,7 @@ function scr_option_menu()
 				&& (open_dropdown)
 				&& (global.number_of_audio_channels> 0)
 				{
-					global.number_of_audio_channels --;
+					global.number_of_audio_channels--;
 					menu_delay = 3;
 				}
 				else
@@ -3395,9 +3395,9 @@ function scr_option_menu()
 				}
 			}
 			#endregion /* Number of Audio Channels Navigation END */
-	
+
 			else
-	
+
 			#region /* Verbosity Slider Navigation */
 			if (menu == "verbosity_slider")
 			{
@@ -3493,9 +3493,9 @@ function scr_option_menu()
 				}
 			}
 			#endregion /* Select Narrator Navigation */
-		
+
 			else
-		
+
 			#region /* Default Audio Settings Navigation */
 			if (menu == "default_audio_settings")
 			{
@@ -3530,19 +3530,19 @@ function scr_option_menu()
 				}
 			}
 			#endregion /* Default Audio Settings Navigation */
-		
+
 			#endregion /* Options Menu END */
-		
+
 		}
 		#endregion /* Menu Navigation END */
-		
+
 	}
 	else
 	{
 		left_sidebar_x = lerp(left_sidebar_x, -400, 0.1);
 		background_brightness_menu_lerp = lerp(background_brightness_menu_lerp, 0, 0.1);
 	}
-	
+
 	#region /* Darken sidebar when it's not the focus */
 	if (can_navigate_settings_sidebar)
 	&& (in_settings)
@@ -3564,7 +3564,7 @@ function scr_option_menu()
 		darken_settings_sidebar_alpha = lerp(darken_settings_sidebar_alpha, 0, 0.1); /* And don't darken the settings sidebar */
 	}
 	#endregion /* Darken sidebar when it's not the focus END */
-	
+
 	scr_menu_navigation_with_joystick_delay();
 	scr_draw_option_description();
 }

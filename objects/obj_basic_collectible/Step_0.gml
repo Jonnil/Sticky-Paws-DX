@@ -22,7 +22,7 @@ if (bounce_up)
 		visible = true;
 		gravity_direction = 270;
 		gravity = 0.5;
-		
+
 		if (vspeed > 0 && y > ystart - 32 || delay >= delay_time + 60)
 		{
 			alarm[0] = 1; /* Collect the basic collectible */
@@ -33,6 +33,6 @@ if (bounce_up)
 		visible = false;
 		y = ystart;
 	}
-	delay ++;
+	delay++;
 }
 #endregion /* Bounce up END */

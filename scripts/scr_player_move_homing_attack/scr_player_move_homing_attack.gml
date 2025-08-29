@@ -1,10 +1,10 @@
 function scr_player_move_homing_attack()
 {
-	
+
 	#region /* Homing Attack */
 	if (allow_homing_attack)
 	{
-		
+
 		#region /* Homing Enemy */
 		if (!place_meeting(x, y + 1, obj_wall))
 		&& (!position_meeting(x, bbox_bottom + 1, obj_semisolid_platform))
@@ -33,9 +33,9 @@ function scr_player_move_homing_attack()
 			}
 		}
 		#endregion /* Homing Enemy END */
-		
+
 		else
-		
+
 		#region /* Homing Spring */
 		if (!place_meeting(x, y + 1, obj_wall))
 		&& (!position_meeting(x, bbox_bottom + 1, obj_semisolid_platform))
@@ -64,7 +64,7 @@ function scr_player_move_homing_attack()
 			}
 		}
 		#endregion /* Homing Spring END */
-		
+
 		if (homing_attack_x > 0)
 		{
 			move_towards_point(homing_attack_x, homing_attack_y, 30);
@@ -82,5 +82,5 @@ function scr_player_move_homing_attack()
 		}
 	}
 	#endregion /* Homing Attack END */
-	
+
 }

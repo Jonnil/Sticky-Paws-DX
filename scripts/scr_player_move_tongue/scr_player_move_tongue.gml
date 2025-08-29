@@ -3,7 +3,7 @@ function scr_player_move_tongue()
 	if (allow_tongue)
 	{
 		var rope_lenght_max = 320;
-		
+
 		#region /* Tongue */
 		if (can_move)
 		{
@@ -11,16 +11,16 @@ function scr_player_move_tongue()
 			{
 				can_tongue = true;
 			}
-			
+
 			#region /* If you are allowed to use tongue, then you are able to use your tongue END */
 			if (allow_tongue)
 			&& (can_tongue)
 			&& (!climb)
 			&& (!horizontal_rope_climb)
 			{
-				
+
 				#region /* Activate Tongue */
-				
+
 				#region /* Use tongue with mouse click */
 				if (mouse_check_button_pressed(mb_left))
 				{
@@ -35,9 +35,9 @@ function scr_player_move_tongue()
 					}
 				}
 				#endregion /* Use tongue with mouse click END */
-				
+
 				else
-				
+
 				#region /* Use tongue with right stick */
 				if (gamepad_axis_value(player - 1, gp_axisrh) != 0)
 				|| (gamepad_axis_value(player - 1, gp_axisrv) != 0)
@@ -49,9 +49,9 @@ function scr_player_move_tongue()
 					}
 				}
 				#endregion /* Use tongue with right stick END */
-				
+
 				else
-				
+
 				#region /* Key tongue pressed moving left stick */
 				if (gamepad_axis_value(player - 1, gp_axislh) != 0)
 				|| (gamepad_axis_value(player - 1, gp_axislv) != 0)
@@ -64,20 +64,20 @@ function scr_player_move_tongue()
 							direction = point_direction(0, 0, gamepad_axis_value(instance_nearest(x, y, obj_player).player - 1, gp_axislh), gamepad_axis_value(instance_nearest(x, y, obj_player).player - 1, gp_axislv));
 						}
 					}
-				
+
 				}
 				#endregion /* Key tongue pressed moving left stick END */
-				
+
 				else
-				
+
 				#region /* Press Tongue Button */
 				if (key_tongue_pressed)
 				{
-					
+
 					#region /* Key Up */
 					if (key_up)
 					{
-						
+
 						#region /* Key Left */
 						if (key_left_hold)
 						&& (!place_meeting(x - 1, y, obj_wall))
@@ -91,9 +91,9 @@ function scr_player_move_tongue()
 							}
 						}
 						#endregion /* Key Left END */
-						
+
 						else
-						
+
 						#region /* Key Right */
 						if (key_right_hold)
 						&& (!place_meeting(x + 1, y, obj_wall))
@@ -107,7 +107,7 @@ function scr_player_move_tongue()
 							}
 						}
 						#endregion /* Key Right END */
-						
+
 						else
 						{
 							can_tongue = false;
@@ -118,16 +118,16 @@ function scr_player_move_tongue()
 						}
 					}
 					#endregion /* Key Up END */
-					
+
 					else
-					
+
 					#region /* Key Left */
 					if (key_left_hold)
 					&& (!place_meeting(x - 1, y, obj_wall))
 					&& (can_collide_with_wall)
 					|| (key_left_hold)
 					{
-						
+
 						#region /* Key Up */
 						if (key_up)
 						{
@@ -138,9 +138,9 @@ function scr_player_move_tongue()
 							}
 						}
 						#endregion /* Key Up END */
-						
+
 						else
-						
+
 						#region /* Key Down */
 						if (key_down)
 						{
@@ -151,7 +151,7 @@ function scr_player_move_tongue()
 							}
 						}
 						#endregion /* Key Down END */
-						
+
 						else
 						{
 							can_tongue = false;
@@ -162,16 +162,16 @@ function scr_player_move_tongue()
 						}
 					}
 					#endregion /* Key Left END */
-					
+
 					else
-					
+
 					#region /* Key Right */
 					if (key_right_hold)
 					&& (!place_meeting(x + 1, y, obj_wall))
 					&& (can_collide_with_wall)
 					|| (key_right_hold)
 					{
-						
+
 						#region /* Key Up */
 						if (key_up)
 						{
@@ -182,9 +182,9 @@ function scr_player_move_tongue()
 							}
 						}
 						#endregion /* Key Up END */
-						
+
 						else
-						
+
 						#region /* Key Down */
 						if (key_down)
 						{
@@ -195,7 +195,7 @@ function scr_player_move_tongue()
 							}
 						}
 						#endregion /* Key Down END */
-						
+
 						else
 						{
 							can_tongue = false;
@@ -206,16 +206,16 @@ function scr_player_move_tongue()
 						}
 					}
 					#endregion /* Key Right END */
-					
+
 					else
-					
+
 					#region /* Key Down */
 					if (key_down)
 					&& (!place_meeting(x, y + 1, obj_wall))
 					&& (can_collide_with_wall)
 					|| (key_down)
 					{
-						
+
 						#region /* Key Left */
 						if (key_left_hold)
 						&& (!place_meeting(x - 1, y, obj_wall))
@@ -229,9 +229,9 @@ function scr_player_move_tongue()
 							}
 						}
 						#endregion /* Key Left END */
-						
+
 						else
-						
+
 						#region /* Key Right */
 						if (key_right_hold)
 						&& (!place_meeting(x + 1, y, obj_wall))
@@ -245,7 +245,7 @@ function scr_player_move_tongue()
 							}
 						}
 						#endregion /* Key Right END */
-						
+
 						else
 						{
 							can_tongue = false;
@@ -256,7 +256,7 @@ function scr_player_move_tongue()
 						}
 					}
 					#endregion /* Key Down END */
-					
+
 					else
 					if (image_xscale < 0)
 					&& (!place_meeting(x - 1, y, obj_wall))
@@ -283,12 +283,12 @@ function scr_player_move_tongue()
 					}
 				}
 				#endregion /* Press Tongue Button END */
-				
+
 				#endregion /* Activate Tongue END */
-				
+
 			}
 			#endregion /* If you are allowed to use tongue, then you are able to use your tongue */
-			
+
 			#region /* Rope Swing */
 			if (rope_swing)
 			{
@@ -304,9 +304,9 @@ function scr_player_move_tongue()
 					rope_angle = point_direction(grapple_x, grapple_y, x, y);
 					rope_length = point_distance(grapple_x, grapple_y, x, y);
 					var rope_angle_acceleration = -0.4 * dcos(rope_angle);
-					
+
 					#region /* Control the tongue */
-					
+
 					#region /* Key Left */
 					if (key_left_hold)
 					&& (obj_tongue.y > y)
@@ -322,9 +322,9 @@ function scr_player_move_tongue()
 						rope_angle_acceleration += 0.08;
 					}
 					#endregion /* Key Left END */
-					
+
 					else
-					
+
 					#region /* Key Right */
 					if (key_right_hold)
 					&& (obj_tongue.y > y)
@@ -340,9 +340,9 @@ function scr_player_move_tongue()
 						rope_angle_acceleration -= 0.08;
 					}
 					#endregion /* Key Right END */
-					
+
 					else
-					
+
 					#region /* Key Left */
 					if (key_left_hold)
 					&& (!place_meeting(x - 4, y, obj_wall))
@@ -352,9 +352,9 @@ function scr_player_move_tongue()
 						rope_angle_acceleration -= 0.08;
 					}
 					#endregion /* Key Left END */
-					
+
 					else
-					
+
 					#region /* Key Right */
 					if (key_right_hold)
 					&& (!place_meeting(x + 4, y, obj_wall))
@@ -364,7 +364,7 @@ function scr_player_move_tongue()
 						rope_angle_acceleration += 0.08;
 					}
 					#endregion /* Key Right END */
-					
+
 					#region /* Make rope shorter */
 					if (key_up)
 					&& (obj_tongue.y < y)
@@ -380,9 +380,9 @@ function scr_player_move_tongue()
 						}
 					}
 					#endregion /* Make rope shorter END */
-					
+
 					else
-					
+
 					#region /* Make rope longer */
 					if (key_down)
 					&& (obj_tongue.y < y)
@@ -398,12 +398,12 @@ function scr_player_move_tongue()
 						}
 					}
 					#endregion /* Make rope longer END */
-					
+
 					#endregion /* Control the tongue END */
-					
+
 					if (rope_length > rope_lenght_max) /* Don't let the rope longer than max length */
 					{
-						rope_length --;
+						rope_length--;
 					}
 					rope_length = max(rope_length, 0);
 					rope_angle_velocity += rope_angle_acceleration;
@@ -413,9 +413,9 @@ function scr_player_move_tongue()
 					rope_y = grapple_y + lengthdir_y(rope_length, rope_angle);
 					hspeed = rope_x - x;
 					vspeed = rope_y - y;
-					
+
 					#region /* Collision for tongue swinging */
-					
+
 					#region /* Hitting wall to your left */
 					if (place_meeting(x - 1, y, obj_wall))
 					{
@@ -433,7 +433,7 @@ function scr_player_move_tongue()
 						}
 					}
 					#endregion /* Hitting wall to your left END */
-					
+
 					#region /* Hitting wall to your right */
 					if (place_meeting(x + 1, y, obj_wall))
 					{
@@ -451,9 +451,9 @@ function scr_player_move_tongue()
 						}
 					}
 					#endregion /* Hitting wall to your right END */
-					
+
 					rope_angle_acceleration = clamp(rope_angle_acceleration, -10, +10); /* Limit rope angle acceleration so you don't go too fast and go trough walls */
-					
+
 					#region /* Hitting ceiling */
 					if (place_meeting(x, y - 1, obj_wall))
 					&& (vspeed <= 0)
@@ -461,7 +461,7 @@ function scr_player_move_tongue()
 						hspeed = 0;
 					}
 					#endregion /* Hitting ceiling END */
-					
+
 					#region /* Hitting floor */
 					if (place_meeting(x, y + 1, obj_wall))
 					&& (vspeed >= 0)
@@ -469,11 +469,11 @@ function scr_player_move_tongue()
 						vspeed = 0;
 					}
 					#endregion /* Hitting floor END */
-					
+
 					#endregion /* Collision for tongue swinging END */
-					
+
 				}
-				
+
 				if (instance_number(instance_nearest(x, y, obj_tongue)) < 1)
 				{
 					with(instance_nearest(x, y, obj_tongue))
@@ -483,11 +483,11 @@ function scr_player_move_tongue()
 					rope_swing = false;
 				}
 				else
-				
+
 				#region /* Key Jump */
 				if (key_jump)
 				{
-					
+
 					#region /* Retrieve tongue */
 					with(instance_nearest(x, y, obj_tongue))
 					{
@@ -501,20 +501,20 @@ function scr_player_move_tongue()
 					rope_length = point_distance(grapple_x, grapple_y, x, y);
 					rope_swing = false;
 					#endregion /* Retrieve tongue END */
-					
+
 					tongue_move_player_toward_wall = false; /* Make sure to disable player moving toward wall when you jump out of a tongue swing */
 					tongue_move_player_toward_wall_timer = 0;
 					vspeed = -normal_jump_height + vspeed; /* Make the player jump when going out of rope swing */
 				}
 				#endregion /* Key Jump END */
-				
+
 			}
 			else
 			{
 				can_collide_with_wall = true;
 			}
 			#endregion /* Rope Swing END */
-			
+
 			#region /* Fly toward wall when clicking tongue button again */
 			if (rope_swing)
 			&& (mouse_check_button_pressed(mb_left))
@@ -523,7 +523,7 @@ function scr_player_move_tongue()
 			{
 				tongue_move_player_toward_wall = true;
 			}
-			
+
 			if (instance_exists(obj_tongue))
 			&& (tongue_move_player_toward_wall)
 			{
@@ -542,12 +542,12 @@ function scr_player_move_tongue()
 				{
 					move_towards_point(instance_nearest(x, y, obj_tongue).x, instance_nearest(x, y, obj_tongue).y, 16); /* This makes the player fly toward the tongue */
 				}
-				tongue_move_player_toward_wall_timer ++;
-				
+				tongue_move_player_toward_wall_timer++;
+
 				#region /* When touching tongue when flying towards it, or when the character has stopped moving and can't move closer to tongue, then retrieve the tongue */
 				if (distance_to_object(instance_nearest(x, y, obj_tongue)) < 32)
 				{
-					
+
 					#region /* Retrieve tongue */
 					with(instance_nearest(x, y, obj_tongue))
 					{
@@ -561,16 +561,16 @@ function scr_player_move_tongue()
 					rope_length = point_distance(grapple_x, grapple_y, x, y);
 					rope_swing = false;
 					#endregion /* Retrieve tongue END */
-					
+
 					tongue_move_player_toward_wall = false;
 					tongue_move_player_toward_wall_timer = 0;
 				}
 				#endregion /* When touching tongue when flying towards it, or when the character has stopped moving and can't move closer to tongue, then retrieve the tongue END */
-				
+
 			}
-			
+
 			#endregion /* Fly toward wall when clicking tongue button again END */
-			
+
 		}
 		else
 		{
@@ -584,7 +584,7 @@ function scr_player_move_tongue()
 			}
 		}
 		#endregion /* Tongue END */
-		
+
 		#region /* When the character has stopped moving and can't move closer to tongue, then retrieve the tongue */
 		if (instance_exists(obj_tongue))
 		&& (tongue_move_player_toward_wall)
@@ -593,7 +593,7 @@ function scr_player_move_tongue()
 		&& (tongue_move_player_toward_wall)
 		&& (tongue_move_player_toward_wall_timer > 60) /* If it's been over 1 second, cancel the move towards tongue move, as backup if the player didn't stop correctly */
 		{
-			
+
 			#region /* Retrieve tongue */
 			with(instance_nearest(x, y, obj_tongue))
 			{
@@ -607,11 +607,11 @@ function scr_player_move_tongue()
 			rope_length = point_distance(grapple_x, grapple_y, x, y);
 			rope_swing = false;
 			#endregion /* Retrieve tongue END */
-			
+
 			tongue_move_player_toward_wall = false;
 			tongue_move_player_toward_wall_timer = 0;
 		}
 		#endregion /* When the character has stopped moving and can't move closer to tongue, then retrieve the tongue END */
-		
+
 	}
 }

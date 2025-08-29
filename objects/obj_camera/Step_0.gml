@@ -8,7 +8,7 @@ scr_resize_application_surface();
 if (!have_set_numbers) /* Have to set numbers in step event like this for it to work in every case */
 {
 	have_set_numbers = true;
-	
+
 	#region /* Set big collectible numbers for every big collectible */
 	for(set_all_big_collectible = 0; set_all_big_collectible < instance_number(obj_big_collectible_number) + 1; set_all_big_collectible += 1)
 	{
@@ -21,7 +21,7 @@ if (!have_set_numbers) /* Have to set numbers in step event like this for it to 
 		}
 	}
 	#endregion /* Set big collectible numbers for every big collectible END */
-	
+
 	#region /* Set key fragment numbers for every key fragment */
 	for(set_all_key_fragment = 0; set_all_key_fragment < instance_number(obj_key_fragment_number) + 1; set_all_key_fragment += 1)
 	{
@@ -34,7 +34,7 @@ if (!have_set_numbers) /* Have to set numbers in step event like this for it to 
 		}
 	}
 	#endregion /* Set key fragment numbers for every key fragment END */
-	
+
 	#region /* Set checkpoint numbers for every checkpoint */
 	for(checkpoint_number = 0;checkpoint_number < instance_number(obj_checkpoint) + 1;checkpoint_number += 1)
 	{
@@ -47,10 +47,10 @@ if (!have_set_numbers) /* Have to set numbers in step event like this for it to 
 		}
 	}
 	#endregion /* Set checkpoint numbers for every checkpoint END */
-	
+
 }
 
-global.appear_block_timer ++;
+global.appear_block_timer++;
 if (global.appear_block_timer > 60 * 5)
 {
 	global.appear_block_timer = 0;
@@ -62,21 +62,21 @@ var get_room_speed = 60;
 
 if (!global.goal_active)
 {
-	
+
 	/* Timer Countup */
 	global.timeattack_millisecond++;
-    global.timeattack_realmillisecond++;
-    if (global.timeattack_millisecond > 60)
+	global.timeattack_realmillisecond++;
+	if (global.timeattack_millisecond > 60)
 	{
-        global.timeattack_millisecond = 0;
-        global.timeattack_second++;
-        if (global.timeattack_second > 59)
+		global.timeattack_millisecond = 0;
+		global.timeattack_second++;
+		if (global.timeattack_second > 59)
 		{
-            global.timeattack_second = 0;
-            global.timeattack_minute++;
-        }
-    }
-	
+			global.timeattack_second = 0;
+			global.timeattack_minute++;
+		}
+	}
+
 	/* Time Countdown */
 	time_second++;
 	if (time_second > get_room_speed)
@@ -88,14 +88,14 @@ if (!global.goal_active)
 			global.time_countdown--;
 		}
 	}
-	
+
 }
 
 /* Spikes Emerge Time increment */
 global.spikes_emerge_time++;
 if (global.spikes_emerge_time >= get_room_speed * 4)
 {
-    global.spikes_emerge_time = 0;
+	global.spikes_emerge_time = 0;
 }
 
 #region /* Rain Effect */
@@ -118,7 +118,7 @@ if (global.effect_snow && part_system_exists(part_system_snow))
 
 for(var i = 1; i <= global.max_players; i += 1)
 {
-	
+
 	#region /* Player Show Controls HUD timer */
 	if (player[i] >= 1)
 	&& (instance_exists(player[i]))
@@ -137,7 +137,7 @@ for(var i = 1; i <= global.max_players; i += 1)
 			if (player_show_controls_timer[i] >= 1)
 			{
 				player_show_controls_alpha[i] = lerp(player_show_controls_alpha[i], 0, 0.2);
-				player_show_controls_timer[i] --;
+				player_show_controls_timer[i]--;
 			}
 			if (player_show_controls_timer[i] <= 0)
 			&& (player[i].speed == 0)
@@ -167,7 +167,7 @@ for(var i = 1; i <= global.max_players; i += 1)
 		player_show_controls_timer[i] = get_room_speed * global.player_show_controls[i];
 	}
 	#endregion /* Player Show Controls HUD timer */
-	
+
 	#region /* Stop gamepad vibration for player */
 	if (is_array(player_vibration_active))
 	{
@@ -177,14 +177,14 @@ for(var i = 1; i <= global.max_players; i += 1)
 		}
 		else
 		{
-			player_vibration_active[i] --;
+			player_vibration_active[i]--;
 		}
 	}
 	else
 	{
 		player_motor_speed[i] = lerp(player_motor_speed[i], 0, 0.1);
 	}
-	
+
 	if (os_type == os_switch)
 	{
 		switch_controller_vibrate_hd(global.player_slot[i], player_motor_speed[i], player_motor_speed[i], player_motor_speed[i], player_motor_speed[i], player_motor_speed[i]);
@@ -194,7 +194,7 @@ for(var i = 1; i <= global.max_players; i += 1)
 		gamepad_set_vibration(global.player_slot[i], player_motor_speed[i], player_motor_speed[i]);
 	}
 	#endregion /* Stop gamepad vibration for player END */
-	
+
 }
 
 #region /* Spawn Players in multiplayer */
@@ -239,7 +239,7 @@ scr_camera_logic();
 #region /* Iris */
 if (allow_iris && !save_level_as_png)
 {
-		
+
 	#region /* Zoom In */
 	if (global.player_has_entered_goal)
 	&& (global.time_countdown_bonus <= 0)
@@ -265,9 +265,9 @@ if (allow_iris && !save_level_as_png)
 		}
 	}
 	#endregion /* Zoom In END */
-		
+
 	else
-		
+
 	#region /* Zoom Out */
 	if (iris_zoom == 0)
 	{
@@ -288,7 +288,7 @@ if (allow_iris && !save_level_as_png)
 		}
 	}
 	#endregion /* Zoom Out END */
-		
+
 }
 #endregion /* Iris END */
 
@@ -296,18 +296,18 @@ if (allow_iris && !save_level_as_png)
 for(var i = 1; i <= global.max_players; i += 1)
 {
 	key_player_run_toggle_pressed[i] = scr_key_initialize(key_player_run_toggle_pressed[i], 1, i, action.run_toggle);
-	
+
 	if (key_player_run_toggle_pressed[i])
 	{
 		show_run_toggle_for_player[i] = 100;
 		/* Reset other player toggles */
-	    for(var j = 1; j <= global.max_players; j += 1)
+		for(var j = 1; j <= global.max_players; j += 1)
 		{
 			if (j != i)
 			{
 				show_run_toggle_for_player[j] = 0;
 			}
-	    }
+		}
 		global.player_run_toggle[i] = !global.player_run_toggle[i];
 	}
 }
@@ -368,23 +368,23 @@ else
 {
 	if (hud_show_lives_timer > 0)
 	{
-		hud_show_lives_timer --;
+		hud_show_lives_timer--;
 	}
 	if (hud_show_defeats_timer > 0)
 	{
-		hud_show_defeats_timer --;
+		hud_show_defeats_timer--;
 	}
 	if (hud_show_big_collectibles_timer > 0)
 	{
-		hud_show_big_collectibles_timer --;
+		hud_show_big_collectibles_timer--;
 	}
 	if (hud_show_key_fragment_timer > 0)
 	{
-		hud_show_key_fragment_timer --;
+		hud_show_key_fragment_timer--;
 	}
 	if (hud_show_score_timer > 0)
 	{
-		hud_show_score_timer --;
+		hud_show_score_timer--;
 	}
 }
 
@@ -398,7 +398,7 @@ if (global.hud_hide_time > 0)
 	Big Collectibles
 	Basic Collectibles
 	*/
-	
+
 	#region /* Show Lives y position */
 	if (room == rm_world)
 	{
@@ -416,7 +416,7 @@ if (global.hud_hide_time > 0)
 		}
 	}
 	#endregion /* Show Lives y position END */
-	
+
 	#region /* Show Defeats y position */
 	if (hud_show_defeats_timer > 0 && global.show_defeats_counter)
 	{
@@ -434,7 +434,7 @@ if (global.hud_hide_time > 0)
 		hud_show_defeats_y = lerp(hud_show_defeats_y, -64, 0.1);
 	}
 	#endregion /* Show Defeats y position END */
-	
+
 	#region /* Show Big Collectibles y position */
 	if (hud_show_big_collectibles_timer > 0) /* Make sure it says BIG collectibles */
 	{
@@ -457,12 +457,12 @@ if (global.hud_hide_time > 0)
 		hud_show_big_collectibles_y = lerp(hud_show_big_collectibles_y, -64, 0.1);
 	}
 	#endregion /* Show Big Collectibles y position END */
-	
+
 	#region /* Show Basic Collectible y position */
 	if (hud_show_basic_collectibles_timer > 0) /* Make sure it says BASIC collectibles */
 	{
-		hud_show_basic_collectibles_timer --;
-		
+		hud_show_basic_collectibles_timer--;
+
 		if (hud_show_lives_y > 0)
 		&& (hud_show_defeats_y > 0)
 		&& (hud_show_big_collectibles_y > 0)
@@ -505,7 +505,7 @@ if (global.hud_hide_time > 0)
 		hud_show_basic_collectibles_y = lerp(hud_show_basic_collectibles_y, -64, 0.1);
 	}
 	#endregion /* Show Basic Collectible y position END */
-	
+
 	#region /* Show Key Fragment y position */
 	if (hud_show_key_fragment_timer > 0)
 	{
@@ -538,7 +538,7 @@ if (global.hud_hide_time > 0)
 		hud_show_key_fragment_y = lerp(hud_show_key_fragment_y, -64, 0.1);
 	}
 	#endregion /* Show Key Fragment y position END */
-	
+
 	#region /* Show Score y position */
 	if (hud_show_score_timer > 0)
 	{
@@ -549,7 +549,7 @@ if (global.hud_hide_time > 0)
 		hud_show_score_y = lerp(hud_show_score_y, -128, 0.1);
 	}
 	#endregion /* Show Score y position END */
-	
+
 }
 #endregion /* Y position of all HUD should be lerping onto screen when it's relevant END */
 
@@ -560,7 +560,7 @@ scr_set_show_controls_y();
 #region /* Show what input is used */
 if (show_controller_input_change_prompt > 0)
 {
-	show_controller_input_change_prompt --;
+	show_controller_input_change_prompt--;
 	show_keyboard_and_mouse_input_change_prompt = 0;
 	show_controller_input_change_prompt_y = lerp(show_controller_input_change_prompt_y, -400, 0.1);
 }
@@ -571,7 +571,7 @@ else
 
 if (show_keyboard_and_mouse_input_change_prompt > 0)
 {
-	show_keyboard_and_mouse_input_change_prompt --;
+	show_keyboard_and_mouse_input_change_prompt--;
 	show_controller_input_change_prompt = 0;
 	show_keyboard_and_mouse_input_change_prompt_y = lerp(show_keyboard_and_mouse_input_change_prompt_y, -400, 0.1);
 }
@@ -596,7 +596,7 @@ else
 	letterbox_bottom_y = lerp(letterbox_bottom_y, display_get_gui_height(), 0.1);
 	if (show_letterbox > 0)
 	{
-		show_letterbox --;
+		show_letterbox--;
 	}
 }
 #endregion /* Letterboxing during cutscenes (when the player object is absent) END */
@@ -627,9 +627,9 @@ if (global.character_select_in_this_menu == "main_game")
 && (!global.doing_clear_check_level)
 && (!global.doing_clear_check_character)
 {
-	
+
 	show_playtest_buttons = true;
-	
+
 	#region /* Press Pause button */
 	if (point_in_rectangle(device_mouse_x_to_gui(0), device_mouse_y_to_gui(0), pause_x - 32 + 1, display_get_gui_height() - 64, pause_x + 32, display_get_gui_height() + 64 - 1)
 	|| gamepad_button_check_pressed(global.player_slot[1], gp_select))
@@ -654,7 +654,7 @@ if (global.character_select_in_this_menu == "main_game")
 			global.actually_play_edited_level = false;
 			global.play_edited_level = false;
 			score = 0;
-			
+
 			#region /* Save Level Information when in level editor */
 			if (global.level_name != ""
 			&& !global.actually_play_edited_level)
@@ -665,7 +665,7 @@ if (global.character_select_in_this_menu == "main_game")
 				ini_close(); /* Don't commit the save data on Switch, this is only temporary! */
 			}
 			#endregion /* Save Level Information when in level editor END */
-			
+
 			var time_source = time_source_create(time_source_game, 1, time_source_units_frames, function()
 			{
 				room_restart();
@@ -680,7 +680,7 @@ if (global.character_select_in_this_menu == "main_game")
 		can_click_on_pause_key = false;
 	}
 	#endregion /* Press Pause button END */
-	
+
 	/* Press Invincibility button */
 	if (mouse_check_button_released(mb_left))
 	&& (global.controls_used_for_navigation == "mouse")
@@ -689,13 +689,13 @@ if (global.character_select_in_this_menu == "main_game")
 	|| (gamepad_button_check_pressed(global.player_slot[1], invincibility_button))
 	{
 		global.playtest_invincibility = !global.playtest_invincibility;
-		
+
 		if (global.playtest_invincibility)
 		{
 			global.debug_mode_activated_once = true;
 		}
 	}
-	
+
 	/* Press Moonjump button */
 	if (mouse_check_button_released(mb_left))
 	&& (global.controls_used_for_navigation == "mouse")
@@ -704,13 +704,13 @@ if (global.character_select_in_this_menu == "main_game")
 	|| (gamepad_button_check_pressed(global.player_slot[1], moonjump_button))
 	{
 		global.playtest_moonjump = !global.playtest_moonjump;
-		
+
 		if (global.playtest_moonjump)
 		{
 			global.debug_mode_activated_once = true;
 		}
 	}
-	
+
 }
 else
 {
@@ -739,7 +739,7 @@ if (global.enable_time_countdown)
 	{
 		time_countup_y = 94;
 	}
-	
+
 	#region /* Show the Time Countdown */
 	if (global.hud_hide_time > 0 && global.time_countdown >= 0)
 	{
@@ -787,7 +787,7 @@ if (global.enable_time_countdown)
 		}
 	}
 	#endregion /* Show the Time Countdown END */
-	
+
 }
 #endregion /* Time Countdown END */
 

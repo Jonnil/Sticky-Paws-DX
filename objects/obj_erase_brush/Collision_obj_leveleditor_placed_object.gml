@@ -50,7 +50,7 @@ if (instance_exists(obj_leveleditor))
 	audio_sound_pitch(snd_leveleditor_erase_object, random_range(0.9, 1.1));
 	scr_audio_play(snd_leveleditor_erase_object, volume_source.sound);
 	image_blend = c_red;
-	with(other)		
+	with(other)
 	{
 		instance_destroy();
 	}
@@ -116,7 +116,7 @@ if (!keyboard_check(vk_escape))
 	&& (instance_exists(obj_leveleditor))
 	&& (mouse_check_button(mb_right))
 	&& (!obj_leveleditor.pause)
-	
+
 	|| (instance_exists(obj_leveleditor))
 	&& (!obj_leveleditor.key_a_hold)
 	&& (obj_leveleditor.key_b_hold)

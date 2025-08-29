@@ -4,7 +4,7 @@ function scr_draw_level_editor_placable_object(v_selected_object, v_place_object
 	var menu_x_offset = select_object_menu_x + v_scroll_x * v_selected_object;
 	var draw_x = half_gui_width + menu_x_offset + v_x_offset;
 	var is_selected = (selected_object == v_selected_object);
-	
+
 	if (unlocked_object[v_place_object_id] >= true)
 	{
 		if (draw_x > 0 && draw_x < display_get_gui_width() || (initialize_recent_object_selected)) /* Additional check to ensure that the graphics are within the display width */
@@ -23,7 +23,7 @@ function scr_draw_level_editor_placable_object(v_selected_object, v_place_object
 			}
 			var y_offset = 128;
 			var hover_offset = 49;
-			
+
 			/* Hover mouse over object icon and click to select */
 			if (global.controls_used_for_navigation == "mouse"
 			&& point_in_rectangle(device_mouse_x_to_gui(0), device_mouse_y_to_gui(0), (half_gui_width + menu_x_offset) - hover_offset, y_offset - hover_offset, (half_gui_width + menu_x_offset) + hover_offset, y_offset + hover_offset))
@@ -39,19 +39,19 @@ function scr_draw_level_editor_placable_object(v_selected_object, v_place_object
 			}
 			draw_set_alpha(selected_menu_alpha * alpha_offset);
 			draw_sprite_ext(v_sprite_index, v_image_index, draw_x, y_offset + v_scroll_y, v_scale * v_scale_modify, v_scale * v_scale_modify, v_rotation, v_color, selected_menu_alpha * alpha_offset);
-			
+
 			if (object_text != "")
 			{
 				scr_draw_text_outlined(draw_x, y_offset + v_scroll_y, string(object_text), global.default_text_size * v_scale * v_scale_modify, c_white, c_black, selected_menu_alpha * alpha_offset);
 			}
-			
+
 			/* If you have recently unlocked a new object, indicate that to the player */
 			if (unlocked_object[v_place_object_id] == 1
 			&& global.show_new_items_notification)
 			{
 				draw_circle_color(half_gui_width + menu_x_offset + 16, y_offset - 16, 3 + scr_wave(0, 3, 1, 0), c_red, c_red, false);
 			}
-			
+
 			if (is_selected)
 			&& (object_video_tutorial != "")
 			{

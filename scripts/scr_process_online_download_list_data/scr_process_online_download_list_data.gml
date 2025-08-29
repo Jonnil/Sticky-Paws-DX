@@ -5,7 +5,7 @@ function scr_process_online_download_list_data()
 	/* Show loading overlay & start timeout */
 	scr_draw_loading(1, , , "Loading from server 4");
 	scr_server_timeout(15);
-	
+
 	/* Only parse & init once per true load (or when forced) */
 	if (global.online_list_loaded
 	&& !global.force_online_list_refresh)
@@ -13,14 +13,14 @@ function scr_process_online_download_list_data()
 		show_debug_message("[scr_process_online_download_list_data] Cache active – skipping re-init\n");
 		return;
 	}
-	
+
 	/* Interpret the online download list as JSON */
 	if (global.online_download_list != ""
 	&& global.online_download_list != "HTTP request exception"
 	&& global.online_download_list != "Unauthorized")
 	{
 		show_debug_message("[scr_process_online_download_list_data] Valid list received. Parsing JSON...");
-		
+
 		try
 		{
 			/* Parse and compute pages */
@@ -28,13 +28,13 @@ function scr_process_online_download_list_data()
 			var total = array_length(global.online_content_data);
 			global.download_total_pages = ceil(total / global.download_items_per_page);
 			show_debug_message("[scr_process_online_download_list_data] JSON parsed. Items: " + string(total));
-			
+
 			/* Loop over every item index */
 			for (var i = 0; i < total; i++)
 			{
 				/* Clear any previous display name */
 				global.draw_download_name[i] = "";
-				
+
 				/* --- Thumbnail setup --- */
 				/* If we're forcing a full refresh, delete & reset */
 				if (global.force_online_list_refresh)
@@ -45,7 +45,7 @@ function scr_process_online_download_list_data()
 						scr_delete_sprite_properly(global.spr_download_list_thumbnail[i]);
 						show_debug_message("[scr_process_online_download_list_data] Deleted sprite at " + string(i));
 					}
-					
+
 					global.spr_download_list_thumbnail[i] = spr_thumbnail_missing;
 					show_debug_message("[scr_process_online_download_list_data] Reset thumbnail " + string(i));
 				}
@@ -58,17 +58,17 @@ function scr_process_online_download_list_data()
 						global.spr_download_list_thumbnail[i] = spr_thumbnail_missing;
 						show_debug_message("[scr_process_online_download_list_data] Init placeholder for " + string(i));
 					}
-					
+
 					/* else: leave any existing sprite in place (cache hit) */
 				}
-				
+
 				/* Reset ID lookup */
 				all_download_id[i] = "";
 			}
-			
+
 			/* Finished a true load – clear the refresh flag & mark loaded */
-			global.force_online_list_refresh	= false;
-			global.online_list_loaded			= true;
+			global.force_online_list_refresh    = false;
+			global.online_list_loaded            = true;
 		}
 		catch (e)
 		{

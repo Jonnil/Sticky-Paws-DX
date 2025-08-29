@@ -114,7 +114,7 @@ have_heart_balloon = false; /* If you have the heart balloon upgrade or not. You
 #region /* Custom Music */
 if (room != rm_title)
 {
-	
+
 	#region /* Update Player Lose Melody */
 	/* OGG small letter File */
 	if (file_exists("levels/" + string(ds_list_find_value(global.all_loaded_main_levels, global.select_level_index)) + "/sound/lose_melody.ogg"))
@@ -147,7 +147,7 @@ if (room != rm_title)
 		player_lose_melody = noone;
 	}
 	#endregion /* Update Player Lose Melody END */
-	
+
 	if (file_exists("resource_pack/" + string(ds_list_find_value(global.all_loaded_resource_pack, global.selected_resource_pack)) + "/sound/music_invincible.ogg"))
 	{
 		music_invincible = audio_create_stream("resource_pack/" + string(ds_list_find_value(global.all_loaded_resource_pack, global.selected_resource_pack)) + "/sound/music_invincible.ogg");
@@ -161,7 +161,7 @@ if (room != rm_title)
 	{
 		music_invincible = noone;
 	}
-	
+
 }
 else
 {

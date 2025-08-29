@@ -4,13 +4,13 @@
 function scr_draw_level_editor_thumbnail(load_what_levels = global.all_loaded_custom_levels, show_first_thumbnail_name = false)
 {
 	var custom_level_select_blinking = 0;
-	
+
 	#region /* Red rectangle behind the level thumbnail to indicate what level you are selecting */
 	var top_left_of_thumbnail_x = 394 * (global.select_level_index - column * row) + 100 - 3 + thumbnail_x_offset;
 	var top_left_of_thumbnail_y = 226 * (column - scroll) + 250 - 3;
 	var bottom_right_of_thumbnail_x = 394 * (global.select_level_index - column * row) + 100 + 384 + 3 + thumbnail_x_offset;
 	var bottom_right_of_thumbnail_y = 226 * (column - scroll) + 466 + 3;
-	
+
 	if (menu != "back_from_level_editor")
 	&& (menu != "open_custom_levels_folder")
 	&& (menu != "online_level_list")
@@ -32,30 +32,30 @@ function scr_draw_level_editor_thumbnail(load_what_levels = global.all_loaded_cu
 		draw_set_alpha(1);
 	}
 	#endregion /* Red rectangle behind the level thumbnail to indicate what level you are selecting END */
-	
+
 	#region /* Draw Thumbnail */
 	var list_size = ds_list_size(global.thumbnail_sprite);
-	
+
 	for (var i = 0; i < list_size; i++)
 	{
 		/* 1) Single lookup */
 		var spr = ds_list_find_value(global.thumbnail_sprite, i);
-		
+
 		/* 2) Guard against invalid sprite IDs */
 		if (!sprite_exists(spr))
 		{
 			continue;
 		}
-		
+
 		/* 3) Calculate grid cell */
 		column = floor(i / row); /* The variable 'column' is being used elsewhere in other scripts */
 		var cell_x = 394 * (i - column * row) + 100 + thumbnail_x_offset;
-		var cell_y = 226 * (column - scroll)	+ 250;
-		
+		var cell_y = 226 * (column - scroll)    + 250;
+
 		/* 4) Fetch dimensions once */
 		var w = sprite_get_width(spr);
 		var h = sprite_get_height(spr);
-		
+
 		/* 5) Draw thumbnail */
 		draw_sprite_ext(
 			spr, 0,
@@ -64,7 +64,7 @@ function scr_draw_level_editor_thumbnail(load_what_levels = global.all_loaded_cu
 			216 / h,
 			0, c_white, 1
 		);
-		
+
 		/* 6) Draw separator line after the last thumbnail */
 		if (i == list_size - 1)
 		{
@@ -72,7 +72,7 @@ function scr_draw_level_editor_thumbnail(load_what_levels = global.all_loaded_cu
 			draw_line_width_color(30, line_y, display_get_gui_width() - 30, line_y, 7, c_black, c_black);
 			draw_line_width_color(32, line_y, display_get_gui_width() - 32, line_y, 3, c_white, c_white);
 		}
-		
+
 		if (!show_first_thumbnail_name)
 		&& (i >= 1)
 		&& (menu != "load_custom_level")
@@ -85,7 +85,7 @@ function scr_draw_level_editor_thumbnail(load_what_levels = global.all_loaded_cu
 		{
 			draw_set_halign(fa_center);
 			draw_set_valign(fa_middle);
-			
+
 			/* Draw level name on top of level thumbnail */
 			if (load_what_levels == global.all_loaded_custom_levels)
 			&& (is_array(thumbnail_level_name))
@@ -106,7 +106,7 @@ function scr_draw_level_editor_thumbnail(load_what_levels = global.all_loaded_cu
 				{
 					var draw_level_name_scale = global.default_text_size;
 				}
-				
+
 				scr_draw_text_outlined(394 * (i - column * row) + 100 + 192 + thumbnail_x_offset, 226 * (column - scroll) + 450, string(thumbnail_level_name[i]), draw_level_name_scale, c_black, c_white, 1);
 			}
 			else
@@ -125,13 +125,13 @@ function scr_draw_level_editor_thumbnail(load_what_levels = global.all_loaded_cu
 				{
 					var draw_level_name_scale = global.default_text_size;
 				}
-				
+
 				scr_draw_text_outlined(394 * (i - column * row) + 100 + 192 + thumbnail_x_offset, 226 * (column - scroll) + 450, string(ds_list_find_value(load_what_levels, i)), global.default_text_size * 0.8, c_black, c_white, 1);
 			}
-			
+
 			#region /* Draw if level have been Clear Checked on top of level thumbnail */
 			var clear_check = false;
-			
+
 			if (room == rm_title)
 			{
 				if (variable_instance_exists(self, "thumbnail_clear_check"))
@@ -154,7 +154,7 @@ function scr_draw_level_editor_thumbnail(load_what_levels = global.all_loaded_cu
 					var level_id_text = "";
 					var level_unlisted_text = "";
 					var clear_check_text = "";
-					
+
 					/* Get the Level ID */
 					if (var_level_id != "")
 					{
@@ -162,13 +162,13 @@ function scr_draw_level_editor_thumbnail(load_what_levels = global.all_loaded_cu
 						{
 							level_id_text = string(var_level_id);
 							level_unlisted_text = l10n_text("Unlisted");
-							
+
 							if (room == rm_title)
 							{
 								global.search_id = string(var_level_id); /* Set the global search id for future use within the level editor */
 							}
 						}
-						
+
 						var icon_scale = scr_wave(0.9, 1, 1, 0);
 					}
 					else
@@ -176,32 +176,32 @@ function scr_draw_level_editor_thumbnail(load_what_levels = global.all_loaded_cu
 					{
 						global.search_id = ""; /* Reset the global search id so it's blank */
 					}
-					
+
 					/* Get the Clear Check status */
 					if (clear_check)
 					{
 						if (global.select_level_index == i)
 						{
 							var clear_check_text = l10n_text("Clear Checked");
-							
+
 							if (room == rm_title)
 							{
 								global.search_id = string(var_level_id); /* Set the global search id for future use within the level editor */
 							}
 						}
-						
+
 						var icon_scale = scr_wave(0.9, 1, 1, 0);
 					}
-					
+
 					var draw_x = 394 * (i - column * row) + 140 + thumbnail_x_offset;
 					var level_id_draw_y = 226 * (column - scroll) + 274;
 					var unlisted_draw_y = 226 * (column - scroll) + 274;
 					var clear_check_draw_y = 226 * (column - scroll) + 274;
 					var text_size = global.default_text_size * scr_wave(1, 1.1, 1, 0);
-						
+
 					draw_set_halign(fa_left);
 					draw_set_valign(fa_middle);
-					
+
 					/* Draw Level ID furthest up */
 					if (var_level_id != "")
 					{
@@ -210,7 +210,7 @@ function scr_draw_level_editor_thumbnail(load_what_levels = global.all_loaded_cu
 						var unlisted_draw_y = level_id_draw_y + 32;
 						var clear_check_draw_y = level_id_draw_y + 32;
 					}
-					
+
 					/* Draw if level is unlisted below Level ID */
 					if (var_level_unlisted)
 					{
@@ -218,7 +218,7 @@ function scr_draw_level_editor_thumbnail(load_what_levels = global.all_loaded_cu
 						draw_sprite_ext(spr_icon_unlisted, 1, draw_x - 20, unlisted_draw_y, icon_scale, icon_scale, 0, c_white, 1);
 						var clear_check_draw_y = unlisted_draw_y + 32;
 					}
-					
+
 					/* Draw Clear Check status below if level is unlisted */
 					if (clear_check)
 					{
@@ -228,7 +228,7 @@ function scr_draw_level_editor_thumbnail(load_what_levels = global.all_loaded_cu
 				}
 			}
 			#endregion /* Draw if level have been Clear Checked on top of level thumbnail END */
-			
+
 			#region /* Draw if level have been created in Daily Build mode on top of level thumbnail */
 			if (room == rm_title)
 			{
@@ -242,7 +242,7 @@ function scr_draw_level_editor_thumbnail(load_what_levels = global.all_loaded_cu
 					{
 						var icon_scale = scr_wave(0.9, 1, 1, 0);
 						var draw_x = 394 * (i - column * row) + 140 + thumbnail_x_offset;
-						
+
 						if (clear_check)
 						{
 							var daily_build_draw_y = clear_check_draw_y + 32;
@@ -256,20 +256,20 @@ function scr_draw_level_editor_thumbnail(load_what_levels = global.all_loaded_cu
 						{
 							var daily_build_draw_y = 226 * (column - scroll) + 274;
 						}
-						
+
 						if (global.select_level_index == i)
 						{
 							draw_set_halign(fa_left);
 							draw_set_valign(fa_middle);
 							scr_draw_text_outlined(draw_x, daily_build_draw_y, l10n_text("Daily Build"), global.default_text_size * scr_wave(1, 1.1, 1, 0), c_white, c_black, 1);
 						}
-						
+
 						draw_sprite_ext(spr_icon_daily_build, 1, draw_x - 20, daily_build_draw_y, icon_scale, icon_scale, 0, c_white, 1);
 					}
 				}
 			}
 			#endregion /* Draw if level have been created in Daily Build mode on top of level thumbnail END */
-			
+
 			#region /* Draw if level have custom background on top of level thumbnail */
 			if (room == rm_title)
 			{
@@ -283,7 +283,7 @@ function scr_draw_level_editor_thumbnail(load_what_levels = global.all_loaded_cu
 					{
 						var icon_scale = scr_wave(0.9, 1, 1, 0);
 						var draw_x = 394 * (i - column * row) + 140 + thumbnail_x_offset;
-						
+
 						if (thumbnail_daily_build[i])
 						{
 							var has_custom_background_draw_y = daily_build_draw_y + 32;
@@ -302,22 +302,22 @@ function scr_draw_level_editor_thumbnail(load_what_levels = global.all_loaded_cu
 						{
 							var has_custom_background_draw_y = 226 * (column - scroll) + 274;
 						}
-						
+
 						if (global.select_level_index == i)
 						{
 							draw_set_halign(fa_left);
 							draw_set_valign(fa_middle);
 							scr_draw_text_outlined(draw_x, has_custom_background_draw_y, l10n_text("Custom BG"), global.default_text_size * scr_wave(1, 1.1, 1, 0), c_white, c_black, 1);
 						}
-						
+
 						draw_sprite_ext(spr_icon_pen, 1, draw_x - 20, has_custom_background_draw_y, icon_scale, icon_scale, 0, c_white, 1);
 					}
 				}
 			}
 			#endregion /* Draw if level have custom background on top of level thumbnail END */
-			
+
 		}
-		
+
 		if (i == 0)
 		&& (ds_list_size(global.all_loaded_custom_levels) - 1 >= global.max_custom_levels)
 		{
@@ -328,7 +328,7 @@ function scr_draw_level_editor_thumbnail(load_what_levels = global.all_loaded_cu
 		}
 	}
 	#endregion /* Draw Thumbnail END */
-	
+
 	#region /* Draw 4 red small triangles above the level thumbnail to be even more certain what level you are selecting */
 	if (menu != "back_from_level_editor")
 	&& (menu != "open_custom_levels_folder")
@@ -350,37 +350,37 @@ function scr_draw_level_editor_thumbnail(load_what_levels = global.all_loaded_cu
 		var bottom_right_x_offset = bottom_right_of_thumbnail_x + custom_level_select_arrows_moving;
 		var bottom_right_y_offset = bottom_right_of_thumbnail_y + custom_level_select_arrows_moving;
 		var triangle_size = 32 - custom_level_select_arrows_moving;
-		
+
 		/* Draw red triangles */
 		draw_triangle_color(top_left_x_offset, top_left_y_offset, top_left_x_offset + triangle_size, top_left_y_offset,
 			top_left_x_offset, top_left_y_offset + triangle_size, c_red, c_red, c_red, false);
-		
+
 		draw_triangle_color(bottom_right_x_offset, bottom_right_y_offset, bottom_right_x_offset - triangle_size, bottom_right_y_offset,
 			bottom_right_x_offset, bottom_right_y_offset - triangle_size, c_red, c_red, c_red, false);
-		
+
 		draw_triangle_color(bottom_right_x_offset, top_left_y_offset, bottom_right_x_offset - triangle_size, top_left_y_offset,
 			bottom_right_x_offset, top_left_y_offset + triangle_size, c_red, c_red, c_red, false);
-		
+
 		draw_triangle_color(top_left_x_offset, bottom_right_y_offset, top_left_x_offset + triangle_size, bottom_right_y_offset,
 			top_left_x_offset, bottom_right_y_offset - triangle_size, c_red, c_red, c_red, false);
-			
+
 		draw_set_alpha(custom_level_select_blinking);
-		
+
 		/* Draw yellow triangles */
 		draw_triangle_color(top_left_x_offset, top_left_y_offset, top_left_x_offset + triangle_size, top_left_y_offset,
 			top_left_x_offset, top_left_y_offset + triangle_size, c_yellow, c_yellow, c_yellow, false);
-			
+
 		draw_triangle_color(bottom_right_x_offset, bottom_right_y_offset, bottom_right_x_offset - triangle_size, bottom_right_y_offset,
 			bottom_right_x_offset, bottom_right_y_offset - triangle_size, c_yellow, c_yellow, c_yellow, false);
-			
+
 		draw_triangle_color(bottom_right_x_offset, top_left_y_offset, bottom_right_x_offset - triangle_size, top_left_y_offset,
 			bottom_right_x_offset, top_left_y_offset + triangle_size, c_yellow, c_yellow, c_yellow, false);
-			
+
 		draw_triangle_color(top_left_x_offset, bottom_right_y_offset, top_left_x_offset + triangle_size, bottom_right_y_offset,
 			top_left_x_offset, bottom_right_y_offset - triangle_size, c_yellow, c_yellow, c_yellow, false);
-			
+
 		draw_set_alpha(1);
 	}
 	#endregion /* Draw 4 red small triangles above the level thumbnail to be even more certain what level you are selecting END */
-	
+
 }

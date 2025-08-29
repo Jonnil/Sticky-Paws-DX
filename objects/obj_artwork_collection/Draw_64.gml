@@ -119,13 +119,13 @@ if (image_index == 0) && (level1_big_collectible1)
 || (image_index >= max_artwork)
 {
 	draw_sprite_ext(sprite_index, image_index, xx, get_window_height * 0.5, 1, 1, 0, c_white, 1); /* Draw the actual artwork */
-	
+
 	#region /* Draw Comments */
 	draw_set_halign(fa_left);
 	draw_set_valign(fa_middle);
 	scr_draw_text_outlined(+ 32, get_window_height -94, string(current_comment), global.default_text_size, c_black, c_white, 1);
 	#endregion /* Draw Comments END */
-	
+
 }
 draw_set_halign(fa_center);
 draw_set_valign(fa_middle);
@@ -225,7 +225,7 @@ if (key_left)
 	{
 		if (image_index > 0)
 		{
-			image_index --;
+			image_index--;
 		}
 		else
 		{
@@ -244,7 +244,7 @@ if (key_right)
 	{
 		if (image_index < image_number - 1)
 		{
-			image_index ++;
+			image_index++;
 		}
 		else
 		{

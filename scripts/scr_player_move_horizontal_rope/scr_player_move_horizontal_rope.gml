@@ -1,6 +1,6 @@
 function scr_player_move_horizontal_rope()
 {
-	
+
 	/* If you aren't touching horizontal rope */
 	if (!collision_rectangle(bbox_left, bbox_top, bbox_right, y, obj_horizontal_rope, false, true))
 	{
@@ -10,10 +10,10 @@ function scr_player_move_horizontal_rope()
 		}
 		if (can_climb_horizontal_rope_cooldown > 0)
 		{
-			can_climb_horizontal_rope_cooldown --;
+			can_climb_horizontal_rope_cooldown--;
 		}
 	}
-	
+
 	#region /* Climb Horizontal Rope */
 	if (horizontal_rope_climb)
 	{
@@ -33,14 +33,14 @@ function scr_player_move_horizontal_rope()
 		{
 			friction = 0.5;
 		}
-		
+
 		#region /* Spinning on horizontal rope */
 		if (key_up)
 		&& (!key_down)
 		&& (!collision_rectangle(bbox_left, bbox_top - 64, bbox_right, bbox_bottom, obj_wall, false, true))
 		{
 			friction = 0.5; /* Make the character stop horizontal movement sooner when spinning on horizontal rope */
-			
+
 			#region /* Start spinning on rope */
 			if (image_index <= 5)
 			&& (image_speed > 0.3)
@@ -85,7 +85,7 @@ function scr_player_move_horizontal_rope()
 				image_speed = 1;
 			}
 			#endregion /* Start spinning on rope END */
-			
+
 			#region /* Jump from rope spin */
 			if (key_jump)
 			{
@@ -99,7 +99,7 @@ function scr_player_move_horizontal_rope()
 				buffer_jump = 0;
 				spring_animation = 0;
 				spring = true;
-				
+
 				#region /* Do a charged upward jump depending on how fast you spin */
 				if (image_speed >= 1)
 				{
@@ -121,15 +121,15 @@ function scr_player_move_horizontal_rope()
 					vspeed = -normal_jump_height; /* Do the normal upward jump, when you haven't spinned fast enough */
 				}
 				#endregion /* Do a charged upward jump depending on how fast you spin END */
-				
+
 			}
 			#endregion /* Jump from rope spin END */
-			
+
 		}
 		#endregion /* Spinning on horizontal rope END */
-		
+
 		else
-		
+
 		#region /* Jump upward normally from rope spin if drop down from rope doesn't use jump */
 		if (drop_from_rope == 0) /* Drop down from rope: Release Jump */
 		&& (key_jump)
@@ -154,9 +154,9 @@ function scr_player_move_horizontal_rope()
 			}
 		}
 		#endregion /* Jump upward normally from rope spin if drop down from rope doesn't use jump END */
-		
+
 		else
-		
+
 		#region /* Drop down from rope */
 		if (drop_from_rope == 0) /* Drop down from rope: Release Jump */
 		&& (!key_jump_hold)
@@ -176,12 +176,12 @@ function scr_player_move_horizontal_rope()
 			{
 				if (place_meeting(x - 1, y, obj_wall))
 				{
-					x ++;
+					x++;
 				}
 				else
 				if (place_meeting(x + 1, y, obj_wall))
 				{
-					x --;
+					x--;
 				}
 				can_climb_horizontal_rope_cooldown = 3; /* Cooldown timer before you can start climbing again. You should grab a rope below you but not grabbing the same rope you were just on */
 				can_ground_pound = false;
@@ -193,9 +193,9 @@ function scr_player_move_horizontal_rope()
 			}
 		}
 		#endregion /* Drop down from rope END */
-		
+
 		else
-		
+
 		#region /* Climb left on horizontal rope */
 		if (key_left_hold)
 		&& (!key_right_hold)
@@ -234,9 +234,9 @@ function scr_player_move_horizontal_rope()
 			}
 		}
 		#endregion /* Climb left on horizontal rope END */
-		
+
 		else
-		
+
 		#region /* Climb right on horizontal rope */
 		if (key_right_hold)
 		&& (!key_left_hold)
@@ -275,9 +275,9 @@ function scr_player_move_horizontal_rope()
 			}
 		}
 		#endregion /* Climb right on horizontal rope END */
-		
+
 		else
-		
+
 		#region /* Look up when on horizontal rope */
 		if (key_up)
 		{
@@ -298,7 +298,7 @@ function scr_player_move_horizontal_rope()
 			image_speed = 0.5;
 		}
 		#endregion /* Look up when on horizontal rope END */
-		
+
 		else
 		{
 			if (speed > 0)
@@ -319,7 +319,7 @@ function scr_player_move_horizontal_rope()
 				if (sprite_walk > noone){sprite_index = sprite_walk;}
 			}
 		}
-		
+
 		#region /* Bump into wall on left side when climbing horizontal rope */
 		if (key_left_hold || hspeed < 0)
 		&& (!key_right_hold && taken_damage <= taken_damage_freezetime)
@@ -336,9 +336,9 @@ function scr_player_move_horizontal_rope()
 			}
 		}
 		#endregion /* Bump into wall on left side when climbing horizontal rope END */
-		
+
 		else
-		
+
 		#region /* Bump into wall on right side when climbing horizontal rope */
 		if (key_right_hold || hspeed > 0)
 		&& (!key_left_hold && taken_damage <= taken_damage_freezetime)
@@ -355,8 +355,8 @@ function scr_player_move_horizontal_rope()
 			}
 		}
 		#endregion /* Bump into wall on right side when climbing horizontal rope END */
-		
+
 	}
 	#endregion /* Climb Horizontal Rope END */
-	
+
 }

@@ -2,9 +2,9 @@ function scr_draw_fullscreen_button(fullscreen_x = 0, fullscreen_y = 0, fullscre
 {
 	var fullscreen_text = l10n_text("Fullscreen");
 	draw_menu_checkmark(fullscreen_x, fullscreen_y, string(fullscreen_text), fullscreen_menu, window_get_fullscreen(), false);
-	
+
 	var fullscreen_text_width = string_width(fullscreen_text);
-	
+
 	/* Draw what key to press to toggle Fullscreen */
 	if (os_type == os_macosx)
 	&& (global.controls_used_for_navigation != "gamepad")

@@ -26,7 +26,7 @@ fade_in_pause_alpha = lerp(fade_in_pause_alpha, 1, 0.1);
 
 if (menu_delay > 0)
 {
-	menu_delay --;
+	menu_delay--;
 }
 
 if (global.narrator >= 0)
@@ -129,16 +129,16 @@ if (show_loading_icon)
 && (gamepad_button_check_pressed(global.pause_player, gp_select))
 {
 	show_loading_icon = true;
-	
+
 	if (menu == "reset_from_checkpoint")
 	{
-		
+
 		#region /* Restart Level from Checkpoint */
 		global.restart_level = true;
 		audio_stop_all();
 		global.pause = false;
 		#endregion /* Restart Level from Checkpoint END */
-		
+
 	}
 	else
 	if (menu == "reset_from_start")
@@ -147,9 +147,9 @@ if (show_loading_icon)
 	&& (gamepad_button_check(global.pause_player, gp_shoulderrb))
 	&& (gamepad_button_check_pressed(global.pause_player, gp_select))
 	{
-		
+
 		#region /* Restart Level from Start */
-		
+
 		/* Reset the "big collectible already collected" variables when restarting from start */
 		for(var i = 1; i <= global.max_big_collectible; i += 1)
 		{
@@ -160,14 +160,14 @@ if (show_loading_icon)
 			global.key_fragment_already_collected[i] = false;
 		}
 		global.how_many_big_collectible_collected = 0;
-		
+
 		#region /* Reset timer back to zero */
 		global.timeattack_realmillisecond = 0;
 		global.timeattack_millisecond = 0;
 		global.timeattack_second = 0;
 		global.timeattack_minute = 0;
 		#endregion /* Reset timer back to zero END */
-		
+
 		if (global.character_select_in_this_menu == "main_game")
 		{
 			ini_open(game_save_id + "save_file/file" + string(global.file) + ".ini");
@@ -183,12 +183,12 @@ if (show_loading_icon)
 		global.checkpoint_x = 0;
 		global.checkpoint_y = 0;
 		global.lives_until_assist = 0; /* Reset the lives until assist counter if you manually restart a level. This is so you can do a zero defeats */
-		
+
 		global.restart_level = true;
 		audio_stop_all();
 		global.pause = false;
 		#endregion /* Restart Level from Start END */
-		
+
 	}
 }
 #endregion /* Show loading icon and reset level END */
@@ -240,7 +240,7 @@ if (!hide_menu_for_clean_screenshots)
 	|| global.pause_room == rm_world
 	|| global.pause_room == rm_leveleditor)
 	{
-		
+
 		#region /* Continue */
 		if (menu == "continue")
 		{
@@ -250,7 +250,7 @@ if (!hide_menu_for_clean_screenshots)
 			&& (point_in_rectangle(mouse_get_x, mouse_get_y, get_window_width * 0.5 - 185, continue_y, get_window_width * 0.5 + 185, continue_y + 41))
 			&& (menu_delay == 0 && menu_joystick_delay == 0)
 			{
-				
+
 				#region /* Return to game */
 				audio_resume_all();
 				if (global.music != noone)
@@ -271,7 +271,7 @@ if (!hide_menu_for_clean_screenshots)
 				}
 				global.pause = false;
 				#endregion /* Return to game END */
-				
+
 			}
 			if (key_up)
 			&& (!key_down)
@@ -303,9 +303,9 @@ if (!hide_menu_for_clean_screenshots)
 			}
 		}
 		#endregion /* Continue END */
-		
+
 		else
-		
+
 		#region /* Change Character */
 		if (menu == "change_character")
 		{
@@ -342,9 +342,9 @@ if (!hide_menu_for_clean_screenshots)
 			}
 		}
 		#endregion /* Change Character END */
-		
+
 		else
-		
+
 		#region /* Edit Level */
 		if (menu == "edit_level")
 		{
@@ -398,13 +398,13 @@ if (!hide_menu_for_clean_screenshots)
 			}
 		}
 		#endregion /* Edit Level END */
-		
+
 		else
-		
+
 		#region /* Options */
 		if (menu == "options")
 		{
-			
+
 			#region /* Select Options */
 			if (key_a_pressed)
 			&& (menu_delay == 0 && menu_joystick_delay == 0)
@@ -422,7 +422,7 @@ if (!hide_menu_for_clean_screenshots)
 				scr_load_storage_variables();
 			}
 			#endregion /* Select Options END */
-			
+
 			if (key_up)
 			&& (!key_down)
 			&& (menu_delay == 0 && menu_joystick_delay == 0)
@@ -464,9 +464,9 @@ if (!hide_menu_for_clean_screenshots)
 			}
 		}
 		#endregion /* Options END */
-		
+
 		else
-		
+
 		#region /* Restart */
 		if (menu == "restart")
 		&& (!global.goal_active)
@@ -475,19 +475,19 @@ if (!hide_menu_for_clean_screenshots)
 			&& (global.checkpoint_y == 0)
 			&& (key_a_hold)
 			&& (menu_delay == 0 && menu_joystick_delay == 0)
-			
+
 			|| (global.checkpoint_x != 0)
 			&& (global.checkpoint_y != 0)
 			&& (key_a_pressed)
 			&& (menu_delay == 0 && menu_joystick_delay == 0)
-			
+
 			|| (global.checkpoint_x == 0)
 			&& (global.checkpoint_y == 0)
 			&& (global.pause_room == rm_leveleditor)
 			&& (mouse_check_button(mb_left))
 			&& (point_in_rectangle(mouse_get_x, mouse_get_y, get_window_width * 0.5 - 185, restart_y, get_window_width * 0.5 + 185, restart_y + 42))
 			&& (menu_delay == 0 && menu_joystick_delay == 0)
-			
+
 			|| (global.checkpoint_x != 0)
 			&& (global.checkpoint_y != 0)
 			&& (global.pause_room == rm_leveleditor)
@@ -499,14 +499,14 @@ if (!hide_menu_for_clean_screenshots)
 				&& (global.checkpoint_y == 0)
 				{
 					holding_key_timer += 2;
-					
+
 					#region /* Restart Level */
 					if (holding_key_timer > 61)
 					{
 						show_loading_icon = true;
 					}
 					#endregion /* Restart Level END */
-					
+
 				}
 				else
 				{
@@ -518,7 +518,7 @@ if (!hide_menu_for_clean_screenshots)
 			else
 			if (holding_key_timer > 0)
 			{
-				holding_key_timer --;
+				holding_key_timer--;
 			}
 			if (key_up)
 			&& (!key_down)
@@ -537,9 +537,9 @@ if (!hide_menu_for_clean_screenshots)
 			}
 		}
 		#endregion /* Restart END */
-		
+
 		else
-		
+
 		#region /* Reset from Checkpoint */
 		if (menu == "reset_from_checkpoint")
 		&& (!global.goal_active)
@@ -552,19 +552,19 @@ if (!hide_menu_for_clean_screenshots)
 			&& (menu_delay == 0 && menu_joystick_delay == 0)
 			{
 				holding_key_timer += 2;
-				
+
 				#region /* Restart Level */
 				if (holding_key_timer > 61)
 				{
 					show_loading_icon = true;
 				}
 				#endregion /* Restart Level END */
-				
+
 			}
 			else
 			if (holding_key_timer > 0)
 			{
-				holding_key_timer --;
+				holding_key_timer--;
 			}
 			if (key_up)
 			&& (!key_down)
@@ -585,9 +585,9 @@ if (!hide_menu_for_clean_screenshots)
 			}
 		}
 		#endregion /* Restart to Checkpoint END */
-		
+
 		else
-		
+
 		#region /* Reset from Start */
 		if (menu == "reset_from_start")
 		&& (!global.goal_active)
@@ -600,19 +600,19 @@ if (!hide_menu_for_clean_screenshots)
 			&& (menu_delay == 0 && menu_joystick_delay == 0)
 			{
 				holding_key_timer += 2;
-				
+
 				#region /* Restart Level */
 				if (holding_key_timer > 61)
 				{
 					show_loading_icon = true;
 				}
 				#endregion /* Restart Level END */
-				
+
 			}
 			else
 			if (holding_key_timer > 0)
 			{
-				holding_key_timer --;
+				holding_key_timer--;
 			}
 			if (key_up)
 			&& (!key_down)
@@ -633,9 +633,9 @@ if (!hide_menu_for_clean_screenshots)
 			}
 		}
 		#endregion /* Reset from Start END */
-		
+
 		else
-		
+
 		#region /* Restart Nevermind */
 		if (menu == "restart_nevermind")
 		&& (!global.goal_active)
@@ -669,9 +669,9 @@ if (!hide_menu_for_clean_screenshots)
 			}
 		}
 		#endregion /* Restart Nevermind END */
-		
+
 		else
-		
+
 		#region /* Quit */
 		if (menu == "quit")
 		&& (!global.goal_active)
@@ -734,9 +734,9 @@ if (!hide_menu_for_clean_screenshots)
 			}
 		}
 		#endregion /* Quit END */
-		
+
 		else
-		
+
 		#region /* Report */
 		if (menu == "report")
 		&& (global.character_select_in_this_menu == "level_editor")
@@ -776,9 +776,9 @@ if (!hide_menu_for_clean_screenshots)
 			}
 		}
 		#endregion /* Report END */
-		
+
 		else
-		
+
 		#region /* Quit to Map */
 		if (menu == "quit_to_world")
 		&& (!global.goal_active)
@@ -794,22 +794,22 @@ if (!hide_menu_for_clean_screenshots)
 			&& (point_in_rectangle(mouse_get_x, mouse_get_y, get_window_width * 0.5 - 185, get_window_height * 0.5 + 2, get_window_width * 0.5 + 185, get_window_height * 0.5 + 41))
 			&& (menu_delay == 0 && menu_joystick_delay == 0)
 			{
-			
+
 				#region /* Return to Map */
-			
+
 				#region /* Reset timer back to zero */
 				global.timeattack_realmillisecond = 0;
 				global.timeattack_millisecond = 0;
 				global.timeattack_second = 0;
 				global.timeattack_minute = 0;
 				#endregion /* Reset timer back to zero END */
-			
+
 				global.quit_level = true;
 				global.quit_to_world = true;
 				audio_stop_all();
 				global.pause = false;
 				#endregion /* Return to Map END */
-			
+
 			}
 			if (key_up)
 			&& (!key_down)
@@ -828,9 +828,9 @@ if (!hide_menu_for_clean_screenshots)
 			}
 		}
 		#endregion /* Quit to Map END */
-		
+
 		else
-		
+
 		#region /* Quit to Title */
 		if (menu == "quit_to_title")
 		&& (!global.goal_active)
@@ -851,21 +851,21 @@ if (!hide_menu_for_clean_screenshots)
 			&& (point_in_rectangle(mouse_get_x, mouse_get_y, get_window_width * 0.5 - 185, get_window_height * 0.5 + 2, get_window_width * 0.5 + 185, get_window_height * 0.5 + 41))
 			&& (menu_delay == 0 && menu_joystick_delay == 0)
 			{
-				
+
 				#region /* Return to Title */
-				
+
 				/* Reset timer back to zero */
 				global.timeattack_realmillisecond = 0;
 				global.timeattack_millisecond = 0;
 				global.timeattack_second = 0;
 				global.timeattack_minute = 0;
-				
+
 				global.quit_level = true;
 				global.quit_to_title = true;
 				audio_stop_all();
 				global.pause = false;
 				#endregion /* Return to Title END */
-				
+
 			}
 			if (key_up)
 			&& (!key_down)
@@ -899,9 +899,9 @@ if (!hide_menu_for_clean_screenshots)
 			}
 		}
 		#endregion /* Quit to Title END */
-		
+
 		else
-		
+
 		#region /* Quit to Desktop */
 		if (menu == "quit_to_desktop")
 		&& (!global.goal_active)
@@ -945,9 +945,9 @@ if (!hide_menu_for_clean_screenshots)
 			}
 		}
 		#endregion /* Quit to Desktop END */
-		
+
 		else
-		
+
 		#region /* Quit Nevermind */
 		if (menu == "quit_nevermind")
 		&& (!global.goal_active)
@@ -990,11 +990,11 @@ if (!hide_menu_for_clean_screenshots)
 				{
 					menu = "quit_to_title";
 				}
-			
+
 			}
 		}
 		#endregion /* Quit Nevermind END */
-		
+
 		#region /* Return to game by pressing the back key */
 		if (key_b_pressed)
 		&& (menu_delay == 0 && menu_joystick_delay == 0)
@@ -1027,7 +1027,7 @@ if (!hide_menu_for_clean_screenshots)
 				global.pause = false;
 			}
 			else
-			
+
 			#region /* Return to first menu */
 			if (menu == "reset_from_checkpoint")
 			|| (menu == "reset_from_start")
@@ -1047,13 +1047,13 @@ if (!hide_menu_for_clean_screenshots)
 				menu = "quit";
 			}
 			#endregion /* Return to first menu END */
-			
+
 		}
 		#endregion /* Return to game by pressing the back key END */
-		
+
 	}
 	scr_character_select_menu_step();
-	
+
 	if (menu == "load_characters")
 	{
 		scr_load_rest_of_characters();

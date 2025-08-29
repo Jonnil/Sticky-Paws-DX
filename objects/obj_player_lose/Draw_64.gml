@@ -6,7 +6,7 @@ var mouse_get_y = device_mouse_y_to_gui(0);
 #region /* Game Over */
 if (lives <= 0)
 {
-	
+
 	#region /* When you get a game over, reset checkpoints */
 	global.checkpoint_x = 0;
 	global.checkpoint_y = 0;
@@ -33,26 +33,26 @@ if (lives <= 0)
 	ini_key_delete(level_name, "checkpoint_realmillisecond");
 	ini_close(); /* Don't commit the save data on Switch, this is only temporary! */
 	#endregion /* When you get a game over, reset checkpoints END */
-	
+
 	draw_set_halign(fa_center);
 	if (iris_xscale <= 0.3)
 	{
 		game_over_sprite_y = lerp(game_over_sprite_y, get_window_height * 0.5 + 170, 0.07);
 		game_over_text_y = lerp(game_over_text_y, get_window_height * 0.5 - 180, 0.1);
 	}
-	
+
 	if (sprite_game_over_character_portrait > noone)
 	{
 		draw_sprite(sprite_game_over_character_portrait, image_index, get_window_width * 0.5, game_over_sprite_y);
 	}
-	
+
 	draw_sprite(spr_game_over_text, image_index, get_window_width * 0.5, game_over_text_y);
-	
+
 	#region /* Continue / Quit from Game Over */
 	if (game_over_text_y >= get_window_height * 0.5 - 190)
 	{
 		draw_menu_button(get_window_width * 0.5 - 370 - game_over_menu_seperation_distance, get_window_height - game_over_menu_y, l10n_text("Continue"), "continue", "continue");
-		
+
 		if (global.go_to_menu_when_going_back_to_title == "online_download_list_load")
 		{
 			var quit_to_title_name = "Quit to Online Level List";
@@ -66,9 +66,9 @@ if (lives <= 0)
 		{
 			var quit_to_title_name = "Quit to Map";
 		}
-		
+
 		draw_menu_button(get_window_width * 0.5 + game_over_menu_seperation_distance, get_window_height - game_over_menu_y, l10n_text(string(quit_to_title_name)), "quit", "quit", c_red);
-		
+
 		if (keyboard_check_pressed(global.player_[inp.key][1][1][action.left]))
 		|| (keyboard_check_pressed(global.player_[inp.key][2][1][action.left]))
 		|| (keyboard_check_pressed(global.player_[inp.key][3][1][action.left]))
@@ -111,7 +111,7 @@ if (lives <= 0)
 				}
 			}
 		}
-		
+
 		if (keyboard_check_pressed(vk_enter))
 		|| (keyboard_check_pressed(vk_space))
 		|| (keyboard_check_pressed(global.player_[inp.key][1][1][action.accept]))
@@ -137,7 +137,7 @@ if (lives <= 0)
 		&& (point_in_rectangle(mouse_get_x, mouse_get_y, get_window_width * 0.5 + game_over_menu_seperation_distance, get_window_height - game_over_menu_y + 2, get_window_width * 0.5 + 370 + game_over_menu_seperation_distance, get_window_height - game_over_menu_y + 41))
 		&& (mouse_check_button_released(mb_left))
 		{
-			
+
 			#region /* Click Menu */
 			lives = 5 * global.playergame; /* Add 5 lives times the amount of players playing. So 2 players = 10, 3 players = 15, 4 players = 20, and so on */
 			if (global.character_select_in_this_menu == "main_game")
@@ -146,20 +146,20 @@ if (lives <= 0)
 				ini_write_real("Player", "lives", lives);
 				ini_close(); /* Don't commit the save data on Switch, this is only temporary! */
 			}
-			
+
 			#region /* Reset Level */
 			global.timeattack_realmillisecond = 0;
 			score = 0;
 			scr_save_level();
 			audio_stop_all();
-			
+
 			#region /* Go to level editor if you die in level editor */
 			if (global.character_select_in_this_menu == "level_editor")
 			{
 				global.play_edited_level = false;
 			}
 			#endregion /* Go to level editor if you die in level editor END */
-			
+
 			if (menu == "quit")
 			{
 				room_persistent = false; /* Turn OFF Room Persistency */
@@ -177,15 +177,15 @@ if (lives <= 0)
 			{
 				room_restart();
 			}
-			
+
 			#endregion /* Reset Level END */
-			
+
 			#endregion /* Click Menu END */
-			
+
 		}
 	}
 	#endregion /* Continue / Quit from Game Over END */
-	
+
 }
 #endregion /* Game Over END */
 

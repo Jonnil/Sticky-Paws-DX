@@ -1,8 +1,8 @@
 function scr_modify_objects_in_level_editor()
 {
-	
+
 	#region /* Modify Objects */
-	
+
 	if (mouse_check_button_released(mb_left))
 	|| (instance_exists(obj_leveleditor))
 	&& (obj_leveleditor.key_a_released)
@@ -36,17 +36,17 @@ function scr_modify_objects_in_level_editor()
 		&& (obj_leveleditor.placing_object <= 0)
 		{
 			var other_instance = instance_place(x, y, obj_leveleditor_placed_object); /* Check if another obj_leveleditor_placed_object is at the same position (x, y) */
-			
+
 			if (other_instance == noone || other_instance == id) /* Ensure that no other instance is found or that the only instance found is the current instance */
 			&& (position_meeting(obj_leveleditor.x, obj_leveleditor.y, id))
 			{
 				/* Don't put a move_snap here! We don't want the object to change position when modifying it */
-				
+
 				#region /* Object ID's to modify */
 				if (!global.world_editor)
 				{
 					modify_object_menu = true;
-					
+
 					#region /* Change wall into it's different forms */
 					if (object == LEVEL_OBJECT_ID.ID_WALL_DIRT)
 					{
@@ -83,9 +83,9 @@ function scr_modify_objects_in_level_editor()
 						object = LEVEL_OBJECT_ID.ID_WALL_DIRT;
 					}
 					#endregion /* Change wall into it's different forms END */
-					
+
 					else
-					
+
 					#region /* Change Basic Collectible Direction */
 					if (object == LEVEL_OBJECT_ID.ID_BASIC_COLLECTIBLE)
 					{
@@ -127,9 +127,9 @@ function scr_modify_objects_in_level_editor()
 						object = LEVEL_OBJECT_ID.ID_BASIC_COLLECTIBLE;
 					}
 					#endregion /* Change Basic Collectible Direction */
-					
+
 					else
-					
+
 					#region /* Change Bulk Collectible Number */
 					if (object == LEVEL_OBJECT_ID.ID_10_BULK_COLLECTIBLE)
 					{
@@ -146,9 +146,9 @@ function scr_modify_objects_in_level_editor()
 						object = LEVEL_OBJECT_ID.ID_10_BULK_COLLECTIBLE;
 					}
 					#endregion /* Change Bulk Collectible Number */
-					
+
 					else
-					
+
 					#region /* Falling Block */
 					if (object == LEVEL_OBJECT_ID.ID_FALLING_BLOCK)
 					{
@@ -190,7 +190,7 @@ function scr_modify_objects_in_level_editor()
 						object = LEVEL_OBJECT_ID.ID_FALLING_BLOCK;
 					}
 					#endregion /* Falling Block END */
-					
+
 					#region /* Falling Block Long */
 					if (object == LEVEL_OBJECT_ID.ID_FALLING_BLOCK_LONG)
 					{
@@ -232,9 +232,9 @@ function scr_modify_objects_in_level_editor()
 						object = LEVEL_OBJECT_ID.ID_FALLING_BLOCK_LONG;
 					}
 					#endregion /* Falling Block Long END */
-					
+
 					else
-					
+
 					#region /* Hard Block */
 					if (object == LEVEL_OBJECT_ID.ID_HARD_BLOCK)
 					{
@@ -251,9 +251,9 @@ function scr_modify_objects_in_level_editor()
 						object = LEVEL_OBJECT_ID.ID_HARD_BLOCK;
 					}
 					#endregion /* Hard Block END */
-					
+
 					else
-					
+
 					#region /* Heart Balloon / HP Pickup */
 					if (object == LEVEL_OBJECT_ID.ID_HEART)
 					{
@@ -265,9 +265,9 @@ function scr_modify_objects_in_level_editor()
 						object = LEVEL_OBJECT_ID.ID_HEART;
 					}
 					#endregion /* Heart Balloon / HP Pickup END */
-					
+
 					else
-					
+
 					#region /* Invincibility Powerup */
 					if (object == LEVEL_OBJECT_ID.ID_INVINCIBILITY_POWERUP)
 					{
@@ -279,9 +279,9 @@ function scr_modify_objects_in_level_editor()
 						object = LEVEL_OBJECT_ID.ID_INVINCIBILITY_POWERUP;
 					}
 					#endregion /* Invincibility Powerup END */
-					
+
 					else
-					
+
 					#region /* Extra Lives Pickup */
 					if (object == LEVEL_OBJECT_ID.ID_ONE_UP)
 					{
@@ -298,9 +298,9 @@ function scr_modify_objects_in_level_editor()
 						object = LEVEL_OBJECT_ID.ID_ONE_UP;
 					}
 					#endregion /* Extra Lives Pickup END */
-					
+
 					else
-					
+
 					#region /* Basic enemy */
 					if (object == LEVEL_OBJECT_ID.ID_BASIC_ENEMY)
 					{
@@ -322,9 +322,9 @@ function scr_modify_objects_in_level_editor()
 						object = LEVEL_OBJECT_ID.ID_BASIC_ENEMY;
 					}
 					#endregion /* Basic enemy END */
-					
+
 					else
-					
+
 					#region /* Bowling ball enemy */
 					if (object == LEVEL_OBJECT_ID.ID_ENEMY_BOWLINGBALL)
 					{
@@ -346,9 +346,9 @@ function scr_modify_objects_in_level_editor()
 						object = LEVEL_OBJECT_ID.ID_ENEMY_BOWLINGBALL;
 					}
 					#endregion /* Bowling ball enemy END */
-					
+
 					else
-					
+
 					#region /* Big Stationary Enemy */
 					if (object == LEVEL_OBJECT_ID.ID_BIG_STATIONARY_ENEMY)
 					{
@@ -360,9 +360,9 @@ function scr_modify_objects_in_level_editor()
 						object = LEVEL_OBJECT_ID.ID_BIG_STATIONARY_ENEMY;
 					}
 					#endregion /* Big Stationary Enemy END */
-					
+
 					else
-					
+
 					#region /* Spikes Emerge Direction */
 					if (object == LEVEL_OBJECT_ID.ID_SPIKES_EMERGE_BLOCK)
 					{
@@ -404,9 +404,9 @@ function scr_modify_objects_in_level_editor()
 						object = LEVEL_OBJECT_ID.ID_SPIKES_EMERGE_BLOCK;
 					}
 					#endregion /* Spikes Emerge Direction END */
-					
+
 					else
-					
+
 					#region /* Change Arrow Sign */
 					if (object == LEVEL_OBJECT_ID.ID_ARROW_SIGN)
 					{
@@ -418,9 +418,9 @@ function scr_modify_objects_in_level_editor()
 						object = LEVEL_OBJECT_ID.ID_ARROW_SIGN;
 					}
 					#endregion /* Change Arrow Sign END */
-					
+
 					else
-					
+
 					#region /* Change Oneway Direction */
 					if (object == LEVEL_OBJECT_ID.ID_ONEWAY)
 					{
@@ -442,9 +442,9 @@ function scr_modify_objects_in_level_editor()
 						object = LEVEL_OBJECT_ID.ID_ONEWAY;
 					}
 					#endregion /* Change Oneway Direction END */
-					
+
 					else
-					
+
 					#region /* Change Water */
 					if (object == LEVEL_OBJECT_ID.ID_WATER)
 					{
@@ -461,9 +461,9 @@ function scr_modify_objects_in_level_editor()
 						object = LEVEL_OBJECT_ID.ID_WATER;
 					}
 					#endregion /* Change Water END */
-					
+
 					else
-					
+
 					#region /* Change Clipped Clothing on Rope */
 					if (object == LEVEL_OBJECT_ID.ID_CLIPPED_SHIRT)
 					{
@@ -480,9 +480,9 @@ function scr_modify_objects_in_level_editor()
 						object = LEVEL_OBJECT_ID.ID_CLIPPED_SHIRT;
 					}
 					#endregion /* Change Clipped Clothing on Rope END */
-					
+
 					else
-					
+
 					#region /* Change Moveset Signs */
 					if (object == LEVEL_OBJECT_ID.ID_SIGN_CROUCH)
 					{
@@ -514,9 +514,9 @@ function scr_modify_objects_in_level_editor()
 						object = LEVEL_OBJECT_ID.ID_SIGN_CROUCH;
 					}
 					#endregion /* Change Moveset Signs END */
-					
+
 					else
-					
+
 					#region /* Change Eye Block */
 					if (object == LEVEL_OBJECT_ID.ID_EYE_BLOCK)
 					{
@@ -533,9 +533,9 @@ function scr_modify_objects_in_level_editor()
 						object = LEVEL_OBJECT_ID.ID_EYE_BLOCK;
 					}
 					#endregion /* Change Eye Block END */
-					
+
 					else
-					
+
 					#region /* Change Water Level Change */
 					if (object == LEVEL_OBJECT_ID.ID_WATER_LEVEL_CHANGE_SLOW)
 					{
@@ -552,9 +552,9 @@ function scr_modify_objects_in_level_editor()
 						object = LEVEL_OBJECT_ID.ID_WATER_LEVEL_CHANGE_SLOW;
 					}
 					#endregion /* Change Water Level Change END */
-					
+
 					else
-					
+
 					#region /* Change Warp Box */
 					if (object == LEVEL_OBJECT_ID.ID_WARP_BOX)
 					{
@@ -576,9 +576,9 @@ function scr_modify_objects_in_level_editor()
 						object = LEVEL_OBJECT_ID.ID_WARP_BOX;
 					}
 					#endregion /* Change Warp Box END */
-					
+
 					else
-					
+
 					#region /* Change Bump in Ground */
 					if (object == LEVEL_OBJECT_ID.ID_BUMP_IN_GROUND)
 					{
@@ -590,9 +590,9 @@ function scr_modify_objects_in_level_editor()
 						object = LEVEL_OBJECT_ID.ID_BUMP_IN_GROUND;
 					}
 					#endregion /* Change Bump in Ground END */
-					
+
 					else
-					
+
 					#region /* Objects that needs modify menu */
 					if (object == LEVEL_OBJECT_ID.ID_SIGN_READABLE)
 					{
@@ -617,7 +617,7 @@ function scr_modify_objects_in_level_editor()
 						}
 					}
 					#endregion /* Objects that needs modify menu END */
-					
+
 					#region /* Update variables */
 					if (!global.actually_play_edited_level)
 					{
@@ -637,15 +637,15 @@ function scr_modify_objects_in_level_editor()
 						}
 					}
 					#endregion /* Update variables END */
-					
+
 				}
 				#endregion /* Level Object ID's to modify END */
-				
+
 				else
-				
+
 				#region /* World Object ID's to modify */
 				{
-					
+
 					#region /* Change Turn */
 					if (object == 4)
 					{
@@ -667,16 +667,16 @@ function scr_modify_objects_in_level_editor()
 						object = 4;
 					}
 					#endregion /* Change Turn END */
-					
+
 				}
-				
+
 				alarm[0] = 1; /* Update sprite initializing. That code is in alarm event, so it's not running every frame in step event */
-				
+
 				#endregion /* World Object ID's to modify END */
-				
+
 			}
 		}
 	}
 	#endregion /* Modify Objects END */
-	
+
 }

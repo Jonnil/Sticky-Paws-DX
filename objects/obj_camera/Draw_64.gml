@@ -84,11 +84,11 @@ if (show_playtest_buttons)
 {
 	var playtest_invincibility_blend = global.playtest_invincibility ? c_white : c_dkgray;
 	var playtest_moonjump_blend = global.playtest_moonjump ? c_white : c_dkgray;
-	
+
 	if (global.character_select_in_this_menu == "level_editor")
 	{
 		draw_sprite_ext(spr_menu_button_pause, 0, 32, window_height - 32, 1, 1, 0, c_white, 1);
-		
+
 		if (is_gamepad_connected
 		&& controls_used_for_navigation == "gamepad"
 		|| always_show_gamepad_buttons)
@@ -100,10 +100,10 @@ if (show_playtest_buttons)
 			draw_sprite_ext(spr_keyboard_keys, vk_escape, 32 + 20, window_height - 32 + 20, 0.4, 0.4, 0, c_white, 1);
 		}
 	}
-	
+
 	draw_sprite_ext(spr_leveleditor_icon_invincibility, 0, playtest_invincibility_x, window_height - 32, 1, 1, 0, playtest_invincibility_blend, 1);
 	draw_sprite_ext(spr_leveleditor_icon_moonjump, 0, playtest_moonjump_x, window_height - 32, 1, 1, 0, playtest_moonjump_blend, 1);
-	
+
 	if (is_gamepad_connected
 	&& controls_used_for_navigation == "gamepad"
 	|| always_show_gamepad_buttons)

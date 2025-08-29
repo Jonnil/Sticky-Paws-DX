@@ -4,7 +4,7 @@ function scr_get_sorted_language_position(selected_language_id)
 {
 	var temp_languages = scr_get_sorted_language_list();
 	var sorted_position = 1;
-	
+
 	for (var i = 1; i < array_length(temp_languages); i++)
 	{
 		if (temp_languages[i].index == selected_language_id)
@@ -13,6 +13,6 @@ function scr_get_sorted_language_position(selected_language_id)
 			break;
 		}
 	}
-	
+
 	return sorted_position;
 }

@@ -109,9 +109,9 @@ if (taken_damage >= taken_damage_freezetime)
 	hspeed = 0;
 	vspeed = 0;
 	speed = 0;
-	
+
 	scr_select_first_valid_sprite(sprite_die, sprite_idle, sprite_walk);
-	
+
 	if (image_index > image_number - 1)
 	{
 		image_speed = 0;
@@ -124,14 +124,14 @@ if (taken_damage >= taken_damage_freezetime)
 #endregion /* Make it obvious if you take damage END */
 
 #region /* Red blink timer */
-red_blink_timer ++;
+red_blink_timer++;
 if (red_blink_timer > 30)
 {
 	red_blink_timer = 0;
 }
 if (midair_jumps_left == 0 && number_of_jumps > 1)
 {
-	double_jump_depleted_blink ++;
+	double_jump_depleted_blink++;
 	if (double_jump_depleted_blink > 20)
 	{
 		double_jump_depleted_blink = 0;
@@ -175,7 +175,7 @@ else
 #region /* Invincible */
 if (invincible_timer >= 2)
 {
-	invincible_blinking ++;
+	invincible_blinking++;
 	if (invincible_blinking > 21)
 	{
 		invincible_blinking = 0;
@@ -246,7 +246,7 @@ if (global.show_collision_mask)
 	draw_rectangle_color(x - 2, y, x + 2, y, c_red, c_red, c_red, c_red, false);
 	draw_rectangle_color(x, y - 2, x, y + 2, c_red, c_red, c_red, c_red, false);
 	collision_mask_alpha = lerp(collision_mask_alpha, 0.5, 0.01);
-	
+
 	draw_set_halign(fa_center);
 	draw_set_valign(fa_bottom);
 	scr_draw_text_outlined(x, bbox_top - 32,
@@ -267,7 +267,7 @@ if (effect_turnaround_subimg < 10)
 	{
 		draw_sprite_ext(spr_effect_turnaround, effect_turnaround_subimg, xx, yy, image_xscale, 1, angle, c_white, 0.5);
 	}
-	effect_turnaround_subimg ++;
+	effect_turnaround_subimg++;
 }
 #endregion /* Turnaround Effect END */
 
@@ -305,7 +305,7 @@ else
 #region /* Homing Attack */
 if (allow_homing_attack)
 {
-	
+
 	#region /* Homing Enemy */
 	if (!on_ground)
 	&& (!stick_to_wall)
@@ -318,13 +318,13 @@ if (allow_homing_attack)
 	&& (instance_nearest(x, y, obj_enemy).bbox_bottom > y)
 	&& (!instance_nearest(x, y, obj_enemy).die)
 	{
-		aim_index ++;
+		aim_index++;
 		draw_sprite_ext(spr_aim, aim_index, instance_nearest(x, y, obj_enemy).x, instance_nearest(x, y, obj_enemy).y, 1, 1, 0, c_white, 1);
 	}
 	#endregion /* Homing Enemy END */
-	
+
 	else
-	
+
 	#region /* Homing Spring */
 	if (!on_ground)
 	&& (!stick_to_wall)
@@ -336,11 +336,11 @@ if (allow_homing_attack)
 	&& (distance_to_object(obj_spring) < homing_attack_distance)
 	&& (instance_nearest(x, y, obj_spring).bbox_bottom > y)
 	{
-		aim_index ++;
+		aim_index++;
 		draw_sprite_ext(spr_aim, aim_index, instance_nearest(x, y, obj_spring).x, instance_nearest(x, y, obj_spring).y, 1, 1, 0, c_white, 1);
 	}
 	#endregion /* Homing Spring END */
-	
+
 	else
 	{
 		aim_index = 0;

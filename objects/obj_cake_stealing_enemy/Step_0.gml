@@ -45,7 +45,7 @@ else
 
 if (cutscene == 0)
 {
-	time ++;
+	time++;
 	if (time >= 60 * 2.3)
 	{
 		if (place_meeting(x + 1, y, obj_wall))
@@ -90,7 +90,7 @@ if (cutscene == 1) /* When placed in level, use this cutscene value */
 else
 if (cutscene = 2)
 {
-	time ++;
+	time++;
 	if (place_meeting(x + 1, y, obj_wall))
 	{
 		sprite_index = global.resource_pack_sprite_basic_enemy;

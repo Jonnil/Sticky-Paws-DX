@@ -2,7 +2,7 @@ function scr_initialize_character_abilities(what_player = player - 1, ability_st
 {
 	/* ability_string. Ability string. The name of the ability in string */
 	/* default_value. Ability default value. The default value of the ability */
-	
+
 	#region /* Allow Ability */
 	if (ini_key_exists(string(section_string), string(ability_string)))
 	{
@@ -17,5 +17,5 @@ function scr_initialize_character_abilities(what_player = player - 1, ability_st
 		return (default_value);
 	}
 	#endregion /* Allow Ability END */
-	
+
 }

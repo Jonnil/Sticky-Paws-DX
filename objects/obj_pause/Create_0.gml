@@ -5,10 +5,10 @@ quit_nevermind_y = 0;
 for(var p = 1; p <= global.max_players; p += 1)
 {
 	show_player_controls_y[p] = -64;
-	
+
 	show_player_controller_cant_use[p] = 0;
 	show_player_controller_cant_use_y[p] = display_get_gui_height() * 2;
-	
+
 	if (global.character_select_in_this_menu == "level_editor" && global.search_id != "")
 	{
 		var show_controls_x = 128 + 74;
@@ -18,19 +18,19 @@ for(var p = 1; p <= global.max_players; p += 1)
 		var show_controls_x = 32;
 	}
 	scr_set_show_controls_x(p, show_controls_x);
-	
+
 	player_accept_selection[p] = -1;
 	player_automatically_join[p] = false;
 	player_menu[p] = "select_character";
 	can_input_player_name[p] = 2; /* What player can enter a name */
-	
+
 	scr_set_character_folder(p);
 	ini_open(character_folder + "/data/character_config.ini"); /* First open the character folder ini before initializing custom character abilities */
 	allow_player_tongue[p] = scr_initialize_character_abilities(p - 1, "allow_tongue", false);
 	allow_player_double_jump[p] = scr_initialize_character_abilities(p - 1, "number_of_jumps", 1, "values");
 	allow_player_dive[p] = scr_initialize_character_abilities(p - 1, "allow_dive", false);
 	ini_close(); /* Don't commit the save data on Switch, this is only temporary! */
-	
+
 	menu_specific_joystick_delay[p] = 3;
 	player_display_x[p] = 0;
 	xx[p] = 0;
@@ -190,11 +190,11 @@ if (file_exists("characters/" + string(ds_list_find_value(global.all_loaded_char
 	{
 		ini_open(game_save_id + "custom_characters/" + string(ds_list_find_value(global.all_loaded_characters, global.narrator)) + "/data/character_config.ini");
 	}
-						
+
 	#region /* Character Name */
 	narrator_name = string(ds_list_find_value(global.all_loaded_characters, global.narrator));
 	#endregion /* Character Name END */
-						
+
 	ini_close(); /* Don't commit the save data on Switch, this is only temporary! */
 }
 else
@@ -215,16 +215,16 @@ if (room == rm_leveleditor)
 && (global.character_select_in_this_menu == "main_game")
 {
 	var level_name = global.level_name;
-	
+
 	ini_open(game_save_id + "save_file/file" + string(global.file) + ".ini");
-	
+
 	ini_write_real(level_name, "checkpoint_x", global.checkpoint_x);
 	ini_write_real(level_name, "checkpoint_y", global.checkpoint_y);
 	ini_write_real(level_name, "checkpoint_millisecond", global.timeattack_millisecond);
 	ini_write_real(level_name, "checkpoint_second", global.timeattack_second);
 	ini_write_real(level_name, "checkpoint_minute", global.timeattack_minute);
 	ini_write_real(level_name, "checkpoint_realmillisecond", global.timeattack_realmillisecond);
-	
+
 	ini_close(); /* Don't commit the save data on Switch, this is only temporary! */
 }
 else
@@ -232,16 +232,16 @@ if (room == rm_leveleditor)
 && (global.character_select_in_this_menu == "level_editor")
 {
 	var level_name = global.level_name;
-	
+
 	ini_open(game_save_id + "save_file/custom_level_save.ini");
-	
+
 	ini_write_real(level_name, "checkpoint_x", global.checkpoint_x);
 	ini_write_real(level_name, "checkpoint_y", global.checkpoint_y);
 	ini_write_real(level_name, "checkpoint_millisecond", global.timeattack_millisecond);
 	ini_write_real(level_name, "checkpoint_second", global.timeattack_second);
 	ini_write_real(level_name, "checkpoint_minute", global.timeattack_minute);
 	ini_write_real(level_name, "checkpoint_realmillisecond", global.timeattack_realmillisecond);
-	
+
 	ini_close(); /* Don't commit the save data on Switch, this is only temporary! */
 }
 #endregion /* Save Level Editor Checkpoint END */

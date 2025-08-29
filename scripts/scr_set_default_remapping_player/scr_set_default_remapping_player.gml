@@ -1,8 +1,8 @@
 function scr_set_default_remapping_player_gamepad(what_player = 1, save_default_controls_to_config = false)
 {
-	
+
 	#region /* Player Gamepad Remapping */
-	
+
 	#region /* Player Gamepad 1 defaults */
 	/* global.player_[keyboard/gamepad][player][key1/key2][action] */
 	global.player_[inp.gp][what_player][1][action.dive] = gp_face3;
@@ -30,7 +30,7 @@ function scr_set_default_remapping_player_gamepad(what_player = 1, save_default_
 		global.player_[inp.gp][what_player][1][action.back] = gp_face2;
 	}
 	#endregion /* Player Gamepad 1 defaults END */
-	
+
 	#region /* Player Gamepad 2 defaults */
 	/* global.player_[keyboard/gamepad][player][key1/key2][action] */
 	global.player_[inp.gp][what_player][2][action.dive] = noone;
@@ -50,7 +50,7 @@ function scr_set_default_remapping_player_gamepad(what_player = 1, save_default_
 	global.player_[inp.gp][what_player][2][action.accept] = noone;
 	global.player_[inp.gp][what_player][2][action.back] = noone;
 	#endregion /* Player Gamepad 2 defaults END */
-	
+
 	global.player_up_is_also_jump[what_player] = false;
 	global.player_double_jump_uses_jump_key[what_player] = true;
 	global.player_down_is_also_crouch[what_player] = true;
@@ -64,23 +64,23 @@ function scr_set_default_remapping_player_gamepad(what_player = 1, save_default_
 	global.player_drop_from_rope[what_player] = 1;
 	global.player_show_controls[what_player] = 0; /* Needs to be set to 0 by default for best performance */
 	#endregion /* Player Gamepad Remapping END */
-	
+
 	#region /* After setting the gamepad controls back to default, save these settings in config */
 	if (save_default_controls_to_config) {
 		scr_save_player_control_profile(what_player, 1);
 	}
 	#endregion /* After setting the gamepad controls back to default, save these settings in config END */
-	
+
 }
 
 function scr_set_default_remapping_player_keyboard(what_player = 1, save_default_controls_to_config = false)
 {
-	
+
 	#region /* Player Key Remapping */
-	
+
 	if (what_player == 1)
 	{
-		
+
 		#region /* Player 1 Key 1 defaults */
 		/* global.player_[keyboard/gamepad][player][key1/key2][action] */
 		global.player_[inp.key][what_player][1][action.dive] = ord("X");
@@ -100,7 +100,7 @@ function scr_set_default_remapping_player_keyboard(what_player = 1, save_default
 		global.player_[inp.key][what_player][1][action.accept] = ord("Z");
 		global.player_[inp.key][what_player][1][action.back] = ord("X");
 		#endregion /* Player 1 Key 1 defaults END */
-		
+
 		#region /* Player 1 Key 2 defaults */
 		/* global.player_[keyboard/gamepad][player][key1/key2][action] */
 		global.player_[inp.key][what_player][2][action.dive] = noone;
@@ -120,12 +120,12 @@ function scr_set_default_remapping_player_keyboard(what_player = 1, save_default
 		global.player_[inp.key][what_player][2][action.accept] = vk_enter;
 		global.player_[inp.key][what_player][2][action.back] = vk_backspace;
 		#endregion /* Player 1 Key 2 defaults END */
-		
+
 	}
 	else
 	if (what_player >= 2)
 	{
-		
+
 		#region /* Player Other Key 1 defaults */
 		/* global.player_[keyboard/gamepad][player][key1/key2][action] */
 		global.player_[inp.key][what_player][1][action.dive] = noone;
@@ -145,7 +145,7 @@ function scr_set_default_remapping_player_keyboard(what_player = 1, save_default
 		global.player_[inp.key][what_player][1][action.accept] = noone;
 		global.player_[inp.key][what_player][1][action.back] = noone;
 		#endregion /* Player Other Key 1 defaults END */
-		
+
 		#region /* Player Other Key 2 defaults */
 		/* global.player_[keyboard/gamepad][player][key1/key2][action] */
 		global.player_[inp.key][what_player][2][action.dive] = noone;
@@ -165,9 +165,9 @@ function scr_set_default_remapping_player_keyboard(what_player = 1, save_default
 		global.player_[inp.key][what_player][2][action.accept] = noone;
 		global.player_[inp.key][what_player][2][action.back] = noone;
 		#endregion /* Player Other Key 2 defaults END */
-		
+
 	}
-	
+
 	global.player_up_is_also_jump[what_player] = false;
 	global.player_double_jump_uses_jump_key[what_player] = true;
 	global.player_down_is_also_crouch[what_player] = true;
@@ -181,11 +181,11 @@ function scr_set_default_remapping_player_keyboard(what_player = 1, save_default
 	global.player_drop_from_rope[what_player] = 1;
 	global.player_show_controls[what_player] = 0; /* Needs to be set to 0 by default for best performance */
 	#endregion /* Player Keyboard Remapping END */
-	
+
 	#region /* After setting the keyboard controls back to default, save these settings in config */
 	if (save_default_controls_to_config) {
 		scr_save_player_control_profile(what_player, 0);
 	}
 	#endregion /* After setting the keyboard controls back to default, save these settings in config END */
-	
+
 }

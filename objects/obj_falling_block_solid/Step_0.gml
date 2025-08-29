@@ -17,9 +17,9 @@ if (fall < fall_max)
 	|| (image_index == 3)
 	&& (fall >= 1)
 	{
-		fall ++;
+		fall++;
 		image_blend = c_red;
-		
+
 		if fall > 45
 		{
 			var random_x = 2.5;
@@ -42,10 +42,10 @@ if (fall < fall_max)
 			var random_x = 1;
 			var random_y = 1;
 		}
-		
+
 		xx = random_range(x - random_x, x + random_x);
 		yy = random_range(y - random_y, y + random_y);
-		
+
 	}
 	else
 	{
@@ -69,8 +69,8 @@ else
 if (image_alpha < 1)
 {
 	gravity = 0;
-	respawn_timer --;
-	
+	respawn_timer--;
+
 	if (respawn_timer <= 0 && !place_meeting(xstart, ystart, obj_player))
 	{
 		x = xstart;

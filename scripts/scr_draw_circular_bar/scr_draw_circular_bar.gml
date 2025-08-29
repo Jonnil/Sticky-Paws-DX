@@ -16,7 +16,7 @@ function scr_draw_circular_bar(xx, yy, value, max_value, colour = c_black, radiu
 			draw_clear_alpha(c_black, 0);
 			draw_primitive_begin(pr_trianglefan);
 			draw_vertex(radius, radius);
-			
+
 			for(i = 0; i <= val; i ++)
 			{
 				len = (i * sizeofsection) +90; /* the 90 here is the starting angle */

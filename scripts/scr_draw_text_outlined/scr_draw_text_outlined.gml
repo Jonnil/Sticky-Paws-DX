@@ -15,7 +15,7 @@ function scr_draw_text_outlined(x_position = x, y_position = y, string_text = ""
 	{
 		/* Cache the text size multiplier to avoid recalculating it for each offset */
 		var ts = text_size;
-		
+
 		/* Unrolled loop: Instead of iterating through an array, directly draw the outline */
 		/* in four directions (left, right, up, down). This is more efficient */
 		draw_text_transformed_color(x_position - ts, y_position, string_text, text_size, text_size, 0,
@@ -27,7 +27,7 @@ function scr_draw_text_outlined(x_position = x, y_position = y, string_text = ""
 		draw_text_transformed_color(x_position, y_position + ts, string_text, text_size, text_size, 0,
 			outline_color, outline_color, outline_color, outline_color, img_alpha);
 	}
-	
+
 	/* Draw the filled text on top of the outlined text */
 	draw_text_transformed_color(x_position, y_position, string_text, text_size, text_size, 0,
 		text_color, text_color, text_color, text_color, img_alpha);

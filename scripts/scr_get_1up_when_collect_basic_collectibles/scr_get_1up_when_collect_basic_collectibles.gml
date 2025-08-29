@@ -8,7 +8,7 @@ function create_score_up_1up(xx, yy)
 
 function get_1up_when_collect_basic_collectibles()
 {
-	
+
 	#region /* Get 1-up if you get 100 basic collectibles */
 	var basic_collectible_threshold = 100;
 	if (global.basic_collectibles >= basic_collectible_threshold)
@@ -26,5 +26,5 @@ function get_1up_when_collect_basic_collectibles()
 		}
 	}
 	#endregion /* Get 1-up if you get 100 basic collectibles END */
-	
+
 }

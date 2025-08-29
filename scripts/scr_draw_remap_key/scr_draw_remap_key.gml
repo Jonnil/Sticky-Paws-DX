@@ -2,10 +2,10 @@ function scr_draw_remap_key(menu_string, name_string, remapping_player_key, rema
 {
 	var mouse_get_x = device_mouse_x_to_gui(0);
 	var mouse_get_y = device_mouse_y_to_gui(0);
-	
+
 	if (global.settings_sidebar_menu == "controller_settings")
 	{
-		
+
 		#region /* Remap Gamepad Button */
 		if (menu == menu_string)
 		&& (menu_remap_key_number == 0)
@@ -32,7 +32,7 @@ function scr_draw_remap_key(menu_string, name_string, remapping_player_key, rema
 			}
 		}
 		#endregion /* Remap Gamepad Button END */
-		
+
 		#region /* Remap Gamepad Button 2 */
 		if (menu == menu_string)
 		&& (menu_remap_key_number == 2)
@@ -59,14 +59,14 @@ function scr_draw_remap_key(menu_string, name_string, remapping_player_key, rema
 			}
 		}
 		#endregion /* Remap Gamepad Button 2 END */
-		
+
 	}
-	
+
 	else
-	
+
 	if (global.settings_sidebar_menu == "keyboard_and_mouse_settings")
 	{
-		
+
 		#region /* Remap Keyboard Key 1 */
 		if (menu == menu_string)
 		&& (menu_remap_key_number == 0)
@@ -175,7 +175,7 @@ function scr_draw_remap_key(menu_string, name_string, remapping_player_key, rema
 			}
 		}
 		#endregion /* Remap Keyboard Key 1 END */
-		
+
 		#region /* Remap Keyboard Key 2 */
 		if (menu == menu_string)
 		&& (menu_remap_key_number == 2)
@@ -284,15 +284,15 @@ function scr_draw_remap_key(menu_string, name_string, remapping_player_key, rema
 			}
 		}
 		#endregion /* Remap Keyboard Key 2 END */
-		
+
 	}
-	
+
 	#region /* OR text */
 	draw_set_halign(fa_center);
 	draw_set_valign(fa_middle);
 	scr_draw_text_outlined(key_x + 100, menu_y_remap_key + menu_y_offset, l10n_text("Or"), global.default_text_size, c_menu_outline, c_menu_fill, 1);
 	#endregion /* OR text END */
-	
+
 	#region /* Mouse Navigation */
 	if (point_in_rectangle(mouse_get_x, mouse_get_y, key_x - 34, menu_y_remap_key + menu_y_offset - 32, key_x + 32, menu_y_remap_key + menu_y_offset + 32))
 	&& (!input_key)
@@ -329,7 +329,7 @@ function scr_draw_remap_key(menu_string, name_string, remapping_player_key, rema
 		}
 	}
 	#endregion /* Mouse Navigation END */
-	
+
 	#region /* Other Remap Code */
 	if (menu == menu_string)
 	{
@@ -367,5 +367,5 @@ function scr_draw_remap_key(menu_string, name_string, remapping_player_key, rema
 		scr_draw_text_outlined(410, menu_y_remap_key + menu_y_offset, name_string, global.default_text_size, c_menu_outline, c_menu_fill, 0.9);
 	}
 	#endregion /* Other Remap Code END */
-	
+
 }

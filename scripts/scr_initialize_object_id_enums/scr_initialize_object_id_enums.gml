@@ -1,6 +1,6 @@
 function scr_initialize_object_id_enums()
 {
-	
+
 	#region /* Translate object names into object ID */
 	enum LEVEL_OBJECT_ID
 	{
@@ -16,7 +16,7 @@ function scr_initialize_object_id_enums()
 		ID_WALL_CLIMB_PANEL = 1009,
 		ID_SPIKES = 2,
 		ID_SEMISOLID_PLATFORM = 3,
-		
+
 		#region /* Brick Block */
 		ID_BRICK_BLOCK = 4,
 		ID_BRICK_BLOCK_10_BASIC_COLLECTIBLES = 5,
@@ -27,7 +27,7 @@ function scr_initialize_object_id_enums()
 		ID_BRICK_BLOCK_INVINCIBILITY_POWERUP = 10,
 		ID_BRICK_BLOCK_INVINCIBILITY_POWERUP_COIL_SPRING = 10001,
 		#endregion /* Brick Block END */
-		
+
 		#region /* Question Block */
 		ID_QUESTION_BLOCK = 11,
 		ID_QUESTION_BLOCK_10_BASIC_COLLECTIBLES = 12,
@@ -38,7 +38,7 @@ function scr_initialize_object_id_enums()
 		ID_QUESTION_BLOCK_INVINCIBILITY_POWERUP = 17,
 		ID_QUESTION_BLOCK_INVINCIBILITY_POWERUP_COIL_SPRING = 17001,
 		#endregion /* Question Block END */
-		
+
 		#region /* Melon Block */
 		ID_MELON_BLOCK = 135121,
 		ID_MELON_BLOCK_10_BASIC_COLLECTIBLES = 135122,
@@ -49,44 +49,44 @@ function scr_initialize_object_id_enums()
 		ID_MELON_BLOCK_INVINCIBILITY_POWERUP = 135127,
 		ID_MELON_BLOCK_INVINCIBILITY_POWERUP_COIL_SPRING = 135128,
 		#endregion /* Melon Block END */
-		
+
 		ID_HARD_BLOCK = 18,
 		ID_HARD_BLOCK_ALTERNATE = 181,
 		ID_HARD_BLOCK_2X2 = 182,
-		
+
 		#region /* Falling Blocks */
 		/* Normal Falling Blocks */
 		ID_FALLING_BLOCK = 19,
 		ID_FALLING_BLOCK_SOLID = 20,
 		ID_FALLING_BLOCK_LONG = 21,
 		ID_FALLING_BLOCK_LONG_SOLID = 22,
-		
+
 		/* Instant Falling Blocks */
 		ID_INSTANT_FALLING_BLOCK = 191,
 		ID_INSTANT_FALLING_BLOCK_SOLID = 201,
 		ID_INSTANT_FALLING_BLOCK_LONG = 211,
 		ID_INSTANT_FALLING_BLOCK_LONG_SOLID = 221,
-		
+
 		/* Wood Falling Blocks */
 		ID_WOOD_FALLING_BLOCK = 192,
 		ID_WOOD_FALLING_BLOCK_SOLID = 202,
 		ID_WOOD_FALLING_BLOCK_LONG = 212,
 		ID_WOOD_FALLING_BLOCK_LONG_SOLID = 222,
-		
+
 		/* Stone Falling Blocks */
 		ID_STONE_FALLING_BLOCK = 193,
 		ID_STONE_FALLING_BLOCK_SOLID = 203,
 		ID_STONE_FALLING_BLOCK_LONG = 213,
 		ID_STONE_FALLING_BLOCK_LONG_SOLID = 223,
 		#endregion /* Falling Blocks END */
-		
+
 		ID_CLOUD_BLOCK = 23,
 		ID_ICE_BLOCK = 24,
 		ID_ENEMY_ONLY_WALL = 241,
 		ID_CARDBOARD_BLOCK = 25,
 		ID_CARDBOARD = 26,
 		ID_CARDBOARD_LONG = 27,
-		
+
 		#region /* Bump in Ground */
 		ID_BUMP_IN_GROUND = 28,
 		ID_BUMP_IN_GROUND_8_BASIC_COLLECTIBLES = 29,
@@ -98,7 +98,7 @@ function scr_initialize_object_id_enums()
 		ID_BUMP_IN_GROUND_INVINCIBILITY_POWERUP = 39,
 		ID_BUMP_IN_GROUND_INVINCIBILITY_POWERUP_COIL_SPRING = 39001,
 		#endregion /* Bump in Ground END */
-		
+
 		#region /* Invisible Bump in Ground */
 		ID_INVISIBLE_BUMP_IN_GROUND = 281,
 		ID_INVISIBLE_BUMP_IN_GROUND_8_BASIC_COLLECTIBLES = 291,
@@ -110,7 +110,7 @@ function scr_initialize_object_id_enums()
 		ID_INVISIBLE_BUMP_IN_GROUND_INVINCIBILITY_POWERUP = 391,
 		ID_INVISIBLE_BUMP_IN_GROUND_INVINCIBILITY_POWERUP_COIL_SPRING = 390011,
 		#endregion /* Invisible Bump in Ground END */
-		
+
 		ID_BASIC_COLLECTIBLE = 40,
 		ID_BASIC_COLLECTIBLE_2 = 41,
 		ID_BASIC_COLLECTIBLE_3 = 42,
@@ -151,19 +151,19 @@ function scr_initialize_object_id_enums()
 		ID_ARROW_SIGN = 64,
 		ID_ARROW_SIGN_SMALL = 65,
 		ID_CHECKPOINT = 66,
-		
+
 		#region /* Spikes Emerge Block */
 		ID_SPIKES_EMERGE_BLOCK = 67,
 		ID_SPIKES_EMERGE_BLOCK_LEFT = 671,
 		ID_SPIKES_EMERGE_BLOCK_DOWN = 672,
 		ID_SPIKES_EMERGE_BLOCK_RIGHT = 673,
-		
+
 		ID_SPIKES_EMERGE_BLOCK_OFFSET_TIME = 674,
 		ID_SPIKES_EMERGE_BLOCK_LEFT_OFFSET_TIME = 675,
 		ID_SPIKES_EMERGE_BLOCK_DOWN_OFFSET_TIME = 676,
 		ID_SPIKES_EMERGE_BLOCK_RIGHT_OFFSET_TIME = 677,
 		#endregion /* Spikes Emerge Block END */
-		
+
 		ID_ONEWAY = 68,
 		ID_ONEWAY2 = 69,
 		ID_ONEWAY3 = 70,
@@ -179,7 +179,7 @@ function scr_initialize_object_id_enums()
 		ID_CLIPPED_SHIRT = 74,
 		ID_CLIPPED_PANTS = 75,
 		ID_CLIPPED_SOCK = 76,
-		
+
 		#region /* Bucket */
 		ID_BUCKET = 77,
 		ID_BUCKET_8_BASIC_COLLECTIBLES = 78,
@@ -191,7 +191,7 @@ function scr_initialize_object_id_enums()
 		ID_BUCKET_INVINCIBILITY_POWERUP = 88,
 		ID_BUCKET_INVINCIBILITY_POWERUP_COIL_SPRING = 88001,
 		#endregion /* Bucket END */
-		
+
 		ID_BIRD = 89,
 		ID_BUSH = 891,
 		ID_SIGN_CROUCH = 90,
@@ -234,5 +234,5 @@ function scr_initialize_object_id_enums()
 		ID_LEFT_DOWN = 7
 	}
 	#endregion /* Translate object names into object ID */
-	
+
 }

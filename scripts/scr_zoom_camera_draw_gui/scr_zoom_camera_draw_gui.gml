@@ -10,7 +10,7 @@ function scr_zoom_camera_draw_gui(width = 10)
 		draw_rectangle_color(0, display_get_gui_height() - width, display_get_gui_width(), display_get_gui_height(), c_red, c_red, c_red, c_red, false); /* Bottom */
 		draw_set_alpha(1);
 	}
-	
+
 	if (show_zoom_value > 0)
 	{
 		if (room == rm_leveleditor)
@@ -22,7 +22,7 @@ function scr_zoom_camera_draw_gui(width = 10)
 			var what_zoom_value = global.zoom_world;
 		}
 		show_zoom_value--;
-		
+
 		if (global.debug_screen)
 		{
 			draw_set_halign(fa_left);

@@ -38,7 +38,7 @@ if (can_bounce == 0)
 			spring_endpoint_y = nearest_spring.second_y;
 			spring_twist_sprite = true;
 			stick_to_wall = false;
-			
+
 			if (ground_pound >= true)
 			{
 				effect_create_above(ef_smoke, x, bbox_bottom, 2, c_white);

@@ -1,13 +1,13 @@
 function scr_draw_level_editor_pause_menu()
 {
-	
+
 	#region /* Draw Level Editor Pause Menu */
 	if (pause)
 	&& (quit_level_editor <= 0)
 	&& (pressing_play_timer == 0)
 	{
 		welcome_to_level_editor = 0; /* Close the help menu when pausing the game */
-		
+
 		#region /* Make Background Darker */
 		if (changing_level_theme_menu)
 		{
@@ -20,10 +20,10 @@ function scr_draw_level_editor_pause_menu()
 		draw_rectangle_color(0, 0, room_width, room_height, c_black, c_black, c_black, c_black, false);
 		draw_set_alpha(1);
 		#endregion /* Make Background Darker END */
-		
+
 		draw_set_halign(fa_center);
 		draw_set_valign(fa_middle);
-		
+
 		#region /* Make the menu invisible when entering the options menu */
 		if (menu == "continue")
 		|| (menu == "options")
@@ -33,7 +33,7 @@ function scr_draw_level_editor_pause_menu()
 		|| (menu == "level_editor_upload")
 		|| (menu == "quit")
 		{
-			
+
 			#region /* Only quit the pause menu when you're in the first pause menu */
 			if (keyboard_check_pressed(vk_escape))
 			|| (gamepad_button_check_pressed(global.player_slot[1], gp_start))
@@ -54,7 +54,7 @@ function scr_draw_level_editor_pause_menu()
 				}
 			}
 			#endregion /* Only quit the pause menu when you're in the first pause menu END */
-			
+
 			#region /* Show what version of the game the level was first created in */
 			/* This should make it easier to port old levels to new game versions */
 			/* Showing the original version number makes it easier to pinpoint what changes happened from one version to another */
@@ -72,7 +72,7 @@ function scr_draw_level_editor_pause_menu()
 				}
 			}
 			#endregion /* Show what version of the game the level was first created in END */
-			
+
 			#region /* Draw if level have a Level ID on top of screen */
 			if (level_id != "")
 			{
@@ -87,7 +87,7 @@ function scr_draw_level_editor_pause_menu()
 				level_id_y = 0;
 			}
 			#endregion /* Draw if level have A Level ID on top of screen END */
-			
+
 			#region /* Draw if level have been Clear Checked on top of screen */
 			if (if_clear_checked)
 			{
@@ -102,7 +102,7 @@ function scr_draw_level_editor_pause_menu()
 				var clear_check_y = level_id_y;
 			}
 			#endregion /* Draw if level have been Clear Checked on top of screen END */
-			
+
 			#region /* Draw if level is created in Daily Build on top of screen */
 			var daily_build_y = clear_check_y + 32;
 			if (if_daily_build)
@@ -117,10 +117,10 @@ function scr_draw_level_editor_pause_menu()
 				var daily_build_y = clear_check_y;
 			}
 			#endregion /* Draw if level is created in Daily Build on top of screen END */
-			
+
 			#region /* Draw if level uses Custom Backgrounds on top of screen */
 			var level_has_custom_background_y = daily_build_y + 32;
-			
+
 			if (variable_instance_exists(self, "level_has_custom_background"))
 			&& (level_has_custom_background)
 			{
@@ -130,19 +130,19 @@ function scr_draw_level_editor_pause_menu()
 				draw_sprite_ext(spr_icon_pen, 1, 32, level_has_custom_background_y, scr_wave(0.9, 1, 1, 0), scr_wave(0.9, 1, 1, 0), 0, c_white, 1);
 			}
 			#endregion /* Draw if level uses Custom Backgrounds on top of screen END */
-			
+
 			#region /* Show text in bottom right of screen what the current custom level name is. This will make it less confusing what level you are editing */
 			draw_set_halign(fa_right);
 			draw_set_valign(fa_middle);
 			scr_draw_text_outlined(display_get_gui_width() - 16, display_get_gui_height() - 16, string(masked_level_name), global.default_text_size, c_black, c_white, 1);
 			#endregion /* Show text in bottom right of screen what the current custom level name is. This will make it less confusing what level you are editing END */
-			
+
 			in_settings = false;
-			
+
 			#region /* If menu is on continue */
 			draw_menu_button(get_window_width * 0.5 - 185, get_window_height * 0.5 - 126, l10n_text("Continue"), "continue", noone);
 			draw_sprite_ext(spr_icon_back, 0, get_window_width * 0.5 - 185 + 20, get_window_height * 0.5 - 126 + 21, 1, 1, 0, c_white, 1);
-			
+
 			if (point_in_rectangle(cursor_x, cursor_y, get_window_width * 0.5 - 185, get_window_height * 0.5 - 126, get_window_width * 0.5 + 185, get_window_height * 0.5 -84))
 			&& (global.controls_used_for_navigation == "mouse")
 			&& (mouse_check_button_released(mb_left))
@@ -182,11 +182,11 @@ function scr_draw_level_editor_pause_menu()
 				}
 			}
 			#endregion /* If menu is on continue END */
-			
+
 			#region /* If menu is on options */
 			draw_menu_button(get_window_width * 0.5 - 185, get_window_height * 0.5 -84, l10n_text("Options"), "options", noone);
 			draw_sprite_ext(spr_icon_cogwheel, 0, get_window_width * 0.5 - 185 + 20, get_window_height * 0.5 -84 + 21, 1, 1, 0, c_white, 1);
-			
+
 			if (point_in_rectangle(cursor_x, cursor_y, get_window_width * 0.5 - 185, get_window_height * 0.5 -84, get_window_width * 0.5 + 185, get_window_height * 0.5 - 42))
 			&& (global.controls_used_for_navigation == "mouse")
 			&& (mouse_check_button_released(mb_left))
@@ -204,7 +204,7 @@ function scr_draw_level_editor_pause_menu()
 				menu_delay = 3;
 				scr_load_storage_variables();
 			}
-			
+
 			if (menu == "options")
 			&& (!can_input_level_name)
 			{
@@ -250,10 +250,10 @@ function scr_draw_level_editor_pause_menu()
 				}
 			}
 			#endregion /* If menu is on options END */
-			
+
 			#region /* If menu is on level editor options */
 			draw_menu_button(get_window_width * 0.5 - 185, get_window_height * 0.5 -42, l10n_text("Level Options"), "level_editor_options", "level_editor_options");
-			
+
 			if (point_in_rectangle(cursor_x, cursor_y, get_window_width * 0.5 - 185, get_window_height * 0.5 -42, get_window_width * 0.5 + 185, get_window_height * 0.5))
 			&& (global.controls_used_for_navigation == "mouse")
 			&& (mouse_check_button_released(mb_left))
@@ -272,7 +272,7 @@ function scr_draw_level_editor_pause_menu()
 					ini_close(); /* Don't commit the save data on Switch, this is only temporary! */
 					if_clear_checked = false;
 				}
-				
+
 				level_editor_option_back_to_menu = ""; /* Reset this variable to nothing */
 				quit_level_editor = 0;
 				can_input_level_name = false;
@@ -283,7 +283,7 @@ function scr_draw_level_editor_pause_menu()
 				menu = "level_theme";
 				menu_delay = 3;
 			}
-			
+
 			if (menu == "level_editor_options")
 			&& (!can_input_level_name)
 			{
@@ -318,12 +318,12 @@ function scr_draw_level_editor_pause_menu()
 				}
 			}
 			#endregion /* If menu is on level editor options END */
-			
+
 			#region /* If menu is on generate level map */
 			if (global.enable_option_for_pc)
 			{
 				draw_menu_button(get_window_width * 0.5 - 185, get_window_height * 0.5, l10n_text("Generate Level Map"), "generate_level_map", "generate_level_map_yes");
-				
+
 				if (point_in_rectangle(cursor_x, cursor_y, get_window_width * 0.5 - 185, get_window_height * 0.5, get_window_width * 0.5 + 185, get_window_height * 0.5 + 42))
 				&& (global.controls_used_for_navigation == "mouse")
 				&& (mouse_check_button_released(mb_left))
@@ -376,7 +376,7 @@ function scr_draw_level_editor_pause_menu()
 				}
 			}
 			#endregion /* If menu is on generate level map END */
-			
+
 			#region /* Open Custom Levels Folder */
 			if (global.enable_option_for_pc)
 			{
@@ -413,11 +413,11 @@ function scr_draw_level_editor_pause_menu()
 				}
 			}
 			#endregion /* Open Custom Levels Folder END */
-			
+
 			#region /* If menu is on upload */
 			draw_menu_button(get_window_width * 0.5 - 185, get_window_height * 0.5 + 42 + 42, l10n_text("Upload"), "level_editor_upload", "level_editor_upload");
 			draw_sprite_ext(spr_icon_upload, 0, get_window_width * 0.5 - 185 + 16, get_window_height * 0.5 + 42 + 42 + 21, 1, 1, 0, c_white, 1);
-			
+
 			if (menu == "level_editor_upload")
 			&& (!can_input_level_name)
 			{
@@ -453,7 +453,7 @@ function scr_draw_level_editor_pause_menu()
 				}
 			}
 			#endregion /* If menu is on upload END */
-			
+
 			#region /* If menu is on quit */
 			draw_menu_button(get_window_width * 0.5 - 185, get_window_height * 0.5 + 42 + 42 + 42, l10n_text("Save and Quit"), "quit", noone);
 			if (point_in_rectangle(cursor_x, cursor_y, get_window_width * 0.5 - 185, get_window_height * 0.5 + 42 + 42 + 42, get_window_width * 0.5 + 185, get_window_height * 0.5 + 42 + 42 + 42 + 42))
@@ -501,7 +501,7 @@ function scr_draw_level_editor_pause_menu()
 				}
 			}
 			#endregion /* If menu is on quit END */
-			
+
 		}
 		else
 		if (menu == "generate_level_map_yes")
@@ -514,10 +514,10 @@ function scr_draw_level_editor_pause_menu()
 			var generate_level_map_y_5 = get_window_height * 0.5 - 256 + 160;
 			var generate_level_map_y_6 = get_window_height * 0.5 - 256 + 192;
 			var generate_level_map_y_7 = get_window_height * 0.5 - 256 + 224;
-			
+
 			draw_set_halign(fa_center);
 			draw_set_valign(fa_middle);
-			
+
 			#region /* Draw the path for saving full level map */
 			if (global.enable_option_for_pc)
 			{
@@ -531,36 +531,36 @@ function scr_draw_level_editor_pause_menu()
 				scr_draw_text_outlined(get_window_width * 0.5, generate_level_map_y_1, l10n_text("A map of the whole level will be generated and saved"), global.default_text_size, c_black, c_white, 1);
 			}
 			#endregion /* Draw the path for saving full level map END */
-			
+
 			scr_draw_text_outlined(get_window_width * 0.5, generate_level_map_y_3, l10n_text("With this map you can then use it in a drawing program"), global.default_text_size, c_black, c_white, 1);
 			scr_draw_text_outlined(get_window_width * 0.5, generate_level_map_y_4, l10n_text("as the base to make the background and foreground layers."), global.default_text_size, c_black, c_white, 1);
 			scr_draw_text_outlined(get_window_width * 0.5, generate_level_map_y_5, l10n_text("Do you want to generate a level map?"), global.default_text_size, c_black, c_white, 1);
 			scr_draw_text_outlined(get_window_width * 0.5, generate_level_map_y_6, l10n_text("The level will start for a split second so a level map can be properly generated"), global.default_text_size, c_black, c_white, 1);
-			
+
 			#region /* Warn the player if the level is bigger than 8192 in any direction */
 			var level_width = obj_level_width.x; /* Get level dimensions */
 			var level_height = obj_level_height.y;
-			
+
 			if (level_width > 8192 || level_height > 8192) /* Check if level dimensions exceed 8192 pixels in any direction */
 			{
 				var warning_text = "";
-				
+
 				if (level_width > 8192 && level_height > 8192) /* Create warning text based on exceeded dimensions */
 					warning_text = "width and height";
 				else if (level_width > 8192)
 					warning_text = "width";
 				else if (level_height > 8192)
 					warning_text = "height";
-				
+
 				/* Display the warning message */
 				scr_draw_text_outlined(get_window_width * 0.5, generate_level_map_y_7, l10n_text("Warning! Level " + string(warning_text) + " is more than 8192 pixels, it might not screenshot the entire level"), global.default_text_size, c_black, c_white, 1);
 				scr_draw_text_outlined(get_window_width * 0.5, generate_level_map_y_7, l10n_text("Warning! Level " + string(warning_text) + " is more than 8192 pixels, it might not screenshot the entire level"), global.default_text_size, c_black, c_red, scr_wave(0, 1, 2));
 			}
 			#endregion /* Warn the player if the level is bigger than 8192 in any direction END */
-			
+
 			#region /* If menu is on generate level map yes */
 			draw_menu_button(get_window_width * 0.5 - 185, get_window_height * 0.5, l10n_text("Yes"), "generate_level_map_yes", "generate_level_map_yes");
-			
+
 			if (point_in_rectangle(cursor_x, cursor_y, get_window_width * 0.5 - 185, get_window_height * 0.5, get_window_width * 0.5 + 185, get_window_height * 0.5 + 42))
 			&& (global.controls_used_for_navigation == "mouse")
 			&& (mouse_check_button_released(mb_left))
@@ -611,11 +611,11 @@ function scr_draw_level_editor_pause_menu()
 				}
 			}
 			#endregion /* If menu is on generate level map yes END */
-			
+
 			#region /* If menu is on generate level map no */
 			draw_menu_button(get_window_width * 0.5 - 185, get_window_height * 0.5 + 42, l10n_text("No"), "generate_level_map_no", "generate_level_map");
 			draw_sprite_ext(spr_icon_back, 0, get_window_width * 0.5 - 185 + 20, get_window_height * 0.5 + 42 + 21, 1, 1, 0, c_white, 1);
-			
+
 			if (point_in_rectangle(cursor_x, cursor_y, get_window_width * 0.5 - 185, get_window_height * 0.5, get_window_width * 0.5 + 185, get_window_height * 0.5 + 42 + 42))
 			&& (global.controls_used_for_navigation == "mouse")
 			&& (mouse_check_button_released(mb_left))
@@ -666,17 +666,17 @@ function scr_draw_level_editor_pause_menu()
 				}
 			}
 			#endregion /* If menu is on generate level map no END */
-			
+
 		}
 		#endregion /* Make the menu invisible when entering the options menu END */
-		
+
 		scr_draw_upload_level_menu();
-		
+
 		#region /* PLAYER 1 INPUT LEVEL NAME NOW */
 		if (menu == "input_level_name")
 		&& (can_input_level_name)
 		{
-			
+
 			#region /* Press enter when done typing */
 			if (keyboard_check_pressed(vk_enter))
 			|| (gamepad_button_check_pressed(global.player_slot[1], gp_start))
@@ -691,16 +691,16 @@ function scr_draw_level_editor_pause_menu()
 				}
 			}
 			#endregion /* Press enter when done typing END */
-			
+
 			#region /* Make Background Darker */
 			draw_set_alpha(0.5);
 			draw_rectangle_color(0, 0, room_width, room_height, c_black, c_black, c_black, c_black, false);
 			draw_set_alpha(1);
 			#endregion /* Make Background Darker END */
-			
+
 			draw_set_halign(fa_left);
 			draw_set_valign(fa_middle);
-			
+
 			#region /* Inputed Name Text */
 			if (name_enter_blink < 1)
 			{
@@ -711,7 +711,7 @@ function scr_draw_level_editor_pause_menu()
 				scr_draw_text_outlined(camera_get_view_x(view_camera[view_current]) + camera_get_view_width(view_camera[view_current]) * 0.5 -400 - 2, camera_get_view_y(view_camera[view_current]) + camera_get_view_height(view_camera[view_current]) * 0.5, l10n_text("Type a name on the keyboard for level name") + "\n" + l10n_text("Level Name") + ": " + string(level_name), global.default_text_size, c_black, c_white, 1);
 			}
 			#endregion /* Inputed Name Text END */
-			
+
 			#region /* Limit Name Input Length for Level Name */
 			draw_set_halign(fa_center);
 			draw_set_valign(fa_middle);
@@ -722,7 +722,7 @@ function scr_draw_level_editor_pause_menu()
 				keyboard_string = string_copy(level_name, 1, 32);
 			}
 			#endregion /* Limit Name Input Length for Level Name END */
-			
+
 			name_enter_blink += 0.05;
 			if (name_enter_blink > 1.5)
 			{
@@ -730,11 +730,11 @@ function scr_draw_level_editor_pause_menu()
 			}
 		}
 		#endregion /* PLAYER 1 INPUT LEVEL NAME NOW END */
-		
+
 		scr_option_menu(); /* Options */
 		scr_option_level_editor(); /* Level Editor Options */
 	}
 	#endregion /* Draw Level Editor Pause Menu END */
-	
+
 	scr_draw_network_error_menu();
 }

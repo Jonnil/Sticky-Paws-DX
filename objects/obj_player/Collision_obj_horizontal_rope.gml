@@ -10,7 +10,7 @@ if (!horizontal_rope_climb)
 		if (can_climb_horizontal_rope_cooldown == 0)
 		&& (collision_rectangle(bbox_left, bbox_top, bbox_right, bbox_top + abs(vspeed), obj_horizontal_rope, false, true))
 		{
-			
+
 			#region /* Set a bunch of variables only once to specific values when you are climbing on horizontal ropes */
 			angle = 0;
 			midair_jumps_left = number_of_jumps;
@@ -31,7 +31,7 @@ if (!horizontal_rope_climb)
 			scr_audio_play(snd_catch_ivy, volume_source.sound); /* Make a sound effect that you have started cimbing */
 			scr_audio_play(voice_rope_catch, volume_source.voice);
 			#endregion /* Set a bunch of variables only once to specific values when you are climbing on horizontal ropes END */
-			
+
 			horizontal_rope_climb = true; /* Make player climb horizontal rope */
 		}
 	}

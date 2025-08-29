@@ -18,7 +18,7 @@ if (die_volting == 0)
 	{
 		hspeed = 1;
 	}
-	
+
 	if (flat)
 	{
 		speed = 0;

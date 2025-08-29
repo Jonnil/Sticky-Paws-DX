@@ -3,7 +3,7 @@ function scr_draw_welcome_to_level_editor_menu()
 	var welcome_screen_shortcuts_x = display_get_gui_width() * 0.5 - 320;
 	var welcome_screen_tutorial_x = display_get_gui_width() * 0.5 - 95;
 	var welcome_screen_close_x = display_get_gui_width() * 0.5 + 130;
-	
+
 	if (os_type == os_switch)
 	{
 		var shortcuts_available = false;
@@ -12,7 +12,7 @@ function scr_draw_welcome_to_level_editor_menu()
 	{
 		var shortcuts_available = true;
 	}
-	
+
 	#region /* Welcome to Level Editor screen */
 	if (welcome_to_level_editor == 1)
 	|| (global.first_time_opened_level_editor)
@@ -69,7 +69,7 @@ function scr_draw_welcome_to_level_editor_menu()
 		scr_draw_text_outlined(display_get_gui_width() * 0.5 - 42 - 42 - 42 - 42 - 42 - 42, display_get_gui_height() * 0.5 + 42 + 42 + 42 + 42 - 126, l10n_text("on objects") + " : " + l10n_text("Change object property"), global.default_text_size, c_black, c_white, 1);
 		draw_set_halign(fa_center);
 		scr_draw_text_outlined(display_get_gui_width() * 0.5, display_get_gui_height() * 0.5 + 42 + 42 + 42 + 42 + 42 - 126, l10n_text("Select objects from toolbar and start making!"), global.default_text_size, c_black, c_white, 1);
-		
+
 		if (global.controls_used_for_navigation != "gamepad")
 		&& (shortcuts_available)
 		{
@@ -81,7 +81,7 @@ function scr_draw_welcome_to_level_editor_menu()
 		}
 		//draw_menu_button_sprite(spr_menu_button, welcome_screen_tutorial_x, display_get_gui_height() * 0.5 + 126, 0, 0, 0.5, 1, 185, 42, l10n_text("Tutorial"), "welcome_screen_tutorial", "welcome_screen_tutorial");
 		draw_menu_button_sprite(spr_menu_button, welcome_screen_close_x, display_get_gui_height() * 0.5 + 126, 0, 0, 0.5, 1, 185, 42, l10n_text("Close"), "welcome_screen_close", "welcome_screen_close");
-		
+
 		if (menu == "welcome_screen_shortcuts")
 		&& (global.controls_used_for_navigation != "gamepad")
 		&& (shortcuts_available)
@@ -145,34 +145,34 @@ function scr_draw_welcome_to_level_editor_menu()
 		draw_set_halign(fa_center);
 		scr_draw_text_outlined(display_get_gui_width() * 0.5, display_get_gui_height() * 0.5 - 42 - 126, l10n_text("Editor Shortcuts"), global.default_text_size, c_black, c_white, 1);
 		draw_set_halign(fa_left);
-		
+
 		//draw_sprite_ext(spr_keyboard_keys, ord("L"), display_get_gui_width() * 0.5 - 42 - 84, display_get_gui_height() * 0.5 - 126 + line_y, 0.5, 0.5, 0, c_white, 1);
 		//scr_draw_text_outlined(display_get_gui_width() * 0.5 - 84, display_get_gui_height() * 0.5 - 126 + line_y, ": " + l10n_text("Switch Layers"), global.default_text_size, c_black, c_white, 1);
 		//line_y += 42;
-		
+
 		draw_sprite_ext(spr_keyboard_keys, ord("G"), display_get_gui_width() * 0.5 - 42 - 84, display_get_gui_height() * 0.5 - 126 + line_y, 0.5, 0.5, 0, c_white, 1);
 		scr_draw_text_outlined(display_get_gui_width() * 0.5 - 84, display_get_gui_height() * 0.5 - 126 + line_y, ": " + l10n_text("Toggle Grid"), global.default_text_size, c_black, c_white, 1);
 		line_y += 42;
-		
+
 		draw_sprite_ext(spr_keyboard_keys, ord("T"), display_get_gui_width() * 0.5 - 42 - 84, display_get_gui_height() * 0.5 - 126 + line_y, 0.5, 0.5, 0, c_white, 1);
 		scr_draw_text_outlined(display_get_gui_width() * 0.5 - 84, display_get_gui_height() * 0.5 - 126 + line_y, ": " + l10n_text("Hide/Show Toolbar"), global.default_text_size, c_black, c_white, 1);
 		line_y += 42;
-		
+
 		draw_sprite_ext(spr_keyboard_keys, vk_shift, display_get_gui_width() * 0.5 - 42 - 84, display_get_gui_height() * 0.5 - 126 + line_y, 0.5, 0.5, 0, c_white, 1);
 		scr_draw_text_outlined(display_get_gui_width() * 0.5 - 84, display_get_gui_height() * 0.5 - 126 + line_y, ": " + l10n_text("Slow Scroll"), global.default_text_size, c_black, c_white, 1);
 		line_y += 42;
-		
+
 		draw_sprite_ext(spr_keyboard_keys, ord("B"), display_get_gui_width() * 0.5 - 42 - 84, display_get_gui_height() * 0.5 - 126 + line_y, 0.5, 0.5, 0, c_white, 1);
 		scr_draw_text_outlined(display_get_gui_width() * 0.5 - 84, display_get_gui_height() * 0.5 - 126 + line_y, ": " + l10n_text("Hide/Show Backgrounds"), global.default_text_size, c_black, c_white, 1);
 		line_y += 42;
-		
+
 		draw_sprite_ext(spr_keyboard_keys, ord("E"), display_get_gui_width() * 0.5 - 42 - 84, display_get_gui_height() * 0.5 - 126 + line_y, 0.5, 0.5, 0, c_white, 1);
 		scr_draw_text_outlined(display_get_gui_width() * 0.5 - 84, display_get_gui_height() * 0.5 - 126 + line_y, ": " + l10n_text("Change to erase tool"), global.default_text_size, c_black, c_white, 1);
-		
+
 		/* Back and Close buttons */
 		draw_menu_button_sprite(spr_menu_button, welcome_screen_shortcuts_x, display_get_gui_height() * 0.5 + 126, 0, 0, 0.5, 1, 185, 42, l10n_text("Back"), "welcome_screen_shortcuts", "welcome_screen_shortcuts");
 		draw_menu_button_sprite(spr_menu_button, welcome_screen_close_x, display_get_gui_height() * 0.5 + 126, 0, 0, 0.5, 1, 185, 42, l10n_text("Close"), "welcome_screen_close", "welcome_screen_close");
-		
+
 		if (menu == "welcome_screen_shortcuts")
 		{
 			if (key_a_pressed)
@@ -220,5 +220,5 @@ function scr_draw_welcome_to_level_editor_menu()
 		}
 	}
 	#endregion /* Welcome to Level Editor screen END */
-	
+
 }

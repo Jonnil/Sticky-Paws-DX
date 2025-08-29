@@ -1,11 +1,11 @@
 if (stomped_delay > 0)
 {
-	stomped_delay --;
+	stomped_delay--;
 }
 
 if (die_volting == 0)
 {
-	
+
 	#region /* Set the gravity */
 	gravity_direction = 270; /* Direction of the gravity */
 	if (!on_ground)
@@ -17,7 +17,7 @@ if (die_volting == 0)
 		gravity = 0;
 	}
 	#endregion /* Set the gravity END */
-	
+
 	if (flat)
 	{
 		speed = 0;

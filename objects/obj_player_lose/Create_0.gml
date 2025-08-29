@@ -38,7 +38,7 @@ default_yscale = 1;
 if (global.character_select_in_this_menu == "main_game")
 {
 	var level_name = string(ds_list_find_value(global.all_loaded_main_levels, global.select_level_index));
-	
+
 	ini_open(game_save_id + "save_file/file" + string(global.file) + ".ini");
 	ini_write_real(level_name, "number_of_defeats", ini_read_real(level_name, "number_of_defeats", 0) + 1);
 	ini_close(); /* Don't commit the save data on Switch, this is only temporary! */
@@ -47,7 +47,7 @@ else
 if (global.character_select_in_this_menu == "level_editor")
 {
 	var level_name = global.level_name;
-	
+
 	ini_open(game_save_id + "save_file/custom_level_save.ini");
 	ini_write_real(level_name, "number_of_defeats", ini_read_real(level_name, "number_of_defeats", 0) + 1);
 	ini_close(); /* Don't commit the save data on Switch, this is only temporary! */
@@ -68,7 +68,7 @@ if (lives > 0)
 	{
 		if (lives > 0)
 		{
-			lives --;
+			lives--;
 		}
 		if (instance_exists(obj_camera))
 		{
@@ -79,7 +79,7 @@ if (lives > 0)
 	time_source_start(time_source);
 	var time_source = time_source_create(time_source_game, 40, time_source_units_frames, function()
 	{
-		global.lives_until_assist ++;
+		global.lives_until_assist++;
 		if (instance_exists(obj_camera))
 		{
 			obj_camera.hud_show_defeats_y = 80; /* Make the defeats counter in HUD shake downward when you lose */

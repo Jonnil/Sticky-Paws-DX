@@ -1,4 +1,4 @@
-timer ++;
+timer++;
 if (timer == 10)
 {
 	sprite_index = spr_world_map_water_1;

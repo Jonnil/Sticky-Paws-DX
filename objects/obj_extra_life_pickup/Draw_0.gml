@@ -105,7 +105,7 @@ if (instance_exists(obj_player))
 	if (place_meeting(x, y, obj_player))
 	&& (!bounce_up)
 	{
-		
+
 		#region /* Give Life */
 		if (number_of_extra_lives = 3)
 		{
@@ -134,7 +134,7 @@ if (instance_exists(obj_player))
 			obj_camera.hud_show_lives_timer = global.hud_hide_time * 60;
 		}
 		#endregion /* Give Life END */
-		
+
 		effect_create_below(ef_ring, x, y, 1, c_white);
 		instance_destroy();
 	}
@@ -156,7 +156,7 @@ if (place_meeting(x, y - 1, obj_wall))
 #region /* Expanding Ring Effect */
 if effect_time < 60
 {
-	effect_time ++;
+	effect_time++;
 }
 if effect_time > 60
 {

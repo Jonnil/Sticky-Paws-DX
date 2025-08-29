@@ -4,7 +4,7 @@ if (brick_particle)
 	gravity_direction = 270;
 	gravity = 0.5;
 	#endregion /* Set the gravity END */
-	
+
 	if (hspeed < 0)
 	{
 		image_angle += 10;

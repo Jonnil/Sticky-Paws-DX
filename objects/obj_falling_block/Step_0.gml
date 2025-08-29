@@ -19,7 +19,7 @@ if (fall < fall_max)
 	{
 		fall++;
 		image_blend = c_red;
-		
+
 		if fall > 45
 		{
 			var random_x = 2.5;
@@ -42,10 +42,10 @@ if (fall < fall_max)
 			var random_x = 1;
 			var random_y = 1;
 		}
-		
+
 		xx = random_range(x - random_x, x + random_x);
 		yy = random_range(y - random_y, y + random_y);
-		
+
 	}
 	else
 	{
@@ -71,7 +71,7 @@ if (image_alpha < 1)
 	instance_activate_object(self);
 	gravity = 0;
 	respawn_timer--;
-	
+
 	if (respawn_timer <= 0)
 	{
 		x = xstart;

@@ -2,7 +2,7 @@ function draw_menu_dropdown_item(string_text_item, x_position, y_position, varia
 {
 	var mouse_get_x = device_mouse_x_to_gui(0);
 	var mouse_get_y = device_mouse_y_to_gui(0);
-	
+
 	#region /* Show Item */
 	if (string_text_item > "")
 	{
@@ -41,9 +41,9 @@ function draw_menu_dropdown_item(string_text_item, x_position, y_position, varia
 		draw_set_valign(fa_middle);
 		scr_draw_text_outlined(x_position + 277, y_position + 13 + (28 * item_number), string(string_text_item), global.default_text_size * 0.75, c_white, c_black, 1);
 		#endregion /* Text inside the menu button END */
-		
+
 	}
 	#endregion /* Show Item END */
-	
+
 	return(variable_to_change);
 }

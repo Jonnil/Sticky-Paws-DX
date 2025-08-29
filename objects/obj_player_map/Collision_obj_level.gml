@@ -29,7 +29,7 @@ if (can_enter_level_automatically)
 	{
 		if (other.clear_rate == "enter" || other.clear_rate == "clear")
 		{
-			
+
 			if (brand_new_file)
 			{
 				if (music_map != noone)
@@ -46,7 +46,7 @@ if (can_enter_level_automatically)
 					}
 				}
 			}
-			
+
 			#region /* Save Player Position */
 			x = other.x;
 			y = other.y;
@@ -56,7 +56,7 @@ if (can_enter_level_automatically)
 			ini_write_real("Player", "brand_new_file", false);
 			ini_close(); /* Don't commit the save data on Switch, this is only temporary! */
 			#endregion /* Save Player Position END */
-			
+
 			can_move = false;
 			delay = 0;
 			entering_level = true;
@@ -67,7 +67,7 @@ if (can_enter_level_automatically)
 			global.lives_until_assist = other.lives_until_assist;
 			global.spikes_emerge_time = 0;
 			score = 0;
-			
+
 			with(other)
 			{
 				if (checkpoint_x > 0 || checkpoint_y > 0)
@@ -108,7 +108,7 @@ if (key_b_pressed)
 		{
 			alarm[0] = 1;
 		}
-		
+
 		#region /* Save Player Position */
 		x = other.x;
 		y = other.y;
@@ -118,7 +118,7 @@ if (key_b_pressed)
 		ini_write_real("Player", "brand_new_file", false);
 		ini_close(); /* Don't commit the save data on Switch, this is only temporary! */
 		#endregion /* Save Player Position END */
-		
+
 		if (global.character_select_in_this_menu == "main_game")
 		{
 			var level_name = string(ds_list_find_value(global.all_loaded_main_levels, global.select_level_index));

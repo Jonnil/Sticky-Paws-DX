@@ -16,7 +16,7 @@ if (other.vspeed > 0)
 		}
 		else
 		{
-			hp --;
+			hp--;
 			other.ground_pound = false;
 			other.can_ground_pound = false;
 			draw_xscale = 1.25;

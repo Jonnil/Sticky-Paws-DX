@@ -1,7 +1,7 @@
 function scr_menu_navigation_with_joystick_delay()
 {
 	var max_navigation_speed = 50;
-	
+
 	#region /* Menu navigation with joystick or keyboard (This code must come after all menu navigation code) */
 	if (gamepad_axis_value(global.player_slot[1], gp_axislv) < -0.3)
 	|| (gamepad_axis_value(global.player_slot[1], gp_axislv) > +0.3)
@@ -35,13 +35,13 @@ function scr_menu_navigation_with_joystick_delay()
 		}
 	}
 	#endregion /* Menu navigation with joystick or keyboard (This code must come after all menu navigation code) END */
-	
+
 	if (menu_joystick_delay > 0)
 	{
-		menu_joystick_delay --;
+		menu_joystick_delay--;
 	}
 	global.menu_navigation_speed = clamp(global.menu_navigation_speed, 10, max_navigation_speed);
-	
+
 	#region /* Reset back to 0 */
 	if (gamepad_axis_value(global.player_slot[1], gp_axislv) == 0)
 	&& (gamepad_axis_value(global.player_slot[1], gp_axislh) == 0)
@@ -64,5 +64,5 @@ function scr_menu_navigation_with_joystick_delay()
 		menu_joystick_delay = 0;
 	}
 	#endregion /* Reset back to 0 END */
-	
+
 }

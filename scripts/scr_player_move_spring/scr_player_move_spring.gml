@@ -1,10 +1,10 @@
 function scr_player_move_spring()
 {
-	
+
 	#region /* Spring */
 	if (move_towards_spring_endpoint) {
 		move_towards_point(spring_endpoint_x, spring_endpoint_y, 20);
-		
+
 		if (instance_exists(obj_spring))
 		&& (point_distance(
 		spring_endpoint_x,
@@ -32,7 +32,7 @@ function scr_player_move_spring()
 				spring_endpoint_y = 0;
 			}
 		}
-		
+
 		if (speed <= 1) /* If player isn't moving when bouncing on spring, something wrong probably happened, cancel moving towards spring endpoint */
 		|| (y <= camera_get_view_y(view_camera[view_current]) - 64) /* If you are being sprung outside the view, cancel moving towards spring endpoint*/
 		|| (hspeed < 0 && x <= camera_get_view_x(view_camera[view_current]))
@@ -42,7 +42,7 @@ function scr_player_move_spring()
 			spring_endpoint_y = 0;
 		}
 	}
-	
+
 	if (spring) {
 		if (spring_animation == 0) {
 			if (image_index > image_number - 1 && vspeed >= 0) {
@@ -93,7 +93,7 @@ function scr_player_move_spring()
 				spring_animation = 0;
 			}
 		}
-		
+
 		#region /* Make the cahracter face wherever you're going */
 		if (spring_twist_sprite) {
 			if (hold_item_in_hands == "") {
@@ -104,9 +104,9 @@ function scr_player_move_spring()
 			}
 		}
 		#endregion /* Make the cahracter face wherever you're going END */
-		
-		star_index ++;
-		
+
+		star_index++;
+
 		if (star_index == 5)
 		{
 			effect_create_above(
@@ -118,9 +118,9 @@ function scr_player_move_spring()
 			);
 			star_index = 0;
 		}
-		
+
 		image_speed = 0.5;
 	}
 	#endregion /* Spring END */
-	
+
 }

@@ -35,19 +35,19 @@ if (which_grayscale_method != "Noone")
 	shader_set(shd_greyscale);
 	switch (which_grayscale_method)
 	{
-	    case "Max Color":
-	        shader_set_uniform_f(which_shader_to_use,0);
-	        break;
+		case "Max Color":
+			shader_set_uniform_f(which_shader_to_use,0);
+			break;
 		case "Relative Luminance":
-	        shader_set_uniform_f(which_shader_to_use,1);
-	        break;
+			shader_set_uniform_f(which_shader_to_use,1);
+			break;
 		case "Average Color":
-	        shader_set_uniform_f(which_shader_to_use,2);
-	        break;
+			shader_set_uniform_f(which_shader_to_use,2);
+			break;
 		case "Average of the Min and Max":
-	        shader_set_uniform_f(which_shader_to_use,3);
-	        break;	
-    
+			shader_set_uniform_f(which_shader_to_use,3);
+			break;
+
 	}
 
 	draw_surface(application_surface, 0, 0);

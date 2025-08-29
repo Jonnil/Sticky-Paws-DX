@@ -1,6 +1,6 @@
 function scr_player_move_restart()
 {
-	
+
 	#region /* Restart Level */
 	var quick_restart = false;
 	if (controller_connected)
@@ -45,7 +45,7 @@ function scr_player_move_restart()
 		global.timeattack_realmillisecond = 0; /* Reset timer back to zero */
 		global.timeattack_millisecond = 0;
 		global.timeattack_second = 0;
-		global.timeattack_minute = 0;	
+		global.timeattack_minute = 0;
 		score = 0;
 		for(var i = 1; i <= global.max_players + 1; i += 1)
 		{
@@ -54,12 +54,12 @@ function scr_player_move_restart()
 		room_restart();
 	}
 	#endregion /* Restart Level END */
-	
+
 }
 
 function scr_player_move_quit()
 {
-	
+
 	#region /* Quit Level */
 	if (global.quit_level)
 	{
@@ -70,12 +70,12 @@ function scr_player_move_quit()
 		global.timeattack_realmillisecond = 0; /* Reset timer back to zero */
 		global.timeattack_millisecond = 0;
 		global.timeattack_second = 0;
-		global.timeattack_minute = 0;	
+		global.timeattack_minute = 0;
 		score = 0;
 		scr_save_level();
 		if (global.quit_to_world || global.quit_to_title)
 		{
-			
+
 			#region /* Player availability check. These variables control player availability */
 			/* If certain players are not playing the level anymore, make them disconnect until they join manually again */
 			for(var i = 1; i <= global.max_players; i += 1)
@@ -87,7 +87,7 @@ function scr_player_move_quit()
 				gamepad_set_vibration(i - 1, 0, 0);
 			}
 			#endregion /* Player availability check. These variables control player availability END */
-			
+
 			room_goto(global.quit_to_world ? rm_world : rm_title); /* If player chose to quit to map, then go to world map, otherwise go to title screen */
 			global.quit_level = false;
 			global.quit_to_world = false;
@@ -95,5 +95,5 @@ function scr_player_move_quit()
 		}
 	}
 	#endregion /* Quit Level END */
-	
+
 }

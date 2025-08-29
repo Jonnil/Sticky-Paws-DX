@@ -17,7 +17,7 @@ if (global.character_select_in_this_menu == "main_game")
 	{
 		ini_open(global.use_temp_or_working + "custom_levels/" + string(global.level_name) + "/data/level_information.ini");
 	}
-	
+
 	if (ini_key_exists("info", "level_end_x"))
 	{
 		x = ini_read_real("info", "level_end_x", 0);
@@ -26,6 +26,6 @@ if (global.character_select_in_this_menu == "main_game")
 	{
 		y = ini_read_real("info", "level_end_y", 0);
 	}
-	
+
 	ini_close(); /* Don't commit the save data on Switch, this is only temporary! */
 }

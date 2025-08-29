@@ -34,16 +34,16 @@ function scr_size_place_object(xx, yy, place_size_number, can_place_object_angle
 					global.part_limit_entity_text_alpha = 3;
 				}
 			}
-			
+
 			// Place the object
 			obj_leveleditor.placing_object = 1;
 			var inst = instance_create_depth(x + xx, y + yy, 0, obj_leveleditor_placed_object);
 			inst.place_object_angle = can_place_object_angle;
 			inst.object = obj_leveleditor.place_object;
 			inst.placed_for_the_first_time = true;
-			
+
 			scr_when_placing_on_difficulty_layer(inst);
-			
+
 			audio_sound_pitch(snd_leveleditor_place_object, random_range(0.9, 1.1));
 			scr_audio_play(snd_leveleditor_place_object, volume_source.sound);
 		}

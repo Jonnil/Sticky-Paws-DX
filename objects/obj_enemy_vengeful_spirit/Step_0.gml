@@ -4,9 +4,9 @@ if (!die)
 	xx = lerp(xx, instance_nearest(x, y, obj_player).x, 0.1);
 	yy = lerp(yy, instance_nearest(x, y, obj_player).y, 0.1);
 	speed = lerp(speed, 3, 0.01);
-	
+
 	move_towards_point(xx, yy - scr_wave(-10, +10), speed);
-	
+
 	if (hspeed < 0)
 	{
 		image_xscale = -1;

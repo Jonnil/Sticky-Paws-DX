@@ -164,11 +164,11 @@ if (instance_exists(obj_leveleditor))
 
 if (menu_delay > 0)
 {
-	menu_delay --;
+	menu_delay--;
 }
 if (menu_joystick_delay > 0)
 {
-	menu_joystick_delay --;
+	menu_joystick_delay--;
 }
 
 if (show_copied_text > 0)

@@ -1,6 +1,6 @@
 function scr_player_move_dive()
 {
-	
+
 	#region /* Dive */
 	if (allow_dive)
 	&& (can_move)
@@ -57,7 +57,7 @@ function scr_player_move_dive()
 			{
 				vspeed = 0;
 			}
-					
+
 			#region /* Choose direction to dive */
 			if (key_left_hold)
 			&& (!key_right_hold)
@@ -87,7 +87,7 @@ function scr_player_move_dive()
 				image_xscale = +1;
 			}
 			#endregion /* Choose direction to dive */
-					
+
 			ground_pound = false;
 			can_ground_pound = false;
 			scr_audio_play(snd_dive, volume_source.sound);
@@ -119,7 +119,7 @@ function scr_player_move_dive()
 			{
 				hspeed = 0;
 			}
-			
+
 			#region /* Propel the player forward in the direction the player is facing */
 			if (image_xscale < 0)
 			{
@@ -153,7 +153,7 @@ function scr_player_move_dive()
 				}
 			}
 			#endregion /* Propel the player forward in the direction the player is facing END */
-			
+
 			#region /* If player lands on ground when diving, stop diving */
 			if (on_ground)
 			{
@@ -176,7 +176,7 @@ function scr_player_move_dive()
 				crouch = false;
 			}
 			#endregion /* If player lands in water when diving, stop diving END */
-			
+
 			#region /* Cancel dive (only when you have enabled dive canceling in settings) */
 			if (cancel_dive_by_jump_or_dive)
 			{
@@ -199,9 +199,9 @@ function scr_player_move_dive()
 				}
 			}
 			#endregion /* Cancel dive (only when you have enabled dive canceling in settings) END */
-			
+
 		}
 	}
 	#endregion /* Dive END */
-	
+
 }

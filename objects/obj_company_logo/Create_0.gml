@@ -38,17 +38,17 @@ if (file_exists("whats_new.txt"))
 {
 	/* Open the file for reading */
 	var file = file_text_open_read("whats_new.txt");
-	
+
 	/* Loop through each line until the end of the file */
 	while (!file_text_eof(file))
 	{
 		/* Read a line and append it to the "global.whats_new" variable */
 		global.whats_new += file_text_read_string(file) + "\n";
-		
+
 		/* Move to the next line */
 		file_text_readln(file);
 	}
-	
+
 	/* Close the file */
 	file_text_close(file);
 }
@@ -96,7 +96,7 @@ global.switch_logged_in = noone;
 #region /* If you're playing on console, then some things should not show up that is for PC */
 if (os_type == os_switch)
 {
-	
+
 	#region /* Need to set these Switch specific functions */
 	var switch_controller_style = switch_controller_handheld | switch_controller_joycon_left | switch_controller_joycon_right | switch_controller_pro_controller | switch_controller_joycon_dual;
 	switch_controller_set_supported_styles(switch_controller_style);
@@ -104,16 +104,16 @@ if (os_type == os_switch)
 	switch_controller_support_set_player_min(1);
 	switch_controller_support_set_player_max(global.max_players);
 	#endregion /* Need to set these Switch specific functions END */
-	
+
 	/* If free communication is disabled, you shouldn't be able to upload or download custom content */
 	/* If free communication is disabled, you shouldn't even see the buttons for going online */
 	/* But if switch_accounts_network_service_available is false, you should be able to see the buttons for going online, but stop you from going online and instead show a notification telling you to link a Switch Account before proceeding */
 	/* Free communication is basically what determines if you are using parental controls or not */
 	global.free_communication_available = switch_free_communication_available();
-	
+
 	global.can_load_photographic_images = false; /* It's against Switch guidelines to be able to view photographic images in UGC */
 	global.show_prompt_when_changing_to_gamepad = false;
-	global.show_prompt_when_changing_to_keyboard_and_mouse = false;	
+	global.show_prompt_when_changing_to_keyboard_and_mouse = false;
 	global.enable_open_custom_folder = false; /* Enable the option to open custom folders in the game */
 	global.enable_option_for_pc = false; /* Enable if options related to gamepad, but only intended for when playing with gamepad on PC should show up */
 	global.enable_keyboard_and_mouse_settings = false; /* Enable Keyboard and Mouse settings */
@@ -240,9 +240,9 @@ if (GM_build_type == "run")
 	global.debug_screen = false;
 	global.debug_force_network_error = false;
 	//show_debug_log(true);
-	
-	
-	
+
+
+
 	show_debug_message("[Debug] GM_build_type is 'run'. Enabling development debug toggles.");
 }
 else
@@ -506,7 +506,7 @@ global.players_can_collide = false;
 global.player_has_entered_goal = false;
 global.pause_room = noone;
 global.pause_player = 0;
-global.playergame = 0; /* This variable will match the amount of player_can_play that are set to true */ 
+global.playergame = 0; /* This variable will match the amount of player_can_play that are set to true */
 global.basic_collectibles = 0;
 global.level_clear_rate = noone;
 global.current_level_clear_rate = "";

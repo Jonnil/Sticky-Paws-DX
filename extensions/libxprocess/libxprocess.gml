@@ -1,6 +1,6 @@
 #define libxprocess_init
 globalvar fd_stdin, fd_stdout, pid_stdin, pid_stdout, fd_enable;
-fd_stdin  = -1; 
+fd_stdin  = -1;
 fd_stdout = -1;
 fd_enable = false;
 
@@ -8,10 +8,10 @@ fd_enable = false;
 prog = argument0; arg = argument1;
 prog = string_replace_all(prog, @'\', @'\\');
 prog = string_replace_all(prog, @'"', @'\"');
-if (os_type == os_windows && 
+if (os_type == os_windows &&
   (string_lower(filename_name(prog)) == "cmd" ||
-  string_lower(filename_name(prog)) == "cmd.exe")) 
-{ prog = "cmd.exe"; arg = "/c " + arg; } 
+  string_lower(filename_name(prog)) == "cmd.exe"))
+{ prog = "cmd.exe"; arg = "/c " + arg; }
 prog = @'"' + prog + @'"';
 pid = ProcessExecuteAsync(prog + " " + arg);
 if (!fd_enable) {

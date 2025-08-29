@@ -23,10 +23,10 @@ y = camera_get_view_y(view_camera[view_current]) + camera_get_view_height(view_c
 
 if (mouse_check_button(mb_any))
 {
-	
+
 	var temp_dir = point_direction(x, y, device_mouse_x(temp_joystick), device_mouse_y(temp_joystick));
 	var_direction = temp_dir;
-	
+
 	#region /* Direction */
 	if (point_distance(x, y, device_mouse_x(temp_joystick), device_mouse_y(temp_joystick)) < (base_size * 2) * var_screen_size)
 	{
@@ -38,13 +38,13 @@ if (mouse_check_button(mb_any))
 		var_y_dir_gui = device_mouse_y(temp_joystick) - y;
 	}
 	#endregion /* Direction END */
-	
+
 	#region /* Move in Level */
 	if (var_joystick_active)
 	&& (point_distance(x, y, device_mouse_x(temp_joystick), device_mouse_y(temp_joystick)) > 10)
 	&& (instance_exists(obj_player))
 	{
-		
+
 		#region /* Left */
 		if (point_in_triangle(device_mouse_x(temp_joystick), device_mouse_y(temp_joystick), x, y, x - 9000, y - 9000, x - 9000, y + 9000))
 		{
@@ -55,7 +55,7 @@ if (mouse_check_button(mb_any))
 			obj_player.active_left = false;
 		}
 		#endregion /* Left END */
-		
+
 		#region /* Right */
 		if (point_in_triangle(device_mouse_x(temp_joystick), device_mouse_y(temp_joystick), x, y, x + 9000, y - 9000, x + 9000, y + 9000))
 		{
@@ -66,7 +66,7 @@ if (mouse_check_button(mb_any))
 			obj_player.active_right = false;
 		}
 		#endregion /* Right END */
-		
+
 		#region /* Up */
 		if (point_in_triangle(device_mouse_x(temp_joystick), device_mouse_y(temp_joystick), x, y, x - 9000, y - 9000, x + 9000, y - 9000))
 		{
@@ -77,7 +77,7 @@ if (mouse_check_button(mb_any))
 			obj_player.active_up = false;
 		}
 		#endregion /* Up END */
-		
+
 		#region /* Down */
 		if (point_in_triangle(device_mouse_x(temp_joystick), device_mouse_y(temp_joystick), x, y, x - 9000, y + 9000, x + 9000, y + 9000))
 		{
@@ -88,7 +88,7 @@ if (mouse_check_button(mb_any))
 			obj_player.active_down = false;
 		}
 		#endregion /* Down END */
-		
+
 	}
 	else
 	if (instance_exists(obj_player))
@@ -99,13 +99,13 @@ if (mouse_check_button(mb_any))
 		obj_player.active_down = false;
 	}
 	#endregion /* Move in Level END */
-	
+
 	#region /* Move in Map */
 	if (var_joystick_active)
 	&& (point_distance(x, y, device_mouse_x(temp_joystick), device_mouse_y(temp_joystick)) > 10)
 	&& (instance_exists(obj_player_map))
 	{
-		
+
 		#region /* Left */
 		if (point_in_triangle(device_mouse_x(temp_joystick), device_mouse_y(temp_joystick), x, y, x - 9000, y - 9000, x - 9000, y + 9000))
 		{
@@ -116,7 +116,7 @@ if (mouse_check_button(mb_any))
 			obj_player_map.active_left = false;
 		}
 		#endregion /* Left END */
-		
+
 		#region /* Right */
 		if (point_in_triangle(device_mouse_x(temp_joystick), device_mouse_y(temp_joystick), x, y, x + 9000, y - 9000, x + 9000, y + 9000))
 		{
@@ -127,7 +127,7 @@ if (mouse_check_button(mb_any))
 			obj_player_map.active_right = false;
 		}
 		#endregion /* Right END */
-		
+
 		#region /* Up */
 		if (point_in_triangle(device_mouse_x(temp_joystick), device_mouse_y(temp_joystick), x, y, x - 9000, y - 9000, x + 9000, y - 9000))
 		{
@@ -138,7 +138,7 @@ if (mouse_check_button(mb_any))
 			obj_player_map.active_up = false;
 		}
 		#endregion /* Up END */
-		
+
 		#region /* Down */
 		if (point_in_triangle(device_mouse_x(temp_joystick), device_mouse_y(temp_joystick), x, y, x - 9000, y + 9000, x + 9000, y + 9000))
 		{
@@ -149,7 +149,7 @@ if (mouse_check_button(mb_any))
 			obj_player_map.active_down = false;
 		}
 		#endregion /* Down END */
-		
+
 	}
 	else
 	if (instance_exists(obj_player_map))
@@ -160,7 +160,7 @@ if (mouse_check_button(mb_any))
 		obj_player_map.active_down = false;
 	}
 	#endregion /* Move in Map END */
-	
+
 	if (var_joystick_active)
 	&& (point_distance(x, y, device_mouse_x(temp_joystick), device_mouse_y(temp_joystick)) > base_size * var_screen_size)
 	{

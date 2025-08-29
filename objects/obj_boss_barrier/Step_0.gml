@@ -5,10 +5,10 @@ if (!instance_exists(obj_boss))
 {
 	if (!place_meeting(x, y - 1, obj_boss_barrier))
 	{
-		time ++;
+		time++;
 		if (time > 5)
 		{
-			
+
 			#region /* Create broken boss barrier particles */
 			with(instance_create_depth(x, y, 0, obj_brick_particle))
 			{
@@ -36,7 +36,7 @@ if (!instance_exists(obj_boss))
 			}
 			effect_create_above(ef_smoke, x, y, 1, c_white);
 			#endregion /* Create broken boss barrier particles END */
-			
+
 			#region /* Destroy emerging spikes sitting on the boss barrier */
 			if (place_meeting(x - 1, y, obj_spikes_emerge))
 			{
@@ -67,7 +67,7 @@ if (!instance_exists(obj_boss))
 				}
 			}
 			#endregion /* Destroy emerging spikes sitting on the boss barrier END */
-			
+
 			instance_destroy();
 		}
 	}

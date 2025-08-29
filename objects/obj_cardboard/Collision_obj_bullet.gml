@@ -10,7 +10,7 @@ if (instance_exists(obj_bullet))
 		alarm[1] = 1; /* Break cardboard */
 		break_cardboard_source_x = other.x;
 		break_cardboard_source_speed = other.speed;
-		
+
 		if (other.x < x)
 		{
 			with(other)

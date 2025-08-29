@@ -9,5 +9,5 @@ else
 
 if (delay > 0)
 {
-	delay --;
+	delay--;
 }

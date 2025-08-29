@@ -8,10 +8,10 @@ if (menu_cursor_index > 4)
 
 if (menu_delay > 0)
 {
-	menu_delay --;
+	menu_delay--;
 }
 
-count ++;
+count++;
 
 #region /* Check if the last player just died */
 if (count == 1)
@@ -80,7 +80,7 @@ if (y > camera_get_view_y(view_camera[view_current]) + camera_get_view_height(vi
 			score = 0;
 			scr_save_level();
 			audio_stop_all();
-			
+
 			#region /* Go to level editor if you die in level editor */
 			if (room == rm_leveleditor)
 			{
@@ -88,7 +88,7 @@ if (y > camera_get_view_y(view_camera[view_current]) + camera_get_view_height(vi
 				room_restart();
 			}
 			#endregion /* Go to level editor if you die in level editor END */
-			
+
 		}
 	}
 	else
@@ -99,7 +99,7 @@ if (y > camera_get_view_y(view_camera[view_current]) + camera_get_view_height(vi
 			score = 0;
 			scr_save_level();
 			audio_stop_all();
-			
+
 			#region /* Go to level editor if you die in level editor */
 			if (room == rm_leveleditor)
 			{
@@ -107,7 +107,7 @@ if (y > camera_get_view_y(view_camera[view_current]) + camera_get_view_height(vi
 				room_restart();
 			}
 			#endregion /* Go to level editor if you die in level editor END */
-			
+
 		}
 	}
 }
@@ -117,7 +117,7 @@ if (y > camera_get_view_y(view_camera[view_current]) + camera_get_view_height(vi
 	if (lives >= 1)
 	&& (instance_exists(obj_player))
 	{
-		
+
 		#region /* Re-enable the players for the camera */
 		if (instance_exists(obj_camera))
 		{
@@ -132,7 +132,7 @@ if (y > camera_get_view_y(view_camera[view_current]) + camera_get_view_height(vi
 			}
 		}
 		#endregion /* Re-enable the players for the camera END */
-		
+
 		instance_destroy();
 	}
 }
@@ -191,21 +191,21 @@ if (global.restart_level)
 		global.checkpoint_x = 0;
 		global.checkpoint_y = 0;
 	}
-	
+
 	global.restart_level = false;
 	global.quit_level = false;
 	audio_stop_all();
 	room_persistent = false; /* Turn OFF Room Persistency */
-	
+
 	#region /* Reset timer back to zero */
 	global.timeattack_realmillisecond = 0;
 	global.timeattack_millisecond = 0;
 	global.timeattack_second = 0;
-	global.timeattack_minute = 0;	
+	global.timeattack_minute = 0;
 	#endregion /* Reset timer back to zero END */
-	
+
 	score = 0;
-	
+
 	if (os_type == os_switch)
 	{
 		switch_controller_vibrate_hd(global.player_slot[player], 0, 0, 0, 0, 0);
@@ -225,18 +225,18 @@ if (global.quit_level)
 	global.doing_clear_check_character = false; /* If you exit the level manually , you no longer are doing character clear check */
 	audio_stop_all();
 	room_persistent = false; /* Turn OFF Room Persistency */
-	
+
 	#region /* Reset timer back to zero */
 	global.timeattack_realmillisecond = 0;
 	global.timeattack_millisecond = 0;
 	global.timeattack_second = 0;
-	global.timeattack_minute = 0;	
+	global.timeattack_minute = 0;
 	#endregion /* Reset timer back to zero END */
-	
+
 	score = 0;
-	
+
 	scr_save_level();
-	
+
 	if (global.quit_to_world || global.quit_to_title)
 	{
 		if (os_type == os_switch)

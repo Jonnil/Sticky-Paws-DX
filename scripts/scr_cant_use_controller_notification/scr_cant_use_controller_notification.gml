@@ -7,7 +7,7 @@ function scr_cant_use_controller_notification()
 		var icon_offset_width = 150;
 		player_display_x[i] = normalized_position * icon_offset_width - (icon_offset_width * 0.5); /* Now icon_offset array contains evenly distributed positions based on the screen width */
 	}
-	
+
 	if (!variable_instance_exists(self, "show_player_controller_cant_use"))
 	{
 		for(var p = 1; p <= global.max_players; p += 1)
@@ -16,12 +16,12 @@ function scr_cant_use_controller_notification()
 			show_player_controller_cant_use_y[p] = display_get_gui_height() * 2;
 		}
 	}
-	
+
 	for (var i = 1; i <= global.max_players; i++)
 	{
 		if (gamepad_is_connected(i - 1))
 		{
-			
+
 			#region /* Detect when a player is trying to use the controller when they can't */
 			if (global.pause_player != i - 1)
 			&& (gamepad_is_connected(global.player_slot[i]))
@@ -35,19 +35,19 @@ function scr_cant_use_controller_notification()
 				}
 			}
 			#endregion /* Detect when a player is trying to use the controller when they can't END */
-			
+
 			#region /* Hide and show controllers that can't be used */
 			if (show_player_controller_cant_use[i] > 0)
 			{
 				show_player_controller_cant_use_y[i] = lerp(show_player_controller_cant_use_y[i], display_get_gui_height() - 32, 0.1);
-				show_player_controller_cant_use[i] --;
+				show_player_controller_cant_use[i]--;
 			}
 			else
 			{
 				show_player_controller_cant_use_y[i] = lerp(show_player_controller_cant_use_y[i], display_get_gui_height() * 2, 0.1);
 			}
 			#endregion /* Hide and show controllers that can't be used END */
-			
+
 			#region /* Draw the controllers that can't be used */
 			if (show_player_controller_cant_use_y[i] < display_get_gui_height() + 64)
 			{
@@ -61,11 +61,11 @@ function scr_cant_use_controller_notification()
 					global.player_color[i],
 					1
 				);
-				
+
 				draw_sprite_ext(spr_icon_gamepad, 0, display_get_gui_width() * 0.5 + player_display_x[i - 1], show_player_controller_cant_use_y[i], 1, 1, 0, global.player_color[i], 1);
 			}
 			#endregion /* Draw the controllers that can't be used END */
-			
+
 		}
 	}
 }

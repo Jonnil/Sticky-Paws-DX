@@ -4,10 +4,10 @@
 function scr_check_daily_translation_flush()
 {
 	static sent_daily_translation_flush = false;
-	
+
 	if (!sent_daily_translation_flush)
 	{
-		if (global.online_enabled 
+		if (global.online_enabled
 		&& os_is_network_connected(network_connect_passive))
 		{
 			/* Check a flag to disable file logging (e.g., on Nintendo Switch) */
@@ -20,7 +20,7 @@ function scr_check_daily_translation_flush()
 					ini_open(game_save_id + "save_file/config.ini");
 					global.last_missing_flush_time = ini_read_real("translation_sync", "last_flush_time", 0);
 					ini_close();
-					
+
 					/* If still zero, set to current time and store it */
 					if (global.last_missing_flush_time == 0)
 					{
@@ -30,10 +30,10 @@ function scr_check_daily_translation_flush()
 						ini_close();
 					}
 				}
-				
+
 				/* Calculate time elapsed in seconds */
 				var diff = date_second_span(global.last_missing_flush_time, date_current_datetime());
-				
+
 				/* If 24 hours (86400 seconds) have passed and we have keys in the queue, flush them */
 				if (diff >= 86400
 				&& ds_list_size(global.missing_translation_queue) > 0)

@@ -6,7 +6,7 @@ if (touch_player == 0)
 		x += lengthdir_x(0.5, point_direction(other.x, other.y, x, y));
 		y += lengthdir_y(0.5, point_direction(other.x, other.y, x, y));
 	}
-	
+
 	#region /* Change direction when hitting a wall */
 	if (speed > 0)
 	{
@@ -30,12 +30,12 @@ if (touch_player == 0)
 		}
 	}
 	#endregion /* Change direction when hitting a wall END */
-	
+
 	#region /* If it's inside the wall, destroy itself */
 	if (position_meeting(x, y, other))
 	{
 		instance_destroy();
 	}
 	#endregion /* If it's inside the wall, destroy itself END */
-	
+
 }

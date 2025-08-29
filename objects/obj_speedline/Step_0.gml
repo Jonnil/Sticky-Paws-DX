@@ -2,12 +2,12 @@
 /// In obj_player Step Event, have this code:
 /// if (image_alpha > 0)
 /// {
-/// 	if (invincible_timer >= 2)
-/// 	|| (vspeed < 0)
-/// 	|| (vspeed > 0)
-/// 	{
-/// 		instance_create_depth(xx, yy, 0, obj_speedline);
-/// 	}
+///     if (invincible_timer >= 2)
+///     || (vspeed < 0)
+///     || (vspeed > 0)
+///     {
+///         instance_create_depth(xx, yy, 0, obj_speedline);
+///     }
 /// }
 image_alpha -= 0.02;
 

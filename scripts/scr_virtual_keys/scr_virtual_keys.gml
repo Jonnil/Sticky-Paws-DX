@@ -1,6 +1,6 @@
 function scr_virtual_keys()
 {
-	
+
 	#region /* Virtual Key, iOS and Android */
 	if (global.show_virtual_controls)
 	{
@@ -28,12 +28,12 @@ function scr_virtual_keys()
 		var mobile_key_zoom_in_x = get_window_width * 0.5 + 400;
 		var mobile_key_zoom_in_y = + 100;
 		var mobile_key_extra_deadzone = 50;
-		
+
 		if (instance_exists(obj_player_map))
 		&& (obj_player_map.iris_xscale > 0.25)
 		&& (obj_player_map.iris_yscale > 0.25)
 		&& (!instance_exists(obj_title))
-		
+
 		|| (variable_instance_exists(self, "iris_xscale"))
 		&& (variable_instance_exists(self, "iris_yscale"))
 		&& (iris_xscale > 0.25)
@@ -45,14 +45,14 @@ function scr_virtual_keys()
 			|| (instance_exists(obj_player_map))
 			&& (obj_player_map.can_move)
 			{
-				
+
 				#region /* Joystick */
 				if (enable_joystick)
 				&& (!instance_exists(obj_virtual_joystick))
 				{
 					instance_create_depth(x, y, 0, obj_virtual_joystick);
 				}
-				
+
 				if (instance_exists(obj_virtual_joystick))
 				{
 					draw_sprite_ext(spr_virtual_joystick_base, 0, obj_virtual_joystick.xx, obj_virtual_joystick.yy, obj_virtual_joystick.var_screen_size, obj_virtual_joystick.var_screen_size, 0, c_white, 0.5);
@@ -98,7 +98,7 @@ function scr_virtual_keys()
 					draw_sprite_ext(spr_virtual_joystick_stick, 0, obj_virtual_joystick.xx + obj_virtual_joystick.var_x_dir_gui, obj_virtual_joystick.yy + obj_virtual_joystick.var_y_dir_gui, obj_virtual_joystick.var_screen_size, obj_virtual_joystick.var_screen_size, 0, c_white, 0.5);
 				}
 				#endregion /* Joystick END */
-				
+
 				#region /* Virtual D-pad */
 				if (!enable_joystick)
 				{
@@ -108,14 +108,14 @@ function scr_virtual_keys()
 					scr_initialize_virtual_button(global.player_[inp.key][1][1][action.right], global.player_[inp.key][1][2][action.right], mobile_key_right_x, mobile_key_right_y, spr_virtual_key_direction, mobile_key_extra_deadzone, 0);
 				}
 				#endregion /* Virtual D-pad END */
-				
+
 				#region /* Virtual key add */
 				scr_initialize_virtual_button(global.player_[inp.key][1][1][action.jump], global.player_[inp.key][1][2][action.jump], mobile_key_jump_x, mobile_key_jump_y, spr_virtual_key_jump, mobile_key_extra_deadzone);
 				scr_initialize_virtual_button(global.player_[inp.key][1][1][action.crouch], global.player_[inp.key][1][2][action.crouch], mobile_key_crouch_x, mobile_key_crouch_y, spr_virtual_key_crouch, mobile_key_extra_deadzone);
 				scr_initialize_virtual_button(global.player_[inp.key][1][1][action.run], global.player_[inp.key][1][2][action.run], mobile_key_run_x, mobile_key_run_y, spr_noone, mobile_key_extra_deadzone);
 				scr_initialize_virtual_button(global.player_[inp.key][1][1][action.dive], global.player_[inp.key][1][2][action.dive], mobile_key_run_x, mobile_key_run_y, spr_virtual_key_run, mobile_key_extra_deadzone);
 				#endregion /* Virtual key add END */
-				
+
 				#region /* Zoom out virtual key */
 				virtual_key_add(mobile_key_zoom_out_x - 64, mobile_key_zoom_out_y - 64, 128, 128, vk_subtract); /* Virtual key add zoom out */
 				if (keyboard_check(vk_subtract))
@@ -127,7 +127,7 @@ function scr_virtual_keys()
 					draw_sprite_ext(spr_virtual_key_zoom_out, 0, mobile_key_zoom_out_x, mobile_key_zoom_out_y, 2, 2, 0, c_white, 0.5);
 				}
 				#endregion /* Zoom out virtual key END */
-				
+
 				#region /* Zoom in virtual key */
 				virtual_key_add(mobile_key_zoom_in_x - 64, mobile_key_zoom_in_y - 64, 128, 128, vk_add); /* Virtual key add zoom in */
 				if (keyboard_check(vk_add))
@@ -139,10 +139,10 @@ function scr_virtual_keys()
 					draw_sprite_ext(spr_virtual_key_zoom_in, 0, mobile_key_zoom_in_x, mobile_key_zoom_in_y, 2, 2, 0, c_white, 0.5);
 				}
 				#endregion /* Zoom out virtual key END */
-				
+
 			}
 		}
 	}
 	#endregion /* Virtual Key, iOS and Android END */
-	
+
 }

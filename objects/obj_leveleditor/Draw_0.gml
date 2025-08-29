@@ -20,7 +20,7 @@ if (!global.actually_play_edited_level)
 				draw_sprite_ext(spr_rotate_arrow, image_index, x, y, draw_rotate_arrow_scale, draw_rotate_arrow_scale, instance_nearest(x, y, obj_leveleditor_placed_object).draw_angle, image_blend, image_alpha);
 		}
 	}
-	
+
 	#region /* Draw where player will do playtesting from */
 	if (sprite_exists(global.sprite_player_stand[4])) /* Display Player 4 behind Player 3 */
 	&& (quit_level_editor == 0)
@@ -87,16 +87,16 @@ if (!global.actually_play_edited_level)
 		draw_sprite_ext(global.sprite_player_stand[1], 0, sprite_player_stand_x, sprite_player_stand_y, player_default_xscale[1], player_default_yscale[1], 0, c_white, 0.5);
 	}
 	#endregion /* Draw where player will do playtesting from END */
-	
+
 	draw_rectangle_color(0, 0, obj_level_width.x - 16, obj_level_height.y -16, c_red, c_red, c_red, c_red, true);  /* Border around entire level */
-	
+
 	#region /* Draw Grid */
 	if (quit_level_editor <= 0)
 	&& (show_grid)
 	{
 		var grid_offset = 16; /* If the grid should have an offset from the top_left corner of the screen, normally this should be 16 */
 		draw_set_alpha(0.5);
-		
+
 		#region /* Draw Horizontal Line in the Grid */
 		for(var i = 0; i < obj_level_width.x; i += global.grid_hsnap)
 		{
@@ -104,7 +104,7 @@ if (!global.actually_play_edited_level)
 			draw_line_color(i + grid_offset, - 16 + grid_offset, i + grid_offset, obj_level_height.y + 16 + grid_offset, c_white, c_white);
 		}
 		#endregion /* Draw Horizontal Line in the Grid END */
-		
+
 		#region /* Draw Vertical Line in the Grid */
 		for(var i = 0; i < obj_level_height.y; i += global.grid_vsnap)
 		{
@@ -112,7 +112,7 @@ if (!global.actually_play_edited_level)
 			draw_line_color(- 16 + grid_offset, i + grid_offset, obj_level_width.x + 16 + grid_offset, i + grid_offset, c_white, c_white);
 		}
 		#endregion /* Draw Vertical Line in the Grid END */
-		
+
 		#region /* Draw Horizontal Ruler at the bottom of the screen */
 		draw_rectangle_color(
 		camera_get_view_x(view_camera[view_current]),
@@ -120,9 +120,9 @@ if (!global.actually_play_edited_level)
 		camera_get_view_x(view_camera[view_current]) + camera_get_view_width(view_camera[view_current]),
 		camera_get_view_y(view_camera[view_current]) + camera_get_view_height(view_camera[view_current]),
 		c_yellow, c_yellow, c_yellow, c_yellow, false);
-		
+
 		var ruler_number = 1;
-		
+
 		for(var i = 0; i < camera_get_view_width(view_camera[view_current]); i += global.grid_hsnap)
 		{
 			draw_line_color(
@@ -131,22 +131,22 @@ if (!global.actually_play_edited_level)
 			camera_get_view_x(view_camera[view_current]) + i - 1,
 			camera_get_view_y(view_camera[view_current]) + camera_get_view_height(view_camera[view_current]),
 			c_black, c_black);
-			
+
 			draw_line_color(
 			camera_get_view_x(view_camera[view_current]) + i,
 			camera_get_view_y(view_camera[view_current]) + camera_get_view_height(view_camera[view_current]) - 96,
 			camera_get_view_x(view_camera[view_current]) + i,
 			camera_get_view_y(view_camera[view_current]) + camera_get_view_height(view_camera[view_current]),
 			c_white, c_white);
-			
+
 			scr_draw_text_outlined(
 			camera_get_view_x(view_camera[view_current]) + i + 16,
 			camera_get_view_y(view_camera[view_current]) + camera_get_view_height(view_camera[view_current]) - 80,
 			string(ruler_number), global.default_text_size * 0.6, c_black, c_white, 1);
-			ruler_number ++;
+			ruler_number++;
 		}
 		#endregion /* Draw Horizontal Ruler at the bottom of the screen END */
-		
+
 		#region /* Draw Vertical Ruler at the left of the screen */
 		draw_rectangle_color(
 		camera_get_view_x(view_camera[view_current]),
@@ -154,9 +154,9 @@ if (!global.actually_play_edited_level)
 		camera_get_view_x(view_camera[view_current]) + 32,
 		camera_get_view_y(view_camera[view_current]) + camera_get_view_height(view_camera[view_current]) - 95,
 		c_yellow, c_yellow, c_yellow, c_yellow, false);
-		
+
 		var ruler_number = 1;
-		
+
 		for(var i = 0; i < camera_get_view_height(view_camera[view_current]) - 96; i += global.grid_vsnap)
 		{
 			draw_line_color(
@@ -165,38 +165,38 @@ if (!global.actually_play_edited_level)
 			camera_get_view_x(view_camera[view_current]) + 32,
 			camera_get_view_y(view_camera[view_current]) + i - 1,
 			c_black, c_black);
-			
+
 			draw_line_color(
 			camera_get_view_x(view_camera[view_current]),
 			camera_get_view_y(view_camera[view_current]) + i,
 			camera_get_view_x(view_camera[view_current]) + 32,
 			camera_get_view_y(view_camera[view_current]) + i,
 			c_white, c_white);
-			
+
 			scr_draw_text_outlined(
 			camera_get_view_x(view_camera[view_current]) + 16,
 			camera_get_view_y(view_camera[view_current]) + i + 16,
 			string(ruler_number), global.default_text_size * 0.6, c_black, c_white, 1);
-			ruler_number ++;
+			ruler_number++;
 		}
 		#endregion /* Draw Horizontal Ruler at the bottom of the screen END */
-		
+
 		draw_set_alpha(1);
 	}
-	
+
 	#endregion /* Draw Grid END */
-	
+
 	#region /* Zoom In and Out (Draw red rectangles around the screen when you can't zoom any more) */
 	if (!pause)
 	{
-		
+
 		#region /* Zoom Out */
 		if (zoom_out)
 		{
 			if (cam_width < room_width)
 			&& (cam_height < room_height)
 			{
-				
+
 			}
 			else
 			{
@@ -207,16 +207,16 @@ if (!global.actually_play_edited_level)
 			}
 		}
 		#endregion /* Zoom Out END */
-		
+
 		else
-		
+
 		#region /* Zoom In */
 		if (zoom_in)
 		{
 			if (cam_width > 696)
 			&& (cam_height > 368)
 			{
-				
+
 			}
 			else
 			{
@@ -227,10 +227,10 @@ if (!global.actually_play_edited_level)
 			}
 		}
 		#endregion /* Zoom In END */
-		
+
 	}
 	#endregion /* Zoom In and Out (Draw red rectangles around the screen when you can't zoom any more) END */
-	
+
 	#region /* Select Object Menu */
 	if (quit_level_editor <= 0)
 	{
@@ -240,18 +240,18 @@ if (!global.actually_play_edited_level)
 			draw_sprite_ext(spr_level_ring, 0, view_center_x + select_object_menu_x + 64, cam_y + 64, 1, 1, 0, c_yellow, selected_menu_alpha);
 			draw_sprite_ext(spr_level, 0, view_center_x + select_object_menu_x + 64, cam_y + 64, 1, 1, 0, c_black, selected_menu_alpha);
 			draw_sprite_ext(spr_map_exit, 0, view_center_x + select_object_menu_x + 64 * 2, cam_y + 64, 1, 1, 0, c_white, selected_menu_alpha);
-			draw_sprite_ext(spr_map_turn_right_down, 0,	view_center_x + select_object_menu_x + 64 * 3, cam_y + 64, 1, 1, 0, c_white, selected_menu_alpha);
-			draw_sprite_ext(spr_map_turn_right_down, 0,	view_center_x + select_object_menu_x + 64 * 4, cam_y + 64, 1, 1, 90, c_white, selected_menu_alpha);
-			draw_sprite_ext(spr_map_turn_right_down, 0,	view_center_x + select_object_menu_x + 64 * 5, cam_y + 64, 1, 1, 180, c_white, selected_menu_alpha);
-			draw_sprite_ext(spr_map_turn_right_down, 0,	view_center_x + select_object_menu_x + 64 * 6, cam_y + 64, 1, 1, 270, c_white, selected_menu_alpha);
+			draw_sprite_ext(spr_map_turn_right_down, 0,    view_center_x + select_object_menu_x + 64 * 3, cam_y + 64, 1, 1, 0, c_white, selected_menu_alpha);
+			draw_sprite_ext(spr_map_turn_right_down, 0,    view_center_x + select_object_menu_x + 64 * 4, cam_y + 64, 1, 1, 90, c_white, selected_menu_alpha);
+			draw_sprite_ext(spr_map_turn_right_down, 0,    view_center_x + select_object_menu_x + 64 * 5, cam_y + 64, 1, 1, 180, c_white, selected_menu_alpha);
+			draw_sprite_ext(spr_map_turn_right_down, 0,    view_center_x + select_object_menu_x + 64 * 6, cam_y + 64, 1, 1, 270, c_white, selected_menu_alpha);
 		}
 	}
 	#endregion /* Select Object Menu END */
-	
+
 	#region /* Position the Cursor */
 	if (quit_level_editor <= 0)
 	{
-		
+
 		#region /* Fill Cursor */
 		if (fill_mode)
 		&& (!erase_mode)
@@ -272,9 +272,9 @@ if (!global.actually_play_edited_level)
 			draw_set_alpha(1);
 		}
 		#endregion /* Fill Cursor END */
-		
+
 		else
-		
+
 		#region /* Erase Cursor */
 		if (erase_mode)
 		&& (!scroll_view)
@@ -315,9 +315,9 @@ if (!global.actually_play_edited_level)
 			draw_set_alpha(1);
 		}
 		#endregion /* Erase Cursor END */
-		
+
 		else
-		
+
 		#region /* Default Cursor */
 		if (!scroll_view)
 		&& (!drag_object)
@@ -331,20 +331,20 @@ if (!global.actually_play_edited_level)
 			{
 				draw_sprite_ext(sprite_index, image_index, x, y, 1, 1, image_angle, c_white, 0.2);
 			}
-			
+
 			if (can_make_place_size_bigger)
 			&& (sprite_index >= 0)
 			{
 				if (!place_meeting(x + 32, y, obj_leveleditor_placed_object)) && (obj_leveleditor.place_size >= 1){draw_sprite_ext(sprite_index, image_index, x + 32, y, 1, 1, image_angle, c_white, 0.2);}
 				if (!place_meeting(x + 32, y + 32, obj_leveleditor_placed_object)) && (obj_leveleditor.place_size >= 1){draw_sprite_ext(sprite_index, image_index, x + 32, y + 32, 1, 1, image_angle, c_white, 0.2);}
 				if (!place_meeting(x, y + 32, obj_leveleditor_placed_object)) && (obj_leveleditor.place_size >= 1){draw_sprite_ext(sprite_index, image_index, x, y + 32, 1, 1, image_angle, c_white, 0.2);}
-				
+
 				if (!place_meeting(x + 32, y - 32, obj_leveleditor_placed_object)) && (obj_leveleditor.place_size >= 2){draw_sprite_ext(sprite_index, image_index, x + 32, y - 32, 1, 1, image_angle, c_white, 0.2);}
 				if (!place_meeting(x, y - 32, obj_leveleditor_placed_object)) && (obj_leveleditor.place_size >= 2){draw_sprite_ext(sprite_index, image_index, x, y - 32, 1, 1, image_angle, c_white, 0.2);}
 				if (!place_meeting(x - 32, y - 32, obj_leveleditor_placed_object)) && (obj_leveleditor.place_size >= 2){draw_sprite_ext(sprite_index, image_index, x - 32, y - 32, 1, 1, image_angle, c_white, 0.2);}
 				if (!place_meeting(x - 32, y, obj_leveleditor_placed_object)) && (obj_leveleditor.place_size >= 2){draw_sprite_ext(sprite_index, image_index, x - 32, y, 1, 1, image_angle, c_white, 0.2);}
 				if (!place_meeting(x - 32, y + 32, obj_leveleditor_placed_object)) && (obj_leveleditor.place_size >= 2){draw_sprite_ext(sprite_index, image_index, x - 32, y + 32, 1, 1, image_angle, c_white, 0.2);}
-				
+
 				if (!place_meeting(x + 64, y - 32, obj_leveleditor_placed_object)) && (obj_leveleditor.place_size >= 3){draw_sprite_ext(sprite_index, image_index, x + 64, y - 32, 1, 1, image_angle, c_white, 0.2);}
 				if (!place_meeting(x + 64, y, obj_leveleditor_placed_object)) && (obj_leveleditor.place_size >= 3){draw_sprite_ext(sprite_index, image_index, x + 64, y, 1, 1, image_angle, c_white, 0.2);}
 				if (!place_meeting(x + 64, y + 32, obj_leveleditor_placed_object)) && (obj_leveleditor.place_size >= 3){draw_sprite_ext(sprite_index, image_index, x + 64, y + 32, 1, 1, image_angle, c_white, 0.2);}
@@ -352,7 +352,7 @@ if (!global.actually_play_edited_level)
 				if (!place_meeting(x + 32, y + 64, obj_leveleditor_placed_object)) && (obj_leveleditor.place_size >= 3){draw_sprite_ext(sprite_index, image_index, x + 32, y + 64, 1, 1, image_angle, c_white, 0.2);}
 				if (!place_meeting(x, y + 64, obj_leveleditor_placed_object)) && (obj_leveleditor.place_size >= 3){draw_sprite_ext(sprite_index, image_index, x, y + 64, 1, 1, image_angle, c_white, 0.2);}
 				if (!place_meeting(x - 32, y + 64, obj_leveleditor_placed_object)) && (obj_leveleditor.place_size >= 3){draw_sprite_ext(sprite_index, image_index, x - 32, y + 64, 1, 1, image_angle, c_white, 0.2);}
-				
+
 				if (!place_meeting(x + 64, y - 64, obj_leveleditor_placed_object)) && (obj_leveleditor.place_size >= 4){draw_sprite_ext(sprite_index, image_index, x + 64, y - 64, 1, 1, image_angle, c_white, 0.2);}
 				if (!place_meeting(x + 32, y - 64, obj_leveleditor_placed_object)) && (obj_leveleditor.place_size >= 4){draw_sprite_ext(sprite_index, image_index, x + 32, y - 64, 1, 1, image_angle, c_white, 0.2);}
 				if (!place_meeting(x, y - 64, obj_leveleditor_placed_object)) && (obj_leveleditor.place_size >= 4){draw_sprite_ext(sprite_index, image_index, x, y - 64, 1, 1, image_angle, c_white, 0.2);}
@@ -362,7 +362,7 @@ if (!global.actually_play_edited_level)
 				if (!place_meeting(x - 64, y, obj_leveleditor_placed_object)) && (obj_leveleditor.place_size >= 4){draw_sprite_ext(sprite_index, image_index, x - 64, y, 1, 1, image_angle, c_white, 0.2);}
 				if (!place_meeting(x - 64, y + 32, obj_leveleditor_placed_object)) && (obj_leveleditor.place_size >= 4){draw_sprite_ext(sprite_index, image_index, x - 64, y + 32, 1, 1, image_angle, c_white, 0.2);}
 				if (!place_meeting(x - 64, y + 64, obj_leveleditor_placed_object)) && (obj_leveleditor.place_size >= 4){draw_sprite_ext(sprite_index, image_index, x - 64, y + 64, 1, 1, image_angle, c_white, 0.2);}
-				
+
 				if (!place_meeting(x + 96, y - 64, obj_leveleditor_placed_object)) && (obj_leveleditor.place_size >= 5){draw_sprite_ext(sprite_index, image_index, x + 96, y - 64, 1, 1, image_angle, c_white, 0.2);}
 				if (!place_meeting(x + 96, y - 32, obj_leveleditor_placed_object)) && (obj_leveleditor.place_size >= 5){draw_sprite_ext(sprite_index, image_index, x + 96, y - 32, 1, 1, image_angle, c_white, 0.2);}
 				if (!place_meeting(x + 96, y, obj_leveleditor_placed_object)) && (obj_leveleditor.place_size >= 5){draw_sprite_ext(sprite_index, image_index, x + 96, y, 1, 1, image_angle, c_white, 0.2);}
@@ -375,7 +375,7 @@ if (!global.actually_play_edited_level)
 				if (!place_meeting(x - 32, y + 96, obj_leveleditor_placed_object)) && (obj_leveleditor.place_size >= 5){draw_sprite_ext(sprite_index, image_index, x - 32, y + 96, 1, 1, image_angle, c_white, 0.2);}
 				if (!place_meeting(x - 64, y + 96, obj_leveleditor_placed_object)) && (obj_leveleditor.place_size >= 5){draw_sprite_ext(sprite_index, image_index, x - 64, y + 96, 1, 1, image_angle, c_white, 0.2);}
 			}
-			
+
 			#region /* Draw a rectangle around the placable objects */
 			if (place_size == 5)
 			&& (can_make_place_size_bigger)
@@ -418,17 +418,17 @@ if (!global.actually_play_edited_level)
 				}
 			}
 			#endregion /* Draw a rectangle around the placable objects END */
-			
+
 		}
 		#endregion /* Default Cursor END */
-		
+
 		if (global.controls_used_for_navigation == "gamepad")
 		|| (navigate_camera_with_arrowkeys)
 		{
 			scr_draw_mouse_cursor_sprite();
 		}
-		
+
 	}
 	#endregion /* Position the Cursor END */
-	
+
 }

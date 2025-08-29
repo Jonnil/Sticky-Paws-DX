@@ -5,18 +5,18 @@ if (!die)
 	|| (position_meeting(x, bbox_bottom + 2, other))
 	|| (position_meeting(x, bbox_bottom + 3, other))
 	|| (position_meeting(x, bbox_bottom + 4, other))
-	
+
 	|| (position_meeting(bbox_left, bbox_bottom + 1, other))
 	|| (position_meeting(bbox_left, bbox_bottom + 2, other))
 	|| (position_meeting(bbox_left, bbox_bottom + 3, other))
 	|| (position_meeting(bbox_left, bbox_bottom + 4, other))
-	
+
 	|| (position_meeting(bbox_right, bbox_bottom + 1, other))
 	|| (position_meeting(bbox_right, bbox_bottom + 2, other))
 	|| (position_meeting(bbox_right, bbox_bottom + 3, other))
 	|| (position_meeting(bbox_right, bbox_bottom + 4, other))
 	{
-		y --;
+		y--;
 	}
 	#endregion /* Push out of the solid object END */
 

@@ -8,7 +8,7 @@ function scr_load_resource_pack_sprite()
 	{
 		resource_pack_folder = game_save_id + "custom_resource_pack/" + string(ds_list_find_value(global.all_loaded_resource_pack, global.selected_resource_pack));
 	}
-	
+
 	#region /* Delete sprites before loading new sprites */
 	if (room != rm_splash_screen)
 	{
@@ -73,7 +73,7 @@ function scr_load_resource_pack_sprite()
 		if (global.resource_pack_sprite_buttons_playstation5 > 0){global.resource_pack_sprite_buttons_playstation5 = spr_noone;}
 	}
 	#endregion /* Delete sprites before loading new sprites END */
-	
+
 	if (file_exists("resource_pack/" + string(ds_list_find_value(global.all_loaded_resource_pack, global.selected_resource_pack)) + "/data/sprite_origin_point.ini"))
 	|| (file_exists(game_save_id + "custom_resource_pack/" + string(ds_list_find_value(global.all_loaded_resource_pack, global.selected_resource_pack)) + "/data/sprite_origin_point.ini"))
 	{

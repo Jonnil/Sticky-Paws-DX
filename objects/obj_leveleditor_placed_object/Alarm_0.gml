@@ -7,10 +7,10 @@ if (!global.actually_play_edited_level)
 		{
 			object = LEVEL_OBJECT_ID.ID_WALL_STONE;
 		}
-		
+
 		var grid = global.object_grid;
 		var grid_height = ds_grid_height(grid) - 1;
-		
+
 		var grid_object_index = -1;
 		for(var i = 0; i < grid_height; i++)
 		{
@@ -20,7 +20,7 @@ if (!global.actually_play_edited_level)
 				break;
 			}
 		}
-		
+
 		if (grid_object_index != -1)
 		{
 			sprite_index = grid[# 1, grid_object_index];
@@ -35,12 +35,12 @@ if (!global.actually_play_edited_level)
 			draw_alpha = grid[# 7, grid_object_index];
 			draw_text_over_placed_object = grid[# 8, grid_object_index];
 		}
-		
+
 		draw_item_on_top = noone;
 		draw_item_on_top_blend = c_white;
 		draw_item_with_spring = false;
 		draw_enemy_with_spring = false;
-		
+
 		#region /* Set what item is drawn on top, if this object contains any times */
 		if (object == LEVEL_OBJECT_ID.ID_QUESTION_BLOCK
 		|| object == LEVEL_OBJECT_ID.ID_BRICK_BLOCK
@@ -49,7 +49,7 @@ if (!global.actually_play_edited_level)
 		|| object == LEVEL_OBJECT_ID.ID_INVISIBLE_BUMP_IN_GROUND
 		|| object == LEVEL_OBJECT_ID.ID_BUCKET
 		|| object == LEVEL_OBJECT_ID.ID_CHECKPOINT
-		
+
 		|| object == LEVEL_OBJECT_ID.ID_BASIC_ENEMY
 		|| object == LEVEL_OBJECT_ID.ID_BASIC_ENEMY_COIL_SPRING
 		|| object == LEVEL_OBJECT_ID.ID_BASIC_ENEMY_BLIND
@@ -68,7 +68,7 @@ if (!global.actually_play_edited_level)
 			{
 				var grid = global.object_grid;
 				var grid_height = ds_grid_height(grid) - 1;
-			
+
 				var grid_object_index = -1;
 				for(var i = 0; i < grid_height; i++)
 				{
@@ -78,7 +78,7 @@ if (!global.actually_play_edited_level)
 						break;
 					}
 				}
-			
+
 				if (grid_object_index != -1)
 				{
 					draw_item_on_top = grid[# 1, grid_object_index];
@@ -86,7 +86,7 @@ if (!global.actually_play_edited_level)
 			}
 		}
 		#endregion /* Set what item is drawn on top, if this object contains any times END */
-		
+
 		switch (object)
 		{
 			case LEVEL_OBJECT_ID.ID_BASIC_COLLECTIBLE:
@@ -127,7 +127,7 @@ if (!global.actually_play_edited_level)
 			case LEVEL_OBJECT_ID.ID_BUCKET_HEART_BALLOON:
 				draw_item_on_top = spr_heart;
 				break;
-				
+
 			case LEVEL_OBJECT_ID.ID_BRICK_BLOCK_ONE_UP:
 			case LEVEL_OBJECT_ID.ID_QUESTION_BLOCK_ONE_UP:
 			case LEVEL_OBJECT_ID.ID_MELON_BLOCK_ONE_UP:
@@ -144,7 +144,7 @@ if (!global.actually_play_edited_level)
 					draw_item_on_top = spr_1up;
 				}
 				break;
-				
+
 			case LEVEL_OBJECT_ID.ID_BRICK_BLOCK_TWO_UP:
 			case LEVEL_OBJECT_ID.ID_QUESTION_BLOCK_TWO_UP:
 			case LEVEL_OBJECT_ID.ID_MELON_BLOCK_TWO_UP:

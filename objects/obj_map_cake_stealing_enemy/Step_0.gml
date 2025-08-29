@@ -18,7 +18,7 @@ if (hspeed > +1)
 }
 if (enter_level_delay >= 1)
 {
-	enter_level_delay ++;
+	enter_level_delay++;
 }
 if (move_speed == 4)
 && (enter_level_delay >= 30)
@@ -50,7 +50,7 @@ if (move_speed == 4)
 }
 if (delay > 0)
 {
-	delay --;
+	delay--;
 }
 xx = lerp(xx, x, 0.2);
 yy = lerp(yy, y, 0.2);

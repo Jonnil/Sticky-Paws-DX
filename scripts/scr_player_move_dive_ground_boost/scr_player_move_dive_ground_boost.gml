@@ -1,12 +1,12 @@
 function scr_player_move_dive_ground_boost()
 {
-	
+
 	#region /* Dive ground boost */
 	if (allow_dive_ground_boost)
 	&& (dive_on_ground > 0)
 	&& (on_ground)
 	{
-		dive_on_ground --;
+		dive_on_ground--;
 		if (key_jump)
 		{
 			dive_on_ground = false;
@@ -53,5 +53,5 @@ function scr_player_move_dive_ground_boost()
 		}
 	}
 	#endregion /* Dive ground boost END */
-	
+
 }

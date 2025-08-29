@@ -12,7 +12,7 @@ if (touch_player == 0)
 		vspeed = -8;
 		die_volting = +1;
 	}
-	
+
 	#region /* 1 Basic Collectible */
 	with(instance_create_depth(x, bbox_top, 0, obj_basic_collectible))
 	{
@@ -21,7 +21,7 @@ if (touch_player == 0)
 		bounce_up = true;
 	}
 	#endregion /* 1 Basic Collectible END */
-	
+
 	if (vspeed > 8)
 	{
 		touch_player = 2;

@@ -2,7 +2,7 @@ function scr_character_portrait_for_player_step(what_player = 1)
 {
 	var skin_y = 192;
 	var voicepack_y = 234;
-	
+
 	if (keyboard_virtual_status()
 	&& keyboard_virtual_height() != 0
 	&& keyboard_virtual_height() != undefined)
@@ -17,7 +17,7 @@ function scr_character_portrait_for_player_step(what_player = 1)
 	var get_window_width = display_get_gui_width();
 	var mouse_get_x = device_mouse_x_to_gui(0);
 	var mouse_get_y = device_mouse_y_to_gui(0);
-	
+
 	#region /* Make character portraits smaller if screen size is too small to fit them */
 	if (get_window_width >= 1670)
 	{
@@ -43,7 +43,7 @@ function scr_character_portrait_for_player_step(what_player = 1)
 		var scale_offset = 0.6;
 	}
 	#endregion /* Make character portraits smaller if screen size is too small to fit them END */
-	
+
 	#region /* Set all the player variables */
 	var sprite_select_player = global.sprite_select_player[what_player];
 	var player_key_left = global.player_[inp.key][what_player][1][action.left];
@@ -63,7 +63,7 @@ function scr_character_portrait_for_player_step(what_player = 1)
 	var player_gamepad_button_accept = global.player_[inp.gp][what_player][1][action.accept];
 	var player_gamepad_button2_accept = global.player_[inp.gp][what_player][2][action.accept];
 	#endregion /* Set all the player variables END */
-	
+
 	#region /* Display Selected Skin if skins are available */
 	if (no_players_are_inputting_names)
 	&& (character_portrait_for_player_dir_exists_1[what_player])
@@ -77,7 +77,7 @@ function scr_character_portrait_for_player_step(what_player = 1)
 			}
 			if (player_accept_selection[what_player] == 0)
 			{
-				
+
 				#region /* Player key left Skin */
 				if (keyboard_check_pressed(player_key_left))
 				|| (keyboard_check_pressed(player_key2_left))
@@ -91,9 +91,9 @@ function scr_character_portrait_for_player_step(what_player = 1)
 					&& (global.skin_for_player[what_player] > 0)
 					{
 						menu_delay = 3;
-						
+
 						#region /* Player character select portrait sprite */
-						global.skin_for_player[what_player] --;
+						global.skin_for_player[what_player]--;
 						global.actual_skin_for_player[what_player] = global.skin_for_player[what_player]; /* When changing skins, update "actual skin for player" to match "skin for player". Update "skin for player" first */
 						ini_open(game_save_id + "save_file/config.ini");
 						ini_write_real("config", "skin_for_player" + string(what_player), global.actual_skin_for_player[what_player]);
@@ -101,14 +101,14 @@ function scr_character_portrait_for_player_step(what_player = 1)
 						menu_specific_joystick_delay[what_player] = 30;
 						xx_delay[what_player] = -1;
 						#endregion /* Player character select portrait sprite END */
-						
+
 						scr_change_character_portrait();
 					}
 				}
 				#endregion /* Player key left Skin END */
-				
+
 				else
-				
+
 				#region /* Player key right Skin */
 				if (keyboard_check_pressed(player_key_right))
 				|| (keyboard_check_pressed(player_key2_right))
@@ -122,9 +122,9 @@ function scr_character_portrait_for_player_step(what_player = 1)
 					&& (character_portrait_for_player_dir_exists_2[what_player])
 					{
 						menu_delay = 3;
-						
+
 						#region /* Player character select portrait sprite */
-						global.skin_for_player[what_player] ++;
+						global.skin_for_player[what_player]++;
 						global.actual_skin_for_player[what_player] = global.skin_for_player[what_player]; /* When changing skins, update "actual skin for player" to match "skin for player". Update "skin for player" first */
 						ini_open(game_save_id + "save_file/config.ini");
 						ini_write_real("config", "skin_for_player" + string(what_player), global.actual_skin_for_player[what_player]);
@@ -132,12 +132,12 @@ function scr_character_portrait_for_player_step(what_player = 1)
 						menu_specific_joystick_delay[what_player] = 30;
 						xx_delay[what_player] = +1;
 						#endregion /* Player character select portrait sprite END */
-						
+
 						scr_change_character_portrait();
 					}
 				}
 				#endregion /* Player key right Skin END */
-				
+
 				#region /* Show left key for character skin select */
 				if (global.skin_for_player[what_player] > 0)
 				{
@@ -148,7 +148,7 @@ function scr_character_portrait_for_player_step(what_player = 1)
 					}
 				}
 				#endregion /* Show left key for character skin select END */
-				
+
 				#region /* Show right key for character skin select */
 				if (character_portrait_for_player_dir_exists_2[what_player])
 				{
@@ -159,12 +159,12 @@ function scr_character_portrait_for_player_step(what_player = 1)
 					}
 				}
 				#endregion /* Show right key for character skin select END */
-				
+
 			}
 		}
 	}
 	#endregion /* Display Selected Skin if skins are available END */
-	
+
 	#region /* Display Selected Voice Pack if voice packs are available */
 	if (no_players_are_inputting_names)
 	&& (character_portrait_for_player_dir_exists_3[what_player])
@@ -178,7 +178,7 @@ function scr_character_portrait_for_player_step(what_player = 1)
 			}
 			if (player_accept_selection[what_player] == 0)
 			{
-				
+
 				#region /* Player key left Voice Pack */
 				if (keyboard_check_pressed(player_key_left))
 				|| (keyboard_check_pressed(player_key2_left))
@@ -192,11 +192,11 @@ function scr_character_portrait_for_player_step(what_player = 1)
 					&& (global.voicepack_for_player[what_player] > 0)
 					{
 						menu_delay = 3;
-						global.voicepack_for_player[what_player] --;
+						global.voicepack_for_player[what_player]--;
 						menu_specific_joystick_delay[what_player] = 30;
 						xx[what_player] = player_display_x[what_player] -32;
 						scr_change_character_portrait();
-						
+
 						/* Lastly, save the voicepack in config */
 						ini_open(game_save_id + "save_file/config.ini");
 						ini_write_real("config", "voicepack_for_player" + string(what_player), global.voicepack_for_player[what_player]);
@@ -204,9 +204,9 @@ function scr_character_portrait_for_player_step(what_player = 1)
 					}
 				}
 				#endregion /* Player key left Voice Pack END */
-				
+
 				else
-				
+
 				#region /* Player key right Voice Pack */
 				if (keyboard_check_pressed(player_key_right))
 				|| (keyboard_check_pressed(player_key2_right))
@@ -221,11 +221,11 @@ function scr_character_portrait_for_player_step(what_player = 1)
 						if (character_portrait_for_player_dir_exists_4[what_player])
 						{
 							menu_delay = 3;
-							global.voicepack_for_player[what_player] ++;
+							global.voicepack_for_player[what_player]++;
 							menu_specific_joystick_delay[what_player] = 30;
 							xx[what_player] = player_display_x[what_player] +32;
 							scr_change_character_portrait();
-							
+
 							/* Lastly, save the voicepack in config */
 							ini_open(game_save_id + "save_file/config.ini");
 							ini_write_real("config", "voicepack_for_player" + string(what_player), global.voicepack_for_player[what_player]);
@@ -234,7 +234,7 @@ function scr_character_portrait_for_player_step(what_player = 1)
 					}
 				}
 				#endregion /* Player key right Voice Pack END */
-				
+
 				#region /* Show left key for character voicepack select */
 				if (global.voicepack_for_player[what_player] > 0)
 				{
@@ -245,7 +245,7 @@ function scr_character_portrait_for_player_step(what_player = 1)
 					}
 				}
 				#endregion /* Show left key for character voicepack select END */
-				
+
 				#region /* Show right key for character voicepack select */
 				if (character_portrait_for_player_dir_exists_4[what_player])
 				{
@@ -256,12 +256,12 @@ function scr_character_portrait_for_player_step(what_player = 1)
 					}
 				}
 				#endregion /* Show right key for character voicepack select END */
-				
+
 			}
 		}
 	}
 	#endregion /* Display Selected Voice Pack if voice packs are available END */
-	
+
 	#region /* Show left and right arrows when selecting character */
 	if (no_players_are_inputting_names)
 	{
@@ -297,14 +297,14 @@ function scr_character_portrait_for_player_step(what_player = 1)
 				player_menu[what_player] = "select_character";
 			}
 		}
-		
+
 		#region /* Player Show left and right arrows when selecting character */
 		if (player_menu[what_player] == "select_character")
 		|| (global.controls_used_for_navigation == "mouse")
 		{
 			if (player_accept_selection[what_player] == 0)
 			{
-				
+
 				#region /* Key Left */
 				if (global.character_index[what_player - 1] > 0)
 				{
@@ -315,7 +315,7 @@ function scr_character_portrait_for_player_step(what_player = 1)
 					}
 				}
 				#endregion /* Key Left END */
-				
+
 				#region /* Key Right */
 				if (global.character_index[what_player - 1] < ds_list_size(global.all_loaded_characters) - 1)
 				{
@@ -326,14 +326,14 @@ function scr_character_portrait_for_player_step(what_player = 1)
 					}
 				}
 				#endregion /* Key Right END */
-				
+
 			}
 		}
 		#endregion /* Player Show left and right arrows when selecting character END */
-		
+
 	}
 	#endregion /* Show left and right arrows when selecting character END */
-	
+
 	#region /* Tell the player the inputed name */
 	if (point_in_rectangle(mouse_get_x, mouse_get_y, get_window_width * 0.5 + player_display_x[what_player] - 150, name_input_y - 16, get_window_width * 0.5 + player_display_x[what_player] + 150, name_input_y + 16))
 	&& (global.controls_used_for_navigation == "mouse")
@@ -343,9 +343,9 @@ function scr_character_portrait_for_player_step(what_player = 1)
 		player_menu[what_player] = "select_name";
 	}
 	#endregion /* Tell the player the inputed name END */
-	
+
 	#region /* Tell the players what buttons to push */
-	
+
 	#region /* Tell the player what button to push to select or cancel a selection */
 	if (player_menu[what_player] != "select_name")
 	&& (player_menu[what_player] != "back_from_character_select")
@@ -375,9 +375,9 @@ function scr_character_portrait_for_player_step(what_player = 1)
 		}
 	}
 	#endregion /* Tell the player what button to push to select or cancel a selection END */
-	
+
 	#endregion /* Tell the players what buttons to push END */
-	
+
 	if (player_menu[what_player] == "select_character")
 	|| (player_menu[what_player] == "select_skin")
 	|| (player_menu[what_player] == "select_voicepack")
@@ -387,7 +387,7 @@ function scr_character_portrait_for_player_step(what_player = 1)
 		{
 			menu = "select_character";
 		}
-		
+
 		#region /* Player key up Skin or Voicepack */
 		if (keyboard_check_pressed(player_key_up))
 		|| (keyboard_check_pressed(player_key2_up))
@@ -397,7 +397,7 @@ function scr_character_portrait_for_player_step(what_player = 1)
 			if (menu_delay == 0 && menu_joystick_delay == 0 && menu_specific_joystick_delay[what_player] == 0)
 			{
 				menu_specific_joystick_delay[what_player] = 30;
-				
+
 				if (player_menu[what_player] == "select_character")
 				&& (what_player == 1)
 				{
@@ -439,9 +439,9 @@ function scr_character_portrait_for_player_step(what_player = 1)
 			}
 		}
 		#endregion /* Player key up Skin or Voicepack END */
-		
+
 		else
-		
+
 		#region /* Player key down Skin or Voicepack */
 		if (keyboard_check_pressed(player_key_down))
 		|| (keyboard_check_pressed(player_key2_down))
@@ -452,7 +452,7 @@ function scr_character_portrait_for_player_step(what_player = 1)
 			&& (player_accept_selection[what_player] == 0)
 			{
 				menu_specific_joystick_delay[what_player] = 30;
-				
+
 				if (player_menu[what_player] == "select_character")
 				{
 					if (character_portrait_for_player_dir_exists_1[what_player])
@@ -490,6 +490,6 @@ function scr_character_portrait_for_player_step(what_player = 1)
 			}
 		}
 		#endregion /* Player key down Skin or Voicepack END */
-		
+
 	}
 }

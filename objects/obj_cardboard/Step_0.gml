@@ -2,7 +2,7 @@ if (instance_exists(obj_player))
 && (distance_to_object(obj_player) < 21)
 {
 	var player_nearest = instance_nearest(x, y, obj_player);
-	
+
 	if (place_meeting(x, y + 7, obj_player)
 	&& player_nearest.vspeed < 0
 	|| player_nearest.ground_pound >= 1
@@ -16,7 +16,7 @@ if (instance_exists(obj_player))
 		alarm[1] = 1; /* Break cardboard */
 		break_cardboard_source_x = player_nearest.x;
 		break_cardboard_source_speed = player_nearest.speed;
-		
+
 		if (player_nearest.ground_pound >= 1)
 		{
 			player_nearest.ground_pound = 1;
@@ -27,14 +27,14 @@ if (instance_exists(obj_player))
 if (distance_to_object(obj_enemy_bowlingball) < 32)
 {
 	var enemy_bowlingball_nearest = instance_nearest(x, y, obj_enemy_bowlingball);
-	
+
 	if (enemy_bowlingball_nearest.sliding_along_ground != 0
 	|| place_meeting(x, y + 1, obj_enemy_bowlingball)
 	&& enemy_bowlingball_nearest.vspeed < 0)
 	&& (!enemy_bowlingball_nearest.die)
 	{
 		alarm[1] = 1; /* Break cardboard */
-		
+
 		if (instance_exists(obj_enemy_bowlingball))
 		{
 			break_cardboard_source_x = enemy_bowlingball_nearest.x;
@@ -58,7 +58,7 @@ if (!collision_rectangle(check_left, check_bottom, check_right, check_bottom, ob
 	var view_top = view_y_center - view_distance_from_center;
 	var view_right = view_x_center + view_distance_from_center;
 	var view_bottom = view_y_center + view_distance_from_center;
-	
+
 	if (bbox_left < view_right)
 	&& (bbox_right > view_left)
 	&& (bbox_top < view_bottom)
@@ -66,7 +66,7 @@ if (!collision_rectangle(check_left, check_bottom, check_right, check_bottom, ob
 	&& (global.deactivate_timer % 7 == 0)
 	{
 		alarm[1] = 1; /* Break cardboard */
-		
+
 		if (instance_exists(obj_player))
 		{
 			var player_nearest = instance_nearest(x, y, obj_player);

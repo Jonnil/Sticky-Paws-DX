@@ -1,6 +1,6 @@
 if (stomped_delay > 0)
 {
-	stomped_delay --;
+	stomped_delay--;
 }
 
 draw_xscale = lerp(draw_xscale, 1, 0.1);
@@ -21,17 +21,17 @@ else
 /* If you are not blind, then turn around when seeing pit */
 if (!blind && !coil_spring && on_ground)
 {
-    var wall_right = !place_meeting(x + 5, y + 1, obj_wall) && !place_meeting(x + 5, y + 1, obj_enemy_only_wall) && !position_meeting(x + 5, bbox_bottom + 1, obj_semisolid_platform);
-    var wall_left = !place_meeting(x - 5, y + 1, obj_wall) && !place_meeting(x - 5, y + 1, obj_enemy_only_wall) && !position_meeting(x - 5, bbox_bottom + 1, obj_semisolid_platform);
-    if (wall_right)
-    {
-        image_xscale = -1;
-    }
-    else
+	var wall_right = !place_meeting(x + 5, y + 1, obj_wall) && !place_meeting(x + 5, y + 1, obj_enemy_only_wall) && !position_meeting(x + 5, bbox_bottom + 1, obj_semisolid_platform);
+	var wall_left = !place_meeting(x - 5, y + 1, obj_wall) && !place_meeting(x - 5, y + 1, obj_enemy_only_wall) && !position_meeting(x - 5, bbox_bottom + 1, obj_semisolid_platform);
+	if (wall_right)
+	{
+		image_xscale = -1;
+	}
+	else
 	if (wall_left)
-    {
-        image_xscale = 1;
-    }
+	{
+		image_xscale = 1;
+	}
 }
 
 if (die)
@@ -62,7 +62,7 @@ if (die_volting == -1 || die_volting == 1)
 		image_angle += 20;
 		hspeed = -4;
 	}
-	
+
 	gravity_direction = 270; /* Direction of the gravity */
 	gravity = 0.5; /* The gravity */
 }

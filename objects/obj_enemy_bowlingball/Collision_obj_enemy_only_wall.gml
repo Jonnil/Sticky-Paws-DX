@@ -18,7 +18,7 @@ if (!die_volting)
 		sliding_along_ground = -1;
 		scr_audio_play(snd_bump, volume_source.sound, 0.1);
 	}
-	
+
 	if (place_meeting(x, bbox_top - 1, obj_wall))
 	&& (!die)
 	&& (vspeed < 0)
@@ -30,7 +30,7 @@ if (!die_volting)
 			image_yscale = 0.1;
 		}
 	}
-	
+
 	#region /* Push out of the solid object */
 	while(place_meeting(x, y, other))
 	{
@@ -38,7 +38,7 @@ if (!die_volting)
 		y += lengthdir_y(0.5, point_direction(other.x, other.y, x, y));
 	}
 	#endregion /* Push out of the solid object END */
-	
+
 	#region /* Landing on solid object */
 	if (place_meeting(x, bbox_bottom + 1, other))
 	&& (vspeed >= 0)
@@ -66,5 +66,5 @@ if (!die_volting)
 		draw_yscale = 0.75;
 	}
 	#endregion /* Landing on solid object END */
-	
+
 }

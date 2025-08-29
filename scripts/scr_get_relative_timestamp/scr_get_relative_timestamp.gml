@@ -10,7 +10,7 @@ function get_relative_timezone(datetime, what_timezone = timezone_utc)
 	var d = string_split(dt[0], "-");
 	var t = string_split(dt[1], ":");
 	var diff = date_second_span(date_create_datetime(d[0], d[1], d[2], t[0], t[1], t[2]), date_current_datetime());
-	
+
 	if (diff < 60)
 	{
 		return string(floor(diff)) + " " + l10n_text("second" + (diff > 1 ? "s" : "") + " ago");

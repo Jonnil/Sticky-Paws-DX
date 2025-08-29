@@ -11,7 +11,7 @@ while (place_meeting(x, y, other))
 if (place_meeting(x, y + 1, other))
 && (vspeed >= 0)
 {
-	
+
 	#region /* Smoke Landing Effect */
 	if (instance_exists(obj_camera))
 	&& (obj_camera.iris_xscale > 1)
@@ -35,11 +35,11 @@ if (place_meeting(x, y + 1, other))
 		}
 		if (position_meeting(x + 24, bbox_bottom + 2, obj_wall))
 		{
-			effect_create_above(ef_smoke, x + 24, bbox_bottom - 8, 0, c_white);	
+			effect_create_above(ef_smoke, x + 24, bbox_bottom - 8, 0, c_white);
 		}
 	}
 	#endregion /* Smoke Landing Effect END */
-	
+
 	vspeed = 0;
 	gravity = 0;
 }

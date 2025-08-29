@@ -5,7 +5,7 @@ if (!other.set_difficulty_mode)
 && (delay > 1)
 && (!other.modify_object_menu)
 {
-	
+
 	#region /* Click on object to start drag */
 	if (mouse_check_button_pressed(mb_left) || other.key_a_pressed)
 	{
@@ -30,7 +30,7 @@ if (!other.set_difficulty_mode)
 		&& !position_meeting(x, y, obj_level_width)
 		&& !position_meeting(x, y, obj_water_level_height)
 		&& position_meeting(other.x, other.y, id);
-		
+
 		if (can_drag_object)
 		{
 			effect_create_above(ef_ring, x, y, 0, c_white);
@@ -42,7 +42,7 @@ if (!other.set_difficulty_mode)
 		}
 	}
 	#endregion /* Click on object to start drag END */
-	
+
 }
 
 #region /* Release the object */
@@ -56,7 +56,7 @@ if (mouse_check_button_released(mb_left))
 		drag_object = 0.5;
 		other.drag_object = false;
 		dragged_from_original_place = false;
-		
+
 		#region /* Reset depth to normal when releasing object */
 		if (object == LEVEL_OBJECT_ID.ID_WATER)
 		|| (object == LEVEL_OBJECT_ID.ID_BREATHABLE_WATER)
@@ -73,14 +73,14 @@ if (mouse_check_button_released(mb_left))
 			depth = (-bbox_bottom) * 0.04 -19;
 		}
 		#endregion /* Reset depth to normal when releasing object END */
-		
+
 	}
 }
 #endregion /* Release the object END */
 
 if (drag_release_timer > 0)
 {
-	drag_release_timer --;
+	drag_release_timer--;
 }
 else
 if (drag_object == 0.5)

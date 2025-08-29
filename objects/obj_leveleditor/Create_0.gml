@@ -120,7 +120,7 @@ if (global.actually_play_edited_level)
 #region /* If you're actually playing a level, then you don't need to run a lot of the code only relevant when making a level */
 if (!global.actually_play_edited_level)
 {
-	
+
 	#region /* Save what date this level was first created in */
 	ini_open(game_save_id + "custom_levels/" + string(global.level_name) + "/data/level_information.ini");
 	if (!ini_key_exists("info", "first_created_on_version"))
@@ -157,7 +157,7 @@ if (!global.actually_play_edited_level)
 	}
 	ini_close();
 	#endregion /* Save what date this level was first created in END */
-	
+
 	#region /* Show what version of the game the level was first created in */
 	/* This should make it easier to port old levels to new game versions */
 	/* Showing the original version number makes it easier to pinpoint what changes happened from one version to another */
@@ -168,27 +168,27 @@ if (!global.actually_play_edited_level)
 	&& (file_exists(level_information_ini_path))
 	{
 		ini_open(level_information_ini_path);
-		
+
 		if (ini_key_exists("info", "clear_check"))
 		{
 			if_clear_checked = ini_read_string("info", "clear_check", false); /* Draw if level have been Clear Checked on top of screen */
 		}
-		
+
 		if (ini_key_exists("info", "if_daily_build"))
 		{
 			if_daily_build = ini_read_string("info", "if_daily_build", false); /* Draw if level have been created in Daily Build on top of screen */
 		}
-		
+
 		if (ini_key_exists("info", "level_has_custom_background"))
 		{
 			level_has_custom_background = ini_read_string("info", "level_has_custom_background", false); /* Draw if level uses Custom Background on top of screen */
 		}
-		
+
 		if (ini_key_exists("info", "level_id"))
 		{
 			level_id = ini_read_string("info", "level_id", ""); /* Draw the Level ID on top of screen */
 		}
-		
+
 		if (ini_key_exists("info", "first_created_on_version"))
 		{
 			if (string_digits(ini_read_string("info", "first_created_on_version", "v" + scr_get_build_date())) < string_digits(scr_get_build_date()))
@@ -200,14 +200,14 @@ if (!global.actually_play_edited_level)
 			{
 				made_in_what_version_text = l10n_text("Level made in new version");
 			}
-			
-			first_created_on_version = ini_read_string("info", "first_created_on_version", "v" + scr_get_build_date());	
+
+			first_created_on_version = ini_read_string("info", "first_created_on_version", "v" + scr_get_build_date());
 		}
-		
+
 		ini_close(); /* Don't commit the save data on Switch, this is only temporary! */
 	}
 	#endregion /* Show what version of the game the level was first created in END */
-	
+
 	#region /* Load Custom Title Background */
 	title_bg_layer = 1; /* Selected Title Background Layer to change */
 	title_background_scale_lerp[1] = global.title_background_scale[1];
@@ -223,16 +223,16 @@ if (!global.actually_play_edited_level)
 	title_background_blink[2] = 1;
 	title_background_blink[3] = 1;
 	#endregion /* Load Custom Title Background END */
-	
+
 	object_text = "";
-	
+
 	key_a_pressed = noone;
 	key_a_released = noone;
-	
+
 	autosave_timer = (60 * 3) + 1; /* Default is (60 * 3) + 1. When debugging autosave, set this to 18000 - (60 * 10) */
-	
+
 	welcome_to_level_editor = 0;
-	
+
 	scroll = 0;
 	scroll_to = 0;
 	column = 0;
@@ -249,14 +249,14 @@ if (!global.actually_play_edited_level)
 	mouse_get_y = device_mouse_y_to_gui(0);
 	view_center_x = cam_x + cam_width * 0.5;
 	view_center_y = cam_y + cam_height * 0.5;
-	
+
 	current_object_name = "";
 	placed_objects_list = ds_list_create(); /* Only create a DS list if the file exists */
-	
+
 	scr_initialize_level_information_ini();
-	
+
 	scr_controls_for_level_editor();
-	
+
 	tag_art = false;
 	tag_boss_battle = false;
 	tag_dont_move = false;
@@ -272,9 +272,9 @@ if (!global.actually_play_edited_level)
 	tag_themed = false;
 	tag_glitch_showcase = false;
 	intended_level_difficulty = 1; /* Easy = 0. Normal = 1. Hard = 2. Super Hard = 3 */
-	
+
 	scr_unlock_placable_level_objects();
-	
+
 	#region /* Load custom sprites */
 	sprite_lives_icon = spr_1up;
 	scr_set_character_folder(1, global.skin_for_player[1]);
@@ -286,21 +286,21 @@ if (!global.actually_play_edited_level)
 	sprite_enemy_bowlingball = global.resource_pack_sprite_enemy_bowlingball_walk;
 	sprite_enemy_bowlingball_blind = global.resource_pack_sprite_enemy_bowlingball_blind_walk;
 	sprite_big_stationary_enemy = global.resource_pack_sprite_big_stationary_enemy;
-	
+
 	/* Loop through each character */
 	for (var i = 1; i <= global.max_players; i++)
 	{
 		scr_set_character_folder(i, global.skin_for_player[i]); /* Set the character folder */
 		ini_open(character_folder + "/data/character_config.ini"); /* Open "character config.ini" */
-		
+
 		/* Initialize default xscale and yscale for sprites */
 		player_default_xscale[i] = scr_initialize_character_abilities(i - 1, "default_xscale", 1, "values");
 		player_default_yscale[i] = scr_initialize_character_abilities(i - 1, "default_yscale", 1, "values");
-		
+
 		ini_close(); /* Close the ini file */
 	}
 	#endregion /* Load custom sprites END */
-	
+
 	#region /* Grid Initialization */
 	global.object_grid = ds_grid_create(12, 0);
 	add_object(LEVEL_OBJECT_ID.ID_WALL_DIRT, spr_wall_dirt, 0, spr_wall, 1, 0, c_white, 1, "", noone, true, 0);
@@ -314,7 +314,7 @@ if (!global.actually_play_edited_level)
 	add_object(LEVEL_OBJECT_ID.ID_WALL_CLIMB_PANEL, spr_wall_climb_panel, 0, spr_wall, 1, 0, c_white, 1, "", noone, true, 0);
 	add_object(LEVEL_OBJECT_ID.ID_SPIKES, spr_spikes, 0, spr_wall, 1, 0, c_white, 1, "", noone, true, 0);
 	add_object(LEVEL_OBJECT_ID.ID_SEMISOLID_PLATFORM, spr_semisolid_platform, 0, spr_wall, 1, 0, c_white, 1, "", noone, true, 0);
-	
+
 	#region /* Brick Block */
 	add_object(LEVEL_OBJECT_ID.ID_BRICK_BLOCK, spr_brick_block, 0, spr_wall, 1, 0, c_white, 1, "", noone, true, 0);
 	add_object(LEVEL_OBJECT_ID.ID_BRICK_BLOCK_10_BASIC_COLLECTIBLES, spr_brick_block, 0, spr_wall, 1, 0, c_white, 1, "", noone, true, 0);
@@ -325,7 +325,7 @@ if (!global.actually_play_edited_level)
 	add_object(LEVEL_OBJECT_ID.ID_BRICK_BLOCK_INVINCIBILITY_POWERUP, spr_brick_block, 0, spr_wall, 1, 0, c_white, 1, "", noone, true, 0);
 	add_object(LEVEL_OBJECT_ID.ID_BRICK_BLOCK_INVINCIBILITY_POWERUP_COIL_SPRING, spr_brick_block, 0, spr_wall, 1, 0, c_white, 1, "", noone, true, 0);
 	#endregion /* Brick Block END */
-	
+
 	#region /* Question Block */
 	add_object(LEVEL_OBJECT_ID.ID_QUESTION_BLOCK, spr_question_block, 0, spr_wall, 1, 0, c_white, 1, "", noone, true, 0);
 	add_object(LEVEL_OBJECT_ID.ID_QUESTION_BLOCK_10_BASIC_COLLECTIBLES, spr_question_block, 0, spr_wall, 1, 0, c_white, 1, "", noone, true, 0);
@@ -336,7 +336,7 @@ if (!global.actually_play_edited_level)
 	add_object(LEVEL_OBJECT_ID.ID_QUESTION_BLOCK_INVINCIBILITY_POWERUP, spr_question_block, 0, spr_wall, 1, 0, c_white, 1, "", noone, true, 0);
 	add_object(LEVEL_OBJECT_ID.ID_QUESTION_BLOCK_INVINCIBILITY_POWERUP_COIL_SPRING, spr_question_block, 0, spr_wall, 1, 0, c_white, 1, "", noone, true, 0);
 	#endregion /* Question Block END */
-	
+
 	#region /* Melon Block */
 	add_object(LEVEL_OBJECT_ID.ID_MELON_BLOCK, spr_melon_block, 0, spr_wall, 1, 0, c_white, 1, "", noone, true, 0);
 	add_object(LEVEL_OBJECT_ID.ID_MELON_BLOCK_10_BASIC_COLLECTIBLES, spr_melon_block, 0, spr_wall, 1, 0, c_white, 1, "", noone, true, 0);
@@ -347,46 +347,46 @@ if (!global.actually_play_edited_level)
 	add_object(LEVEL_OBJECT_ID.ID_MELON_BLOCK_INVINCIBILITY_POWERUP, spr_melon_block, 0, spr_wall, 1, 0, c_white, 1, "", noone, true, 0);
 	add_object(LEVEL_OBJECT_ID.ID_MELON_BLOCK_INVINCIBILITY_POWERUP_COIL_SPRING, spr_melon_block, 0, spr_wall, 1, 0, c_white, 1, "", noone, true, 0);
 	#endregion /* Melon Block END */
-	
+
 	add_object(LEVEL_OBJECT_ID.ID_HARD_BLOCK, spr_hard_block, 0, spr_wall, 1, 0, c_white, 1, "", noone, true, 0);
 	add_object(LEVEL_OBJECT_ID.ID_HARD_BLOCK_ALTERNATE, spr_hard_block_alternate, 0, spr_wall, 1, 0, c_white, 1, "", noone, true, 0);
 	add_object(LEVEL_OBJECT_ID.ID_HARD_BLOCK_2X2, spr_hard_block_2x2, 0, spr_wall, 1, 0, c_white, 1, "", noone, true, 0);
-	
+
 	#region /* Falling Block */
 	add_object(LEVEL_OBJECT_ID.ID_FALLING_BLOCK, spr_falling_block, 0, spr_wall, 1, 0, c_white, 1, "", noone, true, 0);
 	add_object(LEVEL_OBJECT_ID.ID_FALLING_BLOCK_SOLID, spr_falling_block_solid, 0, spr_wall, 1, 0, c_white, 1, "", noone, true, 0);
-	
+
 	add_object(LEVEL_OBJECT_ID.ID_INSTANT_FALLING_BLOCK, spr_instant_falling_block, 0, spr_wall, 1, 0, c_white, 1, "", noone, true, 0);
 	add_object(LEVEL_OBJECT_ID.ID_INSTANT_FALLING_BLOCK_SOLID, spr_instant_falling_block_solid, 0, spr_wall, 1, 0, c_white, 1, "", noone, true, 0);
-	
+
 	add_object(LEVEL_OBJECT_ID.ID_WOOD_FALLING_BLOCK, spr_wood_falling_block, 0, spr_wall, 1, 0, c_white, 1, "", noone, true, 0);
 	add_object(LEVEL_OBJECT_ID.ID_WOOD_FALLING_BLOCK_SOLID, spr_wood_falling_block_solid, 0, spr_wall, 1, 0, c_white, 1, "", noone, true, 0);
-	
+
 	add_object(LEVEL_OBJECT_ID.ID_STONE_FALLING_BLOCK, spr_stone_falling_block, 0, spr_wall, 1, 0, c_white, 1, "", noone, true, 0);
 	add_object(LEVEL_OBJECT_ID.ID_STONE_FALLING_BLOCK_SOLID, spr_stone_falling_block_solid, 0, spr_wall, 1, 0, c_white, 1, "", noone, true, 0);
 	#endregion /* Falling Block END */
-	
+
 	#region /* Falling Block Long */
 	add_object(LEVEL_OBJECT_ID.ID_FALLING_BLOCK_LONG, spr_falling_block_long, 0, spr_mask_block_long, 1, 0, c_white, 1, "", noone, true, 0);
 	add_object(LEVEL_OBJECT_ID.ID_FALLING_BLOCK_LONG_SOLID, spr_falling_block_long_solid, 0, spr_mask_block_long, 1, 0, c_white, 1, "", noone, true, 0);
-	
+
 	add_object(LEVEL_OBJECT_ID.ID_INSTANT_FALLING_BLOCK_LONG, spr_instant_falling_block_long, 0, spr_mask_block_long, 1, 0, c_white, 1, "", noone, true, 0);
 	add_object(LEVEL_OBJECT_ID.ID_INSTANT_FALLING_BLOCK_LONG_SOLID, spr_instant_falling_block_long_solid, 0, spr_mask_block_long, 1, 0, c_white, 1, "", noone, true, 0);
-	
+
 	add_object(LEVEL_OBJECT_ID.ID_WOOD_FALLING_BLOCK_LONG, spr_wood_falling_block_long, 0, spr_mask_block_long, 1, 0, c_white, 1, "", noone, true, 0);
 	add_object(LEVEL_OBJECT_ID.ID_WOOD_FALLING_BLOCK_LONG_SOLID, spr_wood_falling_block_long_solid, 0, spr_mask_block_long, 1, 0, c_white, 1, "", noone, true, 0);
-	
+
 	add_object(LEVEL_OBJECT_ID.ID_STONE_FALLING_BLOCK_LONG, spr_stone_falling_block_long, 0, spr_mask_block_long, 1, 0, c_white, 1, "", noone, true, 0);
 	add_object(LEVEL_OBJECT_ID.ID_STONE_FALLING_BLOCK_LONG_SOLID, spr_stone_falling_block_long_solid, 0, spr_mask_block_long, 1, 0, c_white, 1, "", noone, true, 0);
 	#endregion /* Falling Block Long END */
-	
+
 	add_object(LEVEL_OBJECT_ID.ID_CLOUD_BLOCK, spr_cloud_block, 0, spr_wall, 1, 0, c_white, 1, "", noone, true, 0);
 	add_object(LEVEL_OBJECT_ID.ID_ICE_BLOCK, spr_ice_block, 0, spr_wall, 1, 0, c_white, 1, "", noone, true, 0);
 	add_object(LEVEL_OBJECT_ID.ID_ENEMY_ONLY_WALL, spr_enemy_only_wall, 0, spr_wall, 1, 0, c_white, 1, "", noone, true, 0);
 	add_object(LEVEL_OBJECT_ID.ID_CARDBOARD_BLOCK, spr_cardboard_block, 0, spr_wall, 1, 0, c_white, 1, "", noone, true, 0);
 	add_object(LEVEL_OBJECT_ID.ID_CARDBOARD, spr_cardboard, 0, spr_mask_block_long, 1, 0, c_white, 1, "", noone, true, 0);
 	add_object(LEVEL_OBJECT_ID.ID_CARDBOARD_LONG, spr_cardboard_long, 0, spr_cardboard_long, 1, 0, c_white, 1, "", noone, true, 0);
-	
+
 	#region /* Bump in Ground */
 	add_object(LEVEL_OBJECT_ID.ID_BUMP_IN_GROUND, spr_bump_in_ground, 0, spr_wall, 1, 0, c_white, 1, "", noone, true, 0);
 	add_object(LEVEL_OBJECT_ID.ID_BUMP_IN_GROUND_8_BASIC_COLLECTIBLES, spr_bump_in_ground, 0, spr_wall, 1, 0, c_white, 1, "", noone, true, 0);
@@ -398,7 +398,7 @@ if (!global.actually_play_edited_level)
 	add_object(LEVEL_OBJECT_ID.ID_BUMP_IN_GROUND_INVINCIBILITY_POWERUP, spr_bump_in_ground, 0, spr_wall, 1, 0, c_white, 1, "", noone, true, 0);
 	add_object(LEVEL_OBJECT_ID.ID_BUMP_IN_GROUND_INVINCIBILITY_POWERUP_COIL_SPRING, spr_bump_in_ground, 0, spr_wall, 1, 0, c_white, 1, "", noone, true, 0);
 	#endregion /* Bump in Ground END */
-	
+
 	#region /* Invisible Bump in Ground */
 	add_object(LEVEL_OBJECT_ID.ID_INVISIBLE_BUMP_IN_GROUND, spr_bump_in_ground, 0, spr_wall, 1, 0, c_white, 0.5, "", noone, true, 0);
 	add_object(LEVEL_OBJECT_ID.ID_INVISIBLE_BUMP_IN_GROUND_8_BASIC_COLLECTIBLES, spr_bump_in_ground, 0, spr_wall, 1, 0, c_white, 0.5, "", noone, true, 0);
@@ -410,7 +410,7 @@ if (!global.actually_play_edited_level)
 	add_object(LEVEL_OBJECT_ID.ID_INVISIBLE_BUMP_IN_GROUND_INVINCIBILITY_POWERUP, spr_bump_in_ground, 0, spr_wall, 1, 0, c_white, 0.5, "", noone, true, 0);
 	add_object(LEVEL_OBJECT_ID.ID_INVISIBLE_BUMP_IN_GROUND_INVINCIBILITY_POWERUP_COIL_SPRING, spr_bump_in_ground, 0, spr_wall, 1, 0, c_white, 0.5, "", noone, true, 0);
 	#endregion /* Invisible Bump in Ground END */
-	
+
 	#region /* Basic Collectible */
 	add_object(LEVEL_OBJECT_ID.ID_BASIC_COLLECTIBLE, global.resource_pack_sprite_basic_collectible, 0, spr_wall, 1, 0, c_white, 1, "", noone, true, 0);
 	add_object(LEVEL_OBJECT_ID.ID_BASIC_COLLECTIBLE_2, global.resource_pack_sprite_basic_collectible, 0, spr_wall, 1, 315, c_white, 1, "", noone, true, 0);
@@ -421,30 +421,30 @@ if (!global.actually_play_edited_level)
 	add_object(LEVEL_OBJECT_ID.ID_BASIC_COLLECTIBLE_7, global.resource_pack_sprite_basic_collectible, 0, spr_wall, 1, 90, c_white, 1, "", noone, true, 0);
 	add_object(LEVEL_OBJECT_ID.ID_BASIC_COLLECTIBLE_8, global.resource_pack_sprite_basic_collectible, 0, spr_wall, 1, 45, c_white, 1, "", noone, true, 0);
 	#endregion /* Basic Collectible END */
-	
+
 	#region /* Bulk Collectible */
 	add_object(LEVEL_OBJECT_ID.ID_10_BULK_COLLECTIBLE, global.resource_pack_sprite_bulk_collectible, 0, spr_wall, 1, 0, c_white, 1, "10", noone, true, 0);
 	add_object(LEVEL_OBJECT_ID.ID_30_BULK_COLLECTIBLE, global.resource_pack_sprite_bulk_collectible, 0, spr_wall, 1, 0, c_white, 1, "30", noone, true, 0);
 	add_object(LEVEL_OBJECT_ID.ID_50_BULK_COLLECTIBLE, global.resource_pack_sprite_bulk_collectible, 0, spr_wall, 1, 0, c_white, 1, "50", noone, true, 0);
 	#endregion /* Bulk Collectible END */
-	
+
 	#region /* Big Collectible */
 	add_object(LEVEL_OBJECT_ID.ID_BIG_COLLECTIBLE, global.resource_pack_sprite_big_collectible, 0, spr_wall, 1, 0, c_white, 1, "", noone, true, 0);
 	#endregion /* Big Collectible END */
-	
+
 	add_object(LEVEL_OBJECT_ID.ID_KEY, spr_key, 0, spr_wall, 1, 0, c_white, 1, "", noone, true, 0);
 	add_object(LEVEL_OBJECT_ID.ID_KEY_FRAGMENT, spr_key_fragment, 0, spr_wall, 1, 0, c_white, 1, "", noone, true, 0);
 	add_object(LEVEL_OBJECT_ID.ID_HEART, spr_heart, 0, spr_wall, 1, 0, c_white, 1, "", noone, true, 0);
 	add_object(LEVEL_OBJECT_ID.ID_HP_PICKUP, global.resource_pack_sprite_hp_pickup, 0, spr_wall, 1, 0, c_white, 1, "", noone, true, 0);
 	add_object(LEVEL_OBJECT_ID.ID_INVINCIBILITY_POWERUP, global.resource_pack_sprite_invincibility_powerup, 0, spr_wall, 1, 0, c_white, 1, "", noone, true, 0);
 	add_object(LEVEL_OBJECT_ID.ID_INVINCIBILITY_POWERUP_COIL_SPRING, global.resource_pack_sprite_invincibility_powerup, 0, spr_wall, 1, 0, c_white, 1, "", noone, true, 0);
-	
+
 	#region /* Extra Lives */
 	add_object(LEVEL_OBJECT_ID.ID_ONE_UP, sprite_lives_icon, 0, spr_wall, 1, 0, c_white, 1, "1-UP", noone, true, 0);
 	add_object(LEVEL_OBJECT_ID.ID_TWO_UP, sprite_lives_icon, 0, spr_wall, 1, 0, c_lime, 1, "2-UP", noone, true, 0);
 	add_object(LEVEL_OBJECT_ID.ID_THREE_UP, sprite_lives_icon, 0, spr_wall, 1, 0, c_blue, 1, "3-UP", noone, true, 0);
 	#endregion /* Extra Lives END */
-	
+
 	add_object(LEVEL_OBJECT_ID.ID_BASIC_ENEMY, global.resource_pack_sprite_basic_enemy, 0, spr_wall, 1, 0, c_white, 1, "", noone, true, 0);
 	add_object(LEVEL_OBJECT_ID.ID_BASIC_ENEMY_BLIND, global.resource_pack_sprite_basic_enemy_blind, 0, spr_wall, 1, 0, c_white, 1, "", noone, true, 0);
 	add_object(LEVEL_OBJECT_ID.ID_BASIC_ENEMY_COIL_SPRING, global.resource_pack_sprite_basic_enemy, 0, spr_wall, 1, 0, c_white, 1, "", noone, true, 0);
@@ -459,32 +459,32 @@ if (!global.actually_play_edited_level)
 	add_object(LEVEL_OBJECT_ID.ID_ENEMY_BULLET_RIGHT, global.resource_pack_sprite_bullet, 0, spr_wall, 1, 0, c_white, 1, "", noone, false, 0);
 	add_object(LEVEL_OBJECT_ID.ID_BLASTER, spr_blaster, 0, spr_wall, 1, 0, c_white, 1, "", noone, false, 0);
 	add_object(LEVEL_OBJECT_ID.ID_ENEMY_VENGEFUL_SPIRIT, global.resource_pack_sprite_enemy_vengeful_spirit, 0, spr_wall, 1, 0, c_white, 1, "", noone, false, 0);
-	
+
 	add_object(LEVEL_OBJECT_ID.ID_SPRING, spr_spring, 0, spr_wall, 1, 0, c_white, 1, "", noone, false, 0);
 	add_object(LEVEL_OBJECT_ID.ID_LADDER, spr_ladder, 0, spr_wall, 1, 0, c_white, 1, "", noone, true, 0);
 	add_object(LEVEL_OBJECT_ID.ID_ARROW_SIGN, spr_arrow_sign, 0, spr_wall, 1, 0, c_white, 1, "", noone, false, 0);
 	add_object(LEVEL_OBJECT_ID.ID_ARROW_SIGN_SMALL, spr_arrow_sign_small, 0, spr_wall, 1, 0, c_white, 1, "", noone, false, 0);
 	add_object(LEVEL_OBJECT_ID.ID_CHECKPOINT, spr_checkpoint_activated, 0, spr_wall, 1, 0, c_white, 1, "", noone, false, 0);
-	
+
 	#region /* Spikes Emerge Block */
 	add_object(LEVEL_OBJECT_ID.ID_SPIKES_EMERGE_BLOCK, spr_spikes_emerge_block, 0, spr_wall, 1, 0, c_white, 1, "", noone, true, 0);
 	add_object(LEVEL_OBJECT_ID.ID_SPIKES_EMERGE_BLOCK_LEFT, spr_spikes_emerge_block, 0, spr_wall, 1, 90, c_white, 1, "", noone, true, 0);
 	add_object(LEVEL_OBJECT_ID.ID_SPIKES_EMERGE_BLOCK_DOWN, spr_spikes_emerge_block, 0, spr_wall, 1, 180, c_white, 1, "", noone, true, 0);
 	add_object(LEVEL_OBJECT_ID.ID_SPIKES_EMERGE_BLOCK_RIGHT, spr_spikes_emerge_block, 0, spr_wall, 1, 270, c_white, 1, "", noone, true, 0);
-	
+
 	add_object(LEVEL_OBJECT_ID.ID_SPIKES_EMERGE_BLOCK_OFFSET_TIME, spr_spikes_emerge_half_out, 0, spr_wall, 1, 0, c_white, 1, "", noone, true, 0);
 	add_object(LEVEL_OBJECT_ID.ID_SPIKES_EMERGE_BLOCK_LEFT_OFFSET_TIME, spr_spikes_emerge_half_out, 0, spr_wall, 1, 90, c_white, 1, "", noone, true, 0);
 	add_object(LEVEL_OBJECT_ID.ID_SPIKES_EMERGE_BLOCK_DOWN_OFFSET_TIME, spr_spikes_emerge_half_out, 0, spr_wall, 1, 180, c_white, 1, "", noone, true, 0);
 	add_object(LEVEL_OBJECT_ID.ID_SPIKES_EMERGE_BLOCK_RIGHT_OFFSET_TIME, spr_spikes_emerge_half_out, 0, spr_wall, 1, 270, c_white, 1, "", noone, true, 0);
 	#endregion /* Spikes Emerge Block END */
-	
+
 	#region /* One Way */
 	add_object(LEVEL_OBJECT_ID.ID_ONEWAY, spr_oneway, 0, spr_wall, 1, 0, c_white, 1, "", noone, true, 0);
 	add_object(LEVEL_OBJECT_ID.ID_ONEWAY2, spr_oneway, 0, spr_wall, 1, 90, c_white, 1, "", noone, true, 0);
 	add_object(LEVEL_OBJECT_ID.ID_ONEWAY3, spr_oneway, 0, spr_wall, 1, 180, c_white, 1, "", noone, true, 0);
 	add_object(LEVEL_OBJECT_ID.ID_ONEWAY4, spr_oneway, 0, spr_wall, 1, 270, c_white, 1, "", noone, true, 0);
 	#endregion /* One Way END */
-	
+
 	add_object(LEVEL_OBJECT_ID.ID_HORIZONTAL_ROPE, spr_horizontal_rope, 0, spr_wall, 1, 0, c_white, 1, "", noone, true, 0);
 	add_object(LEVEL_OBJECT_ID.ID_WATER, spr_water_surface, 0, spr_wall, 1, 0, c_white, 1, "", noone, false, 0);
 	add_object(LEVEL_OBJECT_ID.ID_LAVA, spr_lava_surface, 0, spr_wall, 1, 0, c_white, 1, "", noone, false, 0);
@@ -507,7 +507,7 @@ if (!global.actually_play_edited_level)
 	add_object(LEVEL_OBJECT_ID.ID_BUCKET_THREE_UP, spr_bucket, 0, spr_wall, 1, 0, c_white, 1, "", noone, true, 0);
 	add_object(LEVEL_OBJECT_ID.ID_BIRD, spr_bird, 0, spr_wall, 1, 0, c_white, 1, "", noone, true, 0);
 	add_object(LEVEL_OBJECT_ID.ID_BUSH, spr_bush, 0, spr_wall, 1, 0, c_white, 1, "", noone, true, 0);
-	
+
 	#region /* Signs */
 	add_object(LEVEL_OBJECT_ID.ID_SIGN_CROUCH, spr_sign_crouch, 0, spr_wall, 1, 0, c_white, 1, "", noone, false, 0);
 	add_object(LEVEL_OBJECT_ID.ID_SIGN_DIVE, spr_sign_dive, 0, spr_wall, 1, 0, c_white, 1, "", noone, false, 0);
@@ -516,7 +516,7 @@ if (!global.actually_play_edited_level)
 	add_object(LEVEL_OBJECT_ID.ID_SIGN_WALL_JUMP, spr_sign_wall_jump, 0, spr_wall, 1, 0, c_white, 1, "", noone, false, 0);
 	add_object(LEVEL_OBJECT_ID.ID_SIGN_RUN, spr_sign_run, 0, spr_wall, 1, 0, c_white, 1, "", noone, false, 0);
 	#endregion /* Signs END */
-	
+
 	add_object(LEVEL_OBJECT_ID.ID_BOSS, spr_boss_stand, 0, spr_wall, 1, 0, c_white, 1, "", noone, true, 0);
 	add_object(LEVEL_OBJECT_ID.ID_BOSS_BARRIER, spr_boss_barrier, 0, spr_wall, 1, 0, c_white, 1, "", noone, true, 0);
 	add_object(LEVEL_OBJECT_ID.ID_CAKE_STEALING_ENEMY, global.resource_pack_sprite_cake, 0, spr_wall, 1, 0, c_white, 1, "", noone, true, 0);
@@ -540,13 +540,13 @@ if (!global.actually_play_edited_level)
 	add_object(LEVEL_OBJECT_ID.ID_APPEAR_BLOCK_5, spr_appear_block, 44, spr_wall, 1, 0, c_lime, 1, "5", noone, false, 0);
 	/* This is a dummy object, to make sure every object gets added to the list */ add_object(LEVEL_OBJECT_ID.ID_LAST_OBJECT_DUMMY, spr_wall, 0, spr_wall, 1, 0, c_white, 1, "", noone, true, 0); /* This dummy object is just here so the last object actually appears */
 	#endregion /* Grid Initialization END */
-	
+
 	mouse_x_position = device_mouse_x_to_gui(0);
 	mouse_y_position = device_mouse_y_to_gui(0);
-	
+
 	order_index = 0;
 	unlock_index = 0;
-	
+
 	ini_open(game_save_id + "save_file/config.ini");
 	global.upload_rules_do_not_show_level = ini_read_real("config", "upload_rules_do_not_show_level", false);
 	global.upload_rules_do_not_show_character = ini_read_real("config", "upload_rules_do_not_show_character", false);
@@ -561,7 +561,7 @@ if (!global.actually_play_edited_level)
 		previous_selected_level_editing_music = 1;
 	}
 	ini_close(); /* Don't commit the save data on Switch, this is only temporary! */
-	
+
 	#region /* Loading selected level editing music */
 	if (global.selected_level_editing_music == 0)
 	{
@@ -605,18 +605,18 @@ if (!global.actually_play_edited_level)
 		level_editing_music = noone;
 	}
 	#endregion /* Loading selected level editing music END */
-	
+
 	can_save_to_level_information = false;
 	depth = -300;
-	
+
 	old_window_get_height = 0;
 	old_window_get_width = 0;
-	
+
 	mx = mouse_x;
 	my = mouse_y;
-	
+
 	selected_skin = global.skin_for_player[fixed_player];
-	
+
 	audio_stop_all();
 	hovering_over_level_editor_corner_menu = false;
 	level_editor_option_back_to_menu = ""; /* Save what menu you came from, to use later */
@@ -695,7 +695,7 @@ if (!global.actually_play_edited_level)
 	background_brightness_lerp = 0;
 	background_brightness_menu_lerp = 0;
 	language_mouse_scroll = 0;
-	
+
 	#region /* Toggle for menu warning whenever the player plays a level from beginning and finishes the level too fast */
 	if (global.playing_level_from_beginning
 	&& global.player_has_entered_goal)
@@ -704,23 +704,23 @@ if (!global.actually_play_edited_level)
 		ini_write_real("info", "clear_check", true); /* If doing a level clear check, and winning the level, then add in level information that you have done a clear check */
 		ini_close(); /* Don't commit the save data on Switch, this is only temporary! */
 		if_clear_checked = true;
-		
+
 		if (global.enable_level_length_target)
 		{
 			menu = "level_length_recommendation_ok";
 		}
 	}
 	#endregion /* Toggle for menu warning whenever the player plays a level from beginning and finishes the level too fast END */
-	
+
 	global.player_has_entered_goal = false; /* Set this variable after checking for level length warning */
-	
+
 	scroll_view = false; /* If you can scroll the view or not */
 	create_level_from_template_save_delay = 0; /* Save the level before starting to edit the template level */
-	
+
 	darken_settings_alpha = 0;
 	darken_settings_sidebar_alpha = 0;
 	left_sidebar_x = -400;
-	
+
 	play_level_icon_x = 32;
 	place_icon_x = 96;
 	erase_icon_x = 160;
@@ -728,19 +728,19 @@ if (!global.actually_play_edited_level)
 	always_show_level_editor_buttons_x = 288;
 	autoscroll_icon_y = display_get_gui_height() - 192 - 64;
 	time_icon_y = display_get_gui_height() - 192;
-	
+
 	autoscroll_icon_sprite = spr_leveleditor_icon_autoscroll_none;
 	autoscroll_icon_subimg = 0;
 	show_autoscroll_menu = false;
 	show_time_menu = false;
-	
+
 	/* Top Right Icons X Positions */
 	grid_button_x = display_get_gui_width() - 288;
 	zoom_out_button_x = display_get_gui_width() - 224;
 	zoom_reset_button_x = display_get_gui_width() - 160;
 	zoom_in_button_x = display_get_gui_width() - 96;
 	help_button_x = display_get_gui_width() - 32;
-	
+
 	#region /* Options */
 	can_navigate = false;
 	menu_y_offset_real = 0;
@@ -749,7 +749,7 @@ if (!global.actually_play_edited_level)
 	scrolling_menu_with_mousewheel = false;
 	menu_remap_key_number = 0;
 	menu_remap_gamepad_button_number = 0;
-	
+
 	#region /* Remapping options variables */
 	remapping_player = 0; /* remapping_player 0 = player 1. remapping_player 1 = player 2. remapping_player 2 = player 3. remapping_player 3 = player 4 */
 	input_key = false;
@@ -766,7 +766,7 @@ if (!global.actually_play_edited_level)
 		ini_close(); /* Don't commit the save data on Switch, this is only temporary! */
 	}
 	#endregion /* Remapping options variables END */
-	
+
 	#region /* Character Name */
 	if (file_exists("characters/" + string(ds_list_find_value(global.all_loaded_characters, global.narrator)) + "/data/character_config.ini"))
 	|| (file_exists(game_save_id + "custom_characters/" + string(ds_list_find_value(global.all_loaded_characters, global.narrator)) + "/data/character_config.ini"))
@@ -779,11 +779,11 @@ if (!global.actually_play_edited_level)
 		{
 			ini_open(game_save_id + "custom_characters/" + string(ds_list_find_value(global.all_loaded_characters, global.narrator)) + "/data/character_config.ini");
 		}
-		
+
 		#region /* Character Name */
 		narrator_name = string(ds_list_find_value(global.all_loaded_characters, global.narrator));
 		#endregion /* Character Name END */
-		
+
 		ini_close(); /* Don't commit the save data on Switch, this is only temporary! */
 	}
 	else
@@ -791,18 +791,18 @@ if (!global.actually_play_edited_level)
 		narrator_name = string(global.narrator + 1);
 	}
 	#endregion /* Character Name END */
-	
+
 	#region /* Customize look of Options Menu */
 	menu_y_offset = -100;
 	c_menu_outline = c_black;
 	c_menu_fill = c_white;
 	#endregion /* Customize look of Options Menu END */
-	
+
 	#endregion /* Options END */
-	
+
 	image_speed = 0;
 	image_index = 0;
-	
+
 	#region /* Initialize Background */
 	background_x_offset[0] = 0;background_x[0] = 0;background_y_offset[0] = 0;background_y[0] = 0;
 	background_x_offset[1] = 0;background_x[1] = 0;background_y_offset[1] = 0;background_y[1] = 0;
@@ -813,7 +813,7 @@ if (!global.actually_play_edited_level)
 	background_x_offset[6] = 0;background_x[6] = 0;background_y_offset[6] = 0;background_y[6] = 0;
 	background_x_offset[7] = 0;background_x[7] = 0;background_y_offset[7] = 0;background_y[7] = 0;
 	#endregion /* Initialize Background END */
-	
+
 	select_object_menu_x = 0;
 	sprite_index = spr_wall;
 	mask_index = spr_wall;

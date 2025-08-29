@@ -15,7 +15,7 @@ else
 {
 	var sprite_alpha = 0.5;
 	var red_alpha = 0;
-	
+
 	if (taken_damage % 2 == 0)
 	{
 		sprite_alpha = 1;
@@ -28,7 +28,7 @@ else
 			red_alpha = 0.5;
 		}
 	}
-	
+
 	draw_sprite_ext(sprite_index, image_index, x, y, draw_xscale * sign(image_xscale), draw_yscale, angle, c_white, sprite_alpha);
 	draw_sprite_ext(sprite_index, image_index, x, y, draw_xscale * sign(image_xscale), draw_yscale, angle, c_red, red_alpha);
 }

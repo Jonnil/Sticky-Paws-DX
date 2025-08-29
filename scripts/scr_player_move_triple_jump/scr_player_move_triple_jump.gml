@@ -1,19 +1,19 @@
 function scr_player_move_triple_jump()
 {
-	
+
 	#region /* Triple Jump */
 	if (on_ground)
 	{
 		if (triplejumpdelay > 0)
 		{
-			triplejumpdelay --;
+			triplejumpdelay--;
 		}
 		if (triplejumpdelay < 1)
 		&& (vspeed >= 0)
 		{
 			jump = 0;
 		}
-	
+
 		#region /* Stop horizontal speed if you land after triple jump without holding direction */
 		if (jump >= 3)
 		&& (vspeed >= 0)
@@ -27,8 +27,8 @@ function scr_player_move_triple_jump()
 			}
 		}
 		#endregion /* Stop horizontal speed if you land after triple jump without holding direction END */
-	
+
 	}
 	#endregion /* Triple Jump END */
-	
+
 }

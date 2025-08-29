@@ -15,7 +15,7 @@ with(other)
 		taken_damage = 200; /* Invincibility frames */
 		if (invincible_timer == 0)
 		{
-			hp --;
+			hp--;
 		}
 		if (vspeed > 0)
 		{

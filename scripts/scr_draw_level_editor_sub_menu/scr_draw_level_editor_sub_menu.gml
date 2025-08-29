@@ -6,10 +6,10 @@ function scr_draw_level_editor_sub_menu(xx = 0)
 	var mouse_get_x = device_mouse_x_to_gui(0);
 	var mouse_get_y = device_mouse_y_to_gui(0);
 	var daily_build_enabled = true;
-	
+
 	var back_y = 226 * (column - scroll) + 569 - 3;
 	var daily_build_y = 226 * (column - scroll) + 569 - 3;
-	
+
 	#region /* Draw sub menu (code must be here to be above everything else) */
 	if (open_sub_menu)
 	&& (menu != "caution_online_back")
@@ -22,7 +22,7 @@ function scr_draw_level_editor_sub_menu(xx = 0)
 	&& (menu != "level_editor_downloaded_level")
 	&& (menu != "level_length_recommendation_ok" && menu != "level_length_recommendation_back")
 	{
-		
+
 		#region /* Navigate Sub Menu */
 		if (key_up)
 		&& (menu_delay == 0 && menu_joystick_delay == 0)
@@ -206,7 +206,7 @@ function scr_draw_level_editor_sub_menu(xx = 0)
 			}
 		}
 		#endregion /* Navigate Sub Menu END */
-		
+
 		#region /* Button Y Positions */
 		if (show_delete_button)
 		{
@@ -251,7 +251,7 @@ function scr_draw_level_editor_sub_menu(xx = 0)
 			}
 		}
 		#endregion /* Button Y Positions END */
-		
+
 		#region /* Show Sub Menu Buttons */
 		if (!can_input_level_name)
 		&& (menu != "load_official_level_template")
@@ -277,7 +277,7 @@ function scr_draw_level_editor_sub_menu(xx = 0)
 				if (daily_build_enabled) {
 					back_y += 47;
 				}
-				
+
 				scroll_to = floor(global.select_level_index / row) + 0.1; /* Scroll the view to fit all the buttons */
 				draw_roundrect_color_ext(xx - 3, 226 * (column - scroll) + 455 - 3 + 10 - 3, xx + 384 + 3, back_y + 47 + 3, 50, 50, c_black, c_black, false);
 				draw_roundrect_color_ext(xx, 226 * (column - scroll) + 455 - 3 + 10, xx + 384, back_y + 47, 50, 50, c_white, c_white, false);
@@ -324,7 +324,7 @@ function scr_draw_level_editor_sub_menu(xx = 0)
 			}
 		}
 		#endregion /* Show Sub Menu Buttons END */
-		
+
 		#region /* Pressing the Create from Scratch button */
 		if (menu == "level_editor_create_from_scratch")
 		&& (!can_input_level_name)
@@ -355,7 +355,7 @@ function scr_draw_level_editor_sub_menu(xx = 0)
 			}
 		}
 		#endregion /* Pressing the Create from Scratch button END */
-		
+
 		#region /* Pressing the Create from Back button */
 		if (menu == "level_editor_create_from_back")
 		&& (!can_input_level_name)
@@ -376,7 +376,7 @@ function scr_draw_level_editor_sub_menu(xx = 0)
 			}
 		}
 		#endregion /* Pressing the Create from Back button END */
-		
+
 		#region /* Pressing the Back button when selecting level */
 		if (menu == "level_editor_selected_back")
 		&& (!can_input_level_name)
@@ -398,7 +398,7 @@ function scr_draw_level_editor_sub_menu(xx = 0)
 			}
 		}
 		#endregion /* Pressing the Back button when selecting level END */
-		
+
 		#region /* Clicking outside of the sub menu should close the sub menu */
 		if (open_sub_menu)
 		&& (!can_input_level_name)
@@ -443,7 +443,7 @@ function scr_draw_level_editor_sub_menu(xx = 0)
 			}
 		}
 		#endregion /* Clicking outside of the sub menu should close the sub menu END */
-		
+
 		#region /* Pressing the Play button */
 		if (menu == "level_editor_play")
 		&& (!can_input_level_name)
@@ -463,7 +463,7 @@ function scr_draw_level_editor_sub_menu(xx = 0)
 			}
 		}
 		#endregion /* Pressing the Play button END */
-		
+
 		#region /* Pressing the Make button */
 		if (menu == "level_editor_make")
 		{
@@ -481,7 +481,7 @@ function scr_draw_level_editor_sub_menu(xx = 0)
 			}
 		}
 		#endregion /* Pressing the Make button END */
-		
+
 		#region /* Pressing the Edit Name button */
 		if (menu == "level_editor_edit_name")
 		{
@@ -498,15 +498,15 @@ function scr_draw_level_editor_sub_menu(xx = 0)
 				can_navigate = true;
 				global.doing_clear_check_level = false;
 				global.actually_play_edited_level = false;
-				
+
 				old_level_index = ds_list_find_value(global.all_loaded_custom_levels, global.select_level_index);
-				
+
 				if (ds_list_find_value(global.all_loaded_custom_levels, global.select_level_index) != undefined) /* Don't set "global level name" to "ds list find value" if it's undefined */
 				{
 					global.level_name = string(ds_list_find_value(global.all_loaded_custom_levels, global.select_level_index)); /* Set the "level name" to the selected level, so when you exit the level editor, the cursor will remember to appear on the level you selected */
 					keyboard_string = string(ds_list_find_value(global.all_loaded_custom_levels, global.select_level_index));
 				}
-				
+
 				old_level_name = global.level_name; /* Need to remember original name of level, so that renaming level doesn't actually happen if you haven't edited the name */
 				global.play_edited_level = false;
 				menu_delay = 3;
@@ -514,7 +514,7 @@ function scr_draw_level_editor_sub_menu(xx = 0)
 			}
 		}
 		#endregion /* Pressing the Edit Name button END */
-		
+
 		#region /* Pressing the Edit Description button */
 		if (menu == "level_editor_enter_description")
 		{
@@ -531,7 +531,7 @@ function scr_draw_level_editor_sub_menu(xx = 0)
 				can_navigate = true;
 				global.doing_clear_check_level = false;
 				global.actually_play_edited_level = false;
-				
+
 				if (file_exists(game_save_id + "custom_levels/" + string(global.level_name) + "/data/level_information.ini"))
 				{
 					ini_open(game_save_id + "custom_levels/" + string(global.level_name) + "/data/level_information.ini");
@@ -544,7 +544,7 @@ function scr_draw_level_editor_sub_menu(xx = 0)
 					keyboard_string = "";
 					global.level_description = "";
 				}
-				
+
 				old_level_description = global.level_description; /* Need to remember original description of level, so that renaming level doesn't actually happen if you haven't edited the description */
 				global.play_edited_level = false;
 				menu_delay = 3;
@@ -552,13 +552,13 @@ function scr_draw_level_editor_sub_menu(xx = 0)
 			}
 		}
 		#endregion /* Pressing the Edit Description button END */
-		
+
 		#region /* Key A pressed */
 		if (key_a_pressed)
 		&& (!can_input_level_name)
 		&& (menu_delay == 0 && menu_joystick_delay == 0)
 		{
-			
+
 			#region /* Pressing the Delete button */
 			if (menu == "level_editor_delete")
 			&& (show_delete_button)
@@ -567,9 +567,9 @@ function scr_draw_level_editor_sub_menu(xx = 0)
 				menu = "level_editor_delete_no";
 			}
 			#endregion /* Pressing the Delete button END */
-			
+
 			else
-			
+
 			#region /* Pressing the No Delete button */
 			if (menu == "level_editor_delete_no")
 			{
@@ -584,10 +584,10 @@ function scr_draw_level_editor_sub_menu(xx = 0)
 				}
 			}
 			#endregion /* Pressing the No Delete button END */
-			
+
 		}
 		#endregion /* Key A pressed END */
-		
+
 		#region /* Pressing the Create from Template button */
 		if (key_a_pressed)
 		&& (!can_input_level_name)
@@ -602,7 +602,7 @@ function scr_draw_level_editor_sub_menu(xx = 0)
 			if (menu == "level_editor_create_from_template")
 			{
 				scr_switch_expand_save_data(); /* Expand the save data before editing level name */
-				
+
 				if (global.save_data_size_is_sufficient)
 				{
 					creating_daily_build = false; /* Disable Daily Build */
@@ -622,7 +622,7 @@ function scr_draw_level_editor_sub_menu(xx = 0)
 			}
 		}
 		#endregion /* Pressing the Create from Template button END */
-		
+
 		#region /* Pressing the Create Daily Build button */
 		if (daily_build_enabled)
 		&& (key_a_pressed)
@@ -656,7 +656,7 @@ function scr_draw_level_editor_sub_menu(xx = 0)
 			}
 		}
 		#endregion /* Pressing the Create Daily Build button END */
-		
+
 		#region /* Pressing the Yes Delete button */
 		if (key_a_pressed)
 		&& (!can_input_level_name)
@@ -674,20 +674,20 @@ function scr_draw_level_editor_sub_menu(xx = 0)
 				{
 					directory_destroy(game_save_id + "custom_levels/" + global.level_name);
 				}
-				
+
 				ini_open(game_save_id + "save_file/custom_level_save.ini");
 				ini_section_delete(global.level_name);
 				ini_close(); /* Don't commit the save data on Switch, this is only temporary! */
-				
-				global.select_level_index --; /* Decrease the "select level index" so that the cursor isn't selecting a level that no longer exists */
+
+				global.select_level_index--; /* Decrease the "select level index" so that the cursor isn't selecting a level that no longer exists */
 				scr_load_custom_level_initializing();
-				
+
 				for(var i = 1; i <= global.max_players; i += 1)
 				{
 					can_input_player_name[i] = 2;
 					player_accept_selection[i] = false;
 				}
-				
+
 				global.go_to_menu_when_going_back_to_title = "level_editor_delete";
 				can_navigate = true;
 				menu_delay = 3;
@@ -699,8 +699,8 @@ function scr_draw_level_editor_sub_menu(xx = 0)
 			}
 		}
 		#endregion /* Pressing the Yes Delete button END */
-		
+
 	}
 	#endregion /* Draw sub menu END */
-	
+
 }

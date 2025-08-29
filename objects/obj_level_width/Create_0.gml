@@ -17,7 +17,7 @@ if (global.character_select_in_this_menu == "main_game")
 	{
 		ini_open(global.use_temp_or_working + "custom_levels/" + string(global.level_name) + "/data/level_information.ini");
 	}
-	
+
 	if (ini_key_exists("info", "level_width"))
 	{
 		x = ini_read_real("info", "level_width", 0);

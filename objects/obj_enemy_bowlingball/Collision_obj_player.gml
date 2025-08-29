@@ -23,7 +23,7 @@ if (!die)
 			with(instance_nearest(x, y, obj_player))
 			{
 				dive = false;
-				chain_reaction ++;
+				chain_reaction++;
 				midair_jumps_left = number_of_jumps - 1;
 				can_dive = true;
 			}
@@ -42,11 +42,11 @@ if (!die)
 			scr_different_items_inside(bbox_top);
 			effect_create_above(ef_smoke, x, y, 2, c_white);
 			scr_gamepad_vibration(other.player, 0.5, 10);
-			
+
 			scr_audio_play(choose(enemyvoice_defeated1, enemyvoice_defeated2, enemyvoice_defeated3), volume_source.voice);
 
 			scr_get_rewards_when_jumped_on();
-			
+
 		}
 	}
 	if (!die_volting)
@@ -60,7 +60,7 @@ if (!die)
 			{
 				if (abs(other.hspeed) > 7)
 				{
-					other.jump ++;
+					other.jump++;
 					if (other.jump > 2)
 					{
 						if (other.image_xscale > 0)
@@ -76,17 +76,17 @@ if (!die)
 				with(instance_nearest(x, y, obj_player))
 				{
 					dive = false;
-					chain_reaction ++;
+					chain_reaction++;
 					midair_jumps_left = number_of_jumps - 1;
 					can_dive = true;
 				}
 				effect_create_below(ef_ring, x, y, 0, c_white);
 				scr_gamepad_vibration(other.player, 0.5, 10);
-				
+
 				scr_audio_play(choose(enemyvoice_defeated1, enemyvoice_defeated2, enemyvoice_defeated3), volume_source.voice);
-				
+
 				scr_get_rewards_when_jumped_on();
-				
+
 				speed = 0;
 				if (other.key_jump_hold)
 				{
@@ -223,7 +223,7 @@ if (!die)
 				{
 					coil_spring = false;
 					stomped_delay = 5;
-					global.enemy_counter ++;
+					global.enemy_counter++;
 					if (vspeed < 0)
 					{
 						vspeed = +1;
@@ -233,7 +233,7 @@ if (!die)
 				{
 					flat = true;
 					stomped_delay = 5;
-					global.enemy_counter ++;
+					global.enemy_counter++;
 				}
 				image_index = 0;
 			}
@@ -242,21 +242,21 @@ if (!die)
 			{
 				die = true;
 				scr_different_items_inside(bbox_top);
-				global.enemy_counter ++;
+				global.enemy_counter++;
 				with(instance_nearest(x, y, obj_player))
 				{
 					dive = false;
-					chain_reaction ++;
+					chain_reaction++;
 					midair_jumps_left = number_of_jumps - 1;
 					can_dive = true;
 				}
 				effect_create_below(ef_ring, x, y, 0, c_white);
 				scr_gamepad_vibration(other.player, 0.5, 10);
-				
+
 				scr_audio_play(choose(enemyvoice_defeated1, enemyvoice_defeated2, enemyvoice_defeated3), volume_source.voice);
-				
+
 				scr_get_rewards_when_jumped_on();
-				
+
 				speed = 0;
 				image_index = 0;
 				if (other.x < x)
@@ -271,9 +271,9 @@ if (!die)
 				}
 			}
 		}
-		
+
 		else
-		
+
 		if (stomped_delay == 0)
 		&& (!die)
 		&& (!flat)

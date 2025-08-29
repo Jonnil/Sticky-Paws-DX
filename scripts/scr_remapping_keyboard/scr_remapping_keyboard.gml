@@ -1,7 +1,7 @@
 function scr_remapping_keyboard()
 {
 	player_profile = global.player_profile[remapping_player + 1];
-	
+
 	if (menu_remap_key_number == 0)
 	{
 		var remap_key_number_string = "";
@@ -13,7 +13,7 @@ function scr_remapping_keyboard()
 		var remap_key_number_string = "2";
 		var remap_key_number = 2;
 	}
-	
+
 	if (!keyboard_check_pressed(vk_escape))
 	&& (keyboard_check_pressed(vk_anykey))
 	{
@@ -69,7 +69,7 @@ function scr_remapping_keyboard()
 		last_key = noone;
 		can_remap_key = true;
 	}
-	
+
 	#region /* Remapping Keyboard */
 	if (can_remap_key)
 	{
@@ -250,5 +250,5 @@ function scr_remapping_keyboard()
 		menu_delay = 6;
 	}
 	#endregion /* Remapping Keyboard END */
-	
+
 }

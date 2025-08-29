@@ -14,32 +14,32 @@ function scr_download_language_pack_from_server()
 		global.language_update_status_color = c_red;
 		return;
 	}
-	
+
 	/* 2) Build the endpoint URL. Adjust the path if needed */
 	var endpoint = "https://" + string(global.base_url) + "/download_language_file";
 		scr_log("DEBUG", "HTTP.LANG", "download_url", endpoint);
-	
+
 	/* 3) Create a header map for the HTTP GET request */
 	var header_map = ds_map_create();
 	ds_map_add(header_map, "User-Agent", "gm_language_downloader_server");
 	ds_map_add(header_map, "Accept", "text/csv");
 	ds_map_add(header_map, "X-API-Key", global.api_key);
-	
+
 	/* 4) Debug: Output the headers being used */
 	var header_str = "";
 	var key = ds_map_find_first(header_map);
-	
+
 	while (!is_undefined(key))
 	{
 		header_str += key + ": " + ds_map_find_value(header_map, key) + ", ";
 		key = ds_map_find_next(header_map, key);
 	}
 		scr_log("DEBUG", "HTTP.LANG", "http_request_headers", header_str);
-	
+
 	/* 5) Initiate the asynchronous HTTP GET request */
 	global.language_http_request_id = http_request(endpoint, "GET", header_map, "");
 	ds_map_destroy(header_map);
-	
+
 	if (global.language_http_request_id == -1)
 	{
 			scr_log("ERROR", "HTTP.LANG", "http_request_failed");
@@ -47,6 +47,6 @@ function scr_download_language_pack_from_server()
 		global.language_update_status_color = c_red;
 		return;
 	}
-	
+
 		scr_log("INFO", "HTTP.LANG", "http_request_started", "request_id=" + string(global.language_http_request_id));
 }

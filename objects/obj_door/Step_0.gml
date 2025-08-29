@@ -65,7 +65,7 @@ if (open_door)
 		camera_get_view_width(view_camera[view_current]),
 		camera_get_view_height(view_camera[view_current]),
 		true);
-		
+
 		door_x = 0;
 		door_xscale = 1;
 		global.iris_zoom_in = false;
@@ -85,16 +85,16 @@ if (open_door)
 			obj_key_follow.x = second_x; /* Teleport any keys following the player */
 			obj_key_follow.y = second_y;
 		}
-		
+
 		open_door = false;
-		
+
 		var time_source = time_source_create(time_source_game, 10, time_source_units_frames, function()
 		{
 			global.player_can_go_outside_view = false;
 		}
 		, [], 1);
 		time_source_start(time_source);
-		
+
 		with (instance_nearest(obj_player.x, obj_player.y, obj_door))
 		{
 			if (place_meeting(x, y, obj_player))

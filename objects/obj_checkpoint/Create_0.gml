@@ -20,7 +20,7 @@ if (room == rm_leveleditor)
 && (global.actually_play_edited_level)
 {
 	var level_name = global.level_name;
-					
+
 	ini_open(game_save_id + "save_file/file" + string(global.file) + ".ini");
 	checkpoint_what_player = ini_read_real(level_name, "checkpoint_what_player", 1);
 	ini_close(); /* Don't commit the save data on Switch, this is only temporary! */
@@ -30,7 +30,7 @@ if (room == rm_leveleditor)
 && (global.actually_play_edited_level)
 {
 	var level_name = global.level_name;
-					
+
 	ini_open(game_save_id + "save_file/custom_level_save.ini");
 	checkpoint_what_player = ini_read_real(level_name, "checkpoint_what_player", 1);
 	ini_close(); /* Don't commit the save data on Switch, this is only temporary! */

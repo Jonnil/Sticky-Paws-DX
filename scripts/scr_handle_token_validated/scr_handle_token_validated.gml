@@ -8,23 +8,23 @@ function scr_handle_token_validated()
 		/* Get the status code and response body */
 		var status_code = async_load[? "http_status"];
 		var response_str = async_load[? "result"];
-		
+
 		/* Check if the response status is 200 (OK) */
 		if (status_code == 200)
 		{
 			/* Get the response as a string and decode it from JSON */
 			var response_json = json_decode(response_str);
 			var file_data_base64 = response_json[? "data"];
-			
+
 			/* Save the decoded data to a local file (with the .zip extension) */
 			var buffer = buffer_base64_decode(file_data_base64);
 			global.online_token_validated = true;
-			
+
 			/* Free the buffer memory */
 			buffer_delete(buffer);
-			
+
 				scr_log("INFO", "HTTP.AUTH", "token_validated", "http_status=200, validated=" + string(global.online_token_validated));
-			
+
 			scr_get_todays_upload_count(); /* Update the todays upload count whenever you first go online */
 		}
 		else

@@ -1,6 +1,6 @@
 function scr_when_placing_on_difficulty_layer(what_object)
 {
-	
+
 	#region /* When placing on difficulty layer */
 	what_object.placed_for_the_first_time = true;
 	if (obj_leveleditor.set_difficulty_mode)
@@ -33,5 +33,5 @@ function scr_when_placing_on_difficulty_layer(what_object)
 		}
 	}
 	#endregion /* When placing on difficulty layer END */
-	
+
 }

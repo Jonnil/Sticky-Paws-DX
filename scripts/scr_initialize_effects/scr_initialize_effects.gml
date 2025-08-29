@@ -1,13 +1,13 @@
 function scr_initialize_effects()
 {
-	
+
 	#region /* Rain Effect */
 	if (global.effect_rain)
 	{
 		if (!part_system_exists(part_system_rain))
 		{
 			part_system_rain = part_system_create(par_rain_level);
-			
+
 			if (!audio_is_playing(snd_rain))
 			{
 				scr_audio_play(snd_rain, volume_source.ambient); /* Play rain sound */
@@ -15,33 +15,33 @@ function scr_initialize_effects()
 		}
 	}
 	#endregion /* Rain Effect END */
-	
+
 	#region /* Snow Effect */
 	if (global.effect_snow)
 	{
 		if (!part_system_exists(part_system_snow))
 		{
 			part_system_snow = part_system_create(par_snow);
-			
+
 			// Uncomment if you want to play snow sound
 			// if (!audio_is_playing(snd_snow))
 			// {
-			//	 scr_audio_play(snd_snow, volume_source.ambient);
+			//     scr_audio_play(snd_snow, volume_source.ambient);
 			// }
 		}
 	}
 	#endregion /* Snow Effect END */
-	
+
 	#region /* Wind Effect */
 	if (global.effect_wind)
 	{
 		if (!layer_exists("WindEffectLayer"))
 		{
 			layer_create(-100, "WindEffectLayer");
-			
+
 			/* Create the FX object and validate it */
 			var _fx_wind = fx_create("_effect_windblown_particles");
-			
+
 			if (_fx_wind)
 			{
 				fx_set_parameter(_fx_wind, "param_num_particles", 9); /* No more than 9 particles for better performance */
@@ -67,5 +67,5 @@ function scr_initialize_effects()
 		layer_destroy("WindEffectLayer");
 	}
 	#endregion /* Wind Effect END */
-	
+
 }

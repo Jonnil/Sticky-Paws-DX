@@ -14,7 +14,7 @@ if (!show_remaining_jumps)
 		{
 			if (lives < 99)
 			{
-				lives ++;
+				lives++;
 			}
 			audio_sound_pitch(snd_1up, 1);
 			scr_audio_play(snd_1up, volume_source.sound);
@@ -39,7 +39,7 @@ if (!show_remaining_jumps)
 		{
 			if (lives < 99)
 			{
-				lives ++;
+				lives++;
 			}
 			audio_sound_pitch(snd_1up, 1);
 			scr_audio_play(snd_1up, volume_source.sound);
@@ -50,7 +50,7 @@ if (!show_remaining_jumps)
 		{
 			if (lives < 99)
 			{
-				lives ++;
+				lives++;
 			}
 			audio_sound_pitch(snd_1up, 1.1);
 			scr_audio_play(snd_1up, volume_source.sound);
@@ -75,7 +75,7 @@ if (!show_remaining_jumps)
 		{
 			if (lives < 99)
 			{
-				lives ++;
+				lives++;
 			}
 			audio_sound_pitch(snd_1up, 1);
 			scr_audio_play(snd_1up, volume_source.sound);
@@ -86,7 +86,7 @@ if (!show_remaining_jumps)
 		{
 			if (lives < 99)
 			{
-				lives ++;
+				lives++;
 			}
 			audio_sound_pitch(snd_1up, 1.1);
 			scr_audio_play(snd_1up, volume_source.sound);
@@ -97,7 +97,7 @@ if (!show_remaining_jumps)
 		{
 			if (lives < 99)
 			{
-				lives ++;
+				lives++;
 			}
 			audio_sound_pitch(snd_1up, 1.2);
 			scr_audio_play(snd_1up, volume_source.sound);

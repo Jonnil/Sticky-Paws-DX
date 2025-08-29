@@ -4,19 +4,19 @@ selected_voicepack = 0;
 for(var p = 1; p <= global.max_players; p += 1)
 {
 	gamepad_set_vibration(p - 1, 0, 0);
-	
+
 	player_accept_selection[p] = -1;
 	player_automatically_join[p] = false;
 	player_menu[p] = "select_character";
 	can_input_player_name[p] = 2; /* What player can enter a name */
-	
+
 	scr_set_character_folder(p);
 	ini_open(character_folder + "/data/character_config.ini"); /* First open the character folder ini before initializing custom character abilities */
 	allow_player_tongue[p] = scr_initialize_character_abilities(p - 1, "allow_tongue", false);
 	allow_player_double_jump[p] = scr_initialize_character_abilities(p - 1, "number_of_jumps", 1, "values");
 	allow_player_dive[p] = scr_initialize_character_abilities(p - 1, "allow_dive", false);
 	ini_close(); /* Don't commit the save data on Switch, this is only temporary! */
-	
+
 	menu_specific_joystick_delay[p] = 3;
 	player_display_x[p] = 0;
 	xx[p] = 0;
@@ -234,13 +234,13 @@ lives = 5; /* Starting lives */
 if (global.character_select_in_this_menu == "level_editor")
 {
 	scr_load_custom_level_initializing();
-	
+
 	for(var p = 1; p <= global.max_players; p += 1)
 	{
 		can_input_player_name[p] = false;
 		player_accept_selection[p] = false;
 	}
-	
+
 	can_navigate = true;
 	open_sub_menu = false;
 	menu = "load_custom_level";

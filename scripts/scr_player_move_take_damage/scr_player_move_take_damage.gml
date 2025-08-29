@@ -24,17 +24,17 @@ function scr_player_move_take_damage()
 			{
 				/* Calculate damage: double damage if challenge_enemies_double_damage is enabled, otherwise normal damage (1) */
 				var damage = 1;
-				
+
 				if (global.challenge_mode_enable
 				&& global.challenge_enemies_double_damage)
 				{
 					damage = 2;
 				}
-				
+
 				hp -= damage;
 			}
 		}
-		
+
 		/* Set invincibility frames if not disabled by challenge_no_post_hit_invincibility */
 		if (!(global.challenge_mode_enable
 		&& global.challenge_no_post_hit_invincibility))
@@ -45,7 +45,7 @@ function scr_player_move_take_damage()
 		{
 			taken_damage = 10; /* No post-hit invincibility in challenge mode */
 		}
-		
+
 		/* Trigger gamepad vibration as feedback for taking damage */
 		scr_gamepad_vibration(player, 1, 10);
 	}

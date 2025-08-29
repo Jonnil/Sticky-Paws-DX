@@ -3,7 +3,7 @@ function scr_draw_report()
 	var report_back_y = 0;
 	var mouse_get_x = device_mouse_x_to_gui(0);
 	var mouse_get_y = device_mouse_y_to_gui(0);
-	
+
 	if (menu == "report_send_to_server")
 	|| (menu == "report_complete_back")
 	|| (menu == "report_complete_delete")
@@ -26,19 +26,19 @@ function scr_draw_report()
 	|| (menu == "report_send_back")
 	|| (menu == "report_send_confirm")
 	{
-		
+
 		#region /* Opaque transparent black rectangle over whole screen, but underneath text */
 		draw_set_alpha(0.75);
 		draw_rectangle_color(- 32, - 32, display_get_gui_width() + 32, display_get_gui_height() + 32, c_black, c_black, c_black, c_black, false);
 		draw_set_alpha(1);
 		#endregion /* Opaque transparent black rectangle over whole screen, but underneath text END */
-		
+
 		/* Show the Email Support in the bottom left screen */
 		draw_set_halign(fa_left);
 		scr_draw_text_outlined(32, display_get_gui_height() - 32, l10n_text("Email Support") + ": " + string(global.email_support));
 		draw_set_halign(fa_center);
 	}
-	
+
 	#region /* Send report information to the server */
 	if (menu == "report_send_to_server")
 	{
@@ -50,21 +50,21 @@ function scr_draw_report()
 				{
 					if (scr_online_token_is_valid() == true)
 					{
-						
+
 						#region /* Actually upload the report to the server */
-						
+
 						/* Create DS Map to hold the HTTP Header info */
 						var report_upload_headers = ds_map_create();
-						
+
 						/* Add to the header DS Map */
 						var boundary = "----GMBoundary";
 						ds_map_add(report_upload_headers, "Content-Type", "multipart/form-data; boundary=" + boundary);
 						ds_map_add(report_upload_headers, "User-Agent", "gmuploader");
 						ds_map_add(report_upload_headers, "X-API-Key", global.api_key);
-						
+
 						/* If there is a report message, save that in data_send */
 						if (global.report_message != undefined
-						&& global.report_message != "") 
+						&& global.report_message != "")
 						{
 							data_send = string(global.report_message);
 						}
@@ -72,7 +72,7 @@ function scr_draw_report()
 						{
 							data_send = "";
 						}
-						
+
 						/* Post the data to the upload script */
 						var post_data = "--" + boundary + "\r\n";
 						post_data += "Content-Disposition: form-data; name=\"report_reason\"\r\n\r\n";
@@ -81,7 +81,7 @@ function scr_draw_report()
 						post_data += "Content-Disposition: form-data; name=\"report_message\"\r\n\r\n";
 						post_data += data_send + "\r\n";
 						post_data += "--" + boundary + "--";
-						
+
 						/* Add the Content-Length header to the map */
 						ds_map_add(report_upload_headers, "Content-Length", string(string_length(post_data)));
 						global.http_request_id = http_request(
@@ -90,11 +90,11 @@ function scr_draw_report()
 							report_upload_headers,
 							post_data
 						);
-						
+
 						/* Cleans up! */
 						ds_map_destroy(report_upload_headers);
 						#endregion /* Actually upload the level to the server END */
-						
+
 						search_for_id_still = false;
 						if (content_type == "level")
 						&& (file_exists(game_save_id + "custom_levels/" + string(global.level_name) + "/data/level_information.ini"))
@@ -137,17 +137,17 @@ function scr_draw_report()
 		}
 	}
 	#endregion /* Send report information to the server END */
-	
+
 	#region /* Report Complete */
 	if (menu == "report_complete_back")
 	|| (menu == "report_complete_delete")
 	|| (menu == "report_complete_back_to_online_list")
 	{
 		var report_sent_message_y = display_get_gui_height() * 0.5;
-		
+
 		draw_menu_button(0, report_back_y, l10n_text("Back"), "report_complete_back", report_back_to_menu);
 		draw_sprite_ext(spr_icon_back, 0, 16, report_back_y + 21, 1, 1, 0, c_white, 1);
-		
+
 		if (point_in_rectangle(mouse_get_x, mouse_get_y, display_get_gui_width() * 0.5 - 185, report_back_y, display_get_gui_width() * 0.5 - 185 + 370, report_back_y + 41))
 		&& (global.controls_used_for_navigation == "mouse")
 		&& (mouse_check_button_released(mb_left))
@@ -159,7 +159,7 @@ function scr_draw_report()
 			menu = report_back_to_menu;
 			menu_delay = 3;
 		}
-		
+
 		scr_draw_text_outlined(display_get_gui_width() * 0.5, report_sent_message_y - 64, l10n_text("Report has been sent"), global.default_text_size * 2, c_black, c_white, 1);
 		if (content_type == "level")
 		{
@@ -201,7 +201,7 @@ function scr_draw_report()
 		}
 		draw_menu_button(display_get_gui_width() * 0.5 - 185, back_to_list_y, back_to_list_text, "report_complete_back_to_online_list", "report_complete_back_to_online_list");
 		draw_sprite_ext(spr_icon_back, 0, display_get_gui_width() * 0.5 - 185 + 16, back_to_list_y + 20, 1, 1, 0, c_white, 1);
-		
+
 		#region /* Click Delete */
 		if (menu == "report_complete_delete")
 		{
@@ -230,7 +230,7 @@ function scr_draw_report()
 					directory_destroy(game_save_id + "custom_characters/" + string(downloaded_character_name));
 					global.character_index[0] = 0;
 				}
-				
+
 				if (room == rm_title)
 				{
 					menu = "searched_file_downloaded_deleted_back_to_list";
@@ -239,24 +239,24 @@ function scr_draw_report()
 				if (room == rm_pause)
 				{
 					#region /* Return to Title */
-					
+
 					/* Reset timer back to zero */
 					global.timeattack_realmillisecond = 0;
 					global.timeattack_millisecond = 0;
 					global.timeattack_second = 0;
 					global.timeattack_minute = 0;
-					
+
 					global.quit_level = true;
 					global.quit_to_title = true;
 					audio_stop_all();
 					global.pause = false;
 					#endregion /* Return to Title END */
-					
+
 				}
 			}
 		}
 		#endregion /* Click Delete END */
-		
+
 		#region /* Click back to online level list */
 		if (point_in_rectangle(mouse_get_x, mouse_get_y, display_get_gui_width() * 0.5 - 185, back_to_list_y, display_get_gui_width() * 0.5 + 185, back_to_list_y + 41))
 		&& (global.controls_used_for_navigation == "mouse")
@@ -268,7 +268,7 @@ function scr_draw_report()
 		{
 			/* Don't set the "select level index" or "level name" here, because we want it saved still */
 			menu_delay = 3;
-			
+
 			if (room == rm_title)
 			&& (scr_online_token_is_valid() == true)
 			{
@@ -278,23 +278,23 @@ function scr_draw_report()
 			if (room == rm_pause)
 			{
 				#region /* Return to Title */
-				
+
 				/* Reset timer back to zero */
 				global.timeattack_realmillisecond = 0;
 				global.timeattack_millisecond = 0;
 				global.timeattack_second = 0;
 				global.timeattack_minute = 0;
-				
+
 				global.quit_level = true;
 				global.quit_to_title = true;
 				audio_stop_all();
 				global.pause = false;
 				#endregion /* Return to Title END */
-				
+
 			}
 		}
 		#endregion /* Click back to online level list END */
-		
+
 		if (key_up)
 		&& (menu_delay == 0 && menu_joystick_delay == 0)
 		{
@@ -354,12 +354,12 @@ function scr_draw_report()
 				menu = "report_complete_back";
 			}
 		}
-		
+
 	}
 	#endregion /* Report Complete END */
-	
+
 	#region /* Fill information about report before sending to server */
-	
+
 	#region /* Information for the player before asking player to give information */
 	if (menu == "report_back")
 	|| (menu == "report_next")
@@ -371,7 +371,7 @@ function scr_draw_report()
 		var report_next_y = display_get_gui_height() * 0.5 + 106;
 		draw_menu_button(display_get_gui_width() * 0.5 - 185, report_next_y, l10n_text("Next"), "report_next", "report_next");
 		draw_sprite_ext(spr_icon_report, 0, display_get_gui_width() * 0.5 - 185 + 16, report_next_y + 21, 1, 1, 0, c_white, 1);
-		
+
 		if (point_in_rectangle(mouse_get_x, mouse_get_y, display_get_gui_width() * 0.5 - 185, report_back_y, display_get_gui_width() * 0.5 - 185 + 370, report_back_y + 41))
 		&& (global.controls_used_for_navigation == "mouse")
 		&& (mouse_check_button_released(mb_left))
@@ -383,7 +383,7 @@ function scr_draw_report()
 			menu = report_back_to_menu;
 			menu_delay = 3;
 		}
-		
+
 		if (point_in_rectangle(mouse_get_x, mouse_get_y, display_get_gui_width() * 0.5 - 185, report_next_y, display_get_gui_width() * 0.5 - 185 + 370, report_next_y + 41))
 		&& (global.controls_used_for_navigation == "mouse")
 		&& (mouse_check_button_released(mb_left))
@@ -395,14 +395,14 @@ function scr_draw_report()
 			menu = "report_intrusion_of_privacy";
 			menu_delay = 3;
 		}
-		
+
 		if (key_b_pressed)
 		&& (menu_delay == 0 && menu_joystick_delay == 0)
 		{
 			menu = report_back_to_menu;
 			menu_delay = 3;
 		}
-		
+
 		if (key_up)
 		&& (menu_delay == 0 && menu_joystick_delay == 0)
 		|| (key_down)
@@ -421,7 +421,7 @@ function scr_draw_report()
 		}
 	}
 	#endregion /* Information for the player before asking player to give information END */
-	
+
 	#region /* Report Reason */
 	if (menu == "report_reason_back")
 	|| (menu == "report_intrusion_of_privacy")
@@ -438,7 +438,7 @@ function scr_draw_report()
 	{
 		global.report_message = "";
 		keyboard_string = "";
-		
+
 		var report_intrusion_of_privacy_y = 42 * 3;
 		var report_violence_physical_harm_y = 42 * 4;
 		var report_abusive_harassing_bullying = 42 * 5;
@@ -450,12 +450,12 @@ function scr_draw_report()
 		var report_blatant_copying_y = 42 * 10;
 		/* var report_phony_world_record_y = 42 * 11; */
 		var report_other_inappropriate_content_y = 42 * 11;
-		
+
 		scr_draw_text_outlined(display_get_gui_width() * 0.5, 64, l10n_text("Please select the reason for this report"), global.default_text_size, c_black, c_white, 1);
-		
+
 		draw_menu_button(0, report_back_y, l10n_text("Back"), "report_reason_back", report_back_to_menu);
 		draw_sprite_ext(spr_icon_back, 0, 16, report_back_y + 21, 1, 1, 0, c_white, 1);
-		
+
 		draw_menu_button(display_get_gui_width() * 0.5 - 185, report_intrusion_of_privacy_y, l10n_text("Intrusion of Privacy"), "report_intrusion_of_privacy", "report_message_ok");
 		draw_menu_button(display_get_gui_width() * 0.5 - 185, report_violence_physical_harm_y, l10n_text("Violence/Physical Harm"), "report_violence_physical_harm", "report_message_ok");
 		draw_menu_button(display_get_gui_width() * 0.5 - 185, report_abusive_harassing_bullying, l10n_text("Abusive/Harassing/Bullying"), "report_abusive_harassing_bullying", "report_message_ok");
@@ -466,7 +466,7 @@ function scr_draw_report()
 		draw_menu_button(display_get_gui_width() * 0.5 - 185, report_uses_a_bug_y, l10n_text("Uses a Bug without Bug tag"), "report_uses_a_bug", "report_message_ok");
 		draw_menu_button(display_get_gui_width() * 0.5 - 185, report_blatant_copying_y, l10n_text("Blatant Copying"), "report_blatant_copying", "report_message_ok");
 		draw_menu_button(display_get_gui_width() * 0.5 - 185, report_other_inappropriate_content_y, l10n_text("Other Inappropriate Content"), "report_other_inappropriate_content", "report_message_ok");
-		
+
 		#region /* What report reason to use when hovering over different buttons */
 		if (menu == "report_intrusion_of_privacy")
 		{
@@ -534,7 +534,7 @@ function scr_draw_report()
 			report_reason_text = l10n_text("Other Inappropriate Content");
 		}
 		#endregion /* What report reason to use when hovering over different buttons END */
-		
+
 		#region /* Report Reason Accept */
 		if (point_in_rectangle(mouse_get_x, mouse_get_y, display_get_gui_width() * 0.5 - 185, report_back_y, display_get_gui_width() * 0.5 - 185 + 370, report_back_y + 41))
 		&& (global.controls_used_for_navigation == "mouse")
@@ -629,14 +629,14 @@ function scr_draw_report()
 			menu_delay = 3;
 		}
 		#endregion /* Report Reason Accept END */
-		
+
 		if (key_b_pressed)
 		&& (menu_delay == 0 && menu_joystick_delay == 0)
 		{
 			menu_delay = 3;
 			menu = report_back_to_menu;
 		}
-		
+
 		if (key_up)
 		&& (menu_delay == 0 && menu_joystick_delay == 0)
 		{
@@ -762,15 +762,15 @@ function scr_draw_report()
 		}
 	}
 	#endregion /* Report Reason END */
-	
+
 	#region /* Report Comment */
 	if (menu == "report_message_ok")
 	|| (menu == "report_message_back")
 	{
 		global.report_message = scr_draw_name_input_screen(global.report_message, 100, c_white, 0.9, false, display_get_gui_width() * 0.5, display_get_gui_height() * 0.5, "report_message_ok", "report_message_back", false, true, false);
-		
+
 		scr_draw_text_outlined(display_get_gui_width() * 0.5, display_get_gui_height() * 0.5 - 96, l10n_text("Please provide a reason for this report"), global.default_text_size, c_black, c_white, 1);
-		
+
 		#region /* Pressing Report Comment OK */
 		if (global.clicking_ok_input_screen)
 		&& (global.report_message != "")
@@ -783,7 +783,7 @@ function scr_draw_report()
 			{
 				menu_delay = 3;
 				input_key = false;
-				
+
 				if (scr_check_network_connection(network_connect_active))
 				{
 					if (global.switch_logged_in)
@@ -825,9 +825,9 @@ function scr_draw_report()
 			}
 		}
 		#endregion /* Pressing Report Comment OK END */
-		
+
 		else
-		
+
 		#region /* Pressing Report Comment Cancel */
 		if (global.clicking_cancel_input_screen)
 		{
@@ -845,14 +845,14 @@ function scr_draw_report()
 			}
 		}
 		#endregion /* Pressing Report Comment Cancel END */
-		
+
 		/* Show the Email Support in the bottom left screen */
 		draw_set_halign(fa_left);
 		scr_draw_text_outlined(32, display_get_gui_height() - 32, l10n_text("Email Support") + ": " + string(global.email_support));
 		draw_set_halign(fa_center);
 	}
 	#endregion /* Report Comment END */
-	
+
 	#region /* Confirm report before sending it to server */
 	if (menu == "report_send_back")
 	|| (menu == "report_send_confirm")
@@ -860,14 +860,14 @@ function scr_draw_report()
 		scr_draw_text_outlined(display_get_gui_width() * 0.5, display_get_gui_height() * 0.5 - 96, l10n_text("Send this report?"), global.default_text_size, c_black, c_ltgray, 1);
 		scr_draw_text_outlined(display_get_gui_width() * 0.5, display_get_gui_height() * 0.5 - 32, string(report_reason_text), global.default_text_size, c_black, c_white, 1);
 		scr_draw_text_outlined(display_get_gui_width() * 0.5, display_get_gui_height() * 0.5, string(global.report_message), global.default_text_size, c_black, c_white, 1);
-		
+
 		draw_menu_button(0, report_back_y, l10n_text("Back"), "report_send_back", global.report_reason);
 		draw_sprite_ext(spr_icon_back, 0, 16, report_back_y + 21, 1, 1, 0, c_white, 1);
-		
+
 		var report_send_confirm_y = display_get_gui_height() * 0.5 + 96;
 		draw_menu_button(display_get_gui_width() * 0.5 - 185, report_send_confirm_y, l10n_text("Report"), "report_send_confirm", "report_send_to_server");
 		draw_sprite_ext(spr_icon_report, 0, display_get_gui_width() * 0.5 - 185 + 16, report_send_confirm_y + 21, 1, 1, 0, c_white, 1);
-		
+
 		if (point_in_rectangle(mouse_get_x, mouse_get_y, display_get_gui_width() * 0.5 - 185, report_back_y, display_get_gui_width() * 0.5 - 185 + 370, report_back_y + 41))
 		&& (global.controls_used_for_navigation == "mouse")
 		&& (mouse_check_button_released(mb_left))
@@ -879,7 +879,7 @@ function scr_draw_report()
 			menu_delay = 3;
 			menu = global.report_reason;
 		}
-		
+
 		if (point_in_rectangle(mouse_get_x, mouse_get_y, display_get_gui_width() * 0.5 - 185, report_send_confirm_y, display_get_gui_width() * 0.5 - 185 + 370, report_send_confirm_y + 41))
 		&& (global.controls_used_for_navigation == "mouse")
 		&& (mouse_check_button_released(mb_left))
@@ -891,14 +891,14 @@ function scr_draw_report()
 			menu_delay = 3;
 			menu = "report_send_to_server";
 		}
-		
+
 		if (key_b_pressed)
 		&& (menu_delay == 0 && menu_joystick_delay == 0)
 		{
 			menu_delay = 3;
 			menu = global.report_reason;
 		}
-		
+
 		if (key_up)
 		&& (menu_delay == 0 && menu_joystick_delay == 0)
 		|| (key_down)
@@ -917,7 +917,7 @@ function scr_draw_report()
 		}
 	}
 	#endregion /* Confirm report before sending it to server END */
-	
+
 	#endregion /* Fill information about report before sending to server END */
-	
+
 }

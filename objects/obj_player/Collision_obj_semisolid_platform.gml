@@ -13,7 +13,7 @@ if (collision_rectangle(bbox_left, bbox_bottom + 1, bbox_right, bbox_bottom + 4,
 	}
 	if (vspeed >= 0)
 	{
-		y --;
+		y--;
 	}
 }
 
@@ -21,7 +21,7 @@ if (collision_rectangle(bbox_left, bbox_bottom + 1, bbox_right, bbox_bottom + 4,
 if (collision_rectangle(bbox_left, bbox_bottom + 1, bbox_right, bbox_bottom + 1, other, false, true))
 && (!stick_to_wall)
 {
-	
+
 	#region /* Smoke Landing Effect */
 	if (instance_exists(obj_camera))
 	&& (obj_camera.iris_xscale > 1)
@@ -53,19 +53,19 @@ if (collision_rectangle(bbox_left, bbox_bottom + 1, bbox_right, bbox_bottom + 1,
 				}
 				if (position_meeting(x + 24, bbox_bottom + 2, other))
 				{
-					effect_create_above(ef_smoke, x + 24, bbox_bottom - 8, 0, c_white);	
+					effect_create_above(ef_smoke, x + 24, bbox_bottom - 8, 0, c_white);
 				}
 			}
 		}
 	}
 	#endregion /* Smoke Landing Effect END */
-	
+
 	if (vspeed > 2)
 	{
 		draw_xscale = 1.25;
 		draw_yscale = 0.75;
 	}
-	
+
 	if (vspeed >= 0)
 	{
 		vspeed = 0;
@@ -84,7 +84,7 @@ if (collision_rectangle(bbox_left, bbox_bottom + 1, bbox_right, bbox_bottom + 1,
 #region /* Sound Effect Handeling */
 if (speed != 0)
 {
-	
+
 	#region /* Landing on different surfaces sound effects */
 	if (position_meeting(x, bbox_bottom + 1, other))
 	&& (vspeed >= 0)
@@ -99,9 +99,9 @@ if (speed != 0)
 		}
 	}
 	#endregion /* Landing on different surfaces sound effects END */
-	
+
 	#region /* Footstep Land sounds */
-	
+
 	#region /* Dirt Footstep Right */
 	if (place_meeting(x, y + 1, obj_ground))
 	&& (instance_nearest(x, bbox_bottom, obj_ground).ground_surface == 1)
@@ -112,9 +112,9 @@ if (speed != 0)
 		}
 	}
 	#endregion /* Dirt Footstep Right END */
-	
+
 	else
-	
+
 	#region /* Glass Footstep Right */
 	if (place_meeting(x, y + 1, obj_ground))
 	&& (instance_nearest(x, bbox_bottom, obj_ground).ground_surface == 2)
@@ -125,9 +125,9 @@ if (speed != 0)
 		}
 	}
 	#endregion /* Glass Footstep Right END */
-	
+
 	else
-	
+
 	#region /* Grass Footstep Right */
 	if (place_meeting(x, y + 1, obj_ground))
 	&& (instance_nearest(x, bbox_bottom, obj_ground).ground_surface == 3)
@@ -138,9 +138,9 @@ if (speed != 0)
 		}
 	}
 	#endregion /* Grass Footstep Right END */
-	
+
 	else
-	
+
 	#region /* Gravel Footstep Right */
 	if (place_meeting(x, y + 1, obj_ground))
 	&& (instance_nearest(x, bbox_bottom, obj_ground).ground_surface == 4)
@@ -151,9 +151,9 @@ if (speed != 0)
 		}
 	}
 	#endregion /* Gravel Footstep Right END */
-	
+
 	else
-	
+
 	#region /* Metal Footstep Right */
 	if (place_meeting(x, y + 1, obj_ground))
 	&& (instance_nearest(x, bbox_bottom, obj_ground).ground_surface == 5)
@@ -164,9 +164,9 @@ if (speed != 0)
 		}
 	}
 	#endregion /* Metal Footstep Right END */
-	
+
 	else
-	
+
 	#region /* Stone Footstep Right */
 	if (place_meeting(x, y + 1, obj_ground))
 	&& (instance_nearest(x, bbox_bottom, obj_ground).ground_surface == 6)
@@ -177,9 +177,9 @@ if (speed != 0)
 		}
 	}
 	#endregion /* Stone Footstep Right END */
-	
+
 	else
-	
+
 	#region /* Wood Footstep Right */
 	if (place_meeting(x, y + 1, obj_ground))
 	&& (instance_nearest(x, bbox_bottom, obj_ground).ground_surface == 7)
@@ -190,17 +190,17 @@ if (speed != 0)
 		}
 	}
 	#endregion /* Wood Footstep Right END */
-	
+
 	else
-	
+
 	#region /* Default Footstep Right */
 	if (!audio_is_playing(snd_footstep_default_right))
 	{
 		scr_audio_play(snd_footstep_default_right, volume_source.footstep);
 	}
 	#endregion /* Default Footstep Right END */
-	
+
 	#endregion /* Footstep Land sounds END */
-	
+
 }
 #endregion /* Sound Effect Handeling END */

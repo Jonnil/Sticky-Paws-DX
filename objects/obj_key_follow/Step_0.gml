@@ -15,7 +15,7 @@ if (follow_player != noone)
 		xx = nearest_key.x - 30;
 	}
 	yy = nearest_key.y;
-	
+
 	x = lerp(x, xx, 0.25);
 	y = lerp(y, yy, 0.25);
 }
@@ -35,7 +35,7 @@ if (follow_player != noone)
 		xx = follow_player.x - 30;
 	}
 	yy = follow_player.y;
-	
+
 	x = lerp(x, xx, 0.25);
 	y = lerp(y, yy, 0.25);
 }

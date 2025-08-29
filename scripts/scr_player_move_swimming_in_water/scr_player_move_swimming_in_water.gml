@@ -1,6 +1,6 @@
 function scr_player_move_swimming_in_water()
 {
-	
+
 	#region /* Swimming In Water */
 	if (position_meeting(x, y, obj_water))
 	|| (instance_exists(obj_water_level) && y > obj_water_level.y)
@@ -39,7 +39,7 @@ function scr_player_move_swimming_in_water()
 		can_dive = true; /* Can dive when you jump out of water still */
 		wall_jump = false;
 		spring = false;
-		
+
 		if (!on_ground)
 		{
 			if (key_up)
@@ -69,7 +69,7 @@ function scr_player_move_swimming_in_water()
 				}
 			}
 		}
-		
+
 		#region /* Set the gravity underwater */
 		gravity_direction = 270; /* Direction of the gravity */
 		if (!on_ground)
@@ -85,7 +85,7 @@ function scr_player_move_swimming_in_water()
 
 		if (key_jump)
 		{
-			
+
 			#region /* Swim up */
 			{
 				if (key_up)
@@ -112,7 +112,7 @@ function scr_player_move_swimming_in_water()
 				}
 			}
 			#endregion /* Swim up END */
-			
+
 		}
 		if (floor(random(30 - 1)) == 0)
 		{
@@ -133,7 +133,7 @@ function scr_player_move_swimming_in_water()
 				hspeed = +2;
 			}
 		}
-		
+
 		#region /* Slow down if not pressing anything */
 		if (!key_left_hold)
 		{
@@ -150,7 +150,7 @@ function scr_player_move_swimming_in_water()
 			}
 		}
 		#endregion /* Slow down if not pressing anything END */
-		
+
 	}
 	else
 	{
@@ -160,5 +160,5 @@ function scr_player_move_swimming_in_water()
 		can_wall_jump = true;
 	}
 	#endregion /* Swimming In Water END */
-	
+
 }

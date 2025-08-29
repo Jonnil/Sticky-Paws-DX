@@ -1,12 +1,12 @@
 function scr_player_move_mid_air_jump()
 {
-	
+
 	#region /* Mid-Air / Double Jumping */
 	if (can_mid_air_jump > 0)
 	{
-		can_mid_air_jump --;
+		can_mid_air_jump--;
 	}
-	
+
 	if (key_double_jump)
 	&& (can_move)
 	&& (ground_pound == 0)
@@ -48,7 +48,7 @@ function scr_player_move_mid_air_jump()
 				effect_create_above(ef_smoke, x, bbox_bottom, 0, c_white);
 				effect_create_above(ef_smoke, x + 16, bbox_bottom, 0, c_white);
 				image_index = 0;
-		
+
 				if (number_of_jumps > - 1)
 				&& (midair_jumps_left != number_of_jumps)
 				{
@@ -78,7 +78,7 @@ function scr_player_move_mid_air_jump()
 						}
 					}
 				}
-		
+
 				#region /* Mid-air flip animation */
 				if (midair_jumps_left >= midair_jump_flip_animation)
 				|| (number_of_jumps = 2)
@@ -94,12 +94,12 @@ function scr_player_move_mid_air_jump()
 					}
 				}
 				#endregion /* Mid-air flip animation END */
-		
+
 			}
 		}
 	}
 	#endregion /* Mid-Air / Double Jumping END */
-	
+
 	#region /* Recharge mid-air / double jump when landing on ground */
 	if (on_ground)
 	{
@@ -109,5 +109,5 @@ function scr_player_move_mid_air_jump()
 		}
 	}
 	#endregion /* Recharge mid-air / double jump when landing on ground END */
-	
+
 }

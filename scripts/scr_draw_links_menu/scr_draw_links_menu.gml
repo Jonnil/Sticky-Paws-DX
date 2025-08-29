@@ -2,7 +2,7 @@ function scr_draw_links_menu()
 {
 	var mouse_get_x = device_mouse_x_to_gui(0);
 	var mouse_get_y = device_mouse_y_to_gui(0);
-	
+
 	/* Define an array of button information */
 	if (os_type != os_switch)
 	{
@@ -44,9 +44,9 @@ function scr_draw_links_menu()
 			/* Add more buttons here with their respective text, link, menu string, and icon */
 		];
 	}
-	
+
 	var valid_link_count = 0; /* Initialize the count of valid links */
-	
+
 	/* Loop through the buttons array */
 	for (var i = 0; i < array_length(buttons); i++)
 	{
@@ -55,7 +55,7 @@ function scr_draw_links_menu()
 		var link_text = button_info.text;
 		var link_menu_string = button_info.menu_string;
 		var link_to_y = 64 + (50 * valid_link_count); /* Calculate Y position for each button */
-		
+
 		draw_set_halign(fa_left);
 		draw_set_valign(fa_middle);
 		scr_draw_text_outlined(810, link_to_y + 20, l10n_text(link_text), global.default_text_size, c_black, c_white, 1);
@@ -74,7 +74,7 @@ function scr_draw_links_menu()
 			url_open(link_global);
 			menu_delay = 3;
 		}
-		
+
 		if (menu == "links")
 		&& (menu_delay == 0 && menu_joystick_delay == 0)
 		{

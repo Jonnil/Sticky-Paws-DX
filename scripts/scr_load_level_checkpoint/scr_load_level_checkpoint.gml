@@ -2,7 +2,7 @@ function scr_load_level_checkpoint()
 {
 	if (global.actually_play_edited_level) /* Only load from checkpoint if you are actually playing the level normally and not when playtesting in level editor */
 	{
-		
+
 		#region /* Load Level Checkpoint */
 		if (global.character_select_in_this_menu == "main_game")
 		{
@@ -23,7 +23,7 @@ function scr_load_level_checkpoint()
 			global.checkpoint_realmillisecond = ini_read_real(global.level_name, "checkpoint_realmillisecond", 0);
 		}
 		ini_close(); /* Only reading save data */
-		
+
 		if (!instance_exists(obj_camera))
 		{
 			if (!global.doing_clear_check_character && !global.doing_clear_check_level)
@@ -39,6 +39,6 @@ function scr_load_level_checkpoint()
 			}
 		}
 		#endregion /* Load Level Checkpoint END */
-		
+
 	}
 }

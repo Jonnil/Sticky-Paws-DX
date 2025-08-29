@@ -2,7 +2,7 @@ function scr_draw_upload_account_name(what_kind_of_file = "level")
 {
 	var get_window_height = display_get_gui_height();
 	var get_window_width = display_get_gui_width();
-	
+
 	#region /* Ask the player if they want to enter a account username before taking them to the enter username screen */
 	/* On certain systems where they need to use a virtual keyboard, you need to explain what the player is expected to do before the virtual keyboard shows up */
 	/* Otherwise the virtual keyboard will come up without explanation */
@@ -13,27 +13,27 @@ function scr_draw_upload_account_name(what_kind_of_file = "level")
 		draw_set_alpha(0.75);
 		draw_rectangle_color(0, 0, get_window_width, get_window_height, c_black, c_black, c_black, c_black, false);
 		draw_set_alpha(1);
-		
+
 		draw_set_halign(fa_center);
 		draw_set_valign(fa_middle);
 		var change_username_x = get_window_width * 0.5;
 		var change_username_y = get_window_height * 0.5;
-		
+
 		#region /* Draw the question text above everything */
 		scr_draw_text_outlined(change_username_x, change_username_y - (42 * 3), l10n_text("You need a username before uploading"), global.default_text_size, c_menu_outline, c_menu_fill, 1);
 		scr_draw_text_outlined(change_username_x, change_username_y - (42 * 2), l10n_text("Do you want to enter a username right now?"), global.default_text_size, c_menu_outline, c_menu_fill, 1);
 		scr_draw_text_outlined(change_username_x, change_username_y - (42 * 1), l10n_text("You can enter a username at any time in options"), global.default_text_size, c_menu_outline, c_menu_fill, 1);
 		#endregion /* Draw the question text above everything END */
-		
+
 		var button_options_y = change_username_y + 21 - 42;
 		var button_ok_y = change_username_y + 21 + 42;
 		var button_cancel_y = change_username_y + 21 + 42 + 42;
-		
+
 		draw_menu_button(change_username_x - 185, button_options_y, l10n_text("Account"), "question_upload_" + string(what_kind_of_file) + "_edit_username_options", "question_upload_" + string(what_kind_of_file) + "_edit_username_options");
 		draw_sprite_ext(spr_icon_person, 0, change_username_x - 185 + 20, button_options_y + 20, 1, 1, 0, c_white, 1);
 		draw_menu_button(change_username_x - 185, button_ok_y, l10n_text("OK"), "question_upload_" + string(what_kind_of_file) + "_edit_username_ok", "question_upload_" + string(what_kind_of_file) + "_edit_username_ok");
 		draw_menu_button(change_username_x - 185, button_cancel_y, l10n_text("Cancel"), "question_upload_" + string(what_kind_of_file) + "_edit_username_cancel", "question_upload_" + string(what_kind_of_file) + "_edit_username_cancel");
-		
+
 		if (key_up && menu_delay == 0 && menu_joystick_delay == 0)
 		{
 			menu_delay = 3;
@@ -71,7 +71,7 @@ function scr_draw_upload_account_name(what_kind_of_file = "level")
 				menu = "question_upload_" + string(what_kind_of_file) + "_edit_username_options";
 			}
 		}
-		
+
 		#region /* Press Account Options */
 		if (key_a_pressed)
 		&& (menu == "question_upload_" + string(what_kind_of_file) + "_edit_username_options")
@@ -87,14 +87,14 @@ function scr_draw_upload_account_name(what_kind_of_file = "level")
 			{
 				show_level_editor_corner_menu = true;
 			}
-			
+
 			keyboard_string = "";
-			
+
 			can_input_level_name = false;
 			can_navigate = true;
 			select_custom_level_menu_open = false;
 			level_editor_template_select = false;
-			
+
 			menu_cursor_y_position = 0; /* Reset so the scrolling menus are back to 0 */
 			in_settings = true;
 			can_navigate_settings_sidebar = false;
@@ -104,7 +104,7 @@ function scr_draw_upload_account_name(what_kind_of_file = "level")
 			scr_load_storage_variables();
 		}
 		#endregion /* Press Account Options END */
-		
+
 		#region /* Press OK */
 		if (key_a_pressed)
 		&& (menu == "question_upload_" + string(what_kind_of_file) + "_edit_username_ok")
@@ -117,9 +117,9 @@ function scr_draw_upload_account_name(what_kind_of_file = "level")
 			menu_delay = 3;
 		}
 		#endregion /* Press OK END */
-		
+
 		else
-		
+
 		#region /* Press Cancel */
 		if (key_a_pressed)
 		&& (menu == "question_upload_" + string(what_kind_of_file) + "_edit_username_cancel")
@@ -150,10 +150,10 @@ function scr_draw_upload_account_name(what_kind_of_file = "level")
 			}
 		}
 		#endregion /* Press Cancel END */
-		
+
 	}
 	#endregion /* Ask the player if they want to enter a account username before taking them to the enter username screen END */
-	
+
 	#region /* Draw enter username screen */
 	if (menu == "upload_" + string(what_kind_of_file) + "_edit_username_ok")
 	|| (menu == "upload_" + string(what_kind_of_file) + "_edit_username_cancel")
@@ -161,25 +161,25 @@ function scr_draw_upload_account_name(what_kind_of_file = "level")
 		draw_set_alpha(0.75);
 		draw_rectangle_color(0, 0, get_window_width, get_window_height, c_black, c_black, c_black, c_black, false);
 		draw_set_alpha(1);
-		
+
 		draw_set_halign(fa_center);
 		draw_set_valign(fa_middle);
 		var change_username_x = get_window_width * 0.5;
 		var change_username_y = get_window_height * 0.5;
-		
+
 		#region /* Change username */
 		global.username = scr_draw_name_input_screen(global.username, 32, c_white, 0.9, false, change_username_x - 185 + 185, change_username_y + 21, "upload_" + string(what_kind_of_file) + "_edit_username_ok", "upload_" + string(what_kind_of_file) + "_edit_username_cancel", false, true, false);
-		
+
 		#region /* Pressing Change Username OK */
 		if (global.clicking_ok_input_screen && global.username != "")
 		{
 			ini_open(game_save_id + "save_file/config.ini");
 			ini_write_string("config", "username", string(global.username)); /* Save username to config file */
 			ini_close(); /* Don't commit the save data on Switch, this is only temporary! */
-				
+
 			menu_delay = 3;
 			input_key = false;
-			
+
 			if (scr_check_network_connection(network_connect_active))
 			{
 				if (global.switch_logged_in)
@@ -198,7 +198,7 @@ function scr_draw_upload_account_name(what_kind_of_file = "level")
 								ini_open(game_save_id + "custom_levels/" + string(global.level_name) + "/data/level_information.ini");
 								var short_level_minute = ini_read_real("rank", "rank_timeattack_minute", 0);
 								ini_close(); /* Commit save data later on in this code */
-								
+
 								#region /* Tell the player before uploading, if the level they clear checked was too short or not */
 								if (global.enable_level_length_target)
 								&& (short_level_minute < global.target_length_minutes_min
@@ -212,7 +212,7 @@ function scr_draw_upload_account_name(what_kind_of_file = "level")
 									menu = "upload_edit_name"; /* Go to edit name, description, and tags menu */
 								}
 								#endregion /* Tell the player before uploading, if the level they clear checked was too short or not END */
-								
+
 							}
 							switch_save_data_commit(); /* Commit save data! */
 						}
@@ -238,9 +238,9 @@ function scr_draw_upload_account_name(what_kind_of_file = "level")
 			}
 		}
 		#endregion /* Pressing Change Username OK END */
-		
+
 		else
-		
+
 		#region /* Pressing Change Username Cancel */
 		if (global.clicking_cancel_input_screen)
 		{
@@ -270,7 +270,7 @@ function scr_draw_upload_account_name(what_kind_of_file = "level")
 			}
 		}
 		#endregion /* Pressing Change Username Cancel END */
-		
+
 		#region /* Draw the username text above everything */
 		if (global.username != "")
 		{
@@ -282,10 +282,10 @@ function scr_draw_upload_account_name(what_kind_of_file = "level")
 			scr_draw_text_outlined(change_username_x, 20 + (40 * 4), l10n_text("No username!"), global.default_text_size, c_menu_outline, c_red, scr_wave(0, 1, 1, 0));
 		}
 		#endregion /* Draw the username text above everything END */
-		
+
 		#endregion /* Change username END */
-		
+
 	}
 	#endregion /* Draw enter username screen END */
-	
+
 }

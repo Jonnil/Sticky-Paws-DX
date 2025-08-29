@@ -1,6 +1,6 @@
 function scr_player_move_roll_when_landing()
 {
-	
+
 	#region /* Roll when landing */
 	if (allow_roll)
 	&& (on_ground)
@@ -21,5 +21,5 @@ function scr_player_move_roll_when_landing()
 		}
 	}
 	#endregion /* Roll when landing END */
-	
+
 }

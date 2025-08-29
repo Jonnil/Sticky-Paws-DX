@@ -7,7 +7,7 @@ function scr_load_title_logo_initializing()
 	"title_logo_japanese_old_style.png",
 	"title_logo_old.png",
 	"title_logo_christmas_english.png");
-	
+
 	first_title_logo = string(file_find_first(game_save_id + "custom_title_logo/*", fa_directory))
 	if (file_exists(game_save_id + "custom_title_logo/" + first_title_logo))
 	{

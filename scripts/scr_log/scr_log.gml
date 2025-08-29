@@ -6,17 +6,17 @@
 /// - details: optional string appended as-is (avoid secrets)
 function scr_log(level, module, message, details = "")
 {
-    var _lvl = string_upper(string(level));
-    var _mod = string_upper(string(module));
-    var _msg = string(message);
+	var _lvl = string_upper(string(level));
+	var _mod = string_upper(string(module));
+	var _msg = string(message);
 
-    var out = "[" + _mod + "] [" + _lvl + "] " + _msg;
+	var out = "[" + _mod + "] [" + _lvl + "] " + _msg;
 
-    if (is_string(details) && details != "")
-    {
-        out += " " + details;
-    }
+	if (is_string(details) && details != "")
+	{
+		out += " " + details;
+	}
 
-    show_debug_message(out);
+	show_debug_message(out);
 }
 

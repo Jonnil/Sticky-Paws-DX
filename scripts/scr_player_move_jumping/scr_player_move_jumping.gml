@@ -1,33 +1,33 @@
 function scr_player_move_jumping()
 {
-	
+
 	#region /* Jumping */
 	if (buffer_jump > 0)
 	{
-		buffer_jump --;
+		buffer_jump--;
 	}
-	
+
 	if (key_jump)
 	&& (number_of_jumps >= 1 || number_of_jumps <= -1)
 	{
 		buffer_jump = 20; /* Set the buffer jump to be 20 frames, so player have enough time to buffer jump when landing again */
 	}
-	
+
 	if (coyote_jump > 0)
 	{
-		coyote_jump --;
+		coyote_jump--;
 	}
-	
+
 	if (on_ground)
 	{
 		coyote_jump = 10; /* Set the coyote jump to be 10 frames. The player still has the ability to jump after walking off a ledge for a few frames */
 	}
-	
+
 	if (buffer_jump > 0)
 	&& (can_move)
 	&& (key_jump_hold)
 	{
-		
+
 		#region /* Drop down below semisolid platform */
 		if (key_crouch_hold || key_down)
 		&& (ground_pound == 0)
@@ -42,7 +42,7 @@ function scr_player_move_jumping()
 			y += 8;
 		}
 		#endregion /* Drop down below semisolid platform END */
-		
+
 		else
 		if (ground_pound == 0)
 		{
@@ -114,7 +114,7 @@ function scr_player_move_jumping()
 						vspeed = -1;
 					}
 				}
-				
+
 				#region /* Smoke effect under player when jumping */
 				if (coyote_jump > 0)
 				{
@@ -123,9 +123,9 @@ function scr_player_move_jumping()
 					effect_create_above(ef_smoke, x + 16, bbox_bottom, 0, c_white);
 				}
 				#endregion /* Smoke effect under player when jumping END */
-				
+
 				image_index = 0;
-				
+
 				#region /* Jump sound sfx */
 				if (jump >= 3)
 				&& (hold_item_in_hands == "")
@@ -158,5 +158,5 @@ function scr_player_move_jumping()
 		}
 	}
 	#endregion /* Jumping END */
-	
+
 }

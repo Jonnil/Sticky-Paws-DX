@@ -5,9 +5,9 @@
 if (file_exists(game_save_id + "save_file/file" + string(global.file) + ".ini"))
 {
 	var level_name = string(ds_list_find_value(global.all_loaded_main_levels, level));
-	
+
 	ini_open(game_save_id + "save_file/file" + string(global.file) + ".ini");
-	
+
 	clear_rate = ini_read_string(level_name, "clear_rate", "closed");
 	cleared_with_debug = ini_read_real(level_name, "cleared_with_debug", false);
 	number_of_defeats = ini_read_real(level_name, "number_of_defeats", 0);
@@ -29,9 +29,9 @@ if (file_exists(game_save_id + "save_file/file" + string(global.file) + ".ini"))
 	timeattack_realmillisecond = ini_read_real(level_name, "timeattack_realmillisecond", 999999999);
 	level_score = ini_read_real(level_name, "level_score", 0);
 	zero_defeats = ini_read_real(level_name, "zero_defeats", 0);
-	
+
 	ini_close(); /* Don't commit the save data on Switch, this is only temporary! */
-	
+
 }
 else
 {

@@ -1,6 +1,6 @@
 function scr_dont_move_outside_view()
 {
-	
+
 	#region /* Don't move outside view */
 	var view_x_center = camera_get_view_x(view_camera[view_current]) + (camera_get_view_width(view_camera[view_current]) * 0.5);
 	var view_y_center = camera_get_view_y(view_camera[view_current]) + (camera_get_view_height(view_camera[view_current]) * 0.5);
@@ -33,5 +33,5 @@ function scr_dont_move_outside_view()
 		friction = 0;
 	}
 	#endregion /* Don't move outside view END */
-	
+
 }

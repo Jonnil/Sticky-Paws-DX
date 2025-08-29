@@ -3,7 +3,7 @@ if (follow_player == noone)
 	follow_player = other;
 	other.keys += 1;
 	what_key = other.keys;
-	
+
 	if (what_key >= 2)
 	{
 		nearest_key = instance_nth_nearest(other.x, other.y, obj_key_follow, other.keys - 1);

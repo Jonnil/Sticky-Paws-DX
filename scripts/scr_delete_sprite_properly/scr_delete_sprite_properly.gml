@@ -6,7 +6,7 @@ function scr_delete_sprite_properly(spr)
 	&& spr != noone)
 	{
 		var is_external = string_pos("__newsprite", sprite_get_name(spr)) == 1;
-		
+
 		if (is_external)
 		{
 			/* Never do "spr = noone" before doing sprite_delete, as this will not let the game properly delete the sprite */
@@ -16,6 +16,6 @@ function scr_delete_sprite_properly(spr)
 			return true;
 		}
 	}
-	
+
 	return false; /* Didn't exist or an internal sprite */
 }

@@ -1,7 +1,7 @@
 function scr_load_rest_of_characters()
 {
 	var fixed_player = 1;
-	
+
 	#region /* Player Automatically Join */
 	/* When going to the character select menu, game should remember what player entered the menu, and therefore should automatically join the game, as the game should already know for certain that player is already joining the game */
 	for(var p = 1; p <= global.max_players; p += 1)
@@ -17,26 +17,26 @@ function scr_load_rest_of_characters()
 		}
 	}
 	#endregion /* Player Automatically Join END */
-	
+
 	/* Load custom character data */
-	file_load_timer ++;
-	
+	file_load_timer++;
+
 	if (file_load_timer > 1)
 	{
 		file_found = file_find_next();
-		
+
 		if (file_found == "")
 		{
 			file_find_close(); /* Don't commit the save data on Switch, this is only temporary! */
-			
+
 			if (player_menu[fixed_player] == "click_copy_character")
 			{
-				
+
 				#region /* After copying character, show the copied character */
 				global.character_index[fixed_player - 1] = ds_list_find_index(global.all_loaded_characters, copied_character_name);
 				global.character_for_player[fixed_player] = ds_list_find_index(global.all_loaded_characters, global.character_index[fixed_player - 1]);
 				#endregion /* After copying character, show the copied character END */
-				
+
 				#region /* Player 1 character select portrait sprite */
 				global.skin_for_player[fixed_player] = global.actual_skin_for_player[fixed_player]; /* Update "skin for player" to what it should actually be when selecting a new character before setting a sprite */
 				scr_delete_sprite_properly(global.sprite_select_player[fixed_player]);
@@ -48,7 +48,7 @@ function scr_load_rest_of_characters()
 				global.sprite_select_player[fixed_player] = scr_initialize_character_sprite("character_select_portrait", global.sprite_select_player[fixed_player]);
 				ini_close(); /* Don't commit the save data on Switch, this is only temporary! */
 				#endregion /* Player 1 character select portrait sprite END */
-				
+
 				menu = "click_copy_character";
 				player_menu[fixed_player] = "click_copy_character";
 			}
@@ -67,7 +67,7 @@ function scr_load_rest_of_characters()
 						global.character_index[fixed_player - 1] = ds_list_find_index(global.all_loaded_characters, string(downloaded_character_name));
 					}
 					global.character_for_player[fixed_player] = ds_list_find_index(global.all_loaded_characters, global.character_index[0]);
-					
+
 					#region /* Player 1 character select portrait sprite */
 					global.skin_for_player[fixed_player] = global.actual_skin_for_player[fixed_player]; /* Update "skin for player" to what it should actually be when selecting a new character before setting a sprite */
 					scr_delete_sprite_properly(global.sprite_select_player[fixed_player]);
@@ -79,9 +79,9 @@ function scr_load_rest_of_characters()
 					global.sprite_select_player[fixed_player] = scr_initialize_character_sprite("character_select_portrait", global.sprite_select_player[fixed_player]);
 					ini_close(); /* Don't commit the save data on Switch, this is only temporary! */
 					#endregion /* Player 1 character select portrait sprite END */
-					
+
 				}
-				
+
 				player_menu[fixed_player] = "select_character"; /* Set this to be "select character" so it's not on wrong menu unintentionally */
 				menu = "select_character"; /* Default menu to go to after loading all characters */
 				in_character_select_menu = true;
@@ -93,7 +93,7 @@ function scr_load_rest_of_characters()
 			{
 				ds_list_add(global.all_loaded_characters, file_found);
 			}
-			
+
 			file_load_timer = 0; /* 0 not 1. So it doesn't do the "file find first" code which it does at 1 */
 		}
 	}

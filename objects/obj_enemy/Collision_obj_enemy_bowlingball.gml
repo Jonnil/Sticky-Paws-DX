@@ -26,9 +26,9 @@ and (other.sliding_along_ground = 0)
 		audio_sound_gain(enemyvoice_defeated2, global.voices_volume, 0);
 		audio_sound_gain(enemyvoice_defeated3, global.voices_volume, 0);
 		#endregion /*Enemy Voice Defeated END*/
-		
+
 		#region /*Rewards*/
-		
+
 		#region /* 1 Coin*/
 		if (asset_get_type("obj_basic_collectible") == asset_object)
 		{
@@ -42,7 +42,7 @@ and (other.sliding_along_ground = 0)
 			}
 		}
 		#endregion /* 1 Coin END*/
-		
+
 		#region /* 200 Score*/
 		score += 200;
 		if (asset_get_type("obj_scoreup") == asset_object)
@@ -54,9 +54,9 @@ and (other.sliding_along_ground = 0)
 			}
 		}
 		#endregion /* 200 Score END*/
-		
+
 		#endregion /*Rewards END*/
-		
+
 		if (asset_get_type("snd_stomp") == asset_sound)
 		{
 			audio_play_sound(snd_stomp, 0, 0);

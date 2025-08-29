@@ -4,14 +4,14 @@ function scr_draw_caution_online()
 	var fixed_player = 1;
 	var mouse_get_x = device_mouse_x_to_gui(0);
 	var mouse_get_y = device_mouse_y_to_gui(0);
-	
+
 	#region /* Opaque transparent black rectangle over whole screen, but underneath text */
 	draw_set_alpha(0.75);
 	draw_rectangle_color(- 32, - 32, display_get_gui_width() + 32, display_get_gui_height() + 32, c_black, c_black, c_black, c_black, false);
 	draw_set_alpha(1);
 	draw_roundrect_color_ext(display_get_gui_width() * 0.5 - 600, display_get_gui_height() * 0.5 - 200, display_get_gui_width() * 0.5 + 600, display_get_gui_height() * 0.5 + 200, 50, 50, c_black, c_black, false);
 	#endregion /* Opaque transparent black rectangle over whole screen, but underneath text END */
-	
+
 	if (menu == "caution_online_back")
 	|| (menu == "caution_online_do_not_show")
 	|| (menu == "caution_online_proceed")
@@ -20,7 +20,7 @@ function scr_draw_caution_online()
 		{
 			show_level_editor_corner_menu = false;
 		}
-		
+
 		draw_menu_button(0, 0, l10n_text("Back"), "caution_online_back", "caution_online_back");
 		draw_sprite_ext(spr_icon_back, 0, 16, 21, 1, 1, 0, c_white, 1);
 		scr_draw_text_outlined(display_get_gui_width() * 0.5, display_get_gui_height() * 0.5 - 128, l10n_text("Caution: Online Communication"), global.default_text_size * 2, c_black, c_white, 1);
@@ -30,7 +30,7 @@ function scr_draw_caution_online()
 		scr_draw_text_outlined(display_get_gui_width() * 0.5, display_get_gui_height() * 0.5 + 32, l10n_text("If you find inappropriate content please report it"), global.default_text_size, c_black, c_white, 1);
 		global.caution_online_do_not_show = draw_menu_checkmark(display_get_gui_width() * 0.5 - 280, display_get_gui_height() * 0.5 + 96, l10n_text("Do not show this screen again"), "caution_online_do_not_show", global.caution_online_do_not_show);
 		draw_menu_button(display_get_gui_width() * 0.5 - 185, display_get_gui_height() * 0.5 + 138, l10n_text("Proceed"), "caution_online_proceed", "caution_online_proceed");
-		
+
 		if (point_in_rectangle(mouse_get_x, mouse_get_y, display_get_gui_width() * 0.5 - 185, display_get_gui_height() * 0.5 + 138, display_get_gui_width() * 0.5 - 185 + 370, display_get_gui_height() * 0.5 + 138 + 41))
 		&& (global.controls_used_for_navigation == "mouse")
 		&& (mouse_check_button_released(mb_left))
@@ -43,10 +43,10 @@ function scr_draw_caution_online()
 		&& (menu_delay == 0 && menu_joystick_delay == 0)
 		{
 			menu_delay = 3;
-			
+
 			global.online_enabled = true;
 			online_enabled_auto = true;
-			
+
 			/* If you have enabled "do not show", then save that regardless if you have a internet connection or not */
 			if (global.caution_online_do_not_show)
 			{
@@ -54,22 +54,22 @@ function scr_draw_caution_online()
 				ini_write_string("config", "caution_online_do_not_show", true);
 				ini_close(); /* Don't commit the save data on Switch, this is only temporary! */
 			}
-			
+
 			if (!os_is_network_connected(network_connect_passive))
 			{
 				scr_draw_loading(1,,,l10n_text("Looking for Network"));
-				
+
 				menu = "network_error_main_menu";
 			}
 			else
 			if (!global.online_token_validated)
 			{
 				static switch_update_online_status = false;
-				
+
 				scr_draw_loading(1,,,l10n_text("Looking for Token"));
-				
+
 				menu = "network_error_main_menu";
-				
+
 				if (!switch_update_online_status)
 				{
 					switch_update_online_status = true;
@@ -86,7 +86,7 @@ function scr_draw_caution_online()
 						if (scr_online_token_is_valid() == true)
 						{
 							show_debug_message("[scr_draw_caution_online] Online token is valid. Token Validity: " + string(scr_online_token_is_valid()) + ", caution_online_takes_you_to: " + string(caution_online_takes_you_to) + ", current menu: " + string(menu));
-							
+
 							if (caution_online_takes_you_to == "online_download_list_load")
 							{
 								show_debug_message("[scr_draw_caution_online] Transitioning to online download list load menu. Selected index: " + string(global.selected_online_download_index) + ", content_type: " + string(content_type));
@@ -105,25 +105,25 @@ function scr_draw_caution_online()
 								menu = "search_id_ok";
 								select_custom_level_menu_open = false;
 							}
-							
+
 							var no_players_can_play = true;
-							
+
 							for(var i = 1; i <= global.max_players; i += 1)
 							{
-							    if (global.player_can_play[i])
+								if (global.player_can_play[i])
 								{
-							        no_players_can_play = false;
-							        break; /* exit the loop if any player can play */
-							    }
+									no_players_can_play = false;
+									break; /* exit the loop if any player can play */
+								}
 							}
-							
+
 							if (no_players_can_play)
 							|| (global.playergame <= 0)
 							{
 								global.player_can_play[fixed_player] = true;
 							}
 							information_menu_open = "";
-							
+
 							if (!global.upload_rules_do_not_show_level) /* If you have not yet agreed to the upload rules for uploading levels */
 							&& (caution_online_takes_you_to == "level_editor_upload_pressed") /* And you're supposed to go to the upload edit menu */
 							{
@@ -153,7 +153,7 @@ function scr_draw_caution_online()
 			{
 				/* No Internet Connection */
 				in_online_download_list_menu = false; show_debug_message("[scr_draw_caution_online] 'In online download list menu' is set to false");
-				
+
 				if (content_type == "character")
 				{
 					scr_handle_no_network_connection("scr_draw_caution_online", "download_online_search_id");
@@ -167,7 +167,7 @@ function scr_draw_caution_online()
 				}
 			}
 		}
-		
+
 		if (point_in_rectangle(mouse_get_x, mouse_get_y, 0, 0, 370, 41))
 		&& (global.controls_used_for_navigation == "mouse")
 		&& (mouse_check_button_released(mb_left))
@@ -179,7 +179,7 @@ function scr_draw_caution_online()
 		&& (menu_delay == 0 && menu_joystick_delay == 0)
 		{
 			menu_delay = 3;
-			
+
 			if (variable_instance_exists(self, "show_level_editor_corner_menu"))
 			{
 				show_level_editor_corner_menu = true;
@@ -190,7 +190,7 @@ function scr_draw_caution_online()
 			}
 			menu = caution_online_takes_you_back_to;
 		}
-		
+
 		if (key_up)
 		&& (menu_delay == 0 && menu_joystick_delay == 0)
 		{
@@ -230,23 +230,23 @@ function scr_draw_caution_online()
 			menu_delay = 3;
 		}
 	}
-	
+
 	else
-	
+
 	#region /* Caution Online Network Service Unavailable */
 	if (menu == "caution_online_network_error")
 	{
 		var network_service_unavailable_x = display_get_gui_width() * 0.5 - 180;
 		var network_service_unavailable_y = display_get_gui_height() - 64;
-		
+
 		draw_menu_button(network_service_unavailable_x, network_service_unavailable_y, l10n_text("Back"), "caution_online_network_error", "caution_online_network_error");
 		draw_sprite_ext(spr_icon_back, 0, network_service_unavailable_x + 16, network_service_unavailable_y + 21, 1, 1, 0, c_white, 1);
-		
+
 		#region /* Tell the player when Network Servie is unavailable */
 		if (!global.switch_account_network_service_available)
 		{
 			scr_draw_text_outlined(display_get_gui_width() * 0.5, display_get_gui_height() * 0.5 - 128, l10n_text("Network Service is Unavailable!"), global.default_text_size * 2, c_black, c_white, 1);
-			
+
 			if (os_type == os_switch)
 			{
 				scr_draw_text_outlined(display_get_gui_width() * 0.5, display_get_gui_height() * 0.5 - 32, l10n_text("Please connect your account"), global.default_text_size, c_black, c_white, 1);
@@ -254,7 +254,7 @@ function scr_draw_caution_online()
 			}
 		}
 		#endregion /* Tell the player when Network Servie is unavailable END */
-		
+
 		#region /* Tell the player when Online Token is invalidated */
 		if (!global.online_token_validated)
 		{
@@ -262,14 +262,14 @@ function scr_draw_caution_online()
 			scr_draw_text_outlined(display_get_gui_width() * 0.5, display_get_gui_height() * 0.5 + 192, l10n_text(string(global.online_token_error_message)), global.default_text_size, c_black, c_white, 1);
 		}
 		#endregion /* Tell the player when Online Token is invalidated END */
-		
+
 		/* If you are still in this network error screen, but there isn't any immediate errors, just make this into a loading screen */
 		if (global.switch_account_network_service_available)
 		&& (global.online_token_validated)
 		{
 			scr_draw_loading(1);
 		}
-		
+
 		if (caution_online_takes_you_to != "")
 		&& (global.switch_account_network_service_available) /* In case this variable gets enabled on this error screen, proceed automatically to the correct menu */
 		&& (global.online_token_validated) /* Make sure that id token isn't missing too before proceeding automatically */
@@ -277,7 +277,7 @@ function scr_draw_caution_online()
 		{
 			menu = caution_online_takes_you_to;
 		}
-		
+
 		if (global.controls_used_for_navigation == "mouse")
 		&& (mouse_check_button_released(mb_left))
 		&& (point_in_rectangle(mouse_get_x, mouse_get_y, network_service_unavailable_x, network_service_unavailable_y, network_service_unavailable_x + 370, network_service_unavailable_y + 41))
@@ -298,10 +298,10 @@ function scr_draw_caution_online()
 			menu_delay = 3;
 			menu = caution_online_takes_you_back_to;
 		}
-		
+
 	}
 	#endregion /* Caution Online Network Service Unavailable END */
-	
+
 	else
 	if (menu == "server_timeout_retry")
 	|| (menu == "server_timeout_check_status")
@@ -309,5 +309,5 @@ function scr_draw_caution_online()
 	{
 		scr_draw_server_timeout_error();
 	}
-	
+
 }

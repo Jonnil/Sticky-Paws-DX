@@ -1,7 +1,7 @@
 function scr_remapping_gamepad()
 {
 	player_profile = global.player_profile[remapping_player + 1];
-	
+
 	if (menu_remap_key_number == 0)
 	{
 		var remap_key_number_string = "";
@@ -13,7 +13,7 @@ function scr_remapping_gamepad()
 		var remap_key_number_string = "2";
 		var remap_key_number = 2;
 	}
-	
+
 	#region /* Check for player button presses */
 	if (gamepad_button_check_pressed(global.player_slot[remapping_player + 1], gp_face1))
 	{
@@ -151,16 +151,16 @@ function scr_remapping_gamepad()
 		can_remap_key = true;
 	}
 	#endregion /* Check for player button presses END */
-	
+
 	else
-	
+
 	if (keyboard_check_pressed(vk_escape))
 	|| (gamepad_button_check(global.player_slot[remapping_player + 1], gp_start))
 	{
 		last_key = noone;
 		can_remap_key = true;
 	}
-	
+
 	var force_back = false;
 	for(var i = 1; i <= global.max_players; i += 1) {
 		if (i != remapping_player && gamepad_is_connected(global.player_slot[i])) {
@@ -170,14 +170,14 @@ function scr_remapping_gamepad()
 			}
 		}
 	}
-	
+
 	if (mouse_check_button_pressed(mb_right))
 	|| (force_back) {
 		can_remap_key = false;
 		input_key = false;
 		menu_delay = 3;
 	}
-	
+
 	#region /* Remapping Gamepad */
 	if (can_remap_key)
 	{
@@ -372,5 +372,5 @@ function scr_remapping_gamepad()
 		menu_delay = 6;
 	}
 	#endregion /* Remapping Gamepad END */
-	
+
 }

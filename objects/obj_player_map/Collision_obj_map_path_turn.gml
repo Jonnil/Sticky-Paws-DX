@@ -1,5 +1,5 @@
 #region /* Path Turning */
-/* 
+/*
 right down = 0
 up right = 1
 up left = 2

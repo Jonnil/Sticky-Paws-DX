@@ -82,7 +82,7 @@ if (place_meeting(x, y - 1, obj_wall))
 }
 
 #region /* Expanding Ring Effect */
-effect_time ++;
+effect_time++;
 if (effect_time > 60)
 {
 	effect_time = 0;

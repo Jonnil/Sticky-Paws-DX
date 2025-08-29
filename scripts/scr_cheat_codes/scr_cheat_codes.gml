@@ -5,7 +5,7 @@ function scr_debug_init_cheat_codes()
 	/* I'm including classic cheat codes from video game history */
 	/* Some consoles like the Sega Genesis have a C button, which modern controllers don't have */
 	/* So I'm mapping the C button from a Sega Genesis controller to the X button on a Xbox controller */
-	
+
 	global.cheat_codes = [
 		{
 			code: ["UP", "X", "DOWN", "X", "LEFT", "X", "RIGHT", "X", "A+START"],
@@ -38,7 +38,7 @@ function scr_debug_check_cheat_input(input_str)
 	for (var i = 0; i < array_length(global.cheat_codes); i++)
 	{
 		var cheat = global.cheat_codes[i];
-		
+
 		/* If this cheat code requires a hold key and it is not currently held, reset its progress */
 		if (cheat.hold_required != ""
 		&& !gamepad_button_check(global.player_slot[1], cheat.hold_required))
@@ -46,11 +46,11 @@ function scr_debug_check_cheat_input(input_str)
 			cheat.progress = 0;
 			continue; /* Skip processing this cheat code for this input */
 		}
-		
+
 		if (input_str == string_upper(cheat.code[cheat.progress]))
 		{
 			cheat.progress++; /* Advance progress if input is correct */
-			
+
 			/* If the entire code has been entered: */
 			if (cheat.progress == array_length(cheat.code))
 			{
@@ -63,7 +63,7 @@ function scr_debug_check_cheat_input(input_str)
 			cheat.progress = 0; /* Reset progress if input doesn't match */
 		}
 	}
-	
+
 	/* Debug: Print out cheat code progress for all cheat codes */
 	scr_debug_print_cheat_progress();
 }
@@ -80,7 +80,7 @@ function scr_debug_print_cheat_progress()
 			var progress = cheat.progress;
 			var total = array_length(cheat.code);
 			show_debug_message("[scr_debug_print_cheat_progress] Cheat code " + string(i) + ": Progress " + string(progress) + " / " + string(total));
-			
+
 			if (progress < total)
 			{
 				show_debug_message("[scr_debug_print_cheat_progress]  Next expected: " + cheat.code[progress]);
@@ -122,7 +122,7 @@ function scr_debug_process_cheat_inputs()
 		scr_debug_check_cheat_input("RIGHT");
 	}
 	else
-	
+
 	/* Face Buttons */
 	if (gamepad_button_check_released(global.player_slot[1], gp_face1)) /* Needs to be check on released, to make "A + Start" work */
 	|| (keyboard_check_released(ord("A")))
@@ -148,7 +148,7 @@ function scr_debug_process_cheat_inputs()
 		scr_debug_check_cheat_input("Y");
 	}
 	else
-	
+
 	/* Shoulder Buttons */
 	if (gamepad_button_check_pressed(global.player_slot[1], gp_shoulderl))
 	|| (keyboard_check_pressed(ord("L")))
@@ -171,11 +171,11 @@ function scr_debug_process_cheat_inputs()
 	{
 		scr_debug_check_cheat_input("SHOULDERRB");
 	}
-	
+
 	/* A + Start Button */
 	/* Process combination input for the final element: A+Start */
 	/* We check this explicitly by testing if both buttons are pressed */
-	if (gamepad_button_check(global.player_slot[1], gp_face1) 
+	if (gamepad_button_check(global.player_slot[1], gp_face1)
 	&& gamepad_button_check_pressed(global.player_slot[1], gp_start))
 	|| (keyboard_check(ord("A")))
 	|| (keyboard_check_pressed(vk_enter))

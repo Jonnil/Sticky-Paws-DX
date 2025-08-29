@@ -1,6 +1,6 @@
 function scr_player_move_drowning()
 {
-	
+
 	#region /* Drowning */
 	if (allow_drowning)
 	&& (can_move)
@@ -34,5 +34,5 @@ function scr_player_move_drowning()
 		drawn_frames_until_drowning = frames_until_drowning;
 	}
 	#endregion /* Drowning END */
-	
+
 }

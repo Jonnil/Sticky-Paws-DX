@@ -9,19 +9,19 @@ if (!global.actually_play_edited_level)
 		{
 			hover_over_object_indicator = true;
 		}
-		
+
 		#region /* All code before initializing the object */
-		
+
 		if (delay < 3)
 		{
-			delay ++;
+			delay++;
 		}
-		
+
 		if (instance_exists(obj_leveleditor))
 		&& (delay == 3)
 		&& (!obj_leveleditor.pause)
 		{
-			
+
 			#region /* Destroy if erased */
 			if (instance_exists(obj_level_player1_start))
 			&& (place_meeting(x, y, obj_level_player1_start))
@@ -37,7 +37,7 @@ if (!global.actually_play_edited_level)
 			&& (!obj_level_player3_start.drag_object)
 			&& (!obj_level_player4_start.drag_object)
 			{
-				
+
 				#region /* Reset Level Editor Checkpoint */
 				if (room == rm_leveleditor)
 				&& (global.character_select_in_this_menu == "level_editor")
@@ -50,16 +50,16 @@ if (!global.actually_play_edited_level)
 					ini_key_delete(ds_list_find_value(global.all_loaded_custom_levels, global.select_level_index), "checkpoint_minute");
 					ini_key_delete(ds_list_find_value(global.all_loaded_custom_levels, global.select_level_index), "checkpoint_realmillisecond");
 					ini_key_delete(ds_list_find_value(global.all_loaded_custom_levels, global.select_level_index), "checkpoint_direction");
-					ini_close(); /* Don't commit the save data on Switch, this is only temporary! */		
+					ini_close(); /* Don't commit the save data on Switch, this is only temporary! */
 				}
 				#endregion /* Reset Level Editor Checkpoint END */
-				
+
 				instance_destroy();
 			}
 			#endregion /* Destroy if erased END */
-			
+
 		}
-		
+
 		if (mouse_check_button_released(mb_left))
 		|| (instance_exists(obj_leveleditor))
 		&& (obj_leveleditor.key_a_released)
@@ -68,6 +68,6 @@ if (!global.actually_play_edited_level)
 		}
 
 		#endregion /* All code before initializing the object */
-		
+
 	}
 }

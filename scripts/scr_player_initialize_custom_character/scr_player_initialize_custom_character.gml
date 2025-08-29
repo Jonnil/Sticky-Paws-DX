@@ -1,8 +1,8 @@
 function scr_player_initialize_custom_character()
 {
-	
+
 	#region /* Initialize Custom character */
-	
+
 	#region /* Allow */
 	allow_crawl = true;
 	allow_crouch = true;
@@ -23,7 +23,7 @@ function scr_player_initialize_custom_character()
 	allow_wall_jump = true; /* If you can wall jump or not */
 	allow_glide = false;
 	#endregion /* Allow END */
-	
+
 	#region /* Character Values Handeling */
 	acceleration_on_ground = 0.3; /* How much acceleration the character has on ground */
 	acceleration_in_air = 0.3; /* How much acceleration the character has in air */
@@ -45,11 +45,11 @@ function scr_player_initialize_custom_character()
 	double_jump_height = 11.5;
 	homing_attack_distance = 500;
 	#endregion /* Character Values Handeling END */
-	
+
 	#region /* Play as Custom character */
-	
+
 	climb_under_y_offset = 10;
-	
+
 	#region /* Sprite variables */
 	sprite_mask = spr_player_stand; /* Mask Index END */
 	sprite_mask_crouch = spr_player_stand; /* Mask Crouch Index END */
@@ -127,11 +127,11 @@ function scr_player_initialize_custom_character()
 	sprite_wall_slide_up = noone;
 	sprite_glide_down = noone;
 	#endregion /* Sprite variables END */
-	
+
 	#region /* Sound variables */
-	
+
 	#region /* Voices */
-	
+
 	#region /* Voice Wall Jump */
 	voice_wall_jump_1 = noone; /* Voice Wall Jump 1 */
 	voice_wall_jump_2 = noone; /* Voice Wall Jump 2 */
@@ -154,7 +154,7 @@ function scr_player_initialize_custom_character()
 	voice_wall_jump_19 = noone; /* Voice Wall Jump 19 */
 	voice_wall_jump_20 = noone; /* Voice Wall Jump 20 */
 	#endregion /* Voice Wall Jump END */
-	
+
 	#region /* Voice Start Running */
 	voice_start_running_1 = noone; /* Voice Start Running 1 */
 	voice_start_running_2 = noone; /* Voice Start Running 2 */
@@ -167,7 +167,7 @@ function scr_player_initialize_custom_character()
 	voice_start_running_9 = noone; /* Voice Start Running 9 */
 	voice_start_running_10 = noone; /* Voice Start Running 10 */
 	#endregion /* Voice Start Running END */
-	
+
 	#region /* Voice Rope Catch */
 	voice_rope_catch_1 = noone; /* Voice Rope Catch 1 */
 	voice_rope_catch_2 = noone; /* Voice Rope Catch 2 */
@@ -180,7 +180,7 @@ function scr_player_initialize_custom_character()
 	voice_rope_catch_9 = noone; /* Voice Rope Catch 9 */
 	voice_rope_catch_10 = noone; /* Voice Rope Catch 10 */
 	#endregion /* Voice Rope Catch END */
-	
+
 	#region /* Voice Jump Spring */
 	voice_jump_spring_1 = noone; /* Voice Jump Spring 1 */
 	voice_jump_spring_2 = noone; /* Voice Jump Spring 2 */
@@ -193,7 +193,7 @@ function scr_player_initialize_custom_character()
 	voice_jump_spring_9 = noone; /* Voice Jump Spring 9 */
 	voice_jump_spring_10 = noone; /* Voice Jump Spring 10 */
 	#endregion /* Voice Jump Spring END */
-	
+
 	#region /* Voice Jump Rope */
 	voice_jump_rope_1 = noone; /* Voice Jump Rope 1 */
 	voice_jump_rope_2 = noone; /* Voice Jump Rope 2 */
@@ -206,7 +206,7 @@ function scr_player_initialize_custom_character()
 	voice_jump_rope_9 = noone; /* Voice Jump Rope 9 */
 	voice_jump_rope_10 = noone; /* Voice Jump Rope 10 */
 	#endregion /* Voice Jump Rope END */
-	
+
 	#region /* Voice Jump */
 	voice_jump_1 = noone; /* Voice Jump 1 */
 	voice_jump_2 = noone; /* Voice Jump 2 */
@@ -219,7 +219,7 @@ function scr_player_initialize_custom_character()
 	voice_jump_9 = noone; /* Voice Jump 9 */
 	voice_jump_10 = noone; /* Voice Jump 10 */
 	#endregion /* Voice Jump END */
-	
+
 	#region /* Voice Jump 3rd */
 	voice_jump_3rd_1 = noone; /* Voice Jump 3rd 1 */
 	voice_jump_3rd_2 = noone; /* Voice Jump 3rd 2 */
@@ -232,7 +232,7 @@ function scr_player_initialize_custom_character()
 	voice_jump_3rd_9 = noone; /* Voice Jump 3rd 9 */
 	voice_jump_3rd_10 = noone; /* Voice Jump 3rd 10 */
 	#endregion /* Voice Jump 3rd END */
-	
+
 	#region /* Voice Jump 2nd */
 	voice_jump_2nd_1 = noone; /* Voice Jump 2nd 1 */
 	voice_jump_2nd_2 = noone; /* Voice Jump 2nd 2 */
@@ -245,7 +245,7 @@ function scr_player_initialize_custom_character()
 	voice_jump_2nd_9 = noone; /* Voice Jump 2nd 9 */
 	voice_jump_2nd_10 = noone; /* Voice Jump 2nd 10 */
 	#endregion /* Voice Jump 2nd END */
-	
+
 	#region /* Voice Get Invincibility */
 	voice_get_invincibility_1 = noone; /* Voice Get Invincibility 1 */
 	voice_get_invincibility_2 = noone; /* Voice Get Invincibility 2 */
@@ -258,7 +258,7 @@ function scr_player_initialize_custom_character()
 	voice_get_invincibility_9 = noone; /* Voice Get Invincibility 9 */
 	voice_get_invincibility_10 = noone; /* Voice Get Invincibility 10 */
 	#endregion /* Voice Get Invincibility END */
-	
+
 	#region /* Voice Enter Goal */
 	voice_enter_goal_1 = noone; /* Voice Enter Goal 1 */
 	voice_enter_goal_2 = noone; /* Voice Enter Goal 2 */
@@ -271,7 +271,7 @@ function scr_player_initialize_custom_character()
 	voice_enter_goal_9 = noone; /* Voice Enter Goal 9 */
 	voice_enter_goal_10 = noone; /* Voice Enter Goal 10 */
 	#endregion /* Voice Enter Goal END */
-	
+
 	#region /* Voice Dive */
 	voice_dive_1 = noone; /* Voice Dive 1 */
 	voice_dive_2 = noone; /* Voice Dive 2 */
@@ -294,7 +294,7 @@ function scr_player_initialize_custom_character()
 	voice_dive_19 = noone; /* Voice Dive 19 */
 	voice_dive_20 = noone; /* Voice Dive 20 */
 	#endregion /* Voice Dive END */
-	
+
 	#region /* Voice Damage */
 	voice_damage_1 = noone; /* Voice Damage 1 */
 	voice_damage_2 = noone; /* Voice Damage 2 */
@@ -307,7 +307,7 @@ function scr_player_initialize_custom_character()
 	voice_damage_9 = noone; /* Voice Damage 9 */
 	voice_damage_10 = noone; /* Voice Damage 10 */
 	#endregion /* Voice Damage END */
-	
+
 	#region /* Voice Burned Running */
 	voice_burned_running_1 = noone; /* Voice Burned Running 1 */
 	voice_burned_running_2 = noone; /* Voice Burned Running 2 */
@@ -320,7 +320,7 @@ function scr_player_initialize_custom_character()
 	voice_burned_running_9 = noone; /* Voice Burned Running 9 */
 	voice_burned_running_10 = noone; /* Voice Burned Running 10 */
 	#endregion /* Voice Burned Running END */
-	
+
 	#region /* Voice Burned */
 	voice_burned_1 = noone; /* Voice Burned 1 */
 	voice_burned_2 = noone; /* Voice Burned 2 */
@@ -333,7 +333,7 @@ function scr_player_initialize_custom_character()
 	voice_burned_9 = noone; /* Voice Burned 9 */
 	voice_burned_10 = noone; /* Voice Burned 10 */
 	#endregion /* Voice Burned END */
-	
+
 	#region /* Voice Burned Die */
 	voice_burned_die_1 = noone; /* Voice Burned Die 1 */
 	voice_burned_die_2 = noone; /* Voice Burned Die 2 */
@@ -346,7 +346,7 @@ function scr_player_initialize_custom_character()
 	voice_burned_die_9 = noone; /* Voice Burned Die 9 */
 	voice_burned_die_10 = noone; /* Voice Burned Die 10 */
 	#endregion /* Voice Burned Die END */
-	
+
 	#region /* Voice Scream */
 	voice_scream_1 = noone; /* Voice Scream 1 */
 	voice_scream_2 = noone; /* Voice Scream 2 */
@@ -359,9 +359,9 @@ function scr_player_initialize_custom_character()
 	voice_scream_9 = noone; /* Voice Scream 9 */
 	voice_scream_10 = noone; /* Voice Scream 10 */
 	#endregion /* Voice Scream END */
-	
+
 	#endregion /* Voices END */
-	
+
 	voice_wallkick = noone;
 	voice_startdash = noone;
 	voice_rope_catch = noone;
@@ -377,15 +377,15 @@ function scr_player_initialize_custom_character()
 	voice_burned_running = noone;
 	voice_burned = noone;
 	voice_burned_die = noone;
-	
+
 	voice_open_mouth = noone;
 	voice_notice = noone;
 	voice_scream = noone;
-	
+
 	#endregion /* Sound variables END */
-	
+
 	#endregion /* Play as Custom Character END */
-	
+
 	#endregion /* Initialize Custom Character END */
-	
+
 }

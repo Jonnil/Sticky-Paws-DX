@@ -1,7 +1,7 @@
 function scr_initialize_virtual_button(key_1, key_2, key_x, key_y, key_sprite, mobile_key_extra_deadzone = 50, angle = 0)
 {
 	sprite_get_width(key_sprite);
-	
+
 	#region /* Virtual key add jump */
 	if (key_1 > noone)
 	{
@@ -23,7 +23,7 @@ function scr_initialize_virtual_button(key_1, key_2, key_x, key_y, key_sprite, m
 		key_2);
 	}
 	#endregion /* Virtual key add jump END */
-	
+
 	if (key_sprite > noone)
 	{
 		if (keyboard_check(key_1))

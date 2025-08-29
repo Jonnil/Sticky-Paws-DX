@@ -1,6 +1,6 @@
 function scr_set_show_controls_x(what_player = 1, xx = 32)
 {
-	
+
 	#region /* Show keys x positions */
 	/* For some reason, code within "Show keys x positions" lags the Switch version */
 	player_show_dive_key_x[what_player] = xx;
@@ -21,5 +21,5 @@ function scr_set_show_controls_x(what_player = 1, xx = 32)
 		player_show_up_key_x[what_player] = player_show_down_key_x[what_player] + string_width(l10n_text("Down")) + 37;
 	}
 	#endregion /* Show keys x positions END */
-	
+
 }

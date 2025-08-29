@@ -33,22 +33,22 @@ draw_set_valign(fa_middle);
 
 for(var i = 1; i <= global.max_players; i += 1)
 {
-    if (show_run_toggle_for_player[i] > 0)
-    {
-        for(var j = 1; j <= global.max_players; j += 1)
-        {
-            show_run_toggle_for_player[j] = (i == j) ? show_run_toggle_for_player[j] - 1 : 0;
-        }
-		
-        var player_text = l10n_text("Player " + string(i) + " always runs");
-        if (instance_number(obj_player) == 1)
-        {
-            player_text = l10n_text("Always run");
-        }
-		
-        scr_draw_text_outlined(camera_get_view_x(view_camera[view_current]) + 200, camera_get_view_y(view_camera[view_current]) + 32, player_text, global.default_text_size, c_white, c_black, 1);
-        draw_sprite_ext(spr_checkbox, global.player_run_toggle[i], camera_get_view_x(view_camera[view_current]) + 180, camera_get_view_y(view_camera[view_current]) + 32, 0.5, 0.5, 0, c_white, 1);
-    }
+	if (show_run_toggle_for_player[i] > 0)
+	{
+		for(var j = 1; j <= global.max_players; j += 1)
+		{
+			show_run_toggle_for_player[j] = (i == j) ? show_run_toggle_for_player[j] - 1 : 0;
+		}
+
+		var player_text = l10n_text("Player " + string(i) + " always runs");
+		if (instance_number(obj_player) == 1)
+		{
+			player_text = l10n_text("Always run");
+		}
+
+		scr_draw_text_outlined(camera_get_view_x(view_camera[view_current]) + 200, camera_get_view_y(view_camera[view_current]) + 32, player_text, global.default_text_size, c_white, c_black, 1);
+		draw_sprite_ext(spr_checkbox, global.player_run_toggle[i], camera_get_view_x(view_camera[view_current]) + 180, camera_get_view_y(view_camera[view_current]) + 32, 0.5, 0.5, 0, c_white, 1);
+	}
 }
 #endregion /* Run Toggling END */
 

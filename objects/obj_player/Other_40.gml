@@ -12,7 +12,7 @@ if (intro_animation == "")
 	}
 	else
 	{
-		can_clamp_inside_view ++;
+		can_clamp_inside_view++;
 	}
 }
 #endregion /* Don't let the player outside the view END */

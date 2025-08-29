@@ -25,7 +25,7 @@ if (!die)
 				{
 					coil_spring = false;
 					stomped_delay = 20;
-					global.enemy_counter ++;
+					global.enemy_counter++;
 					if (vspeed < 0)
 					{
 						vspeed = +1;
@@ -42,10 +42,10 @@ if (!die)
 					{
 						instance_create_depth(xstart, ystart, 0, obj_blaster_reward_decrease_mask);
 					}
-					global.enemy_counter ++;
+					global.enemy_counter++;
 					with(instance_nearest(x, y, obj_player))
 					{
-						chain_reaction ++;
+						chain_reaction++;
 						midair_jumps_left = number_of_jumps - 1;
 						can_dive = true;
 					}
@@ -84,7 +84,7 @@ if (!die)
 			{
 				if (abs(other.hspeed) > 7)
 				{
-					other.jump ++;
+					other.jump++;
 					if (other.jump > 2)
 					{
 						if (other.image_xscale > 0)
@@ -101,7 +101,7 @@ if (!die)
 				{
 					coil_spring = false;
 					stomped_delay = 20;
-					global.enemy_counter ++;
+					global.enemy_counter++;
 					if (vspeed < 0)
 					{
 						vspeed = +1;
@@ -118,10 +118,10 @@ if (!die)
 					{
 						instance_create_depth(xstart, ystart, 0, obj_blaster_reward_decrease_mask);
 					}
-					global.enemy_counter ++;
+					global.enemy_counter++;
 					with(instance_nearest(x, y, obj_player))
 					{
-						chain_reaction ++;
+						chain_reaction++;
 						midair_jumps_left = number_of_jumps - 1;
 						can_dive = true;
 					}
@@ -155,10 +155,10 @@ if (!die)
 				{
 					instance_create_depth(xstart, ystart, 0, obj_blaster_reward_decrease_mask);
 				}
-				global.enemy_counter ++;
+				global.enemy_counter++;
 				with(instance_nearest(x, y, obj_player))
 				{
-					chain_reaction ++;
+					chain_reaction++;
 					midair_jumps_left = number_of_jumps - 1;
 					can_dive = true;
 				}

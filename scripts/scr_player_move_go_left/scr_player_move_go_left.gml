@@ -1,6 +1,6 @@
 function scr_player_move_go_left()
 {
-	
+
 	#region /* Go Left */
 	if (key_left_hold)
 	&& (!key_right_hold)
@@ -17,14 +17,14 @@ function scr_player_move_go_left()
 				if (image_xscale == +1)
 				{
 					image_xscale = -1;
-				
+
 					#region /* Turnaround Effect */
 					if (!on_ground)
 					{
 						effect_turnaround_subimg = 0;
 					}
 					#endregion /* Turnaround Effect END */
-				
+
 				}
 			}
 			if (x > camera_get_view_x(view_camera[view_current]) + 8)
@@ -51,5 +51,5 @@ function scr_player_move_go_left()
 		}
 	}
 	#endregion /* Go Left END */
-	
+
 }

@@ -1,14 +1,14 @@
 function scr_audio_play(sound_id, what_volume_source = volume_source.sound, volume_modifier = 1) /* This script is to simplify code when wanting to add sound effects to the game */
 {
 	var sound_exists = sound_id >= 0;
-	
+
 	if (sound_exists) /* Check if the sound even exists, otherwise the game can crash */
 	{
 		audio_falloff_set_model(audio_falloff_exponent_distance_scaled);
 		var falloff_ref_dist = 100;
 		var fallof_max_dist = 1100;
 		var fallof_factor = 1;
-		
+
 		#region /* Different audio sources play differently */
 		if (what_volume_source == volume_source.ambient)
 		{
@@ -75,6 +75,6 @@ function scr_audio_play(sound_id, what_volume_source = volume_source.sound, volu
 			}
 		}
 		#endregion /* Different audio sources play differently END */
-		
+
 	}
 }

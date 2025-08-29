@@ -8,7 +8,7 @@ function scr_get_wrapped_text_height(text, max_width, sep, scale = 1)
 	var words = string_split(text, " ");
 	var lines = [];
 	var current_line = "";
-	
+
 	for (var i = 0; i < array_length(words); i++)
 	{
 		var word = words[i];
@@ -27,7 +27,7 @@ function scr_get_wrapped_text_height(text, max_width, sep, scale = 1)
 	{
 		array_push(lines, current_line);
 	}
-	
+
 	var num_lines = array_length(lines);
 	/* Use a representative character (e.g., "W") to measure a single line's height and apply scale */
 	var line_height = string_height("W") * scale;

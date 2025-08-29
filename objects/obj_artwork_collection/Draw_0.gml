@@ -7,7 +7,7 @@ if (instance_exists(obj_player))
 && (!can_navigate)
 {
 	what_player_navigate = instance_nearest(x, y, obj_player).player;
-	
+
 	#region /* Draw Enter Gallery Key */
 	if (global.controls_used_for_navigation == "gamepad")
 	&& (gamepad_is_connected(global.player_slot[what_player_navigate - 1]))
@@ -20,5 +20,5 @@ if (instance_exists(obj_player))
 		draw_sprite_ext(spr_keyboard_keys, vk_up, x, y - 64, 0.5, 0.5, 0, c_white, 1);
 	}
 	#endregion /* Draw Enter Gallery Key END */
-	
+
 }

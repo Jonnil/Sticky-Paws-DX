@@ -8,7 +8,7 @@ function scr_get_sorted_language_list()
 	|| global.valid_languages == undefined)
 	{
 		scr_get_valid_languages();
-		
+
 		/* Optionally, check if it is still undefined: */
 		if (!variable_global_exists("valid_languages")
 		|| global.valid_languages == undefined)
@@ -17,9 +17,9 @@ function scr_get_sorted_language_list()
 			return [];
 		}
 	}
-	
+
 	var temp_languages = [];
-	
+
 	/* Loop through valid_languages (starting at 1, assuming index 0 is not used) */
 	for (var i = 1; i < array_length(global.valid_languages); i++)
 	{
@@ -27,7 +27,7 @@ function scr_get_sorted_language_list()
 		var language_name = global.language_local_data[# global.valid_languages[i], 0];
 		array_push(temp_languages, { index: global.valid_languages[i], name: language_name });
 	}
-	
+
 	/* Sort the array alphabetically by language name */
 	for (var j = 0; j < array_length(temp_languages) - 1; j++)
 	{
@@ -41,6 +41,6 @@ function scr_get_sorted_language_list()
 			}
 		}
 	}
-	
+
 	return temp_languages;
 }

@@ -7,7 +7,7 @@ if (touch_player == 0)
 	startled = true;
 	gravity = 0;
 	image_speed = 0.3;
-	
+
 	if (instance_nearest(x, y, obj_player).x > x)
 	{
 		image_xscale = -1;
@@ -18,7 +18,7 @@ if (touch_player == 0)
 		image_xscale = +1;
 		hspeed = +4;
 	}
-	
+
 	vspeed = -4;
 }
 
@@ -58,7 +58,7 @@ if (!startled)
 	{
 		gravity = 0.5;
 	}
-	
+
 	if (place_meeting(x, y + 1, obj_wall))
 	|| (place_meeting(x, y + 1, obj_semisolid_platform))
 	{
@@ -76,7 +76,7 @@ if (!startled)
 		{
 			hspeed = random_range(-5, +5); /* Can jump either left or right */
 			vspeed = -random(5);
-			
+
 			/* Turn towards where bird is jumping towards */
 			if (hspeed < 0)
 			{
@@ -88,7 +88,7 @@ if (!startled)
 			}
 		}
 	}
-	
+
 	/* Hop left or right, but never jump off ledges */
 	if (!place_meeting(bbox_left - 5, bbox_bottom + 20, obj_wall))
 	&& (!place_meeting(bbox_left - 5, bbox_bottom + 20, obj_semisolid_platform))
@@ -103,5 +103,5 @@ if (!startled)
 		hspeed = -1;
 		image_xscale = -1;
 	}
-	
+
 }

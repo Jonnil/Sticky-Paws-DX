@@ -2,7 +2,7 @@ function scr_player_move_wall_jump_and_wall_climb()
 {
 	var wall_collision_left = place_meeting(x - 1, y, obj_wall) && !place_meeting(x - 1, y, obj_black_wall); /* Can't climb on black walls. Stop climbing if you are climbing on black wall */
 	var wall_collision_right = place_meeting(x + 1, y, obj_wall) && !place_meeting(x + 1, y, obj_black_wall);
-	
+
 	#region /* Wall Jump and Wall Climb */
 	if (can_move
 	&& taken_damage <= taken_damage_freezetime
@@ -81,7 +81,7 @@ function scr_player_move_wall_jump_and_wall_climb()
 			{
 				pressing_opposite_direction_to_drop_off_from_wall--;
 			}
-	
+
 			/* If there is ground under you when trying to go down, then stop wall climbing */
 			if (on_ground)
 			{
@@ -89,7 +89,7 @@ function scr_player_move_wall_jump_and_wall_climb()
 				wall_climb_slippy = 0;
 				audio_stop_sound(snd_skiddingvertical);
 			}
-			
+
 			if (!crouch && !ground_pound && !ledge_grab)
 			{
 				if (vspeed > 0 && position_meeting(x + 18 * image_xscale, bbox_top, obj_wall))
@@ -108,9 +108,9 @@ function scr_player_move_wall_jump_and_wall_climb()
 						audio_stop_sound(snd_skiddingvertical);
 					}
 				}
-		
+
 				vspeed = clamp(vspeed, -4, 4); /* Limit the vspeed between -4 and 4 */
-		
+
 				/* If there is no wall beside when climbing, then stop climbing */
 				if (image_xscale < 0
 				&& (!place_meeting(x - 1, y, obj_wall)
@@ -124,13 +124,13 @@ function scr_player_move_wall_jump_and_wall_climb()
 					audio_stop_sound(snd_skiddingvertical);
 				}
 			}
-			
+
 			#region /* Wall Climb */
 			if (allow_wall_climb || place_meeting(x, y, obj_wall_climb_panel))
 			{
 				dive = false;
 				last_standing_y = y;
-				
+
 				if (vspeed >= 0)
 				{
 					can_ground_pound = true;
@@ -139,7 +139,7 @@ function scr_player_move_wall_jump_and_wall_climb()
 					vspeed = 0;
 					gravity = 0;
 				}
-				
+
 				#region /* Climbing Wall Down */
 				if (key_down
 				&& !key_up
@@ -154,9 +154,9 @@ function scr_player_move_wall_jump_and_wall_climb()
 					vspeed = +4;
 				}
 				#endregion /* Climbing Wall Down END */
-				
+
 				else
-				
+
 				#region /* Climbing Wall Up */
 				if ((key_up
 				&& !key_down)
@@ -184,7 +184,7 @@ function scr_player_move_wall_jump_and_wall_climb()
 					}
 				}
 				#endregion /* Climbing Wall Up END */
-				
+
 				#region /* Climbing Ice Blocks makes you slip off */
 				if (image_xscale < 0 && place_meeting(x - 1, y, obj_ice_block))
 				|| (image_xscale > 0 && place_meeting(x + 1, y, obj_ice_block))
@@ -196,10 +196,10 @@ function scr_player_move_wall_jump_and_wall_climb()
 					vspeed += wall_climb_slippy;
 				}
 				#endregion /* Climbing Ice Blocks makes you slip off END */
-				
+
 			}
 			#endregion /* Wall Climb END */
-			
+
 			/* When pressing the jump button and besides the wall, do the wall jump */
 			if ((key_jump && !on_ground && (wall_collision_right)) ||
 			(key_jump && !on_ground && (wall_collision_left)) ||
@@ -219,7 +219,7 @@ function scr_player_move_wall_jump_and_wall_climb()
 						image_xscale = +1;
 						hspeed = +6;
 					}
-					
+
 					angle = 0;
 					crouch = false;
 					dive = false;
@@ -233,16 +233,16 @@ function scr_player_move_wall_jump_and_wall_climb()
 					triplejumpdelay = 50;
 					wall_climb_slippy = 0;
 					wall_jump = wall_jump_time;
-					
+
 					audio_stop_sound(snd_skiddingvertical);
 					effect_create_above(ef_smoke, x, bbox_bottom - 8, 0, c_white);
 					effect_create_above(ef_smoke, x, bbox_top + 8, 0, c_white);
 					scr_audio_play(snd_wallkick, volume_source.sound);
 					scr_audio_play(voice_wallkick, volume_source.voice);
-					
+
 					image_index = 0;
 					vspeed = -normal_jump_height;
-					
+
 				}
 			}
 		}
@@ -274,7 +274,7 @@ function scr_player_move_wall_jump_and_wall_climb()
 				crouch = false;
 			}
 		}
-		
+
 		#region /* When pressing the jump button, a direction and besides the wall, do the wall jump even if you still haven't started the wall cling state */
 		if ((key_down && !key_left_hold && !key_right_hold && key_run_pressed && stick_to_wall)
 		|| (key_down && !key_left_hold && !key_right_hold && key_dive_pressed && stick_to_wall)
@@ -388,7 +388,7 @@ function scr_player_move_wall_jump_and_wall_climb()
 			}
 		}
 		#endregion /* When pressing the jump button, a direction and besides the wall, do the wall jump even if you still haven't started the wall cling state */
-		
+
 	}
 	else
 	{
@@ -397,8 +397,8 @@ function scr_player_move_wall_jump_and_wall_climb()
 	}
 	if (drop_off_wall_climb > 0)
 	{
-		drop_off_wall_climb --;
+		drop_off_wall_climb--;
 	}
 	#endregion /* Wall Jump and Wall Climb END */
-	
+
 }

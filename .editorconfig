@@ -1,0 +1,17 @@
+root = true
+
+# GameMaker Language and events
+[*.gml]
+indent_style = tab
+tab_width = 4
+end_of_line = lf
+insert_final_newline = true
+trim_trailing_whitespace = true
+
+# JSON-like asset files should preserve formatting
+[*.{yy,yyp}]
+indent_style = space
+indent_size = 2
+end_of_line = lf
+insert_final_newline = true
+trim_trailing_whitespace = false

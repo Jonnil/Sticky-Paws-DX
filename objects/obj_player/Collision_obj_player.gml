@@ -13,18 +13,18 @@ if (global.players_can_collide)
 	&& (other.hspeed > 0)
 	{ /* And other is going right */
 		hspeed = 0;
-		x ++; /* Push yourself right */
+		x++; /* Push yourself right */
 		other.hspeed = 0;
-		other.x --; /* Push other left */
+		other.x--; /* Push other left */
 	}
 	else
 	if (hspeed > 0) /* If you are going right */
 	&& (x < other.x)
 	&& (other.hspeed < 0) { /* And other is going left */
 		hspeed = 0;
-		x --; /* Push yourself left*/
+		x--; /* Push yourself left*/
 		other.hspeed = 0;
-		other.x ++; /* Push other right */
+		other.x++; /* Push other right */
 	}
 	else
 	if (hspeed < 0) /* If you are going left */
@@ -33,7 +33,7 @@ if (global.players_can_collide)
 		if (hspeed < -1) {
 			hspeed = -1;
 		}
-		other.x --;
+		other.x--;
 	}
 	else
 	if (hspeed > 0) /* If you are going right */
@@ -42,7 +42,7 @@ if (global.players_can_collide)
 		if (hspeed > +1) {
 			hspeed = +1;
 		}
-		other.x ++;
+		other.x++;
 	}
 	if (hspeed <= 0) /* If you are standing still or going left */
 	&& (x < other.x)
@@ -50,7 +50,7 @@ if (global.players_can_collide)
 		if (other.hspeed < -1) {
 			other.hspeed = -1;
 		}
-		x --;
+		x--;
 	}
 	else
 	if (hspeed >= 0) /* If you are standing still or going right */
@@ -59,13 +59,13 @@ if (global.players_can_collide)
 		if (other.hspeed > +1) {
 			other.hspeed = +1;
 		}
-		x ++;
+		x++;
 	}
 }
 
 #region /* Interaction with other players */
 if (!in_water) {
-	
+
 	#region /* Jump on other players heads */
 	if (place_meeting(x, y + 1, other))
 	&& (!place_meeting(x, y - 1, obj_wall))
@@ -90,6 +90,6 @@ if (!in_water) {
 		}
 	}
 	#endregion /* Jump on other players heads END */
-	
+
 }
 #endregion /* Interaction with other players END */

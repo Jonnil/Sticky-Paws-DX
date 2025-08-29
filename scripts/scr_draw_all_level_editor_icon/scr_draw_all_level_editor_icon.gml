@@ -1,15 +1,15 @@
 function scr_draw_all_level_editor_icon()
 {
-	
+
 	#region /* Level Editor Icons */
-	
+
 	#region /* Autoscroll Button */
-	
+
 	var autoscroll_speed_overall = max(abs(autoscroll_speed_x), abs(autoscroll_speed_y));
-	
+
 	#region /* Autoscroll Icon X */
 	var autoscroll_xscale = 1;
-	
+
 	if (autoscroll_speed_x == 0)
 	&& (autoscroll_speed_y == 0)
 	{
@@ -44,7 +44,7 @@ function scr_draw_all_level_editor_icon()
 		autoscroll_xscale = 1;
 	}
 	#endregion /* Autoscroll Icon X END */
-	
+
 	#region /* Autoscroll Icon Y */
 	if (autoscroll_speed_y == 0)
 	{
@@ -75,9 +75,9 @@ function scr_draw_all_level_editor_icon()
 		}
 	}
 	#endregion /* Autoscroll Icon Y END */
-	
+
 	draw_sprite_ext(autoscroll_icon_sprite, autoscroll_icon_subimg, icon_at_left_x + 32, autoscroll_icon_y, autoscroll_xscale, 1, autoscroll_angle, c_white, 1);
-	
+
 	if (show_autoscroll_menu)
 	&& (!pause)
 	{
@@ -99,7 +99,7 @@ function scr_draw_all_level_editor_icon()
 		}
 	}
 	#endregion /* Autoscroll Button END */
-	
+
 	#region /* Click Autoscroll Button */
 	if (global.controls_used_for_navigation == "mouse")
 	&& (point_in_rectangle(cursor_x, cursor_y, icon_at_left_x - 32, autoscroll_icon_y - 32, icon_at_left_x + 64, autoscroll_icon_y + 32))
@@ -134,7 +134,7 @@ function scr_draw_all_level_editor_icon()
 				ini_close(); /* Don't commit the save data on Switch, this is only temporary! */
 				if_clear_checked = false;
 			}
-			
+
 			menu = "autoscroll_speed_x";
 			show_time_menu = false;
 			show_autoscroll_menu = !show_autoscroll_menu;
@@ -145,9 +145,9 @@ function scr_draw_all_level_editor_icon()
 		}
 	}
 	#endregion /* Click Autoscroll Button END */
-	
+
 	#region /* Time Button */
-	
+
 	if (global.enable_time_countdown)
 	&& (global.time_countdown > 0)
 	{
@@ -157,9 +157,9 @@ function scr_draw_all_level_editor_icon()
 	{
 		var time_icon_sprite = spr_leveleditor_icon_time_no;
 	}
-	
+
 	draw_sprite_ext(time_icon_sprite, 0, icon_at_left_x + 32, time_icon_y, 1, 1, 0, c_white, 1);
-	
+
 	if (show_time_menu)
 	&& (!pause)
 	{
@@ -184,7 +184,7 @@ function scr_draw_all_level_editor_icon()
 		}
 	}
 	#endregion /* Time Button END */
-	
+
 	#region /* Click Time Button */
 	if (global.controls_used_for_navigation == "mouse")
 	&& (point_in_rectangle(cursor_x, cursor_y, icon_at_left_x - 32, time_icon_y - 32, icon_at_left_x + 64, time_icon_y + 32))
@@ -216,7 +216,7 @@ function scr_draw_all_level_editor_icon()
 				ini_close(); /* Don't commit the save data on Switch, this is only temporary! */
 				if_clear_checked = false;
 			}
-			
+
 			menu = "in_editor_enable_time_countdown";
 			show_autoscroll_menu = false;
 			show_time_menu = !show_time_menu;
@@ -227,7 +227,7 @@ function scr_draw_all_level_editor_icon()
 		}
 	}
 	#endregion /* Click Time Button END */
-	
+
 	#region /* Play Level Button */
 	if (global.controls_used_for_navigation == "mouse"
 	&& point_in_rectangle(mouse_get_x, mouse_get_y, play_level_icon_x - 32, display_get_gui_height() - 64, play_level_icon_x + 32, display_get_gui_height() + 64)
@@ -246,7 +246,7 @@ function scr_draw_all_level_editor_icon()
 		scr_draw_text_outlined(play_level_icon_x - 22, display_get_gui_height() - 80 + icon_at_bottom_y, l10n_text("Press once to start from center of screen"), global.default_text_size, c_black, c_white, 1);
 	}
 	draw_sprite_ext(spr_menu_button_play, 0, play_level_icon_x, display_get_gui_height() - 32 + icon_at_bottom_y, 1, 1, 0, c_white, 1);
-	
+
 	#region /* Draw Play Key */
 	if (global.controls_used_for_navigation == "gamepad"
 	&& gamepad_is_connected(global.player_slot[1])
@@ -259,13 +259,13 @@ function scr_draw_all_level_editor_icon()
 		draw_sprite_ext(spr_keyboard_keys, key_play, play_level_icon_x + 20, display_get_gui_height() - 32 + icon_at_bottom_y + 20, 0.4, 0.4, 0, c_white, 1);
 	}
 	#endregion /* Draw Play key END */
-	
+
 	if (pressing_play_timer > 0)
 	{
 		scr_draw_circular_bar(play_level_icon_x, display_get_gui_height() - 32 + icon_at_bottom_y, pressing_play_timer, frames_until_playtest_from_start, c_red, 20, 1, 6); /* Draw a circular bar that fills when holding play key */
 		scr_draw_circular_bar(display_get_gui_width() * 0.5, display_get_gui_height() * 0.5, pressing_play_timer, frames_until_playtest_from_start, c_red, 20, 1, 6); /* Draw a circular bar that fills when holding play key */
 	}
-	
+
 	if (global.controls_used_for_navigation == "mouse"
 	&& point_in_rectangle(cursor_x, cursor_y, play_level_icon_x - 32 + 1, display_get_gui_height() - 64, play_level_icon_x + 32, display_get_gui_height() + 64 - 1)
 	&& show_icon_at_bottom
@@ -279,7 +279,7 @@ function scr_draw_all_level_editor_icon()
 		draw_set_alpha(1);
 	}
 	#endregion /* Play Level Button END */
-	
+
 	#region /* Place brush icon */
 	if (!erase_mode)
 	&& (!fill_mode)
@@ -291,7 +291,7 @@ function scr_draw_all_level_editor_icon()
 		var place_blend = c_dkgray;
 	}
 	draw_sprite_ext(spr_leveleditor_icon_pen, place_size, place_icon_x, display_get_gui_height() - 32 + icon_at_bottom_y, 1, 1, 0, place_blend, 1);
-	
+
 	#region /* Draw Brush Key */
 	if (global.controls_used_for_navigation == "gamepad")
 	&& (gamepad_is_connected(global.player_slot[1]))
@@ -320,7 +320,7 @@ function scr_draw_all_level_editor_icon()
 		}
 	}
 	#endregion /* Draw Brush key END */
-	
+
 	#region /* Click Pen */
 	if (global.controls_used_for_navigation == "mouse")
 	&& (point_in_rectangle(cursor_x, cursor_y, place_icon_x - 32 + 1, display_get_gui_height() - 64, place_icon_x + 32, display_get_gui_height() + 64 - 1))
@@ -340,26 +340,26 @@ function scr_draw_all_level_editor_icon()
 		{
 			if (erase_mode || fill_mode)
 			{
-			    erase_mode = false;
-			    fill_mode = false;
+				erase_mode = false;
+				fill_mode = false;
 			}
 			else
 			{
-			    place_size += 1;
-			    erase_size = place_size;
-				
-			    if (place_size > 5)
+				place_size += 1;
+				erase_size = place_size;
+
+				if (place_size > 5)
 				{
-			        place_size = 0;
-			        erase_size = 0;
-			    }
+					place_size = 0;
+					erase_size = 0;
+				}
 			}
 		}
 	}
 	#endregion /* Click Pen END */
-	
+
 	#endregion /* Place brush icon END */
-	
+
 	#region /* Erase icon */
 	if (erase_mode)
 	{
@@ -370,7 +370,7 @@ function scr_draw_all_level_editor_icon()
 		var erase_blend = c_dkgray;
 	}
 	draw_sprite_ext(spr_leveleditor_icon_erase, erase_size, erase_icon_x, display_get_gui_height() - 32 + icon_at_bottom_y, 1, 1, 0, erase_blend, 1);
-	
+
 	#region /* Draw Eraser Key */
 	if (global.controls_used_for_navigation == "gamepad")
 	&& (gamepad_is_connected(global.player_slot[1]))
@@ -397,7 +397,7 @@ function scr_draw_all_level_editor_icon()
 		}
 	}
 	#endregion /* Draw Eraser key END */
-	
+
 	#region /* Click Erase */
 	if (global.controls_used_for_navigation == "mouse")
 	&& (point_in_rectangle(cursor_x, cursor_y, erase_icon_x - 32 + 1, display_get_gui_height() - 64, erase_icon_x + 32, display_get_gui_height() + 64 - 1))
@@ -417,26 +417,26 @@ function scr_draw_all_level_editor_icon()
 		{
 			if (!erase_mode)
 			{
-			    erase_mode = true;
-			    fill_mode = false;
+				erase_mode = true;
+				fill_mode = false;
 			}
 			else
 			{
-			    erase_size += 1;
-			    place_size = erase_size;
-				
-			    if (erase_size > 5)
+				erase_size += 1;
+				place_size = erase_size;
+
+				if (erase_size > 5)
 				{
-			        erase_size = 0;
-			        place_size = 0;
-			    }
+					erase_size = 0;
+					place_size = 0;
+				}
 			}
 		}
 	}
 	#endregion /* Click Erase END */
-	
+
 	#endregion /* Erase icon END */
-	
+
 	#region /* Fill icon */
 	if (fill_mode)
 	&& (!erase_mode)
@@ -466,7 +466,7 @@ function scr_draw_all_level_editor_icon()
 		var fill_sprite = spr_leveleditor_icon_fill_line;
 	}
 	draw_sprite_ext(fill_sprite, 0, fill_icon_x, display_get_gui_height() - 32 + icon_at_bottom_y, 1, 1, fill_angle, fill_blend, 1);
-	
+
 	#region /* Draw Fill Key */
 	if (global.controls_used_for_navigation == "gamepad")
 	&& (gamepad_is_connected(global.player_slot[1]))
@@ -493,7 +493,7 @@ function scr_draw_all_level_editor_icon()
 		}
 	}
 	#endregion /* Draw Fill key END */
-	
+
 	#region /* Click Fill */
 	if (global.controls_used_for_navigation == "mouse")
 	&& (point_in_rectangle(cursor_x, cursor_y, fill_icon_x - 32 + 1, display_get_gui_height() - 64, fill_icon_x + 32, display_get_gui_height() + 64 - 1))
@@ -540,9 +540,9 @@ function scr_draw_all_level_editor_icon()
 		}
 	}
 	#endregion /* Click Fill END */
-	
+
 	#endregion /* Fill icon END */
-	
+
 	#region /* Hide Buttons - Always show level editor buttons toggle */
 	if (global.always_show_level_editor_buttons)
 	{
@@ -553,7 +553,7 @@ function scr_draw_all_level_editor_icon()
 		var hide_angle = 270;
 	}
 	draw_sprite_ext(spr_menu_cursor, 0, always_show_level_editor_buttons_x, display_get_gui_height() - 32 + icon_at_bottom_y, 1, 1, hide_angle, c_white, 1);
-	
+
 	if (global.controls_used_for_navigation == "gamepad")
 	|| (global.always_show_gamepad_buttons)
 	{
@@ -597,14 +597,14 @@ function scr_draw_all_level_editor_icon()
 		ini_close(); /* Don't commit the save data on Switch, this is only temporary! */
 	}
 	#endregion /* Hide Buttons - Always show level editor buttons toggle END */
-	
+
 	if (undo_and_redo_buttons_enabled)
 	{
-		
+
 		#region /* Show Undo icon */
 		draw_set_halign(fa_right);
 		scr_draw_text_outlined(display_get_gui_width() - 16 + undo_redo_icon_y, display_get_gui_height() - 128 - 32, string(current_undo_value) + "/" + string(max_undo_value));
-		
+
 		if (global.controls_used_for_navigation == "mouse")
 		&& (point_in_rectangle(cursor_x, cursor_y, display_get_gui_width() - 128, display_get_gui_height() - 128, display_get_gui_width() - 64, display_get_gui_height() - 64))
 		&& (mouse_check_button(mb_left))
@@ -616,7 +616,7 @@ function scr_draw_all_level_editor_icon()
 			draw_sprite_ext(spr_leveleditor_icon, 17, display_get_gui_width() - 96 + undo_redo_icon_y, display_get_gui_height() - 96, 1, 1, 0, c_dkgray, 1);
 		}
 		#endregion /* Show Undo icon END */
-		
+
 		#region /* Show Redo icon */
 		if (global.controls_used_for_navigation == "mouse")
 		&& (point_in_rectangle(cursor_x, cursor_y, display_get_gui_width() - 64, display_get_gui_height() - 128, display_get_gui_width(), display_get_gui_height() - 64))
@@ -629,9 +629,9 @@ function scr_draw_all_level_editor_icon()
 			draw_sprite_ext(spr_leveleditor_icon, 18, display_get_gui_width() - 32 + undo_redo_icon_y, display_get_gui_height() - 96, 1, 1, 0, c_dkgray, 1);
 		}
 		#endregion /* Show Redo icon */
-		
+
 	}
-	
+
 	#region /* Delete All Objects / Wipe button */
 	draw_sprite_ext(spr_leveleditor_icon_wipe, 0, display_get_gui_width() - 32, display_get_gui_height() - 32 + icon_at_bottom_y, 1, 1, 0, c_white, 1);
 	if (global.controls_used_for_navigation == "mouse")
@@ -644,11 +644,11 @@ function scr_draw_all_level_editor_icon()
 		draw_set_alpha(1);
 	}
 	#endregion /* Delete All Objects / Wipe button END */
-	
+
 	#region /* Set difficulty layer */
 	if (global.enable_difficutly_layers_in_level_editor)
 	&& (set_difficulty_mode) {
-		
+
 		#region /* Easy */
 		if (difficulty_layer == 1)
 		{
@@ -668,7 +668,7 @@ function scr_draw_all_level_editor_icon()
 			draw_set_alpha(1);
 		}
 		#endregion /* Easy END */
-		
+
 		#region /* Normal */
 		if (difficulty_layer == 2)
 		{
@@ -688,7 +688,7 @@ function scr_draw_all_level_editor_icon()
 			draw_set_alpha(1);
 		}
 		#endregion /* Normal END */
-		
+
 		#region /* Hard */
 		if (difficulty_layer == 3)
 		{
@@ -708,10 +708,10 @@ function scr_draw_all_level_editor_icon()
 			draw_set_alpha(1);
 		}
 		#endregion /* Hard END */
-		
+
 		#region /* Set Difficulty Mode / Back */
 		draw_sprite_ext(spr_leveleditor_icon, 24, display_get_gui_width() - 32 - 64, display_get_gui_height() - 32 + icon_at_bottom_y, 1, 1, 0, c_white, 1);
-		
+
 		if (global.controls_used_for_navigation == "mouse")
 		&& (point_in_rectangle(cursor_x, cursor_y, display_get_gui_width() - 32 - 64 - 32 + 1, display_get_gui_height() - 32 + icon_at_bottom_y - 32, display_get_gui_width() + 32 - 64 - 32, display_get_gui_height() + 32 + icon_at_bottom_y - 32))
 		|| (level_editor_menu == "difficulty_toggle")
@@ -722,12 +722,12 @@ function scr_draw_all_level_editor_icon()
 			draw_set_alpha(1);
 		}
 		#endregion /* Set Difficulty Mode / Back END */
-		
+
 	}
 	else
 	if (global.enable_difficutly_layers_in_level_editor) {
 		draw_sprite_ext(spr_leveleditor_icon, 19, display_get_gui_width() - 32 - 64, display_get_gui_height() - 32 + icon_at_bottom_y, 1, 1, 0, c_white, 1);
-		
+
 		if (global.controls_used_for_navigation == "mouse")
 		&& (point_in_rectangle(cursor_x, cursor_y, display_get_gui_width() - 32 - 64 - 32 + 1, display_get_gui_height() - 32 + icon_at_bottom_y - 32, display_get_gui_width() + 32 - 64 - 32, display_get_gui_height() + 32 + icon_at_bottom_y - 32))
 		|| (level_editor_menu == "difficulty_toggle")
@@ -739,15 +739,15 @@ function scr_draw_all_level_editor_icon()
 		}
 	}
 	#endregion /* Set difficulty layer END */
-	
+
 	#region /* Show icon at top of screen */
-	
+
 	#region /* Show Grid */
 	if (show_grid)
 	{
 		draw_set_halign(fa_left);
 		scr_draw_text_outlined(48, 32, l10n_text("View X") + ": " + string(round(camera_get_view_x(view_camera[0]))) + "\n" + l10n_text("View Y") + ": " + string(round(camera_get_view_y(view_camera[0]))), global.default_text_size, c_black, c_white, 1);
-		
+
 		draw_sprite_ext(spr_leveleditor_icon, 13, grid_button_x, + 32 + icon_at_top_y, 1, 1, 0, c_white, 1);
 		if (global.grid_hsnap == global.grid_vsnap)
 		{
@@ -781,8 +781,8 @@ function scr_draw_all_level_editor_icon()
 			{
 				if (global.grid_hsnap < 63 || global.grid_vsnap < 63)
 				{
-					global.grid_hsnap ++;
-					global.grid_vsnap ++;
+					global.grid_hsnap++;
+					global.grid_vsnap++;
 				}
 			}
 			else
@@ -790,8 +790,8 @@ function scr_draw_all_level_editor_icon()
 			{
 				if (global.grid_hsnap > 1 || global.grid_vsnap > 1)
 				{
-					global.grid_hsnap --;
-					global.grid_vsnap --;
+					global.grid_hsnap--;
+					global.grid_vsnap--;
 				}
 			}
 		}
@@ -812,7 +812,7 @@ function scr_draw_all_level_editor_icon()
 		draw_sprite_ext(spr_keyboard_keys, ord("G"), grid_button_x + 20, + 32 + icon_at_top_y + 20, 0.4, 0.4, 0, c_white, 1);
 	}
 	#endregion /* Show Grid END */
-	
+
 	#region /* Zoom Out */
 	if (zoom_out)
 	{
@@ -824,7 +824,7 @@ function scr_draw_all_level_editor_icon()
 	}
 	draw_sprite_ext(spr_leveleditor_icon, 14, zoom_out_button_x, + 32 + icon_at_top_y, 1, 1, 0, zoom_out_blend, 1);
 	#endregion /* Zoom Out END */
-	
+
 	#region /* Zoom Reset */
 	if (zoom_reset)
 	{
@@ -836,7 +836,7 @@ function scr_draw_all_level_editor_icon()
 	}
 	draw_sprite_ext(spr_leveleditor_icon, 15, zoom_reset_button_x, + 32 + icon_at_top_y, 1, 1, 0, zoom_reset_blend, 1);
 	#endregion /* Zoom Reset END */
-	
+
 	#region /* Zoom In */
 	if (zoom_in)
 	{
@@ -848,7 +848,7 @@ function scr_draw_all_level_editor_icon()
 	}
 	draw_sprite_ext(spr_leveleditor_icon, 16, zoom_in_button_x, + 32 + icon_at_top_y, 1, 1, 0, zoom_in_blend, 1);
 	#endregion /* Zoom In END */
-	
+
 	#region /* Help Button */
 	if (welcome_to_level_editor > 0)
 	{
@@ -870,9 +870,9 @@ function scr_draw_all_level_editor_icon()
 		draw_sprite_ext(spr_keyboard_keys, ord("H"), help_button_x + 20, + 32 + icon_at_top_y + 20, 0.4, 0.4, 0, c_white, 1);
 	}
 	#endregion /* Help Button END */
-	
+
 	#endregion /* Show icon at top of screen END */
-	
+
 	#endregion /* Level Editor Icons */
-	
+
 }

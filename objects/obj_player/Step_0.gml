@@ -61,7 +61,7 @@ if (goal && global.time_countdown_bonus <= 0 && instance_exists(obj_camera) && o
 		global.checkpoint_realmillisecond = 0;
 		global.lives_until_assist = 0;
 		scr_save_level(); /* Important that you save all level information here, before going back to the map screen, but after setting level_clear_rate to clear */
-		
+
 		/* If certain player is no longer playing, make them dissapear from the game until they manually join the game again */
 		for(var i = 1; i <= global.max_players; i += 1)
 		{
@@ -78,7 +78,7 @@ if (goal && global.time_countdown_bonus <= 0 && instance_exists(obj_camera) && o
 				gamepad_set_vibration(global.player_slot[player], 0, 0);
 			}
 		}
-		
+
 		if (!global.actually_play_edited_level && global.play_edited_level && global.character_select_in_this_menu == "level_editor")
 		{
 			global.actually_play_edited_level = false;
@@ -135,7 +135,7 @@ if (intro_animation == "")
 	}
 	else
 	{
-		can_clamp_inside_view ++;
+		can_clamp_inside_view++;
 	}
 }
 #endregion /* Winning the level and transitioning to the next area END */
@@ -429,7 +429,7 @@ scr_player_move_throw_items_in_hands();
 #region /* Can Attack After Dive On Ground */
 if (on_ground && can_attack_after_dive_on_ground > 0)
 {
-	can_attack_after_dive_on_ground --;
+	can_attack_after_dive_on_ground--;
 	if (key_jump)
 	{
 		can_attack_after_dive_on_ground = false;
@@ -548,7 +548,7 @@ scr_player_move_drowning();
 #region /* Water Splash Effect */
 if (in_water != old_in_water)
 {
-	
+
 	#region /* Jump out of water */
 	if (key_jump_hold && !in_water && vspeed > -normal_jump_height)
 	{
@@ -557,9 +557,9 @@ if (in_water != old_in_water)
 		scr_audio_play(snd_swim, volume_source.sound); /* Swim sound effect */
 	}
 	#endregion /* Jump out of water END */
-	
+
 	old_in_water = in_water;
-	
+
 	instance_create_depth(x, y, 0, obj_water_splash);
 	repeat(10)
 	{
@@ -587,7 +587,7 @@ if (power_meter_running_sound && invincible_timer >= 2 && abs(hspeed) > 7)
 }
 else
 {
-	speedunit --;
+	speedunit--;
 	if (speedunit < 0)
 	{
 		speedunit = 0;
@@ -600,7 +600,7 @@ else
 if (taken_damage > 0)
 {
 	global.zero_hits = false;
-	taken_damage --;
+	taken_damage--;
 }
 
 #region /* Make the player die if you have 0 HP */
@@ -641,7 +641,7 @@ if (burnt == 2)
 #region /* Invincible Music */
 if (invincible_timer >= 1)
 {
-	invincible_timer --;
+	invincible_timer--;
 	if (invincible_timer >= 2)
 	{
 		if (!audio_is_playing(music_invincible))
@@ -652,7 +652,7 @@ if (invincible_timer >= 1)
 }
 else
 {
-	
+
 	#region /* Handle Music Transitions */
 	/* Check the state of invincibility music */
 	if (invincible_timer <= 1)
@@ -664,13 +664,13 @@ else
 			audio_stop_sound(music_invincible);
 		}
 	}
-	
+
 	/* Check and handle loading music */
 	if (audio_is_playing(global.loading_music))
 	{
 		/* Debug message to confirm that loading music is playing */
 		show_debug_message("Loading music is playing.");
-		
+
 		/* Check if there is a valid level music to play */
 		if (current_music_playing != noone)
 		{
@@ -682,12 +682,12 @@ else
 				scr_audio_play(current_music_playing, volume_source.music);
 			}
 		}
-		
+
 		/* Stop the loading music regardless */
 		show_debug_message("Stopping loading music.");
 		audio_stop_sound(global.loading_music);
 	}
-	
+
 	/* Handle underwater music priority */
 	if (global.music_underwater != noone) /* Ensure underwater music is valid */
 	{
@@ -695,14 +695,14 @@ else
 		{
 			/* Debug message to confirm underwater music isn't playing */
 			show_debug_message("Underwater music is not playing.");
-			
+
 			/* Check if hurry-up music is also not playing */
 			if (!audio_is_playing(snd_hurry_up))
 			{
 				/* Debug message to confirm playing underwater music */
 				show_debug_message("Playing underwater music: " + string(global.music_underwater));
 				scr_audio_play(global.music_underwater, volume_source.music);
-				
+
 				/* Debug message to confirm stopping loading music, if applicable */
 				if (audio_is_playing(global.loading_music))
 				{
@@ -713,7 +713,7 @@ else
 		}
 	}
 	#endregion /* Handle Music Transitions END */
-	
+
 }
 if (invincible_timer >= 50)
 {
@@ -773,7 +773,7 @@ else
 		}
 		else
 		{
-			global.time_countdown_bonus --;
+			global.time_countdown_bonus--;
 			score += 50;
 		}
 		if (!audio_is_playing(snd_beep))
@@ -936,7 +936,7 @@ if (place_meeting(x, y, obj_vine))
 		midair_jumps_left = number_of_jumps;
 		spring = false;
 		chain_reaction = 0;
-		
+
 		if (key_up)
 		&& (!key_down)
 		&& (place_meeting(x, bbox_top - 1, obj_vine))
@@ -955,7 +955,7 @@ if (place_meeting(x, y, obj_vine))
 				x -= 4;
 			}
 		}
-		
+
 		if (key_up)
 		&& (!key_down)
 		&& (place_meeting(x, bbox_top - 1, obj_vine))
@@ -998,7 +998,7 @@ if (place_meeting(x, y, obj_vine))
 			if (sprite_vine_stay > noone){sprite_index = sprite_vine_stay;}else
 			if (sprite_idle > noone) && (typeof(sprite_idle) != "undefined"){sprite_index = sprite_idle;}else
 			if (sprite_walk > noone){sprite_index = sprite_walk;}
-			
+
 			if (!on_ground)
 			{
 				if (key_run)
@@ -1016,7 +1016,7 @@ if (place_meeting(x, y, obj_vine))
 					scr_audio_play(snd_move_ivy, volume_source.sound);
 				}
 			}
-			
+
 			if (on_ground)
 			{
 				climb = false;
@@ -1141,10 +1141,10 @@ if (in_water && !climb)
 {
 	can_ground_pound = false;
 	chain_reaction = 0;
-	
+
 	if (on_ground && !crouch)
 	{
-	
+
 		#region /* Skidding */
 		if (hspeed < 0)
 		&& (key_right_hold)
@@ -1170,9 +1170,9 @@ if (in_water && !climb)
 			}
 		}
 		#endregion /* Skidding END */
-	
+
 		else
-	
+
 		#region /* Run in Water */
 		if (hspeed <+ 0.1)
 		|| (hspeed >- 0.1)
@@ -1223,9 +1223,9 @@ if (in_water && !climb)
 			image_speed = speed / 13.5 +0.1;
 		}
 		#endregion /* Run in Water END */
-	
+
 		else
-	
+
 		#region /* Stand Underwater */
 		if (hspeed == 0)
 		&& (!key_left_hold)
@@ -1238,7 +1238,7 @@ if (in_water && !climb)
 			image_speed = 0.1;
 		}
 		#endregion /* Stand Underwater END */
-	
+
 		#region /* Mask */
 		if (sprite_mask >= 0)
 		{
@@ -1249,22 +1249,22 @@ if (in_water && !climb)
 			mask_index = spr_player_stand;
 		}
 		#endregion /* Mask END */
-	
+
 	}
 	else
-	
+
 	#region /* Swimming Sprites */
 	if (!on_ground
 	&& !crouch)
 	{
 		/* Don't have skidding animations underwater */
-	
+
 		/* Single Swim */
 		if (key_jump)
 		{
 			image_index = 0;
 		}
-		
+
 		if (image_index > image_number - 1)
 		{
 			image_speed = 0;
@@ -1273,7 +1273,7 @@ if (in_water && !climb)
 		{
 			image_speed = 0.3;
 		}
-		
+
 		if (vspeed > 0)
 		{
 			if (sprite_swim_fall > noone){sprite_index = sprite_swim_fall;}else
@@ -1289,7 +1289,7 @@ if (in_water && !climb)
 			if (sprite_idle > noone) && (typeof(sprite_idle) != "undefined"){sprite_index = sprite_idle;}else
 			if (sprite_walk > noone){sprite_index = sprite_walk;}
 		}
-		
+
 		if (sprite_mask >= 0)
 		{
 			mask_index = sprite_mask;
@@ -1300,7 +1300,7 @@ if (in_water && !climb)
 		}
 	}
 	#endregion /* Swimming Sprites END */
-	
+
 }
 #endregion /* In Water Animations END */
 
@@ -1348,7 +1348,7 @@ else
 	if (on_ground && !crouch)
 	&& (vspeed == 0)
 	{
-		
+
 		#region /* Skidding */
 		if (hspeed < 0)
 		&& (key_right_hold)
@@ -1407,9 +1407,9 @@ else
 			effect_create_above(ef_smoke, x, bbox_bottom, 0, c_white);
 		}
 		#endregion /* Skidding END */
-		
+
 		else
-		
+
 		#region /* Skidding Stop */
 		if (hspeed < 0)
 		&& (!key_left_hold)
@@ -1434,9 +1434,9 @@ else
 			if (typeof(sprite_idle) != "undefined"){sprite_index = sprite_idle; image_speed = 0.5;}
 		}
 		#endregion /* Skidding Stop END */
-		
+
 		else
-		
+
 		#region /* Look Up */
 		if (hspeed == 0)
 		&& (key_up)
@@ -1473,9 +1473,9 @@ else
 			}
 		}
 		#endregion /* Look Up END */
-		
+
 		else
-		
+
 		#region /* Run */
 		if (abs(hspeed) > 0)
 		{
@@ -1538,9 +1538,9 @@ else
 			}
 		}
 		#endregion /* Run END */
-		
+
 		else
-		
+
 		#region /* Against Wall */
 		if (place_meeting(x - 1, y, obj_wall))
 		&& (on_ground)
@@ -1586,9 +1586,9 @@ else
 			}
 		}
 		#endregion /* Against Wall END */
-		
+
 		else
-		
+
 		#region /* Stand */
 		if (hspeed == 0)
 		&& (!key_left_hold)
@@ -1691,7 +1691,7 @@ else
 				{
 					sprite_index = sprite_idle;
 				}
-				
+
 				#region /* If there isn't any stand or idle animation existing, then just use walk sprite */
 				else
 				if (sprite_walk > noone)
@@ -1700,7 +1700,7 @@ else
 					image_speed = 0;
 				}
 				#endregion /* If there isn't any stand or idle animation existing, then just use walk sprite END */
-				
+
 				image_speed = 0.3;
 			}
 		}
@@ -1709,7 +1709,7 @@ else
 			idle_animtaion = 0;
 		}
 		#endregion /* Stand END */
-		
+
 		#region /* Mask */
 		if (sprite_mask >= 0)
 		{
@@ -1720,10 +1720,10 @@ else
 			mask_index = spr_player_stand;
 		}
 		#endregion /* Maske END */
-		
+
 	}
 	else
-	
+
 	#region /* Jumping Sprites */
 	if (!on_ground && !crouch)
 	{
@@ -1752,7 +1752,7 @@ else
 			if (sprite_walk > noone){sprite_index = sprite_walk;}
 		}
 		else
-		
+
 		#region /* Wall slide down */
 		if (stick_to_wall)
 		&& (vspeed >= 0)
@@ -1778,7 +1778,7 @@ else
 			}
 		}
 		#endregion /* Wall slide down END */
-		
+
 		else
 		if (vspeed < 0)
 		{
@@ -1820,11 +1820,11 @@ else
 				}
 			}
 			else
-		
+
 			#region /* Jump sprites */
 			if (!horizontal_rope_climb)
 			{
-			
+
 				#region /* Single Jump */
 				if (jump <= 1)
 				{
@@ -1837,9 +1837,9 @@ else
 					}
 				}
 				#endregion /* Single Jump END */
-		
+
 				else
-		
+
 				#region /* Double Jump */
 				if (jump == 2)
 				{
@@ -1874,14 +1874,14 @@ else
 				}
 			}
 			#endregion /* Jump sprites END */
-		
+
 		}
 		else
 		if (vspeed > 0)
 		&& (!stick_to_wall)
 		&& (!spring)
 		{
-		
+
 			#region /* Fall sprites */
 			if (jump_transition_to_fall_animation == 0)
 			{
@@ -1921,7 +1921,7 @@ else
 				}
 			}
 			#endregion /* Fall sprites END */
-		
+
 		}
 		if (sprite_mask >= 0)
 		{
@@ -1933,7 +1933,7 @@ else
 		}
 	}
 	#endregion /* Jumping Sprites END */
-	
+
 }
 
 #region/* Stop skidding ice sound */
@@ -2011,7 +2011,7 @@ if (on_ground && speed > 0 && !crouch)
 			var ground_surface = false;
 			var ground_meeting = false;
 		}
-		
+
 		if (image_index < 1)
 		{
 			switch (ground_surface)
@@ -2195,7 +2195,7 @@ if (allow_glide)
 {
 	if (can_glide > 0)
 	{
-		can_glide --;
+		can_glide--;
 	}
 	if (!on_ground)
 	&& (!place_meeting(x, y + 32, obj_wall))

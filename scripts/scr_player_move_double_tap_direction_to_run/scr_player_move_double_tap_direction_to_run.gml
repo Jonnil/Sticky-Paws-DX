@@ -1,12 +1,12 @@
 function scr_player_move_double_tap_direction_to_run()
 {
-	
+
 	#region /* Double-tap direction to run */
 	if (double_tap_to_run)
 	{
 		if (!key_run)
 		{
-			
+
 			#region /* Double tap left direction to run */
 			if (key_left_hold)
 			{
@@ -28,9 +28,9 @@ function scr_player_move_double_tap_direction_to_run()
 				}
 			}
 			#endregion /* Double tap left direction to run END */
-			
+
 			else
-			
+
 			#region /* Double tap right direction to run */
 			if (key_right_hold)
 			{
@@ -52,7 +52,7 @@ function scr_player_move_double_tap_direction_to_run()
 				}
 			}
 			#endregion /* Double tap right direction to run END */
-			
+
 			else
 			if (!key_left_hold)
 			&& (!key_right_hold)
@@ -68,7 +68,7 @@ function scr_player_move_double_tap_direction_to_run()
 				{
 					double_tap_right = 2;
 				}
-				double_tap_run_timer --;
+				double_tap_run_timer--;
 			}
 		}
 		else
@@ -85,5 +85,5 @@ function scr_player_move_double_tap_direction_to_run()
 		double_tap_right = false;
 	}
 	#endregion /* Double-tap direction to run END */
-	
+
 }

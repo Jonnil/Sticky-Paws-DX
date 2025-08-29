@@ -4,7 +4,7 @@ function scr_save_crash_log(crash_logs_folder = "", crash_log_filename = "", gam
 	if (file_exists(crash_logs_folder + crash_log_filename))
 	{
 		var pending_folder = game_save_id + "pending_crash_logs/";
-		
+
 		if (!directory_exists(pending_folder))
 		{
 			directory_create(pending_folder);

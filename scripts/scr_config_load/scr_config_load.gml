@@ -3,11 +3,11 @@ function scr_config_load()
 	if (file_exists(game_save_id + "save_file/config.ini")) /* Check if config.ini exists before loading any settings */
 	{
 		ini_open(game_save_id + "save_file/config.ini");
-		
+
 		#region /* Set player specific variables. This needs to run FIRST, because other variables are dependent on these being set first */
 		for(var i = 1; i <= global.max_players; i += 1)
 		{
-			
+
 			#region /* Load Player Keyboard Remapping */
 			if (ini_key_exists("config", "vibration_strength" + string(i))){global.vibration_strength[i] = ini_read_real("config", "vibration_strength" + string(i), 0);}
 			if (ini_key_exists("config", "character_index_player" + string(i))){global.character_index[i - 1] = ini_read_real("config", "character_index_player" + string(i), 0);}
@@ -30,7 +30,7 @@ function scr_config_load()
 			if (ini_key_exists("player" + string(i) + "_profile" + string(global.player_profile[i] + 1), "player" + string(i) + "_key_zoom_out")){global.player_[inp.key][i][1][action.zoom_out] = ini_read_real("player" + string(i) + "_profile" + string(global.player_profile[i] + 1), "player" + string(i) + "_key_zoom_out", 0);}
 			if (ini_key_exists("player" + string(i) + "_profile" + string(global.player_profile[i] + 1), "player" + string(i) + "_key_accept")){global.player_[inp.key][i][1][action.accept] = ini_read_real("player" + string(i) + "_profile" + string(global.player_profile[i] + 1), "player" + string(i) + "_key_accept", 0);}
 			if (ini_key_exists("player" + string(i) + "_profile" + string(global.player_profile[i] + 1), "player" + string(i) + "_key_back")){global.player_[inp.key][i][1][action.back] = ini_read_real("player" + string(i) + "_profile" + string(global.player_profile[i] + 1), "player" + string(i) + "_key_back", 0);}
-			
+
 			if (ini_key_exists("player" + string(i) + "_profile" + string(global.player_profile[i] + 1), "player" + string(i) + "_key2_dive")){global.player_[inp.key][i][2][action.dive] = ini_read_real("player" + string(i) + "_profile" + string(global.player_profile[i] + 1), "player" + string(i) + "_key2_dive", 0);}
 			if (ini_key_exists("player" + string(i) + "_profile" + string(global.player_profile[i] + 1), "player" + string(i) + "_key2_jump")){global.player_[inp.key][i][2][action.jump] = ini_read_real("player" + string(i) + "_profile" + string(global.player_profile[i] + 1), "player" + string(i) + "_key2_jump", 0);}
 			if (ini_key_exists("player" + string(i) + "_profile" + string(global.player_profile[i] + 1), "player" + string(i) + "_key2_double_jump")){global.player_[inp.key][i][2][action.double_jump] = ini_read_real("player" + string(i) + "_profile" + string(global.player_profile[i] + 1), "player" + string(i) + "_key2_double_jump", 0);}
@@ -47,7 +47,7 @@ function scr_config_load()
 			if (ini_key_exists("player" + string(i) + "_profile" + string(global.player_profile[i] + 1), "player" + string(i) + "_key2_zoom_out")){global.player_[inp.key][i][2][action.zoom_out] = ini_read_real("player" + string(i) + "_profile" + string(global.player_profile[i] + 1), "player" + string(i) + "_key2_zoom_out", 0);}
 			if (ini_key_exists("player" + string(i) + "_profile" + string(global.player_profile[i] + 1), "player" + string(i) + "_key2_accept")){global.player_[inp.key][i][2][action.accept] = ini_read_real("player" + string(i) + "_profile" + string(global.player_profile[i] + 1), "player" + string(i) + "_key2_accept", 0);}
 			if (ini_key_exists("player" + string(i) + "_profile" + string(global.player_profile[i] + 1), "player" + string(i) + "_key2_back")){global.player_[inp.key][i][2][action.back] = ini_read_real("player" + string(i) + "_profile" + string(global.player_profile[i] + 1), "player" + string(i) + "_key2_back", 0);}
-			
+
 			if (ini_key_exists("player" + string(i) + "_profile" + string(global.player_profile[i] + 1), "player" + string(i) + "_up_is_also_jump")){global.player_up_is_also_jump[i] = ini_read_real("player" + string(i) + "_profile" + string(global.player_profile[i] + 1), "player" + string(i) + "_up_is_also_jump", 0);}
 			if (ini_key_exists("player" + string(i) + "_profile" + string(global.player_profile[i] + 1), "player" + string(i) + "_double_jump_uses_jump_key")){global.player_double_jump_uses_jump_key[i] = ini_read_real("player" + string(i) + "_profile" + string(global.player_profile[i] + 1), "player" + string(i) + "_double_jump_uses_jump_key", 0);}
 			if (ini_key_exists("player" + string(i) + "_profile" + string(global.player_profile[i] + 1), "player" + string(i) + "_down_is_also_crouch")){global.player_down_is_also_crouch[i] = ini_read_real("player" + string(i) + "_profile" + string(global.player_profile[i] + 1), "player" + string(i) + "_down_is_also_crouch", 0);}
@@ -61,7 +61,7 @@ function scr_config_load()
 			if (ini_key_exists("player" + string(i) + "_profile" + string(global.player_profile[i] + 1), "player" + string(i) + "_drop_from_rope")){global.player_drop_from_rope[i] = ini_read_real("player" + string(i) + "_profile" + string(global.player_profile[i] + 1), "player" + string(i) + "_drop_from_rope", 0);}
 			if (ini_key_exists("player" + string(i) + "_profile" + string(global.player_profile[i] + 1), "player" + string(i) + "_show_controls")){global.player_show_controls[i] = ini_read_real("player" + string(i) + "_profile" + string(global.player_profile[i] + 1), "player" + string(i) + "_show_controls", 0);}
 			#endregion /* Load Player Keyboard Remapping END */
-			
+
 			#region /* Load Player Gamepad Remapping */
 			if (ini_key_exists("player" + string(i) + "_profile" + string(global.player_profile[i] + 1), "player" + string(i) + "_gamepad_button_dive")){global.player_[inp.gp][i][1][action.dive] = ini_read_real("player" + string(i) + "_profile" + string(global.player_profile[i] + 1), "player" + string(i) + "_gamepad_button_dive", 0);}
 			if (ini_key_exists("player" + string(i) + "_profile" + string(global.player_profile[i] + 1), "player" + string(i) + "_gamepad_button_jump")){global.player_[inp.gp][i][1][action.jump] = ini_read_real("player" + string(i) + "_profile" + string(global.player_profile[i] + 1), "player" + string(i) + "_gamepad_button_jump", 0);}
@@ -79,7 +79,7 @@ function scr_config_load()
 			if (ini_key_exists("player" + string(i) + "_profile" + string(global.player_profile[i] + 1), "player" + string(i) + "_gamepad_button_zoom_out")){global.player_[inp.gp][i][1][action.zoom_out] = ini_read_real("player" + string(i) + "_profile" + string(global.player_profile[i] + 1), "player" + string(i) + "_gamepad_button_zoom_out", 0);}
 			if (ini_key_exists("player" + string(i) + "_profile" + string(global.player_profile[i] + 1), "player" + string(i) + "_gamepad_button_accept")){global.player_[inp.gp][i][1][action.accept] = ini_read_real("player" + string(i) + "_profile" + string(global.player_profile[i] + 1), "player" + string(i) + "_gamepad_button_accept", 0);}
 			if (ini_key_exists("player" + string(i) + "_profile" + string(global.player_profile[i] + 1), "player" + string(i) + "_gamepad_button_back")){global.player_[inp.gp][i][1][action.back] = ini_read_real("player" + string(i) + "_profile" + string(global.player_profile[i] + 1), "player" + string(i) + "_gamepad_button_back", 0);}
-			
+
 			if (ini_key_exists("player" + string(i) + "_profile" + string(global.player_profile[i] + 1), "player" + string(i) + "_gamepad_button2_dive")){global.player_[inp.gp][i][2][action.dive] = ini_read_real("player" + string(i) + "_profile" + string(global.player_profile[i] + 1), "player" + string(i) + "_gamepad_button2_dive", 0);}
 			if (ini_key_exists("player" + string(i) + "_profile" + string(global.player_profile[i] + 1), "player" + string(i) + "_gamepad_button2_jump")){global.player_[inp.gp][i][2][action.jump] = ini_read_real("player" + string(i) + "_profile" + string(global.player_profile[i] + 1), "player" + string(i) + "_gamepad_button2_jump", 0);}
 			if (ini_key_exists("player" + string(i) + "_profile" + string(global.player_profile[i] + 1), "player" + string(i) + "_gamepad_button2_double_jump")){global.player_[inp.gp][i][2][action.double_jump] = ini_read_real("player" + string(i) + "_profile" + string(global.player_profile[i] + 1), "player" + string(i) + "_gamepad_button2_double_jump", 0);}
@@ -97,10 +97,10 @@ function scr_config_load()
 			if (ini_key_exists("player" + string(i) + "_profile" + string(global.player_profile[i] + 1), "player" + string(i) + "_gamepad_button2_accept")){global.player_[inp.gp][i][2][action.accept] = ini_read_real("player" + string(i) + "_profile" + string(global.player_profile[i] + 1), "player" + string(i) + "_gamepad_button2_accept", 0);}
 			if (ini_key_exists("player" + string(i) + "_profile" + string(global.player_profile[i] + 1), "player" + string(i) + "_gamepad_button2_back")){global.player_[inp.gp][i][2][action.back] = ini_read_real("player" + string(i) + "_profile" + string(global.player_profile[i] + 1), "player" + string(i) + "_gamepad_button2_back", 0);}
 			#endregion /* Load Player Gamepad Remapping END */
-			
+
 		}
 		#endregion /* Set player specific variables. This needs to run FIRST, because other variables are dependent on these being set first END */
-		
+
 		if (variable_instance_exists(self, "inform_about_report_feature"))
 		{
 			inform_about_report_feature = ini_read_real("config", "inform_about_report_feature", true);
@@ -108,7 +108,7 @@ function scr_config_load()
 		global.upload_rules_do_not_show_level = ini_read_real("config", "upload_rules_do_not_show_level", false);
 		global.upload_rules_do_not_show_character = ini_read_real("config", "upload_rules_do_not_show_character", false);
 		if (ini_key_exists("config", "debug_detailed_mode")){global.debug_detailed_mode = ini_read_real("config", "debug_detailed_mode", false);}
-		
+
 		#region /* Debug Collapsed Sections */
 		var section_list = [
 			"Instructions",
@@ -119,7 +119,7 @@ function scr_config_load()
 			"Switch Information",
 			"Online Download Info"
 		];
-		
+
 		for (var i = 0; i < array_length(section_list); i++)
 		{
 			var key = section_list[i];
@@ -134,7 +134,7 @@ function scr_config_load()
 			}
 		}
 		#endregion /* Debug Collapsed Sections END */
-		
+
 		if (ini_key_exists("config", "enable_level_length_target")){global.enable_level_length_target = ini_read_real("config", "enable_level_length_target", false);}
 		if (ini_key_exists("config", "target_length_minutes_min")){global.target_length_minutes_min = ini_read_real("config", "target_length_minutes_min", 3);}
 		if (ini_key_exists("config", "target_length_minutes_max")){global.target_length_minutes_max = ini_read_real("config", "target_length_minutes_max", 5);}
@@ -156,7 +156,7 @@ function scr_config_load()
 		if (ini_key_exists("config", "show_new_items_notification")){global.show_new_items_notification = ini_read_real("config", "show_new_items_notification", 1);}
 		if (ini_key_exists("config", "hud_hide_time")){global.hud_hide_time = ini_read_real("config", "hud_hide_time", 3);}
 		if (ini_key_exists("config", "players_can_collide")){global.players_can_collide = ini_read_real("config", "players_can_collide", 0);}
-		
+
 		#region /* Assist Settings */
 		if (ini_key_exists("config", "assist_enable")){global.assist_enable = ini_read_real("config", "assist_enable", 0);}
 		if (ini_key_exists("config", "assist_item_appear")){global.assist_item_appear = ini_read_real("config", "assist_item_appear", 0);}
@@ -172,7 +172,7 @@ function scr_config_load()
 		if (ini_key_exists("config", "assist_enable_enemies")){global.assist_enable_enemies = ini_read_real("config", "assist_enable_enemies", 1);}
 		if (ini_key_exists("config", "assist_enable_spikes")){global.assist_enable_spikes = ini_read_real("config", "assist_enable_spikes", 1);}
 		#endregion /* Assist Settings END */
-		
+
 		#region /* Challenge Mode Settings */
 		if (ini_key_exists("config", "challenge_mode_score_multiplier")) { global.challenge_mode_score_multiplier = ini_read_real("config", "challenge_mode_score_multiplier", 1); }
 		if (ini_key_exists("config", "challenge_mode_enable")) { global.challenge_mode_enable = ini_read_real("config", "challenge_mode_enable", 0); }
@@ -215,11 +215,11 @@ function scr_config_load()
 		if (ini_key_exists("config", "challenge_perma_death_mode")) { global.challenge_perma_death_mode = ini_read_real("config", "challenge_perma_death_mode", 0); }
 		if (ini_key_exists("config", "challenge_roguelike_mode")) { global.challenge_roguelike_mode = ini_read_real("config", "challenge_roguelike_mode", 0); }
 		#endregion /* Challenge Mode Settings END */
-		
+
 		#region /* Account Settings */
 		if (ini_key_exists("config", "username")){global.username = ini_read_string("config", "username", "");}
 		#endregion /* Account Settings END */
-		
+
 		if (ini_key_exists("config", "fullscreen_mode")){window_set_fullscreen(ini_read_real("config", "fullscreen_mode", 0));}
 		if (ini_key_exists("config", "interpolate")){global.interpolate = ini_read_real("config", "interpolate", 0);}
 		if (ini_key_exists("config", "show_fps")){global.show_fps = ini_read_real("config", "show_fps", 0);}
@@ -247,9 +247,9 @@ function scr_config_load()
 		if (ini_key_exists("config", "button_design_shape")){global.button_design_shape = ini_read_real("config", "button_design_shape", 1);}
 		if (ini_key_exists("config", "button_design_transparency")){global.button_design_transparency = ini_read_real("config", "button_design_transparency", 0);}
 		if (ini_key_exists("config", "menu_button_subimg")){global.menu_button_subimg = ini_read_real("config", "menu_button_subimg", 16);}
-		
+
 		if (ini_key_exists("config", "select_resource_pack")){global.selected_resource_pack = ini_read_real("config", "select_resource_pack", 0);}
-		
+
 		#region/* Load Title Background Config */
 		if (ini_key_exists("config", "select_title_background1")){global.selected_title_background[1] = ini_read_real("config", "select_title_background1", 0);}
 		if (ini_key_exists("config", "title_background_scale1")){global.title_background_scale[1] = ini_read_real("config", "title_background_scale1", 1);}
@@ -264,7 +264,7 @@ function scr_config_load()
 		if (ini_key_exists("config", "background_layer_x_scroll3")){global.background_layer_x_scroll[3] = ini_read_real("config", "background_layer_x_scroll3", 1);}
 		if (ini_key_exists("config", "background_layer_y_scroll3")){global.background_layer_y_scroll[3] = ini_read_real("config", "background_layer_y_scroll3", 1);}
 		#endregion/* Load Title Background Config END */
-		
+
 		if (ini_key_exists("config", "select_title_logo")){global.selected_title_logo = ini_read_real("config", "select_title_logo", 0);}
 		if (ini_key_exists("config", "can_load_custom_level_assets")){global.can_load_custom_level_assets = ini_read_real("config", "can_load_custom_level_assets", 0);}
 		if (ini_key_exists("config", "zoom_level")){global.zoom_level = ini_read_real("config", "zoom_level", 1);}
@@ -287,7 +287,7 @@ function scr_config_load()
 		if (ini_key_exists("config", "show_prompt_when_changing_to_gamepad")){global.show_prompt_when_changing_to_gamepad = ini_read_real("config", "show_prompt_when_changing_to_gamepad", 1);}
 		if (ini_key_exists("config", "show_prompt_when_changing_to_keyboard_and_mouse")){global.show_prompt_when_changing_to_keyboard_and_mouse = ini_read_real("config", "show_prompt_when_changing_to_keyboard_and_mouse", 1);}
 		if (ini_key_exists("config", "always_show_gamepad_buttons")){global.always_show_gamepad_buttons = ini_read_real("config", "always_show_gamepad_buttons", 0);}
-		
+
 		ini_close(); /* Don't commit the save data on Switch, this is only temporary! */
 	}
 }

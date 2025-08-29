@@ -1,22 +1,22 @@
 /* Developed by Eray Zesen (c) 2020-2021 erayzesen.itch.io
 
 @function scr_raycast(xx, yy, dir, length, per_pixel, object, tilemap_layer_name, precise_mode)
-@param {int} xx	 start position x
-@param {int} yy	 start position y
-@param {int} dir		 angle of the ray
-@param {int} [lenght = 100]	 length of the ray
-@param {int} [per_pixel = 16]	 check per pixel
-@param [object]	 target object or objects array
-@param {string} [tilemap_layer_name]	target tilemap layer name
+@param {int} xx     start position x
+@param {int} yy     start position y
+@param {int} dir         angle of the ray
+@param {int} [lenght = 100]     length of the ray
+@param {int} [per_pixel = 16]     check per pixel
+@param [object]     target object or objects array
+@param {string} [tilemap_layer_name]    target tilemap layer name
 @param {bool} [precise_mode] for the precise mask collisions(slow)
 @return {raycast_data} */
 
 function scr_raycast(xx = x, yy = y, dir = 90, length = 380, per_pixel = 16, object = obj_wall, tilemap_layer_name = "", precise_mode = false)
 {
-	
+
 	/* Precise Mode required when you use collision mask shapes except the square on the objects */
 	precise_mode ??= false;
-	
+
 	/* tilemap_layer_name is optional */
 	if (tilemap_layer_name == undefined || tilemap_layer_name == noone)
 	{
@@ -25,7 +25,7 @@ function scr_raycast(xx = x, yy = y, dir = 90, length = 380, per_pixel = 16, obj
 	/* Current Positions */
 	var cx = xx;
 	var cy = yy;
-	
+
 	/* We will return this */
 	raycast_data =
 	{
@@ -43,7 +43,7 @@ function scr_raycast(xx = x, yy = y, dir = 90, length = 380, per_pixel = 16, obj
 		var tilemap_id = layer_tilemap_get_id(layer_id);
 		no_tilemaps = false;
 	}
-	
+
 	/* Playing while loop to check ray collisions */
 	while(point_distance(xx, yy, cx, cy) < length)
 	{

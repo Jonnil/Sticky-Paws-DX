@@ -1,6 +1,6 @@
 function set_pause_button_y_positions()
 {
-	
+
 	#region /* Set pause button y positions */
 	continue_y = display_get_gui_height() * 0.5 - 84;
 	change_character_y = continue_y + 42;
@@ -30,5 +30,5 @@ function set_pause_button_y_positions()
 		quit_y = option_y + 42;
 	}
 	#endregion /* Set pause button y positions END */
-	
+
 }

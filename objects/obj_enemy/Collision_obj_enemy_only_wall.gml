@@ -7,7 +7,7 @@ if (!die)
 		vspeed = 0;
 		scr_audio_play(snd_bump, volume_source.sound, 0.1);
 	}
-	
+
 	#region /* Push out of the solid object */
 	while(place_meeting(x, y, other))
 	{
@@ -45,12 +45,12 @@ if (!die)
 		vspeed = 0;
 		gravity = 0;
 	}
-	
+
 	#region /* Kill enemy if it's inside the wall */
 	if (position_meeting(x, y, other))
 	&& (draw_xscale >= 0.8)
 	{
-		stuck_in_wall_counter ++;
+		stuck_in_wall_counter++;
 		if (stuck_in_wall_counter >= 3)
 		{
 			flat = false;
@@ -63,11 +63,11 @@ if (!die)
 	{
 		if (stuck_in_wall_counter > 0)
 		{
-			stuck_in_wall_counter --;
+			stuck_in_wall_counter--;
 		}
 	}
 	#endregion /* Kill enemy if it's inside the wall END */
-	
+
 	#region /* Turn around at wall */
 	if (can_turn_around_at_wall)
 	{
@@ -82,6 +82,6 @@ if (!die)
 		}
 	}
 	#endregion /* Turn around at wall END */
-	
+
 }
 #endregion /* Landing on solid object END */

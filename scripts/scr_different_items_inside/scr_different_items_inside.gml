@@ -1,15 +1,15 @@
 function scr_different_items_inside(create_from_y = bbox_top)
 {
-	
+
 	#region /* Different Items Inside */
 	if (variable_instance_exists(self, "item_inside"))
 	{
-		
+
 		#region /* No Items Inside (1 Basic Collectible if it's a question block) */
 		if (item_inside == "none")
 		{
 			empty = true;
-			
+
 			if (object_index == obj_question_block)
 			&& (block_type = "brick_block" || block_type = "melon_block")
 			{
@@ -29,15 +29,15 @@ function scr_different_items_inside(create_from_y = bbox_top)
 			}
 		}
 		#endregion /* No Items Inside (1 Basic Collectible if it's a question block) END */
-		
+
 		else
-		
+
 		#region /* 10 Basic Collectible */
 		if (item_inside == LEVEL_OBJECT_ID.ID_BASIC_COLLECTIBLE)
 		|| (item_inside == "10_basic_collectibles")
 		|| (item_inside == "8_basic_collectibles")
 		{
-			
+
 			#region /* Bump in Ground 8 Basic Collectible */
 			if (object_index == obj_bump_in_ground)
 			|| (object_index == obj_bucket)
@@ -106,21 +106,21 @@ function scr_different_items_inside(create_from_y = bbox_top)
 				}
 			}
 			#endregion /* Bump in Ground 8 Basic Collectible END */
-			
+
 			else
-			
+
 			#region /* Block 10 Basic Collectible */
 			if (object_index == obj_question_block)
 			&& (hit <= 4)
 			&& (!empty)
 			{
 				bounce_up = true;
-				hit ++;
+				hit++;
 				with(instance_create_depth(x, y - 32, 0, obj_block_break))
 				{
 					image_yscale = 0.1;
 				}
-				
+
 				#region /* 2 Basic Collectibles per hit */
 				scr_audio_play(snd_basic_collectible, volume_source.sound);
 				with(instance_create_depth(x, create_from_y, 0, obj_basic_collectible))
@@ -141,15 +141,15 @@ function scr_different_items_inside(create_from_y = bbox_top)
 					empty = true;
 				}
 				#endregion /* 2 Basic Collectibles per hit END */
-				
+
 			}
 			#endregion /* Block 10 Basic Collectible END */
-			
+
 		}
 		#endregion /* 10 Basic Collectible END */
-		
+
 		else
-		
+
 		#region /* Heart Balloon */
 		if (item_inside == "heart_balloon")
 		{
@@ -165,9 +165,9 @@ function scr_different_items_inside(create_from_y = bbox_top)
 			empty = true;
 		}
 		#endregion /* Heart Balloon END */
-		
+
 		else
-		
+
 		#region /* 1-up */
 		if (item_inside == "1-up")
 		{
@@ -184,9 +184,9 @@ function scr_different_items_inside(create_from_y = bbox_top)
 			empty = true;
 		}
 		#endregion /* 1-up END */
-		
+
 		else
-		
+
 		#region /* 2-up */
 		if (item_inside == "2-up")
 		{
@@ -203,9 +203,9 @@ function scr_different_items_inside(create_from_y = bbox_top)
 			empty = true;
 		}
 		#endregion /* 2-up END */
-		
+
 		else
-		
+
 		#region /* 3-up */
 		if (item_inside == "3-up")
 		{
@@ -222,9 +222,9 @@ function scr_different_items_inside(create_from_y = bbox_top)
 			empty = true;
 		}
 		#endregion /* 3-up END */
-		
+
 		else
-		
+
 		#region /* Invincibility Powerup */
 		if (item_inside == "invincibility_powerup")
 		{
@@ -242,9 +242,9 @@ function scr_different_items_inside(create_from_y = bbox_top)
 			empty = true;
 		}
 		#endregion /* Invincibility Powerup END */
-		
+
 		else
-		
+
 		#region /* Invincibility Powerup Coil Spring */
 		if (item_inside == "invincibility_powerup_coil_spring")
 		{
@@ -262,9 +262,9 @@ function scr_different_items_inside(create_from_y = bbox_top)
 			empty = true;
 		}
 		#endregion /* Invincibility Powerup END */
-		
+
 		else
-		
+
 		#region /* Big Collectible */
 		if (item_inside = "big_collectible")
 		{
@@ -276,9 +276,9 @@ function scr_different_items_inside(create_from_y = bbox_top)
 			}
 		}
 		#endregion /* Big Collectible END */
-		
+
 		else
-		
+
 		#region /* Any item */
 		if (item_inside != "none")
 		&& (item_inside != 0)
@@ -298,8 +298,8 @@ function scr_different_items_inside(create_from_y = bbox_top)
 			empty = true;
 		}
 		#endregion /* Any item END */
-		
+
 	}
 	#endregion /* Different Items Inside END */
-	
+
 }

@@ -22,7 +22,7 @@ if (!global.actually_play_edited_level)
 	i = 0;
 	default_blend = c_white;
 	draw_text_over_placed_object = "";
-	
+
 	place_object_angle = false;
 	draw_rotate_arrow = false;
 	draw_item_on_top = noone;
@@ -30,20 +30,20 @@ if (!global.actually_play_edited_level)
 	draw_item_with_spring = false;
 	draw_enemy_with_spring = false;
 	draw_leveleditor_arrow = noone;
-	
+
 	draw_xscale = 1;
 	draw_yscale = 1;
 	draw_angle = 0;
 	draw_alpha = 1;
 	hover_over_object_indicator = false;
-	
+
 	mask_index = spr_wall;
-	
+
 	image_speed = 0;
 	image_index = 0;
-	
+
 	alarm[0] = 1;
-	global.part_limit ++;
+	global.part_limit++;
 	global.part_limit_text_alpha = 3;
 	first_created = false;
 }

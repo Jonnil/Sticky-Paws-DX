@@ -5,23 +5,23 @@ function scr_draw_online_download_list_thumbnail(thumbnail_index, number_of_thum
 	if (in_online_download_list_menu)
 	{
 		/* PAGINATION SLICE */
-		var perPage		= global.download_items_per_page;
-		var page		= clamp(global.download_current_page, 0, global.download_total_pages - 1);
-		var start_idx	= page * perPage;
-		var total		= array_length(global.online_content_data);
-		var end_idx		= min(start_idx + perPage - 1, total - 1);
-		var page_count	= end_idx - start_idx + 1;
-		
+		var perPage        = global.download_items_per_page;
+		var page        = clamp(global.download_current_page, 0, global.download_total_pages - 1);
+		var start_idx    = page * perPage;
+		var total        = array_length(global.online_content_data);
+		var end_idx        = min(start_idx + perPage - 1, total - 1);
+		var page_count    = end_idx - start_idx + 1;
+
 		/* Skip any thumbnail not on this page */
 		if (thumbnail_index < start_idx
 		|| thumbnail_index > end_idx)
 		{
 			return;
 		}
-		
+
 		/* Convert global index into a local "slot" (0...page_count-1) */
 		var slot = thumbnail_index - start_idx;
-		
+
 		/* Pre-calculate common GUI and offset values */
 		var guiWidth = display_get_gui_width();
 		var halfWidth = guiWidth * 0.5;
@@ -31,14 +31,14 @@ function scr_draw_online_download_list_thumbnail(thumbnail_index, number_of_thum
 		var baseY = offsetY + download_online_y;
 		var can_thumbnail = true;
 		var draw_thumbnail = spr_thumbnail_missing; /* Fallback: use your "missing" sprite */
-		
+
 		if (global.debug_screen)
 		{
 			draw_set_halign(fa_right);
 			scr_draw_text_outlined(download_online_x, baseY + 100, "baseY = " + string(baseY) + "\n" +
 			"draw_thumbnail = global.spr_download_list_thumbnail[" + string(thumbnail_index) + "]\n(" + string(global.spr_download_list_thumbnail[thumbnail_index]) + ")", 0.5)
 		}
-		
+
 		/* Only draw if the thumbnail is within the visible GUI view */
 		/* Assuming the thumbnail area height is 300 */
 		if ((baseY + 300 < 0)
@@ -46,13 +46,13 @@ function scr_draw_online_download_list_thumbnail(thumbnail_index, number_of_thum
 		{
 			can_thumbnail = false;
 		}
-		
+
 		/* Determine if this thumbnail is currently selected */
 		var thumbID = "download_online_" + string(thumbnail_index);
 		var isSelected = (menu == thumbID);
-		
+
 		#region /* Draw Bottom Line for Last Thumbnail */
-		
+
 		if (slot == page_count - 1
 		&& can_thumbnail)
 		{
@@ -60,7 +60,7 @@ function scr_draw_online_download_list_thumbnail(thumbnail_index, number_of_thum
 			draw_line_width_color(32, baseY + 300, guiWidth - 32, baseY + 300, 3, c_white, c_white);
 		}
 		#endregion /* Draw Bottom Line for Last Thumbnail END */
-		
+
 		#region /* Draw Selection Overlay if Selected */
 		if (isSelected)
 		&& (can_thumbnail)
@@ -68,25 +68,25 @@ function scr_draw_online_download_list_thumbnail(thumbnail_index, number_of_thum
 			/* Cache wave values to reduce function calls */
 			var waveArrow = scr_wave(10, 0, 1, 0);
 			var waveBlink = scr_wave(1, 0, 2, 0);
-			
+
 			/* Calculate thumbnail boundaries */
 			var topLeftX = download_online_x + 96;  /* (download_online_x + 100 - 4) */
 			var topLeftY = download_online_y - 4;
 			var bottomRightX = download_online_x + 488; /* (download_online_x + 484 + 4) */
 			var bottomRightY = download_online_y + offsetY + 220; /* (download_online_y + menu_y_offset + 216 + 4) */
-			
+
 			/* Pre-calculate offsets for triangles */
 			var topLeftXOffset = topLeftX - waveArrow;
 			var topLeftYOffset = topLeftY + offsetY - waveArrow;
 			var bottomRightXOffset = bottomRightX + waveArrow;
 			var bottomRightYOffset = bottomRightY + waveArrow;
 			var triangleSize = 32 - waveArrow;
-			
+
 			/* Draw a translucent rounded rectangle outline */
 			var alphaWave = scr_wave(0.1, 0.2, 3, 0);
 			draw_set_alpha(alphaWave);
 			draw_roundrect_color_ext(topLeftX - 16, topLeftY + offsetY - 16, bottomRightX + 16, bottomRightY + 64, 50, 50, c_white, c_white, false);
-			
+
 			/* Reset alpha and draw selection rectangles */
 			draw_set_alpha(1);
 			draw_rectangle_color(topLeftX, topLeftY + offsetY, bottomRightX, bottomRightY, c_red, c_red, c_red, c_red, false);
@@ -95,7 +95,7 @@ function scr_draw_online_download_list_thumbnail(thumbnail_index, number_of_thum
 			draw_set_alpha(1);
 		}
 		#endregion /* Draw Selection Overlay if Selected END */
-		
+
 		#region /* Draw Thumbnail Sprite */
 		/* Only try to pull from it if it really is an array, and index is in range */
 		if (is_array(global.spr_download_list_thumbnail)
@@ -104,7 +104,7 @@ function scr_draw_online_download_list_thumbnail(thumbnail_index, number_of_thum
 		{
 			draw_thumbnail = global.spr_download_list_thumbnail[thumbnail_index];
 		}
-		
+
 		if (sprite_exists(draw_thumbnail))
 		&& (can_thumbnail)
 		{
@@ -113,7 +113,7 @@ function scr_draw_online_download_list_thumbnail(thumbnail_index, number_of_thum
 			draw_sprite_ext(draw_thumbnail, 0, download_online_x + 100, download_online_y + offsetY, scaleX, scaleY, 0, c_white, 1);
 		}
 		#endregion /* Draw Thumbnail Sprite END */
-		
+
 		#region /* Draw Download Name */
 		if (is_array(global.draw_download_name)
 		&& thumbnail_index >= 0
@@ -124,7 +124,7 @@ function scr_draw_online_download_list_thumbnail(thumbnail_index, number_of_thum
 			draw_set_valign(fa_middle);
 			var nameWidth = string_width(global.draw_download_name[thumbnail_index]);
 			var draw_level_name_scale;
-			
+
 			if (nameWidth > 640)
 			{
 				draw_level_name_scale = global.default_text_size * 0.6;
@@ -138,9 +138,9 @@ function scr_draw_online_download_list_thumbnail(thumbnail_index, number_of_thum
 			{
 				draw_level_name_scale = global.default_text_size;
 			}
-			
+
 			scr_draw_text_outlined(download_online_x + 300, download_online_y + offsetY + 240, string(global.draw_download_name[thumbnail_index]), draw_level_name_scale, c_menu_outline, c_menu_fill, 1);
-			
+
 			/* Loading Indicator for Missing Thumbnail */
 			if (draw_thumbnail == spr_thumbnail_missing
 			&& global.draw_download_name[thumbnail_index] == "")
@@ -149,33 +149,33 @@ function scr_draw_online_download_list_thumbnail(thumbnail_index, number_of_thum
 			}
 		}
 		#endregion /* Draw Download Name END */
-		
+
 		#region /* Draw Selection Triangles */
 		if (isSelected)
 		&& (can_thumbnail)
 		{
-			draw_triangle_color(topLeftXOffset, topLeftYOffset, topLeftXOffset + triangleSize, topLeftYOffset, 
+			draw_triangle_color(topLeftXOffset, topLeftYOffset, topLeftXOffset + triangleSize, topLeftYOffset,
 				topLeftXOffset, topLeftYOffset + triangleSize, c_red, c_red, c_red, false);
-			draw_triangle_color(bottomRightXOffset, bottomRightYOffset, bottomRightXOffset - triangleSize, bottomRightYOffset, 
+			draw_triangle_color(bottomRightXOffset, bottomRightYOffset, bottomRightXOffset - triangleSize, bottomRightYOffset,
 				bottomRightXOffset, bottomRightYOffset - triangleSize, c_red, c_red, c_red, false);
-			draw_triangle_color(bottomRightXOffset, topLeftYOffset, bottomRightXOffset - triangleSize, topLeftYOffset, 
+			draw_triangle_color(bottomRightXOffset, topLeftYOffset, bottomRightXOffset - triangleSize, topLeftYOffset,
 				bottomRightXOffset, topLeftYOffset + triangleSize, c_red, c_red, c_red, false);
-			draw_triangle_color(topLeftXOffset, bottomRightYOffset, topLeftXOffset + triangleSize, bottomRightYOffset, 
+			draw_triangle_color(topLeftXOffset, bottomRightYOffset, topLeftXOffset + triangleSize, bottomRightYOffset,
 				topLeftXOffset, bottomRightYOffset - triangleSize, c_red, c_red, c_red, false);
-			
+
 			draw_set_alpha(waveBlink);
-			draw_triangle_color(topLeftXOffset, topLeftYOffset, topLeftXOffset + triangleSize, topLeftYOffset, 
+			draw_triangle_color(topLeftXOffset, topLeftYOffset, topLeftXOffset + triangleSize, topLeftYOffset,
 				topLeftXOffset, topLeftYOffset + triangleSize, c_yellow, c_yellow, c_yellow, false);
-			draw_triangle_color(bottomRightXOffset, bottomRightYOffset, bottomRightXOffset - triangleSize, bottomRightYOffset, 
+			draw_triangle_color(bottomRightXOffset, bottomRightYOffset, bottomRightXOffset - triangleSize, bottomRightYOffset,
 				bottomRightXOffset, bottomRightYOffset - triangleSize, c_yellow, c_yellow, c_yellow, false);
-			draw_triangle_color(bottomRightXOffset, topLeftYOffset, bottomRightXOffset - triangleSize, topLeftYOffset, 
+			draw_triangle_color(bottomRightXOffset, topLeftYOffset, bottomRightXOffset - triangleSize, topLeftYOffset,
 				bottomRightXOffset, topLeftYOffset + triangleSize, c_yellow, c_yellow, c_yellow, false);
-			draw_triangle_color(topLeftXOffset, bottomRightYOffset, topLeftXOffset + triangleSize, bottomRightYOffset, 
+			draw_triangle_color(topLeftXOffset, bottomRightYOffset, topLeftXOffset + triangleSize, bottomRightYOffset,
 				topLeftXOffset, bottomRightYOffset - triangleSize, c_yellow, c_yellow, c_yellow, false);
 			draw_set_alpha(1);
 		}
 		#endregion /* Draw Selection Triangles END */
-		
+
 		#region /* Mouse Navigation */
 		if (global.controls_used_for_navigation == "mouse"
 			&& point_in_rectangle(device_mouse_x_to_gui(0), device_mouse_y_to_gui(0),
@@ -190,7 +190,7 @@ function scr_draw_online_download_list_thumbnail(thumbnail_index, number_of_thum
 			}
 		}
 		#endregion /* Mouse Navigation END */
-		
+
 		#region /* Process Download ID and Time */
 		var item = global.online_content_data[thumbnail_index];
 		var draw_download_id = item.name;
@@ -198,7 +198,7 @@ function scr_draw_online_download_list_thumbnail(thumbnail_index, number_of_thum
 		draw_download_id = string_replace(draw_download_id, ".zip", "");
 		var draw_download_time = string_replace(item.time_created, "T", " ");
 		draw_download_time = string_replace(draw_download_time, "Z", "");
-		
+
 		if (is_array(all_download_id)
 		&& thumbnail_index >= 0
 		&& thumbnail_index < array_length(all_download_id))
@@ -210,20 +210,20 @@ function scr_draw_online_download_list_thumbnail(thumbnail_index, number_of_thum
 			}
 		}
 		#endregion /* Process Download ID and Time END */
-		
+
 		#region /* Handle Thumbnail Hover and Download on Selection */
 		if (isSelected)
 		{
 			currently_selected_id = draw_download_id;
-			
+
 			if (global.controls_used_for_navigation != "mouse")
 			{
 				menu_cursor_y_position = 64 + download_online_y;
 			}
-			
+
 			var selected_download_c_menu_fill = c_lime;
 			global.selected_online_download_index = thumbnail_index;
-			
+
 			if (key_a_pressed
 			|| (mouse_check_button_released(mb_left)
 				&& point_in_rectangle(device_mouse_x_to_gui(0), device_mouse_y_to_gui(0),
@@ -240,11 +240,11 @@ function scr_draw_online_download_list_thumbnail(thumbnail_index, number_of_thum
 					search_id = string_upper(draw_download_id);
 					automatically_search_for_id = true;
 					in_online_download_list_menu = false; show_debug_message("[scr_draw_online_download_list_thumbnail] 'In online download list menu' is set to false");
-					
+
 					#region /* Set Thumbnail for Download Menu */
 					/* Before you do the 'sprite exists' check, compute your index */
 					var idx = global.selected_online_download_index;
-					
+
 					/* Make sure the thumbnail array exists and idx is valid */
 					if (is_array(global.spr_download_list_thumbnail)
 					&& idx >= 0
@@ -259,7 +259,7 @@ function scr_draw_online_download_list_thumbnail(thumbnail_index, number_of_thum
 						downloaded_thumbnail_sprite = noone;
 					}
 					#endregion /* Set Thumbnail for Download Menu END */
-					
+
 					menu = "search_id_ok";
 				}
 			}
@@ -269,7 +269,7 @@ function scr_draw_online_download_list_thumbnail(thumbnail_index, number_of_thum
 			var selected_download_c_menu_fill = c_gray;
 		}
 		#endregion /* Handle Thumbnail Hover and Download on Selection END */
-		
+
 		#region /* Display Index and Download ID */
 		if (can_thumbnail)
 		{
@@ -283,7 +283,7 @@ function scr_draw_online_download_list_thumbnail(thumbnail_index, number_of_thum
 				selected_download_c_menu_fill,
 				0.5
 			);
-			
+
 			draw_set_halign(fa_left);
 			scr_draw_text_outlined(
 				download_online_x + 108,
@@ -296,7 +296,7 @@ function scr_draw_online_download_list_thumbnail(thumbnail_index, number_of_thum
 			);
 		}
 		#endregion /* Display Index and Download ID END */
-		
+
 		#region /* Display Finished Level Status */
 		if (content_type == "level")
 		&& (can_thumbnail)
@@ -321,12 +321,12 @@ function scr_draw_online_download_list_thumbnail(thumbnail_index, number_of_thum
 					}
 				}
 			}
-			
+
 			#region /* Display Finished Icon */
 			if (is_array(finished_level))
 			{
 				var played_level_text, played_level_icon, played_level_color;
-				
+
 				if (finished_level[thumbnail_index] == 1)
 				{
 					played_level_text = "Played";
@@ -353,21 +353,21 @@ function scr_draw_online_download_list_thumbnail(thumbnail_index, number_of_thum
 					played_level_icon = spr_icon_unplayed;
 					played_level_color = c_red;
 				}
-				
+
 				if (sprite_exists(played_level_icon))
 				{
 					draw_sprite_ext(played_level_icon, 0, download_online_x + 524, 32 + download_online_y + offsetY, 1, 1, 0, c_white, 1);
 				}
-				
+
 				scr_draw_text_outlined(download_online_x + 548, 32 + download_online_y + offsetY, l10n_text(played_level_text), global.default_text_size, c_menu_outline, played_level_color, 1);
 			}
 			#endregion /* Display Finished Icon END */
-		
+
 			#region /* Display Zero Defeats Icon */
 			if (is_array(zero_defeats_level))
 			{
 				var zero_defeats_level_text, zero_defeats_level_icon, zero_defeats_level_color;
-				
+
 				if (zero_defeats_level[thumbnail_index] == 1)
 				{
 					zero_defeats_level_text = "Zero Defeats";
@@ -387,14 +387,14 @@ function scr_draw_online_download_list_thumbnail(thumbnail_index, number_of_thum
 					zero_defeats_level_icon = spr_noone;
 					zero_defeats_level_color = c_red;
 				}
-				
+
 				if (zero_defeats_level_text != "")
 				{
 					if (sprite_exists(zero_defeats_level_icon))
 					{
 						draw_sprite_ext(zero_defeats_level_icon, 0, download_online_x + 524, 64 + download_online_y + offsetY, 1, 1, 0, c_white, 1);
 					}
-					
+
 					scr_draw_text_outlined(
 						download_online_x + 548, 64 + download_online_y + offsetY,
 						l10n_text(zero_defeats_level_text),
@@ -406,10 +406,10 @@ function scr_draw_online_download_list_thumbnail(thumbnail_index, number_of_thum
 				}
 			}
 			#endregion /* Display Zero Defeats Icon END */
-			
+
 		}
 		#endregion /* Display Finished Level Status END */
-		
+
 		#region /* Display Like/Dislike Status */
 		if (is_array(liked_content))
 		{
@@ -428,12 +428,12 @@ function scr_draw_online_download_list_thumbnail(thumbnail_index, number_of_thum
 				}
 			}
 		}
-		
+
 		if (is_array(liked_content))
 		&& (can_thumbnail)
 		{
 			var liked_content_text, liked_content_icon, liked_content_color;
-			
+
 			if (liked_content[thumbnail_index] == +1)
 			{
 				liked_content_text = "Liked";
@@ -453,19 +453,19 @@ function scr_draw_online_download_list_thumbnail(thumbnail_index, number_of_thum
 				liked_content_icon = spr_noone;
 				liked_content_color = c_white;
 			}
-			
+
 			if (liked_content_text != "")
 			{
 				if (sprite_exists(liked_content_icon))
 				{
 					draw_sprite_ext(liked_content_icon, 0, download_online_x + 524, 32 + download_online_y + offsetY, 1, 1, 0, c_white, 1);
 				}
-				
+
 				scr_draw_text_outlined(download_online_x + 548, 32 + download_online_y + offsetY, l10n_text(liked_content_text), global.default_text_size, c_menu_outline, liked_content_color, 1);
 			}
 		}
 		#endregion /* Display Like/Dislike Status END */
-		
+
 		if (can_thumbnail)
 		{
 			scr_draw_text_outlined(

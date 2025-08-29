@@ -115,7 +115,7 @@ function menu_dropdown_variable_to_change(variable_to_change, change_to_value)
 	&& (variable_to_change == global.resolution_setting)
 	{
 		global.resolution_setting = change_to_value;
-		
+
 		/* Resolution Current Display Size */
 		if (global.resolution_setting == 0){display_set_gui_size(display_get_width(), display_get_height());window_set_size(display_get_width(), display_get_height());}else
 		if (global.resolution_setting == 1){display_set_gui_size(1920, 1080);window_set_size(1920, 1080);}else

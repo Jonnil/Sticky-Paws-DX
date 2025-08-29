@@ -1,7 +1,7 @@
 function scr_config_save()
 {
 	ini_open(game_save_id + "save_file/config.ini");
-	
+
 	ini_write_real("config", "current_file", global.file);
 	ini_write_real("config", "difficulty", global.difficulty);
 	if (global.difficulty != 1)
@@ -20,7 +20,7 @@ function scr_config_save()
 	ini_write_real("config", "hud_hide_time", global.hud_hide_time);
 	ini_write_real("config", "select_font", global.selected_font);
 	ini_write_real("config", "players_can_collide", global.players_can_collide);
-	
+
 	#region /* Assist Settings */
 	ini_write_real("config", "assist_enable", global.assist_enable);
 	ini_write_real("config", "assist_item_appear", global.assist_item_appear);
@@ -36,7 +36,7 @@ function scr_config_save()
 	ini_write_real("config", "assist_enable_enemies", global.assist_enable_enemies);
 	ini_write_real("config", "assist_enable_spikes", global.assist_enable_spikes);
 	#endregion /* Assist Settings END */
-	
+
 	#region /* Challenge Mode Settings */
 	ini_write_real("config", "challenge_mode_score_multiplier", global.challenge_mode_score_multiplier);
 	ini_write_real("config", "challenge_mode_enable", global.challenge_mode_enable);
@@ -79,7 +79,7 @@ function scr_config_save()
 	ini_write_real("config", "challenge_perma_death_mode", global.challenge_perma_death_mode);
 	ini_write_real("config", "challenge_roguelike_mode", global.challenge_roguelike_mode);
 	#endregion /* Challenge Mode Settings END */
-	
+
 	ini_write_real("config", "fullscreen_mode", window_get_fullscreen());
 	ini_write_real("config", "interpolate", global.interpolate);
 	ini_write_real("config", "show_fps", global.show_fps);
@@ -112,7 +112,7 @@ function scr_config_save()
 		global.selected_resource_pack = 0;
 	}
 	ini_write_real("config", "select_resource_pack", global.selected_resource_pack);
-	
+
 	#region /* Save Custom Title Background */
 	if (global.selected_title_background[1] <= -2){global.selected_title_background[1] = -1;}
 	if (global.selected_title_background[2] <= -2){global.selected_title_background[2] = -1;}
@@ -121,18 +121,18 @@ function scr_config_save()
 	ini_write_real("config", "title_background_scale1", global.title_background_scale[1]);
 	ini_write_real("config", "background_layer_x_scroll1", global.background_layer_x_scroll[1]);
 	ini_write_real("config", "background_layer_y_scroll1", global.background_layer_y_scroll[1]);
-	
+
 	ini_write_real("config", "select_title_background2", global.selected_title_background[2]);
 	ini_write_real("config", "title_background_scale2", global.title_background_scale[2]);
 	ini_write_real("config", "background_layer_x_scroll2", global.background_layer_x_scroll[2]);
 	ini_write_real("config", "background_layer_y_scroll2", global.background_layer_y_scroll[2]);
-	
+
 	ini_write_real("config", "select_title_background3", global.selected_title_background[3]);
 	ini_write_real("config", "title_background_scale3", global.title_background_scale[3]);
 	ini_write_real("config", "background_layer_x_scroll3", global.background_layer_x_scroll[3]);
 	ini_write_real("config", "background_layer_y_scroll3", global.background_layer_y_scroll[3]);
 	#endregion /* Save Custom Title Background END */
-	
+
 	if (global.selected_title_logo <= -1)
 	{
 		global.selected_title_logo = 0;
@@ -149,10 +149,10 @@ function scr_config_save()
 	ini_write_real("config", "show_prompt_when_changing_to_keyboard_and_mouse", global.show_prompt_when_changing_to_keyboard_and_mouse);
 	ini_write_real("config", "always_show_gamepad_buttons", global.always_show_gamepad_buttons);
 	ini_write_real("language_updates", "language_auto_update_interval", global.language_auto_update_interval);
-	
+
 	for(var i = 1; i <= global.max_players; i += 1)
 	{
-		
+
 		#region /* Save Player Keyboard Remapping */
 		ini_write_real("config", "vibration_strength" + string(i), global.vibration_strength[i]);
 		ini_write_real("config", "character_index_player" + string(i), global.character_index[i - 1]);
@@ -170,9 +170,9 @@ function scr_config_save()
 		ini_write_real("player" + string(i) + "_profile" + string(global.player_profile[i] + 1), "player" + string(i) + "_drop_from_rope", global.player_drop_from_rope[i]);
 		ini_write_real("player" + string(i) + "_profile" + string(global.player_profile[i] + 1), "player" + string(i) + "_show_controls", global.player_show_controls[i]);
 		#endregion /* Save Player Keyboard Remapping END */
-		
+
 	}
-	
+
 	ini_close(); switch_save_data_commit(); /* Remember to commit the save data! */
-	
+
 }

@@ -2,7 +2,7 @@ function scr_character_portrait_for_player_draw(what_player = 1)
 {
 	var skin_y = 192;
 	var voicepack_y = 234;
-	
+
 	if (keyboard_virtual_status()
 	&& keyboard_virtual_height() != 0
 	&& keyboard_virtual_height() != undefined)
@@ -17,7 +17,7 @@ function scr_character_portrait_for_player_draw(what_player = 1)
 	var get_window_width = display_get_gui_width();
 	var mouse_get_x = device_mouse_x_to_gui(0);
 	var mouse_get_y = device_mouse_y_to_gui(0);
-	
+
 	#region /* Make character portraits smaller if screen size is too small to fit them */
 	if (get_window_width >= 1670)
 	{
@@ -43,11 +43,11 @@ function scr_character_portrait_for_player_draw(what_player = 1)
 		var scale_offset = 0.6;
 	}
 	#endregion /* Make character portraits smaller if screen size is too small to fit them END */
-	
+
 	#region /* Set correct variables for players */
 	var player_name = global.player_name[what_player];
 	var player_color = global.player_color[what_player];
-	
+
 	#region /* If player is player, set all the variables to Player variables */
 	var sprite_select_player = global.sprite_select_player[what_player];
 	var player_key_left = global.player_[inp.key][what_player][1][action.left];
@@ -67,9 +67,9 @@ function scr_character_portrait_for_player_draw(what_player = 1)
 	var player_gamepad_button_accept = global.player_[inp.gp][what_player][1][action.accept];
 	var player_gamepad_button2_accept = global.player_[inp.gp][what_player][2][action.accept];
 	#endregion /* If player is player, set all the variables to Player variables END */
-	
+
 	#endregion /* Set correct variables for players END */
-	
+
 	#region /* Draw character portrait for player */
 	if (sprite_select_player > 0
 	&& player_accept_selection[what_player] >= 0
@@ -90,7 +90,7 @@ function scr_character_portrait_for_player_draw(what_player = 1)
 			draw_set_halign(fa_center);
 			draw_set_valign(fa_middle);
 			var character_name = string(ds_list_find_value(global.all_loaded_characters, global.character_index[what_player - 1]));
-			
+
 			#region /* Display Character Name */
 			if (player_menu[what_player] != "select_name")
 			&& (no_players_are_inputting_names)
@@ -99,15 +99,15 @@ function scr_character_portrait_for_player_draw(what_player = 1)
 				scr_draw_text_outlined(get_window_width * 0.5 + player_display_x[what_player], get_window_height * 0.5 + 324, string(character_name), global.default_text_size, c_menu_outline, c_menu_fill, 1);
 			}
 			#endregion /* Display Character Name END */
-			
+
 		}
 	}
 	#endregion /* Draw character portrait for player END */
-	
+
 	#region /* Display Selected Skin if skins are available */
 	if (no_players_are_inputting_names)
 	{
-		
+
 		#region /* Player Select Skin */
 		if (character_portrait_for_player_dir_exists_1[what_player])
 		{
@@ -117,13 +117,13 @@ function scr_character_portrait_for_player_draw(what_player = 1)
 				draw_set_valign(fa_middle);
 				scr_draw_text_outlined(get_window_width * 0.5 + player_display_x[what_player], get_window_height * 0.5 + skin_y, l10n_text("Skin") + ": " + string(global.skin_for_player[what_player] + 1), global.default_text_size, c_black, c_white, 1);
 			}
-			
+
 			if (player_menu[what_player] == "select_skin")
 			|| (global.controls_used_for_navigation == "mouse")
 			{
 				if (player_accept_selection[what_player] == 0)
 				{
-					
+
 					#region /* Show left key for character skin select */
 					if (global.skin_for_player[what_player] > 0)
 					{
@@ -157,7 +157,7 @@ function scr_character_portrait_for_player_draw(what_player = 1)
 						}
 					}
 					#endregion /* Show left key for character skin select END */
-					
+
 					#region /* Show right key for character skin select */
 					if (character_portrait_for_player_dir_exists_2[what_player])
 					{
@@ -191,19 +191,19 @@ function scr_character_portrait_for_player_draw(what_player = 1)
 						}
 					}
 					#endregion /* Show right key for character skin select END */
-					
+
 				}
 			}
 		}
 		#endregion /* Player Select Skin END */
-		
+
 	}
 	#endregion /* Display Selected Skin if skins are available END */
-	
+
 	#region /* Display Selected Voice Pack if voice packs are available */
 	if (no_players_are_inputting_names)
 	{
-		
+
 		#region /* Player Select Voice Pack */
 		if (character_portrait_for_player_dir_exists_3[what_player])
 		{
@@ -213,13 +213,13 @@ function scr_character_portrait_for_player_draw(what_player = 1)
 				draw_set_valign(fa_middle);
 				scr_draw_text_outlined(get_window_width * 0.5 + player_display_x[what_player], get_window_height * 0.5 + voicepack_y, l10n_text("Voice Pack") + ": " + string(global.voicepack_for_player[what_player] + 1), global.default_text_size, c_black, c_white, 1);
 			}
-			
+
 			if (player_menu[what_player] == "select_voicepack")
 			|| (global.controls_used_for_navigation == "mouse")
 			{
 				if (player_accept_selection[what_player] == 0)
 				{
-					
+
 					#region /* Show left key for character voicepack select */
 					if (global.voicepack_for_player[what_player] > 0)
 					{
@@ -253,7 +253,7 @@ function scr_character_portrait_for_player_draw(what_player = 1)
 						}
 					}
 					#endregion /* Show left key for character voicepack select END */
-					
+
 					#region /* Show right key for character voicepack select */
 					if (character_portrait_for_player_dir_exists_4[what_player])
 					{
@@ -287,19 +287,19 @@ function scr_character_portrait_for_player_draw(what_player = 1)
 						}
 					}
 					#endregion /* Show right key for character voicepack select END */
-					
+
 				}
 			}
 		}
 		#endregion /* Player Select Voice Pack END */
-	
+
 	}
 	#endregion /* Display Selected Voice Pack if voice packs are available END */
-	
+
 	#region /* Show left and right arrows when selecting character */
 	if (no_players_are_inputting_names)
 	{
-		
+
 		#region /* Player Show left and right arrows when selecting character */
 		if (player_menu[what_player] == "select_character")
 		|| (global.controls_used_for_navigation == "mouse")
@@ -307,7 +307,7 @@ function scr_character_portrait_for_player_draw(what_player = 1)
 			if (player_accept_selection[what_player] == 0)
 			&& (ds_list_size(global.all_loaded_characters) >= 2) /* If there are more than 1 character */
 			{
-				
+
 				#region /* Key Left */
 				if (gamepad_is_connected(global.player_slot[what_player]))
 				&& (global.controls_used_for_navigation == "gamepad")
@@ -337,7 +337,7 @@ function scr_character_portrait_for_player_draw(what_player = 1)
 					draw_set_alpha(1);
 				}
 				#endregion /* Key Left END */
-			
+
 				#region /* Key Right */
 				if (gamepad_is_connected(global.player_slot[what_player]))
 				&& (global.controls_used_for_navigation == "gamepad")
@@ -367,27 +367,27 @@ function scr_character_portrait_for_player_draw(what_player = 1)
 					draw_set_alpha(1);
 				}
 				#endregion /* Key Right END */
-			
+
 			}
 		}
 		#endregion /* Player Show left and right arrows when selecting character END */
-		
+
 	}
 	#endregion /* Show left and right arrows when selecting character END */
-	
+
 	#region /* Tell the player the inputed name */
 	if (player_accept_selection[what_player] >= 0)
 	{
-	    var can_select = true;
-	    for(var i = 1; i <= global.max_players; i += 1)
+		var can_select = true;
+		for(var i = 1; i <= global.max_players; i += 1)
 		{
-	        if (can_input_player_name[i] != 0)
+			if (can_input_player_name[i] != 0)
 			{
-	            can_select = false;
-	            break;
-	        }
-	    }
-	    if (can_select)
+				can_select = false;
+				break;
+			}
+		}
+		if (can_select)
 		{
 			if (player_name = "")
 			{
@@ -400,9 +400,9 @@ function scr_character_portrait_for_player_draw(what_player = 1)
 		}
 	}
 	#endregion /* Tell the player the inputed name END */
-	
+
 	#region /* Tell the players what buttons to push */
-	
+
 	#region /* Tell the player what button to push to select or cancel a selection */
 	if (player_menu[what_player] != "select_name")
 	&& (player_menu[what_player] != "back_from_character_select")
@@ -431,12 +431,12 @@ function scr_character_portrait_for_player_draw(what_player = 1)
 				draw_roundrect_color_ext(get_window_width * 0.5 + player_display_x[what_player] - 100, get_window_height * 0.5 + 150 - 20, get_window_width * 0.5 + player_display_x[what_player] + 100, get_window_height * 0.5 + 150 + 20, 50, 50, player_color, player_color, false);
 				draw_set_alpha(1);
 			}
-			
+
 			#region /* Accept Text */
 			draw_set_halign(fa_right);
 			scr_draw_text_outlined(get_window_width * 0.5 + player_display_x[what_player] + 60, get_window_height * 0.5 + 150, l10n_text("Accept") + ": ", global.default_text_size, c_black, c_white, 1);
 			#endregion /* Accept Text END */
-			
+
 			#region /* Key A */
 			if (gamepad_is_connected(global.player_slot[what_player]))
 			&& (global.controls_used_for_navigation == "gamepad")
@@ -461,7 +461,7 @@ function scr_character_portrait_for_player_draw(what_player = 1)
 				}
 			}
 			#endregion /* Key A END */
-			
+
 		}
 		else
 		if (player_accept_selection[what_player] == 1)
@@ -475,12 +475,12 @@ function scr_character_portrait_for_player_draw(what_player = 1)
 				draw_roundrect_color_ext(get_window_width * 0.5 + player_display_x[what_player] - 100, get_window_height * 0.5 + 150 - 20, get_window_width * 0.5 + player_display_x[what_player] + 100, get_window_height * 0.5 + 150 + 20, 50, 50, c_red, c_red, false);
 				draw_set_alpha(1);
 			}
-			
+
 			#region /* Cancel Text */
 			draw_set_halign(fa_right);
 			scr_draw_text_outlined(get_window_width * 0.5 + player_display_x[what_player] + 60, get_window_height * 0.5 + 150, l10n_text("Cancel") + ": ", global.default_text_size, c_black, c_white, 1);
 			#endregion /* Cancel Text END */
-			
+
 			#region /* Key B */
 			if (gamepad_is_connected(global.player_slot[what_player]))
 			&& (global.controls_used_for_navigation == "gamepad")
@@ -505,21 +505,21 @@ function scr_character_portrait_for_player_draw(what_player = 1)
 				}
 			}
 			#endregion /* Key B END */
-			
+
 		}
 	}
 	#endregion /* Tell the player what button to push to select or cancel a selection END */
-	
+
 	#region /* Tell player what button to push to enter a name */
 	draw_set_halign(fa_right);
 	draw_set_valign(fa_middle);
-	
+
 	if (player_menu[what_player] == "select_name")
 	&& (no_players_are_inputting_names)
 	&& (global.controls_used_for_navigation != "mouse")
 	{
 		scr_draw_text_outlined(get_window_width * 0.5 + player_display_x[what_player] + 60, name_input_y + 35, l10n_text("Enter name") + ": ", global.default_text_size, c_black, c_white, 1); /* Accept Text */
-		
+
 		#region /* Key A */
 		if (gamepad_is_connected(global.player_slot[what_player]))
 		&& (global.controls_used_for_navigation == "gamepad")
@@ -544,12 +544,12 @@ function scr_character_portrait_for_player_draw(what_player = 1)
 			}
 		}
 		#endregion /* Key A END */
-		
+
 	}
 	#endregion /* Tell player what button to push to enter a name END */
-	
+
 	#endregion /* Tell the players what buttons to push END */
-	
+
 	if (player_accept_selection[what_player] >= 0)
 	&& (can_input_player_name[what_player] == 1)
 	{

@@ -11,12 +11,12 @@ switch (object)
 	case LEVEL_OBJECT_ID.ID_LAVA:
 	case LEVEL_OBJECT_ID.ID_BREATHABLE_WATER:
 		draw_set_alpha(0.5);
-		
+
 		if (object == LEVEL_OBJECT_ID.ID_BREATHABLE_WATER)
 		{
 			draw_set_alpha(0.25);
 		}
-			
+
 		if (object == LEVEL_OBJECT_ID.ID_LAVA)
 		{
 			liquid_color = c_red;
@@ -25,7 +25,7 @@ switch (object)
 		{
 			liquid_color = c_blue;
 		}
-		
+
 		draw_rectangle_color(x - 16, y - 16, 16 + second_x, 16 + second_y, liquid_color, liquid_color, liquid_color, liquid_color, false);
 		draw_set_alpha(1);
 		break;
@@ -80,7 +80,7 @@ if (position_meeting(x, y, obj_leveleditor))
 		var xx = x;
 		var yy = y - 32;
 		var x_adjusted = x;
-		
+
 		if (string_length(second_x) > 0)
 		{
 			var textbox_text = string(second_x);
@@ -96,7 +96,7 @@ if (position_meeting(x, y, obj_leveleditor))
 				var textbox_text = "";
 			}
 		}
-		
+
 		if (textbox_text != "")
 		{
 			draw_set_alpha(0.75);

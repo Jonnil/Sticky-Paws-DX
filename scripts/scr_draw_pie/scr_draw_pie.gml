@@ -5,9 +5,9 @@ function scr_draw_pie(xx, yy, value, max_value, colour, radius, transparency)
 		var i, len, tx, ty, val;
 		var numberofsections = 60 /* there is no draw_get_circle_precision() else I would use that here */
 		var sizeofsection = 360 / numberofsections;
-		val = (value /max_value) * numberofsections; 
+		val = (value /max_value) * numberofsections;
 		if (val > 1)
-		{ /* HTML5 version doesnt like triangle with only 2 sides */ 
+		{ /* HTML5 version doesnt like triangle with only 2 sides */
 			draw_set_colour(colour);
 			draw_set_alpha(transparency);
 			draw_primitive_begin(pr_trianglefan);

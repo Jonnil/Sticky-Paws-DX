@@ -4,7 +4,7 @@ if (!global.actually_play_edited_level)
 	{
 		hover_over_object_indicator = false;
 	}
-	
+
 	if (drag_object > 0 || place_object_angle)
 	{
 		switch (object)
@@ -23,7 +23,7 @@ if (!global.actually_play_edited_level)
 				break;
 		}
 	}
-	
+
 	#region /* Actually drag the object */
 	if (drag_object)
 	{
@@ -38,16 +38,16 @@ if (!global.actually_play_edited_level)
 		y = global.leveleditor_y;
 	}
 	#endregion /* Actually drag the object END */
-	
+
 	#region /* Change certain objects angle */
 	/* Some objects should not save second x and second y, only objects that actually rotate should save */
 	if (place_object_angle)
 	{
-		
+
 		/* Make sure that you can drag the second x and second y outside of the view without the origin point being deactivated */
 		global.deactivate_timer = 0;
 		instance_activate_region(obj_leveleditor.cam_x - 32, obj_leveleditor.cam_y - 32, obj_leveleditor.cam_width + 32, obj_leveleditor.cam_height + 32, true);
-		
+
 		switch (object)
 		{
 			case LEVEL_OBJECT_ID.ID_SPRING:
@@ -82,5 +82,5 @@ if (!global.actually_play_edited_level)
 		}
 	}
 	#endregion /* Change certain objects angle END */
-	
+
 }

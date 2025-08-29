@@ -1,10 +1,10 @@
 function scr_save_custom_world()
 {
-	
+
 	#region /* Save Custom World */
 	if (global.character_select_in_this_menu == "level_editor")
 	{
-	
+
 		#region /* Create directory for saving custom worlds */
 		if (global.select_level_index >= 1)
 		&& (!global.create_level_from_template)
@@ -19,7 +19,7 @@ function scr_save_custom_world()
 			directory_create(game_save_id + "custom_worlds/" + global.level_name);
 		}
 		#endregion /* Create directory for saving custom levels END */
-	
+
 		#region /* Save object placement */
 		instance_activate_all();
 		var file, str;
@@ -34,19 +34,19 @@ function scr_save_custom_world()
 			file = file_text_open_write(game_save_id + "custom_worlds/" + string(global.level_name) + "/data/object_placement.txt"); /* Open file for writing */
 		}
 		str = ""; /* Reset string var */
-		
+
 		#region /* Write all objects to file */
 		with(obj_leveleditor_placed_object)
 		{
 			str+= string(x) + "|" + string(y) + "|" + string(object) + "|";
 		}
 		#endregion /* Write all objects to file END */
-		
+
 		file_text_write_string(file, str); /* Write string with wall information to file and start a new line */
 		file_text_close(file); /* Don't commit the save data on Switch, this is only temporary! */
-		
+
 		#endregion /* Save object placement END */
-		
+
 		#region /* Save World Information */
 		if (global.character_select_in_this_menu == "level_editor") /* Only save this if you're in the level editor, otherwise level folders for main game will be created in AppData */
 		{
@@ -81,9 +81,9 @@ function scr_save_custom_world()
 			ini_close();
 		}
 		#endregion /* Save World Information END */
-		
+
 		switch_save_data_commit(); /* Remember to commit the save data! */
 	}
 	#endregion /* Save Custom World END */
-	
+
 }

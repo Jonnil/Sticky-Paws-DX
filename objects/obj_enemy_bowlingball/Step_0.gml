@@ -1,6 +1,6 @@
 if (stomped_delay > 0)
 {
-	stomped_delay --;
+	stomped_delay--;
 }
 
 if (die_volting = -1)
@@ -21,11 +21,11 @@ if (die_volting = -1)
 	gravity_direction = 270; /* Direction of the gravity */
 	gravity = 0.5; /* The gravity */
 	#endregion /* Set the gravity END */
-	
+
 }
 else
 {
-	
+
 	#region /* Set the gravity */
 	gravity_direction = 270; /* Direction of the gravity */
 	if (!on_ground)
@@ -38,7 +38,7 @@ else
 		gravity = 0;
 	}
 	#endregion /* Set the gravity END */
-	
+
 	if (flat)
 	{
 		image_speed = 0.5;
@@ -82,11 +82,11 @@ else
 				sliding_along_ground = +1;
 				sliding_along_ground_speed = instance_nearest(x, y, obj_player).speed + 1;
 				stomped_delay = 5;
-				
+
 				if (number_of_times_stomped < 10)
 				{
-					number_of_times_stomped ++;
-					
+					number_of_times_stomped++;
+
 					#region /* 1 Coin */
 					with(instance_create_depth(x, bbox_top, 0, obj_basic_collectible))
 					{
@@ -95,7 +95,7 @@ else
 						bounce_up = true;
 					}
 					#endregion /* 1 Coin END */
-				
+
 					#region /* 200 Score */
 					score += 200;
 					with(instance_create_depth(x, y, 0, obj_score_up))
@@ -103,7 +103,7 @@ else
 						score_up = 200;
 					}
 					#endregion /* 200 Score END */
-				
+
 					#region /* 1-up */
 					if (global.number_of_chain_kills_for_1up <= 1)
 					{
@@ -113,7 +113,7 @@ else
 						}
 					}
 					#endregion /* 1-up END */
-					
+
 				}
 				audio_sound_pitch(snd_stomp, 1);
 				scr_audio_play(snd_stomp, volume_source.sound);
@@ -128,11 +128,11 @@ else
 				sliding_along_ground = -1;
 				sliding_along_ground_speed = instance_nearest(x, y, obj_player).speed + 1;
 				stomped_delay = 5;
-				
+
 				if (number_of_times_stomped < 10)
 				{
-					number_of_times_stomped ++;
-					
+					number_of_times_stomped++;
+
 					#region /* 1 Coin */
 					with(instance_create_depth(x, bbox_top, 0, obj_basic_collectible))
 					{
@@ -141,7 +141,7 @@ else
 						bounce_up = true;
 					}
 					#endregion /* 1 Coin END */
-				
+
 					#region /* 200 Score */
 					score += 200;
 					with(instance_create_depth(x, y, 0, obj_score_up))
@@ -149,7 +149,7 @@ else
 						score_up = 200;
 					}
 					#endregion /* 200 Score END */
-				
+
 					#region /* 1-up */
 					if (global.number_of_chain_kills_for_1up <= 1)
 					{
@@ -159,7 +159,7 @@ else
 						}
 					}
 					#endregion /* 1-up END */
-					
+
 				}
 				audio_sound_pitch(snd_stomp, 1);
 				scr_audio_play(snd_stomp, volume_source.sound);
@@ -174,11 +174,11 @@ else
 				sliding_along_ground = +1;
 				sliding_along_ground_speed = 8;
 				stomped_delay = 5;
-				
+
 				if (number_of_times_stomped < 10)
 				{
-					number_of_times_stomped ++;
-					
+					number_of_times_stomped++;
+
 					#region /* 1 Coin */
 					with(instance_create_depth(x, bbox_top, 0, obj_basic_collectible))
 					{
@@ -187,7 +187,7 @@ else
 						bounce_up = true;
 					}
 					#endregion /* 1 Coin END */
-				
+
 					#region /* 200 Score */
 					score += 200;
 					with(instance_create_depth(x, y, 0, obj_score_up))
@@ -195,7 +195,7 @@ else
 						score_up = 200;
 					}
 					#endregion /* 200 Score END */
-				
+
 					#region /* 1-up */
 					if (global.number_of_chain_kills_for_1up <= 1)
 					{
@@ -205,9 +205,9 @@ else
 						}
 					}
 					#endregion /* 1-up END */
-					
+
 				}
-				
+
 				audio_sound_pitch(snd_stomp, 1);
 				scr_audio_play(snd_stomp, volume_source.sound);
 			}
@@ -220,11 +220,11 @@ else
 				sliding_along_ground = -1;
 				sliding_along_ground_speed = 8;
 				stomped_delay = 5;
-				
+
 				if (number_of_times_stomped < 10)
 				{
-					number_of_times_stomped ++;
-					
+					number_of_times_stomped++;
+
 					#region /* 1 Coin */
 					with(instance_create_depth(x, bbox_top, 0, obj_basic_collectible))
 					{
@@ -233,7 +233,7 @@ else
 						bounce_up = true;
 					}
 					#endregion /* 1 Coin END */
-				
+
 					#region /* 200 Score */
 					score += 200;
 					with(instance_create_depth(x, y, 0, obj_score_up))
@@ -241,7 +241,7 @@ else
 						score_up = 200;
 					}
 					#endregion /* 200 Score END */
-				
+
 					#region /* 1-up */
 					if (global.number_of_chain_kills_for_1up <= 1)
 					{
@@ -251,9 +251,9 @@ else
 						}
 					}
 					#endregion /* 1-up END */
-					
+
 				}
-				
+
 				audio_sound_pitch(snd_stomp, 1);
 				scr_audio_play(snd_stomp, volume_source.sound);
 			}
@@ -271,7 +271,7 @@ if (!flat)
 	{
 		hspeed = +1;
 	}
-	
+
 	#region /* Turn around */
 	if (place_meeting(x - 2, y, obj_wall))
 	{
@@ -282,7 +282,7 @@ if (!flat)
 		image_xscale = -1;
 	}
 	#endregion /* Turn around END */
-	
+
 	if (blind)
 	{
 		if (global.resource_pack_sprite_enemy_bowlingball_blind_walk > noone){sprite_index = global.resource_pack_sprite_enemy_bowlingball_blind_walk;}else

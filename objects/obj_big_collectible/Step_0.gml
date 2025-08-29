@@ -20,14 +20,14 @@ if (follow_player)
 {
 	if (instance_exists(obj_player) && distance_to_object(obj_player) < sprite_height + sprite_width)
 	{
-		
+
 		#region /* Show Big Collectible HUD */
 		if (instance_exists(obj_camera))
 		{
 			obj_camera.hud_show_big_collectibles_timer = global.hud_hide_time * 60;
 		}
 		#endregion /* Show Big Collectible HUD END */
-		
+
 		x = lerp(x, instance_nearest(x, y, obj_player).x, 0.5);
 		y = lerp(y, instance_nearest(x, y, obj_player).y, 0.5);
 	}
@@ -45,14 +45,14 @@ if (follow_player)
 
 if (bounce_up)
 {
-	
+
 	#region /* Show Big Collectible HUD */
 	if (instance_exists(obj_camera))
 	{
 		obj_camera.hud_show_big_collectibles_timer = global.hud_hide_time * 60;
 	}
 	#endregion /* Show Big Collectible HUD END */
-	
+
 	if (delay >= delay_time)
 	{
 		visible = true;
@@ -68,11 +68,11 @@ if (bounce_up)
 		visible = false;
 		y = ystart;
 	}
-	delay ++;
+	delay++;
 }
 
 #region /* Expanding Ring Effect */
-effect_time ++;
+effect_time++;
 if (effect_time > 60)
 {
 	effect_time = 0;
@@ -83,16 +83,16 @@ if (effect_time > 60)
 #region /* Actually collect big collectible */
 if (collect_big_collectible)
 {
-	
+
 	#region /* Show Big Collectible HUD */
 	if (instance_exists(obj_camera))
 	{
 		obj_camera.hud_show_big_collectibles_timer = global.hud_hide_time * 60;
 	}
 	#endregion /* Show Big Collectible HUD END */
-	
+
 	effect_create_above(ef_ring, x, y, 2, c_white);
-	
+
 	#region /* 1000 Score */
 	score += 1000;
 	with(instance_create_depth(x, y, 0, obj_score_up))
@@ -100,20 +100,20 @@ if (collect_big_collectible)
 		score_up = 1000;
 	}
 	#endregion /* 1000 Score END */
-	
+
 	#region /* What Big Collectible is this? */
 	for(var i = 1; i <= global.max_big_collectible; i ++)
 	{
 		if (big_collectible == i)
 		{
 			global.big_collectible[i] = true;
-			
+
 			if (instance_exists(obj_camera))
 			{
 				obj_camera.hud_show_big_collectible_blink[i] = 120;
 				if (!global.big_collectible_already_collected[i])
 				{
-					global.how_many_big_collectible_collected ++;
+					global.how_many_big_collectible_collected++;
 					global.big_collectible_already_collected[i] = true;
 				}
 			}
@@ -127,7 +127,7 @@ if (collect_big_collectible)
 				var save_path = game_save_id + "save_file/custom_level_save.ini";
 			}
 			ini_open(save_path);
-			
+
 			/* Increase total big collectibe, so player can know how many big collectibles they have collected in total */
 			if (!ini_read_real(global.level_name, "big_collectible" + string(i), false)) /* If you have never collected this big collectible before, then increase total big collectibles */
 			{
@@ -137,7 +137,7 @@ if (collect_big_collectible)
 					scr_set_stat_achievement("TOTAL_BIG_COLLECTIBLE", ini_read_real("Player", "total_big_collectibles", 0));
 				}
 			}
-			
+
 			ini_write_real(global.level_name, "big_collectible" + string(i), true); /* After increasing total big collectibles, then set this big collectible to be collected */
 			ini_close(); /* Don't commit the save data on Switch, this is only temporary! */
 			break;
@@ -151,7 +151,7 @@ if (collect_big_collectible)
 		}
 	}
 	#endregion /* What Big Collectible is this? END */
-	
+
 	if (global.how_many_big_collectible_collected >= global.max_big_collectible)
 	{
 		var big_collectible_sound_index = snd_big_collectible_all;
@@ -162,7 +162,7 @@ if (collect_big_collectible)
 	}
 	audio_sound_pitch(big_collectible_sound_index, 0.9 + (0.1 * global.how_many_big_collectible_collected));
 	scr_audio_play(big_collectible_sound_index, volume_source.sound);
-	
+
 	instance_create_depth(xstart, ystart, 0, obj_big_collectible_outline);
 	instance_destroy();
 }

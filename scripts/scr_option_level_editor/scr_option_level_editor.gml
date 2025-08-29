@@ -6,7 +6,7 @@ function scr_option_level_editor()
 		var get_window_width = display_get_gui_width();
 		var button_info = "";
 		var parallax_info = "";
-		
+
 		var level_editor_option_x = (get_window_width * 0.5) - 200;
 		var option_level_editor_right_arrow_x = (get_window_width * 0.5) - 200 + 50;
 		var custom_background_x_offset1_y = (40 * 3);
@@ -25,7 +25,7 @@ function scr_option_level_editor()
 		var custom_foreground2_y_offset_y = (40 * 16);
 		var custom_foreground_secret_x_offset_y = (40 * 17);
 		var custom_foreground_secret_y_offset_y = (40 * 18);
-		
+
 		var custom_background_x_parallax1_y = (40 * 3);
 		var custom_background_y_parallax1_y = (40 * 4);
 		var custom_background_x_parallax2_y = (40 * 5);
@@ -34,7 +34,7 @@ function scr_option_level_editor()
 		var custom_background_y_parallax3_y = (40 * 8);
 		var custom_background_x_parallax4_y = (40 * 9);
 		var custom_background_y_parallax4_y = (40 * 10);
-		
+
 		var custom_background1_x_scale_y = (40 * 3);
 		var custom_background1_y_scale_y = (40 * 4);
 		var custom_background2_x_scale_y = (40 * 5);
@@ -43,7 +43,7 @@ function scr_option_level_editor()
 		var custom_background3_y_scale_y = (40 * 8);
 		var custom_background4_x_scale_y = (40 * 9);
 		var custom_background4_y_scale_y = (40 * 10);
-		
+
 		var custom_background1_htiled_y = (50 * 3);
 		var custom_background1_vtiled_y = (50 * 4);
 		var custom_background2_htiled_y = (50 * 5);
@@ -52,9 +52,9 @@ function scr_option_level_editor()
 		var custom_background3_vtiled_y = (50 * 8);
 		var custom_background4_htiled_y = (50 * 9);
 		var custom_background4_vtiled_y = (50 * 10);
-		
+
 		scr_scroll_menu();
-	
+
 		if (menu == "back_level_editor_options")
 		|| (menu == "level_theme")
 		|| (menu == "make_every_tileset_into_default_tileset")
@@ -76,9 +76,9 @@ function scr_option_level_editor()
 				pause = false;
 			}
 			changing_level_theme_menu = false;
-			
+
 			#region /* Menu Navigation */
-			
+
 			#region /* Back Navigation */
 			if (key_b_pressed)
 			&& (!keyboard_check(vk_control))
@@ -87,7 +87,7 @@ function scr_option_level_editor()
 			&& (key_a_pressed)
 			&& (menu_delay == 0 && menu_joystick_delay == 0)
 			{
-				
+
 				#region /* Save level_information.ini */
 				if (global.character_select_in_this_menu == "level_editor")
 				&& (file_exists(game_save_id + "custom_levels/" + string(global.level_name) + "/data/level_information.ini"))
@@ -102,7 +102,7 @@ function scr_option_level_editor()
 					ini_close(); /* Don't commit the save data on Switch, this is only temporary! */
 				}
 				#endregion /* Save level_information.ini END */
-				
+
 				#region /* Save config.ini */
 				if (global.character_select_in_this_menu == "level_editor")
 				&& (file_exists(game_save_id + "save_file/config.ini"))
@@ -117,7 +117,7 @@ function scr_option_level_editor()
 					ini_close(); /* Don't commit the save data on Switch, this is only temporary! */
 				}
 				#endregion /* Save config.ini END */
-				
+
 				if (open_dropdown)
 				{
 					open_dropdown = false;
@@ -129,7 +129,7 @@ function scr_option_level_editor()
 				}
 			}
 			#endregion /* Back Navigation END */
-			
+
 			if (menu == "back_level_editor_options")
 			{
 				if (key_up)
@@ -512,7 +512,7 @@ function scr_option_level_editor()
 				&& (open_dropdown)
 				&& (global.selected_level_editing_music > 0)
 				{
-					global.selected_level_editing_music --;
+					global.selected_level_editing_music--;
 					menu_delay = 3;
 				}
 				else
@@ -521,7 +521,7 @@ function scr_option_level_editor()
 				&& (open_dropdown)
 				&& (global.selected_level_editing_music < 5)
 				{
-					global.selected_level_editing_music ++;
+					global.selected_level_editing_music++;
 					menu_delay = 3;
 				}
 			}
@@ -553,7 +553,7 @@ function scr_option_level_editor()
 				}
 			}
 			#endregion /* Menu Navigation END */
-			
+
 			if (global.controls_used_for_navigation == "gamepad")
 			{
 				scr_draw_gamepad_buttons(gp_face3, 40, 80, 0.75, c_white, 1, 1, 1, 1);
@@ -565,12 +565,12 @@ function scr_option_level_editor()
 			draw_set_halign(fa_left);
 			draw_set_valign(fa_middle);
 			scr_draw_text_outlined(80, 80, l10n_text("Hold down to change the value faster"), global.default_text_size * 0.6, c_black, c_white, 1);
-			
+
 			if (global.time_countdown < 0)
 			{
 				global.time_countdown = 0;
 			}
-			
+
 			var level_theme_y = 47 + menu_y_offset;
 			var make_every_tileset_into_default_tileset_y = 47 * 2 + menu_y_offset;
 			var rain_y = 47 * 3 + menu_y_offset;
@@ -584,7 +584,7 @@ function scr_option_level_editor()
 			var can_save_length_variable_y = 46 * 12 + menu_y_offset;
 			var selected_level_editing_music_y = 46 * 14 - 16 + menu_y_offset;
 			var delete_all_objects_y = 46 * 15 + 20 - 16 + menu_y_offset;
-			
+
 			draw_menu_button(0, 0, l10n_text("Back"), "back_level_editor_options", "level_editor_options");
 			draw_sprite_ext(spr_icon_back, 0, 20, 21, 1, 1, 0, c_white, 1);
 			draw_menu_button(level_editor_option_x, level_theme_y, l10n_text("Level Theme"), "level_theme", "change_entire_theme");
@@ -592,42 +592,42 @@ function scr_option_level_editor()
 			{
 				menu_cursor_y_position = 0;
 			}
-			
-			draw_menu_checkmark(level_editor_option_x - 90, make_every_tileset_into_default_tileset_y, 
-				l10n_text("Make every tileset into default tileset"), "make_every_tileset_into_default_tileset", global.make_every_tileset_into_default_tileset, false, 
+
+			draw_menu_checkmark(level_editor_option_x - 90, make_every_tileset_into_default_tileset_y,
+				l10n_text("Make every tileset into default tileset"), "make_every_tileset_into_default_tileset", global.make_every_tileset_into_default_tileset, false,
 				"Replaces all tilesets in the level with the default tileset");
-			
-			draw_menu_checkmark(level_editor_option_x - 90, rain_y, 
-				l10n_text("Rain"), "rain", global.effect_rain, false, 
+
+			draw_menu_checkmark(level_editor_option_x - 90, rain_y,
+				l10n_text("Rain"), "rain", global.effect_rain, false,
 				"Enables rain effects in the level. Purely cosmetic");
-			
-			draw_menu_checkmark(level_editor_option_x - 90, snow_y, 
-				l10n_text("Snow"), "snow", global.effect_snow, false, 
+
+			draw_menu_checkmark(level_editor_option_x - 90, snow_y,
+				l10n_text("Snow"), "snow", global.effect_snow, false,
 				"Enables snow effects in the level. Purely cosmetic");
-			
-			draw_menu_checkmark(level_editor_option_x - 90, wind_y, 
-				l10n_text("Wind"), "wind", global.effect_wind, false, 
+
+			draw_menu_checkmark(level_editor_option_x - 90, wind_y,
+				l10n_text("Wind"), "wind", global.effect_wind, false,
 				"Enables wind effects in the level. Purely cosmetic");
-			
-			draw_menu_checkmark(level_editor_option_x - 90, enable_time_countdown_y, 
-				l10n_text("Enable Time Countdown"), "enable_time_countdown", global.enable_time_countdown, false, 
+
+			draw_menu_checkmark(level_editor_option_x - 90, enable_time_countdown_y,
+				l10n_text("Enable Time Countdown"), "enable_time_countdown", global.enable_time_countdown, false,
 				"Adds a countdown timer to the level requiring completion before time runs out");
-			
-			draw_menu_checkmark(level_editor_option_x - 90, show_new_items_notification_y, 
-				l10n_text("Show New Items Notification"), "show_new_items_notification_level_editor", global.show_new_items_notification, true, 
+
+			draw_menu_checkmark(level_editor_option_x - 90, show_new_items_notification_y,
+				l10n_text("Show New Items Notification"), "show_new_items_notification_level_editor", global.show_new_items_notification, true,
 				"Notifies you when new items become available in the level editor");
-			
-			draw_menu_checkmark(level_editor_option_x - 90, enable_level_length_target_y, 
-				l10n_text("Enable Level Length Target"), "enable_level_length_target", global.enable_level_length_target, false, 
+
+			draw_menu_checkmark(level_editor_option_x - 90, enable_level_length_target_y,
+				l10n_text("Enable Level Length Target"), "enable_level_length_target", global.enable_level_length_target, false,
 				"You get a warning if your level is shorter than your desired length");
-			
-			draw_menu_checkmark(level_editor_option_x - 90, can_save_length_variable_y, 
-				l10n_text("Save Length Variable"), "can_save_length_variable", global.can_save_length_variable, false, 
+
+			draw_menu_checkmark(level_editor_option_x - 90, can_save_length_variable_y,
+				l10n_text("Save Length Variable"), "can_save_length_variable", global.can_save_length_variable, false,
 				"This function reduces data size slightly but saving takes longer");
-			
-			draw_menu_button(level_editor_option_x, delete_all_objects_y, 
+
+			draw_menu_button(level_editor_option_x, delete_all_objects_y,
 				l10n_text("Delete All Objects"), "delete_all_objects", "delete_all_objects_no", c_red);
-			
+
 			if (menu == "delete_all_objects")
 			{
 				menu_cursor_y_position = delete_all_objects_y - menu_y_offset;
@@ -643,14 +643,14 @@ function scr_option_level_editor()
 			{
 				global.target_length_minutes_min = draw_menu_left_right_buttons(level_editor_option_x, target_length_minutes_y, option_level_editor_right_arrow_x, l10n_text("Target Length Minutes Minimum"), global.target_length_minutes_min, "target_length_minutes_min", 1, false, 0, 60);
 				global.target_length_minutes_max = draw_menu_left_right_buttons(level_editor_option_x, target_length_minutes_y + 42, option_level_editor_right_arrow_x, l10n_text("Target Length Minutes Maximum"), global.target_length_minutes_max, "target_length_minutes_max", 1, false, 0, 60);
-				
+
 				/* Set the maximum so that it can never be lower than the minimum */
 				if (menu == "target_length_minutes_min")
 				&& (global.target_length_minutes_max < global.target_length_minutes_min)
 				{
 					global.target_length_minutes_max = global.target_length_minutes_min;
 				}
-				
+
 				/* Set the minimum so that it can never be higher than the maximum */
 				if (menu == "target_length_minutes_max")
 				&& (global.target_length_minutes_min > global.target_length_minutes_max)
@@ -673,7 +673,7 @@ function scr_option_level_editor()
 			draw_sprite_ext(spr_icon_delete, 0, get_window_width * 0.5 - 370 - 32 + 16, get_window_height * 0.5 + 21, 1, 1, 0, c_white, 1);
 			draw_menu_button(get_window_width * 0.5 + 32, get_window_height * 0.5, l10n_text("No"), "delete_all_objects_no", "delete_all_objects");
 			draw_sprite_ext(spr_icon_back, 0, get_window_width * 0.5 + 32 + 16, get_window_height * 0.5 + 21, 1, 1, 0, c_white, 1);
-			
+
 			if (key_b_pressed)
 			&& (menu_delay == 0 && menu_joystick_delay == 0)
 			{
@@ -705,7 +705,7 @@ function scr_option_level_editor()
 					}
 				}
 			}
-		
+
 			if (key_left)
 			&& (menu_delay == 0 && menu_joystick_delay == 0)
 			|| (key_right)
@@ -730,7 +730,7 @@ function scr_option_level_editor()
 			ini_write_real("info", "clear_check", false);
 			ini_close(); /* Don't commit the save data on Switch, this is only temporary! */
 			if_clear_checked = false;
-			
+
 			instance_activate_all();
 			if (instance_exists(obj_leveleditor_fill))
 			{
@@ -756,7 +756,7 @@ function scr_option_level_editor()
 			}
 		}
 		else
-		
+
 		#region /* Level Theme Menu */
 		if (menu == "back_level_theme")
 		|| (menu == "change_entire_theme")
@@ -771,7 +771,7 @@ function scr_option_level_editor()
 			changing_level_theme_menu = true;
 			level_editor_option_back_to_menu = menu; /* Save what menu you came from, to use later */
 			level_editor_option_select_level_index = global.select_level_index;
-			
+
 			var change_entire_theme_y = 47 * 3;
 			var change_background_y = 47 * 4;
 			var change_music_y = 47 * 5;
@@ -779,10 +779,10 @@ function scr_option_level_editor()
 			var background_parallax_y = 47 * 7;
 			var background_scale_y = 47 * 8;
 			var background_tiled_y = 47 * 9;
-			
+
 			draw_set_halign(fa_center);
 			scr_draw_text_outlined(display_get_gui_width() * 0.5, 47 * 2, l10n_text("Changing the theme from this menu will set the default theme taken from official levels"), global.default_text_size * 0.9, c_black, c_white, 1);
-			
+
 			if (!global.can_load_custom_level_assets)
 			{
 				draw_set_halign(fa_left);
@@ -790,7 +790,7 @@ function scr_option_level_editor()
 				scr_draw_text_outlined(24, display_get_gui_height() - 24, l10n_text("Load Custom Level Assets is turned off!"), global.default_text_size, c_black, c_white, 1);
 				scr_draw_text_outlined(24, display_get_gui_height() - 24, l10n_text("Load Custom Level Assets is turned off!"), global.default_text_size, c_black, c_red, scr_wave(0, 1, 2));
 			}
-			
+
 			draw_menu_button(0, 0, l10n_text("Back"), "back_level_theme", "level_theme");
 			draw_sprite_ext(spr_icon_back, 0, 20, 21, 1, 1, 0, c_white, 1);
 			draw_menu_button(level_editor_option_x, change_entire_theme_y, l10n_text("Change Entire Theme"), "change_entire_theme", "load_official_level_to_take_from");
@@ -839,7 +839,7 @@ function scr_option_level_editor()
 			draw_menu_button(level_editor_option_x, background_parallax_y, l10n_text("BG Parallax"), "background_parallax", "back_background_parallax");
 			draw_menu_button(level_editor_option_x, background_scale_y, l10n_text("BG Scale"), "background_scale", "back_background_scale");
 			draw_menu_button(level_editor_option_x, background_tiled_y, l10n_text("BG Tiled"), "background_tiled", "back_background_tiled");
-			
+
 			if (key_b_pressed)
 			&& (!keyboard_check(vk_control))
 			&& (menu_delay == 0 && menu_joystick_delay == 0)
@@ -1104,9 +1104,9 @@ function scr_option_level_editor()
 			}
 		}
 		#endregion /* Level Theme Menu END */
-		
+
 		else
-		
+
 		#region /* Change Background Menu */
 		if (menu == "back_change_background")
 		|| (menu == "change_all_background")
@@ -1132,7 +1132,7 @@ function scr_option_level_editor()
 		{
 			level_editor_option_back_to_menu = menu; /* Save what menu you came from, to use later */
 			level_editor_option_select_level_index = global.select_level_index;
-			
+
 			var change_all_background_y = 47;
 			var change_background1_y = 47 * 2;
 			var change_background2_y = 47 * 3;
@@ -1143,7 +1143,7 @@ function scr_option_level_editor()
 			var change_foreground1_5_y = 47 * 8;
 			var change_foreground2_y = 47 * 9;
 			var change_foreground_secret_y = 47 * 10;
-			
+
 			if (!global.can_load_custom_level_assets)
 			{
 				draw_set_halign(fa_left);
@@ -1151,7 +1151,7 @@ function scr_option_level_editor()
 				scr_draw_text_outlined(24, display_get_gui_height() - 24, l10n_text("Load Custom Level Assets is turned off!"), global.default_text_size, c_black, c_white, 1);
 				scr_draw_text_outlined(24, display_get_gui_height() - 24, l10n_text("Load Custom Level Assets is turned off!"), global.default_text_size, c_black, c_red, scr_wave(0, 1, 2));
 			}
-			
+
 			draw_menu_button(0, 0, l10n_text("Back"), "back_change_background", "change_background");
 			draw_sprite_ext(spr_icon_back, 0, 20, 21, 1, 1, 0, c_white, 1);
 			draw_menu_button(level_editor_option_x, change_all_background_y, l10n_text("Change All Backgrounds"), "change_all_background", "load_official_level_to_take_from");
@@ -1278,7 +1278,7 @@ function scr_option_level_editor()
 				scr_draw_text_outlined(level_editor_option_x + 620, change_foreground_secret_y + 24, string(global.default_foreground_secret), global.default_text_size * 0.75, c_black, c_white, 1);
 			}
 			draw_menu_button_sprite(spr_icon_delete, level_editor_option_x + 432, change_foreground_secret_y, 16, 0, 1, 1, 32, 32, "", "remove_foreground_secret", "remove_theme_are_you_sure_no");
-			
+
 			if (key_b_pressed)
 			&& (!keyboard_check(vk_control))
 			&& (menu_delay == 0 && menu_joystick_delay == 0)
@@ -1310,7 +1310,7 @@ function scr_option_level_editor()
 				}
 			}
 			else
-			
+
 			#region /* Navigate change backgrounds */
 			if (menu == "change_all_background")
 			{
@@ -1680,9 +1680,9 @@ function scr_option_level_editor()
 				}
 			}
 			#endregion /* Navigate change backgrounds END */
-			
+
 			else
-			
+
 			#region /* Navigate remove backgrounds */
 			if (menu == "remove_all_background")
 			{
@@ -2034,16 +2034,16 @@ function scr_option_level_editor()
 				}
 			}
 			#endregion /* Navigate remove backgrounds END */
-			
+
 			/* Show information about what each background layer properties are */
 			draw_set_halign(fa_center);
 			scr_draw_text_outlined(get_window_width * 0.5, get_window_height - 42, l10n_text(button_info), global.default_text_size, c_black, c_white, 1);
 			scr_draw_text_outlined(get_window_width * 0.5, get_window_height - 16, l10n_text(parallax_info), global.default_text_size * 0.75, c_black, c_white, 1);
 		}
 		#endregion /* Change Background Menu END */
-		
+
 		else
-		
+
 		#region /* Change Music Menu */
 		if (menu == "back_change_music")
 		|| (menu == "change_all_music")
@@ -2061,14 +2061,14 @@ function scr_option_level_editor()
 		{
 			level_editor_option_back_to_menu = menu; /* Save what menu you came from, to use later */
 			level_editor_option_select_level_index = global.select_level_index;
-			
+
 			var change_all_music_y = 47;
 			var change_music_overworld_y = 47 * 2;
 			var change_music_underwater_y = 47 * 3;
 			var change_ambience_overworld_y = 47 * 4;
 			var change_ambience_underwater_y = 47 * 5;
 			var change_clear_melody_y = 47 * 6;
-			
+
 			if (!global.can_load_custom_level_assets)
 			{
 				draw_set_halign(fa_left);
@@ -2076,7 +2076,7 @@ function scr_option_level_editor()
 				scr_draw_text_outlined(24, display_get_gui_height() - 24, l10n_text("Load Custom Level Assets is turned off!"), global.default_text_size, c_black, c_white, 1);
 				scr_draw_text_outlined(24, display_get_gui_height() - 24, l10n_text("Load Custom Level Assets is turned off!"), global.default_text_size, c_black, c_red, scr_wave(0, 1, 2));
 			}
-			
+
 			draw_menu_button(0, 0, l10n_text("Back"), "back_change_music", "change_music");
 			draw_sprite_ext(spr_icon_back, 0, 20, 21, 1, 1, 0, c_white, 1);
 			draw_menu_button(level_editor_option_x, change_all_music_y, l10n_text("Change All Music"), "change_all_music", "load_official_level_to_take_from");
@@ -2155,7 +2155,7 @@ function scr_option_level_editor()
 				scr_draw_text_outlined(level_editor_option_x + 620, change_clear_melody_y + 24, string(global.default_clear_melody), global.default_text_size * 0.75, c_black, c_white, 1);
 			}
 			draw_menu_button_sprite(spr_icon_delete, level_editor_option_x + 432, change_clear_melody_y, 16, 0, 1, 1, 32, 32, "", "remove_clear_melody", "remove_theme_are_you_sure_no");
-			
+
 			if (key_b_pressed)
 			&& (!keyboard_check(vk_control))
 			&& (menu_delay == 0 && menu_joystick_delay == 0)
@@ -2187,7 +2187,7 @@ function scr_option_level_editor()
 				}
 			}
 			else
-			
+
 			#region /* Navigate change music */
 			if (menu == "change_all_music")
 			{
@@ -2399,9 +2399,9 @@ function scr_option_level_editor()
 				}
 			}
 			#endregion /* Navigate change music END */
-			
+
 			else
-			
+
 			#region /* Navigate remove music */
 			if (menu == "remove_all_music")
 			{
@@ -2615,11 +2615,11 @@ function scr_option_level_editor()
 			#endregion /* Navigate remove music END */
 		}
 		#endregion /* Change Music Menu END */
-		
+
 		else
-		
+
 		#region /* Background Offset, Parallax, Scale, and Tiled */
-		
+
 		#region /* Background Offset */
 		if (menu == "back_background_offset")
 		|| (menu == "custom_background1_x_offset")
@@ -2639,9 +2639,9 @@ function scr_option_level_editor()
 		|| (menu == "custom_foreground_secret_x_offset")
 		|| (menu == "custom_foreground_secret_y_offset")
 		{
-			
+
 			#region /* Background Offset Menu Navigation */
-			
+
 			#region /* Background Offset Back Navigation */
 			if (key_b_pressed)
 			&& (!keyboard_check(vk_control))
@@ -2652,7 +2652,7 @@ function scr_option_level_editor()
 			&& (menu_delay == 0 && menu_joystick_delay == 0)
 			&& (!open_dropdown)
 			{
-				
+
 				#region /* Background Offset Save level_information.ini */
 				if (global.character_select_in_this_menu == "level_editor")
 				&& (file_exists(game_save_id + "custom_levels/" + string(global.level_name) + "/data/level_information.ini"))
@@ -2689,12 +2689,12 @@ function scr_option_level_editor()
 					ini_close(); /* Don't commit the save data on Switch, this is only temporary! */
 				}
 				#endregion /* Background Offset Save level_information.ini END */
-				
+
 				menu = "background_offset";
 				menu_delay = 3;
 			}
 			#endregion /* Background Offset Back Navigation END */
-			
+
 			if (menu == "back_background_offset")
 			{
 				if (key_up)
@@ -3003,7 +3003,7 @@ function scr_option_level_editor()
 				}
 			}
 			#endregion /* Background Offset Menu Navigation END */
-			
+
 			if (global.controls_used_for_navigation == "gamepad")
 			{
 				scr_draw_gamepad_buttons(gp_face3, 40, 80, 0.75, c_white, 1, 1, 1, 1);
@@ -3015,10 +3015,10 @@ function scr_option_level_editor()
 			draw_set_halign(fa_left);
 			draw_set_valign(fa_middle);
 			scr_draw_text_outlined(80, 80, l10n_text("Hold down to change the value faster"), global.default_text_size * 0.6, c_black, c_white, 1);
-			
+
 			draw_menu_button(0, 0, l10n_text("Back"), "back_background_offset", "background_offset");
 			draw_sprite_ext(spr_icon_back, 0, 20, 21, 1, 1, 0, c_white, 1);
-			
+
 			custom_background_x_offset[1] = draw_menu_left_right_buttons(level_editor_option_x, custom_background_x_offset1_y + menu_y_offset, option_level_editor_right_arrow_x, "Background 1 x offset", custom_background_x_offset[1], "custom_background1_x_offset", 1, true);
 			custom_background_y_offset[1] = draw_menu_left_right_buttons(level_editor_option_x, custom_background_y_offset1_y + menu_y_offset, option_level_editor_right_arrow_x, "Background 1 y offset", custom_background_y_offset[1], "custom_background1_y_offset", 1, true);
 			custom_background_x_offset[2] = draw_menu_left_right_buttons(level_editor_option_x, custom_background_x_offset2_y + menu_y_offset, option_level_editor_right_arrow_x, "Background 2 x offset", custom_background_x_offset[2], "custom_background2_x_offset", 1, true);
@@ -3049,9 +3049,9 @@ function scr_option_level_editor()
 			}
 		}
 		#endregion /* Background Offset END */
-		
+
 		else
-		
+
 		#region /* Background Parallax */
 		if (menu == "back_background_parallax")
 		|| (menu == "custom_background1_x_parallax")
@@ -3063,9 +3063,9 @@ function scr_option_level_editor()
 		|| (menu == "custom_background4_x_parallax")
 		|| (menu == "custom_background4_y_parallax")
 		{
-			
+
 			#region /* Background Parallax Menu Navigation */
-			
+
 			#region /* Background Parallax Back Navigation */
 			if (key_b_pressed)
 			&& (!keyboard_check(vk_control))
@@ -3076,7 +3076,7 @@ function scr_option_level_editor()
 			&& (menu_delay == 0 && menu_joystick_delay == 0)
 			&& (!open_dropdown)
 			{
-				
+
 				#region /* Background Parallax Save level_information.ini */
 				if (global.character_select_in_this_menu == "level_editor")
 				&& (file_exists(game_save_id + "custom_levels/" + string(global.level_name) + "/data/level_information.ini"))
@@ -3089,12 +3089,12 @@ function scr_option_level_editor()
 					ini_close(); /* Don't commit the save data on Switch, this is only temporary! */
 				}
 				#endregion /* Background Parallax Save level_information.ini END */
-				
+
 				menu = "background_parallax";
 				menu_delay = 3;
 			}
 			#endregion /* Background Parallax Back Navigation END */
-		
+
 			if (menu == "back_background_parallax")
 			{
 				if (key_up)
@@ -3259,7 +3259,7 @@ function scr_option_level_editor()
 				}
 			}
 			#endregion /* Background Parallax Menu Navigation END */
-			
+
 			if (global.controls_used_for_navigation == "gamepad")
 			{
 				scr_draw_gamepad_buttons(gp_face3, 40, 80, 0.75, c_white, 1, 1, 1, 1);
@@ -3271,10 +3271,10 @@ function scr_option_level_editor()
 			draw_set_halign(fa_left);
 			draw_set_valign(fa_middle);
 			scr_draw_text_outlined(80, 80, l10n_text("Hold down to change the value faster"), global.default_text_size * 0.6, c_black, c_white, 1);
-			
+
 			draw_menu_button(0, 0, l10n_text("Back"), "back_background_parallax", "background_parallax");
 			draw_sprite_ext(spr_icon_back, 0, 20, 21, 1, 1, 0, c_white, 1);
-			
+
 			custom_background_x_parallax[1] = draw_menu_left_right_buttons(level_editor_option_x, custom_background_x_parallax1_y + menu_y_offset, option_level_editor_right_arrow_x, "Background 1 x parallax", custom_background_x_parallax[1], "custom_background1_x_parallax", 0.1, true);
 			custom_background_y_parallax[1] = draw_menu_left_right_buttons(level_editor_option_x, custom_background_y_parallax1_y + menu_y_offset, option_level_editor_right_arrow_x, "Background 1 y parallax", custom_background_y_parallax[1], "custom_background1_y_parallax", 0.1, true);
 			custom_background_x_parallax[2] = draw_menu_left_right_buttons(level_editor_option_x, custom_background_x_parallax2_y + menu_y_offset, option_level_editor_right_arrow_x, "Background 2 x parallax", custom_background_x_parallax[2], "custom_background2_x_parallax", 0.1, true);
@@ -3285,9 +3285,9 @@ function scr_option_level_editor()
 			custom_background_y_parallax[4] = draw_menu_left_right_buttons(level_editor_option_x, custom_background_y_parallax4_y + menu_y_offset, option_level_editor_right_arrow_x, "Background 4 y parallax", custom_background_y_parallax[4], "custom_background4_y_parallax", 0.1, true);
 		}
 		#endregion /* Background Parallax END */
-		
+
 		else
-		
+
 		#region /* Background Scale */
 		if (menu == "back_background_scale")
 		|| (menu == "custom_background1_x_scale")
@@ -3299,9 +3299,9 @@ function scr_option_level_editor()
 		|| (menu == "custom_background4_x_scale")
 		|| (menu == "custom_background4_y_scale")
 		{
-			
+
 			#region /* Background Scale Menu Navigation */
-			
+
 			#region /* Background Scale Back Navigation */
 			if (key_b_pressed)
 			&& (!keyboard_check(vk_control))
@@ -3316,7 +3316,7 @@ function scr_option_level_editor()
 				menu_delay = 3;
 			}
 			#endregion /* Background Scale Back Navigation END */
-		
+
 			if (menu == "back_background_scale")
 			{
 				if (key_up)
@@ -3481,7 +3481,7 @@ function scr_option_level_editor()
 				}
 			}
 			#endregion /* Background Scale Menu Navigation END */
-			
+
 			#region /* Background Scale Save level_information.ini */
 			if (global.character_select_in_this_menu == "level_editor")
 			&& (file_exists(game_save_id + "custom_levels/" + string(global.level_name) + "/data/level_information.ini"))
@@ -3498,7 +3498,7 @@ function scr_option_level_editor()
 				ini_close(); /* Don't commit the save data on Switch, this is only temporary! */
 			}
 			#endregion /* Background Scale Save level_information.ini END */
-			
+
 			if (global.controls_used_for_navigation == "gamepad")
 			{
 				scr_draw_gamepad_buttons(gp_face3, 40, 80, 0.75, c_white, 1, 1, 1, 1);
@@ -3510,10 +3510,10 @@ function scr_option_level_editor()
 			draw_set_halign(fa_left);
 			draw_set_valign(fa_middle);
 			scr_draw_text_outlined(80, 80, l10n_text("Hold down to change the value faster"), global.default_text_size * 0.6, c_black, c_white, 1);
-			
+
 			draw_menu_button(0, 0, l10n_text("Back"), "back_background_scale", "background_scale");
 			draw_sprite_ext(spr_icon_back, 0, 20, 21, 1, 1, 0, c_white, 1);
-			
+
 			custom_background1_x_scale = draw_menu_left_right_buttons(level_editor_option_x, custom_background1_x_scale_y + menu_y_offset, option_level_editor_right_arrow_x, "Background 1 x scale", custom_background1_x_scale, "custom_background1_x_scale", 0.1, true);
 			custom_background1_y_scale = draw_menu_left_right_buttons(level_editor_option_x, custom_background1_y_scale_y + menu_y_offset, option_level_editor_right_arrow_x, "Background 1 y scale", custom_background1_y_scale, "custom_background1_y_scale", 0.1, true);
 			custom_background2_x_scale = draw_menu_left_right_buttons(level_editor_option_x, custom_background2_x_scale_y + menu_y_offset, option_level_editor_right_arrow_x, "Background 2 x scale", custom_background2_x_scale, "custom_background2_x_scale", 0.1, true);
@@ -3525,9 +3525,9 @@ function scr_option_level_editor()
 			scr_scale_background();
 		}
 		#endregion /* Background Scale END */
-		
+
 		else
-		
+
 		#region /* Background Tiled */
 		if (menu == "back_background_tiled")
 		|| (menu == "custom_background1_htiled")
@@ -3539,9 +3539,9 @@ function scr_option_level_editor()
 		|| (menu == "custom_background4_htiled")
 		|| (menu == "custom_background4_vtiled")
 		{
-			
+
 			#region /* Background Tiled Menu Navigation */
-			
+
 			#region /* Background Tiled Back Navigation */
 			if (key_b_pressed)
 			&& (!keyboard_check(vk_control))
@@ -3552,7 +3552,7 @@ function scr_option_level_editor()
 			&& (menu_delay == 0 && menu_joystick_delay == 0)
 			&& (!open_dropdown)
 			{
-				
+
 				#region /* Background Tiled Save level_information.ini */
 				if (global.character_select_in_this_menu == "level_editor")
 				&& (file_exists(game_save_id + "custom_levels/" + string(global.level_name) + "/data/level_information.ini"))
@@ -3569,12 +3569,12 @@ function scr_option_level_editor()
 					ini_close(); /* Don't commit the save data on Switch, this is only temporary! */
 				}
 				#endregion /* Background Tiled Save level_information.ini END */
-				
+
 				menu = "background_tiled";
 				menu_delay = 3;
 			}
 			#endregion /* Background Tiled Back Navigation END */
-		
+
 			if (menu == "back_background_tiled")
 			{
 				if (key_up)
@@ -3811,10 +3811,10 @@ function scr_option_level_editor()
 				}
 			}
 			#endregion /* Background Tiled Menu Navigation END */
-			
+
 			draw_menu_button(0, 0, l10n_text("Back"), "back_background_tiled", "background_tiled");
 			draw_sprite_ext(spr_icon_back, 0, 20, 21, 1, 1, 0, c_white, 1);
-			
+
 			draw_menu_checkmark(level_editor_option_x, custom_background1_htiled_y + menu_y_offset, "Background 1 horizontal tiled", "custom_background1_htiled", custom_background1_htiled, true);
 			draw_menu_checkmark(level_editor_option_x, custom_background1_vtiled_y + menu_y_offset, "Background 1 vertical tiled", "custom_background1_vtiled", custom_background1_vtiled, true);
 			draw_menu_checkmark(level_editor_option_x, custom_background2_htiled_y + menu_y_offset, "Background 2 horizontal tiled", "custom_background2_htiled", custom_background2_htiled, true);
@@ -3825,11 +3825,11 @@ function scr_option_level_editor()
 			draw_menu_checkmark(level_editor_option_x, custom_background4_vtiled_y + menu_y_offset, "Background 4 vertical tiled", "custom_background4_vtiled", custom_background4_vtiled, true);
 		}
 		#endregion /* Background Tiled END */
-		
+
 		#endregion /* Background Offset, Parallax, Scale, and Tiled END */
-		
+
 		else
-		
+
 		#region /* Choose official level to take from */
 		if (menu == "load_official_level_to_take_from")
 		{
@@ -3840,29 +3840,29 @@ function scr_option_level_editor()
 			menu_delay = 3;
 			menu = "load2_official_level_to_take_from";
 		}
-		
+
 		else
-		
+
 		if (menu == "load2_official_level_to_take_from")
 		{
 			scr_draw_loading(1);
 			scr_draw_text_outlined(display_get_gui_width() * 0.5, display_get_gui_height() * 0.5 + 64 + 32, string(file_found), global.default_text_size, c_white, c_black, 1);
-			
+
 			/* Load official level data */
-			
-			file_load_timer ++;
-			
+
+			file_load_timer++;
+
 			if (file_load_timer > 1)
 			{
 				file_found = ds_list_find_value(global.all_loaded_main_levels, level_find_pos)
-				level_find_pos ++;
-				
+				level_find_pos++;
+
 				if (file_found = ds_list_find_value(global.all_loaded_main_levels, ds_list_size(global.all_loaded_main_levels) - 1))
 				{
 					file_found = ds_list_find_value(global.all_loaded_main_levels, ds_list_size(global.all_loaded_main_levels) - 1)
-					
+
 					#region /* Update Thumbnail */
-					
+
 					/* PNG Official Thumbnail */
 					if (file_exists("levels/" + file_found + "/thumbnail.png"))
 					{
@@ -3879,7 +3879,7 @@ function scr_option_level_editor()
 						ds_list_add(global.thumbnail_sprite, spr_thumbnail_missing)
 					}
 					#endregion /* Update Thumbnail END */
-					
+
 					select_custom_level_menu_open = false;
 					level_editor_template_select = true;
 					global.select_level_index = 1; /* Cursor should start at level 1, as level 1 is the default level to choose from */
@@ -3889,7 +3889,7 @@ function scr_option_level_editor()
 				}
 				else
 				{
-					
+
 					#region /* Update Thumbnail */
 					/* PNG Official Thumbnail */
 					if (file_exists("levels/" + file_found + "/thumbnail.png"))
@@ -3907,14 +3907,14 @@ function scr_option_level_editor()
 						ds_list_add(global.thumbnail_sprite, spr_thumbnail_missing)
 					}
 					#endregion /* Update Thumbnail END */
-					
+
 					file_load_timer = 0; /* 0 not 1. So it doesn't do the "file find first" code which it does at 1 */
 				}
 			}
 		}
-		
+
 		else
-		
+
 		if (menu == "back_from_level_editor")
 		|| (menu == "choose_official_level_to_take_from")
 		{
@@ -3922,9 +3922,9 @@ function scr_option_level_editor()
 			scr_custom_level_select_with_the_mouse(global.all_loaded_main_levels);
 		}
 		#endregion /* Choose official level to take from END */
-		
+
 		else
-		
+
 		#region /* Remove level theme data */
 		if (menu == "remove_theme_are_you_sure_no")
 		|| (menu == "remove_theme_are_you_sure_yes")
@@ -4005,14 +4005,14 @@ function scr_option_level_editor()
 			draw_menu_button(display_get_gui_width() * 0.5 - 185, remove_theme_are_you_sure_no_y, l10n_text("No"), "remove_theme_are_you_sure_no", level_editor_option_back_to_menu);
 			draw_menu_button(display_get_gui_width() * 0.5 - 185, remove_theme_are_you_sure_yes_y, l10n_text("Yes"), "remove_theme_are_you_sure_yes", "remove_theme_are_you_sure_yes", c_red, 1);
 			draw_sprite_ext(spr_icon_delete, 0, display_get_gui_width() * 0.5 - 185 + 20, remove_theme_are_you_sure_yes_y + 21, 1, 1, 0, c_white, 1);
-			
+
 			if (menu == "remove_theme_are_you_sure_no")
 			{
 				if (key_a_pressed)
 				&& (menu_delay == 0 && menu_joystick_delay == 0)
 				&& (!open_dropdown)
 				{
-					
+
 					menu = level_editor_option_back_to_menu; /* Go back to the previous menu */
 					menu_delay = 3;
 				}
@@ -4040,7 +4040,7 @@ function scr_option_level_editor()
 				&& menu_joystick_delay == 0)
 				&& (!open_dropdown)
 				{
-					
+
 					#region /* Set default theme values to empty string */
 					if (level_editor_option_back_to_menu == "remove_entire_theme")
 					{
@@ -4195,7 +4195,7 @@ function scr_option_level_editor()
 						ini_close(); /* Don't commit the save data on Switch, this is only temporary! */
 					}
 					#endregion /* Set default theme values to empty string END */
-					
+
 					if (level_editor_option_back_to_menu != "change_all_music") /* Don't reload all backgrounds if you are only changing sound related options */
 					&& (level_editor_option_back_to_menu != "change_music_overworld")
 					&& (level_editor_option_back_to_menu != "change_music_underwater")
@@ -4206,7 +4206,7 @@ function scr_option_level_editor()
 						scr_update_all_backgrounds();
 					}
 					scr_update_all_music();
-					
+
 					menu = level_editor_option_back_to_menu; /* Lastly, go back to the previous menu */
 					menu_delay = 3;
 				}
@@ -4224,7 +4224,7 @@ function scr_option_level_editor()
 			}
 		}
 		#endregion /* Remove level theme data END */
-		
+
 		scr_draw_option_description();
 	}
 }

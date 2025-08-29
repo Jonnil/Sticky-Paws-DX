@@ -49,7 +49,7 @@ if (!place_meeting(x - 8, y, obj_player))
 	draw_yscale = lerp(draw_yscale, image_yscale, 0.5);
 	if (time < 201)
 	{
-		time ++;
+		time++;
 	}
 }
 else

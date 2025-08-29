@@ -41,24 +41,24 @@ scr_initialize_translations();
 function scr_initialize_translations()
 {
 	show_debug_message("[scr_initialize_translations] Starting translation initialization...");
-	
+
 	/* The user-downloaded file we want to check for: */
 	var user_file_path = game_save_id + "language_packs/all.txt";
 	show_debug_message("[scr_initialize_translations] Checking user-downloaded path: " + string(user_file_path));
-	
+
 	/* The built-in fallback: */
 	var included_file_path = "localization.csv";
 	show_debug_message("[scr_initialize_translations] Checking built-in fallback path: " + string(included_file_path));
-	
+
 	var final_path_to_use = "";
-	
+
 	/* 1) Check if the user-downloaded file exists: */
 	if (file_exists(user_file_path))
 	{
 		final_path_to_use = user_file_path;
 		show_debug_message("[scr_initialize_translations] Found user-downloaded CSV: " + user_file_path);
 	}
-	
+
 	/* 2) Else, check if the included fallback file exists: */
 	else
 	if (file_exists(included_file_path))
@@ -66,7 +66,7 @@ function scr_initialize_translations()
 		final_path_to_use = included_file_path;
 		show_debug_message("[scr_initialize_translations] User file missing. Using included CSV instead: " + included_file_path);
 	}
-	
+
 	/* 3) If neither exist, set no translations: */
 	else
 	{
@@ -76,11 +76,11 @@ function scr_initialize_translations()
 		global.language_completion = 0;
 		return;
 	}
-	
+
 	/* Now load whichever CSV we decided on: */
 	show_debug_message("[scr_initialize_translations] Loading translation file: " + final_path_to_use);
 	var translations_map = scr_language_load_csv_into_memory(final_path_to_use);
-	
+
 	if (translations_map == -1)
 	{
 		/* Something went wrong loading the CSV */
@@ -90,13 +90,13 @@ function scr_initialize_translations()
 		global.language_completion = 0;
 		return;
 	}
-	
+
 	/* Store the map so we can look up row indices from the code strings */
 	global.translations = translations_map;
-	
+
 	show_debug_message("[scr_initialize_translations] Translations loaded successfully into memory.");
 	show_debug_message("[scr_initialize_translations] Map entry count: " + string(ds_map_size(translations_map)));
-	
+
 	/* Grid size check */
 	if (global.language_local_data != 0)
 	{

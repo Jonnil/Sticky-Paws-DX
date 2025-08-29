@@ -481,17 +481,17 @@ if (hp <= 0)
 		effect_create_above(ef_smoke, x - 32, y, 2, c_white);
 		effect_create_above(ef_smoke, x - 42, y + 32, 2, c_white);
 		effect_create_above(ef_smoke, x - 32, y + 64, 2, c_white);
-		
+
 		effect_create_above(ef_smoke, x, y, 2, c_white);
 		effect_create_above(ef_smoke, x, y + 32, 2, c_white);
 		effect_create_above(ef_smoke, x, y + 64, 2, c_white);
-		
+
 		effect_create_above(ef_smoke, x + 32, y, 2, c_white);
 		effect_create_above(ef_smoke, x + 42, y + 32, 2, c_white);
 		effect_create_above(ef_smoke, x + 32, y + 64, 2, c_white);
-		
+
 		scr_different_items_inside(bbox_top);
-		
+
 		if (!empty)
 		{
 			/* 1 Coin */
@@ -533,5 +533,5 @@ if (flying_back > 2)
 }
 if (flying_back > 1)
 {
-	flying_back --;
+	flying_back--;
 }

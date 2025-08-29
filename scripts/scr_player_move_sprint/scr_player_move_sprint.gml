@@ -1,6 +1,6 @@
 function scr_player_move_run()
 {
-	
+
 	#region /* Run */
 	if (goal)
 	&& (global.time_countdown_bonus <= 0)
@@ -64,5 +64,5 @@ function scr_player_move_run()
 		}
 	}
 	#endregion /* Run END */
-	
+
 }

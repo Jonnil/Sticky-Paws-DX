@@ -1,6 +1,6 @@
 function scr_draw_list_of_placable_objects()
 {
-	
+
 	#region /* List of Placable Objects */
 	if (selected_menu_alpha > 0)
 	|| (initialize_recent_object_selected)
@@ -15,46 +15,46 @@ function scr_draw_list_of_placable_objects()
 		{
 			order_index = 0;
 			unlock_index = 0;
-			
+
 			/* Daily Build Standard Objects use this category: "daily_build_standard" */
 			/* Daily Build Featured Objects use this category: "daily_build_featured" */
-			
+
 			/*
-			o_id							=	The ID of the object
-			o_can_make_bigger				=	If you can place objects with bigger brush tool or not
-			sprite							=	Sprite the object uses
-			mask							=	Mask the object uses
-			scroll_x						=	Scroll X
-			o_scale							=	Scale of the object sprite
-			o_rotation						=	Rotation of the object sprite
-			o_color							=	Color of the object sprite
-			o_scroll_y						=	Y offset the sprite
-			o_x_offset						=	X offset the sprite
-			o_alpha							=	Alpha of the object sprite
-			o_add_order_index				=	Add order index
-			o_name							=	Name of the object
-			o_description					=	Description of the object
-			o_image_index					=	Image index of the object sprite
-			o_category						=	What category this object shows up in level editor
-			o_daily_build_category			=	What category this object shows up in Daily Build
+			o_id                            =    The ID of the object
+			o_can_make_bigger                =    If you can place objects with bigger brush tool or not
+			sprite                            =    Sprite the object uses
+			mask                            =    Mask the object uses
+			scroll_x                        =    Scroll X
+			o_scale                            =    Scale of the object sprite
+			o_rotation                        =    Rotation of the object sprite
+			o_color                            =    Color of the object sprite
+			o_scroll_y                        =    Y offset the sprite
+			o_x_offset                        =    X offset the sprite
+			o_alpha                            =    Alpha of the object sprite
+			o_add_order_index                =    Add order index
+			o_name                            =    Name of the object
+			o_description                    =    Description of the object
+			o_image_index                    =    Image index of the object sprite
+			o_category                        =    What category this object shows up in level editor
+			o_daily_build_category            =    What category this object shows up in Daily Build
 			*/
-			
+
 			#region /* Object Array */
 			var objects = [
 				/* Defaults for each variable: o_id = 0, o_can_make_bigger: true, o_sprite: spr_wall, o_mask: spr_wall, scroll_x = +100, o_scale: 1, o_rotation: 0, o_color: c_white, o_scroll_y: 0, o_x_offset: 0, o_alpha: 1, o_add_order_index: 1, o_name: "", o_description: "", o_image_index: 0, o_category: "", o_daily_build_category: "" */
-				
+
 				/* Category: Terrain */
 				{ o_id: LEVEL_OBJECT_ID.ID_WALL_DIRT, o_can_make_bigger: true, o_sprite: spr_wall_dirt, o_mask: spr_wall, o_scroll_x: +100, o_scale: 1, o_rotation: 0, o_color: c_white, o_scroll_y: 0, o_x_offset: 0, o_alpha: 1, o_add_order_index: 1, o_name: "Dirt", o_description: "", o_image_index: 0, o_category: "terrain", o_daily_build_category: "daily_build_featured", o_text: "", o_video_tutorial: ""},
-			    { o_id: LEVEL_OBJECT_ID.ID_WALL_GLASS, o_can_make_bigger: true, o_sprite: spr_wall_glass, o_mask: spr_wall, o_scroll_x: +100, o_scale: 1, o_rotation: 0, o_color: c_white, o_scroll_y: 0, o_x_offset: 0, o_alpha: 1, o_add_order_index: 1, o_name: "Glass", o_description: "", o_image_index: 0, o_category: "terrain", o_daily_build_category: "daily_build_featured", o_text: "", o_video_tutorial: ""},
-			    { o_id: LEVEL_OBJECT_ID.ID_WALL_GRASS, o_can_make_bigger: true, o_sprite: spr_wall_grass, o_mask: spr_wall, o_scroll_x: +100, o_scale: 1, o_rotation: 0, o_color: c_white, o_scroll_y: 0, o_x_offset: 0, o_alpha: 1, o_add_order_index: 1, o_name: "Grass", o_description: "", o_image_index: 0, o_category: "terrain", o_daily_build_category: "daily_build_standard", o_text: "", o_video_tutorial: ""},
-			    { o_id: LEVEL_OBJECT_ID.ID_WALL_GRAVEL, o_can_make_bigger: true, o_sprite: spr_wall_gravel, o_mask: spr_wall, o_scroll_x: +100, o_scale: 1, o_rotation: 0, o_color: c_white, o_scroll_y: 0, o_x_offset: 0, o_alpha: 1, o_add_order_index: 1, o_name: "Gravel", o_description: "", o_image_index: 0, o_category: "terrain", o_daily_build_category: "daily_build_featured", o_text: "", o_video_tutorial: ""},
-			    { o_id: LEVEL_OBJECT_ID.ID_WALL_METAL, o_can_make_bigger: true, o_sprite: spr_wall_metal, o_mask: spr_wall, o_scroll_x: +100, o_scale: 1, o_rotation: 0, o_color: c_white, o_scroll_y: 0, o_x_offset: 0, o_alpha: 1, o_add_order_index: 1, o_name: "Metal", o_description: "", o_image_index: 0, o_category: "terrain", o_daily_build_category: "daily_build_featured", o_text: "", o_video_tutorial: ""},
-			    { o_id: LEVEL_OBJECT_ID.ID_WALL_STONE, o_can_make_bigger: true, o_sprite: spr_wall_stone, o_mask: spr_wall, o_scroll_x: +100, o_scale: 1, o_rotation: 0, o_color: c_white, o_scroll_y: 0, o_x_offset: 0, o_alpha: 1, o_add_order_index: 1, o_name: "Stone", o_description: "", o_image_index: 0, o_category: "terrain", o_daily_build_category: "daily_build_standard", o_text: "", o_video_tutorial: ""},
-			    { o_id: LEVEL_OBJECT_ID.ID_WALL_WOOD, o_can_make_bigger: true, o_sprite: spr_wall_wood, o_mask: spr_wall, o_scroll_x: +100, o_scale: 1, o_rotation: 0, o_color: c_white, o_scroll_y: 0, o_x_offset: 0, o_alpha: 1, o_add_order_index: 1, o_name: "Wood", o_description: "", o_image_index: 0, o_category: "terrain", o_daily_build_category: "daily_build_featured", o_text: "", o_video_tutorial: ""},
-			    { o_id: LEVEL_OBJECT_ID.ID_BLACK_WALL, o_can_make_bigger: true, o_sprite: spr_black_wall, o_mask: spr_wall, o_scroll_x: +100, o_scale: 1, o_rotation: 0, o_color: c_white, o_scroll_y: 0, o_x_offset: 0, o_alpha: 1, o_add_order_index: 1, o_name: "Black Wall", o_description: "Can't interact with the sides of black walls", o_image_index: 0, o_category: "terrain", o_daily_build_category: "daily_build_featured", o_text: "", o_video_tutorial: ""},
-			    { o_id: LEVEL_OBJECT_ID.ID_SPIKES, o_can_make_bigger: true, o_sprite: spr_spikes, o_mask: spr_wall, o_scroll_x: +100, o_scale: 1, o_rotation: 0, o_color: c_white, o_scroll_y: 0, o_x_offset: 0, o_alpha: 1, o_add_order_index: 1, o_name: "Spikes", o_description: "", o_image_index: 0, o_category: "terrain", o_daily_build_category: "daily_build_featured", o_text: "", o_video_tutorial: ""},
-			    { o_id: LEVEL_OBJECT_ID.ID_SEMISOLID_PLATFORM, o_can_make_bigger: true, o_sprite: spr_semisolid_platform, o_mask: spr_wall, o_scroll_x: +100, o_scale: 1, o_rotation: 0, o_color: c_white, o_scroll_y: 0, o_x_offset: 0, o_alpha: 1, o_add_order_index: 1, o_name: "Semisolid Platform", o_description: "" , o_image_index: 0, o_category: "terrain", o_daily_build_category: "daily_build_featured", o_text: "", o_video_tutorial: ""},
-			    { o_id: LEVEL_OBJECT_ID.ID_BRICK_BLOCK, o_can_make_bigger: true, o_sprite: spr_brick_block, o_mask: spr_wall, o_scroll_x: +100, o_scale: 1, o_rotation: 0, o_color: c_white, o_scroll_y: 0, o_x_offset: 0, o_alpha: 1, o_add_order_index: 1, o_name: "Lamp Block", o_description: "Can be destroyed by player jumping underneath them if there is no items inside", o_image_index: 0, o_category: "terrain", o_daily_build_category: "daily_build_standard", o_text: "", o_video_tutorial: ""},
+				{ o_id: LEVEL_OBJECT_ID.ID_WALL_GLASS, o_can_make_bigger: true, o_sprite: spr_wall_glass, o_mask: spr_wall, o_scroll_x: +100, o_scale: 1, o_rotation: 0, o_color: c_white, o_scroll_y: 0, o_x_offset: 0, o_alpha: 1, o_add_order_index: 1, o_name: "Glass", o_description: "", o_image_index: 0, o_category: "terrain", o_daily_build_category: "daily_build_featured", o_text: "", o_video_tutorial: ""},
+				{ o_id: LEVEL_OBJECT_ID.ID_WALL_GRASS, o_can_make_bigger: true, o_sprite: spr_wall_grass, o_mask: spr_wall, o_scroll_x: +100, o_scale: 1, o_rotation: 0, o_color: c_white, o_scroll_y: 0, o_x_offset: 0, o_alpha: 1, o_add_order_index: 1, o_name: "Grass", o_description: "", o_image_index: 0, o_category: "terrain", o_daily_build_category: "daily_build_standard", o_text: "", o_video_tutorial: ""},
+				{ o_id: LEVEL_OBJECT_ID.ID_WALL_GRAVEL, o_can_make_bigger: true, o_sprite: spr_wall_gravel, o_mask: spr_wall, o_scroll_x: +100, o_scale: 1, o_rotation: 0, o_color: c_white, o_scroll_y: 0, o_x_offset: 0, o_alpha: 1, o_add_order_index: 1, o_name: "Gravel", o_description: "", o_image_index: 0, o_category: "terrain", o_daily_build_category: "daily_build_featured", o_text: "", o_video_tutorial: ""},
+				{ o_id: LEVEL_OBJECT_ID.ID_WALL_METAL, o_can_make_bigger: true, o_sprite: spr_wall_metal, o_mask: spr_wall, o_scroll_x: +100, o_scale: 1, o_rotation: 0, o_color: c_white, o_scroll_y: 0, o_x_offset: 0, o_alpha: 1, o_add_order_index: 1, o_name: "Metal", o_description: "", o_image_index: 0, o_category: "terrain", o_daily_build_category: "daily_build_featured", o_text: "", o_video_tutorial: ""},
+				{ o_id: LEVEL_OBJECT_ID.ID_WALL_STONE, o_can_make_bigger: true, o_sprite: spr_wall_stone, o_mask: spr_wall, o_scroll_x: +100, o_scale: 1, o_rotation: 0, o_color: c_white, o_scroll_y: 0, o_x_offset: 0, o_alpha: 1, o_add_order_index: 1, o_name: "Stone", o_description: "", o_image_index: 0, o_category: "terrain", o_daily_build_category: "daily_build_standard", o_text: "", o_video_tutorial: ""},
+				{ o_id: LEVEL_OBJECT_ID.ID_WALL_WOOD, o_can_make_bigger: true, o_sprite: spr_wall_wood, o_mask: spr_wall, o_scroll_x: +100, o_scale: 1, o_rotation: 0, o_color: c_white, o_scroll_y: 0, o_x_offset: 0, o_alpha: 1, o_add_order_index: 1, o_name: "Wood", o_description: "", o_image_index: 0, o_category: "terrain", o_daily_build_category: "daily_build_featured", o_text: "", o_video_tutorial: ""},
+				{ o_id: LEVEL_OBJECT_ID.ID_BLACK_WALL, o_can_make_bigger: true, o_sprite: spr_black_wall, o_mask: spr_wall, o_scroll_x: +100, o_scale: 1, o_rotation: 0, o_color: c_white, o_scroll_y: 0, o_x_offset: 0, o_alpha: 1, o_add_order_index: 1, o_name: "Black Wall", o_description: "Can't interact with the sides of black walls", o_image_index: 0, o_category: "terrain", o_daily_build_category: "daily_build_featured", o_text: "", o_video_tutorial: ""},
+				{ o_id: LEVEL_OBJECT_ID.ID_SPIKES, o_can_make_bigger: true, o_sprite: spr_spikes, o_mask: spr_wall, o_scroll_x: +100, o_scale: 1, o_rotation: 0, o_color: c_white, o_scroll_y: 0, o_x_offset: 0, o_alpha: 1, o_add_order_index: 1, o_name: "Spikes", o_description: "", o_image_index: 0, o_category: "terrain", o_daily_build_category: "daily_build_featured", o_text: "", o_video_tutorial: ""},
+				{ o_id: LEVEL_OBJECT_ID.ID_SEMISOLID_PLATFORM, o_can_make_bigger: true, o_sprite: spr_semisolid_platform, o_mask: spr_wall, o_scroll_x: +100, o_scale: 1, o_rotation: 0, o_color: c_white, o_scroll_y: 0, o_x_offset: 0, o_alpha: 1, o_add_order_index: 1, o_name: "Semisolid Platform", o_description: "" , o_image_index: 0, o_category: "terrain", o_daily_build_category: "daily_build_featured", o_text: "", o_video_tutorial: ""},
+				{ o_id: LEVEL_OBJECT_ID.ID_BRICK_BLOCK, o_can_make_bigger: true, o_sprite: spr_brick_block, o_mask: spr_wall, o_scroll_x: +100, o_scale: 1, o_rotation: 0, o_color: c_white, o_scroll_y: 0, o_x_offset: 0, o_alpha: 1, o_add_order_index: 1, o_name: "Lamp Block", o_description: "Can be destroyed by player jumping underneath them if there is no items inside", o_image_index: 0, o_category: "terrain", o_daily_build_category: "daily_build_standard", o_text: "", o_video_tutorial: ""},
 				{ o_id: LEVEL_OBJECT_ID.ID_QUESTION_BLOCK, o_can_make_bigger: true, o_sprite: spr_question_block, o_mask: spr_wall, o_scroll_x: +100, o_scale: 1, o_rotation: 0, o_color: c_white, o_scroll_y: 0, o_x_offset: 0, o_alpha: 1, o_add_order_index: 1, o_name: "? Block", o_description: "Can't be destroyed by player jumping underneath them", o_image_index: 0, o_category: "terrain", o_daily_build_category: "daily_build_standard", o_text: "", o_video_tutorial: ""},
 				{ o_id: LEVEL_OBJECT_ID.ID_HARD_BLOCK, o_can_make_bigger: true, o_sprite: spr_hard_block, o_mask: spr_wall, o_scroll_x: +100, o_scale: 1, o_rotation: 0, o_color: c_white, o_scroll_y: 0, o_x_offset: 0, o_alpha: 1, o_add_order_index: 1, o_name: "Hard Block", o_description: "", o_image_index: 0, o_category: "terrain", o_daily_build_category: "daily_build_featured", o_text: "", o_video_tutorial: ""},
 				{ o_id: LEVEL_OBJECT_ID.ID_FALLING_BLOCK, o_can_make_bigger: true, o_sprite: spr_falling_block, o_mask: spr_wall, o_scroll_x: +100, o_scale: 1, o_rotation: 0, o_color: c_white, o_scroll_y: 0, o_x_offset: 0, o_alpha: 1, o_add_order_index: 1, o_name: "Falling Block", o_description: "Falls shortly after you stand on them for too long", o_image_index: 0, o_category: "terrain", o_daily_build_category: "daily_build_featured", o_text: "", o_video_tutorial: ""},
@@ -79,7 +79,7 @@ function scr_draw_list_of_placable_objects()
 				{ o_id: LEVEL_OBJECT_ID.ID_APPEAR_BLOCK_3, o_can_make_bigger: true, o_sprite: spr_appear_block, o_mask: spr_wall, o_scroll_x: +100, o_scale: 1, o_rotation: 0, o_color: c_red, o_scroll_y: 0, o_x_offset: 0, o_alpha: 1, o_add_order_index: 1, o_name: "Appear Block 3", o_description: "This block appears and disappears in cycles", o_image_index: 0, o_category: "terrain", o_daily_build_category: "daily_build_featured", o_text: "", o_video_tutorial: ""},
 				{ o_id: LEVEL_OBJECT_ID.ID_APPEAR_BLOCK_4, o_can_make_bigger: true, o_sprite: spr_appear_block, o_mask: spr_wall, o_scroll_x: +100, o_scale: 1, o_rotation: 0, o_color: c_purple, o_scroll_y: 0, o_x_offset: 0, o_alpha: 1, o_add_order_index: 1, o_name: "Appear Block 4", o_description: "This block appears and disappears in cycles", o_image_index: 0, o_category: "terrain", o_daily_build_category: "daily_build_featured", o_text: "", o_video_tutorial: ""},
 				{ o_id: LEVEL_OBJECT_ID.ID_APPEAR_BLOCK_5, o_can_make_bigger: true, o_sprite: spr_appear_block, o_mask: spr_wall, o_scroll_x: +100, o_scale: 1, o_rotation: 0, o_color: c_lime, o_scroll_y: 0, o_x_offset: 0, o_alpha: 1, o_add_order_index: 1, o_name: "Appear Block 5", o_description: "This block appears and disappears in cycles", o_image_index: 0, o_category: "terrain", o_daily_build_category: "daily_build_featured", o_text: "", o_video_tutorial: ""},
-				
+
 				/* Category: Decoration */
 				{ o_id: LEVEL_OBJECT_ID.ID_ARROW_SIGN, o_can_make_bigger: false, o_sprite: spr_arrow_sign, o_mask: spr_wall, o_scroll_x: +100, o_scale: 1, o_rotation: 0, o_color: c_white, o_scroll_y: 0, o_x_offset: 0, o_alpha: 1, o_add_order_index: 1, o_name: "Arrow Sign", o_description: "", o_image_index: 0, o_category: "decoration", o_daily_build_category: "daily_build_featured", o_text: "", o_video_tutorial: ""},
 				{ o_id: LEVEL_OBJECT_ID.ID_SIGN_READABLE, o_can_make_bigger: false, o_sprite: spr_sign_readable, o_mask: spr_wall, o_scroll_x: +100, o_scale: 1, o_rotation: 0, o_color: c_white, o_scroll_y: 0, o_x_offset: 0, o_alpha: 1, o_add_order_index: 1, o_name: "Readable Sign", o_description: "A sign that displays custom text allowing you to guide players provide hints or add story elements to your level", o_image_index: 0, o_category: "decoration", o_daily_build_category: "daily_build_featured", o_text: "", o_video_tutorial: ""},
@@ -87,7 +87,7 @@ function scr_draw_list_of_placable_objects()
 				{ o_id: LEVEL_OBJECT_ID.ID_BUSH, o_can_make_bigger: true, o_sprite: spr_bush, o_mask: spr_wall, o_scroll_x: +100, o_scale: 1, o_rotation: 0, o_color: c_white, o_scroll_y: 0, o_x_offset: 0, o_alpha: 1, o_add_order_index: 1, o_name: "Bush", o_description: "", o_image_index: 0, o_category: "decoration", o_daily_build_category: "daily_build_featured", o_text: "", o_video_tutorial: ""},
 				{ o_id: LEVEL_OBJECT_ID.ID_SIGN_CROUCH, o_can_make_bigger: false, o_sprite: spr_sign_crouch, o_mask: spr_wall, o_scroll_x: +100, o_scale: 0.5, o_rotation: 0, o_color: c_white, o_scroll_y: 0, o_x_offset: 0, o_alpha: 1, o_add_order_index: 1, o_name: "Tutorial Signs", o_description: "Teach the player what abilities they have", o_image_index: 0, o_category: "decoration", o_daily_build_category: "daily_build_standard", o_text: "", o_video_tutorial: ""},
 				{ o_id: LEVEL_OBJECT_ID.ID_CAKE_STEALING_ENEMY, o_can_make_bigger: false, o_sprite: global.resource_pack_sprite_cake, o_mask: spr_wall, o_scroll_x: +100, o_scale: 1, o_rotation: 0, o_color: c_white, o_scroll_y: 0, o_x_offset: 0, o_alpha: 1, o_add_order_index: 1, o_name: "Cake Rat", o_description: "This rat stole your cake! Let the player try to catch them before the end of the level. The player will chase this rat until the very end of the game", o_image_index: 0, o_category: "decoration", o_daily_build_category: "daily_build_standard", o_text: "", o_video_tutorial: ""},
-				
+
 				/* Category: Item */
 				{ o_id: LEVEL_OBJECT_ID.ID_BASIC_COLLECTIBLE, o_can_make_bigger: true, o_sprite: global.resource_pack_sprite_basic_collectible, o_mask: spr_wall, o_scroll_x: +100, o_scale: 1, o_rotation: 0, o_color: c_white, o_scroll_y: 0, o_x_offset: 0, o_alpha: 1, o_add_order_index: 1, o_name: "Fish", o_description: "One of the most fundamental objects to include in a level!. Fish usually come in small groups and can also be used to indicate a path", o_image_index: 0, o_category: "item", o_daily_build_category: "daily_build_standard", o_text: "", o_video_tutorial: ""},
 				{ o_id: LEVEL_OBJECT_ID.ID_10_BULK_COLLECTIBLE, o_can_make_bigger: false, o_sprite: global.resource_pack_sprite_bulk_collectible, o_mask: spr_wall, o_scroll_x: +100, o_scale: 1, o_rotation: 0, o_color: c_white, o_scroll_y: 0, o_x_offset: 0, o_alpha: 1, o_add_order_index: 1, o_name: "10-Fish", o_description: "A large Fish worth 10 regular Fish", o_image_index: 0, o_category: "item", o_daily_build_category: "daily_build_featured", o_text: "10", o_video_tutorial: ""},
@@ -100,7 +100,7 @@ function scr_draw_list_of_placable_objects()
 				{ o_id: LEVEL_OBJECT_ID.ID_ONE_UP, o_can_make_bigger: true, o_sprite: sprite_lives_icon, o_mask: spr_wall, o_scroll_x: +100, o_scale: 1, o_rotation: 0, o_color: c_white, o_scroll_y: 0, o_x_offset: 0, o_alpha: 1, o_add_order_index: 1, o_name: "Extra Life", o_description: "Adds 1 extra life to the life counter", o_image_index: 0, o_category: "item", o_daily_build_category: "daily_build_featured", o_text: "1-UP", o_video_tutorial: ""},
 				{ o_id: LEVEL_OBJECT_ID.ID_TWO_UP, o_can_make_bigger: true, o_sprite: sprite_lives_icon, o_mask: spr_wall, o_scroll_x: +100, o_scale: 1, o_rotation: 0, o_color: c_lime, o_scroll_y: 0, o_x_offset: 0, o_alpha: 1, o_add_order_index: 1, o_name: "2 Extra Lives", o_description: "Adds 2 extra lives to the life counter", o_image_index: 0, o_category: "item", o_daily_build_category: "daily_build_featured", o_text: "2-UP", o_video_tutorial: ""},
 				{ o_id: LEVEL_OBJECT_ID.ID_THREE_UP, o_can_make_bigger: true, o_sprite: sprite_lives_icon, o_mask: spr_wall, o_scroll_x: +100, o_scale: 1, o_rotation: 0, o_color: c_blue, o_scroll_y: 0, o_x_offset: 0, o_alpha: 1, o_add_order_index: 1, o_name: "3 Extra Lives", o_description: "Adds 3 extra lives to the life counter", o_image_index: 0, o_category: "item", o_daily_build_category: "daily_build_featured", o_text: "3-UP", o_video_tutorial: ""},
-				
+
 				/* Category: Enemy */
 				{ o_id: LEVEL_OBJECT_ID.ID_BASIC_ENEMY, o_can_make_bigger: true, o_sprite: sprite_basic_enemy, o_mask: spr_wall, o_scroll_x: +100, o_scale: 1, o_rotation: 0, o_color: c_white, o_scroll_y: 0, o_x_offset: 0, o_alpha: 1, o_add_order_index: 1, o_name: "Rat", o_description: "", o_image_index: 0, o_category: "enemy", o_daily_build_category: "daily_build_standard", o_text: "", o_video_tutorial: ""},
 				{ o_id: LEVEL_OBJECT_ID.ID_ENEMY_BOWLINGBALL, o_can_make_bigger: true, o_sprite: sprite_enemy_bowlingball, o_mask: spr_wall, o_scroll_x: +100, o_scale: 1, o_rotation: 0, o_color: c_white, o_scroll_y: 0, o_x_offset: 0, o_alpha: 1, o_add_order_index: 1, o_name: "Bowlingball Rat", o_description: "", o_image_index: 0, o_category: "enemy", o_daily_build_category: "daily_build_featured", o_text: "", o_video_tutorial: ""},
@@ -109,7 +109,7 @@ function scr_draw_list_of_placable_objects()
 				{ o_id: LEVEL_OBJECT_ID.ID_ENEMY_BULLET_RIGHT, o_can_make_bigger: true, o_sprite: global.resource_pack_sprite_bullet, o_mask: spr_wall, o_scroll_x: +100, o_scale: 1, o_rotation: 0, o_color: c_white, o_scroll_y: 0, o_x_offset: 0, o_alpha: 1, o_add_order_index: 1, o_name: "Bullet Rat Right", o_description: "", o_image_index: 0, o_category: "enemy", o_daily_build_category: "daily_build_featured", o_text: "", o_video_tutorial: ""},
 				{ o_id: LEVEL_OBJECT_ID.ID_BOSS, o_can_make_bigger: false, o_sprite: spr_boss_stand, o_mask: spr_wall, o_scroll_x: +100, o_scale: 0.5, o_rotation: 0, o_color: c_white, o_scroll_y: 0, o_x_offset: 0, o_alpha: 1, o_add_order_index: 1, o_name: "Mousette", o_description: "", o_image_index: 0, o_category: "enemy", o_daily_build_category: "daily_build_featured", o_text: "", o_video_tutorial: ""},
 				{ o_id: LEVEL_OBJECT_ID.ID_ENEMY_VENGEFUL_SPIRIT, o_can_make_bigger: true, o_sprite: global.resource_pack_sprite_enemy_vengeful_spirit, o_mask: spr_wall, o_scroll_x: +100, o_scale: 1, o_rotation: 0, o_color: c_white, o_scroll_y: 0, o_x_offset: 0, o_alpha: 1, o_add_order_index: 1, o_name: "Vengeful Rat Spirit", o_description: "", o_image_index: 0, o_category: "enemy", o_daily_build_category: "daily_build_featured", o_text: "", o_video_tutorial: ""},
-				
+
 				/* Category: Gizmo */
 				{ o_id: LEVEL_OBJECT_ID.ID_BLASTER, o_can_make_bigger: true, o_sprite: global.resource_pack_sprite_blaster, o_mask: spr_wall, o_scroll_x: +100, o_scale: 1, o_rotation: 0, o_color: c_white, o_scroll_y: 0, o_x_offset: 0, o_alpha: 1, o_add_order_index: 1, o_name: "Rat Blaster", o_description: "", o_image_index: 0, o_category: "gizmo", o_daily_build_category: "daily_build_featured", o_text: "", o_video_tutorial: ""},
 				{ o_id: LEVEL_OBJECT_ID.ID_KEY, o_can_make_bigger: true, o_sprite: spr_key, o_mask: spr_wall, o_scroll_x: +100, o_scale: 1, o_rotation: 0, o_color: c_white, o_scroll_y: 0, o_x_offset: 0, o_alpha: 1, o_add_order_index: 1, o_name: "Key", o_description: "A key is required to open Locked Doors or Locked Warp Boxes. It also appears after collecting every Key Fragment in a level", o_image_index: 0, o_category: "gizmo", o_daily_build_category: "daily_build_featured", o_text: "", o_video_tutorial: ""},
@@ -136,11 +136,11 @@ function scr_draw_list_of_placable_objects()
 				{ o_id: LEVEL_OBJECT_ID.ID_BUCKET, o_can_make_bigger: true, o_sprite: spr_bucket, o_mask: spr_wall, o_scroll_x: +100, o_scale: 1, o_rotation: 0, o_color: c_white, o_scroll_y: 0, o_x_offset: 0, o_alpha: 1, o_add_order_index: 1, o_name: "Bucket", o_description: "Let clothes drop into the bucket to get rewards", o_image_index: 0, o_category: "gizmo", o_daily_build_category: "daily_build_featured", o_text: "", o_video_tutorial: ""},
 				{ o_id: LEVEL_OBJECT_ID.ID_ARTWORK_COLLECTION, o_can_make_bigger: false, o_sprite: spr_artwork_collection, o_mask: spr_wall, o_scroll_x: +100, o_scale: 1, o_rotation: 0, o_color: c_white, o_scroll_y: 0, o_x_offset: 0, o_alpha: 1, o_add_order_index: 1, o_name: "Artwork Collection", o_description: "", o_image_index: 0, o_category: "gizmo", o_daily_build_category: "daily_build_standard", o_text: "", o_video_tutorial: ""},
 				{ o_id: LEVEL_OBJECT_ID.ID_RING, o_can_make_bigger: false, o_sprite: spr_ring, o_mask: spr_wall, o_scroll_x: +100, o_scale: 1, o_rotation: 0, o_color: c_white, o_scroll_y: 0, o_x_offset: 0, o_alpha: 1, o_add_order_index: 1, o_name: "Ring", o_description: "Swing with long tongue on this ring", o_image_index: 0, o_category: "gizmo", o_daily_build_category: "daily_build_featured", o_text: "", o_video_tutorial: ""}
-				
+
 				/* Add more objects here... */
 			];
 			#endregion /* Object Array END */
-			
+
 			for (var i = 0; i < array_length(objects); i++)
 			{
 				var obj = objects[i];
@@ -154,9 +154,9 @@ function scr_draw_list_of_placable_objects()
 					scr_draw_level_editor_placable_object(order_index, obj.o_id, obj.o_can_make_bigger, obj.o_sprite, obj.o_mask, obj.o_scroll_x, obj.o_scale, obj.o_rotation, obj.o_color, obj.o_scroll_y, obj.o_x_offset, obj.o_alpha, obj.o_add_order_index, obj.o_name, obj.o_description, obj.o_image_index);
 				}
 			}
-			
+
 			scr_draw_text_outlined(display_get_gui_width() * 0.5, 114 + 64, l10n_text(current_object_name), global.default_text_size * 0.75, noone, c_white, selected_menu_alpha);
-			
+
 			total_number_of_objects = order_index - 1; /* This is the total number of objects you have in the list to let the level editor know (0 is counted as object number 1) */
 			if (selected_object > total_number_of_objects)
 			{
@@ -182,7 +182,7 @@ function scr_draw_list_of_placable_objects()
 				can_make_place_size_bigger = false;
 				draw_sprite_ext(spr_level_ring, 0, x, y, 1, 1, 0, c_yellow, 0.5);
 				draw_sprite_ext(spr_level, 0, x, y, 1, 1, 0, c_black, 0.5);
-				sprite_index = spr_noone; 
+				sprite_index = spr_noone;
 				mask_index = spr_wall;
 			}
 			if (selected_object == 2)
@@ -225,7 +225,7 @@ function scr_draw_list_of_placable_objects()
 				mask_index = spr_wall;
 			}
 		}
-		
+
 		/* Draw an arrow pointing to currently selected object */
 		if (level_editor_menu == "select_object_menu")
 		|| (level_editor_menu == "")
@@ -238,5 +238,5 @@ function scr_draw_list_of_placable_objects()
 		draw_set_alpha(1);
 	}
 	#endregion /* List of Placable Objects END */
-	
+
 }

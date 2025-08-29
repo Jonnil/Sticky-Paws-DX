@@ -4,7 +4,7 @@ function scr_quit_to_desktop_menu(return_to_this_menu)
 	var get_window_width = display_get_gui_width();
 	var mouse_get_x = device_mouse_x_to_gui(0);
 	var mouse_get_y = device_mouse_y_to_gui(0);
-	
+
 	#region /* Quit to Desktop menu */
 	draw_set_halign(fa_center);
 	draw_set_valign(fa_middle);
@@ -15,7 +15,7 @@ function scr_quit_to_desktop_menu(return_to_this_menu)
 		draw_rectangle_color(0, 0, get_window_width, get_window_height, c_black, c_black, c_black, c_black, false);
 		draw_set_alpha(1);
 		scr_draw_text_outlined(get_window_width * 0.5, get_window_height * 0.5 - 128, l10n_text("ARE YOU SURE YOU WANT TO QUIT?"), global.default_text_size * 1.9, c_black, c_white, 1);
-		
+
 		#region /* Quit No */
 		if (point_in_rectangle(mouse_get_x, mouse_get_y, get_window_width * 0.5 - 370, get_window_height * 0.5 - 42, get_window_width * 0.5 + 370, get_window_height * 0.5 + 42))
 		&& (global.controls_used_for_navigation == "mouse")
@@ -51,9 +51,9 @@ function scr_quit_to_desktop_menu(return_to_this_menu)
 				draw_sprite_ext(spr_icon_back, 0, get_window_width * 0.5 - 370 + 32, get_window_height * 0.5, 1, 1, 0, c_white, 1);
 			}
 		}
-		
+
 		if (menu == "quit_game_no")
-		{		
+		{
 			if (point_in_rectangle(mouse_get_x, mouse_get_y, get_window_width * 0.5 - 370, get_window_height * 0.5 - 42, get_window_width * 0.5 + 370, get_window_height * 0.5 + 42))
 			&& (mouse_check_button_released(mb_left))
 			&& (menu_delay == 0 && menu_joystick_delay == 0)
@@ -72,7 +72,7 @@ function scr_quit_to_desktop_menu(return_to_this_menu)
 			}
 		}
 		#endregion /* Quit No END */
-		
+
 		#region /* Quit Yes */
 		if (point_in_rectangle(mouse_get_x, mouse_get_y, get_window_width * 0.5 - 370, get_window_height * 0.5 + 84 - 42, get_window_width * 0.5 + 370, get_window_height * 0.5 + 84 + 42))
 		&& (global.controls_used_for_navigation == "mouse")
@@ -105,7 +105,7 @@ function scr_quit_to_desktop_menu(return_to_this_menu)
 				scr_draw_text_outlined(get_window_width * 0.5, get_window_height * 0.5 + 84, l10n_text("YES"), global.default_text_size * 2.3, c_white, c_black, 1);
 			}
 		}
-		
+
 		if (menu == "quit_game_yes")
 		{
 			if (point_in_rectangle(mouse_get_x, mouse_get_y, get_window_width * 0.5 - 370, get_window_height * 0.5 + 84 - 42, get_window_width * 0.5 + 370, get_window_height * 0.5 + 84 + 42))
@@ -125,7 +125,7 @@ function scr_quit_to_desktop_menu(return_to_this_menu)
 			}
 		}
 		#endregion /* Quit Yes END */
-		
+
 		#region /* Return to game */
 		if (menu == "quit_game_no")
 		|| (menu == "quit_game_yes")
@@ -140,8 +140,8 @@ function scr_quit_to_desktop_menu(return_to_this_menu)
 			}
 		}
 		#endregion /* Return to game END */
-		
+
 	}
 	#endregion /* Quit to Desktop menu END */
-	
+
 }
