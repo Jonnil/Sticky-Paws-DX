@@ -4,7 +4,8 @@
 .LSOverride
 
 # Icon must end with two \r
-Icon
+Icon
+
 
 # Thumbnails
 ._*
@@ -49,3 +50,80 @@ $RECYCLE.BIN/
 
 # Windows shortcuts
 *.lnk
+
+############################################
+# GameMaker Studio 2 / Project Artifacts   #
+############################################
+# Project exports and marketplace packages
+*.yyz
+*.yymp
+*.yymps
+
+# Lock and autosave/backup/temp files
+*.yyp.lock
+*.yy.lock
+*.autosave
+*.bak
+*.backup
+*.tmp
+*.temp
+*.orig
+
+############################################
+# Build Outputs (generated, not source)     #
+############################################
+# Common build/export directories and binaries
+build/
+Build/
+dist/
+Dist/
+out/
+Out/
+bin/
+Bin/
+export/
+Export/
+exports/
+Exports/
+release/
+Release/
+releases/
+Releases/
+
+# Packaged builds/artifacts
+*.exe
+*.app
+*.ipa
+*.apk
+*.aab
+*.dmg
+*.msi
+*.msix
+*.cab
+*.pkg
+*.dSYM/
+
+############################################
+# IDEs / Editors                           #
+############################################
+.vscode/
+.idea/
+.fleet/
+.vs/
+*.code-workspace
+*.iml
+
+############################################
+# Logs / Crash Dumps                       #
+############################################
+*.log
+*.log.*
+*.dmp
+*.mdmp
+
+############################################
+# Linux                                    #
+############################################
+*~
+.Trash-*/
+.nfs*
