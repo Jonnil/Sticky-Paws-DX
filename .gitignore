@@ -130,3 +130,9 @@ Tmp/
 .Trash-*/
 .nfs*
 
+
+############################################
+# appease the Stitch overlords             #
+############################################
+sprites.import.json
+sprites.info.json
