@@ -9,8 +9,13 @@ function scr_log_missing_translation_keyword(log_translation_key = "")
 
 		/* Only show region messages if verbose logging is enabled */
 
-		if (log_translation_key != ""
-		&& !ds_map_exists(global.missing_translation_cache, log_translation_key))
+        var _already_cached = false;
+        if (is_struct(global.missing_translation_cache))
+        {
+            _already_cached = variable_struct_exists(global.missing_translation_cache, log_translation_key);
+        }
+
+        if (log_translation_key != "" && !_already_cached)
 		{
 			show_debug_message("[scr_log_missing_translation_keyword] Cache Check passed for key: " + string(log_translation_key));
 
@@ -149,7 +154,11 @@ function scr_log_missing_translation_keyword(log_translation_key = "")
 			if (verbose_translation_logging)
 				show_debug_message("[scr_log_missing_translation_keyword] Exiting Enqueue Key for Bulk Upload region");
 
-			ds_map_add(global.missing_translation_cache, log_translation_key, true);
+            if (!is_struct(global.missing_translation_cache))
+            {
+                global.missing_translation_cache = {};
+            }
+            variable_struct_set(global.missing_translation_cache, log_translation_key, true);
 			show_debug_message("[scr_log_missing_translation_keyword] Added key to missing_translation_cache: " + log_translation_key);
 		}
 	}

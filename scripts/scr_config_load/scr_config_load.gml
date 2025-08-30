@@ -120,19 +120,23 @@ function scr_config_load()
 			"Online Download Info"
 		];
 
-		for (var i = 0; i < array_length(section_list); i++)
-		{
-			var key = section_list[i];
-			if (ini_key_exists("debug_collapsed_sections", key))
-			{
-				global.debug_collapsed_sections[? key] = ini_read_real("debug_collapsed_sections", key, false);
-			}
-			else
-			{
-				/* If the key doesn't exist, you can set a default */
-				global.debug_collapsed_sections[? key] = false;
-			}
-		}
+            /* Ensure struct exists (migrates from old ds_map usage if needed) */
+            if (!is_struct(global.debug_collapsed_sections))
+            {
+                global.debug_collapsed_sections = {};
+            }
+
+            for (var i = 0; i < array_length(section_list); i++)
+            {
+                var key = section_list[i];
+                var val = false;
+                if (ini_key_exists("debug_collapsed_sections", key))
+                {
+                    val = ini_read_real("debug_collapsed_sections", key, false);
+                }
+                /* Store into struct with dynamic key */
+                variable_struct_set(global.debug_collapsed_sections, key, val);
+            }
 		#endregion /* Debug Collapsed Sections END */
 
 		if (ini_key_exists("config", "enable_level_length_target")){global.enable_level_length_target = ini_read_real("config", "enable_level_length_target", false);}

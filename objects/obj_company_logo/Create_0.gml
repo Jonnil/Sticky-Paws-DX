@@ -217,7 +217,7 @@ global.can_load_official_and_custom_resources = true; /* For debug, you might no
 
 global.debug_screen = false; /* Toggles the visibility of the debug screen. When set to true, the debug screen appears overlayed on the game. Useful for displaying live debugging information */
 global.debug_mode_activated_once = false; /* If debug mode has been activated at any point during the level, don't save fastest time and score */
-global.debug_collapsed_sections = ds_map_create(); /* A data structure that tracks which debug sections are collapsed. Each key represents a section name, and its value (true/false) indicates whether the section is currently collapsed. Helps organize and declutter the debug screen for better readability. */
+global.debug_collapsed_sections = {}; /* Tracks which debug sections are collapsed. Using a struct instead of a ds_map follows modern GML best practices and benefits from automatic garbage collection. Keys are section names; values are booleans. */
 global.debug_detailed_mode = false; /* Determines whether the debug screen displays detailed variable names or simplified, user-friendly labels. Set to true for detailed mode, showing exact variable names, which is helpful for developers familiar with the codebase. */
 global.show_fps = false; /* Show fps for optimization debug */
 global.show_instance_count = false; /* Show instance count for optimization debug */

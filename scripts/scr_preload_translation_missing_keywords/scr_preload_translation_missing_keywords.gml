@@ -3,9 +3,9 @@ function preload_translation_missing_keywords()
 	// Check a flag to disable file logging (e.g., on Nintendo Switch)
 	if (global.enable_translation_file_logging)
 	{
-		/* Initialize Missing Translation Queue and Cache */
-		global.missing_translation_queue = ds_list_create();
-		global.missing_translation_cache = ds_map_create();
+        /* Initialize Missing Translation Queue and Cache (struct preferred over ds_map) */
+        global.missing_translation_queue = ds_list_create();
+        global.missing_translation_cache = {};
 
 		/* Define the folder and file pattern */
 		var folder_path = game_save_id + "translation_missing_keywords/";
@@ -57,8 +57,8 @@ function preload_translation_missing_keywords()
 					var fields = string_split(line, ",");
 					if (array_length(fields) > 0)
 					{
-						var keyword = string_replace_all(fields[0], "\"", "");
-						ds_map_add(global.missing_translation_cache, keyword, true);
+                    var keyword = string_replace_all(fields[0], "\"", "");
+                    variable_struct_set(global.missing_translation_cache, keyword, true);
 					}
 				}
 				file_text_close(file);

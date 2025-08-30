@@ -361,8 +361,9 @@ function scr_debug_draw_debug_logic()
 			/* Draw the header for the Instructions section */
 			instructions_y = scr_draw_debug_header("Instructions", display_get_gui_width() * 0.5 - 100, instructions_y);
 
-			/* Only display the instructions if the section is expanded */
-			if (!global.debug_collapsed_sections[? "Instructions"])
+				/* Only display the instructions if the section is expanded */
+				var _inst_collapsed = variable_struct_exists(global.debug_collapsed_sections, "Instructions") ? variable_struct_get(global.debug_collapsed_sections, "Instructions") : false;
+				if (!_inst_collapsed)
 			{
 				/* Set larger text size if you prefer, multiply your default size */
 				var instr_text_size = global.default_text_size * 1.0; /* Adjust as needed */
@@ -398,16 +399,27 @@ function scr_debug_draw_debug_logic()
 		draw_set_halign(fa_right);
 		scr_draw_text_outlined(display_get_gui_width() - 32, display_y, "Display: " + string(window_get_width()) + "x" + string(window_get_height()), global.default_text_size, c_black, c_white, 1);
 
-		if (ds_exists(global.os_info, ds_type_map))
-		{
-			if (ds_map_exists(global.os_info, "video_adapter_description"))
+			/* Support both ds_map and struct for os_get_info across GM versions */
+			var _adapter_desc = undefined;
+			if (is_struct(global.os_info))
 			{
-				if (global.os_info[? "video_adapter_description"] != undefined)
+				if (variable_struct_exists(global.os_info, "video_adapter_description"))
 				{
-					scr_draw_text_outlined(display_get_gui_width() - 32, d3d11_y, string(global.os_info[? "video_adapter_description"]), global.default_text_size, c_black, c_white, 1);
+					_adapter_desc = variable_struct_get(global.os_info, "video_adapter_description");
 				}
 			}
-		}
+			else if (ds_exists(global.os_info, ds_type_map))
+			{
+				if (ds_map_exists(global.os_info, "video_adapter_description"))
+				{
+					_adapter_desc = global.os_info[? "video_adapter_description"];
+				}
+			}
+
+			if (_adapter_desc != undefined)
+			{
+				scr_draw_text_outlined(display_get_gui_width() - 32, d3d11_y, string(_adapter_desc), global.default_text_size, c_black, c_white, 1);
+			}
 
 		/* --- Current Room Info at Bottom --- */
 		draw_set_halign(fa_center);
@@ -481,7 +493,8 @@ function scr_debug_draw_optimized_text()
 	#region /* Section 1: System Information */
 	debug_text_y = scr_draw_debug_header("System Information", 32, debug_text_y);
 
-	if (!global.debug_collapsed_sections[? "System Information"])
+	var _sys_collapsed = variable_struct_exists(global.debug_collapsed_sections, "System Information") ? variable_struct_get(global.debug_collapsed_sections, "System Information") : false;
+	if (!_sys_collapsed)
 	{
 		debug_text_y = scr_draw_highlighted_text(32, debug_text_y,
 							"current_datetime", string(scr_format_timestamp(date_current_datetime())),
@@ -508,7 +521,8 @@ function scr_debug_draw_optimized_text()
 	{
 		debug_text_y = scr_draw_debug_header("Player Information", 32, debug_text_y);
 
-		if (!global.debug_collapsed_sections[? "Player Information"])
+		var _player_collapsed = variable_struct_exists(global.debug_collapsed_sections, "Player Information") ? variable_struct_get(global.debug_collapsed_sections, "Player Information") : false;
+		if (!_player_collapsed)
 		{
 			var player_positions = scr_get_player_positions();
 			for (var i = 0; i < array_length(player_positions); i++)
@@ -560,7 +574,8 @@ function scr_debug_draw_optimized_text()
 		{
 			debug_text_y = scr_draw_debug_header("Menu Information", 32, debug_text_y);
 
-			if (!global.debug_collapsed_sections[? "Menu Information"])
+			var _menu_collapsed = variable_struct_exists(global.debug_collapsed_sections, "Menu Information") ? variable_struct_get(global.debug_collapsed_sections, "Menu Information") : false;
+			if (!_menu_collapsed)
 			{
 				/* Debug output ordered by overall system state, control settings, then scroll values and delays */
 
@@ -655,7 +670,8 @@ function scr_debug_draw_optimized_text()
 	{
 		debug_text_y = scr_draw_debug_header("Gamepad Information", 32, debug_text_y);
 
-		if (!global.debug_collapsed_sections[? "Gamepad Information"])
+		var _gamepad_collapsed = variable_struct_exists(global.debug_collapsed_sections, "Gamepad Information") ? variable_struct_get(global.debug_collapsed_sections, "Gamepad Information") : false;
+		if (!_gamepad_collapsed)
 		{
 			for (var g = 0; g < 5; g++)
 			{
@@ -675,7 +691,8 @@ function scr_debug_draw_optimized_text()
 	{
 		debug_text_y = scr_draw_debug_header("Switch Information", 32, debug_text_y);
 
-		if (!global.debug_collapsed_sections[? "Switch Information"])
+		var _switch_collapsed = variable_struct_exists(global.debug_collapsed_sections, "Switch Information") ? variable_struct_get(global.debug_collapsed_sections, "Switch Information") : false;
+		if (!_switch_collapsed)
 		{
 			debug_text_y = scr_draw_highlighted_text(32, debug_text_y, "switch_account_name", string(global.switch_account_name), "Switch Account Name", c_white, c_red, false);
 			debug_text_y = scr_draw_highlighted_text(32, debug_text_y, "switch_account_handle", string(global.switch_account_handle), "Switch Account Handle", c_white, c_red, false);
@@ -702,7 +719,8 @@ function scr_debug_draw_optimized_text()
 			//{
 				debug_text_y = scr_draw_debug_header("Online Download Info", 32, debug_text_y);
 
-				if (!global.debug_collapsed_sections[? "Online Download Info"])
+				var _odl_collapsed = variable_struct_exists(global.debug_collapsed_sections, "Online Download Info") ? variable_struct_get(global.debug_collapsed_sections, "Online Download Info") : false;
+				if (!_odl_collapsed)
 				{
 					/* Online System Status */
 					debug_text_y = scr_draw_highlighted_text(32, debug_text_y, "online_enabled", string(global.online_enabled), "Online Enabled", c_white, c_red, false);
@@ -742,17 +760,20 @@ function scr_draw_debug_header(section_name, xx, yy)
 
 		if (mouse_check_button_released(mb_left))
 		{
-			/* Toggle collapse state for this section */
-			global.debug_collapsed_sections[? section_name] = !global.debug_collapsed_sections[? section_name];
+				/* Toggle collapse state for this section using struct accessors */
+				var _prev = variable_struct_exists(global.debug_collapsed_sections, section_name) ? variable_struct_get(global.debug_collapsed_sections, section_name) : false;
+				var _cur = !_prev;
+				variable_struct_set(global.debug_collapsed_sections, section_name, _cur);
 
-			ini_open(game_save_id + "save_file/config.ini");
-			ini_write_real("debug_collapsed_sections", string(section_name), global.debug_collapsed_sections[? section_name]);
-			ini_close();
+				ini_open(game_save_id + "save_file/config.ini");
+				ini_write_real("debug_collapsed_sections", string(section_name), _cur);
+				ini_close();
+			}
 		}
-	}
 
-	var debug_header_icon = (!global.debug_collapsed_sections[? string(section_name)]) ? "[+]" : "[-]";
-	scr_draw_text_outlined(xx, yy, section_name + " " + string(debug_header_icon), global.default_text_size, debug_header_outline_color, debug_header_text_color);
+		var _isCollapsed = variable_struct_exists(global.debug_collapsed_sections, string(section_name)) ? variable_struct_get(global.debug_collapsed_sections, string(section_name)) : false;
+		var debug_header_icon = (!_isCollapsed) ? "[+]" : "[-]";
+		scr_draw_text_outlined(xx, yy, section_name + " " + string(debug_header_icon), global.default_text_size, debug_header_outline_color, debug_header_text_color);
 	return yy + line_spacing;
 }
 
