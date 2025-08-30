@@ -101,7 +101,7 @@ function scr_camera_logic()
 							yy = player[i].y;
 						}
 						else
-						if (player[i].y < camera_get_view_y(view_camera[view_current]) + 128)
+						if (player[i].y < camera_get_view_y(view_get_camera(view_current)) + 128)
 						{
 							yy -= abs(player[i].vspeed);
 						}
@@ -109,7 +109,7 @@ function scr_camera_logic()
 						/* Additional conditions for y position adjustments */
 						if (player[i].wall_jump
 						|| player[i].climb
-						|| player[i].y > camera_get_view_y(view_camera[view_current]) + camera_get_view_height(view_camera[view_current]) * 0.5)
+						|| player[i].y > camera_get_view_y(view_get_camera(view_current)) + camera_get_view_height(view_get_camera(view_current)) * 0.5)
 						{
 							yy = player[i].y;
 						}
@@ -121,7 +121,7 @@ function scr_camera_logic()
 						|| player[i].climb
 						|| player[i].horizontal_rope_climb)
 						{
-							if (player[i].y < camera_get_view_y(view_camera[view_current]) + camera_get_view_height(view_camera[view_current]) * 0.5)
+							if (player[i].y < camera_get_view_y(view_get_camera(view_current)) + camera_get_view_height(view_get_camera(view_current)) * 0.5)
 							{
 								yy = player[i].y;
 							}

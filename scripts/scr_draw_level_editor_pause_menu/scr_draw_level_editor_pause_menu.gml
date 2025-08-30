@@ -704,18 +704,18 @@ function scr_draw_level_editor_pause_menu()
 			#region /* Inputed Name Text */
 			if (name_enter_blink < 1)
 			{
-				scr_draw_text_outlined(camera_get_view_x(view_camera[view_current]) + camera_get_view_width(view_camera[view_current]) * 0.5 -400 - 2, camera_get_view_y(view_camera[view_current]) + camera_get_view_height(view_camera[view_current]) * 0.5, l10n_text("Type a name on the keyboard for level name") + "\n" + l10n_text("Level Name") + ": " + string(level_name) + "|", global.default_text_size, c_black, c_white, 1);
+				scr_draw_text_outlined(camera_get_view_x(view_get_camera(view_current)) + camera_get_view_width(view_get_camera(view_current)) * 0.5 -400 - 2, camera_get_view_y(view_get_camera(view_current)) + camera_get_view_height(view_get_camera(view_current)) * 0.5, l10n_text("Type a name on the keyboard for level name") + "\n" + l10n_text("Level Name") + ": " + string(level_name) + "|", global.default_text_size, c_black, c_white, 1);
 			}
 			else
 			{
-				scr_draw_text_outlined(camera_get_view_x(view_camera[view_current]) + camera_get_view_width(view_camera[view_current]) * 0.5 -400 - 2, camera_get_view_y(view_camera[view_current]) + camera_get_view_height(view_camera[view_current]) * 0.5, l10n_text("Type a name on the keyboard for level name") + "\n" + l10n_text("Level Name") + ": " + string(level_name), global.default_text_size, c_black, c_white, 1);
+				scr_draw_text_outlined(camera_get_view_x(view_get_camera(view_current)) + camera_get_view_width(view_get_camera(view_current)) * 0.5 -400 - 2, camera_get_view_y(view_get_camera(view_current)) + camera_get_view_height(view_get_camera(view_current)) * 0.5, l10n_text("Type a name on the keyboard for level name") + "\n" + l10n_text("Level Name") + ": " + string(level_name), global.default_text_size, c_black, c_white, 1);
 			}
 			#endregion /* Inputed Name Text END */
 
 			#region /* Limit Name Input Length for Level Name */
 			draw_set_halign(fa_center);
 			draw_set_valign(fa_middle);
-			scr_draw_text_outlined(camera_get_view_x(view_camera[view_current]) + camera_get_view_width(view_camera[view_current]) * 0.5 - 2, camera_get_view_y(view_camera[view_current]) + camera_get_view_height(view_camera[view_current]) * 0.5 + 100, "Limit: " + string_length(level_name) + "/32", global.default_text_size, c_black, c_white, 1);
+			scr_draw_text_outlined(camera_get_view_x(view_get_camera(view_current)) + camera_get_view_width(view_get_camera(view_current)) * 0.5 - 2, camera_get_view_y(view_get_camera(view_current)) + camera_get_view_height(view_get_camera(view_current)) * 0.5 + 100, "Limit: " + string_length(level_name) + "/32", global.default_text_size, c_black, c_white, 1);
 			level_name = keyboard_string;
 			if (string_length(level_name) > 32)
 			{

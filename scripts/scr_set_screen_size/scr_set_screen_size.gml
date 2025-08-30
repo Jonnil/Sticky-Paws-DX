@@ -43,7 +43,7 @@ function scr_set_screen_size()
 	}
 
 	#region /* Set screen size */
-	var current_camera = view_camera[view_current];
+	var current_camera = view_get_camera(view_current);
 	if (camera_get_view_border_x(current_camera) != camera_get_view_width(current_camera))
 	|| (camera_get_view_border_y(current_camera) != camera_get_view_height(current_camera))
 	{

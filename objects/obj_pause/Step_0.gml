@@ -102,12 +102,12 @@ for(var i = 1; i <= global.max_players + 1; i += 1)
 }
 
 #region /* Set screen size */
-camera_set_view_border(view_camera[view_current], 1920, 1080); /* View Border */
-camera_set_view_size(view_camera[view_current], 1920, 1080);
+camera_set_view_border(view_get_camera(view_current), 1920, 1080); /* View Border */
+camera_set_view_size(view_get_camera(view_current), 1920, 1080);
 
 if (!instance_exists(obj_leveleditor))
 {
-	camera_set_view_target(view_camera[view_current], self);
+	camera_set_view_target(view_get_camera(view_current), self);
 }
 scr_set_screen_size();
 #endregion /* Set screen size END */

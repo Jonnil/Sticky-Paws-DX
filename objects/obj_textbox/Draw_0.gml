@@ -4,14 +4,14 @@ if (textbox_alpha > 0)
 	var xx = x;
 	var yy = y - 64;
 
-	if (xx < camera_get_view_x(view_camera[view_current]) + (string_width_ext(textbox_text_masked, 40, 1000) * 0.4))
+	if (xx < camera_get_view_x(view_get_camera(view_current)) + (string_width_ext(textbox_text_masked, 40, 1000) * 0.4))
 	{
-		var x_adjusted = camera_get_view_x(view_camera[view_current]) + (string_width_ext(textbox_text_masked, 40, 1000) * 0.4);
+		var x_adjusted = camera_get_view_x(view_get_camera(view_current)) + (string_width_ext(textbox_text_masked, 40, 1000) * 0.4);
 	}
 	else
-	if (xx > camera_get_view_x(view_camera[view_current]) + camera_get_view_width(view_camera[view_current]) - (string_width_ext(textbox_text_masked, 40, 1000) * 0.4))
+	if (xx > camera_get_view_x(view_get_camera(view_current)) + camera_get_view_width(view_get_camera(view_current)) - (string_width_ext(textbox_text_masked, 40, 1000) * 0.4))
 	{
-		var x_adjusted = camera_get_view_x(view_camera[view_current]) + camera_get_view_width(view_camera[view_current]) - (string_width_ext(textbox_text_masked, 40, 1000) * 0.4);
+		var x_adjusted = camera_get_view_x(view_get_camera(view_current)) + camera_get_view_width(view_get_camera(view_current)) - (string_width_ext(textbox_text_masked, 40, 1000) * 0.4);
 	}
 	else
 	{

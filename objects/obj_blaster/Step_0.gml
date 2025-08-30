@@ -1,6 +1,6 @@
 #region /* Gravity */
-var view_x_center = camera_get_view_x(view_camera[view_current]) + (camera_get_view_width(view_camera[view_current]) * 0.5);
-var view_y_center = camera_get_view_y(view_camera[view_current]) + (camera_get_view_height(view_camera[view_current]) * 0.5);
+var view_x_center = camera_get_view_x(view_get_camera(view_current)) + (camera_get_view_width(view_get_camera(view_current)) * 0.5);
+var view_y_center = camera_get_view_y(view_get_camera(view_current)) + (camera_get_view_height(view_get_camera(view_current)) * 0.5);
 var view_distance_from_center = 1014; /* How many pixels from view center objects should deactivate. Needs to be enought to not cause problems */
 var view_left = view_x_center - view_distance_from_center;
 var view_top = view_y_center - view_distance_from_center;
@@ -9,10 +9,10 @@ var view_bottom = view_y_center + view_distance_from_center;
 
 if (!position_meeting(x, bbox_bottom + 1, obj_wall))
 && (!position_meeting(x, bbox_bottom + 1, obj_semisolid_platform))
-&& (bbox_left < max(camera_get_view_x(view_camera[view_current]) + camera_get_view_width(view_camera[view_current]) + 32, view_right))
-&& (bbox_right > min(camera_get_view_x(view_camera[view_current]), view_left))
-&& (bbox_top < max(camera_get_view_y(view_camera[view_current]) + camera_get_view_height(view_camera[view_current]) + 32, view_bottom))
-&& (bbox_bottom > min(camera_get_view_y(view_camera[view_current]), view_top))
+&& (bbox_left < max(camera_get_view_x(view_get_camera(view_current)) + camera_get_view_width(view_get_camera(view_current)) + 32, view_right))
+&& (bbox_right > min(camera_get_view_x(view_get_camera(view_current)), view_left))
+&& (bbox_top < max(camera_get_view_y(view_get_camera(view_current)) + camera_get_view_height(view_get_camera(view_current)) + 32, view_bottom))
+&& (bbox_bottom > min(camera_get_view_y(view_get_camera(view_current)), view_top))
 {
 	gravity = 0.5;
 }

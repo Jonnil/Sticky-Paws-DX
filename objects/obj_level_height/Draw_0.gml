@@ -2,10 +2,10 @@
 if (!global.actually_play_edited_level)
 && (!global.play_edited_level)
 {
-	var cam_x = camera_get_view_x(view_camera[0]);
-	var cam_y = camera_get_view_y(view_camera[0]);
-	var cam_width = camera_get_view_width(view_camera[0]);
-	var cam_height = camera_get_view_height(view_camera[0]);
+	var cam_x = camera_get_view_x(view_get_camera(0));
+	var cam_y = camera_get_view_y(view_get_camera(0));
+	var cam_width = camera_get_view_width(view_get_camera(0));
+	var cam_height = camera_get_view_height(view_get_camera(0));
 	draw_set_alpha(0.75); /* Make the level border transparent */
 	draw_rectangle_color(cam_x - 999, cam_y - 999, 0, cam_y + cam_height, c_black, c_black, c_black, c_black, false); /* Left Black Rectangle */
 	draw_rectangle_color(1, cam_y - 999, cam_x + cam_width + 999, 0, c_black, c_black, c_black, c_black, false);  /* Top Black Rectangle */

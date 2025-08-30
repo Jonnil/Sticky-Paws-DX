@@ -2,7 +2,7 @@ function scr_parallax_scrolling_background()
 {
 	/* Have this script in End Step, so that the background scrolling can keep up with a moving camera */
 
-	var current_view_camera = view_camera[view_current];
+	var current_view_camera = view_get_camera(view_current);
 	var view_x = camera_get_view_x(current_view_camera);
 	var view_y = camera_get_view_y(current_view_camera);
 

@@ -60,10 +60,10 @@ if (open_door)
 	{
 		/* Activate objects at the teleport destination so you don't fall trough the floor */
 		instance_activate_region(
-		real(second_x) - (camera_get_view_width(view_camera[view_current]) * 0.5),
-		real(second_y) - (camera_get_view_height(view_camera[view_current]) * 0.5),
-		camera_get_view_width(view_camera[view_current]),
-		camera_get_view_height(view_camera[view_current]),
+		real(second_x) - (camera_get_view_width(view_get_camera(view_current)) * 0.5),
+		real(second_y) - (camera_get_view_height(view_get_camera(view_current)) * 0.5),
+		camera_get_view_width(view_get_camera(view_current)),
+		camera_get_view_height(view_get_camera(view_current)),
 		true);
 
 		door_x = 0;

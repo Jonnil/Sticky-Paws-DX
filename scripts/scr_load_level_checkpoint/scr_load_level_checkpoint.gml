@@ -29,12 +29,12 @@ function scr_load_level_checkpoint()
 			if (!global.doing_clear_check_character && !global.doing_clear_check_level)
 			&& (global.checkpoint_x > 0 || global.checkpoint_y > 0)
 			{
-				camera_set_view_pos(view_camera[view_current], global.checkpoint_x, global.checkpoint_y); /* Set camera position to be on the last used checkpoint position */
+				camera_set_view_pos(view_get_camera(view_current), global.checkpoint_x, global.checkpoint_y); /* Set camera position to be on the last used checkpoint position */
 				instance_create_depth(global.checkpoint_x, global.checkpoint_y, 0, obj_camera);
 			}
 			else
 			{
-				camera_set_view_pos(view_camera[view_current], x, y); /* Set camera position to be on the x and y position */
+				camera_set_view_pos(view_get_camera(view_current), x, y); /* Set camera position to be on the x and y position */
 				instance_create_depth(x, y, 0, obj_camera);
 			}
 		}

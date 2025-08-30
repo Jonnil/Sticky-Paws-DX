@@ -115,33 +115,33 @@ if (!global.actually_play_edited_level)
 
 		#region /* Draw Horizontal Ruler at the bottom of the screen */
 		draw_rectangle_color(
-		camera_get_view_x(view_camera[view_current]),
-		camera_get_view_y(view_camera[view_current]) + camera_get_view_height(view_camera[view_current]) - 96,
-		camera_get_view_x(view_camera[view_current]) + camera_get_view_width(view_camera[view_current]),
-		camera_get_view_y(view_camera[view_current]) + camera_get_view_height(view_camera[view_current]),
+		camera_get_view_x(view_get_camera(view_current)),
+		camera_get_view_y(view_get_camera(view_current)) + camera_get_view_height(view_get_camera(view_current)) - 96,
+		camera_get_view_x(view_get_camera(view_current)) + camera_get_view_width(view_get_camera(view_current)),
+		camera_get_view_y(view_get_camera(view_current)) + camera_get_view_height(view_get_camera(view_current)),
 		c_yellow, c_yellow, c_yellow, c_yellow, false);
 
 		var ruler_number = 1;
 
-		for(var i = 0; i < camera_get_view_width(view_camera[view_current]); i += global.grid_hsnap)
+		for(var i = 0; i < camera_get_view_width(view_get_camera(view_current)); i += global.grid_hsnap)
 		{
 			draw_line_color(
-			camera_get_view_x(view_camera[view_current]) + i - 1,
-			camera_get_view_y(view_camera[view_current]) + camera_get_view_height(view_camera[view_current]) - 96,
-			camera_get_view_x(view_camera[view_current]) + i - 1,
-			camera_get_view_y(view_camera[view_current]) + camera_get_view_height(view_camera[view_current]),
+			camera_get_view_x(view_get_camera(view_current)) + i - 1,
+			camera_get_view_y(view_get_camera(view_current)) + camera_get_view_height(view_get_camera(view_current)) - 96,
+			camera_get_view_x(view_get_camera(view_current)) + i - 1,
+			camera_get_view_y(view_get_camera(view_current)) + camera_get_view_height(view_get_camera(view_current)),
 			c_black, c_black);
 
 			draw_line_color(
-			camera_get_view_x(view_camera[view_current]) + i,
-			camera_get_view_y(view_camera[view_current]) + camera_get_view_height(view_camera[view_current]) - 96,
-			camera_get_view_x(view_camera[view_current]) + i,
-			camera_get_view_y(view_camera[view_current]) + camera_get_view_height(view_camera[view_current]),
+			camera_get_view_x(view_get_camera(view_current)) + i,
+			camera_get_view_y(view_get_camera(view_current)) + camera_get_view_height(view_get_camera(view_current)) - 96,
+			camera_get_view_x(view_get_camera(view_current)) + i,
+			camera_get_view_y(view_get_camera(view_current)) + camera_get_view_height(view_get_camera(view_current)),
 			c_white, c_white);
 
 			scr_draw_text_outlined(
-			camera_get_view_x(view_camera[view_current]) + i + 16,
-			camera_get_view_y(view_camera[view_current]) + camera_get_view_height(view_camera[view_current]) - 80,
+			camera_get_view_x(view_get_camera(view_current)) + i + 16,
+			camera_get_view_y(view_get_camera(view_current)) + camera_get_view_height(view_get_camera(view_current)) - 80,
 			string(ruler_number), global.default_text_size * 0.6, c_black, c_white, 1);
 			ruler_number++;
 		}
@@ -149,33 +149,33 @@ if (!global.actually_play_edited_level)
 
 		#region /* Draw Vertical Ruler at the left of the screen */
 		draw_rectangle_color(
-		camera_get_view_x(view_camera[view_current]),
-		camera_get_view_y(view_camera[view_current]),
-		camera_get_view_x(view_camera[view_current]) + 32,
-		camera_get_view_y(view_camera[view_current]) + camera_get_view_height(view_camera[view_current]) - 95,
+		camera_get_view_x(view_get_camera(view_current)),
+		camera_get_view_y(view_get_camera(view_current)),
+		camera_get_view_x(view_get_camera(view_current)) + 32,
+		camera_get_view_y(view_get_camera(view_current)) + camera_get_view_height(view_get_camera(view_current)) - 95,
 		c_yellow, c_yellow, c_yellow, c_yellow, false);
 
 		var ruler_number = 1;
 
-		for(var i = 0; i < camera_get_view_height(view_camera[view_current]) - 96; i += global.grid_vsnap)
+		for(var i = 0; i < camera_get_view_height(view_get_camera(view_current)) - 96; i += global.grid_vsnap)
 		{
 			draw_line_color(
-			camera_get_view_x(view_camera[view_current]),
-			camera_get_view_y(view_camera[view_current]) + i - 1,
-			camera_get_view_x(view_camera[view_current]) + 32,
-			camera_get_view_y(view_camera[view_current]) + i - 1,
+			camera_get_view_x(view_get_camera(view_current)),
+			camera_get_view_y(view_get_camera(view_current)) + i - 1,
+			camera_get_view_x(view_get_camera(view_current)) + 32,
+			camera_get_view_y(view_get_camera(view_current)) + i - 1,
 			c_black, c_black);
 
 			draw_line_color(
-			camera_get_view_x(view_camera[view_current]),
-			camera_get_view_y(view_camera[view_current]) + i,
-			camera_get_view_x(view_camera[view_current]) + 32,
-			camera_get_view_y(view_camera[view_current]) + i,
+			camera_get_view_x(view_get_camera(view_current)),
+			camera_get_view_y(view_get_camera(view_current)) + i,
+			camera_get_view_x(view_get_camera(view_current)) + 32,
+			camera_get_view_y(view_get_camera(view_current)) + i,
 			c_white, c_white);
 
 			scr_draw_text_outlined(
-			camera_get_view_x(view_camera[view_current]) + 16,
-			camera_get_view_y(view_camera[view_current]) + i + 16,
+			camera_get_view_x(view_get_camera(view_current)) + 16,
+			camera_get_view_y(view_get_camera(view_current)) + i + 16,
 			string(ruler_number), global.default_text_size * 0.6, c_black, c_white, 1);
 			ruler_number++;
 		}

@@ -42,10 +42,10 @@ function scr_zoom_camera_controls()
 
 	zoom_lerp = lerp(zoom_lerp, zoom_variable, 0.1);
 
-	var new_width = min(camera_get_view_width(view_camera[view_current]) * zoom_lerp, room_width);
-	var new_height = min(camera_get_view_height(view_camera[view_current]) * zoom_lerp, room_height);
+	var new_width = min(camera_get_view_width(view_get_camera(view_current)) * zoom_lerp, room_width);
+	var new_height = min(camera_get_view_height(view_get_camera(view_current)) * zoom_lerp, room_height);
 
-	camera_set_view_size(view_camera[view_current], new_width, new_height);
+	camera_set_view_size(view_get_camera(view_current), new_width, new_height);
 
 	#region /* Zoom in and out controls */
 	if (key_in_hold && !key_out_hold)

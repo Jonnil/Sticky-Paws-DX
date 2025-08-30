@@ -8,8 +8,8 @@ if (!place_meeting(x, y + 1, obj_wall))
 && (!position_meeting(x, bbox_bottom + 1, obj_semisolid_platform))
 && (!position_meeting(bbox_left, bbox_bottom + 1, obj_semisolid_platform))
 && (!position_meeting(bbox_right, bbox_bottom + 1, obj_semisolid_platform))
-&& (x - 32 < camera_get_view_x(view_camera[view_current]) + camera_get_view_width(view_camera[view_current]))
-&& (x + 32 > camera_get_view_x(view_camera[view_current]))
+&& (x - 32 < camera_get_view_x(view_get_camera(view_current)) + camera_get_view_width(view_get_camera(view_current)))
+&& (x + 32 > camera_get_view_x(view_get_camera(view_current)))
 {
 	gravity = 0.5; /* The gravity */
 }
@@ -20,13 +20,13 @@ else
 }
 #endregion /* Set the gravity END */
 
-if (y + 32 < camera_get_view_y(view_camera[view_current]))
+if (y + 32 < camera_get_view_y(view_get_camera(view_current)))
 && (vspeed < 0)
 {
 	vspeed = +1;
 }
 else
-if (y - 32 > camera_get_view_y(view_camera[view_current]) + camera_get_view_height(view_camera[view_current]))
+if (y - 32 > camera_get_view_y(view_get_camera(view_current)) + camera_get_view_height(view_get_camera(view_current)))
 && (!place_meeting(x, y + 1, obj_wall))
 && (!place_meeting(x, y + 1, obj_semisolid_platform))
 {
@@ -83,10 +83,10 @@ if (place_meeting(x, y - 1, obj_wall))
 }
 
 if (floor(random(10)) == 0)
-&& (x < camera_get_view_x(view_camera[view_current]) + camera_get_view_width(view_camera[view_current]))
-&& (x > camera_get_view_x(view_camera[view_current]))
-&& (y < camera_get_view_y(view_camera[view_current]) + camera_get_view_height(view_camera[view_current]))
-&& (y > camera_get_view_y(view_camera[view_current]))
+&& (x < camera_get_view_x(view_get_camera(view_current)) + camera_get_view_width(view_get_camera(view_current)))
+&& (x > camera_get_view_x(view_get_camera(view_current)))
+&& (y < camera_get_view_y(view_get_camera(view_current)) + camera_get_view_height(view_get_camera(view_current)))
+&& (y > camera_get_view_y(view_get_camera(view_current)))
 {
 	effect_create_below(
 		ef_star,
@@ -100,10 +100,10 @@ if (floor(random(10)) == 0)
 #region /* Expanding Ring Effect */
 effect_time++;
 if (effect_time > 60)
-&& (x < camera_get_view_x(view_camera[view_current]) + camera_get_view_width(view_camera[view_current]))
-&& (x > camera_get_view_x(view_camera[view_current]))
-&& (y < camera_get_view_y(view_camera[view_current]) + camera_get_view_height(view_camera[view_current]))
-&& (y > camera_get_view_y(view_camera[view_current]))
+&& (x < camera_get_view_x(view_get_camera(view_current)) + camera_get_view_width(view_get_camera(view_current)))
+&& (x > camera_get_view_x(view_get_camera(view_current)))
+&& (y < camera_get_view_y(view_get_camera(view_current)) + camera_get_view_height(view_get_camera(view_current)))
+&& (y > camera_get_view_y(view_get_camera(view_current)))
 {
 	effect_time = 0;
 	effect_create_below(ef_ring, x, y, 1, c_white);

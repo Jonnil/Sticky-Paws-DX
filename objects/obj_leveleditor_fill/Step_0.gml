@@ -7,10 +7,10 @@ if (
 	(instance_exists(obj_level_player2_start) && place_meeting(x, y, obj_level_player2_start)) ||
 	(instance_exists(obj_level_player3_start) && place_meeting(x, y, obj_level_player3_start)) ||
 	(instance_exists(obj_level_player4_start) && place_meeting(x, y, obj_level_player4_start)) ||
-	(x < camera_get_view_x(view_camera[view_current])) ||
-	(x > camera_get_view_x(view_camera[view_current]) + camera_get_view_width(view_camera[view_current])) ||
-	(y < camera_get_view_y(view_camera[view_current])) ||
-	(y > camera_get_view_y(view_camera[view_current]) + camera_get_view_height(view_camera[view_current]))
+	(x < camera_get_view_x(view_get_camera(view_current))) ||
+	(x > camera_get_view_x(view_get_camera(view_current)) + camera_get_view_width(view_get_camera(view_current))) ||
+	(y < camera_get_view_y(view_get_camera(view_current))) ||
+	(y > camera_get_view_y(view_get_camera(view_current)) + camera_get_view_height(view_get_camera(view_current)))
 )
 {
 	instance_destroy();

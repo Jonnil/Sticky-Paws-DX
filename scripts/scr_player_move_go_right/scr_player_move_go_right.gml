@@ -27,7 +27,7 @@ function scr_player_move_go_right()
 
 				}
 			}
-			if (x < camera_get_view_x(view_camera[view_current]) + camera_get_view_width(view_camera[view_current]) - 8)
+			if (x < camera_get_view_x(view_get_camera(view_current)) + camera_get_view_width(view_get_camera(view_current)) - 8)
 			{
 				if (!place_meeting(x + 1, y, obj_wall)) /* If there is no wall to the right */
 				{

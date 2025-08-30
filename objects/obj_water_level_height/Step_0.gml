@@ -1,4 +1,4 @@
-x = camera_get_view_x(view_camera[view_current]) + camera_get_view_width(view_camera[view_current]) * 0.5;
+x = camera_get_view_x(view_get_camera(view_current)) + camera_get_view_width(view_get_camera(view_current)) * 0.5;
 
 if (x < 16)
 {

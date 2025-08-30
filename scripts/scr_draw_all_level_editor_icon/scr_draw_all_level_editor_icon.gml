@@ -746,7 +746,7 @@ function scr_draw_all_level_editor_icon()
 	if (show_grid)
 	{
 		draw_set_halign(fa_left);
-		scr_draw_text_outlined(48, 32, l10n_text("View X") + ": " + string(round(camera_get_view_x(view_camera[0]))) + "\n" + l10n_text("View Y") + ": " + string(round(camera_get_view_y(view_camera[0]))), global.default_text_size, c_black, c_white, 1);
+		scr_draw_text_outlined(48, 32, l10n_text("View X") + ": " + string(round(camera_get_view_x(view_get_camera(0)))) + "\n" + l10n_text("View Y") + ": " + string(round(camera_get_view_y(view_get_camera(0)))), global.default_text_size, c_black, c_white, 1);
 
 		draw_sprite_ext(spr_leveleditor_icon, 13, grid_button_x, + 32 + icon_at_top_y, 1, 1, 0, c_white, 1);
 		if (global.grid_hsnap == global.grid_vsnap)
@@ -796,7 +796,7 @@ function scr_draw_all_level_editor_icon()
 			}
 		}
 		scr_draw_text_outlined(display_get_gui_width() - 16, 32 + 140 + icon_at_top_y, l10n_text("X") + ": " + string(x) + " " + l10n_text("Y") + ": " + string(y), global.default_text_size, c_black, c_white, 1);
-		scr_draw_text_outlined(display_get_gui_width() - 16, 32 + 190 + icon_at_top_y, l10n_text("View width") + ": " + string(camera_get_view_width(view_camera[0])) + " " + l10n_text("View height") + ": " + string(camera_get_view_height(view_camera[0])), global.default_text_size * 0.5, c_black, c_white, 1);
+		scr_draw_text_outlined(display_get_gui_width() - 16, 32 + 190 + icon_at_top_y, l10n_text("View width") + ": " + string(camera_get_view_width(view_get_camera(0))) + " " + l10n_text("View height") + ": " + string(camera_get_view_height(view_get_camera(0))), global.default_text_size * 0.5, c_black, c_white, 1);
 	}
 	else
 	{

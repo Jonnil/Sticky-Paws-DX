@@ -3,7 +3,7 @@ if (x < 0)
 	x = 0;
 }
 
-y = camera_get_view_y(view_camera[view_current]) + camera_get_view_height(view_camera[view_current]) * 0.5;
+y = camera_get_view_y(view_get_camera(view_current)) + camera_get_view_height(view_get_camera(view_current)) * 0.5;
 
 if (y < 16)
 {

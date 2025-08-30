@@ -7,7 +7,7 @@ function scr_deactivate_objects_outside_view()
 	{
 		/* Deactivating from view center makes it more consistend, where players with any view zoom will experience the same things */
 		/* It might deactivate less things on more zoomed in, but we have to find other things to optimize */
-		var view_camera_current = view_camera[view_current];
+		var view_camera_current = view_get_camera(view_current);
 		var view_x_center = camera_get_view_x(view_camera_current) + (camera_get_view_width(view_camera_current) * 0.5);
 		var view_y_center = camera_get_view_y(view_camera_current) + (camera_get_view_height(view_camera_current) * 0.5);
 		var view_distance_from_center = 1074; /* How many pixels from view center objects should deactivate. Needs to be enought to not cause problems */

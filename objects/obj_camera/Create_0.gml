@@ -195,7 +195,7 @@ if (global.actually_play_edited_level)
 	if (global.checkpoint_x > 0)
 	|| (global.checkpoint_y > 0)
 	{
-		camera_set_view_pos(view_camera[view_current], global.checkpoint_x, global.checkpoint_y); /* Set camera position to be on the last used checkpoint position */
+		camera_set_view_pos(view_get_camera(view_current), global.checkpoint_x, global.checkpoint_y); /* Set camera position to be on the last used checkpoint position */
 		if (instance_exists(obj_player))
 		{
 			obj_player.x = global.checkpoint_x;
@@ -208,12 +208,12 @@ if (global.actually_play_edited_level)
 	}
 	else
 	{
-		camera_set_view_pos(view_camera[view_current], x, y); /* Spawn the camera position on this object's x and y positon when this object is created */
+		camera_set_view_pos(view_get_camera(view_current), x, y); /* Spawn the camera position on this object's x and y positon when this object is created */
 	}
 }
 else
 {
-	camera_set_view_pos(view_camera[view_current], x, y); /* Spawn the camera position on this object's x and y positon when this object is created */
+	camera_set_view_pos(view_get_camera(view_current), x, y); /* Spawn the camera position on this object's x and y positon when this object is created */
 }
 #endregion /* Checkpoint END */
 

@@ -30,9 +30,9 @@ function scr_player_move_save_whole_level_as_screenshot()
 			}
 			#endregion /* Delete some objects so it doesn't show up in the screenshot END */
 
-			camera_set_view_border(view_camera[view_current], new_width, new_height); /* View Border */
-			camera_set_view_pos(view_camera[view_current], 0, 0); /* Set camera position in top left corner when taking full level map screenshots */
-			camera_set_view_size(view_camera[view_current], new_width, new_height);
+			camera_set_view_border(view_get_camera(view_current), new_width, new_height); /* View Border */
+			camera_set_view_pos(view_get_camera(view_current), 0, 0); /* Set camera position in top left corner when taking full level map screenshots */
+			camera_set_view_size(view_get_camera(view_current), new_width, new_height);
 			display_set_gui_size(new_width, new_height);
 
 			surface_resize(application_surface, new_width, new_height);
@@ -72,9 +72,9 @@ function scr_player_move_save_whole_level_as_screenshot()
 		}
 		if (full_level_map_screenshot_timer >= 20)
 		{
-			camera_set_view_border(view_camera[view_current], 1920, 1080); /* View Border */
-			camera_set_view_pos(view_camera[view_current], x, y); /* Set camera position to object's x and y positions again */
-			camera_set_view_size(view_camera[view_current], 1920, 1080);
+			camera_set_view_border(view_get_camera(view_current), 1920, 1080); /* View Border */
+			camera_set_view_pos(view_get_camera(view_current), x, y); /* Set camera position to object's x and y positions again */
+			camera_set_view_size(view_get_camera(view_current), 1920, 1080);
 			surface_resize(application_surface, 1920, 1080);
 			scr_set_screen_size();
 			global.full_level_map_screenshot = false;

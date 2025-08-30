@@ -37,8 +37,8 @@ else
 	hspeed = +4;
 }
 
-var view_left = camera_get_view_x(view_camera[view_current]) - 22;
-var view_right = (camera_get_view_x(view_camera[view_current])) + (camera_get_view_width(view_camera[view_current])) + 22;
+var view_left = camera_get_view_x(view_get_camera(view_current)) - 22;
+var view_right = (camera_get_view_x(view_get_camera(view_current))) + (camera_get_view_width(view_get_camera(view_current))) + 22;
 
 if (instance_exists(obj_camera))
 && (x < view_left)

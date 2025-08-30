@@ -8,7 +8,7 @@ var_screen_size = 1;
 var_joystick_active = false;
 var_direction = 0;
 
-base_size = 150 * (camera_get_view_width(view_camera[view_current]));
+base_size = 150 * (camera_get_view_width(view_get_camera(view_current)));
 stick_size = base_size * 0.5;
 
 base_size_gui = 150

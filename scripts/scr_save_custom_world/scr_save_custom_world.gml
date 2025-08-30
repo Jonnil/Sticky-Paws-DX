@@ -76,8 +76,8 @@ function scr_save_custom_world()
 			{
 				ini_write_real("info", "level_width", obj_level_width.x);
 			}
-			ini_write_real("info", "view_xview", camera_get_view_x(view_camera[view_current]));
-			ini_write_real("info", "view_yview", camera_get_view_y(view_camera[view_current]));
+			ini_write_real("info", "view_xview", camera_get_view_x(view_get_camera(view_current)));
+			ini_write_real("info", "view_yview", camera_get_view_y(view_get_camera(view_current)));
 			ini_close();
 		}
 		#endregion /* Save World Information END */

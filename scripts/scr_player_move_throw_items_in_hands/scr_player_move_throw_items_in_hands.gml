@@ -29,11 +29,11 @@ function scr_player_move_throw_items_in_hands()
 				{
 					if (hold_item_in_hands = "enemy_bowlingball")
 					{
-						if (y + 16 < camera_get_view_y(view_camera[view_current]))
+						if (y + 16 < camera_get_view_y(view_get_camera(view_current)))
 						&& (!place_meeting(x, y + 1, obj_wall))
 						&& (!place_meeting(x, y + 1, obj_semisolid_platform))
 						{
-							with(instance_create_depth(x, camera_get_view_y(view_camera[view_current]) + 16, 0, obj_enemy_bowlingball))
+							with(instance_create_depth(x, camera_get_view_y(view_get_camera(view_current)) + 16, 0, obj_enemy_bowlingball))
 							{
 								flat = true;
 								sliding_along_ground = 0;
@@ -76,11 +76,11 @@ function scr_player_move_throw_items_in_hands()
 				{
 					if (hold_item_in_hands = "enemy_bowlingball")
 					{
-						if (y + 16 < camera_get_view_y(view_camera[view_current]))
+						if (y + 16 < camera_get_view_y(view_get_camera(view_current)))
 						&& (!place_meeting(x, y + 1, obj_wall))
 						&& (!place_meeting(x, y + 1, obj_semisolid_platform))
 						{
-							with(instance_create_depth(x, camera_get_view_y(view_camera[view_current]) + 16, 0, obj_enemy_bowlingball))
+							with(instance_create_depth(x, camera_get_view_y(view_get_camera(view_current)) + 16, 0, obj_enemy_bowlingball))
 							{
 								flat = true;
 								sliding_along_ground = 0;

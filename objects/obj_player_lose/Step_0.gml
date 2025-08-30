@@ -63,7 +63,7 @@ if (vspeed >+ 32)
 }
 #endregion /* Limit the vertical speed END */
 
-if (y > camera_get_view_y(view_camera[view_current]) + camera_get_view_height(view_camera[view_current]))
+if (y > camera_get_view_y(view_get_camera(view_current)) + camera_get_view_height(view_get_camera(view_current)))
 && (!instance_exists(obj_player))
 && (iris_xscale <= 0.01)
 {
@@ -112,7 +112,7 @@ if (y > camera_get_view_y(view_camera[view_current]) + camera_get_view_height(vi
 	}
 }
 else
-if (y > camera_get_view_y(view_camera[view_current]) + camera_get_view_height(view_camera[view_current]))
+if (y > camera_get_view_y(view_get_camera(view_current)) + camera_get_view_height(view_get_camera(view_current)))
 {
 	if (lives >= 1)
 	&& (instance_exists(obj_player))
@@ -137,10 +137,10 @@ if (y > camera_get_view_y(view_camera[view_current]) + camera_get_view_height(vi
 	}
 }
 
-if (y > camera_get_view_y(view_camera[view_current]) + camera_get_view_height(view_camera[view_current]))
+if (y > camera_get_view_y(view_get_camera(view_current)) + camera_get_view_height(view_get_camera(view_current)))
 && (!continue_falling)
 {
-	y = camera_get_view_y(view_camera[view_current]) + camera_get_view_height(view_camera[view_current]) + 1;
+	y = camera_get_view_y(view_get_camera(view_current)) + camera_get_view_height(view_get_camera(view_current)) + 1;
 	sprite_index = noone;
 }
 else

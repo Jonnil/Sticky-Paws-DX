@@ -3,7 +3,7 @@ if (!global.actually_play_edited_level)
 && (!global.play_edited_level)
 {
 	draw_set_alpha(0.75); /* Make the level border transparent */
-	draw_rectangle_color(x - 16, 1, camera_get_view_x(view_camera[0]) + camera_get_view_width(view_camera[0]), camera_get_view_y(view_camera[0]) + camera_get_view_height(view_camera[0]), c_black, c_black, c_black, c_black, false);
+	draw_rectangle_color(x - 16, 1, camera_get_view_x(view_get_camera(0)) + camera_get_view_width(view_get_camera(0)), camera_get_view_y(view_get_camera(0)) + camera_get_view_height(view_get_camera(0)), c_black, c_black, c_black, c_black, false);
 	draw_set_alpha(1);
 }
 #endregion /* Draw black rectangle outside level border END */

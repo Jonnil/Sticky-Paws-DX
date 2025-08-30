@@ -84,7 +84,7 @@ function scr_initialize_level_information_ini()
 			{
 				var default_camera_y = 0;
 			}
-			camera_set_view_pos(view_camera[view_current], ini_read_real("info", "view_xview", default_camera_x), ini_read_real("info", "view_yview", default_camera_y)); /* Set camera position on the last positions you had the camera when doing level editing */
+			camera_set_view_pos(view_get_camera(view_current), ini_read_real("info", "view_xview", default_camera_x), ini_read_real("info", "view_yview", default_camera_y)); /* Set camera position on the last positions you had the camera when doing level editing */
 			x = ini_read_real("info", "view_xview", default_camera_x);
 			y = ini_read_real("info", "view_yview", default_camera_y);
 		}

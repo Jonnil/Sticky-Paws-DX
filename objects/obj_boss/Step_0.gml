@@ -32,10 +32,10 @@ if (!has_seen_player
 }
 
 #region /* Set the gravity */
-var view_x = camera_get_view_x(view_camera[view_current]);
-var view_y = camera_get_view_y(view_camera[view_current]);
-var view_width = camera_get_view_width(view_camera[view_current]);
-var view_height = camera_get_view_height(view_camera[view_current]);
+var view_x = camera_get_view_x(view_get_camera(view_current));
+var view_y = camera_get_view_y(view_get_camera(view_current));
+var view_width = camera_get_view_width(view_get_camera(view_current));
+var view_height = camera_get_view_height(view_get_camera(view_current));
 
 if (!place_meeting(x, y + 1, obj_wall) &&
 	!position_meeting(x, bbox_bottom + 1, obj_semisolid_platform) &&

@@ -15,11 +15,11 @@ if (instance_exists(obj_finger_indicator))
 	temp_joystick = instance_nearest(x, y, obj_finger_indicator).my_touch;
 }
 
-base_size = 150 * (camera_get_view_width(view_camera[view_current]));
+base_size = 150 * (camera_get_view_width(view_get_camera(view_current)));
 stick_size = base_size * 0.5;
 
-x = camera_get_view_x(view_camera[view_current]) + (base_size * 2);
-y = camera_get_view_y(view_camera[view_current]) + camera_get_view_height(view_camera[view_current]) - (base_size * 2);
+x = camera_get_view_x(view_get_camera(view_current)) + (base_size * 2);
+y = camera_get_view_y(view_get_camera(view_current)) + camera_get_view_height(view_get_camera(view_current)) - (base_size * 2);
 
 if (mouse_check_button(mb_any))
 {

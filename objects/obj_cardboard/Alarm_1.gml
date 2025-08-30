@@ -1,5 +1,5 @@
 /// @description Breaking cardboard
-var view_camera_current = view_camera[view_current];
+var view_camera_current = view_get_camera(view_current);
 var view_left = camera_get_view_x(view_camera_current);
 var view_right = view_left + camera_get_view_width(view_camera_current);
 var view_top = camera_get_view_y(view_camera_current);

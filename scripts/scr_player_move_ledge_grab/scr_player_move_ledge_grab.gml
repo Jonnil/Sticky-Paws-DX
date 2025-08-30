@@ -6,8 +6,8 @@ function scr_player_move_ledge_grab()
 	{
 		if (in_water)
 		|| (ground_pound >= true)
-		|| (x < camera_get_view_x(view_camera[view_current]) + 25)
-		|| (x > camera_get_view_x(view_camera[view_current]) + camera_get_view_width(view_camera[view_current]) - 25)
+		|| (x < camera_get_view_x(view_get_camera(view_current)) + 25)
+		|| (x > camera_get_view_x(view_get_camera(view_current)) + camera_get_view_width(view_get_camera(view_current)) - 25)
 		{
 			can_ledge_grab = false; /* You are not able to grab a ledge in certain situations, so set this variable to false */
 		}

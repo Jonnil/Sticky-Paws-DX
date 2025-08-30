@@ -394,8 +394,8 @@ function scr_save_level_information()
 		ini_write_real("info", "level_width", obj_level_width.x);
 		ini_write_real("info", "water_level_height", obj_water_level_height.y);
 
-		ini_write_real("info", "view_xview", camera_get_view_x(view_camera[view_current]));
-		ini_write_real("info", "view_yview", camera_get_view_y(view_camera[view_current]));
+		ini_write_real("info", "view_xview", camera_get_view_x(view_get_camera(view_current)));
+		ini_write_real("info", "view_yview", camera_get_view_y(view_get_camera(view_current)));
 		ini_write_real("info", "rain", global.effect_rain);
 		ini_write_real("info", "snow", global.effect_snow);
 		ini_write_real("info", "wind", global.effect_wind);

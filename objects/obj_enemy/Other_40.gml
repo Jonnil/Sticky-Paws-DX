@@ -1,7 +1,7 @@
-var view_left = camera_get_view_x(view_camera[view_current]);
-var view_top = camera_get_view_y(view_camera[view_current]);
-var view_right = view_left + camera_get_view_width(view_camera[view_current]);
-var view_bottom = view_top + camera_get_view_height(view_camera[view_current]);
+var view_left = camera_get_view_x(view_get_camera(view_current));
+var view_top = camera_get_view_y(view_get_camera(view_current));
+var view_right = view_left + camera_get_view_width(view_get_camera(view_current));
+var view_bottom = view_top + camera_get_view_height(view_get_camera(view_current));
 
 if (bbox_top > room_height + 16)
 {

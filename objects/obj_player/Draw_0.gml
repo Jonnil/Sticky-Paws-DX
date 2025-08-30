@@ -5,8 +5,8 @@ var draw_alpha = image_alpha * collision_mask_alpha;
 var draw_blend = image_blend;
 var draw_x = xx;
 var draw_y = yy;
-var view_y = camera_get_view_y(view_camera[view_current]);
-var view_height = camera_get_view_height(view_camera[view_current]);
+var view_y = camera_get_view_y(view_get_camera(view_current));
+var view_height = camera_get_view_height(view_get_camera(view_current));
 var view_bottom_y = view_y + view_height;
 var draw_arrow_outside_view_y = view_y + 32;
 

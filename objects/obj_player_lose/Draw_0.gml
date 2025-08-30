@@ -38,7 +38,7 @@ if (sprite_exists(sprite_index))
 #region /* Display Player Number and Name */
 if (global.playergame >= 2)
 && (y < room_height)
-&& (y < camera_get_view_y(view_camera[view_current]) + camera_get_view_height(view_camera[view_current]))
+&& (y < camera_get_view_y(view_get_camera(view_current)) + camera_get_view_height(view_get_camera(view_current)))
 {
 	draw_set_halign(fa_center);
 	draw_set_valign(fa_middle);

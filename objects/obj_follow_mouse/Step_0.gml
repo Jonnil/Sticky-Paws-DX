@@ -1,4 +1,4 @@
-var viewCamera = view_camera[view_current];
+var viewCamera = view_get_camera(view_current);
 var viewX = camera_get_view_x(viewCamera);
 var viewY = camera_get_view_y(viewCamera);
 var viewWidth = camera_get_view_width(viewCamera);

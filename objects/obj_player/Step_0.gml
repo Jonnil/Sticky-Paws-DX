@@ -122,10 +122,10 @@ if (intro_animation == "")
 {
 	if (can_clamp_inside_view > 3)
 	{
-		var view_x = camera_get_view_x(view_camera[view_current]);
-		var view_y = camera_get_view_y(view_camera[view_current]);
-		var view_width = camera_get_view_width(view_camera[view_current]);
-		var view_height = camera_get_view_height(view_camera[view_current]);
+		var view_x = camera_get_view_x(view_get_camera(view_current));
+		var view_y = camera_get_view_y(view_get_camera(view_current));
+		var view_width = camera_get_view_width(view_get_camera(view_current));
+		var view_height = camera_get_view_height(view_get_camera(view_current));
 		var x_min = view_x;
 		var x_max = view_x + view_width;
 		var y_min = view_y - 64;
