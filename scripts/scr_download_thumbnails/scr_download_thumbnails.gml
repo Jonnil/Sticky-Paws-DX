@@ -95,13 +95,14 @@ function scr_download_thumbnails(download_all, what_num_items = 0)
 		var _now = get_timer(); // microseconds since game start
 
 		// Log only if the state changed or at least 1 second passed
+		/* Fennex note- this is annoying af in the output. commented out for now
 		if ((_key != global.thumb_skip_log_key) || (_now - global.thumb_skip_log_time > 1000000))
 		{
 			scr_log("DEBUG", "THUMBNAILS", "skip_http_request",
 				"info_queue_http_request=" + string(info_queue_http_request) + ", info_queue_index=" + string(info_queue_index));
 			global.thumb_skip_log_key = _key;
 			global.thumb_skip_log_time = _now;
-		}
+		}*/
 	}
 
 	/* Once an HTTP response is received, info_data is still undefined until processed.
