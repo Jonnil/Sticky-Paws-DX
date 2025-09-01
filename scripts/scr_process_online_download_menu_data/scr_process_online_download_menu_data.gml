@@ -150,6 +150,5 @@ function scr_process_online_download_menu_data()
 		}
 	}
 	#endregion /* Handle Search ID Button Input END */
-
-	menu_y_offset_real = clamp(menu_y_offset_real, -250 + window_get_height() - (300 * array_length(global.online_content_data)), 0);
+	
 }

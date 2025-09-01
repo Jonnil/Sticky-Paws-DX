@@ -11,17 +11,17 @@ function scr_draw_online_download_list_thumbnail(thumbnail_index, number_of_thum
 		var total        = array_length(global.online_content_data);
 		var end_idx        = min(start_idx + perPage - 1, total - 1);
 		var page_count    = end_idx - start_idx + 1;
-
+		
 		/* Skip any thumbnail not on this page */
 		if (thumbnail_index < start_idx
 		|| thumbnail_index > end_idx)
 		{
 			return;
 		}
-
+		
 		/* Convert global index into a local "slot" (0...page_count-1) */
 		var slot = thumbnail_index - start_idx;
-
+		
 		/* Pre-calculate common GUI and offset values */
 		var guiWidth = display_get_gui_width();
 		var halfWidth = guiWidth * 0.5;
@@ -31,14 +31,14 @@ function scr_draw_online_download_list_thumbnail(thumbnail_index, number_of_thum
 		var baseY = offsetY + download_online_y;
 		var can_thumbnail = true;
 		var draw_thumbnail = spr_thumbnail_missing; /* Fallback: use your "missing" sprite */
-
+		
 		if (global.debug_screen)
 		{
 			draw_set_halign(fa_right);
 			scr_draw_text_outlined(download_online_x, baseY + 100, "baseY = " + string(baseY) + "\n" +
 			"draw_thumbnail = global.spr_download_list_thumbnail[" + string(thumbnail_index) + "]\n(" + string(global.spr_download_list_thumbnail[thumbnail_index]) + ")", 0.5)
 		}
-
+		
 		/* Only draw if the thumbnail is within the visible GUI view */
 		/* Assuming the thumbnail area height is 300 */
 		if ((baseY + 300 < 0)
@@ -46,13 +46,12 @@ function scr_draw_online_download_list_thumbnail(thumbnail_index, number_of_thum
 		{
 			can_thumbnail = false;
 		}
-
+		
 		/* Determine if this thumbnail is currently selected */
 		var thumbID = "download_online_" + string(thumbnail_index);
 		var isSelected = (menu == thumbID);
-
+		
 		#region /* Draw Bottom Line for Last Thumbnail */
-
 		if (slot == page_count - 1
 		&& can_thumbnail)
 		{
@@ -60,7 +59,10 @@ function scr_draw_online_download_list_thumbnail(thumbnail_index, number_of_thum
 			draw_line_width_color(32, baseY + 300, guiWidth - 32, baseY + 300, 3, c_white, c_white);
 		}
 		#endregion /* Draw Bottom Line for Last Thumbnail END */
-
+		
+		var content_bottom_y_at_offset0 = 80 + (300 * page_count)
+		menu_y_offset_real = clamp(menu_y_offset_real, display_get_gui_height() -abs(content_bottom_y_at_offset0) - 80, 0); /* Online Download List Menu Offset Stopper */
+		
 		#region /* Draw Selection Overlay if Selected */
 		if (isSelected)
 		&& (can_thumbnail)
