@@ -3,7 +3,7 @@
 function scr_process_online_download_list_data()
 {
 	/* Show loading overlay & start timeout */
-	scr_draw_loading(1, , , "Loading from server 4");
+	scr_draw_loading(1, , , "Loading from server");
 	scr_server_timeout(15);
 
 	/* Only parse & init once per true load (or when forced) */

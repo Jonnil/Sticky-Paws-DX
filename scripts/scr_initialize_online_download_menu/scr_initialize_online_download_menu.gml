@@ -158,7 +158,7 @@ function scr_initialize_online_download_menu()
 	menu_delay = 3;
 
 	/* Draw the spinner/text and set up timeout */
-	scr_draw_loading(1, , , "Loading from server 3");
+	scr_draw_loading(1, , , "Loading from server");
 	scr_server_timeout(15);
 	#endregion /* Server load path END */
 
