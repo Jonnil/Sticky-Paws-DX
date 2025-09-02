@@ -10,21 +10,22 @@ var character_for_player3 = "sticky"; /* Player 3 Select Character 3 */
 var character_for_player4 = "catlyn"; /* Player 4 Select Character 4 */
 
 /* Links to websites */
-global.link_to_bug_report_form = "https://www.jonnil.games/sticky-paws-bug-report";
-global.link_to_changelog_history = "https://www.jonnil.games/sticky-paws-changelog";
-global.link_to_discord = "https://www.jonnil.games/discord";
+/* Note: all links to jonnil.games are not working as intended. This is a known issue and will be fixed prior to release */
+global.link_to_bug_report_form = "https://www.jonnil.games/sticky-paws/bug-report";
+global.link_to_changelog_history = "https://www.jonnil.games/sticky-paws/changelog";
+global.link_to_discord = "https://discord.jonnil.games";
 global.link_to_gamebanana = "https://gamebanana.com/games/7722";
 global.link_to_instagram = "https://www.instagram.com/jonnilll";
 global.link_to_reddit = "https://www.reddit.com/r/Jonnil";
 global.link_to_steam_page = "https://store.steampowered.com/app/1129090/Sticky_Paws";
 global.link_to_twitter = "https://twitter.com/jonnilll";
-global.link_to_update_schedule = "https://www.jonnil.games/sticky-paws-update-schedule";
+global.link_to_update_schedule = "https://www.jonnil.games/sticky-paws/update-schedule";
 global.link_to_website = "https://www.jonnil.games/";
-global.link_to_website_guide = "https://www.jonnil.games/sticky-paws-guide";
-global.link_to_website_guide_custom_character = "https://www.jonnil.games/sticky-paws-custom-character";
-global.link_to_wiki = ""; //"https://stickypedia.miraheze.org/wiki/Main_Page";
+global.link_to_website_guide = "https://www.jonnil.games/sticky-paws/guide";
+global.link_to_website_guide_custom_character = "https://www.jonnil.games/sticky-paws/custom-character";
+global.link_to_wiki = "https://www.jonnil.wiki"; //TODO: buy domain name
 global.link_to_youtube = "https://www.youtube.com/Jonnilescom";
-global.link_to_privacy_policy = "https://www.jonnil.games/sticky-paws-privacy-policy";
+global.link_to_privacy_policy = "https://www.jonnil.games/sticky-paws/privacy-policy";
 global.link_to_check_server_status = "";
 global.email_support = "contact@jonnil.games"; /* This is the email address for an email support, which is required by most game platforms. Will show up whenever you report content in the game */
 
