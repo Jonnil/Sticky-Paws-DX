@@ -22,5 +22,5 @@ function scr_format_timestamp(_date_value, what_timezone = timezone_local)
 	var sSec  = (sec < 10) ? ("0" + string(sec)) : string(sec);
 
 	/* Build final string: "YYYY-MM-DD hh:mm:ss" */
-	return sYY + "-" + sMM + "-" + sDD + " " + sHour + ":" + sMin + ":" + sSec;
+	return sYY + "-" + sMM + "-" + sDD + "_" + sHour + "." + sMin + "." + sSec;
 }
