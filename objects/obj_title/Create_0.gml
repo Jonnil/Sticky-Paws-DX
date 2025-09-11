@@ -81,6 +81,7 @@ key_down = noone;
 key_left = noone;
 key_right = noone;
 
+if_clear_checked = false;
 thumbnail_clear_check[0] = noone;
 thumbnail_daily_build[0] = noone;
 thumbnail_level_id[0] = "";
