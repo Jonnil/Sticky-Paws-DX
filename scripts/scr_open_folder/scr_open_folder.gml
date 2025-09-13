@@ -14,10 +14,11 @@ function scr_open_folder(dname)
 			execute_shell("open", "\"" + escapedfolder + "\"");
 		}
 		else
-		if (os_type == os_linux)
-		{
-			execute_shell("xdg-mime", "\"" + escapedfolder + "\"");
-		}
+        if (os_type == os_linux)
+        {
+            // Use xdg-open to open folders on Linux/SteamOS
+            execute_shell("xdg-open", "\"" + escapedfolder + "\"");
+        }
 		if (instance_exists(obj_open_folder_text))
 		{
 			with(obj_open_folder_text)

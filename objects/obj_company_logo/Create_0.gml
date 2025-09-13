@@ -29,6 +29,23 @@ global.link_to_privacy_policy = "https://www.jonnil.games/sticky-paws/privacy-po
 global.link_to_check_server_status = "";
 global.email_support = "contact@jonnil.games"; /* This is the email address for an email support, which is required by most game platforms. Will show up whenever you report content in the game */
 
+#region /* Steam initialization */
+/* Initialize Steam and Steam Input early so Deck/Steam features are available */
+global.steam_initialized = false;
+if (!steam_initialised())
+{
+    steam_init();
+}
+global.steam_initialized = steam_initialised();
+
+/* Initialize Steam Input if Steam is active */
+if (global.steam_initialized)
+{
+    /* false = we don't manually call steam_input_run_frame */
+    steam_input_init(false);
+}
+#endregion /* Steam initialization END */
+
 #region /* Retrieve What's New Text */
 /* Update this text explaining what is new in each update */
 /* Initialize an empty string to store the text */
@@ -123,17 +140,25 @@ if (os_type == os_switch)
 }
 else
 {
-	global.free_communication_available = true; /* If free communication is disabled, you shouldn't be able to upload or download custom content. Set this to true by default on PC. Free communication is basically what determines if you are using parental controls or not */
-	global.can_load_photographic_images = true; /* Default: true. There are no guidelines preventing other platfroms to view photographic images in UGC */
-	global.show_prompt_when_changing_to_gamepad = true;
+    global.free_communication_available = true; /* If free communication is disabled, you shouldn't be able to upload or download custom content. Set this to true by default on PC. Free communication is basically what determines if you are using parental controls or not */
+    global.can_load_photographic_images = true; /* Default: true. There are no guidelines preventing other platfroms to view photographic images in UGC */
+    global.show_prompt_when_changing_to_gamepad = true;
 	global.show_prompt_when_changing_to_keyboard_and_mouse = true;
 	global.enable_open_custom_folder = true; /* Enable the option to open custom folders in the game */
 	global.enable_option_for_pc = true; /* Enable if options related to gamepad, but only intended for when playing with gamepad on PC should show up */
 	global.enable_keyboard_and_mouse_settings = true; /* Enable Keyboard and Mouse settings */
-	global.always_show_gamepad_buttons = false; /* You can force to show gamepad buttons, even if playing with keyboard, mouse or touch controls. Default = false */
-	global.enable_translation_file_logging = false;
+    global.always_show_gamepad_buttons = false; /* You can force to show gamepad buttons, even if playing with keyboard, mouse or touch controls. Default = false */
+    global.enable_translation_file_logging = false;
 }
 #endregion /* If you're playing on console, then some things should not show up that is for PC END */
+
+#region /* Steam Deck specific tweaks */
+/* On Steam Deck, avoid opening system file managers and prefer in-game flows */
+if (global.steam_initialized && steam_utils_is_steam_running_on_steam_deck())
+{
+    global.enable_open_custom_folder = false;
+}
+#endregion /* Steam Deck specific tweaks END */
 
 #region /* What settings can be changed */
 global.enable_verbosity_slider = false;
