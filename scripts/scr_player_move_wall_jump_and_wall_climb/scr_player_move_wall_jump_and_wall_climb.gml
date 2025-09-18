@@ -94,7 +94,9 @@ function scr_player_move_wall_jump_and_wall_climb()
 			{
 				if (vspeed > 0 && position_meeting(x + 18 * image_xscale, bbox_top, obj_wall))
 				{
-					effect_create_above(ef_smoke, x + 17 * image_xscale, bbox_top, 0, c_white);
+					//effect_create_depth(depth - 1, ef_smoke, x + 17 * image_xscale, bbox_top, 0, c_white);
+					effect_create_depth(depth - 1, ef_smoke, x + 17 * image_xscale, bbox_top, 0, c_white);
+					
 					if (!audio_is_playing(snd_skiddingvertical))
 					{
 						scr_audio_play(snd_skiddingvertical, volume_source.sound);
@@ -235,8 +237,8 @@ function scr_player_move_wall_jump_and_wall_climb()
 					wall_jump = wall_jump_time;
 
 					audio_stop_sound(snd_skiddingvertical);
-					effect_create_above(ef_smoke, x, bbox_bottom - 8, 0, c_white);
-					effect_create_above(ef_smoke, x, bbox_top + 8, 0, c_white);
+					effect_create_depth(depth - 1, ef_smoke, x, bbox_bottom - 8, 0, c_white);
+					effect_create_depth(depth - 1, ef_smoke, x, bbox_top + 8, 0, c_white);
 					scr_audio_play(snd_wallkick, volume_source.sound);
 					scr_audio_play(voice_wallkick, volume_source.voice);
 
@@ -382,8 +384,8 @@ function scr_player_move_wall_jump_and_wall_climb()
 					can_glide = 3;
 					vspeed = -normal_jump_height;
 					image_index = 0;
-					effect_create_above(ef_smoke, x, bbox_bottom - 8, 0, c_white);
-					effect_create_above(ef_smoke, x, bbox_top + 8, 0, c_white);
+					effect_create_depth(depth - 1, ef_smoke, x, bbox_bottom - 8, 0, c_white);
+					effect_create_depth(depth - 1, ef_smoke, x, bbox_top + 8, 0, c_white);
 				}
 			}
 		}

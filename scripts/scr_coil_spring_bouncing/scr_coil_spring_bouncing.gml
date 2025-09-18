@@ -14,7 +14,7 @@ function scr_coil_spring_bouncing()
 			{
 				for(var i = 0; i < 3; i++)
 				{
-					effect_create_above(ef_smoke, x + random_range(-16, 16), bbox_bottom + random_range(-8, 0), 0, c_white);
+					effect_create_depth(depth - 1, ef_smoke, x + random_range(-16, 16), bbox_bottom + random_range(-8, 0), 0, c_white);
 				}
 			}
 			scr_audio_play(snd_spring, volume_source.sound, 0.1);

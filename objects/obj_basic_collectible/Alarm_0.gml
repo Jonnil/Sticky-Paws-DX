@@ -1,5 +1,5 @@
 /// @description Collect the basic collectible
-effect_create_above(ef_ring, x, y, 0, c_white);
+effect_create_depth(depth - 1, ef_ring, x, y, 0, c_white);
 global.basic_collectibles += bulk_number;
 if (instance_exists(obj_player))
 {

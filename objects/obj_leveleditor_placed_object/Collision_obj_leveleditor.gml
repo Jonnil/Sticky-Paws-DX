@@ -33,7 +33,7 @@ if (!other.set_difficulty_mode)
 
 		if (can_drag_object)
 		{
-			effect_create_above(ef_ring, x, y, 0, c_white);
+			effect_create_depth(depth - 1, ef_ring, x, y, 0, c_white);
 			depth = (-bbox_bottom) * 0.04 -300;
 			drag_object = true;
 			drag_xstart = x;

@@ -43,7 +43,7 @@ if (count = 50)
 if (burnt)
 && (speed > 0)
 {
-	effect_create_above(ef_smoke, x, bbox_bottom, 0, c_black);
+	effect_create_depth(depth - 1, ef_smoke, x, bbox_bottom, 0, c_black);
 }
 #endregion /* If the player is burned, have black smoke coming out END */
 

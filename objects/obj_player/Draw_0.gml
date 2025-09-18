@@ -207,7 +207,7 @@ if (invincible_timer >= 1)
 {
 	if (floor(random(10)) == 0)
 	{
-		effect_create_above(
+		effect_create_depth(depth - 1, 
 			ef_star,
 			x + random_range(- 50, + 50),
 			y + random_range(- 50, + 50),

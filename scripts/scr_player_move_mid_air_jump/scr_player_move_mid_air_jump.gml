@@ -44,9 +44,9 @@ function scr_player_move_mid_air_jump()
 					vspeed = 0;
 				}
 				scr_audio_play(voice_jump, volume_source.voice);
-				effect_create_above(ef_smoke, x - 16, bbox_bottom, 0, c_white);
-				effect_create_above(ef_smoke, x, bbox_bottom, 0, c_white);
-				effect_create_above(ef_smoke, x + 16, bbox_bottom, 0, c_white);
+				effect_create_depth(depth - 1, ef_smoke, x - 16, bbox_bottom, 0, c_white);
+				effect_create_depth(depth - 1, ef_smoke, x, bbox_bottom, 0, c_white);
+				effect_create_depth(depth - 1, ef_smoke, x + 16, bbox_bottom, 0, c_white);
 				image_index = 0;
 
 				if (number_of_jumps > - 1)

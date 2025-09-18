@@ -188,7 +188,7 @@ if (global.playtest_invincibility
 	invincible_timer = true;
 	if (floor(random(10)) == 0)
 	{
-		effect_create_above(
+		effect_create_depth(depth - 1, 
 			ef_star,
 			random_range(bbox_left - 8, bbox_right + 8),
 			random_range(bbox_top - 8, bbox_bottom + 8),
@@ -615,7 +615,7 @@ if (hp <= 0 && !global.goal_active)
 #region /* Burnt */
 if (burnt)
 {
-	effect_create_above(ef_smoke, x, bbox_bottom, 0, c_black);
+	effect_create_depth(depth - 1, ef_smoke, x, bbox_bottom, 0, c_black);
 	if (on_ground && !die)
 	{
 		scr_audio_play(voice_burned_running, volume_source.voice);
@@ -630,7 +630,7 @@ if (burnt)
 else
 if (burnt == 2)
 {
-	effect_create_above(ef_smoke, x, bbox_bottom, 0, c_black);
+	effect_create_depth(depth - 1, ef_smoke, x, bbox_bottom, 0, c_black);
 	if (on_ground)
 	{
 		burnt = false;
@@ -1159,7 +1159,7 @@ if (in_water && !climb)
 			if (sprite_swim_stand > noone){sprite_index = sprite_swim_stand;}else
 			if (sprite_idle > noone) && (typeof(sprite_idle) != "undefined"){sprite_index = sprite_idle;}else
 			if (sprite_walk > noone){sprite_index = sprite_walk;}
-			effect_create_above(ef_smoke, x, bbox_bottom, 1, c_white);
+			effect_create_depth(depth - 1, ef_smoke, x, bbox_bottom, 1, c_white);
 			if (image_index > image_number - 1)
 			{
 				image_speed = 0;
@@ -1404,7 +1404,7 @@ else
 				if (sprite_run > noone) && (hspeed <> 0){sprite_index = sprite_run;}else
 				if (typeof(sprite_idle) != "undefined"){sprite_index = sprite_idle;}
 			}
-			effect_create_above(ef_smoke, x, bbox_bottom, 0, c_white);
+			effect_create_depth(depth - 1, ef_smoke, x, bbox_bottom, 0, c_white);
 		}
 		#endregion /* Skidding END */
 

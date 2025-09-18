@@ -118,9 +118,9 @@ function scr_player_move_jumping()
 				#region /* Smoke effect under player when jumping */
 				if (coyote_jump > 0)
 				{
-					effect_create_above(ef_smoke, x - 16, bbox_bottom, 0, c_white);
-					effect_create_above(ef_smoke, x, bbox_bottom, 0, c_white);
-					effect_create_above(ef_smoke, x + 16, bbox_bottom, 0, c_white);
+					effect_create_depth(depth - 1, ef_smoke, x - 16, bbox_bottom, 0, c_white);
+					effect_create_depth(depth - 1, ef_smoke, x, bbox_bottom, 0, c_white);
+					effect_create_depth(depth - 1, ef_smoke, x + 16, bbox_bottom, 0, c_white);
 				}
 				#endregion /* Smoke effect under player when jumping END */
 

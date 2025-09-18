@@ -18,7 +18,7 @@ new_instance.direction = break_cardboard_direction;
 new_instance.speed = random_range(5, 10) + instance_nearest(x, y, obj_cardboard).break_cardboard_source_speed * 0.5;
 if (x < view_right && x > view_left && y < view_bottom && y > view_top)
 {
-	effect_create_above(ef_smoke, x, y, 1, c_dkgray);
+	effect_create_depth(depth - 1, ef_smoke, x, y, 1, c_dkgray);
 	scr_audio_play(snd_blockbreak, volume_source.sound);
 }
 with (obj_camera)

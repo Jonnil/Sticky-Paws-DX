@@ -41,7 +41,7 @@ if (can_bounce == 0)
 
 			if (ground_pound >= true)
 			{
-				effect_create_above(ef_smoke, x, bbox_bottom, 2, c_white);
+				effect_create_depth(depth - 1, ef_smoke, x, bbox_bottom, 2, c_white);
 				image_index = 0;
 				ground_pound = false;
 				speed_max = 4;

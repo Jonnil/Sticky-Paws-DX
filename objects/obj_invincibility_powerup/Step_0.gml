@@ -88,7 +88,7 @@ if (floor(random(10)) == 0)
 && (y < camera_get_view_y(view_get_camera(view_current)) + camera_get_view_height(view_get_camera(view_current)))
 && (y > camera_get_view_y(view_get_camera(view_current)))
 {
-	effect_create_below(
+	effect_create_depth(depth + 1, 
 		ef_star,
 		x + random_range(- 16, + 16),
 		y + random_range(- 16, + 16),
@@ -106,6 +106,6 @@ if (effect_time > 60)
 && (y > camera_get_view_y(view_get_camera(view_current)))
 {
 	effect_time = 0;
-	effect_create_below(ef_ring, x, y, 1, c_white);
+	effect_create_depth(depth + 1, ef_ring, x, y, 1, c_white);
 }
 #endregion /* Expanding Ring Effect END */

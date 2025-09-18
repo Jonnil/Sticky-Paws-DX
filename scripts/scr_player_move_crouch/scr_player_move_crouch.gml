@@ -100,7 +100,7 @@ function scr_player_move_crouch()
 					scr_audio_play(snd_skidding, volume_source.sound);
 					scr_gamepad_vibration(player, 0.1, 10);
 				}
-				effect_create_above(ef_smoke, x, bbox_bottom, 0, c_white);
+				effect_create_depth(depth - 1, ef_smoke, x, bbox_bottom, 0, c_white);
 			}
 			else
 			{

@@ -58,7 +58,7 @@ if (can_break_this_block)
 			score_up = 50;
 		}
 	}
-	effect_create_above(ef_smoke, x, y, 1, c_dkgray);
+	effect_create_depth(depth - 1, ef_smoke, x, y, 1, c_dkgray);
 	scr_audio_play(snd_blockbreak, volume_source.sound);
 	instance_destroy();
 }

@@ -76,7 +76,7 @@ effect_time++;
 if (effect_time > 60)
 {
 	effect_time = 0;
-	effect_create_below(ef_ring, x, y, 1, c_white);
+	effect_create_depth(depth + 1, ef_ring, x, y, 1, c_white);
 }
 #endregion /* Expanding Ring Effect END */
 
@@ -91,7 +91,7 @@ if (collect_big_collectible)
 	}
 	#endregion /* Show Big Collectible HUD END */
 
-	effect_create_above(ef_ring, x, y, 2, c_white);
+	effect_create_depth(depth - 1, ef_ring, x, y, 2, c_white);
 
 	#region /* 1000 Score */
 	score += 1000;

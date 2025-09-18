@@ -27,7 +27,7 @@ if (instance_exists(obj_player))
 								hp = max_hp;
 							}
 						}
-						effect_create_below(ef_ring, x, y, 2, c_white);
+						effect_create_depth(depth + 1, ef_ring, x, y, 2, c_white);
 
 						#region /* 2000 Score */
 						score += 2000;

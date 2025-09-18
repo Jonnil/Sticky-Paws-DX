@@ -28,7 +28,7 @@ if (current_month == 12)
 {
 	if (floor(random(10)) == 0)
 	{
-		effect_create_below(ef_snow, 0, 0, 2, c_white); /* Make the title screen snow when it's between 24th and 26th December */
+		effect_create_depth(depth + 1, ef_snow, 0, 0, 2, c_white); /* Make the title screen snow when it's between 24th and 26th December */
 	}
 }
 #endregion /* Change title screen during specific times and dates END */

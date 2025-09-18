@@ -1,4 +1,4 @@
-var get_room_speed = room_speed;
+var boss_speed = 120;
 
 if (place_meeting(x, y, obj_water))
 {
@@ -69,7 +69,7 @@ if (has_seen_player)
 
 taken_damage = max(0, taken_damage - 1);
 
-if (time == get_room_speed * 3)
+if (time == boss_speed * 3)
 {
 	if (can_jump_on_head)
 	{
@@ -86,7 +86,7 @@ if (hp >= 3)
 && (has_seen_player)
 && (flying_back == 0)
 {
-	if (time < get_room_speed * 7)
+	if (time < boss_speed * 7)
 	&& (instance_exists(obj_player))
 	{
 		if (instance_nearest(x, y, obj_player).x < x)
@@ -99,7 +99,7 @@ if (hp >= 3)
 			image_xscale = +1;
 		}
 	}
-	if (time == get_room_speed)
+	if (time == boss_speed)
 	{
 		if (can_jump_on_head)
 		{
@@ -110,7 +110,7 @@ if (hp >= 3)
 		mask_index = spr_boss_stand;
 		sprite_index = spr_boss_stand;
 	}
-	if (time == get_room_speed * 2)
+	if (time == boss_speed * 2)
 	{
 		if (can_jump_on_head)
 		{
@@ -122,7 +122,7 @@ if (hp >= 3)
 		sprite_index = spr_boss_laugh;
 		scr_audio_play(snd_boss_voice_laugh, volume_source.voice);
 	}
-	if (time == get_room_speed * 3)
+	if (time == boss_speed * 3)
 	{
 		if (can_jump_on_head)
 		{
@@ -133,9 +133,9 @@ if (hp >= 3)
 		mask_index = spr_boss_stand;
 		sprite_index = spr_boss_stand;
 	}
-	if (time == get_room_speed * 4)
-	|| (time == get_room_speed * 5)
-	|| (time == get_room_speed * 6)
+	if (time == boss_speed * 4)
+	|| (time == boss_speed * 5)
+	|| (time == boss_speed * 6)
 	{
 		if (can_jump_on_head)
 		{
@@ -147,13 +147,13 @@ if (hp >= 3)
 		sprite_index = spr_boss_throw;
 		instance_create_depth(x, y + random_range(0, + 8), 0, obj_arrow);
 	}
-	if (time == get_room_speed * 7)
+	if (time == boss_speed * 7)
 	{
 		image_speed = 1;
 		mask_index = spr_boss_stand;
 		sprite_index = spr_boss_start_running;
 	}
-	if (time >= get_room_speed * 8)
+	if (time >= boss_speed * 8)
 	{
 		if (image_xscale == -1)
 		{
@@ -168,7 +168,7 @@ if (hp >= 3)
 		}
 	}
 	if (place_meeting(x - 16, y, obj_wall))
-	&& (time > get_room_speed * 8)
+	&& (time > boss_speed * 8)
 	&& (!can_jump_on_head)
 	{
 		if (instance_exists(obj_camera))
@@ -186,7 +186,7 @@ if (hp >= 3)
 	}
 	else
 	if (place_meeting(x + 16, y, obj_wall))
-	&& (time > get_room_speed * 8)
+	&& (time > boss_speed * 8)
 	&& (!can_jump_on_head)
 	{
 		if (instance_exists(obj_camera))
@@ -212,7 +212,7 @@ if (hp >= 2)
 && (has_seen_player)
 && (flying_back == 0)
 {
-	if (time < get_room_speed * 8)
+	if (time < boss_speed * 8)
 	&& (instance_exists(obj_player))
 	{
 		if (instance_nearest(x, y, obj_player).x < x)
@@ -225,7 +225,7 @@ if (hp >= 2)
 			image_xscale = +1;
 		}
 	}
-	if (time == get_room_speed)
+	if (time == boss_speed)
 	{
 		if (can_jump_on_head)
 		{
@@ -238,7 +238,7 @@ if (hp >= 2)
 			sprite_index = spr_boss_stand;
 		}
 	}
-	if (time == get_room_speed * 2)
+	if (time == boss_speed * 2)
 	{
 		if (can_jump_on_head)
 		{
@@ -250,7 +250,7 @@ if (hp >= 2)
 		sprite_index = spr_boss_laugh;
 		scr_audio_play(snd_boss_voice_laugh, volume_source.voice);
 	}
-	if (time == get_room_speed * 3)
+	if (time == boss_speed * 3)
 	{
 		if (can_jump_on_head)
 		{
@@ -261,10 +261,10 @@ if (hp >= 2)
 		mask_index = spr_boss_stand;
 		sprite_index = spr_boss_stand;
 	}
-	if (time == get_room_speed * 4)
-	|| (time == get_room_speed * 5)
-	|| (time == get_room_speed * 6)
-	|| (time == get_room_speed * 7)
+	if (time == boss_speed * 4)
+	|| (time == boss_speed * 5)
+	|| (time == boss_speed * 6)
+	|| (time == boss_speed * 7)
 	{
 		if (can_jump_on_head)
 		{
@@ -276,13 +276,13 @@ if (hp >= 2)
 		sprite_index = spr_boss_throw;
 		instance_create_depth(x, y + random_range(0, + 8), 0, obj_arrow);
 	}
-	if (time == get_room_speed * 8)
+	if (time == boss_speed * 8)
 	{
 		image_speed = 1;
 		mask_index = spr_boss_stand;
 		sprite_index = spr_boss_start_running;
 	}
-	if (time == get_room_speed * 9)
+	if (time == boss_speed * 9)
 	{
 		if (image_xscale == -1)
 		{
@@ -297,7 +297,7 @@ if (hp >= 2)
 		}
 	}
 	if (place_meeting(x - 16, y, obj_wall))
-	&& (time > get_room_speed * 9)
+	&& (time > boss_speed * 9)
 	&& (!can_jump_on_head)
 	{
 		if (instance_exists(obj_camera))
@@ -315,7 +315,7 @@ if (hp >= 2)
 	}
 	else
 	if (place_meeting(x + 16, y, obj_wall))
-	&& (time > get_room_speed * 9)
+	&& (time > boss_speed * 9)
 	&& (!can_jump_on_head)
 	{
 		if (instance_exists(obj_camera))
@@ -340,7 +340,7 @@ else
 if (has_seen_player)
 && (flying_back == 0)
 {
-	if (time < get_room_speed * 9)
+	if (time < boss_speed * 9)
 	{
 		if (instance_exists(obj_player))
 		{
@@ -355,7 +355,7 @@ if (has_seen_player)
 			}
 		}
 	}
-	if (time == get_room_speed)
+	if (time == boss_speed)
 	{
 		if (can_jump_on_head)
 		{
@@ -368,7 +368,7 @@ if (has_seen_player)
 			sprite_index = spr_boss_stand;
 		}
 	}
-	if (time == get_room_speed * 2)
+	if (time == boss_speed * 2)
 	{
 		if (can_jump_on_head)
 		{
@@ -380,7 +380,7 @@ if (has_seen_player)
 		sprite_index = spr_boss_laugh;
 		scr_audio_play(snd_boss_voice_laugh, volume_source.voice);
 	}
-	if (time == get_room_speed * 3)
+	if (time == boss_speed * 3)
 	{
 		if (can_jump_on_head)
 		{
@@ -391,11 +391,11 @@ if (has_seen_player)
 		mask_index = spr_boss_stand;
 		sprite_index = spr_boss_stand;
 	}
-	if (time == get_room_speed * 4)
-	|| (time == get_room_speed * 5)
-	|| (time == get_room_speed * 6)
-	|| (time == get_room_speed * 7)
-	|| (time == get_room_speed * 8)
+	if (time == boss_speed * 4)
+	|| (time == boss_speed * 5)
+	|| (time == boss_speed * 6)
+	|| (time == boss_speed * 7)
+	|| (time == boss_speed * 8)
 	{
 		if (can_jump_on_head)
 		{
@@ -407,13 +407,13 @@ if (has_seen_player)
 		sprite_index = spr_boss_throw;
 		instance_create_depth(x, y + random_range(0, + 8), 0, obj_arrow);
 	}
-	if (time == get_room_speed * 9)
+	if (time == boss_speed * 9)
 	{
 		image_speed = 1;
 		mask_index = spr_boss_stand;
 		sprite_index = spr_boss_start_running;
 	}
-	if (time == get_room_speed * 10)
+	if (time == boss_speed * 10)
 	{
 		if (image_xscale == -1)
 		{
@@ -428,7 +428,7 @@ if (has_seen_player)
 		}
 	}
 	if (place_meeting(x - 16, y, obj_wall))
-	&& (time > get_room_speed * 10)
+	&& (time > boss_speed * 10)
 	&& (!can_jump_on_head)
 	{
 		if (instance_exists(obj_camera))
@@ -446,7 +446,7 @@ if (has_seen_player)
 	}
 	else
 	if (place_meeting(x + 16, y, obj_wall))
-	&& (time > get_room_speed * 10)
+	&& (time > boss_speed * 10)
 	&& (!can_jump_on_head)
 	{
 		if (instance_exists(obj_camera))
@@ -475,20 +475,20 @@ if (sprite_index == spr_boss_throw)
 
 if (hp <= 0)
 {
-	if (time == get_room_speed * 3 - 1)
+	if (time == boss_speed * 3 - 1)
 	|| (taken_damage == 0)
 	{
-		effect_create_above(ef_smoke, x - 32, y, 2, c_white);
-		effect_create_above(ef_smoke, x - 42, y + 32, 2, c_white);
-		effect_create_above(ef_smoke, x - 32, y + 64, 2, c_white);
+		effect_create_depth(depth - 1, ef_smoke, x - 32, y, 2, c_white);
+		effect_create_depth(depth - 1, ef_smoke, x - 42, y + 32, 2, c_white);
+		effect_create_depth(depth - 1, ef_smoke, x - 32, y + 64, 2, c_white);
 
-		effect_create_above(ef_smoke, x, y, 2, c_white);
-		effect_create_above(ef_smoke, x, y + 32, 2, c_white);
-		effect_create_above(ef_smoke, x, y + 64, 2, c_white);
+		effect_create_depth(depth - 1, ef_smoke, x, y, 2, c_white);
+		effect_create_depth(depth - 1, ef_smoke, x, y + 32, 2, c_white);
+		effect_create_depth(depth - 1, ef_smoke, x, y + 64, 2, c_white);
 
-		effect_create_above(ef_smoke, x + 32, y, 2, c_white);
-		effect_create_above(ef_smoke, x + 42, y + 32, 2, c_white);
-		effect_create_above(ef_smoke, x + 32, y + 64, 2, c_white);
+		effect_create_depth(depth - 1, ef_smoke, x + 32, y, 2, c_white);
+		effect_create_depth(depth - 1, ef_smoke, x + 42, y + 32, 2, c_white);
+		effect_create_depth(depth - 1, ef_smoke, x + 32, y + 64, 2, c_white);
 
 		scr_different_items_inside(bbox_top);
 

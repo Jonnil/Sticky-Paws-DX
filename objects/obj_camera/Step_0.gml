@@ -111,7 +111,7 @@ if (global.effect_snow && part_system_exists(part_system_snow))
 	part_emitter_region(part_system_snow, 0, camera_get_view_x(view_get_camera(view_current)), camera_get_view_x(view_get_camera(view_current)) + camera_get_view_width(view_get_camera(view_current)), camera_get_view_y(view_get_camera(view_current)), camera_get_view_y(view_get_camera(view_current)) + camera_get_view_height(view_get_camera(view_current)), ps_shape_rectangle, ps_distr_linear);
 	if (irandom(9) == 0) /* Reduce the frequency of snowflakes. irandom generates a random integer between 0 and 9 */
 	{
-		effect_create_below(ef_snow, x, y, 2, c_white);
+		effect_create_depth(depth + 1, ef_snow, x, y, 2, c_white);
 	}
 }
 #endregion /* Snow Effect END */

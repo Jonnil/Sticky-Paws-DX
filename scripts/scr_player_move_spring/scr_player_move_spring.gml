@@ -109,7 +109,7 @@ function scr_player_move_spring()
 
 		if (star_index == 5)
 		{
-			effect_create_above(
+			effect_create_depth(depth - 1, 
 				ef_star,
 				x + random_range(-32, +32),
 				y + random_range(-32, +32),

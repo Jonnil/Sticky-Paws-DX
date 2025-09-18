@@ -33,7 +33,7 @@ if (die_volting == 0)
 		sprite_index = global.resource_pack_sprite_big_stationary_enemy_flattened;
 		if (image_index > image_number - 1)
 		{
-			effect_create_above(ef_smoke, x, y, 2, c_white);
+			effect_create_depth(depth - 1, ef_smoke, x, y, 2, c_white);
 			instance_destroy();
 		}
 	}

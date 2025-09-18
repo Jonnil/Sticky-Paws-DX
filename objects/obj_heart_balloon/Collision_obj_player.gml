@@ -46,6 +46,6 @@ if (!bounce_up)
 	}
 	#endregion /* 1000 Score END */
 
-	effect_create_below(ef_ring, x, y, 1, c_white);
+	effect_create_depth(depth + 1, ef_ring, x, y, 1, c_white);
 	instance_destroy();
 }

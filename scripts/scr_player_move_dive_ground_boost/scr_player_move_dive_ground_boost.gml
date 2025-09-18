@@ -10,7 +10,7 @@ function scr_player_move_dive_ground_boost()
 		if (key_jump)
 		{
 			dive_on_ground = false;
-			effect_create_above(ef_smoke, x, bbox_bottom, 1, c_white);
+			effect_create_depth(depth - 1, ef_smoke, x, bbox_bottom, 1, c_white);
 			if (speed_max < 10)
 			{
 				speed_max = 10;

@@ -16,7 +16,7 @@ if (!die)
 		hspeed = -1;
 	}
 
-	effect_create_above(ef_smoke, x, y, 2, c_white);
+	effect_create_depth(depth - 1, ef_smoke, x, y, 2, c_white);
 	if (instance_exists(obj_player))
 	{
 		scr_gamepad_vibration(instance_nearest(x, y, obj_player).player, 0.5, 10);

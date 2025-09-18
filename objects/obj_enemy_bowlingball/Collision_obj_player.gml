@@ -40,7 +40,7 @@ if (!die)
 				die_volting = +1;
 			}
 			scr_different_items_inside(bbox_top);
-			effect_create_above(ef_smoke, x, y, 2, c_white);
+			effect_create_depth(depth - 1, ef_smoke, x, y, 2, c_white);
 			scr_gamepad_vibration(other.player, 0.5, 10);
 
 			scr_audio_play(choose(enemyvoice_defeated1, enemyvoice_defeated2, enemyvoice_defeated3), volume_source.voice);
@@ -80,7 +80,7 @@ if (!die)
 					midair_jumps_left = number_of_jumps - 1;
 					can_dive = true;
 				}
-				effect_create_below(ef_ring, x, y, 0, c_white);
+				effect_create_depth(depth + 1, ef_ring, x, y, 0, c_white);
 				scr_gamepad_vibration(other.player, 0.5, 10);
 
 				scr_audio_play(choose(enemyvoice_defeated1, enemyvoice_defeated2, enemyvoice_defeated3), volume_source.voice);
@@ -250,7 +250,7 @@ if (!die)
 					midair_jumps_left = number_of_jumps - 1;
 					can_dive = true;
 				}
-				effect_create_below(ef_ring, x, y, 0, c_white);
+				effect_create_depth(depth + 1, ef_ring, x, y, 0, c_white);
 				scr_gamepad_vibration(other.player, 0.5, 10);
 
 				scr_audio_play(choose(enemyvoice_defeated1, enemyvoice_defeated2, enemyvoice_defeated3), volume_source.voice);

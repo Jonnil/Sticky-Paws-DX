@@ -91,7 +91,7 @@ function scr_player_move_ground_pound()
 				}
 
 				scr_gamepad_vibration(player, 0.5, 10);
-				effect_create_above(ef_smoke, x, bbox_bottom, 2, c_white);
+				effect_create_depth(depth - 1, ef_smoke, x, bbox_bottom, 2, c_white);
 
 				#region /* Continuesly break blocks underneath you, if they are breakable */
 				if (key_crouch_hold)
@@ -146,7 +146,7 @@ function scr_player_move_ground_pound()
 				&& (key_jump_hold)
 				{
 					can_ground_pound = true;
-					effect_create_above(ef_smoke, x, bbox_bottom, 1, c_white);
+					effect_create_depth(depth - 1, ef_smoke, x, bbox_bottom, 1, c_white);
 					ground_pound = 3;
 					image_index = 0;
 					midair_jumps_left = clamp(midair_jumps_left - 1, 0, number_of_jumps);

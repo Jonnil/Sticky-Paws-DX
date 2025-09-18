@@ -37,10 +37,10 @@ if (other.vspeed > 0)
 			other.vspeed = -8;
 		}
 		image_index = 0;
-		effect_create_below(ef_ring, other.x, other.bbox_bottom, 0, c_white);
+		effect_create_depth(depth + 1, ef_ring, other.x, other.bbox_bottom, 0, c_white);
 		taken_damage = 100;
 		can_jump_on_head = false;
-		time = room_speed * 2
+		time = 60 * 2
 	}
 	else
 	{

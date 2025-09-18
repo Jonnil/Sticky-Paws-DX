@@ -18,24 +18,24 @@ if (place_meeting(x, y + 1, other))
 	{
 		if (position_meeting(x - 24, bbox_bottom + 2, obj_wall))
 		{
-			effect_create_above(ef_smoke, x - 24, bbox_bottom - 8, 0, c_white);
+			effect_create_depth(depth - 1, ef_smoke, x - 24, bbox_bottom - 8, 0, c_white);
 		}
 		if (position_meeting(x - 16, bbox_bottom + 2, obj_wall))
 		{
-			effect_create_above(ef_smoke, x - 16, bbox_bottom, 0, c_white);
+			effect_create_depth(depth - 1, ef_smoke, x - 16, bbox_bottom, 0, c_white);
 		}
 		if (position_meeting(x, bbox_bottom + 2, obj_wall))
 		{
-			effect_create_above(ef_smoke, x, bbox_bottom, 0, c_white);
-			effect_create_above(ef_smoke, x, bbox_bottom - 8, 0, c_white);
+			effect_create_depth(depth - 1, ef_smoke, x, bbox_bottom, 0, c_white);
+			effect_create_depth(depth - 1, ef_smoke, x, bbox_bottom - 8, 0, c_white);
 		}
 		if (position_meeting(x + 16, bbox_bottom + 2, obj_wall))
 		{
-			effect_create_above(ef_smoke, x + 16, bbox_bottom, 0, c_white);
+			effect_create_depth(depth - 1, ef_smoke, x + 16, bbox_bottom, 0, c_white);
 		}
 		if (position_meeting(x + 24, bbox_bottom + 2, obj_wall))
 		{
-			effect_create_above(ef_smoke, x + 24, bbox_bottom - 8, 0, c_white);
+			effect_create_depth(depth - 1, ef_smoke, x + 24, bbox_bottom - 8, 0, c_white);
 		}
 	}
 	#endregion /* Smoke Landing Effect END */

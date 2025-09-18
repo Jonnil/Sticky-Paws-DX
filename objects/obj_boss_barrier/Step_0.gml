@@ -34,7 +34,7 @@ if (!instance_exists(obj_boss))
 				motion_set(315, random_range(5, 10));
 				brick_particle = true;
 			}
-			effect_create_above(ef_smoke, x, y, 1, c_white);
+			effect_create_depth(depth - 1, ef_smoke, x, y, 1, c_white);
 			#endregion /* Create broken boss barrier particles END */
 
 			#region /* Destroy emerging spikes sitting on the boss barrier */
