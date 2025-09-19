@@ -612,8 +612,8 @@
   "optionsFile":"options.json",
   "packageId":"",
   "parent":{
-    "name":"Steamworks",
-    "path":"folders/Steamworks.yy",
+    "name":"Extensions",
+    "path":"folders/Extensions.yy",
   },
   "productId":"",
   "resourceType":"GMExtension",
