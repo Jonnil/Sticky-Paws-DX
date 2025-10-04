@@ -94,7 +94,13 @@ function scr_draw_upload_rules()
 			{
 				keyboard_string = "";
 				search_id = "";
-				content_type = "character";
+				
+				if (content_type != "character")
+				{
+					global.force_online_list_refresh = true;
+					content_type = "character";
+				}
+				
 				menu = "search_id_ok";
 				select_custom_level_menu_open = false;
 				menu_delay = 3;

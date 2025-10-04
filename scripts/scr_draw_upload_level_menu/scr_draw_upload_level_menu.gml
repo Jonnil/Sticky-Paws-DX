@@ -200,7 +200,13 @@ function scr_draw_upload_level_menu()
 									}
 									caution_online_takes_you_to = "level_editor_upload_pressed";
 									caution_online_takes_you_back_to = "level_editor_upload"; show_debug_message("1 [scr_draw_upload_level_menu] caution_online_takes_you_back_to = level_editor_upload");
-									content_type = "level";
+									
+									if (content_type != "level")
+									{
+										global.force_online_list_refresh = true;
+										content_type = "level";
+									}
+									
 									menu = "upload_rules";
 									menu_delay = 3;
 								}
@@ -1887,13 +1893,19 @@ function scr_draw_upload_level_menu()
 			keyboard_string = "";
 			menu_delay = 3;
 			menu = "question_upload_level_edit_username_ok"; /* If there isn't an username, have the player make an username */
+			
 			if (variable_instance_exists(self, "show_level_editor_corner_menu"))
 			{
 				show_level_editor_corner_menu = false;
 			}
 		}
-
-		content_type = "level"; /* Set "content type" to be correct for what kind of files you're uploading, before uploading the files to the server */
+		
+		if (content_type != "level")
+		{
+			global.force_online_list_refresh = true;
+			content_type = "level"; /* Set "content type" to be correct for what kind of files you're uploading, before uploading the files to the server */
+		}
+		
 		var uploading_level_message_y = 532;
 
 		draw_set_halign(fa_center);
@@ -1989,29 +2001,34 @@ function scr_draw_upload_level_menu()
 							{
 								if (scr_online_token_is_valid() == true)
 								{
-
+									
 									#region /* Actually upload the level to the server */
-									content_type = "level"; /* Set "content type" to be correct for what kind of files you're uploading, before uploading the files to the server */
-
+									
+									if (content_type != "level")
+									{
+										global.force_online_list_refresh = true;
+										content_type = "level"; /* Set "content type" to be correct for what kind of files you're uploading, before uploading the files to the server */
+									}
+									
 									/* User is prompted for a file to upload */
 									file_name = filename_name(game_save_id + string(file));
-
+									
 									/* Create DS Map to hold the HTTP Header info */
 									var level_upload_headers = ds_map_create();
-
+									
 									/* Add to the header DS Map */
 									var boundary = "----GMBoundary";
 									ds_map_add(level_upload_headers, "Content-Type", "multipart/form-data; boundary=" + boundary);
 									ds_map_add(level_upload_headers, "User-Agent", "gmuploader");
 									ds_map_add(level_upload_headers, "X-API-Key", global.api_key);
-
+									
 									/* Loads the file into a buffer */
 									send_buffer = buffer_create(1, buffer_grow, 1);
 									buffer_load_ext(send_buffer, game_save_id + string(file), 0);
-
+									
 									/* Encodes the data as base64 */
 									data_send = buffer_base64_encode(send_buffer, 0, buffer_get_size(send_buffer));
-
+									
 									/* Post the data to the upload script */
 									var post_data = "--" + boundary + "\r\n";
 									post_data += "Content-Disposition: form-data; name=\"name\"\r\n\r\n";
@@ -2023,7 +2040,7 @@ function scr_draw_upload_level_menu()
 									post_data += "Content-Disposition: form-data; name=\"data\"\r\n\r\n";
 									post_data += data_send + "\r\n";
 									post_data += "--" + boundary + "--";
-
+									
 									/* Add the Content-Length header to the map */
 									ds_map_add(level_upload_headers, "Content-Length", string(string_length(post_data)));
 									global.http_request_id = http_request(
@@ -2032,11 +2049,11 @@ function scr_draw_upload_level_menu()
 										level_upload_headers,
 										post_data
 									);
-
+									
 									/* Cleans up! */
 									buffer_delete(send_buffer);
 									ds_map_destroy(level_upload_headers);
-
+									
 									/* Delete some leftover files and folders */
 									if (destroy_zip_after_uploading)
 									|| (GM_build_type == "exe")
@@ -2044,7 +2061,7 @@ function scr_draw_upload_level_menu()
 										file_delete(game_save_id + string(level_id) + ".zip");
 									}
 									#endregion /* Actually upload the level to the server END */
-
+									
 									/* Update a list of downloaded levels that you have finished. The level you are uploading have already been finished */
 									ini_open(game_save_id + "save_file/custom_level_save.ini");
 									if (ini_read_real("finished_downloaded_level", string(level_id), 0) < 2)
@@ -2052,9 +2069,9 @@ function scr_draw_upload_level_menu()
 										ini_write_real("finished_downloaded_level", string(level_id), 2); /* Played and finished when uploading own level */
 									}
 									ini_close(); /* Don't commit the save data on Switch, this is only temporary! */
-
+									
 									search_for_id_still = false;
-
+									
 									switch_save_data_commit(); /* Remember to commit the save data when uploading content to server */
 									menu = "level_uploaded";
 								}

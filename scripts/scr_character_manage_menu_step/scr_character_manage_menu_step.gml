@@ -607,7 +607,13 @@ function scr_character_manage_menu_step()
 								{
 									caution_online_takes_you_to = "upload_yes_character";
 									caution_online_takes_you_back_to = "click_upload_character";
-									content_type = "character";
+									
+									if (content_type != "character")
+									{
+										global.force_online_list_refresh = true;
+										content_type = "character"; /* Need to set the "content type" to "level", so Async - HTTP Event is running correctly */
+									}
+									
 									menu = "upload_rules";
 									menu_delay = 3;
 								}

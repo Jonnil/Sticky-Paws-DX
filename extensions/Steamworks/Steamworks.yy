@@ -15,7 +15,7 @@
   "copyToTargets":194,
   "description":"",
   "exportToGame":true,
-  "extensionVersion":"1.4.5",
+  "extensionVersion":"2.1.5",
   "files":[
     {"$GMExtensionFile":"v1","%Name":"Steamworks.ext","constants":[
         {"$GMExtensionConstant":"","%Name":"ov_friends","hidden":false,"name":"ov_friends","resourceType":"GMExtensionConstant","resourceVersion":"2.0","value":"0",},
@@ -612,8 +612,8 @@
   "optionsFile":"options.json",
   "packageId":"",
   "parent":{
-    "name":"Extensions",
-    "path":"folders/Extensions.yy",
+    "name":"Steamworks",
+    "path":"folders/Steamworks.yy",
   },
   "productId":"",
   "resourceType":"GMExtension",

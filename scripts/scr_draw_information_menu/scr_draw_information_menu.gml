@@ -619,7 +619,13 @@ function scr_draw_information_menu()
 							{
 								/* Go to online level list, so you can browse all uploaded levels, instead of just searching for specific levels */
 								select_custom_level_menu_open = false;
-								content_type = "level"; /* Need to set the "content type" to "level", so Async - HTTP Event is running correctly */
+								
+								if (content_type != "level")
+								{
+									global.force_online_list_refresh = true;
+									content_type = "level"; /* Need to set the "content type" to "level", so Async - HTTP Event is running correctly */
+								}
+								
 								global.selected_online_download_index = 0;
 								global.download_current_page = 0;
 								menu = "online_download_list_load";
@@ -659,7 +665,13 @@ function scr_draw_information_menu()
 				else
 				{
 					information_menu_open = ""; /* Disable information menu so you can't accidentally navigate information menu when navigating online caution menu */
-					content_type = "level"; /* Need to set the "content type" to "level", so Async - HTTP Event is running correctly */
+					
+					if (content_type != "level")
+					{
+						global.force_online_list_refresh = true;
+						content_type = "level"; /* Need to set the "content type" to "level", so Async - HTTP Event is running correctly */
+					}
+					
 					scr_handle_no_network_connection("scr_draw_information_menu");
 					menu_delay = 3;
 				}

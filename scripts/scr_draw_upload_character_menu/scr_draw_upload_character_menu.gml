@@ -638,17 +638,22 @@ function scr_draw_upload_character_menu()
 			menu_delay = 3;
 			menu = "question_upload_character_edit_username_ok"; /* If there isn't an username, have the player make an username */
 		}
-
+		
 		var character_name = string(ds_list_find_value(global.all_loaded_characters, global.character_index[fixed_player - 1]));
-
-		content_type = "character"; /* Set "content type" to be correct for what kind of files you're uploading, before uploading the files to the server */
+		
+		if (content_type != "character")
+		{
+			global.force_online_list_refresh = true;
+			content_type = "character"; /* Set "content type" to be correct for what kind of files you're uploading, before uploading the files to the server */
+		}
+		
 		var uploading_character_message_y = 532;
-
+		
 		draw_set_alpha(0.75);
 		draw_roundrect_color_ext(get_window_width * 0.5 - message_x_offset, uploading_character_message_y - 32, get_window_width * 0.5 + message_x_offset, uploading_character_message_y + 32, 50, 50, c_black, c_black, false);
 		draw_set_alpha(1);
 		scr_draw_text_outlined(get_window_width * 0.5, uploading_character_message_y, l10n_text("Uploading") + " " + string(character_name) + "...", global.default_text_size * 1.9, c_black, c_white, 1);
-
+		
 		if (menu_delay >= 41)
 		{
 			scr_draw_text_outlined(get_window_width * 0.5, uploading_character_message_y + 42, l10n_text("Generating Character ID"), global.default_text_size, c_black, c_ltgray, 1);
@@ -714,30 +719,34 @@ function scr_draw_upload_character_menu()
 							{
 								if (scr_online_token_is_valid() == true)
 								{
-
+									
 									#region /* Actually upload the character to the server */
-
-									content_type = "character"; /* Set "content type" to be correct for what kind of files you're uploading, before uploading the files to the server */
-
+									
+									if (content_type != "character")
+									{
+										global.force_online_list_refresh = true;
+										content_type = "character"; /* Set "content type" to be correct for what kind of files you're uploading, before uploading the files to the server */
+									}
+									
 									/* User is prompted for a file to upload */
 									file_name = filename_name(file);
-
+									
 									/* Create DS Map to hold the HTTP Header info */
 									var character_upload_headers = ds_map_create();
-
+									
 									/* Add to the header DS Map */
 									var boundary = "----GMBoundary";
 									ds_map_add(character_upload_headers, "Content-Type", "multipart/form-data; boundary=" + boundary);
 									ds_map_add(character_upload_headers, "User-Agent", "gmuploader");
 									ds_map_add(character_upload_headers, "X-API-Key", global.api_key);
-
+									
 									/* Loads the file into a buffer */
 									send_buffer = buffer_create(1, buffer_grow, 1);
 									buffer_load_ext(send_buffer, game_save_id + string(file), 0);
-
+									
 									/* Encodes the data as base64 */
 									data_send = buffer_base64_encode(send_buffer, 0, buffer_get_size(send_buffer));
-
+									
 									/* Post the data to the upload script */
 									var post_data = "--" + boundary + "\r\n";
 									post_data += "Content-Disposition: form-data; name=\"name\"\r\n\r\n";

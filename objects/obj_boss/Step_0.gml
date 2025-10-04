@@ -1,4 +1,4 @@
-var boss_speed = 120;
+var boss_speed = 60;
 
 if (place_meeting(x, y, obj_water))
 {

@@ -125,7 +125,13 @@ function scr_draw_network_error_menu()
 							show_debug_message("[scr_draw_caution_online] Transitioning to search ID OK menu. content_type: " + string(content_type) + ", keyboard_string: " + string(keyboard_string) + ", search_id: " + string(search_id));
 							keyboard_string = "";
 							search_id = "";
-							content_type = "character";
+							
+							if (content_type != "character")
+							{
+								global.force_online_list_refresh = true;
+								content_type = "character"; /* Need to set the "content type" to "level", so Async - HTTP Event is running correctly */
+							}
+							
 							menu = "search_id_ok";
 							select_custom_level_menu_open = false;
 						}

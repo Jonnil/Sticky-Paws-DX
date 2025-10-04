@@ -76,31 +76,31 @@ function scr_step_online_download_list()
 		scr_fallback_to_previous_menu_state();
 	}
 	#endregion /* Initialization: Begin loading the online download list if requested END */
-
+	
 	#region /* Input Handling: Navigation for the online download list menu */
 	if (string_copy(menu, 1, string_length("download_online")) == "download_online")
 	{
 		var num_items = array_length(global.online_content_data);
-
+		
 		/* Pagination slice calculation */
 		var perPage        = global.download_items_per_page;
 		var page        = clamp(global.download_current_page, 0, global.download_total_pages - 1);
-		var start_idx    = page * perPage;
+		start_idx    = page * perPage;
 		var end_idx        = min(start_idx + perPage - 1, array_length(global.online_content_data) - 1);
 		page_count    = end_idx - start_idx + 1;
-
+		
 		#region /* Combined Navigation with keyboard/joystick when data is present */
 		if (global.online_content_data != undefined
 		&& (menu != "search_id_ok"))
 		{
-
+			
 			#region /* Handle UP key */
 			if (key_up
 			&& (menu_delay == 0)
 			&& (menu_joystick_delay == 0))
 			{
 				menu_delay = 3;
-
+				
 				if (menu == "download_online_" + string(start_idx))
 				{
 					if (global.download_current_page < global.download_total_pages - 1)

@@ -90,3 +90,9 @@ if (clear_rate = "closed")
 	image_alpha = 0.1;
 	level_color = c_black; /* Closed */
 }
+
+if (global.demo_enable)
+&& (level > global.demo_number_of_levels)
+{
+	instance_destroy();
+}

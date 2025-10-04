@@ -223,7 +223,13 @@ function scr_character_select_menu_draw()
 								{
 									/* Go to online level list, so you can browse all uploaded levels, instead of just searching for specific levels */
 									select_custom_level_menu_open = false;
-									content_type = "character"; /* Need to set the "content type" to "level", so Async - HTTP Event is running correctly */
+									
+									if (content_type != "character")
+									{
+										global.force_online_list_refresh = true;
+										content_type = "character"; /* Need to set the "content type" to "level", so Async - HTTP Event is running correctly */
+									}
+									
 									global.selected_online_download_index = 0;
 									global.download_current_page = 0;
 									menu = "online_download_list_load";
@@ -248,7 +254,12 @@ function scr_character_select_menu_draw()
 					}
 					else
 					{
-						content_type = "character"; /* Need to set the "content type" to "character", so Async - HTTP Event is running correctly */
+						if (content_type != "character")
+						{
+							global.force_online_list_refresh = true;
+							content_type = "character"; /* Need to set the "content type" to "level", so Async - HTTP Event is running correctly */
+						}
+						
 						scr_handle_no_network_connection("scr_character_select_menu_draw", "online_character_list");
 						menu_delay = 3;
 					}

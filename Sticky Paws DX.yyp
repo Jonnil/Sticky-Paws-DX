@@ -48,6 +48,7 @@
     {"$GMFolder":"","%Name":"ground","folderPath":"folders/Sprites/ground.yy","name":"ground","resourceType":"GMFolder","resourceVersion":"2.0",},
     {"$GMFolder":"","%Name":"Map Sprites","folderPath":"folders/Sprites/Map Sprites.yy","name":"Map Sprites","resourceType":"GMFolder","resourceVersion":"2.0",},
     {"$GMFolder":"","%Name":"Sprite Masks","folderPath":"folders/Sprites/Sprite Masks.yy","name":"Sprite Masks","resourceType":"GMFolder","resourceVersion":"2.0",},
+    {"$GMFolder":"","%Name":"Steamworks","folderPath":"folders/Steamworks.yy","name":"Steamworks","resourceType":"GMFolder","resourceVersion":"2.0",},
     {"$GMFolder":"","%Name":"Tile Sets","folderPath":"folders/Tile Sets.yy","name":"Tile Sets","resourceType":"GMFolder","resourceVersion":"2.0",},
     {"$GMFolder":"","%Name":"Timelines","folderPath":"folders/Timelines.yy","name":"Timelines","resourceType":"GMFolder","resourceVersion":"2.0",},
   ],
@@ -2053,7 +2054,7 @@
   "isEcma":false,
   "LibraryEmitters":[],
   "MetaData":{
-    "IDEVersion":"2024.1400.0.892",
+    "IDEVersion":"2024.1400.0.901",
   },
   "name":"Sticky Paws DX",
   "resources":[
@@ -2472,6 +2473,7 @@
     {"id":{"name":"scr_zoom_camera_draw_gui","path":"scripts/scr_zoom_camera_draw_gui/scr_zoom_camera_draw_gui.yy",},},
     {"id":{"name":"set_controller_sprites_to_use","path":"scripts/set_controller_sprites_to_use/set_controller_sprites_to_use.yy",},},
     {"id":{"name":"set_pause_button_y_positions","path":"scripts/set_pause_button_y_positions/set_pause_button_y_positions.yy",},},
+    {"id":{"name":"Steamworks_Definitions","path":"scripts/Steamworks_Definitions/Steamworks_Definitions.yy",},},
     {"id":{"name":"seq_catlyn_break","path":"sequences/seq_catlyn_break/seq_catlyn_break.yy",},},
     {"id":{"name":"shd_greyscale","path":"shaders/shd_greyscale/shd_greyscale.yy",},},
     {"id":{"name":"snd_1up","path":"sounds/snd_1up/snd_1up.yy",},},
