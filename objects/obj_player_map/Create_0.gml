@@ -46,16 +46,16 @@ move_speed = 8;
 
 if (file_exists("resource_pack/" + string(ds_list_find_value(global.all_loaded_resource_pack, global.selected_resource_pack)) + "/sound/music_map.ogg"))
 {
-	music_map = audio_create_stream("resource_pack/" + string(ds_list_find_value(global.all_loaded_resource_pack, global.selected_resource_pack)) + "/sound/music_map.ogg");
+	global.music = audio_create_stream("resource_pack/" + string(ds_list_find_value(global.all_loaded_resource_pack, global.selected_resource_pack)) + "/sound/music_map.ogg");
 }
 else
 if (file_exists(game_save_id + "custom_resource_pack/" + string(ds_list_find_value(global.all_loaded_resource_pack, global.selected_resource_pack)) + "/sound/music_map.ogg"))
 {
-	music_map = audio_create_stream(game_save_id + "custom_resource_pack/" + string(ds_list_find_value(global.all_loaded_resource_pack, global.selected_resource_pack)) + "/sound/music_map.ogg");
+	global.music = audio_create_stream(game_save_id + "custom_resource_pack/" + string(ds_list_find_value(global.all_loaded_resource_pack, global.selected_resource_pack)) + "/sound/music_map.ogg");
 }
 else
 {
-	music_map = noone;
+	global.music = noone;
 }
 
 #region /* Play as custom character */
@@ -260,7 +260,7 @@ if (!instance_exists(obj_camera_map))
 audio_listener_orientation(0, 0, 1, 0, -1, 0);
 audio_listener_position(x, y, 0); /* Audio listener should start on top of the player */
 
-scr_audio_play(music_map, volume_source.music); /* Play the map screen music */
+scr_audio_play(global.music, volume_source.music); /* Play the map screen music */
 
 nearest_level = noone;
 distance_to_level = 0;
@@ -270,11 +270,9 @@ best_time_text = "";
 audio_stop_sound(snd_skidding);
 audio_stop_sound(snd_skidding_ice);
 audio_stop_sound(global.music_boss);
-audio_stop_sound(global.music);
 audio_stop_sound(global.music_underwater);
 audio_stop_sound(global.ambience);
 audio_stop_sound(global.ambience_underwater);
-global.music = noone;
 global.music_underwater = noone;
 global.ambience = noone;
 global.ambience_underwater = noone;

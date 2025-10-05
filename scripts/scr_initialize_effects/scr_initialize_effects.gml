@@ -7,10 +7,15 @@ function scr_initialize_effects()
 		if (!part_system_exists(part_system_rain))
 		{
 			part_system_rain = part_system_create(par_rain_level);
-
-			if (!audio_is_playing(snd_rain))
+			
+			if (global.ambience == noone)
 			{
-				scr_audio_play(snd_rain, volume_source.ambient); /* Play rain sound */
+				global.ambience = snd_rain;
+			}
+			
+			if (!audio_is_playing(global.ambience))
+			{
+				scr_audio_play(global.ambience, volume_source.ambient); /* Play rain sound */
 			}
 		}
 	}

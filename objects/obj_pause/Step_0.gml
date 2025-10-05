@@ -208,24 +208,6 @@ if (keyboard_check_pressed(vk_escape))
 	&& (!input_key)
 	&& (menu_delay == 0 && menu_joystick_delay == 0)
 	{
-		scr_config_save(); /* Save Config */
-		audio_resume_all();
-		if (global.music != noone)
-		{
-			audio_sound_gain(global.music, global.volume_music * global.volume_main, 0);
-		}
-		if (global.music_underwater != noone)
-		{
-			audio_sound_gain(global.music_underwater, 0, 0);
-		}
-		if (global.ambience != noone)
-		{
-			audio_sound_gain(global.ambience, global.volume_ambient * global.volume_main, 0);
-		}
-		if (global.ambience_underwater != noone)
-		{
-			audio_sound_gain(global.ambience_underwater, 0, 0);
-		}
 		global.pause = false;
 	}
 }
@@ -250,28 +232,7 @@ if (!hide_menu_for_clean_screenshots)
 			&& (point_in_rectangle(mouse_get_x, mouse_get_y, get_window_width * 0.5 - 185, continue_y, get_window_width * 0.5 + 185, continue_y + 41))
 			&& (menu_delay == 0 && menu_joystick_delay == 0)
 			{
-
-				#region /* Return to game */
-				audio_resume_all();
-				if (global.music != noone)
-				{
-					audio_sound_gain(global.music, global.volume_music * global.volume_main, 0);
-				}
-				if (global.music_underwater != noone)
-				{
-					audio_sound_gain(global.music_underwater, 0, 0);
-				}
-				if (global.ambience != noone)
-				{
-					audio_sound_gain(global.ambience, global.volume_ambient * global.volume_main, 0);
-				}
-				if (global.ambience_underwater != noone)
-				{
-					audio_sound_gain(global.ambience_underwater, 0, 0);
-				}
 				global.pause = false;
-				#endregion /* Return to game END */
-
 			}
 			if (key_up)
 			&& (!key_down)
@@ -1006,24 +967,6 @@ if (!hide_menu_for_clean_screenshots)
 			|| (menu == "restart")
 			|| (menu == "quit")
 			{
-				scr_config_save(); /* Save Config */
-				audio_resume_all();
-				if (global.music != noone)
-				{
-					audio_sound_gain(global.music, global.volume_music * global.volume_main, 0);
-				}
-				if (global.music_underwater != noone)
-				{
-					audio_sound_gain(global.music_underwater, 0, 0);
-				}
-				if (global.ambience != noone)
-				{
-					audio_sound_gain(global.ambience, global.volume_ambient * global.volume_main, 0);
-				}
-				if (global.ambience_underwater != noone)
-				{
-					audio_sound_gain(global.ambience_underwater, 0, 0);
-				}
 				global.pause = false;
 			}
 			else
