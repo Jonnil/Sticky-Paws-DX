@@ -174,7 +174,8 @@ global.online_token_error_message = ""; /* Can only be a string value */
 global.server_timeout_end = undefined;
 global.online_list_loaded = false;
 global.force_online_list_refresh = false;
-global.online_content_data = undefined; /* The uploaded online content will be json parsed into this variable */
+global.online_content_data_levels = undefined; /* The uploaded online content will be json parsed into this variable */
+global.online_content_data_characters = undefined;
 global.info_data = undefined; /* The uploaded online content information will be json parsed into this variable */
 global.draw_download_name = "";
 #endregion /* Server stuff END */

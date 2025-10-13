@@ -12,7 +12,7 @@ function scr_draw_online_download_list()
 		draw_set_alpha(1);
 
 		#region /* Process Data */
-		if (global.online_content_data == undefined
+		if (variable_global_get("online_content_data_" + string(content_type)) == undefined
 		&& in_online_download_list_menu)
 		{
 			scr_draw_online_download_list_data();
@@ -33,15 +33,15 @@ function scr_draw_online_download_list()
 /// @description Draw the online download list data
 function scr_draw_online_download_list_data()
 {
-	scr_draw_loading(1, , , "Loading from server");
-
+	scr_draw_loading(1, , , "Loading from server 2");
+	
 	var page_offset = global.download_current_page * global.download_items_per_page;
 	info_queue_index = page_offset;
-
+	
 	/* Draw error messages when online download list returns errors */
 	var centerX = display_get_gui_width() * 0.5;
 	var centerY = display_get_gui_height() * 0.5 + 84;
-
+	
 	if (global.online_download_list == "HTTP request exception")
 	{
 		scr_draw_text_outlined(centerX, centerY, l10n_text("HTTP request exception"), global.default_text_size, c_white, c_black, 1);
@@ -63,17 +63,17 @@ function scr_draw_online_download_menu_data()
 	var guiWidth = display_get_gui_width();
 
 	#region /* Show online downloads if data is available */
-	if (global.online_content_data != undefined
+	if (variable_global_get("online_content_data_" + string(content_type)) != undefined
 	&& (menu != "search_id_ok"))
 	{
-		if (is_array(global.online_content_data))
+		if (is_array(variable_global_get("online_content_data_" + string(content_type))))
 		{
-			var num_items = array_length(global.online_content_data);
+			var num_items = array_length(variable_global_get("online_content_data_" + string(content_type)));
 			/* Figure out our slice */
 			var perPage        = global.download_items_per_page;
 			var page        = clamp(global.download_current_page, 0, global.download_total_pages - 1);
 			var start_idx    = page * perPage;
-			var end_idx        = min(start_idx + perPage - 1, array_length(global.online_content_data) - 1);
+			var end_idx        = min(start_idx + perPage - 1, array_length(variable_global_get("online_content_data_" + string(content_type))) - 1);
 			var page_count    = end_idx - start_idx + 1;
 
 			/* Draw each thumbnail, optimized loop through downloads. Draw only that page's thumbnails */
@@ -154,8 +154,8 @@ function scr_draw_online_download_menu_data()
 				+ " / " + string(global.download_total_pages), global.default_text_size, c_menu_outline, c_menu_fill, 1);
 		}
 
-		if (is_array(global.online_content_data)
-		&& array_length(global.online_content_data) <= 0)
+		if (is_array(variable_global_get("online_content_data_" + string(content_type)))
+		&& array_length(variable_global_get("online_content_data_" + string(content_type))) <= 0)
 		{
 			draw_set_halign(fa_center);
 			scr_draw_text_outlined(guiWidth * 0.5, display_get_gui_height() * 0.5,

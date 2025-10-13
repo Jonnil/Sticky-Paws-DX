@@ -6,8 +6,8 @@ function scr_initialize_online_download_menu()
 	in_online_download_list_load_menu = false;
 
 	/* If we've already loaded the list this session, just reopen the menu */
-	if (is_array(global.online_content_data)
-	&& array_length(global.online_content_data) > 0)
+	if (is_array(variable_global_get("online_content_data_" + string(content_type)))
+	&& array_length(variable_global_get("online_content_data_" + string(content_type))) > 0)
 	{
 
 		#region /* Cached list path (no network) */
@@ -23,9 +23,9 @@ function scr_initialize_online_download_menu()
 		info_queue_http_request = true;
 
 		/* Best‑practice: ensure core arrays exist when reopening from cache */
-		if (is_array(global.online_content_data))
+		if (is_array(variable_global_get("online_content_data_" + string(content_type))))
 		{
-			var _total = array_length(global.online_content_data);
+			var _total = array_length(variable_global_get("online_content_data_" + string(content_type)));
 
 			/* 1) Ensure all_download_id is an array (used to kick off per‑item requests) */
 			if (!is_array(all_download_id) || array_length(all_download_id) < _total)
@@ -77,7 +77,7 @@ function scr_initialize_online_download_menu()
 			{
 				if (all_download_id[a] == "")
 				{
-					var _item = global.online_content_data[a];
+					var _item = variable_global_get("online_content_data_" + string(content_type))[a];
 					var _id = _item.name;
 					_id = string_replace(_id, string(content_type) + "s/", "");
 					_id = string_replace(_id, ".zip", "");
@@ -105,7 +105,7 @@ function scr_initialize_online_download_menu()
 	draw_set_alpha(1);
 
 	#region /* Server load path */
-	/* Mark that we’re actively loading from server */
+	/* Mark that we’re actively loading from the server */
 	in_online_download_list_load_menu = true;
 
 	var page_offset = global.download_current_page * global.download_items_per_page;
@@ -158,7 +158,7 @@ function scr_initialize_online_download_menu()
 	menu_delay = 3;
 
 	/* Draw the spinner/text and set up timeout */
-	scr_draw_loading(1, , , "Loading from server");
+	scr_draw_loading(1, , , "Loading from server 3");
 	scr_server_timeout(15);
 	#endregion /* Server load path END */
 

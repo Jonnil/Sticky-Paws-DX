@@ -3,7 +3,7 @@
 function scr_process_online_download_list_data()
 {
 	/* Show loading overlay & start timeout */
-	scr_draw_loading(1, , , "Loading from server");
+	scr_draw_loading(1, , , "Loading from server 4");
 	scr_server_timeout(15);
 	
 	/* Only parse & init once per true load (or when forced) */
@@ -24,8 +24,8 @@ function scr_process_online_download_list_data()
 		try
 		{
 			/* Parse and compute pages */
-			global.online_content_data = json_parse(global.online_download_list);
-			var total = array_length(global.online_content_data);
+			variable_global_set("online_content_data_" + string(content_type), json_parse(global.online_download_list));
+			var total = array_length(variable_global_get("online_content_data_" + string(content_type)));
 			global.download_total_pages = ceil(total / global.download_items_per_page);
 			show_debug_message("[scr_process_online_download_list_data] JSON parsed. Items: " + string(total));
 			

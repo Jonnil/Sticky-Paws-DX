@@ -2,15 +2,15 @@
 /// @description Processes the online download menu with thumbnails, buttons, and handles navigation when data is available.
 function scr_process_online_download_menu_data()
 {
-	var num_items = array_length(global.online_content_data);
+	var num_items = array_length(variable_global_get("online_content_data_" + string(content_type)));
 
 	#region /* Show online downloads if data is available */
-	if (global.online_content_data != undefined
+	if (variable_global_get("online_content_data_" + string(content_type)) != undefined
 	&& (menu != "search_id_ok"))
 	{
 		scr_scroll_menu(300, false);
 
-		if (is_array(global.online_content_data))
+		if (is_array(variable_global_get("online_content_data_" + string(content_type))))
 		{
 
 			#region /* Set level data for each download */
