@@ -14,7 +14,7 @@ function scr_fallback_to_previous_menu_state()
 		if (string_copy(menu, 1, string_length("download_online")) == "download_online")
 		{
 			show_debug_message("[scr_fallback_to_previous_menu_state] Force fallback if not in online download list")
-
+			
 			global.online_download_list = "";
 			//online_content_data = undefined; show_debug_message("[scr_fallback_to_previous_menu_state] 'online content data' is set to undefined");
 			//info_data = undefined;
@@ -24,7 +24,7 @@ function scr_fallback_to_previous_menu_state()
 			keyboard_string = "";
 			menu_delay = 3;
 			search_id = "";
-
+			
 			/* Change menu state last */
 			if (content_type == "level")
 			{

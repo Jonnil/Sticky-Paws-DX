@@ -64,6 +64,15 @@ function scr_draw_server_timeout_error()
 	&& (menu_delay == 0 && menu_joystick_delay == 0)
 	{
 		/* Change back to a previous menu state */
+		in_online_download_list_menu = false;
+		in_online_download_list_load_menu = false;
+		in_online_search_id = false;
+		
+		if (caution_online_takes_you_back_to == "online_level_list")
+		{
+			select_custom_level_menu_open = true;
+		}
+		
 		menu = caution_online_takes_you_back_to;
 	}
 
