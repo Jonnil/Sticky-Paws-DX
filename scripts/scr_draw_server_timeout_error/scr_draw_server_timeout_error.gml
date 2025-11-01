@@ -63,6 +63,8 @@ function scr_draw_server_timeout_error()
 	|| (key_b_pressed)
 	&& (menu_delay == 0 && menu_joystick_delay == 0)
 	{
+		menu_delay = 3;
+		
 		/* Change back to a previous menu state */
 		in_online_download_list_menu = false;
 		in_online_download_list_load_menu = false;
