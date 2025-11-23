@@ -474,7 +474,7 @@ function scr_draw_online_download_list_thumbnail(thumbnail_index, number_of_thum
 			scr_draw_text_outlined(
 				download_online_x + 100,
 				270 + download_online_y + offsetY,
-				string(get_relative_timezone(draw_download_time)),
+				string(scr_get_relative_timezone(draw_download_time)),
 				global.default_text_size * 0.75,
 				c_menu_outline,
 				selected_download_c_menu_fill,

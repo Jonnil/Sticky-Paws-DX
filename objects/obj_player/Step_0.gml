@@ -13,22 +13,22 @@ scr_start_intro_animations();
 scr_player_move_restart();
 scr_player_move_quit();
 
+var current_music_playing = global.music; /* Play the regular music by default */
+
 if (global.music_boss != noone) /* If there is boss music loaded */
 {
-	var current_music_playing = global.music_boss; /* Then play the boss music */
-}
-else
-{
-	var current_music_playing = global.music; /* Otherwise play the regular music */
+	current_music_playing = global.music_boss; /* Then play the boss music */
 }
 
 #region /* Music Pitch */
-if (global.time_countdown < 100 && global.enable_time_countdown)
+if (global.time_countdown < 100
+&& global.enable_time_countdown)
 {
 	if (current_music_playing != noone)
 	{
 		audio_sound_pitch(current_music_playing, music_pitch + 0.3);
 	}
+	
 	if (global.music_underwater != noone)
 	{
 		audio_sound_pitch(global.music_underwater, music_pitch + 0.3);
@@ -40,6 +40,7 @@ else
 	{
 		audio_sound_pitch(current_music_playing, music_pitch);
 	}
+	
 	if (global.music_underwater != noone)
 	{
 		audio_sound_pitch(global.music_underwater, music_pitch);
@@ -48,7 +49,10 @@ else
 #endregion /* Music Pitch END */
 
 #region /* Winning the level and transitioning to the next area */
-if (goal && global.time_countdown_bonus <= 0 && instance_exists(obj_camera) && obj_camera.iris_xscale < 3)
+if (goal
+&& global.time_countdown_bonus <= 0
+&& instance_exists(obj_camera)
+&& obj_camera.iris_xscale < 3)
 {
 	if (obj_camera.iris_xscale <= 0.01 && obj_camera.iris_yscale <= 0.001)
 	{
@@ -491,29 +495,34 @@ if (invincible_timer <= 2)
 			{
 				audio_sound_gain(current_music_playing, 0, 0);
 			}
+			
 			audio_sound_gain(global.music_underwater, global.volume_music * global.volume_main, 0);
 		}
 		else
 		if (current_music_playing != noone)
 		{
 			audio_sound_gain(current_music_playing, global.volume_music * global.volume_main, 0);
+			
 			if (global.music_underwater != noone)
 			{
 				audio_sound_gain(global.music_underwater, 0, 0);
 			}
 		}
+		
 		if (global.ambience_underwater != noone)
 		{
 			if (global.ambience != noone)
 			{
 				audio_sound_gain(global.ambience, 0, 0);
 			}
+			
 			audio_sound_gain(global.ambience_underwater, global.volume_ambient * global.volume_main, 0);
 		}
 		else
 		if (global.ambience != noone)
 		{
 			audio_sound_gain(global.ambience, global.volume_ambient * global.volume_main, 0);
+			
 			if (global.ambience_underwater != noone)
 			{
 				audio_sound_gain(global.ambience_underwater, 0, 0);
@@ -525,14 +534,17 @@ if (invincible_timer <= 2)
 		if (current_music_playing != noone)
 		{
 			audio_sound_gain(current_music_playing, global.volume_music * global.volume_main, 0);
+			
 			if (global.music_underwater != noone)
 			{
 				audio_sound_gain(global.music_underwater, 0, 0);
 			}
 		}
+		
 		if (global.ambience != noone)
 		{
 			audio_sound_gain(global.ambience, global.volume_ambient * global.volume_main, 0);
+			
 			if (global.ambience_underwater != noone)
 			{
 				audio_sound_gain(global.ambience_underwater, 0, 0);
@@ -665,28 +677,28 @@ else
 		}
 	}
 
-	/* Check and handle loading music */
-	if (audio_is_playing(global.loading_music))
-	{
-		/* Debug message to confirm that loading music is playing */
-		show_debug_message("Loading music is playing.");
-
-		/* Check if there is a valid level music to play */
-		if (current_music_playing != noone)
-		{
-			/* Ensure level music starts before stopping loading music */
-			if (!audio_is_playing(current_music_playing))
-			{
-				/* Debug message to confirm playing level music */
-				show_debug_message("Playing current level music: " + string(current_music_playing));
-				scr_audio_play(current_music_playing, volume_source.music);
-			}
-		}
-
-		/* Stop the loading music regardless */
-		show_debug_message("Stopping loading music.");
-		audio_stop_sound(global.loading_music);
-	}
+	///* Check and handle loading music */
+	//if (audio_is_playing(global.loading_music))
+	//{
+	//	/* Debug message to confirm that loading music is playing */
+	//	show_debug_message("Loading music is playing.");
+		
+	//	/* Check if there is a valid level music to play */
+	//	if (current_music_playing != noone)
+	//	{
+	//		/* Ensure level music starts before stopping loading music */
+	//		if (!audio_is_playing(current_music_playing))
+	//		{
+	//			/* Debug message to confirm playing level music */
+	//			show_debug_message("Playing current level music: " + string(current_music_playing));
+	//			scr_audio_play(current_music_playing, volume_source.music);
+	//		}
+	//	}
+		
+	//	/* Stop the loading music regardless */
+	//	show_debug_message("Stopping loading music.");
+	//	audio_stop_sound(global.loading_music);
+	//}
 
 	/* Handle underwater music priority */
 	if (global.music_underwater != noone) /* Ensure underwater music is valid */

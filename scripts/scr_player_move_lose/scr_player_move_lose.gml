@@ -1,7 +1,7 @@
 function scr_player_move_lose()
 {
-
-	#region /* Die */
+	
+	#region /* Lose */
 	if (die)
 	&& (!goal)
 	{
@@ -32,20 +32,19 @@ function scr_player_move_lose()
 		{
 			if (global.music != noone)
 			{
-				audio_sound_gain(global.music, 0, 0);
 				audio_stop_sound(global.music);
 			}
+			
 			if (global.music_underwater != noone)
 			{
-				audio_sound_gain(global.music_underwater, 0, 0);
 				audio_stop_sound(global.music_underwater);
 			}
-			global.music = noone;
-			global.music_underwater = noone;
+			
 			audio_stop_sound(snd_skidding);
 			audio_stop_sound(snd_skidding_ice);
 			audio_stop_sound(snd_skiddingvertical);
 		}
+		
 		speed = 0;
 		invincible_timer = false;
 		scr_audio_play(snd_lose, volume_source.sound);
@@ -99,6 +98,6 @@ function scr_player_move_lose()
 
 		instance_destroy();
 	}
-	#endregion /* Die END */
+	#endregion /* Lose END */
 
 }

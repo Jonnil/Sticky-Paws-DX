@@ -9,6 +9,7 @@ var view_y = camera_get_view_y(view_get_camera(view_current));
 var view_height = camera_get_view_height(view_get_camera(view_current));
 var view_bottom_y = view_y + view_height;
 var draw_arrow_outside_view_y = view_y + 32;
+var heart_alpha = image_alpha * 0.3;
 
 #region /* Draw things underneath the player */
 
@@ -18,14 +19,12 @@ if (have_heart_balloon)
 	draw_set_alpha(image_alpha);
 	draw_line_width_color(xx, yy, xx_heart, yy_heart, 6, c_black, c_black);
 	draw_line_width_color(xx, yy, xx_heart, yy_heart, 3, c_white, c_white);
+	
 	if (taken_damage % 2 == 0)
 	{
-		var heart_alpha = image_alpha;
+		heart_alpha = image_alpha;
 	}
-	else
-	{
-		var heart_alpha = image_alpha * 0.3;
-	}
+	
 	draw_set_alpha(heart_alpha);
 	draw_sprite_ext(spr_heart, 0, xx_heart, yy_heart, 1, 1, point_direction(xx_heart, yy_heart, xx, yy) + 90, c_white, heart_alpha);
 }
@@ -41,7 +40,8 @@ if (hold_item_in_hands = "enemy_bowlingball")
 #endregion /* Draw holding items in hands underneath the player sprite END */
 
 if (y < view_y) /* Outside top view */
-|| (y > view_bottom_y && y < room_height) /* Outside bottom view */
+|| (y > view_bottom_y
+&& y < room_height) /* Outside bottom view */
 {
 	draw_arrow_outside_view_alpha = lerp(draw_arrow_outside_view_alpha, 1, 0.3);
 }
@@ -353,6 +353,7 @@ if (global.playergame >= 2)
 {
 	draw_set_halign(fa_center);
 	draw_set_valign(fa_middle);
+	
 	if (global.player_name[player] = "")
 	{
 		var player_name_text = "P" + string(player);
@@ -361,14 +362,19 @@ if (global.playergame >= 2)
 	{
 		var player_name_text = string(global.player_name[player]);
 	}
+	
 	scr_draw_text_outlined(x, y - 64, string(player_name_text), global.default_text_size, c_black, global.player_color[player], 1);
 }
 #endregion /* Display Player Number and Name END */
 
 #region /* If player has more hp, show that */
-if (global.assist_enable) && (hp > 0 && !global.assist_above_1_hp || hp > 0)
+if (global.assist_enable)
+&& (hp > 0
+&& !global.assist_above_1_hp
+|| hp > 0)
 {
-	if (max_hp == 2 && sprite_panting == noone) /* If there is only max 2 hp and there is no panting sprite, display HP */
+	if (max_hp == 2
+	&& sprite_panting == noone) /* If there is only max 2 hp and there is no panting sprite, display HP */
 	|| (max_hp >= 3) /* If there is more than max 3 hp, always display HP */
 	{
 		draw_set_halign(fa_center);
@@ -377,5 +383,25 @@ if (global.assist_enable) && (hp > 0 && !global.assist_above_1_hp || hp > 0)
 	}
 }
 #endregion /* If player has more hp, show that END */
+
+#region /* If player enters goal, and have managed to not get defeated once, show achievement above players head so that it's noticable */
+if (global.player_has_entered_goal
+&& global.lives_until_assist == 0)
+{
+	var zero_defeats_sprite = spr_icon_zero_defeats;
+	var zero_defeats_text = l10n_text("Zero Defeats");
+	var zero_defeats_x = xx - 64;
+	
+	if (global.zero_hits)
+	{
+		zero_defeats_sprite = spr_icon_zero_hits;
+		zero_defeats_text = l10n_text("Zero Hits");
+	}
+	
+	draw_sprite_ext(zero_defeats_sprite, 0, zero_defeats_x, bbox_top - 64, 1, 1, 0, c_white, 1);
+	draw_set_halign(fa_left);
+	scr_draw_text_outlined(zero_defeats_x + 20, bbox_top - 64, zero_defeats_text, global.default_text_size, c_black, c_white, 1);
+}
+#endregion /* If player enters goal, and have managed to not get defeated once, show achievement above players head so that it's noticable END */
 
 #endregion /* Draw things on top of the player END */

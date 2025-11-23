@@ -300,20 +300,28 @@ function scr_option_language_menu()
 			{
 				update_details += "\n" + l10n_text("HTTP Request ID: ") + string(global.language_http_request_id);
 			}
-
+			
 			/* Last updated information: raw timestamp and relative time */
 			var last_updated = "";
 			if (global.language_last_update_string != "")
 			{
-				var rel_time = get_relative_timezone(global.language_last_update_string, timezone_local);
+				var rel_time = scr_get_relative_timezone(global.language_last_update_string, timezone_local);
 				last_updated = l10n_text("Last Updated: ") + global.language_last_update_string + " (" + rel_time + ")";
 			}
-
+			
 			/* Combine all parts into a final message */
 			var combined_message = base_msg;
-			if (update_details != "") combined_message += "\n" + update_details;
-			if (last_updated != "") combined_message += "\n" + last_updated;
-
+			
+			if (update_details != "")
+			{
+				combined_message += "\n" + update_details;
+			}
+			
+			if (last_updated != "")
+			{
+				combined_message += "\n" + last_updated;
+			}
+			
 			/* Draw the combined status text */
 			draw_set_halign(fa_left);
 			draw_set_valign(fa_top);
@@ -327,7 +335,7 @@ function scr_option_language_menu()
 				1
 			);
 			#endregion /* Display language pack update status below the language auto update dropdown END */
-
+			
 			/* --- Automatic update dropdown using your existing function --- */
 			draw_menu_dropdown(
 				language_buttons_x,

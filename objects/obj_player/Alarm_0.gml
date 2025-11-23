@@ -498,3 +498,22 @@ var h = hsv[0];
 
 /* Create the new color with fixed saturation */
 saturated_player_color = make_color_hsv(h, 64, 255);
+
+/* Check if there is a valid level music to play */
+if (global.music != noone)
+{
+	/* Ensure level music starts before stopping loading music */
+	if (!audio_is_playing(global.music))
+	{
+		/* Debug message to confirm playing level music */
+		show_debug_message("Playing current level music: " + string(global.music));
+		scr_audio_play(global.music, volume_source.music);
+	}
+}
+
+/* Stop the loading music */
+if (audio_is_playing(global.loading_music))
+{
+	show_debug_message("Stopping loading music");
+	audio_stop_sound(global.loading_music);
+}

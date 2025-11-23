@@ -52,7 +52,9 @@
     {"$GMFolder":"","%Name":"Tile Sets","folderPath":"folders/Tile Sets.yy","name":"Tile Sets","resourceType":"GMFolder","resourceVersion":"2.0",},
     {"$GMFolder":"","%Name":"Timelines","folderPath":"folders/Timelines.yy","name":"Timelines","resourceType":"GMFolder","resourceVersion":"2.0",},
   ],
-  "ForcedPrefabProjectReferences":[],
+  "ForcedPrefabProjectReferences":[
+    {"link":"io.gamemaker.gm_effect_windblown_particles-1.0.0","name":"io.gamemaker.gm_effect_windblown_particles-1.0.0","path":"io.gamemaker.gm_effect_windblown_particles-1.0.0.yyp",},
+  ],
   "IncludedFiles":[
     {"$GMIncludedFile":"","%Name":"allowed_urls.txt","CopyToMask":-1,"filePath":"datafiles","name":"allowed_urls.txt","resourceType":"GMIncludedFile","resourceVersion":"2.0",},
     {"$GMIncludedFile":"","%Name":"cacert.pem","CopyToMask":-1,"filePath":"datafiles","name":"cacert.pem","resourceType":"GMIncludedFile","resourceVersion":"2.0",},
@@ -2054,7 +2056,7 @@
   "isEcma":false,
   "LibraryEmitters":[],
   "MetaData":{
-    "IDEVersion":"2024.1400.0.907",
+    "IDEVersion":"2024.1400.1.926",
   },
   "name":"Sticky Paws DX",
   "resources":[
