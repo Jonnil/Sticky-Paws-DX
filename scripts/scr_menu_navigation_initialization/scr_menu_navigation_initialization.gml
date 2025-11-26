@@ -14,9 +14,11 @@ function scr_menu_navigation_initialization(key_direction_hold_press_release = 0
 
 	var what_player = -1;
 	var player_slot = -1;
+	
 	for(var i = 1; i <= global.max_players; i += 1)
 	{
-		if (global.pause_player == i - 1 || global.player_can_play[i] || i == 1 && only_player_one_can_navigate)
+		if (global.player_can_play[i]
+		|| i == 1 && only_player_one_can_navigate)
 		{
 			what_player = i;
 			player_slot = global.player_slot[i];
