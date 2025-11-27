@@ -193,37 +193,49 @@ if (!in_settings)
 	menu == "information" ||
 	menu == "fullscreen_mode_title")
 	{
-
-		draw_menu_button(display_get_gui_width() * 0.5 - 185, main_game_y, l10n_text("Main Game"), "main_game", "main_game");
-		draw_menu_button(display_get_gui_width() * 0.5 - 185, level_editor_y, l10n_text("Level Editor"), "level_editor", "level_editor");
-		if (placable_object_unlock_notify)
-		&& (global.show_new_items_notification)
+		var main_game_text = l10n_text("Main Game");
+		
+		if (global.demo_enable)
 		{
-			draw_set_halign(fa_left);
-			scr_draw_text_outlined(display_get_gui_width() * 0.5 + 185 + 25, level_editor_y + 21,
-				l10n_text("New Objects Unlocked!"),
-				global.default_text_size * 0.5 + scr_wave(0, 0.1, 1), c_black, c_lime, 1);
-			draw_set_halign(fa_center);
+			main_game_text = l10n_text("Play Demo");
 		}
-
-		if (global.free_communication_available)
+		
+		draw_menu_button(display_get_gui_width() * 0.5 - 185, main_game_y, string(main_game_text), "main_game", "main_game");
+		
+		if (!global.demo_enable)
 		{
-			draw_menu_button(display_get_gui_width() * 0.5 - 185, online_level_list_title_y, l10n_text("Online Level List"), "online_level_list_title", "online_level_list_title");
-			if (levels_added_today_text != "")
+			draw_menu_button(display_get_gui_width() * 0.5 - 185, level_editor_y, l10n_text("Level Editor"), "level_editor", "level_editor");
+			
+			if (placable_object_unlock_notify)
+			&& (global.show_new_items_notification)
 			{
 				draw_set_halign(fa_left);
-				scr_draw_text_outlined(display_get_gui_width() * 0.5 + 185 + 25, online_level_list_title_y + 21,
-					string(levels_added_today_text),
+				scr_draw_text_outlined(display_get_gui_width() * 0.5 + 185 + 25, level_editor_y + 21,
+					l10n_text("New Objects Unlocked!"),
 					global.default_text_size * 0.5 + scr_wave(0, 0.1, 1), c_black, c_lime, 1);
 				draw_set_halign(fa_center);
 			}
+			
+			if (global.free_communication_available)
+			{
+				draw_menu_button(display_get_gui_width() * 0.5 - 185, online_level_list_title_y, l10n_text("Online Level List"), "online_level_list_title", "online_level_list_title");
+				
+				if (levels_added_today_text != "")
+				{
+					draw_set_halign(fa_left);
+					scr_draw_text_outlined(display_get_gui_width() * 0.5 + 185 + 25, online_level_list_title_y + 21,
+						string(levels_added_today_text),
+						global.default_text_size * 0.5 + scr_wave(0, 0.1, 1), c_black, c_lime, 1);
+					draw_set_halign(fa_center);
+				}
+			}
 		}
-
+		
 		select_custom_level_menu_open = false;
 		can_input_level_name = false;
-
+		
 		#region /* Click on menu buttons */
-
+		
 		#region /* Click Main Game */
 		if (point_in_rectangle(mouse_get_x, mouse_get_y, display_get_gui_width() * 0.5 - 185, main_game_y, display_get_gui_width() * 0.5 + 185, main_game_y + 41))
 		&& (mouse_check_button_released(mb_left))
@@ -605,7 +617,15 @@ if (!input_key)
 		if (key_down)
 		{
 			menu_delay = 3;
-			menu = "level_editor";
+			
+			if (!global.demo_enable)
+			{
+				menu = "level_editor";
+			}
+			else
+			{
+				menu = "options";
+			}
 		}
 	}
 	else
@@ -620,7 +640,9 @@ if (!input_key)
 		if (key_down)
 		{
 			menu_delay = 3;
+			
 			if (global.free_communication_available)
+			&& (!global.demo_enable)
 			{
 				menu = "online_level_list_title";
 			}
@@ -636,7 +658,11 @@ if (!input_key)
 		if (key_up)
 		{
 			menu_delay = 3;
-			menu = "level_editor";
+			
+			if (!global.demo_enable)
+			{
+				menu = "level_editor";
+			}
 		}
 		else
 		if (key_down)
@@ -665,13 +691,20 @@ if (!input_key)
 		if (key_up)
 		{
 			menu_delay = 3;
-			if (global.free_communication_available)
+			if (!global.demo_enable)
 			{
-				menu = "online_level_list_title";
+				if (global.free_communication_available)
+				{
+					menu = "online_level_list_title";
+				}
+				else
+				{
+					menu = "level_editor";
+				}
 			}
 			else
 			{
-				menu = "level_editor";
+				menu = "main_game";
 			}
 		}
 		else
@@ -694,13 +727,20 @@ if (!input_key)
 		if (key_up)
 		{
 			menu_delay = 3;
-			if (global.free_communication_available)
+			if (!global.demo_enable)
 			{
-				menu = "online_level_list_title";
+				if (global.free_communication_available)
+				{
+					menu = "online_level_list_title";
+				}
+				else
+				{
+					menu = "level_editor";
+				}
 			}
 			else
 			{
-				menu = "level_editor";
+				menu = "main_game";
 			}
 		}
 		else
