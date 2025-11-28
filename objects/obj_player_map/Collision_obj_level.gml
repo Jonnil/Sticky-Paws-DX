@@ -27,7 +27,8 @@ if (can_enter_level_automatically)
 {
 	if (can_move)
 	{
-		if (other.clear_rate == "enter" || other.clear_rate == "clear")
+		if (other.clear_rate == "enter"
+		|| other.clear_rate == "clear")
 		{
 
 			if (brand_new_file)
@@ -37,7 +38,12 @@ if (can_enter_level_automatically)
 					audio_sound_gain(global.music, 0, 0);
 					audio_stop_sound(global.music);
 				}
+				
+				audio_stop_sound(global.music_boss);
+				global.music_boss = noone;
+				
 				audio_stop_all(); /* Stop all sound from playing whenever a brand new file is loaded, so nothing is playing at the loading screen first */
+				
 				if (global.loading_music > 0)
 				{
 					if (!audio_is_playing(global.loading_music)) /* Then after stopping all sound, play the loading music */

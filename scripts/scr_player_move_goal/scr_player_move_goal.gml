@@ -60,15 +60,18 @@ function scr_player_move_goal()
 
 				#region /* Stop Music */
 				audio_stop_sound(global.music);
+				audio_stop_sound(global.music_boss);
 				audio_stop_sound(global.music_underwater);
 				global.music = noone;
+				global.music_boss = noone;
 				global.music_underwater = noone;
 				music = noone;
 				music_underwater = noone;
 				#endregion /* Stop Music END */
 
 				#region /* Save Checkpoint */
-				if (global.character_select_in_this_menu == "main_game" && room == rm_leveleditor)
+				if (global.character_select_in_this_menu == "main_game"
+				&& room == rm_leveleditor)
 				{
 					global.checkpoint_x = 0;
 					global.checkpoint_y = 0;

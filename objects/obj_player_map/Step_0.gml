@@ -114,26 +114,39 @@ if (can_enter_level < 30)
 }
 
 /* Start level after pressing enter */
-if (!can_move && entering_level && delay >= 60 && iris_yscale <= 0.001 && !global.quit_level && !loading_assets)
+if (!can_move
+&& entering_level
+&& delay >= 60
+&& iris_yscale <= 0.001
+&& !global.quit_level
+&& !loading_assets)
 {
 	global.level_name = string(ds_list_find_value(global.all_loaded_custom_levels, global.select_level_index));
 	room_persistent = false;
+	
 	if (global.music != noone)
 	{
 		audio_sound_gain(global.music, 0, 0);
 		audio_stop_sound(global.music);
 	}
+	
+	audio_stop_sound(global.music_boss);
+	global.music_boss = noone;
+	
 	/* Don't "audio stop all" here, otherwise the loading music will play twice during loading screen */
-	if (global.loading_music > 0 && !audio_is_playing(global.loading_music))
+	if (global.loading_music > 0
+	&& !audio_is_playing(global.loading_music))
 	{
 		scr_audio_play(global.loading_music, volume_source.music);
 	}
+	
 	global.pause = false;
 	global.quit_level = false;
 	scr_update_all_backgrounds();
 	global.actually_play_edited_level = true;
 	global.play_edited_level = true;
 	global.part_limit = global.part_limit_entity = 0;
+	
 	var time_source = time_source_create(time_source_game, 10, time_source_units_frames, function()
 	{
 		if (global.music != noone)
@@ -141,8 +154,13 @@ if (!can_move && entering_level && delay >= 60 && iris_yscale <= 0.001 && !globa
 			audio_sound_gain(global.music, 0, 0);
 			audio_stop_sound(global.music);
 		}
+		
+		audio_stop_sound(global.music_boss);
+		global.music_boss = noone;
+		
 		room_goto(rm_leveleditor);
 	}, [], 1);
+	
 	time_source_start(time_source);
 	loading_assets = true;
 }

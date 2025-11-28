@@ -35,6 +35,11 @@ function scr_player_move_lose()
 				audio_stop_sound(global.music);
 			}
 			
+			if (global.music_boss != noone)
+			{
+				audio_stop_sound(global.music_boss);
+			}
+			
 			if (global.music_underwater != noone)
 			{
 				audio_stop_sound(global.music_underwater);
@@ -43,6 +48,7 @@ function scr_player_move_lose()
 			audio_stop_sound(snd_skidding);
 			audio_stop_sound(snd_skidding_ice);
 			audio_stop_sound(snd_skiddingvertical);
+			global.music_boss = noone;
 		}
 		
 		speed = 0;

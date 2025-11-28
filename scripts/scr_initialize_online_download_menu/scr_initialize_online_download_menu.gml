@@ -10,6 +10,9 @@ function scr_initialize_online_download_menu()
 	&& array_length(variable_global_get("online_content_data_" + string(content_type))) > 0)
 	{
 
+		/* Clear any stale server timeout since we are using cached data */
+		global.server_timeout_end = undefined;
+
 		#region /* Cached list path (no network) */
 		/* Restore menu state without network.
 		   IMPORTANT FIX: Do NOT mark "loading list" when using cache. */
@@ -72,7 +75,28 @@ function scr_initialize_online_download_menu()
 				global.spr_download_list_thumbnail = _new_thumbs;
 			}
 
+			/* 5) Ensure per-item status arrays exist for cached path */
+			if (!variable_instance_exists(self, "finished_level") || !is_array(finished_level) || array_length(finished_level) < _total)
+			{
+				finished_level = array_create(_total, undefined);
+			}
+
+			if (!variable_instance_exists(self, "zero_defeats_level") || !is_array(zero_defeats_level) || array_length(zero_defeats_level) < _total)
+			{
+				zero_defeats_level = array_create(_total, undefined);
+			}
+
+			if (!variable_instance_exists(self, "liked_content") || !is_array(liked_content) || array_length(liked_content) < _total)
+			{
+				liked_content = array_create(_total, undefined);
+			}
+
 			/* 4) Prepopulate all_download_id from list data so downloads can start immediately */
+			if (!is_array(all_download_id) || array_length(all_download_id) < _total)
+			{
+				all_download_id = array_create(_total, "");
+			}
+
 			for (var a = 0; a < _total; a++)
 			{
 				if (all_download_id[a] == "")

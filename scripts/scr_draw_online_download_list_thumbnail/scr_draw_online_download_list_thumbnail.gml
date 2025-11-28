@@ -304,7 +304,7 @@ function scr_draw_online_download_list_thumbnail(thumbnail_index, number_of_thum
 		if (content_type == "level")
 		&& (can_thumbnail)
 		{
-			if (is_array(finished_level))
+			if (variable_instance_exists(self, "finished_level") && is_array(finished_level))
 			{
 				if (finished_level[thumbnail_index] == undefined)
 				{
@@ -326,7 +326,7 @@ function scr_draw_online_download_list_thumbnail(thumbnail_index, number_of_thum
 			}
 
 			#region /* Display Finished Icon */
-			if (is_array(finished_level))
+			if (variable_instance_exists(self, "finished_level") && is_array(finished_level))
 			{
 				var played_level_text, played_level_icon, played_level_color;
 
@@ -367,7 +367,7 @@ function scr_draw_online_download_list_thumbnail(thumbnail_index, number_of_thum
 			#endregion /* Display Finished Icon END */
 
 			#region /* Display Zero Defeats Icon */
-			if (is_array(zero_defeats_level))
+			if (variable_instance_exists(self, "zero_defeats_level") && is_array(zero_defeats_level))
 			{
 				var zero_defeats_level_text, zero_defeats_level_icon, zero_defeats_level_color;
 
@@ -414,7 +414,7 @@ function scr_draw_online_download_list_thumbnail(thumbnail_index, number_of_thum
 		#endregion /* Display Finished Level Status END */
 
 		#region /* Display Like/Dislike Status */
-		if (is_array(liked_content))
+		if (variable_instance_exists(self, "liked_content") && is_array(liked_content))
 		{
 			if (liked_content[thumbnail_index] == undefined)
 			{
@@ -432,7 +432,7 @@ function scr_draw_online_download_list_thumbnail(thumbnail_index, number_of_thum
 			}
 		}
 
-		if (is_array(liked_content))
+		if (variable_instance_exists(self, "liked_content") && is_array(liked_content))
 		&& (can_thumbnail)
 		{
 			var liked_content_text, liked_content_icon, liked_content_color;

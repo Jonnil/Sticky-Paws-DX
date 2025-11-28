@@ -16,11 +16,17 @@ var nearest_player = instance_nearest(x, y, obj_player);
 if (has_seen_player
 && global.music_boss == noone
 && instance_exists(obj_camera)
+&& instance_exists(obj_player)
 && distance_to_object(obj_camera) < 500)
 {
 	audio_stop_sound(global.music);
 	audio_stop_sound(global.music_underwater);
 	global.music_boss = snd_music_boss;
+	
+	if (!audio_is_playing(global.music_boss))
+	{
+		scr_audio_play(global.music_boss, volume_source.music);
+	}
 }
 
 if (!has_seen_player

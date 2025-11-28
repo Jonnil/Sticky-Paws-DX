@@ -5,4 +5,6 @@ global.music_boss = noone;
 
 scr_update_all_music();
 
+scr_audio_play(global.music, volume_source.music);
+
 instance_create_depth(xstart, ystart, 0, obj_boss_defeated);
