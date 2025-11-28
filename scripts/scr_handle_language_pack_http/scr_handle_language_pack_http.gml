@@ -6,6 +6,17 @@ function scr_handle_language_pack_http(_async_map, var_handle_redirects = true)
 	&& global.online_token_validated)
 	{
 			var req_id = ds_map_find_value(_async_map, "id");
+		var is_manifest = (req_id == global.language_http_request_id);
+		var is_lang_file = (variable_global_exists("language_file_requests")
+			&& ds_exists(global.language_file_requests, ds_type_map)
+			&& ds_map_exists(global.language_file_requests, string(req_id)));
+
+		/* Ignore any HTTP responses that are not related to language packs */
+		if (!(is_manifest || is_lang_file))
+		{
+			return;
+		}
+
 			/* "status" reports transfer state; "http_status" is the HTTP code */
 			var transfer_status = ds_map_find_value(_async_map, "status");
 			var http_status = ds_map_find_value(_async_map, "http_status");
@@ -86,6 +97,7 @@ function scr_handle_language_pack_http(_async_map, var_handle_redirects = true)
 					scr_log("DEBUG", "HTTP.LANG", "hint", "4xx_may_indicate_malformed_url_or_headers");
 				global.language_update_status_message = "Manifest error: Server responded with incorrect status. Please try again";
 				global.language_update_status_color = c_red;
+				global.language_http_request_id = -1;
 				return;
 			}
 
@@ -105,6 +117,7 @@ function scr_handle_language_pack_http(_async_map, var_handle_redirects = true)
 
 			global.language_update_status_message = "Your translations are now up to date!";
 			global.language_update_status_color = c_lime;
+			global.language_http_request_id = -1;
 			return;
 		}
 		#endregion /* ---------- Handle Manifest Download ---------- END */

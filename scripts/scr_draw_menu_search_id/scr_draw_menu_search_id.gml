@@ -159,6 +159,29 @@ function scr_draw_menu_search_id(what_kind_of_id = "level")
 								id_search_request_headers,
 								""
 							);
+							
+							if (global.http_request_id != -1)
+							{
+								if (!variable_global_exists("http_request_contexts")
+								|| global.http_request_contexts == noone)
+								{
+									global.http_request_contexts = ds_map_create();
+								}
+
+								var _req_key = string(global.http_request_id);
+								if (ds_map_exists(global.http_request_contexts, _req_key))
+								{
+									ds_map_replace(global.http_request_contexts, _req_key, "online_content_primary");
+								}
+								else
+								{
+									ds_map_add(global.http_request_contexts, _req_key, "online_content_primary");
+								}
+
+								global.online_primary_request_active = global.http_request_id;
+								global.language_update_blocked = true;
+								global.language_update_pending = true;
+							}
 							ds_map_destroy(id_search_request_headers);
 							
 							automatically_search_for_id = false;

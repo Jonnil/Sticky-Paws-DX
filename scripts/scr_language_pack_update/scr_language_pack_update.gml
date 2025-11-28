@@ -8,6 +8,13 @@ function scr_language_pack_update(forced = false)
 
 	if (!downloaded_language_pack_update)
 	{
+		/* Do not start a language update while primary online downloads are running */
+		if (global.language_update_blocked)
+		{
+			global.language_update_pending = true;
+			return;
+		}
+
 		if (global.online_enabled
 		&& global.online_token_validated
 		&& os_is_network_connected(network_connect_passive))
@@ -70,6 +77,7 @@ function scr_language_pack_update(forced = false)
 			/* 6. If we get here, it means either forced is true, or the time threshold is met => Perform the update */
 			scr_download_language_packs();
 			downloaded_language_pack_update = true;
+			global.language_update_pending = false;
 		}
 	}
 }

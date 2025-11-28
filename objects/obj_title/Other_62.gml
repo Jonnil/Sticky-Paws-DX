@@ -1,17 +1,29 @@
-/* Exit early for intermediate “status == 1” notifications */
+/* Exit early for intermediate "status == 1" notifications */
 if (async_load[? "status"] == 1)
 {
 	exit;
 }
 
+var _rid = async_load[? "id"];
+var _context = "";
+
+if (variable_global_exists("http_request_contexts")
+&& global.http_request_contexts != noone
+&& ds_map_exists(global.http_request_contexts, string(_rid)))
+{
+	_context = ds_map_find_value(global.http_request_contexts, string(_rid));
+}
+
+var _is_primary_request = (_rid == global.http_request_id) || (_context == "online_content_primary");
+
 /* ------------------------------------------------------------- */
 /* --------- PRIMARY REQUEST: global.http_request_id ----------- */
 /* ------------------------------------------------------------- */
 
-if (async_load[? "id"] == global.http_request_id)
+if (_is_primary_request)
 {
 	scr_log("INFO", "HTTP.PRIMARY", "request_id_matched",
-		"request_id=" + string(async_load[? "id"]) + ", expected=" + string(global.http_request_id));
+		"request_id=" + string(_rid) + ", expected=" + string(global.http_request_id) + ", context=" + string(_context));
 
 	/* Read status + body */
 	var status_code = async_load[? "http_status"];
@@ -34,6 +46,20 @@ if (async_load[? "id"] == global.http_request_id)
 		else
 		{
 			scr_log("ERROR", "HTTP.PRIMARY", "json_decode_failed", "reason=invalid_json");
+			if (variable_global_exists("http_request_contexts")
+			&& global.http_request_contexts != noone
+			&& ds_map_exists(global.http_request_contexts, string(_rid)))
+			{
+				ds_map_delete(global.http_request_contexts, string(_rid));
+			}
+
+			if (variable_global_exists("online_primary_request_active")
+			&& global.online_primary_request_active == _rid)
+			{
+				global.online_primary_request_active = noone;
+			}
+
+			global.language_update_blocked = false;
 			exit; /* Nothing more we can do */
 		}
 
@@ -174,18 +200,38 @@ if (async_load[? "id"] == global.http_request_id)
 	{
 	scr_log("ERROR", "HTTP.PRIMARY", "non_200", "http_status=" + string(status_code));
 	}
+
+	/* Release any primary request bookkeeping now that this response is handled */
+	if (variable_global_exists("http_request_contexts")
+	&& global.http_request_contexts != noone
+	&& ds_map_exists(global.http_request_contexts, string(_rid)))
+	{
+		ds_map_delete(global.http_request_contexts, string(_rid));
+	}
+
+	if (variable_global_exists("online_primary_request_active")
+	&& global.online_primary_request_active == _rid)
+	{
+		global.online_primary_request_active = noone;
+	}
+
+	global.language_update_blocked = false;
 }
 else
 {
 	/* Avoid noisy logs for other legitimate async requests handled elsewhere */
-	var _rid = async_load[? "id"];
 	var _is_language_manifest = (variable_global_exists("language_http_request_id") && _rid == global.language_http_request_id);
 	var _is_info              = (variable_global_exists("http_request_info") && _rid == global.http_request_info);
 	var _is_content_today     = (variable_global_exists("content_added_today") && _rid == global.content_added_today);
 	var _is_token             = (variable_global_exists("online_token_request") && _rid == global.online_token_request);
-	var _is_lang_file         = (variable_global_exists("language_file_requests") && ds_map_exists(global.language_file_requests, string(_rid)));
+	var _is_lang_file         = (variable_global_exists("language_file_requests")
+		&& ds_exists(global.language_file_requests, ds_type_map)
+		&& ds_map_exists(global.language_file_requests, string(_rid)));
 
-	if (!(_is_language_manifest || _is_info || _is_content_today || _is_token || _is_lang_file))
+	var _is_crash             = (variable_global_exists("crash_requests") && ds_map_exists(global.crash_requests, string(_rid)));
+	var _has_context_entry    = (variable_global_exists("http_request_contexts") && global.http_request_contexts != noone && ds_map_exists(global.http_request_contexts, string(_rid)));
+
+	if (!(_is_language_manifest || _is_info || _is_content_today || _is_token || _is_lang_file || _is_crash || _has_context_entry))
 	{
 		scr_log("WARN", "HTTP.PRIMARY", "request_id_mismatch", "request_id=" + string(_rid) + ", expected=" + string(global.http_request_id));
 	}
