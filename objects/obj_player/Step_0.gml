@@ -1,12 +1,8 @@
 /* Platformer Player Part 1 */
 
-#region /* Only update audio listener position and velocity when the player is moving */
-if (speed > 0)
-{
-	audio_listener_position(x, y, 0);
-	audio_listener_velocity(abs(hspeed), abs(vspeed), 0);
-}
-#endregion /* Only update audio listener position and velocity when the player is moving END */
+/* Update audio listener position and velocity at the player position */
+audio_listener_position(x, y, 0);
+audio_listener_velocity(hspeed, vspeed, 0);
 
 scr_player_move_save_whole_level_as_screenshot();
 scr_start_intro_animations();

@@ -198,6 +198,7 @@ global.draw_download_name = "";
 #region /* Things you shouldn't change, warning, don't change any of these options or you might break the game! */
 window_set_caption(string(global.game_name) + " v" + scr_get_build_date()); /* Set the window caption to be the game name and version number, so it's always obvious what game and version you're playing */
 global.os_info = os_get_info();
+audio_falloff_set_model(audio_falloff_linear_distance);
 
 randomize(); /* You need to get random level ID codes when you upload a new level */
 
