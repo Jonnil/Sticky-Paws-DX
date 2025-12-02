@@ -14,10 +14,15 @@ function scr_process_online_download_list_data()
 	/* Show loading overlay & start timeout only when doing a real load */
 	scr_draw_loading(1, , , "Loading from server 4");
 	scr_server_timeout(15);
+
+	/* If no payload has arrived yet, wait for the HTTP response */
+	if (global.online_download_list == "")
+	{
+		return;
+	}
 	
 	/* Interpret the online download list as JSON */
-	if (global.online_download_list != ""
-	&& global.online_download_list != "HTTP request exception"
+	if (global.online_download_list != "HTTP request exception"
 	&& global.online_download_list != "Unauthorized")
 	{
 		show_debug_message("[scr_process_online_download_list_data] Valid list received. Parsing JSON...");
@@ -96,7 +101,15 @@ function scr_process_online_download_list_data()
 			/* Finished a true load - clear the refresh flag & mark loaded */
 			global.force_online_list_refresh    = false;
 			global.online_list_loaded            = true;
+			global.online_download_cached_type  = content_type;
 			global.server_timeout_end           = undefined; /* Clear timeout after successful load */
+
+			/* Reset thumbnail download queue to the start of this list */
+			var _page_offset = global.download_current_page * global.download_items_per_page;
+			info_queue_index = _page_offset;
+			info_queue_http_request = true;
+			global.info_data = undefined;
+			global.online_download_list_info = "";
 		}
 		catch (e)
 		{
