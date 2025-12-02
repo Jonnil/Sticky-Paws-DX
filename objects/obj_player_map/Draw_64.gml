@@ -4,10 +4,11 @@ var window_width = display_get_gui_width();
 var clear_prompt_x = 164;
 
 /* Common conditions for multiple sections */
-var common_conditions_met = (nearest_level != noone && can_move && can_enter_level >= 30 && distance_to_level < 4 && speed == 0);
+var common_conditions_met = (nearest_level != noone && stop_at_level && can_move && can_enter_level >= 30 && distance_to_level < 4 && speed == 0);
 
 /* Show Enter Level Key */
-if (common_conditions_met && nearest_level.clear_rate != "closed")
+if (common_conditions_met
+&& nearest_level.clear_rate != "closed")
 {
 	draw_set_halign(fa_left);
 	draw_set_valign(fa_middle);
@@ -62,21 +63,29 @@ if (iris_xscale > 9)
 }
 
 /* Check if conditions are met to show level info */
-if (nearest_level != noone && iris_xscale > 9 && move_delay > 10 && distance_to_level < 4 && nearest_level.level_number != 0)
+
+if (nearest_level != noone
+&& stop_at_level
+&& iris_xscale > 9
+&& move_delay > 10
+&& distance_to_level < 4
+&& nearest_level.level_number != 0
+&& speed == 0)
 {
-	if (nearest_level.clear_rate == "enter" || nearest_level.clear_rate == "clear")
+	if (nearest_level.clear_rate == "enter"
+	|| nearest_level.clear_rate == "clear")
 	{
 		var show_level_info_x = 180;
 		var show_level_info_y = 232;
 		var show_big_collectibles_y = -160;
 		var total_defeats_y = global.show_defeats_counter && nearest_level.number_of_defeats > 0 ? -32 : -64;
-
+		
 		var show_info = global.show_defeats_counter && nearest_level.number_of_defeats > 0 ||
-					   nearest_level.number_of_clears > 0 ||
-					   nearest_level.level_score > 0 ||
-					   (nearest_level.timeattack_realmillisecond < 999999999 && nearest_level.timeattack_realmillisecond > 0) ||
-					   at_least_one_big_collectible;
-
+						nearest_level.number_of_clears > 0 ||
+						nearest_level.level_score > 0 ||
+						(nearest_level.timeattack_realmillisecond < 999999999 && nearest_level.timeattack_realmillisecond > 0) ||
+						at_least_one_big_collectible;
+		
 		if (show_info)
 		{
 			draw_set_halign(fa_center);
@@ -84,10 +93,12 @@ if (nearest_level != noone && iris_xscale > 9 && move_delay > 10 && distance_to_
 			draw_set_alpha(0.75);
 			draw_roundrect_color_ext(show_level_info_x - 160, show_level_info_y - abs(show_big_collectibles_y) - 16, show_level_info_x + 160, show_level_info_y + total_defeats_y + 24, 50, 50, c_black, c_black, false);
 			draw_set_alpha(1);
-
+			
 			/* Draw level info */
 			var total_defeats_text = "";
-			if (global.show_defeats_counter && nearest_level.number_of_defeats > 0)
+			
+			if (global.show_defeats_counter
+			&& nearest_level.number_of_defeats > 0)
 			{
 				var total_defeats_text = l10n_text("Total Defeats") + ": " + string(nearest_level.number_of_defeats);
 			}

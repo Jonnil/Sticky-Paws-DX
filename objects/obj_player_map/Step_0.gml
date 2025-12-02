@@ -16,13 +16,14 @@ if (speed > 0)
 }
 
 /* Check if "obj level" exists */
-if (stop_at_level && nearest_level == noone) /* Only get info from levels when you stop at a level and nothing is stored in "nearest level" variable, so this code isn't running every frame */
+if (stop_at_level
+&& nearest_level == noone) /* Only get info from levels when you stop at a level and nothing is stored in "nearest level" variable, so this code isn't running every frame */
 {
 	if (instance_exists(obj_level))
 	{
-		nearest_level = instance_nearest(x, y, obj_level);
 		distance_to_level = distance_to_object(nearest_level);
 		at_least_one_big_collectible = false;
+		
 		for(var i = 1; i <= global.max_big_collectible; i += 1)
 		{
 			if (nearest_level.big_collectible[i])
@@ -31,6 +32,7 @@ if (stop_at_level && nearest_level == noone) /* Only get info from levels when y
 				break; /* exit the loop if any big collectible is false */
 			}
 		}
+		
 		/* Best time text */
 		var time_minute = nearest_level.timeattack_minute;
 		var time_second = string_replace_all(string_format(nearest_level.timeattack_second, 2, 0), " ", "0");
@@ -94,9 +96,13 @@ if (pause_condition_met)
 if (!place_meeting(x, y, obj_level))
 {
 	stop_at_level = false;
-	nearest_level = noone; /* Reset nearest level when */
 }
 #endregion /* Stop player when touching level END */
+
+if (instance_exists(obj_level))
+{
+	nearest_level = instance_nearest(x, y, obj_level);
+}
 
 /* Delay countup */
 if (!can_move)
