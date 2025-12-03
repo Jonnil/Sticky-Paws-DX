@@ -413,8 +413,16 @@ function scr_step_online_download_list()
 
 	if (in_online_download_list_menu)
 	{
-		/* Keep the thumbnail pipeline alive while the list is open */
-		scr_download_thumbnails(true);
+		var _menu_is_download = (string_copy(menu, 1, string_length("download_online")) == "download_online");
+		var _list_data = variable_global_get("online_content_data_" + string(content_type));
+
+		/* Keep the thumbnail pipeline alive only when the list has real data and we are on a download menu */
+		if (_menu_is_download
+		&& is_array(_list_data)
+		&& global.online_list_loaded)
+		{
+			scr_download_thumbnails(true);
+		}
 		
 		#region /* Process Data */
 		if (variable_global_get("online_content_data_" + string(content_type)) == undefined

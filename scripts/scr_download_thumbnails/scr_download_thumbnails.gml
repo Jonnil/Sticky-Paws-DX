@@ -5,6 +5,15 @@
 /// 2. Single Download: Processes a specific item (based on global.selected_online_download_index) if download_all is false.
 function scr_download_thumbnails(download_all, what_num_items = 0)
 {
+	/* Bail out early if the list data isn't ready or we're not in an online download flow */
+	var _list_data = variable_global_get("online_content_data_" + string(content_type));
+	var _menu_is_download = (string_copy(menu, 1, string_length("download_online")) == "download_online");
+
+	if (!is_array(_list_data) || !global.online_list_loaded || !_menu_is_download)
+	{
+		return;
+	}
+
 	/* If we are not in "download all" mode,
 	set the queue index to the one selected by the user. */
 	if (!download_all)
