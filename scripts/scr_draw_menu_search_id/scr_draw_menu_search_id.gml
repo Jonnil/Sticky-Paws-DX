@@ -576,13 +576,26 @@ function scr_draw_menu_search_id(what_kind_of_id = "level")
 					if (sprite_exists(downloaded_thumbnail_sprite))
 					{
 						var scale_offset = 1;
+						var scale_x = (392 / sprite_get_width(downloaded_thumbnail_sprite)) * scale_offset;
+						var scale_y = scale_x;
+
+						/* Center the sprite by its bbox center (ignores whatever origin the sprite has) */
+						var target_x = get_window_width * 0.5;
+						var target_y = get_window_height * 0.5 - 100;
+						var bbox_cx = (sprite_get_bbox_left(downloaded_thumbnail_sprite) + sprite_get_bbox_right(downloaded_thumbnail_sprite)) * 0.5;
+						var bbox_cy = (sprite_get_bbox_top(downloaded_thumbnail_sprite) + sprite_get_bbox_bottom(downloaded_thumbnail_sprite)) * 0.5;
+						var origin_adjust_x = bbox_cx - sprite_get_xoffset(downloaded_thumbnail_sprite);
+						var origin_adjust_y = bbox_cy - sprite_get_yoffset(downloaded_thumbnail_sprite);
+						var draw_x = target_x - origin_adjust_x * scale_x;
+						var draw_y = target_y - origin_adjust_y * scale_y;
+
 						draw_sprite_ext(
 							downloaded_thumbnail_sprite,
 							0,
-							get_window_width * 0.5 - 350,
-							get_window_height * 0.5 - 100,
-							(392 / sprite_get_width(downloaded_thumbnail_sprite)) * scale_offset,
-							(392 / sprite_get_width(downloaded_thumbnail_sprite)) * scale_offset,
+							draw_x,
+							draw_y,
+							scale_x,
+							scale_y,
 							0,
 							c_white,
 							1
