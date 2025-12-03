@@ -22,8 +22,13 @@ function draw_menu_button_sprite(spr_index, x_position, y_position, x_origin_off
 		if (menu_delay == 0 && menu_joystick_delay == 0) /* Only change menu when "menu delay" is 0, otherwise there could be weird menu bugs that happen when you hover over a button when game needs to load code */
 		{
 			menu = menu_index;
-			if (variable_instance_exists(self, "menu_cursor_y_position"))
-			&& (variable_instance_exists(self, "menu_y_offset"))
+
+			/* Don't force-scroll the online download list when highlighting the page buttons */
+			var _is_online_page_button = (string_copy(menu_index, 1, string_length("download_online_page")) == "download_online_page");
+
+			if (!_is_online_page_button
+			&& variable_instance_exists(self, "menu_cursor_y_position")
+			&& variable_instance_exists(self, "menu_y_offset"))
 			{
 				menu_cursor_y_position = y_position - menu_y_offset;
 			}
