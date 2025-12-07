@@ -181,8 +181,10 @@ function scr_character_select_menu_draw()
 		#region /* Online Character List Button */
 		if (global.free_communication_available)
 		&& (room == rm_title) /* Can only access online in title screen */
+		&& (!global.demo_enable)
 		{
 			draw_menu_button(0, draw_online_character_list_y, l10n_text("Online Character List"), "online_character_list", "online_character_list");
+			
 			if (characters_added_today_text != "")
 			{
 				draw_set_halign(fa_left);

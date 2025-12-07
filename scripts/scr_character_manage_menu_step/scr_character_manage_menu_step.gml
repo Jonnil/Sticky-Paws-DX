@@ -504,6 +504,7 @@ function scr_character_manage_menu_step()
 			if (!selecting_official_character)
 			&& (global.free_communication_available)
 			&& (enable_upload_character)
+			&& (!global.demo_enable)
 			{
 				player_menu[fixed_player] = "click_upload_character";
 				menu = "click_upload_character";
@@ -556,11 +557,13 @@ function scr_character_manage_menu_step()
 		&& (menu_delay == 0 && menu_joystick_delay == 0)
 		&& (can_navigate)
 		&& (enable_upload_character)
+		&& (!global.demo_enable)
 		|| (menu == "click_upload_character")
 		&& (key_a_pressed)
 		&& (menu_delay == 0 && menu_joystick_delay == 0)
 		&& (can_navigate)
 		&& (enable_upload_character)
+		&& (!global.demo_enable)
 		{
 			if (!selecting_official_character)
 			&& (global.free_communication_available)
@@ -648,6 +651,7 @@ function scr_character_manage_menu_step()
 				}
 			}
 		}
+		
 		if (keyboard_check_pressed(global.player_[inp.key][fixed_player][1][action.up]))
 		|| (keyboard_check_pressed(global.player_[inp.key][fixed_player][2][action.up]))
 		|| (gamepad_button_check_pressed(global.player_slot[fixed_player], gp_padu))
@@ -673,6 +677,7 @@ function scr_character_manage_menu_step()
 				}
 			}
 		}
+		
 		if (menu == "click_upload_character")
 		&& (key_down)
 		&& (menu_delay == 0 && menu_joystick_delay == 0)
@@ -730,9 +735,11 @@ function scr_character_manage_menu_step()
 			{
 				menu_delay = 3;
 				can_navigate = true;
+				
 				if (!selecting_official_character)
 				&& (global.free_communication_available)
 				&& (enable_upload_character)
+				&& (!global.demo_enable)
 				{
 					player_menu[fixed_player] = "click_upload_character";
 					menu = "click_upload_character";

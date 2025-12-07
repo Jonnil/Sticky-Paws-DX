@@ -85,16 +85,14 @@ var can_toggle_fullscreen = (os_type != os_ios)
 if (can_toggle_fullscreen)
 {
 	scr_draw_fullscreen_button(-74, display_get_gui_height() - 65 + version_y_pos, "fullscreen_mode_title");
-
+	
+	var fullscreen_text = l10n_text("Fullscreen");
+	
 	if (window_get_fullscreen())
 	{
-		var fullscreen_text = l10n_text("Windowed");
+		fullscreen_text = l10n_text("Windowed");
 	}
-	else
-	{
-		var fullscreen_text = l10n_text("Fullscreen");
-	}
-
+	
 	if (global.controls_used_for_navigation == "mouse")
 	&& (mouse_check_button_released(mb_left))
 	&& (point_in_rectangle(mouse_get_x, mouse_get_y, 0, display_get_gui_height() - 65 + version_y_pos - 6, -74 + string_width(fullscreen_text) + 100, display_get_gui_height() - 65 + version_y_pos + 32 + 6))
@@ -116,7 +114,14 @@ if (can_toggle_fullscreen)
 #region /* Build Date and Version */
 draw_set_halign(fa_left);
 draw_set_valign(fa_middle);
-scr_draw_text_outlined(0 + 16, display_get_gui_height() - 16 + version_y_pos, "v" + scr_get_build_date(), global.default_text_size, c_menu_outline, c_menu_fill, 1);
+var demo_build_text = "";
+
+if (global.demo_enable)
+{
+	demo_build_text = l10n_text("Demo");
+}
+
+scr_draw_text_outlined(0 + 16, display_get_gui_height() - 16 + version_y_pos, "v" + scr_get_build_date() + " " + string(demo_build_text), global.default_text_size, c_menu_outline, c_menu_fill, 1);
 draw_set_halign(fa_center);
 #endregion /* Build Date and Version END */
 
@@ -418,20 +423,22 @@ if (!in_settings)
 		{
 			global.character_select_in_this_menu = "main_game";
 		}
-
+		
 		if (menu == "level_editor")
 		{
 			if (global.level_editor_level > 0)
 			{
 				global.level_editor_level = 0;
 			}
+			
 			global.character_select_in_this_menu = "level_editor"; /* No custom level is selected before you go into the level editor */
 		}
-
+		
 		if (global.enable_option_for_pc)
 		{
 			draw_menu_button_sprite(spr_menu_button, display_get_gui_width() * 0.5 - 185, option_and_quit_y, 0, 0, 0.5, 1, 185, 42, l10n_text("Options"), "options", "options", true);
 			draw_menu_button_sprite(spr_menu_button, display_get_gui_width() * 0.5, option_and_quit_y, 0, 0, 0.5, 1, 185, 42, l10n_text("Quit"), "quit", "quit_game_no", true, c_red);
+			
 			if (menu == "quit")
 			{
 				draw_menu_button_sprite(spr_menu_button, display_get_gui_width() * 0.5 - 185, option_and_quit_y, 0, 0, 0.5, 1, 185, 42, l10n_text("Options"), "options", "options", true);
@@ -442,8 +449,9 @@ if (!in_settings)
 		{
 			draw_menu_button(display_get_gui_width() * 0.5 - 185, option_and_quit_y, l10n_text("Options"), "options", "options");
 		}
+		
 		draw_sprite_ext(spr_icon_cogwheel, 0, display_get_gui_width() * 0.5 - 185 + 8, option_and_quit_y + 21, 1, 1, 0, c_white, 1);
-
+		
 		/* Information button */
 		if (!latest_whats_new_read)
 		{
@@ -453,11 +461,14 @@ if (!in_settings)
 		{
 			var information_alpha = 1;
 		}
+		
 		draw_menu_button_sprite(spr_icon_exclamation, display_get_gui_width() - 32, display_get_gui_height() - 35, 16, 0, 1, 1, 32, 32, "", "information", "information", false,,information_alpha);
+		
 		if (menu == "information")
 		{
 			draw_set_halign(fa_right);
 			scr_draw_text_outlined(display_get_gui_width() - 8, display_get_gui_height() - 54, l10n_text("Information"), global.default_text_size, c_black, c_white, 1);
+			
 			if (key_a_pressed)
 			&& (menu_delay == 0 && menu_joystick_delay == 0)
 			|| (point_in_rectangle(mouse_get_x, mouse_get_y, display_get_gui_width() - 32, display_get_gui_height() - 35, display_get_gui_width(), display_get_gui_height()))

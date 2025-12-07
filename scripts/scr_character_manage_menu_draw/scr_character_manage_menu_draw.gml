@@ -225,13 +225,16 @@ function scr_character_manage_menu_draw()
 				{
 					draw_menu_button(get_window_width * 0.5 - 185, delete_character_y, l10n_text("Delete Character"), "click_delete_character", "click_delete_character_no", c_red); /* Delete Characters */
 					draw_sprite_ext(spr_icon_delete, 0, get_window_width * 0.5 - 185 + 16, delete_character_y + 21, 1, 1, 0, c_white, 1);
-					if (global.free_communication_available && enable_upload_character)
+					
+					if (global.free_communication_available
+					&& enable_upload_character)
+					&& (!global.demo_enable)
 					{
 						draw_menu_button(get_window_width * 0.5 - 185, upload_character_y, l10n_text("Upload Character"), "click_upload_character", "click_upload_character"); /* Upload Characters */
 						draw_sprite_ext(spr_icon_upload, 0, get_window_width * 0.5 - 185 + 16, upload_character_y + 21, 1, 1, 0, c_white, 1);
 					}
 				}
-
+				
 				#region /* Open Character Folder */
 				if (global.enable_open_custom_folder)
 				{
@@ -239,12 +242,12 @@ function scr_character_manage_menu_draw()
 					draw_sprite_ext(spr_icon_folder, 0, get_window_width * 0.5 - 185 + 16, open_character_folder_y + 21, 1, 1, 0, c_white, 1);
 				}
 				#endregion /* Open Character Folder END */
-
+				
 				#region /* Back from Copy Characters */
 				draw_menu_button(0, 0, l10n_text("Back"), "back_from_copy_character", "back_from_copy_character");
 				draw_sprite_ext(spr_icon_back, 0, 20, 21, 1, 1, 0, c_white, 1);
 				#endregion /* Back from Copy Characters END */
-
+				
 				#region /* Get information from character config */
 				draw_set_halign(fa_right);
 				if (file_exists(game_save_id + "custom_characters/" + string(ds_list_find_value(global.all_loaded_characters, global.character_index[0])) + "/data/character_config.ini"))

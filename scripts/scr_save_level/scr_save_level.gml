@@ -6,7 +6,7 @@ function scr_save_level()
 	ini_open(global.use_temp_or_working + "custom_levels/" + string(level_name) + "/data/level_information.ini");
 	var level_id = ini_read_string("info", "level_id", "");
 	ini_close();
-
+	
 	#region /* If doing a character clear check, and winning the level, then add in character config that you have done a clear check */
 	if (global.level_clear_rate == "clear"
 	&& global.doing_clear_check_character)
@@ -35,9 +35,19 @@ function scr_save_level()
 			&& ini_key_exists(level_name, "clear_rate")
 			&& ini_read_string(level_name, "clear_rate", "closed") != "clear")
 			{
-				ini_write_real("Player", "number_of_levels_cleared", ini_read_real("Player", "number_of_levels_cleared", 1) + 1); /* Increase how many levels in total you have cleared */
+				var levels_cleared_before = ini_read_real("Player", "number_of_levels_cleared", 1);
+				var levels_cleared_after = levels_cleared_before + 1;
+				ini_write_real("Player", "number_of_levels_cleared", levels_cleared_after); /* Increase how many levels in total you have cleared */
 			}
+			
 			ini_write_string(level_name, "clear_rate", "clear"); /* Make the level clear after checking number of levels cleared */
+			
+			/* Mark when the last playable demo level was just cleared */
+			if (global.demo_enable
+			&& global.select_level_index >= global.demo_number_of_levels)
+			{
+				global.demo_over_popup = true;
+			}
 		}
 
 		/* Make it known if the level was cleared with debug mode or not */

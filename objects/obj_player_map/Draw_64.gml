@@ -155,3 +155,80 @@ if (iris_yscale <= 0.002 || (brand_new_file && can_enter_level_automatically) ||
 	black_screen_at_start_delay++;
 	scr_draw_loading(1); /* Draw loading screen when transitioning to other rooms */
 }
+
+/* If playing the demo version, show how to purchase the game when they finish the demo */
+if (global.demo_enable
+&& global.demo_over_popup)
+{
+	can_move = false;
+	draw_set_alpha(0.75);
+	draw_rectangle_color(0, 0, window_width, window_height, c_black, c_black, c_black, c_black, false);
+	draw_set_alpha(1);
+	draw_set_halign(fa_center);
+	draw_set_valign(fa_middle);
+	scr_draw_text_outlined(window_width * 0.5, window_height * 0.5 - 32, l10n_text("Thank you for playing the " + string(global.game_name) + " Demo!"), global.default_text_size, c_black, c_white, 1);
+	scr_draw_text_outlined(window_width * 0.5, window_height * 0.5, l10n_text("Buy the full version to continue the game"), global.default_text_size, c_black, c_white, 1);
+	var demo_end_buttons_x = window_width * 0.5 - 185;
+	var purchase_now_y = window_height * 0.5 + 42;
+	draw_menu_button(demo_end_buttons_x, purchase_now_y, l10n_text("Purchase Now"), "purchase_now", "purchase_now");
+	var continue_demo_y = window_height * 0.5 + 42 + 42;
+	draw_menu_button(demo_end_buttons_x, continue_demo_y, l10n_text("Continue Demo"), "continue_demo", "continue_demo");
+	
+	if (menu != "purchase_now"
+	&& menu != "continue_demo")
+	{
+		menu = "purchase_now";
+	}
+	
+	if (key_up
+	&& (menu_delay == 0 && menu_joystick_delay == 0))
+	{
+		menu_delay = 3;
+		menu = "purchase_now";
+	}
+	
+	if (key_down
+	&& (menu_delay == 0 && menu_joystick_delay == 0))
+	{
+		menu_delay = 3;
+		menu = "continue_demo";
+	}
+	
+	/* Click Purchase Now */
+	var purchase_clicked =
+		(point_in_rectangle(device_mouse_x_to_gui(0), device_mouse_y_to_gui(0), demo_end_buttons_x, purchase_now_y, demo_end_buttons_x + 370, purchase_now_y + 41)
+		&& global.controls_used_for_navigation == "mouse"
+		&& mouse_check_button_released(mb_left)
+		&& (menu_delay == 0 && menu_joystick_delay == 0))
+		|| (menu == "purchase_now"
+		&& key_a_pressed
+		&& (menu_delay == 0 && menu_joystick_delay == 0));
+	
+	if (purchase_clicked)
+	{
+		menu_delay = 3;
+		global.demo_over_popup = false;
+		can_move = true;
+		menu = noone;
+		url_open(global.link_to_steam_page);
+	}
+	
+	/* Click Continue Playing Demo */
+	var continue_clicked =
+		(point_in_rectangle(device_mouse_x_to_gui(0), device_mouse_y_to_gui(0), demo_end_buttons_x, continue_demo_y, demo_end_buttons_x + 370, continue_demo_y + 41)
+		&& global.controls_used_for_navigation == "mouse"
+		&& mouse_check_button_released(mb_left)
+		&& (menu_delay == 0 && menu_joystick_delay == 0))
+		|| (menu == "continue_demo"
+		&& (key_a_pressed || key_b_pressed)
+		&& (menu_delay == 0 && menu_joystick_delay == 0));
+	
+	if (continue_clicked)
+	{
+		/* Close the pop-up for the demo end screen */
+		menu_delay = 3;
+		can_move = true;
+		menu = noone;
+		global.demo_over_popup = false;
+	}
+}

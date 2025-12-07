@@ -118,6 +118,7 @@ default_yscale = 1;
 menu = noone;
 menu_cursor_index = 0;
 menu_delay = 3;
+open_dropdown = false;
 
 brand_new_file = -1;
 xx_heart = x;
@@ -125,7 +126,8 @@ yy_heart = y - 64;
 have_heart_balloon = false; /* If you have the heart balloon upgrade or not. You start without it */
 
 #region /* Load Game */
-if (file_exists(game_save_id + "save_file/file" + string(global.file) + ".ini")) {
+if (file_exists(game_save_id + "save_file/file" + string(global.file) + ".ini"))
+{
 	ini_open(game_save_id + "save_file/file" + string(global.file) + ".ini");
 
 	brand_new_file = ini_read_real("Player", "brand_new_file", true);

@@ -403,6 +403,7 @@ function scr_character_portrait_for_player_step(what_player = 1)
 				{
 					if (global.free_communication_available)
 					&& (room == rm_title) /* Can only access online in title screen */
+					&& (!global.demo_enable)
 					{
 						menu_delay = 3;
 						player_menu[what_player] = "online_character_list";

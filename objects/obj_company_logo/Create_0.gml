@@ -41,17 +41,17 @@ if (file_exists("whats_new.txt"))
 {
 	/* Open the file for reading */
 	var file = file_text_open_read("whats_new.txt");
-
+	
 	/* Loop through each line until the end of the file */
 	while (!file_text_eof(file))
 	{
 		/* Read a line and append it to the "global.whats_new" variable */
 		global.whats_new += file_text_read_string(file) + "\n";
-
+		
 		/* Move to the next line */
 		file_text_readln(file);
 	}
-
+	
 	/* Close the file */
 	file_text_close(file);
 }
@@ -292,6 +292,7 @@ global.selected_level_editing_music = 0;
 global.gui_scale = -1;
 global.gui_scale_modifier = 0;
 global.draw_text_outline = true; /* Let it be an option that the player can disable text outline, because it can help improve performance */
+global.demo_over_popup = false; /* Show the "demo over" pop-up when the last demo level is cleared */
 
 global.resolution_setting = 0; /* Preset resolution settings */
 /* 0 = Current Display Size,

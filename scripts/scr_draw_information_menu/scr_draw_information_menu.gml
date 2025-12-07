@@ -3,7 +3,7 @@ function scr_draw_information_menu()
 	var mouse_get_x = device_mouse_x_to_gui(0);
 	var mouse_get_y = device_mouse_y_to_gui(0);
 	var fixed_player = 1;
-
+	
 	#region /* Information menu */
 	if (information_menu_open != "")
 	{
@@ -12,7 +12,7 @@ function scr_draw_information_menu()
 		{
 			instance_destroy(obj_credits);
 		}
-
+		
 		draw_set_alpha(0.5);
 		var information_background_color = make_color_hsv((current_time * 0.01) mod 255, 127, 255);
 		draw_rectangle_color(0, 0, display_get_gui_width(), display_get_gui_height() * 0.75, information_background_color, information_background_color, c_black, c_black, false);
@@ -20,7 +20,7 @@ function scr_draw_information_menu()
 		draw_rectangle_color(0, display_get_gui_height() * 0.75 + 1, display_get_gui_width(), display_get_gui_height(), c_black, c_black, c_black, c_black, false);
 		draw_rectangle_color(0, 0, display_get_gui_width(), display_get_gui_height(), c_black, c_black, c_black, c_black, false);
 		draw_set_alpha(1);
-
+		
 		if (key_left)
 		&& (menu_delay == 0 && menu_joystick_delay == 0)
 		&& (information_menu_open != "about_privacy_policy")
@@ -53,8 +53,16 @@ function scr_draw_information_menu()
 			else
 			if (menu == "community")
 			{
-				menu = "backups";
-				information_menu_open = "backups";
+				if (!global.demo_enable)
+				{
+					menu = "backups";
+					information_menu_open = "backups";
+				}
+				else
+				{
+					menu = "whats_new";
+					information_menu_open = "whats_new";
+				}
 			}
 			else
 			if (menu == "credits")
@@ -65,9 +73,15 @@ function scr_draw_information_menu()
 					information_menu_open = "community";
 				}
 				else
+				if (!global.demo_enable)
 				{
 					menu = "backups";
 					information_menu_open = "backups";
+				}
+				else
+				{
+					menu = "whats_new";
+					information_menu_open = "whats_new";
 				}
 			}
 			else
@@ -90,8 +104,22 @@ function scr_draw_information_menu()
 			else
 			if (menu == "whats_new")
 			{
-				menu = "backups";
-				information_menu_open = "backups";
+				if (!global.demo_enable)
+				{
+					menu = "backups";
+					information_menu_open = "backups";
+				}
+				else
+				if (global.enable_option_for_pc)
+				{
+					menu = "community";
+					information_menu_open = "community";
+				}
+				else
+				{
+					menu = "credits";
+					information_menu_open = "credits";
+				}
 			}
 			else
 			if (menu == "backups")
@@ -158,6 +186,7 @@ function scr_draw_information_menu()
 			{
 				menu_delay = 3;
 				if (global.free_communication_available)
+				&& (!global.demo_enable)
 				{
 					menu = "about_online_level_list";
 				}
@@ -188,6 +217,7 @@ function scr_draw_information_menu()
 				}
 				else
 				if (global.free_communication_available)
+				&& (!global.demo_enable)
 				{
 					menu = "about_online_level_list";
 				}
@@ -233,8 +263,13 @@ function scr_draw_information_menu()
 					menu = "backup_open_custom_character_folder";
 				}
 				else
+				if (!global.demo_enable)
 				{
 					menu = "backups";
+				}
+				else
+				{
+					menu = "community_discord";
 				}
 			}
 			else
@@ -310,7 +345,9 @@ function scr_draw_information_menu()
 			if (menu == "about")
 			{
 				menu_delay = 3;
+				
 				if (global.free_communication_available)
+				&& (!global.demo_enable)
 				{
 					menu = "about_online_level_list";
 				}
@@ -328,6 +365,7 @@ function scr_draw_information_menu()
 			if (menu == "about_online_level_list")
 			{
 				menu_delay = 3;
+				
 				if (global.enable_option_for_pc)
 				{
 					menu = "about_link_to_website";
@@ -429,11 +467,12 @@ function scr_draw_information_menu()
 		#region /* About, What's New, Backups, Credits, and Back tabs */
 		if (information_menu_open != "about_privacy_policy")
 		{
-
+			var tab_button_x = 0;
+			
 			/* About tab button */
-			draw_menu_button_sprite(spr_menu_button, 0, 0, 0, 0, 0.5, 1, 185, 42, l10n_text("About"), "about", "about", false);
+			draw_menu_button_sprite(spr_menu_button, tab_button_x, 0, 0, 0, 0.5, 1, 185, 42, l10n_text("About"), "about", "about", false);
 
-			if (point_in_rectangle(mouse_get_x, mouse_get_y, 0, 0, 185, 42))
+			if (point_in_rectangle(mouse_get_x, mouse_get_y, tab_button_x, 0, tab_button_x + 185, 42))
 			&& (mouse_check_button_released(mb_left))
 			&& (menu_delay == 0 && menu_joystick_delay == 0)
 			|| (menu == "about")
@@ -453,9 +492,11 @@ function scr_draw_information_menu()
 			{
 				var whats_new_alpha = 1;
 			}
-			draw_menu_button_sprite(spr_menu_button, 185, 0, 0, 0, 0.5, 1, 185, 42, l10n_text("What's New?"), "whats_new", "whats_new", false,,whats_new_alpha);
-
-			if (point_in_rectangle(mouse_get_x, mouse_get_y, 185, 0, 185 * 2, 42))
+			
+			tab_button_x += 185;
+			draw_menu_button_sprite(spr_menu_button, tab_button_x, 0, 0, 0, 0.5, 1, 185, 42, l10n_text("What's New?"), "whats_new", "whats_new", false,,whats_new_alpha);
+			
+			if (point_in_rectangle(mouse_get_x, mouse_get_y, tab_button_x, 0, tab_button_x + 185, 42))
 			&& (mouse_check_button_released(mb_left))
 			&& (menu_delay == 0 && menu_joystick_delay == 0)
 			|| (menu == "whats_new")
@@ -465,27 +506,34 @@ function scr_draw_information_menu()
 				information_menu_open = "whats_new";
 				menu_delay = 3;
 			}
-
+			
 			/* Backups tab button */
-			draw_menu_button_sprite(spr_menu_button, 185 * 2, 0, 0, 0, 0.5, 1, 185, 42, l10n_text("Backups"), "backups", "backups", false);
-
-			if (point_in_rectangle(mouse_get_x, mouse_get_y, 185 * 2, 0, 185 * 3, 42))
+			if (!global.demo_enable)
+			{
+				tab_button_x += 185;
+				draw_menu_button_sprite(spr_menu_button, tab_button_x, 0, 0, 0, 0.5, 1, 185, 42, l10n_text("Backups"), "backups", "backups", false);
+			}
+			
+			if (point_in_rectangle(mouse_get_x, mouse_get_y, tab_button_x, 0, tab_button_x + 185, 42))
 			&& (mouse_check_button_released(mb_left))
 			&& (menu_delay == 0 && menu_joystick_delay == 0)
+			&& (!global.demo_enable)
 			|| (menu == "backups")
 			&& (key_a_pressed)
 			&& (menu_delay == 0 && menu_joystick_delay == 0)
+			&& (!global.demo_enable)
 			{
 				information_menu_open = "backups";
 				menu_delay = 3;
 			}
-
+			
 			/* Community tab button */
 			if (global.enable_option_for_pc)
 			{
-				draw_menu_button_sprite(spr_menu_button, 185 * 3, 0, 0, 0, 0.5, 1, 185, 42, l10n_text("Community"), "community", "community", false);
-
-				if (point_in_rectangle(mouse_get_x, mouse_get_y, 185 * 3, 0, 185 * 4, 42))
+				tab_button_x += 185;
+				draw_menu_button_sprite(spr_menu_button, tab_button_x, 0, 0, 0, 0.5, 1, 185, 42, l10n_text("Community"), "community", "community", false);
+				
+				if (point_in_rectangle(mouse_get_x, mouse_get_y, tab_button_x, 0, tab_button_x + 185, 42))
 				&& (mouse_check_button_released(mb_left))
 				&& (menu_delay == 0 && menu_joystick_delay == 0)
 				|| (menu == "community")
@@ -495,17 +543,13 @@ function scr_draw_information_menu()
 					information_menu_open = "community";
 					menu_delay = 3;
 				}
-				var credits_y = 185 * 4;
 			}
-			else
-			{
-				var credits_y = 185 * 3;
-			}
-
+			
 			/* Credits tab button */
-			draw_menu_button_sprite(spr_menu_button, credits_y, 0, 0, 0, 0.5, 1, 185, 42, l10n_text("Credits"), "credits", "credits", false);
+			tab_button_x += 185;
+			draw_menu_button_sprite(spr_menu_button, tab_button_x, 0, 0, 0, 0.5, 1, 185, 42, l10n_text("Credits"), "credits", "credits", false);
 
-			if (point_in_rectangle(mouse_get_x, mouse_get_y, credits_y, 0, credits_y + 185, 42))
+			if (point_in_rectangle(mouse_get_x, mouse_get_y, tab_button_x, 0, tab_button_x + 185, 42))
 			&& (mouse_check_button_released(mb_left))
 			&& (menu_delay == 0 && menu_joystick_delay == 0)
 			|| (menu == "credits")
@@ -519,8 +563,9 @@ function scr_draw_information_menu()
 			/* Links tab button */
 			if (global.enable_option_for_pc)
 			{
-				draw_menu_button_sprite(spr_menu_button, 185 * 5, 0, 0, 0, 0.5, 1, 185, 42, l10n_text("Links"), "links", "links", false);
-				if (point_in_rectangle(mouse_get_x, mouse_get_y, 185 * 5, 0, 185 * 6, 42))
+				tab_button_x += 185;
+				draw_menu_button_sprite(spr_menu_button, tab_button_x, 0, 0, 0, 0.5, 1, 185, 42, l10n_text("Links"), "links", "links", false);
+				if (point_in_rectangle(mouse_get_x, mouse_get_y, tab_button_x, 0, tab_button_x + 185, 42))
 				&& (mouse_check_button_released(mb_left))
 				&& (menu_delay == 0 && menu_joystick_delay == 0)
 				|| (menu == "links")
@@ -580,27 +625,36 @@ function scr_draw_information_menu()
 			scr_draw_text_outlined(display_get_gui_width() * 0.5, welcome_to_game_y, l10n_text("Welcome to " + string(global.game_name) + "!"), global.default_text_size, c_black, c_white, 1);
 			draw_set_halign(fa_left);
 			scr_draw_text_outlined(32, this_is_a_game_y, l10n_text("This is a game that allows you to create your own levels"), global.default_text_size, c_black, c_white, 1);
-
+			
+			if (global.demo_enable)
+			{
+				scr_draw_text_outlined(32, this_is_a_game_y + 32, l10n_text("You need to buy the full version of the game to create custom levels"), global.default_text_size, c_black, c_white, 1);
+			}
+			
 			if (global.free_communication_available)
+			&& (!global.demo_enable)
 			{
 				scr_draw_text_outlined(32, to_share_levels_y, l10n_text("To share levels press the Upload button in level editor"), global.default_text_size, c_black, c_white, 1);
 				scr_draw_text_outlined(32, to_browse_levels_y, l10n_text("To browse levels press the Online Level List button in level editor"), global.default_text_size, c_black, c_white, 1);
 				draw_menu_button(32 + 25, online_level_list_button_y, l10n_text("Online Level List"), "about_online_level_list", "about_online_level_list");
 			}
+			
 			if (levels_added_today_text != "")
 			{
 				draw_set_halign(fa_left);
 				scr_draw_text_outlined(370 + 32 + 25 + 25, online_level_list_button_y + 21, string(levels_added_today_text), global.default_text_size + scr_wave(0, 0.1, 1), c_black, c_lime, 1);
 				draw_set_halign(fa_center);
 			}
-
+			
 			#region /* Click Online Level List button in About tab */
 			if (point_in_rectangle(mouse_get_x, mouse_get_y, 32, online_level_list_button_y, 370 + 32, online_level_list_button_y + 42))
 			&& (mouse_check_button_released(mb_left))
 			&& (menu_delay == 0 && menu_joystick_delay == 0)
+			&& (!global.demo_enable)
 			|| (menu == "about_online_level_list")
 			&& (key_a_pressed)
 			&& (menu_delay == 0 && menu_joystick_delay == 0)
+			&& (!global.demo_enable)
 			{
 				caution_online_takes_you_to = "online_download_list_load";
 				caution_online_takes_you_back_to = "about_online_level_list";
@@ -1006,20 +1060,21 @@ function scr_draw_information_menu()
 		{
 			draw_set_halign(fa_center);
 			scr_draw_text_outlined(display_get_gui_width() * 0.5, 32 * 2, l10n_text("Keep your levels safe!"), global.default_text_size, c_black, c_white, 1);
-
+			
 			draw_set_halign(fa_left);
 			draw_text_ext_transformed_color(32, 32 * 4, l10n_text("To prevent losing your custom levels and characters you should upload content and then save your level IDs and character IDs somewhere safe"), -1, display_get_gui_width(), global.default_text_size * 0.9, global.default_text_size * 0.9, 0, c_white, c_white, c_white, c_white, 1);
 			scr_draw_text_outlined(32, 32 * 7, l10n_text("The game includes an autosave feature that automatically saves your level every 5 minutes"), global.default_text_size * 0.9, c_black, c_white, 1);
 			scr_draw_text_outlined(32, 32 * 8, l10n_text("It also saves your level every time you playtest"), global.default_text_size, c_black, c_white, 1);
-
+			
 			if (global.enable_option_for_pc)
 			{
 				scr_draw_text_outlined(32, 32 * 10, l10n_text("Your custom levels are saved in this folder") + ":", global.default_text_size, c_black, c_white, 1);
-
+				
 				#region /* Open Custom Levels Folder */
 				var draw_open_custom_levels_folder_y = 32 * 11;
 				draw_menu_button(32, draw_open_custom_levels_folder_y, l10n_text("Open Custom Levels Folder"), "backup_open_custom_levels_folder", "backup_open_custom_levels_folder");
 				draw_sprite_ext(spr_icon_folder, 0, 32 + 16, draw_open_custom_levels_folder_y + 21, 1, 1, 0, c_white, 1);
+				
 				if (point_in_rectangle(mouse_get_x, mouse_get_y, 32, draw_open_custom_levels_folder_y + 2, 32 + 370, draw_open_custom_levels_folder_y + 41))
 				&& (global.controls_used_for_navigation == "mouse")
 				&& (mouse_check_button_released(mb_left))
@@ -1031,14 +1086,15 @@ function scr_draw_information_menu()
 					scr_open_folder(game_save_id + "\custom_levels")
 				}
 				#endregion /* Open Custom Levels Folder END */
-
+				
 				draw_set_halign(fa_left);
 				scr_draw_text_outlined(32, 32 * 13, l10n_text("Your custom characters are saved in this folder") + ":", global.default_text_size, c_black, c_white, 1);
-
+				
 				#region /* Open Custom Levels Folder */
-				var draw_open_custom_levels_folder_y = 32 * 14;
+				draw_open_custom_levels_folder_y = 32 * 14;
 				draw_menu_button(32, draw_open_custom_levels_folder_y, l10n_text("Open Custom Character Folder"), "backup_open_custom_character_folder", "backup_open_custom_character_folder");
 				draw_sprite_ext(spr_icon_folder, 0, 32 + 16, draw_open_custom_levels_folder_y + 21, 1, 1, 0, c_white, 1);
+				
 				if (point_in_rectangle(mouse_get_x, mouse_get_y, 32, draw_open_custom_levels_folder_y + 2, 32 + 370, draw_open_custom_levels_folder_y + 41))
 				&& (global.controls_used_for_navigation == "mouse")
 				&& (mouse_check_button_released(mb_left))
@@ -1050,7 +1106,14 @@ function scr_draw_information_menu()
 					scr_open_folder(game_save_id + "\custom_characters")
 				}
 				#endregion /* Open Custom Levels Folder END */
-
+				
+				/* Describe to the player what the icon for uploaded levels look like */
+				draw_set_halign(fa_left);
+				scr_draw_text_outlined(32, draw_open_custom_levels_folder_y + 64, l10n_text("Uploaded levels have this icon next to them"), global.default_text_size, c_black, c_white, 1);
+				draw_sprite_ext(spr_icon_upload, 0, 42, draw_open_custom_levels_folder_y + 96, 1, 1, 0, c_white, 1);
+				
+				/* TODO: It would be cool if there was some kind of auto-backup custom levels and custom characters button here
+				I'm usnusre how to implement that right now. So best I can do for now is just explain to the player that they need to look out for the upload icon */
 			}
 		}
 		else

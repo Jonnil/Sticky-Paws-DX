@@ -388,6 +388,7 @@ function scr_character_select_menu_step()
 						can_navigate = true;
 						if (global.free_communication_available)
 						&& (room == rm_title) /* Can only access online in title screen */
+						&& (!global.demo_enable)
 						{
 							player_menu[fixed_player] = "online_character_list";
 							menu = "online_character_list";
