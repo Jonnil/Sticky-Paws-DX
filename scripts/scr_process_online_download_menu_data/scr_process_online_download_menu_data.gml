@@ -85,11 +85,12 @@ function scr_process_online_download_menu_data()
 		&& menu_joystick_delay == 0)
 		{
 			menu_delay = 3;
-
+			
 			/* Safe resets that don't affect thumbnail cache */
 			global.automatically_play_downloaded_level = false;
 			global.use_temp_or_working = game_save_id;
-
+			global.server_timeout_end = undefined; /* Reset timeout flag */
+			
 			/* Reset only UI/input state */
 			automatically_search_for_id = false;
 			in_online_download_list_menu = false;
@@ -97,11 +98,11 @@ function scr_process_online_download_menu_data()
 			in_online_download_list_load_menu = false;
 			keyboard_string = "";
 			search_id = "";
-
+			
 			/* Paging variables, make sure scroll/page position restores correctly */
 			var page_offset = global.download_current_page * global.download_items_per_page;
 			info_queue_index = page_offset;
-
+			
 			/* Change menu state last */
 			if (content_type == "level")
 			{
@@ -109,7 +110,9 @@ function scr_process_online_download_menu_data()
 				{
 					show_level_editor_corner_menu = true;
 				}
+				
 				select_custom_level_menu_open = false;
+				
 				if (global.online_level_list_back == "online_level_list_title")
 				{
 					menu = "online_level_list_title";

@@ -4,11 +4,26 @@ function scr_draw_online_download_list_thumbnail(thumbnail_index, number_of_thum
 {
 	if (in_online_download_list_menu)
 	{
+		/* Ensure list data exists and index is sane before any array access */
+		var _list_data = variable_global_get("online_content_data_" + string(content_type));
+		if (!is_array(_list_data))
+		{
+			return;
+		}
+		
+		var _total_items = array_length(_list_data);
+		if (_total_items <= 0
+		|| thumbnail_index < 0
+		|| thumbnail_index >= _total_items)
+		{
+			return;
+		}
+		
 		/* PAGINATION SLICE */
 		var perPage        = global.download_items_per_page;
 		var page        = clamp(global.download_current_page, 0, global.download_total_pages - 1);
 		var start_idx    = page * perPage;
-		var total        = array_length(variable_global_get("online_content_data_" + string(content_type)));
+		var total        = _total_items;
 		
 		var end_idx        = min(start_idx + perPage - 1, total - 1);
 		var page_count    = end_idx - start_idx + 1;
@@ -184,8 +199,7 @@ function scr_draw_online_download_list_thumbnail(thumbnail_index, number_of_thum
 			&& point_in_rectangle(device_mouse_x_to_gui(0), device_mouse_y_to_gui(0),
 				download_online_x + 100 - 16, download_online_y + offsetY - 16,
 				download_online_x + 484 + 16, download_online_y + offsetY + 216 + 62)
-			&& is_array(variable_global_get("online_content_data_" + string(content_type)))
-			&& (array_length(variable_global_get("online_content_data_" + string(content_type))) > 0))
+			&& (_total_items > 0))
 		{
 			if (!isSelected)
 			{
@@ -195,7 +209,7 @@ function scr_draw_online_download_list_thumbnail(thumbnail_index, number_of_thum
 		#endregion /* Mouse Navigation END */
 		
 		#region /* Process Download ID and Time */
-		var item = variable_global_get("online_content_data_" + string(content_type))[thumbnail_index];
+		var item = _list_data[thumbnail_index];
 		var draw_download_id = item.name;
 		draw_download_id = string_replace(draw_download_id, string(content_type) + "s/", "");
 		draw_download_id = string_replace(draw_download_id, ".zip", "");

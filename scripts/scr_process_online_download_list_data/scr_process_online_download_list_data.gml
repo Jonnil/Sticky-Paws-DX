@@ -30,8 +30,21 @@ function scr_process_online_download_list_data()
 		try
 		{
 			/* Parse and compute pages */
-			variable_global_set("online_content_data_" + string(content_type), json_parse(global.online_download_list));
-			var total = array_length(variable_global_get("online_content_data_" + string(content_type)));
+			var _parsed = json_parse(global.online_download_list);
+			
+			/* Ensure the parsed payload is an array; otherwise bail safely */
+			if (!is_array(_parsed))
+			{
+				show_debug_message("[scr_process_online_download_list_data] Parsed payload is not an array. Resetting to empty.");
+				_parsed = array_create(0);
+			}
+			
+			variable_global_set("online_content_data_" + string(content_type), _parsed);
+			
+			if (content_type == "level")      { global.online_content_data_level      = _parsed; }
+			else if (content_type == "character") { global.online_content_data_character = _parsed; }
+			
+			var total = array_length(_parsed);
 			global.download_total_pages = ceil(total / global.download_items_per_page);
 			show_debug_message("[scr_process_online_download_list_data] JSON parsed. Items: " + string(total));
 

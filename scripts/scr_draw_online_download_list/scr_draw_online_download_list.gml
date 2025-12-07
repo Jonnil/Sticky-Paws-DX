@@ -66,14 +66,42 @@ function scr_draw_online_download_menu_data()
 	if (variable_global_get("online_content_data_" + string(content_type)) != undefined
 	&& (menu != "search_id_ok"))
 	{
+		/* Draw the back button always, even if there is no content uploaded yet */
+		draw_menu_button(0, 0, l10n_text("Back"), "download_online_back", "");
+		draw_sprite_ext(spr_icon_back, 0, 20, 21, 1, 1, 0, c_white, 1);
+		
 		if (is_array(variable_global_get("online_content_data_" + string(content_type))))
 		{
+			/* I fixed so that the crashes don't happen anymore. BUT... you end up on a infinite loop of loading, that fixes itself whenever back out and go back to the Online Character List. At least it doesn't crash anymore, but it's still annoying that this happens at all, even if it's no longer game breaking
+			TODO: If the loading screen is on-screen for too long, just make it tell the player to go back and enter the menu again. This usually fixes things like this. Implement this first, because this is the backup fix, in case I'm unable to fix the actual problem
+			TODO 2: Fix the actual problem so that the "online content data" global variables don't randomly become non-arrays
+			Should put the "global.online_content_data_level" and "global.online_content_data_character" on the debug screen */
+			
 			var num_items = array_length(variable_global_get("online_content_data_" + string(content_type)));
+			
+			/* If we haven't finished loading/parsing yet, keep showing the spinner instead of "nothing uploaded" */
+			if (!global.online_list_loaded
+			|| global.online_download_list == "")
+			{
+				scr_draw_loading(1, , , "Loading from server");
+				return;
+			}
+			
+			/* If no items, skip pagination math that assumes a positive count */
+			if (num_items <= 0)
+			{
+				/* Fall through to the "nothing uploaded" message below */
+				draw_set_halign(fa_center);
+				scr_draw_text_outlined(guiWidth * 0.5, display_get_gui_height() * 0.5,
+					l10n_text("There is nothing uploaded yet!"), global.default_text_size * 2, c_menu_outline, c_menu_fill, 1);
+				return;
+			}
+			
 			/* Figure out our slice */
 			var perPage        = global.download_items_per_page;
-			var page        = clamp(global.download_current_page, 0, global.download_total_pages - 1);
+			var page        = clamp(global.download_current_page, 0, max(0, global.download_total_pages - 1));
 			var start_idx    = page * perPage;
-			var end_idx        = min(start_idx + perPage - 1, array_length(variable_global_get("online_content_data_" + string(content_type))) - 1);
+			var end_idx        = min(start_idx + perPage - 1, num_items - 1);
 			var page_count    = end_idx - start_idx + 1;
 
 			/* Draw each thumbnail, optimized loop through downloads. Draw only that page's thumbnails */
@@ -163,11 +191,8 @@ function scr_draw_online_download_menu_data()
 		}
 	}
 	#endregion /* Show online downloads if data is available END */
-
-	#region /* Draw Back and Search ID buttons */
-	draw_menu_button(0, 0, l10n_text("Back"), "download_online_back", "");
-	draw_sprite_ext(spr_icon_back, 0, 20, 21, 1, 1, 0, c_white, 1);
-
+	
+	#region /* Draw Search ID button */
 	var draw_search_id_y = 42;
 
 	if (global.free_communication_available)
@@ -192,7 +217,7 @@ function scr_draw_online_download_menu_data()
 		#endregion /* Draw Gamepad Search Key END */
 
 	}
-	#endregion /* Draw Back and Search ID buttons END */
+	#endregion /* Draw Search ID button END */
 
 	#region /* Draw Load Custom Level Assets Option */
 	if (content_type == "level")

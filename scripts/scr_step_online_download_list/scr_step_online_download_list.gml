@@ -4,6 +4,17 @@ function scr_step_online_download_list()
 {
 	var start_idx = 0;
 	var page_count = 0;
+	
+	/* Normalize list data so all downstream array_length/indexing calls are safe */
+	var _content_data = variable_global_get("online_content_data_" + string(content_type));
+	if (!is_array(_content_data))
+	{
+		_content_data = array_create(0);
+		variable_global_set("online_content_data_" + string(content_type), _content_data);
+		
+		if (content_type == "level")      { global.online_content_data_level      = _content_data; }
+		else if (content_type == "character") { global.online_content_data_character = _content_data; }
+	}
 
 	#region /* Initialization: Begin loading the online download list if requested */
 	if (menu == "online_download_list_load")
@@ -432,7 +443,6 @@ function scr_step_online_download_list()
 		}
 		else
 		{
-			//variable_global_set("online_content_data_" + string(content_type), undefined);
 			scr_process_online_download_menu_data();
 		}
 		#endregion /* Process Data END */
