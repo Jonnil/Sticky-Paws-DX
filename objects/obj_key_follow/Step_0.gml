@@ -41,5 +41,7 @@ if (follow_player != noone)
 }
 else
 {
-	instance_change(obj_key, true);
+	var obj = instance_create_depth(x, y, 0, obj_key)
+	obj.what_key = what_key;
+	instance_destroy();
 }

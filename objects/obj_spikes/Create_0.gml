@@ -5,6 +5,7 @@ image_index = random(10);
 if (global.assist_enable)
 && (!global.assist_enable_spikes)
 {
-	instance_change(obj_ground, true);
+	instance_create_depth(x, y, 0, obj_ground);
+	instance_destroy();
 }
 #endregion /* If enemies are disabled, replace this object with ground object END */

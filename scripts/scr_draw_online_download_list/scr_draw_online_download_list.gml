@@ -33,7 +33,7 @@ function scr_draw_online_download_list()
 /// @description Draw the online download list data
 function scr_draw_online_download_list_data()
 {
-	scr_draw_loading(1, , , "Loading from server 2");
+	scr_draw_loading(1, , , "Loading from server");
 	
 	var page_offset = global.download_current_page * global.download_items_per_page;
 	info_queue_index = page_offset;

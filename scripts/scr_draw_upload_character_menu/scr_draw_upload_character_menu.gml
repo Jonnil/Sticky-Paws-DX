@@ -434,6 +434,7 @@ function scr_draw_upload_character_menu()
 		var do_a_clear_check_character_y = 432;
 		var do_a_clear_check_character_no_y = 532;
 		var do_a_clear_check_character_yes_y = 532;
+		
 		if (!global.doing_clear_check_character)
 		{
 			draw_set_alpha(0.75);
@@ -441,7 +442,7 @@ function scr_draw_upload_character_menu()
 			draw_set_alpha(1);
 			scr_draw_text_outlined(get_window_width * 0.5, do_a_clear_check_character_y - 16, l10n_text("Do a clear check?"), global.default_text_size * 1.9, c_black, c_white, 1);
 			scr_draw_text_outlined(get_window_width * 0.5, do_a_clear_check_character_y + 30, l10n_text("Custom character needs to be able to clear level 1 before upload"), global.default_text_size, c_black, c_white, 1);
-
+			
 			#region /* Clear Check No */
 			if (point_in_rectangle(mouse_get_x, mouse_get_y, get_window_width * 0.5 - 370, do_a_clear_check_character_no_y - 42, get_window_width * 0.5 + 370, do_a_clear_check_character_no_y + 42))
 			&& (global.controls_used_for_navigation == "mouse")

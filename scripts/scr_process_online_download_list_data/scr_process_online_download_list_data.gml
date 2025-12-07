@@ -12,7 +12,7 @@ function scr_process_online_download_list_data()
 	}
 
 	/* Show loading overlay & start timeout only when doing a real load */
-	scr_draw_loading(1, , , "Loading from server 4");
+	scr_draw_loading(1, , , "Loading from server");
 	scr_server_timeout(15);
 
 	/* If no payload has arrived yet, wait for the HTTP response */
