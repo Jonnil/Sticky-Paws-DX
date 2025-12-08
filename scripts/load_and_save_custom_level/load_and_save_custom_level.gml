@@ -376,7 +376,8 @@ function scr_save_level_information()
 		ini_write_string("info", "username", string(global.username));
 		ini_write_real("info", "make_every_tileset_into_default_tileset", global.make_every_tileset_into_default_tileset);
 
-		var player_starts = [        [obj_level_player1_start, "level_player1_start"],
+		var player_starts = [
+			[obj_level_player1_start, "level_player1_start"],
 			[obj_level_player2_start, "level_player2_start"],
 			[obj_level_player3_start, "level_player3_start"],
 			[obj_level_player4_start, "level_player4_start"]
@@ -384,8 +385,19 @@ function scr_save_level_information()
 		for(var i = 0; i < array_length(player_starts); i++)
 		{
 			var player_start = player_starts[i];
-			ini_write_real("info", player_start[1] + "_x", player_start[0].x);
-			ini_write_real("info", player_start[1] + "_y", player_start[0].y);
+			var inst = instance_exists(player_start[0]) ? instance_find(player_start[0], 0) : noone;
+
+			if (inst == noone)
+			{
+				show_debug_message("[scr_save_level_information] Missing " + string(player_start[1]) + "; saving fallback 0,0.");
+				ini_write_real("info", player_start[1] + "_x", 0);
+				ini_write_real("info", player_start[1] + "_y", 0);
+			}
+			else
+			{
+				ini_write_real("info", player_start[1] + "_x", inst.x);
+				ini_write_real("info", player_start[1] + "_y", inst.y);
+			}
 		}
 
 		ini_write_real("info", "level_end_x", obj_level_end.x);

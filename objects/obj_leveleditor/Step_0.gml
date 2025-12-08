@@ -667,6 +667,14 @@ if (!global.actually_play_edited_level)
 
 					audio_stop_sound(level_editing_music); /* Stop the background music that plays during level editing when playtesting a level */
 
+					/* Make sure we have a valid player 1 start before trying to read its coordinates */
+					var start_inst = instance_exists(obj_level_player1_start) ? instance_find(obj_level_player1_start, 0) : noone;
+					if (start_inst == noone)
+					{
+						show_debug_message("[LevelEditor] Missing obj_level_player1_start; spawning a temporary one at the view center to avoid crash.");
+						start_inst = instance_create_depth(view_center_x, view_center_y, 0, obj_level_player1_start);
+					}
+
 					if (!global.world_editor)
 					{
 						scr_save_custom_level_json();
@@ -678,7 +686,7 @@ if (!global.actually_play_edited_level)
 
 						if (global.playing_level_from_beginning || global.full_level_map_screenshot)
 						{
-							instance_create_depth(obj_level_player1_start.x, obj_level_player1_start.y, 0, obj_camera);
+							instance_create_depth(start_inst.x, start_inst.y, 0, obj_camera);
 						}
 						else
 						{
@@ -691,7 +699,7 @@ if (!global.actually_play_edited_level)
 
 						if (point_in_rectangle(mouse_get_x, mouse_get_y, play_level_icon_x - 32, display_get_gui_height() - 64, play_level_icon_x + 32, display_get_gui_height() + 64) || global.full_level_map_screenshot)
 						{
-							instance_create_depth(obj_level_player1_start.x, obj_level_player1_start.y, 0, obj_player_map);
+							instance_create_depth(start_inst.x, start_inst.y, 0, obj_player_map);
 						}
 						else
 						{
