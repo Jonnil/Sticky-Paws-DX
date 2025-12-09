@@ -727,14 +727,19 @@ function scr_debug_draw_optimized_text()
 					debug_text_y = scr_draw_highlighted_text(32, debug_text_y, "online_token_validated", string(global.online_token_validated), "Online Token Validated", c_white, c_red, false);
 					debug_text_y = scr_draw_highlighted_text(32, debug_text_y, "online_token_error_message", string(global.online_token_error_message), "Online Token Error Message", c_white, c_red, false);
 					debug_text_y = scr_draw_highlighted_text(32, debug_text_y, "thumbnail_sprite", string(global.thumbnail_sprite), "Thumbnail Sprite", c_white, c_red, false);
+					
 					if (variable_instance_exists(self, "info_queue_index"))
 					{
 						debug_text_y = scr_draw_highlighted_text(32, debug_text_y, "info_queue_index", string(info_queue_index), "Info Queue Index", c_white, c_red, false);
 					}
+					
 					if (variable_instance_exists(self, "content_type"))
 					{
 						debug_text_y = scr_draw_highlighted_text(32, debug_text_y, "content_type", string(content_type), "Content Type", c_white, c_red, false);
 					}
+					
+					debug_text_y = scr_draw_highlighted_text(32, debug_text_y, "online_content_data_level", string(global.online_content_data_level), "Online Content Data Level", c_white, c_red, false);
+					debug_text_y = scr_draw_highlighted_text(32, debug_text_y, "online_content_data_character", string(global.online_content_data_character), "Online Content Data Character", c_white, c_red, false);
 					
 					/* Download Menu Info */
 					debug_text_y = scr_draw_highlighted_text(32, debug_text_y, "selected_online_download_index", string(global.selected_online_download_index), "Selected Online Download Index", c_white, c_red, false);
