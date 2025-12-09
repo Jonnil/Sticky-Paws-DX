@@ -80,8 +80,7 @@ function scr_draw_online_download_menu_data()
 			var num_items = array_length(variable_global_get("online_content_data_" + string(content_type)));
 			
 			/* If we haven't finished loading/parsing yet, keep showing the spinner instead of "nothing uploaded" */
-			if (!global.online_list_loaded
-			|| global.online_download_list == "")
+			if (!global.online_list_loaded)
 			{
 				scr_draw_loading(1, , , "Loading from server");
 				return;

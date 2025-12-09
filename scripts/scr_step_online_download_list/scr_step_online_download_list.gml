@@ -436,14 +436,18 @@ function scr_step_online_download_list()
 		}
 		
 		#region /* Process Data */
-		if (variable_global_get("online_content_data_" + string(content_type)) == undefined
-		&& in_online_download_list_menu)
+		var _needs_process = (!global.online_list_loaded)
+			|| global.force_online_list_refresh
+			|| (_list_data == undefined)
+			|| (!is_array(_list_data));
+
+		if (_needs_process && in_online_download_list_menu)
 		{
-			scr_process_online_download_list_data();
+			scr_process_online_download_list_data(); /* Parse/refresh list data when not yet loaded */
 		}
 		else
 		{
-			scr_process_online_download_menu_data();
+			scr_process_online_download_menu_data(); /* Normal menu logic once data is ready */
 		}
 		#endregion /* Process Data END */
 
