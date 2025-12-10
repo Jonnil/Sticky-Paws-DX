@@ -8,9 +8,10 @@ function scr_upload_zip_add_files(what_kind_of_file = "level")
 	if (what_kind_of_file == "level")
 	{
 		var z = zip_create();
-		var level_name = ds_list_find_value(global.all_loaded_custom_levels, global.select_level_index);
+		var level_name = string(ds_list_find_value(global.all_loaded_custom_levels, global.select_level_index));
 		show_debug_message("[scr_upload_zip_add_files] Level name found: " + string(level_name));
-		global.creating_zip_file_description = "Creating ZIP for level: " + level_name;
+		
+		global.creating_zip_file_description = "Creating ZIP for level: " + string(level_name);
 
 		var file_name = ""; /* In case there is no file found, set the "file name" to nothing here */
 
@@ -23,7 +24,7 @@ function scr_upload_zip_add_files(what_kind_of_file = "level")
 		var files = [];
 		var upload_folder_name = "background";
 		var file_type = "png";
-		var file_name = file_find_first(game_save_id + "custom_levels/" + string(level_name) + "/" + string(upload_folder_name) + "/*." + file_type, 0);
+		file_name = file_find_first(game_save_id + "custom_levels/" + string(level_name) + "/" + string(upload_folder_name) + "/*." + file_type, 0);
 
 		if (file_name != "")
 		{
@@ -53,10 +54,10 @@ function scr_upload_zip_add_files(what_kind_of_file = "level")
 		show_debug_message("[scr_upload_zip_add_files] " + global.creating_zip_file_description);
 
 		#region /* Data INI */
-		var files = [];
-		var upload_folder_name = "data";
-		var file_type = "ini";
-		var file_name = file_find_first(game_save_id + "custom_levels/" + string(level_name) + "/" + string(upload_folder_name) + "/*." + file_type, 0);
+		files = [];
+		upload_folder_name = "data";
+		file_type = "ini";
+		file_name = file_find_first(game_save_id + "custom_levels/" + string(level_name) + "/" + string(upload_folder_name) + "/*." + file_type, 0);
 
 		if (file_name != "")
 		{
@@ -85,10 +86,10 @@ function scr_upload_zip_add_files(what_kind_of_file = "level")
 		show_debug_message("[scr_upload_zip_add_files] " + global.creating_zip_file_description);
 
 		#region /* Data TXT */
-		var files = [];
-		var upload_folder_name = "data";
-		var file_type = "txt";
-		var file_name = file_find_first(game_save_id + "custom_levels/" + string(level_name) + "/" + string(upload_folder_name) + "/*." + file_type, 0);
+		files = [];
+		upload_folder_name = "data";
+		file_type = "txt";
+		file_name = file_find_first(game_save_id + "custom_levels/" + string(level_name) + "/" + string(upload_folder_name) + "/*." + file_type, 0);
 
 		if (file_name != "")
 		{
@@ -118,10 +119,10 @@ function scr_upload_zip_add_files(what_kind_of_file = "level")
 		show_debug_message("[scr_upload_zip_add_files] " + global.creating_zip_file_description);
 
 		#region /* Data JSON */
-		var files = [];
-		var upload_folder_name = "data";
-		var file_type = "json";
-		var file_name = file_find_first(game_save_id + "custom_levels/" + string(level_name) + "/" + string(upload_folder_name) + "/*." + file_type, 0);
+		files = [];
+		upload_folder_name = "data";
+		file_type = "json";
+		file_name = file_find_first(game_save_id + "custom_levels/" + string(level_name) + "/" + string(upload_folder_name) + "/*." + file_type, 0);
 
 		if (file_name != "")
 		{
@@ -151,10 +152,10 @@ function scr_upload_zip_add_files(what_kind_of_file = "level")
 		show_debug_message("[scr_upload_zip_add_files] " + global.creating_zip_file_description);
 
 		#region /* Sound */
-		var files = [];
-		var upload_folder_name = "sound";
-		var file_type = "ogg";
-		var file_name = file_find_first(game_save_id + "custom_levels/" + string(level_name) + "/" + string(upload_folder_name) + "/*." + file_type, 0);
+		files = [];
+		upload_folder_name = "sound";
+		file_type = "ogg";
+		file_name = file_find_first(game_save_id + "custom_levels/" + string(level_name) + "/" + string(upload_folder_name) + "/*." + file_type, 0);
 
 		if (file_name != "")
 		{
@@ -184,10 +185,10 @@ function scr_upload_zip_add_files(what_kind_of_file = "level")
 		show_debug_message("[scr_upload_zip_add_files] " + global.creating_zip_file_description);
 
 		#region /* Tilesets */
-		var files = [];
-		var upload_folder_name = "tilesets";
-		var file_type = "png";
-		var file_name = file_find_first(game_save_id + "custom_levels/" + string(level_name) + "/" + string(upload_folder_name) + "/*." + file_type, 0);
+		files = [];
+		upload_folder_name = "tilesets";
+		file_type = "png";
+		file_name = file_find_first(game_save_id + "custom_levels/" + string(level_name) + "/" + string(upload_folder_name) + "/*." + file_type, 0);
 
 		if (file_name != "")
 		{
@@ -217,9 +218,9 @@ function scr_upload_zip_add_files(what_kind_of_file = "level")
 		show_debug_message("[scr_upload_zip_add_files] " + global.creating_zip_file_description);
 
 		#region /* Other png files */
-		var files = [];
-		var file_type = "png";
-		var file_name = file_find_first(game_save_id + "custom_levels/" + string(level_name) + "/*." + file_type, 0);
+		files = [];
+		file_type = "png";
+		file_name = file_find_first(game_save_id + "custom_levels/" + string(level_name) + "/*." + file_type, 0);
 
 		if (file_name != "")
 		{
@@ -270,9 +271,10 @@ function scr_upload_zip_add_files(what_kind_of_file = "level")
 	if (what_kind_of_file == "character")
 	{
 		var z = zip_create();
-		var character_name = ds_list_find_value(global.all_loaded_characters, global.character_index[0]);
+		var character_name = string(ds_list_find_value(global.all_loaded_characters, global.character_index[0]));
 		show_debug_message("[scr_upload_zip_add_files] Character name found: " + string(character_name));
-		global.creating_zip_file_description = "Creating ZIP for character: " + character_name;
+		
+		global.creating_zip_file_description = "Creating ZIP for character: " + string(character_name);
 
 		var file_name = ""; /* In case there is no file found */
 
@@ -285,7 +287,7 @@ function scr_upload_zip_add_files(what_kind_of_file = "level")
 		var files = [];
 		var upload_folder_name = "data";
 		var file_type = "ini";
-		var file_name = file_find_first(game_save_id + "custom_characters/" + string(character_name) + "/" + string(upload_folder_name) + "/*." + file_type, 0);
+		file_name = file_find_first(game_save_id + "custom_characters/" + string(character_name) + "/" + string(upload_folder_name) + "/*." + file_type, 0);
 
 		if (file_name != "")
 		{
@@ -314,10 +316,10 @@ function scr_upload_zip_add_files(what_kind_of_file = "level")
 		show_debug_message("[scr_upload_zip_add_files] " + global.creating_zip_file_description);
 
 		#region /* Ogg files in sound folder */
-		var files = [];
-		var upload_folder_name = "sound";
-		var file_type = "ogg";
-		var file_name = file_find_first(game_save_id + "custom_characters/" + string(character_name) + "/" + string(upload_folder_name) + "/*." + file_type, 0);
+		files = [];
+		upload_folder_name = "sound";
+		file_type = "ogg";
+		file_name = file_find_first(game_save_id + "custom_characters/" + string(character_name) + "/" + string(upload_folder_name) + "/*." + file_type, 0);
 
 		if (file_name != "")
 		{
@@ -346,10 +348,10 @@ function scr_upload_zip_add_files(what_kind_of_file = "level")
 		show_debug_message("[scr_upload_zip_add_files] " + global.creating_zip_file_description);
 
 		#region /* Png files in sprites folder */
-		var files = [];
-		var upload_folder_name = "sprites";
-		var file_type = "png";
-		var file_name = file_find_first(game_save_id + "custom_characters/" + string(character_name) + "/" + string(upload_folder_name) + "/*." + file_type, 0);
+		files = [];
+		upload_folder_name = "sprites";
+		file_type = "png";
+		file_name = file_find_first(game_save_id + "custom_characters/" + string(character_name) + "/" + string(upload_folder_name) + "/*." + file_type, 0);
 
 		if (file_name != "")
 		{
@@ -377,11 +379,11 @@ function scr_upload_zip_add_files(what_kind_of_file = "level")
 		show_debug_message("[scr_upload_zip_add_files] " + global.creating_zip_file_description);
 
 		#region /* Voicepack folders in sound folder */
-		var files = [];
-		var upload_folder_name = "sound";
+		files = [];
+		upload_folder_name = "sound";
 		var voicepack_folder_number = 0;
 		var voicepack_folder_path = "";
-		var file_name = file_find_first(game_save_id + "custom_characters/" + string(character_name) + "/" + string(upload_folder_name) + "/voicepack" + string(voicepack_folder_number) + "/*", 0);
+		file_name = file_find_first(game_save_id + "custom_characters/" + string(character_name) + "/" + string(upload_folder_name) + "/voicepack" + string(voicepack_folder_number) + "/*", 0);
 
 		while (file_name != "")
 		{
@@ -406,11 +408,11 @@ function scr_upload_zip_add_files(what_kind_of_file = "level")
 		show_debug_message("[scr_upload_zip_add_files] " + global.creating_zip_file_description);
 
 		#region /* Skin folders in sprites folder */
-		var files = [];
-		var upload_folder_name = "sprites";
+		files = [];
+		upload_folder_name = "sprites";
 		var skin_folder_number = 0;
 		var skin_folder_path = "";
-		var file_name = file_find_first(game_save_id + "custom_characters/" + string(character_name) + "/" + string(upload_folder_name) + "/skin" + string(skin_folder_number) + "/*", 0);
+		file_name = file_find_first(game_save_id + "custom_characters/" + string(character_name) + "/" + string(upload_folder_name) + "/skin" + string(skin_folder_number) + "/*", 0);
 
 		while (file_name != "")
 		{
