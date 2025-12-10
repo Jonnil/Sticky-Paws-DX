@@ -22,228 +22,229 @@ function scr_initialize_online_download_menu()
 	
 	/* Normalize data handle for this content type and verify it's an array */
 	var _list_data = variable_global_get("online_content_data_" + string(content_type));
+	
 	if (!is_array(_list_data))
 	{
 		_list_data = array_create(0);
 		variable_global_set("online_content_data_" + string(content_type), _list_data);
 		
 		/* Keep the explicit globals in sync so later checks don't read stale/non-array values */
-		if (content_type == "level")      { global.online_content_data_level      = _list_data; }
-		else if (content_type == "character") { global.online_content_data_character = _list_data; }
+		if (content_type == "level")
+		{
+			global.online_content_data_level = _list_data;
+		}
+		else
+		if (content_type == "character")
+		{
+			global.online_content_data_character = _list_data;
+		}
 	}
 	
 	/* If we've already loaded the list this session, just reopen the menu */
-	if (is_array(_list_data)
-	&& array_length(_list_data) > 0)
+	var _has_cache = (is_array(_list_data) && array_length(_list_data) > 0);
+	var _force_reset = global.force_online_list_refresh || _content_type_changed;
+	
+	if (_has_cache)
 	{
 
 		/* Clear any stale server timeout since we are using cached data */
 		global.server_timeout_end = undefined;
 		
-		#region /* Cached list path (no network) */
-		/* Restore menu state without network.
-		   IMPORTANT FIX: Do NOT mark "loading list" when using cache. */
-		in_online_download_list_load_menu = false;
-		in_online_download_list_menu = true;
-		
-		var page_offset = global.download_current_page * global.download_items_per_page;
-		info_queue_index = page_offset;
-
-		/* Ensure we aren't waiting on any HTTP in this path */
-		info_queue_http_request = true;
-		
-		/* Best-practice: ensure core arrays exist when reopening from cache */
-		if (is_array(_list_data))
+		/* If we're forcing a refresh, clear the cache and fall through to the server-load path */
+		if (_force_reset)
 		{
-			var _total = array_length(_list_data);
-			var _force_reset = global.force_online_list_refresh || _content_type_changed;
+			/* Always reset paging so we start at the top of the new list */
+			global.download_current_page = 0;
+			info_queue_index = 0;
 			
-			/* If switching list types (or explicitly refreshing), clear stale thumbnail/name/ID data */
-			if (_force_reset)
+			/* Throw away any previous list data to avoid parsing stale JSON from the last content type */
+			global.online_download_list = "";
+			global.online_download_list_info = "";
+			global.online_list_loaded = false;
+			variable_global_set("online_content_data_" + string(content_type), undefined);
+			
+			/* Clean up thumbnails before reloading */
+			if (is_array(global.spr_download_list_thumbnail))
 			{
-				/* Always reset paging so we start at the top of the new list */
-				global.download_current_page = 0;
-				info_queue_index = 0;
-				page_offset = 0;
-				
-				/* Throw away any previous list data to avoid parsing stale JSON from the last content type */
-				global.online_download_list = "";
-				global.online_download_list_info = "";
-				global.online_list_loaded = false;
-				variable_global_set("online_content_data_" + string(content_type), undefined);
-				
-				if (is_array(global.spr_download_list_thumbnail))
+				for (var t = 0; t < array_length(global.spr_download_list_thumbnail); t++)
 				{
-					for (var t = 0; t < array_length(global.spr_download_list_thumbnail); t++)
-					{
-						scr_delete_sprite_properly(global.spr_download_list_thumbnail[t]);
-					}
-				}
-				
-				global.spr_download_list_thumbnail = array_create(_total, spr_thumbnail_missing);
-				global.draw_download_name = array_create(_total, "");
-				all_download_id = array_create(_total, "");
-				
-				for (var p = 0; p < _total; p++)
-				{
-					var _item_reset = _list_data[p];
-					
-					if (_item_reset != noone)
-					{
-						var _id_reset = _item_reset.name;
-						_id_reset = string_replace(_id_reset, string(content_type) + "s/", "");
-						_id_reset = string_replace(_id_reset, ".zip", "");
-						all_download_id[p] = _id_reset;
-					}
-				}
-				
-				/* Reset per-item status arrays so level metadata isn't mixed across lists */
-				finished_level     = array_create(_total, undefined);
-				zero_defeats_level = array_create(_total, undefined);
-				liked_content      = array_create(_total, undefined);
-				
-				global.force_online_list_refresh = false;
-				
-				/* Reset async state so the first item re-requests fresh metadata */
-				global.info_data = undefined;
-				global.http_request_info = -1;
-				info_queue_http_request = true;
-				info_queue_index = page_offset; /* page_offset is 0 after reset above */
-			}
-			
-			/* Ensure all_download_id is an array (used to kick off per-item requests) */
-			if (!is_array(all_download_id)
-			|| array_length(all_download_id) < _total)
-			{
-				var _new_ids = array_create(_total, "");
-				
-				if (is_array(all_download_id))
-				{
-					var _old_n = array_length(all_download_id);
-					
-					for (var i = 0; i < min(_old_n, _total); i++)
-					{
-						_new_ids[i] = all_download_id[i];
-					}
-				}
-				
-				all_download_id = _new_ids;
-			}
-			
-			/* Ensure draw_download_name exists so the pipeline can advance */
-			if (!is_array(global.draw_download_name)
-			|| array_length(global.draw_download_name) < _total)
-			{
-				var _new_names = array_create(_total, "");
-				
-				if (is_array(global.draw_download_name))
-				{
-					var _old_m = array_length(global.draw_download_name);
-					
-					for (var j = 0; j < min(_old_m, _total); j++)
-					{
-						_new_names[j] = global.draw_download_name[j];
-					}
-				}
-				
-				global.draw_download_name = _new_names;
-			}
-			
-			/* Ensure thumbnail sprite array exists without clobbering cache */
-			if (!is_array(global.spr_download_list_thumbnail)
-			|| array_length(global.spr_download_list_thumbnail) < _total)
-			{
-				var _new_thumbs = array_create(_total, spr_thumbnail_missing);
-				
-				if (is_array(global.spr_download_list_thumbnail))
-				{
-					var _old_t = array_length(global.spr_download_list_thumbnail);
-					
-					for (var k = 0; k < min(_old_t, _total); k++)
-					{
-						_new_thumbs[k] = global.spr_download_list_thumbnail[k];
-					}
-				}
-				
-				global.spr_download_list_thumbnail = _new_thumbs;
-			}
-
-			/* Ensure per-item status arrays exist for cached path */
-			if (!variable_instance_exists(self, "finished_level")
-			|| !is_array(finished_level)
-			|| array_length(finished_level) < _total
-			|| _force_reset)
-			{
-				finished_level = array_create(_total, undefined);
-			}
-			
-			if (!variable_instance_exists(self, "zero_defeats_level")
-			|| !is_array(zero_defeats_level)
-			|| array_length(zero_defeats_level) < _total
-			|| _force_reset)
-			{
-				zero_defeats_level = array_create(_total, undefined);
-			}
-			
-			if (!variable_instance_exists(self, "liked_content")
-			|| !is_array(liked_content)
-			|| array_length(liked_content) < _total
-			|| _force_reset)
-			{
-				liked_content = array_create(_total, undefined);
-			}
-			
-			/* Prepopulate all_download_id from list data so downloads can start immediately */
-			if (!is_array(all_download_id)
-			|| array_length(all_download_id) < _total)
-			{
-				all_download_id = array_create(_total, "");
-			}
-			
-			for (var a = 0; a < _total; a++)
-			{
-				var _item = _list_data[a];
-				
-				if (_item != noone)
-				{
-					var _id = _item.name;
-					_id = string_replace(_id, string(content_type) + "s/", "");
-					_id = string_replace(_id, ".zip", "");
-					
-					/* Always overwrite ID to avoid stale/mismatched requests */
-					all_download_id[a] = _id;
-				}
-				
-				/* If the thumbnail is missing (or reset), clear the name so the loader spins and fetches again */
-				var _thumb_missing = (!is_array(global.spr_download_list_thumbnail))
-					|| (a >= array_length(global.spr_download_list_thumbnail))
-					|| (global.spr_download_list_thumbnail[a] == spr_thumbnail_missing)
-					|| (!sprite_exists(global.spr_download_list_thumbnail[a]));
-				
-				if (_force_reset
-				|| _thumb_missing)
-				{
-					global.draw_download_name[a] = "";
-					
-					if (is_array(global.spr_download_list_thumbnail)
-					&& a < array_length(global.spr_download_list_thumbnail))
-					{
-						global.spr_download_list_thumbnail[a] = spr_thumbnail_missing;
-					}
+					scr_delete_sprite_properly(global.spr_download_list_thumbnail[t]);
 				}
 			}
 			
-			global.online_download_cached_type = content_type;
+			var _total_reset = array_length(_list_data);
+			global.spr_download_list_thumbnail = array_create(_total_reset, spr_thumbnail_missing);
+			global.draw_download_name = array_create(_total_reset, "");
+			all_download_id = array_create(_total_reset, "");
+			
+			/* Reset per-item status arrays so level metadata isn't mixed across lists */
+			finished_level     = array_create(_total_reset, undefined);
+			zero_defeats_level = array_create(_total_reset, undefined);
+			liked_content      = array_create(_total_reset, undefined);
+			
+			/* Reset async state so the first item re-requests fresh metadata */
+			global.info_data = undefined;
+			global.http_request_info = -1;
+			info_queue_http_request = true;
+			info_queue_index = 0;
+			
+			global.force_online_list_refresh = false;
+			/* Fall through to the server load path below */
 		}
-		
-		menu = "download_online_" + string(global.selected_online_download_index);
-		automatically_search_for_id = false;
-		menu_delay = 3;
-		
-		show_debug_message("[scr_initialize_online_download_menu] Cached data found – skipping HTTP request. "
-		+ "in_online_download_list_load_menu set to false\n");
-		return;
-		#endregion /* Cached list path (no network) END */
+		else
+		{
+
+			#region /* Cached list path (no network) */
+			/* Restore menu state without network. Do NOT mark "loading list" when using cache */
+			in_online_download_list_load_menu = false;
+			in_online_download_list_menu = true;
+			
+			var page_offset = global.download_current_page * global.download_items_per_page;
+			info_queue_index = page_offset;
+
+			/* Ensure we aren't waiting on any HTTP in this path */
+			info_queue_http_request = true;
+			
+			/* Ensure core arrays exist when reopening from cache */
+			if (is_array(_list_data))
+			{
+				var _total = array_length(_list_data);
+				
+				/* Ensure all_download_id is an array (used to kick off per-item requests) */
+				if (!is_array(all_download_id)
+				|| array_length(all_download_id) < _total)
+				{
+					var _new_ids = array_create(_total, "");
+					
+					if (is_array(all_download_id))
+					{
+						var _old_n = array_length(all_download_id);
+						
+						for (var i = 0; i < min(_old_n, _total); i++)
+						{
+							_new_ids[i] = all_download_id[i];
+						}
+					}
+					
+					all_download_id = _new_ids;
+				}
+				
+				/* Ensure draw_download_name exists so the pipeline can advance */
+				if (!is_array(global.draw_download_name)
+				|| array_length(global.draw_download_name) < _total)
+				{
+					var _new_names = array_create(_total, "");
+					
+					if (is_array(global.draw_download_name))
+					{
+						var _old_m = array_length(global.draw_download_name);
+						
+						for (var j = 0; j < min(_old_m, _total); j++)
+						{
+							_new_names[j] = global.draw_download_name[j];
+						}
+					}
+					
+					global.draw_download_name = _new_names;
+				}
+				
+				/* Ensure thumbnail sprite array exists without clobbering cache */
+				if (!is_array(global.spr_download_list_thumbnail)
+				|| array_length(global.spr_download_list_thumbnail) < _total)
+				{
+					var _new_thumbs = array_create(_total, spr_thumbnail_missing);
+					
+					if (is_array(global.spr_download_list_thumbnail))
+					{
+						var _old_t = array_length(global.spr_download_list_thumbnail);
+						
+						for (var k = 0; k < min(_old_t, _total); k++)
+						{
+							_new_thumbs[k] = global.spr_download_list_thumbnail[k];
+						}
+					}
+					
+					global.spr_download_list_thumbnail = _new_thumbs;
+				}
+
+				/* Ensure per-item status arrays exist for cached path */
+				if (!variable_instance_exists(self, "finished_level")
+				|| !is_array(finished_level)
+				|| array_length(finished_level) < _total
+				|| _force_reset)
+				{
+					finished_level = array_create(_total, undefined);
+				}
+				
+				if (!variable_instance_exists(self, "zero_defeats_level")
+				|| !is_array(zero_defeats_level)
+				|| array_length(zero_defeats_level) < _total
+				|| _force_reset)
+				{
+					zero_defeats_level = array_create(_total, undefined);
+				}
+				
+				if (!variable_instance_exists(self, "liked_content")
+				|| !is_array(liked_content)
+				|| array_length(liked_content) < _total
+				|| _force_reset)
+				{
+					liked_content = array_create(_total, undefined);
+				}
+				
+				/* Prepopulate all_download_id from list data so downloads can start immediately */
+				if (!is_array(all_download_id)
+				|| array_length(all_download_id) < _total)
+				{
+					all_download_id = array_create(_total, "");
+				}
+				
+				for (var a = 0; a < _total; a++)
+				{
+					var _item = _list_data[a];
+					
+					if (_item != noone)
+					{
+						var _id = _item.name;
+						_id = string_replace(_id, string(content_type) + "s/", "");
+						_id = string_replace(_id, ".zip", "");
+						
+						/* Always overwrite ID to avoid stale/mismatched requests */
+						all_download_id[a] = _id;
+					}
+					
+					/* If the thumbnail is missing (or reset), clear the name so the loader spins and fetches again */
+					var _thumb_missing = (!is_array(global.spr_download_list_thumbnail))
+						|| (a >= array_length(global.spr_download_list_thumbnail))
+						|| (global.spr_download_list_thumbnail[a] == spr_thumbnail_missing)
+						|| (!sprite_exists(global.spr_download_list_thumbnail[a]));
+					
+					if (_force_reset
+					|| _thumb_missing)
+					{
+						global.draw_download_name[a] = "";
+						
+						if (is_array(global.spr_download_list_thumbnail)
+						&& a < array_length(global.spr_download_list_thumbnail))
+						{
+							global.spr_download_list_thumbnail[a] = spr_thumbnail_missing;
+						}
+					}
+				}
+				
+				global.online_download_cached_type = content_type;
+			}
+			
+			menu = "download_online_" + string(global.selected_online_download_index);
+			automatically_search_for_id = false;
+			menu_delay = 3;
+			
+			show_debug_message("[scr_initialize_online_download_menu] Cached data found - skipping HTTP request. "
+			+ "in_online_download_list_load_menu set to false\n");
+			return;
+			#endregion /* Cached list path (no network) END */
+
+		}
 	}
 	
 	/* First-time load, or after a refresh, show loading overlay */

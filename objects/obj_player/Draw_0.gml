@@ -400,6 +400,7 @@ if (global.player_has_entered_goal
 	
 	draw_sprite_ext(zero_defeats_sprite, 0, zero_defeats_x, bbox_top - 64, 1, 1, 0, c_white, 1);
 	draw_set_halign(fa_left);
+	draw_set_valign(fa_middle);
 	scr_draw_text_outlined(zero_defeats_x + 20, bbox_top - 64, zero_defeats_text, global.default_text_size, c_black, c_white, 1);
 }
 #endregion /* If player enters goal, and have managed to not get defeated once, show achievement above players head so that it's noticable END */
