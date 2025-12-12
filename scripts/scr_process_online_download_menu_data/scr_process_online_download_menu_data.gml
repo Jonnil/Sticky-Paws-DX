@@ -165,8 +165,23 @@ function scr_process_online_download_menu_data()
 		&& menu_joystick_delay == 0)
 		{
 			menu_delay = 3;
-			/* Start a forced refresh of the online list */
-			/* This should let the player manually refresh the list, to look for any content that might have been uploaded recently that isn't in the cache */
+			
+			/* Flag next load as a hard refresh so we bypass cache */
+			global.force_online_list_refresh = true;
+			global.online_list_loaded = false;
+			global.online_download_list = "";
+			global.online_download_list_info = "";
+			global.info_data = undefined;
+			global.http_request_info = -1;
+			info_queue_http_request = true;
+			info_queue_index = 0;
+			global.server_timeout_end = undefined;
+			
+			/* Reset paging/selection and re-enter the normal load path */
+			global.download_current_page = 0;
+			global.selected_online_download_index = 0;
+			in_online_download_list_load_menu = false;
+			menu = "online_download_list_load"; /* Triggers scr_initialize_online_download_menu on next step */
 		}
 	}
 	#endregion /* Handle Force Refresh Button Input END */
