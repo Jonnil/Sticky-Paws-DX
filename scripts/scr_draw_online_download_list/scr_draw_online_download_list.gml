@@ -218,6 +218,15 @@ function scr_draw_online_download_menu_data()
 	}
 	#endregion /* Draw Search ID button END */
 
+	#region /* Draw Force Refresh button */
+	var draw_force_refresh_y = 42 + 42;
+
+	if (global.free_communication_available)
+	{
+		draw_menu_button(0, draw_force_refresh_y, l10n_text("Refresh"), "download_online_force_refresh", "");
+	}
+	#endregion /* Draw Force Refresh button END */
+
 	#region /* Draw Load Custom Level Assets Option */
 	if (content_type == "level")
 	{

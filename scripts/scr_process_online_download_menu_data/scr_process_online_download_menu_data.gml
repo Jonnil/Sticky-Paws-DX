@@ -154,4 +154,21 @@ function scr_process_online_download_menu_data()
 	}
 	#endregion /* Handle Search ID Button Input END */
 	
+	#region /* Handle Force Refresh Button Input */
+	if (((menu == "download_online_force_refresh")
+	&& key_a_pressed)
+	|| ((menu == "download_online_force_refresh")
+	&& (point_in_rectangle(device_mouse_x_to_gui(0), device_mouse_y_to_gui(0), 0, 42 + 42, 370, 84 + 42))
+	&& mouse_check_button_released(mb_left)))
+	{
+		if (menu_delay == 0
+		&& menu_joystick_delay == 0)
+		{
+			menu_delay = 3;
+			/* Start a forced refresh of the online list */
+			/* This should let the player manually refresh the list, to look for any content that might have been uploaded recently that isn't in the cache */
+		}
+	}
+	#endregion /* Handle Force Refresh Button Input END */
+	
 }

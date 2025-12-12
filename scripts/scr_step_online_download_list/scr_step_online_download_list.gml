@@ -167,6 +167,11 @@ function scr_step_online_download_list()
 					menu = "download_online_back";
 				}
 				else
+				if (menu == "download_online_force_refresh")
+				{
+					menu = "download_online_search_id";
+				}
+				else
 				if (menu == "download_online_page_next")
 				{
 					if (global.download_current_page > 0)
@@ -175,7 +180,7 @@ function scr_step_online_download_list()
 					}
 					else
 					{
-						menu = "download_online_search_id";
+						menu = "download_online_force_refresh";
 					}
 				}
 				else
@@ -241,6 +246,11 @@ function scr_step_online_download_list()
 				else
 				if (menu == "download_online_search_id")
 				{
+					menu = "download_online_force_refresh";
+				}
+				else
+				if (menu == "download_online_force_refresh")
+				{
 					if (global.download_current_page > 0)
 					{
 						menu = "download_online_page_prev";
@@ -300,6 +310,7 @@ function scr_step_online_download_list()
 
 				if (menu == "download_online_back")
 				|| (menu == "download_online_search_id")
+				|| (menu == "download_online_force_refresh")
 				|| (menu == "download_online_page_next")
 				|| (menu == "download_online_page_prev")
 				{
