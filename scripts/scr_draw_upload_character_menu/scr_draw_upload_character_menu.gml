@@ -104,7 +104,7 @@ function scr_draw_upload_character_menu()
 		#endregion /* Upload Character No END */
 
 		#region /* Upload Character Yes */
-		if (file_exists(game_save_id + "custom_characters/" + character_name + "/data/character_config.ini"))
+		if (file_exists(game_save_id + "custom_characters/" + string(character_name) + "/data/character_config.ini"))
 		{
 			if (point_in_rectangle(mouse_get_x, mouse_get_y, get_window_width * 0.5 - 370, upload_character_yes_y - 42, get_window_width * 0.5 + 370, upload_character_yes_y + 42))
 			&& (global.controls_used_for_navigation == "mouse")
@@ -250,7 +250,7 @@ function scr_draw_upload_character_menu()
 			if (point_in_rectangle(mouse_get_x, mouse_get_y, get_window_width * 0.5 - 370, upload_character_yes_y - 42, get_window_width * 0.5 + 370, upload_character_yes_y + 42))
 			&& (mouse_check_button_released(mb_left))
 			&& (menu_delay == 0 && menu_joystick_delay == 0)
-			&& (file_exists(game_save_id + "custom_characters/" + character_name + "/data/character_config.ini"))
+			&& (file_exists(game_save_id + "custom_characters/" + string(character_name) + "/data/character_config.ini"))
 			|| (key_a_pressed)
 			&& (menu_delay == 0 && menu_joystick_delay == 0)
 			&& (file_exists(game_save_id + "custom_characters/" + string(character_name) + "/data/character_config.ini"))

@@ -8,10 +8,7 @@ function scr_upload_zip_add_files(what_kind_of_file = "level")
 	if (what_kind_of_file == "level")
 	{
 		var z = zip_create();
-		var level_name = string(ds_list_find_value(global.all_loaded_custom_levels, global.select_level_index));
-		
-		/* If the variable level_name has not been defined, then use the global fallback */
-		level_name ??= global.level_name;
+		var level_name = global.level_name;
 		
 		show_debug_message("[scr_upload_zip_add_files] Level name found: " + string(level_name));
 		

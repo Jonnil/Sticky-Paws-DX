@@ -252,7 +252,7 @@ if (async_load[? "id"] == global.http_request_info)
 	if (status_code == 200)
 	{
 		var response_json = json_decode(response_str);
-
+		
 		if (response_json != undefined)
 		{
 			var _has_base64 = ds_map_exists(response_json, "data")
