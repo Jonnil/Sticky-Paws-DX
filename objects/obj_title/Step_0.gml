@@ -22,8 +22,11 @@ if (global.go_to_menu_when_going_back_to_title == "upload_yes_character")
 		global.sprite_select_player[fixed_player] = scr_initialize_character_sprite("character_select_portrait", global.sprite_select_player[fixed_player]);
 		ini_close(); /* Don't commit the save data on Switch, this is only temporary! */
 	}
+	
+	in_edit_character_menu = false; /* Set this to false so we don't end up on the wrong menu */
 	select_custom_level_menu_open = false;
-
+	in_character_select_menu = true; /* We need set this to true to end up on the correct menu */
+	
 	ini_open(game_save_id + "custom_characters/" + string(ds_list_find_value(global.all_loaded_characters, global.character_index[fixed_player - 1])) + "/data/character_config.ini");
 	visibility_index = ini_read_real("info", "visibility_index", 0);
 	ini_close();

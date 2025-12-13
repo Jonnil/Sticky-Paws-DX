@@ -272,6 +272,7 @@ function scr_option_language_menu()
 				"language_check_updates",
 				"language_check_updates"
 			);
+			
 			if (menu == "language_check_updates")
 			{
 				/* Description for the "Update Translations Now" button */
@@ -306,7 +307,7 @@ function scr_option_language_menu()
 			if (global.language_last_update_string != "")
 			{
 				var rel_time = scr_get_relative_timezone(global.language_last_update_string, timezone_local);
-				last_updated = l10n_text("Last Updated: ") + global.language_last_update_string + " (" + rel_time + ")";
+				last_updated = l10n_text("Last Updated: ") + string(global.language_last_update_string) + " (" + string(rel_time) + ")";
 			}
 			
 			/* Combine all parts into a final message */
@@ -514,10 +515,12 @@ function scr_option_language_menu()
 
 				if (scr_check_network_connection(network_connect_active)) /* Force to update language pack when you click this button. Ask the player to connect to the internet */
 				{
+					show_debug_message("[scr_option_language_menu] Run scr_language_pack_update(true)");
 					scr_language_pack_update(true);
 				}
 				else
 				{
+					show_debug_message("[scr_option_language_menu] Run scr_handle_no_network_connection");
 					scr_handle_no_network_connection("scr_option_language_menu", "language_check_updates");
 				}
 			}

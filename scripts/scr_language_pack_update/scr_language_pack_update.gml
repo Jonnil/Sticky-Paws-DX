@@ -7,6 +7,7 @@ function scr_language_pack_update(forced = false)
 	static downloaded_language_pack_update = false;
 
 	if (!downloaded_language_pack_update)
+	|| (forced)
 	{
 		/* Do not start a language update while primary online downloads are running */
 		if (global.language_update_blocked)

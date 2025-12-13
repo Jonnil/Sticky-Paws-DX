@@ -1,7 +1,7 @@
-/// @function calculate_translation_completion()
+/// @function scr_calculate_translation_completion()
 /// @description Calculates the completion percentage for each language column
 /// in the translation grid. If the grid is missing or invalid, it attempts to reinitialize it.
-function calculate_translation_completion()
+function scr_calculate_translation_completion()
 {
 	/* If the CSV grid isn't loaded, try to load it */
 	if (global.language_local_data == 0)

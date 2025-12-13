@@ -17,6 +17,7 @@ function scr_get_relative_timezone(datetime, what_timezone = timezone_utc)
 	
 	/* Normalize ISO-8601 formats like "2025-11-19T08:03:36Z" */
 	datetime = string_replace_all(datetime, "T", " ");
+	datetime = string_replace_all(datetime, "_", " ");
 	
 	if (string_length(datetime) > 0)
 	{
@@ -34,12 +35,13 @@ function scr_get_relative_timezone(datetime, what_timezone = timezone_utc)
 	if (array_length(dt) < 2)
 	{
 		/* Unexpected format, avoid crash and log once per bad value */
-		show_debug_message("scr_get_relative_timezone: unexpected datetime format: \"" + string(original_datetime) + "\"");
+		show_debug_message("scr_get_relative_timezone: unexpected datetime format: \"" + string(original_datetime) + "\"" + ", datetime = " + string(datetime) + ", what_timezone = " + string(what_timezone));
 		return original_datetime;
 	}
 	
 	var d = string_split(dt[0], "-");
 	var t = string_split(dt[1], ":");
+	t = string_split(dt[1], ".");
 	
 	/* Validate date and time components */
 	if (array_length(d) < 3

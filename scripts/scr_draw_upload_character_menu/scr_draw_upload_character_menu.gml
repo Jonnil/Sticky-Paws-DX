@@ -8,16 +8,14 @@ function scr_draw_upload_character_menu()
 	var get_window_width = display_get_gui_width();
 	var mouse_get_x = device_mouse_x_to_gui(0);
 	var mouse_get_y = device_mouse_y_to_gui(0);
-
+	var selecting_official_character = false;
+	var character_name = string(ds_list_find_value(global.all_loaded_characters, global.character_index[fixed_player - 1]));
+	
 	if (file_exists("characters/" + string(ds_list_find_value(global.all_loaded_characters, global.character_index[fixed_player - 1])) + "/data/character_config.ini"))
 	{
-		var selecting_official_character = true;
+		selecting_official_character = true;
 	}
-	else
-	{
-		var selecting_official_character = false;
-	}
-
+	
 	#region /* Should always be visible in character upload menu */
 	if (menu == "upload_yes_character")
 	|| (menu == "upload_no_character")
@@ -52,8 +50,6 @@ function scr_draw_upload_character_menu()
 	|| (menu == "upload_clear_check_character_again")
 	|| (menu == "upload_clear_check_character_open_character_folder")
 	{
-		var character_name = string(ds_list_find_value(global.all_loaded_characters, global.character_index[fixed_player - 1]));
-
 		var upload_name_question_y = display_get_gui_height() - (48 * 9);
 		var upload_character_no_y = display_get_gui_height() - (48 * 7);
 		var upload_character_yes_y = display_get_gui_height() - (48 * 5);
@@ -100,6 +96,7 @@ function scr_draw_upload_character_menu()
 				draw_sprite_ext(spr_icon_back, 0, get_window_width * 0.5 - 370 + 32, upload_character_no_y, 1, 1, 0, c_white, 1);
 			}
 		}
+		
 		scr_draw_text_outlined(get_window_width * 0.5, upload_character_no_y - 55, l10n_text("You have to clear check again if you don't upload now"), global.default_text_size * 0.75, c_black, c_white, 1);
 		#endregion /* Upload Character No END */
 
@@ -113,6 +110,7 @@ function scr_draw_upload_character_menu()
 				{
 					menu = "upload_yes_character";
 				}
+				
 				draw_sprite_ext(spr_menu_cursor, menu_cursor_index, get_window_width * 0.5 - 370 - 32, upload_character_yes_y, 1, 1, 0, c_white, 1);
 				draw_sprite_ext(spr_menu_cursor, menu_cursor_index, get_window_width * 0.5 + 370 + 32, upload_character_yes_y, 1, 1, 180, c_white, 1);
 				draw_sprite_ext(spr_menu_button, global.menu_button_subimg, get_window_width * 0.5 - 370, upload_character_yes_y, 2, 2, 0, c_lime, 1);
@@ -208,7 +206,8 @@ function scr_draw_upload_character_menu()
 		{
 
 			#region /* Set clear_check_character to false whenever you back out from uploading custom character, in case you edit the custom character later */
-			if (character_name != "" && !selecting_official_character)
+			if (character_name != ""
+			&& !selecting_official_character)
 			{
 				ini_open(game_save_id + "custom_characters/" + string(character_name) + "/data/character_config.ini");
 				ini_write_real("info", "clear_check_character", false); /* Set "clear check" to false */
@@ -232,7 +231,8 @@ function scr_draw_upload_character_menu()
 			{
 
 				#region /* Set clear_check_character to false whenever you back out from uploading custom character, in case you edit the custom character later */
-				if (character_name != "" && !selecting_official_character)
+				if (character_name != ""
+				&& !selecting_official_character)
 				{
 					ini_open(game_save_id + "custom_characters/" + string(character_name) + "/data/character_config.ini");
 					ini_write_real("info", "clear_check_character", false); /* Set "clear check" to false */
@@ -256,6 +256,7 @@ function scr_draw_upload_character_menu()
 			&& (file_exists(game_save_id + "custom_characters/" + string(character_name) + "/data/character_config.ini"))
 			{
 				ini_open(game_save_id + "custom_characters/" + string(character_name) + "/data/character_config.ini");
+				
 				if (ini_key_exists("info", "clear_check_character"))
 				{
 					if (ini_read_real("info", "clear_check_character", false))
@@ -264,6 +265,8 @@ function scr_draw_upload_character_menu()
 						{
 							if (scr_check_network_connection(network_connect_active))
 							{
+								ini_open(game_save_id + "custom_characters/" + string(character_name) + "/data/character_config.ini");
+								
 								if (global.switch_logged_in)
 								{
 									if (global.switch_account_network_service_available) /* Need to make sure that network service is available before going online */
@@ -429,8 +432,6 @@ function scr_draw_upload_character_menu()
 	if (menu == "clear_check_character_no")
 	|| (menu == "clear_check_character_yes")
 	{
-		var character_name = string(ds_list_find_value(global.all_loaded_characters, global.character_index[fixed_player - 1]));
-
 		var do_a_clear_check_character_y = 432;
 		var do_a_clear_check_character_no_y = 532;
 		var do_a_clear_check_character_yes_y = 532;
@@ -576,7 +577,8 @@ function scr_draw_upload_character_menu()
 
 		/* Set clear_check_character to false whenever you agree to do a clear check for the first time, just in case it's already not */
 		if (global.character_select_in_this_menu == "level_editor") /* Only save this if you're in the level editor, otherwise level folders for main game will be created in AppData */
-		&& (character_name != "" && !selecting_official_character)
+		&& (character_name != ""
+		&& !selecting_official_character)
 		{
 			ini_open(game_save_id + "custom_characters/" + string(character_name) + "/data/character_config.ini");
 			ini_write_real("info", "clear_check_character", false); /* Set "clear check" to false when you click on "clear check yes" just in case it isn't already false when doing a "clear check" */
@@ -587,6 +589,7 @@ function scr_draw_upload_character_menu()
 		global.character_select_in_this_menu = "main_game"; /* Play the official Level 1, always */
 
 		var no_players_can_play = true;
+		
 		for(var i = 1; i <= global.max_players; i += 1)
 		{
 			if (global.player_can_play[i])
@@ -595,6 +598,7 @@ function scr_draw_upload_character_menu()
 				break; /* Exit the loop if at least one player can play */
 			}
 		}
+		
 		if (no_players_can_play) /* When no player can play */
 		|| (global.playergame <= 0)
 		{
@@ -611,10 +615,12 @@ function scr_draw_upload_character_menu()
 		menu_delay = 9999;
 		iris_zoom = 0;
 		loading_assets = false;
+		
 		if (instance_exists(obj_camera))
 		{
 			obj_camera.iris_zoom = 0;
 		}
+		
 		if (instance_exists(obj_pause))
 		{
 			global.restart_level = true;
@@ -639,8 +645,6 @@ function scr_draw_upload_character_menu()
 			menu_delay = 3;
 			menu = "question_upload_character_edit_username_ok"; /* If there isn't an username, have the player make an username */
 		}
-		
-		var character_name = string(ds_list_find_value(global.all_loaded_characters, global.character_index[fixed_player - 1]));
 		
 		if (content_type != "character")
 		{
@@ -779,6 +783,18 @@ function scr_draw_upload_character_menu()
 										file_delete(game_save_id + string(character_id) + ".zip");
 									}
 									#endregion /* Actually upload the character to the server END */
+
+									/* Force the online list to refresh so the new upload appears */
+									global.force_online_list_refresh = true;
+									global.online_list_loaded = false;
+									global.online_download_list = "";
+									global.online_download_list_info = "";
+									global.info_data = undefined;
+									global.http_request_info = -1;
+									info_queue_http_request = true;
+									info_queue_index = 0;
+									global.server_timeout_end = undefined;
+									variable_global_set("online_content_data_" + string(content_type), undefined);
 
 									menu_delay = 3;
 									search_for_id_still = false;

@@ -4,7 +4,7 @@ scr_set_controls_used_to_navigate();
 
 if (goto_title_screen)
 {
-	calculate_translation_completion();
+	scr_calculate_translation_completion();
 	room_goto(rm_title);
 }
 

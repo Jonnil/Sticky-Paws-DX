@@ -25,16 +25,20 @@ function scr_player_move_goal()
 			else
 
 			#region /* Can't walk back when touched goal */
-			if (goal && x < nearest_goal.x)
+			if (goal
+			&& x < nearest_goal.x)
 			{
 				x = nearest_goal.x;
 			}
 			#endregion /* Can't walk back when touched goal END */
 
-			if (just_hit_goal && !goal)
+			if (just_hit_goal
+			&& !goal)
 			{
 				/* Get clear level achievement */
-				if (global.character_select_in_this_menu == "main_game" && global.actually_play_edited_level && !global.doing_clear_check_character)
+				if (global.character_select_in_this_menu == "main_game"
+				&& global.actually_play_edited_level
+				&& !global.doing_clear_check_character)
 				{
 					scr_set_achievement("CLEAR_LEVEL_" + string_upper(global.level_name));
 				}
@@ -93,7 +97,8 @@ function scr_player_move_goal()
 					ini_close(); /* Don't commit the save data on Switch, this is only temporary! */
 				}
 				else
-				if (global.character_select_in_this_menu == "level_editor" && room == rm_leveleditor)
+				if (global.character_select_in_this_menu == "level_editor"
+				&& room == rm_leveleditor)
 				{
 					global.checkpoint_x = 0;
 					global.checkpoint_y = 0;
@@ -124,7 +129,25 @@ function scr_player_move_goal()
 					scr_audio_play(global.level_clear_melody, volume_source.melody);
 				}
 				#endregion /* Level Clear Melody END */
-
+				
+				if (global.doing_clear_check_level)
+				{
+					ini_open(global.use_temp_or_working + "custom_levels/" + string(global.level_name) + "/data/level_information.ini");
+					ini_write_real("info", "clear_check", true); /* If doing a level clear check, and winning the level, then add in level information that you have done a clear check */
+					ini_close();
+					
+					if (global.enable_level_length_target)
+					&& (global.timeattack_minute < global.target_length_minutes_min
+					|| global.timeattack_minute > global.target_length_minutes_max)
+					{
+						global.go_to_menu_when_going_back_to_title = "level_length_recommendation_back";
+					}
+					else
+					{
+						global.go_to_menu_when_going_back_to_title = "upload_edit_name";
+					}
+				}
+				
 				goal = true; /* Set goal to true on last line */
 			}
 		}

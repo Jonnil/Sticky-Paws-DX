@@ -2071,6 +2071,18 @@ function scr_draw_upload_level_menu()
 									}
 									ini_close(); /* Don't commit the save data on Switch, this is only temporary! */
 									
+									/* Force the online list to refresh so the new upload appears */
+									global.force_online_list_refresh = true;
+									global.online_list_loaded = false;
+									global.online_download_list = "";
+									global.online_download_list_info = "";
+									global.info_data = undefined;
+									global.http_request_info = -1;
+									info_queue_http_request = true;
+									info_queue_index = 0;
+									global.server_timeout_end = undefined;
+									variable_global_set("online_content_data_" + string(content_type), undefined);
+									
 									search_for_id_still = false;
 									
 									switch_save_data_commit(); /* Remember to commit the save data when uploading content to server */
