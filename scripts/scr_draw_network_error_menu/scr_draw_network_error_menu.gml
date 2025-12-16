@@ -59,14 +59,12 @@ function scr_draw_network_error_menu()
 			/* Keyboard/Gamepad activation using a selected button indicator */
 			if (global.controls_used_for_navigation == "keyboard"
 			|| global.controls_used_for_navigation == "gamepad")
+			&& (key_a_pressed
+			|| key_b_pressed)
 			{
-				if (key_a_pressed
-				|| key_b_pressed)
+				if (menu == "network_error_main_menu")
 				{
-					if (menu == "network_error_main_menu")
-					{
-						mainmenu_clicked = true;
-					}
+					mainmenu_clicked = true;
 				}
 			}
 		}
@@ -484,6 +482,7 @@ function scr_draw_network_error_menu()
 		}
 		else
 		if (mainmenu_clicked)
+		|| (global.switch_login_cancelled)
 		{
 			switch_update_online_status = false;
 			in_character_select_menu = false;
@@ -492,6 +491,7 @@ function scr_draw_network_error_menu()
 			in_online_download_list_load_menu = false;
 			in_settings = false;
 			global.go_to_menu_when_going_back_to_title = "";
+			global.switch_login_cancelled = false;
 
 			menu_delay = 3;
 
@@ -500,8 +500,13 @@ function scr_draw_network_error_menu()
 			{
 				room_goto(rm_title);
 			}
-
-			menu = "main_game"; /* Switch to offline/main menu to let the user access non-network features */
+			
+			if (caution_online_takes_you_back_to == "select_character")
+			{
+				in_character_select_menu = true;
+			}
+			
+			menu = caution_online_takes_you_back_to; /* Switch to offline/main menu to let the user access non-network features */
 		}
 
 		if (retry_successful)

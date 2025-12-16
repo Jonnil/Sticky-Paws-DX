@@ -4,6 +4,12 @@ function scr_switch_update_online_status(show_login_screen = true)
 	#region /* Update Switch Online Status */
 	if (os_type == os_switch)
 	{
+		/* Track a one-shot cancel flag so we don't spam the Switch UI after the user presses Cancel */
+		if (!variable_global_exists("switch_login_cancelled"))
+		{
+			global.switch_login_cancelled = false;
+		}
+
 		/* Check network connection (passive mode) */
 		if (!global.online_token_validated)
 		&& (os_is_network_connected(network_connect_passive))
@@ -18,7 +24,9 @@ function scr_switch_update_online_status(show_login_screen = true)
 			#region /* Iterate through accounts to find a valid open account with network service */
 			show_debug_message("[scr_switch_update_online_status] Checking account index: " + string(preselected_user_index));
 
-			if (switch_accounts_login_user(preselected_user_index))
+			if (!global.switch_login_cancelled
+			&& !show_login_screen /* Avoid double prompts: only auto-login when we're not planning to show the UI */
+			&& switch_accounts_login_user(preselected_user_index))
 			{
 				show_debug_message("[scr_switch_update_online_status] Account " + string(preselected_user_index) + " is open and has network service available.");
 				global.switch_account_network_service_available = true;
@@ -56,6 +64,17 @@ function scr_switch_update_online_status(show_login_screen = true)
 				}
 			}
 			else
+			if (show_login_screen)
+			{
+				show_debug_message("[scr_switch_update_online_status] Skipping auto login because login screen will be shown.");
+			}
+			else
+			if (global.switch_login_cancelled)
+			{
+				show_debug_message("[scr_switch_update_online_status] Skipping auto login attempt because user previously cancelled.");
+				preselected_user_index = undefined;
+			}
+			else
 			{
 				show_debug_message("[scr_switch_update_online_status] Account index " + string(preselected_user_index) + " is not open or network service unavailable.");
 			}
@@ -66,6 +85,12 @@ function scr_switch_update_online_status(show_login_screen = true)
 			|| is_undefined(preselected_user_index))
 			&& show_login_screen)
 			{
+				if (global.switch_login_cancelled)
+				{
+					show_debug_message("[scr_switch_update_online_status] Skipping login prompt because user previously cancelled.");
+					return;
+				}
+
 				if (!valid_id_token_found
 				&& is_undefined(preselected_user_index))
 				{
@@ -85,9 +110,23 @@ function scr_switch_update_online_status(show_login_screen = true)
 					global.online_token_error_message = "No logged-in account detected.";
 				}
 
-				switch_accounts_open_user(preselected_user_index);
-				show_debug_message("[scr_switch_update_online_status] User selected account: " + string(preselected_user_index));
+				var selected_user_index = switch_accounts_open_user(preselected_user_index);
+				show_debug_message("[scr_switch_update_online_status] Preselected account: " + string(preselected_user_index) + ", User selected account: " + string(selected_user_index));
 
+				/* If the user cancels out of the Switch UI, bail immediately so we don't reopen the prompt repeatedly */
+				if (is_undefined(selected_user_index))
+				{
+					show_debug_message("[scr_switch_update_online_status] User cancelled account selection. Aborting login flow.");
+					global.switch_logged_in = false;
+					global.online_token_validated = false;
+					global.switch_account_network_service_available = false;
+					global.online_token_error_message = "Account selection cancelled.";
+					global.switch_login_cancelled = true;
+					return;
+				}
+
+				/* From this point on, work with the actual selection */
+				preselected_user_index = selected_user_index;
 				global.switch_account_network_service_available = switch_accounts_network_service_available(preselected_user_index);
 				show_debug_message("[scr_switch_update_online_status] Post-selection network service availability: " + string(global.switch_account_network_service_available));
 
@@ -95,15 +134,19 @@ function scr_switch_update_online_status(show_login_screen = true)
 				if (!is_undefined(preselected_user_index)
 				&& !switch_accounts_login_user(preselected_user_index))
 				{
-					show_debug_message("[scr_switch_update_online_status] ERROR: Login failed for account " + string(preselected_user_index) + ". Restarting room...");
-					global.online_token_error_message = "Login failed for account " + string(preselected_user_index);
-					room_restart();
+					show_debug_message("[scr_switch_update_online_status] ERROR: Login failed for account " + string(preselected_user_index) + ". Cancelling login flow.");
+					global.online_token_error_message = "Login cancelled for account " + string(preselected_user_index);
+					global.switch_logged_in = false;
+					global.online_token_validated = false;
+					global.switch_account_network_service_available = false;
+					global.switch_login_cancelled = true;
 					return;
 				}
 				else
 				{
 					show_debug_message("[scr_switch_update_online_status] Login successful for account " + string(preselected_user_index));
 					global.online_token_error_message = ""; /* Clear error message on success */
+					global.switch_login_cancelled = false;
 				}
 			}
 			#endregion /* Prompt user if needed END */

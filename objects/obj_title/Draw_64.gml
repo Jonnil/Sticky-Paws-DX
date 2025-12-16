@@ -134,6 +134,8 @@ if (menu == "main_game")
 || (menu == "information")
 || (menu == "fullscreen_mode_title")
 {
+	global.switch_login_cancelled = false;
+	
 	if (!in_settings)
 	{
 		for(var i = 1; i <= global.max_players; i += 1)
