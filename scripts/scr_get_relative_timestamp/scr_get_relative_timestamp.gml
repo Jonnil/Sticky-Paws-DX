@@ -39,15 +39,51 @@ function scr_get_relative_timezone(datetime, what_timezone = timezone_utc)
 		return original_datetime;
 	}
 	
+	/* Split the date (YYYY-MM-DD) */
 	var d = string_split(dt[0], "-");
-	var t = string_split(dt[1], ":");
-	t = string_split(dt[1], ".");
+	
+	/* Split the time, accepting either ":" or "." */
+	var time_separator = ":";
+	var time_part = dt[1];
+	var t = string_split(time_part, time_separator);
+	
+	/* If colon splitting failed, try dot-separated times */
+	if (array_length(t) < 3)
+	{
+		var t_dot = string_split(time_part, ".");
+		if (array_length(t_dot) >= 3)
+		{
+			time_separator = ".";
+			t = t_dot;
+		}
+	}
 	
 	/* Validate date and time components */
 	if (array_length(d) < 3
 	|| array_length(t) < 3)
 	{
-		show_debug_message("scr_get_relative_timezone: could not split date/time parts from: \"" + string(original_datetime) + "\"");
+		/* Build concise debug info so we know exactly what failed */
+		var date_parts_debug = "";
+		for (var i = 0; i < array_length(d); i++)
+		{
+			if (i > 0) date_parts_debug += ",";
+			date_parts_debug += d[i];
+		}
+		
+		var time_parts_debug = "";
+		for (var j = 0; j < array_length(t); j++)
+		{
+			if (j > 0) time_parts_debug += ",";
+			time_parts_debug += t[j];
+		}
+		
+		show_debug_message(
+			"scr_get_relative_timezone: could not split date/time parts from: \"" + string(original_datetime)
+			+ "\" | expected 3 parts for both date (yyyy-mm-dd) and time (hh" + time_separator + "mm" + time_separator + "ss)"
+			+ " | date parts (" + string(array_length(d)) + "): [" + date_parts_debug + "]"
+			+ " | time parts (" + string(array_length(t)) + ") using '" + time_separator + "' from \"" + time_part + "\": [" + time_parts_debug + "]"
+			+ " | normalized datetime: \"" + string(datetime) + "\""
+		);
 		return original_datetime;
 	}
 	

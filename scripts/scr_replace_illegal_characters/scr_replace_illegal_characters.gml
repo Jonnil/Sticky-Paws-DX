@@ -19,6 +19,17 @@
 ///                                    • and will be "_" if all other characters are stripped out.
 function scr_sanitize_filename(raw_name, max_length = 255)
 {
+	/* Defensive: ensure max_length is numeric so bad call sites don't crash this script */
+	var max_len = 255;
+	if (is_real(max_length))
+	{
+		max_len = max(1, floor(max_length));
+	}
+	else
+	{
+		show_debug_message("[scr_sanitize_filename] Non-numeric max_length (" + string(max_length) + "), defaulting to 255");
+	}
+
 	/* Build a quick lookup of "symbol" to "text"
 	We only convert a small set of high-value symbols into words because:
 	These characters (&, @, #, %, +) are commonly used by players and carry clear meaning ("and", "at", "number/hash", "percent", "plus")
@@ -86,9 +97,9 @@ function scr_sanitize_filename(raw_name, max_length = 255)
 	}
 
 	/* Enforce max length */
-	if (string_length(out) > max_length)
+	if (string_length(out) > max_len)
 	{
-		out = string_copy(out, 1, max_length);
+		out = string_copy(out, 1, max_len);
 	}
 
 	/* Never return empty */

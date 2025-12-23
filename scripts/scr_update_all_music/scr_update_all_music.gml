@@ -1,10 +1,12 @@
 function scr_update_all_music()
 {
-
+	/* For actual folder name, replace illegal characters with underscore only for naming folder */
+	var folder_name = scr_sanitize_filename(string(global.level_name));
+	
 	#region /* Load Default Music Data */
 	if (global.character_select_in_this_menu == "level_editor")
 	{
-		ini_open(global.use_temp_or_working + "custom_levels/" + string(global.level_name) + "/data/level_information.ini");
+		ini_open(global.use_temp_or_working + "custom_levels/" + string(folder_name) + "/data/level_information.ini");
 		global.default_music_overworld = ini_read_string("info", "default_music_overworld", "level1");
 		global.default_music_underwater = ini_read_string("info", "default_music_underwater", "level1");
 		global.default_ambience_overworld = ini_read_string("info", "default_ambience_overworld", "level1");
@@ -21,7 +23,8 @@ function scr_update_all_music()
 
 	for (var i = 0; i < array_length(audio_streams); i++)
 	{
-		if (audio_streams[i] != noone && audio_exists(audio_streams[i]))
+		if (audio_streams[i] != noone
+		&& audio_exists(audio_streams[i]))
 		{
 			audio_destroy_stream(audio_streams[i]);
 			show_debug_message("Destroyed existing " + stream_names[i] + " stream.");
@@ -36,18 +39,20 @@ function scr_update_all_music()
 			return audio_create_stream(audio_asset_path + filename);
 		}
 		else
-		if (global.character_select_in_this_menu == "level_editor" && default_filename != noone &&
-		file_exists("levels/" + string(default_filename) + "/sound/" + filename))
+		if (global.character_select_in_this_menu == "level_editor"
+		&& default_filename != noone
+		&& file_exists("levels/" + string(default_filename) + "/sound/" + filename))
 		{
 			return audio_create_stream("levels/" + string(default_filename) + "/sound/" + filename);
 		}
+		
 		return noone;
 	}
 
 	#region /* Load Music Streams */
 	var base_path = global.character_select_in_this_menu == "main_game" ?
 					"levels/" + string(ds_list_find_value(global.all_loaded_main_levels, global.select_level_index)) + "/sound/" :
-					global.use_temp_or_working + "custom_levels/" + string(global.level_name) + "/sound/";
+					global.use_temp_or_working + "custom_levels/" + string(folder_name) + "/sound/";
 
 	global.music = load_audio("music.ogg", global.default_music_overworld, base_path);
 	global.music_underwater = load_audio("music_underwater.ogg", global.default_music_underwater, base_path);

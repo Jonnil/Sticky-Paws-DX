@@ -2,7 +2,7 @@
 function scr_load_object_placement_json()
 {
 	/* For actual folder name, replace illegal characters with underscore only for naming folder */
-	var folder_name = scr_get_unique_folder_name(game_save_id + "custom_levels/", string(global.level_name));
+	var folder_name = scr_sanitize_filename(string(global.level_name));
 	
 	/* Initialize flag for determining which level type to load */
 	var load_main_game_level = true;
@@ -173,14 +173,13 @@ function scr_load_object_placement_json()
 function scr_save_custom_level_json()
 {
 	/* For actual folder name, replace illegal characters with underscore only for naming folder */
-	var folder_name = scr_get_unique_folder_name(game_save_id + "custom_levels/", string(global.level_name));
+	var folder_name = scr_sanitize_filename(string(global.level_name));
 	
 	global.create_level_from_template = false; /* Set this variable to false, so that the level can properly save and load after you have loaded a template level */
 
 	#region /* Save Custom Level */
 	if (global.character_select_in_this_menu == "level_editor") /* Only save this if you're in the level editor, otherwise level folders for main game will be created in AppData */
 	{
-
 		/* The path I actually want to create. Can't create this directory on Switch because there are a directory inside the directory */
 		var custom_levels_path = game_save_id + "custom_levels/" + string(folder_name);
 
@@ -321,7 +320,7 @@ function scr_save_custom_level_json()
 function scr_save_level_information()
 {
 	/* For actual folder name, replace illegal characters with underscore only for naming folder */
-	var folder_name = scr_get_unique_folder_name(game_save_id + "custom_levels/", string(global.level_name));
+	var folder_name = scr_sanitize_filename(string(global.level_name));
 	
 	#region /* Save Level Information */
 	if (string(folder_name) != "")

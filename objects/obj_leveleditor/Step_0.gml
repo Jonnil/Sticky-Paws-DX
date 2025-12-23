@@ -1937,14 +1937,16 @@ if (!global.actually_play_edited_level)
 				obj_background_brightness_gameplay.background_brightness_lerp = 0;
 			}
 
-			if (cam_width < 1920 || cam_height < 1080)
+			if (cam_width < 1920
+			|| cam_height < 1080)
 			{
 				camera_set_view_size(view_get_camera(view_current), 1920, 1080);
 			}
 			scr_set_screen_size();
 
 			/* Limit view inside room when saving screenshot */
-			if (instance_exists(obj_level_width) && instance_exists(obj_level_height))
+			if (instance_exists(obj_level_width)
+			&& instance_exists(obj_level_height))
 			{
 				camera_set_view_pos(view_get_camera(view_current),
 				max(0, min(cam_x, obj_level_width.x - cam_width)),
