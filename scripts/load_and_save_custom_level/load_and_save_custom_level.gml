@@ -1,6 +1,9 @@
 #region /* THIS IS LOADING JSON FILE */
 function scr_load_object_placement_json()
 {
+	/* For actual folder name, replace illegal characters with underscore only for naming folder */
+	var folder_name = scr_get_unique_folder_name(game_save_id + "custom_levels/", string(global.level_name));
+	
 	/* Initialize flag for determining which level type to load */
 	var load_main_game_level = true;
 
@@ -15,10 +18,10 @@ function scr_load_object_placement_json()
 		load_main_game_level = false;
 
 		/* Ensure directories exist for custom levels if level name is set */
-		if (string(global.level_name) != "")
+		if (string(folder_name) != "")
 		{
 			var directories = ["background", "data", "sound", "tilesets"];
-			var base_path = global.use_temp_or_working + "custom_levels/" + string(global.level_name) + "/";
+			var base_path = global.use_temp_or_working + "custom_levels/" + string(folder_name) + "/";
 
 			for (var i = 0; i < array_length(directories); i++)
 			{
@@ -40,9 +43,9 @@ function scr_load_object_placement_json()
 		file_path = "levels/" + string(ds_list_find_value(global.all_loaded_main_levels, global.select_level_index)) + "/data/object_placement_all.json";
 	}
 	else
-	if (string(global.level_name) != "")
+	if (string(folder_name) != "")
 	{
-		file_path = global.use_temp_or_working + "custom_levels/" + string(global.level_name) + "/data/object_placement_all.json";
+		file_path = global.use_temp_or_working + "custom_levels/" + string(folder_name) + "/data/object_placement_all.json";
 	}
 
 	/* Load object placement data if the file exists */
@@ -169,6 +172,9 @@ function scr_load_object_placement_json()
 #region /* THIS IS SAVING .JSON FILE */
 function scr_save_custom_level_json()
 {
+	/* For actual folder name, replace illegal characters with underscore only for naming folder */
+	var folder_name = scr_get_unique_folder_name(game_save_id + "custom_levels/", string(global.level_name));
+	
 	global.create_level_from_template = false; /* Set this variable to false, so that the level can properly save and load after you have loaded a template level */
 
 	#region /* Save Custom Level */
@@ -176,10 +182,10 @@ function scr_save_custom_level_json()
 	{
 
 		/* The path I actually want to create. Can't create this directory on Switch because there are a directory inside the directory */
-		var custom_levels_path = game_save_id + "custom_levels/" + string(global.level_name);
+		var custom_levels_path = game_save_id + "custom_levels/" + string(folder_name);
 
 		if (!global.automatically_play_downloaded_level
-		&& string(global.level_name) != ""
+		&& string(folder_name) != ""
 		&& !file_exists(custom_levels_path + "/data/object_placement_all.json"))
 		{
 			directory_create(custom_levels_path); /* Create directory for saving custom levels */
@@ -197,14 +203,15 @@ function scr_save_custom_level_json()
 		#region /* Save object placement */
 		var file
 
-		if (string(global.level_name) != "")
+		if (string(folder_name) != "")
 		{
 			file = file_text_open_write(custom_levels_path + "/data/object_placement_all.json"); /* Open file for writing */
 		}
 
 		var online_content_metadata = [];
 
-		if (global.can_save_length_variable && instance_exists(obj_level_width))
+		if (global.can_save_length_variable
+		&& instance_exists(obj_level_width))
 		{
 			global.max_length_iterations = obj_level_width.x div 32;
 		}
@@ -257,7 +264,7 @@ function scr_save_custom_level_json()
 				#endregion /* Save second x and second y variables END */
 
 				#region /* Save item inside variables */
-				var obj_ids = ds_list_create();
+				obj_ids = ds_list_create();
 				ds_list_add(obj_ids, LEVEL_OBJECT_ID.ID_QUESTION_BLOCK);
 				ds_list_add(obj_ids, LEVEL_OBJECT_ID.ID_BRICK_BLOCK);
 				ds_list_add(obj_ids, LEVEL_OBJECT_ID.ID_MELON_BLOCK);
@@ -313,13 +320,15 @@ function scr_save_custom_level_json()
 #region /* THIS IS SAVING ADDITIONAL LEVEL INFORMATION IN A .INI FILE */
 function scr_save_level_information()
 {
-
+	/* For actual folder name, replace illegal characters with underscore only for naming folder */
+	var folder_name = scr_get_unique_folder_name(game_save_id + "custom_levels/", string(global.level_name));
+	
 	#region /* Save Level Information */
-	if (string(global.level_name) != "")
+	if (string(folder_name) != "")
 	&& (!global.create_level_from_template) /* Don't save when you are creating a level from template, as it will incorrectly create a "levels" folder in Local AppData */
 	{
 		show_debug_message("SAVE LEVEL INFORMATION");
-		ini_open(game_save_id + "custom_levels/" + string(global.level_name) + "/data/level_information.ini");
+		ini_open(game_save_id + "custom_levels/" + string(folder_name) + "/data/level_information.ini");
 
 		ini_write_real("info", "part_limit_entity", global.part_limit_entity); /* Save how many entity objects have been placed in the level, so you can't lag the game with too many objects with lots of code */
 
@@ -428,45 +437,45 @@ function scr_save_level_information()
 		#region /* Save Custom Background Settings */
 
 		#region /* Save if any custom background exist at all */
-		if (file_exists(game_save_id + "custom_levels/" + string(global.level_name) + "/background/" + "background1.png"))
-		|| (file_exists(game_save_id + "custom_levels/" + string(global.level_name) + "/background/" + "background1.gif"))
-		|| (file_exists(game_save_id + "custom_levels/" + string(global.level_name) + "/background/" + "background1.jpg"))
-		|| (file_exists(game_save_id + "custom_levels/" + string(global.level_name) + "/background/" + "background1.jpeg"))
+		if (file_exists(game_save_id + "custom_levels/" + string(folder_name) + "/background/" + "background1.png"))
+		|| (file_exists(game_save_id + "custom_levels/" + string(folder_name) + "/background/" + "background1.gif"))
+		|| (file_exists(game_save_id + "custom_levels/" + string(folder_name) + "/background/" + "background1.jpg"))
+		|| (file_exists(game_save_id + "custom_levels/" + string(folder_name) + "/background/" + "background1.jpeg"))
 
-		|| (file_exists(game_save_id + "custom_levels/" + string(global.level_name) + "/background/" + "background2.png"))
-		|| (file_exists(game_save_id + "custom_levels/" + string(global.level_name) + "/background/" + "background2.gif"))
-		|| (file_exists(game_save_id + "custom_levels/" + string(global.level_name) + "/background/" + "background2.jpg"))
-		|| (file_exists(game_save_id + "custom_levels/" + string(global.level_name) + "/background/" + "background2.jpeg"))
+		|| (file_exists(game_save_id + "custom_levels/" + string(folder_name) + "/background/" + "background2.png"))
+		|| (file_exists(game_save_id + "custom_levels/" + string(folder_name) + "/background/" + "background2.gif"))
+		|| (file_exists(game_save_id + "custom_levels/" + string(folder_name) + "/background/" + "background2.jpg"))
+		|| (file_exists(game_save_id + "custom_levels/" + string(folder_name) + "/background/" + "background2.jpeg"))
 
-		|| (file_exists(game_save_id + "custom_levels/" + string(global.level_name) + "/background/" + "background3.png"))
-		|| (file_exists(game_save_id + "custom_levels/" + string(global.level_name) + "/background/" + "background3.gif"))
-		|| (file_exists(game_save_id + "custom_levels/" + string(global.level_name) + "/background/" + "background3.jpg"))
-		|| (file_exists(game_save_id + "custom_levels/" + string(global.level_name) + "/background/" + "background3.jpeg"))
+		|| (file_exists(game_save_id + "custom_levels/" + string(folder_name) + "/background/" + "background3.png"))
+		|| (file_exists(game_save_id + "custom_levels/" + string(folder_name) + "/background/" + "background3.gif"))
+		|| (file_exists(game_save_id + "custom_levels/" + string(folder_name) + "/background/" + "background3.jpg"))
+		|| (file_exists(game_save_id + "custom_levels/" + string(folder_name) + "/background/" + "background3.jpeg"))
 
-		|| (file_exists(game_save_id + "custom_levels/" + string(global.level_name) + "/background/" + "background4.png"))
-		|| (file_exists(game_save_id + "custom_levels/" + string(global.level_name) + "/background/" + "background4.gif"))
-		|| (file_exists(game_save_id + "custom_levels/" + string(global.level_name) + "/background/" + "background4.jpg"))
-		|| (file_exists(game_save_id + "custom_levels/" + string(global.level_name) + "/background/" + "background4.jpeg"))
+		|| (file_exists(game_save_id + "custom_levels/" + string(folder_name) + "/background/" + "background4.png"))
+		|| (file_exists(game_save_id + "custom_levels/" + string(folder_name) + "/background/" + "background4.gif"))
+		|| (file_exists(game_save_id + "custom_levels/" + string(folder_name) + "/background/" + "background4.jpg"))
+		|| (file_exists(game_save_id + "custom_levels/" + string(folder_name) + "/background/" + "background4.jpeg"))
 
-		|| (file_exists(game_save_id + "custom_levels/" + string(global.level_name) + "/background/" + "foreground1.png"))
-		|| (file_exists(game_save_id + "custom_levels/" + string(global.level_name) + "/background/" + "foreground1.gif"))
-		|| (file_exists(game_save_id + "custom_levels/" + string(global.level_name) + "/background/" + "foreground1.jpg"))
-		|| (file_exists(game_save_id + "custom_levels/" + string(global.level_name) + "/background/" + "foreground1.jpeg"))
+		|| (file_exists(game_save_id + "custom_levels/" + string(folder_name) + "/background/" + "foreground1.png"))
+		|| (file_exists(game_save_id + "custom_levels/" + string(folder_name) + "/background/" + "foreground1.gif"))
+		|| (file_exists(game_save_id + "custom_levels/" + string(folder_name) + "/background/" + "foreground1.jpg"))
+		|| (file_exists(game_save_id + "custom_levels/" + string(folder_name) + "/background/" + "foreground1.jpeg"))
 
-		|| (file_exists(game_save_id + "custom_levels/" + string(global.level_name) + "/background/" + "foreground1_5.png"))
-		|| (file_exists(game_save_id + "custom_levels/" + string(global.level_name) + "/background/" + "foreground1_5.gif"))
-		|| (file_exists(game_save_id + "custom_levels/" + string(global.level_name) + "/background/" + "foreground1_5.jpg"))
-		|| (file_exists(game_save_id + "custom_levels/" + string(global.level_name) + "/background/" + "foreground1_5.jpeg"))
+		|| (file_exists(game_save_id + "custom_levels/" + string(folder_name) + "/background/" + "foreground1_5.png"))
+		|| (file_exists(game_save_id + "custom_levels/" + string(folder_name) + "/background/" + "foreground1_5.gif"))
+		|| (file_exists(game_save_id + "custom_levels/" + string(folder_name) + "/background/" + "foreground1_5.jpg"))
+		|| (file_exists(game_save_id + "custom_levels/" + string(folder_name) + "/background/" + "foreground1_5.jpeg"))
 
-		|| (file_exists(game_save_id + "custom_levels/" + string(global.level_name) + "/background/" + "foreground2.png"))
-		|| (file_exists(game_save_id + "custom_levels/" + string(global.level_name) + "/background/" + "foreground2.gif"))
-		|| (file_exists(game_save_id + "custom_levels/" + string(global.level_name) + "/background/" + "foreground2.jpg"))
-		|| (file_exists(game_save_id + "custom_levels/" + string(global.level_name) + "/background/" + "foreground2.jpeg"))
+		|| (file_exists(game_save_id + "custom_levels/" + string(folder_name) + "/background/" + "foreground2.png"))
+		|| (file_exists(game_save_id + "custom_levels/" + string(folder_name) + "/background/" + "foreground2.gif"))
+		|| (file_exists(game_save_id + "custom_levels/" + string(folder_name) + "/background/" + "foreground2.jpg"))
+		|| (file_exists(game_save_id + "custom_levels/" + string(folder_name) + "/background/" + "foreground2.jpeg"))
 
-		|| (file_exists(game_save_id + "custom_levels/" + string(global.level_name) + "/background/" + "foreground_secret.png"))
-		|| (file_exists(game_save_id + "custom_levels/" + string(global.level_name) + "/background/" + "foreground_secret.gif"))
-		|| (file_exists(game_save_id + "custom_levels/" + string(global.level_name) + "/background/" + "foreground_secret.jpg"))
-		|| (file_exists(game_save_id + "custom_levels/" + string(global.level_name) + "/background/" + "foreground_secret.jpeg"))
+		|| (file_exists(game_save_id + "custom_levels/" + string(folder_name) + "/background/" + "foreground_secret.png"))
+		|| (file_exists(game_save_id + "custom_levels/" + string(folder_name) + "/background/" + "foreground_secret.gif"))
+		|| (file_exists(game_save_id + "custom_levels/" + string(folder_name) + "/background/" + "foreground_secret.jpg"))
+		|| (file_exists(game_save_id + "custom_levels/" + string(folder_name) + "/background/" + "foreground_secret.jpeg"))
 		{
 			ini_write_real("info", "level_has_custom_background", true);
 		}

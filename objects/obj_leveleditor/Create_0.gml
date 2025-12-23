@@ -695,6 +695,7 @@ if (!global.actually_play_edited_level)
 	background_brightness_lerp = 0;
 	background_brightness_menu_lerp = 0;
 	language_mouse_scroll = 0;
+	visibility_index = 0; /* If custom content should show up publicly in online list or not. 0 = Public. 1 = Unlisted */
 
 	#region /* Toggle for menu warning whenever the player plays a level from beginning and finishes the level too fast */
 	if (global.playing_level_from_beginning

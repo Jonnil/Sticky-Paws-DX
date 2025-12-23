@@ -203,22 +203,26 @@ if (doing_clear_check_timer_thumbnail == 3)
 }
 #endregion /* Save automatic thumbnail before doing a clear check END */
 
-if (doing_clear_check_timer == 1) /* Save the level before starting clear check */
+/* Save the level before starting clear check */
+if (doing_clear_check_timer == 1)
 {
 	show_debug_message("Save the level before starting clear check");
 	scr_save_custom_level_json();
 }
 
-if (doing_clear_check_timer == 3) /* Spawn the objects before starting clear check */
+/* Spawn the objects before starting clear check */
+if (doing_clear_check_timer == 3)
 {
 	show_debug_message("Spawn the objects before starting clear check ");
+	
 	with(obj_leveleditor_placed_object)
 	{
 		alarm[1] = 1;
 	}
 }
 
-if (doing_clear_check_timer == 5) /* Start the clear check */
+/* Start the clear check */
+if (doing_clear_check_timer == 5)
 {
 	show_debug_message("Start the clear check");
 	audio_stop_sound(level_editing_music);
