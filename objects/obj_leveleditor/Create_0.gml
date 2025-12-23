@@ -1,5 +1,5 @@
 #region /* Essential code that needs to be initialized */
-ini_open(game_save_id + "custom_levels/" + string(global.level_name) + "/data/level_information.ini");
+ini_open(game_save_id + "custom_levels/" + scr_get_custom_level_folder_name() + "/data/level_information.ini");
 
 var level_name_ini = ini_read_string("info", "level_name", "");
 
@@ -122,7 +122,7 @@ if (!global.actually_play_edited_level)
 {
 
 	#region /* Save what date this level was first created in */
-	ini_open(game_save_id + "custom_levels/" + string(global.level_name) + "/data/level_information.ini");
+	ini_open(game_save_id + "custom_levels/" + scr_get_custom_level_folder_name() + "/data/level_information.ini");
 	if (!ini_key_exists("info", "first_created_on_version"))
 	{
 		ini_write_string("info", "first_created_on_version", "v" + scr_get_build_date());
@@ -163,7 +163,7 @@ if (!global.actually_play_edited_level)
 	/* Showing the original version number makes it easier to pinpoint what changes happened from one version to another */
 	made_in_what_version_text = "";
 	first_created_on_version = "";
-	var level_information_ini_path = game_save_id + "custom_levels/" + string(global.level_name) + "/data/level_information.ini";
+	var level_information_ini_path = game_save_id + "custom_levels/" + scr_get_custom_level_folder_name() + "/data/level_information.ini";
 	if (global.level_name != "")
 	&& (file_exists(level_information_ini_path))
 	{
@@ -701,7 +701,7 @@ if (!global.actually_play_edited_level)
 	if (global.playing_level_from_beginning
 	&& global.player_has_entered_goal)
 	{
-		ini_open(game_save_id + "custom_levels/" + string(global.level_name) + "/data/level_information.ini");
+		ini_open(game_save_id + "custom_levels/" + scr_get_custom_level_folder_name() + "/data/level_information.ini");
 		ini_write_real("info", "clear_check", true); /* If doing a level clear check, and winning the level, then add in level information that you have done a clear check */
 		ini_close(); /* Don't commit the save data on Switch, this is only temporary! */
 		if_clear_checked = true;
@@ -824,7 +824,7 @@ if (!global.actually_play_edited_level)
 #endregion /* If you're actually playing a level, then you don't need to run a lot of the code only relevant when making a level END */
 
 #region /* Load what selected object you were using most recent in the specific level */
-ini_open(game_save_id + "custom_levels/" + string(global.level_name) + "/data/level_information.ini");
+ini_open(game_save_id + "custom_levels/" + scr_get_custom_level_folder_name() + "/data/level_information.ini");
 global.part_limit_entity = ini_read_real("info", "part_limit_entity", 0);
 place_object = ini_read_real("info", "place_object", 1);
 selected_object = ini_read_real("info", "selected_object", 0);

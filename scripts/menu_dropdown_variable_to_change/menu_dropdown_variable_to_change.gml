@@ -130,7 +130,7 @@ function menu_dropdown_variable_to_change(variable_to_change, change_to_value)
 	&& (variable_to_change == development_stage_index)
 	{
 		development_stage_index = change_to_value;
-		ini_open(game_save_id + "custom_levels/" + string(global.level_name) + "/data/level_information.ini");
+		ini_open(game_save_id + "custom_levels/" + scr_get_custom_level_folder_name() + "/data/level_information.ini");
 		ini_write_real("info", "development_stage_index", development_stage_index);
 		ini_close(); /* Don't commit the save data on Switch, this is only temporary! */
 	}
@@ -140,7 +140,7 @@ function menu_dropdown_variable_to_change(variable_to_change, change_to_value)
 	{
 		visibility_index = change_to_value;
 		thumbnail_level_unlisted[global.select_level_index] = visibility_index;
-		ini_open(game_save_id + "custom_levels/" + string(global.level_name) + "/data/level_information.ini");
+		ini_open(game_save_id + "custom_levels/" + scr_get_custom_level_folder_name() + "/data/level_information.ini");
 		ini_write_real("info", "visibility_index", visibility_index);
 		ini_close(); /* Don't commit the save data on Switch, this is only temporary! */
 	}

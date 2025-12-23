@@ -7,7 +7,7 @@ function scr_draw_level_length_recommendation()
 	{
 		if (global.timeattack_realmillisecond == 0)
 		{
-			ini_open(game_save_id + "custom_levels/" + string(global.level_name) + "/data/level_information.ini");
+			ini_open(game_save_id + "custom_levels/" + scr_get_custom_level_folder_name() + "/data/level_information.ini");
 			global.timeattack_minute = ini_read_real("rank", "rank_timeattack_minute", 0);
 			global.timeattack_second = ini_read_real("rank", "rank_timeattack_second", 0);
 			global.timeattack_realmillisecond = ini_read_real("rank", "rank_timeattack_realmillisecond", 0);

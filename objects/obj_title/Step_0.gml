@@ -43,7 +43,7 @@ if (global.go_to_menu_when_going_back_to_title == "online_download_list_load")
 {
 	if (scr_online_token_is_valid())
 	{
-		directory_destroy(temp_directory + "custom_levels/" + global.level_name); /* Delete the temporary downloaded level */
+		directory_destroy(temp_directory + "custom_levels/" + scr_get_custom_level_folder_name()); /* Delete the temporary downloaded level */
 		global.use_temp_or_working = game_save_id; /* When downloading levels from online and temporarily playing the level, you have to use the "temp directory", but normally you need to use the "working directory" */
 		select_custom_level_menu_open = false;
 		menu = "online_download_list_load";
@@ -226,7 +226,9 @@ if (iris_xscale <= 0.01)
 			&& (global.select_level_index > 0) /* Don't update if you're selecting "create from scratch" */
 			{
 				/* Update the "global level name" before updating all backgrounds and going to the level editor */
-				global.level_name = string(ds_list_find_value(global.all_loaded_custom_levels, global.select_level_index)); /* Set the "level name" to the selected level, so when you exit the level editor, the cursor will remember to appear on the level you selected */
+				var folder_name = string(ds_list_find_value(global.all_loaded_custom_levels, global.select_level_index));
+				global.level_folder_name = folder_name;
+				global.level_name = scr_get_level_display_name(folder_name); /* Keep the displayed level name unsanitized */
 			}
 			scr_update_all_backgrounds();
 			global.part_limit = 0; /* How many objects are currently placed in the level editor */

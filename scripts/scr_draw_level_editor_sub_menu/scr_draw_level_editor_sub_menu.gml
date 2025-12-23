@@ -503,8 +503,10 @@ function scr_draw_level_editor_sub_menu(xx = 0)
 
 				if (ds_list_find_value(global.all_loaded_custom_levels, global.select_level_index) != undefined) /* Don't set "global level name" to "ds list find value" if it's undefined */
 				{
-					global.level_name = string(ds_list_find_value(global.all_loaded_custom_levels, global.select_level_index)); /* Set the "level name" to the selected level, so when you exit the level editor, the cursor will remember to appear on the level you selected */
-					keyboard_string = string(ds_list_find_value(global.all_loaded_custom_levels, global.select_level_index));
+					var folder_name = string(ds_list_find_value(global.all_loaded_custom_levels, global.select_level_index));
+					global.level_folder_name = folder_name;
+					global.level_name = scr_get_level_display_name(folder_name); /* Use the saved display name, not the sanitized folder name */
+					keyboard_string = global.level_name;
 				}
 
 				old_level_name = global.level_name; /* Need to remember original name of level, so that renaming level doesn't actually happen if you haven't edited the name */
@@ -532,9 +534,9 @@ function scr_draw_level_editor_sub_menu(xx = 0)
 				global.doing_clear_check_level = false;
 				global.actually_play_edited_level = false;
 
-				if (file_exists(game_save_id + "custom_levels/" + string(global.level_name) + "/data/level_information.ini"))
+				if (file_exists(game_save_id + "custom_levels/" + scr_get_custom_level_folder_name() + "/data/level_information.ini"))
 				{
-					ini_open(game_save_id + "custom_levels/" + string(global.level_name) + "/data/level_information.ini");
+					ini_open(game_save_id + "custom_levels/" + scr_get_custom_level_folder_name() + "/data/level_information.ini");
 					keyboard_string = ini_read_string("info", "level_description", "");
 					global.level_description = ini_read_string("info", "level_description", "");
 					ini_close(); /* Don't commit the save data on Switch, this is only temporary! */
@@ -670,13 +672,13 @@ function scr_draw_level_editor_sub_menu(xx = 0)
 		{
 			if (menu == "level_editor_delete_yes")
 			{
-				if (file_exists(game_save_id + "custom_levels/" + string(global.level_name) + "/data/level_information.ini"))
+				if (file_exists(game_save_id + "custom_levels/" + scr_get_custom_level_folder_name() + "/data/level_information.ini"))
 				{
-					directory_destroy(game_save_id + "custom_levels/" + global.level_name);
+					directory_destroy(game_save_id + "custom_levels/" + scr_get_custom_level_folder_name());
 				}
 
 				ini_open(game_save_id + "save_file/custom_level_save.ini");
-				ini_section_delete(global.level_name);
+				ini_section_delete(scr_get_custom_level_folder_name());
 				ini_close(); /* Don't commit the save data on Switch, this is only temporary! */
 
 				global.select_level_index--; /* Decrease the "select level index" so that the cursor isn't selecting a level that no longer exists */

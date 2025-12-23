@@ -29,7 +29,7 @@ if (!global.actually_play_edited_level)
 	{
 		if (obj_leveleditor.if_clear_checked)
 		{
-			ini_open(game_save_id + "custom_levels/" + string(global.level_name) + "/data/level_information.ini");
+			ini_open(game_save_id + "custom_levels/" + scr_get_custom_level_folder_name() + "/data/level_information.ini");
 			ini_write_real("info", "clear_check", false); /* Set clear check to false when trying to upload within the level editor */
 			ini_close(); /* Don't commit the save data on Switch, this is only temporary! */
 			obj_leveleditor.if_clear_checked = false;

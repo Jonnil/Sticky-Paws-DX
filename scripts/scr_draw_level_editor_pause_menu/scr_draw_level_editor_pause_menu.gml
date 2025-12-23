@@ -267,7 +267,7 @@ function scr_draw_level_editor_pause_menu()
 			{
 				if (if_clear_checked)
 				{
-					ini_open(game_save_id + "custom_levels/" + string(global.level_name) + "/data/level_information.ini");
+					ini_open(game_save_id + "custom_levels/" + scr_get_custom_level_folder_name() + "/data/level_information.ini");
 					ini_write_real("info", "clear_check", false); /* Set clear check to false when trying to upload within the level editor */
 					ini_close(); /* Don't commit the save data on Switch, this is only temporary! */
 					if_clear_checked = false;
@@ -392,7 +392,7 @@ function scr_draw_level_editor_pause_menu()
 				{
 					if (global.level_name != "")
 					{
-						scr_open_folder(game_save_id + "\custom_levels\\" + global.level_name)
+						scr_open_folder(game_save_id + "\custom_levels\\" + scr_get_custom_level_folder_name())
 					}
 				}
 				if (menu == "open_custom_levels_folder")

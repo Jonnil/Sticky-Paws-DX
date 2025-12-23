@@ -127,10 +127,10 @@ if (room != rm_title)
 	}
 	else
 	/* OGG small letter File */
-	if (file_exists(global.use_temp_or_working + "custom_levels/" + string(global.level_name) + "/sound/lose_melody.ogg"))
+	if (file_exists(global.use_temp_or_working + "custom_levels/" + scr_get_custom_level_folder_name() + "/sound/lose_melody.ogg"))
 	&& (global.character_select_in_this_menu == "level_editor")
 	{
-		player_lose_melody = audio_create_stream(global.use_temp_or_working + "custom_levels/" + string(global.level_name) + "/sound/lose_melody.ogg");
+		player_lose_melody = audio_create_stream(global.use_temp_or_working + "custom_levels/" + scr_get_custom_level_folder_name() + "/sound/lose_melody.ogg");
 	}
 	else
 	if (file_exists("resource_pack/" + string(ds_list_find_value(global.all_loaded_resource_pack, global.selected_resource_pack)) + "/sound/lose_melody.ogg"))

@@ -148,7 +148,7 @@ function scr_unlock_placable_level_objects(default_unlock = false)
 		#region /* All the objects that should be randomly unlocked in Daily Build */
 
 		#region /* Load what date this level was first created in */
-		ini_open(game_save_id + "custom_levels/" + string(global.level_name) + "/data/level_information.ini");
+		ini_open(game_save_id + "custom_levels/" + scr_get_custom_level_folder_name() + "/data/level_information.ini");
 		var year = ini_read_real("info", "first_created_on_date_year", date_get_year(date_current_datetime()));
 		var month = ini_read_real("info", "first_created_on_date_month", date_get_month(date_current_datetime()));
 		var day = ini_read_real("info", "first_created_on_date_day", date_get_day(date_current_datetime()));

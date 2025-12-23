@@ -61,7 +61,7 @@ function scr_player_move_save_whole_level_as_screenshot()
 			if (global.select_level_index <= 0)
 			|| (global.create_level_from_template >= 2)
 			{
-				sprite_save(custom_level_map_sprite, 0, game_save_id + "custom_levels/" + string(global.level_name) + "/full_level_map_" + string(global.level_name) + ".png");
+				sprite_save(custom_level_map_sprite, 0, game_save_id + "custom_levels/" + scr_get_custom_level_folder_name() + "/full_level_map_" + string(global.level_name) + ".png");
 			}
 			else
 			{

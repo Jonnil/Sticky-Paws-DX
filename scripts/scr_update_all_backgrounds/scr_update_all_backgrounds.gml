@@ -22,8 +22,8 @@ function scr_update_all_backgrounds(delete_existing_bg = true)
 	}
 	else
 	{
-		global.path_to_use = global.use_temp_or_working + "custom_levels/" + string(global.level_name) + "/background/";
-		ini_open(global.use_temp_or_working + "custom_levels/" + string(global.level_name) + "/data/level_information.ini");
+		global.path_to_use = global.use_temp_or_working + "custom_levels/" + scr_get_custom_level_folder_name() + "/background/";
+		ini_open(global.use_temp_or_working + "custom_levels/" + scr_get_custom_level_folder_name() + "/data/level_information.ini");
 	}
 
 	/* Read default backgrounds/foregrounds from ini */

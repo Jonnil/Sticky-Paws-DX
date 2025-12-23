@@ -97,7 +97,7 @@ function scr_draw_report()
 
 						search_for_id_still = false;
 						if (content_type == "level")
-						&& (file_exists(game_save_id + "custom_levels/" + string(global.level_name) + "/data/level_information.ini"))
+						&& (file_exists(game_save_id + "custom_levels/" + scr_get_custom_level_folder_name() + "/data/level_information.ini"))
 						|| (content_type == "character")
 						&& (file_exists(game_save_id + "custom_characters/" + string(downloaded_character_name) + "/data/character_config.ini"))
 						{
@@ -164,7 +164,7 @@ function scr_draw_report()
 		if (content_type == "level")
 		{
 			if (content_type == "level")
-			&& (file_exists(game_save_id + "custom_levels/" + string(global.level_name) + "/data/level_information.ini"))
+			&& (file_exists(game_save_id + "custom_levels/" + scr_get_custom_level_folder_name() + "/data/level_information.ini"))
 			|| (content_type == "character")
 			&& (file_exists(game_save_id + "custom_characters/" + string(downloaded_character_name) + "/data/character_config.ini"))
 			{
@@ -179,7 +179,7 @@ function scr_draw_report()
 		else
 		{
 			if (content_type == "level")
-			&& (file_exists(game_save_id + "custom_levels/" + string(global.level_name) + "/data/level_information.ini"))
+			&& (file_exists(game_save_id + "custom_levels/" + scr_get_custom_level_folder_name() + "/data/level_information.ini"))
 			|| (content_type == "character")
 			&& (file_exists(game_save_id + "custom_characters/" + string(downloaded_character_name) + "/data/character_config.ini"))
 			{
@@ -192,7 +192,7 @@ function scr_draw_report()
 			var searched_file_downloaded_back_text = l10n_text("Back to character select");
 		}
 		if (content_type == "level")
-		&& (file_exists(game_save_id + "custom_levels/" + string(global.level_name) + "/data/level_information.ini"))
+		&& (file_exists(game_save_id + "custom_levels/" + scr_get_custom_level_folder_name() + "/data/level_information.ini"))
 		|| (content_type == "character")
 		&& (file_exists(game_save_id + "custom_characters/" + string(downloaded_character_name) + "/data/character_config.ini"))
 		{
@@ -214,14 +214,15 @@ function scr_draw_report()
 			{
 				menu_delay = 3;
 				if (content_type == "level")
-				&& (file_exists(game_save_id + "custom_levels/" + string(global.level_name) + "/data/level_information.ini"))
+				&& (file_exists(game_save_id + "custom_levels/" + scr_get_custom_level_folder_name() + "/data/level_information.ini"))
 				{
-					directory_destroy(game_save_id + "custom_levels/" + global.level_name);
+					directory_destroy(game_save_id + "custom_levels/" + scr_get_custom_level_folder_name());
 					ini_open(game_save_id + "save_file/custom_level_save.ini");
-					ini_section_delete(global.level_name);
+					ini_section_delete(scr_get_custom_level_folder_name());
 					ini_close(); /* Don't commit the save data on Switch, this is only temporary! */
 					global.select_level_index = 0;
 					global.level_name = "";
+					global.level_folder_name = "";
 				}
 				else
 				if (content_type == "character")
@@ -312,7 +313,7 @@ function scr_draw_report()
 			if (menu == "report_complete_back_to_online_list")
 			{
 				if (content_type == "level")
-				&& (file_exists(game_save_id + "custom_levels/" + string(global.level_name) + "/data/level_information.ini"))
+				&& (file_exists(game_save_id + "custom_levels/" + scr_get_custom_level_folder_name() + "/data/level_information.ini"))
 				|| (content_type == "character")
 				&& (file_exists(game_save_id + "custom_characters/" + string(downloaded_character_name) + "/data/character_config.ini"))
 				{
@@ -332,7 +333,7 @@ function scr_draw_report()
 			if (menu == "report_complete_back")
 			{
 				if (content_type == "level")
-				&& (file_exists(game_save_id + "custom_levels/" + string(global.level_name) + "/data/level_information.ini"))
+				&& (file_exists(game_save_id + "custom_levels/" + scr_get_custom_level_folder_name() + "/data/level_information.ini"))
 				|| (content_type == "character")
 				&& (file_exists(game_save_id + "custom_characters/" + string(downloaded_character_name) + "/data/character_config.ini"))
 				{

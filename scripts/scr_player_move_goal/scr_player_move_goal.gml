@@ -132,7 +132,7 @@ function scr_player_move_goal()
 				
 				if (global.doing_clear_check_level)
 				{
-					ini_open(global.use_temp_or_working + "custom_levels/" + string(global.level_name) + "/data/level_information.ini");
+					ini_open(global.use_temp_or_working + "custom_levels/" + scr_get_custom_level_folder_name() + "/data/level_information.ini");
 					ini_write_real("info", "clear_check", true); /* If doing a level clear check, and winning the level, then add in level information that you have done a clear check */
 					ini_close();
 					

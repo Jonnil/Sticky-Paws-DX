@@ -131,7 +131,7 @@ function scr_rename_custom_level_name()
 	#endregion /* Update Thumbnail END */
 
 	global.select_level_index = ds_list_find_index(global.all_loaded_custom_levels, folder_name); /* After renaming a level, make sure "select level index" is updated before updating the thumbnail */
-	global.level_name = folder_name; /* Set the global level name to the filtered level name, because it will be reading filtered folder names */
+	global.level_folder_name = folder_name; /* Track the folder name separately so UI can keep the unsanitized display name */
 	#endregion /* Save the newly entered name END */
 
 	#region /* Properly reload all levels so the level with a new name can be initialized */

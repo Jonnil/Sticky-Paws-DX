@@ -129,7 +129,7 @@ function scr_draw_all_level_editor_icon()
 		{
 			if (if_clear_checked)
 			{
-				ini_open(game_save_id + "custom_levels/" + string(global.level_name) + "/data/level_information.ini");
+				ini_open(game_save_id + "custom_levels/" + scr_get_custom_level_folder_name() + "/data/level_information.ini");
 				ini_write_real("info", "clear_check", false); /* Set clear check to false when trying to upload within the level editor */
 				ini_close(); /* Don't commit the save data on Switch, this is only temporary! */
 				if_clear_checked = false;
@@ -138,7 +138,7 @@ function scr_draw_all_level_editor_icon()
 			menu = "autoscroll_speed_x";
 			show_time_menu = false;
 			show_autoscroll_menu = !show_autoscroll_menu;
-			ini_open(game_save_id + "custom_levels/" + string(global.level_name) + "/data/level_information.ini");
+			ini_open(game_save_id + "custom_levels/" + scr_get_custom_level_folder_name() + "/data/level_information.ini");
 			ini_write_real("info", "autoscroll_speed_x", autoscroll_speed_x);
 			ini_write_real("info", "autoscroll_speed_y", autoscroll_speed_y);
 			ini_close();
@@ -211,7 +211,7 @@ function scr_draw_all_level_editor_icon()
 		{
 			if (if_clear_checked)
 			{
-				ini_open(game_save_id + "custom_levels/" + string(global.level_name) + "/data/level_information.ini");
+				ini_open(game_save_id + "custom_levels/" + scr_get_custom_level_folder_name() + "/data/level_information.ini");
 				ini_write_real("info", "clear_check", false); /* Set clear check to false when trying to upload within the level editor */
 				ini_close(); /* Don't commit the save data on Switch, this is only temporary! */
 				if_clear_checked = false;
@@ -220,7 +220,7 @@ function scr_draw_all_level_editor_icon()
 			menu = "in_editor_enable_time_countdown";
 			show_autoscroll_menu = false;
 			show_time_menu = !show_time_menu;
-			ini_open(game_save_id + "custom_levels/" + string(global.level_name) + "/data/level_information.ini");
+			ini_open(game_save_id + "custom_levels/" + scr_get_custom_level_folder_name() + "/data/level_information.ini");
 			ini_write_real("info", "enable_time_countdown", global.enable_time_countdown);
 			ini_write_real("info", "time_countdown", global.time_countdown);
 			ini_close();

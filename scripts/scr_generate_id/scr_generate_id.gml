@@ -28,7 +28,7 @@ function scr_generate_id(what_kind_of_id = "level")
 	if (what_kind_of_id == "level")
 	{
 		global.creating_zip_file_description = "Saving level ID for level: " + global.level_name;
-		var ini_path = game_save_id + "custom_levels/" + string(global.level_name) + "/data/level_information.ini";
+		var ini_path = game_save_id + "custom_levels/" + scr_get_custom_level_folder_name() + "/data/level_information.ini";
 		show_debug_message("[scr_generate_id] Saving level ID to ini file: " + ini_path);
 		ini_open(ini_path);
 		ini_write_string("info", "level_id", generate_id);

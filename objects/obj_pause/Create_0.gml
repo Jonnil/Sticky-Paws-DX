@@ -256,7 +256,7 @@ if (global.character_select_in_this_menu == "main_game")
 else
 if (global.character_select_in_this_menu == "level_editor")
 {
-	var level_path = global.use_temp_or_working + "custom_levels/" + string(global.level_name);
+	var level_path = global.use_temp_or_working + "custom_levels/" + scr_get_custom_level_folder_name();
 }
 ini_open(level_path + "/data/level_information.ini");
 display_level_name = ini_read_string("info", "level_name", string(global.level_name));

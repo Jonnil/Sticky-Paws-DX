@@ -195,7 +195,7 @@ function scr_draw_upload_account_name(what_kind_of_file = "level")
 							else
 							if (what_kind_of_file == "level")
 							{
-								ini_open(game_save_id + "custom_levels/" + string(global.level_name) + "/data/level_information.ini");
+								ini_open(game_save_id + "custom_levels/" + scr_get_custom_level_folder_name() + "/data/level_information.ini");
 								var short_level_minute = ini_read_real("rank", "rank_timeattack_minute", 0);
 								ini_close(); /* Commit save data later on in this code */
 

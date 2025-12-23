@@ -127,7 +127,9 @@ if (!can_move
 && !global.quit_level
 && !loading_assets)
 {
-	global.level_name = string(ds_list_find_value(global.all_loaded_custom_levels, global.select_level_index));
+	var folder_name = string(ds_list_find_value(global.all_loaded_custom_levels, global.select_level_index));
+	global.level_folder_name = folder_name;
+	global.level_name = scr_get_level_display_name(folder_name);
 	room_persistent = false;
 	
 	if (global.music != noone)

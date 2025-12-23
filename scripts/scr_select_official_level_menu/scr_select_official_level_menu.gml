@@ -195,7 +195,7 @@ function scr_select_official_level_menu()
 				{
 					if (level_editor_option_back_to_menu == "change_entire_theme")
 					{
-						ini_open(game_save_id + "custom_levels/" + string(global.level_name) + "/data/level_information.ini");
+						ini_open(game_save_id + "custom_levels/" + scr_get_custom_level_folder_name() + "/data/level_information.ini");
 						ini_write_string("info", "default_background1", take_from_official_level);
 						ini_write_string("info", "default_background2", take_from_official_level);
 						ini_write_string("info", "default_background3", take_from_official_level);
@@ -214,7 +214,7 @@ function scr_select_official_level_menu()
 					else
 					if (level_editor_option_back_to_menu == "change_all_background")
 					{
-						ini_open(game_save_id + "custom_levels/" + string(global.level_name) + "/data/level_information.ini");
+						ini_open(game_save_id + "custom_levels/" + scr_get_custom_level_folder_name() + "/data/level_information.ini");
 						ini_write_string("info", "default_background1", take_from_official_level);
 						ini_write_string("info", "default_background2", take_from_official_level);
 						ini_write_string("info", "default_background3", take_from_official_level);
@@ -224,7 +224,7 @@ function scr_select_official_level_menu()
 					else
 					if (level_editor_option_back_to_menu == "change_all_foreground")
 					{
-						ini_open(game_save_id + "custom_levels/" + string(global.level_name) + "/data/level_information.ini");
+						ini_open(game_save_id + "custom_levels/" + scr_get_custom_level_folder_name() + "/data/level_information.ini");
 						ini_write_string("info", "default_foreground1", take_from_official_level);
 						ini_write_string("info", "default_foreground1_5", take_from_official_level);
 						ini_write_string("info", "default_foreground2", take_from_official_level);
@@ -234,63 +234,63 @@ function scr_select_official_level_menu()
 					else
 					if (level_editor_option_back_to_menu == "change_background1")
 					{
-						ini_open(game_save_id + "custom_levels/" + string(global.level_name) + "/data/level_information.ini");
+						ini_open(game_save_id + "custom_levels/" + scr_get_custom_level_folder_name() + "/data/level_information.ini");
 						ini_write_string("info", "default_background1", take_from_official_level);
 						ini_close(); /* Don't commit the save data on Switch, this is only temporary! */
 					}
 					else
 					if (level_editor_option_back_to_menu == "change_background2")
 					{
-						ini_open(game_save_id + "custom_levels/" + string(global.level_name) + "/data/level_information.ini");
+						ini_open(game_save_id + "custom_levels/" + scr_get_custom_level_folder_name() + "/data/level_information.ini");
 						ini_write_string("info", "default_background2", take_from_official_level);
 						ini_close(); /* Don't commit the save data on Switch, this is only temporary! */
 					}
 					else
 					if (level_editor_option_back_to_menu == "change_background3")
 					{
-						ini_open(game_save_id + "custom_levels/" + string(global.level_name) + "/data/level_information.ini");
+						ini_open(game_save_id + "custom_levels/" + scr_get_custom_level_folder_name() + "/data/level_information.ini");
 						ini_write_string("info", "default_background3", take_from_official_level);
 						ini_close(); /* Don't commit the save data on Switch, this is only temporary! */
 					}
 					else
 					if (level_editor_option_back_to_menu == "change_background4")
 					{
-						ini_open(game_save_id + "custom_levels/" + string(global.level_name) + "/data/level_information.ini");
+						ini_open(game_save_id + "custom_levels/" + scr_get_custom_level_folder_name() + "/data/level_information.ini");
 						ini_write_string("info", "default_background4", take_from_official_level);
 						ini_close(); /* Don't commit the save data on Switch, this is only temporary! */
 					}
 					else
 					if (level_editor_option_back_to_menu == "change_foreground1")
 					{
-						ini_open(game_save_id + "custom_levels/" + string(global.level_name) + "/data/level_information.ini");
+						ini_open(game_save_id + "custom_levels/" + scr_get_custom_level_folder_name() + "/data/level_information.ini");
 						ini_write_string("info", "default_foreground1", take_from_official_level);
 						ini_close(); /* Don't commit the save data on Switch, this is only temporary! */
 					}
 					else
 					if (level_editor_option_back_to_menu == "change_foreground1_5")
 					{
-						ini_open(game_save_id + "custom_levels/" + string(global.level_name) + "/data/level_information.ini");
+						ini_open(game_save_id + "custom_levels/" + scr_get_custom_level_folder_name() + "/data/level_information.ini");
 						ini_write_string("info", "default_foreground1_5", take_from_official_level);
 						ini_close(); /* Don't commit the save data on Switch, this is only temporary! */
 					}
 					else
 					if (level_editor_option_back_to_menu == "change_foreground2")
 					{
-						ini_open(game_save_id + "custom_levels/" + string(global.level_name) + "/data/level_information.ini");
+						ini_open(game_save_id + "custom_levels/" + scr_get_custom_level_folder_name() + "/data/level_information.ini");
 						ini_write_string("info", "default_foreground2", take_from_official_level);
 						ini_close(); /* Don't commit the save data on Switch, this is only temporary! */
 					}
 					else
 					if (level_editor_option_back_to_menu == "change_foreground_secret")
 					{
-						ini_open(game_save_id + "custom_levels/" + string(global.level_name) + "/data/level_information.ini");
+						ini_open(game_save_id + "custom_levels/" + scr_get_custom_level_folder_name() + "/data/level_information.ini");
 						ini_write_string("info", "default_foreground_secret", take_from_official_level);
 						ini_close(); /* Don't commit the save data on Switch, this is only temporary! */
 					}
 					else
 					if (level_editor_option_back_to_menu == "change_all_music")
 					{
-						ini_open(game_save_id + "custom_levels/" + string(global.level_name) + "/data/level_information.ini");
+						ini_open(game_save_id + "custom_levels/" + scr_get_custom_level_folder_name() + "/data/level_information.ini");
 						ini_write_string("info", "default_music_overworld", take_from_official_level);global.default_music_overworld = string(take_from_official_level);
 						ini_write_string("info", "default_music_underwater", take_from_official_level);global.default_music_underwater = string(take_from_official_level);
 						ini_write_string("info", "default_ambience_overworld", take_from_official_level);global.default_ambience_overworld = string(take_from_official_level);
@@ -301,35 +301,35 @@ function scr_select_official_level_menu()
 					else
 					if (level_editor_option_back_to_menu == "change_music_overworld")
 					{
-						ini_open(game_save_id + "custom_levels/" + string(global.level_name) + "/data/level_information.ini");
+						ini_open(game_save_id + "custom_levels/" + scr_get_custom_level_folder_name() + "/data/level_information.ini");
 						ini_write_string("info", "default_music_overworld", take_from_official_level);global.default_music_overworld = string(take_from_official_level);
 						ini_close(); /* Don't commit the save data on Switch, this is only temporary! */
 					}
 					else
 					if (level_editor_option_back_to_menu == "change_music_underwater")
 					{
-						ini_open(game_save_id + "custom_levels/" + string(global.level_name) + "/data/level_information.ini");
+						ini_open(game_save_id + "custom_levels/" + scr_get_custom_level_folder_name() + "/data/level_information.ini");
 						ini_write_string("info", "default_music_underwater", take_from_official_level);global.default_music_underwater = string(take_from_official_level);
 						ini_close(); /* Don't commit the save data on Switch, this is only temporary! */
 					}
 					else
 					if (level_editor_option_back_to_menu == "change_ambience_overworld")
 					{
-						ini_open(game_save_id + "custom_levels/" + string(global.level_name) + "/data/level_information.ini");
+						ini_open(game_save_id + "custom_levels/" + scr_get_custom_level_folder_name() + "/data/level_information.ini");
 						ini_write_string("info", "default_ambience_overworld", take_from_official_level);global.default_ambience_overworld = string(take_from_official_level);
 						ini_close(); /* Don't commit the save data on Switch, this is only temporary! */
 					}
 					else
 					if (level_editor_option_back_to_menu == "change_ambience_underwater")
 					{
-						ini_open(game_save_id + "custom_levels/" + string(global.level_name) + "/data/level_information.ini");
+						ini_open(game_save_id + "custom_levels/" + scr_get_custom_level_folder_name() + "/data/level_information.ini");
 						ini_write_string("info", "default_ambience_underwater", take_from_official_level);global.default_ambience_underwater = string(take_from_official_level);
 						ini_close(); /* Don't commit the save data on Switch, this is only temporary! */
 					}
 					else
 					if (level_editor_option_back_to_menu == "change_clear_melody")
 					{
-						ini_open(game_save_id + "custom_levels/" + string(global.level_name) + "/data/level_information.ini");
+						ini_open(game_save_id + "custom_levels/" + scr_get_custom_level_folder_name() + "/data/level_information.ini");
 						ini_write_string("info", "default_clear_melody", take_from_official_level);global.default_clear_melody = string(take_from_official_level);
 						ini_close(); /* Don't commit the save data on Switch, this is only temporary! */
 					}
@@ -507,6 +507,7 @@ function scr_select_official_level_menu()
 		&& (mouse_check_button_released(mb_left))
 		{
 			global.level_name = "";
+			global.level_folder_name = "";
 			global.select_level_index = 0;
 			can_input_level_name = false;
 			menu_delay = 3;
@@ -812,7 +813,7 @@ function scr_select_official_level_menu()
 					
 					ini_close(); /* Don't commit the save data on Switch, this is only temporary! */
 					
-					global.level_name = string(folder_name); /* Set the global level name to the filtered level name, because it will be reading filtered folder names */
+					global.level_folder_name = string(folder_name); /* Track the folder name separately so UI can keep the unsanitized display name */
 					
 					allowed_to_load_template_level = true;
 					

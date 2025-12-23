@@ -659,7 +659,7 @@ if (global.character_select_in_this_menu == "main_game")
 			if (global.level_name != ""
 			&& !global.actually_play_edited_level)
 			{
-				ini_open(game_save_id + "custom_levels/" + string(global.level_name) + "/data/level_information.ini");
+				ini_open(game_save_id + "custom_levels/" + scr_get_custom_level_folder_name() + "/data/level_information.ini");
 				ini_write_real("info", "view_xview", camera_get_view_x(view_get_camera(view_current)));
 				ini_write_real("info", "view_yview", camera_get_view_y(view_get_camera(view_current)));
 				ini_close(); /* Don't commit the save data on Switch, this is only temporary! */

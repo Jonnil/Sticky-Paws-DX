@@ -654,6 +654,7 @@ global.fullscreen_key = vk_f11;
 
 global.level_name = ""; /* In the level editor, the name of the currently selected level will be stored here */
 global.level_name = ""; /* The actual level path name will be store here, without being censored */
+global.level_folder_name = ""; /* Sanitized folder name for the currently selected custom level */
 global.level_description = ""; /* In the level editor, the description of the currently selected level will be stored here */
 global.creating_zip_file_description = "";
 

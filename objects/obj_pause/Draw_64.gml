@@ -213,14 +213,14 @@ if (!hide_menu_for_clean_screenshots)
 			draw_sprite_ext(spr_icon_change_character, 0, get_window_width * 0.5 - 185 + 20, change_character_y + 21, 1, 1, 0, c_white, 1 * fade_in_pause_alpha);
 
 			if (global.character_select_in_this_menu == "level_editor")
-			&& (!file_exists(game_save_id + "custom_levels/" + string(global.level_name) + "/data/level_information.ini"))
+			&& (!file_exists(game_save_id + "custom_levels/" + scr_get_custom_level_folder_name() + "/data/level_information.ini"))
 			&& (ds_list_size(global.all_loaded_custom_levels) - 1 < global.max_custom_levels) /* Don't let player download levels if they have reached the max amount of levels stored */
 			{
 				draw_menu_button(get_window_width * 0.5 - 185, edit_level_y, l10n_text("Download to Level Select"), "edit_level", "edit_level", c_lime, fade_in_pause_alpha);
 			}
 			else
 			if (global.character_select_in_this_menu == "level_editor")
-			&& (file_exists(game_save_id + "custom_levels/" + string(global.level_name) + "/data/level_information.ini"))
+			&& (file_exists(game_save_id + "custom_levels/" + scr_get_custom_level_folder_name() + "/data/level_information.ini"))
 			{
 				draw_menu_button(get_window_width * 0.5 - 185, edit_level_y, l10n_text("Edit Level"), "edit_level", "edit_level", c_lime, fade_in_pause_alpha);
 			}

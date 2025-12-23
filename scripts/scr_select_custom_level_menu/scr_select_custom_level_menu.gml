@@ -77,7 +77,9 @@ function scr_select_custom_level_menu()
 			if (ds_list_find_value(global.all_loaded_custom_levels, global.select_level_index) != undefined) /* Don't set "global level name" to "ds list find value" if it's undefined */
 			{
 				/* Update the "global level name" so game knows what level player is selecting when opening sub menu */
-				global.level_name = string(ds_list_find_value(global.all_loaded_custom_levels, global.select_level_index)); /* Set the "level name" to the selected level, so when you exit the level editor, the cursor will remember to appear on the level you selected */
+				var folder_name = string(ds_list_find_value(global.all_loaded_custom_levels, global.select_level_index));
+				global.level_folder_name = folder_name;
+				global.level_name = scr_get_level_display_name(folder_name); /* Set the human-readable name so UI shows the unsanitized version */
 			}
 		}
 
@@ -340,7 +342,9 @@ function scr_select_custom_level_menu()
 					if (ds_list_find_value(global.all_loaded_custom_levels, global.select_level_index) != undefined) /* Don't set "global level name" to "ds list find value" if it's undefined */
 					{
 						/* Update the "global level name" so game knows what level player is selecting when opening sub menu */
-						global.level_name = string(ds_list_find_value(global.all_loaded_custom_levels, global.select_level_index)); /* Set the "level name" to the selected level, so when you exit the level editor, the cursor will remember to appear on the level you selected */
+						var folder_name = string(ds_list_find_value(global.all_loaded_custom_levels, global.select_level_index));
+						global.level_folder_name = folder_name;
+						global.level_name = scr_get_level_display_name(folder_name); /* Set the "level name" to the selected level, so when you exit the level editor, the cursor will remember to appear on the level you selected */
 					}
 					scroll_to = floor(global.select_level_index / row);
 					menu = "level_editor_play";
@@ -610,6 +614,7 @@ function scr_select_custom_level_menu()
 			&& (mouse_check_button_released(mb_left))
 			{
 				global.level_name = "";
+				global.level_folder_name = "";
 				global.select_level_index = 0;
 				can_input_level_name = false;
 				menu_delay = 3;
@@ -794,7 +799,7 @@ function scr_select_custom_level_menu()
 								ini_close(); /* Don't commit the save data on Switch, this is only temporary! */
 							}
 
-							global.level_name = folder_name; /* Set the global level name to the filtered level name, because it will be reading filtered folder names */
+							global.level_folder_name = folder_name; /* Track the folder separately so UI can keep the unsanitized display name */
 
 							can_navigate = false;
 							menu_delay = 9999;
@@ -892,7 +897,7 @@ function scr_select_custom_level_menu()
 						show_level_editor_corner_menu = true;
 						menu_delay = 3;
 
-						ini_open(game_save_id + "custom_levels/" + string(global.level_name) + "/data/level_information.ini");
+						ini_open(game_save_id + "custom_levels/" + scr_get_custom_level_folder_name() + "/data/level_information.ini");
 						ini_write_string("info", "level_description", string(global.level_description)); /* Save description */
 						ini_close(); /* Don't commit the save data on Switch, this is only temporary! */
 

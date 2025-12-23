@@ -2,7 +2,7 @@
 function scr_load_object_placement_json()
 {
 	/* For actual folder name, replace illegal characters with underscore only for naming folder */
-	var folder_name = scr_sanitize_filename(string(global.level_name));
+	var folder_name = scr_get_custom_level_folder_name();
 	
 	/* Initialize flag for determining which level type to load */
 	var load_main_game_level = true;
@@ -173,7 +173,7 @@ function scr_load_object_placement_json()
 function scr_save_custom_level_json()
 {
 	/* For actual folder name, replace illegal characters with underscore only for naming folder */
-	var folder_name = scr_sanitize_filename(string(global.level_name));
+	var folder_name = scr_get_custom_level_folder_name();
 	
 	global.create_level_from_template = false; /* Set this variable to false, so that the level can properly save and load after you have loaded a template level */
 
@@ -320,7 +320,7 @@ function scr_save_custom_level_json()
 function scr_save_level_information()
 {
 	/* For actual folder name, replace illegal characters with underscore only for naming folder */
-	var folder_name = scr_sanitize_filename(string(global.level_name));
+	var folder_name = scr_get_custom_level_folder_name();
 	
 	#region /* Save Level Information */
 	if (string(folder_name) != "")

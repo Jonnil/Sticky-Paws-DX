@@ -127,3 +127,37 @@ function scr_sanitize_filename(raw_name, max_length = 255)
 
 	return out;
 }
+
+/* Convenience helper: always use the sanitized folder name for the active custom level */
+function scr_get_custom_level_folder_name()
+{
+	if (variable_global_exists("level_folder_name")
+	&& string(global.level_folder_name) != "")
+	{
+		return string(global.level_folder_name);
+	}
+
+	return scr_sanitize_filename(string(global.level_name));
+}
+
+/* Read the human-facing level name from level_information.ini, falling back to the folder name */
+function scr_get_level_display_name(folder_name)
+{
+	var info_paths = [
+		game_save_id + "custom_levels/" + string(folder_name) + "/data/level_information.ini",
+		global.use_temp_or_working + "custom_levels/" + string(folder_name) + "/data/level_information.ini"
+	];
+
+	for (var i = 0; i < array_length(info_paths); i++)
+	{
+		if (file_exists(info_paths[i]))
+		{
+			ini_open(info_paths[i]);
+			var display_name = ini_read_string("info", "level_name", string(folder_name));
+			ini_close();
+			return display_name;
+		}
+	}
+
+	return string(folder_name);
+}
