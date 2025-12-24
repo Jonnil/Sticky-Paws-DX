@@ -108,10 +108,21 @@ function scr_load_custom_levels()
 			}
 			#endregion /* Get clear check and level ID information END */
 
-			if (global.level_name != "")
+			var target_folder_name = "";
+			if (variable_global_exists("level_folder_name") && string(global.level_folder_name) != "")
 			{
-				global.select_level_index = ds_list_find_index(global.all_loaded_custom_levels, global.level_name);
-				show_debug_message("[scr_load_custom_levels] select_level_index set to " + string(global.select_level_index) + ", level_name was set to " + string(global.level_name));
+				target_folder_name = string(global.level_folder_name);
+			}
+			else
+			{
+				target_folder_name = scr_get_custom_level_folder_name(); /* Falls back to sanitized level_name */
+			}
+
+			if (target_folder_name != "")
+			{
+				global.select_level_index = ds_list_find_index(global.all_loaded_custom_levels, target_folder_name);
+				if (global.select_level_index < 0) global.select_level_index = 0; /* Stay on Create if not found */
+				show_debug_message("[scr_load_custom_levels] select_level_index set to " + string(global.select_level_index) + ", target folder: " + string(target_folder_name));
 			}
 
 			if (global.go_to_menu_when_going_back_to_title != "online_download_list_load"
@@ -133,11 +144,21 @@ function scr_load_custom_levels()
 				{
 					show_debug_message("[scr_load_custom_levels][scroll_to_after_rename] Global 'select_level_index' before update: " + string(global.select_level_index));
 
-					if (global.level_name != "")
-					&& (global.level_name != undefined)
+					var target_folder_name = "";
+					if (variable_global_exists("level_folder_name") && string(global.level_folder_name) != "")
 					{
-						global.select_level_index = ds_list_find_index(global.all_loaded_custom_levels, global.level_name);
-						show_debug_message("[scr_load_custom_levels][scroll_to_after_rename] Updated 'select_level_index': " + string(global.select_level_index) + " - 'global level name': " + string(global.level_name));
+						target_folder_name = string(global.level_folder_name);
+					}
+					else
+					{
+						target_folder_name = scr_get_custom_level_folder_name();
+					}
+
+					if (target_folder_name != "")
+					{
+						global.select_level_index = ds_list_find_index(global.all_loaded_custom_levels, target_folder_name);
+						if (global.select_level_index < 0) global.select_level_index = 0;
+						show_debug_message("[scr_load_custom_levels][scroll_to_after_rename] Updated 'select_level_index': " + string(global.select_level_index) + " - target folder: " + string(target_folder_name));
 					}
 
 					if (variable_instance_exists(self, "scroll_to")
@@ -181,11 +202,21 @@ function scr_load_custom_levels()
 				{
 					show_debug_message("[scr_load_custom_levels][scroll_to_after_rename] Global 'select_level_index' before update: " + string(global.select_level_index));
 
-					if (global.level_name != "")
-					&& (global.level_name != undefined)
+					var target_folder_name = "";
+					if (variable_global_exists("level_folder_name") && string(global.level_folder_name) != "")
 					{
-						global.select_level_index = ds_list_find_index(global.all_loaded_custom_levels, global.level_name);
-						show_debug_message("[scr_load_custom_levels][scroll_to_after_rename] Updated 'select_level_index': " + string(global.select_level_index) + " - 'global level name': " + string(global.level_name));
+						target_folder_name = string(global.level_folder_name);
+					}
+					else
+					{
+						target_folder_name = scr_get_custom_level_folder_name();
+					}
+
+					if (target_folder_name != "")
+					{
+						global.select_level_index = ds_list_find_index(global.all_loaded_custom_levels, target_folder_name);
+						if (global.select_level_index < 0) global.select_level_index = 0;
+						show_debug_message("[scr_load_custom_levels][scroll_to_after_rename] Updated 'select_level_index': " + string(global.select_level_index) + " - target folder: " + string(target_folder_name));
 					}
 
 					if (variable_instance_exists(self, "scroll_to")
