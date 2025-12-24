@@ -5,13 +5,17 @@ function scr_draw_name_input_screen(what_string /* What string to edit */, max_c
 	var buttons_cancel_y = buttons_ok_y + 42;
 	var width = 150;
 	var extra_height = 16;
+	var mouse_gui_x = device_mouse_x_to_gui(0);
+	var mouse_gui_y = device_mouse_y_to_gui(0);
+	var input_text = string(keyboard_string);
+	var text_width = string_width_ext(input_text, 40, 1000);
+	var text_height = string_height_ext(input_text, 40, 1000);
 
-	#region /* Opaque transparent black rectangle over whole screen, but underneath name input screen */
+	/* Opaque transparent black rectangle over whole screen, but underneath name input screen */
 	draw_set_alpha(0.5);
 	draw_rectangle_color(- 32, - 32, display_get_gui_width() + 32, display_get_gui_height() + 32, c_black, c_black, c_black, c_black, false);
 	draw_set_alpha(1);
-	#endregion /* Opaque transparent black rectangle over whole screen, but underneath name input screen END */
-
+	
 	#region /* Never draw x too far off screen */
 	if (xx < 200)
 	{
@@ -44,13 +48,13 @@ function scr_draw_name_input_screen(what_string /* What string to edit */, max_c
 	}
 	#endregion /* Never draw y too low on screen so it shows up underneath the screen END */
 
-	if (string_width_ext(keyboard_string, 40, 1000) < 300)
+	if (text_width < 300)
 	{
 		width = 150;
 	}
 	else
 	{
-		width = string_width_ext(keyboard_string, 40, 1000) * 0.5;
+		width = text_width * 0.5;
 	}
 
 	if (global.keyboard_virtual_timer < 6)
@@ -68,7 +72,7 @@ function scr_draw_name_input_screen(what_string /* What string to edit */, max_c
 	}
 
 	if (global.keyboard_virtual_timer == 4)
-	|| (point_in_rectangle(device_mouse_x_to_gui(0), device_mouse_y_to_gui(0), xx - width, yy - 16, xx + width, yy + 16))
+	|| (point_in_rectangle(mouse_gui_x, mouse_gui_y, xx - width, yy - 16, xx + width, yy + 16))
 	&& (mouse_check_button_released(mb_left))
 	&& (global.keyboard_virtual_timer >= 5)
 	|| (gamepad_button_check_pressed(global.player_slot[1], gp_face4))
@@ -89,9 +93,9 @@ function scr_draw_name_input_screen(what_string /* What string to edit */, max_c
 	}
 
 	#region /* Box where name is written on */
-	if (string_height_ext(keyboard_string, 40, 1000) > 0)
+	if (text_height > 0)
 	{
-		extra_height = string_height_ext(keyboard_string, 40, 1000) - 25;
+		extra_height = text_height - 25;
 	}
 	else
 	{
@@ -109,28 +113,18 @@ function scr_draw_name_input_screen(what_string /* What string to edit */, max_c
 	draw_set_valign(fa_middle);
 
 	var name_entering_blink = scr_wave(0, 1, 1, 0);
+	
+	/* Build the displayed text once, then optionally append the caret for blink */
+	var string_text = input_text;
+	if (only_big_letter)
+	{
+		string_text = string_upper(input_text);
+	}
 	if (name_entering_blink > 0.5)
 	{
-		if (only_big_letter)
-		{
-			var string_text = string_upper(keyboard_string) + "|";
-		}
-		else
-		{
-			var string_text = string(keyboard_string) + "|";
-		}
+		string_text += "|";
 	}
-	else
-	{
-		if (only_big_letter)
-		{
-			var string_text = string_upper(keyboard_string);
-		}
-		else
-		{
-			var string_text = string(keyboard_string);
-		}
-	}
+	
 	draw_set_halign(fa_center);
 	draw_set_valign(fa_bottom);
 	draw_text_ext_transformed_color(xx, yy + 15, string_text, 40, 1000, global.default_text_size, global.default_text_size, 0, c_white, c_white, c_white, c_white, 1);
@@ -138,10 +132,10 @@ function scr_draw_name_input_screen(what_string /* What string to edit */, max_c
 	#endregion /* Draw the inputed text END */
 
 	#region /* When pressing backspace with nothing in keyboard_string, a DEL character gets typed. Do code like this to prevent that */
-	if (keyboard_string = "\u007f") /* This is the unicode for DEL character */
-	&& (string_length(keyboard_string) <= 1)
+	if (input_text = "\u007f") /* This is the unicode for DEL character */
+	&& (string_length(input_text) <= 1)
 	{
-		keyboard_string = "";
+		input_text = "";
 		what_string = "";
 	}
 	#endregion /* When pressing backspace with nothing in keyboard_string, a DEL character gets typed. Do code like this to prevent that END */
@@ -151,8 +145,8 @@ function scr_draw_name_input_screen(what_string /* What string to edit */, max_c
 	&& (keyboard_check_pressed(ord("V")))
 	&& (clipboard_has_text())
 	{
-		keyboard_string = clipboard_get_text();
-		what_string = clipboard_get_text();
+		input_text = clipboard_get_text();
+		what_string = input_text;
 	}
 	#endregion /* Can paste text from clipboard END */
 
@@ -160,13 +154,13 @@ function scr_draw_name_input_screen(what_string /* What string to edit */, max_c
 	draw_set_halign(fa_right);
 	draw_set_valign(fa_middle);
 
-	if (string_length(what_string) >= max_char)
+	if (string_length(input_text) >= max_char)
 	{
 		scr_draw_text_outlined(xx + 150, yy + 32, string(max_char) + "/" + string(max_char), global.default_text_size, c_black, c_white, 1);
 	}
 	else
 	{
-		scr_draw_text_outlined(xx + 150, yy + 32, string(string_length(what_string)) + "/" + string(max_char), global.default_text_size, c_black, c_ltgray, 1);
+		scr_draw_text_outlined(xx + 150, yy + 32, string(string_length(input_text)) + "/" + string(max_char), global.default_text_size, c_black, c_ltgray, 1);
 	}
 	#endregion /* Show how many characters a name has and what the max amount of characters is END */
 
@@ -184,7 +178,7 @@ function scr_draw_name_input_screen(what_string /* What string to edit */, max_c
 	&& menu_joystick_delay == 0)
 	{
 		if (mouse_check_button_released(mb_left))
-		&& (point_in_rectangle(device_mouse_x_to_gui(0), device_mouse_y_to_gui(0), xx + buttons_x, yy + buttons_cancel_y, xx + buttons_x + 370, yy + buttons_cancel_y + 41))
+		&& (point_in_rectangle(mouse_gui_x, mouse_gui_y, xx + buttons_x, yy + buttons_cancel_y, xx + buttons_x + 370, yy + buttons_cancel_y + 41))
 		&& (menu == cancel_menu_string)
 		|| (keyboard_check_pressed(vk_escape))
 		|| (keyboard_check_pressed(vk_enter)
@@ -213,7 +207,7 @@ function scr_draw_name_input_screen(what_string /* What string to edit */, max_c
 			if (variable_instance_exists(self, "remember_keyboard_string"))
 			{
 				what_string = remember_keyboard_string;
-				keyboard_string = remember_keyboard_string; /* Revert back to whatever was already written before entering name input screen */
+				input_text = remember_keyboard_string; /* Revert back to whatever was already written before entering name input screen */
 			}
 
 			what_string_async = "";
@@ -235,11 +229,11 @@ function scr_draw_name_input_screen(what_string /* What string to edit */, max_c
 
 	#region /* OK and Cancel buttons under name input */
 	if (!can_ok_when_empty)
-	&& (keyboard_string != "")
+	&& (input_text != "")
 	|| (can_ok_when_empty)
 	{
 		if (max_char_needed) /* On some code input screens, you want to fill all the characters to the max before you can continue */
-		&& (string_length(keyboard_string) == max_char)
+		&& (string_length(input_text) == max_char)
 		|| (!max_char_needed)
 		{
 			draw_menu_button(xx + buttons_x, yy + buttons_ok_y, l10n_text("OK"), ok_menu_string, ok_menu_string);
@@ -264,7 +258,7 @@ function scr_draw_name_input_screen(what_string /* What string to edit */, max_c
 			&& (menu == ok_menu_string)
 			{
 				if (mouse_check_button_released(mb_left))
-				&& (point_in_rectangle(device_mouse_x_to_gui(0), device_mouse_y_to_gui(0), xx + buttons_x, yy + buttons_ok_y, xx + buttons_x + 370, yy + buttons_ok_y + 41))
+				&& (point_in_rectangle(mouse_gui_x, mouse_gui_y, xx + buttons_x, yy + buttons_ok_y, xx + buttons_x + 370, yy + buttons_ok_y + 41))
 				|| (keyboard_check_pressed(vk_enter))
 				|| (gamepad_button_check_pressed(global.player_slot[1], global.player_[inp.gp][1][1][action.accept]))
 				|| (gamepad_button_check_pressed(global.player_slot[1], global.player_[inp.gp][1][2][action.accept]))
@@ -330,11 +324,11 @@ function scr_draw_name_input_screen(what_string /* What string to edit */, max_c
 	}
 	#endregion /* OK and Cancel buttons under name input END */
 
-	var string_previous = keyboard_string;
+	var string_previous = input_text;
 
-	if (string_length(keyboard_string) > max_char)
+	if (string_length(input_text) > max_char)
 	{
-		keyboard_string = string_copy(string_previous, 1, max_char);
+		input_text = string_copy(string_previous, 1, max_char);
 	}
 
 	if (menu_delay == 0
@@ -360,15 +354,21 @@ function scr_draw_name_input_screen(what_string /* What string to edit */, max_c
 		}
 	}
 
-	if (switch_check_profanity(keyboard_string))
+	static __last_profanity_checked = "";
+	if (input_text != __last_profanity_checked)
 	{
-		keyboard_string = switch_mask_profanity(keyboard_string);
+		if (switch_check_profanity(input_text))
+		{
+			input_text = switch_mask_profanity(input_text);
+		}
+		__last_profanity_checked = input_text;
 	}
 
-	what_string = keyboard_string; /* Set this variable to keyboard string */
+	what_string = input_text; /* Set this variable to keyboard string */
 
 	/* Remove any quotation marks right before returning, as they make most strings invalid */
-	keyboard_string = string_replace_all(keyboard_string, "\"", "'");
+	input_text = string_replace_all(input_text, "\"", "'");
+	keyboard_string = input_text;
 
-	return(keyboard_string);
+	return(input_text);
 }
