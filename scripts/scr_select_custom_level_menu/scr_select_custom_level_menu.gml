@@ -339,6 +339,7 @@ function scr_select_custom_level_menu()
 				&& (ds_list_find_value(global.all_loaded_custom_levels, global.select_level_index) != undefined) /* Can only open sub menu if there actually is a level existing */
 				{
 					menu_delay = 3;
+					
 					if (ds_list_find_value(global.all_loaded_custom_levels, global.select_level_index) != undefined) /* Don't set "global level name" to "ds list find value" if it's undefined */
 					{
 						/* Update the "global level name" so game knows what level player is selecting when opening sub menu */
@@ -346,6 +347,7 @@ function scr_select_custom_level_menu()
 						global.level_folder_name = folder_name;
 						global.level_name = scr_get_level_display_name(folder_name); /* Set the "level name" to the selected level, so when you exit the level editor, the cursor will remember to appear on the level you selected */
 					}
+					
 					scroll_to = floor(global.select_level_index / row);
 					menu = "level_editor_play";
 					open_sub_menu = true;
@@ -386,16 +388,24 @@ function scr_select_custom_level_menu()
 		{
 			draw_set_halign(fa_center);
 			draw_set_valign(fa_middle);
+			var text_scale_modifier = 1;
+			
 			if (get_window_width <= 1350)
 			{
-				var text_scale_modifier = 0.75;
+				text_scale_modifier = 0.75;
 			}
-			else
-			{
-				var text_scale_modifier = 1;
-			}
+			
 			draw_roundrect_color_ext(0, get_window_height - 32, get_window_width, get_window_height, 50, 50, c_black, c_black, false);
-			var file_path_text = string_replace_all(string_replace_all(game_save_id, environment_get_variable("USERNAME"), "*") + "\custom_levels\\" + global.level_name, "\\", "/");
+			/* Need to make absolutely sure that it's the actual folder name for the level path */
+			var folder_name_for_path = string(global.level_folder_name);
+			
+			if (folder_name_for_path == "")
+			{
+				/* Fall back to the real folder name from disk, not the display name */
+				folder_name_for_path = string(ds_list_find_value(global.all_loaded_custom_levels, global.select_level_index));
+			}
+			
+			var file_path_text = string_replace_all(string_replace_all(game_save_id, environment_get_variable("USERNAME"), "*") + "\custom_levels\\" + folder_name_for_path, "\\", "/");
 			scr_draw_text_outlined(get_window_width * 0.5, get_window_height - 16, string(file_path_text), global.default_text_size * text_scale_modifier, c_menu_outline, c_dkgray, 1);
 		}
 		#endregion /* Show the path of the custom level on the bottom of the screen END */
