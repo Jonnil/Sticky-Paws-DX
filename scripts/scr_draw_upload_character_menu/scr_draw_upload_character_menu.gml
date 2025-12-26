@@ -639,6 +639,8 @@ function scr_draw_upload_character_menu()
 	#region /* Uploading Character */
 	if (menu == "uploading_character")
 	{
+		var character_zip_path = game_save_id + "uploads/" + string(character_id) + ".zip";
+		show_debug_message("[upload_character] tick delay=" + string(menu_delay) + " exists=" + string(file_exists(character_zip_path)) + " path=" + character_zip_path);
 		if (global.username == "")
 		{
 			keyboard_string = "";
@@ -666,14 +668,14 @@ function scr_draw_upload_character_menu()
 		}
 		else
 		if (menu_delay <= 40)
-		&& (!file_exists(game_save_id + string(character_id) + ".zip"))
+		&& (!file_exists(character_zip_path))
 		{
 			scr_draw_text_outlined(get_window_width * 0.5, uploading_character_message_y + 42, l10n_text("Creating Character Zip File"), global.default_text_size, c_black, c_ltgray, 1);
 			scr_draw_text_outlined(get_window_width * 0.5, uploading_character_message_y + 84, l10n_text(global.creating_zip_file_description), global.default_text_size, c_black, c_dkgray, 1);
 		}
 		else
 		if (menu_delay >= 0)
-		&& (file_exists(game_save_id + string(character_id) + ".zip"))
+		&& (file_exists(character_zip_path))
 		{
 			scr_draw_text_outlined(get_window_width * 0.5, uploading_character_message_y + 42, l10n_text("Send Zip File to the Server"), global.default_text_size, c_black, c_ltgray, 1);
 		}
@@ -685,29 +687,31 @@ function scr_draw_upload_character_menu()
 		}
 		#endregion /* Generate Character ID END */
 
-		#region /* Create Zip File */
-		if (menu_delay == 40
-		&& !file_exists(game_save_id + string(character_id) + ".zip"))
-		{
-			file = scr_upload_zip_add_files("character"); /* Add all the character files to a new zip file */
-		}
-		#endregion /* Create Zip File END */
+	#region /* Create Zip File */
+	if (menu_delay == 40
+	&& !file_exists(character_zip_path))
+	{
+		show_debug_message("[upload_character] menu_delay==40 creating zip: " + character_zip_path);
+		file = scr_upload_zip_add_files("character"); /* Add all the character files to a new zip file */
+	}
+	#endregion /* Create Zip File END */
 
-		#region /* Send Zip File to the Server */
+	#region /* Send Zip File to the Server */
 		if (menu_delay == 0)
-		&& (file_exists(game_save_id + string(character_id) + ".zip"))
-		{
-			var zip_file = file_bin_open(game_save_id + string(character_id) + ".zip", 0);
-			var zip_size = file_bin_size(zip_file);
-			file_bin_close(zip_file); /* Don't commit the save data on Switch, this is only temporary! */
-			zip_megabytes = zip_size / 1024 / 1024;
+		&& (file_exists(character_zip_path))
+	{
+		show_debug_message("[upload_character] menu_delay==0 found zip, preparing upload: " + character_zip_path);
+		var zip_file = file_bin_open(character_zip_path, 0);
+		var zip_size = file_bin_size(zip_file);
+		file_bin_close(zip_file); /* Don't commit the save data on Switch, this is only temporary! */
+		zip_megabytes = zip_size / 1024 / 1024;
 
 			if (zip_megabytes > global.max_file_upload_megabytes)
 			{
 				if (destroy_zip_after_uploading) /* Delete some leftover files and folders */
 				|| (GM_build_type == "exe")
 				{
-					file_delete(game_save_id + string(character_id) + ".zip");
+					file_delete(character_zip_path);
 				}
 				menu = "error_character_too_big";
 			}
@@ -734,7 +738,7 @@ function scr_draw_upload_character_menu()
 									}
 									
 									/* User is prompted for a file to upload */
-									file_name = filename_name(file);
+									file_name = filename_name(character_zip_path);
 									
 									/* Create DS Map to hold the HTTP Header info */
 									var character_upload_headers = ds_map_create();
@@ -747,7 +751,7 @@ function scr_draw_upload_character_menu()
 									
 									/* Loads the file into a buffer */
 									send_buffer = buffer_create(1, buffer_grow, 1);
-									buffer_load_ext(send_buffer, game_save_id + string(file), 0);
+									buffer_load_ext(send_buffer, character_zip_path, 0);
 									
 									/* Encodes the data as base64 */
 									data_send = buffer_base64_encode(send_buffer, 0, buffer_get_size(send_buffer));
@@ -780,7 +784,7 @@ function scr_draw_upload_character_menu()
 									if (destroy_zip_after_uploading) /* Delete some leftover files and folders */
 									|| (GM_build_type == "exe")
 									{
-										file_delete(game_save_id + string(character_id) + ".zip");
+										file_delete(character_zip_path);
 									}
 									#endregion /* Actually upload the character to the server END */
 
@@ -826,13 +830,14 @@ function scr_draw_upload_character_menu()
 				}
 			}
 		}
-		else
-		if (menu_delay == 0)
-		&& (!file_exists(game_save_id + string(character_id) + ".zip"))
-		{
-			menu_delay = 45;
-		}
-		#endregion /* Send Zip File to the Server END */
+	else
+	if (menu_delay == 0)
+	&& (!file_exists(character_zip_path))
+	{
+		show_debug_message("[upload_character] menu_delay==0 zip missing, resetting delay to 45. Path: " + character_zip_path);
+		menu_delay = 45;
+	}
+	#endregion /* Send Zip File to the Server END */
 
 	}
 	#endregion /* Uploading Character END */

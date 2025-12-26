@@ -1,10 +1,13 @@
 /* Save Level Information like if you have cleared the level or if you have a checkpoint */
 function scr_save_level()
 {
-	var level_name = global.level_name; /* Before getting the level id, we need to get the level name, as the level name is needed so we know what level to look for level id */
+	/* Use the real folder name to read level_id; display name can differ from folder name */
+	var level_name = global.level_name;
+	var level_folder = scr_get_custom_level_folder_name();
+	var level_info_path = global.use_temp_or_working + "custom_levels/" + string(level_folder) + "/data/level_information.ini";
 
-	ini_open(global.use_temp_or_working + "custom_levels/" + string(level_name) + "/data/level_information.ini");
-	var level_id = ini_read_string("info", "level_id", "");
+	ini_open(level_info_path);
+	var level_id = string_upper(ini_read_string("info", "level_id", ""));
 	ini_close();
 	
 	#region /* If doing a character clear check, and winning the level, then add in character config that you have done a clear check */
@@ -144,7 +147,9 @@ function scr_save_level()
 	{
 
 		#region /* Save to custom level save file */
-		ini_open(game_save_id + "save_file/custom_level_save.ini");
+		/* Use a dedicated file for online progress (not mixed with local custom-level data) */
+		var online_progress_path = game_save_id + "save_file/online_level_progress.ini";
+		ini_open(online_progress_path);
 
 		#region /* Downloaded Level Progression */
 		/* Update a list of downloaded levels that you have finished */

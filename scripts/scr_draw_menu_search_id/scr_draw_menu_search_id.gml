@@ -931,110 +931,118 @@ function scr_draw_menu_search_id(what_kind_of_id = "level")
 							have_downloaded_from_server = true;
 							menu_delay = 3;
 							global.use_temp_or_working = game_save_id;
-							scr_copy_move_files(normalize_path_seps(download_temp_path + "custom_" + string(what_kind_of_id) + "s/" + global.level_name), normalize_path_seps(game_save_id + "custom_" + string(what_kind_of_id) + "s/" + global.level_name), delete_file_after_download);
+							var folder_name_for_copy = scr_get_custom_level_folder_name(); /* Use the actual folder name, not the display name */
 							
-							#region /* After files have been moved to the working directory, check if game doesn't accept photographic images, and if they are found, remove them */
-							if (what_kind_of_id == "level"
-							&& !global.can_load_photographic_images) /* If you are not allowed to load photographic images */
+							var copy_source_path = normalize_path_seps(download_temp_path + "custom_" + string(what_kind_of_id) + "s/" + folder_name_for_copy);
+							var copy_target_path = normalize_path_seps(game_save_id + "custom_" + string(what_kind_of_id) + "s/" + folder_name_for_copy);
+							scr_copy_move_files(copy_source_path, copy_target_path, delete_file_after_download);
+							
+							/* Make sure the files have actualy been copied correctly before going to the intended menu */
+							if (directory_exists(copy_target_path))
 							{
-								ini_open(game_save_id + "custom_levels/" + scr_get_custom_level_folder_name() + "/data/level_information.ini");
-								
-								if (ini_read_real("Custom Backgrounds", "background1_uses_photographic_image", false) == true)
+								#region /* After files have been moved to the working directory, check if game doesn't accept photographic images, and if they are found, remove them */
+								if (what_kind_of_id == "level"
+								&& !global.can_load_photographic_images) /* If you are not allowed to load photographic images */
 								{
-									file_delete(game_save_id + "custom_levels/" + scr_get_custom_level_folder_name() + "/background/background1.png");
-									file_delete(game_save_id + "custom_levels/" + scr_get_custom_level_folder_name() + "/background/background1.bmp");
-									file_delete(game_save_id + "custom_levels/" + scr_get_custom_level_folder_name() + "/background/background1.gif");
-									file_delete(game_save_id + "custom_levels/" + scr_get_custom_level_folder_name() + "/background/background1.jpg");
-									file_delete(game_save_id + "custom_levels/" + scr_get_custom_level_folder_name() + "/background/background1.jpeg");
-									ini_write_real("Custom Backgrounds", "background1_uses_photographic_image", false);
+									ini_open(game_save_id + "custom_levels/" + scr_get_custom_level_folder_name() + "/data/level_information.ini");
+									
+									if (ini_read_real("Custom Backgrounds", "background1_uses_photographic_image", false) == true)
+									{
+										file_delete(game_save_id + "custom_levels/" + scr_get_custom_level_folder_name() + "/background/background1.png");
+										file_delete(game_save_id + "custom_levels/" + scr_get_custom_level_folder_name() + "/background/background1.bmp");
+										file_delete(game_save_id + "custom_levels/" + scr_get_custom_level_folder_name() + "/background/background1.gif");
+										file_delete(game_save_id + "custom_levels/" + scr_get_custom_level_folder_name() + "/background/background1.jpg");
+										file_delete(game_save_id + "custom_levels/" + scr_get_custom_level_folder_name() + "/background/background1.jpeg");
+										ini_write_real("Custom Backgrounds", "background1_uses_photographic_image", false);
+									}
+									
+									if (ini_read_real("Custom Backgrounds", "background2_uses_photographic_image", false) == true)
+									{
+										file_delete(game_save_id + "custom_levels/" + scr_get_custom_level_folder_name() + "/background/background2.png");
+										file_delete(game_save_id + "custom_levels/" + scr_get_custom_level_folder_name() + "/background/background2.bmp");
+										file_delete(game_save_id + "custom_levels/" + scr_get_custom_level_folder_name() + "/background/background2.gif");
+										file_delete(game_save_id + "custom_levels/" + scr_get_custom_level_folder_name() + "/background/background2.jpg");
+										file_delete(game_save_id + "custom_levels/" + scr_get_custom_level_folder_name() + "/background/background2.jpeg");
+										ini_write_real("Custom Backgrounds", "background2_uses_photographic_image", false);
+									}
+									
+									if (ini_read_real("Custom Backgrounds", "background3_uses_photographic_image", false) == true)
+									{
+										file_delete(game_save_id + "custom_levels/" + scr_get_custom_level_folder_name() + "/background/background3.png");
+										file_delete(game_save_id + "custom_levels/" + scr_get_custom_level_folder_name() + "/background/background3.bmp");
+										file_delete(game_save_id + "custom_levels/" + scr_get_custom_level_folder_name() + "/background/background3.gif");
+										file_delete(game_save_id + "custom_levels/" + scr_get_custom_level_folder_name() + "/background/background3.jpg");
+										file_delete(game_save_id + "custom_levels/" + scr_get_custom_level_folder_name() + "/background/background3.jpeg");
+										ini_write_real("Custom Backgrounds", "background3_uses_photographic_image", false);
+									}
+									
+									if (ini_read_real("Custom Backgrounds", "background4_uses_photographic_image", false) == true)
+									{
+										file_delete(game_save_id + "custom_levels/" + scr_get_custom_level_folder_name() + "/background/background4.png");
+										file_delete(game_save_id + "custom_levels/" + scr_get_custom_level_folder_name() + "/background/background4.bmp");
+										file_delete(game_save_id + "custom_levels/" + scr_get_custom_level_folder_name() + "/background/background4.gif");
+										file_delete(game_save_id + "custom_levels/" + scr_get_custom_level_folder_name() + "/background/background4.jpg");
+										file_delete(game_save_id + "custom_levels/" + scr_get_custom_level_folder_name() + "/background/background4.jpeg");
+										ini_write_real("Custom Backgrounds", "background4_uses_photographic_image", false);
+									}
+									
+									if (ini_read_real("Custom Backgrounds", "foreground1_uses_photographic_image", false) == true)
+									{
+										file_delete(game_save_id + "custom_levels/" + scr_get_custom_level_folder_name() + "/background/foreground1.png");
+										file_delete(game_save_id + "custom_levels/" + scr_get_custom_level_folder_name() + "/background/foreground1.bmp");
+										file_delete(game_save_id + "custom_levels/" + scr_get_custom_level_folder_name() + "/background/foreground1.gif");
+										file_delete(game_save_id + "custom_levels/" + scr_get_custom_level_folder_name() + "/background/foreground1.jpg");
+										file_delete(game_save_id + "custom_levels/" + scr_get_custom_level_folder_name() + "/background/foreground1.jpeg");
+										ini_write_real("Custom Backgrounds", "foreground1_uses_photographic_image", false);
+									}
+									
+									if (ini_read_real("Custom Backgrounds", "foreground1_5_uses_photographic_image", false) == true)
+									{
+										file_delete(game_save_id + "custom_levels/" + scr_get_custom_level_folder_name() + "/background/foreground1_5.png");
+										file_delete(game_save_id + "custom_levels/" + scr_get_custom_level_folder_name() + "/background/foreground1_5.bmp");
+										file_delete(game_save_id + "custom_levels/" + scr_get_custom_level_folder_name() + "/background/foreground1_5.gif");
+										file_delete(game_save_id + "custom_levels/" + scr_get_custom_level_folder_name() + "/background/foreground1_5.jpg");
+										file_delete(game_save_id + "custom_levels/" + scr_get_custom_level_folder_name() + "/background/foreground1_5.jpeg");
+										ini_write_real("Custom Backgrounds", "foreground1_5_uses_photographic_image", false);
+									}
+									
+									if (ini_read_real("Custom Backgrounds", "foreground2_uses_photographic_image", false) == true)
+									{
+										file_delete(game_save_id + "custom_levels/" + scr_get_custom_level_folder_name() + "/background/foreground2.png");
+										file_delete(game_save_id + "custom_levels/" + scr_get_custom_level_folder_name() + "/background/foreground2.bmp");
+										file_delete(game_save_id + "custom_levels/" + scr_get_custom_level_folder_name() + "/background/foreground2.gif");
+										file_delete(game_save_id + "custom_levels/" + scr_get_custom_level_folder_name() + "/background/foreground2.jpg");
+										file_delete(game_save_id + "custom_levels/" + scr_get_custom_level_folder_name() + "/background/foreground2.jpeg");
+										ini_write_real("Custom Backgrounds", "foreground2_uses_photographic_image", false);
+									}
+									
+									if (ini_read_real("Custom Backgrounds", "foreground_secret_uses_photographic_image", false) == true)
+									{
+										file_delete(game_save_id + "custom_levels/" + scr_get_custom_level_folder_name() + "/background/foreground_secret.png");
+										file_delete(game_save_id + "custom_levels/" + scr_get_custom_level_folder_name() + "/background/foreground_secret.bmp");
+										file_delete(game_save_id + "custom_levels/" + scr_get_custom_level_folder_name() + "/background/foreground_secret.gif");
+										file_delete(game_save_id + "custom_levels/" + scr_get_custom_level_folder_name() + "/background/foreground_secret.jpg");
+										file_delete(game_save_id + "custom_levels/" + scr_get_custom_level_folder_name() + "/background/foreground_secret.jpeg");
+										ini_write_real("Custom Backgrounds", "foreground_secret_uses_photographic_image", false);
+									}
+									
+									if (ini_read_real("Custom Backgrounds", "thumbnail_uses_photographic_image", false) == true)
+									{
+										file_delete(game_save_id + "custom_levels/" + scr_get_custom_level_folder_name() + "/thumbnail.png");
+										file_delete(game_save_id + "custom_levels/" + scr_get_custom_level_folder_name() + "/thumbnail.bmp");
+										file_delete(game_save_id + "custom_levels/" + scr_get_custom_level_folder_name() + "/thumbnail.gif");
+										file_delete(game_save_id + "custom_levels/" + scr_get_custom_level_folder_name() + "/thumbnail.jpg");
+										file_delete(game_save_id + "custom_levels/" + scr_get_custom_level_folder_name() + "/thumbnail.jpeg");
+										file_delete(game_save_id + "custom_levels/" + scr_get_custom_level_folder_name() + "/automatic_thumbnail.png");
+										ini_write_real("Custom Backgrounds", "thumbnail_uses_photographic_image", false);
+									}
+									
+									ini_close(); /* Don't commit the save data on Switch, this is only temporary! */
 								}
+								#endregion /* After files have been moved to the working directory, check if game doesn't accept photographic images, and if they are found, remove them END */
 								
-								if (ini_read_real("Custom Backgrounds", "background2_uses_photographic_image", false) == true)
-								{
-									file_delete(game_save_id + "custom_levels/" + scr_get_custom_level_folder_name() + "/background/background2.png");
-									file_delete(game_save_id + "custom_levels/" + scr_get_custom_level_folder_name() + "/background/background2.bmp");
-									file_delete(game_save_id + "custom_levels/" + scr_get_custom_level_folder_name() + "/background/background2.gif");
-									file_delete(game_save_id + "custom_levels/" + scr_get_custom_level_folder_name() + "/background/background2.jpg");
-									file_delete(game_save_id + "custom_levels/" + scr_get_custom_level_folder_name() + "/background/background2.jpeg");
-									ini_write_real("Custom Backgrounds", "background2_uses_photographic_image", false);
-								}
-								
-								if (ini_read_real("Custom Backgrounds", "background3_uses_photographic_image", false) == true)
-								{
-									file_delete(game_save_id + "custom_levels/" + scr_get_custom_level_folder_name() + "/background/background3.png");
-									file_delete(game_save_id + "custom_levels/" + scr_get_custom_level_folder_name() + "/background/background3.bmp");
-									file_delete(game_save_id + "custom_levels/" + scr_get_custom_level_folder_name() + "/background/background3.gif");
-									file_delete(game_save_id + "custom_levels/" + scr_get_custom_level_folder_name() + "/background/background3.jpg");
-									file_delete(game_save_id + "custom_levels/" + scr_get_custom_level_folder_name() + "/background/background3.jpeg");
-									ini_write_real("Custom Backgrounds", "background3_uses_photographic_image", false);
-								}
-								
-								if (ini_read_real("Custom Backgrounds", "background4_uses_photographic_image", false) == true)
-								{
-									file_delete(game_save_id + "custom_levels/" + scr_get_custom_level_folder_name() + "/background/background4.png");
-									file_delete(game_save_id + "custom_levels/" + scr_get_custom_level_folder_name() + "/background/background4.bmp");
-									file_delete(game_save_id + "custom_levels/" + scr_get_custom_level_folder_name() + "/background/background4.gif");
-									file_delete(game_save_id + "custom_levels/" + scr_get_custom_level_folder_name() + "/background/background4.jpg");
-									file_delete(game_save_id + "custom_levels/" + scr_get_custom_level_folder_name() + "/background/background4.jpeg");
-									ini_write_real("Custom Backgrounds", "background4_uses_photographic_image", false);
-								}
-								
-								if (ini_read_real("Custom Backgrounds", "foreground1_uses_photographic_image", false) == true)
-								{
-									file_delete(game_save_id + "custom_levels/" + scr_get_custom_level_folder_name() + "/background/foreground1.png");
-									file_delete(game_save_id + "custom_levels/" + scr_get_custom_level_folder_name() + "/background/foreground1.bmp");
-									file_delete(game_save_id + "custom_levels/" + scr_get_custom_level_folder_name() + "/background/foreground1.gif");
-									file_delete(game_save_id + "custom_levels/" + scr_get_custom_level_folder_name() + "/background/foreground1.jpg");
-									file_delete(game_save_id + "custom_levels/" + scr_get_custom_level_folder_name() + "/background/foreground1.jpeg");
-									ini_write_real("Custom Backgrounds", "foreground1_uses_photographic_image", false);
-								}
-								
-								if (ini_read_real("Custom Backgrounds", "foreground1_5_uses_photographic_image", false) == true)
-								{
-									file_delete(game_save_id + "custom_levels/" + scr_get_custom_level_folder_name() + "/background/foreground1_5.png");
-									file_delete(game_save_id + "custom_levels/" + scr_get_custom_level_folder_name() + "/background/foreground1_5.bmp");
-									file_delete(game_save_id + "custom_levels/" + scr_get_custom_level_folder_name() + "/background/foreground1_5.gif");
-									file_delete(game_save_id + "custom_levels/" + scr_get_custom_level_folder_name() + "/background/foreground1_5.jpg");
-									file_delete(game_save_id + "custom_levels/" + scr_get_custom_level_folder_name() + "/background/foreground1_5.jpeg");
-									ini_write_real("Custom Backgrounds", "foreground1_5_uses_photographic_image", false);
-								}
-								
-								if (ini_read_real("Custom Backgrounds", "foreground2_uses_photographic_image", false) == true)
-								{
-									file_delete(game_save_id + "custom_levels/" + scr_get_custom_level_folder_name() + "/background/foreground2.png");
-									file_delete(game_save_id + "custom_levels/" + scr_get_custom_level_folder_name() + "/background/foreground2.bmp");
-									file_delete(game_save_id + "custom_levels/" + scr_get_custom_level_folder_name() + "/background/foreground2.gif");
-									file_delete(game_save_id + "custom_levels/" + scr_get_custom_level_folder_name() + "/background/foreground2.jpg");
-									file_delete(game_save_id + "custom_levels/" + scr_get_custom_level_folder_name() + "/background/foreground2.jpeg");
-									ini_write_real("Custom Backgrounds", "foreground2_uses_photographic_image", false);
-								}
-								
-								if (ini_read_real("Custom Backgrounds", "foreground_secret_uses_photographic_image", false) == true)
-								{
-									file_delete(game_save_id + "custom_levels/" + scr_get_custom_level_folder_name() + "/background/foreground_secret.png");
-									file_delete(game_save_id + "custom_levels/" + scr_get_custom_level_folder_name() + "/background/foreground_secret.bmp");
-									file_delete(game_save_id + "custom_levels/" + scr_get_custom_level_folder_name() + "/background/foreground_secret.gif");
-									file_delete(game_save_id + "custom_levels/" + scr_get_custom_level_folder_name() + "/background/foreground_secret.jpg");
-									file_delete(game_save_id + "custom_levels/" + scr_get_custom_level_folder_name() + "/background/foreground_secret.jpeg");
-									ini_write_real("Custom Backgrounds", "foreground_secret_uses_photographic_image", false);
-								}
-								
-								if (ini_read_real("Custom Backgrounds", "thumbnail_uses_photographic_image", false) == true)
-								{
-									file_delete(game_save_id + "custom_levels/" + scr_get_custom_level_folder_name() + "/thumbnail.png");
-									file_delete(game_save_id + "custom_levels/" + scr_get_custom_level_folder_name() + "/thumbnail.bmp");
-									file_delete(game_save_id + "custom_levels/" + scr_get_custom_level_folder_name() + "/thumbnail.gif");
-									file_delete(game_save_id + "custom_levels/" + scr_get_custom_level_folder_name() + "/thumbnail.jpg");
-									file_delete(game_save_id + "custom_levels/" + scr_get_custom_level_folder_name() + "/thumbnail.jpeg");
-									file_delete(game_save_id + "custom_levels/" + scr_get_custom_level_folder_name() + "/automatic_thumbnail.png");
-									ini_write_real("Custom Backgrounds", "thumbnail_uses_photographic_image", false);
-								}
-								
-								ini_close(); /* Don't commit the save data on Switch, this is only temporary! */
+								menu = "searched_file_downloaded_play";
 							}
-							#endregion /* After files have been moved to the working directory, check if game doesn't accept photographic images, and if they are found, remove them END */
-							
-							menu = "searched_file_downloaded_play";
 						}
 					}
 				}

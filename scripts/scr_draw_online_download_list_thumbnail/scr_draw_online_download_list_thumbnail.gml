@@ -318,13 +318,14 @@ function scr_draw_online_download_list_thumbnail(thumbnail_index, number_of_thum
 		if (content_type == "level")
 		&& (can_thumbnail)
 		{
-			if (variable_instance_exists(self, "finished_level") && is_array(finished_level))
+			if (variable_instance_exists(self, "finished_level")
+			&& is_array(finished_level))
 			{
 				if (finished_level[thumbnail_index] == undefined)
 				{
-					if (file_exists(game_save_id + "save_file/custom_level_save.ini"))
+					if (file_exists(game_save_id + "save_file/online_level_progress.ini"))
 					{
-						ini_open(game_save_id + "save_file/custom_level_save.ini");
+						ini_open(game_save_id + "save_file/online_level_progress.ini");
 						finished_level[thumbnail_index] = (ini_key_exists("finished_downloaded_level", draw_download_id)) ?
 							ini_read_real("finished_downloaded_level", draw_download_id, 0) : 0;
 						zero_defeats_level[thumbnail_index] = (ini_key_exists("zero_defeats_downloaded_level", draw_download_id)) ?
@@ -340,7 +341,8 @@ function scr_draw_online_download_list_thumbnail(thumbnail_index, number_of_thum
 			}
 
 			#region /* Display Finished Icon */
-			if (variable_instance_exists(self, "finished_level") && is_array(finished_level))
+			if (variable_instance_exists(self, "finished_level")
+			&& is_array(finished_level))
 			{
 				var played_level_text, played_level_icon, played_level_color;
 

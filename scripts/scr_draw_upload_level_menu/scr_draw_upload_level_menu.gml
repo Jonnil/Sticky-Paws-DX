@@ -112,7 +112,14 @@ function scr_draw_upload_level_menu()
 				global.level_folder_name = folder_name;
 				global.level_name = scr_get_level_display_name(folder_name);
 			}
-
+			
+			/* Force the game to create an automatic thumbnail if there are thumbnails missing */
+			if (!file_exists(upload_level_path + "/thumbnail.png")
+			&& !file_exists(upload_level_path + "/automatic_thumbnail.png"))
+			{
+				scr_automatic_screenshot();
+			}
+			
 			#region /* Load level info before anything */
 			ini_open(game_save_id + "custom_levels/" + scr_get_custom_level_folder_name() + "/data/level_information.ini");
 
@@ -399,7 +406,17 @@ function scr_draw_upload_level_menu()
 		&& sprite_exists(ds_list_find_value(global.thumbnail_sprite, global.select_level_index)))
 		{
 			/* Draw Thumbnail */
-			draw_sprite_ext(ds_list_find_value(global.thumbnail_sprite, global.select_level_index), 0, get_window_width * 0.5 - 390, 32, 384 / sprite_get_width(ds_list_find_value(global.thumbnail_sprite, global.select_level_index)) * 2, 216 / sprite_get_height(ds_list_find_value(global.thumbnail_sprite, global.select_level_index)) * 2, 0, c_white, 1);
+			draw_sprite_ext(
+				ds_list_find_value(global.thumbnail_sprite, global.select_level_index),
+				0,
+				get_window_width * 0.5 - 390,
+				32,
+				384 / sprite_get_width(ds_list_find_value(global.thumbnail_sprite, global.select_level_index)) * 2,
+				216 / sprite_get_height(ds_list_find_value(global.thumbnail_sprite, global.select_level_index)) * 2,
+				0,
+				c_white,
+				1
+			);
 		}
 		
 		draw_set_alpha(0.75);
@@ -1892,6 +1909,8 @@ function scr_draw_upload_level_menu()
 	#region /* Uploading Level */
 	if (menu == "uploading_level")
 	{
+		var level_zip_path = game_save_id + "uploads/" + string(level_id) + ".zip";
+		show_debug_message("[upload_level] tick delay=" + string(menu_delay) + " exists=" + string(file_exists(level_zip_path)) + " path=" + level_zip_path);
 
 		if (global.username == "")
 		{
@@ -1967,8 +1986,9 @@ function scr_draw_upload_level_menu()
 
 		#region /* Create Zip File */
 		if (menu_delay == 40
-		&& !file_exists(game_save_id + string(level_id) + ".zip"))
+		&& !file_exists(level_zip_path))
 		{
+			show_debug_message("[upload_level] menu_delay==40 creating zip: " + level_zip_path);
 			file = scr_upload_zip_add_files("level"); /* Add all the level files to a new zip file */
 		}
 		#endregion /* Create Zip File END */
@@ -1977,9 +1997,10 @@ function scr_draw_upload_level_menu()
 
 		#region /* Send Zip File to the Server */
 		if (menu_delay == 0
-		&& file_exists(game_save_id + string(level_id) + ".zip"))
+		&& file_exists(level_zip_path))
 		{
-			var zip_file = file_bin_open(game_save_id + string(level_id) + ".zip", 0);
+			show_debug_message("[upload_level] menu_delay==0 found zip, preparing upload: " + level_zip_path);
+			var zip_file = file_bin_open(level_zip_path, 0);
 			var zip_size = file_bin_size(zip_file);
 			file_bin_close(zip_file); /* Don't commit the save data on Switch, this is only temporary! */
 			zip_megabytes = zip_size / 1024 / 1024;
@@ -1989,7 +2010,7 @@ function scr_draw_upload_level_menu()
 				if (destroy_zip_after_uploading)
 				|| (GM_build_type == "exe")
 				{
-					file_delete(game_save_id + string(level_id) + ".zip");
+					file_delete(level_zip_path);
 				}
 				menu = "error_level_too_big";
 			}
@@ -2016,7 +2037,7 @@ function scr_draw_upload_level_menu()
 									}
 									
 									/* User is prompted for a file to upload */
-									file_name = filename_name(game_save_id + string(file));
+									file_name = filename_name(level_zip_path);
 									
 									/* Create DS Map to hold the HTTP Header info */
 									var level_upload_headers = ds_map_create();
@@ -2029,7 +2050,7 @@ function scr_draw_upload_level_menu()
 									
 									/* Loads the file into a buffer */
 									send_buffer = buffer_create(1, buffer_grow, 1);
-									buffer_load_ext(send_buffer, game_save_id + string(file), 0);
+									buffer_load_ext(send_buffer, level_zip_path, 0);
 									
 									/* Encodes the data as base64 */
 									data_send = buffer_base64_encode(send_buffer, 0, buffer_get_size(send_buffer));
@@ -2063,12 +2084,12 @@ function scr_draw_upload_level_menu()
 									if (destroy_zip_after_uploading)
 									|| (GM_build_type == "exe")
 									{
-										file_delete(game_save_id + string(level_id) + ".zip");
+										file_delete(level_zip_path);
 									}
 									#endregion /* Actually upload the level to the server END */
 									
 									/* Update a list of downloaded levels that you have finished. The level you are uploading have already been finished */
-									ini_open(game_save_id + "save_file/custom_level_save.ini");
+									ini_open(game_save_id + "save_file/online_level_progress.ini");
 									if (ini_read_real("finished_downloaded_level", string(level_id), 0) < 2)
 									{
 										ini_write_real("finished_downloaded_level", string(level_id), 2); /* Played and finished when uploading own level */
@@ -2117,8 +2138,9 @@ function scr_draw_upload_level_menu()
 		}
 		else
 		if (menu_delay == 0
-		&& !file_exists(game_save_id + string(level_id) + ".zip"))
+		&& !file_exists(level_zip_path))
 		{
+			show_debug_message("[upload_level] menu_delay==0 zip missing, resetting delay to 45. Path: " + level_zip_path);
 			menu_delay = 45;
 		}
 		#endregion /* Send Zip File to the Server END */
