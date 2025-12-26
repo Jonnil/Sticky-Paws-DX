@@ -118,8 +118,43 @@ function scr_draw_upload_level_menu()
 			&& !file_exists(upload_level_path + "/automatic_thumbnail.png"))
 			{
 				scr_automatic_screenshot();
+
+				/* After generating a thumbnail, refresh the thumbnail sprite list entry for this level */
+				var _refresh_thumb = function(_idx, _folder_path)
+				{
+					var new_thumb = spr_thumbnail_missing;
+					if (file_exists(_folder_path + "/thumbnail.png"))
+					{
+						new_thumb = sprite_add(_folder_path + "/thumbnail.png", 0, false, false, 0, 0);
+					}
+					else
+					if (file_exists(_folder_path + "/automatic_thumbnail.png"))
+					{
+						new_thumb = sprite_add(_folder_path + "/automatic_thumbnail.png", 0, false, false, 0, 0);
+					}
+
+					/* Ensure list has a slot at index */
+					while (ds_list_size(global.thumbnail_sprite) <= _idx)
+					{
+						ds_list_add(global.thumbnail_sprite, spr_thumbnail_missing);
+					}
+
+					var old_thumb = ds_list_find_value(global.thumbnail_sprite, _idx);
+					/* Avoid deleting a built-in placeholder sprite */
+					if (old_thumb != spr_thumbnail_missing && sprite_exists(old_thumb))
+					{
+						sprite_delete(old_thumb);
+					}
+
+					ds_list_replace(global.thumbnail_sprite, _idx, new_thumb);
+				};
+
+				if (global.select_level_index >= 0)
+				{
+					_refresh_thumb(global.select_level_index, upload_level_path);
+				}
 			}
-			
+
 			#region /* Load level info before anything */
 			ini_open(game_save_id + "custom_levels/" + scr_get_custom_level_folder_name() + "/data/level_information.ini");
 
