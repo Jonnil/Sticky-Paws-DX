@@ -299,7 +299,7 @@ function scr_save_level()
 	|| global.playing_level_from_beginning))
 	&& (!global.debug_mode_activated_once)
 	{
-		var level_folder_name = scr_get_custom_level_folder_name(); /* Use real folder name, not display name */
+		var level_folder_name = scr_get_custom_level_folder_name(); /* Use real folder name, ALWAYS the display name, NEVER forced sanitized */
 		ini_open(global.use_temp_or_working + "custom_levels/" + string(level_folder_name) + "/data/level_information.ini");
 
 		#region /* Save Fastest Time */

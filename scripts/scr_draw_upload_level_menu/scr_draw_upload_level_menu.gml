@@ -140,12 +140,7 @@ function scr_draw_upload_level_menu()
 					}
 
 					var old_thumb = ds_list_find_value(global.thumbnail_sprite, _idx);
-					/* Avoid deleting a built-in placeholder sprite */
-					if (old_thumb != spr_thumbnail_missing && sprite_exists(old_thumb))
-					{
-						sprite_delete(old_thumb);
-					}
-
+					
 					ds_list_replace(global.thumbnail_sprite, _idx, new_thumb);
 				};
 
