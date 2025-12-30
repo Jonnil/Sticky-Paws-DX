@@ -5,7 +5,7 @@ draw_set_alpha(black_background_alpha);
 draw_rectangle_colour(0, 0, get_window_width * 2, get_window_height * 2, c_black, c_black, c_black, c_black, false);
 draw_set_alpha(1);
 
-/* Draw Skip Text */
+#region /* Draw Skip Text */
 draw_set_halign(fa_right);
 draw_set_valign(fa_top);
 
@@ -40,6 +40,7 @@ if (skip > 0)
 {
 	scr_draw_circular_bar(get_window_width - 32, 21, skip, 64, c_red, 20, 1, 6);
 }
+#endregion /* Draw Skip Text END */
 
 /* Legal text in bottom left corner of screen */
 draw_set_halign(fa_left);
@@ -48,15 +49,19 @@ scr_draw_text_outlined(10, display_get_gui_height() - 20, l10n_text(
 ), global.default_text_size * 0.5, c_black, c_white, black_background_alpha);
 
 /* Draw Title Logo or Sprite */
-if (sprite_index == global.title_logo_index && global.title_logo_index >= 0)
+if (global.title_logo_index >= 0)
 {
-	draw_sprite_ext(sprite_index, image_index, get_window_width * 0.5, y, 402 / sprite_get_height(global.title_logo_index), 402 / sprite_get_height(global.title_logo_index), 0, c_white, image_alpha);
+	draw_sprite_ext(global.title_logo_index, image_index, get_window_width * 0.5, credits_y, 402 / sprite_get_height(global.title_logo_index), 402 / sprite_get_height(global.title_logo_index), 0, c_white, 1);
 }
-else
+
 if (sprite_exists(sprite_index))
 {
-	draw_sprite_ext(sprite_index, image_index, get_window_width * 0.5, y, 1, 1, 0, c_white, image_alpha);
+	draw_sprite_ext(sprite_index, image_index, get_window_width * 0.5, credits_y + 500, 1, 1, 0, c_white, 1);
 }
+
+draw_set_halign(fa_center);
+draw_set_valign(fa_top);
+scr_draw_text_outlined(get_window_width * 0.5, credits_y + 1000, credits_text, global.default_text_size, c_black, c_aqua, 1);
 
 /* Draw Iris Transitions */
 if (global.enable_transitions

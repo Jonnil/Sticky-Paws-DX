@@ -5,6 +5,7 @@ var mouse_get_y = device_mouse_y_to_gui(0);
 
 black_background_alpha = lerp(black_background_alpha, 0.75, 0.01);
 menu_cursor_index += 0.3;
+credits_y -= 3;
 
 if (global.controls_used_for_navigation == "mouse")
 {
@@ -110,52 +111,7 @@ for(var i = 1; i <= global.max_players; i += 1)
 if (keyboard_check(vk_space)
 || gamepad_skip_hold)
 {
-	time += 10;
-	y = lerp(y, yy, 0.75);
-	image_alpha = lerp(image_alpha, alpha, 0.75);
-}
-else
-{
-	time++;
-	y = lerp(y, yy, 0.1);
-	image_alpha = lerp(image_alpha, alpha, 0.1);
-}
-
-var credits_speed = 60;
-
-if (time >= credits_speed * 1 - 10 && time <= credits_speed * 1 + 10)
-{
-	yy = get_window_height * 0.5;
-	alpha = 1;
-}
-else
-if (time >= credits_speed * 4 - 10 && time <= credits_speed * 4 + 10)
-{
-	yy = 0;
-	alpha = 0;
-}
-else
-if (time >= credits_speed * 5 - 10 && time <= credits_speed * 5 + 10)
-{
-	y = get_window_height;
-	yy = get_window_height;
-	alpha = 0;
-}
-
-if (time >= credits_speed * 5)
-{
-	if (!end_credits)
-	{
-		time = 0;
-	}
-	
-	image_index++;
-	
-	if (sprite_index == global.title_logo_index)
-	{
-		sprite_index = spr_credits;
-		image_index = 0;
-	}
+	credits_y -= 10;
 }
 
 #region /* Zoom In */

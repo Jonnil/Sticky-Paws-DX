@@ -14,6 +14,7 @@ yy = get_window_height;
 alpha = 0;
 black_background_alpha = 0;
 skip = 0;
+credits_y = get_window_height + 400;
 
 iris_xscale = 32;
 iris_yscale = 32;
@@ -22,15 +23,29 @@ menu = "";
 menu_delay = 3;
 menu_cursor_index = 0;
 
-#region /* Show Title Logo first during credits */
-if (global.title_logo_index > noone)
-{
-	sprite_index = global.title_logo_index;
-}
-else
-{
-	sprite_index = spr_noone;
-}
-#endregion /* Show Title Logo first during credits END */
-
 alarm[0] = 3;
+
+#region /* Retrieve Credits Text */
+/* Initialize an empty string to store the text */
+credits_text = "";
+
+/* Check if the file exists */
+if (file_exists("credits.txt"))
+{
+	/* Open the file for reading */
+	var file = file_text_open_read("credits.txt");
+	
+	/* Loop through each line until the end of the file */
+	while (!file_text_eof(file))
+	{
+		/* Read a line and append it to the "credits_text" variable */
+		credits_text += file_text_read_string(file) + "\n";
+		
+		/* Move to the next line */
+		file_text_readln(file);
+	}
+	
+	/* Close the file */
+	file_text_close(file);
+}
+#endregion /* Retrieve Credits Text END */

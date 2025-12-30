@@ -37,10 +37,17 @@ global.email_support = "contact@jonnil.games"; /* This is the email address for 
 global.whats_new = "";
 
 /* Check if the file exists */
-if (file_exists("whats_new.txt"))
+if (os_type == os_switch)
+&& (file_exists("whats_new_switch.txt"))
+|| (file_exists("whats_new_steam.txt"))
 {
 	/* Open the file for reading */
-	var file = file_text_open_read("whats_new.txt");
+	var file = file_text_open_read("whats_new_steam.txt");
+	
+	if (os_type == os_switch)
+	{
+		file = file_text_open_read("whats_new_switch.txt");
+	}
 	
 	/* Loop through each line until the end of the file */
 	while (!file_text_eof(file))
