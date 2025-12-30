@@ -59,9 +59,25 @@ if (sprite_exists(sprite_index))
 	draw_sprite_ext(sprite_index, image_index, get_window_width * 0.5, credits_y + 500, 1, 1, 0, c_white, 1);
 }
 
-draw_set_halign(fa_center);
+draw_set_halign(fa_left);
 draw_set_valign(fa_top);
-scr_draw_text_outlined(get_window_width * 0.5, credits_y + 1000, credits_text, global.default_text_size, c_black, c_aqua, 1);
+var credits_line_height = string_height("A") * global.default_text_size;
+var credits_x = get_window_width * 0.5;
+var credits_current_y = credits_y + 1000;
+
+for (var i = 0; i < array_length(credits_lines); i++)
+{
+	var credit_entry = credits_lines[i];
+	var credit_text = credit_entry.text;
+	var credit_color = credit_entry.indented ? c_white : c_aqua;
+	
+	if (credit_text != "")
+	{
+		scr_draw_text_outlined(credits_x - 150, credits_current_y, credit_text, global.default_text_size, c_black, credit_color, 1);
+	}
+	
+	credits_current_y += credits_line_height;
+}
 
 /* Draw Iris Transitions */
 if (global.enable_transitions

@@ -42,18 +42,16 @@ if (point_in_rectangle(mouse_get_x, mouse_get_y, get_window_width - 370, 0, get_
 }
 
 /* Handle Credits and Transitions */
-if (image_index >= image_number - 1
-&& sprite_index == spr_credits)
+var credits_start_y = credits_y + 1000; /* matches draw offset */
+var credits_line_height = string_height("A") * global.default_text_size;
+var credits_line_count = max(1, array_length(credits_lines)); /* always advance even if empty */
+var credits_last_line_bottom = credits_start_y + (credits_line_count * credits_line_height);
+
+if (!end_credits
+&& credits_last_line_bottom < 0)
 {
 	end_credits = true;
-}
-
-if (image_index <= 1
-&& end_credits
-&& sprite_index == spr_credits)
-{
 	menu_delay = 9999;
-	sprite_index = noone;
 }
 
 if (iris_xscale <= 0.01)
