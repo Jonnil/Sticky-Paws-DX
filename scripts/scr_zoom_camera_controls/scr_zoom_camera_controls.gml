@@ -9,8 +9,8 @@ function scr_zoom_camera_controls()
 	{
 		if (global.player_can_play[i])
 		{
-			var key_in_hold = scr_key_initialize(key_player_zoom_in_hold[i], 0, i, action.zoom_in);
-			var key_out_hold = scr_key_initialize(key_player_zoom_out_hold[i], 0, i, action.zoom_out);
+			key_in_hold = scr_key_initialize(key_player_zoom_in_hold[i], 0, i, action.zoom_in);
+			key_out_hold = scr_key_initialize(key_player_zoom_out_hold[i], 0, i, action.zoom_out);
 			break; /* Exit the loop if a player can play */
 		}
 	}

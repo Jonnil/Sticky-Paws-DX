@@ -777,12 +777,12 @@ else
 		if (global.time_countdown_bonus > 3)
 		{
 			global.time_countdown_bonus -= 3;
-			score += 150;
+			global.level_score += 150;
 		}
 		else
 		{
 			global.time_countdown_bonus--;
-			score += 50;
+			global.level_score += 50;
 		}
 		if (!audio_is_playing(snd_beep))
 		{
@@ -818,10 +818,15 @@ scr_player_move_spring();
 if (have_heart_balloon)
 {
 	var heart_y_offset = -64;
-	if (horizontal_rope_climb && key_up && !key_down && (!collision_rectangle(bbox_left, bbox_top - 64, bbox_right, bbox_bottom, obj_wall, false, true)))
+	
+	if (horizontal_rope_climb
+	&& key_up
+	&& !key_down
+	&& (!collision_rectangle(bbox_left, bbox_top - 64, bbox_right, bbox_bottom, obj_wall, false, true)))
 	{
-		var heart_y_offset = -1;
+		heart_y_offset = -1;
 	}
+	
 	xx_heart = lerp(xx_heart, x, 0.1);
 	yy_heart = lerp(yy_heart, y + heart_y_offset, 0.1);
 }
@@ -2003,23 +2008,26 @@ if (!place_meeting(x, y + 1, obj_wall))
 #endregion /* Stop skidding sound END */
 
 #region /* Footstep sounds */
-if (on_ground && speed > 0 && !crouch)
+if (on_ground
+&& speed > 0
+&& !crouch)
 {
-	if (hspeed < 0 && !key_right_hold || hspeed > 0 && !key_left_hold)
+	if (hspeed < 0
+	&& !key_right_hold
+	|| hspeed > 0
+	&& !key_left_hold)
 	{
+		var ground = false;
+		var ground_surface = false;
+		var ground_meeting = false;
+		
 		if (instance_exists(obj_ground))
 		{
-			var ground = instance_nearest(x, bbox_bottom, obj_ground);
-			var ground_surface = ground.ground_surface;
-			var ground_meeting = place_meeting(x, y + 1, obj_ground);
+			ground = instance_nearest(x, bbox_bottom, obj_ground);
+			ground_surface = ground.ground_surface;
+			ground_meeting = place_meeting(x, y + 1, obj_ground);
 		}
-		else
-		{
-			var ground = false;
-			var ground_surface = false;
-			var ground_meeting = false;
-		}
-
+		
 		if (image_index < 1)
 		{
 			switch (ground_surface)

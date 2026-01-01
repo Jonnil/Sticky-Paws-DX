@@ -79,27 +79,27 @@ function scr_draw_online_download_list_thumbnail(thumbnail_index, number_of_thum
 		var content_bottom_y_at_offset0 = 80 + (300 * page_count)
 		menu_y_offset_real = clamp(menu_y_offset_real, display_get_gui_height() -abs(content_bottom_y_at_offset0) - 80, 0); /* Online Download List Menu Offset Stopper */
 		
+		/* Cache wave values to reduce function calls */
+		var waveArrow = scr_wave(10, 0, 1, 0);
+		var waveBlink = scr_wave(1, 0, 2, 0);
+
+		/* Calculate thumbnail boundaries */
+		var topLeftX = download_online_x + 96;  /* (download_online_x + 100 - 4) */
+		var topLeftY = download_online_y - 4;
+		var bottomRightX = download_online_x + 488; /* (download_online_x + 484 + 4) */
+		var bottomRightY = download_online_y + offsetY + 220; /* (download_online_y + menu_y_offset + 216 + 4) */
+
+		/* Pre-calculate offsets for triangles */
+		var topLeftXOffset = topLeftX - waveArrow;
+		var topLeftYOffset = topLeftY + offsetY - waveArrow;
+		var bottomRightXOffset = bottomRightX + waveArrow;
+		var bottomRightYOffset = bottomRightY + waveArrow;
+		var triangleSize = 32 - waveArrow;
+		
 		#region /* Draw Selection Overlay if Selected */
 		if (isSelected)
 		&& (can_thumbnail)
 		{
-			/* Cache wave values to reduce function calls */
-			var waveArrow = scr_wave(10, 0, 1, 0);
-			var waveBlink = scr_wave(1, 0, 2, 0);
-
-			/* Calculate thumbnail boundaries */
-			var topLeftX = download_online_x + 96;  /* (download_online_x + 100 - 4) */
-			var topLeftY = download_online_y - 4;
-			var bottomRightX = download_online_x + 488; /* (download_online_x + 484 + 4) */
-			var bottomRightY = download_online_y + offsetY + 220; /* (download_online_y + menu_y_offset + 216 + 4) */
-
-			/* Pre-calculate offsets for triangles */
-			var topLeftXOffset = topLeftX - waveArrow;
-			var topLeftYOffset = topLeftY + offsetY - waveArrow;
-			var bottomRightXOffset = bottomRightX + waveArrow;
-			var bottomRightYOffset = bottomRightY + waveArrow;
-			var triangleSize = 32 - waveArrow;
-
 			/* Draw a translucent rounded rectangle outline */
 			var alphaWave = scr_wave(0.1, 0.2, 3, 0);
 			draw_set_alpha(alphaWave);
@@ -229,6 +229,8 @@ function scr_draw_online_download_list_thumbnail(thumbnail_index, number_of_thum
 		#endregion /* Process Download ID and Time END */
 
 		#region /* Handle Thumbnail Hover and Download on Selection */
+		var selected_download_c_menu_fill = c_gray;
+		
 		if (isSelected)
 		{
 			currently_selected_id = draw_download_id;
@@ -238,7 +240,7 @@ function scr_draw_online_download_list_thumbnail(thumbnail_index, number_of_thum
 				menu_cursor_y_position = 64 + download_online_y;
 			}
 
-			var selected_download_c_menu_fill = c_lime;
+			selected_download_c_menu_fill = c_lime;
 			global.selected_online_download_index = thumbnail_index;
 
 			if (key_a_pressed
@@ -280,10 +282,6 @@ function scr_draw_online_download_list_thumbnail(thumbnail_index, number_of_thum
 					menu = "search_id_ok";
 				}
 			}
-		}
-		else
-		{
-			var selected_download_c_menu_fill = c_gray;
 		}
 		#endregion /* Handle Thumbnail Hover and Download on Selection END */
 

@@ -1,18 +1,15 @@
 var get_window_width = display_get_gui_width();
 var get_window_height = display_get_gui_height();
+var quit_to_title_name = "Quit to Title";
 
 if (global.go_to_menu_when_going_back_to_title == "online_download_list_load")
 {
-	var quit_to_title_name = "Quit to Online Level List";
+	quit_to_title_name = "Quit to Online Level List";
 }
 else
 if (global.character_select_in_this_menu == "level_editor")
 {
-	var quit_to_title_name = "Quit to Level Select";
-}
-else
-{
-	var quit_to_title_name = "Quit to Title";
+	quit_to_title_name = "Quit to Level Select";
 }
 
 #region /* Pause Screenshot */
@@ -261,7 +258,9 @@ if (!hide_menu_for_clean_screenshots)
 			}
 		}
 		else
-		if (menu == "reset_from_checkpoint" || menu == "reset_from_start" || menu == "restart_nevermind")
+		if (menu == "reset_from_checkpoint"
+		|| menu == "reset_from_start"
+		|| menu == "restart_nevermind")
 		{
 
 			if (global.controls_used_for_navigation == "gamepad")
@@ -277,20 +276,31 @@ if (!hide_menu_for_clean_screenshots)
 			}
 
 			draw_menu_button(get_window_width * 0.5 - 185, get_window_height * 0.5, l10n_text("Reset from Checkpoint"), "reset_from_checkpoint", "reset_from_checkpoint", c_lime, fade_in_pause_alpha);
-			if (holding_key_timer > 0 && menu == "reset_from_checkpoint") {
+			
+			if (holding_key_timer > 0
+			&& menu == "reset_from_checkpoint")
+			{
 				scr_draw_circular_bar(get_window_width * 0.5 - 185 + 16, get_window_height * 0.5 + 21, holding_key_timer, 60, c_red, 20, 1, 6); /* Draw a circular bar that fills when holding reset from checkpoint key */
 			}
+			
 			draw_menu_button(get_window_width * 0.5 - 185, get_window_height * 0.5 + 42, l10n_text("Reset from Start"), "reset_from_start", "reset_from_start", c_lime, fade_in_pause_alpha);
-			if (holding_key_timer > 0 && menu == "reset_from_start") {
+			
+			if (holding_key_timer > 0
+			&& menu == "reset_from_start")
+			{
 				scr_draw_circular_bar(get_window_width * 0.5 - 185 + 16, get_window_height * 0.5 + 42 + 21, holding_key_timer, 60, c_red, 20, 1, 6); /* Draw a circular bar that fills when holding reset from checkpoint key */
 			}
+			
 			draw_menu_button(get_window_width * 0.5 - 185, get_window_height * 0.5 + 42 + 42, l10n_text("Nevermind"), "restart_nevermind", "restart_nevermind", c_lime, fade_in_pause_alpha);
 			draw_sprite_ext(spr_icon_back, 0, get_window_width * 0.5 - 185 + 20, get_window_height * 0.5 + 42 + 42 + 21, 1, 1, 0, c_white, 1 * fade_in_pause_alpha);
 		}
 		else
 		if (global.pause_room == rm_leveleditor)
 		&& (global.character_select_in_this_menu == "main_game")
-		&& (menu == "quit_to_world" || menu == "quit_to_title" || menu == "quit_to_desktop" || menu == "quit_nevermind")
+		&& (menu == "quit_to_world"
+		|| menu == "quit_to_title"
+		|| menu == "quit_to_desktop"
+		|| menu == "quit_nevermind")
 		{
 			draw_menu_button(get_window_width * 0.5 - 185, get_window_height * 0.5, l10n_text("Quit to Map"), "quit_to_world", "quit_to_world", c_lime, fade_in_pause_alpha);
 			draw_menu_button(get_window_width * 0.5 - 185, get_window_height * 0.5 + 42, l10n_text(string(quit_to_title_name)), "quit_to_title", "quit_to_title", c_lime, fade_in_pause_alpha);

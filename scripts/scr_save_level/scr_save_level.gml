@@ -134,11 +134,12 @@ function scr_save_level()
 		}
 		#endregion /* Save Fastest Time END */
 
-		if (score > ini_read_real(level_name, "level_score", false))
+		if (global.level_score > ini_read_real(level_name, "level_score", false))
 		&& (!global.debug_mode_activated_once)
 		{
-			ini_write_real(level_name, "level_score", score);
+			ini_write_real(level_name, "level_score", global.level_score);
 		}
+		
 		ini_close(); /* Don't commit the save data on Switch, this is only temporary! */
 	}
 	else
@@ -282,10 +283,10 @@ function scr_save_level()
 		}
 		#endregion /* Save Fastest Time END */
 
-		if (score > ini_read_real(level_name, "level_score", false))
+		if (global.level_score > ini_read_real(level_name, "level_score", false))
 		&& (!global.debug_mode_activated_once)
 		{
-			ini_write_real(level_name, "level_score", score);
+			ini_write_real(level_name, "level_score", global.level_score);
 		}
 
 		ini_close(); /* Don't commit the save data on Switch, this is only temporary! */
@@ -316,9 +317,9 @@ function scr_save_level()
 		}
 		#endregion /* Save Fastest Time END */
 
-		if (score > ini_read_real("rank", "rank_level_score", false))
+		if (global.level_score > ini_read_real("rank", "rank_level_score", false))
 		{
-			ini_write_real("rank", "rank_level_score", score);
+			ini_write_real("rank", "rank_level_score", global.level_score);
 		}
 
 		ini_close(); /* Don't commit the save data on Switch, this is only temporary! */
@@ -354,7 +355,7 @@ function scr_save_level()
 	}
 	global.level_clear_rate = noone;
 	global.debug_mode_activated_once = false;
-	score = 0;
+	global.level_score = 0;
 
 	ini_open(game_save_id + "save_file/config.ini")
 	ini_write_real("config", "zoom_level", global.zoom_level);

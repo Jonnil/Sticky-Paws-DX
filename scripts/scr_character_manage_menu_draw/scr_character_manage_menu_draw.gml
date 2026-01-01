@@ -1,27 +1,21 @@
 function scr_character_manage_menu_draw()
 {
 	var enable_edit_character = true;
-
+	var max_custom_characters_reached = false;
+	var enable_copy_character = true;
+	var enable_upload_character = true;
+	
 	if (ds_list_size(global.all_loaded_characters) >= global.max_custom_characters)
 	{
-		var max_custom_characters_reached = true;
+		max_custom_characters_reached = true;
 	}
-	else
-	{
-		var max_custom_characters_reached = false;
-	}
-
+	
 	if (os_type == os_switch)
 	{
-		var enable_copy_character = false;
-		var enable_upload_character = false;
+		enable_copy_character = false;
+		enable_upload_character = false;
 	}
-	else
-	{
-		var enable_copy_character = true;
-		var enable_upload_character = true;
-	}
-
+	
 	var get_window_height = display_get_gui_height();
 	var get_window_width = display_get_gui_width();
 	var mouse_get_x = device_mouse_x_to_gui(0);
@@ -124,17 +118,14 @@ function scr_character_manage_menu_draw()
 		#endregion /* Key Right END */
 
 		#endregion /* Left and Right Keys END */
-
+		var selecting_official_character = false;
+		
 		if (directory_exists("characters/" + string(ds_list_find_value(global.all_loaded_characters, global.character_index[0]))))
 		{
-			var selecting_official_character = true;
+			selecting_official_character = true;
 			enable_edit_character = false;
 		}
-		else
-		{
-			var selecting_official_character = false;
-		}
-
+		
 		var char_name_y, edit_character_y, copy_character_y, delete_character_y, upload_character_y, open_character_folder_y;
 
 		if (global.enable_open_custom_folder)
@@ -263,16 +254,14 @@ function scr_character_manage_menu_draw()
 					#endregion /* Draw who made the character END */
 
 					#region /* Draw if character is unlisted */
+					var draw_character_id_y = get_window_height - 64;
+					
 					if (ini_key_exists("info", "visibility_index"))
 					&& (ini_read_string("info", "visibility_index", "") == 1)
 					{
-						var draw_character_id_y = get_window_height - 96;
+						draw_character_id_y = get_window_height - 96;
 						scr_draw_text_outlined(get_window_width - 32, get_window_height - 64, l10n_text("Unlisted"), global.default_text_size, c_black, c_white, 1);
 						draw_sprite_ext(spr_icon_unlisted, 0, get_window_width - 32 - string_width(l10n_text("Unlisted")), get_window_height - 64, 1, 1, 0, c_white, 1);
-					}
-					else
-					{
-						var draw_character_id_y = get_window_height - 64;
 					}
 					#endregion /* Draw if character is unlisted END */
 

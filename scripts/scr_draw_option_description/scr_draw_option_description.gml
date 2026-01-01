@@ -2,20 +2,17 @@ function scr_draw_option_description()
 {
 	/* Description that shows up when changing certain options */
 	var text_fill = c_white;
+	var option_default = "";
 
 	if (global.option_default == 1)
 	{
-		var option_default = l10n_text("On by default");
+		option_default = l10n_text("On by default");
 		text_fill = c_lime;
 	}
 	else
 	if (global.option_default == 0)
 	{
-		var option_default = l10n_text("Off by default");
-	}
-	else
-	{
-		var option_default = "";
+		option_default = l10n_text("Off by default");
 	}
 
 	var option_description_text = "";

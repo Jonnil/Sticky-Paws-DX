@@ -18,7 +18,8 @@ if (follow_player)
 #region /* Follow Player */
 if (follow_player)
 {
-	if (instance_exists(obj_player) && distance_to_object(obj_player) < sprite_height + sprite_width)
+	if (instance_exists(obj_player)
+	&& distance_to_object(obj_player) < sprite_height + sprite_width)
 	{
 
 		#region /* Show Big Collectible HUD */
@@ -94,7 +95,7 @@ if (collect_big_collectible)
 	effect_create_depth(depth - 1, ef_ring, x, y, 2, c_white);
 
 	#region /* 1000 Score */
-	score += 1000;
+	global.level_score += 1000;
 	with(instance_create_depth(x, y, 0, obj_score_up))
 	{
 		score_up = 1000;
@@ -117,15 +118,14 @@ if (collect_big_collectible)
 					global.big_collectible_already_collected[i] = true;
 				}
 			}
+			
+			var save_path = game_save_id + "save_file/custom_level_save.ini";
+			
 			if (global.character_select_in_this_menu == "main_game")
 			{
-				var save_path = game_save_id + "save_file/file" + string(global.file) + ".ini"
+				save_path = game_save_id + "save_file/file" + string(global.file) + ".ini"
 			}
-			else
-			if (global.character_select_in_this_menu == "level_editor")
-			{
-				var save_path = game_save_id + "save_file/custom_level_save.ini";
-			}
+			
 			ini_open(save_path);
 
 			/* Increase total big collectibe, so player can know how many big collectibles they have collected in total */
@@ -151,15 +151,14 @@ if (collect_big_collectible)
 		}
 	}
 	#endregion /* What Big Collectible is this? END */
-
+	
+	var big_collectible_sound_index = snd_big_collectible;
+	
 	if (global.how_many_big_collectible_collected >= global.max_big_collectible)
 	{
-		var big_collectible_sound_index = snd_big_collectible_all;
+		big_collectible_sound_index = snd_big_collectible_all;
 	}
-	else
-	{
-		var big_collectible_sound_index = snd_big_collectible;
-	}
+	
 	audio_sound_pitch(big_collectible_sound_index, 0.9 + (0.1 * global.how_many_big_collectible_collected));
 	scr_audio_play(big_collectible_sound_index, volume_source.sound);
 

@@ -42,14 +42,14 @@ if (global.playergame >= 2)
 {
 	draw_set_halign(fa_center);
 	draw_set_valign(fa_middle);
+	
+	var player_name_text = string(global.player_name[player]);
+	
 	if (global.player_name[player] = "")
 	{
-		var player_name_text = "P" + string(player);
+		player_name_text = "P" + string(player);
 	}
-	else
-	{
-		var player_name_text = string(global.player_name[player]);
-	}
+	
 	scr_draw_text_outlined(x, y - 64, string(player_name_text), global.default_text_size, c_black, global.player_color[player], 1);
 }
 #endregion /* Display Player Number and Name END */

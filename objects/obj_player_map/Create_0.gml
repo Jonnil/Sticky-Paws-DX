@@ -282,13 +282,13 @@ global.ambience_underwater = noone;
 global.goal_active = false;
 
 /* Give player lives if they get a game over */
-if (lives <= 0)
+if (global.player_lives <= 0)
 {
-	lives = 5 * global.playergame;
+	global.player_lives = 5 * global.playergame;
 	if (global.character_select_in_this_menu == "main_game")
 	{
 		ini_open(game_save_id + "save_file/file" + string(global.file) + ".ini");
-		ini_write_real("Player", "lives", lives);
+		ini_write_real("Player", "lives", global.player_lives);
 		ini_close(); /* Don't commit the save data on Switch, this is only temporary! */
 	}
 }

@@ -1,18 +1,17 @@
 function scr_character_select_menu_draw()
 {
+	var max_custom_characters_reached = false;
+	
 	if (ds_list_size(global.all_loaded_characters) >= global.max_custom_characters)
 	{
-		var max_custom_characters_reached = true;
+		max_custom_characters_reached = true;
 	}
-	else
-	{
-		var max_custom_characters_reached = false;
-	}
-
+	
 	var player_join_text_size = 1;
+	
 	if (string_width(l10n_text("Player 1 Join")) > 300)
 	{
-		var player_join_text_size = 0.75;
+		player_join_text_size = 0.75;
 	}
 
 	arrow_offset = 125;
@@ -57,12 +56,13 @@ function scr_character_select_menu_draw()
 			scr_draw_text_outlined(get_window_width * 0.5 -40, play_the_game_text_y_lerp, l10n_text("Play the game!"), global.default_text_size * 2, c_black, c_white, 1);
 
 			var what_player = 1;
+			
 			if (player_accept_selection[1] == 1)
 			&& (player_accept_selection[2] != 0)
 			&& (player_accept_selection[3] != 0)
 			&& (player_accept_selection[4] != 0)
 			{
-				var what_player = 1;
+				what_player = 1;
 			}
 			else
 			if (player_accept_selection[1] != 0)
@@ -70,7 +70,7 @@ function scr_character_select_menu_draw()
 			&& (player_accept_selection[3] != 0)
 			&& (player_accept_selection[4] != 0)
 			{
-				var what_player = 2;
+				what_player = 2;
 			}
 			else
 			if (player_accept_selection[1] != 0)
@@ -78,7 +78,7 @@ function scr_character_select_menu_draw()
 			&& (player_accept_selection[3])
 			&& (player_accept_selection[4] != 0)
 			{
-				var what_player = 3;
+				what_player = 3;
 			}
 			else
 			if (player_accept_selection[1] != 0)
@@ -86,7 +86,7 @@ function scr_character_select_menu_draw()
 			&& (player_accept_selection[3] != 0)
 			&& (player_accept_selection[4])
 			{
-				var what_player = 4;
+				what_player = 4;
 			}
 
 			var player_starts_the_game_text = l10n_text("Player " + string(what_player) + " starts the game");
@@ -282,15 +282,17 @@ function scr_character_select_menu_draw()
 				if (player_accept_selection[i] <= -1 && !player_automatically_join[i])
 				{
 					var player_join_x = window_width_half + player_display_x[i];
+					var player_join_y = window_height_half;
+					
 					if (i % 2 == 0)
 					{
-						var player_join_y = window_height_half + 32;
+						player_join_y = window_height_half + 32;
 					}
-					else
-					{
-						var player_join_y = window_height_half;
-					}
+					
 					draw_set_halign(fa_right);
+					
+					var player_join_outline_color = c_black;
+					
 					if (point_in_rectangle(mouse_get_x, mouse_get_y, player_join_x - 150, player_join_y - 32, player_join_x + 150, player_join_y + 32) && global.controls_used_for_navigation == "mouse")
 					{
 						player_menu[i] = "select_character";
@@ -298,7 +300,7 @@ function scr_character_select_menu_draw()
 						draw_set_alpha(0.5);
 						draw_roundrect_color_ext(player_join_x - 150, player_join_y - 32, player_join_x + 150, player_join_y + 32, 50, 50, c_white, c_white, false);
 						draw_set_alpha(1);
-						var player_join_outline_color = c_white;
+						player_join_outline_color = c_white;
 
 						#region /* Join game when clicking the join text */
 						if (mouse_check_button_released(mb_left))
@@ -317,10 +319,7 @@ function scr_character_select_menu_draw()
 						#endregion /* Join game when clicking the join text END */
 
 					}
-					else
-					{
-						var player_join_outline_color = c_black;
-					}
+					
 					scr_draw_text_outlined(player_join_x + 60, player_join_y, l10n_text("Player " + string(i) + " Join"), global.default_text_size * player_join_text_size, player_join_outline_color, global.player_color[i], 1);
 
 					#region /* Key A */

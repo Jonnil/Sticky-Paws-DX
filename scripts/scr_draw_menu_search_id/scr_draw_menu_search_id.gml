@@ -625,47 +625,60 @@ function scr_draw_menu_search_id(what_kind_of_id = "level")
 				draw_set_valign(fa_middle);
 				search_for_id_still = false;
 				
+				/* Declare once so they're in scope everywhere in this script */
 				var draw_id_y = 32;
+				var draw_name_y;
+				var draw_unlisted_y;
+				var draw_author_name_y;
+				var draw_description_y;
+				var searched_file_play_y;
+				var searched_file_make_y;
+				var searched_file_open_folder_y;
+				var searched_file_downloaded_delete_y;
+
 				if (global.enable_option_for_pc)
 				{
 					if (downloaded_content_is_unlisted)
 					{
-						var draw_name_y = get_window_height - (42 * 9);
-						var draw_unlisted_y = get_window_height - (42 * 8);
+						draw_name_y = get_window_height - (42 * 9);
+						draw_unlisted_y = get_window_height - (42 * 8);
 					}
 					else
 					{
-						var draw_name_y = get_window_height - (42 * 8);
-						var draw_unlisted_y = get_window_height + 999;
+						draw_name_y = get_window_height - (42 * 8);
+						draw_unlisted_y = get_window_height + 999;
 					}
-					
-					var draw_author_name_y = get_window_height - (42 * 7);
-					var draw_description_y = get_window_height - (42 * 6);
-					var searched_file_play_y = get_window_height - (42 * 5);
-					var searched_file_make_y = get_window_height - (42 * 4);
-					var searched_file_open_folder_y = get_window_height - (42 * 3);
-					var searched_file_downloaded_delete_y = get_window_height - (42 * 2);
+
+					draw_author_name_y = get_window_height - (42 * 7);
+					draw_description_y = get_window_height - (42 * 6);
+					searched_file_play_y = get_window_height - (42 * 5);
+					searched_file_make_y = get_window_height - (42 * 4);
+					searched_file_open_folder_y = get_window_height - (42 * 3);
+					searched_file_downloaded_delete_y = get_window_height - (42 * 2);
 				}
 				else
 				{
 					if (downloaded_content_is_unlisted)
 					{
-						var draw_name_y = get_window_height - (42 * 8);
-						var draw_unlisted_y = get_window_height - (42 * 7);
+						draw_name_y = get_window_height - (42 * 8);
+						draw_unlisted_y = get_window_height - (42 * 7);
 					}
 					else
 					{
-						var draw_name_y = get_window_height - (42 * 7);
-						var draw_unlisted_y = get_window_height + 999;
+						draw_name_y = get_window_height - (42 * 7);
+						draw_unlisted_y = get_window_height + 999;
 					}
-					
-					var draw_author_name_y = get_window_height - (42 * 6);
-					var draw_description_y = get_window_height - (42 * 5);
-					var searched_file_play_y = get_window_height - (42 * 4);
-					var searched_file_make_y = get_window_height - (42 * 3);
-					var searched_file_open_folder_y = -999;
-					var searched_file_downloaded_delete_y = get_window_height - (42 * 2);
+
+					draw_author_name_y = get_window_height - (42 * 6);
+					draw_description_y = get_window_height - (42 * 5);
+					searched_file_play_y = get_window_height - (42 * 4);
+					searched_file_make_y = get_window_height - (42 * 3);
+					searched_file_open_folder_y = -999;
+					searched_file_downloaded_delete_y = get_window_height - (42 * 2);
 				}
+				
+				var back_to_list_text = l10n_text("Back"); /* Back to online character list */
+				var searched_file_downloaded_back_text = l10n_text("Back to character select");
 				
 				if (what_kind_of_id == "level")
 				{
@@ -702,8 +715,8 @@ function scr_draw_menu_search_id(what_kind_of_id = "level")
 						}
 					}
 					
-					var back_to_list_text = l10n_text("Back"); /* Back to online level list */
-					var searched_file_downloaded_back_text = l10n_text("Back to custom level select");
+					back_to_list_text = l10n_text("Back"); /* Back to online level list */
+					searched_file_downloaded_back_text = l10n_text("Back to custom level select");
 				}
 				else
 				if (!inform_about_report_feature)
@@ -711,9 +724,6 @@ function scr_draw_menu_search_id(what_kind_of_id = "level")
 					/* Draw Character Name */
 					draw_set_halign(fa_center);
 					scr_draw_text_outlined(get_window_width * 0.5, draw_name_y, string(downloaded_character_name), global.default_text_size * 1.9, c_black, c_white, 1);
-					
-					var back_to_list_text = l10n_text("Back"); /* Back to online character list */
-					var searched_file_downloaded_back_text = l10n_text("Back to character select");
 				}
 				
 				draw_set_halign(fa_center);
@@ -778,13 +788,8 @@ function scr_draw_menu_search_id(what_kind_of_id = "level")
 					if (what_kind_of_id == "character")
 					&& (file_exists(normalize_path_seps(game_save_id + "custom_characters/" + string(downloaded_character_name) + "/data/character_config.ini")))
 					{
-						var back_to_list_x = get_window_width * 0.5 - 185;
-						var back_to_list_y = searched_file_downloaded_delete_y - 42;
-					}
-					else
-					{
-						var back_to_list_x = 0;
-						var back_to_list_y = 0;
+						back_to_list_x = get_window_width * 0.5 - 185;
+						back_to_list_y = searched_file_downloaded_delete_y - 42;
 					}
 					
 					draw_menu_button_sprite(spr_menu_button, back_to_list_x, back_to_list_y, 0, 0, back_to_list_button_width, 1, 370 * back_to_list_button_width, 42, back_to_list_text, "searched_file_downloaded_back_to_list", "searched_file_downloaded_back_to_list");
@@ -1588,15 +1593,11 @@ function scr_draw_menu_search_id(what_kind_of_id = "level")
 			var downloaded_message_y = get_window_height * 0.5;
 			draw_set_halign(fa_center);
 			draw_set_valign(fa_middle);
+			var failed_to_download_what = l10n_text("Failed to download character");
 			
 			if (what_kind_of_id == "level")
 			{
-				var failed_to_download_what = l10n_text("Failed to download level");
-			}
-			else
-			if (what_kind_of_id == "character")
-			{
-				var failed_to_download_what = l10n_text("Failed to download character");
+				failed_to_download_what = l10n_text("Failed to download level");
 			}
 			
 			scr_draw_text_outlined(get_window_width * 0.5, get_window_height * 0.5 - 32, string(failed_to_download_what), global.default_text_size * 2, c_black, c_white, 1);

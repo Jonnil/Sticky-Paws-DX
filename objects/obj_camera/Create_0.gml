@@ -226,37 +226,40 @@ if (can_spawn_players)
 	{
 		if (global.player_can_play[i])
 		{
+			var object_level_start = obj_level_player1_start;
+			
 			if (i == 1)
 			{
-				var object_level_start = obj_level_player1_start;
+				object_level_start = obj_level_player1_start;
 			}
 			else
 			if (i == 2)
 			{
-				var object_level_start = obj_level_player2_start;
+				object_level_start = obj_level_player2_start;
 			}
 			else
 			if (i == 3)
 			{
-				var object_level_start = obj_level_player3_start;
+				object_level_start = obj_level_player3_start;
 			}
 			else
 			if (i == 4)
 			{
-				var object_level_start = obj_level_player4_start;
+				object_level_start = obj_level_player4_start;
 			}
-			else
-			{
-				var object_level_start = obj_level_player1_start;
-			}
+			
 			var start_x, start_y;
-			if (global.checkpoint_x > 0 && global.checkpoint_y > 0 && global.actually_play_edited_level)
+			
+			if (global.checkpoint_x > 0
+			&& global.checkpoint_y > 0
+			&& global.actually_play_edited_level)
 			{
 				start_x = global.checkpoint_x;
 				start_y = global.checkpoint_y;
 			}
 			else
-			if (global.actually_play_edited_level && instance_exists(object_level_start))
+			if (global.actually_play_edited_level
+			&& instance_exists(object_level_start))
 			{
 				start_x = object_level_start.x;
 				start_y = object_level_start.y;
@@ -266,6 +269,7 @@ if (can_spawn_players)
 				start_x = x; /* Default start position if no specific conditions are met */
 				start_y = y;
 			}
+			
 			player[i] = instance_create_depth(start_x, start_y, 0, obj_player);
 			with (player[i])
 			{
@@ -401,14 +405,13 @@ part_system_snow = noone;
 
 set_controller_sprites_to_use();
 
+var timeattack_record_minute_text = "";
+
 if (timeattack_record_minute > 0)
 {
-	var timeattack_record_minute_text = string(timeattack_record_minute) + ":";
+	timeattack_record_minute_text = string(timeattack_record_minute) + ":";
 }
-else
-{
-	var timeattack_record_minute_text = "";
-}
+
 best_time_text = l10n_text("Best") + ": " + string(timeattack_record_minute_text)
 										  + string_replace_all(string_format(timeattack_record_second, 2, 0), " ", "0") + "."
 										  + string_replace_all(string_format(timeattack_record_millisecond, 2, 0), " ", "0");

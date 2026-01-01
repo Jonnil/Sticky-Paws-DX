@@ -913,7 +913,7 @@ function scr_draw_upload_character_menu()
 	if (menu == "character_uploaded")
 	|| (menu == "character_uploaded_discord")
 	{
-		var character_name = string(ds_list_find_value(global.all_loaded_characters, global.character_index[fixed_player - 1]));
+		character_name = string(ds_list_find_value(global.all_loaded_characters, global.character_index[fixed_player - 1]));
 
 		var uploaded_character_message_y = 432;
 		var ok_y = uploaded_character_message_y + 168;

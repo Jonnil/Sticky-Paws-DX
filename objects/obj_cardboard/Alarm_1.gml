@@ -6,7 +6,7 @@ var view_top = camera_get_view_y(view_camera_current);
 var view_bottom = view_top + camera_get_view_height(view_camera_current);
 
 instance_create_depth(x, y - 32, 0, obj_block_break);
-score += 50;
+global.level_score += 50;
 var break_cardboard_direction = random_range(103, 167);
 if (break_cardboard_source_x < x)
 {

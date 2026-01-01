@@ -172,7 +172,9 @@ function scr_draw_name_input_screen(what_string /* What string to edit */, max_c
 		scr_draw_gamepad_buttons(gp_face4, xx + 200, yy + 32, 0.5, c_white, 1, 1, 1, 1);
 		scr_draw_text_outlined(xx + 280, yy + 32, l10n_text("Edit"), global.default_text_size, c_black, c_ltgray, 1);
 	}
-
+	
+	var time_source = noone;
+	
 	#region /* Clicking the Cancel button */
 	if (menu_delay == 0
 	&& menu_joystick_delay == 0)
@@ -214,12 +216,12 @@ function scr_draw_name_input_screen(what_string /* What string to edit */, max_c
 			keyboard_virtual_hide(); /* Hide the virtual keyboard when clicking Cancel */
 			global.clicking_cancel_input_screen = true;
 
-			var time_source = time_source_create(time_source_game, 10, time_source_units_frames, function(){
+			time_source = time_source_create(time_source_game, 10, time_source_units_frames, function(){
 				global.clicking_cancel_input_screen = false; /* Reset clicking cancel */
 			}, [], 1);
 			time_source_start(time_source);
 
-			var time_source = time_source_create(time_source_game, 20, time_source_units_frames, function(){
+			time_source = time_source_create(time_source_game, 20, time_source_units_frames, function(){
 				global.keyboard_virtual_timer = 0; /* Reset the virtual keyboard timer */
 			}, [], 1);
 			time_source_start(time_source);
@@ -275,12 +277,12 @@ function scr_draw_name_input_screen(what_string /* What string to edit */, max_c
 					keyboard_virtual_hide(); /* Hide the virtual keyboard when clicking OK */
 					global.clicking_ok_input_screen = true;
 
-					var time_source = time_source_create(time_source_game, 10, time_source_units_frames, function(){
+					time_source = time_source_create(time_source_game, 10, time_source_units_frames, function(){
 						global.clicking_ok_input_screen = false; /* Reset clicking ok */
 					}, [], 1);
 					time_source_start(time_source);
 
-					var time_source = time_source_create(time_source_game, 20, time_source_units_frames, function(){
+					time_source = time_source_create(time_source_game, 20, time_source_units_frames, function(){
 						global.keyboard_virtual_timer = 0; /* Reset the virtual keyboard timer */
 					}, [], 1);
 					time_source_start(time_source);

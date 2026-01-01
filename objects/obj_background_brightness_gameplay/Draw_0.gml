@@ -4,13 +4,11 @@ y = camera_get_view_y(view_get_camera(view_current));
 #region /* Background Brightness in Gameplay Options */
 background_brightness_lerp = lerp(background_brightness_lerp, global.background_brightness_gameplay, 0.05);
 
+var color = c_white;
+
 if (background_brightness_lerp < 0)
 {
-	var color = c_black;
-}
-else
-{
-	var color = c_white;
+	color = c_black;
 }
 
 draw_set_alpha(abs(background_brightness_lerp));

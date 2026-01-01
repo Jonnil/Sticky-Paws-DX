@@ -1,34 +1,28 @@
 function scr_character_manage_menu_step()
 {
+	var enable_edit_character = false;
+	
 	if (variable_instance_exists(self, "in_edit_character_menu"))
 	{
-		var enable_edit_character = true;
+		enable_edit_character = true;
 	}
-	else
-	{
-		var enable_edit_character = false;
-	}
-
+	
+	var max_custom_characters_reached = false;
+	
 	if (ds_list_size(global.all_loaded_characters) >= global.max_custom_characters)
 	{
-		var max_custom_characters_reached = true;
+		max_custom_characters_reached = true;
 	}
-	else
-	{
-		var max_custom_characters_reached = false;
-	}
-
+	
+	var enable_copy_character = true;
+	var enable_upload_character = true;
+	
 	if (os_type == os_switch)
 	{
-		var enable_copy_character = false;
-		var enable_upload_character = false;
+		enable_copy_character = false;
+		enable_upload_character = false;
 	}
-	else
-	{
-		var enable_copy_character = true;
-		var enable_upload_character = true;
-	}
-
+	
 	var get_window_height = display_get_gui_height();
 	var fixed_player = 1;
 
@@ -154,17 +148,15 @@ function scr_character_manage_menu_step()
 		#endregion /* Key Right END */
 
 		#endregion /* Player END */
-
+		
+		var selecting_official_character = false;
+		
 		if (file_exists("characters/" + string(ds_list_find_value(global.all_loaded_characters, global.character_index[fixed_player - 1])) + "/data/character_config.ini"))
 		{
-			var selecting_official_character = true;
+			selecting_official_character = true;
 			enable_edit_character = false;
 		}
-		else
-		{
-			var selecting_official_character = false;
-		}
-
+		
 		var character_name_y, edit_character_y, copy_character_y, delete_character_y, upload_character_y, open_character_folder_y;
 
 		if (global.enable_open_custom_folder)
@@ -226,6 +218,7 @@ function scr_character_manage_menu_step()
 				menu_delay = 20;
 			}
 		}
+		
 		if (keyboard_check_pressed(global.player_[inp.key][fixed_player][1][action.up]))
 		|| (keyboard_check_pressed(global.player_[inp.key][fixed_player][2][action.up]))
 		|| (gamepad_button_check_pressed(global.player_slot[fixed_player], gp_padu))
@@ -250,6 +243,7 @@ function scr_character_manage_menu_step()
 		{
 			menu_delay = 3;
 			can_navigate = true;
+			
 			if (enable_copy_character)
 			{
 				player_menu[fixed_player] = "click_copy_character";

@@ -9,7 +9,7 @@ obj_camera.hud_show_basic_collectibles_timer = global.hud_hide_time * 60;
 obj_camera.hud_show_score_timer = global.hud_hide_time * 60;
 if (bulk_number == 1)
 {
-	score += 200;
+	global.level_score += 200;
 }
 
 get_1up_when_collect_basic_collectibles();

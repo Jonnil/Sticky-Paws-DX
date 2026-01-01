@@ -2188,7 +2188,7 @@ function scr_draw_upload_level_menu()
 		scr_draw_text_outlined(get_window_width * 0.5, get_window_height * 0.5, string(zip_megabytes) + " MB / " + string(global.max_file_upload_megabytes) + " MB", global.default_text_size, c_black, c_red, scr_wave(0, 1, 1, 0));
 		scr_draw_text_outlined(get_window_width * 0.5, get_window_height * 0.5 + 32, l10n_text("There is a max upload size, please make it smaller"), global.default_text_size, c_black, c_white, 1);
 
-		var ok_y = get_window_height * 0.5 + 42 + 42 + 42;
+		ok_y = get_window_height * 0.5 + 42 + 42 + 42;
 
 		#region /* OK Button */
 		if (point_in_rectangle(mouse_get_x, mouse_get_y, get_window_width * 0.5 - 370, ok_y - 42, get_window_width * 0.5 + 370, ok_y + 42))
@@ -2261,7 +2261,7 @@ function scr_draw_upload_level_menu()
 	|| (menu == "level_uploaded_discord")
 	{
 		var uploaded_level_message_y = 432;
-		var ok_y = uploaded_level_message_y + 168;
+		ok_y = uploaded_level_message_y + 168;
 
 		draw_set_halign(fa_center);
 		draw_set_valign(fa_middle);

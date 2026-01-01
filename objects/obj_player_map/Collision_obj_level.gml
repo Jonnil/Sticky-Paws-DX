@@ -72,7 +72,7 @@ if (can_enter_level_automatically)
 			global.increase_number_of_levels_cleared = other.increase_number_of_levels_cleared;
 			global.lives_until_assist = other.lives_until_assist;
 			global.spikes_emerge_time = 0;
-			score = 0;
+			global.level_score = 0;
 
 			with(other)
 			{

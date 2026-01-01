@@ -230,7 +230,7 @@ scr_config_load(); /* Load Config */
 
 scr_set_default_language(false);
 
-lives = 5; /* Starting lives */
+global.player_lives = 5; /* Starting lives */
 
 #region /* If title screen should start at the level editor menu or the main menu */
 if (global.character_select_in_this_menu == "level_editor")

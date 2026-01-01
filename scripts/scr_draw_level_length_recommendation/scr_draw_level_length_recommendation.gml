@@ -19,6 +19,7 @@ function scr_draw_level_length_recommendation()
 		draw_set_alpha(1);
 
 		var show_back_button = true;
+		var box_height = display_get_gui_height() * 0.5 + 64 + 64;
 
 		if (room == rm_title)
 		|| (variable_instance_exists(self, "pause")
@@ -28,30 +29,28 @@ function scr_draw_level_length_recommendation()
 			{
 				show_level_editor_corner_menu = false;
 			}
-			var box_height = display_get_gui_height() * 0.5 + 64 + 64 + 42;
+			
+			box_height = display_get_gui_height() * 0.5 + 64 + 64 + 42;
 			show_back_button = true;
 		}
 		else
 		{
-			var box_height = display_get_gui_height() * 0.5 + 64 + 64;
 			show_back_button = false;
 		}
 
 		/* Determine message color based on timeattack minutes relative to minimum and maximum target */
+		var message_color = c_lime;
+		
 		if (global.timeattack_minute < global.target_length_minutes_min)
 		{
-			var message_color = c_orange;
+			message_color = c_orange;
 		}
 		else
 		if (global.timeattack_minute > global.target_length_minutes_max)
 		{
-			var message_color = c_red;
+			message_color = c_red;
 		}
-		else
-		{
-			var message_color = c_lime;
-		}
-
+		
 		draw_roundrect_color_ext(display_get_gui_width() * 0.5 - 440 - 4, display_get_gui_height() * 0.5 - 64 - 4, display_get_gui_width() * 0.5 + 440 + 4, box_height + 4, 50, 50, message_color, message_color, false);
 		draw_roundrect_color_ext(display_get_gui_width() * 0.5 - 440, display_get_gui_height() * 0.5 - 64, display_get_gui_width() * 0.5 + 440, box_height, 50, 50, c_black, c_black, false);
 		draw_set_halign(fa_center);

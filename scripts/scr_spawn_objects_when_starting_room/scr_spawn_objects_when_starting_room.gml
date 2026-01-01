@@ -10,6 +10,8 @@ function scr_spawn_objects_when_starting_room()
 		|| (global.difficulty == 1 && normal)
 		|| (global.difficulty >= 2 && hard)
 		{
+			var obj = noone;
+			
 			switch (object)
 			{
 				case LEVEL_OBJECT_ID.ID_WALL:
@@ -49,7 +51,7 @@ function scr_spawn_objects_when_starting_room()
 					instance_create_depth(x, y, 0, obj_semisolid_platform);
 					break;
 				case LEVEL_OBJECT_ID.ID_BRICK_BLOCK:
-					var obj = instance_create_depth(x, y, 0, obj_question_block);
+					obj = instance_create_depth(x, y, 0, obj_question_block);
 					obj.block_type = "brick_block";
 					scr_spawn_objects_with_items_inside(obj);
 					break;
@@ -76,7 +78,7 @@ function scr_spawn_objects_when_starting_room()
 					break;
 
 				case LEVEL_OBJECT_ID.ID_QUESTION_BLOCK:
-					var obj = instance_create_depth(x, y, 0, obj_question_block);
+					obj = instance_create_depth(x, y, 0, obj_question_block);
 					obj.block_type = "question_block";
 					scr_spawn_objects_with_items_inside(obj);
 					break;
@@ -103,7 +105,7 @@ function scr_spawn_objects_when_starting_room()
 					break;
 
 				case LEVEL_OBJECT_ID.ID_MELON_BLOCK:
-					var obj = instance_create_depth(x, y, 0, obj_question_block);
+					obj = instance_create_depth(x, y, 0, obj_question_block);
 					obj.block_type = "melon_block";
 					scr_spawn_objects_with_items_inside(obj);
 					break;
@@ -254,7 +256,7 @@ function scr_spawn_objects_when_starting_room()
 					with(instance_create_depth(x, y, 0, obj_cardboard)) {length = 3;}
 					break;
 				case LEVEL_OBJECT_ID.ID_BUMP_IN_GROUND:
-					var obj = instance_create_depth(x, y, 0, obj_bump_in_ground);
+					obj = instance_create_depth(x, y, 0, obj_bump_in_ground);
 					scr_spawn_objects_with_items_inside(obj);
 					break;
 				case LEVEL_OBJECT_ID.ID_BUMP_IN_GROUND_8_BASIC_COLLECTIBLES:
@@ -290,7 +292,7 @@ function scr_spawn_objects_when_starting_room()
 				case LEVEL_OBJECT_ID.ID_BUMP_IN_GROUND_INVINCIBILITY_POWERUP_COIL_SPRING: with(instance_create_depth(x, y, 0, obj_bump_in_ground)){item_inside = "invincibility_powerup_coil_spring";}break;
 
 				case LEVEL_OBJECT_ID.ID_INVISIBLE_BUMP_IN_GROUND:
-					var obj = instance_create_depth(x, y, 0, obj_bump_in_ground);
+					obj = instance_create_depth(x, y, 0, obj_bump_in_ground);
 					obj.visible = false;
 					scr_spawn_objects_with_items_inside(obj);
 					break;

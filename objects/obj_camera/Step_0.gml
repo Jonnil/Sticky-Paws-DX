@@ -209,7 +209,7 @@ if (!global.goal_active)
 		{
 			if (player[i] <= 0)
 			&& (can_spawn_player[i])
-			&& (lives >= 1)
+			&& (global.player_lives >= 1)
 			{
 				if (!global.player_can_play[i])
 				{
@@ -225,7 +225,7 @@ if (!global.goal_active)
 				}
 			}
 			else
-			if (lives <= 0)
+			if (global.player_lives <= 0)
 			{
 				hud_show_lives_timer = global.hud_hide_time * 60;
 			}
@@ -653,7 +653,7 @@ if (global.character_select_in_this_menu == "main_game")
 			black_screen_gui_alpha = 1;
 			global.actually_play_edited_level = false;
 			global.play_edited_level = false;
-			score = 0;
+			global.level_score = 0;
 
 			#region /* Save Level Information when in level editor */
 			if (global.level_name != ""

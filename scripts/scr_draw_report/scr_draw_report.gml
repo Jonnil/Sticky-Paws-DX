@@ -161,6 +161,13 @@ function scr_draw_report()
 		}
 
 		scr_draw_text_outlined(display_get_gui_width() * 0.5, report_sent_message_y - 64, l10n_text("Report has been sent"), global.default_text_size * 2, c_black, c_white, 1);
+		
+		var searched_file_downloaded_delete_y = report_sent_message_y + 50 + (42 * 2);
+		var back_to_list_y = report_sent_message_y + 50 + (42 * 3);
+		var back_to_list_text = l10n_text("Back to online character list");
+		var searched_file_downloaded_back_y = report_sent_message_y + 50 + (42 * 4);
+		var searched_file_downloaded_back_text = l10n_text("Back to character select");
+		
 		if (content_type == "level")
 		{
 			if (content_type == "level")
@@ -170,11 +177,12 @@ function scr_draw_report()
 			{
 				scr_draw_text_outlined(display_get_gui_width() * 0.5, report_sent_message_y, l10n_text("You can delete the reported level if you want to"), global.default_text_size, c_black, c_white, 1);
 			}
-			var searched_file_downloaded_delete_y = report_sent_message_y + 50 + (42 * 2);
-			var back_to_list_y = report_sent_message_y + 50 + (42 * 3);
-			var back_to_list_text = l10n_text("Back to online level list");
-			var searched_file_downloaded_back_y = report_sent_message_y + 50 + (42 * 4);
-			var searched_file_downloaded_back_text = l10n_text("Back to custom level select");
+			
+			searched_file_downloaded_delete_y = report_sent_message_y + 50 + (42 * 2);
+			back_to_list_y = report_sent_message_y + 50 + (42 * 3);
+			back_to_list_text = l10n_text("Back to online level list");
+			searched_file_downloaded_back_y = report_sent_message_y + 50 + (42 * 4);
+			searched_file_downloaded_back_text = l10n_text("Back to custom level select");
 		}
 		else
 		{
@@ -185,11 +193,6 @@ function scr_draw_report()
 			{
 				scr_draw_text_outlined(display_get_gui_width() * 0.5, report_sent_message_y, l10n_text("You can delete the reported character if you want to"), global.default_text_size, c_black, c_white, 1);
 			}
-			var searched_file_downloaded_delete_y = report_sent_message_y + 50 + (42 * 2);
-			var back_to_list_y = report_sent_message_y + 50 + (42 * 3);
-			var back_to_list_text = l10n_text("Back to online character list");
-			var searched_file_downloaded_back_y = report_sent_message_y + 50 + (42 * 4);
-			var searched_file_downloaded_back_text = l10n_text("Back to character select");
 		}
 		if (content_type == "level")
 		&& (file_exists(game_save_id + "custom_levels/" + scr_get_custom_level_folder_name() + "/data/level_information.ini"))

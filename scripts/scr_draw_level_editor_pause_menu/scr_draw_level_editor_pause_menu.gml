@@ -74,47 +74,41 @@ function scr_draw_level_editor_pause_menu()
 			#endregion /* Show what version of the game the level was first created in END */
 
 			#region /* Draw if level have a Level ID on top of screen */
+			var level_id_y = 0;
+			
 			if (level_id != "")
 			{
-				var level_id_y = 32;
+				level_id_y = 32;
 				draw_set_halign(fa_left);
 				draw_set_valign(fa_middle);
 				scr_draw_text_outlined(64, level_id_y, string(level_id), global.default_text_size * scr_wave(1, 1.1, 1, 0), c_black, c_white, 1);
 				draw_sprite_ext(spr_icon_upload, 1, 32, level_id_y, scr_wave(0.9, 1, 1, 0), scr_wave(0.9, 1, 1, 0), 0, c_white, 1);
 			}
-			else
-			{
-				level_id_y = 0;
-			}
 			#endregion /* Draw if level have A Level ID on top of screen END */
 
 			#region /* Draw if level have been Clear Checked on top of screen */
+			var clear_check_y = level_id_y;
+			
 			if (if_clear_checked)
 			{
-				var clear_check_y = level_id_y + 32;
+				clear_check_y = level_id_y + 32;
 				draw_set_halign(fa_left);
 				draw_set_valign(fa_middle);
 				scr_draw_text_outlined(64, clear_check_y, l10n_text("Clear Checked"), global.default_text_size * scr_wave(1, 1.1, 1, 0), c_black, c_white, 1);
 				draw_sprite_ext(spr_icon_finished, 1, 32, clear_check_y, scr_wave(0.9, 1, 1, 0), scr_wave(0.9, 1, 1, 0), 0, c_white, 1);
 			}
-			else
-			{
-				var clear_check_y = level_id_y;
-			}
 			#endregion /* Draw if level have been Clear Checked on top of screen END */
 
 			#region /* Draw if level is created in Daily Build on top of screen */
-			var daily_build_y = clear_check_y + 32;
+			var daily_build_y = clear_check_y;
+			
 			if (if_daily_build)
 			{
+				daily_build_y = clear_check_y + 32;
 				draw_set_halign(fa_left);
 				draw_set_valign(fa_middle);
 				scr_draw_text_outlined(64, daily_build_y, l10n_text("Daily Build"), global.default_text_size * scr_wave(1, 1.1, 1, 0), c_black, c_white, 1);
 				draw_sprite_ext(spr_icon_daily_build, 1, 32, daily_build_y, scr_wave(0.9, 1, 1, 0), scr_wave(0.9, 1, 1, 0), 0, c_white, 1);
-			}
-			else
-			{
-				var daily_build_y = clear_check_y;
 			}
 			#endregion /* Draw if level is created in Daily Build on top of screen END */
 

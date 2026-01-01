@@ -1,7 +1,7 @@
 #region /* Collect Invincibility Powerup */
 if (!bounce_up)
 {
-	score += 1000;
+	global.level_score += 1000;
 	if (instance_exists(obj_camera))
 	{
 		obj_camera.hud_show_score_timer = global.hud_hide_time * 60;

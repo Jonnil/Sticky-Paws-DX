@@ -23,7 +23,7 @@ function scr_get_rewards_when_jumped_on()
 			#endregion /* 1 Coin END */
 
 			#region /* 200 Score */
-			score += 200;
+			global.level_score += 200;
 			with(instance_create_depth(x, y, 0, obj_score_up))
 			{
 				score_up = 200;
@@ -69,7 +69,7 @@ function scr_get_rewards_when_jumped_on()
 			#endregion /* 2 Coin END */
 
 			#region /* 400 Score */
-			score += 400;
+			global.level_score += 400;
 			with(instance_create_depth(x, y, 0, obj_score_up))
 			{
 				score_up = 400;
@@ -129,7 +129,7 @@ function scr_get_rewards_when_jumped_on()
 			#endregion /* 4 Coin END */
 
 			#region /* 800 Score */
-			score += 800;
+			global.level_score += 800;
 			with(instance_create_depth(x, y, 0, obj_score_up))
 			{
 				score_up = 800;
@@ -189,7 +189,7 @@ function scr_get_rewards_when_jumped_on()
 			#endregion /* 4 Coin END */
 
 			#region /* 1000 Score */
-			score += 1000;
+			global.level_score += 1000;
 			with(instance_create_depth(x, y, 0, obj_score_up))
 			{
 				score_up = 1000;
@@ -249,7 +249,7 @@ function scr_get_rewards_when_jumped_on()
 			#endregion /* 4 Coin END */
 
 			#region /* 2000 Score */
-			score += 2000;
+			global.level_score += 2000;
 			with(instance_create_depth(x, y, 0, obj_score_up))
 			{
 				score_up = 2000;
@@ -309,7 +309,7 @@ function scr_get_rewards_when_jumped_on()
 			#endregion /* 4 Coin END */
 
 			#region /* 4000 Score */
-			score += 4000;
+			global.level_score += 4000;
 			with(instance_create_depth(x, y, 0, obj_score_up))
 			{
 				score_up = 4000;
@@ -324,7 +324,7 @@ function scr_get_rewards_when_jumped_on()
 					score_up = "1-up";
 				}
 			}
-			#endregion /* 1-up */
+			#endregion /* 1-up END */
 
 			audio_sound_pitch(snd_stomp, 1.5);
 			scr_audio_play(snd_stomp, volume_source.sound);
@@ -369,7 +369,7 @@ function scr_get_rewards_when_jumped_on()
 			#endregion /* 4 Coin END */
 
 			#region /* 8000 Score */
-			score += 8000;
+			global.level_score += 8000;
 			with(instance_create_depth(x, y, 0, obj_score_up))
 			{
 				score_up = 8000;

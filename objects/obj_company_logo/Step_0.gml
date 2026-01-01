@@ -176,7 +176,7 @@ if (!can_navigate)
 					controller_splash_2 = scr_get_voice("controller_splash_2.ogg");
 					controller_splash_3 = scr_get_voice("controller_splash_3.ogg");
 
-					var sound_variations = [controller_splash_1, controller_splash_2, controller_splash_3];
+					sound_variations = [controller_splash_1, controller_splash_2, controller_splash_3];
 					controller_splash = scr_choose_sound_variation(sound_variations);
 				}
 				#endregion /* Character as Narrator END */

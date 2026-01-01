@@ -484,17 +484,15 @@ function scr_draw_information_menu()
 			}
 
 			/* What's New tab button */
+			var whats_new_alpha = 1;
+			
 			if (!latest_whats_new_read)
 			{
-				var whats_new_alpha = scr_wave(0, 1, 1);
-			}
-			else
-			{
-				var whats_new_alpha = 1;
+				whats_new_alpha = scr_wave(0, 1, 1);
 			}
 			
 			tab_button_x += 185;
-			draw_menu_button_sprite(spr_menu_button, tab_button_x, 0, 0, 0, 0.5, 1, 185, 42, l10n_text("What's New?"), "whats_new", "whats_new", false,,whats_new_alpha);
+			draw_menu_button_sprite(spr_menu_button, tab_button_x, 0, 0, 0, 0.5, 1, 185, 42, l10n_text("What's New?"), "whats_new", "whats_new", false,, whats_new_alpha);
 			
 			if (point_in_rectangle(mouse_get_x, mouse_get_y, tab_button_x, 0, tab_button_x + 185, 42))
 			&& (mouse_check_button_released(mb_left))
@@ -611,16 +609,13 @@ function scr_draw_information_menu()
 			var check_out_website_y = 42 * 6;
 			var check_out_guide_y = 42 * 8;
 			var check_out_update_schedule_y = 42 * 10;
-
+			var privacy_policy_y = 32 * 6 + 55;
+			
 			if (global.enable_option_for_pc)
 			{
-				var privacy_policy_y = 42 * 12;
+				privacy_policy_y = 42 * 12;
 			}
-			else
-			{
-				var privacy_policy_y = 32 * 6 + 55;
-			}
-
+			
 			draw_set_halign(fa_center);
 			scr_draw_text_outlined(display_get_gui_width() * 0.5, welcome_to_game_y, l10n_text("Welcome to " + string(global.game_name) + "!"), global.default_text_size, c_black, c_white, 1);
 			draw_set_halign(fa_left);

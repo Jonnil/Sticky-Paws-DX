@@ -12,16 +12,16 @@ if (!show_remaining_jumps)
 		}
 		var time_source = time_source_create(time_source_game, 10, time_source_units_frames, function()
 		{
-			if (lives < 99)
+			if (global.player_lives < 99)
 			{
-				lives++;
+				global.player_lives++;
 			}
 			audio_sound_pitch(snd_1up, 1);
 			scr_audio_play(snd_1up, volume_source.sound);
 			if (global.character_select_in_this_menu == "main_game")
 			{
 				ini_open(game_save_id + "save_file/file" + string(global.file) + ".ini");
-				ini_write_real("Player", "lives", lives);
+				ini_write_real("Player", "lives", global.player_lives);
 				ini_close(); /* Don't commit the save data on Switch, this is only temporary! */
 			}
 		}
@@ -37,27 +37,27 @@ if (!show_remaining_jumps)
 		}
 		var time_source = time_source_create(time_source_game, 10, time_source_units_frames, function()
 		{
-			if (lives < 99)
+			if (global.player_lives < 99)
 			{
-				lives++;
+				global.player_lives++;
 			}
 			audio_sound_pitch(snd_1up, 1);
 			scr_audio_play(snd_1up, volume_source.sound);
 		}
 		, [], 1);
 		time_source_start(time_source);
-		var time_source = time_source_create(time_source_game, 20, time_source_units_frames, function()
+		time_source = time_source_create(time_source_game, 20, time_source_units_frames, function()
 		{
-			if (lives < 99)
+			if (global.player_lives < 99)
 			{
-				lives++;
+				global.player_lives++;
 			}
 			audio_sound_pitch(snd_1up, 1.1);
 			scr_audio_play(snd_1up, volume_source.sound);
 			if (global.character_select_in_this_menu == "main_game")
 			{
 				ini_open(game_save_id + "save_file/file" + string(global.file) + ".ini");
-				ini_write_real("Player", "lives", lives);
+				ini_write_real("Player", "lives", global.player_lives);
 				ini_close(); /* Don't commit the save data on Switch, this is only temporary! */
 			}
 		}
@@ -73,38 +73,38 @@ if (!show_remaining_jumps)
 		}
 		var time_source = time_source_create(time_source_game, 10, time_source_units_frames, function()
 		{
-			if (lives < 99)
+			if (global.player_lives < 99)
 			{
-				lives++;
+				global.player_lives++;
 			}
 			audio_sound_pitch(snd_1up, 1);
 			scr_audio_play(snd_1up, volume_source.sound);
 		}
 		, [], 1);
 		time_source_start(time_source);
-		var time_source = time_source_create(time_source_game, 20, time_source_units_frames, function()
+		time_source = time_source_create(time_source_game, 20, time_source_units_frames, function()
 		{
-			if (lives < 99)
+			if (global.player_lives < 99)
 			{
-				lives++;
+				global.player_lives++;
 			}
 			audio_sound_pitch(snd_1up, 1.1);
 			scr_audio_play(snd_1up, volume_source.sound);
 		}
 		, [], 1);
 		time_source_start(time_source);
-		var time_source = time_source_create(time_source_game, 30, time_source_units_frames, function()
+		time_source = time_source_create(time_source_game, 30, time_source_units_frames, function()
 		{
-			if (lives < 99)
+			if (global.player_lives < 99)
 			{
-				lives++;
+				global.player_lives++;
 			}
 			audio_sound_pitch(snd_1up, 1.2);
 			scr_audio_play(snd_1up, volume_source.sound);
 			if (global.character_select_in_this_menu == "main_game")
 			{
 				ini_open(game_save_id + "save_file/file" + string(global.file) + ".ini");
-				ini_write_real("Player", "lives", lives);
+				ini_write_real("Player", "lives", global.player_lives);
 				ini_close(); /* Don't commit the save data on Switch, this is only temporary! */
 			}
 		}

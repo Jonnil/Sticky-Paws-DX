@@ -9,11 +9,7 @@ function scr_get_voice(sound_names)
 	{
 		voice = audio_create_stream(string(file_path));
 	}
-	else
-	{
-		var voice = noone;
-	}
-
+	
 	return voice;
 	#endregion /* Define a get voice function to reduce code duplication END */
 

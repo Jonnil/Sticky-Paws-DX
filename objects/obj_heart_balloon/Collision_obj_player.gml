@@ -39,7 +39,7 @@ if (!bounce_up)
 	}
 
 	#region /* 1000 Score */
-	score += 1000;
+	global.level_score += 1000;
 	with(instance_create_depth(x, y, 0, obj_score_up))
 	{
 		score_up = 1000;

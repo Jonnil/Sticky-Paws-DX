@@ -109,7 +109,9 @@ function scr_load_custom_levels()
 			#endregion /* Get clear check and level ID information END */
 
 			var target_folder_name = "";
-			if (variable_global_exists("level_folder_name") && string(global.level_folder_name) != "")
+			
+			if (variable_global_exists("level_folder_name")
+			&& string(global.level_folder_name) != "")
 			{
 				target_folder_name = string(global.level_folder_name);
 			}
@@ -144,7 +146,8 @@ function scr_load_custom_levels()
 				{
 					show_debug_message("[scr_load_custom_levels][scroll_to_after_rename] Global 'select_level_index' before update: " + string(global.select_level_index));
 
-					var target_folder_name = "";
+					target_folder_name = "";
+					
 					if (variable_global_exists("level_folder_name") && string(global.level_folder_name) != "")
 					{
 						target_folder_name = string(global.level_folder_name);
@@ -202,7 +205,8 @@ function scr_load_custom_levels()
 				{
 					show_debug_message("[scr_load_custom_levels][scroll_to_after_rename] Global 'select_level_index' before update: " + string(global.select_level_index));
 
-					var target_folder_name = "";
+					target_folder_name = "";
+					
 					if (variable_global_exists("level_folder_name") && string(global.level_folder_name) != "")
 					{
 						target_folder_name = string(global.level_folder_name);

@@ -34,63 +34,70 @@ function scr_draw_upload_photographic_images()
 		|| (file_exists(game_save_id + "custom_levels/" + scr_get_custom_level_folder_name() + "/background/background1.jpg"))
 		|| (file_exists(game_save_id + "custom_levels/" + scr_get_custom_level_folder_name() + "/background/background1.jpeg"))
 		{
-			var background1_exists = true;
+			background1_exists = true;
 		}
+		
 		if (file_exists(game_save_id + "custom_levels/" + scr_get_custom_level_folder_name() + "/background/background2.png"))
 		if (file_exists(game_save_id + "custom_levels/" + scr_get_custom_level_folder_name() + "/background/background2.bmp"))
 		if (file_exists(game_save_id + "custom_levels/" + scr_get_custom_level_folder_name() + "/background/background2.gif"))
 		if (file_exists(game_save_id + "custom_levels/" + scr_get_custom_level_folder_name() + "/background/background2.jpg"))
 		if (file_exists(game_save_id + "custom_levels/" + scr_get_custom_level_folder_name() + "/background/background2.jpeg"))
 		{
-			var background2_exists = true;
+			background2_exists = true;
 		}
+		
 		if (file_exists(game_save_id + "custom_levels/" + scr_get_custom_level_folder_name() + "/background/background3.png"))
 		if (file_exists(game_save_id + "custom_levels/" + scr_get_custom_level_folder_name() + "/background/background3.bmp"))
 		if (file_exists(game_save_id + "custom_levels/" + scr_get_custom_level_folder_name() + "/background/background3.gif"))
 		if (file_exists(game_save_id + "custom_levels/" + scr_get_custom_level_folder_name() + "/background/background3.jpg"))
 		if (file_exists(game_save_id + "custom_levels/" + scr_get_custom_level_folder_name() + "/background/background3.jpeg"))
 		{
-			var background3_exists = true;
+			background3_exists = true;
 		}
+		
 		if (file_exists(game_save_id + "custom_levels/" + scr_get_custom_level_folder_name() + "/background/background4.png"))
 		if (file_exists(game_save_id + "custom_levels/" + scr_get_custom_level_folder_name() + "/background/background4.bmp"))
 		if (file_exists(game_save_id + "custom_levels/" + scr_get_custom_level_folder_name() + "/background/background4.gif"))
 		if (file_exists(game_save_id + "custom_levels/" + scr_get_custom_level_folder_name() + "/background/background4.jpg"))
 		if (file_exists(game_save_id + "custom_levels/" + scr_get_custom_level_folder_name() + "/background/background4.jpeg"))
 		{
-			var background4_exists = true;
+			background4_exists = true;
 		}
+		
 		if (file_exists(game_save_id + "custom_levels/" + scr_get_custom_level_folder_name() + "/background/foreground1.png"))
 		if (file_exists(game_save_id + "custom_levels/" + scr_get_custom_level_folder_name() + "/background/foreground1.bmp"))
 		if (file_exists(game_save_id + "custom_levels/" + scr_get_custom_level_folder_name() + "/background/foreground1.gif"))
 		if (file_exists(game_save_id + "custom_levels/" + scr_get_custom_level_folder_name() + "/background/foreground1.jpg"))
 		if (file_exists(game_save_id + "custom_levels/" + scr_get_custom_level_folder_name() + "/background/foreground1.jpeg"))
 		{
-			var foreground1_exists = true;
+			foreground1_exists = true;
 		}
+		
 		if (file_exists(game_save_id + "custom_levels/" + scr_get_custom_level_folder_name() + "/background/foreground1_5.png"))
 		if (file_exists(game_save_id + "custom_levels/" + scr_get_custom_level_folder_name() + "/background/foreground1_5.bmp"))
 		if (file_exists(game_save_id + "custom_levels/" + scr_get_custom_level_folder_name() + "/background/foreground1_5.gif"))
 		if (file_exists(game_save_id + "custom_levels/" + scr_get_custom_level_folder_name() + "/background/foreground1_5.jpg"))
 		if (file_exists(game_save_id + "custom_levels/" + scr_get_custom_level_folder_name() + "/background/foreground1_5.jpeg"))
 		{
-			var foreground1_5_exists = true;
+			foreground1_5_exists = true;
 		}
+		
 		if (file_exists(game_save_id + "custom_levels/" + scr_get_custom_level_folder_name() + "/background/foreground2.png"))
 		if (file_exists(game_save_id + "custom_levels/" + scr_get_custom_level_folder_name() + "/background/foreground2.bmp"))
 		if (file_exists(game_save_id + "custom_levels/" + scr_get_custom_level_folder_name() + "/background/foreground2.gif"))
 		if (file_exists(game_save_id + "custom_levels/" + scr_get_custom_level_folder_name() + "/background/foreground2.jpg"))
 		if (file_exists(game_save_id + "custom_levels/" + scr_get_custom_level_folder_name() + "/background/foreground2.jpeg"))
 		{
-			var foreground2_exists = true;
+			foreground2_exists = true;
 		}
+		
 		if (file_exists(game_save_id + "custom_levels/" + scr_get_custom_level_folder_name() + "/background/foreground_secret.png"))
 		if (file_exists(game_save_id + "custom_levels/" + scr_get_custom_level_folder_name() + "/background/foreground_secret.bmp"))
 		if (file_exists(game_save_id + "custom_levels/" + scr_get_custom_level_folder_name() + "/background/foreground_secret.gif"))
 		if (file_exists(game_save_id + "custom_levels/" + scr_get_custom_level_folder_name() + "/background/foreground_secret.jpg"))
 		if (file_exists(game_save_id + "custom_levels/" + scr_get_custom_level_folder_name() + "/background/foreground_secret.jpeg"))
 		{
-			var foreground_secret_exists = true;
+			foreground_secret_exists = true;
 		}
 
 		scr_draw_text_outlined(get_window_width * 0.5, 32 + 32, l10n_text("Does your level use photographic images for the custom background assets?"), global.default_text_size, c_black, c_white, 1);

@@ -666,7 +666,7 @@ if (!global.actually_play_edited_level)
 					#endregion /* Reset all collected big collectibles and key fragments when playtesting level END */
 
 					menu_delay = 9999; /* Disable all menu control */
-					lives = 5;
+					global.player_lives = 5;
 					global.lives_until_assist = 0;
 
 					audio_stop_sound(level_editing_music); /* Stop the background music that plays during level editing when playtesting a level */
@@ -777,7 +777,7 @@ if (!global.actually_play_edited_level)
 		ini_close(); /* Don't commit the save data on Switch, this is only temporary! */
 
 		menu_delay = 3; /* Disable all menu control */
-		lives = 5;
+		global.player_lives = 5;
 		global.lives_until_assist = 0;
 		global.actually_play_edited_level = false;
 		global.play_edited_level = false; /* Set this to false so you don't playtest the level */
@@ -1445,23 +1445,30 @@ if (!global.actually_play_edited_level)
 	#endregion /* Scroll mouse wheel to change erase tool size in level editor END */
 
 	#region /* Grid hotkeys */
-	if (show_grid && keyboard_check(vk_control) && !pause && !in_modify_object_menu)
+	if (show_grid
+	&& keyboard_check(vk_control)
+	&& !pause
+	&& !in_modify_object_menu)
 	{
+		var grid_snap_how_much = 1;
+		
 		if (keyboard_check(vk_shift))
 		{
-			var grid_snap_how_much = 16;
+			grid_snap_how_much = 16;
 		}
-		else
-		{
-			var grid_snap_how_much = 1;
-		}
-		if (keyboard_check_pressed(ord("A")) && global.grid_hsnap > grid_snap_how_much && global.grid_vsnap > grid_snap_how_much)
+		
+		if (keyboard_check_pressed(ord("A"))
+		&& global.grid_hsnap > grid_snap_how_much
+		&& global.grid_vsnap > grid_snap_how_much)
 		{
 			show_grid = true;
 			global.grid_hsnap -= grid_snap_how_much;
 			global.grid_vsnap -= grid_snap_how_much;
 		}
-		else if (keyboard_check_pressed(ord("S")) && global.grid_hsnap < 160 && global.grid_vsnap < 160)
+		else
+		if (keyboard_check_pressed(ord("S"))
+		&& global.grid_hsnap < 160
+		&& global.grid_vsnap < 160)
 		{
 			show_grid = true;
 			global.grid_hsnap += grid_snap_how_much;
@@ -1480,7 +1487,7 @@ if (!global.actually_play_edited_level)
 	&& (!pause)
 	&& (!in_modify_object_menu)
 	{
-		show_grid = not show_grid;
+		show_grid = !show_grid;
 	}
 	#endregion /* Show or hide grid hotkey END */
 
@@ -1920,7 +1927,7 @@ if (!global.actually_play_edited_level)
 			global.checkpoint_realmillisecond = 0;
 
 			menu_delay = 9999; /* Disable all menu control */
-			lives = 5;
+			global.player_lives = 5;
 			global.lives_until_assist = 0;
 			global.actually_play_edited_level = false;
 			global.play_edited_level = false; /* Set this to false so you don't playtest the level */

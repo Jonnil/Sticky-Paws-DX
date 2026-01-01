@@ -1,15 +1,14 @@
 var main_game_y = display_get_gui_height() * 0.5 + 100 + 40;
 var level_editor_y = display_get_gui_height() * 0.5 + 100 + 80 + 2;
+var online_level_list_title_y = -999;
+var option_and_quit_y = display_get_gui_height() * 0.5 + 225;
+
 if (global.free_communication_available)
 {
-	var online_level_list_title_y = display_get_gui_height() * 0.5 + 100 + 120 + 4;
-	var option_and_quit_y = display_get_gui_height() * 0.5 + 225 + 40;
+	online_level_list_title_y = display_get_gui_height() * 0.5 + 100 + 120 + 4;
+	option_and_quit_y = display_get_gui_height() * 0.5 + 225 + 40;
 }
-else
-{
-	var online_level_list_title_y = -999;
-	var option_and_quit_y = display_get_gui_height() * 0.5 + 225;
-}
+
 var mouse_get_x = device_mouse_x_to_gui(0);
 var mouse_get_y = device_mouse_y_to_gui(0);
 var fixed_player = 1;
@@ -455,13 +454,11 @@ if (!in_settings)
 		draw_sprite_ext(spr_icon_cogwheel, 0, display_get_gui_width() * 0.5 - 185 + 8, option_and_quit_y + 21, 1, 1, 0, c_white, 1);
 		
 		/* Information button */
+		var information_alpha = 1;
+		
 		if (!latest_whats_new_read)
 		{
-			var information_alpha = scr_wave(0, 1, 1);
-		}
-		else
-		{
-			var information_alpha = 1;
+			information_alpha = scr_wave(0, 1, 1);
 		}
 		
 		draw_menu_button_sprite(spr_icon_exclamation, display_get_gui_width() - 32, display_get_gui_height() - 35, 16, 0, 1, 1, 32, 32, "", "information", "information", false,,information_alpha);

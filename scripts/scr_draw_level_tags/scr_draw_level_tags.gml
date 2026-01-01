@@ -1,41 +1,61 @@
 function scr_draw_level_tags(draw_tags_x = display_get_gui_width() * 0.5, draw_tags_y = display_get_gui_height() * 0.5, show_if_no_tags = true, halign = fa_center, one_line = true, text_size = global.default_text_size, alpha = 1) {
 
-	if (one_line) {
-		var text_prefix = l10n_text("Tags") + ": ";
-		var new_line = "";
-	}
-	else
+	var text_prefix = "";
+	var new_line = "\n";
+	
+	if (one_line)
 	{
-		var text_prefix = "";
-		var new_line = "\n";
+		text_prefix = l10n_text("Tags") + ": ";
+		new_line = "";
 	}
 
 	#region /* How many tags */
+	var tag_art_text = "";
+	var tag_boss_battle_text = "";
+	var tag_dont_move_text = "";
+	var tag_kaizo_text = "";
+	var tag_multiplayer_text = "";
+	var tag_music_text = "";
+	var tag_puzzle_solving_text = "";
+	var tag_short_and_sweet_text = "";
+	var tag_singleplayer_text = "";
+	var tag_speedrun_text = "";
+	var tag_standard_text = "";
+	var tag_technical_text = "";
+	var tag_themed_text = "";
+	var tag_glitch_showcase_text = "";
+	
 	how_many_tags = 0;
-	if (tag_art){var tag_art_text = "Art" + " " + new_line;how_many_tags++;}else{var tag_art_text = "";};
-	if (tag_boss_battle){var tag_boss_battle_text = "Boss Battle" + " " + new_line;how_many_tags++;}else{var tag_boss_battle_text = "";};
-	if (tag_dont_move){var tag_dont_move_text = "Don't Move" + " " + new_line;how_many_tags++;}else{var tag_dont_move_text = "";};
-	if (tag_kaizo){var tag_kaizo_text = "Kaizo" + " " + new_line;how_many_tags++;}else{var tag_kaizo_text = "";};
-	if (tag_multiplayer){var tag_multiplayer_text = "Multiplayer Only" + " " + new_line;how_many_tags++;}else{var tag_multiplayer_text = "";};
-	if (tag_music){var tag_music_text = "Music" + " " + new_line;how_many_tags++;}else{var tag_music_text = "";};
-	if (tag_puzzle_solving){var tag_puzzle_solving_text = "Puzzle-solving" + " " + new_line;how_many_tags++;}else{var tag_puzzle_solving_text = "";};
-	if (tag_short_and_sweet){var tag_short_and_sweet_text = "Short and Sweet" + " " + new_line;how_many_tags++;}else{var tag_short_and_sweet_text = "";};
-	if (tag_singleplayer){var tag_singleplayer_text = "Singleplayer Only" + " " + new_line;how_many_tags++;}else{var tag_singleplayer_text = "";};
-	if (tag_speedrun){var tag_speedrun_text = "Speedrun" + " " + new_line;how_many_tags++;}else{var tag_speedrun_text = "";};
-	if (tag_standard){var tag_standard_text = "Standard" + " " + new_line;how_many_tags++;}else{var tag_standard_text = "";};
-	if (tag_technical){var tag_technical_text = "Technical" + " " + new_line;how_many_tags++;}else{var tag_technical_text = "";};
-	if (tag_themed){var tag_themed_text = "Themed" + " " + new_line;how_many_tags++;}else{var tag_themed_text = "";};
-	if (tag_glitch_showcase){var tag_glitch_showcase_text = "Glitch Showcase" + " " + new_line;how_many_tags++;}else{var tag_glitch_showcase_text = "";};
+	if (tag_art){tag_art_text = "Art" + " " + new_line;how_many_tags++;}
+	if (tag_boss_battle){tag_boss_battle_text = "Boss Battle" + " " + new_line;how_many_tags++;}
+	if (tag_dont_move){tag_dont_move_text = "Don't Move" + " " + new_line;how_many_tags++;}
+	if (tag_kaizo){tag_kaizo_text = "Kaizo" + " " + new_line;how_many_tags++;}
+	if (tag_multiplayer){tag_multiplayer_text = "Multiplayer Only" + " " + new_line;how_many_tags++;}
+	if (tag_music){tag_music_text = "Music" + " " + new_line;how_many_tags++;}
+	if (tag_puzzle_solving){tag_puzzle_solving_text = "Puzzle-solving" + " " + new_line;how_many_tags++;}
+	if (tag_short_and_sweet){tag_short_and_sweet_text = "Short and Sweet" + " " + new_line;how_many_tags++;}
+	if (tag_singleplayer){tag_singleplayer_text = "Singleplayer Only" + " " + new_line;how_many_tags++;}
+	if (tag_speedrun){tag_speedrun_text = "Speedrun" + " " + new_line;how_many_tags++;}
+	if (tag_standard){tag_standard_text = "Standard" + " " + new_line;how_many_tags++;}
+	if (tag_technical){tag_technical_text = "Technical" + " " + new_line;how_many_tags++;}
+	if (tag_themed){tag_themed_text = "Themed" + " " + new_line;how_many_tags++;}
+	if (tag_glitch_showcase){tag_glitch_showcase_text = "Glitch Showcase" + " " + new_line;how_many_tags++;}
 	#endregion /* How many tags END */
 
 	#region /* Draw Level Tags */
 	draw_set_halign(halign);
 	draw_set_valign(fa_top);
-	if (show_if_no_tags && how_many_tags == 0) {
+	
+	if (show_if_no_tags
+	&& how_many_tags == 0)
+	{
 		scr_draw_text_outlined(draw_tags_x, draw_tags_y, l10n_text("Tags") + ": " + l10n_text("None"), text_size, c_black, c_white, 1);
 		scr_draw_text_outlined(draw_tags_x, draw_tags_y, l10n_text("Tags") + ": " + l10n_text("None"), text_size, c_black, c_red, scr_wave(0, 1, 1, 0));
 	}
-	else if (how_many_tags >= 1 && how_many_tags <= 3) {
+	else
+	if (how_many_tags >= 1
+	&& how_many_tags <= 3)
+	{
 		scr_draw_text_outlined(draw_tags_x, draw_tags_y, text_prefix +
 		string(tag_art_text) +
 		string(tag_boss_battle_text) +

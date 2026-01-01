@@ -8,15 +8,14 @@ for(var p = 1; p <= global.max_players; p += 1)
 
 	show_player_controller_cant_use[p] = 0;
 	show_player_controller_cant_use_y[p] = display_get_gui_height() * 2;
-
+	
+	var show_controls_x = 32;
+	
 	if (global.character_select_in_this_menu == "level_editor" && global.search_id != "")
 	{
-		var show_controls_x = 128 + 74;
+		show_controls_x = 128 + 74;
 	}
-	else
-	{
-		var show_controls_x = 32;
-	}
+	
 	scr_set_show_controls_x(p, show_controls_x);
 
 	player_accept_selection[p] = -1;
@@ -249,15 +248,13 @@ if (room == rm_leveleditor)
 set_controller_sprites_to_use();
 
 #region /* Load level information that can be displayed in pause menu */
+var level_path = global.use_temp_or_working + "custom_levels/" + scr_get_custom_level_folder_name();
+
 if (global.character_select_in_this_menu == "main_game")
 {
-	var level_path = "levels/" + string(ds_list_find_value(global.all_loaded_main_levels, global.select_level_index));
+	level_path = "levels/" + string(ds_list_find_value(global.all_loaded_main_levels, global.select_level_index));
 }
-else
-if (global.character_select_in_this_menu == "level_editor")
-{
-	var level_path = global.use_temp_or_working + "custom_levels/" + scr_get_custom_level_folder_name();
-}
+
 ini_open(level_path + "/data/level_information.ini");
 display_level_name = ini_read_string("info", "level_name", string(global.level_name));
 display_level_author = ini_read_string("info", "username", "");

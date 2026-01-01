@@ -9,21 +9,20 @@ function scr_player_move_restart()
 		&& (gamepad_button_check(global.player_slot[player], gp_shoulderrb))
 		&& (gamepad_button_check_pressed(global.player_slot[player], gp_select))
 		{
-			var quick_restart = true;
+			quick_restart = true;
 		}
 	}
 	if (global.restart_level || quick_restart)
 	{
 		if (quick_restart)
 		{
+			var ini_path = game_save_id + "save_file/custom_level_save.ini";
+			
 			if (global.character_select_in_this_menu == "main_game")
 			{
-				var ini_path = game_save_id + "save_file/file" + string(global.file) + ".ini";
+				ini_path = game_save_id + "save_file/file" + string(global.file) + ".ini";
 			}
-			else
-			{
-				var ini_path = game_save_id + "save_file/custom_level_save.ini";
-			}
+			
 			ini_open(ini_path);
 			ini_key_delete(global.level_name, "checkpoint_x");
 			ini_key_delete(global.level_name, "checkpoint_y");
@@ -46,7 +45,7 @@ function scr_player_move_restart()
 		global.timeattack_millisecond = 0;
 		global.timeattack_second = 0;
 		global.timeattack_minute = 0;
-		score = 0;
+		global.level_score = 0;
 		for(var i = 1; i <= global.max_players + 1; i += 1)
 		{
 			gamepad_set_vibration(i - 1, 0, 0);
@@ -71,9 +70,11 @@ function scr_player_move_quit()
 		global.timeattack_millisecond = 0;
 		global.timeattack_second = 0;
 		global.timeattack_minute = 0;
-		score = 0;
+		global.level_score = 0;
 		scr_save_level();
-		if (global.quit_to_world || global.quit_to_title)
+		
+		if (global.quit_to_world
+		|| global.quit_to_title)
 		{
 
 			#region /* Player availability check. These variables control player availability */
@@ -84,6 +85,7 @@ function scr_player_move_quit()
 				{
 					global.player_can_play[i] = false;
 				}
+				
 				gamepad_set_vibration(i - 1, 0, 0);
 			}
 			#endregion /* Player availability check. These variables control player availability END */

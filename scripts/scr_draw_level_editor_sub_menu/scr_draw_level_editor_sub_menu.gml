@@ -171,7 +171,8 @@ function scr_draw_level_editor_sub_menu(xx = 0)
 			else
 			if (menu == "level_editor_create_from_template")
 			{
-				if (daily_build_enabled) {
+				if (daily_build_enabled)
+				{
 					menu = "level_editor_create_daily_build";
 				}
 				else
@@ -208,46 +209,39 @@ function scr_draw_level_editor_sub_menu(xx = 0)
 		#endregion /* Navigate Sub Menu END */
 
 		#region /* Button Y Positions */
+		var play_y = 0;
+		var make_y = 42;
+		var edit_name_y = 42 * 2;
+		var edit_description_y = 42 * 3;
+		var delete_y = 42 * 4;
+		var upload_y = -99999;
+		back_y = 42 * 5;
+		
 		if (show_delete_button)
 		{
-			var play_y = 0;
-			var make_y = 42;
 			if (global.free_communication_available)
 			{
-				var upload_y = 42 * 2;
-				var edit_name_y = 42 * 3;
-				var edit_description_y = 42 * 4;
-				var delete_y = 42 * 5;
-				var back_y = 42 * 6;
-			}
-			else
-			{
-				var upload_y = -99999;
-				var edit_name_y = 42 * 2;
-				var edit_description_y = 42 * 3;
-				var delete_y = 42 * 4;
-				var back_y = 42 * 5;
+				upload_y = 42 * 2;
+				edit_name_y = 42 * 3;
+				edit_description_y = 42 * 4;
+				delete_y = 42 * 5;
+				back_y = 42 * 6;
 			}
 		}
 		else
 		{
-			var play_y = 0;
-			var make_y = 42;
+			delete_y = -99999;
+			
 			if (global.free_communication_available)
 			{
-				var upload_y = 42 * 2;
-				var edit_name_y = 42 * 3;
-				var edit_description_y = 42 * 4;
-				var delete_y = -99999;
-				var back_y = 42 * 5;
+				upload_y = 42 * 2;
+				edit_name_y = 42 * 3;
+				edit_description_y = 42 * 4;
+				back_y = 42 * 5;
 			}
 			else
 			{
-				var upload_y = -99999;
-				var edit_name_y = 42 * 2;
-				var edit_description_y = 42 * 3;
-				var delete_y = -99999;
-				var back_y = 42 * 4;
+				back_y = 42 * 4;
 			}
 		}
 		#endregion /* Button Y Positions END */
@@ -272,9 +266,11 @@ function scr_draw_level_editor_sub_menu(xx = 0)
 			else
 			if (global.select_level_index == 0) /* Create from Scratch and Create from Template menu */
 			{
-				var back_y = 226 * (column - scroll) + 569 - 3;
-				var daily_build_y = 226 * (column - scroll) + 569 - 3;
-				if (daily_build_enabled) {
+				back_y = 226 * (column - scroll) + 569 - 3;
+				daily_build_y = 226 * (column - scroll) + 569 - 3;
+				
+				if (daily_build_enabled)
+				{
 					back_y += 47;
 				}
 
@@ -283,10 +279,13 @@ function scr_draw_level_editor_sub_menu(xx = 0)
 				draw_roundrect_color_ext(xx, 226 * (column - scroll) + 455 - 3 + 10, xx + 384, back_y + 47, 50, 50, c_white, c_white, false);
 				draw_menu_button(xx + 8, 226 * (column - scroll) + 475 - 3, l10n_text("Create from Scratch"), "level_editor_create_from_scratch", "level_editor_create_from_scratch");
 				draw_menu_button(xx + 8, 226 * (column - scroll) + 522 - 3, l10n_text("Create from Template"), "level_editor_create_from_template", "level_editor_create_from_template"); /* + 47 on y */
-				if (daily_build_enabled) {
+				
+				if (daily_build_enabled)
+				{
 					draw_menu_button(xx + 8, daily_build_y, l10n_text("Create Daily Build"), "level_editor_create_daily_build", "level_editor_create_daily_build"); /* + 47 on y */
 					draw_sprite_ext(spr_icon_daily_build, 0, xx + 8 + 20, daily_build_y + 21, 1, 1, 0, c_white, 1);
 				}
+				
 				draw_menu_button(xx + 8, back_y, l10n_text("Back"), "level_editor_create_from_back", "level_editor_create_from_back");
 				draw_sprite_ext(spr_icon_back, 0, xx + 8 + 20, back_y + 21, 1, 1, 0, c_white, 1);
 			}

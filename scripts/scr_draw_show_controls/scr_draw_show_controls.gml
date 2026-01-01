@@ -1,21 +1,22 @@
 /* Have a function for drawing the on-screen controls, for less repeatable code */
 function scr_draw_show_controls_key(show_controls_name = "", gp_button = noone, gp_button2 = noone, player_key = noone, player_key2 = noone, player_show_key_x, what_player = 1, yy = show_player_controls_y[what_player], alpha = player_show_controls_alpha[what_player], gp_is_connected, get_window_height)
 {
+	var real_yy = yy;
+	
 	if (get_window_height != 0)
 	{
-		var real_yy = get_window_height - yy;
+		real_yy = get_window_height - yy;
 	}
-	else
-	{
-		var real_yy = yy;
-	}
-
+	
 	var draw_text_show_controls = false;
 
 	var show_controls_button = (gp_button != noone) ? gp_button : gp_button2;
 	var show_controls_key = (player_key != noone) ? player_key : player_key2;
 
-	if (show_controls_button != noone) && (global.controls_used_for_navigation == "gamepad" && gp_is_connected || global.always_show_gamepad_buttons)
+	if (show_controls_button != noone)
+	&& (global.controls_used_for_navigation == "gamepad"
+	&& gp_is_connected
+	|| global.always_show_gamepad_buttons)
 	{
 		draw_text_show_controls = true;
 		scr_draw_gamepad_buttons(show_controls_button, player_show_key_x, real_yy, 0.5, c_white, alpha, 1, 1, what_player);
@@ -68,19 +69,22 @@ function scr_draw_show_controls(what_player = 1, yy = show_player_controls_y[wha
 	/* If crouch buttons are not found, find crouch toggle buttons instead */
 	if (gp_button_crouch == noone)
 	{
-		var gp_button_crouch = global.player_[inp.gp][what_player][1][action.crouch_toggle];
+		gp_button_crouch = global.player_[inp.gp][what_player][1][action.crouch_toggle];
 	}
+	
 	if (gp_button2_crouch == noone)
 	{
-		var gp_button2_crouch = global.player_[inp.gp][what_player][2][action.crouch_toggle];
+		gp_button2_crouch = global.player_[inp.gp][what_player][2][action.crouch_toggle];
 	}
+	
 	if (player_key_crouch == noone)
 	{
-		var player_key_crouch = global.player_[inp.key][what_player][1][action.crouch_toggle];
+		player_key_crouch = global.player_[inp.key][what_player][1][action.crouch_toggle];
 	}
+	
 	if (player_key2_crouch == noone)
 	{
-		var player_key2_crouch = global.player_[inp.key][what_player][2][action.crouch_toggle];
+		player_key2_crouch = global.player_[inp.key][what_player][2][action.crouch_toggle];
 	}
 
 	var gp_button_run = global.player_[inp.gp][what_player][1][action.run];
@@ -91,19 +95,22 @@ function scr_draw_show_controls(what_player = 1, yy = show_player_controls_y[wha
 	/* If run buttons are not found, find run toggle buttons instead */
 	if (gp_button_run == noone)
 	{
-		var gp_button_run = global.player_[inp.gp][what_player][1][action.run_toggle];
+		gp_button_run = global.player_[inp.gp][what_player][1][action.run_toggle];
 	}
+	
 	if (gp_button2_run == noone)
 	{
-		var gp_button2_run = global.player_[inp.gp][what_player][2][action.run_toggle];
+		gp_button2_run = global.player_[inp.gp][what_player][2][action.run_toggle];
 	}
+	
 	if (player_key_run == noone)
 	{
-		var player_key_run = global.player_[inp.key][what_player][1][action.run_toggle];
+		player_key_run = global.player_[inp.key][what_player][1][action.run_toggle];
 	}
+	
 	if (player_key2_run == noone)
 	{
-		var player_key2_run = global.player_[inp.key][what_player][2][action.run_toggle];
+		player_key2_run = global.player_[inp.key][what_player][2][action.run_toggle];
 	}
 
 	var gp_button_left = global.player_[inp.gp][what_player][1][action.left];
@@ -142,7 +149,8 @@ function scr_draw_show_controls(what_player = 1, yy = show_player_controls_y[wha
 		scr_draw_show_controls_key("Up", gp_button_up, gp_button2_up, player_key_up, player_key2_up, player_show_up_key_x[what_player], what_player, yy, alpha, gamepad_player_is_connected, get_window_height);
 	}
 	else
-	if (lives != 0 && can_spawn_player[what_player])
+	if (global.player_lives != 0
+	&& can_spawn_player[what_player])
 	{
 		scr_draw_show_controls_key("Join Game", gp_button_accept, gp_button2_accept, player_key_accept, player_key2_accept, 32, what_player, yy, alpha, gamepad_player_is_connected, get_window_height);
 	}

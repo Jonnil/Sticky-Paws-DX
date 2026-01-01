@@ -3,14 +3,11 @@ function scr_draw_welcome_to_level_editor_menu()
 	var welcome_screen_shortcuts_x = display_get_gui_width() * 0.5 - 320;
 	var welcome_screen_tutorial_x = display_get_gui_width() * 0.5 - 95;
 	var welcome_screen_close_x = display_get_gui_width() * 0.5 + 130;
+	var shortcuts_available = true;
 
 	if (os_type == os_switch)
 	{
-		var shortcuts_available = false;
-	}
-	else
-	{
-		var shortcuts_available = true;
+		shortcuts_available = false;
 	}
 
 	#region /* Welcome to Level Editor screen */

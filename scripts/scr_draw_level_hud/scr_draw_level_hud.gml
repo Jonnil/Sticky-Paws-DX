@@ -32,7 +32,7 @@ function scr_draw_level_hud()
 			draw_set_halign(fa_left);
 			draw_set_valign(fa_middle);
 			draw_sprite_ext(sprite_exists(sprite_lives_icon) ? sprite_lives_icon : spr_1up, 0, 32, hud_show_lives_y, 1, 1, 0, c_white, 1);
-			scr_draw_text_outlined(64, hud_show_lives_y, string(lives), global.default_text_size, c_black, c_white, 1);
+			scr_draw_text_outlined(64, hud_show_lives_y, string(global.player_lives), global.default_text_size, c_black, c_white, 1);
 		}
 		
 		#region /* Big Collectibles */
@@ -95,7 +95,7 @@ function scr_draw_level_hud()
 		{
 			draw_set_halign(fa_right);
 			draw_set_valign(fa_middle);
-			scr_draw_text_outlined(window_width - 200, hud_show_score_y, l10n_text("Score") + "\n" + string(score), global.default_text_size, c_white, c_black, 1);
+			scr_draw_text_outlined(window_width - 200, hud_show_score_y, l10n_text("Score") + "\n" + string(global.level_score), global.default_text_size, c_white, c_black, 1);
 			
 			if (global.challenge_mode_enable)
 			{

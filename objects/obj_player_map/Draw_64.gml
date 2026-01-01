@@ -100,7 +100,7 @@ if (nearest_level != noone
 			if (global.show_defeats_counter
 			&& nearest_level.number_of_defeats > 0)
 			{
-				var total_defeats_text = l10n_text("Total Defeats") + ": " + string(nearest_level.number_of_defeats);
+				total_defeats_text = l10n_text("Total Defeats") + ": " + string(nearest_level.number_of_defeats);
 			}
 
 			scr_draw_text_outlined(show_level_info_x, show_level_info_y - 150,
@@ -130,14 +130,13 @@ if (nearest_level != noone
 			}
 			if (nearest_level.zero_defeats != 0)
 			{
+				var sprite_zero_defeats = spr_icon_zero_hits;
+				
 				if (nearest_level.zero_defeats == 1)
 				{
-					var sprite_zero_defeats = spr_icon_zero_defeats;
+					sprite_zero_defeats = spr_icon_zero_defeats;
 				}
-				else
-				{
-					var sprite_zero_defeats = spr_icon_zero_hits;
-				}
+				
 				draw_sprite_ext(sprite_zero_defeats, 0, show_level_info_x + 100, show_level_info_y + show_big_collectibles_y, 1, 1, 0, c_white, 1);
 			}
 		}

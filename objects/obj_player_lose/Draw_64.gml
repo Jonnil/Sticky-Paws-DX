@@ -4,7 +4,7 @@ var mouse_get_x = device_mouse_x_to_gui(0);
 var mouse_get_y = device_mouse_y_to_gui(0);
 
 #region /* Game Over */
-if (lives <= 0)
+if (global.player_lives <= 0)
 {
 
 	#region /* When you get a game over, reset checkpoints */
@@ -52,21 +52,19 @@ if (lives <= 0)
 	if (game_over_text_y >= get_window_height * 0.5 - 190)
 	{
 		draw_menu_button(get_window_width * 0.5 - 370 - game_over_menu_seperation_distance, get_window_height - game_over_menu_y, l10n_text("Continue"), "continue", "continue");
-
+		
+		var quit_to_title_name = "Quit to Map";
+		
 		if (global.go_to_menu_when_going_back_to_title == "online_download_list_load")
 		{
-			var quit_to_title_name = "Quit to Online Level List";
+			quit_to_title_name = "Quit to Online Level List";
 		}
 		else
 		if (global.character_select_in_this_menu == "level_editor")
 		{
-			var quit_to_title_name = "Quit to Level Select";
+			quit_to_title_name = "Quit to Level Select";
 		}
-		else
-		{
-			var quit_to_title_name = "Quit to Map";
-		}
-
+		
 		draw_menu_button(get_window_width * 0.5 + game_over_menu_seperation_distance, get_window_height - game_over_menu_y, l10n_text(string(quit_to_title_name)), "quit", "quit", c_red);
 
 		if (keyboard_check_pressed(global.player_[inp.key][1][1][action.left]))
@@ -139,17 +137,17 @@ if (lives <= 0)
 		{
 
 			#region /* Click Menu */
-			lives = 5 * global.playergame; /* Add 5 lives times the amount of players playing. So 2 players = 10, 3 players = 15, 4 players = 20, and so on */
+			global.player_lives = 5 * global.playergame; /* Add 5 lives times the amount of players playing. So 2 players = 10, 3 players = 15, 4 players = 20, and so on */
 			if (global.character_select_in_this_menu == "main_game")
 			{
 				ini_open(game_save_id + "save_file/file" + string(global.file) + ".ini");
-				ini_write_real("Player", "lives", lives);
+				ini_write_real("Player", "lives", global.player_lives);
 				ini_close(); /* Don't commit the save data on Switch, this is only temporary! */
 			}
 
 			#region /* Reset Level */
 			global.timeattack_realmillisecond = 0;
-			score = 0;
+			global.level_score = 0;
 			scr_save_level();
 			audio_stop_all();
 
@@ -191,7 +189,7 @@ if (lives <= 0)
 
 #region /* Draw loading screen when reloading level */
 if (iris_xscale <= 0.01)
-&& (lives >= 1)
+&& (global.player_lives >= 1)
 {
 	if (global.enable_transitions)
 	{

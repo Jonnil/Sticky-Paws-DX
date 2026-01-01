@@ -55,7 +55,7 @@ function scr_initialize_resource_pack_sprite(sprite_name, resource_sprite_variab
 	/* If sprite is found, set saved_file_exists to true */
 	if (sprite_found)
 	{
-		var saved_file_exists = true;
+		saved_file_exists = true;
 	}
 	#endregion /* Add sprite END */
 

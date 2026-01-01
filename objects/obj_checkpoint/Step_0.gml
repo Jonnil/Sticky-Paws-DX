@@ -30,7 +30,7 @@ if (instance_exists(obj_player))
 						effect_create_depth(depth + 1, ef_ring, x, y, 2, c_white);
 
 						#region /* 2000 Score */
-						score += 2000;
+						global.level_score += 2000;
 						with(instance_create_depth(x, y, 0, obj_score_up))
 						{
 							score_up = 2000;

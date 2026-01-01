@@ -46,20 +46,22 @@ function scr_draw_all_level_editor_icon()
 	#endregion /* Autoscroll Icon X END */
 
 	#region /* Autoscroll Icon Y */
+	var autoscroll_angle = 0;
+	
 	if (autoscroll_speed_y == 0)
 	{
-		var autoscroll_angle = 0;
+		autoscroll_angle = 0;
 	}
 	else
 	if (autoscroll_speed_y < 0)
 	{
 		if (autoscroll_xscale == 1)
 		{
-			var autoscroll_angle = 90;
+			autoscroll_angle = 90;
 		}
 		else
 		{
-			var autoscroll_angle = 270;
+			autoscroll_angle = 270;
 		}
 	}
 	else
@@ -67,11 +69,11 @@ function scr_draw_all_level_editor_icon()
 	{
 		if (autoscroll_xscale == 1)
 		{
-			var autoscroll_angle = 270;
+			autoscroll_angle = 270;
 		}
 		else
 		{
-			var autoscroll_angle = 90;
+			autoscroll_angle = 90;
 		}
 	}
 	#endregion /* Autoscroll Icon Y END */
@@ -147,17 +149,14 @@ function scr_draw_all_level_editor_icon()
 	#endregion /* Click Autoscroll Button END */
 
 	#region /* Time Button */
-
+	var time_icon_sprite = spr_leveleditor_icon_time_no;
+	
 	if (global.enable_time_countdown)
 	&& (global.time_countdown > 0)
 	{
-		var time_icon_sprite = spr_leveleditor_icon_time;
+		time_icon_sprite = spr_leveleditor_icon_time;
 	}
-	else
-	{
-		var time_icon_sprite = spr_leveleditor_icon_time_no;
-	}
-
+	
 	draw_sprite_ext(time_icon_sprite, 0, icon_at_left_x + 32, time_icon_y, 1, 1, 0, c_white, 1);
 
 	if (show_time_menu)
@@ -281,15 +280,14 @@ function scr_draw_all_level_editor_icon()
 	#endregion /* Play Level Button END */
 
 	#region /* Place brush icon */
+	var place_blend = c_dkgray;
+	
 	if (!erase_mode)
 	&& (!fill_mode)
 	{
-		var place_blend = c_white;
+		place_blend = c_white;
 	}
-	else
-	{
-		var place_blend = c_dkgray;
-	}
+	
 	draw_sprite_ext(spr_leveleditor_icon_pen, place_size, place_icon_x, display_get_gui_height() - 32 + icon_at_bottom_y, 1, 1, 0, place_blend, 1);
 
 	#region /* Draw Brush Key */
@@ -361,14 +359,13 @@ function scr_draw_all_level_editor_icon()
 	#endregion /* Place brush icon END */
 
 	#region /* Erase icon */
+	var erase_blend = c_dkgray;
+	
 	if (erase_mode)
 	{
-		var erase_blend = c_white;
+		erase_blend = c_white;
 	}
-	else
-	{
-		var erase_blend = c_dkgray;
-	}
+	
 	draw_sprite_ext(spr_leveleditor_icon_erase, erase_size, erase_icon_x, display_get_gui_height() - 32 + icon_at_bottom_y, 1, 1, 0, erase_blend, 1);
 
 	#region /* Draw Eraser Key */
@@ -438,33 +435,29 @@ function scr_draw_all_level_editor_icon()
 	#endregion /* Erase icon END */
 
 	#region /* Fill icon */
+	var fill_blend = c_dkgray;
+	var fill_angle = 90;
+	var fill_sprite = spr_leveleditor_icon_fill_line; /* Fill mode type is assumed to be "vertical" here */
+	
 	if (fill_mode)
 	&& (!erase_mode)
 	&& (difficulty_layer == 0)
 	{
-		var fill_blend = c_white;
+		fill_blend = c_white;
 	}
-	else
-	{
-		var fill_blend = c_dkgray;
-	}
+	
 	if (fill_mode_type == "fill")
 	{
-		var fill_angle = 0;
-		var fill_sprite = spr_leveleditor_icon_fill;
+		fill_angle = 0;
+		fill_sprite = spr_leveleditor_icon_fill;
 	}
 	else
 	if (fill_mode_type == "horizontal")
 	{
-		var fill_angle = 0;
-		var fill_sprite = spr_leveleditor_icon_fill_line;
+		fill_angle = 0;
+		fill_sprite = spr_leveleditor_icon_fill_line;
 	}
-	else
-	if (fill_mode_type == "vertical")
-	{
-		var fill_angle = 90;
-		var fill_sprite = spr_leveleditor_icon_fill_line;
-	}
+	
 	draw_sprite_ext(fill_sprite, 0, fill_icon_x, display_get_gui_height() - 32 + icon_at_bottom_y, 1, 1, fill_angle, fill_blend, 1);
 
 	#region /* Draw Fill Key */
@@ -544,14 +537,13 @@ function scr_draw_all_level_editor_icon()
 	#endregion /* Fill icon END */
 
 	#region /* Hide Buttons - Always show level editor buttons toggle */
+	var hide_angle = 270;
+	
 	if (global.always_show_level_editor_buttons)
 	{
-		var hide_angle = 90;
+		hide_angle = 90;
 	}
-	else
-	{
-		var hide_angle = 270;
-	}
+	
 	draw_sprite_ext(spr_menu_cursor, 0, always_show_level_editor_buttons_x, display_get_gui_height() - 32 + icon_at_bottom_y, 1, 1, hide_angle, c_white, 1);
 
 	if (global.controls_used_for_navigation == "gamepad")
@@ -749,37 +741,44 @@ function scr_draw_all_level_editor_icon()
 		scr_draw_text_outlined(48, 32, l10n_text("View X") + ": " + string(round(camera_get_view_x(view_get_camera(0)))) + "\n" + l10n_text("View Y") + ": " + string(round(camera_get_view_y(view_get_camera(0)))), global.default_text_size, c_black, c_white, 1);
 
 		draw_sprite_ext(spr_leveleditor_icon, 13, grid_button_x, + 32 + icon_at_top_y, 1, 1, 0, c_white, 1);
+		
+		var grid_text = l10n_text("Grid X") + ": " + string(global.grid_hsnap) + "\n" + l10n_text("Grid Y") + ": " + string(global.grid_vsnap);
+		
 		if (global.grid_hsnap == global.grid_vsnap)
 		{
-			var grid_text = l10n_text("Grid") + ": " + string(global.grid_hsnap);
+			grid_text = l10n_text("Grid") + ": " + string(global.grid_hsnap);
 		}
-		else
-		{
-			var grid_text = l10n_text("Grid X") + ": " + string(global.grid_hsnap) + "\n" + l10n_text("Grid Y") + ": " + string(global.grid_vsnap);
-		}
+		
 		draw_set_halign(fa_right);draw_set_valign(fa_middle);
 		scr_draw_text_outlined(display_get_gui_width() - 80, 80 + icon_at_top_y, string(grid_text), global.default_text_size, c_black, c_white, 1);
 		var default_grid_size_text = "";
-		if (global.grid_hsnap < 32 && global.grid_vsnap < 32)
+		
+		if (global.grid_hsnap < 32
+		&& global.grid_vsnap < 32)
 		{
-			var default_grid_size_text = l10n_text("Under default grid size!");
+			default_grid_size_text = l10n_text("Under default grid size!");
 		}
 		else
-		if (global.grid_hsnap > 32 && global.grid_vsnap > 32)
+		if (global.grid_hsnap > 32
+		&& global.grid_vsnap > 32)
 		{
-			var default_grid_size_text = l10n_text("Above default grid size!");
+			default_grid_size_text = l10n_text("Above default grid size!");
 		}
+		
 		if (default_grid_size_text != "")
 		{
 			scr_draw_text_outlined(display_get_gui_width() - 80, 135 + icon_at_top_y, string(default_grid_size_text), global.default_text_size, c_black, c_white, 1);
 		}
+		
 		draw_sprite_ext(spr_menu_button_up_down, 0, display_get_gui_width() - 32, 80 + icon_at_top_y + 16, 1, 1, 0, c_white, 1);
+		
 		if (global.controls_used_for_navigation == "mouse"
 		&& mouse_check_button_pressed(mb_left))
 		{
 			if (point_in_rectangle(cursor_x, cursor_y, display_get_gui_width() - 32 - 32, 80 + icon_at_top_y + 16 - 32 + 2, display_get_gui_width() + 64, 80 + icon_at_top_y + 16))
 			{
-				if (global.grid_hsnap < 63 || global.grid_vsnap < 63)
+				if (global.grid_hsnap < 63
+				|| global.grid_vsnap < 63)
 				{
 					global.grid_hsnap++;
 					global.grid_vsnap++;
@@ -788,13 +787,15 @@ function scr_draw_all_level_editor_icon()
 			else
 			if (point_in_rectangle(cursor_x, cursor_y, display_get_gui_width() - 32 - 32, 80 + icon_at_top_y + 16, display_get_gui_width() + 64, 80 + icon_at_top_y + 16 + 32))
 			{
-				if (global.grid_hsnap > 1 || global.grid_vsnap > 1)
+				if (global.grid_hsnap > 1
+				|| global.grid_vsnap > 1)
 				{
 					global.grid_hsnap--;
 					global.grid_vsnap--;
 				}
 			}
 		}
+		
 		scr_draw_text_outlined(display_get_gui_width() - 16, 32 + 140 + icon_at_top_y, l10n_text("X") + ": " + string(x) + " " + l10n_text("Y") + ": " + string(y), global.default_text_size, c_black, c_white, 1);
 		scr_draw_text_outlined(display_get_gui_width() - 16, 32 + 190 + icon_at_top_y, l10n_text("View width") + ": " + string(camera_get_view_width(view_get_camera(0))) + " " + l10n_text("View height") + ": " + string(camera_get_view_height(view_get_camera(0))), global.default_text_size * 0.5, c_black, c_white, 1);
 	}
@@ -802,6 +803,7 @@ function scr_draw_all_level_editor_icon()
 	{
 		draw_sprite_ext(spr_leveleditor_icon, 13, grid_button_x, + 32 + icon_at_top_y, 1, 1, 0, c_dkgray, 1);
 	}
+	
 	if (global.controls_used_for_navigation == "gamepad")
 	|| (global.always_show_gamepad_buttons)
 	{
@@ -814,52 +816,49 @@ function scr_draw_all_level_editor_icon()
 	#endregion /* Show Grid END */
 
 	#region /* Zoom Out */
+	var zoom_out_blend = c_dkgray;
+	
 	if (zoom_out)
 	{
-		var zoom_out_blend = c_white;
+		zoom_out_blend = c_white;
 	}
-	else
-	{
-		var zoom_out_blend = c_dkgray;
-	}
+	
 	draw_sprite_ext(spr_leveleditor_icon, 14, zoom_out_button_x, + 32 + icon_at_top_y, 1, 1, 0, zoom_out_blend, 1);
 	#endregion /* Zoom Out END */
 
 	#region /* Zoom Reset */
+	var zoom_reset_blend = c_dkgray;
+	
 	if (zoom_reset)
 	{
-		var zoom_reset_blend = c_white;
+		zoom_reset_blend = c_white;
 	}
-	else
-	{
-		var zoom_reset_blend = c_dkgray;
-	}
+	
 	draw_sprite_ext(spr_leveleditor_icon, 15, zoom_reset_button_x, + 32 + icon_at_top_y, 1, 1, 0, zoom_reset_blend, 1);
 	#endregion /* Zoom Reset END */
 
 	#region /* Zoom In */
+	var zoom_in_blend = c_dkgray;
+	
 	if (zoom_in)
 	{
-		var zoom_in_blend = c_white;
+		zoom_in_blend = c_white;
 	}
-	else
-	{
-		var zoom_in_blend = c_dkgray;
-	}
+	
 	draw_sprite_ext(spr_leveleditor_icon, 16, zoom_in_button_x, + 32 + icon_at_top_y, 1, 1, 0, zoom_in_blend, 1);
 	#endregion /* Zoom In END */
 
 	#region /* Help Button */
+	var help_blend = c_dkgray;
+	
 	if (welcome_to_level_editor > 0)
 	{
-		var help_blend = c_white;
+		help_blend = c_white;
 		draw_sprite_ext(spr_arrow_swirly, menu_cursor_index, help_button_x - 32, + 132 + icon_at_top_y + scr_wave(0, 16, 1), 1, 1, 180, c_white, 1);
 	}
-	else
-	{
-		var help_blend = c_dkgray;
-	}
+	
 	draw_sprite_ext(spr_leveleditor_icon_help, 0, help_button_x, + 32 + icon_at_top_y, 1, 1, 0, help_blend, 1);
+	
 	if (global.controls_used_for_navigation == "gamepad")
 	|| (global.always_show_gamepad_buttons)
 	{

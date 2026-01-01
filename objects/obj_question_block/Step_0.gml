@@ -46,7 +46,7 @@ if (can_break_this_block)
 		motion_set(315, random_range(5, 10));
 		brick_particle = true;
 	}
-	score += 50;
+	global.level_score += 50;
 	if (instance_exists(obj_camera))
 	{
 		obj_camera.hud_show_score_timer = global.hud_hide_time * 60;

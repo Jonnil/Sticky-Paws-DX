@@ -119,12 +119,16 @@ if (show_playtest_buttons)
 }
 
 /* Darken screen when window is unfocused or during transitions */
-if (enable_transitions && (black_screen_gui_alpha > 0.2 || pause_playtest))
+if (enable_transitions
+&& (black_screen_gui_alpha > 0.2
+|| pause_playtest))
 {
 	draw_set_alpha(black_screen_gui_alpha);
 	draw_rectangle_color(0, 0, window_width * 2, window_height * 2, c_black, c_black, c_black, c_black, false);
 	draw_set_alpha(1);
-	if (lives >= 1 || pause_playtest)
+	
+	if (global.player_lives >= 1
+	|| pause_playtest)
 	{
 		scr_draw_loading(black_screen_gui_alpha);
 	}

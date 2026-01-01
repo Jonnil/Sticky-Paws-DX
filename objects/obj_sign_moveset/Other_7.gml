@@ -10,11 +10,12 @@ if (sprite_index = spr_sign_run)
 	/* If run buttons are not found, find run toggle buttons instead */
 	if (gp_button2_run == noone)
 	{
-		var gp_button2_run = global.player_[inp.gp][what_player][2][action.run_toggle];
+		gp_button2_run = global.player_[inp.gp][what_player][2][action.run_toggle];
 	}
+	
 	if (player_key2_run == noone)
 	{
-		var player_key2_run = global.player_[inp.key][what_player][2][action.run_toggle];
+		player_key2_run = global.player_[inp.key][what_player][2][action.run_toggle];
 	}
 	#endregion /* Set correct variables for players END */
 

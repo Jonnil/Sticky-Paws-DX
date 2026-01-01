@@ -16,17 +16,14 @@ function scr_choose_sound_variation(variations)
 	}
 
 	/* Check if there are any valid variations in the list */
+	var sound_variable_that_will_choose = noone; /* If there are no valid variations, assign "noone" to the chosen sound variable */
+	
 	if (array_length(valid_variations) > 0)
 	{
 		/* If there are valid variations, select a random index within the valid variations array */
 		var random_index = irandom(array_length(valid_variations) - 1);
 		/* Retrieve the chosen sound variation based on the random index */
-		var sound_variable_that_will_choose = valid_variations[random_index];
-	}
-	else
-	{
-		/* If there are no valid variations, assign "noone" to the chosen sound variable */
-		sound_variable_that_will_choose = noone;
+		sound_variable_that_will_choose = valid_variations[random_index];
 	}
 
 	/* Return the chosen sound variation */

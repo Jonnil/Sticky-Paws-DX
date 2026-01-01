@@ -1,11 +1,9 @@
+var fall_max = 60;
+
 if (image_index == 1)
 || (image_index == 3)
 {
-	var fall_max = 30;
-}
-else
-{
-	var fall_max = 60;
+	fall_max = 30;
 }
 
 if (fall < fall_max)
@@ -19,30 +17,28 @@ if (fall < fall_max)
 	{
 		fall++;
 		image_blend = c_red;
-
+		
+		var random_x = 1;
+		var random_y = 1;
+		
 		if fall > 45
 		{
-			var random_x = 2.5;
-			var random_y = 4;
+			random_x = 2.5;
+			random_y = 4;
 		}
 		else
 		if fall > 30
 		{
-			var random_x = 2;
-			var random_y = 3;
+			random_x = 2;
+			random_y = 3;
 		}
 		else
 		if fall > 15
 		{
-			var random_x = 1.5;
-			var random_y = 2;
+			random_x = 1.5;
+			random_y = 2;
 		}
-		else
-		{
-			var random_x = 1;
-			var random_y = 1;
-		}
-
+		
 		xx = random_range(x - random_x, x + random_x);
 		yy = random_range(y - random_y, y + random_y);
 

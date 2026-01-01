@@ -85,10 +85,12 @@ function scr_character_select_menu_step()
 		#endregion /* When you are ready to start game, and you're using mouse, and you aren't hovering mouse over the other buttons, then take you to "select character" menu END */
 
 		#region /* Lerp Play the game text */
+		var play_the_game_text_y = display_get_gui_height() + 100;
+		
 		if (player_start_game)
 		&& (no_players_are_inputting_names)
 		{
-			var play_the_game_text_y = display_get_gui_height() - 125; /* Text should appear at bottom of screen, for easier access with mouse */
+			play_the_game_text_y = display_get_gui_height() - 125; /* Text should appear at bottom of screen, for easier access with mouse */
 		}
 		else
 		{
@@ -96,7 +98,6 @@ function scr_character_select_menu_step()
 			{
 				play_the_game_text_y_lerp = display_get_gui_height() + 100;
 			}
-			var play_the_game_text_y = display_get_gui_height() + 100;
 		}
 		play_the_game_text_y_lerp = lerp(play_the_game_text_y_lerp, play_the_game_text_y, 0.2);
 		#endregion /* Lerp Play the game text END */
@@ -553,10 +554,12 @@ function scr_character_select_menu_step()
 				}
 			}
 			#endregion /* Player Back / Cancel Selection END */
-
+			
+			var player_key_a_pressed_back_from_character_select = noone;
+			
 			for(var i = 1; i <= global.max_players; i += 1)
 			{
-				var player_key_a_pressed_back_from_character_select = player_key_a_pressed[i] && player_menu[i] == "back_from_character_select";
+				player_key_a_pressed_back_from_character_select = player_key_a_pressed[i] && player_menu[i] == "back_from_character_select";
 			}
 
 			if (player_key_b_pressed[fixed_player])

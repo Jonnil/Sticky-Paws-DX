@@ -80,23 +80,18 @@ if (position_meeting(x, y, obj_leveleditor))
 		var xx = x;
 		var yy = y - 32;
 		var x_adjusted = x;
-
+		var textbox_text = "";
+		
 		if (string_length(second_x) > 0)
 		{
-			var textbox_text = string(second_x);
+			textbox_text = string(second_x);
 		}
 		else
+		if (object == LEVEL_OBJECT_ID.ID_SIGN_READABLE)
 		{
-			if (object == LEVEL_OBJECT_ID.ID_SIGN_READABLE)
-			{
-				var textbox_text = l10n_text("This is a sign");
-			}
-			else
-			{
-				var textbox_text = "";
-			}
+			textbox_text = l10n_text("This is a sign");
 		}
-
+		
 		if (textbox_text != "")
 		{
 			draw_set_alpha(0.75);

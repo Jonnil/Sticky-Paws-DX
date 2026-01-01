@@ -20,7 +20,10 @@ if (!global.actually_play_edited_level)
 				draw_sprite_ext(spr_rotate_arrow, image_index, x, y, draw_rotate_arrow_scale, draw_rotate_arrow_scale, instance_nearest(x, y, obj_leveleditor_placed_object).draw_angle, image_blend, image_alpha);
 		}
 	}
-
+	
+	var sprite_player_stand_x = view_center_x;
+	var sprite_player_stand_y = view_center_y;
+	
 	#region /* Draw where player will do playtesting from */
 	if (sprite_exists(global.sprite_player_stand[4])) /* Display Player 4 behind Player 3 */
 	&& (quit_level_editor == 0)
@@ -28,13 +31,13 @@ if (!global.actually_play_edited_level)
 		if (pressing_play_timer > 0)
 		&& (global.player_can_play[4])
 		{
-			var sprite_player_stand_x = view_center_x;
-			var sprite_player_stand_y = view_center_y;
+			sprite_player_stand_x = view_center_x;
+			sprite_player_stand_y = view_center_y;
 		}
 		else
 		{
-			var sprite_player_stand_x = obj_level_player4_start.x;
-			var sprite_player_stand_y = obj_level_player4_start.y;
+			sprite_player_stand_x = obj_level_player4_start.x;
+			sprite_player_stand_y = obj_level_player4_start.y;
 		}
 		draw_sprite_ext(global.sprite_player_stand[4], 0, sprite_player_stand_x, sprite_player_stand_y, player_default_xscale[4], player_default_yscale[4], 0, c_white, 0.5);
 	}
@@ -44,13 +47,13 @@ if (!global.actually_play_edited_level)
 		if (pressing_play_timer > 0)
 		&& (global.player_can_play[3])
 		{
-			var sprite_player_stand_x = view_center_x;
-			var sprite_player_stand_y = view_center_y;
+			sprite_player_stand_x = view_center_x;
+			sprite_player_stand_y = view_center_y;
 		}
 		else
 		{
-			var sprite_player_stand_x = obj_level_player3_start.x;
-			var sprite_player_stand_y = obj_level_player3_start.y;
+			sprite_player_stand_x = obj_level_player3_start.x;
+			sprite_player_stand_y = obj_level_player3_start.y;
 		}
 		draw_sprite_ext(global.sprite_player_stand[3], 0, sprite_player_stand_x, sprite_player_stand_y, 1, player_default_xscale[3], player_default_yscale[3], c_white, 0.5);
 	}
@@ -60,13 +63,13 @@ if (!global.actually_play_edited_level)
 		if (pressing_play_timer > 0)
 		&& (global.player_can_play[2])
 		{
-			var sprite_player_stand_x = view_center_x;
-			var sprite_player_stand_y = view_center_y;
+			sprite_player_stand_x = view_center_x;
+			sprite_player_stand_y = view_center_y;
 		}
 		else
 		{
-			var sprite_player_stand_x = obj_level_player2_start.x;
-			var sprite_player_stand_y = obj_level_player2_start.y;
+			sprite_player_stand_x = obj_level_player2_start.x;
+			sprite_player_stand_y = obj_level_player2_start.y;
 		}
 		draw_sprite_ext(global.sprite_player_stand[2], 0, sprite_player_stand_x, sprite_player_stand_y, player_default_xscale[2], player_default_yscale[2], 0, c_white, 0.5);
 	}
@@ -76,13 +79,13 @@ if (!global.actually_play_edited_level)
 		if (pressing_play_timer > 0)
 		&& (global.player_can_play[1])
 		{
-			var sprite_player_stand_x = view_center_x;
-			var sprite_player_stand_y = view_center_y;
+			sprite_player_stand_x = view_center_x;
+			sprite_player_stand_y = view_center_y;
 		}
 		else
 		{
-			var sprite_player_stand_x = obj_level_player1_start.x;
-			var sprite_player_stand_y = obj_level_player1_start.y;
+			sprite_player_stand_x = obj_level_player1_start.x;
+			sprite_player_stand_y = obj_level_player1_start.y;
 		}
 		draw_sprite_ext(global.sprite_player_stand[1], 0, sprite_player_stand_x, sprite_player_stand_y, player_default_xscale[1], player_default_yscale[1], 0, c_white, 0.5);
 	}
@@ -155,7 +158,7 @@ if (!global.actually_play_edited_level)
 		camera_get_view_y(view_get_camera(view_current)) + camera_get_view_height(view_get_camera(view_current)) - 95,
 		c_yellow, c_yellow, c_yellow, c_yellow, false);
 
-		var ruler_number = 1;
+		ruler_number = 1;
 
 		for(var i = 0; i < camera_get_view_height(view_get_camera(view_current)) - 96; i += global.grid_vsnap)
 		{

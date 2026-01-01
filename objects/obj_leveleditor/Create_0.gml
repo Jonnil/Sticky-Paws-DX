@@ -829,15 +829,14 @@ global.part_limit_entity = ini_read_real("info", "part_limit_entity", 0);
 place_object = ini_read_real("info", "place_object", 1);
 selected_object = ini_read_real("info", "selected_object", 0);
 select_object_menu_actual_x = ini_read_real("info", "select_object_menu_actual_x", 0);
+
+var default_category = "daily_build_standard";
+
 if (!if_daily_build)
 {
-	var default_category = "terrain";
+	default_category = "terrain";
 }
-else
-if (if_daily_build)
-{
-	var default_category = "daily_build_standard";
-}
+
 current_object_category = ini_read_string("info", "current_object_category", default_category); /* Seperate objects into different categories, to make objects easier to find */
 sprite_index = ini_read_real("info", "selected_object_sprite", sprite_index);
 ini_close();

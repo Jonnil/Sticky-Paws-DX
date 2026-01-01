@@ -122,7 +122,7 @@ if (!global.actually_play_edited_level)
 			{
 				draw_sprite_ext(spr_leveleditor_icon_empty, 0, icon_object_category_terrain_x, 32 + icon_at_top_y, 1, 1, 0, c_white, 1);
 				draw_sprite_ext(global.resource_pack_sprite_tileset_default, 0, icon_object_category_terrain_x, 32 + icon_at_top_y, 1, 1, 0, c_white, 1);
-				var category_title = l10n_text("Terrain");
+				category_title = l10n_text("Terrain");
 			}
 			else
 			{
@@ -133,7 +133,7 @@ if (!global.actually_play_edited_level)
 			{
 				draw_sprite_ext(spr_leveleditor_icon_empty, 0, icon_object_category_decoration_x, 32 + icon_at_top_y, 1, 1, 0, c_white, 1);
 				draw_sprite_ext(spr_arrow_sign, 0, icon_object_category_decoration_x, 32 + icon_at_top_y, 1, 1, 0, c_white, 1);
-				var category_title = l10n_text("Decoration");
+				category_title = l10n_text("Decoration");
 			}
 			else
 			{
@@ -144,7 +144,7 @@ if (!global.actually_play_edited_level)
 			{
 				draw_sprite_ext(spr_leveleditor_icon_empty, 1, icon_object_category_item_x, 32 + icon_at_top_y, 1, 1, 0, c_white, 1);
 				draw_sprite_ext(global.resource_pack_sprite_basic_collectible, 1, icon_object_category_item_x, 32 + icon_at_top_y, 1, 1, 0, c_white, 1);
-				var category_title = l10n_text("Item");
+				category_title = l10n_text("Item");
 			}
 			else
 			{
@@ -155,7 +155,7 @@ if (!global.actually_play_edited_level)
 			{
 				draw_sprite_ext(spr_leveleditor_icon_empty, 2, icon_object_category_enemy_x, 32 + icon_at_top_y, 1, 1, 0, c_white, 1);
 				draw_sprite_ext(global.resource_pack_sprite_basic_enemy, 2, icon_object_category_enemy_x, 32 + icon_at_top_y, 1, 1, 0, c_white, 1);
-				var category_title = l10n_text("Enemy");
+				category_title = l10n_text("Enemy");
 			}
 			else
 			{
@@ -166,7 +166,7 @@ if (!global.actually_play_edited_level)
 			{
 				draw_sprite_ext(spr_leveleditor_icon_empty, 3, icon_object_category_gizmo_x, 32 + icon_at_top_y, 1, 1, 0, c_white, 1);
 				draw_sprite_ext(spr_spring, 3, icon_object_category_gizmo_x, 32 + icon_at_top_y, 1, 1, 0, c_white, 1);
-				var category_title = l10n_text("Gizmo");
+				category_title = l10n_text("Gizmo");
 			}
 			else
 			{
@@ -181,7 +181,7 @@ if (!global.actually_play_edited_level)
 			{
 				draw_sprite_ext(spr_leveleditor_icon_empty, 3, icon_object_category_daily_build_standard_x, 32 + icon_at_top_y, 1, 1, 0, c_white, 1);
 				draw_sprite_ext(global.resource_pack_sprite_tileset_default, 0, icon_object_category_daily_build_standard_x, 32 + icon_at_top_y, 1, 1, 0, c_white, 1);
-				var category_title = l10n_text("Standard");
+				category_title = l10n_text("Standard");
 				draw_set_halign(fa_left);
 				scr_draw_text_outlined(10, 10, l10n_text("These items are always unlocked"), global.default_text_size * 0.7, c_black, c_white, selected_menu_alpha);
 			}
@@ -194,7 +194,7 @@ if (!global.actually_play_edited_level)
 			{
 				draw_sprite_ext(spr_leveleditor_icon_empty, 3, icon_object_category_daily_build_featured_x, 32 + icon_at_top_y, 1, 1, 0, c_white, 1);
 				draw_sprite_ext(spr_icon_featured, 0, icon_object_category_daily_build_featured_x, 32 + icon_at_top_y, 0.75, 0.75, 0, c_white, 1);
-				var category_title = l10n_text("Featured");
+				category_title = l10n_text("Featured");
 				draw_set_halign(fa_left);
 				scr_draw_text_outlined(10, 10, l10n_text("These are the featured items for today"), global.default_text_size * 0.7, c_black, c_white, selected_menu_alpha);
 			}
@@ -649,7 +649,7 @@ if (!global.actually_play_edited_level)
 		var autosave_text_color = c_white;
 		if (autosave_timer < (60 * 3))
 		{
-			var autosave_text_color = c_lime;
+			autosave_text_color = c_lime;
 			autosave_text = l10n_text("Autosaved!"); /* After game has autosaved, tell player that the autosave was successful */
 		}
 		else

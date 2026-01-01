@@ -508,7 +508,7 @@ if (hp <= 0)
 				bounce_up = true;
 			}
 			/* 200 Score */
-			score += 200;
+			global.level_score += 200;
 			with(instance_create_depth(x, y, 0, obj_score_up))
 			{
 				score_up = 200;

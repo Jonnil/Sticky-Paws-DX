@@ -2,11 +2,12 @@ function scr_draw_links_menu()
 {
 	var mouse_get_x = device_mouse_x_to_gui(0);
 	var mouse_get_y = device_mouse_y_to_gui(0);
+	var buttons = noone;
 
 	/* Define an array of button information */
 	if (os_type != os_switch)
 	{
-		var buttons = [
+		buttons = [
 			/* Social Media Links */
 			{text: "Discord", link: global.link_to_discord, menu_string: "link_to_discord", icon: global.resource_pack_sprite_logo_discord}
 			,{text: "Gamebanana", link: global.link_to_gamebanana, menu_string: "link_to_gamebanana", icon: global.resource_pack_sprite_logo_gamebanana}
@@ -27,7 +28,7 @@ function scr_draw_links_menu()
 	}
 	else
 	{
-		var buttons = [
+		buttons = [
 			/* Social Media Links */
 			{text: "Discord", link: global.link_to_discord, menu_string: "link_to_discord", icon: global.resource_pack_sprite_logo_discord}
 			,{text: "Instagram", link: global.link_to_instagram, menu_string: "link_to_instagram", icon: global.resource_pack_sprite_logo_instagram}
@@ -60,10 +61,12 @@ function scr_draw_links_menu()
 		draw_set_valign(fa_middle);
 		scr_draw_text_outlined(810, link_to_y + 20, l10n_text(link_text), global.default_text_size, c_black, c_white, 1);
 		draw_menu_button_sprite(spr_menu_button, 32, link_to_y, 0, 0, 2.1, 1, 370 * 2.1, 42, string(link_global), link_menu_string, link_menu_string, false);
+		
 		if (buttons[i].icon != noone)
 		{
 			draw_sprite_ext(buttons[i].icon, 0, 780, link_to_y + 20, 0.25, 0.25, 0, c_white, 1);
 		}
+		
 		if ((point_in_rectangle(mouse_get_x, mouse_get_y, 32, link_to_y, 32 + (370 * 2.1), link_to_y + 20 + 42))
 		&& (mouse_check_button_released(mb_left))
 		&& (menu_delay == 0 && menu_joystick_delay == 0)

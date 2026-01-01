@@ -48,8 +48,8 @@ if (show_button_graphic)
 		gp_button2 = global.player_[inp.gp][what_player][2][action.dive];
 		player_key = global.player_[inp.key][what_player][1][action.dive];
 		player_key2 = global.player_[inp.key][what_player][2][action.dive];
-		var xx = x + 48;
-		var yy = y - 48;
+		xx = x + 48;
+		yy = y - 48;
 	}
 	#endregion /* Set correct variables for players END */
 	

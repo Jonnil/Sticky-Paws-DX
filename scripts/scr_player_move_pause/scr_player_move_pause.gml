@@ -20,17 +20,20 @@ function scr_player_move_pause()
 
 		controller_connected = false;
 
-		if (global.character_select_in_this_menu == "level_editor" && !global.actually_play_edited_level && global.play_edited_level)
+		if (global.character_select_in_this_menu == "level_editor"
+		&& !global.actually_play_edited_level
+		&& global.play_edited_level)
 		{
 			/* Handle level editor pause logic */
 			obj_camera.pause_playtest = true;
 			obj_camera.black_screen_gui_alpha = 1;
 			global.actually_play_edited_level = false;
 			global.play_edited_level = false;
-			score = 0;
+			global.level_score = 0;
 
 			#region /* Save Level Information when in level editor */
-			if (global.level_name != "" && !global.actually_play_edited_level)
+			if (global.level_name != ""
+			&& !global.actually_play_edited_level)
 			{
 				ini_open(game_save_id + "custom_levels/" + scr_get_custom_level_folder_name() + "/data/level_information.ini");
 				ini_write_real("info", "view_xview", camera_get_view_x(view_get_camera(view_current)));

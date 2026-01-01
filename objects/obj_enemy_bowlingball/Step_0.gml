@@ -97,7 +97,7 @@ else
 					#endregion /* 1 Coin END */
 
 					#region /* 200 Score */
-					score += 200;
+					global.level_score += 200;
 					with(instance_create_depth(x, y, 0, obj_score_up))
 					{
 						score_up = 200;
@@ -143,7 +143,7 @@ else
 					#endregion /* 1 Coin END */
 
 					#region /* 200 Score */
-					score += 200;
+					global.level_score += 200;
 					with(instance_create_depth(x, y, 0, obj_score_up))
 					{
 						score_up = 200;
@@ -189,7 +189,7 @@ else
 					#endregion /* 1 Coin END */
 
 					#region /* 200 Score */
-					score += 200;
+					global.level_score += 200;
 					with(instance_create_depth(x, y, 0, obj_score_up))
 					{
 						score_up = 200;
@@ -235,7 +235,7 @@ else
 					#endregion /* 1 Coin END */
 
 					#region /* 200 Score */
-					score += 200;
+					global.level_score += 200;
 					with(instance_create_depth(x, y, 0, obj_score_up))
 					{
 						score_up = 200;

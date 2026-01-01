@@ -2,45 +2,41 @@ function scr_character_portrait_for_player_step(what_player = 1)
 {
 	var skin_y = 192;
 	var voicepack_y = 234;
+	var name_input_y = display_get_gui_height() * 0.5 + name_y;
 
 	if (keyboard_virtual_status()
 	&& keyboard_virtual_height() != 0
 	&& keyboard_virtual_height() != undefined)
 	{
-		var name_input_y = display_get_gui_height() - keyboard_virtual_height() - 160;
+		name_input_y = display_get_gui_height() - keyboard_virtual_height() - 160;
 	}
-	else
-	{
-		var name_input_y = display_get_gui_height() * 0.5 + name_y;
-	}
+	
 	var get_window_height = display_get_gui_height();
 	var get_window_width = display_get_gui_width();
 	var mouse_get_x = device_mouse_x_to_gui(0);
 	var mouse_get_y = device_mouse_y_to_gui(0);
 
 	#region /* Make character portraits smaller if screen size is too small to fit them */
+	var scale_offset = 0.6;
+	
 	if (get_window_width >= 1670)
 	{
-		var scale_offset = 1;
+		scale_offset = 1;
 	}
 	else
 	if (get_window_width >= 1276)
 	{
-		var scale_offset = 0.9;
+		scale_offset = 0.9;
 	}
 	else
 	if (get_window_width >= 882)
 	{
-		var scale_offset = 0.8;
+		scale_offset = 0.8;
 	}
 	else
 	if (get_window_width >= 488)
 	{
-		var scale_offset = 0.7;
-	}
-	else
-	{
-		var scale_offset = 0.6;
+		scale_offset = 0.7;
 	}
 	#endregion /* Make character portraits smaller if screen size is too small to fit them END */
 

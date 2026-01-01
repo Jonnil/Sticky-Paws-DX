@@ -1,5 +1,8 @@
 function scr_character_edit_menu_draw()
 {
+	var spr_origin_x = noone;
+	var spr_origin_y = noone;
+	
 	/* Keep the actual player on-screen */
 	if (instance_exists(obj_player))
 	{
@@ -83,15 +86,13 @@ function scr_character_edit_menu_draw()
 		draw_sprite_ext(spr_edit_character_background, 0, -320, floor_y, 5, 5, 0, c_white, 1);
 
 		var open_character_folder_y = 42;
+		var custom_character_guide_y = 42;
+		
 		if (global.enable_open_custom_folder)
 		{
-			var custom_character_guide_y = open_character_folder_y + 42;
+			custom_character_guide_y = open_character_folder_y + 42;
 		}
-		else
-		{
-			var custom_character_guide_y = 42;
-		}
-
+		
 		var sprite_name_y = 32;
 		var flip_sprite_menu_y = 32;
 
@@ -139,7 +140,7 @@ function scr_character_edit_menu_draw()
 			#endregion /* Open Custom Character Guide END */
 
 			var sprite_name_x = 185;
-			var sprite_name_y = custom_character_guide_y + 84;
+			sprite_name_y = custom_character_guide_y + 84;
 			scr_draw_name_box(edit_character_sprite_name, c_white, 0.5, sprite_name_x, sprite_name_y, "edit_character_input_sprite");
 			if (point_in_rectangle(device_mouse_x_to_gui(0), device_mouse_y_to_gui(0), sprite_name_x - 150, sprite_name_y - 16, sprite_name_x + 150, sprite_name_y + 16))
 			|| (menu == "edit_character_input_sprite")
@@ -156,7 +157,7 @@ function scr_character_edit_menu_draw()
 			}
 
 			var flip_sprite_menu_x = 32;
-			var flip_sprite_menu_y = sprite_name_y + 42;
+			flip_sprite_menu_y = sprite_name_y + 42;
 			edit_character_flip_sprite = draw_menu_checkmark(flip_sprite_menu_x, flip_sprite_menu_y, l10n_text("Flip the Sprite"), "edit_character_flip_sprite", edit_character_flip_sprite, false);
 		}
 
@@ -206,8 +207,8 @@ function scr_character_edit_menu_draw()
 		if (sprite_exists(edit_character_sprite_index)) /* Check if the sprite exists */
 		{
 			/* Get the origin offsets */
-			var spr_origin_x = sprite_get_xoffset(edit_character_sprite_index);
-			var spr_origin_y = sprite_get_yoffset(edit_character_sprite_index);
+			spr_origin_x = sprite_get_xoffset(edit_character_sprite_index);
+			spr_origin_y = sprite_get_yoffset(edit_character_sprite_index);
 
 			/* Variable for crosshair x */
 			var crosshair_center_x;
@@ -268,14 +269,13 @@ function scr_character_edit_menu_draw()
 		&& (menu != "sprite_not_exist_folder")
 		&& (menu != "sprite_not_exist_guide")
 		{
+			var move_origin_speed = 1;
+			
 			if (keyboard_check(vk_control))
 			{
-				var move_origin_speed = 10;
+				move_origin_speed = 10;
 			}
-			else
-			{
-				var move_origin_speed = 1;
-			}
+			
 			if (key_up)
 			&& (menu_delay == 0 && menu_joystick_delay == 0)
 			{

@@ -3930,74 +3930,76 @@ function scr_option_level_editor()
 		|| (menu == "remove_theme_are_you_sure_yes")
 		{
 			var remove_text_question = "";
+			
 			if (level_editor_option_back_to_menu == "remove_entire_theme")
 			{
-				var remove_text_question = "Remove entire theme?";
+				remove_text_question = "Remove entire theme?";
 			}
 			if (level_editor_option_back_to_menu == "remove_all_background")
 			{
-				var remove_text_question = "Remove all backgrounds?";
+				remove_text_question = "Remove all backgrounds?";
 			}
 			if (level_editor_option_back_to_menu == "remove_background1")
 			{
-				var remove_text_question = "Remove background 1?";
+				remove_text_question = "Remove background 1?";
 			}
 			if (level_editor_option_back_to_menu == "remove_background2")
 			{
-				var remove_text_question = "Remove background 2?";
+				remove_text_question = "Remove background 2?";
 			}
 			if (level_editor_option_back_to_menu == "remove_background3")
 			{
-				var remove_text_question = "Remove background 3?";
+				remove_text_question = "Remove background 3?";
 			}
 			if (level_editor_option_back_to_menu == "remove_background4")
 			{
-				var remove_text_question = "Remove background 4?";
+				remove_text_question = "Remove background 4?";
 			}
 			if (level_editor_option_back_to_menu == "remove_all_foreground")
 			{
-				var remove_text_question = "Remove all foregrounds?";
+				remove_text_question = "Remove all foregrounds?";
 			}
 			if (level_editor_option_back_to_menu == "remove_foreground1")
 			{
-				var remove_text_question = "Remove foreground 1?";
+				remove_text_question = "Remove foreground 1?";
 			}
 			if (level_editor_option_back_to_menu == "remove_foreground1_5")
 			{
-				var remove_text_question = "Remove foreground 1.5?";
+				remove_text_question = "Remove foreground 1.5?";
 			}
 			if (level_editor_option_back_to_menu == "remove_foreground2")
 			{
-				var remove_text_question = "Remove foreground 2?";
+				remove_text_question = "Remove foreground 2?";
 			}
 			if (level_editor_option_back_to_menu == "remove_foreground_secret")
 			{
-				var remove_text_question = "Remove foreground secret?";
+				remove_text_question = "Remove foreground secret?";
 			}
 			if (level_editor_option_back_to_menu == "remove_all_music")
 			{
-				var remove_text_question = "Remove all music?";
+				remove_text_question = "Remove all music?";
 			}
 			if (level_editor_option_back_to_menu == "remove_music_overworld")
 			{
-				var remove_text_question = "Remove overworld music?";
+				remove_text_question = "Remove overworld music?";
 			}
 			if (level_editor_option_back_to_menu == "remove_music_underwater")
 			{
-				var remove_text_question = "Remove underwater music?";
+				remove_text_question = "Remove underwater music?";
 			}
 			if (level_editor_option_back_to_menu == "remove_ambience_overworld")
 			{
-				var remove_text_question = "Remove overworld ambience?";
+				remove_text_question = "Remove overworld ambience?";
 			}
 			if (level_editor_option_back_to_menu == "remove_ambience_underwater")
 			{
-				var remove_text_question = "Remove underwater ambience?";
+				remove_text_question = "Remove underwater ambience?";
 			}
 			if (level_editor_option_back_to_menu == "remove_clear_melody")
 			{
-				var remove_text_question = "Remove clear melody?";
+				remove_text_question = "Remove clear melody?";
 			}
+			
 			var remove_theme_are_you_sure_no_y = display_get_gui_height() * 0.5;
 			var remove_theme_are_you_sure_yes_y = display_get_gui_height() * 0.5 + 47;
 			draw_set_halign(fa_center);

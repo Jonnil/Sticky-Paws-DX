@@ -4,9 +4,12 @@ function draw_menu_button_sprite(spr_index, x_position, y_position, x_origin_off
 	var mouse_get_y = device_mouse_y_to_gui(0);
 
 	var var_text_size = 1;
+	var outline_color = c_black;
+	var fill_color = c_white;
+	
 	if (string_width(string(string_text)) > (spr_width + 173))
 	{
-		var var_text_size = 0.7;
+		var_text_size = 0.7;
 	}
 
 	#region /* Button */
@@ -39,8 +42,10 @@ function draw_menu_button_sprite(spr_index, x_position, y_position, x_origin_off
 			{
 				draw_sprite_ext(spr_index, global.menu_button_subimg, x_position + x_origin_offset, y_position + 21 + y_origin_offset, xscale, yscale, 0, highlight_color, alpha);
 			}
-			var outline_color = c_black;
-			var fill_color = c_white;
+			
+			outline_color = c_black;
+			fill_color = c_white;
+			
 			if (show_arrows)
 			{
 				draw_sprite_ext(spr_menu_cursor, menu_cursor_index, x_position - 24, y_position + (spr_height * 0.5), 1, 1, 0, c_white, 1);
@@ -58,8 +63,9 @@ function draw_menu_button_sprite(spr_index, x_position, y_position, x_origin_off
 				draw_sprite_ext(spr_index, global.menu_button_subimg, x_position + x_origin_offset, y_position + 21 + y_origin_offset, xscale, yscale, 0, highlight_color, 0.1);
 			}
 		}
-		var outline_color = c_white;
-		var fill_color = c_black;
+		
+		outline_color = c_white;
+		fill_color = c_black;
 	}
 
 	draw_set_halign(fa_center);

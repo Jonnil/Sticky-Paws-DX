@@ -9,7 +9,7 @@ if (!bounce_up)
 	{
 		with(instance_nearest(x, y, obj_player))
 		{
-			score += 200;
+			global.level_score += 200;
 			basic_collectibles++;
 			global.basic_collectibles++;
 		}

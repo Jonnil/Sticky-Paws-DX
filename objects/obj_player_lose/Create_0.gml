@@ -54,21 +54,21 @@ if (global.character_select_in_this_menu == "level_editor")
 }
 #endregion /* Save how many times you have died END */
 
-if (lives > 0)
+if (global.player_lives > 0)
 && (!global.doing_clear_check_level) /* If you are doing a clear check for uploading level or character, then don't lose lives, you should get infinite tries */
 && (!global.doing_clear_check_character)
 {
 	if (global.character_select_in_this_menu == "main_game")
 	{
 		ini_open(game_save_id + "save_file/file" + string(global.file) + ".ini");
-		ini_write_real("Player", "lives", lives - 1);
+		ini_write_real("Player", "lives", global.player_lives - 1);
 		ini_close(); /* Don't commit the save data on Switch, this is only temporary! */
 	}
 	var time_source = time_source_create(time_source_game, 30, time_source_units_frames, function()
 	{
-		if (lives > 0)
+		if (global.player_lives > 0)
 		{
-			lives--;
+			global.player_lives--;
 		}
 		if (instance_exists(obj_camera))
 		{
@@ -77,7 +77,7 @@ if (lives > 0)
 	}
 	, [], 1);
 	time_source_start(time_source);
-	var time_source = time_source_create(time_source_game, 40, time_source_units_frames, function()
+	time_source = time_source_create(time_source_game, 40, time_source_units_frames, function()
 	{
 		global.lives_until_assist++;
 		if (instance_exists(obj_camera))

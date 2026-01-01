@@ -603,6 +603,8 @@ global.challenge_perma_death_mode = false;
 global.challenge_roguelike_mode = false;
 #endregion /* Challenge Mode Settings END */
 
+global.level_score = 0;
+global.player_lives = 0;
 global.checkpoint_x = false;
 global.checkpoint_y = false;
 global.enable_time_countdown = false; /* If timer should be enabled in specific level, default should be "false" so most levels don't have a countdown */

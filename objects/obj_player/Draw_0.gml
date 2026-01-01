@@ -54,7 +54,7 @@ else
 if (draw_arrow_outside_view_alpha > 0.01)
 && (y < view_y + (view_height * 0.5))
 {
-	var draw_arrow_outside_view_y = view_y + 32;
+	draw_arrow_outside_view_y = view_y + 32;
 	draw_set_alpha(draw_arrow_outside_view_alpha);
 	draw_set_color(c_black);
 	draw_arrow(x, view_y + 16, x, view_y - 2, 30);
@@ -70,7 +70,7 @@ if (draw_arrow_outside_view_alpha > 0.01)
 if (draw_arrow_outside_view_alpha > 0.01)
 && (y > view_y + (view_height * 0.5))
 {
-	var draw_arrow_outside_view_y = view_bottom_y - 32;
+	draw_arrow_outside_view_y = view_bottom_y - 32;
 	draw_set_alpha(draw_arrow_outside_view_alpha);
 	draw_set_color(c_black);
 	draw_arrow(x, view_bottom_y - 16, x, view_bottom_y + 2, 30);
@@ -144,31 +144,29 @@ else
 #endregion /* Red blink timer END */
 
 #region /* Blink red when only having 1 HP left and no heart balloon */
+draw_x = xx;
+draw_y = yy;
+draw_blend = image_blend;
+draw_alpha = 0.5;
+
 if (red_blink_timer > 25)
 && (!have_heart_balloon)
 && (hp <= 1)
 && (max_hp >= 2)
 && (invincible_timer == 0)
 {
-	var draw_x = xx + random_range(- 8, + 8);
-	var draw_y = yy + random_range(- 8, + 8);
-	var draw_blend = c_red;
-	var draw_alpha = image_alpha * collision_mask_alpha;
+	draw_x = xx + random_range(- 8, + 8);
+	draw_y = yy + random_range(- 8, + 8);
+	draw_blend = c_red;
+	draw_alpha = image_alpha * collision_mask_alpha;
 }
 else
 if (taken_damage%2 == 0)
 {
-	var draw_x = xx;
-	var draw_y = yy;
-	var draw_blend = image_blend;
-	var draw_alpha = image_alpha * collision_mask_alpha;
-}
-else
-{
-	var draw_x = xx;
-	var draw_y = yy;
-	var draw_blend = image_blend;
-	var draw_alpha = 0.5;
+	draw_x = xx;
+	draw_y = yy;
+	draw_blend = image_blend;
+	draw_alpha = image_alpha * collision_mask_alpha;
 }
 #endregion /* Blink red when only having 1 HP left and no heart balloon END */
 
@@ -176,16 +174,18 @@ else
 if (invincible_timer >= 2)
 {
 	invincible_blinking++;
+	
 	if (invincible_blinking > 21)
 	{
 		invincible_blinking = 0;
 	}
+	
 	if (invincible_blinking%20 == 0)
 	{
-		var draw_x = xx;
-		var draw_y = yy;
-		var draw_blend = c_black;
-		var draw_alpha = image_alpha * collision_mask_alpha;
+		draw_x = xx;
+		draw_y = yy;
+		draw_blend = c_black;
+		draw_alpha = image_alpha * collision_mask_alpha;
 	}
 	else
 	{
@@ -197,10 +197,11 @@ if (invincible_timer >= 2)
 		{
 			invincible_blend = image_blend;
 		}
-		var draw_x = xx;
-		var draw_y = yy;
-		var draw_blend = invincible_blend;
-		var draw_alpha = image_alpha * collision_mask_alpha;
+		
+		draw_x = xx;
+		draw_y = yy;
+		draw_blend = invincible_blend;
+		draw_alpha = image_alpha * collision_mask_alpha;
 	}
 }
 if (invincible_timer >= 1)
@@ -354,13 +355,11 @@ if (global.playergame >= 2)
 	draw_set_halign(fa_center);
 	draw_set_valign(fa_middle);
 	
+	var player_name_text = string(global.player_name[player]);
+	
 	if (global.player_name[player] = "")
 	{
-		var player_name_text = "P" + string(player);
-	}
-	else
-	{
-		var player_name_text = string(global.player_name[player]);
+		player_name_text = "P" + string(player);
 	}
 	
 	scr_draw_text_outlined(x, y - 64, string(player_name_text), global.default_text_size, c_black, global.player_color[player], 1);

@@ -19,38 +19,36 @@ function scr_option_custom_resources()
 			c_white,
 			1);
 		}
-
+		
+		var resource_pack_y = -999;
+		var open_resource_pack_y = -999;
+		var custom_title_layer_y = 40 + menu_y_offset;
+		var custom_title_background_y = 40 * 2 + menu_y_offset;
+		var custom_title_background_scale_y = 40 * 4 + menu_y_offset;
+		var background_layer_x_scroll_y = 40 * 5 + menu_y_offset;
+		var background_layer_y_scroll_y = 40 * 6 + menu_y_offset;
+		var custom_title_background_open_y = 40 * 7 + menu_y_offset;
+		var custom_title_logo_y = 40 * 9 + menu_y_offset;
+		var custom_title_logo_open_y = 40 * 11 + menu_y_offset;
+		var can_load_custom_level_assets_y = 40 * 12 + 32 + menu_y_offset;
+		menu_cursor_y_position_end = 40 * 12 + 32;
+		
 		if (ds_list_size(global.all_loaded_resource_pack) >= 2)
 		&& (!global.enable_option_for_pc)
 		|| (global.enable_option_for_pc)
 		{
-			var resource_pack_y = 40 + menu_y_offset;
-			var open_resource_pack_y = 40 * 3 + menu_y_offset;
-			var custom_title_layer_y = 40 * 5 + menu_y_offset;
-			var custom_title_background_y = 40 * 6 + menu_y_offset;
-			var custom_title_background_scale_y = 40 * 8 + menu_y_offset;
-			var background_layer_x_scroll_y = 40 * 9 + menu_y_offset;
-			var background_layer_y_scroll_y = 40 * 10 + menu_y_offset;
-			var custom_title_background_open_y = 40 * 11 + menu_y_offset;
-			var custom_title_logo_y = 40 * 13 + menu_y_offset;
-			var custom_title_logo_open_y = 40 * 15 + menu_y_offset;
-			var can_load_custom_level_assets_y = 40 * 16 + 32 + menu_y_offset;
+			resource_pack_y = 40 + menu_y_offset;
+			open_resource_pack_y = 40 * 3 + menu_y_offset;
+			custom_title_layer_y = 40 * 5 + menu_y_offset;
+			custom_title_background_y = 40 * 6 + menu_y_offset;
+			custom_title_background_scale_y = 40 * 8 + menu_y_offset;
+			background_layer_x_scroll_y = 40 * 9 + menu_y_offset;
+			background_layer_y_scroll_y = 40 * 10 + menu_y_offset;
+			custom_title_background_open_y = 40 * 11 + menu_y_offset;
+			custom_title_logo_y = 40 * 13 + menu_y_offset;
+			custom_title_logo_open_y = 40 * 15 + menu_y_offset;
+			can_load_custom_level_assets_y = 40 * 16 + 32 + menu_y_offset;
 			menu_cursor_y_position_end = 40 * 16 + 32;
-		}
-		else
-		{
-			var resource_pack_y = -999;
-			var open_resource_pack_y = -999;
-			var custom_title_layer_y = 40 + menu_y_offset;
-			var custom_title_background_y = 40 * 2 + menu_y_offset;
-			var custom_title_background_scale_y = 40 * 4 + menu_y_offset;
-			var background_layer_x_scroll_y = 40 * 5 + menu_y_offset;
-			var background_layer_y_scroll_y = 40 * 6 + menu_y_offset;
-			var custom_title_background_open_y = 40 * 7 + menu_y_offset;
-			var custom_title_logo_y = 40 * 9 + menu_y_offset;
-			var custom_title_logo_open_y = 40 * 11 + menu_y_offset;
-			var can_load_custom_level_assets_y = 40 * 12 + 32 + menu_y_offset;
-			menu_cursor_y_position_end = 40 * 12 + 32;
 		}
 
 		if (key_up)
@@ -822,7 +820,7 @@ function scr_option_custom_resources()
 		#endregion /* Custom Title Background Scale END */
 
 		#region /* Background Layer X Scroll */
-		var scale_increment = 0.05;
+		scale_increment = 0.05;
 		draw_set_halign(fa_left);
 		draw_set_valign(fa_middle);
 		scr_draw_text_outlined(resource_pack_x, 20 + (background_layer_x_scroll_y), l10n_text("Background Scroll X") + ": " + string(global.background_layer_x_scroll[title_bg_layer]), global.default_text_size * 1.1, c_menu_outline, c_menu_fill, 1);
@@ -918,7 +916,7 @@ function scr_option_custom_resources()
 		#endregion /* Background Layer X Scroll END */
 
 		#region /* Background Layer Y Scroll */
-		var scale_increment = 0.05;
+		scale_increment = 0.05;
 		draw_set_halign(fa_left);
 		draw_set_valign(fa_middle);
 		scr_draw_text_outlined(resource_pack_x, 20 + (background_layer_y_scroll_y), l10n_text("Background Scroll Y") + ": " + string(global.background_layer_y_scroll[title_bg_layer]), global.default_text_size * 1.1, c_menu_outline, c_menu_fill, 1);

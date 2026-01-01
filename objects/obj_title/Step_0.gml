@@ -276,7 +276,7 @@ if (iris_xscale <= 0.01)
 
 		scr_config_save();
 		ini_open(game_save_id + "save_file/file" + string(global.file) + ".ini");
-		lives = ini_read_real("Player", "lives", 5);
+		global.player_lives = ini_read_real("Player", "lives", 5);
 		ini_close(); /* Don't commit the save data on Switch, this is only temporary! */
 		room_goto(rm_world);
 	}

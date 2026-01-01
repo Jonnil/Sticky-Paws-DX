@@ -74,10 +74,10 @@ if (y > camera_get_view_y(view_get_camera(view_current)) + camera_get_view_heigh
 	speed = 0;
 	if (!audio_is_playing(player_lose_melody))
 	{
-		if (lives >= 1)
+		if (global.player_lives >= 1)
 		{
 			global.timeattack_realmillisecond = 0;
-			score = 0;
+			global.level_score = 0;
 			scr_save_level();
 			audio_stop_all();
 
@@ -93,10 +93,10 @@ if (y > camera_get_view_y(view_get_camera(view_current)) + camera_get_view_heigh
 	}
 	else
 	{
-		if (lives >= 1)
+		if (global.player_lives >= 1)
 		{
 			global.timeattack_realmillisecond = 0;
-			score = 0;
+			global.level_score = 0;
 			scr_save_level();
 			audio_stop_all();
 
@@ -114,7 +114,7 @@ if (y > camera_get_view_y(view_get_camera(view_current)) + camera_get_view_heigh
 else
 if (y > camera_get_view_y(view_get_camera(view_current)) + camera_get_view_height(view_get_camera(view_current)))
 {
-	if (lives >= 1)
+	if (global.player_lives >= 1)
 	&& (instance_exists(obj_player))
 	{
 
@@ -204,7 +204,7 @@ if (global.restart_level)
 	global.timeattack_minute = 0;
 	#endregion /* Reset timer back to zero END */
 
-	score = 0;
+	global.level_score = 0;
 
 	if (os_type == os_switch)
 	{
@@ -233,7 +233,7 @@ if (global.quit_level)
 	global.timeattack_minute = 0;
 	#endregion /* Reset timer back to zero END */
 
-	score = 0;
+	global.level_score = 0;
 
 	scr_save_level();
 

@@ -25,7 +25,7 @@ function scr_draw_level_editor_thumbnail(load_what_levels = global.all_loaded_cu
 	&& (menu != "level_length_recommendation_ok" && menu != "level_length_recommendation_back")
 	&& (!open_sub_menu && menu_delay <= 2 || open_sub_menu)
 	{
-		var custom_level_select_blinking = scr_wave(1, 0, 2, 0);
+		custom_level_select_blinking = scr_wave(1, 0, 2, 0);
 		draw_rectangle_color(top_left_of_thumbnail_x, top_left_of_thumbnail_y, bottom_right_of_thumbnail_x, bottom_right_of_thumbnail_y, c_red, c_red, c_red, c_red, false);
 		draw_set_alpha(custom_level_select_blinking);
 		draw_rectangle_color(top_left_of_thumbnail_x, top_left_of_thumbnail_y, bottom_right_of_thumbnail_x, bottom_right_of_thumbnail_y, c_yellow, c_yellow, c_yellow, c_yellow, false);
@@ -87,6 +87,8 @@ function scr_draw_level_editor_thumbnail(load_what_levels = global.all_loaded_cu
 			draw_set_valign(fa_middle);
 
 			/* Draw level name on top of level thumbnail */
+			var draw_level_name_scale = global.default_text_size;
+			
 			if (load_what_levels == global.all_loaded_custom_levels)
 			&& (is_array(thumbnail_level_name))
 			&& (array_length(thumbnail_level_name) > 0)
@@ -95,18 +97,14 @@ function scr_draw_level_editor_thumbnail(load_what_levels = global.all_loaded_cu
 			{
 				if (string_width(thumbnail_level_name[i]) > 640)
 				{
-					var draw_level_name_scale = global.default_text_size * 0.6;
+					draw_level_name_scale = global.default_text_size * 0.6;
 				}
 				else
 				if (string_width(thumbnail_level_name[i]) > 320)
 				{
-					var draw_level_name_scale = global.default_text_size * 0.8;
+					draw_level_name_scale = global.default_text_size * 0.8;
 				}
-				else
-				{
-					var draw_level_name_scale = global.default_text_size;
-				}
-
+				
 				scr_draw_text_outlined(394 * (i - column * row) + 100 + 192 + thumbnail_x_offset, 226 * (column - scroll) + 450, string(thumbnail_level_name[i]), draw_level_name_scale, c_black, c_white, 1);
 			}
 			else
@@ -114,23 +112,23 @@ function scr_draw_level_editor_thumbnail(load_what_levels = global.all_loaded_cu
 			{
 				if (string_width(ds_list_find_value(load_what_levels, i)) > 640)
 				{
-					var draw_level_name_scale = global.default_text_size * 0.6;
+					draw_level_name_scale = global.default_text_size * 0.6;
 				}
 				else
 				if (string_width(ds_list_find_value(load_what_levels, i)) > 320)
 				{
-					var draw_level_name_scale = global.default_text_size * 0.8;
+					draw_level_name_scale = global.default_text_size * 0.8;
 				}
-				else
-				{
-					var draw_level_name_scale = global.default_text_size;
-				}
-
+				
 				scr_draw_text_outlined(394 * (i - column * row) + 100 + 192 + thumbnail_x_offset, 226 * (column - scroll) + 450, string(ds_list_find_value(load_what_levels, i)), global.default_text_size * 0.8, c_black, c_white, 1);
 			}
 
 			#region /* Draw if level have been Clear Checked on top of level thumbnail */
 			var clear_check = false;
+			var clear_check_draw_y = 226 * (column - scroll) + 274;
+			var var_level_id = noone;
+			var level_id_draw_y = 226 * (column - scroll) + 274;
+			var daily_build_draw_y = 226 * (column - scroll) + 274;
 
 			if (room == rm_title)
 			{
@@ -149,11 +147,12 @@ function scr_draw_level_editor_thumbnail(load_what_levels = global.all_loaded_cu
 				&& (i < array_length(thumbnail_level_unlisted))
 				{
 					clear_check = thumbnail_clear_check[i];
-					var var_level_id = thumbnail_level_id[i];
+					var_level_id = thumbnail_level_id[i];
 					var var_level_unlisted = thumbnail_level_unlisted[i];
 					var level_id_text = "";
 					var level_unlisted_text = "";
 					var clear_check_text = "";
+					var icon_scale = scr_wave(0.9, 1, 1, 0);
 
 					/* Get the Level ID */
 					if (var_level_id != "")
@@ -168,8 +167,6 @@ function scr_draw_level_editor_thumbnail(load_what_levels = global.all_loaded_cu
 								global.search_id = string(var_level_id); /* Set the global search id for future use within the level editor */
 							}
 						}
-
-						var icon_scale = scr_wave(0.9, 1, 1, 0);
 					}
 					else
 					if (room == rm_title)
@@ -182,21 +179,17 @@ function scr_draw_level_editor_thumbnail(load_what_levels = global.all_loaded_cu
 					{
 						if (global.select_level_index == i)
 						{
-							var clear_check_text = l10n_text("Clear Checked");
+							clear_check_text = l10n_text("Clear Checked");
 
 							if (room == rm_title)
 							{
 								global.search_id = string(var_level_id); /* Set the global search id for future use within the level editor */
 							}
 						}
-
-						var icon_scale = scr_wave(0.9, 1, 1, 0);
 					}
 
 					var draw_x = 394 * (i - column * row) + 140 + thumbnail_x_offset;
-					var level_id_draw_y = 226 * (column - scroll) + 274;
 					var unlisted_draw_y = 226 * (column - scroll) + 274;
-					var clear_check_draw_y = 226 * (column - scroll) + 274;
 					var text_size = global.default_text_size * scr_wave(1, 1.1, 1, 0);
 
 					draw_set_halign(fa_left);
@@ -207,8 +200,8 @@ function scr_draw_level_editor_thumbnail(load_what_levels = global.all_loaded_cu
 					{
 						scr_draw_text_outlined(draw_x, level_id_draw_y, level_id_text, text_size, c_white, c_black, 1);
 						draw_sprite_ext(spr_icon_upload, 1, draw_x - 20, level_id_draw_y, icon_scale, icon_scale, 0, c_white, 1);
-						var unlisted_draw_y = level_id_draw_y + 32;
-						var clear_check_draw_y = level_id_draw_y + 32;
+						unlisted_draw_y = level_id_draw_y + 32;
+						clear_check_draw_y = level_id_draw_y + 32;
 					}
 
 					/* Draw if level is unlisted below Level ID */
@@ -216,7 +209,7 @@ function scr_draw_level_editor_thumbnail(load_what_levels = global.all_loaded_cu
 					{
 						scr_draw_text_outlined(draw_x, unlisted_draw_y, level_unlisted_text, text_size, c_white, c_black, 1);
 						draw_sprite_ext(spr_icon_unlisted, 1, draw_x - 20, unlisted_draw_y, icon_scale, icon_scale, 0, c_white, 1);
-						var clear_check_draw_y = unlisted_draw_y + 32;
+						clear_check_draw_y = unlisted_draw_y + 32;
 					}
 
 					/* Draw Clear Check status below if level is unlisted */
@@ -245,16 +238,12 @@ function scr_draw_level_editor_thumbnail(load_what_levels = global.all_loaded_cu
 
 						if (clear_check)
 						{
-							var daily_build_draw_y = clear_check_draw_y + 32;
+							daily_build_draw_y = clear_check_draw_y + 32;
 						}
 						else
 						if (var_level_id != "")
 						{
-							var daily_build_draw_y = level_id_draw_y + 32;
-						}
-						else
-						{
-							var daily_build_draw_y = 226 * (column - scroll) + 274;
+							daily_build_draw_y = level_id_draw_y + 32;
 						}
 
 						if (global.select_level_index == i)
@@ -283,24 +272,21 @@ function scr_draw_level_editor_thumbnail(load_what_levels = global.all_loaded_cu
 					{
 						var icon_scale = scr_wave(0.9, 1, 1, 0);
 						var draw_x = 394 * (i - column * row) + 140 + thumbnail_x_offset;
+						var has_custom_background_draw_y = 226 * (column - scroll) + 274;
 
 						if (thumbnail_daily_build[i])
 						{
-							var has_custom_background_draw_y = daily_build_draw_y + 32;
+							has_custom_background_draw_y = daily_build_draw_y + 32;
 						}
 						else
 						if (clear_check)
 						{
-							var has_custom_background_draw_y = clear_check_draw_y + 32;
+							has_custom_background_draw_y = clear_check_draw_y + 32;
 						}
 						else
 						if (var_level_id != "")
 						{
-							var has_custom_background_draw_y = level_id_draw_y + 32;
-						}
-						else
-						{
-							var has_custom_background_draw_y = 226 * (column - scroll) + 274;
+							has_custom_background_draw_y = level_id_draw_y + 32;
 						}
 
 						if (global.select_level_index == i)
