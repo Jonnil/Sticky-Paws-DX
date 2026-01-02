@@ -76,16 +76,16 @@ function scr_initialize_level_information_ini()
 		
 		after_goal_go_to_this_level = get_custom_level_information_real("info", "after_goal_go_to_this_level", noone);
 
-		if (object_index == obj_leveleditor && !global.actually_play_edited_level)
+		if (object_index == obj_leveleditor
+		&& !global.actually_play_edited_level)
 		{
-			var default_camera_x = -128;
-			if (instance_exists(obj_level_height)) {
-				var default_camera_y = obj_level_height.y - window_get_height() + 128;
-			}
-			else
+			var default_camera_y = 0;
+			
+			if (instance_exists(obj_level_height))
 			{
-				var default_camera_y = 0;
+				default_camera_y = obj_level_height.y - window_get_height() + 128;
 			}
+			
 			camera_set_view_pos(view_get_camera(view_current), ini_read_real("info", "view_xview", default_camera_x), ini_read_real("info", "view_yview", default_camera_y)); /* Set camera position on the last positions you had the camera when doing level editing */
 			x = ini_read_real("info", "view_xview", default_camera_x);
 			y = ini_read_real("info", "view_yview", default_camera_y);

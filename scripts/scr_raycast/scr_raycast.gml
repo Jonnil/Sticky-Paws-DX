@@ -37,10 +37,13 @@ function scr_raycast(xx = x, yy = y, dir = 90, length = 380, per_pixel = 16, obj
 
 	/* Checking tilemap_layer_name argument */
 	var no_tilemaps = true;
+	var layer_id = noone;
+	var tilemap_id = noone;
+	
 	if (tilemap_layer_name != "")
 	{
-		var layer_id = layer_get_id(tilemap_layer_name);
-		var tilemap_id = layer_tilemap_get_id(layer_id);
+		layer_id = layer_get_id(tilemap_layer_name);
+		tilemap_id = layer_tilemap_get_id(layer_id);
 		no_tilemaps = false;
 	}
 

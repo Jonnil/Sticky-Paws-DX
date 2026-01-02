@@ -79,6 +79,8 @@ function scr_option_language_menu()
 		var translation_updates_y = advanced_language_options_back_y + 96;
 		var check_updates_button_y = translation_updates_y + 32;
 		var auto_update_dropdown_y = check_updates_button_y + 100;
+		var check_updates_button_scale = 1.5;
+		var check_updates_button_width = 370 * check_updates_button_scale;
 
 		#region /* Normal Language Options */
 		if (menu != "advanced_language_options_back")
@@ -141,6 +143,9 @@ function scr_option_language_menu()
 			draw_set_valign(fa_middle);
 			scr_draw_text_outlined(get_window_width - 32, 64, l10n_text("Translator") + ":", global.default_text_size * 1.5, c_menu_outline, c_menu_fill, 1);
 			scr_draw_text_outlined(get_window_width - 32, 114, l10n_text("Translator name"), global.default_text_size * 1.5, c_menu_outline, c_menu_fill, 1);
+			
+			var translation_completion_outline_color = c_menu_outline;
+			var translation_completion_fill_color = c_gray;
 
 			/* Ensure language_completion is defined for the selected language */
 			if (variable_global_exists("language_completion"))
@@ -149,16 +154,11 @@ function scr_option_language_menu()
 				{
 					global.language_completion[global.selected_language_id] = 0;
 				}
-
+				
 				if (global.language_completion[global.selected_language_id] < 100)
 				{
-					var translation_completion_outline_color = c_menu_outline;
-					var translation_completion_fill_color = make_color_hsv(global.language_completion[global.selected_language_id] * 0.75, 255, 255);
-				}
-				else
-				{
-					var translation_completion_outline_color = c_menu_outline;
-					var translation_completion_fill_color = c_gray;
+					translation_completion_outline_color = c_menu_outline;
+					translation_completion_fill_color = make_color_hsv(global.language_completion[global.selected_language_id] * 0.75, 255, 255);
 				}
 
 				#region /* Clicking on language completion text enables and disables the translation debug mode */
@@ -173,17 +173,15 @@ function scr_option_language_menu()
 				&& (global.controls_used_for_navigation == "mouse")
 				&& (global.enable_option_for_pc)
 				{
+					translation_completion_outline_color = c_menu_fill;
+					translation_completion_fill_color = c_gray;
+					
 					if (global.language_completion[global.selected_language_id] < 100)
 					{
-						var translation_completion_outline_color = c_menu_fill;
-						var translation_completion_fill_color = make_color_hsv(global.language_completion[global.selected_language_id] * 0.75, 255, 255);
+						translation_completion_outline_color = c_menu_fill;
+						translation_completion_fill_color = make_color_hsv(global.language_completion[global.selected_language_id] * 0.75, 255, 255);
 					}
-					else
-					{
-						var translation_completion_outline_color = c_menu_fill;
-						var translation_completion_fill_color = c_gray;
-					}
-
+					
 					if (mouse_check_button_released(mb_left)
 					&& global.language_completion[global.selected_language_id] < 100)
 					{
@@ -255,9 +253,6 @@ function scr_option_language_menu()
 			scr_draw_text_outlined(language_buttons_x, translation_updates_y, l10n_text("Translation Updates"), global.default_text_size, c_menu_outline, c_menu_fill, 1);
 
 			/* --- Manual update button --- */
-			var check_updates_button_scale = 1.5;
-			var check_updates_button_width = 370 * check_updates_button_scale;
-
 			draw_menu_button_sprite(
 				spr_menu_button,
 				language_buttons_x,

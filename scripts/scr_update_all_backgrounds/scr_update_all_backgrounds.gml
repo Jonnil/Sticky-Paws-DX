@@ -37,9 +37,11 @@ function scr_update_all_backgrounds(delete_existing_bg = true)
 	global.default_foreground_secret = ini_read_string("info", "default_foreground_secret", "");
 
 	/* Check if photographic images can be loaded */
+	var use_photographic_images = [false, false, false, false, false, false, false, false];
+	
 	if (!global.can_load_photographic_images)
 	{
-		var use_photographic_images = [
+		use_photographic_images = [
 			ini_read_real("Custom Backgrounds", "background1_uses_photographic_image", false),
 			ini_read_real("Custom Backgrounds", "background2_uses_photographic_image", false),
 			ini_read_real("Custom Backgrounds", "background3_uses_photographic_image", false),
@@ -50,10 +52,7 @@ function scr_update_all_backgrounds(delete_existing_bg = true)
 			ini_read_real("Custom Backgrounds", "foreground_secret_uses_photographic_image", false)
 		];
 	}
-	else
-	{
-		var use_photographic_images = [false, false, false, false, false, false, false, false];
-	}
+	
 	ini_close();
 
 	/* Loading sprites using the optimized method */

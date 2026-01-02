@@ -13,14 +13,13 @@ function scr_zoom_camera_draw_gui(width = 10)
 
 	if (show_zoom_value > 0)
 	{
+		var what_zoom_value = global.zoom_world;
+		
 		if (room == rm_leveleditor)
 		{
-			var what_zoom_value = global.zoom_level;
+			what_zoom_value = global.zoom_level;
 		}
-		else
-		{
-			var what_zoom_value = global.zoom_world;
-		}
+		
 		show_zoom_value--;
 
 		if (global.debug_screen)

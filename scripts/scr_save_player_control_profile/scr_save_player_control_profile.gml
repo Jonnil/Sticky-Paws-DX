@@ -1,14 +1,14 @@
 function scr_save_player_control_profile(what_player = 1, key0_or_gamepad1 = 0)
 {
-	if (key0_or_gamepad1 = 0) {
-		var inp_what = inp.key;
-		var key_or_gamepad_string = "key";
-	}
-	else
+	var inp_what = inp.gp;
+	var key_or_gamepad_string = "gamepad_button";
+	
+	if (key0_or_gamepad1 = 0)
 	{
-		var inp_what = inp.gp;
-		var key_or_gamepad_string = "gamepad_button";
+		inp_what = inp.key;
+		key_or_gamepad_string = "key";
 	}
+	
 	var section = "player" + string(what_player) + "_profile" + string(global.player_profile[what_player] + 1);
 	var key = "player" + string(what_player) + "_" + string(key_or_gamepad_string);
 	ini_open(game_save_id + "save_file/config.ini");

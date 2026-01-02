@@ -36,76 +36,68 @@ function scr_option_menu()
 
 	#region /* Menu navigation tabs y positions */
 	var accessibility_settings_y = 40;
+	var challenge_mode_settings_y = accessibility_settings_y;
+	
 	if (global.enable_challenge_mode_settings)
 	{
-		var challenge_mode_settings_y = accessibility_settings_y + 40;
+		challenge_mode_settings_y = accessibility_settings_y + 40;
 	}
-	else
-	{
-		var challenge_mode_settings_y = accessibility_settings_y;
-	}
+	
+	var how_to_play_y = -999;
+	var game_text_y = challenge_mode_settings_y + 40;
+	
 	if (global.enable_how_to_play_settings)
 	{
-		var how_to_play_y = challenge_mode_settings_y + 40;
-		var game_text_y = how_to_play_y + 40;
+		how_to_play_y = challenge_mode_settings_y + 40;
+		game_text_y = how_to_play_y + 40;
 	}
-	else
-	{
-		var how_to_play_y = -999;
-		var game_text_y = challenge_mode_settings_y + 40;
-	}
+	
 	var game_settings_y = game_text_y + 40;
+	var multiplayer_settings_y = -999;
+	var controls_text_y = game_settings_y + 40;
+	
 	if (global.enable_multiplayer_settings)
 	{
-		var multiplayer_settings_y = game_settings_y + 40;
-		var controls_text_y = multiplayer_settings_y + 40;
+		multiplayer_settings_y = game_settings_y + 40;
+		controls_text_y = multiplayer_settings_y + 40;
 	}
-	else
-	{
-		var multiplayer_settings_y = -999;
-		var controls_text_y = game_settings_y + 40;
-	}
+	
+	var keyboard_and_mouse_settings_y = -999;
+	var controller_settings_y = controls_text_y + 40;
+	
 	if (global.enable_keyboard_and_mouse_settings)
 	{
-		var keyboard_and_mouse_settings_y = controls_text_y + 40;
-		var controller_settings_y = keyboard_and_mouse_settings_y + 40;
+		keyboard_and_mouse_settings_y = controls_text_y + 40;
+		controller_settings_y = keyboard_and_mouse_settings_y + 40;
 	}
-	else
-	{
-		keyboard_and_mouse_settings_y = -999;
-		var controller_settings_y = controls_text_y + 40;
-	}
+	
+	var touch_settings_y = -999;
+	var general_text_y = controller_settings_y + 40;
+	
 	if (global.enable_touch_settings)
 	{
-		var touch_settings_y = controller_settings_y + 40;
-		var general_text_y = touch_settings_y + 40;
+		touch_settings_y = controller_settings_y + 40;
+		general_text_y = touch_settings_y + 40;
 	}
-	else
-	{
-		var touch_settings_y = -999;
-		var general_text_y = controller_settings_y + 40;
-	}
+	
+	var account_settings_y = -999;
+	var video_settings_y = general_text_y + 40;
+	
 	if (global.enable_account_settings)
 	{
-		var account_settings_y = general_text_y + 40;
-		var video_settings_y = account_settings_y + 40;
+		account_settings_y = general_text_y + 40;
+		video_settings_y = account_settings_y + 40;
 	}
-	else
-	{
-		var account_settings_y = -999;
-		var video_settings_y = general_text_y + 40;
-	}
+	
 	var audio_settings_y = video_settings_y + 40;
 	var custom_resources_settings_y = audio_settings_y + 40;
 	var storage_settings_y = custom_resources_settings_y + 40;
 	var language_settings_y = storage_settings_y + 40;
+	var broadcast_settings_y = -999;
+	
 	if (global.enable_broadcast_settings)
 	{
-		var broadcast_settings_y = language_settings_y + 40;
-	}
-	else
-	{
-		var broadcast_settings_y = -999;
+		broadcast_settings_y = language_settings_y + 40;
 	}
 	#endregion /* Menu navigation tabs y positions END */
 
@@ -2108,7 +2100,8 @@ function scr_option_menu()
 		}
 
 		#region /* My Game Settings */
-
+		var can_select_font = true;
+		
 		#region /* Game Settings */
 		if (global.settings_sidebar_menu == "game_settings")
 		{
@@ -2116,27 +2109,25 @@ function scr_option_menu()
 			var automatically_pause_when_window_is_unfocused_settings_y = 48 * 2;
 			var show_timer_settings_y = 48 * 3;
 			var show_defeats_counter_settings_y = 48 * 4;
+			var show_ranks_settings_y = -9999;
+			var show_tutorial_signs_y = 48 * 5;
+			var players_can_collide_y = 48 * 6;
+			var show_new_items_notification_y = 48 * 7;
+			var hud_hide_time_y = 48 * 8 + 16;
+			var selected_font_y = 48 * 9 + 32;
+			var debug_screen_y = 48 * 10 + 32;
 
 			if (global.enable_ranks)
 			{
-				var show_ranks_settings_y = 48 * 5;
-				var show_tutorial_signs_y = 48 * 6;
-				var players_can_collide_y = 48 * 7;
-				var show_new_items_notification_y = 48 * 8;
-				var hud_hide_time_y = 48 * 9 + 16;
-				var selected_font_y = 48 * 10 + 32;
-				var debug_screen_y = 48 * 11 + 32;
+				show_ranks_settings_y = 48 * 5;
+				show_tutorial_signs_y = 48 * 6;
+				players_can_collide_y = 48 * 7;
+				show_new_items_notification_y = 48 * 8;
+				hud_hide_time_y = 48 * 9 + 16;
+				selected_font_y = 48 * 10 + 32;
+				debug_screen_y = 48 * 11 + 32;
 			}
-			else
-			{
-				var show_ranks_settings_y = -9999;
-				var show_tutorial_signs_y = 48 * 5;
-				var players_can_collide_y = 48 * 6;
-				var show_new_items_notification_y = 48 * 7;
-				var hud_hide_time_y = 48 * 8 + 16;
-				var selected_font_y = 48 * 9 + 32;
-				var debug_screen_y = 48 * 10 + 32;
-			}
+			
 			draw_set_halign(fa_left);
 			draw_set_valign(fa_middle);
 
@@ -2192,18 +2183,17 @@ function scr_option_menu()
 			{
 				lang = "";
 			}
-
+			
 			if (lang == "日本語 (Japanese)")
 			{
 				/* Only include Game Font and Normal Font for Japanese language; Open Dyslexic isn't supported */
-				var can_select_font = false;
+				can_select_font = false;
 			}
 			else
 			{
 				draw_menu_dropdown(380, selected_font_y, l10n_text("Selected Font"), "select_font", global.selected_font,
 					l10n_text("Game Font"), l10n_text("Normal Font"), l10n_text("Open Dyslexic")); /* Includes Open Dyslexic */
 				scr_set_default_dropdown_description("select_font", "Game Font");
-				var can_select_font = true;
 			}
 
 			draw_menu_dropdown(380, hud_hide_time_y, l10n_text("HUD hide timer"), "hud_hide_time", global.hud_hide_time, l10n_text("Never Show"), l10n_text("After 1 Second"), l10n_text("After 2 Seconds"), l10n_text("After 3 Seconds"), l10n_text("After 4 Seconds"), l10n_text("After 5 Seconds"), l10n_text("After 6 Seconds"), l10n_text("After 7 Seconds"), l10n_text("After 8 Seconds"), l10n_text("After 9 Seconds"), l10n_text("Always Show"));

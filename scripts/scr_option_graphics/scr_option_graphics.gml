@@ -31,15 +31,13 @@ function scr_option_graphics()
 		var gui_scale_modifier_y = resolution_setting_y + 48 + 20;
 		var background_brightness_gameplay_y = gui_scale_modifier_y + 48 * 2;
 		var background_brightness_menu_y = background_brightness_gameplay_y + 68;
+		var fullscreen_mode_y = -999;
+		var advanced_video_option_y = background_brightness_menu_y + 48;
+		
 		if (global.enable_option_for_pc)
 		{
-			var fullscreen_mode_y = background_brightness_menu_y + 48;
-			var advanced_video_option_y = fullscreen_mode_y + 48;
-		}
-		else
-		{
-			var fullscreen_mode_y = -999;
-			var advanced_video_option_y = background_brightness_menu_y + 48;
+			fullscreen_mode_y = background_brightness_menu_y + 48;
+			advanced_video_option_y = fullscreen_mode_y + 48;
 		}
 
 		#region /* Background Brightness Bars */

@@ -157,13 +157,11 @@ function scr_save_level()
 		if (level_id != ""
 		&& !global.doing_clear_check_character)
 		{
+			var read_finished_downloaded_level = 0;
+			
 			if (ini_key_exists("finished_downloaded_level", string(level_id)))
 			{
-				var read_finished_downloaded_level = ini_read_real("finished_downloaded_level", string(level_id), 0);
-			}
-			else
-			{
-				var read_finished_downloaded_level = 0;
+				read_finished_downloaded_level = ini_read_real("finished_downloaded_level", string(level_id), 0);
 			}
 
 			if (global.level_clear_rate == "clear")

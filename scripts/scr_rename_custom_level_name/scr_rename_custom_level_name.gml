@@ -88,7 +88,7 @@ function scr_rename_custom_level_name()
 
 				show_debug_message(
 					"[scr_rename_custom_level_name] Added sprite ID: "
-					+ string(new_spr2)
+					+ string(new_spr)
 					+ "  |  To retrieve later: var spr = ds_list_find_value("
 					+ "global.thumbnail_sprite, string(global.select_level_index)"
 					+ ");  |  global.select_level_index: " + string(global.select_level_index) + "\n"

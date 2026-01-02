@@ -21,8 +21,10 @@ function scr_zoom_camera_controls()
 	var base_zoom_maximum = 1.0; /* Set base maximum zoom */
 	var display_width = display_get_gui_width();
 	var display_height = display_get_gui_height();
+	var zoom_maximum = base_zoom_maximum; /* Use the base maximum zoom if both room width and height are equal to or greater than the screen resolution */
 
-	if (room_width < display_width || room_height < display_height) /* Check if either the room width or height is less than the screen resolution */
+	if (room_width < display_width
+	|| room_height < display_height) /* Check if either the room width or height is less than the screen resolution */
 	{
 		/* Calculate proportional maximum zoom based on both room width and height */
 		var zoom_factor_width = room_width / display_width;
@@ -30,11 +32,7 @@ function scr_zoom_camera_controls()
 
 		var zoom_factor = min(zoom_factor_width, zoom_factor_height); /* Choose the minimum zoom factor to ensure the entire room fits within the screen */
 		var dynamic_zoom_maximum = base_zoom_maximum * zoom_factor; /* Calculate dynamic maximum zoom */
-		var zoom_maximum = dynamic_zoom_maximum; /* Set the maximum zoom to the calculated value */
-	}
-	else
-	{
-		var zoom_maximum = base_zoom_maximum; /* Use the base maximum zoom if both room width and height are equal to or greater than the screen resolution */
+		zoom_maximum = dynamic_zoom_maximum; /* Set the maximum zoom to the calculated value */
 	}
 
 	var zoom_variable = room == rm_world ? global.zoom_world : global.zoom_level;

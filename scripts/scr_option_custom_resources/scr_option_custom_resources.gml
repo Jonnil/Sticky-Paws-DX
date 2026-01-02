@@ -370,16 +370,14 @@ function scr_option_custom_resources()
 			draw_menu_button(resource_pack_x, 20 + (open_resource_pack_y), l10n_text("Open Resource Pack Folder"), "open_resource_pack_folder", "open_resource_pack_folder");
 			draw_sprite_ext(spr_icon_folder, 0, resource_pack_x + 16, 20 + (open_resource_pack_y) + 21, 1, 1, 0, c_white, 1);
 		}
-
+		
+		var add_number = 0;
+		
 		if (os_type == os_macosx)
 		{
-			var add_number = -1; /* For some reason I need to do this for Mac to make the numbers correct on both Mac and PC */
+			add_number = -1; /* For some reason I need to do this for Mac to make the numbers correct on both Mac and PC */
 		}
-		else
-		{
-			var add_number = 0;
-		}
-
+		
 		#region /* Custom Title Background */
 
 		#region /* Make the layer blink so you can see easier which layer is actually selected */

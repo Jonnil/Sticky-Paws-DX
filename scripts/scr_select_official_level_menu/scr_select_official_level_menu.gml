@@ -582,15 +582,13 @@ function scr_select_official_level_menu()
 		draw_set_valign(fa_middle);
 		
 		#region /* INPUT LEVEL NAME NOW */
+		var input_name_y = 226 * (column - scroll) + 569 - 3 - 16
+		
 		if (keyboard_virtual_status()
 		&& keyboard_virtual_height() != 0
 		&& keyboard_virtual_height() != undefined)
 		{
-			var input_name_y = display_get_gui_height() - keyboard_virtual_height() - 160;
-		}
-		else
-		{
-			var input_name_y = 226 * (column - scroll) + 569 - 3 - 16
+			input_name_y = display_get_gui_height() - keyboard_virtual_height() - 160;
 		}
 		
 		if (can_input_level_name)

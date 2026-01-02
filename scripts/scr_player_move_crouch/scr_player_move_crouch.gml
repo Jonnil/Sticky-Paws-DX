@@ -2,7 +2,13 @@ function scr_player_move_crouch()
 {
 
 	#region /* Crouch */
-	if (key_crouch_hold && allow_crouch && !crouch && can_move && !ground_pound && !dive && on_ground)
+	if (key_crouch_hold
+	&& allow_crouch
+	&& !crouch
+	&& can_move
+	&& !ground_pound
+	&& !dive
+	&& on_ground)
 	{
 		crouch = true;
 		draw_xscale = 1.5;
@@ -57,15 +63,15 @@ function scr_player_move_crouch()
 	#endregion /* Crouch END */
 
 	#region /* Don't crouch */
-	if (!key_crouch_hold && crouch)
+	if (!key_crouch_hold
+	&& crouch)
 	{
-		if (sprite_mask >= 0 && sprite_exists(sprite_mask))
+		var mask_to_use = spr_player_stand;
+		
+		if (sprite_mask >= 0
+		&& sprite_exists(sprite_mask))
 		{
-			var mask_to_use = sprite_mask;
-		}
-		else
-		{
-			var mask_to_use = spr_player_stand;
+			mask_to_use = sprite_mask;
 		}
 
 		if (!collision_rectangle(bbox_left, bbox_bottom - sprite_get_height(mask_to_use) - 1, bbox_right, bbox_bottom, obj_wall, false, true))

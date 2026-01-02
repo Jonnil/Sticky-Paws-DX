@@ -482,17 +482,17 @@ function scr_select_custom_level_menu()
 			#endregion /* Open Custom Levels Folder END */
 
 			#region /* Online Level List */
+			var draw_online_level_list_y = 42;
+			
 			if (global.enable_open_custom_folder)
 			{
-				var draw_online_level_list_y = 42 * 2;
+				draw_online_level_list_y = 42 * 2;
 			}
-			else
-			{
-				var draw_online_level_list_y = 42;
-			}
+			
 			if (global.free_communication_available)
 			{
 				draw_menu_button(0, draw_online_level_list_y, l10n_text("Online Level List"), "online_level_list", "");
+				
 				if (levels_added_today_text != "")
 				{
 					draw_set_halign(fa_left);
@@ -736,15 +736,13 @@ function scr_select_custom_level_menu()
 		if (menu == "level_editor_enter_name_ok")
 		|| (menu == "level_editor_enter_name_cancel")
 		{
+			var draw_name_input_screen_y = 226 * (column - scroll) + 500;
+			
 			if (keyboard_virtual_status()
 			&& keyboard_virtual_height() != 0
 			&& keyboard_virtual_height() != undefined)
 			{
-				var draw_name_input_screen_y = display_get_gui_height() - keyboard_virtual_height() - 160;
-			}
-			else
-			{
-				var draw_name_input_screen_y = 226 * (column - scroll) + 500;
+				draw_name_input_screen_y = display_get_gui_height() - keyboard_virtual_height() - 160;
 			}
 
 			show_level_editor_corner_menu = false;
@@ -870,15 +868,13 @@ function scr_select_custom_level_menu()
 		if (menu == "level_editor_enter_description_ok")
 		|| (menu == "level_editor_enter_description_cancel")
 		{
+			var draw_description_input_screen_y = get_window_height * 0.5;
+			
 			if (keyboard_virtual_status()
 			&& keyboard_virtual_height() != 0
 			&& keyboard_virtual_height() != undefined)
 			{
-				var draw_description_input_screen_y = display_get_gui_height() - keyboard_virtual_height() - 160;
-			}
-			else
-			{
-				var draw_description_input_screen_y = get_window_height * 0.5;
+				draw_description_input_screen_y = display_get_gui_height() - keyboard_virtual_height() - 160;
 			}
 
 			if (can_input_level_name)

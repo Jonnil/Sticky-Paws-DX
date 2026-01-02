@@ -1,19 +1,15 @@
 function scr_remapping_gamepad()
 {
 	player_profile = global.player_profile[remapping_player + 1];
-
+	var remap_key_number_string = "2"; /* Assuming "menu remap key number" is set to 2 */
+	var remap_key_number = 2;
+	
 	if (menu_remap_key_number == 0)
 	{
-		var remap_key_number_string = "";
-		var remap_key_number = 1;
+		remap_key_number_string = "";
+		remap_key_number = 1;
 	}
-	else
-	if (menu_remap_key_number == 2)
-	{
-		var remap_key_number_string = "2";
-		var remap_key_number = 2;
-	}
-
+	
 	#region /* Check for player button presses */
 	if (gamepad_button_check_pressed(global.player_slot[remapping_player + 1], gp_face1))
 	{
