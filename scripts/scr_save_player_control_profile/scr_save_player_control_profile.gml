@@ -3,7 +3,7 @@ function scr_save_player_control_profile(what_player = 1, key0_or_gamepad1 = 0)
 	var inp_what = inp.gp;
 	var key_or_gamepad_string = "gamepad_button";
 	
-	if (key0_or_gamepad1 = 0)
+	if (key0_or_gamepad1 == 0)
 	{
 		inp_what = inp.key;
 		key_or_gamepad_string = "key";
