@@ -52,6 +52,7 @@ function scr_save_player_control_profile(what_player = 1, key0_or_gamepad1 = 0)
 	ini_write_real(section, "player" + string(what_player) + "_double_tap_to_dive", global.player_double_tap_to_dive[what_player]);
 	ini_write_real(section, "player" + string(what_player) + "_cancel_dive_by_jump_or_dive", global.player_cancel_dive_by_jump_or_dive[what_player]);
 	ini_write_real(section, "player" + string(what_player) + "_cancel_dive_by_opposite_direction", global.player_cancel_dive_by_opposite_direction[what_player]);
+	ini_write_real(section, "player" + string(what_player) + "_cancel_dive_by_pressing_opposite_direction", global.player_cancel_dive_by_opposite_direction[what_player]); /* Legacy key name for compatibility */
 	ini_write_real(section, "player" + string(what_player) + "_down_and_jump_to_groundpound", global.player_down_and_jump_to_groundpound[what_player]);
 	ini_write_real(section, "player" + string(what_player) + "_wall_jump_setting", global.player_wall_jump_setting[what_player]);
 	ini_write_real(section, "player" + string(what_player) + "_drop_from_rope", global.player_drop_from_rope[what_player]);

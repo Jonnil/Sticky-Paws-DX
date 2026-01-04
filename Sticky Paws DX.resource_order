@@ -40,6 +40,7 @@
     {"name":"Timelines","order":9,"path":"folders/Timelines.yy",},
   ],
   "ResourceOrderSettings":[
+    {"name":"Steamworks","order":2,"path":"extensions/Steamworks/Steamworks.yy",},
     {"name":"obj_air_bubbles_spawner","order":27,"path":"objects/obj_air_bubbles_spawner/obj_air_bubbles_spawner.yy",},
     {"name":"obj_appear_block_spawner","order":22,"path":"objects/obj_appear_block_spawner/obj_appear_block_spawner.yy",},
     {"name":"obj_appear_block","order":23,"path":"objects/obj_appear_block/obj_appear_block.yy",},
@@ -433,7 +434,7 @@
     {"name":"scr_zoom_camera_draw_gui","order":42,"path":"scripts/scr_zoom_camera_draw_gui/scr_zoom_camera_draw_gui.yy",},
     {"name":"set_controller_sprites_to_use","order":79,"path":"scripts/set_controller_sprites_to_use/set_controller_sprites_to_use.yy",},
     {"name":"set_pause_button_y_positions","order":85,"path":"scripts/set_pause_button_y_positions/set_pause_button_y_positions.yy",},
-    {"name":"Steamworks_Definitions","order":1,"path":"scripts/Steamworks_Definitions/Steamworks_Definitions.yy",},
+    {"name":"Steamworks_Definitions","order":3,"path":"scripts/Steamworks_Definitions/Steamworks_Definitions.yy",},
     {"name":"snd_3rdjump","order":1,"path":"sounds/snd_3rdjump/snd_3rdjump.yy",},
     {"name":"snd_arrow","order":2,"path":"sounds/snd_arrow/snd_arrow.yy",},
     {"name":"snd_basic_collectible","order":3,"path":"sounds/snd_basic_collectible/snd_basic_collectible.yy",},

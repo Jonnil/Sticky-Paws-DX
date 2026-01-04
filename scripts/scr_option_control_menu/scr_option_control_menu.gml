@@ -4130,7 +4130,7 @@ function scr_option_control_menu()
 		draw_menu_checkmark(390, menu_y_always_run + menu_y_offset, l10n_text("Always run"), "always_run", global.player_run_toggle[what_player], false);
 		draw_menu_checkmark(390, menu_y_double_tap_direction_to_dive + menu_y_offset, l10n_text("Double-tap direction to dive"), "double_tap_to_dive", global.player_double_tap_to_dive[what_player], false);
 		draw_menu_checkmark(390, menu_y_cancel_dive_by_jump_or_dive + menu_y_offset, l10n_text("Cancel dive by pressing jump or dive"), "cancel_dive_by_jump_or_dive", global.player_cancel_dive_by_jump_or_dive[what_player], false);
-		draw_menu_checkmark(390, menu_y_cancel_dive_by_opposite_direction + menu_y_offset, l10n_text("Cancel dive by pressing the opposite direction"), "cancel_dive_by_pressing_opposite_direction", global.player_cancel_dive_by_pressing_opposite_direction[what_player], false);
+		draw_menu_checkmark(390, menu_y_cancel_dive_by_opposite_direction + menu_y_offset, l10n_text("Cancel dive by pressing the opposite direction"), "cancel_dive_by_pressing_opposite_direction", global.player_cancel_dive_by_opposite_direction[what_player], false);
 		draw_menu_checkmark(390, menu_y_down_and_jump_to_groundpound + menu_y_offset, l10n_text("Down + Jump to Ground Pound"), "down_and_jump_to_groundpound", global.player_down_and_jump_to_groundpound[what_player], false);
 		if (global.enable_option_for_pc)
 		{
@@ -4141,7 +4141,7 @@ function scr_option_control_menu()
 			else
 			{
 				draw_menu_checkmark(390, menu_y_show_prompt_when_changing_controller + menu_y_offset, l10n_text("Show prompt when changing to keyboard and mouse"), "show_prompt_when_changing_controller", global.show_prompt_when_changing_to_keyboard_and_mouse, true);
-				menu_cursor_y_position_end = menu_y_show_prompt_when_changing_controller;
+				menu_cursor_y_position_end = menu_y_show_prompt_when_changing_controller + 100;
 			}
 			draw_menu_checkmark(390, menu_y_always_show_gamepad_buttons + menu_y_offset, l10n_text("Always Show Gamepad Buttons"), "always_show_gamepad_buttons", global.always_show_gamepad_buttons, false);
 		}
@@ -4967,7 +4967,7 @@ function scr_option_control_menu()
 				global.player_cancel_dive_by_jump_or_dive[what_player] = !global.player_cancel_dive_by_jump_or_dive[what_player];
 			}
 			if (menu == "cancel_dive_by_pressing_opposite_direction") {
-				global.player_cancel_dive_by_pressing_opposite_direction[what_player] = !global.player_cancel_dive_by_pressing_opposite_direction[what_player];
+					global.player_cancel_dive_by_opposite_direction[what_player] = !global.player_cancel_dive_by_opposite_direction[what_player];
 			}
 			if (menu == "down_and_jump_to_groundpound") {
 				global.player_down_and_jump_to_groundpound[what_player] = global.player_down_and_jump_to_groundpound[what_player];

@@ -235,7 +235,8 @@ function scr_debug_detect_controller_disconnections()
 			show_debug_message("Gamepad " + string(i) + " connected!");
 			global.initial_gamepad_status[i] = true;
 
-			if (!gamepad_is_connected(0) || (gamepad_get_description(0) == "Handheld"))
+			if (!gamepad_is_connected(0)
+			|| (gamepad_get_description(0) == "Handheld"))
 			{
 				for (var j = 1; j <= global.max_players; j += 1)
 				{

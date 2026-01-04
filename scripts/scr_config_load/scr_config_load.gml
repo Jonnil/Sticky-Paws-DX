@@ -55,7 +55,14 @@ function scr_config_load()
 			if (ini_key_exists("player" + string(i) + "_profile" + string(global.player_profile[i] + 1), "player" + string(i) + "_run_toggle")){global.player_run_toggle[i] = ini_read_real("player" + string(i) + "_profile" + string(global.player_profile[i] + 1), "player" + string(i) + "_run_toggle", 0);}
 			if (ini_key_exists("player" + string(i) + "_profile" + string(global.player_profile[i] + 1), "player" + string(i) + "_double_tap_to_dive")){global.player_double_tap_to_dive[i] = ini_read_real("player" + string(i) + "_profile" + string(global.player_profile[i] + 1), "player" + string(i) + "_double_tap_to_dive", 0);}
 			if (ini_key_exists("player" + string(i) + "_profile" + string(global.player_profile[i] + 1), "player" + string(i) + "_cancel_dive_by_jump_or_dive")){global.player_cancel_dive_by_jump_or_dive[i] = ini_read_real("player" + string(i) + "_profile" + string(global.player_profile[i] + 1), "player" + string(i) + "_cancel_dive_by_jump_or_dive", 0);}
-			if (ini_key_exists("player" + string(i) + "_profile" + string(global.player_profile[i] + 1), "player" + string(i) + "_cancel_dive_by_pressing_opposite_direction")){global.player_cancel_dive_by_pressing_opposite_direction[i] = ini_read_real("player" + string(i) + "_profile" + string(global.player_profile[i] + 1), "player" + string(i) + "_cancel_dive_by_pressing_opposite_direction", 0);}
+			if (ini_key_exists("player" + string(i) + "_profile" + string(global.player_profile[i] + 1), "player" + string(i) + "_cancel_dive_by_pressing_opposite_direction"))
+			{
+				global.player_cancel_dive_by_opposite_direction[i] = ini_read_real("player" + string(i) + "_profile" + string(global.player_profile[i] + 1), "player" + string(i) + "_cancel_dive_by_pressing_opposite_direction", 0);
+			}
+			else if (ini_key_exists("player" + string(i) + "_profile" + string(global.player_profile[i] + 1), "player" + string(i) + "_cancel_dive_by_opposite_direction"))
+			{
+				global.player_cancel_dive_by_opposite_direction[i] = ini_read_real("player" + string(i) + "_profile" + string(global.player_profile[i] + 1), "player" + string(i) + "_cancel_dive_by_opposite_direction", 0);
+			}
 			if (ini_key_exists("player" + string(i) + "_profile" + string(global.player_profile[i] + 1), "player" + string(i) + "_down_and_jump_to_groundpound")){global.player_down_and_jump_to_groundpound[i] = ini_read_real("player" + string(i) + "_profile" + string(global.player_profile[i] + 1), "player" + string(i) + "_down_and_jump_to_groundpound", 0);}
 			if (ini_key_exists("player" + string(i) + "_profile" + string(global.player_profile[i] + 1), "player" + string(i) + "_wall_jump_setting")){global.player_wall_jump_setting[i] = ini_read_real("player" + string(i) + "_profile" + string(global.player_profile[i] + 1), "player" + string(i) + "_wall_jump_setting", 0);}
 			if (ini_key_exists("player" + string(i) + "_profile" + string(global.player_profile[i] + 1), "player" + string(i) + "_drop_from_rope")){global.player_drop_from_rope[i] = ini_read_real("player" + string(i) + "_profile" + string(global.player_profile[i] + 1), "player" + string(i) + "_drop_from_rope", 0);}

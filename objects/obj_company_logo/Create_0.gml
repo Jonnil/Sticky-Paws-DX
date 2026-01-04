@@ -428,7 +428,7 @@ for(var i = 1; i <= global.max_players; i += 1)
 	global.player_crouch_toggle[i] = false; /* If crouch toggle for player 1 is true or false (false by default) */
 	global.player_run_toggle[i] = false; /* If run toggle for player 1 is true or false (false by default) */
 	global.player_cancel_dive_by_jump_or_dive[i] = false;
-	global.player_cancel_dive_by_pressing_opposite_direction[i] = false;
+	global.player_cancel_dive_by_opposite_direction[i] = false;
 	global.player_down_and_jump_to_groundpound[i] = false;
 	global.player_name[i] = "";
 	global.player_slot[i] = i - 1; /* Controller ports */

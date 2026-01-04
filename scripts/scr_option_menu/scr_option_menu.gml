@@ -2227,16 +2227,16 @@ function scr_option_menu()
 		#region /* Audio Settings */
 		if (global.settings_sidebar_menu == "audio_settings")
 		{
-			var volume_main_y = 64 + menu_y_offset;
-			var volume_music_y = 96 + (64) + menu_y_offset;
-			var volume_melody_y = 96 + (64 * 2) + menu_y_offset;
-			var volume_sound_y = 96 + (64 * 3) + menu_y_offset;
-			var volume_ambient_y = 96 + (64 * 4) + menu_y_offset;
-			var volume_footstep_y = 96 + (64 * 5) + menu_y_offset;
-			var volume_voice_y = 96 + (64 * 6) + menu_y_offset;
-			var number_of_audio_channels_y = 96 + 8 + (64 * 7) - 20 + menu_y_offset;
-			var narrator_y = 96 + 8 + (64 * 8) - 10 + menu_y_offset;
-			var default_audio_settings_y = 96 + (64 * 8) + 20 + menu_y_offset;
+			var volume_main_y = 64;
+			var volume_music_y = 96 + (64);
+			var volume_melody_y = 96 + (64 * 2);
+			var volume_sound_y = 96 + (64 * 3);
+			var volume_ambient_y = 96 + (64 * 4);
+			var volume_footstep_y = 96 + (64 * 5);
+			var volume_voice_y = 96 + (64 * 6);
+			var number_of_audio_channels_y = 96 + 8 + (64 * 7) - 20;
+			var narrator_y = 96 + 8 + (64 * 8) - 10;
+			var default_audio_settings_y = 96 + (64 * 8) + 20;
 
 			#region /* Make volumes stay between 0 and 1 */
 			global.volume_main = clamp(global.volume_main, 0, 1);
