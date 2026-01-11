@@ -1,94 +1,70 @@
 function scr_key_initialize(key, hold = 0, what_player = 1, this_player_key = action.jump)
 {
-	/* Retrieve player slot and input configuration */
-	var player_slot = global.player_slot[what_player];
-	var key1      = global.player_[inp.key][what_player][1][this_player_key];
-	var key2      = global.player_[inp.key][what_player][2][this_player_key];
-	var gp_key1   = global.player_[inp.gp][what_player][1][this_player_key];
-	var gp_key2   = global.player_[inp.gp][what_player][2][this_player_key];
+	/* Unified input check for keyboard, mouse, gamepad buttons, and joystick axes */
+	var slot   = global.player_slot[what_player];
+	var key1   = global.player_[inp.key][what_player][1][this_player_key];
+	var key2   = global.player_[inp.key][what_player][2][this_player_key];
+	var gp1    = global.player_[inp.gp][what_player][1][this_player_key];
+	var gp2    = global.player_[inp.gp][what_player][2][this_player_key];
 
-	/* Process mouse inputs (for both primary and secondary keys) */
-	var mouse1 = (key1 != noone) ? processMouseInput(key1, hold) : false;
-	var mouse2 = (key2 != noone) ? processMouseInput(key2, hold) : false;
+	var mouse = _mouse_input(key1, hold) || _mouse_input(key2, hold);
+	var axis  = _joystick_axis(gp1, slot) || _joystick_axis(gp2, slot);
+	var gpbtn = _gamepad_button(gp1, hold, slot) || _gamepad_button(gp2, hold, slot);
+	var kb    = _keyboard_button(key1, hold) || _keyboard_button(key2, hold);
 
-	/* Process joystick inputs */
-	var joy1 = (gp_key1 != noone) ? processJoystick(gp_key1, player_slot) : false;
-	var joy2 = (gp_key2 != noone) ? processJoystick(gp_key2, player_slot) : false;
-
-	/* Process gamepad button inputs */
-	var gp_other = checkGamepad(gp_key1, hold, player_slot) || checkGamepad(gp_key2, hold, player_slot);
-
-	/* Process keyboard inputs */
-	var key_other = checkKeyboard(key1, hold) || checkKeyboard(key2, hold);
-
-	return mouse1 || mouse2 || joy1 || joy2 || key_other || gp_other;
+	return mouse || axis || gpbtn || kb;
 }
 
-/* Helper: Check mouse button based on state (hold/pressed/released) */
-function checkMouse(btn, hold)
+/* --- Helpers --- */
+function _mouse_input(btn, hold)
 {
-	if (hold == 0) return mouse_check_button(btn);
-	else if (hold == 1) return mouse_check_button_pressed(btn);
-	else if (hold == 2) return mouse_check_button_released(btn);
-	return false;
-}
+	if (btn == noone) return false;
 
-/* Helper: Process a mouse input configuration value */
-function processMouseInput(button_value, hold)
-{
-	switch (button_value)
+	static _mouse_fns = [mouse_check_button, mouse_check_button_pressed, mouse_check_button_released];
+	var idx = clamp(hold, 0, 2);
+
+	switch (btn)
 	{
-		case MOUSE_BUTTON_VALUE.MOUSEB_LEFT:        return checkMouse(mb_left, hold);
-		case MOUSE_BUTTON_VALUE.MOUSEB_MIDDLE:        return checkMouse(mb_middle, hold);
-		case MOUSE_BUTTON_VALUE.MOUSEB_RIGHT:        return checkMouse(mb_right, hold);
-		case MOUSE_BUTTON_VALUE.MOUSEB_SIDE1:        return checkMouse(mb_side1, hold);
-		case MOUSE_BUTTON_VALUE.MOUSEB_SIDE2:        return checkMouse(mb_side2, hold);
-		case MOUSE_BUTTON_VALUE.MOUSEWHEEL_DOWN:    return mouse_wheel_down();
-		case MOUSE_BUTTON_VALUE.MOUSEWHEEL_UP:        return mouse_wheel_up();
+		case MOUSE_BUTTON_VALUE.MOUSEB_LEFT:   return _mouse_fns[idx](mb_left);
+		case MOUSE_BUTTON_VALUE.MOUSEB_MIDDLE: return _mouse_fns[idx](mb_middle);
+		case MOUSE_BUTTON_VALUE.MOUSEB_RIGHT:  return _mouse_fns[idx](mb_right);
+		case MOUSE_BUTTON_VALUE.MOUSEB_SIDE1:  return _mouse_fns[idx](mb_side1);
+		case MOUSE_BUTTON_VALUE.MOUSEB_SIDE2:  return _mouse_fns[idx](mb_side2);
+		case MOUSE_BUTTON_VALUE.MOUSEWHEEL_DOWN: return mouse_wheel_down();
+		case MOUSE_BUTTON_VALUE.MOUSEWHEEL_UP:   return mouse_wheel_up();
 		default: return false;
 	}
 }
 
-/* Helper: Process a gamepad joystick axis value */
-function processJoystick(gpButton, player_slot)
+function _joystick_axis(gp_btn, slot)
 {
-	var axis_index = noone;
-	var axis_direction = 0;
-	switch (gpButton)
+	var axis = noone, dir = 0;
+	switch (gp_btn)
 	{
-		case JOYSTICK_VALUE.JOYLEFT_LEFT:   axis_index = gp_axislh; axis_direction = -1; break;
-		case JOYSTICK_VALUE.JOYLEFT_RIGHT:  axis_index = gp_axislh; axis_direction =  1; break;
-		case JOYSTICK_VALUE.JOYLEFT_DOWN:   axis_index = gp_axislv; axis_direction =  1; break;
-		case JOYSTICK_VALUE.JOYLEFT_UP:     axis_index = gp_axislv; axis_direction = -1; break;
-		case JOYSTICK_VALUE.JOYRIGHT_LEFT:  axis_index = gp_axisrh; axis_direction = -1; break;
-		case JOYSTICK_VALUE.JOYRIGHT_RIGHT: axis_index = gp_axisrh; axis_direction =  1; break;
-		case JOYSTICK_VALUE.JOYRIGHT_DOWN:  axis_index = gp_axisrv; axis_direction =  1; break;
-		case JOYSTICK_VALUE.JOYRIGHT_UP:    axis_index = gp_axisrv; axis_direction = -1; break;
+		case JOYSTICK_VALUE.JOYLEFT_LEFT:   axis = gp_axislh; dir = -1; break;
+		case JOYSTICK_VALUE.JOYLEFT_RIGHT:  axis = gp_axislh; dir =  1; break;
+		case JOYSTICK_VALUE.JOYLEFT_UP:     axis = gp_axislv; dir = -1; break;
+		case JOYSTICK_VALUE.JOYLEFT_DOWN:   axis = gp_axislv; dir =  1; break;
+		case JOYSTICK_VALUE.JOYRIGHT_LEFT:  axis = gp_axisrh; dir = -1; break;
+		case JOYSTICK_VALUE.JOYRIGHT_RIGHT: axis = gp_axisrh; dir =  1; break;
+		case JOYSTICK_VALUE.JOYRIGHT_UP:    axis = gp_axisrv; dir = -1; break;
+		case JOYSTICK_VALUE.JOYRIGHT_DOWN:  axis = gp_axisrv; dir =  1; break;
+		default: return false;
 	}
-	if (axis_index != noone)
-	{
-		var axis_val = gamepad_axis_value(player_slot, axis_index);
-		return (axis_direction == -1 ? axis_val < -0.3 : axis_val > 0.3);
-	}
-	return false;
+	var val = gamepad_axis_value(slot, axis);
+	return (dir == -1) ? (val < -0.3) : (val > 0.3);
 }
 
-/* Helper: Check gamepad button based on state */
-function checkGamepad(gpButton, hold, player_slot)
+function _gamepad_button(gp_btn, hold, slot)
 {
-	if (gpButton == noone) return false;
-	if (hold == 0) return gamepad_button_check(player_slot, gpButton);
-	else if (hold == 1) return gamepad_button_check_pressed(player_slot, gpButton);
-	else if (hold == 2) return gamepad_button_check_released(player_slot, gpButton);
-	return false;
+	if (gp_btn == noone) return false;
+	static _gp_fns = [gamepad_button_check, gamepad_button_check_pressed, gamepad_button_check_released];
+	return _gp_fns[clamp(hold, 0, 2)](slot, gp_btn);
 }
 
-/* Helper: Check keyboard button based on state */
-function checkKeyboard(keyCode, hold)
+function _keyboard_button(key_code, hold)
 {
-	if (keyCode == noone) return false;
-	if (hold == 0) return keyboard_check(keyCode);
-	else if (hold == 1) return keyboard_check_pressed(keyCode);
-	else if (hold == 2) return keyboard_check_released(keyCode);
-	return false;
+	if (key_code == noone) return false;
+	static _kb_fns = [keyboard_check, keyboard_check_pressed, keyboard_check_released];
+	return _kb_fns[clamp(hold, 0, 2)](key_code);
 }
