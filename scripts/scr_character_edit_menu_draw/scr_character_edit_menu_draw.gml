@@ -117,6 +117,7 @@ function scr_character_edit_menu_draw()
 			{
 				var custom_character_guide_x = 0;
 				draw_menu_button(custom_character_guide_x, custom_character_guide_y, l10n_text("Custom Character Guide"), "open_custom_character_guide", "open_custom_character_guide");
+				
 				if (menu == "open_custom_character_guide")
 				{
 					draw_set_halign(fa_left);
