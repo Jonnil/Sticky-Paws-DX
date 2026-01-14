@@ -13,7 +13,8 @@ function scr_draw_links_menu()
 		,{text: "Gamebanana", link: global.link_to_gamebanana, menu_string: "link_to_gamebanana", icon: global.resource_pack_sprite_logo_gamebanana, is_company_link: false}
 		,{text: "Instagram", link: global.link_to_instagram, menu_string: "link_to_instagram", icon: global.resource_pack_sprite_logo_instagram, is_company_link: false}
 		,{text: "Reddit", link: global.link_to_reddit, menu_string: "link_to_reddit", icon: global.resource_pack_sprite_logo_reddit, is_company_link: false}
-		,{text: "Twitter", link: global.link_to_twitter, menu_string: "link_to_twitter", icon: global.resource_pack_sprite_logo_twitter, is_company_link: false}
+		//,{text: "Twitter", link: global.link_to_twitter, menu_string: "link_to_twitter", icon: global.resource_pack_sprite_logo_twitter, is_company_link: false}
+		,{text: "Bluesky", link: global.link_to_bluesky, menu_string: "link_to_bluesky", icon: global.resource_pack_sprite_logo_bluesky, is_company_link: false}
 		,{text: "YouTube", link: global.link_to_youtube, menu_string: "link_to_youtube", icon: global.resource_pack_sprite_logo_youtube, is_company_link: false}
 
 		/* Other Links (Company Links) */

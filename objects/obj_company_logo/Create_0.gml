@@ -722,6 +722,7 @@ global.resource_pack_sprite_logo_gamebanana = spr_noone;
 global.resource_pack_sprite_logo_instagram = spr_noone;
 global.resource_pack_sprite_logo_reddit = spr_noone;
 global.resource_pack_sprite_logo_twitter = spr_noone;
+global.resource_pack_sprite_logo_bluesky = spr_noone;
 global.resource_pack_sprite_logo_wiki = spr_noone;
 global.resource_pack_sprite_artwork_collection = spr_noone;
 global.resource_pack_sprite_basic_collectible = spr_noone;

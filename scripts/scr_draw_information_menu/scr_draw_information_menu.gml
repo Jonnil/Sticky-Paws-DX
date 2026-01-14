@@ -1131,7 +1131,7 @@ function scr_draw_information_menu()
 
 			draw_set_halign(fa_left);
 			draw_set_valign(fa_top);
-			scr_draw_text_outlined(32, whats_new_text_y, global.whats_new, global.default_text_size, c_black, c_white, 1);
+			scr_draw_text_outlined(32, whats_new_text_y, global.whats_new, global.default_text_size, c_black, c_white, 1, 30, display_get_gui_width() - 64);
 			draw_set_valign(fa_middle);
 		}
 		else
