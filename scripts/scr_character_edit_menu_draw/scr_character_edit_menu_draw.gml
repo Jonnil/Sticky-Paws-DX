@@ -113,7 +113,8 @@ function scr_character_edit_menu_draw()
 			#endregion /* Open Character Folder END */
 
 			#region /* Open Custom Character Guide */
-			if (global.enable_option_for_pc)
+			if (scr_url_exists(global.link_to_website_guide_custom_character))
+			&& (global.enable_option_for_pc)
 			{
 				var custom_character_guide_x = 0;
 				draw_menu_button(custom_character_guide_x, custom_character_guide_y, l10n_text("Custom Character Guide"), "open_custom_character_guide", "open_custom_character_guide");
@@ -444,7 +445,8 @@ function scr_character_edit_menu_draw()
 				}
 			}
 
-			if (global.enable_option_for_pc)
+			if (scr_url_exists(global.link_to_website_guide_custom_character))
+			&& (global.enable_option_for_pc)
 			{
 				var sprite_not_exist_guide_x = display_get_gui_width() * 0.5 - 370;
 				var sprite_not_exist_guide_y = display_get_gui_height() * 0.5 + 64;
@@ -579,7 +581,14 @@ function scr_character_edit_menu_draw()
 			else
 			if (menu == "edit_character_input_sprite")
 			{
-				menu = "open_custom_character_guide";
+				if (scr_url_exists(global.link_to_website_guide_custom_character))
+				{
+					menu = "open_custom_character_guide";
+				}
+				else
+				{
+					menu = "open_folder_edit_character";
+				}
 			}
 			else
 			if (menu == "edit_character_flip_sprite")
@@ -600,7 +609,14 @@ function scr_character_edit_menu_draw()
 			else
 			if (menu == "open_folder_edit_character")
 			{
-				menu = "open_custom_character_guide";
+				if (scr_url_exists(global.link_to_website_guide_custom_character))
+				{
+					menu = "open_custom_character_guide";
+				}
+				else
+				{
+					menu = "edit_character_input_sprite";
+				}
 			}
 			else
 			if (menu == "open_custom_character_guide")

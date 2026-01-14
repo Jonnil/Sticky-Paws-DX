@@ -185,6 +185,7 @@ function scr_draw_information_menu()
 			if (menu == "about_link_to_website")
 			{
 				menu_delay = 3;
+				
 				if (global.free_communication_available)
 				&& (!global.demo_enable)
 				{
@@ -199,21 +200,68 @@ function scr_draw_information_menu()
 			if (menu == "about_link_to_website_guide")
 			{
 				menu_delay = 3;
-				menu = "about_link_to_website";
+				
+				if (scr_url_exists(global.link_to_website))
+				{
+					menu = "about_link_to_website";
+				}
+				else
+				if (global.free_communication_available)
+				&& (!global.demo_enable)
+				{
+					menu = "about_online_level_list";
+				}
+				else
+				{
+					menu = "about";
+				}
 			}
 			else
 			if (menu == "about_link_to_update_schedule")
 			{
 				menu_delay = 3;
-				menu = "about_link_to_website_guide";
+				
+				if (scr_url_exists(global.link_to_website_guide))
+				{
+					menu = "about_link_to_website_guide";
+				}
+				else
+				if (scr_url_exists(global.link_to_website))
+				{
+					menu = "about_link_to_website";
+				}
+				else
+				if (global.free_communication_available)
+				&& (!global.demo_enable)
+				{
+					menu = "about_online_level_list";
+				}
+				else
+				{
+					menu = "about";
+				}
 			}
 			else
 			if (menu == "about_privacy_policy")
 			{
 				menu_delay = 3;
-				if (global.enable_option_for_pc)
+				
+				if (scr_url_exists(global.link_to_update_schedule))
+				&& (global.enable_option_for_pc)
 				{
 					menu = "about_link_to_update_schedule";
+				}
+				else
+				if (scr_url_exists(global.link_to_website_guide))
+				&& (global.enable_option_for_pc)
+				{
+					menu = "about_link_to_website_guide";
+				}
+				else
+				if (scr_url_exists(global.link_to_website))
+				&& (global.enable_option_for_pc)
+				{
+					menu = "about_link_to_website";
 				}
 				else
 				if (global.free_communication_available)
@@ -238,7 +286,9 @@ function scr_draw_information_menu()
 			&& (information_menu_open == "whats_new")
 			{
 				menu_delay = 3;
-				if (global.enable_option_for_pc)
+				
+				if (scr_url_exists(global.link_to_changelog_history))
+				&& (global.enable_option_for_pc)
 				{
 					menu = "changelog_history";
 				}
@@ -352,7 +402,8 @@ function scr_draw_information_menu()
 					menu = "about_online_level_list";
 				}
 				else
-				if (global.enable_option_for_pc)
+				if (scr_url_exists(global.link_to_website))
+				&& (global.enable_option_for_pc)
 				{
 					menu = "about_link_to_website";
 				}
@@ -366,7 +417,8 @@ function scr_draw_information_menu()
 			{
 				menu_delay = 3;
 				
-				if (global.enable_option_for_pc)
+				if (scr_url_exists(global.link_to_website))
+				&& (global.enable_option_for_pc)
 				{
 					menu = "about_link_to_website";
 				}
@@ -379,13 +431,34 @@ function scr_draw_information_menu()
 			if (menu == "about_link_to_website")
 			{
 				menu_delay = 3;
-				menu = "about_link_to_website_guide";
+				
+				if (scr_url_exists(global.link_to_website_guide))
+				{
+					menu = "about_link_to_website_guide";
+				}
+				else
+				if (scr_url_exists(global.link_to_update_schedule))
+				{
+					menu = "about_link_to_update_schedule";
+				}
+				else
+				{
+					menu = "about_privacy_policy";
+				}
 			}
 			else
 			if (menu == "about_link_to_website_guide")
 			{
 				menu_delay = 3;
-				menu = "about_link_to_update_schedule";
+				
+				if (scr_url_exists(global.link_to_update_schedule))
+				{
+					menu = "about_link_to_update_schedule";
+				}
+				else
+				{
+					menu = "about_privacy_policy";
+				}
 			}
 			else
 			if (menu == "about_link_to_update_schedule")
@@ -403,7 +476,9 @@ function scr_draw_information_menu()
 			if (menu == "whats_new")
 			{
 				menu_delay = 3;
-				if (global.enable_option_for_pc)
+				
+				if (scr_url_exists(global.link_to_changelog_history))
+				&& (global.enable_option_for_pc)
 				{
 					menu = "changelog_history";
 				}
@@ -422,6 +497,7 @@ function scr_draw_information_menu()
 			if (menu == "backups")
 			{
 				menu_delay = 3;
+				
 				if (global.enable_open_custom_folder)
 				{
 					menu = "backup_open_custom_levels_folder";
@@ -435,6 +511,7 @@ function scr_draw_information_menu()
 			if (menu == "backup_open_custom_levels_folder")
 			{
 				menu_delay = 3;
+				
 				if (global.enable_open_custom_folder)
 				{
 					menu = "backup_open_custom_character_folder";
@@ -729,7 +806,8 @@ function scr_draw_information_menu()
 
 			if (global.enable_option_for_pc)
 			{
-				if (global.link_to_website != "")
+				if (scr_url_exists(global.link_to_website))
+				&& (global.link_to_website != "")
 				{
 					draw_set_halign(fa_left);
 					scr_draw_text_outlined(32, check_out_website_y + 20, l10n_text("Check out our website") + ":", global.default_text_size, c_black, c_white, 1);
@@ -746,7 +824,8 @@ function scr_draw_information_menu()
 					}
 				}
 
-				if (global.link_to_website_guide != "")
+				if (scr_url_exists(global.link_to_website_guide))
+				&& (global.link_to_website_guide != "")
 				{
 					draw_set_halign(fa_left);
 					draw_set_valign(fa_middle);
@@ -764,7 +843,8 @@ function scr_draw_information_menu()
 					}
 				}
 
-				if (global.link_to_update_schedule != "")
+				if (scr_url_exists(global.link_to_update_schedule))
+				&& (global.link_to_update_schedule != "")
 				{
 					draw_set_halign(fa_left);
 					draw_set_valign(fa_middle);
@@ -849,7 +929,8 @@ function scr_draw_information_menu()
 			draw_menu_button_sprite(spr_menu_button, to_top_x, 0, 0, 0, 0.5, 1, 370 * 0.5, 42, l10n_text("To Top"), "about_privacy_policy_to_top", "about_privacy_policy_to_top");
 
 			#region /* Link to Privacy Policy Website */
-			if (global.link_to_privacy_policy != "")
+			if (scr_url_exists(global.link_to_privacy_policy))
+			&& (global.link_to_privacy_policy != "")
 			&& (global.enable_option_for_pc)
 			{
 				draw_menu_button_sprite(spr_menu_button, link_to_privacy_policy_x, 0, 0, 0, 2.1, 1, 370 * 2.1, 42, string(global.link_to_privacy_policy), "about_link_to_privacy_policy", "about_link_to_privacy_policy");
@@ -909,7 +990,8 @@ function scr_draw_information_menu()
 				menu_delay = 3;
 				if (menu == "about_privacy_policy_back")
 				{
-					if (global.enable_option_for_pc)
+					if (scr_url_exists(global.link_to_privacy_policy))
+					&& (global.enable_option_for_pc)
 					{
 						menu = "about_link_to_privacy_policy";
 					}
@@ -940,7 +1022,8 @@ function scr_draw_information_menu()
 				else
 				if (menu == "about_privacy_policy_to_top")
 				{
-					if (global.enable_option_for_pc)
+					if (scr_url_exists(global.link_to_privacy_policy))
+					&& (global.enable_option_for_pc)
 					{
 						menu = "about_link_to_privacy_policy";
 					}
@@ -1014,7 +1097,8 @@ function scr_draw_information_menu()
 			draw_set_halign(fa_right);
 			scr_draw_text_outlined(display_get_gui_width() - 8, whats_new_date_y, l10n_text("Build date") + ": " + string(year) + "-" + string(month) + "-" + string(day) + " " + string(hour) + ":" + string(minute) + ":" + string(second), global.default_text_size, c_black, c_white, 1);
 
-			if (global.link_to_changelog_history != "")
+			if (scr_url_exists(global.link_to_changelog_history))
+			&& (global.link_to_changelog_history != "")
 			&& (global.enable_option_for_pc)
 			{
 				draw_menu_button_sprite(spr_menu_button, string_width(l10n_text("Changelog History") + ":") + 10, changelog_history_y - 8, 0, 0, 1.9, 1, 370 * 1.9, 42, string(global.link_to_changelog_history), "changelog_history", "changelog_history");
