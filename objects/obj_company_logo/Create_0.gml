@@ -41,7 +41,7 @@ global.link_to_instagram = "https://www.instagram.com/jonnilll";
 global.link_to_reddit = "https://www.reddit.com/r/Jonnil";
 global.link_to_steam_page = "https://store.steampowered.com/app/1129090/Sticky_Paws";
 global.link_to_twitter = "https://twitter.com/jonnilll";
-global.link_to_bluesky = "https://bsky.app/profile/did:plc:j542cgdsutjikv3rbeqri2no";
+global.link_to_bluesky = "https://bsky.app/profile/jonnil.games";
 global.link_to_youtube = "https://www.youtube.com/Jonnilescom";
 global.link_to_check_server_status = "";
 #endregion /* Links to websites END */
