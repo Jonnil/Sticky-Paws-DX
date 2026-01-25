@@ -3,7 +3,7 @@
 /// then parses it so the game can actually use the new translations.
 function scr_process_language_file(lang_name, file_data)
 {
-	/* 1) Create the language_packs folder if it doesn't exist */
+	/* Create the language_packs folder if it doesn't exist */
 	var folder_path = game_save_id + "language_packs/";
 
 	if (!directory_exists(folder_path))
@@ -11,10 +11,10 @@ function scr_process_language_file(lang_name, file_data)
 		directory_create(folder_path);
 	}
 
-	/* 2) Construct a file path based on lang_name (e.g. "all.txt") */
+	/* Construct a file path based on lang_name (e.g. "all.txt") */
 	var file_path = folder_path + lang_name + ".txt";
 
-	/* 3) Write the CSV data to disk */
+	/* Write the CSV data to disk */
 	var file_id = file_text_open_write(file_path);
 
 	if (file_id != -1)
@@ -29,7 +29,7 @@ function scr_process_language_file(lang_name, file_data)
 		return;
 	}
 
-	/* 4) (Optional) Debug parse of CSV lines */
+	/* (Optional) Debug parse of CSV lines */
 	var lines = string_split(file_data, "\n");
 
 	if (array_length(lines) > 0)
@@ -57,7 +57,7 @@ function scr_process_language_file(lang_name, file_data)
 		}
 	}
 
-	/* 5) Re-parse the saved file with scr_language_load_csv_into_memory */
+	/* Re-parse the saved file with scr_language_load_csv_into_memory */
 	var translations_map = scr_language_load_csv_into_memory(file_path);
 
 	if (translations_map != -1)

@@ -10,20 +10,17 @@ function scr_handle_language_pack_http(_async_map, var_handle_redirects = true)
 		var is_lang_file = (variable_global_exists("language_file_requests")
 			&& ds_exists(global.language_file_requests, ds_type_map)
 			&& ds_map_exists(global.language_file_requests, string(req_id)));
-		
-		/* Ignore any HTTP responses that are not related to language packs */
+
 		if (!(is_manifest
 		|| is_lang_file))
 		{
 			return;
 		}
-			
-		/* "status" reports transfer state; "http_status" is the HTTP code */
+
 		var transfer_status = ds_map_find_value(_async_map, "status");
 		var http_status = ds_map_find_value(_async_map, "http_status");
 		var result = ds_map_find_value(_async_map, "result");
-		
-		/* If transfer is in progress, update message and exit */
+
 		if (transfer_status == 1)
 		{
 			global.language_update_status_message = "Fetching latest language pack data from server...";
@@ -39,10 +36,10 @@ function scr_handle_language_pack_http(_async_map, var_handle_redirects = true)
 
 			return;
 		}
-		
+
 		var message_result = "";
 		var result_truncate_number = 4000;
-		
+
 		if (string_length(result) > result_truncate_number)
 		{
 			message_result = string_copy(result, 1, result_truncate_number) + "...(truncated)";
@@ -51,46 +48,44 @@ function scr_handle_language_pack_http(_async_map, var_handle_redirects = true)
 		{
 			message_result = result;
 		}
-		
+
 		scr_log("INFO", "HTTP.LANG", "http_status", "http_status=" + string(http_status));
-		
+
 		#region /* ---------- Handle Manifest Download ---------- */
 		if (req_id == global.language_http_request_id)
 		{
-			/* Handle redirects (if the result appears to be HTML) */
+			/* Handle redirects */
 			if (((http_status == 0)
 			&& (string_pos("<HTML", result) > 0))
 			|| (http_status >= 300
 			&& http_status < 400))
 			{
 				scr_log("DEBUG", "HTTP.LANG", "handle_redirects", "enabled=" + string(var_handle_redirects));
-				
+
 				if (var_handle_redirects)
 				{
-					/* Attempt the redirect */
 					var new_request_id = scr_handle_redirect(result, _async_map);
 						scr_log("DEBUG", "HTTP.LANG", "redirect_attempt",
 							"http_status=" + string(http_status) +
 							", html_marker_pos=" + string(string_pos("<HTML", result)) +
 							", new_request_id=" + string(new_request_id));
-					
+
 					if (new_request_id != -1)
 					{
-						/* If redirect was valid, store the new ID and wait for next async */
 						global.language_http_request_id = new_request_id;
 						scr_log("INFO", "HTTP.LANG", "follow_redirect", "request_id=" + string(new_request_id));
 						return;
 					}
 					else
 					{
-						/* FALLBACK: If redirect was invalid, call scr_download_language_pack_from_server() */
+						/* FALLBACK */
 						scr_log("WARN", "HTTP.LANG", "redirect_invalid_fallback", "action=scr_download_language_pack_from_server");
 						scr_download_language_pack_from_server();
 						return;
 					}
 				}
 			}
-			
+
 			if (!(http_status == 0
 			|| http_status == 200))
 			{

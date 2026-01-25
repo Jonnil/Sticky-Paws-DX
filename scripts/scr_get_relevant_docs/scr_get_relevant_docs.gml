@@ -3,7 +3,7 @@ function scr_get_relevant_docs(error_stacktrace, error_longmessage)
 
 	#region /* Define Documentation Base URL */
 	/* Determine the appropriate base URL based on GameMaker version */
-	var game_maker_version = ""; /* Replace this with a way to detect the version */
+	var game_maker_version = "";
 	var base_url = "";
 
 	if (game_maker_version == "monthly")
@@ -32,7 +32,7 @@ function scr_get_relevant_docs(error_stacktrace, error_longmessage)
 	ds_map_add(function_docs, "global", base_url + "GameMaker_Language/GML_Overview/Variables/Global_Variables.htm");
 	ds_map_add(function_docs, "draw_text", "");
 	ds_map_add(function_docs, "read only variable", "");
-	ds_map_add(function_docs, "translation_key", ""); /* https://your_project_specific_doc/translation_handling */
+	ds_map_add(function_docs, "translation_key", "");
 	#endregion /* Define Built-in Functions and Documentation URLs END */
 
 	#region /* Define Additional Debugging Advice */
