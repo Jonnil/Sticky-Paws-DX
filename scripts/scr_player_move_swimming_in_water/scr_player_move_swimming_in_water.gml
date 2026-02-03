@@ -72,6 +72,7 @@ function scr_player_move_swimming_in_water()
 
 		#region /* Set the gravity underwater */
 		gravity_direction = 270; /* Direction of the gravity */
+		
 		if (!on_ground)
 		{
 			gravity = 0.1; /* Set gravity */

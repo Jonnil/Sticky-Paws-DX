@@ -32,7 +32,9 @@ if (os_type != os_ios && os_type != os_android && !global.goal_active)
 {
 	for (var i = 1; i <= global.max_players; i++)
 	{
-		if (global.player_can_play[i] && global.player_show_controls[i] != 0 && player_show_controls_alpha[i] != 0)
+		if (global.player_can_play[i]
+		&& global.player_show_controls[i] != 0
+		&& player_show_controls_alpha[i] != 0)
 		{
 			scr_draw_show_controls(i);
 		}
@@ -42,11 +44,14 @@ if (os_type != os_ios && os_type != os_android && !global.goal_active)
 /* Show input change prompts */
 if (playergame == 1)
 {
-	if (global.show_prompt_when_changing_to_gamepad && show_controller_input_change_prompt_y != 0)
+	if (global.show_prompt_when_changing_to_gamepad
+	&& show_controller_input_change_prompt_y != 0)
 	{
 		draw_sprite_ext(spr_change_input_to_controller, 0, 110, window_height + 300 + show_controller_input_change_prompt_y, 1, 1, 0, c_white, 1);
 	}
-	if (global.show_prompt_when_changing_to_keyboard_and_mouse && show_keyboard_and_mouse_input_change_prompt_y != 0)
+	
+	if (global.show_prompt_when_changing_to_keyboard_and_mouse
+	&& show_keyboard_and_mouse_input_change_prompt_y != 0)
 	{
 		draw_sprite_ext(spr_change_input_to_keyboard, 0, 110, window_height + 300 + show_keyboard_and_mouse_input_change_prompt_y, 1, 1, 0, c_white, 1);
 	}

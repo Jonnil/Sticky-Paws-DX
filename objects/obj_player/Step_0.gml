@@ -458,14 +458,17 @@ if (ground_pound == 1)
 }
 else
 {
-	if (!on_ground && vspeed > 0)
+	if (!on_ground
+	&& vspeed > 0)
 	{
-		if (key_left_hold && !key_right_hold)
+		if (key_left_hold
+		&& !key_right_hold)
 		{
 			angle = lerp(angle, +10, 0.1);
 		}
 		else
-		if (key_right_hold && !key_left_hold)
+		if (key_right_hold
+		&& !key_left_hold)
 		{
 			angle = lerp(angle, -10, 0.1);
 		}
@@ -481,27 +484,30 @@ else
 }
 #endregion /* Put sprite angle at right angle */
 
-if (invincible_timer <= 2)
+#region /* Transition from normal music to underwater music when underwater */
+var transition_time = 5000;
+
+if (invincible_timer <= 2) /* Whenever the player isn't playing the invincible music */
 {
-	if (in_water)
+	if (in_water) /* Whenever the player is underwater */
 	{
 		if (global.music_underwater != noone)
 		{
 			if (current_music_playing != noone)
 			{
-				audio_sound_gain(current_music_playing, 0, 0);
+				audio_sound_gain(current_music_playing, 0, transition_time);
 			}
 			
-			audio_sound_gain(global.music_underwater, global.volume_music * global.volume_main, 0);
+			audio_sound_gain(global.music_underwater, global.volume_music * global.volume_main, transition_time);
 		}
 		else
 		if (current_music_playing != noone)
 		{
-			audio_sound_gain(current_music_playing, global.volume_music * global.volume_main, 0);
+			audio_sound_gain(current_music_playing, global.volume_music * global.volume_main, transition_time);
 			
 			if (global.music_underwater != noone)
 			{
-				audio_sound_gain(global.music_underwater, 0, 0);
+				audio_sound_gain(global.music_underwater, 0, transition_time);
 			}
 		}
 		
@@ -509,19 +515,19 @@ if (invincible_timer <= 2)
 		{
 			if (global.ambience != noone)
 			{
-				audio_sound_gain(global.ambience, 0, 0);
+				audio_sound_gain(global.ambience, 0, transition_time);
 			}
 			
-			audio_sound_gain(global.ambience_underwater, global.volume_ambient * global.volume_main, 0);
+			audio_sound_gain(global.ambience_underwater, global.volume_ambient * global.volume_main, transition_time);
 		}
 		else
 		if (global.ambience != noone)
 		{
-			audio_sound_gain(global.ambience, global.volume_ambient * global.volume_main, 0);
+			audio_sound_gain(global.ambience, global.volume_ambient * global.volume_main, transition_time);
 			
 			if (global.ambience_underwater != noone)
 			{
-				audio_sound_gain(global.ambience_underwater, 0, 0);
+				audio_sound_gain(global.ambience_underwater, 0, transition_time);
 			}
 		}
 	}
@@ -529,25 +535,26 @@ if (invincible_timer <= 2)
 	{
 		if (current_music_playing != noone)
 		{
-			audio_sound_gain(current_music_playing, global.volume_music * global.volume_main, 0);
+			audio_sound_gain(current_music_playing, global.volume_music * global.volume_main, transition_time);
 			
 			if (global.music_underwater != noone)
 			{
-				audio_sound_gain(global.music_underwater, 0, 0);
+				audio_sound_gain(global.music_underwater, 0, transition_time);
 			}
 		}
 		
 		if (global.ambience != noone)
 		{
-			audio_sound_gain(global.ambience, global.volume_ambient * global.volume_main, 0);
+			audio_sound_gain(global.ambience, global.volume_ambient * global.volume_main, transition_time);
 			
 			if (global.ambience_underwater != noone)
 			{
-				audio_sound_gain(global.ambience_underwater, 0, 0);
+				audio_sound_gain(global.ambience_underwater, 0, transition_time);
 			}
 		}
 	}
 }
+#endregion /* Transition from normal music to underwater music when underwater END */
 
 scr_player_move_swimming_in_water();
 

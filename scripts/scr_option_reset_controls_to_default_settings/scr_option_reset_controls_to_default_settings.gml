@@ -8,6 +8,7 @@ function scr_option_reset_controls_to_default_settings(xx, yy)
 	if (menu == "remap_reset")
 	{
 		menu_cursor_y_position = yy;
+		
 		if (key_a_pressed)
 		&& (menu_delay == 0 && menu_joystick_delay == 0)
 		|| (mouse_check_button_released(mb_left) && mouse_get_x > 370)

@@ -62,7 +62,7 @@ function scr_set_default_remapping_player_gamepad(what_player = 1, save_default_
 	global.player_down_and_jump_to_groundpound[what_player] = false;
 	global.player_wall_jump_setting[what_player] = 1;
 	global.player_drop_from_rope[what_player] = 1;
-	global.player_show_controls[what_player] = 0; /* Needs to be set to 0 by default for best performance */
+	global.player_show_controls[what_player] = 1; /* Set to 1 to show after 1 second, so everyone will learn the controls. Set to 0 for best performance */
 	#endregion /* Player Gamepad Remapping END */
 
 	#region /* After setting the gamepad controls back to default, save these settings in config */
@@ -179,7 +179,7 @@ function scr_set_default_remapping_player_keyboard(what_player = 1, save_default
 	global.player_down_and_jump_to_groundpound[what_player] = false;
 	global.player_wall_jump_setting[what_player] = 1;
 	global.player_drop_from_rope[what_player] = 1;
-	global.player_show_controls[what_player] = 0; /* Needs to be set to 0 by default for best performance */
+	global.player_show_controls[what_player] = 1; /* Set to 1 to show after 1 second, so everyone will learn the controls. Set to 0 for best performance */
 	#endregion /* Player Keyboard Remapping END */
 
 	#region /* After setting the keyboard controls back to default, save these settings in config */

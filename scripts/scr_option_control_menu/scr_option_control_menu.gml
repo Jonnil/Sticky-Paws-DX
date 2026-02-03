@@ -4172,7 +4172,9 @@ function scr_option_control_menu()
 			l10n_text("Playstation 5"));
 			scr_set_default_dropdown_description("chosen_controller_used", "Auto Detect");
 		}
-		if (os_type != os_ios && os_type != os_android)
+		
+		if (os_type != os_ios
+		&& os_type != os_android)
 		{
 			draw_menu_dropdown(390, menu_y_show_controls + menu_y_offset, l10n_text("Show Controls"), "show_controls", global.player_show_controls[what_player],
 			l10n_text("Never Show"),
@@ -4188,6 +4190,7 @@ function scr_option_control_menu()
 			l10n_text("Always Show"));
 			scr_set_default_dropdown_description("show_controls", "Never Show");
 		}
+		
 		draw_menu_dropdown(390, menu_y_drop_down_from_rope + menu_y_offset, l10n_text("Drop down from rope"), "drop_from_rope", global.player_drop_from_rope[what_player],
 		l10n_text("Release Jump"),
 		l10n_text("Down or Jump"),

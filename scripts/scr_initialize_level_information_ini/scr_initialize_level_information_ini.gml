@@ -79,14 +79,21 @@ function scr_initialize_level_information_ini()
 		if (object_index == obj_leveleditor
 		&& !global.actually_play_edited_level)
 		{
-			var default_camera_y = 0;
+			var default_camera_x = -128;
+			var default_camera_y = +128;
 			
 			if (instance_exists(obj_level_height))
 			{
 				default_camera_y = obj_level_height.y - window_get_height() + 128;
 			}
 			
-			camera_set_view_pos(view_get_camera(view_current), ini_read_real("info", "view_xview", default_camera_x), ini_read_real("info", "view_yview", default_camera_y)); /* Set camera position on the last positions you had the camera when doing level editing */
+			/* Set camera position on the last positions you had the camera when doing level editing */
+			camera_set_view_pos(
+				view_get_camera(view_current),
+				ini_read_real("info", "view_xview", default_camera_x),
+				ini_read_real("info", "view_yview", default_camera_y)
+			);
+			
 			x = ini_read_real("info", "view_xview", default_camera_x);
 			y = ini_read_real("info", "view_yview", default_camera_y);
 		}

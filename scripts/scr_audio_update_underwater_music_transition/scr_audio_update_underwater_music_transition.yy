@@ -1,0 +1,13 @@
+{
+  "$GMScript":"v1",
+  "%Name":"scr_audio_update_underwater_music_transition",
+  "isCompatibility":false,
+  "isDnD":false,
+  "name":"scr_audio_update_underwater_music_transition",
+  "parent":{
+    "name":"Other",
+    "path":"folders/Scripts/Other.yy",
+  },
+  "resourceType":"GMScript",
+  "resourceVersion":"2.0",
+}
