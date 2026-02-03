@@ -4,6 +4,7 @@ scr_set_controls_used_to_navigate();
 scr_zoom_camera_controls();
 scr_toggle_fullscreen();
 scr_resize_application_surface();
+scr_audio_update_underwater_music_transition();
 
 if (!have_set_numbers) /* Have to set numbers in step event like this for it to work in every case */
 {
