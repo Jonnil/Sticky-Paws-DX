@@ -26,14 +26,26 @@ function scr_option_level_editor()
 		var custom_foreground_secret_x_offset_y = (40 * 17);
 		var custom_foreground_secret_y_offset_y = (40 * 18);
 
-		var custom_background_x_parallax1_y = (40 * 3);
-		var custom_background_y_parallax1_y = (40 * 4);
-		var custom_background_x_parallax2_y = (40 * 5);
-		var custom_background_y_parallax2_y = (40 * 6);
-		var custom_background_x_parallax3_y = (40 * 7);
-		var custom_background_y_parallax3_y = (40 * 8);
-		var custom_background_x_parallax4_y = (40 * 9);
-		var custom_background_y_parallax4_y = (40 * 10);
+		var parallax_row_height = 34;
+		var parallax_group_gap = 10;
+		var parallax_group_height = (parallax_row_height * 3) + parallax_group_gap;
+		var parallax_base_y = (40 * 3);
+
+		var parallax_rec1_y = parallax_base_y;
+		var custom_background_x_parallax1_y = parallax_rec1_y + parallax_row_height;
+		var custom_background_y_parallax1_y = parallax_rec1_y + (parallax_row_height * 2);
+
+		var parallax_rec2_y = parallax_rec1_y + parallax_group_height;
+		var custom_background_x_parallax2_y = parallax_rec2_y + parallax_row_height;
+		var custom_background_y_parallax2_y = parallax_rec2_y + (parallax_row_height * 2);
+
+		var parallax_rec3_y = parallax_rec2_y + parallax_group_height;
+		var custom_background_x_parallax3_y = parallax_rec3_y + parallax_row_height;
+		var custom_background_y_parallax3_y = parallax_rec3_y + (parallax_row_height * 2);
+
+		var parallax_rec4_y = parallax_rec3_y + parallax_group_height;
+		var custom_background_x_parallax4_y = parallax_rec4_y + parallax_row_height;
+		var custom_background_y_parallax4_y = parallax_rec4_y + (parallax_row_height * 2);
 
 		var custom_background1_x_scale_y = (40 * 3);
 		var custom_background1_y_scale_y = (40 * 4);
@@ -3082,10 +3094,13 @@ function scr_option_level_editor()
 				&& (file_exists(game_save_id + "custom_levels/" + scr_get_custom_level_folder_name() + "/data/level_information.ini"))
 				{
 					ini_open(game_save_id + "custom_levels/" + scr_get_custom_level_folder_name() + "/data/level_information.ini");
-					for (var i = 1; i <= 4; i++) {
+					
+					for (var i = 1; i <= 4; i++)
+					{
 						ini_write_real("Custom Backgrounds", "custom_background" + string(i) + "_x_parallax", custom_background_x_parallax[i]);
 						ini_write_real("Custom Backgrounds", "custom_background" + string(i) + "_y_parallax", custom_background_y_parallax[i]);
 					}
+					
 					ini_close(); /* Don't commit the save data on Switch, this is only temporary! */
 				}
 				#endregion /* Background Parallax Save level_information.ini END */
@@ -3283,6 +3298,43 @@ function scr_option_level_editor()
 			custom_background_y_parallax[3] = draw_menu_left_right_buttons(level_editor_option_x, custom_background_y_parallax3_y + menu_y_offset, option_level_editor_right_arrow_x, "Background 3 y parallax", custom_background_y_parallax[3], "custom_background3_y_parallax", 0.1, true);
 			custom_background_x_parallax[4] = draw_menu_left_right_buttons(level_editor_option_x, custom_background_x_parallax4_y + menu_y_offset, option_level_editor_right_arrow_x, "Background 4 x parallax", custom_background_x_parallax[4], "custom_background4_x_parallax", 0.1, true);
 			custom_background_y_parallax[4] = draw_menu_left_right_buttons(level_editor_option_x, custom_background_y_parallax4_y + menu_y_offset, option_level_editor_right_arrow_x, "Background 4 y parallax", custom_background_y_parallax[4], "custom_background4_y_parallax", 0.1, true);
+
+			var parallax_rec_row_y = [0, parallax_rec1_y, parallax_rec2_y, parallax_rec3_y, parallax_rec4_y];
+			var current_view_camera = view_get_camera(view_current);
+			var view_w = camera_get_view_width(current_view_camera);
+			var view_h = camera_get_view_height(current_view_camera);
+			var rec_text_size = global.default_text_size * 0.55;
+
+			for (var i = 1; i <= 4; i++)
+			{
+				var metrics = scr_get_background_layer_metrics(i);
+				var base_parallax = scr_get_background_parallax_default(i);
+				var rec_x = scr_calc_parallax_recommendation(room_width, view_w, metrics.width, base_parallax, metrics.h_tiled);
+				var rec_y = scr_calc_parallax_recommendation(room_height, view_h, metrics.height, base_parallax, metrics.v_tiled);
+				var rec_y_pos = parallax_rec_row_y[i] + menu_y_offset;
+
+				draw_set_halign(fa_left);
+				draw_set_valign(fa_middle);
+
+				var rec_text = "";
+				var rec_color = c_gray;
+
+				if (metrics.sprite == noone)
+				{
+					rec_text = "No background sprite loaded";
+				}
+				else
+				{
+					rec_text = "Rec X/Y: " + string_format(rec_x.recommended, 0, 1) + " / " + string_format(rec_y.recommended, 0, 1);
+					if (!rec_x.can_cover || !rec_y.can_cover)
+					{
+						rec_text += "  | BG smaller than view";
+						rec_color = c_red;
+					}
+				}
+
+				scr_draw_text_outlined(level_editor_option_x, 20 + rec_y_pos, rec_text, rec_text_size, c_black, rec_color, 1);
+			}
 		}
 		#endregion /* Background Parallax END */
 
