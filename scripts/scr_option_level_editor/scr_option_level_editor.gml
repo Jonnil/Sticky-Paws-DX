@@ -3303,7 +3303,7 @@ function scr_option_level_editor()
 			var current_view_camera = view_get_camera(view_current);
 			var view_w = camera_get_view_width(current_view_camera);
 			var view_h = camera_get_view_height(current_view_camera);
-			var rec_text_size = global.default_text_size * 0.55;
+			var rec_text_size = global.default_text_size * 0.9;
 
 			for (var i = 1; i <= 4; i++)
 			{
