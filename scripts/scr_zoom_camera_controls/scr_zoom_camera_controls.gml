@@ -18,7 +18,7 @@ function scr_zoom_camera_controls()
 
 	var zoom_speed = 0.015;
 	var zoom_minimum = 0.5;
-	var base_zoom_maximum = 1.0; /* Set base maximum zoom */
+	var base_zoom_maximum = 2.0; /* Set base maximum zoom */
 	var display_width = display_get_gui_width();
 	var display_height = display_get_gui_height();
 	var zoom_maximum = base_zoom_maximum; /* Use the base maximum zoom if both room width and height are equal to or greater than the screen resolution */

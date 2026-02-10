@@ -65,6 +65,15 @@ function scr_option_level_editor()
 		var custom_background4_htiled_y = (50 * 9);
 		var custom_background4_vtiled_y = (50 * 10);
 
+		var custom_background1_clamped_y = (50 * 3);
+		var custom_background1_clamp_autoscale_y = (50 * 4);
+		var custom_background2_clamped_y = (50 * 5);
+		var custom_background2_clamp_autoscale_y = (50 * 6);
+		var custom_background3_clamped_y = (50 * 7);
+		var custom_background3_clamp_autoscale_y = (50 * 8);
+		var custom_background4_clamped_y = (50 * 9);
+		var custom_background4_clamp_autoscale_y = (50 * 10);
+
 		scr_scroll_menu();
 
 		if (menu == "back_level_editor_options")
@@ -778,6 +787,7 @@ function scr_option_level_editor()
 		|| (menu == "background_offset")
 		|| (menu == "background_parallax")
 		|| (menu == "background_scale")
+		|| (menu == "background_clamp")
 		|| (menu == "background_tiled")
 		{
 			changing_level_theme_menu = true;
@@ -790,7 +800,10 @@ function scr_option_level_editor()
 			var background_offset_y = 47 * 6;
 			var background_parallax_y = 47 * 7;
 			var background_scale_y = 47 * 8;
-			var background_tiled_y = 47 * 9;
+			var background_clamp_y = 47 * 9;
+			var background_tiled_y = 47 * 10;
+
+			scr_draw_background_dimension_overlay();
 
 			draw_set_halign(fa_center);
 			scr_draw_text_outlined(display_get_gui_width() * 0.5, 47 * 2, l10n_text("Changing the theme from this menu will set the default theme taken from official levels"), global.default_text_size * 0.9, c_black, c_white, 1);
@@ -850,6 +863,7 @@ function scr_option_level_editor()
 			draw_menu_button(level_editor_option_x, background_offset_y, l10n_text("BG Offset"), "background_offset", "back_background_offset");
 			draw_menu_button(level_editor_option_x, background_parallax_y, l10n_text("BG Parallax"), "background_parallax", "back_background_parallax");
 			draw_menu_button(level_editor_option_x, background_scale_y, l10n_text("BG Scale"), "background_scale", "back_background_scale");
+			draw_menu_button(level_editor_option_x, background_clamp_y, l10n_text("BG Clamp"), "background_clamp", "back_background_clamp");
 			draw_menu_button(level_editor_option_x, background_tiled_y, l10n_text("BG Tiled"), "background_tiled", "back_background_tiled");
 
 			if (key_b_pressed)
@@ -1083,6 +1097,33 @@ function scr_option_level_editor()
 				&& (menu_delay == 0 && menu_joystick_delay == 0)
 				&& (!open_dropdown)
 				{
+					menu = "background_clamp";
+					menu_delay = 3;
+				}
+			}
+			else
+			if (menu == "background_clamp")
+			{
+				if (key_a_pressed)
+				&& (menu_delay == 0 && menu_joystick_delay == 0)
+				&& (!open_dropdown)
+				{
+					menu = "back_background_clamp";
+					menu_delay = 3;
+				}
+				else
+				if (key_up)
+				&& (menu_delay == 0 && menu_joystick_delay == 0)
+				&& (!open_dropdown)
+				{
+					menu = "background_scale";
+					menu_delay = 3;
+				}
+				else
+				if (key_down)
+				&& (menu_delay == 0 && menu_joystick_delay == 0)
+				&& (!open_dropdown)
+				{
 					menu = "background_tiled";
 					menu_delay = 3;
 				}
@@ -1102,7 +1143,7 @@ function scr_option_level_editor()
 				&& (menu_delay == 0 && menu_joystick_delay == 0)
 				&& (!open_dropdown)
 				{
-					menu = "background_scale";
+					menu = "background_clamp";
 					menu_delay = 3;
 				}
 				else
@@ -1155,6 +1196,8 @@ function scr_option_level_editor()
 			var change_foreground1_5_y = 47 * 8;
 			var change_foreground2_y = 47 * 9;
 			var change_foreground_secret_y = 47 * 10;
+
+			scr_draw_background_dimension_overlay();
 
 			if (!global.can_load_custom_level_assets)
 			{
@@ -2080,6 +2123,8 @@ function scr_option_level_editor()
 			var change_ambience_overworld_y = 47 * 4;
 			var change_ambience_underwater_y = 47 * 5;
 			var change_clear_melody_y = 47 * 6;
+
+			scr_draw_background_dimension_overlay();
 
 			if (!global.can_load_custom_level_assets)
 			{
@@ -3016,6 +3061,8 @@ function scr_option_level_editor()
 			}
 			#endregion /* Background Offset Menu Navigation END */
 
+			scr_draw_background_dimension_overlay();
+
 			if (global.controls_used_for_navigation == "gamepad")
 			{
 				scr_draw_gamepad_buttons(gp_face3, 40, 80, 0.75, c_white, 1, 1, 1, 1);
@@ -3275,6 +3322,8 @@ function scr_option_level_editor()
 			}
 			#endregion /* Background Parallax Menu Navigation END */
 
+			scr_draw_background_dimension_overlay();
+
 			if (global.controls_used_for_navigation == "gamepad")
 			{
 				scr_draw_gamepad_buttons(gp_face3, 40, 80, 0.75, c_white, 1, 1, 1, 1);
@@ -3290,20 +3339,26 @@ function scr_option_level_editor()
 			draw_menu_button(0, 0, l10n_text("Back"), "back_background_parallax", "background_parallax");
 			draw_sprite_ext(spr_icon_back, 0, 20, 21, 1, 1, 0, c_white, 1);
 
-			custom_background_x_parallax[1] = draw_menu_left_right_buttons(level_editor_option_x, custom_background_x_parallax1_y + menu_y_offset, option_level_editor_right_arrow_x, "Background 1 x parallax", custom_background_x_parallax[1], "custom_background1_x_parallax", 0.1, true);
-			custom_background_y_parallax[1] = draw_menu_left_right_buttons(level_editor_option_x, custom_background_y_parallax1_y + menu_y_offset, option_level_editor_right_arrow_x, "Background 1 y parallax", custom_background_y_parallax[1], "custom_background1_y_parallax", 0.1, true);
-			custom_background_x_parallax[2] = draw_menu_left_right_buttons(level_editor_option_x, custom_background_x_parallax2_y + menu_y_offset, option_level_editor_right_arrow_x, "Background 2 x parallax", custom_background_x_parallax[2], "custom_background2_x_parallax", 0.1, true);
-			custom_background_y_parallax[2] = draw_menu_left_right_buttons(level_editor_option_x, custom_background_y_parallax2_y + menu_y_offset, option_level_editor_right_arrow_x, "Background 2 y parallax", custom_background_y_parallax[2], "custom_background2_y_parallax", 0.1, true);
-			custom_background_x_parallax[3] = draw_menu_left_right_buttons(level_editor_option_x, custom_background_x_parallax3_y + menu_y_offset, option_level_editor_right_arrow_x, "Background 3 x parallax", custom_background_x_parallax[3], "custom_background3_x_parallax", 0.1, true);
-			custom_background_y_parallax[3] = draw_menu_left_right_buttons(level_editor_option_x, custom_background_y_parallax3_y + menu_y_offset, option_level_editor_right_arrow_x, "Background 3 y parallax", custom_background_y_parallax[3], "custom_background3_y_parallax", 0.1, true);
-			custom_background_x_parallax[4] = draw_menu_left_right_buttons(level_editor_option_x, custom_background_x_parallax4_y + menu_y_offset, option_level_editor_right_arrow_x, "Background 4 x parallax", custom_background_x_parallax[4], "custom_background4_x_parallax", 0.1, true);
-			custom_background_y_parallax[4] = draw_menu_left_right_buttons(level_editor_option_x, custom_background_y_parallax4_y + menu_y_offset, option_level_editor_right_arrow_x, "Background 4 y parallax", custom_background_y_parallax[4], "custom_background4_y_parallax", 0.1, true);
-
-			var parallax_rec_row_y = [0, parallax_rec1_y, parallax_rec2_y, parallax_rec3_y, parallax_rec4_y];
 			var current_view_camera = view_get_camera(view_current);
 			var view_w = camera_get_view_width(current_view_camera);
 			var view_h = camera_get_view_height(current_view_camera);
-			var rec_text_size = global.default_text_size * 0.9;
+			var rec_text_size = global.default_text_size * 0.8;
+			var rec_line_sep = max(26, global.default_text_size * 1.45);
+			var rec_wrap_width = max(220, option_level_editor_right_arrow_x - 90);
+			var rec_to_control_gap = 20;
+			var control_row_height = 34;
+			var group_bottom_gap = 10;
+			var rec_panel_padding_x = 10;
+			var rec_panel_padding_y = 6;
+			var rec_panel_alpha = 0.3;
+			var rec_outline_pad = ceil(max(6, rec_text_size * 3.5));
+			var parallax_group_cursor_y = parallax_base_y;
+			var parallax_rec_text = array_create(5, "");
+			var parallax_rec_color = array_create(5, c_gray);
+			var parallax_rec_row_y = array_create(5, 0);
+			var parallax_rec_block_height = array_create(5, 0);
+			var parallax_x_row_y = array_create(5, 0);
+			var parallax_y_row_y = array_create(5, 0);
 
 			for (var i = 1; i <= 4; i++)
 			{
@@ -3311,10 +3366,6 @@ function scr_option_level_editor()
 				var base_parallax = scr_get_background_parallax_default(i);
 				var rec_x = scr_calc_parallax_recommendation(room_width, view_w, metrics.width, base_parallax, metrics.h_tiled);
 				var rec_y = scr_calc_parallax_recommendation(room_height, view_h, metrics.height, base_parallax, metrics.v_tiled);
-				var rec_y_pos = parallax_rec_row_y[i] + menu_y_offset;
-
-				draw_set_halign(fa_left);
-				draw_set_valign(fa_middle);
 
 				var rec_text = "";
 				var rec_color = c_gray;
@@ -3331,9 +3382,82 @@ function scr_option_level_editor()
 						rec_text += "  | BG smaller than view";
 						rec_color = c_red;
 					}
+
+					var clamp_fit_multiplier = 1;
+					if (metrics.clamped)
+					&& (metrics.clamp_autoscale)
+					{
+						var clamp_x_axis = (!metrics.h_tiled) || (view_w > metrics.width);
+						var clamp_y_axis = (!metrics.v_tiled) || (view_h > metrics.height);
+
+						if (clamp_x_axis)
+						&& (metrics.width > 0)
+						{
+							clamp_fit_multiplier = max(clamp_fit_multiplier, view_w / metrics.width);
+						}
+						if (clamp_y_axis)
+						&& (metrics.height > 0)
+						{
+							clamp_fit_multiplier = max(clamp_fit_multiplier, view_h / metrics.height);
+						}
+					}
+
+					if (clamp_fit_multiplier > 1)
+					{
+						rec_text += "  | Clamp auto-scale: " + string_format(clamp_fit_multiplier, 0, 2) + "x";
+						if (rec_color != c_red)
+						{
+							rec_color = c_yellow;
+						}
+					}
+					else
+					if (!rec_x.can_cover || !rec_y.can_cover)
+					{
+						if (!metrics.clamped)
+						{
+							rec_text += "  | Enable BG Clamp to prevent exposed corners";
+						}
+						else
+						if (!metrics.clamp_autoscale)
+						{
+							rec_text += "  | Enable BG Auto-scale in BG Clamp";
+						}
+					}
 				}
 
-				scr_draw_text_outlined(level_editor_option_x, 20 + rec_y_pos, rec_text, rec_text_size, c_black, rec_color, 1);
+				parallax_rec_text[i] = rec_text;
+				parallax_rec_color[i] = rec_color;
+				parallax_rec_row_y[i] = parallax_group_cursor_y;
+
+				var wrapped_rec_height = string_height_ext(rec_text, rec_line_sep, rec_wrap_width) * rec_text_size;
+				var min_rec_height = string_height("Bg") * rec_text_size;
+				var rec_block_height = max(min_rec_height, wrapped_rec_height) + rec_outline_pad + (rec_panel_padding_y * 2);
+
+				parallax_rec_block_height[i] = rec_block_height;
+				parallax_x_row_y[i] = parallax_group_cursor_y + rec_block_height + rec_to_control_gap;
+				parallax_y_row_y[i] = parallax_x_row_y[i] + control_row_height;
+				parallax_group_cursor_y = parallax_y_row_y[i] + control_row_height + group_bottom_gap;
+			}
+
+			for (var i = 1; i <= 4; i++)
+			{
+				var rec_draw_x = level_editor_option_x;
+				var rec_draw_y = 20 + parallax_rec_row_y[i] + menu_y_offset + rec_panel_padding_y;
+				var rec_panel_left = rec_draw_x - rec_panel_padding_x;
+				var rec_panel_top = rec_draw_y - rec_panel_padding_y;
+				var rec_panel_right = rec_draw_x + rec_wrap_width + rec_panel_padding_x;
+				var rec_panel_bottom = rec_panel_top + parallax_rec_block_height[i];
+
+				draw_set_alpha(rec_panel_alpha);
+				draw_roundrect_color_ext(rec_panel_left, rec_panel_top, rec_panel_right, rec_panel_bottom, 8, 8, c_black, c_black, false);
+				draw_set_alpha(1);
+
+				draw_set_halign(fa_left);
+				draw_set_valign(fa_top);
+				scr_draw_text_outlined(rec_draw_x, rec_draw_y, parallax_rec_text[i], rec_text_size, noone, parallax_rec_color[i], 1, rec_line_sep, rec_wrap_width);
+
+				custom_background_x_parallax[i] = draw_menu_left_right_buttons(level_editor_option_x, parallax_x_row_y[i] + menu_y_offset, option_level_editor_right_arrow_x, "Background " + string(i) + " x parallax", custom_background_x_parallax[i], "custom_background" + string(i) + "_x_parallax", 0.1, true);
+				custom_background_y_parallax[i] = draw_menu_left_right_buttons(level_editor_option_x, parallax_y_row_y[i] + menu_y_offset, option_level_editor_right_arrow_x, "Background " + string(i) + " y parallax", custom_background_y_parallax[i], "custom_background" + string(i) + "_y_parallax", 0.1, true);
 			}
 		}
 		#endregion /* Background Parallax END */
@@ -3551,6 +3675,8 @@ function scr_option_level_editor()
 			}
 			#endregion /* Background Scale Save level_information.ini END */
 
+			scr_draw_background_dimension_overlay();
+
 			if (global.controls_used_for_navigation == "gamepad")
 			{
 				scr_draw_gamepad_buttons(gp_face3, 40, 80, 0.75, c_white, 1, 1, 1, 1);
@@ -3577,6 +3703,321 @@ function scr_option_level_editor()
 			scr_scale_background();
 		}
 		#endregion /* Background Scale END */
+
+		else
+
+		#region /* Background Clamp */
+		if (menu == "back_background_clamp")
+		|| (menu == "custom_background1_clamped")
+		|| (menu == "custom_background1_clamp_autoscale")
+		|| (menu == "custom_background2_clamped")
+		|| (menu == "custom_background2_clamp_autoscale")
+		|| (menu == "custom_background3_clamped")
+		|| (menu == "custom_background3_clamp_autoscale")
+		|| (menu == "custom_background4_clamped")
+		|| (menu == "custom_background4_clamp_autoscale")
+		{
+
+			#region /* Background Clamp Menu Navigation */
+
+			#region /* Background Clamp Back Navigation */
+			if (key_b_pressed)
+			&& (!keyboard_check(vk_control))
+			&& (menu_delay == 0 && menu_joystick_delay == 0)
+			&& (!open_dropdown)
+			|| (menu == "back_background_clamp")
+			&& (key_a_pressed)
+			&& (menu_delay == 0 && menu_joystick_delay == 0)
+			&& (!open_dropdown)
+			{
+
+				#region /* Background Clamp Save level_information.ini */
+				if (global.character_select_in_this_menu == "level_editor")
+				&& (file_exists(game_save_id + "custom_levels/" + scr_get_custom_level_folder_name() + "/data/level_information.ini"))
+				{
+					ini_open(game_save_id + "custom_levels/" + scr_get_custom_level_folder_name() + "/data/level_information.ini");
+					ini_write_real("Custom Backgrounds", "custom_background1_clamped", custom_background1_clamped);
+					ini_write_real("Custom Backgrounds", "custom_background2_clamped", custom_background2_clamped);
+					ini_write_real("Custom Backgrounds", "custom_background3_clamped", custom_background3_clamped);
+					ini_write_real("Custom Backgrounds", "custom_background4_clamped", custom_background4_clamped);
+					ini_write_real("Custom Backgrounds", "custom_background1_clamp_autoscale", custom_background1_clamp_autoscale);
+					ini_write_real("Custom Backgrounds", "custom_background2_clamp_autoscale", custom_background2_clamp_autoscale);
+					ini_write_real("Custom Backgrounds", "custom_background3_clamp_autoscale", custom_background3_clamp_autoscale);
+					ini_write_real("Custom Backgrounds", "custom_background4_clamp_autoscale", custom_background4_clamp_autoscale);
+					ini_close(); /* Don't commit the save data on Switch, this is only temporary! */
+				}
+				#endregion /* Background Clamp Save level_information.ini END */
+
+				menu = "background_clamp";
+				menu_delay = 3;
+			}
+			#endregion /* Background Clamp Back Navigation END */
+
+			if (menu == "back_background_clamp")
+			{
+				if (key_up)
+				&& (menu_delay == 0 && menu_joystick_delay == 0)
+				&& (!open_dropdown)
+				{
+					menu = "custom_background4_clamp_autoscale";
+					menu_delay = 3;
+				}
+				else
+				if (key_down)
+				&& (menu_delay == 0 && menu_joystick_delay == 0)
+				&& (!open_dropdown)
+				{
+					menu = "custom_background1_clamped";
+					menu_delay = 3;
+				}
+			}
+			else
+			if (menu == "custom_background1_clamped")
+			{
+				if (key_a_pressed)
+				&& (menu_delay == 0 && menu_joystick_delay == 0)
+				|| (mouse_check_button_released(mb_left))
+				&& (menu_delay == 0 && menu_joystick_delay == 0)
+				{
+					custom_background1_clamped = !custom_background1_clamped;
+					menu_delay = 3;
+				}
+				else
+				if (key_up)
+				&& (menu_delay == 0 && menu_joystick_delay == 0)
+				&& (!open_dropdown)
+				{
+					menu = "back_background_clamp";
+					menu_delay = 3;
+				}
+				else
+				if (key_down)
+				&& (menu_delay == 0 && menu_joystick_delay == 0)
+				&& (!open_dropdown)
+				{
+					menu = "custom_background1_clamp_autoscale";
+					menu_delay = 3;
+				}
+			}
+			else
+			if (menu == "custom_background1_clamp_autoscale")
+			{
+				if (key_a_pressed)
+				&& (menu_delay == 0 && menu_joystick_delay == 0)
+				|| (mouse_check_button_released(mb_left))
+				&& (menu_delay == 0 && menu_joystick_delay == 0)
+				{
+					custom_background1_clamp_autoscale = !custom_background1_clamp_autoscale;
+					menu_delay = 3;
+				}
+				else
+				if (key_up)
+				&& (menu_delay == 0 && menu_joystick_delay == 0)
+				&& (!open_dropdown)
+				{
+					menu = "custom_background1_clamped";
+					menu_delay = 3;
+				}
+				else
+				if (key_down)
+				&& (menu_delay == 0 && menu_joystick_delay == 0)
+				&& (!open_dropdown)
+				{
+					menu = "custom_background2_clamped";
+					menu_delay = 3;
+				}
+			}
+			else
+			if (menu == "custom_background2_clamped")
+			{
+				if (key_a_pressed)
+				&& (menu_delay == 0 && menu_joystick_delay == 0)
+				|| (mouse_check_button_released(mb_left))
+				&& (menu_delay == 0 && menu_joystick_delay == 0)
+				{
+					custom_background2_clamped = !custom_background2_clamped;
+					menu_delay = 3;
+				}
+				else
+				if (key_up)
+				&& (menu_delay == 0 && menu_joystick_delay == 0)
+				&& (!open_dropdown)
+				{
+					menu = "custom_background1_clamp_autoscale";
+					menu_delay = 3;
+				}
+				else
+				if (key_down)
+				&& (menu_delay == 0 && menu_joystick_delay == 0)
+				&& (!open_dropdown)
+				{
+					menu = "custom_background2_clamp_autoscale";
+					menu_delay = 3;
+				}
+			}
+			else
+			if (menu == "custom_background2_clamp_autoscale")
+			{
+				if (key_a_pressed)
+				&& (menu_delay == 0 && menu_joystick_delay == 0)
+				|| (mouse_check_button_released(mb_left))
+				&& (menu_delay == 0 && menu_joystick_delay == 0)
+				{
+					custom_background2_clamp_autoscale = !custom_background2_clamp_autoscale;
+					menu_delay = 3;
+				}
+				else
+				if (key_up)
+				&& (menu_delay == 0 && menu_joystick_delay == 0)
+				&& (!open_dropdown)
+				{
+					menu = "custom_background2_clamped";
+					menu_delay = 3;
+				}
+				else
+				if (key_down)
+				&& (menu_delay == 0 && menu_joystick_delay == 0)
+				&& (!open_dropdown)
+				{
+					menu = "custom_background3_clamped";
+					menu_delay = 3;
+				}
+			}
+			else
+			if (menu == "custom_background3_clamped")
+			{
+				if (key_a_pressed)
+				&& (menu_delay == 0 && menu_joystick_delay == 0)
+				|| (mouse_check_button_released(mb_left))
+				&& (menu_delay == 0 && menu_joystick_delay == 0)
+				{
+					custom_background3_clamped = !custom_background3_clamped;
+					menu_delay = 3;
+				}
+				else
+				if (key_up)
+				&& (menu_delay == 0 && menu_joystick_delay == 0)
+				&& (!open_dropdown)
+				{
+					menu = "custom_background2_clamp_autoscale";
+					menu_delay = 3;
+				}
+				else
+				if (key_down)
+				&& (menu_delay == 0 && menu_joystick_delay == 0)
+				&& (!open_dropdown)
+				{
+					menu = "custom_background3_clamp_autoscale";
+					menu_delay = 3;
+				}
+			}
+			else
+			if (menu == "custom_background3_clamp_autoscale")
+			{
+				if (key_a_pressed)
+				&& (menu_delay == 0 && menu_joystick_delay == 0)
+				|| (mouse_check_button_released(mb_left))
+				&& (menu_delay == 0 && menu_joystick_delay == 0)
+				{
+					custom_background3_clamp_autoscale = !custom_background3_clamp_autoscale;
+					menu_delay = 3;
+				}
+				else
+				if (key_up)
+				&& (menu_delay == 0 && menu_joystick_delay == 0)
+				&& (!open_dropdown)
+				{
+					menu = "custom_background3_clamped";
+					menu_delay = 3;
+				}
+				else
+				if (key_down)
+				&& (menu_delay == 0 && menu_joystick_delay == 0)
+				&& (!open_dropdown)
+				{
+					menu = "custom_background4_clamped";
+					menu_delay = 3;
+				}
+			}
+			else
+			if (menu == "custom_background4_clamped")
+			{
+				if (key_a_pressed)
+				&& (menu_delay == 0 && menu_joystick_delay == 0)
+				|| (mouse_check_button_released(mb_left))
+				&& (menu_delay == 0 && menu_joystick_delay == 0)
+				{
+					custom_background4_clamped = !custom_background4_clamped;
+					menu_delay = 3;
+				}
+				else
+				if (key_up)
+				&& (menu_delay == 0 && menu_joystick_delay == 0)
+				&& (!open_dropdown)
+				{
+					menu = "custom_background3_clamp_autoscale";
+					menu_delay = 3;
+				}
+				else
+				if (key_down)
+				&& (menu_delay == 0 && menu_joystick_delay == 0)
+				&& (!open_dropdown)
+				{
+					menu = "custom_background4_clamp_autoscale";
+					menu_delay = 3;
+				}
+			}
+			else
+			if (menu == "custom_background4_clamp_autoscale")
+			{
+				if (key_a_pressed)
+				&& (menu_delay == 0 && menu_joystick_delay == 0)
+				|| (mouse_check_button_released(mb_left))
+				&& (menu_delay == 0 && menu_joystick_delay == 0)
+				{
+					custom_background4_clamp_autoscale = !custom_background4_clamp_autoscale;
+					menu_delay = 3;
+				}
+				else
+				if (key_up)
+				&& (menu_delay == 0 && menu_joystick_delay == 0)
+				&& (!open_dropdown)
+				{
+					menu = "custom_background4_clamped";
+					menu_delay = 3;
+				}
+				else
+				if (key_down)
+				&& (menu_delay == 0 && menu_joystick_delay == 0)
+				&& (!open_dropdown)
+				{
+					menu = "back_background_clamp";
+					menu_delay = 3;
+				}
+			}
+			#endregion /* Background Clamp Menu Navigation END */
+
+			scr_draw_background_dimension_overlay();
+
+			draw_menu_button(0, 0, l10n_text("Back"), "back_background_clamp", "background_clamp");
+			draw_sprite_ext(spr_icon_back, 0, 20, 21, 1, 1, 0, c_white, 1);
+
+			draw_set_halign(fa_left);
+			draw_set_valign(fa_middle);
+			scr_draw_text_outlined(80, 80, l10n_text("Clamp keeps non-tiled background edges outside the camera view"), global.default_text_size * 0.9, c_black, c_white, 1);
+			scr_draw_text_outlined(80, 104, l10n_text("Auto-scale is separate: grows BG when camera becomes larger"), global.default_text_size * 0.9, c_black, c_white, 1);
+			scr_draw_text_outlined(80, 128, l10n_text("Enable both to guarantee no exposed corners at extreme zoom"), global.default_text_size * 0.9, c_black, c_white, 1);
+
+			draw_menu_checkmark(level_editor_option_x, custom_background1_clamped_y + menu_y_offset, "Background 1 clamped to view", "custom_background1_clamped", custom_background1_clamped, false);
+			draw_menu_checkmark(level_editor_option_x, custom_background1_clamp_autoscale_y + menu_y_offset, "Background 1 auto-scale while clamped", "custom_background1_clamp_autoscale", custom_background1_clamp_autoscale, false);
+			draw_menu_checkmark(level_editor_option_x, custom_background2_clamped_y + menu_y_offset, "Background 2 clamped to view", "custom_background2_clamped", custom_background2_clamped, false);
+			draw_menu_checkmark(level_editor_option_x, custom_background2_clamp_autoscale_y + menu_y_offset, "Background 2 auto-scale while clamped", "custom_background2_clamp_autoscale", custom_background2_clamp_autoscale, false);
+			draw_menu_checkmark(level_editor_option_x, custom_background3_clamped_y + menu_y_offset, "Background 3 clamped to view", "custom_background3_clamped", custom_background3_clamped, false);
+			draw_menu_checkmark(level_editor_option_x, custom_background3_clamp_autoscale_y + menu_y_offset, "Background 3 auto-scale while clamped", "custom_background3_clamp_autoscale", custom_background3_clamp_autoscale, false);
+			draw_menu_checkmark(level_editor_option_x, custom_background4_clamped_y + menu_y_offset, "Background 4 clamped to view", "custom_background4_clamped", custom_background4_clamped, false);
+			draw_menu_checkmark(level_editor_option_x, custom_background4_clamp_autoscale_y + menu_y_offset, "Background 4 auto-scale while clamped", "custom_background4_clamp_autoscale", custom_background4_clamp_autoscale, false);
+		}
+		#endregion /* Background Clamp END */
 
 		else
 
@@ -3864,6 +4305,8 @@ function scr_option_level_editor()
 			}
 			#endregion /* Background Tiled Menu Navigation END */
 
+			scr_draw_background_dimension_overlay();
+
 			draw_menu_button(0, 0, l10n_text("Back"), "back_background_tiled", "background_tiled");
 			draw_sprite_ext(spr_icon_back, 0, 20, 21, 1, 1, 0, c_white, 1);
 
@@ -3878,7 +4321,7 @@ function scr_option_level_editor()
 		}
 		#endregion /* Background Tiled END */
 
-		#endregion /* Background Offset, Parallax, Scale, and Tiled END */
+		#endregion /* Background Offset, Parallax, Scale, Clamp, and Tiled END */
 
 		else
 

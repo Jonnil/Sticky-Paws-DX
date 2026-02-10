@@ -1,0 +1,13 @@
+{
+  "$GMScript":"v1",
+  "%Name":"scr_draw_background_dimension_overlay",
+  "isCompatibility":false,
+  "isDnD":false,
+  "name":"scr_draw_background_dimension_overlay",
+  "parent":{
+    "name":"Menus",
+    "path":"folders/Scripts/Menus.yy",
+  },
+  "resourceType":"GMScript",
+  "resourceVersion":"2.0",
+}

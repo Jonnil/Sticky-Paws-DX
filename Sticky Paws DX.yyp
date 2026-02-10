@@ -2270,6 +2270,7 @@
     {"id":{"name":"scr_download_language_packs","path":"scripts/scr_download_language_packs/scr_download_language_packs.yy",},},
     {"id":{"name":"scr_download_thumbnails","path":"scripts/scr_download_thumbnails/scr_download_thumbnails.yy",},},
     {"id":{"name":"scr_draw_all_level_editor_icon","path":"scripts/scr_draw_all_level_editor_icon/scr_draw_all_level_editor_icon.yy",},},
+    {"id":{"name":"scr_draw_background_dimension_overlay","path":"scripts/scr_draw_background_dimension_overlay/scr_draw_background_dimension_overlay.yy",},},
     {"id":{"name":"scr_draw_caution_online","path":"scripts/scr_draw_caution_online/scr_draw_caution_online.yy",},},
     {"id":{"name":"scr_draw_circular_bar","path":"scripts/scr_draw_circular_bar/scr_draw_circular_bar.yy",},},
     {"id":{"name":"scr_draw_cursor_mouse","path":"scripts/scr_draw_cursor_mouse/scr_draw_cursor_mouse.yy",},},

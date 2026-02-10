@@ -53,6 +53,15 @@ function scr_initialize_level_information_ini()
 		custom_background1_vtiled = get_custom_level_information_real("Custom Backgrounds", "custom_background1_vtiled", 1);
 		custom_background1_htiled = get_custom_level_information_real("Custom Backgrounds", "custom_background1_htiled", 1);
 
+		custom_background4_clamped = get_custom_level_information_real("Custom Backgrounds", "custom_background4_clamped", false);
+		custom_background3_clamped = get_custom_level_information_real("Custom Backgrounds", "custom_background3_clamped", false);
+		custom_background2_clamped = get_custom_level_information_real("Custom Backgrounds", "custom_background2_clamped", false);
+		custom_background1_clamped = get_custom_level_information_real("Custom Backgrounds", "custom_background1_clamped", false);
+		custom_background4_clamp_autoscale = get_custom_level_information_real("Custom Backgrounds", "custom_background4_clamp_autoscale", false);
+		custom_background3_clamp_autoscale = get_custom_level_information_real("Custom Backgrounds", "custom_background3_clamp_autoscale", false);
+		custom_background2_clamp_autoscale = get_custom_level_information_real("Custom Backgrounds", "custom_background2_clamp_autoscale", false);
+		custom_background1_clamp_autoscale = get_custom_level_information_real("Custom Backgrounds", "custom_background1_clamp_autoscale", false);
+
 		global.make_every_tileset_into_default_tileset = get_custom_level_information_real("info", "make_every_tileset_into_default_tileset", false);
 		global.enable_time_countdown = get_custom_level_information_real("info", "enable_time_countdown", false);
 		global.time_countdown = get_custom_level_information_real("info", "time_countdown", 500);
@@ -131,6 +140,14 @@ function scr_initialize_level_information_ini()
 		custom_background3_vtiled = 1;
 		custom_background4_htiled = 1;
 		custom_background4_vtiled = 1;
+		custom_background1_clamped = false;
+		custom_background2_clamped = false;
+		custom_background3_clamped = false;
+		custom_background4_clamped = false;
+		custom_background1_clamp_autoscale = false;
+		custom_background2_clamp_autoscale = false;
+		custom_background3_clamp_autoscale = false;
+		custom_background4_clamp_autoscale = false;
 		global.enable_time_countdown = false;
 		global.time_countdown = 500;
 		global.make_every_tileset_into_default_tileset = false;

@@ -13,6 +13,10 @@ function scr_parallax_scrolling_background()
 	{
 		var layer_name = "Background_" + string(i);
 		var layer_id = layer_get_id(layer_name);
+		if (layer_id == -1)
+		{
+			continue;
+		}
 		var x_parallax = custom_background_x_parallax[i];
 		var y_parallax = custom_background_y_parallax[i];
 		var x_offset = custom_background_x_offset[i];
@@ -23,15 +27,70 @@ function scr_parallax_scrolling_background()
 		var layer_y_pos = view_y / safe_y_parallax + y_offset;
 
 		var metrics = scr_get_background_layer_metrics(i);
+		var layer_background_id = layer_background_get_id(layer_id);
+		var effective_x_scale = metrics.x_scale;
+		var effective_y_scale = metrics.y_scale;
+		var effective_width = metrics.width;
+		var effective_height = metrics.height;
+		var clamp_x_axis = false;
+		var clamp_y_axis = false;
+
+		/* Clamp applies to non-tiled axes; auto-scale is an optional separate setting */
+		if (metrics.sprite != noone)
+		&& (metrics.clamped)
+		{
+			clamp_x_axis = !metrics.h_tiled;
+			clamp_y_axis = !metrics.v_tiled;
+
+			/* Auto-scale extends clamp behavior to impossible-coverage cases */
+			if (metrics.clamp_autoscale)
+			{
+				clamp_x_axis = clamp_x_axis || (view_w > effective_width);
+				clamp_y_axis = clamp_y_axis || (view_h > effective_height);
+
+				var fit_multiplier = 1;
+				if (clamp_x_axis)
+				&& (effective_width > 0)
+				{
+					fit_multiplier = max(fit_multiplier, view_w / effective_width);
+				}
+				if (clamp_y_axis)
+				&& (effective_height > 0)
+				{
+					fit_multiplier = max(fit_multiplier, view_h / effective_height);
+				}
+
+				if (fit_multiplier > 1)
+				{
+					var x_sign = (metrics.x_scale < 0) ? -1 : 1;
+					var y_sign = (metrics.y_scale < 0) ? -1 : 1;
+					effective_x_scale = x_sign * abs(metrics.x_scale) * fit_multiplier;
+					effective_y_scale = y_sign * abs(metrics.y_scale) * fit_multiplier;
+				}
+			}
+		}
 
 		if (metrics.sprite != noone)
 		{
+			effective_width = abs(metrics.source_width * effective_x_scale);
+			effective_height = abs(metrics.source_height * effective_y_scale);
+		}
+
+		if (layer_background_id != -1)
+		{
+			layer_background_xscale(layer_background_id, effective_x_scale);
+			layer_background_yscale(layer_background_id, effective_y_scale);
+		}
+
+		if (metrics.sprite != noone)
+		&& (metrics.clamped)
+		{
 			/* Clamp background positions so edges never appear inside the view */
-			if (!metrics.h_tiled)
+			if (clamp_x_axis)
 			{
 				if (view_w > 0)
 				{
-					var min_x = view_x + view_w - metrics.width;
+					var min_x = view_x + view_w - effective_width;
 					var max_x = view_x;
 					if (min_x > max_x)
 					{
@@ -39,15 +98,15 @@ function scr_parallax_scrolling_background()
 						min_x = max_x;
 						max_x = temp_x;
 					}
-					//layer_x_pos = clamp(layer_x_pos, min_x, max_x);
+					layer_x_pos = clamp(layer_x_pos, min_x, max_x);
 				}
 			}
 
-			if (!metrics.v_tiled)
+			if (clamp_y_axis)
 			{
 				if (view_h > 0)
 				{
-					var min_y = view_y + view_h - metrics.height;
+					var min_y = view_y + view_h - effective_height;
 					var max_y = view_y;
 					if (min_y > max_y)
 					{
@@ -55,7 +114,7 @@ function scr_parallax_scrolling_background()
 						min_y = max_y;
 						max_y = temp_y;
 					}
-					//layer_y_pos = clamp(layer_y_pos, min_y, max_y);
+					layer_y_pos = clamp(layer_y_pos, min_y, max_y);
 				}
 			}
 		}
@@ -74,6 +133,8 @@ function scr_get_background_layer_metrics(layer_index)
 	var y_scale = 1;
 	var h_tiled = false;
 	var v_tiled = false;
+	var clamped = false;
+	var clamp_autoscale = false;
 
 	switch (layer_index)
 	{
@@ -83,6 +144,8 @@ function scr_get_background_layer_metrics(layer_index)
 			y_scale = custom_background1_y_scale;
 			h_tiled = custom_background1_htiled;
 			v_tiled = custom_background1_vtiled;
+			clamped = custom_background1_clamped;
+			clamp_autoscale = custom_background1_clamp_autoscale;
 			break;
 		case 2:
 			sprite = global.custom_background2;
@@ -90,6 +153,8 @@ function scr_get_background_layer_metrics(layer_index)
 			y_scale = custom_background2_y_scale;
 			h_tiled = custom_background2_htiled;
 			v_tiled = custom_background2_vtiled;
+			clamped = custom_background2_clamped;
+			clamp_autoscale = custom_background2_clamp_autoscale;
 			break;
 		case 3:
 			sprite = global.custom_background3;
@@ -97,6 +162,8 @@ function scr_get_background_layer_metrics(layer_index)
 			y_scale = custom_background3_y_scale;
 			h_tiled = custom_background3_htiled;
 			v_tiled = custom_background3_vtiled;
+			clamped = custom_background3_clamped;
+			clamp_autoscale = custom_background3_clamp_autoscale;
 			break;
 		case 4:
 			sprite = global.custom_background4;
@@ -104,23 +171,35 @@ function scr_get_background_layer_metrics(layer_index)
 			y_scale = custom_background4_y_scale;
 			h_tiled = custom_background4_htiled;
 			v_tiled = custom_background4_vtiled;
+			clamped = custom_background4_clamped;
+			clamp_autoscale = custom_background4_clamp_autoscale;
 			break;
 	}
 
+	var source_width = 0;
+	var source_height = 0;
 	var width = 0;
 	var height = 0;
 	if (sprite != noone)
 	{
-		width = sprite_get_width(sprite) * x_scale;
-		height = sprite_get_height(sprite) * y_scale;
+		source_width = sprite_get_width(sprite);
+		source_height = sprite_get_height(sprite);
+		width = abs(source_width * x_scale);
+		height = abs(source_height * y_scale);
 	}
 
 	return {
 		sprite: sprite,
+		source_width: source_width,
+		source_height: source_height,
+		x_scale: x_scale,
+		y_scale: y_scale,
 		width: width,
 		height: height,
 		h_tiled: h_tiled,
-		v_tiled: v_tiled
+		v_tiled: v_tiled,
+		clamped: clamped,
+		clamp_autoscale: clamp_autoscale
 	};
 }
 

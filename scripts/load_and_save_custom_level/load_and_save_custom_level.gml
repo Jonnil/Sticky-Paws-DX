@@ -533,6 +533,17 @@ function scr_save_level_information()
 		ini_write_real("Custom Backgrounds", "custom_background4_vtiled", custom_background4_vtiled);
 		#endregion /* Save Custom Backgrounds Tiled END */
 
+		#region /* Save Custom Backgrounds Clamped */
+		ini_write_real("Custom Backgrounds", "custom_background1_clamped", custom_background1_clamped);
+		ini_write_real("Custom Backgrounds", "custom_background2_clamped", custom_background2_clamped);
+		ini_write_real("Custom Backgrounds", "custom_background3_clamped", custom_background3_clamped);
+		ini_write_real("Custom Backgrounds", "custom_background4_clamped", custom_background4_clamped);
+		ini_write_real("Custom Backgrounds", "custom_background1_clamp_autoscale", custom_background1_clamp_autoscale);
+		ini_write_real("Custom Backgrounds", "custom_background2_clamp_autoscale", custom_background2_clamp_autoscale);
+		ini_write_real("Custom Backgrounds", "custom_background3_clamp_autoscale", custom_background3_clamp_autoscale);
+		ini_write_real("Custom Backgrounds", "custom_background4_clamp_autoscale", custom_background4_clamp_autoscale);
+		#endregion /* Save Custom Backgrounds Clamped END */
+
 		#endregion /* Save Custom Background Settings END */
 
 		ini_close();
