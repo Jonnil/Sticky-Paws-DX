@@ -389,16 +389,8 @@ else
 }
 #endregion /* Limits the vertical speed END */
 
-#region /* If you touch spikes, take damage */
-if (collision_rectangle(bbox_left - 1, bbox_top - 1, bbox_right + 1, bbox_bottom + 1, obj_spikes, false, true))
-|| (collision_rectangle(bbox_left - 1, bbox_bottom - 1, bbox_right + 1, bbox_bottom + 1, obj_spikes_emerge, false, true) && instance_nearest(x, bbox_bottom, obj_spikes_emerge).image_angle == 0 && instance_nearest(x, bbox_bottom, obj_spikes_emerge).sprite_index == spr_spikes_emerge)
-|| (collision_rectangle(bbox_right - 1, bbox_top - 1, bbox_right + 1, bbox_bottom + 1, obj_spikes_emerge, false, true) && instance_nearest(x, bbox_bottom, obj_spikes_emerge).image_angle == 90 && instance_nearest(x, bbox_bottom, obj_spikes_emerge).sprite_index == spr_spikes_emerge)
-|| (collision_rectangle(bbox_left - 1, bbox_top - 1, bbox_right + 1, bbox_top + 1, obj_spikes_emerge, false, true) && instance_nearest(x, bbox_bottom, obj_spikes_emerge).image_angle == 180 && instance_nearest(x, bbox_bottom, obj_spikes_emerge).sprite_index == spr_spikes_emerge)
-|| (collision_rectangle(bbox_right - 1, bbox_top - 1, bbox_right + 1, bbox_bottom + 1, obj_spikes_emerge, false, true) && instance_nearest(x, bbox_bottom, obj_spikes_emerge).image_angle == 270 && instance_nearest(x, bbox_bottom, obj_spikes_emerge).sprite_index == spr_spikes_emerge)
-{
-	scr_player_move_take_damage()
-}
-#endregion /* If you touch spikes, take damage END */
+/* If you touch spikes, take damage */
+scr_player_check_spike_damage();
 
 #region /* ________________________________MORE MOVES________________________________ */
 
@@ -1153,7 +1145,7 @@ if (in_water && !climb)
 		else
 
 		#region /* Stand Underwater */
-		if (hspeed == 0)
+		if (abs(hspeed) <= 0.1)
 		&& (!key_left_hold)
 		&& (!key_right_hold)
 		{
@@ -1364,7 +1356,7 @@ else
 		else
 
 		#region /* Look Up */
-		if (hspeed == 0)
+		if (abs(hspeed) <= 0.1)
 		&& (key_up)
 		&& (!key_down)
 		&& (intro_animation == "")
@@ -1516,7 +1508,7 @@ else
 		else
 
 		#region /* Stand */
-		if (hspeed == 0)
+		if (abs(hspeed) <= 0.1)
 		&& (!key_left_hold)
 		&& (!key_right_hold)
 		&& (!climb)

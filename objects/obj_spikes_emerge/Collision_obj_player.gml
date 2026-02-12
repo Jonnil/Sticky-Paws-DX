@@ -1,31 +1,5 @@
 #region /* Touching player */
 if (image_angle == 0)
-&& (place_meeting(x, y - 2, other))
-&& (!place_meeting(x - 1, y, other))
-&& (!place_meeting(x + 1, y, other))
-|| (image_angle = 90)
-&& (place_meeting(x - 2, y, other))
-&& (!place_meeting(x, y - 1, other))
-&& (!place_meeting(x, y + 1, other))
-|| (image_angle = 180)
-&& (place_meeting(x, y + 2, other))
-&& (!place_meeting(x - 1, y, other))
-&& (!place_meeting(x + 1, y, other))
-|| (image_angle = 270)
-&& (place_meeting(x + 2, y, other))
-&& (!place_meeting(x, y - 1, other))
-&& (!place_meeting(x, y + 1, other))
-{
-	if (sprite_index = spr_spikes_emerge)
-	{
-		with(other)
-		{
-			scr_gamepad_vibration(player, 1, 10);
-		}
-	}
-}
-
-if (image_angle == 0)
 && (position_meeting(x, y, other))
 && (sprite_index = spr_spikes_emerge)
 {

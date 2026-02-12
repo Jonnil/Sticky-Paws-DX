@@ -666,7 +666,9 @@ function scr_option_graphics()
 		draw_menu_checkmark(386, reset_world_zoom_on_return_y + menu_y_offset, l10n_text("Reset World Map Zoom When Going Back To Map"), "reset_world_zoom_on_return", global.reset_world_zoom_on_return, false);
 		draw_menu_checkmark(386, draw_text_outline_y + menu_y_offset, l10n_text("Draw Text Outline"), "draw_text_outline", global.draw_text_outline, true, l10n_text("Disabling text outline boosts performance but reduces readability"));
 		draw_menu_button(420, customize_button_design_y + menu_y_offset, l10n_text("Customize Button Design"), "customize_button_design", "customize_button_design_color");
-
+		
+		menu_cursor_y_position_end = customize_button_design_y;
+		
 		#region /* Navigate */
 
 		#region /* Navigate Advanced Video Options Back */
