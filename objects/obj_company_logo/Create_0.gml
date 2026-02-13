@@ -5,6 +5,7 @@ global.game_name = "Sticky Paws"; /* String of what the game is called */
 global.game_name_appdata = "Sticky_Paws_DX"; /* String of what the game is called at appdata folder */
 global.demo_enable = false; /* Enable this when exporting demo versions of the game */
 global.demo_number_of_levels = 3; /* How many levels the player should be able to play in the demo version */
+global.max_total_big_collectibles = 50; /* How many max total big collectibles exist in the game */
 var character_for_unassigned_player_default = "sticky"; /* Default character for unassigned players */
 var character_for_player1 = "sticky"; /* Player 1 Select Character 1 */
 var character_for_player2 = "catlyn"; /* Player 2 Select Character 2 */

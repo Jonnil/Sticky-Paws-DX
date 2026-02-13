@@ -2,8 +2,6 @@
 can_enter_level_automatically = true;
 #endregion /* Debug toggles END */
 
-max_total_big_collectibles = 50;
-
 global.max_big_collectible = 5; /* Main game only have 5 big collectibles in each level */
 full_level_map_screenshot_timer = 0;
 can_show_arrows = 0;
@@ -131,7 +129,7 @@ if (file_exists(game_save_id + "save_file/file" + string(global.file) + ".ini"))
 	ini_open(game_save_id + "save_file/file" + string(global.file) + ".ini");
 
 	brand_new_file = ini_read_real("Player", "brand_new_file", true);
-	total_big_collectibles = ini_read_real("Player", "total_big_collectibles", 0);
+	total_big_collectibles = clamp(ini_read_real("Player", "total_big_collectibles", 0), 0, global.max_total_big_collectibles);
 
 	#region /* Load Player Position */
 	if (ini_read_real("Player", "player_x", 0) > 0)
@@ -183,13 +181,13 @@ else
 
 #region /* Make absolutely sure that the big collectibles counter is correct */
 scr_get_each_big_collectible_from_main_game();
-if (total_big_collectibles < total_big_collectibles_add)
+if (total_big_collectibles != total_big_collectibles_add)
 {
-	total_big_collectibles = total_big_collectibles_add;
+	total_big_collectibles = clamp(total_big_collectibles_add, 0, global.max_total_big_collectibles);
 	ini_open(game_save_id + "save_file/file" + string(global.file) + ".ini");
-	ini_write_real("Player", "total_big_collectibles", total_big_collectibles_add);
+	ini_write_real("Player", "total_big_collectibles", clamp(total_big_collectibles_add, 0, global.max_total_big_collectibles));
 	ini_close();
-	scr_set_stat_achievement("TOTAL_BIG_COLLECTIBLE", total_big_collectibles_add);
+	scr_set_stat_achievement("TOTAL_BIG_COLLECTIBLE", clamp(total_big_collectibles_add, 0, global.max_total_big_collectibles));
 }
 #endregion /* Make absolutely sure that the big collectibles counter is correct END */
 
@@ -197,7 +195,8 @@ xx = x;
 yy = y;
 
 /* Create the camera map after setting x and y positions */
-if (!instance_exists(obj_camera_map)) {
+if (!instance_exists(obj_camera_map))
+{
 	instance_create_depth(x, y, 0, obj_camera_map);
 }
 

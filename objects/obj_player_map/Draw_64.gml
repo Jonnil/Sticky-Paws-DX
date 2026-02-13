@@ -59,7 +59,7 @@ if (iris_xscale > 9)
 {
 	draw_sprite_ext(global.resource_pack_sprite_big_collectible, 0, 32, 32, 0.5, 0.5, 0, c_white, 1);
 	draw_set_halign(fa_left);
-	scr_draw_text_outlined(64, 32, string(total_big_collectibles) + "/" + string(max_total_big_collectibles), global.default_text_size, c_black, c_white, 1);
+	scr_draw_text_outlined(64, 32, string(total_big_collectibles) + "/" + string(global.max_total_big_collectibles), global.default_text_size, c_black, c_white, 1);
 }
 
 /* Check if conditions are met to show level info */

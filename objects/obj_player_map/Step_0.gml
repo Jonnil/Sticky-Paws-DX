@@ -16,8 +16,7 @@ if (speed > 0)
 }
 
 /* Check if "obj level" exists */
-if (stop_at_level
-&& nearest_level == noone) /* Only get info from levels when you stop at a level and nothing is stored in "nearest level" variable, so this code isn't running every frame */
+if (stop_at_level)
 {
 	if (instance_exists(obj_level))
 	{

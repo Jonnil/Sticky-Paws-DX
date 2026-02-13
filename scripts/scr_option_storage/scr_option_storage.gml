@@ -9,7 +9,7 @@ function scr_load_storage_variables()
 	storage_second = ini_read_real("Player", "current_second", 0);
 	storage_last_played_level_name = ini_read_string("Player", "last_played_level_name", "");
 	storage_lives = ini_read_real("Player", "lives", 0);
-	storage_total_big_collectibles = ini_read_real("Player", "total_big_collectibles", 0);
+	storage_total_big_collectibles = clamp(ini_read_real("Player", "total_big_collectibles", 0), 0, global.max_total_big_collectibles);
 	storage_number_of_levels_cleared = ini_read_real("Player", "number_of_levels_cleared", 0);
 	if (variable_instance_exists(self, "placable_object_unlock_notify"))
 	{
@@ -94,7 +94,7 @@ function scr_option_storage()
 			scr_draw_text_outlined(file_select_x, lives_y, l10n_text("Lives") + ": " + string(storage_lives), global.default_text_size, c_menu_outline, c_menu_fill, 1);
 
 			draw_sprite_ext(global.resource_pack_sprite_big_collectible, 0, file_select_x + 16, total_big_collectibles_y, 0.5, 0.5, 0, c_white, 1);
-			scr_draw_text_outlined(file_select_x + 48, total_big_collectibles_y, string(storage_total_big_collectibles) + "/" + "50", global.default_text_size, c_menu_outline, c_menu_fill, 1);
+			scr_draw_text_outlined(file_select_x + 48, total_big_collectibles_y, string(storage_total_big_collectibles) + "/" + string(global.max_total_big_collectibles), global.default_text_size, c_menu_outline, c_menu_fill, 1);
 			scr_draw_text_outlined(file_select_x, number_of_levels_passed_y, l10n_text("Number of levels passed") + ": " + string(storage_number_of_levels_cleared), global.default_text_size, c_menu_outline, c_menu_fill, 1);
 		}
 		#endregion /* Display save file data END */
