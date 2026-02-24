@@ -4,13 +4,17 @@
 function scr_language_load_csv_into_memory(_path)
 {
 	/* load_csv is presumably your existing function that loads a CSV into a DS grid */
-	global.language_local_data = load_csv(_path);
+	var loaded_grid = load_csv(_path);
 
-	if (is_undefined(global.language_local_data))
+	/* load_csv may return -1 (invalid DS id) instead of undefined on failure */
+	if (is_undefined(loaded_grid)
+	|| !ds_exists(loaded_grid, ds_type_grid))
 	{
-		show_debug_message("[scr_language_load_csv_into_memory] Error: load_csv returned undefined for " + _path + "\n");
+		show_debug_message("[scr_language_load_csv_into_memory] Error: load_csv failed or returned invalid grid for " + _path + " (value=" + string(loaded_grid) + ")\n");
 		return -1;
 	}
+
+	global.language_local_data = loaded_grid;
 
 	var hh = ds_grid_height(global.language_local_data);
 	var translations_map = ds_map_create();

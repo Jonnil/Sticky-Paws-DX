@@ -81,4 +81,8 @@ function scr_process_language_file(lang_name, file_data)
 		scr_initialize_translations();
 		scr_calculate_translation_completion();
 	}
+	else
+	{
+		show_debug_message("[scr_process_language_file] Error: failed to parse downloaded language CSV at " + string(file_path) + ". Keeping previous in-memory translations.\n");
+	}
 }

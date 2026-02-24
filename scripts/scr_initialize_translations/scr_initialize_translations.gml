@@ -98,10 +98,14 @@ function scr_initialize_translations()
 	show_debug_message("[scr_initialize_translations] Map entry count: " + string(ds_map_size(translations_map)));
 
 	/* Grid size check */
-	if (global.language_local_data != 0)
+	if (ds_exists(global.language_local_data, ds_type_grid))
 	{
 		show_debug_message("[scr_initialize_translations] Language grid dimensions: " +
 			string(ds_grid_width(global.language_local_data)) + " columns x " +
 			string(ds_grid_height(global.language_local_data)) + " rows");
+	}
+	else
+	{
+		show_debug_message("[scr_initialize_translations] Warning: language_local_data is not a valid grid after initialization.");
 	}
 }
