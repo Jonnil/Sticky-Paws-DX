@@ -508,12 +508,16 @@ if (in_water != old_in_water)
 #endregion /* Water Splash Effect END */
 
 #region /* Speedup to Dashspeed */
-if (power_meter_running_sound && invincible_timer >= 2 && abs(hspeed) > 7)
+if (power_meter_running_sound
+&& invincible_timer >= 2
+&& abs(hspeed) > 7)
 {
 	speedunit += 2;
+	
 	if (speedunit > 100)
 	{
 		speedunit = 100;
+		
 		if (on_ground)
 		{
 			speed_dash = true;
@@ -1145,7 +1149,7 @@ if (in_water && !climb)
 		else
 
 		#region /* Stand Underwater */
-		if (abs(hspeed) <= 0.1)
+		if (abs(hspeed) <= 0.2)
 		&& (!key_left_hold)
 		&& (!key_right_hold)
 		{
@@ -1347,8 +1351,8 @@ else
 			if (abs(hspeed) > 15) && (sprite_run_three > noone){sprite_index = sprite_run_three; image_speed = speed / 10 + 0.1;}else
 			if (abs(hspeed) > 10) && (sprite_run_two > noone){sprite_index = sprite_run_two; image_speed = speed / 10 + 0.1;}else
 			if (abs(hspeed) > 5) && (sprite_run > noone){sprite_index = sprite_run; image_speed = speed / 10 + 0.1;}else
-			if (sprite_walk > noone) && (hspeed <> 0){sprite_index = sprite_walk; image_speed = speed / 10 + 0.1;}else
-			if (sprite_run > noone) && (hspeed <> 0){sprite_index = sprite_run; image_speed = speed / 10 + 0.1;}else
+			if (sprite_walk > noone) && (abs(hspeed) > 0.2){sprite_index = sprite_walk; image_speed = speed / 10 + 0.1;}else
+			if (sprite_run > noone) && (abs(hspeed) > 0.2){sprite_index = sprite_run; image_speed = speed / 10 + 0.1;}else
 			if (typeof(sprite_idle) != "undefined"){sprite_index = sprite_idle; image_speed = 0.5;}
 		}
 		#endregion /* Skidding Stop END */
@@ -1356,7 +1360,7 @@ else
 		else
 
 		#region /* Look Up */
-		if (abs(hspeed) <= 0.1)
+		if (abs(hspeed) <= 0.2)
 		&& (key_up)
 		&& (!key_down)
 		&& (intro_animation == "")
@@ -1395,7 +1399,7 @@ else
 		else
 
 		#region /* Run */
-		if (abs(hspeed) > 0)
+		if (abs(hspeed) > 0.2)
 		{
 			look_up_start_animation = true;
 			against_wall_animation = 0;
@@ -1446,9 +1450,10 @@ else
 				if (sprite_run > noone){sprite_index = sprite_run;} /* If no walk sprite, use run sprite */ else
 				if (typeof(sprite_idle) != "undefined"){sprite_index = sprite_idle;}
 			}
+			
 			if (place_meeting(x, y + 1, obj_ice_block))
 			{
-				image_speed = 0.5;
+				image_speed = speed / 10 + 1; /* Character should be looking to run faster when on ice */
 			}
 			else
 			{
@@ -1508,7 +1513,7 @@ else
 		else
 
 		#region /* Stand */
-		if (abs(hspeed) <= 0.1)
+		if (abs(hspeed) <= 0.2)
 		&& (!key_left_hold)
 		&& (!key_right_hold)
 		&& (!climb)

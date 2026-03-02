@@ -27,6 +27,7 @@ if (have_heart_balloon)
 	
 	draw_set_alpha(heart_alpha);
 	draw_sprite_ext(spr_heart, 0, xx_heart, yy_heart, 1, 1, point_direction(xx_heart, yy_heart, xx, yy) + 90, c_white, heart_alpha);
+	draw_set_alpha(1); /* Make sure to reset "draw set alpha" to 1 after using it */
 }
 #endregion /* Heart above head END */
 
