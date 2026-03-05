@@ -705,7 +705,7 @@ function scr_spawn_objects_when_starting_room()
 						sprite_index = spr_sign_run;
 						sprite_sign = spr_sign_run;
 						show_button_graphic = true;
-						sign_text = "Run before jumping\nto go higher and farther\n\nHold Jump\nto jump even higher";
+						sign_text = ""; /* Unused, created too much noise I think */
 						sign_textbox_y_offset = 112;
 					}
 					break;
