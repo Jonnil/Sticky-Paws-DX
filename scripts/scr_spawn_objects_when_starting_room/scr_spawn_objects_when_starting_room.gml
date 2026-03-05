@@ -699,7 +699,16 @@ function scr_spawn_objects_when_starting_room()
 				case LEVEL_OBJECT_ID.ID_SIGN_GROUND_POUND: with(instance_create_depth(x, y, 0, obj_sign_moveset)){sprite_index = spr_sign_ground_pound; sprite_sign = spr_sign_ground_pound;}break;
 				case LEVEL_OBJECT_ID.ID_SIGN_ROPE_SPIN: with(instance_create_depth(x, y, 0, obj_sign_moveset)){sprite_index = spr_sign_rope_spin; sprite_sign = spr_sign_rope_spin;}break;
 				case LEVEL_OBJECT_ID.ID_SIGN_WALL_JUMP: with(instance_create_depth(x, y, 0, obj_sign_moveset)){sprite_index = spr_sign_wall_jump; sprite_sign = spr_sign_wall_jump;}break;
-				case LEVEL_OBJECT_ID.ID_SIGN_RUN: with(instance_create_depth(x, y, 0, obj_sign_moveset)){sprite_index = spr_sign_run; sprite_sign = spr_sign_run; show_button_graphic = true;}break;
+				case LEVEL_OBJECT_ID.ID_SIGN_RUN:
+					with(instance_create_depth(x, y, 0, obj_sign_moveset))
+					{
+						sprite_index = spr_sign_run;
+						sprite_sign = spr_sign_run;
+						show_button_graphic = true;
+						sign_text = "Run before jumping\nto go higher and farther\n\nHold Jump\nto jump even higher";
+						sign_textbox_y_offset = 112;
+					}
+					break;
 				case LEVEL_OBJECT_ID.ID_BOSS:
 					obj = instance_create_depth(x, y, 0, obj_boss);
 					scr_spawn_objects_with_items_inside(obj);
