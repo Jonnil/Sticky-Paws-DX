@@ -20,6 +20,11 @@ function scr_draw_menu_search_id(what_kind_of_id = "level")
 		var download_temp_path = temp_directory;
 		var downloaded_folder_path = normalize_path_seps(download_temp_path + "downloaded_" + string(what_kind_of_id));
 		var downloaded_zip_file_path = normalize_path_seps(downloaded_folder_path + "/" + string_upper(search_id) + ".zip");
+		if (variable_global_exists("expected_download_zip_path")
+		&& global.expected_download_zip_path != "")
+		{
+			downloaded_zip_file_path = normalize_path_seps(global.expected_download_zip_path);
+		}
 		
 		var please_enter_what = l10n_text("Please enter a level ID");
 		
@@ -105,6 +110,9 @@ function scr_draw_menu_search_id(what_kind_of_id = "level")
 			{
 				show_level_editor_corner_menu = true;
 				search_for_id_still = false;
+				global.download_request_timeout_end = undefined;
+				global.download_failure_reason = "";
+				global.expected_download_zip_path = "";
 				search_id = "";
 				select_custom_level_menu_open = false;
 				menu_delay = 3;
@@ -142,6 +150,7 @@ function scr_draw_menu_search_id(what_kind_of_id = "level")
 						if (global.save_data_size_is_sufficient)
 						{
 							search_for_id_still = true; /* Turn this on when you want to search for ID */
+							global.download_failure_reason = "";
 							
 							/* Create DS Map to hold the HTTP Header info */
 							var id_search_request_headers = ds_map_create();
@@ -153,6 +162,7 @@ function scr_draw_menu_search_id(what_kind_of_id = "level")
 							
 							/* Send the HTTP GET request to the /download endpoint */
 							global.search_id = string_upper(search_id);
+							global.expected_download_zip_path = normalize_path_seps(downloaded_folder_path + "/" + global.search_id + ".zip");
 							global.http_request_id = http_request(
 								"https://" + global.base_url + "/download/" + string(content_type_add_s) + "/" + global.search_id,
 								"GET",
@@ -181,6 +191,17 @@ function scr_draw_menu_search_id(what_kind_of_id = "level")
 								global.online_primary_request_active = global.http_request_id;
 								global.language_update_blocked = true;
 								global.language_update_pending = true;
+								global.download_request_timeout_end = current_time + 15000;
+							}
+							else
+							{
+								search_for_id_still = false;
+								global.download_request_timeout_end = undefined;
+								global.download_failure_reason = "http_request_failed";
+								global.expected_download_zip_path = "";
+								in_online_download_list_menu = false; show_debug_message("[scr_draw_menu_search_id] 'In online download list menu' is set to false");
+								menu = "searched_file_downloaded_failed";
+								menu_delay = 3;
 							}
 							ds_map_destroy(id_search_request_headers);
 							
@@ -190,7 +211,20 @@ function scr_draw_menu_search_id(what_kind_of_id = "level")
 							global.level_description = ""; /* Reset the description to be empty */
 							//online_content_data = undefined; show_debug_message("[scr_draw_menu_search_id] 'online content data' is set to undefined"); /* Reset "online content data" so you can reload online level list next time you go to this menu */
 							//info_data = undefined; /* Don't forget to reset info data too */
-							menu = "searching_for_id";
+							if (menu != "searched_file_downloaded_failed")
+							{
+								menu = "searching_for_id";
+								menu_delay = 3;
+							}
+						}
+						else
+						{
+							search_for_id_still = false;
+							global.download_request_timeout_end = undefined;
+							global.download_failure_reason = "save_data_insufficient";
+							global.expected_download_zip_path = "";
+							in_online_download_list_menu = false; show_debug_message("[scr_draw_menu_search_id] 'In online download list menu' is set to false");
+							menu = "searched_file_downloaded_failed";
 							menu_delay = 3;
 						}
 					}
@@ -206,6 +240,9 @@ function scr_draw_menu_search_id(what_kind_of_id = "level")
 			|| !scr_check_network_connection(network_connect_active))
 			&& (menu_delay == 0 && menu_joystick_delay == 0)
 			{
+				global.download_request_timeout_end = undefined;
+				global.download_failure_reason = "";
+				global.expected_download_zip_path = "";
 				in_online_download_list_menu = false; show_debug_message("[scr_draw_menu_search_id] 'In online download list menu' is set to false");
 				
 				if (content_type == "character")
@@ -233,9 +270,22 @@ function scr_draw_menu_search_id(what_kind_of_id = "level")
 		if (menu == "searching_for_id")
 		&& (menu_delay == 0 && menu_joystick_delay == 0)
 		{
+			/* Dedicated timeout for ID download flow so this state never loops forever */
+			if (global.download_request_timeout_end != undefined)
+			&& (current_time >= global.download_request_timeout_end)
+			{
+				search_for_id_still = false;
+				global.download_request_timeout_end = undefined;
+				global.download_failure_reason = "timeout";
+				global.expected_download_zip_path = "";
+				in_online_download_list_menu = false; show_debug_message("[scr_draw_menu_search_id] 'In online download list menu' is set to false");
+				menu = "searched_file_downloaded_failed";
+				menu_delay = 3;
+			}
 			
 			#region /* Download file */
-			if (file_exists(normalize_path_seps(downloaded_zip_file_path))) /* Find if a new "zip" file has been downloaded */
+			if (menu == "searching_for_id")
+			&& file_exists(normalize_path_seps(downloaded_zip_file_path)) /* Find if a new "zip" file has been downloaded */
 			{
 				scr_switch_expand_save_data(); /* Expand the save data before unzipping file */
 				
@@ -441,10 +491,29 @@ function scr_draw_menu_search_id(what_kind_of_id = "level")
 					}
 					#endregion /* Get downloaded character info END */
 					
+					search_for_id_still = false;
+					global.download_request_timeout_end = undefined;
+					global.download_failure_reason = "";
+					global.expected_download_zip_path = "";
+					menu_delay = 3;
+				}
+				else
+				{
+					search_for_id_still = false;
+					global.download_request_timeout_end = undefined;
+					global.download_failure_reason = "save_data_insufficient";
+					global.expected_download_zip_path = "";
+					menu = "searched_file_downloaded_failed";
 					menu_delay = 3;
 				}
 			}
 			#endregion /* Download file END */
+
+			/* Menu changed during processing (success/failure/timeout), stop drawing this state immediately. */
+			if (menu != "searching_for_id")
+			{
+				exit;
+			}
 			
 			#region /* Draw text explaining to the player that the file is downloading, and a loading icon that is spinning */
 			
@@ -484,6 +553,10 @@ function scr_draw_menu_search_id(what_kind_of_id = "level")
 			{
 				if (scr_online_token_is_valid())
 				{
+					search_for_id_still = false;
+					global.download_request_timeout_end = undefined;
+					global.download_failure_reason = "";
+					global.expected_download_zip_path = "";
 					in_online_download_list_menu = true; show_debug_message("[scr_draw_menu_search_id] 'In online download list menu' is set to true\n");
 					menu_delay = 3;
 					menu = "online_download_list_load";
@@ -494,6 +567,10 @@ function scr_draw_menu_search_id(what_kind_of_id = "level")
 			if (!global.online_token_validated
 			|| !scr_check_network_connection(network_connect_active))
 			{
+				search_for_id_still = false;
+				global.download_request_timeout_end = undefined;
+				global.download_failure_reason = "network";
+				global.expected_download_zip_path = "";
 				in_online_download_list_menu = false; show_debug_message("[scr_draw_menu_search_id] 'In online download list menu' is set to false");
 				
 				if (content_type == "character")
@@ -1178,6 +1255,9 @@ function scr_draw_menu_search_id(what_kind_of_id = "level")
 					if (scr_online_token_is_valid() == true)
 					{
 						global.server_timeout_end = undefined; /* Reset timeout flag */
+						global.download_request_timeout_end = undefined;
+						global.download_failure_reason = "";
+						global.expected_download_zip_path = "";
 						global.use_temp_or_working = game_save_id;
 						select_custom_level_menu_open = false;
 						/* Don't set the "select level index" or "level name" here, because we want it saved still */
@@ -1594,6 +1674,13 @@ function scr_draw_menu_search_id(what_kind_of_id = "level")
 			draw_set_halign(fa_center);
 			draw_set_valign(fa_middle);
 			var failed_to_download_what = l10n_text("Failed to download character");
+			var failure_reason_text = "";
+			var failure_reason = "";
+
+			if (variable_global_exists("download_failure_reason"))
+			{
+				failure_reason = string(global.download_failure_reason);
+			}
 			
 			if (what_kind_of_id == "level")
 			{
@@ -1602,6 +1689,51 @@ function scr_draw_menu_search_id(what_kind_of_id = "level")
 			
 			scr_draw_text_outlined(get_window_width * 0.5, get_window_height * 0.5 - 32, string(failed_to_download_what), global.default_text_size * 2, c_black, c_white, 1);
 			
+			if (failure_reason == "timeout")
+			{
+				failure_reason_text = l10n_text("Connection timed out while downloading");
+			}
+			else
+			if (failure_reason == "network")
+			{
+				failure_reason_text = l10n_text("Network connection was lost");
+			}
+			else
+			if (failure_reason == "http_non_200")
+			{
+				failure_reason_text = l10n_text("Server returned an error");
+			}
+			else
+			if (failure_reason == "http_request_failed")
+			{
+				failure_reason_text = l10n_text("Failed to start HTTP request");
+			}
+			else
+			if (failure_reason == "invalid_json")
+			{
+				failure_reason_text = l10n_text("Server response could not be parsed");
+			}
+			else
+			if (failure_reason == "missing_payload")
+			{
+				failure_reason_text = l10n_text("Downloaded payload was missing");
+			}
+			else
+			if (failure_reason == "save_failed")
+			{
+				failure_reason_text = l10n_text("Downloaded file could not be saved");
+			}
+			else
+			if (failure_reason == "save_data_insufficient")
+			{
+				failure_reason_text = l10n_text("Not enough save data space");
+			}
+
+			if (failure_reason_text != "")
+			{
+				scr_draw_text_outlined(get_window_width * 0.5, get_window_height * 0.5 + 22, failure_reason_text, global.default_text_size, c_black, c_white, 1);
+			}
+			else
 			if (string_length(search_id) > id_max_length)
 			{
 				scr_draw_text_outlined(get_window_width * 0.5, get_window_height * 0.5 + 22, l10n_text("Retrieved ID with more than max character length"), global.default_text_size, c_black, c_white, 1)
@@ -1626,6 +1758,10 @@ function scr_draw_menu_search_id(what_kind_of_id = "level")
 				if (scr_online_token_is_valid() == true)
 				{
 					menu_delay = 3;
+					search_for_id_still = false;
+					global.download_request_timeout_end = undefined;
+					global.download_failure_reason = "";
+					global.expected_download_zip_path = "";
 					
 					if (delete_file_after_download)
 					{
