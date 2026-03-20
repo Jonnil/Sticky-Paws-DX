@@ -606,7 +606,7 @@ function scr_select_official_level_menu()
 		{
 			if (global.clicking_ok_input_screen)
 			{
-				scr_switch_expand_save_data(); /* Expand the save data before making new template level */
+				global.save_data_size_is_sufficient = true; /* Avoid Switch save-data API calls during Create menu transitions. */
 				
 				if (global.save_data_size_is_sufficient)
 				{

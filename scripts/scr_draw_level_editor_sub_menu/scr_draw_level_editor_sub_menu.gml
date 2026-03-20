@@ -336,7 +336,7 @@ function scr_draw_level_editor_sub_menu(xx = 0)
 			&& (global.controls_used_for_navigation == "mouse")
 			|| (key_a_pressed)
 			{
-				scr_switch_expand_save_data(); /* Expand the save data before editing level name */
+				global.save_data_size_is_sufficient = true; /* Avoid Switch save-data API calls during Create menu transitions. */
 				if (global.save_data_size_is_sufficient)
 				{
 					creating_daily_build = false; /* Disable Daily Build */
@@ -602,7 +602,7 @@ function scr_draw_level_editor_sub_menu(xx = 0)
 		{
 			if (menu == "level_editor_create_from_template")
 			{
-				scr_switch_expand_save_data(); /* Expand the save data before editing level name */
+				global.save_data_size_is_sufficient = true; /* Avoid Switch save-data API calls during Create menu transitions. */
 
 				if (global.save_data_size_is_sufficient)
 				{
@@ -639,7 +639,7 @@ function scr_draw_level_editor_sub_menu(xx = 0)
 		{
 			if (menu == "level_editor_create_daily_build")
 			{
-				scr_switch_expand_save_data(); /* Expand the save data before editing level name */
+				global.save_data_size_is_sufficient = true; /* Avoid Switch save-data API calls during Create menu transitions. */
 				if (global.save_data_size_is_sufficient)
 				{
 					creating_daily_build = true; /* Enable Daily Build */

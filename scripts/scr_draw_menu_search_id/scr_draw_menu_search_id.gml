@@ -145,7 +145,14 @@ function scr_draw_menu_search_id(what_kind_of_id = "level")
 				{
 					if (scr_check_network_connection(network_connect_active)) /* Need to check if OS is connected to network before getting online */
 					{
-						scr_switch_expand_save_data(); /* Expand the save data before download */
+						if (what_kind_of_id == "level")
+						{
+							global.save_data_size_is_sufficient = true; /* Online levels are staged in temporary storage, so skip Switch save-data checks here. */
+						}
+						else
+						{
+							scr_switch_expand_save_data(); /* Character downloads still end up in user save data. */
+						}
 						
 						if (global.save_data_size_is_sufficient)
 						{
@@ -287,7 +294,14 @@ function scr_draw_menu_search_id(what_kind_of_id = "level")
 			if (menu == "searching_for_id")
 			&& file_exists(normalize_path_seps(downloaded_zip_file_path)) /* Find if a new "zip" file has been downloaded */
 			{
-				scr_switch_expand_save_data(); /* Expand the save data before unzipping file */
+				if (what_kind_of_id == "level")
+				{
+					global.save_data_size_is_sufficient = true; /* Online levels are unpacked into temporary storage, so skip Switch save-data checks here. */
+				}
+				else
+				{
+					scr_switch_expand_save_data(); /* Character downloads still end up in user save data. */
+				}
 				
 				if (global.save_data_size_is_sufficient)
 				{
