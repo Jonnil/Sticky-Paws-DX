@@ -37,7 +37,7 @@ default_yscale = 1;
 #region /* Save how many times you have died */
 if (global.character_select_in_this_menu == "main_game")
 {
-	var level_name = string(ds_list_find_value(global.all_loaded_main_levels, global.select_level_index));
+	var level_name = scr_get_active_official_level_id();
 
 	ini_open(game_save_id + "save_file/file" + string(global.file) + ".ini");
 	ini_write_real(level_name, "number_of_defeats", ini_read_real(level_name, "number_of_defeats", 0) + 1);

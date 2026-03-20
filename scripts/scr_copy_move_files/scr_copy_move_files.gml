@@ -35,6 +35,9 @@ function scr_copy_move_files(source, target, delete_original_folder = false)
 
 			scr_file_copy_dir(source + "/sound", target + "/sound");
 			show_debug_message("[scr_copy_move_files] Copied 'sound' folder\n");
+
+			scr_file_copy_dir(source + "/tilesets", target + "/tilesets");
+			show_debug_message("[scr_copy_move_files] Copied 'tilesets' folder\n");
 		}
 		else
 		if (content_type == "character")

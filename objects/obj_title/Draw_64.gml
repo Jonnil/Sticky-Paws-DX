@@ -263,6 +263,9 @@ if (!in_settings)
 				player_accept_selection[i] = - 1;
 			}
 			global.character_select_in_this_menu = "main_game";
+			global.level_folder_name = "";
+			global.create_level_from_template = false;
+			allowed_to_load_template_level = false;
 			in_settings = false;
 			global.doing_clear_check_level = false;
 			global.actually_play_edited_level = false;
@@ -305,6 +308,9 @@ if (!in_settings)
 				global.doing_clear_check_level = false;
 				global.actually_play_edited_level = false;
 				global.play_edited_level = false;
+				global.level_folder_name = "";
+				global.create_level_from_template = false;
+				allowed_to_load_template_level = false;
 				global.character_select_in_this_menu = "level_editor";
 				scr_load_character_initializing();
 				menu = "load_characters";

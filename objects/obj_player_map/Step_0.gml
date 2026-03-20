@@ -126,9 +126,10 @@ if (!can_move
 && !global.quit_level
 && !loading_assets)
 {
-	var folder_name = string(ds_list_find_value(global.all_loaded_custom_levels, global.select_level_index));
-	global.level_folder_name = folder_name;
-	global.level_name = scr_get_level_display_name(folder_name);
+	var official_level_id = scr_get_selected_official_level_id();
+	global.level_folder_name = ""; /* Official levels must never inherit a writable custom folder. */
+	global.level_name = official_level_id;
+	global.level_description = "";
 	room_persistent = false;
 	
 	if (global.music != noone)

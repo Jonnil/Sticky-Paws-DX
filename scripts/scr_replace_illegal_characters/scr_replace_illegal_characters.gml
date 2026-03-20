@@ -161,3 +161,328 @@ function scr_get_level_display_name(folder_name)
 
 	return string(folder_name);
 }
+
+/* Return the currently selected official level folder ID. */
+function scr_get_selected_official_level_id()
+{
+	if (!variable_global_exists("all_loaded_main_levels")
+	|| !ds_exists(global.all_loaded_main_levels, ds_type_list))
+	{
+		return "";
+	}
+
+	if (!variable_global_exists("select_level_index")
+	|| !is_real(global.select_level_index))
+	{
+		return "";
+	}
+
+	var list_size = ds_list_size(global.all_loaded_main_levels);
+
+	if (list_size <= 0)
+	{
+		return "";
+	}
+
+	var level_index = clamp(global.select_level_index, 0, list_size - 1);
+	var official_level_id = ds_list_find_value(global.all_loaded_main_levels, level_index);
+
+	if (official_level_id == undefined)
+	{
+		return "";
+	}
+
+	return string_lower(string(official_level_id));
+}
+
+/* Prefer the level currently being played; fall back to the menu selection when needed. */
+function scr_get_active_official_level_id()
+{
+	if (variable_global_exists("level_name"))
+	{
+		var current_level_id = scr_normalize_official_level_id(string(global.level_name));
+
+		if (scr_is_reserved_official_level_folder_name(current_level_id))
+		{
+			return current_level_id;
+		}
+	}
+
+	return scr_get_selected_official_level_id();
+}
+
+/* Convert arbitrary official-level references like "levelA" into the canonical included-files folder ID. */
+function scr_normalize_official_level_id(level_name)
+{
+	var normalized_name = string_lower(scr_sanitize_filename(string(level_name)));
+
+	if (!variable_global_exists("all_loaded_main_levels")
+	|| !ds_exists(global.all_loaded_main_levels, ds_type_list))
+	{
+		return normalized_name;
+	}
+
+	for (var i = 0; i < ds_list_size(global.all_loaded_main_levels); i++)
+	{
+		var official_level_id = string(ds_list_find_value(global.all_loaded_main_levels, i));
+
+		if (string_lower(official_level_id) == normalized_name)
+		{
+			return official_level_id;
+		}
+	}
+
+	return normalized_name;
+}
+
+/* Official level IDs are reserved and must never be used as writable custom-level folders. */
+function scr_is_reserved_official_level_folder_name(folder_name)
+{
+	var normalized_name = string_lower(scr_sanitize_filename(string(folder_name)));
+
+	if (normalized_name == ""
+	|| !variable_global_exists("all_loaded_main_levels")
+	|| !ds_exists(global.all_loaded_main_levels, ds_type_list))
+	{
+		return false;
+	}
+
+	for (var i = 0; i < ds_list_size(global.all_loaded_main_levels); i++)
+	{
+		var official_level_id = string_lower(string(ds_list_find_value(global.all_loaded_main_levels, i)));
+
+		if (official_level_id == normalized_name)
+		{
+			return true;
+		}
+	}
+
+	return false;
+}
+
+/* When a player names a custom level after an official level, force the folder away from the reserved namespace. */
+function scr_make_custom_level_folder_name_safe(raw_name)
+{
+	var safe_name = scr_sanitize_filename(string(raw_name));
+
+	if (scr_is_reserved_official_level_folder_name(safe_name))
+	{
+		safe_name += "_custom";
+	}
+
+	return safe_name;
+}
+
+/* Resolve the included-files directory for an official level, accounting for mixed path casing in the project. */
+function scr_get_official_level_directory(level_name = "", category = "")
+{
+	var official_level_id = string(level_name);
+
+	if (official_level_id == "")
+	{
+		official_level_id = scr_get_active_official_level_id();
+	}
+
+	official_level_id = scr_normalize_official_level_id(official_level_id);
+
+	if (official_level_id == "")
+	{
+		return "";
+	}
+
+	var root_candidates = ["levels", "Levels"];
+	var category_candidates = [string(category)];
+
+	if (string(category) != "")
+	{
+		var capitalized_category = string_upper(string_copy(string(category), 1, 1)) + string_delete(string(category), 1, 1);
+
+		if (capitalized_category != string(category))
+		{
+			category_candidates[array_length(category_candidates)] = capitalized_category;
+		}
+	}
+
+	for (var root_index = 0; root_index < array_length(root_candidates); root_index++)
+	{
+		if (string(category) == "")
+		{
+			var level_path = root_candidates[root_index] + "/" + official_level_id;
+
+			if (directory_exists(level_path))
+			{
+				return level_path + "/";
+			}
+		}
+		else
+		{
+			for (var category_index = 0; category_index < array_length(category_candidates); category_index++)
+			{
+				var category_path = root_candidates[root_index] + "/" + official_level_id + "/" + category_candidates[category_index];
+
+				if (directory_exists(category_path))
+				{
+					return category_path + "/";
+				}
+			}
+		}
+	}
+
+	if (string(category) == "")
+	{
+		return "levels/" + official_level_id + "/";
+	}
+
+	return "levels/" + official_level_id + "/" + string(category) + "/";
+}
+
+/* Resolve a specific included file inside an official level directory, including legacy filename casing. */
+function scr_get_official_level_file_path(level_name = "", category = "", filename = "")
+{
+	var base_directory = scr_get_official_level_directory(level_name, category);
+
+	if (base_directory == ""
+	|| string(filename) == "")
+	{
+		return base_directory;
+	}
+
+	var filename_candidates = [string(filename)];
+
+	if (string(filename) == "automatic_thumbnail.png")
+	{
+		filename_candidates[array_length(filename_candidates)] = "Automatic_Thumbnail.png";
+	}
+	else
+	if (string(filename) == "thumbnail.png")
+	{
+		filename_candidates[array_length(filename_candidates)] = "Thumbnail.png";
+	}
+
+	for (var file_index = 0; file_index < array_length(filename_candidates); file_index++)
+	{
+		var full_path = base_directory + filename_candidates[file_index];
+
+		if (file_exists(full_path))
+		{
+			return full_path;
+		}
+	}
+
+	return base_directory + string(filename);
+}
+
+function scr_get_official_level_display_name(level_name = "")
+{
+	var official_level_id = string(level_name);
+
+	if (official_level_id == "")
+	{
+		official_level_id = scr_get_active_official_level_id();
+	}
+
+	official_level_id = scr_normalize_official_level_id(official_level_id);
+
+	if (official_level_id == "")
+	{
+		return "";
+	}
+
+	var level_information_path = scr_get_official_level_file_path(official_level_id, "data", "level_information.ini");
+
+	if (file_exists(level_information_path))
+	{
+		ini_open(level_information_path);
+		var display_name = ini_read_string("info", "level_name", official_level_id);
+		ini_close();
+		return display_name;
+	}
+
+	return official_level_id;
+}
+
+function scr_get_official_level_thumbnail_path(level_name = "")
+{
+	var thumbnail_path = scr_get_official_level_file_path(level_name, "", "thumbnail.png");
+
+	if (file_exists(thumbnail_path))
+	{
+		return thumbnail_path;
+	}
+
+	var automatic_thumbnail_path = scr_get_official_level_file_path(level_name, "", "automatic_thumbnail.png");
+
+	if (file_exists(automatic_thumbnail_path))
+	{
+		return automatic_thumbnail_path;
+	}
+
+	return "";
+}
+
+/* Main-game levels and template levels must read from Included Files, never from custom storage. */
+function scr_is_loading_official_level()
+{
+	return global.create_level_from_template
+	|| global.character_select_in_this_menu == "main_game";
+}
+
+function scr_get_active_level_information_path()
+{
+	if (scr_is_loading_official_level())
+	{
+		return scr_get_official_level_file_path("", "data", "level_information.ini");
+	}
+
+	return global.use_temp_or_working + "custom_levels/" + scr_get_custom_level_folder_name() + "/data/level_information.ini";
+}
+
+/* Rename any legacy custom level folders that shadow official included levels. */
+function scr_quarantine_reserved_custom_level_folders()
+{
+	var custom_levels_root = game_save_id + "custom_levels/";
+
+	if (!directory_exists(custom_levels_root))
+	{
+		return;
+	}
+
+	var reserved_folders = array_create(0);
+	var file_found = string(file_find_first(custom_levels_root + "*", fa_directory));
+
+	while (file_found != "")
+	{
+		var folder_name = string(file_found);
+
+		if (folder_name != "."
+		&& folder_name != ".."
+		&& scr_is_reserved_official_level_folder_name(folder_name))
+		{
+			reserved_folders[array_length(reserved_folders)] = folder_name;
+		}
+
+		file_found = string(file_find_next());
+	}
+
+	file_find_close();
+
+	for (var i = 0; i < array_length(reserved_folders); i++)
+	{
+		var old_folder_name = reserved_folders[i];
+		var new_folder_name = scr_get_unique_folder_name(custom_levels_root, old_folder_name + "_custom");
+
+		if (new_folder_name != old_folder_name)
+		{
+			show_debug_message("[scr_quarantine_reserved_custom_level_folders] Moving custom level folder '" + old_folder_name + "' to '" + new_folder_name + "' so it can no longer shadow an official level.");
+
+			content_type = "level";
+			scr_copy_move_files(custom_levels_root + old_folder_name, custom_levels_root + new_folder_name, true);
+
+			if (variable_global_exists("level_folder_name")
+			&& string(global.level_folder_name) == old_folder_name)
+			{
+				global.level_folder_name = new_folder_name;
+			}
+		}
+	}
+}

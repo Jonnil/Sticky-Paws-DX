@@ -116,14 +116,13 @@ if (room != rm_title)
 {
 
 	#region /* Update Player Lose Melody */
+	var official_lose_melody_path = scr_get_official_level_file_path("", "sound", "lose_melody.ogg");
+
 	/* OGG small letter File */
-	if (file_exists("levels/" + string(ds_list_find_value(global.all_loaded_main_levels, global.select_level_index)) + "/sound/lose_melody.ogg"))
-	&& (global.character_select_in_this_menu == "main_game")
-	|| (file_exists("levels/" + string(ds_list_find_value(global.all_loaded_main_levels, global.select_level_index)) + "/sound/lose_melody.ogg"))
-	&& (global.character_select_in_this_menu == "level_editor")
-	&& (global.create_level_from_template)
+	if (file_exists(official_lose_melody_path))
+	&& scr_is_loading_official_level()
 	{
-		player_lose_melody = audio_create_stream("levels/" + string(ds_list_find_value(global.all_loaded_main_levels, global.select_level_index)) + "/sound/lose_melody.ogg");
+		player_lose_melody = audio_create_stream(official_lose_melody_path);
 	}
 	else
 	/* OGG small letter File */

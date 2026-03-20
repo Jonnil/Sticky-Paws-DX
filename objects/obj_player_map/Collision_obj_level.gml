@@ -127,7 +127,7 @@ if (key_b_pressed)
 
 		if (global.character_select_in_this_menu == "main_game")
 		{
-			var level_name = string(ds_list_find_value(global.all_loaded_main_levels, global.select_level_index));
+			var level_name = scr_get_active_official_level_id();
 			ini_open(game_save_id + "save_file/file" + string(global.file) + ".ini");
 			ini_write_string(level_name, "clear_rate", "clear"); /* Make the level clear after checking number of levels cleared */
 			ini_close(); /* Don't commit the save data on Switch, this is only temporary! */

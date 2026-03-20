@@ -40,7 +40,7 @@ function scr_load_object_placement_json()
 
 	if (load_main_game_level)
 	{
-		file_path = "levels/" + string(ds_list_find_value(global.all_loaded_main_levels, global.select_level_index)) + "/data/object_placement_all.json";
+		file_path = scr_get_official_level_file_path("", "data", "object_placement_all.json");
 	}
 	else
 	if (string(folder_name) != "")

@@ -3,19 +3,22 @@ drag_object = false;
 drag_release_timer = 0;
 image_speed = 0.25;
 
-if (global.character_select_in_this_menu == "main_game")
-&& (file_exists("levels/" + string(ds_list_find_value(global.all_loaded_main_levels, global.select_level_index)) + "/data/level_information.ini"))
-|| (global.character_select_in_this_menu == "level_editor")
-&& (file_exists(global.use_temp_or_working + "custom_levels/" + scr_get_custom_level_folder_name() + "/data/level_information.ini"))
+var official_level_information_path = scr_get_official_level_file_path("", "data", "level_information.ini");
+var custom_level_information_path = global.use_temp_or_working + "custom_levels/" + scr_get_custom_level_folder_name() + "/data/level_information.ini";
+
+if (scr_is_loading_official_level())
+&& file_exists(official_level_information_path)
+|| (!scr_is_loading_official_level())
+&& file_exists(custom_level_information_path)
 {
-	if (global.character_select_in_this_menu == "main_game")
+	if (scr_is_loading_official_level())
 	{
-		ini_open("levels/" + string(ds_list_find_value(global.all_loaded_main_levels, global.select_level_index)) + "/data/level_information.ini");
+		ini_open(official_level_information_path);
 	}
 	else
-	if (global.character_select_in_this_menu == "level_editor")
+	if (!scr_is_loading_official_level())
 	{
-		ini_open(global.use_temp_or_working + "custom_levels/" + scr_get_custom_level_folder_name() + "/data/level_information.ini");
+		ini_open(custom_level_information_path);
 	}
 
 	if (ini_key_exists("info", "level_player2_start_x"))

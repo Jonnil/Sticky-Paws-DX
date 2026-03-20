@@ -1,20 +1,35 @@
 function scr_update_all_music()
 {
-	/* For actual folder name, replace illegal characters with underscore only for naming folder */
-	var folder_name = scr_sanitize_filename(string(global.level_name));
+	var folder_name = scr_get_custom_level_folder_name();
+	var level_information_path = scr_get_active_level_information_path();
 	
 	#region /* Load Default Music Data */
-	if (global.character_select_in_this_menu == "level_editor")
+	if (file_exists(level_information_path))
 	{
-		ini_open(global.use_temp_or_working + "custom_levels/" + string(folder_name) + "/data/level_information.ini");
+		ini_open(level_information_path);
 		global.default_music_overworld = ini_read_string("info", "default_music_overworld", "level1");
 		global.default_music_underwater = ini_read_string("info", "default_music_underwater", "level1");
 		global.default_ambience_overworld = ini_read_string("info", "default_ambience_overworld", "level1");
 		global.default_ambience_underwater = ini_read_string("info", "default_ambience_underwater", "level1");
 		global.default_clear_melody = ini_read_string("info", "default_clear_melody", "level1");
 		ini_close(); /* Don't commit the save data on Switch, this is only temporary! */
-		show_debug_message("Default music and ambience loaded from level_information.ini");
 	}
+	else
+	{
+		global.default_music_overworld = "level1";
+		global.default_music_underwater = "level1";
+		global.default_ambience_overworld = "level1";
+		global.default_ambience_underwater = "level1";
+		global.default_clear_melody = "level1";
+	}
+
+	global.default_music_overworld = scr_normalize_official_level_id(global.default_music_overworld);
+	global.default_music_underwater = scr_normalize_official_level_id(global.default_music_underwater);
+	global.default_ambience_overworld = scr_normalize_official_level_id(global.default_ambience_overworld);
+	global.default_ambience_underwater = scr_normalize_official_level_id(global.default_ambience_underwater);
+	global.default_clear_melody = scr_normalize_official_level_id(global.default_clear_melody);
+
+	show_debug_message("Default music and ambience loaded from level_information.ini");
 	#endregion /* Load Default Music Data END */
 
 	#region /* Destroy Existing Audio Streams */
@@ -34,25 +49,33 @@ function scr_update_all_music()
 
 	function load_audio(filename, default_filename, audio_asset_path)
 	{
+		if (scr_is_loading_official_level())
+		{
+			var official_audio_path = scr_get_official_level_file_path("", "sound", filename);
+
+			if (file_exists(official_audio_path))
+			{
+				return audio_create_stream(official_audio_path);
+			}
+		}
+		else
 		if (file_exists(audio_asset_path + filename))
 		{
 			return audio_create_stream(audio_asset_path + filename);
 		}
-		else
-		if (global.character_select_in_this_menu == "level_editor"
-		&& default_filename != noone
-		&& file_exists("levels/" + string(default_filename) + "/sound/" + filename))
+
+		if (default_filename != noone
+		&& default_filename != ""
+		&& file_exists(scr_get_official_level_file_path(default_filename, "sound", filename)))
 		{
-			return audio_create_stream("levels/" + string(default_filename) + "/sound/" + filename);
+			return audio_create_stream(scr_get_official_level_file_path(default_filename, "sound", filename));
 		}
 		
 		return noone;
 	}
 
 	#region /* Load Music Streams */
-	var base_path = global.character_select_in_this_menu == "main_game" ?
-					"levels/" + string(ds_list_find_value(global.all_loaded_main_levels, global.select_level_index)) + "/sound/" :
-					global.use_temp_or_working + "custom_levels/" + string(folder_name) + "/sound/";
+	var base_path = global.use_temp_or_working + "custom_levels/" + string(folder_name) + "/sound/";
 
 	global.music = load_audio("music.ogg", global.default_music_overworld, base_path);
 	global.music_underwater = load_audio("music_underwater.ogg", global.default_music_underwater, base_path);

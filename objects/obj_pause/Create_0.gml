@@ -248,17 +248,20 @@ if (room == rm_leveleditor)
 set_controller_sprites_to_use();
 
 #region /* Load level information that can be displayed in pause menu */
-var level_path = global.use_temp_or_working + "custom_levels/" + scr_get_custom_level_folder_name();
+var level_information_path = scr_get_active_level_information_path();
 
-if (global.character_select_in_this_menu == "main_game")
+display_level_name = string(global.level_name);
+display_level_author = "";
+display_level_id = "";
+
+if (file_exists(level_information_path))
 {
-	level_path = "levels/" + string(ds_list_find_value(global.all_loaded_main_levels, global.select_level_index));
+	ini_open(level_information_path);
+	display_level_name = ini_read_string("info", "level_name", display_level_name);
+	display_level_author = ini_read_string("info", "username", "");
+	display_level_id = ini_read_string("info", "level_id", "");
+	ini_close();
 }
 
-ini_open(level_path + "/data/level_information.ini");
-display_level_name = ini_read_string("info", "level_name", string(global.level_name));
-display_level_author = ini_read_string("info", "username", "");
-display_level_id = ini_read_string("info", "level_id", "");
-ini_close();
-scr_load_level_tags(level_path);
+scr_load_level_tags(level_information_path);
 #endregion /* Load level information that can be displayed in pause menu END */

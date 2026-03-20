@@ -5,7 +5,7 @@
 function scr_get_unique_folder_name(root_path, raw_name)
 {
 	/* Sanitize base */
-	var base = scr_sanitize_filename(raw_name);
+	var base = scr_make_custom_level_folder_name_safe(raw_name);
 
 	/* First candidate is just the base */
 	var candidate = base;
@@ -14,7 +14,8 @@ function scr_get_unique_folder_name(root_path, raw_name)
 	/* If it already exists, append "_1", "_2", ... */
 	var suffix = 1;
 
-	while (directory_exists(full_path))
+	while (directory_exists(full_path)
+	|| scr_is_reserved_official_level_folder_name(candidate))
 	{
 		candidate = base + "_" + string(suffix);
 		full_path = root_path + candidate;

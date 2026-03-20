@@ -15,45 +15,72 @@ function scr_update_all_backgrounds(delete_existing_bg = true)
 	}
 
 	/* Set the file path based on the current game mode */
+	var level_information_path = "";
+
 	if (global.character_select_in_this_menu == "main_game")
 	{
-		global.path_to_use = "levels/" + string(ds_list_find_value(global.all_loaded_main_levels, global.select_level_index)) + "/background/";
-		ini_open("levels/" + string(ds_list_find_value(global.all_loaded_main_levels, global.select_level_index)) + "/data/level_information.ini");
+		global.path_to_use = scr_get_official_level_directory("", "background");
+		level_information_path = scr_get_official_level_file_path("", "data", "level_information.ini");
 	}
 	else
 	{
 		global.path_to_use = global.use_temp_or_working + "custom_levels/" + scr_get_custom_level_folder_name() + "/background/";
-		ini_open(global.use_temp_or_working + "custom_levels/" + scr_get_custom_level_folder_name() + "/data/level_information.ini");
+		level_information_path = global.use_temp_or_working + "custom_levels/" + scr_get_custom_level_folder_name() + "/data/level_information.ini";
 	}
-
-	/* Read default backgrounds/foregrounds from ini */
-	global.default_background1 = ini_read_string("info", "default_background1", "level1");
-	global.default_background2 = ini_read_string("info", "default_background2", "level1");
-	global.default_background3 = ini_read_string("info", "default_background3", "level1");
-	global.default_background4 = ini_read_string("info", "default_background4", "level1");
-	global.default_foreground1 = ini_read_string("info", "default_foreground1", "");
-	global.default_foreground1_5 = ini_read_string("info", "default_foreground1_5", "");
-	global.default_foreground2 = ini_read_string("info", "default_foreground2", "");
-	global.default_foreground_secret = ini_read_string("info", "default_foreground_secret", "");
 
 	/* Check if photographic images can be loaded */
 	var use_photographic_images = [false, false, false, false, false, false, false, false];
-	
-	if (!global.can_load_photographic_images)
+
+	if (file_exists(level_information_path))
 	{
-		use_photographic_images = [
-			ini_read_real("Custom Backgrounds", "background1_uses_photographic_image", false),
-			ini_read_real("Custom Backgrounds", "background2_uses_photographic_image", false),
-			ini_read_real("Custom Backgrounds", "background3_uses_photographic_image", false),
-			ini_read_real("Custom Backgrounds", "background4_uses_photographic_image", false),
-			ini_read_real("Custom Backgrounds", "foreground1_uses_photographic_image", false),
-			ini_read_real("Custom Backgrounds", "foreground1_5_uses_photographic_image", false),
-			ini_read_real("Custom Backgrounds", "foreground2_uses_photographic_image", false),
-			ini_read_real("Custom Backgrounds", "foreground_secret_uses_photographic_image", false)
-		];
+		ini_open(level_information_path);
+
+		/* Read default backgrounds/foregrounds from ini */
+		global.default_background1 = ini_read_string("info", "default_background1", "level1");
+		global.default_background2 = ini_read_string("info", "default_background2", "level1");
+		global.default_background3 = ini_read_string("info", "default_background3", "level1");
+		global.default_background4 = ini_read_string("info", "default_background4", "level1");
+		global.default_foreground1 = ini_read_string("info", "default_foreground1", "");
+		global.default_foreground1_5 = ini_read_string("info", "default_foreground1_5", "");
+		global.default_foreground2 = ini_read_string("info", "default_foreground2", "");
+		global.default_foreground_secret = ini_read_string("info", "default_foreground_secret", "");
+
+		if (!global.can_load_photographic_images)
+		{
+			use_photographic_images = [
+				ini_read_real("Custom Backgrounds", "background1_uses_photographic_image", false),
+				ini_read_real("Custom Backgrounds", "background2_uses_photographic_image", false),
+				ini_read_real("Custom Backgrounds", "background3_uses_photographic_image", false),
+				ini_read_real("Custom Backgrounds", "background4_uses_photographic_image", false),
+				ini_read_real("Custom Backgrounds", "foreground1_uses_photographic_image", false),
+				ini_read_real("Custom Backgrounds", "foreground1_5_uses_photographic_image", false),
+				ini_read_real("Custom Backgrounds", "foreground2_uses_photographic_image", false),
+				ini_read_real("Custom Backgrounds", "foreground_secret_uses_photographic_image", false)
+			];
+		}
+
+		ini_close();
 	}
-	
-	ini_close();
+	else
+	{
+		global.default_background1 = "level1";
+		global.default_background2 = "level1";
+		global.default_background3 = "level1";
+		global.default_background4 = "level1";
+		global.default_foreground1 = "";
+		global.default_foreground1_5 = "";
+		global.default_foreground2 = "";
+		global.default_foreground_secret = "";
+	}
+
+	global.default_background1 = scr_normalize_official_level_id(global.default_background1);
+	global.default_background2 = scr_normalize_official_level_id(global.default_background2);
+	global.default_background3 = scr_normalize_official_level_id(global.default_background3);
+	global.default_background4 = scr_normalize_official_level_id(global.default_background4);
+	global.default_foreground1 = scr_normalize_official_level_id(global.default_foreground1);
+	global.default_foreground1_5 = scr_normalize_official_level_id(global.default_foreground1_5);
+	global.default_foreground2 = scr_normalize_official_level_id(global.default_foreground2);
+	global.default_foreground_secret = scr_normalize_official_level_id(global.default_foreground_secret);
 
 	/* Loading sprites using the optimized method */
 	global.custom_background1 = load_sprite_with_fallback("background1", global.default_background1, 0, use_photographic_images[0]);
@@ -86,6 +113,11 @@ function load_sprite_with_fallback(filename_prefix, default_filename, index, use
 		{
 			var file_path = string(global.path_to_use) + filename_prefix + "." + file_formats[i];
 
+			if (global.character_select_in_this_menu == "main_game")
+			{
+				file_path = scr_get_official_level_file_path("", "background", filename_prefix + "." + file_formats[i]);
+			}
+
 			if (file_exists(file_path))
 			{
 				show_debug_message(string(filename_prefix) + " updated from custom");
@@ -95,12 +127,14 @@ function load_sprite_with_fallback(filename_prefix, default_filename, index, use
 		}
 
 		/* If no custom sprite, use default */
+		var default_sprite_path = scr_get_official_level_file_path(default_filename, "background", filename_prefix + ".png");
+
 		if (!loaded
 		&& default_filename != ""
-		&& file_exists("levels/" + string(default_filename) + "/background/" + filename_prefix + ".png"))
+		&& file_exists(default_sprite_path))
 		{
 			show_debug_message(string(filename_prefix) + " updated to default");
-			return sprite_add("levels/" + string(default_filename) + "/background/" + filename_prefix + ".png", 0, false, false, 0, 0);
+			return sprite_add(default_sprite_path, 0, false, false, 0, 0);
 		}
 
 		/* If still not loaded, assign 'noone' */
@@ -111,14 +145,16 @@ function load_sprite_with_fallback(filename_prefix, default_filename, index, use
 		}
 	}
 	else
-	if (default_filename != ""
-	&& file_exists("levels/" + string(default_filename) + "/background/" + filename_prefix + ".png"))
 	{
-		show_debug_message(string(filename_prefix) + " updated to default");
-		return sprite_add("levels/" + string(default_filename) + "/background/" + filename_prefix + ".png", 0, false, false, 0, 0);
-	}
-	else
-	{
+		var default_sprite_path = scr_get_official_level_file_path(default_filename, "background", filename_prefix + ".png");
+
+		if (default_filename != ""
+		&& file_exists(default_sprite_path))
+		{
+			show_debug_message(string(filename_prefix) + " updated to default");
+			return sprite_add(default_sprite_path, 0, false, false, 0, 0);
+		}
+
 		show_debug_message(string(filename_prefix) + " set to noone");
 		return noone;
 	}

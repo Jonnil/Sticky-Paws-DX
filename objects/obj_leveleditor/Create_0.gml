@@ -1,7 +1,25 @@
 #region /* Essential code that needs to be initialized */
-ini_open(game_save_id + "custom_levels/" + scr_get_custom_level_folder_name() + "/data/level_information.ini");
+var level_information_path = "";
 
-var level_name_ini = ini_read_string("info", "level_name", "");
+if (global.character_select_in_this_menu == "main_game")
+{
+	level_information_path = scr_get_official_level_file_path("", "data", "level_information.ini");
+}
+else
+{
+	level_information_path = game_save_id + "custom_levels/" + scr_get_custom_level_folder_name() + "/data/level_information.ini";
+}
+
+var level_name_ini = string(global.level_name);
+global.level_description = "";
+
+if (file_exists(level_information_path))
+{
+	ini_open(level_information_path);
+	level_name_ini = ini_read_string("info", "level_name", level_name_ini);
+	global.level_description = ini_read_string("info", "level_description", "");
+	ini_close();
+}
 
 #region /* Name displayed masked if includes profanity */
 if (switch_check_profanity(level_name_ini))
@@ -13,9 +31,6 @@ else
 	masked_level_name = level_name_ini;
 }
 #endregion /* Name displayed masked if includes profanity END */
-
-global.level_description = ini_read_string("info", "level_description", "");
-ini_close();
 
 scr_gamepad_vibration(0, 0, 0); /* Reset gamepad vibration when exiting playtest */
 scr_gamepad_vibration(1, 0, 0);

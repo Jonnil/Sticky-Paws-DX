@@ -65,7 +65,7 @@ if (instance_exists(obj_player))
 						&& (global.character_select_in_this_menu == "main_game")
 						&& (global.actually_play_edited_level)
 						{
-							var level_name = string(ds_list_find_value(global.all_loaded_main_levels, global.select_level_index));
+							var level_name = scr_get_active_official_level_id();
 
 							ini_open(game_save_id + "save_file/file" + string(global.file) + ".ini");
 							ini_write_real(level_name, "checkpoint_x", x);

@@ -1,5 +1,7 @@
 function scr_load_custom_level_initializing()
 {
+	scr_quarantine_reserved_custom_level_folders();
+
 	ds_list_clear(global.all_loaded_custom_levels);
 	ds_list_add(global.all_loaded_custom_levels, "Create_Level");
 	scr_clear_thumbnail_sprites();

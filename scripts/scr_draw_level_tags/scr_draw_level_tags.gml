@@ -85,23 +85,49 @@ function scr_draw_level_tags(draw_tags_x = display_get_gui_width() * 0.5, draw_t
 function scr_load_level_tags(level_path) {
 
 	#region /* loads tags from level_information.ini */
-	ini_open(level_path + "/data/level_information.ini");
-	tag_art = ini_read_real("tags", "tag_art", false);
-	tag_boss_battle = ini_read_real("tags", "tag_boss_battle", false);
-	tag_dont_move = ini_read_real("tags", "tag_dont_move", false);
-	tag_kaizo = ini_read_real("tags", "tag_kaizo", false);
-	tag_multiplayer = ini_read_real("tags", "tag_multiplayer", false);
-	tag_music = ini_read_real("tags", "tag_music", false);
-	tag_puzzle_solving = ini_read_real("tags", "tag_puzzle_solving", false);
-	tag_short_and_sweet = ini_read_real("tags", "tag_short_and_sweet", false);
-	tag_singleplayer = ini_read_real("tags", "tag_singleplayer", false);
-	tag_speedrun = ini_read_real("tags", "tag_speedrun", false);
-	tag_standard = ini_read_real("tags", "tag_standard", false);
-	tag_technical = ini_read_real("tags", "tag_technical", false);
-	tag_themed = ini_read_real("tags", "tag_themed", false);
-	tag_glitch_showcase = ini_read_real("tags", "glitch_showcase", false);
-	intended_level_difficulty = ini_read_real("info", "intended_level_difficulty", 1);
-	ini_close();
+	var level_information_path = string(level_path);
+
+	if (!file_exists(level_information_path))
+	{
+		level_information_path = string(level_path) + "/data/level_information.ini";
+	}
+
+	tag_art = false;
+	tag_boss_battle = false;
+	tag_dont_move = false;
+	tag_kaizo = false;
+	tag_multiplayer = false;
+	tag_music = false;
+	tag_puzzle_solving = false;
+	tag_short_and_sweet = false;
+	tag_singleplayer = false;
+	tag_speedrun = false;
+	tag_standard = false;
+	tag_technical = false;
+	tag_themed = false;
+	tag_glitch_showcase = false;
+	intended_level_difficulty = 1;
+
+	if (file_exists(level_information_path))
+	{
+		ini_open(level_information_path);
+		tag_art = ini_read_real("tags", "tag_art", false);
+		tag_boss_battle = ini_read_real("tags", "tag_boss_battle", false);
+		tag_dont_move = ini_read_real("tags", "tag_dont_move", false);
+		tag_kaizo = ini_read_real("tags", "tag_kaizo", false);
+		tag_multiplayer = ini_read_real("tags", "tag_multiplayer", false);
+		tag_music = ini_read_real("tags", "tag_music", false);
+		tag_puzzle_solving = ini_read_real("tags", "tag_puzzle_solving", false);
+		tag_short_and_sweet = ini_read_real("tags", "tag_short_and_sweet", false);
+		tag_singleplayer = ini_read_real("tags", "tag_singleplayer", false);
+		tag_speedrun = ini_read_real("tags", "tag_speedrun", false);
+		tag_standard = ini_read_real("tags", "tag_standard", false);
+		tag_technical = ini_read_real("tags", "tag_technical", false);
+		tag_themed = ini_read_real("tags", "tag_themed", false);
+		tag_glitch_showcase = ini_read_real("tags", "glitch_showcase", false);
+		intended_level_difficulty = ini_read_real("info", "intended_level_difficulty", 1);
+		ini_close();
+	}
 	#endregion /* loads tags from level_information.ini END */
 
 }

@@ -7,7 +7,7 @@ function scr_load_level_checkpoint()
 		if (global.character_select_in_this_menu == "main_game")
 		{
 			ini_open(game_save_id + "save_file/file" + string(global.file) + ".ini");
-			global.level_name = string(ds_list_find_value(global.all_loaded_main_levels, global.select_level_index)); /* Set the global level name variable to take from loaded main level */
+			global.level_name = scr_get_active_official_level_id(); /* Set the global level name variable to take from the active official level */
 		}
 		else
 		{

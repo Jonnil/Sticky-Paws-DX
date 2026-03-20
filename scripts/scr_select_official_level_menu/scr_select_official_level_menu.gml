@@ -11,6 +11,11 @@ function scr_select_official_level_menu()
 		var mouse_get_y = device_mouse_y_to_gui(0);
 		var take_from_official_level = ds_list_find_value(global.all_loaded_main_levels, global.select_level_index);
 
+		if (take_from_official_level != undefined)
+		{
+			take_from_official_level = scr_normalize_official_level_id(string(take_from_official_level));
+		}
+
 		scroll = lerp(scroll, scroll_to, 0.15)
 
 		if (window_get_width() >= 1670 - 100)
@@ -170,8 +175,8 @@ function scr_select_official_level_menu()
 				
 				if (take_from_official_level != undefined) /* Don't set "global level name" to "ds list find value" if it's undefined */
 				{
-					global.level_name = string(take_from_official_level); /* Set the "level name" to the selected level, so when you exit the level editor, the cursor will remember to appear on the level you selected */
-					keyboard_string = string(take_from_official_level);
+					global.level_name = scr_get_official_level_display_name(take_from_official_level); /* Use the display name so new custom folders don't inherit raw official IDs. */
+					keyboard_string = string(global.level_name);
 				}
 				
 				menu = "level_editor_enter_name_ok";
@@ -640,39 +645,44 @@ function scr_select_official_level_menu()
 					#region /* Copy files from official levels to level editor */
 					/* Don't copy over background and sound files, as they will be set in "level information.ini" with the "default backgground" and "default sound" variables */
 					/* Where it will use the backgrounds and sounds from official levels but not copy over the actual files */
+					var official_tileset_path = scr_get_official_level_file_path(take_from_official_level, "tilesets", "tileset_default.png");
+					var official_level_information_path = scr_get_official_level_file_path(take_from_official_level, "data", "level_information.ini");
+					var official_object_placement_path = scr_get_official_level_file_path(take_from_official_level, "data", "object_placement_all.json");
+					var official_automatic_thumbnail_path = scr_get_official_level_file_path(take_from_official_level, "", "automatic_thumbnail.png");
+					var official_thumbnail_path = scr_get_official_level_file_path(take_from_official_level, "", "thumbnail.png");
 					
-					if (file_exists("levels/" + string(take_from_official_level) + "/tilesets/tileset_default.png"))
+					if (file_exists(official_tileset_path))
 					{
-						file_copy("levels/" + string(take_from_official_level) + "/tilesets/tileset_default.png",
+						file_copy(official_tileset_path,
 						game_save_id + "custom_levels/" + folder_name + "/tilesets/tileset_default.png");
 						show_debug_message("Copy tileset_default.png from official level");
 					}
 					
-					if (file_exists("levels/" + string(take_from_official_level) + "/data/level_information.ini"))
+					if (file_exists(official_level_information_path))
 					{
 						/* Copy over the "level information.ini" first, before writing to the file */
-						file_copy("levels/" + string(take_from_official_level) + "/data/level_information.ini",
+						file_copy(official_level_information_path,
 						game_save_id + "custom_levels/" + folder_name + "/data/level_information.ini");
 						show_debug_message("Copy level_information.ini from official level");
 					}
 					
-					if (file_exists("levels/" + string(take_from_official_level) + "/data/object_placement_all.json"))
+					if (file_exists(official_object_placement_path))
 					{
-						file_copy("levels/" + string(take_from_official_level) + "/data/object_placement_all.json",
+						file_copy(official_object_placement_path,
 						game_save_id + "custom_levels/" + folder_name + "/data/object_placement_all.json");
 						show_debug_message("Copy object_placement_all.json from official level");
 					}
 					
-					if (file_exists("levels/" + string(take_from_official_level) + "/automatic_thumbnail.png"))
+					if (file_exists(official_automatic_thumbnail_path))
 					{
-						file_copy("levels/" + string(take_from_official_level) + "/automatic_thumbnail.png",
+						file_copy(official_automatic_thumbnail_path,
 						game_save_id + "custom_levels/" + folder_name + "/automatic_thumbnail.png");
 						show_debug_message("Copy automatic_thumbnail.png from official level");
 					}
 					
-					if (file_exists("levels/" + string(take_from_official_level) + "/thumbnail.png"))
+					if (file_exists(official_thumbnail_path))
 					{
-						file_copy("levels/" + string(take_from_official_level) + "/thumbnail.png",
+						file_copy(official_thumbnail_path,
 						game_save_id + "custom_levels/" + folder_name + "/automatic_thumbnail.png"); /* Make any normal thumbnail into automatic thumbnail, so it can be automatically replaced later */
 						show_debug_message("Copy thumbnail.png from official level");
 					}
@@ -684,8 +694,22 @@ function scr_select_official_level_menu()
 					/* Update all default background and default sound so it's taken from official level */
 					/* Some official levels already use default background and default sound feature */
 					/* If the official level doesn't have any files in background and sound folders */
-					if (file_exists("levels/" + string(take_from_official_level) + "/background/background1.png")) /* If file exists, then set default to official level */
-					|| (!file_exists("levels/" + string(take_from_official_level) + "/background/background1.png")) /* If file doesn't exist... */
+					var official_background1_path = scr_get_official_level_file_path(take_from_official_level, "background", "background1.png");
+					var official_background2_path = scr_get_official_level_file_path(take_from_official_level, "background", "background2.png");
+					var official_background3_path = scr_get_official_level_file_path(take_from_official_level, "background", "background3.png");
+					var official_background4_path = scr_get_official_level_file_path(take_from_official_level, "background", "background4.png");
+					var official_foreground1_path = scr_get_official_level_file_path(take_from_official_level, "background", "foreground1.png");
+					var official_foreground1_5_path = scr_get_official_level_file_path(take_from_official_level, "background", "foreground1_5.png");
+					var official_foreground2_path = scr_get_official_level_file_path(take_from_official_level, "background", "foreground2.png");
+					var official_foreground_secret_path = scr_get_official_level_file_path(take_from_official_level, "background", "foreground_secret.png");
+					var official_music_path = scr_get_official_level_file_path(take_from_official_level, "sound", "music.ogg");
+					var official_music_underwater_path = scr_get_official_level_file_path(take_from_official_level, "sound", "music_underwater.ogg");
+					var official_ambience_path = scr_get_official_level_file_path(take_from_official_level, "sound", "ambience.ogg");
+					var official_ambience_underwater_path = scr_get_official_level_file_path(take_from_official_level, "sound", "ambience_underwater.ogg");
+					var official_clear_melody_path = scr_get_official_level_file_path(take_from_official_level, "sound", "clear_melody.ogg");
+
+					if (file_exists(official_background1_path)) /* If file exists, then set default to official level */
+					|| (!file_exists(official_background1_path)) /* If file doesn't exist... */
 					&& (!ini_key_exists("info", "default_background1")) /* ...and there isn't a default set already */
 					{
 						ini_write_string("info", "default_background1", take_from_official_level); /* Then set default */
@@ -693,8 +717,8 @@ function scr_select_official_level_menu()
 						show_debug_message("Set default_background1");
 					}
 					
-					if (file_exists("levels/" + string(take_from_official_level) + "/background/background2.png")) /* If file exists, then set default to official level */
-					|| (!file_exists("levels/" + string(take_from_official_level) + "/background/background2.png")) /* If file doesn't exist... */
+					if (file_exists(official_background2_path)) /* If file exists, then set default to official level */
+					|| (!file_exists(official_background2_path)) /* If file doesn't exist... */
 					&& (!ini_key_exists("info", "default_background2")) /* ...and there isn't a default set already */
 					{
 						ini_write_string("info", "default_background2", take_from_official_level);
@@ -702,8 +726,8 @@ function scr_select_official_level_menu()
 						show_debug_message("Set default_background2");
 					}
 					
-					if (file_exists("levels/" + string(take_from_official_level) + "/background/background3.png")) /* If file exists, then set default to official level */
-					|| (!file_exists("levels/" + string(take_from_official_level) + "/background/background3.png")) /* If file doesn't exist... */
+					if (file_exists(official_background3_path)) /* If file exists, then set default to official level */
+					|| (!file_exists(official_background3_path)) /* If file doesn't exist... */
 					&& (!ini_key_exists("info", "default_background3")) /* ...and there isn't a default set already */
 					{
 						ini_write_string("info", "default_background3", take_from_official_level);
@@ -711,8 +735,8 @@ function scr_select_official_level_menu()
 						show_debug_message("Set default_background3");
 					}
 					
-					if (file_exists("levels/" + string(take_from_official_level) + "/background/background4.png")) /* If file exists, then set default to official level */
-					|| (!file_exists("levels/" + string(take_from_official_level) + "/background/background4.png")) /* If file doesn't exist... */
+					if (file_exists(official_background4_path)) /* If file exists, then set default to official level */
+					|| (!file_exists(official_background4_path)) /* If file doesn't exist... */
 					&& (!ini_key_exists("info", "default_background4")) /* ...and there isn't a default set already */
 					{
 						ini_write_string("info", "default_background4", take_from_official_level);
@@ -720,8 +744,8 @@ function scr_select_official_level_menu()
 						show_debug_message("Set default_background4");
 					}
 					
-					if (file_exists("levels/" + string(take_from_official_level) + "/background/foreground1.png")) /* If file exists, then set default to official level */
-					|| (!file_exists("levels/" + string(take_from_official_level) + "/background/foreground1.png")) /* If file doesn't exist... */
+					if (file_exists(official_foreground1_path)) /* If file exists, then set default to official level */
+					|| (!file_exists(official_foreground1_path)) /* If file doesn't exist... */
 					&& (!ini_key_exists("info", "default_foreground1")) /* ...and there isn't a default set already */
 					{
 						ini_write_string("info", "default_foreground1", take_from_official_level);
@@ -729,8 +753,8 @@ function scr_select_official_level_menu()
 						show_debug_message("Set default_foreground1");
 					}
 					
-					if (file_exists("levels/" + string(take_from_official_level) + "/background/foreground1_5.png")) /* If file exists, then set default to official level */
-					|| (!file_exists("levels/" + string(take_from_official_level) + "/background/foreground1_5.png")) /* If file doesn't exist... */
+					if (file_exists(official_foreground1_5_path)) /* If file exists, then set default to official level */
+					|| (!file_exists(official_foreground1_5_path)) /* If file doesn't exist... */
 					&& (!ini_key_exists("info", "default_foreground1_5")) /* ...and there isn't a default set already */
 					{
 						ini_write_string("info", "default_foreground1_5", take_from_official_level);
@@ -738,8 +762,8 @@ function scr_select_official_level_menu()
 						show_debug_message("Set default_foreground1_5");
 					}
 					
-					if (file_exists("levels/" + string(take_from_official_level) + "/background/foreground2.png")) /* If file exists, then set default to official level */
-					|| (!file_exists("levels/" + string(take_from_official_level) + "/background/foreground2.png")) /* If file doesn't exist... */
+					if (file_exists(official_foreground2_path)) /* If file exists, then set default to official level */
+					|| (!file_exists(official_foreground2_path)) /* If file doesn't exist... */
 					&& (!ini_key_exists("info", "default_foreground2")) /* ...and there isn't a default set already */
 					{
 						ini_write_string("info", "default_foreground2", take_from_official_level);
@@ -747,8 +771,8 @@ function scr_select_official_level_menu()
 						show_debug_message("Set default_foreground2");
 					}
 					
-					if (file_exists("levels/" + string(take_from_official_level) + "/background/foreground_secret.png")) /* If file exists, then set default to official level */
-					|| (!file_exists("levels/" + string(take_from_official_level) + "/background/foreground_secret.png")) /* If file doesn't exist... */
+					if (file_exists(official_foreground_secret_path)) /* If file exists, then set default to official level */
+					|| (!file_exists(official_foreground_secret_path)) /* If file doesn't exist... */
 					&& (!ini_key_exists("info", "default_foreground_secret")) /* ...and there isn't a default set already */
 					{
 						ini_write_string("info", "default_foreground_secret", take_from_official_level);
@@ -756,8 +780,8 @@ function scr_select_official_level_menu()
 						show_debug_message("Set default_foreground_secret");
 					}
 					
-					if (file_exists("levels/" + string(take_from_official_level) + "/sound/music.ogg")) /* If file exists, then set default to official level */
-					|| (!file_exists("levels/" + string(take_from_official_level) + "/sound/music.ogg")) /* If file doesn't exist... */
+					if (file_exists(official_music_path)) /* If file exists, then set default to official level */
+					|| (!file_exists(official_music_path)) /* If file doesn't exist... */
 					&& (!ini_key_exists("info", "default_music_overworld")) /* ...and there isn't a default set already */
 					{
 						ini_write_string("info", "default_music_overworld", take_from_official_level);
@@ -765,8 +789,8 @@ function scr_select_official_level_menu()
 						show_debug_message("Set default_music_overworld");
 					}
 					
-					if (file_exists("levels/" + string(take_from_official_level) + "/sound/music_underwater.ogg")) /* If file exists, then set default to official level */
-					|| (!file_exists("levels/" + string(take_from_official_level) + "/sound/music_underwater.ogg")) /* If file doesn't exist... */
+					if (file_exists(official_music_underwater_path)) /* If file exists, then set default to official level */
+					|| (!file_exists(official_music_underwater_path)) /* If file doesn't exist... */
 					&& (!ini_key_exists("info", "default_music_underwater")) /* ...and there isn't a default set already */
 					{
 						ini_write_string("info", "default_music_underwater", take_from_official_level);
@@ -774,8 +798,8 @@ function scr_select_official_level_menu()
 						show_debug_message("Set default_music_underwater");
 					}
 					
-					if (file_exists("levels/" + string(take_from_official_level) + "/sound/ambience.ogg")) /* If file exists, then set default to official level */
-					|| (!file_exists("levels/" + string(take_from_official_level) + "/sound/ambience.ogg")) /* If file doesn't exist... */
+					if (file_exists(official_ambience_path)) /* If file exists, then set default to official level */
+					|| (!file_exists(official_ambience_path)) /* If file doesn't exist... */
 					&& (!ini_key_exists("info", "default_ambience_overworld")) /* ...and there isn't a default set already */
 					{
 						ini_write_string("info", "default_ambience_overworld", take_from_official_level);
@@ -783,8 +807,8 @@ function scr_select_official_level_menu()
 						show_debug_message("Set default_ambience_overworld");
 					}
 					
-					if (file_exists("levels/" + string(take_from_official_level) + "/sound/ambience_underwater.ogg")) /* If file exists, then set default to official level */
-					|| (!file_exists("levels/" + string(take_from_official_level) + "/sound/ambience_underwater.ogg")) /* If file doesn't exist... */
+					if (file_exists(official_ambience_underwater_path)) /* If file exists, then set default to official level */
+					|| (!file_exists(official_ambience_underwater_path)) /* If file doesn't exist... */
 					&& (!ini_key_exists("info", "default_ambience_underwater")) /* ...and there isn't a default set already */
 					{
 						ini_write_string("info", "default_ambience_underwater", take_from_official_level);
@@ -792,8 +816,8 @@ function scr_select_official_level_menu()
 						show_debug_message("Set default_ambience_underwater");
 					}
 					
-					if (file_exists("levels/" + string(take_from_official_level) + "/sound/clear_melody.ogg")) /* If file exists, then set default to official level */
-					|| (!file_exists("levels/" + string(take_from_official_level) + "/sound/clear_melody.ogg")) /* If file doesn't exist... */
+					if (file_exists(official_clear_melody_path)) /* If file exists, then set default to official level */
+					|| (!file_exists(official_clear_melody_path)) /* If file doesn't exist... */
 					&& (!ini_key_exists("info", "default_clear_melody")) /* ...and there isn't a default set already */
 					{
 						ini_write_string("info", "default_clear_melody", take_from_official_level);
