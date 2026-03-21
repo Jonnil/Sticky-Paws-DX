@@ -15,6 +15,7 @@ function scr_server_timeout(timeout_seconds = 15)
 	{
 		/* Timeout Handler */
 		show_debug_message("[scr_server_timeout] Server request timed out");
+		scr_log("WARN", "LANG.UPDATE", "release_block_on_server_timeout", "request_id=" + string(global.online_primary_request_active));
 
 		/* Change to a fallback menu or display an error message */
 		menu = "server_timeout_retry"; /* Make sure your menu system handles this state */
@@ -23,6 +24,17 @@ function scr_server_timeout(timeout_seconds = 15)
 		in_online_download_list_menu = false; show_debug_message("[scr_server_timeout] 'In online download list menu' is set to false");
 		//online_content_data = undefined; show_debug_message("[scr_server_timeout] 'online content data' is set to undefined");
 		//info_data = undefined;
+
+		if (is_real(global.http_request_contexts)
+		&& ds_exists(global.http_request_contexts, ds_type_map)
+		&& global.online_primary_request_active != noone
+		&& ds_map_exists(global.http_request_contexts, string(global.online_primary_request_active)))
+		{
+			ds_map_delete(global.http_request_contexts, string(global.online_primary_request_active));
+		}
+
+		global.online_primary_request_active = noone;
+		global.language_update_blocked = false;
 
 		/* Reset the timeout variable so subsequent requests can start a new timer */
 		global.server_timeout_end = undefined;

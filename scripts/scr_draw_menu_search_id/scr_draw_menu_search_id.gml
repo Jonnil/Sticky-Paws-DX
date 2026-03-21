@@ -285,6 +285,18 @@ function scr_draw_menu_search_id(what_kind_of_id = "level")
 				global.download_request_timeout_end = undefined;
 				global.download_failure_reason = "timeout";
 				global.expected_download_zip_path = "";
+				scr_log("WARN", "LANG.UPDATE", "release_block_on_search_timeout", "request_id=" + string(global.online_primary_request_active));
+
+				if (is_real(global.http_request_contexts)
+				&& ds_exists(global.http_request_contexts, ds_type_map)
+				&& global.online_primary_request_active != noone
+				&& ds_map_exists(global.http_request_contexts, string(global.online_primary_request_active)))
+				{
+					ds_map_delete(global.http_request_contexts, string(global.online_primary_request_active));
+				}
+
+				global.online_primary_request_active = noone;
+				global.language_update_blocked = false;
 				in_online_download_list_menu = false; show_debug_message("[scr_draw_menu_search_id] 'In online download list menu' is set to false");
 				menu = "searched_file_downloaded_failed";
 				menu_delay = 3;

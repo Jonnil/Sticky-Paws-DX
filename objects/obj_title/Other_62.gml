@@ -267,6 +267,12 @@ if (_is_primary_request)
 	}
 
 	global.language_update_blocked = false;
+
+	if (global.language_update_pending)
+	{
+		scr_log("INFO", "LANG.UPDATE", "resume_pending_update", "after_request_id=" + string(_rid));
+		scr_language_pack_update(true);
+	}
 }
 else
 {
