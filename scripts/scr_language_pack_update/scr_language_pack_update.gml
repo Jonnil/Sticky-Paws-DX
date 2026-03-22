@@ -12,6 +12,13 @@ function scr_language_pack_update(forced = false)
 	var update_blocked = global.language_update_blocked;
 	var update_pending = global.language_update_pending;
 	var active_primary_request = global.online_primary_request_active;
+	var allow_without_online_enabled = global.language_update_allow_without_online_enabled;
+
+	if (forced)
+	{
+		global.language_update_allow_without_online_enabled = true;
+		allow_without_online_enabled = true;
+	}
 
 	if (forced)
 	{
@@ -22,6 +29,7 @@ function scr_language_pack_update(forced = false)
 			", blocked=" + string(update_blocked) +
 			", pending=" + string(update_pending) +
 			", online_enabled=" + string(online_enabled) +
+			", online_opt_in_bypass=" + string(allow_without_online_enabled) +
 			", token_validated=" + string(token_validated) +
 			", passive_connected=" + string(passive_connected) +
 			", active_primary_request=" + string(active_primary_request));
@@ -94,7 +102,8 @@ function scr_language_pack_update(forced = false)
 		}
 	}
 
-	if (!online_enabled)
+	if (!online_enabled
+	&& !allow_without_online_enabled)
 	{
 		global.language_update_pending = false;
 		global.language_update_status_message = "Translation updates are disabled until online features are enabled.";
@@ -116,6 +125,7 @@ function scr_language_pack_update(forced = false)
 	if (!token_validated)
 	{
 		global.language_update_pending = false;
+		global.language_update_allow_without_online_enabled = false;
 		global.language_update_status_message = "Translation updates are unavailable because online validation has not completed.";
 		global.language_update_status_color = c_red;
 
@@ -135,6 +145,7 @@ function scr_language_pack_update(forced = false)
 	if (!passive_connected)
 	{
 		global.language_update_pending = false;
+		global.language_update_allow_without_online_enabled = false;
 		global.language_update_status_message = "Translation updates are unavailable because no passive network connection was detected.";
 		global.language_update_status_color = c_red;
 
@@ -319,6 +330,7 @@ function scr_language_pack_update(forced = false)
 	}
 	else
 	{
+		global.language_update_allow_without_online_enabled = false;
 		if (forced)
 		{
 			scr_log("WARN", "LANG.UPDATE", "download_not_started");

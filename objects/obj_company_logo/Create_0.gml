@@ -197,6 +197,7 @@ global.http_request_contexts = ds_map_create(); /* Track HTTP request IDs to the
 global.online_primary_request_active = noone;   /* Last primary download request id */
 global.language_update_blocked = false;         /* Block language updates while other HTTP is active */
 global.language_update_pending = false;         /* Remember that a deferred language update is waiting */
+global.language_update_allow_without_online_enabled = false; /* Manual language updates can bypass the general online opt-in */
 global.online_token_error_message = ""; /* Can only be a string value */
 global.server_timeout_end = undefined;
 global.download_request_timeout_end = undefined; /* Timeout used specifically for search/download-by-id flow */

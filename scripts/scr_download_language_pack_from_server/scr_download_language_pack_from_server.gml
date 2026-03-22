@@ -3,12 +3,19 @@
 /// Assumes the server returns a CSV file.
 function scr_download_language_pack_from_server()
 {
+	var allow_without_online_enabled = global.language_update_allow_without_online_enabled;
+
 	/* Check for a network connection */
-	if (!global.online_enabled
+	if ((!global.online_enabled
+	&& !allow_without_online_enabled)
 	|| !global.online_token_validated
 	|| !scr_check_network_connection(network_connect_passive))
 	{
-			scr_log("ERROR", "HTTP.LANG", "network_unavailable", "action=abort_download");
+			scr_log("ERROR", "HTTP.LANG", "network_unavailable",
+				"action=abort_download, online_enabled=" + string(global.online_enabled) +
+				", allow_without_online_enabled=" + string(allow_without_online_enabled) +
+				", token_validated=" + string(global.online_token_validated));
+		global.language_update_allow_without_online_enabled = false;
 		global.language_update_status_message = "Network error: Unable to connect to server for language update.";
 		global.language_update_status_color = c_red;
 		return;
@@ -42,6 +49,7 @@ function scr_download_language_pack_from_server()
 	if (global.language_http_request_id == -1)
 	{
 			scr_log("ERROR", "HTTP.LANG", "http_request_failed");
+		global.language_update_allow_without_online_enabled = false;
 		global.language_update_status_message = "HTTP error: Unable to initiate language pack download.";
 		global.language_update_status_color = c_red;
 		return;

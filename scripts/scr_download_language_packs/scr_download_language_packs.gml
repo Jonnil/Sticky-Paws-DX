@@ -2,6 +2,8 @@
 /// @description Downloads new or updated language packs from your published Google Sheet.
 function scr_download_language_packs()
 {
+	var allow_without_online_enabled = global.language_update_allow_without_online_enabled;
+
 	/* Start Download Process */
 	global.language_update_status_message = "Fetching latest language pack data from server...";
 
@@ -20,7 +22,8 @@ function scr_download_language_packs()
 	scr_log("INFO", "HTTP.LANG", "download_start", "source=google_sheet");
 
 	#region /* Check Network Connection */
-	if (global.online_enabled
+	if ((global.online_enabled
+	|| allow_without_online_enabled)
 	&& global.online_token_validated
 	&& scr_check_network_connection(network_connect_passive))
 	{
@@ -28,7 +31,11 @@ function scr_download_language_packs()
 	}
 	else
 	{
-		scr_log("ERROR", "HTTP.LANG", "network_unavailable");
+		scr_log("ERROR", "HTTP.LANG", "network_unavailable",
+			"online_enabled=" + string(global.online_enabled) +
+			", allow_without_online_enabled=" + string(allow_without_online_enabled) +
+			", token_validated=" + string(global.online_token_validated));
+		global.language_update_allow_without_online_enabled = false;
 		global.language_update_status_message = "Network error: Unable to connect to server for language updates.";
 		global.language_update_status_color = c_red;
 		return;
@@ -75,6 +82,7 @@ function scr_download_language_packs()
 	if (global.language_http_request_id == -1)
 	{
 		scr_log("ERROR", "HTTP.LANG", "http_request_failed");
+		global.language_update_allow_without_online_enabled = false;
 		global.language_update_status_message = "HTTP error: Unable to start language pack update.";
 		global.language_update_status_color = c_red;
 		return;

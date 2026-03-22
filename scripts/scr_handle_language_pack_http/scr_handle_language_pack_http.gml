@@ -2,7 +2,10 @@
 /// @description Handles the HTTP responses for language pack downloads.
 function scr_handle_language_pack_http(_async_map, var_handle_redirects = true)
 {
-	if (global.online_enabled
+	var allow_without_online_enabled = global.language_update_allow_without_online_enabled;
+
+	if ((global.online_enabled
+	|| allow_without_online_enabled)
 	&& global.online_token_validated)
 	{
 		var req_id = ds_map_find_value(_async_map, "id");
@@ -94,6 +97,7 @@ function scr_handle_language_pack_http(_async_map, var_handle_redirects = true)
 				global.language_update_status_message = "Manifest error: Server responded with incorrect status. Please try again";
 				global.language_update_status_color = c_red;
 				global.language_http_request_id = -1;
+				global.language_update_allow_without_online_enabled = false;
 				return;
 			}
 			
@@ -114,6 +118,7 @@ function scr_handle_language_pack_http(_async_map, var_handle_redirects = true)
 			global.language_update_status_message = "Your translations are now up to date!";
 			global.language_update_status_color = c_lime;
 			global.language_http_request_id = -1;
+			global.language_update_allow_without_online_enabled = false;
 			return;
 		}
 		#endregion /* ---------- Handle Manifest Download ---------- END */
@@ -150,6 +155,7 @@ function scr_handle_language_pack_http(_async_map, var_handle_redirects = true)
 				ds_map_delete(global.language_file_requests, string(req_id));
 				global.language_update_status_message = "Error: Failed to download language file";
 				global.language_update_status_color = c_red;
+				global.language_update_allow_without_online_enabled = false;
 				return;
 			}
 			
@@ -170,6 +176,7 @@ function scr_handle_language_pack_http(_async_map, var_handle_redirects = true)
 				
 				global.language_update_status_message = "Your translations are now up to date!";
 				global.language_update_status_color = c_green;
+				global.language_update_allow_without_online_enabled = false;
 				scr_log("INFO", "HTTP.LANG", "all_language_files_downloaded",
 					"last_update_string=" + string(global.language_last_update_string) +
 					", last_update_real=" + string(date_current_datetime()));
