@@ -6,6 +6,7 @@ break_cardboard_source_x = x;
 break_cardboard_source_speed = 1;
 draw_xscale = 1;
 draw_yscale = 1;
+can_break = false;
 
 length = 2;
 /*

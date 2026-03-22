@@ -48,7 +48,9 @@ var check_margin = 3; /* Adjust this value to set the margin from the corners */
 var check_left = bbox_left + check_margin;
 var check_right = bbox_right - check_margin;
 var check_bottom = bbox_bottom + check_margin;
-if (!collision_rectangle(check_left, check_bottom, check_right, check_bottom, obj_wall, false, true)
+
+if (can_break)
+&& (!collision_rectangle(check_left, check_bottom, check_right, check_bottom, obj_wall, false, true)
 && !collision_rectangle(check_left, check_bottom, check_right, check_bottom, obj_semisolid_platform, false, true))
 {
 	var view_x_center = camera_get_view_x(view_get_camera(view_current)) + (camera_get_view_width(view_get_camera(view_current)) * 0.5);

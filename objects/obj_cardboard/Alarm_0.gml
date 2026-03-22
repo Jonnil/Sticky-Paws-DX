@@ -15,3 +15,5 @@ if (length == 3)
 	sprite_index = spr_cardboard_long;
 	mask_index = spr_cardboard_long;
 }
+
+can_break = true;
