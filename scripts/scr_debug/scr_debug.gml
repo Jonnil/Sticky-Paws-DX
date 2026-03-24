@@ -693,10 +693,25 @@ function scr_debug_draw_optimized_text()
 		debug_text_y = scr_draw_debug_header("Switch Information", 32, debug_text_y);
 
 		var _switch_collapsed = variable_struct_exists(global.debug_collapsed_sections, "Switch Information") ? variable_struct_get(global.debug_collapsed_sections, "Switch Information") : false;
+
 		if (!_switch_collapsed)
 		{
+			var _switch_probe_index = global.switch_accounts_probe_user_index;
+			var _switch_probe_valid = _switch_probe_index >= 0
+				&& _switch_probe_index < global.switch_accounts_get_accounts_result;
+			var _switch_is_user_open_label = _switch_probe_valid
+				? "switch_accounts_is_user_open(" + string(_switch_probe_index) + ")"
+				: "switch_accounts_is_user_open(accountId)";
+			var _switch_is_user_open_value = _switch_probe_valid
+				? (global.switch_accounts_is_user_open_result ? "open" : "closed")
+				: "n/a";
+
 			debug_text_y = scr_draw_highlighted_text(32, debug_text_y, "switch_account_name", string(global.switch_account_name), "Switch Account Name", c_white, c_red, false);
 			debug_text_y = scr_draw_highlighted_text(32, debug_text_y, "switch_account_handle", string(global.switch_account_handle), "Switch Account Handle", c_white, c_red, false);
+			debug_text_y = scr_draw_highlighted_text(32, debug_text_y, "switch_accounts_get_accounts()", string(global.switch_accounts_get_accounts_result), "switch_accounts_get_accounts()", c_white, c_red, global.switch_accounts_get_accounts_result <= 0);
+			debug_text_y = scr_draw_highlighted_text(32, debug_text_y, "switch_accounts_open_preselected_user()", string(global.switch_accounts_open_preselected_user_result), "switch_accounts_open_preselected_user()", c_white, c_red, global.switch_accounts_open_preselected_user_result < 0);
+			debug_text_y = scr_draw_highlighted_text(32, debug_text_y, _switch_is_user_open_label, _switch_is_user_open_value, _switch_is_user_open_label, c_white, c_red, !_switch_probe_valid || !global.switch_accounts_is_user_open_result);
+			debug_text_y = scr_draw_highlighted_text(32, debug_text_y, "switch_accounts_open_states", string(global.switch_accounts_open_states), "Switch Account Open States", c_white, c_red, global.switch_accounts_open_states == "");
 			debug_text_y = scr_draw_highlighted_text(32, debug_text_y, "online_token_validated", string(global.online_token_validated), "Online Token Validated", c_white, c_red, false);
 			debug_text_y = scr_draw_highlighted_text(32, debug_text_y, "online_token_error_message", string(global.online_token_error_message), "Online Token Error Message", c_white, c_red, false);
 			debug_text_y = scr_draw_highlighted_text(32, debug_text_y, "switch_account_netid", string(global.switch_account_netid), "Switch Account NetID", c_white, c_red, false);

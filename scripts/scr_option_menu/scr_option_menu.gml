@@ -2159,6 +2159,7 @@ function scr_option_menu()
 				l10n_text("Notifies you when new items become available in the level editor"));
 
 			if (global.enable_option_for_pc)
+			|| (GM_build_type == "run") /* Only enable debug features in test run, and not executable */
 			{
 				global.debug_screen = draw_menu_checkmark(380, debug_screen_y, l10n_text("Debug Screen"), "debug_screen", global.debug_screen, false,
 					l10n_text("Displays debug information for development and troubleshooting"));
@@ -2551,7 +2552,9 @@ function scr_option_menu()
 				&& (menu_delay == 0 && menu_joystick_delay == 0)
 				{
 					menu_delay = 3;
+					
 					if (global.enable_option_for_pc)
+					|| (GM_build_type == "run") /* Only enable debug features in test run, and not executable */
 					{
 						menu = "debug_screen";
 					}
@@ -2571,6 +2574,7 @@ function scr_option_menu()
 				&& (menu_delay == 0 && menu_joystick_delay == 0)
 				{
 					menu_delay = 3;
+					
 					if (global.enable_option_for_pc)
 					{
 						menu = "automatically_pause_when_window_is_unfocused_settings";
@@ -2777,6 +2781,7 @@ function scr_option_menu()
 					}
 					else
 					if (global.enable_option_for_pc)
+					|| (GM_build_type == "run") /* Only enable debug features in test run, and not executable */
 					{
 						menu = "debug_screen";
 					}
@@ -2844,7 +2849,9 @@ function scr_option_menu()
 				&& (menu_delay == 0 && menu_joystick_delay == 0)
 				{
 					menu_delay = 3;
+					
 					if (global.enable_option_for_pc)
+					|| (GM_build_type == "run") /* Only enable debug features in test run, and not executable */
 					{
 						menu = "debug_screen";
 					}

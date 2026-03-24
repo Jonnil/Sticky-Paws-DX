@@ -118,6 +118,12 @@ global.switch_account_handle = noone;
 global.switch_account_netid = noone;
 global.switch_account_network_service_available = false;
 global.switch_logged_in = noone;
+global.switch_accounts_get_accounts_result = 0;
+global.switch_accounts_open_preselected_user_result = -1;
+global.switch_accounts_probe_user_index = -1;
+global.switch_accounts_is_user_open_result = false;
+global.switch_accounts_open_states = "";
+global.switch_accounts_last_snapshot = "";
 
 #region /* If you're playing on console, then some things should not show up that is for PC */
 if (os_type == os_switch)
@@ -141,7 +147,7 @@ if (os_type == os_switch)
 	global.show_prompt_when_changing_to_gamepad = false;
 	global.show_prompt_when_changing_to_keyboard_and_mouse = false;
 	global.enable_open_custom_folder = false; /* Enable the option to open custom folders in the game */
-	global.enable_option_for_pc = false; /* Enable if options related to gamepad, but only intended for when playing with gamepad on PC should show up */
+	global.enable_option_for_pc = true; /* Enable if options related to gamepad, but only intended for when playing with gamepad on PC should show up. Default is false for Switch export */
 	global.enable_keyboard_and_mouse_settings = false; /* Enable Keyboard and Mouse settings */
 	global.always_show_gamepad_buttons = true;
 	global.enable_translation_file_logging = false;
@@ -153,7 +159,7 @@ else
 	global.show_prompt_when_changing_to_gamepad = true;
 	global.show_prompt_when_changing_to_keyboard_and_mouse = true;
 	global.enable_open_custom_folder = true; /* Enable the option to open custom folders in the game */
-	global.enable_option_for_pc = true; /* Enable if options related to gamepad, but only intended for when playing with gamepad on PC should show up */
+	global.enable_option_for_pc = true; /* Enable if options related to gamepad, but only intended for when playing with gamepad on PC should show up. Default is true */
 	global.enable_keyboard_and_mouse_settings = true; /* Enable Keyboard and Mouse settings */
 	global.always_show_gamepad_buttons = false; /* You can force to show gamepad buttons, even if playing with keyboard, mouse or touch controls. Default = false */
 	global.enable_translation_file_logging = true; /* Always log missing translation keywords on other platforms */
@@ -272,7 +278,7 @@ global.enable_foreground_layer_secret = true; /* Toggles the visibility of the s
 global.auto_open_crash_docs = false;
 global.debug_force_network_error = false; /* Default false for release */
 
-if (GM_build_type == "run")
+if (GM_build_type == "run") /* Only enable debug features in test run, and not executable */
 {
 	/* Enable useful debug tools when testing inside the IDE */
 	global.debug_screen = false;
