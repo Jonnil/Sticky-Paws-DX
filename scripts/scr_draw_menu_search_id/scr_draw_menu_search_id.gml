@@ -143,7 +143,7 @@ function scr_draw_menu_search_id(what_kind_of_id = "level")
 				if (global.clicking_ok_input_screen)
 				|| (automatically_search_for_id) /* If you enter this menu from "online level list menu", automatically enter the search ID and search for the level */
 				{
-					if (scr_check_network_connection(network_connect_active)) /* Need to check if OS is connected to network before getting online */
+					if (scr_check_network_connection(network_connect_active, true)) /* Need to check if OS is connected to network before getting online */
 					{
 						if (what_kind_of_id == "level")
 						{

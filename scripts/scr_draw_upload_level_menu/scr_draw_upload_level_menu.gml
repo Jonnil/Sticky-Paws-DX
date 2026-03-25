@@ -219,7 +219,7 @@ function scr_draw_upload_level_menu()
 			&& menu_joystick_delay == 0)
 			{
 				if (global.online_enabled)
-				&& (scr_check_network_connection(network_connect_active))
+				&& (scr_check_network_connection(network_connect_active, true))
 				{
 					if (global.switch_logged_in)
 					{
@@ -1903,7 +1903,7 @@ function scr_draw_upload_level_menu()
 				&& (file_exists(upload_level_path + "/thumbnail.png")
 				|| file_exists(upload_level_path + "/automatic_thumbnail.png"))
 				{
-					if (scr_check_network_connection(network_connect_active))
+					if (scr_check_network_connection(network_connect_active, true))
 					{
 						/* Essential files does exist, so upload now */
 						menu = "uploading_level"; /* Go to uploading level loading screen */

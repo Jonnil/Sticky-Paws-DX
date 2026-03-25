@@ -29,6 +29,18 @@ function scr_handle_no_network_connection(what_script = "scr_handle_no_network_c
 		return;
 	}
 
+	var fallback_menu = retry_this_menu;
+
+	if (fallback_menu == "")
+	{
+		fallback_menu = caution_online_takes_you_back_to;
+	}
+
+	if (fallback_menu == "")
+	{
+		fallback_menu = menu;
+	}
+
 	/* If a retry menu is provided, update the fallback menu */
 	if (retry_this_menu != "")
 	{
@@ -36,6 +48,72 @@ function scr_handle_no_network_connection(what_script = "scr_handle_no_network_c
 						   + string(caution_online_takes_you_back_to) + " to " + string(retry_this_menu));
 
 		caution_online_takes_you_back_to = retry_this_menu;
+	}
+
+	if (os_type == os_switch)
+	&& (global.switch_login_cancelled)
+	{
+		show_debug_message("[scr_handle_no_network_connection] Switch account prompt was cancelled. Restoring previous menu silently.");
+
+		menu_delay = 3;
+		can_navigate = true;
+		in_online_download_list_menu = false;
+		in_online_download_list_load_menu = false;
+		global.language_update_allow_without_online_enabled = false;
+		global.language_update_pending = false;
+
+		if (string_copy(fallback_menu, 1, string_length("download_online")) == "download_online")
+		|| (fallback_menu == "online_download_list_load")
+		{
+			if (content_type == "character")
+			{
+				fallback_menu = "online_character_list";
+			}
+			else
+			{
+				fallback_menu = "online_level_list";
+			}
+		}
+
+		if (fallback_menu == "select_character")
+		|| (fallback_menu == "online_level_list_title")
+		|| (fallback_menu == "online_character_list")
+		{
+			in_character_select_menu = true;
+			select_custom_level_menu_open = false;
+			in_settings = false;
+			information_menu_open = "";
+		}
+		else
+		if (fallback_menu == "online_level_list")
+		|| (fallback_menu == "level_editor_upload")
+		{
+			in_character_select_menu = false;
+			select_custom_level_menu_open = true;
+			in_settings = false;
+
+			if (variable_instance_exists(self, "show_level_editor_corner_menu"))
+			{
+				show_level_editor_corner_menu = true;
+			}
+		}
+		else
+		if (fallback_menu == "language_check_updates")
+		{
+			in_settings = true;
+			global.settings_sidebar_menu = "language_settings";
+		}
+		else
+		if (fallback_menu == "about_online_level_list")
+		{
+			in_character_select_menu = false;
+			select_custom_level_menu_open = false;
+			in_settings = false;
+			information_menu_open = "about";
+		}
+
+		menu = fallback_menu;
+		return;
 	}
 
 	/* Warn if the current menu doesn't match the expected fallback menu */

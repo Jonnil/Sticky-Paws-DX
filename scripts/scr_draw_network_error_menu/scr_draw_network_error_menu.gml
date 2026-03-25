@@ -12,6 +12,7 @@ function scr_draw_network_error_menu()
 		var center_y        = window_height * 0.5;
 		var mouse_get_x        = device_mouse_x_to_gui(0);
 		var mouse_get_y        = device_mouse_y_to_gui(0);
+		var fixed_player = 1;
 
 		/* Handle button activation to avoid repetitive error pop-ups */
 		var can_activate = (menu_delay == 0 && menu_joystick_delay == 0);
@@ -99,6 +100,7 @@ function scr_draw_network_error_menu()
 		}
 		else
 		if (scr_check_network_connection(network_connect_active)) /* Need to check if you are connected to the internet before proceeding to online content */
+		&& (caution_online_takes_you_to != "")
 		&& (menu_delay == 0 && menu_joystick_delay == 0)
 		{
 			if (global.switch_logged_in)
@@ -449,7 +451,7 @@ function scr_draw_network_error_menu()
 			{
 				scr_switch_update_online_status();
 
-				if (scr_check_network_connection(network_connect_active))
+				if (scr_check_network_connection(network_connect_active, true))
 				{
 					retry_successful = true;
 				}
@@ -492,6 +494,7 @@ function scr_draw_network_error_menu()
 			in_settings = false;
 			global.go_to_menu_when_going_back_to_title = "";
 			global.switch_login_cancelled = false;
+			global.switch_login_cancelled_account_id = -1;
 
 			menu_delay = 3;
 
@@ -504,6 +507,21 @@ function scr_draw_network_error_menu()
 			if (caution_online_takes_you_back_to == "select_character")
 			{
 				in_character_select_menu = true;
+			}
+			else
+			if (caution_online_takes_you_back_to == "online_character_list")
+			{
+				in_character_select_menu = true;
+			}
+			else
+			if (caution_online_takes_you_back_to == "online_level_list")
+			{
+				select_custom_level_menu_open = true;
+
+				if (variable_instance_exists(self, "show_level_editor_corner_menu"))
+				{
+					show_level_editor_corner_menu = true;
+				}
 			}
 			
 			menu = caution_online_takes_you_back_to; /* Switch to offline/main menu to let the user access non-network features */

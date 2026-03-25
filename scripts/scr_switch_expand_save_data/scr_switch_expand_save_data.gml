@@ -4,6 +4,29 @@ function scr_switch_expand_save_data(desired_save_size_mib = 16, desired_journal
 	#region /* Switch Save Data Handling */
 	if (os_type == os_switch)
 	{
+		if (!scr_switch_has_account_id(global.switch_active_account_id))
+		{
+			scr_switch_capture_preselected_user(false);
+		}
+
+		var _active_account_id = scr_switch_has_account_id(global.switch_active_account_id)
+			? global.switch_active_account_id
+			: -1;
+
+		if (!scr_switch_has_account_id(_active_account_id))
+		{
+			global.save_data_size_is_sufficient = false;
+
+			with(instance_create_depth(display_get_gui_width() * 0.5, display_get_gui_height() * 0.5, 0, obj_score_up))
+			{
+				above_gui = true;
+				score_up = "No active Switch account for save data";
+				show_debug_message(string(score_up));
+			}
+
+			return;
+		}
+
 		/* Release safety default:
 		Do not unmount/remount and resize save data during interactive flows unless explicitly enabled. */
 		if (!variable_global_exists("allow_runtime_switch_save_resize")
@@ -15,7 +38,7 @@ function scr_switch_expand_save_data(desired_save_size_mib = 16, desired_journal
 				_minimum_free_bytes = max(0, real(global.switch_save_preflight_min_free_bytes));
 			}
 
-			var _account_idx = 0; /* Startup user account is required for this title flow. */
+			var _account_idx = _active_account_id;
 			var _current_sizes = switch_save_data_get_size(_account_idx);
 			var _used_bytes = 0;
 			var _allocated_data_bytes = 0;
@@ -121,7 +144,7 @@ function scr_switch_expand_save_data(desired_save_size_mib = 16, desired_journal
 		show_debug_message("See if you need to expand save data");
 
 		global.save_data_size_is_sufficient = true; /* Set this variable to true at first */
-		var account_idx = 0; /* Account index */
+		var account_idx = _active_account_id; /* Active account id */
 		var current_sizes = 0;
 		var max_sizes = 0;
 		var success = 0;
@@ -182,7 +205,7 @@ function scr_switch_expand_save_data(desired_save_size_mib = 16, desired_journal
 					success = switch_save_data_set_size(account_idx, success_save_data_size, success_save_data_journal_size); /* Expand save data size. Game crashes on other platforms, because it thinks this is a function that doesn't exist */
 
 					#region /* Rest of success code */
-					switch_save_data_mount(0); /* Don't forget to mount the save data again after expanding save data size */
+					switch_save_data_mount(account_idx); /* Don't forget to mount the save data again after expanding save data size */
 					if (success)
 					{
 						show_debug_message("Save data size expanded successfully");

@@ -1,6 +1,6 @@
-/// @function scr_check_network_connection(connect_mode)
+/// @function scr_check_network_connection(connect_mode, allow_account_prompt)
 /// @description Wrapper function for network connectivity with debug override.
-function scr_check_network_connection(connect_mode)
+function scr_check_network_connection(connect_mode, allow_account_prompt = false)
 {
 
 	#region /* Check if debug override is enabled to simulate network errors (Only in test run mode) */
@@ -36,7 +36,7 @@ function scr_check_network_connection(connect_mode)
 	#region /* If online token has not been validated, update online status */
 	if (!global.online_token_validated)
 	{
-		show_debug_message("[scr_check_network_connection] Online token not validated. Calling 'scr switch update online status(false)'...");
+		show_debug_message("[scr_check_network_connection] Online token not validated. Calling 'scr_switch_update_online_status(" + string(allow_account_prompt) + ")'...");
 
 		if os_is_network_connected(network_connect_active)
 		{
@@ -48,7 +48,14 @@ function scr_check_network_connection(connect_mode)
 			show_debug_message("[scr_check_network_connection] NOT CONNECTED TO INTERNET");
 		}
 
-		scr_switch_update_online_status(true); /* Show the login screen for Switch if there isn't any online token validated */
+		if (os_type == os_switch)
+		&& (allow_account_prompt)
+		{
+			scr_switch_capture_preselected_user(false);
+			scr_switch_clear_cancelled_for_active_account();
+		}
+
+		scr_switch_update_online_status(allow_account_prompt);
 		show_debug_message("[scr_check_network_connection] After update, global.online_token_validated = " + string(global.online_token_validated));
 	}
 	#endregion /* If online token has not been validated, update online status END */

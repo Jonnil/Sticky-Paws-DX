@@ -263,7 +263,7 @@ function scr_draw_upload_character_menu()
 					{
 						if (global.username != "") /* Check if there is an username or not */
 						{
-							if (scr_check_network_connection(network_connect_active))
+							if (scr_check_network_connection(network_connect_active, true))
 							{
 								ini_open(game_save_id + "custom_characters/" + string(character_name) + "/data/character_config.ini");
 								

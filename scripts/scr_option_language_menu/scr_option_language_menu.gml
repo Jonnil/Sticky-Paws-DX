@@ -508,15 +508,44 @@ function scr_option_language_menu()
 				show_debug_message("[scr_option_language_menu] Force to update language pack when you click the 'Update Translations Now' button");
 				menu_delay = 3;
 
-				if (scr_check_network_connection(network_connect_active)) /* Force to update language pack when you click this button. Ask the player to connect to the internet */
+				if (scr_check_network_connection(network_connect_active, true)) /* Force to update language pack when you click this button. Ask the player to connect to the internet */
 				{
 					show_debug_message("[scr_option_language_menu] Run scr_language_pack_update(true)");
 					scr_language_pack_update(true);
 				}
 				else
 				{
-					show_debug_message("[scr_option_language_menu] Run scr_handle_no_network_connection");
-					scr_handle_no_network_connection("scr_option_language_menu", "language_check_updates");
+					if (os_type == os_switch)
+					&& (global.switch_login_cancelled)
+					{
+						show_debug_message("[scr_option_language_menu] Switch account prompt was cancelled. Staying on 'language_check_updates'.");
+						in_settings = true;
+						global.settings_sidebar_menu = "language_settings";
+						menu = "language_check_updates";
+						global.language_update_allow_without_online_enabled = false;
+						global.language_update_pending = false;
+						global.language_update_status_message = "Translation update cancelled.";
+						global.language_update_status_color = c_gray;
+					}
+					else
+					if (os_type == os_switch)
+					&& (global.online_token_request != -1)
+					&& (global.switch_online_token_account_id == global.switch_active_account_id)
+					{
+						show_debug_message("[scr_option_language_menu] Token validation is pending. Staying on 'language_check_updates' and waiting for async auth.");
+						in_settings = true;
+						global.settings_sidebar_menu = "language_settings";
+						menu = "language_check_updates";
+						global.language_update_allow_without_online_enabled = true;
+						global.language_update_pending = true;
+						global.language_update_status_message = "Waiting for Nintendo Account validation before downloading translations.";
+						global.language_update_status_color = c_yellow;
+					}
+					else
+					{
+						show_debug_message("[scr_option_language_menu] Run scr_handle_no_network_connection");
+						scr_handle_no_network_connection("scr_option_language_menu", "language_check_updates");
+					}
 				}
 			}
 			else

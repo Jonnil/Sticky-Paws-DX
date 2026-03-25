@@ -155,10 +155,11 @@ function scr_option_account()
 
 					if (os_type == os_switch)
 					{
-						/* Open whichever account was pre-selected by your .nmeta at launch. Try the console's preselected account */
-						var current_switch_account = switch_accounts_open_preselected_user();
+						var current_switch_account = scr_switch_has_account_id(global.switch_active_account_id)
+							? global.switch_active_account_id
+							: scr_switch_capture_preselected_user(false);
 
-						if (current_switch_account != -1)
+						if (scr_switch_has_account_id(current_switch_account))
 						{
 							global.username = switch_accounts_get_nickname(current_switch_account);
 						}
@@ -170,7 +171,12 @@ function scr_option_account()
 								false, /* showOnlineCapableOnly */
 								false /* canSkip = false, this means the user must pick one */
 							);
-							global.username = switch_accounts_get_nickname(selected_switch_account);
+
+							if (scr_switch_has_account_id(selected_switch_account))
+							{
+								scr_switch_set_active_account(selected_switch_account, true);
+								global.username = switch_accounts_get_nickname(global.switch_active_account_id);
+							}
 						}
 					}
 					else

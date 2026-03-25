@@ -189,11 +189,12 @@ function scr_character_select_menu_step()
 						else
 						if (global.character_select_in_this_menu == "online_level_list_title")
 						{
-							scr_check_network_connection(network_connect_active);
+							var can_open_online_level_list = scr_check_network_connection(network_connect_active, true);
 							caution_online_takes_you_to = "online_download_list_load";
 							caution_online_takes_you_back_to = "online_level_list_title";
 
 							if (global.online_enabled)
+							&& (can_open_online_level_list)
 							{
 								if (global.switch_logged_in)
 								{
@@ -238,7 +239,12 @@ function scr_character_select_menu_step()
 								menu_delay = 3;
 							}
 
-							in_character_select_menu = false;
+							if (menu != "select_character")
+							&& (menu != "online_character_list")
+							&& (menu != "online_level_list_title")
+							{
+								in_character_select_menu = false;
+							}
 						}
 					}
 					else

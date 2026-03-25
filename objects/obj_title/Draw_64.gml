@@ -134,6 +134,7 @@ if (menu == "main_game")
 || (menu == "fullscreen_mode_title")
 {
 	global.switch_login_cancelled = false;
+	global.switch_login_cancelled_account_id = -1;
 	
 	if (!in_settings)
 	{

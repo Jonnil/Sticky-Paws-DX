@@ -735,7 +735,7 @@ function scr_draw_information_menu()
 
 				if (global.online_enabled)
 				&& (global.free_communication_available)
-				&& (scr_check_network_connection(network_connect_active))
+				&& (scr_check_network_connection(network_connect_active, true))
 				{
 					if (global.switch_logged_in)
 					{

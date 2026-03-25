@@ -118,6 +118,12 @@ global.switch_account_handle = noone;
 global.switch_account_netid = noone;
 global.switch_account_network_service_available = false;
 global.switch_logged_in = noone;
+global.switch_active_account_id = -1;
+global.switch_online_token_account_id = -1;
+global.switch_login_cancelled = false;
+global.switch_login_cancelled_account_id = -1;
+global.switch_startup_token_prefetch_active = false;
+global.switch_startup_resume_language_update = false;
 global.switch_accounts_get_accounts_result = 0;
 global.switch_accounts_open_preselected_user_result = -1;
 global.switch_accounts_probe_user_index = -1;
@@ -128,6 +134,7 @@ global.switch_accounts_last_snapshot = "";
 #region /* If you're playing on console, then some things should not show up that is for PC */
 if (os_type == os_switch)
 {
+	global.switch_startup_token_prefetch_active = true;
 
 	#region /* Need to set these Switch specific functions */
 	var switch_controller_style = switch_controller_handheld | switch_controller_joycon_left | switch_controller_joycon_right | switch_controller_pro_controller | switch_controller_joycon_dual;
@@ -135,6 +142,16 @@ if (os_type == os_switch)
 	switch_controller_support_set_singleplayer_only(false);
 	switch_controller_support_set_player_min(1);
 	switch_controller_support_set_player_max(global.max_players);
+
+	var startup_switch_account = switch_accounts_open_preselected_user();
+	global.switch_accounts_open_preselected_user_result = startup_switch_account;
+	if (is_real(startup_switch_account))
+	&& (startup_switch_account >= 0)
+	{
+		global.switch_active_account_id = floor(startup_switch_account);
+		global.switch_account_handle = global.switch_active_account_id;
+		global.switch_account_name = switch_accounts_get_nickname(global.switch_active_account_id);
+	}
 	#endregion /* Need to set these Switch specific functions END */
 
 	/* If free communication is disabled, you shouldn't be able to upload or download custom content */
@@ -147,7 +164,7 @@ if (os_type == os_switch)
 	global.show_prompt_when_changing_to_gamepad = false;
 	global.show_prompt_when_changing_to_keyboard_and_mouse = false;
 	global.enable_open_custom_folder = false; /* Enable the option to open custom folders in the game */
-	global.enable_option_for_pc = true; /* Enable if options related to gamepad, but only intended for when playing with gamepad on PC should show up. Default is false for Switch export */
+	global.enable_option_for_pc = false; /* Enable if options related to gamepad, but only intended for when playing with gamepad on PC should show up. Default is false for Switch export */
 	global.enable_keyboard_and_mouse_settings = false; /* Enable Keyboard and Mouse settings */
 	global.always_show_gamepad_buttons = true;
 	global.enable_translation_file_logging = false;
