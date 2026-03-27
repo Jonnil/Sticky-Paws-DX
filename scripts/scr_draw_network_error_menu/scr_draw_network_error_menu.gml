@@ -523,6 +523,11 @@ function scr_draw_network_error_menu()
 					show_level_editor_corner_menu = true;
 				}
 			}
+			else
+			if (caution_online_takes_you_back_to == "language_check_updates")
+			{
+				in_settings = true;
+			}
 			
 			menu = caution_online_takes_you_back_to; /* Switch to offline/main menu to let the user access non-network features */
 		}
