@@ -1,6 +1,47 @@
 /* @description Sends a HEAD request to a URL and stores the result globally */
 function scr_check_url_exists(_url)
 {
+	if (!variable_global_exists("validated_urls"))
+	{
+		global.validated_urls = ds_map_create();
+	}
+
+	if (!variable_global_exists("url_check_requests"))
+	{
+		global.url_check_requests = ds_map_create();
+	}
+
+	if (!variable_global_exists("pending_url_checks"))
+	{
+		global.pending_url_checks = ds_list_create();
+	}
+
+	var should_defer_request = false;
+
+	/* Website validation is not needed during the splash screen, and it should
+	wait until passive network is available instead of forcing startup traffic. */
+	if (room == rm_splash_screen)
+	|| (!os_is_network_connected(network_connect_passive))
+	{
+		should_defer_request = true;
+	}
+
+	if (should_defer_request)
+	{
+		if (ds_list_find_index(global.pending_url_checks, _url) == -1)
+		{
+			ds_list_add(global.pending_url_checks, _url);
+		}
+
+		show_debug_message(
+			"[URL CHECK] Deferred: "
+			+ _url
+			+ " | room=" + string(room)
+			+ " | passive_network=" + string(os_is_network_connected(network_connect_passive))
+		);
+		return;
+	}
+
 	var headers = ds_map_create();
 	
 	/* HEAD only asks for status, not the full page */
@@ -16,11 +57,6 @@ function scr_check_url_exists(_url)
 			+ " | HTTP: " + string(-1)
 			+ " | Transfer: " + string(-1)
 		);
-		
-		if (!variable_global_exists("validated_urls"))
-		{
-			global.validated_urls = ds_map_create();
-		}
 		
 		if (ds_map_exists(global.validated_urls, _url))
 		{
@@ -43,15 +79,43 @@ function scr_check_url_exists(_url)
 	}
 	
 	/* Store data so we know what this request was for */
-	if (!variable_global_exists("url_check_requests"))
-	{
-		global.url_check_requests = ds_map_create();
-	}
-	
 	var data = ds_map_create();
 	data[? "url"] = _url;
 	
 	global.url_check_requests[? request_id] = data;
+}
+
+function scr_process_pending_url_checks(max_requests_per_call = 2)
+{
+	if (!variable_global_exists("pending_url_checks"))
+	{
+		return;
+	}
+
+	if (!ds_exists(global.pending_url_checks, ds_type_list))
+	{
+		return;
+	}
+
+	if (ds_list_size(global.pending_url_checks) <= 0)
+	{
+		return;
+	}
+
+	if (room == rm_splash_screen)
+	|| (!os_is_network_connected(network_connect_passive))
+	{
+		return;
+	}
+
+	var request_count = min(max_requests_per_call, ds_list_size(global.pending_url_checks));
+
+	repeat (request_count)
+	{
+		var pending_url = global.pending_url_checks[| 0];
+		ds_list_delete(global.pending_url_checks, 0);
+		scr_check_url_exists(pending_url);
+	}
 }
 
 /* @description scr_handle_url_check_http_event(async_load)

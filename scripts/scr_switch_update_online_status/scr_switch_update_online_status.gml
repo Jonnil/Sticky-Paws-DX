@@ -417,6 +417,16 @@ function scr_switch_try_startup_token_prefetch()
 		return false;
 	}
 
+	if (!os_is_network_connected(network_connect_passive))
+	{
+		global.switch_startup_resume_language_update = false;
+		global.online_token_validated = false;
+		global.online_token_error_message = "Startup token prefetch deferred because the system is offline.";
+		global.online_current_attempt_result = l10n_text("No network connection");
+		show_debug_message("[scr_switch_try_startup_token_prefetch] Passive network unavailable. Deferring startup token prefetch until network returns.");
+		return false;
+	}
+
 	var raw_preselected_user_id = scr_switch_capture_preselected_user(false);
 	var active_user_id = global.switch_active_account_id;
 	scr_switch_refresh_account_debug_info(raw_preselected_user_id, active_user_id);
@@ -426,16 +436,6 @@ function scr_switch_try_startup_token_prefetch()
 		global.switch_startup_resume_language_update = false;
 		global.switch_startup_token_prefetch_active = false;
 		show_debug_message("[scr_switch_try_startup_token_prefetch] No active startup account found. Skipping startup token prefetch.");
-		return false;
-	}
-
-	if (!os_is_network_connected(network_connect_passive))
-	{
-		global.switch_startup_resume_language_update = false;
-		global.switch_startup_token_prefetch_active = false;
-		global.online_token_error_message = "Startup token prefetch skipped because the system is offline.";
-		global.online_current_attempt_result = l10n_text("No network connection");
-		show_debug_message("[scr_switch_try_startup_token_prefetch] Passive network unavailable. Skipping startup token prefetch.");
 		return false;
 	}
 

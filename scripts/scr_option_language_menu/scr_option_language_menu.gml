@@ -508,6 +508,32 @@ function scr_option_language_menu()
 				show_debug_message("[scr_option_language_menu] Force to update language pack when you click the 'Update Translations Now' button");
 				menu_delay = 3;
 
+				var manual_update_network_available = true;
+
+				if (os_type == os_switch)
+				{
+					/* Perform one explicit active check on Switch so the system can
+					surface its network guidance for manual update attempts. */
+					manual_update_network_available = os_is_network_connected(network_connect_active);
+				}
+
+				if ((os_type == os_switch)
+				&& (!manual_update_network_available))
+				{
+					show_debug_message("[scr_option_language_menu] Active network unavailable after manual update check. Staying on 'language_check_updates' and skipping 'network_error'.");
+					in_settings = true;
+					global.settings_sidebar_menu = "language_settings";
+					menu = "language_check_updates";
+					global.language_update_allow_without_online_enabled = false;
+					global.language_update_pending = false;
+					global.online_token_validated = false;
+					global.switch_account_network_service_available = false;
+					global.online_token_error_message = "System is not connected to the network.";
+					global.online_current_attempt_result = l10n_text("No network connection");
+					global.language_update_status_message = "Translation updates are unavailable because no network connection was detected.";
+					global.language_update_status_color = c_red;
+				}
+				else
 				if (scr_check_network_connection(network_connect_active, true)) /* Force to update language pack when you click this button. Ask the player to connect to the internet */
 				{
 					show_debug_message("[scr_option_language_menu] Run scr_language_pack_update(true)");

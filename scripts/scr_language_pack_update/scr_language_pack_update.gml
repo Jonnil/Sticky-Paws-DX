@@ -122,6 +122,26 @@ function scr_language_pack_update(forced = false)
 		return;
 	}
 
+	if (!passive_connected)
+	{
+		global.language_update_pending = false;
+		global.language_update_allow_without_online_enabled = false;
+		global.language_update_status_message = "Translation updates are unavailable because no network connection was detected.";
+		global.language_update_status_color = c_red;
+
+		if (forced)
+		{
+			scr_log("WARN", "LANG.UPDATE", "abort_no_passive_network");
+		}
+		else
+		if (background_last_state != "abort_no_passive_network")
+		{
+			background_last_state = "abort_no_passive_network";
+			scr_log("WARN", "LANG.UPDATE", "abort_no_passive_network");
+		}
+		return;
+	}
+
 	if (!token_validated)
 	{
 		global.language_update_pending = false;
@@ -138,26 +158,6 @@ function scr_language_pack_update(forced = false)
 		{
 			background_last_state = "abort_token_not_validated";
 			scr_log("WARN", "LANG.UPDATE", "abort_token_not_validated");
-		}
-		return;
-	}
-
-	if (!passive_connected)
-	{
-		global.language_update_pending = false;
-		global.language_update_allow_without_online_enabled = false;
-		global.language_update_status_message = "Translation updates are unavailable because no passive network connection was detected.";
-		global.language_update_status_color = c_red;
-
-		if (forced)
-		{
-			scr_log("WARN", "LANG.UPDATE", "abort_no_passive_network");
-		}
-		else
-		if (background_last_state != "abort_no_passive_network")
-		{
-			background_last_state = "abort_no_passive_network";
-			scr_log("WARN", "LANG.UPDATE", "abort_no_passive_network");
 		}
 		return;
 	}

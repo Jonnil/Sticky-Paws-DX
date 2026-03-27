@@ -33,6 +33,18 @@ function scr_check_network_connection(connect_mode, allow_account_prompt = false
 	}
 	#endregion /* Check if debug override is enabled to simulate network errors (Only in test run mode) END */
 
+	var passive_network_status = os_is_network_connected(network_connect_passive);
+
+	if (!passive_network_status)
+	{
+		global.online_token_validated = false;
+		global.switch_account_network_service_available = false;
+		global.online_token_error_message = "System is not connected to the network.";
+		global.online_current_attempt_result = l10n_text("No network connection");
+		show_debug_message("[scr_check_network_connection] Passive network unavailable. Skipping Switch account/token validation.");
+		return false;
+	}
+
 	#region /* If online token has not been validated, update online status */
 	if (!global.online_token_validated)
 	{
@@ -60,7 +72,9 @@ function scr_check_network_connection(connect_mode, allow_account_prompt = false
 	}
 	#endregion /* If online token has not been validated, update online status END */
 
-	var actual_network_status = os_is_network_connected(connect_mode);
+	var actual_network_status = (connect_mode == network_connect_passive)
+		? passive_network_status
+		: os_is_network_connected(connect_mode);
 
 	/* Online Token must be validated before player is able to go online */
 	if (global.online_token_validated

@@ -41,6 +41,33 @@ if (global.debug_screen)
 	show_debug_message("[obj_debug_manager " + string(now) + "] menu = " + string(debug_target.menu));
 }
 
+if (os_type == os_switch)
+&& (room != rm_splash_screen)
+{
+	var passive_network_available = os_is_network_connected(network_connect_passive);
+
+	if (global.switch_startup_online_retry_timer > 0)
+	{
+		global.switch_startup_online_retry_timer--;
+	}
+	else
+	if (variable_global_exists("switch_startup_token_prefetch_active"))
+	&& (global.switch_startup_token_prefetch_active)
+	{
+		/* Continue the silent startup prefetch after leaving the splash screen so
+		flight mode boots can recover later without manual input. */
+		if (passive_network_available)
+		{
+			scr_switch_try_startup_token_prefetch();
+		}
+
+		if (global.switch_startup_token_prefetch_active)
+		{
+			global.switch_startup_online_retry_timer = 60;
+		}
+	}
+}
+
 /* First update the language pack */
 scr_language_pack_update(false);
 
@@ -49,3 +76,6 @@ scr_check_daily_translation_flush();
 
 /* Upload any pending crash logs to the server */
 scr_send_pending_crash_logs();
+
+/* URL validation is deferred while offline or during the splash screen. */
+scr_process_pending_url_checks();

@@ -457,8 +457,8 @@ function scr_draw_network_error_menu()
 				}
 				else
 				{
-					retry_successful = true;
-					//menu = "network_error";
+					retry_successful = false;
+					menu = "network_error";
 					/* Optionally prompt for credentials or open network settings: */
 					/* scr_open_network_settings(); */
 					/* Stay on error screen until the connection is fixed */
@@ -527,6 +527,7 @@ function scr_draw_network_error_menu()
 			if (caution_online_takes_you_back_to == "language_check_updates")
 			{
 				in_settings = true;
+				global.settings_sidebar_menu = "language_settings";
 			}
 			
 			menu = caution_online_takes_you_back_to; /* Switch to offline/main menu to let the user access non-network features */
@@ -547,6 +548,7 @@ function scr_draw_network_error_menu()
 			if (caution_online_takes_you_back_to == "language_check_updates")
 			{
 				in_settings = true;
+				global.settings_sidebar_menu = "language_settings";
 			}
 
 			if (caution_online_takes_you_back_to == "about_online_level_list")
