@@ -79,23 +79,29 @@ if (goal
 			}
 		}
 
-		if (!global.actually_play_edited_level && global.play_edited_level && global.character_select_in_this_menu == "level_editor")
+		if (!global.actually_play_edited_level
+		&& global.play_edited_level
+		&& global.character_select_in_this_menu == "level_editor")
 		{
 			global.actually_play_edited_level = false;
 			global.play_edited_level = false;
 			room_restart(); /* Reset the room if you complete custom level in playtest mode */
 		}
 		else
-		if (global.actually_play_edited_level && global.play_edited_level && global.character_select_in_this_menu == "level_editor")
+		if (global.actually_play_edited_level
+		&& global.play_edited_level
+		&& global.character_select_in_this_menu == "level_editor")
 		{
 			global.actually_play_edited_level = false;
 			global.play_edited_level = false;
 			room_goto(rm_title); /* Go back to title screen after completing a custom level normally */
 		}
 		else
-		if (obj_camera.after_goal_go_to_this_level >= 0 && !loading_assets)
+		if (obj_camera.after_goal_go_to_this_level >= 0
+		&& !loading_assets)
 		{
 			global.select_level_index = obj_camera.after_goal_go_to_this_level;
+			scr_prepare_official_level_load(obj_camera.after_goal_go_to_this_level);
 			scr_update_all_backgrounds();
 			global.part_limit = 0; /* How many objects are currently placed in the level editor */
 			global.part_limit_entity = 0; /* How many entities are currently placed in the level editor */

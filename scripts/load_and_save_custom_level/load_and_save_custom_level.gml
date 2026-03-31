@@ -166,6 +166,17 @@ function scr_load_object_placement_json()
 		#endregion /* Save unlockable objects END */
 
 	}
+	else
+	if (load_main_game_level)
+	{
+		show_debug_message("[scr_load_object_placement_json] Missing official object_placement_all.json. select_level_index="
+			+ string(global.select_level_index)
+			+ ", global.level_name='"
+			+ string(global.level_name)
+			+ "', resolved_path='"
+			+ string(file_path)
+			+ "'");
+	}
 }
 #endregion /* THIS IS LOADING JSON FILE END */
 

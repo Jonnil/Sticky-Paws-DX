@@ -112,6 +112,17 @@ function scr_initialize_level_information_ini()
 	}
 	else
 	{
+		if (scr_is_loading_official_level())
+		{
+			show_debug_message("[scr_initialize_level_information_ini] Missing official level_information.ini. select_level_index="
+				+ string(global.select_level_index)
+				+ ", global.level_name='"
+				+ string(global.level_name)
+				+ "', resolved_path='"
+				+ string(official_level_information_path)
+				+ "'");
+		}
+
 		for (var i = 1; i <= 4; i++)
 		{
 			custom_background_x_offset[i] = 0;
@@ -158,7 +169,7 @@ function scr_initialize_level_information_ini()
 		global.effect_wind = false;
 		intro_animation_play_only_once = false;
 		intro_animation = "";
-		after_goal_go_to_this_level = "";
+		after_goal_go_to_this_level = noone;
 		autoscroll_speed_x = 0;
 		autoscroll_speed_y = 0;
 	}

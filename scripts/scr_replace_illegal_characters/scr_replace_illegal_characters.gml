@@ -195,6 +195,49 @@ function scr_get_selected_official_level_id()
 	return string_lower(string(official_level_id));
 }
 
+/* Set the active official level state before loading read-only Included Files. */
+function scr_prepare_official_level_load(level_ref = "")
+{
+	var official_level_id = "";
+
+	if (is_real(level_ref)
+	&& level_ref >= 0)
+	{
+		if (variable_global_exists("all_loaded_main_levels")
+		&& ds_exists(global.all_loaded_main_levels, ds_type_list))
+		{
+			var list_size = ds_list_size(global.all_loaded_main_levels);
+
+			if (list_size > 0)
+			{
+				var level_index = clamp(level_ref, 0, list_size - 1);
+				var level_value = ds_list_find_value(global.all_loaded_main_levels, level_index);
+
+				if (level_value != undefined)
+				{
+					official_level_id = string(level_value);
+				}
+			}
+		}
+	}
+	else
+	{
+		official_level_id = string(level_ref);
+	}
+
+	if (official_level_id == "")
+	{
+		official_level_id = scr_get_selected_official_level_id();
+	}
+
+	official_level_id = scr_normalize_official_level_id(official_level_id);
+	global.level_folder_name = "";
+	global.level_name = official_level_id;
+	global.level_description = "";
+
+	return official_level_id;
+}
+
 /* Prefer the level currently being played; fall back to the menu selection when needed. */
 function scr_get_active_official_level_id()
 {
@@ -276,7 +319,8 @@ function scr_make_custom_level_folder_name_safe(raw_name)
 /* Resolve the included-files directory for an official level, accounting for mixed path casing in the project. */
 function scr_get_official_level_directory(level_name = "", category = "")
 {
-	var official_level_id = string(level_name);
+	var requested_level_name = string(level_name);
+	var official_level_id = requested_level_name;
 
 	if (official_level_id == "")
 	{
@@ -291,7 +335,26 @@ function scr_get_official_level_directory(level_name = "", category = "")
 	}
 
 	var root_candidates = ["levels", "Levels"];
+	var level_candidates = [official_level_id];
 	var category_candidates = [string(category)];
+
+	if (requested_level_name != ""
+	&& requested_level_name != official_level_id)
+	{
+		level_candidates[array_length(level_candidates)] = requested_level_name;
+	}
+
+	if (string_length(official_level_id) == 6
+	&& string_copy(official_level_id, 1, 5) == "level")
+	{
+		var last_character = string_copy(official_level_id, 6, 1);
+
+		if (last_character >= "a"
+		&& last_character <= "z")
+		{
+			level_candidates[array_length(level_candidates)] = "level" + string_upper(last_character);
+		}
+	}
 
 	if (string(category) != "")
 	{
@@ -305,24 +368,29 @@ function scr_get_official_level_directory(level_name = "", category = "")
 
 	for (var root_index = 0; root_index < array_length(root_candidates); root_index++)
 	{
-		if (string(category) == "")
+		for (var level_candidate_index = 0; level_candidate_index < array_length(level_candidates); level_candidate_index++)
 		{
-			var level_path = root_candidates[root_index] + "/" + official_level_id;
+			var level_candidate = string(level_candidates[level_candidate_index]);
 
-			if (directory_exists(level_path))
+			if (string(category) == "")
 			{
-				return level_path + "/";
-			}
-		}
-		else
-		{
-			for (var category_index = 0; category_index < array_length(category_candidates); category_index++)
-			{
-				var category_path = root_candidates[root_index] + "/" + official_level_id + "/" + category_candidates[category_index];
+				var level_path = root_candidates[root_index] + "/" + level_candidate;
 
-				if (directory_exists(category_path))
+				if (directory_exists(level_path))
 				{
-					return category_path + "/";
+					return level_path + "/";
+				}
+			}
+			else
+			{
+				for (var category_index = 0; category_index < array_length(category_candidates); category_index++)
+				{
+					var category_path = root_candidates[root_index] + "/" + level_candidate + "/" + category_candidates[category_index];
+
+					if (directory_exists(category_path))
+					{
+						return category_path + "/";
+					}
 				}
 			}
 		}
