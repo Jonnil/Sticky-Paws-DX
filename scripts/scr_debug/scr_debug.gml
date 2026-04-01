@@ -481,6 +481,81 @@ function scr_debug_handle_mouse_toggle(header_y, config_name)
 // Optimized Debug Text Sections
 ///////////////////////////////////////////////////////////////
 
+/// @function scr_get_debug_level_loading_mode()
+/* Returns a readable label for the current level-loading mode. */
+function scr_get_debug_level_loading_mode()
+{
+	if (variable_global_exists("create_level_from_template")
+	&& global.create_level_from_template)
+	{
+		return "template_official";
+	}
+
+	if (scr_is_loading_official_level())
+	{
+		return "official";
+	}
+
+	return "custom";
+}
+
+/// @function scr_get_level_loading_debug_data()
+/* Collects the current level-loading state and resolved file paths for the debug screen/logs. */
+function scr_get_level_loading_debug_data()
+{
+	var is_official_level = scr_is_loading_official_level();
+	var custom_folder_name = scr_get_custom_level_folder_name();
+	var level_information_path = "";
+	var object_placement_path = "";
+	var background_path = "";
+
+	if (is_official_level)
+	{
+		level_information_path = scr_get_official_level_file_path("", "data", "level_information.ini");
+		object_placement_path = scr_get_official_level_file_path("", "data", "object_placement_all.json");
+		background_path = scr_get_official_level_directory("", "background");
+	}
+	else
+	{
+		level_information_path = global.use_temp_or_working + "custom_levels/" + custom_folder_name + "/data/level_information.ini";
+		object_placement_path = global.use_temp_or_working + "custom_levels/" + custom_folder_name + "/data/object_placement_all.json";
+		background_path = global.use_temp_or_working + "custom_levels/" + custom_folder_name + "/background/";
+	}
+
+	var after_goal_value = "n/a";
+
+	if (instance_exists(obj_camera)
+	&& variable_instance_exists(obj_camera, "after_goal_go_to_this_level"))
+	{
+		after_goal_value = string(obj_camera.after_goal_go_to_this_level);
+	}
+
+	return {
+		load_mode: scr_get_debug_level_loading_mode(),
+		character_select_menu: variable_global_exists("character_select_in_this_menu") ? string(global.character_select_in_this_menu) : "",
+		create_level_from_template: variable_global_exists("create_level_from_template") ? string(global.create_level_from_template) : "",
+		select_level_index: variable_global_exists("select_level_index") ? string(global.select_level_index) : "",
+		level_name: variable_global_exists("level_name") ? string(global.level_name) : "",
+		level_folder_name: variable_global_exists("level_folder_name") ? string(global.level_folder_name) : "",
+		level_description: variable_global_exists("level_description") ? string(global.level_description) : "",
+		selected_official_level_id: scr_get_selected_official_level_id(),
+		active_official_level_id: scr_get_active_official_level_id(),
+		custom_folder_name: custom_folder_name,
+		level_information_path: level_information_path,
+		level_information_exists: file_exists(level_information_path),
+		object_placement_path: object_placement_path,
+		object_placement_exists: file_exists(object_placement_path),
+		background_path: background_path,
+		background_path_exists: directory_exists(background_path),
+		path_to_use: variable_global_exists("path_to_use") ? string(global.path_to_use) : "",
+		player1_start_count: instance_number(obj_level_player1_start),
+		level_end_count: instance_number(obj_level_end),
+		placed_object_count: instance_number(obj_leveleditor_placed_object),
+		after_goal_go_to_this_level: after_goal_value,
+		expect_level_files: instance_exists(obj_camera)
+	};
+}
+
 /// @function scr_debug_draw_optimized_text()
 /* Draws a series of collapsible debug text sections. System, Player, Menu, Gamepad, and Switch info */
 function scr_debug_draw_optimized_text()
@@ -517,7 +592,106 @@ function scr_debug_draw_optimized_text()
 
 	debug_text_y += section_spacing;
 
-	#region /* Section 2: Player Information */
+	#region /* Section 2: Level Loading */
+	var level_loading_debug = scr_get_level_loading_debug_data();
+
+	debug_text_y = scr_draw_debug_header("Level Loading", 32, debug_text_y);
+
+	var _level_loading_collapsed = variable_struct_exists(global.debug_collapsed_sections, "Level Loading") ? variable_struct_get(global.debug_collapsed_sections, "Level Loading") : false;
+	if (!_level_loading_collapsed)
+	{
+		var missing_level_info = level_loading_debug.expect_level_files
+			&& !level_loading_debug.level_information_exists;
+		var missing_object_json = level_loading_debug.expect_level_files
+			&& !level_loading_debug.object_placement_exists;
+		var missing_background_directory = level_loading_debug.expect_level_files
+			&& !level_loading_debug.background_path_exists;
+
+		debug_text_y = scr_draw_highlighted_text(32, debug_text_y,
+							"load_mode", level_loading_debug.load_mode,
+							"Load Mode", c_white, c_red, missing_level_info || missing_object_json);
+
+		debug_text_y = scr_draw_highlighted_text(32, debug_text_y,
+							"character_select_in_this_menu", level_loading_debug.character_select_menu,
+							"Character Select Menu", c_white, c_red, false);
+
+		debug_text_y = scr_draw_highlighted_text(32, debug_text_y,
+							"create_level_from_template", level_loading_debug.create_level_from_template,
+							"Create Level From Template", c_white, c_red, false);
+
+		debug_text_y = scr_draw_highlighted_text(32, debug_text_y,
+							"select_level_index", level_loading_debug.select_level_index,
+							"Select Level Index", c_white, c_red, false);
+
+		debug_text_y = scr_draw_highlighted_text(32, debug_text_y,
+							"global.level_name", level_loading_debug.level_name,
+							"Global Level Name", c_white, c_red, false);
+
+		debug_text_y = scr_draw_highlighted_text(32, debug_text_y,
+							"global.level_folder_name", level_loading_debug.level_folder_name,
+							"Global Level Folder", c_white, c_red, false);
+
+		debug_text_y = scr_draw_highlighted_text(32, debug_text_y,
+							"scr_get_selected_official_level_id()", level_loading_debug.selected_official_level_id,
+							"Selected Official ID", c_white, c_red, false);
+
+		debug_text_y = scr_draw_highlighted_text(32, debug_text_y,
+							"scr_get_active_official_level_id()", level_loading_debug.active_official_level_id,
+							"Active Official ID", c_white, c_red, false);
+
+		debug_text_y = scr_draw_highlighted_text(32, debug_text_y,
+							"scr_get_custom_level_folder_name()", level_loading_debug.custom_folder_name,
+							"Custom Folder Name", c_white, c_red, false);
+
+		debug_text_y = scr_draw_highlighted_text(32, debug_text_y,
+							"level_information_path", level_loading_debug.level_information_path,
+							"Level Info Path", c_white, c_red, missing_level_info);
+
+		debug_text_y = scr_draw_highlighted_text(32, debug_text_y,
+							"level_information_exists", string(level_loading_debug.level_information_exists),
+							"Level Info Exists", c_white, c_red, missing_level_info);
+
+		debug_text_y = scr_draw_highlighted_text(32, debug_text_y,
+							"object_placement_path", level_loading_debug.object_placement_path,
+							"Object JSON Path", c_white, c_red, missing_object_json);
+
+		debug_text_y = scr_draw_highlighted_text(32, debug_text_y,
+							"object_placement_exists", string(level_loading_debug.object_placement_exists),
+							"Object JSON Exists", c_white, c_red, missing_object_json);
+
+		debug_text_y = scr_draw_highlighted_text(32, debug_text_y,
+							"background_path", level_loading_debug.background_path,
+							"Background Path", c_white, c_red, missing_background_directory);
+
+		debug_text_y = scr_draw_highlighted_text(32, debug_text_y,
+							"background_path_exists", string(level_loading_debug.background_path_exists),
+							"Background Path Exists", c_white, c_red, missing_background_directory);
+
+		debug_text_y = scr_draw_highlighted_text(32, debug_text_y,
+							"global.path_to_use", level_loading_debug.path_to_use,
+							"Path To Use", c_white, c_red, false);
+
+		debug_text_y = scr_draw_highlighted_text(32, debug_text_y,
+							"obj_level_player1_start count", string(level_loading_debug.player1_start_count),
+							"P1 Start Count", c_white, c_red, level_loading_debug.expect_level_files && level_loading_debug.player1_start_count <= 0);
+
+		debug_text_y = scr_draw_highlighted_text(32, debug_text_y,
+							"obj_level_end count", string(level_loading_debug.level_end_count),
+							"Level End Count", c_white, c_red, level_loading_debug.expect_level_files && level_loading_debug.level_end_count <= 0);
+
+		debug_text_y = scr_draw_highlighted_text(32, debug_text_y,
+							"obj_leveleditor_placed_object count", string(level_loading_debug.placed_object_count),
+							"Placed Object Count", c_white, c_red, level_loading_debug.expect_level_files && level_loading_debug.placed_object_count <= 0);
+
+		debug_text_y = scr_draw_highlighted_text(32, debug_text_y,
+							"after_goal_go_to_this_level", level_loading_debug.after_goal_go_to_this_level,
+							"After Goal Level", c_white, c_red, false);
+	}
+	#endregion /* Section 2: Level Loading END */
+
+	debug_text_y += section_spacing;
+
+	#region /* Section 3: Player Information */
 	if (instance_exists(obj_camera))
 	{
 		debug_text_y = scr_draw_debug_header("Player Information", 32, debug_text_y);
@@ -563,11 +737,11 @@ function scr_debug_draw_optimized_text()
 			debug_text_y = scr_draw_highlighted_text(32, debug_text_y, "player_slot", string(global.player_slot), "Player Slots", c_white, c_red, false);
 		}
 	}
-	#endregion /* Section 2: Player Information END */
+	#endregion /* Section 3: Player Information END */
 
 	debug_text_y += section_spacing;
 
-	#region /* Section 3: Menu Information */
+	#region /* Section 4: Menu Information */
 	/* If a debug target was found, we can use a "with" block on it */
 	if (debug_target != noone)
 	{
@@ -651,11 +825,11 @@ function scr_debug_draw_optimized_text()
 			}
 		}
 	}
-	#endregion /* Section 3: Menu Information END */
+	#endregion /* Section 4: Menu Information END */
 
 	debug_text_y += section_spacing;
 
-	#region /* Section 4: Gamepad Information */
+	#region /* Section 5: Gamepad Information */
 	var gamepad_connected = false;
 
 	for (var g = 0; g < 5; g++)
@@ -683,11 +857,11 @@ function scr_debug_draw_optimized_text()
 			}
 		}
 	}
-	#endregion /* Section 4: Gamepad Information END */
+	#endregion /* Section 5: Gamepad Information END */
 
 	debug_text_y += section_spacing;
 
-	#region /* Section 5: Switch Information (only for Switch) */
+	#region /* Section 6: Switch Information (only for Switch) */
 	if (os_type == os_switch)
 	{
 		debug_text_y = scr_draw_debug_header("Switch Information", 32, debug_text_y);
@@ -719,11 +893,11 @@ function scr_debug_draw_optimized_text()
 			debug_text_y = scr_draw_highlighted_text(32, debug_text_y, "switch_logged_in", string(global.switch_logged_in), "Switch Logged In", c_white, c_red, !global.switch_logged_in);
 		}
 	}
-	#endregion /* Section 5: Switch Information (only for Switch) END */
+	#endregion /* Section 6: Switch Information (only for Switch) END */
 
 	debug_text_y += section_spacing;
 
-	#region /* Section 6: Online Download Info */
+	#region /* Section 7: Online Download Info */
 	/* If a debug target was found, we can use a "with" block on it */
 	if (debug_target != noone)
 	{
@@ -764,7 +938,7 @@ function scr_debug_draw_optimized_text()
 			//}
 		}
 	}
-	#endregion /* Section 6: Online Download Info END */
+	#endregion /* Section 7: Online Download Info END */
 
 }
 

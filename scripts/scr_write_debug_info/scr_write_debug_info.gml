@@ -44,6 +44,30 @@ function scr_write_debug_info()
 	ini_write_string("Game State", "player_positions", string(scr_get_player_positions()));
 	ini_write_real("Game State", "instance_count", instance_count);
 
+	/* [Level Loading] */
+	var level_loading_debug = scr_get_level_loading_debug_data();
+	ini_write_string("Level Loading", "load_mode", string(level_loading_debug.load_mode));
+	ini_write_string("Level Loading", "character_select_in_this_menu", string(level_loading_debug.character_select_menu));
+	ini_write_string("Level Loading", "create_level_from_template", string(level_loading_debug.create_level_from_template));
+	ini_write_string("Level Loading", "select_level_index", string(level_loading_debug.select_level_index));
+	ini_write_string("Level Loading", "global.level_name", string(level_loading_debug.level_name));
+	ini_write_string("Level Loading", "global.level_folder_name", string(level_loading_debug.level_folder_name));
+	ini_write_string("Level Loading", "global.level_description", string(level_loading_debug.level_description));
+	ini_write_string("Level Loading", "selected_official_level_id", string(level_loading_debug.selected_official_level_id));
+	ini_write_string("Level Loading", "active_official_level_id", string(level_loading_debug.active_official_level_id));
+	ini_write_string("Level Loading", "custom_folder_name", string(level_loading_debug.custom_folder_name));
+	ini_write_string("Level Loading", "level_information_path", string(level_loading_debug.level_information_path));
+	ini_write_string("Level Loading", "level_information_exists", string(level_loading_debug.level_information_exists));
+	ini_write_string("Level Loading", "object_placement_path", string(level_loading_debug.object_placement_path));
+	ini_write_string("Level Loading", "object_placement_exists", string(level_loading_debug.object_placement_exists));
+	ini_write_string("Level Loading", "background_path", string(level_loading_debug.background_path));
+	ini_write_string("Level Loading", "background_path_exists", string(level_loading_debug.background_path_exists));
+	ini_write_string("Level Loading", "global.path_to_use", string(level_loading_debug.path_to_use));
+	ini_write_real("Level Loading", "obj_level_player1_start_count", level_loading_debug.player1_start_count);
+	ini_write_real("Level Loading", "obj_level_end_count", level_loading_debug.level_end_count);
+	ini_write_real("Level Loading", "obj_leveleditor_placed_object_count", level_loading_debug.placed_object_count);
+	ini_write_string("Level Loading", "after_goal_go_to_this_level", string(level_loading_debug.after_goal_go_to_this_level));
+
 	/* [Performance Info] */
 	ini_write_real("Performance Info", "FPS", fps);
 	ini_write_real("Performance Info", "Real FPS", fps_real);
