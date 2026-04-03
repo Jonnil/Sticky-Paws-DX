@@ -66,6 +66,9 @@ function scr_write_debug_info()
 	ini_write_string("Level Loading", "load_snapshot_status", string(level_loading_debug.load_snapshot_status));
 	ini_write_string("Level Loading", "load_snapshot_timestamp", string(level_loading_debug.load_snapshot_timestamp));
 	ini_write_real("Level Loading", "loaded_json_entry_count", level_loading_debug.load_snapshot_json_entry_count);
+	ini_write_string("Level Loading", "monitor_session_id", string(level_loading_debug.monitor_session_id));
+	ini_write_string("Level Loading", "validation_result", string(level_loading_debug.validation_result));
+	ini_write_string("Level Loading", "validation_pending", string(level_loading_debug.validation_pending));
 	ini_write_string("Level Loading", "global.path_to_use", string(level_loading_debug.path_to_use));
 	ini_write_real("Level Loading", "loaded_obj_level_player1_start_count", level_loading_debug.loaded_player1_start_count);
 	ini_write_real("Level Loading", "current_live_obj_level_player1_start_count", level_loading_debug.current_live_player1_start_count);
@@ -73,7 +76,60 @@ function scr_write_debug_info()
 	ini_write_real("Level Loading", "current_live_obj_level_end_count", level_loading_debug.current_live_level_end_count);
 	ini_write_real("Level Loading", "loaded_obj_leveleditor_placed_object_count", level_loading_debug.loaded_placed_object_count);
 	ini_write_real("Level Loading", "current_live_obj_leveleditor_placed_object_count", level_loading_debug.current_live_placed_object_count);
+	ini_write_real("Level Loading", "runtime_spawn_calls", level_loading_debug.runtime_spawn_calls);
+	ini_write_real("Level Loading", "runtime_instances_created_total", level_loading_debug.runtime_instances_created_total);
 	ini_write_string("Level Loading", "after_goal_go_to_this_level", string(level_loading_debug.after_goal_go_to_this_level));
+
+	/* [Auto Level Load Error] */
+	var auto_level_load_context = undefined;
+	if (variable_global_exists("debug_auto_level_load_log_context")
+	&& is_struct(global.debug_auto_level_load_log_context))
+	{
+		auto_level_load_context = global.debug_auto_level_load_log_context;
+	}
+
+	var auto_generated = false;
+	var failure_reason = string(level_loading_debug.failure_reason);
+	var failure_signature = string(level_loading_debug.failure_signature);
+	var validation_delay_frames = level_loading_debug.validation_delay_frames;
+	var session_id = string(level_loading_debug.monitor_session_id);
+
+	if (!is_undefined(auto_level_load_context))
+	{
+		if (variable_struct_exists(auto_level_load_context, "auto_generated"))
+		{
+			auto_generated = auto_level_load_context.auto_generated;
+		}
+
+		if (variable_struct_exists(auto_level_load_context, "failure_reason"))
+		{
+			failure_reason = string(auto_level_load_context.failure_reason);
+		}
+
+		if (variable_struct_exists(auto_level_load_context, "failure_signature"))
+		{
+			failure_signature = string(auto_level_load_context.failure_signature);
+		}
+
+		if (variable_struct_exists(auto_level_load_context, "validation_delay_frames"))
+		{
+			validation_delay_frames = real(auto_level_load_context.validation_delay_frames);
+		}
+
+		if (variable_struct_exists(auto_level_load_context, "session_id"))
+		{
+			session_id = string(auto_level_load_context.session_id);
+		}
+	}
+
+	ini_write_string("Auto Level Load Error", "auto_generated", string(auto_generated));
+	ini_write_string("Auto Level Load Error", "session_id", session_id);
+	ini_write_string("Auto Level Load Error", "validation_result", string(level_loading_debug.validation_result));
+	ini_write_string("Auto Level Load Error", "failure_reason", failure_reason);
+	ini_write_string("Auto Level Load Error", "failure_signature", failure_signature);
+	ini_write_real("Auto Level Load Error", "validation_delay_frames", validation_delay_frames);
+	ini_write_real("Auto Level Load Error", "runtime_spawn_calls", level_loading_debug.runtime_spawn_calls);
+	ini_write_real("Auto Level Load Error", "runtime_instances_created_total", level_loading_debug.runtime_instances_created_total);
 
 	/* [Performance Info] */
 	ini_write_real("Performance Info", "FPS", fps);
@@ -106,19 +162,49 @@ function scr_write_debug_info()
 	ini_write_string("Controller Information", "player_slots", string(global.player_slot));
 
 	/* [Menu Information] */
-	if (variable_instance_exists(debug_target, "menu"))
+	var menu_debug_target = noone;
+
+	if (instance_exists(obj_debug_manager))
 	{
-		ini_write_string("Menu Information", "current_menu", string(debug_target.menu));
+		var debug_manager = instance_find(obj_debug_manager, 0);
+
+		if (variable_instance_exists(debug_manager, "debug_target"))
+		{
+			var candidate_debug_target = debug_manager.debug_target;
+
+			if (instance_exists(candidate_debug_target))
+			{
+				menu_debug_target = candidate_debug_target;
+			}
+		}
 	}
 
-	if (variable_instance_exists(debug_target, "level_editor_menu"))
+	if (menu_debug_target == noone)
+	&& (
+		variable_instance_exists(id, "menu")
+		|| variable_instance_exists(id, "level_editor_menu")
+		|| variable_instance_exists(id, "menu_cursor_y_position")
+	)
 	{
-		ini_write_string("Menu Information", "level_editor_menu", string(debug_target.level_editor_menu));
+		menu_debug_target = id;
 	}
 
-	if (variable_instance_exists(debug_target, "menu_cursor_y_position"))
+	if (menu_debug_target != noone)
+	&& (variable_instance_exists(menu_debug_target, "menu"))
 	{
-		ini_write_real("Menu Information", "menu_cursor_y_position", debug_target.menu_cursor_y_position);
+		ini_write_string("Menu Information", "current_menu", string(menu_debug_target.menu));
+	}
+
+	if (menu_debug_target != noone)
+	&& (variable_instance_exists(menu_debug_target, "level_editor_menu"))
+	{
+		ini_write_string("Menu Information", "level_editor_menu", string(menu_debug_target.level_editor_menu));
+	}
+
+	if (menu_debug_target != noone)
+	&& (variable_instance_exists(menu_debug_target, "menu_cursor_y_position"))
+	{
+		ini_write_real("Menu Information", "menu_cursor_y_position", menu_debug_target.menu_cursor_y_position);
 	}
 
 	ini_write_real("Menu Information", "menu_navigation_speed", global.menu_navigation_speed);

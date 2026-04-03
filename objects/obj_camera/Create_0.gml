@@ -460,3 +460,9 @@ else
 {
 	is_autoscrolling_vertical = false;
 }
+
+var load_monitor = scr_debug_get_level_load_monitor();
+if (load_monitor.validation_pending)
+{
+	alarm[10] = load_monitor.validation_delay_frames;
+}

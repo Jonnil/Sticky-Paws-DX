@@ -22,9 +22,13 @@ function scr_create_game_directories()
 		"custom_resource_pack",
 		"custom_title_background",
 		"custom_title_logo",
-		"save_file",
-		"mods"
+		"save_file"
 	];
+
+	if (os_type != os_switch)
+	{
+		array_push(directories, "mods");
+	}
 
 	/* Iterate over each directory and create it if it doesn't exist */
 	for (var i = 0; i < array_length(directories); i++)

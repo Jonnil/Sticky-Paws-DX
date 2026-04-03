@@ -1,5 +1,6 @@
 function scr_spawn_objects_when_starting_room()
 {
+	var instance_count_before_spawn_pass = instance_count;
 
 	#region /* Spawn objects when starting room */
 	if (!global.world_editor)
@@ -868,6 +869,7 @@ function scr_spawn_objects_when_starting_room()
 	}
 	#endregion /* Spawn objects when starting room END */
 
+	scr_debug_record_runtime_spawn_pass(instance_count - instance_count_before_spawn_pass);
 	instance_destroy(); /* Last thing to do is delete itself */
 }
 

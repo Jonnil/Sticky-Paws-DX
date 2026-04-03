@@ -522,7 +522,374 @@ function scr_debug_reset_level_load_snapshot()
 		timestamp: ""
 	};
 
+	scr_debug_reset_level_load_monitor();
+
 	return global.debug_level_load_snapshot;
+}
+
+/// @function scr_debug_should_monitor_level_load()
+/* Returns true only for gameplay entries that should auto-validate level loading. */
+function scr_debug_should_monitor_level_load()
+{
+	return room == rm_leveleditor
+		&& ((variable_global_exists("character_select_in_this_menu")
+		&& global.character_select_in_this_menu == "main_game")
+		|| (variable_global_exists("actually_play_edited_level")
+		&& global.actually_play_edited_level));
+}
+
+/// @function scr_debug_reset_level_load_monitor()
+/* Reset per-load validation state while preserving the short-term duplicate suppression window. */
+function scr_debug_reset_level_load_monitor()
+{
+	var previous_signature = "";
+	var previous_time = -30000;
+
+	if (variable_global_exists("debug_level_load_monitor")
+	&& is_struct(global.debug_level_load_monitor))
+	{
+		if (variable_struct_exists(global.debug_level_load_monitor, "last_error_signature"))
+		{
+			previous_signature = string(global.debug_level_load_monitor.last_error_signature);
+		}
+
+		if (variable_struct_exists(global.debug_level_load_monitor, "last_error_time"))
+		{
+			previous_time = real(global.debug_level_load_monitor.last_error_time);
+		}
+	}
+
+	var validation_active = scr_debug_should_monitor_level_load();
+
+	global.debug_level_load_monitor =
+	{
+		session_id: scr_format_timestamp(date_current_datetime()) + "_" + string(current_time),
+		validation_pending: validation_active,
+		validated: false,
+		auto_log_saved: false,
+		runtime_spawn_calls: 0,
+		runtime_instances_created_total: 0,
+		last_error_signature: previous_signature,
+		last_error_time: previous_time,
+		validation_result: validation_active ? "PENDING" : "INACTIVE",
+		validation_delay_frames: 10,
+		failure_reason: "",
+		failure_signature: "",
+		warning_reason: ""
+	};
+
+	if (validation_active)
+	{
+		scr_log("INFO", "LEVEL.LOAD", "load_begin",
+			"session_id=" + string(global.debug_level_load_monitor.session_id)
+			+ ", mode=" + scr_get_debug_level_loading_mode()
+			+ ", level_name=" + (variable_global_exists("level_name") ? string(global.level_name) : ""));
+	}
+
+	return global.debug_level_load_monitor;
+}
+
+/// @function scr_debug_get_level_load_monitor()
+/* Return the current level-load validation monitor, creating it on demand. */
+function scr_debug_get_level_load_monitor()
+{
+	if (!variable_global_exists("debug_level_load_monitor")
+	|| !is_struct(global.debug_level_load_monitor))
+	{
+		return scr_debug_reset_level_load_monitor();
+	}
+
+	return global.debug_level_load_monitor;
+}
+
+/// @function scr_debug_record_runtime_spawn_pass(created_instance_count)
+/* Record how many gameplay instances a single placeholder spawn pass created. */
+function scr_debug_record_runtime_spawn_pass(created_instance_count)
+{
+	var monitor = scr_debug_get_level_load_monitor();
+
+	if (!scr_debug_should_monitor_level_load())
+	{
+		return monitor;
+	}
+
+	monitor.runtime_spawn_calls += 1;
+	monitor.runtime_instances_created_total += max(0, floor(real(created_instance_count)));
+	global.debug_level_load_monitor = monitor;
+
+	return monitor;
+}
+
+/// @function scr_debug_join_string_array(string_array)
+/* Join a flat array of strings with "; " for compact debug output. */
+function scr_debug_join_string_array(string_array)
+{
+	var output = "";
+
+	for (var i = 0; i < array_length(string_array); i++)
+	{
+		if (i > 0)
+		{
+			output += "; ";
+		}
+
+		output += string(string_array[i]);
+	}
+
+	return output;
+}
+
+/// @function scr_debug_build_level_load_failure_signature(level_loading_debug, failure_reason)
+/* Build a stable signature so rapid retries suppress duplicate auto-log files. */
+function scr_debug_build_level_load_failure_signature(level_loading_debug, failure_reason)
+{
+	var level_identifier = string(level_loading_debug.active_official_level_id);
+
+	if (level_identifier == "")
+	{
+		level_identifier = string(level_loading_debug.level_name);
+	}
+
+	if (level_identifier == "")
+	{
+		level_identifier = string(level_loading_debug.custom_folder_name);
+	}
+
+	return string(level_loading_debug.load_mode)
+		+ "|"
+		+ level_identifier
+		+ "|"
+		+ string(level_loading_debug.selected_official_level_id)
+		+ "|"
+		+ string(level_loading_debug.active_official_level_id)
+		+ "|"
+		+ string(failure_reason);
+}
+
+/// @function scr_debug_save_level_load_error_log(failure_reason, failure_signature)
+/* Save a one-shot automatic level-load error dump without affecting normal gameplay flow. */
+function scr_debug_save_level_load_error_log(failure_reason, failure_signature)
+{
+	var monitor = scr_debug_get_level_load_monitor();
+	var level_loading_debug = scr_get_level_loading_debug_data();
+	var logs_root = game_save_id + "debug_logs/";
+	var logs_folder = logs_root + "level_load_error/";
+	var level_identifier = string(level_loading_debug.active_official_level_id);
+
+	if (!directory_exists(logs_root))
+	{
+		directory_create(logs_root);
+	}
+
+	if (!directory_exists(logs_folder))
+	{
+		directory_create(logs_folder);
+	}
+
+	if (level_identifier == "")
+	{
+		level_identifier = string(level_loading_debug.level_name);
+	}
+
+	if (level_identifier == "")
+	{
+		level_identifier = string(level_loading_debug.custom_folder_name);
+	}
+
+	if (level_identifier == "")
+	{
+		level_identifier = "unknown_level";
+	}
+
+	var log_file_path = logs_folder
+		+ "level_load_error_"
+		+ scr_format_timestamp(date_current_datetime())
+		+ "_"
+		+ scr_sanitize_filename(level_loading_debug.load_mode, 32)
+		+ "_"
+		+ scr_sanitize_filename(level_identifier, 64)
+		+ ".ini";
+
+	global.debug_auto_level_load_log_context =
+	{
+		auto_generated: true,
+		session_id: monitor.session_id,
+		failure_reason: string(failure_reason),
+		failure_signature: string(failure_signature),
+		validation_delay_frames: monitor.validation_delay_frames
+	};
+
+	ini_open(log_file_path);
+	scr_write_debug_info();
+	ini_close();
+
+	global.debug_auto_level_load_log_context = undefined;
+
+	scr_log("ERROR", "LEVEL.LOAD", "auto_log_saved",
+		"session_id=" + string(monitor.session_id)
+		+ ", path="
+		+ scr_censor_game_save_id_for_display(log_file_path));
+
+	return log_file_path;
+}
+
+/// @function scr_debug_validate_level_load_after_stabilization(validation_delay_frames)
+/* Run a one-shot conservative validation pass after gameplay objects have had time to spawn. */
+function scr_debug_validate_level_load_after_stabilization(validation_delay_frames = 10)
+{
+	var monitor = scr_debug_get_level_load_monitor();
+
+	monitor.validation_delay_frames = max(0, floor(real(validation_delay_frames)));
+
+	if (!scr_debug_should_monitor_level_load())
+	{
+		monitor.validation_pending = false;
+		monitor.validation_result = "INACTIVE";
+		global.debug_level_load_monitor = monitor;
+		return false;
+	}
+
+	if (monitor.validated)
+	{
+		global.debug_level_load_monitor = monitor;
+		return string_pos(string(monitor.validation_result), "FAILED") == 1;
+	}
+
+	monitor.validation_pending = false;
+	monitor.validated = true;
+
+	var level_loading_debug = scr_get_level_loading_debug_data();
+	var failure_messages = [];
+	var warning_messages = [];
+
+	if (level_loading_debug.expect_level_files
+	&& !level_loading_debug.level_information_exists)
+	{
+		failure_messages[array_length(failure_messages)] = "missing level_information.ini";
+	}
+
+	if (level_loading_debug.expect_level_files
+	&& !level_loading_debug.object_placement_exists)
+	{
+		failure_messages[array_length(failure_messages)] = "missing object_placement_all.json";
+	}
+
+	if (level_loading_debug.expect_level_files
+	&& !level_loading_debug.background_path_exists)
+	{
+		failure_messages[array_length(failure_messages)] = "missing background directory";
+	}
+
+	if (level_loading_debug.expect_level_files
+	&& level_loading_debug.object_placement_exists
+	&& level_loading_debug.loaded_placed_object_count <= 0)
+	{
+		failure_messages[array_length(failure_messages)] = "0 objects loaded from object_placement_all.json";
+	}
+
+	if (level_loading_debug.expect_level_files
+	&& level_loading_debug.loaded_player1_start_count <= 0)
+	{
+		failure_messages[array_length(failure_messages)] = "missing player1 start placeholder at load time";
+	}
+
+	if (level_loading_debug.expect_level_files
+	&& level_loading_debug.loaded_level_end_count <= 0)
+	{
+		failure_messages[array_length(failure_messages)] = "missing level end placeholder at load time";
+	}
+
+	if (instance_number(obj_player) <= 0)
+	{
+		failure_messages[array_length(failure_messages)] = "no player instance after stabilization";
+	}
+
+	if (level_loading_debug.loaded_placed_object_count >= 25
+	&& monitor.runtime_instances_created_total <= 0)
+	{
+		failure_messages[array_length(failure_messages)] = "25+ placed objects loaded but runtime spawn count stayed at 0";
+	}
+
+	if (string(level_loading_debug.selected_official_level_id) != ""
+	&& string(level_loading_debug.active_official_level_id) != ""
+	&& string(level_loading_debug.selected_official_level_id) != string(level_loading_debug.active_official_level_id))
+	{
+		warning_messages[array_length(warning_messages)] = "selected official ID and active official ID differ after stabilization";
+	}
+
+	if (level_loading_debug.loaded_placed_object_count >= 1
+	&& level_loading_debug.loaded_placed_object_count <= 24
+	&& monitor.runtime_instances_created_total <= 0)
+	{
+		warning_messages[array_length(warning_messages)] = "1-24 placed objects loaded but runtime spawn count stayed at 0";
+	}
+
+	var failure_reason = scr_debug_join_string_array(failure_messages);
+	var warning_reason = scr_debug_join_string_array(warning_messages);
+
+	monitor.failure_reason = failure_reason;
+	monitor.warning_reason = warning_reason;
+	monitor.failure_signature = "";
+
+	var log_prefix = "session_id=" + string(monitor.session_id)
+		+ ", selected_official_level_id=" + string(level_loading_debug.selected_official_level_id)
+		+ ", active_official_level_id=" + string(level_loading_debug.active_official_level_id)
+		+ ", loaded_placed_object_count=" + string(level_loading_debug.loaded_placed_object_count)
+		+ ", runtime_spawn_calls=" + string(monitor.runtime_spawn_calls)
+		+ ", runtime_instances_created_total=" + string(monitor.runtime_instances_created_total);
+
+	if (array_length(failure_messages) > 0)
+	{
+		var failure_signature = scr_debug_build_level_load_failure_signature(level_loading_debug, failure_reason);
+		var duplicate_error = false;
+
+		monitor.failure_signature = failure_signature;
+		monitor.validation_result = "FAILED: " + failure_reason;
+
+		scr_log("ERROR", "LEVEL.LOAD", "validation_failed",
+			log_prefix + ", reason=" + failure_reason);
+
+		if (string(monitor.last_error_signature) == failure_signature
+		&& (current_time - real(monitor.last_error_time)) < 30000)
+		{
+			duplicate_error = true;
+		}
+
+		if (duplicate_error)
+		{
+			scr_log("WARN", "LEVEL.LOAD", "duplicate_error_suppressed",
+				"session_id=" + string(monitor.session_id)
+				+ ", failure_signature="
+				+ failure_signature);
+		}
+		else
+		if (!monitor.auto_log_saved)
+		{
+			scr_debug_save_level_load_error_log(failure_reason, failure_signature);
+			monitor.auto_log_saved = true;
+			monitor.last_error_signature = failure_signature;
+			monitor.last_error_time = current_time;
+		}
+	}
+	else
+	if (array_length(warning_messages) > 0)
+	{
+		monitor.validation_result = "WARNING: " + warning_reason;
+
+		scr_log("WARN", "LEVEL.LOAD", "validation_warning",
+			log_prefix + ", reason=" + warning_reason);
+	}
+	else
+	{
+		monitor.validation_result = "OK";
+
+		scr_log("INFO", "LEVEL.LOAD", "validation_ok",
+			log_prefix + ", result=OK");
+	}
+
+	global.debug_level_load_monitor = monitor;
+
+	return array_length(failure_messages) > 0;
 }
 
 /// @function scr_debug_get_level_load_snapshot()
@@ -564,6 +931,7 @@ function scr_debug_refresh_level_load_snapshot()
 function scr_debug_capture_level_load_snapshot(capture_reason = "", object_placement_path = undefined, object_placement_exists = undefined, json_entry_count = undefined, loaded_placed_object_count = undefined)
 {
 	var snapshot = scr_debug_get_level_load_snapshot();
+	var monitor = scr_debug_get_level_load_monitor();
 
 	if (string(capture_reason) != "")
 	{
@@ -592,6 +960,27 @@ function scr_debug_capture_level_load_snapshot(capture_reason = "", object_place
 
 	global.debug_level_load_snapshot = snapshot;
 
+	if (scr_debug_should_monitor_level_load())
+	{
+		var capture_details = "session_id=" + string(monitor.session_id)
+			+ ", object_placement_exists=" + string(snapshot.object_placement_exists)
+			+ ", json_entry_count=" + string(snapshot.json_entry_count)
+			+ ", loaded_placed_object_count=" + string(snapshot.loaded_placed_object_count)
+			+ ", object_placement_path="
+			+ scr_censor_game_save_id_for_display(snapshot.object_placement_path);
+
+		switch (string(snapshot.capture_reason))
+		{
+			case "json_loaded":
+				scr_log("INFO", "LEVEL.LOAD", "json_loaded", capture_details);
+				break;
+
+			case "json_missing":
+				scr_log("ERROR", "LEVEL.LOAD", "json_missing", capture_details);
+				break;
+		}
+	}
+
 	return scr_debug_refresh_level_load_snapshot();
 }
 
@@ -605,6 +994,7 @@ function scr_get_level_loading_debug_data()
 	var object_placement_path = "";
 	var background_path = "";
 	var load_snapshot = scr_debug_get_level_load_snapshot();
+	var load_monitor = scr_debug_get_level_load_monitor();
 	var expect_level_files = instance_exists(obj_camera);
 
 	if (is_official_level)
@@ -669,6 +1059,17 @@ function scr_get_level_loading_debug_data()
 		load_snapshot_status: load_snapshot_status,
 		load_snapshot_timestamp: load_snapshot.timestamp,
 		load_snapshot_json_entry_count: load_snapshot.json_entry_count,
+		monitor_session_id: load_monitor.session_id,
+		monitor_active: scr_debug_should_monitor_level_load(),
+		validation_pending: load_monitor.validation_pending,
+		validation_result: load_monitor.validation_result,
+		validation_delay_frames: load_monitor.validation_delay_frames,
+		auto_log_saved: load_monitor.auto_log_saved,
+		runtime_spawn_calls: load_monitor.runtime_spawn_calls,
+		runtime_instances_created_total: load_monitor.runtime_instances_created_total,
+		failure_reason: load_monitor.failure_reason,
+		failure_signature: load_monitor.failure_signature,
+		warning_reason: load_monitor.warning_reason,
 		loaded_player1_start_count: load_snapshot.loaded_player1_start_count,
 		current_live_player1_start_count: instance_number(obj_level_player1_start),
 		loaded_level_end_count: load_snapshot.loaded_level_end_count,
@@ -717,11 +1118,54 @@ function scr_debug_format_snapshot_summary(load_snapshot_status, load_snapshot_r
 	return snapshot_status + " - " + snapshot_reason;
 }
 
+/// @function scr_debug_format_validation_summary(validation_result)
+/* Convert internal validation states into direct, human-readable on-screen wording. */
+function scr_debug_format_validation_summary(validation_result)
+{
+	var summary = string(validation_result);
+
+	if (summary == "OK")
+	{
+		return "PASS";
+	}
+
+	if (summary == "PENDING")
+	{
+		return "WAITING FOR POST-LOAD CHECK";
+	}
+
+	if (summary == "INACTIVE")
+	{
+		return "NOT ACTIVE IN THIS MODE";
+	}
+
+	if (string_pos(summary, "FAILED: ") == 1)
+	{
+		return "FAIL: " + string_delete(summary, 1, string_length("FAILED: "));
+	}
+
+	return summary;
+}
+
 /// @function scr_debug_format_loaded_live_summary(loaded_count, live_count)
 /* Shows the load-time snapshot and the current live count in one compact string. */
 function scr_debug_format_loaded_live_summary(loaded_count, live_count)
 {
-	return "loaded " + string(loaded_count) + ", live " + string(live_count);
+	return "loaded " + string(loaded_count) + ", still present now " + string(live_count);
+}
+
+/// @function scr_debug_format_runtime_spawn_pass_summary(spawn_pass_count)
+/* Describe how many placed-object placeholders finished their spawn pass. */
+function scr_debug_format_runtime_spawn_pass_summary(spawn_pass_count)
+{
+	return string(spawn_pass_count) + " placed-object placeholders processed";
+}
+
+/// @function scr_debug_format_runtime_instances_created_summary(created_count)
+/* Describe how many gameplay instances were created from placed-object placeholders. */
+function scr_debug_format_runtime_instances_created_summary(created_count)
+{
+	return string(created_count) + " created from placed-object placeholders";
 }
 
 /// @function scr_debug_is_integer_string(value_to_check)
@@ -877,9 +1321,14 @@ function scr_debug_draw_optimized_text()
 		var snapshot_summary = scr_debug_format_snapshot_summary(level_loading_debug.load_snapshot_status, level_loading_debug.load_snapshot_reason);
 		var level_folder_display = scr_debug_format_level_folder_display(scr_is_loading_official_level(), level_loading_debug.level_folder_name, level_loading_debug.custom_folder_name);
 		var after_goal_display = scr_debug_format_after_goal_display(level_loading_debug.after_goal_go_to_this_level);
+		var validation_failed = string_pos(level_loading_debug.validation_result, "FAILED") == 1;
+		var validation_display = scr_debug_format_validation_summary(level_loading_debug.validation_result);
 		var show_custom_folder = level_loading_debug.load_mode == "custom";
 		var show_path_to_use = string(level_loading_debug.path_to_use) != ""
 			&& string(level_loading_debug.path_to_use) != string(level_loading_debug.background_path);
+		var placeholder_cleanup_note = level_loading_debug.monitor_active
+			? "expected: 'still present now 0' is normal after placeholder objects spawn gameplay objects"
+			: "edit mode keeps placeholder objects alive instead of deleting them after spawn";
 
 		debug_text_y = scr_draw_highlighted_text(32, debug_text_y,
 							"load_mode", level_loading_debug.load_mode,
@@ -940,6 +1389,14 @@ function scr_debug_draw_optimized_text()
 							"load_snapshot_json_entry_count", string(level_loading_debug.load_snapshot_json_entry_count),
 							"JSON Entries", c_white, c_red, false);
 
+		debug_text_y = scr_draw_highlighted_text(32, debug_text_y,
+							"validation_result", validation_display,
+							"Automatic Load Check", c_white, c_red, validation_failed);
+
+		debug_text_y = scr_draw_highlighted_text(32, debug_text_y,
+							"placeholder_cleanup_note", placeholder_cleanup_note,
+							"Placeholder Object Rule", c_white, c_red, false);
+
 		if (show_path_to_use)
 		{
 			debug_text_y = scr_draw_highlighted_text(32, debug_text_y,
@@ -949,15 +1406,23 @@ function scr_debug_draw_optimized_text()
 
 		debug_text_y = scr_draw_highlighted_text(32, debug_text_y,
 							"loaded/current obj_level_player1_start count", scr_debug_format_loaded_live_summary(level_loading_debug.loaded_player1_start_count, level_loading_debug.current_live_player1_start_count),
-							"P1 Start Count", c_white, c_red, level_loading_debug.expect_level_files && level_loading_debug.loaded_player1_start_count <= 0);
+							"P1 Start Placeholder", c_white, c_red, level_loading_debug.expect_level_files && level_loading_debug.loaded_player1_start_count <= 0);
 
 		debug_text_y = scr_draw_highlighted_text(32, debug_text_y,
 							"loaded/current obj_level_end count", scr_debug_format_loaded_live_summary(level_loading_debug.loaded_level_end_count, level_loading_debug.current_live_level_end_count),
-							"Level End Count", c_white, c_red, level_loading_debug.expect_level_files && level_loading_debug.loaded_level_end_count <= 0);
+							"Level End Placeholder", c_white, c_red, level_loading_debug.expect_level_files && level_loading_debug.loaded_level_end_count <= 0);
 
 		debug_text_y = scr_draw_highlighted_text(32, debug_text_y,
 							"loaded/current obj_leveleditor_placed_object count", scr_debug_format_loaded_live_summary(level_loading_debug.loaded_placed_object_count, level_loading_debug.current_live_placed_object_count),
-							"Placed Object Count", c_white, c_red, failed_loaded_object_snapshot);
+							"Placed-Object Placeholder", c_white, c_red, failed_loaded_object_snapshot);
+
+		debug_text_y = scr_draw_highlighted_text(32, debug_text_y,
+							"runtime_spawn_calls", scr_debug_format_runtime_spawn_pass_summary(level_loading_debug.runtime_spawn_calls),
+							"Placed-Object Spawn Passes", c_white, c_red, validation_failed);
+
+		debug_text_y = scr_draw_highlighted_text(32, debug_text_y,
+							"runtime_instances_created_total", scr_debug_format_runtime_instances_created_summary(level_loading_debug.runtime_instances_created_total),
+							"Gameplay Instances Created", c_white, c_red, validation_failed);
 
 		debug_text_y = scr_draw_highlighted_text(32, debug_text_y,
 							"display_after_goal_go_to_this_level", after_goal_display,
