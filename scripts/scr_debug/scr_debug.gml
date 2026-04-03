@@ -877,6 +877,7 @@ function scr_debug_draw_optimized_text()
 		var snapshot_summary = scr_debug_format_snapshot_summary(level_loading_debug.load_snapshot_status, level_loading_debug.load_snapshot_reason);
 		var level_folder_display = scr_debug_format_level_folder_display(scr_is_loading_official_level(), level_loading_debug.level_folder_name, level_loading_debug.custom_folder_name);
 		var after_goal_display = scr_debug_format_after_goal_display(level_loading_debug.after_goal_go_to_this_level);
+		var show_custom_folder = level_loading_debug.load_mode == "custom";
 		var show_path_to_use = string(level_loading_debug.path_to_use) != ""
 			&& string(level_loading_debug.path_to_use) != string(level_loading_debug.background_path);
 
@@ -912,9 +913,12 @@ function scr_debug_draw_optimized_text()
 							"scr_get_active_official_level_id()", level_loading_debug.active_official_level_id,
 							"Active Official ID", c_white, c_red, false);
 
-		debug_text_y = scr_draw_highlighted_text(32, debug_text_y,
-							"scr_get_custom_level_folder_name()", level_loading_debug.custom_folder_name,
-							"Custom Folder", c_white, c_red, false);
+		if (show_custom_folder)
+		{
+			debug_text_y = scr_draw_highlighted_text(32, debug_text_y,
+								"scr_get_custom_level_folder_name()", level_loading_debug.custom_folder_name,
+								"Custom Folder", c_white, c_red, false);
+		}
 
 		debug_text_y = scr_draw_highlighted_text(32, debug_text_y,
 							"level_information_path + level_information_exists", level_info_summary,
