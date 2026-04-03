@@ -41,6 +41,7 @@ function scr_crash_error_handling()
 
 		/* Filename format .ini */
 		var crash_log_filename = "crash-" + string(game_name) + "_v" + string(scr_get_build_date()) + "_" + save_date + "_" + string(scr_os_type_to_string(true, true)) + ".ini";
+		var crash_log_display_path = scr_censor_game_save_id_for_display(game_save_id + "crash_logs/" + string(crash_log_filename));
 		#endregion /* Define Crash Logs Folder and File END */
 
 		#region /* Extract Line Number from Error Message */
@@ -90,8 +91,7 @@ function scr_crash_error_handling()
 		}
 		ini_write_string("Crash", "StackTrace", string(ex.stacktrace));
 		ini_write_string("Crash", "Documentation", doc_details);
-		ini_write_string("Crash", "CrashLogFile", string_replace(game_save_id, environment_get_variable("USERNAME"), "*") +
-			"crash_logs/" + string(crash_log_filename));
+		ini_write_string("Crash", "CrashLogFile", crash_log_display_path);
 
 		crash_details += "Stack Trace: " + string(ex.stacktrace) + "\n\n";
 		crash_details += doc_details + "\n";
@@ -112,8 +112,7 @@ function scr_crash_error_handling()
 		show_debug_message("--------------------------------------------------------------");
 		show_message(
 			"Sorry, the game has crashed. Please check the crash log for more details:\n" +
-			string_replace(game_save_id, environment_get_variable("USERNAME"), "*") +
-			"crash_logs/" + crash_log_filename + "\n\n" +
+			crash_log_display_path + "\n\n" +
 			string(crash_details)
 		);
 		#endregion /* Output Crash Details and Notify User END */

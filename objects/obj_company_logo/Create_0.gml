@@ -406,6 +406,7 @@ global.online_token_expired = false; /* Set true if you detect an expiry */
 global.online_retry_attempts = 0; /* Count of retry‐loops */
 global.online_current_attempt_result = ""; /* Last high-level failure reason */
 global.online_error_code = ""; /* Your NWT-### code */
+scr_debug_reset_level_load_snapshot();
 
 global.report_reason = "";
 global.report_message = "";

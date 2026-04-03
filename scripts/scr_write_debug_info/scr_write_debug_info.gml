@@ -62,10 +62,17 @@ function scr_write_debug_info()
 	ini_write_string("Level Loading", "object_placement_exists", string(level_loading_debug.object_placement_exists));
 	ini_write_string("Level Loading", "background_path", string(level_loading_debug.background_path));
 	ini_write_string("Level Loading", "background_path_exists", string(level_loading_debug.background_path_exists));
+	ini_write_string("Level Loading", "load_snapshot_reason", string(level_loading_debug.load_snapshot_reason));
+	ini_write_string("Level Loading", "load_snapshot_status", string(level_loading_debug.load_snapshot_status));
+	ini_write_string("Level Loading", "load_snapshot_timestamp", string(level_loading_debug.load_snapshot_timestamp));
+	ini_write_real("Level Loading", "loaded_json_entry_count", level_loading_debug.load_snapshot_json_entry_count);
 	ini_write_string("Level Loading", "global.path_to_use", string(level_loading_debug.path_to_use));
-	ini_write_real("Level Loading", "obj_level_player1_start_count", level_loading_debug.player1_start_count);
-	ini_write_real("Level Loading", "obj_level_end_count", level_loading_debug.level_end_count);
-	ini_write_real("Level Loading", "obj_leveleditor_placed_object_count", level_loading_debug.placed_object_count);
+	ini_write_real("Level Loading", "loaded_obj_level_player1_start_count", level_loading_debug.loaded_player1_start_count);
+	ini_write_real("Level Loading", "current_live_obj_level_player1_start_count", level_loading_debug.current_live_player1_start_count);
+	ini_write_real("Level Loading", "loaded_obj_level_end_count", level_loading_debug.loaded_level_end_count);
+	ini_write_real("Level Loading", "current_live_obj_level_end_count", level_loading_debug.current_live_level_end_count);
+	ini_write_real("Level Loading", "loaded_obj_leveleditor_placed_object_count", level_loading_debug.loaded_placed_object_count);
+	ini_write_real("Level Loading", "current_live_obj_leveleditor_placed_object_count", level_loading_debug.current_live_placed_object_count);
 	ini_write_string("Level Loading", "after_goal_go_to_this_level", string(level_loading_debug.after_goal_go_to_this_level));
 
 	/* [Performance Info] */

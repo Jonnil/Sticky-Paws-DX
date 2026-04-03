@@ -128,6 +128,32 @@ function scr_sanitize_filename(raw_name, max_length = 255)
 	return out;
 }
 
+/* Only censor the OS username when a displayed string is actually showing a save-root path. */
+function scr_censor_game_save_id_for_display(display_text)
+{
+	var text_to_display = is_string(display_text) ? display_text : string(display_text);
+	var save_root_raw = string(game_save_id);
+
+	if (text_to_display == ""
+	|| save_root_raw == "")
+	{
+		return text_to_display;
+	}
+
+	var save_root_forward = string_replace_all(save_root_raw, "\\", "/");
+	var username = environment_get_variable("USERNAME");
+	var contains_save_root = string_pos(save_root_raw, text_to_display) > 0
+		|| string_pos(save_root_forward, text_to_display) > 0;
+
+	if (contains_save_root
+	&& username != "")
+	{
+		text_to_display = string_replace(text_to_display, username, "*");
+	}
+
+	return text_to_display;
+}
+
 /* Convenience helper: always use the sanitized folder name for the active custom level */
 function scr_get_custom_level_folder_name()
 {

@@ -206,7 +206,7 @@ function scr_option_language_menu()
 				draw_set_valign(fa_top);
 				scr_draw_text_outlined(get_window_width - 32, 164 + 64,
 					"Translation debug: enabled" + "\n" +
-					"When missing keywords are found, look in\n" + string_replace(game_save_id, environment_get_variable("USERNAME"), "*") + "translation_missing_keywords" + "\n" +
+					"When missing keywords are found, look in\n" + scr_censor_game_save_id_for_display(game_save_id + "translation_missing_keywords") + "\n" +
 					"selected_language_id: " + string(global.selected_language_id) + " current_language_menu_position: " + string(global.current_language_menu_position) + "\n" +
 					"language_local_data: " + string(global.language_local_data),
 					global.default_text_size * 0.5,

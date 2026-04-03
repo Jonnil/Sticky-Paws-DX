@@ -405,7 +405,7 @@ function scr_select_custom_level_menu()
 				folder_name_for_path = string(ds_list_find_value(global.all_loaded_custom_levels, global.select_level_index));
 			}
 			
-			var file_path_text = string_replace_all(string_replace_all(game_save_id, environment_get_variable("USERNAME"), "*") + "\custom_levels\\" + folder_name_for_path, "\\", "/");
+			var file_path_text = string_replace_all(scr_censor_game_save_id_for_display(game_save_id + "\custom_levels\\" + folder_name_for_path), "\\", "/");
 			scr_draw_text_outlined(get_window_width * 0.5, get_window_height - 16, string(file_path_text), global.default_text_size * text_scale_modifier, c_menu_outline, c_dkgray, 1);
 		}
 		#endregion /* Show the path of the custom level on the bottom of the screen END */

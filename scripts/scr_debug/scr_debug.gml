@@ -314,6 +314,7 @@ function scr_debug_draw_debug_logic()
 		if (keyboard_check_pressed(vk_f2))
 		{
 			var logs_folder = game_save_id + "debug_logs/";
+
 			if (!directory_exists(logs_folder))
 			{
 				directory_create(logs_folder);
@@ -499,6 +500,101 @@ function scr_get_debug_level_loading_mode()
 	return "custom";
 }
 
+/// @function scr_debug_reset_level_load_snapshot()
+/* Reset the stored load-time snapshot so each level load starts from a clean state. */
+function scr_debug_reset_level_load_snapshot()
+{
+	global.debug_level_load_snapshot =
+	{
+		capture_reason: "uninitialized",
+		load_mode: "",
+		select_level_index: "",
+		level_name: "",
+		selected_official_level_id: "",
+		active_official_level_id: "",
+		object_placement_path: "",
+		object_placement_exists: false,
+		json_entry_count: 0,
+		loaded_placed_object_count: 0,
+		loaded_player1_start_count: 0,
+		loaded_level_end_count: 0,
+		room_name: "",
+		timestamp: ""
+	};
+
+	return global.debug_level_load_snapshot;
+}
+
+/// @function scr_debug_get_level_load_snapshot()
+/* Return the current snapshot, lazily creating it when needed. */
+function scr_debug_get_level_load_snapshot()
+{
+	if (!variable_global_exists("debug_level_load_snapshot")
+	|| !is_struct(global.debug_level_load_snapshot))
+	{
+		return scr_debug_reset_level_load_snapshot();
+	}
+
+	return global.debug_level_load_snapshot;
+}
+
+/// @function scr_debug_refresh_level_load_snapshot()
+/* Refresh marker counts after room instances finish creating, without losing the earlier JSON snapshot. */
+function scr_debug_refresh_level_load_snapshot()
+{
+	var snapshot = scr_debug_get_level_load_snapshot();
+
+	snapshot.load_mode = scr_get_debug_level_loading_mode();
+	snapshot.select_level_index = variable_global_exists("select_level_index") ? string(global.select_level_index) : "";
+	snapshot.level_name = variable_global_exists("level_name") ? string(global.level_name) : "";
+	snapshot.selected_official_level_id = scr_get_selected_official_level_id();
+	snapshot.active_official_level_id = scr_get_active_official_level_id();
+	snapshot.loaded_player1_start_count = instance_number(obj_level_player1_start);
+	snapshot.loaded_level_end_count = instance_number(obj_level_end);
+	snapshot.room_name = room_get_name(room);
+	snapshot.timestamp = scr_format_timestamp(date_current_datetime());
+
+	global.debug_level_load_snapshot = snapshot;
+
+	return snapshot;
+}
+
+/// @function scr_debug_capture_level_load_snapshot(capture_reason, object_placement_path, object_placement_exists, json_entry_count, loaded_placed_object_count)
+/* Capture the load-time object counts before gameplay cleanup or deactivation changes what is live on screen. */
+function scr_debug_capture_level_load_snapshot(capture_reason = "", object_placement_path = undefined, object_placement_exists = undefined, json_entry_count = undefined, loaded_placed_object_count = undefined)
+{
+	var snapshot = scr_debug_get_level_load_snapshot();
+
+	if (string(capture_reason) != "")
+	{
+		snapshot.capture_reason = string(capture_reason);
+	}
+
+	if (!is_undefined(object_placement_path))
+	{
+		snapshot.object_placement_path = string(object_placement_path);
+	}
+
+	if (!is_undefined(object_placement_exists))
+	{
+		snapshot.object_placement_exists = object_placement_exists;
+	}
+
+	if (!is_undefined(json_entry_count))
+	{
+		snapshot.json_entry_count = max(0, floor(real(json_entry_count)));
+	}
+
+	if (!is_undefined(loaded_placed_object_count))
+	{
+		snapshot.loaded_placed_object_count = max(0, floor(real(loaded_placed_object_count)));
+	}
+
+	global.debug_level_load_snapshot = snapshot;
+
+	return scr_debug_refresh_level_load_snapshot();
+}
+
 /// @function scr_get_level_loading_debug_data()
 /* Collects the current level-loading state and resolved file paths for the debug screen/logs. */
 function scr_get_level_loading_debug_data()
@@ -508,6 +604,8 @@ function scr_get_level_loading_debug_data()
 	var level_information_path = "";
 	var object_placement_path = "";
 	var background_path = "";
+	var load_snapshot = scr_debug_get_level_load_snapshot();
+	var expect_level_files = instance_exists(obj_camera);
 
 	if (is_official_level)
 	{
@@ -523,11 +621,30 @@ function scr_get_level_loading_debug_data()
 	}
 
 	var after_goal_value = "n/a";
+	var level_information_exists = file_exists(level_information_path);
+	var object_placement_exists = file_exists(object_placement_path);
+	var background_path_exists = directory_exists(background_path);
+	var load_snapshot_status = "OK";
 
 	if (instance_exists(obj_camera)
 	&& variable_instance_exists(obj_camera, "after_goal_go_to_this_level"))
 	{
 		after_goal_value = string(obj_camera.after_goal_go_to_this_level);
+	}
+
+	if (expect_level_files
+	&& (!level_information_exists
+	|| !object_placement_exists
+	|| !background_path_exists))
+	{
+		load_snapshot_status = "FAILED: missing files";
+	}
+	else
+	if (expect_level_files
+	&& object_placement_exists
+	&& load_snapshot.loaded_placed_object_count <= 0)
+	{
+		load_snapshot_status = "FAILED: 0 objects loaded";
 	}
 
 	return {
@@ -542,18 +659,163 @@ function scr_get_level_loading_debug_data()
 		active_official_level_id: scr_get_active_official_level_id(),
 		custom_folder_name: custom_folder_name,
 		level_information_path: level_information_path,
-		level_information_exists: file_exists(level_information_path),
+		level_information_exists: level_information_exists,
 		object_placement_path: object_placement_path,
-		object_placement_exists: file_exists(object_placement_path),
+		object_placement_exists: object_placement_exists,
 		background_path: background_path,
-		background_path_exists: directory_exists(background_path),
+		background_path_exists: background_path_exists,
 		path_to_use: variable_global_exists("path_to_use") ? string(global.path_to_use) : "",
+		load_snapshot_reason: load_snapshot.capture_reason,
+		load_snapshot_status: load_snapshot_status,
+		load_snapshot_timestamp: load_snapshot.timestamp,
+		load_snapshot_json_entry_count: load_snapshot.json_entry_count,
+		loaded_player1_start_count: load_snapshot.loaded_player1_start_count,
+		current_live_player1_start_count: instance_number(obj_level_player1_start),
+		loaded_level_end_count: load_snapshot.loaded_level_end_count,
+		current_live_level_end_count: instance_number(obj_level_end),
+		loaded_placed_object_count: load_snapshot.loaded_placed_object_count,
+		current_live_placed_object_count: instance_number(obj_leveleditor_placed_object),
 		player1_start_count: instance_number(obj_level_player1_start),
 		level_end_count: instance_number(obj_level_end),
 		placed_object_count: instance_number(obj_leveleditor_placed_object),
 		after_goal_go_to_this_level: after_goal_value,
-		expect_level_files: instance_exists(obj_camera)
+		expect_level_files: expect_level_files
 	};
+}
+
+/// @function scr_debug_format_resolved_path_summary(resolved_path, path_exists)
+/* Formats a resolved path as a concise "found/missing" summary for on-screen debug text. */
+function scr_debug_format_resolved_path_summary(resolved_path, path_exists)
+{
+	var display_path = scr_censor_game_save_id_for_display(string(resolved_path));
+
+	if (display_path == "")
+	{
+		return "n/a";
+	}
+
+	if (path_exists)
+	{
+		return "found - " + display_path;
+	}
+
+	return "missing - expected at " + display_path;
+}
+
+/// @function scr_debug_format_snapshot_summary(load_snapshot_status, load_snapshot_reason)
+/* Combines the high-level snapshot status and capture reason into one readable line. */
+function scr_debug_format_snapshot_summary(load_snapshot_status, load_snapshot_reason)
+{
+	var snapshot_status = string(load_snapshot_status);
+	var snapshot_reason = string(load_snapshot_reason);
+
+	if (snapshot_reason == "")
+	{
+		return snapshot_status;
+	}
+
+	return snapshot_status + " - " + snapshot_reason;
+}
+
+/// @function scr_debug_format_loaded_live_summary(loaded_count, live_count)
+/* Shows the load-time snapshot and the current live count in one compact string. */
+function scr_debug_format_loaded_live_summary(loaded_count, live_count)
+{
+	return "loaded " + string(loaded_count) + ", live " + string(live_count);
+}
+
+/// @function scr_debug_is_integer_string(value_to_check)
+/* Returns true when the supplied string is a signed integer. */
+function scr_debug_is_integer_string(value_to_check)
+{
+	var value_string = string(value_to_check);
+	var string_length_value = string_length(value_string);
+
+	if (string_length_value <= 0)
+	{
+		return false;
+	}
+
+	var first_index = 1;
+
+	if (string_copy(value_string, 1, 1) == "-")
+	{
+		if (string_length_value == 1)
+		{
+			return false;
+		}
+
+		first_index = 2;
+	}
+
+	for (var i = first_index; i <= string_length_value; i++)
+	{
+		var character = string_copy(value_string, i, 1);
+
+		if (character < "0"
+		|| character > "9")
+		{
+			return false;
+		}
+	}
+
+	return true;
+}
+
+/// @function scr_debug_format_level_folder_display(is_official_level, tracked_level_folder_name, custom_folder_name)
+/* Formats the folder line so official loads do not look like missing custom-folder data. */
+function scr_debug_format_level_folder_display(is_official_level, tracked_level_folder_name, custom_folder_name)
+{
+	var tracked_folder_name = string(tracked_level_folder_name);
+
+	if (tracked_folder_name != "")
+	{
+		return tracked_folder_name;
+	}
+
+	if (!is_official_level)
+	{
+		var active_custom_folder_name = string(custom_folder_name);
+
+		if (active_custom_folder_name != "")
+		{
+			return active_custom_folder_name;
+		}
+	}
+
+	return "n/a";
+}
+
+/// @function scr_debug_format_after_goal_display(after_goal_value)
+/* Converts sentinel after-goal values into readable text for screenshots and reports. */
+function scr_debug_format_after_goal_display(after_goal_value)
+{
+	var display_value = string(after_goal_value);
+
+	if (display_value == ""
+	|| display_value == "n/a")
+	{
+		return "n/a";
+	}
+
+	if (!scr_debug_is_integer_string(display_value))
+	{
+		return display_value;
+	}
+
+	var numeric_value = real(display_value);
+
+	if (numeric_value == noone)
+	{
+		return "none (" + display_value + ")";
+	}
+
+	if (numeric_value >= 0)
+	{
+		return "level index " + display_value;
+	}
+
+	return "sentinel (" + display_value + ")";
 }
 
 /// @function scr_debug_draw_optimized_text()
@@ -606,6 +868,17 @@ function scr_debug_draw_optimized_text()
 			&& !level_loading_debug.object_placement_exists;
 		var missing_background_directory = level_loading_debug.expect_level_files
 			&& !level_loading_debug.background_path_exists;
+		var failed_loaded_object_snapshot = level_loading_debug.expect_level_files
+			&& level_loading_debug.object_placement_exists
+			&& level_loading_debug.loaded_placed_object_count <= 0;
+		var level_info_summary = scr_debug_format_resolved_path_summary(level_loading_debug.level_information_path, level_loading_debug.level_information_exists);
+		var object_json_summary = scr_debug_format_resolved_path_summary(level_loading_debug.object_placement_path, level_loading_debug.object_placement_exists);
+		var background_summary = scr_debug_format_resolved_path_summary(level_loading_debug.background_path, level_loading_debug.background_path_exists);
+		var snapshot_summary = scr_debug_format_snapshot_summary(level_loading_debug.load_snapshot_status, level_loading_debug.load_snapshot_reason);
+		var level_folder_display = scr_debug_format_level_folder_display(scr_is_loading_official_level(), level_loading_debug.level_folder_name, level_loading_debug.custom_folder_name);
+		var after_goal_display = scr_debug_format_after_goal_display(level_loading_debug.after_goal_go_to_this_level);
+		var show_path_to_use = string(level_loading_debug.path_to_use) != ""
+			&& string(level_loading_debug.path_to_use) != string(level_loading_debug.background_path);
 
 		debug_text_y = scr_draw_highlighted_text(32, debug_text_y,
 							"load_mode", level_loading_debug.load_mode,
@@ -613,23 +886,23 @@ function scr_debug_draw_optimized_text()
 
 		debug_text_y = scr_draw_highlighted_text(32, debug_text_y,
 							"character_select_in_this_menu", level_loading_debug.character_select_menu,
-							"Character Select Menu", c_white, c_red, false);
+							"Character Menu", c_white, c_red, false);
 
 		debug_text_y = scr_draw_highlighted_text(32, debug_text_y,
 							"create_level_from_template", level_loading_debug.create_level_from_template,
-							"Create Level From Template", c_white, c_red, false);
+							"From Template", c_white, c_red, false);
 
 		debug_text_y = scr_draw_highlighted_text(32, debug_text_y,
 							"select_level_index", level_loading_debug.select_level_index,
-							"Select Level Index", c_white, c_red, false);
+							"Level Index", c_white, c_red, false);
 
 		debug_text_y = scr_draw_highlighted_text(32, debug_text_y,
 							"global.level_name", level_loading_debug.level_name,
-							"Global Level Name", c_white, c_red, false);
+							"Level Name", c_white, c_red, false);
 
 		debug_text_y = scr_draw_highlighted_text(32, debug_text_y,
-							"global.level_folder_name", level_loading_debug.level_folder_name,
-							"Global Level Folder", c_white, c_red, false);
+							"display_level_folder", level_folder_display,
+							"Level Folder", c_white, c_red, false);
 
 		debug_text_y = scr_draw_highlighted_text(32, debug_text_y,
 							"scr_get_selected_official_level_id()", level_loading_debug.selected_official_level_id,
@@ -641,50 +914,49 @@ function scr_debug_draw_optimized_text()
 
 		debug_text_y = scr_draw_highlighted_text(32, debug_text_y,
 							"scr_get_custom_level_folder_name()", level_loading_debug.custom_folder_name,
-							"Custom Folder Name", c_white, c_red, false);
+							"Custom Folder", c_white, c_red, false);
 
 		debug_text_y = scr_draw_highlighted_text(32, debug_text_y,
-							"level_information_path", level_loading_debug.level_information_path,
-							"Level Info Path", c_white, c_red, missing_level_info);
+							"level_information_path + level_information_exists", level_info_summary,
+							"Level Info", c_white, c_red, missing_level_info);
 
 		debug_text_y = scr_draw_highlighted_text(32, debug_text_y,
-							"level_information_exists", string(level_loading_debug.level_information_exists),
-							"Level Info Exists", c_white, c_red, missing_level_info);
+							"object_placement_path + object_placement_exists", object_json_summary,
+							"Object JSON", c_white, c_red, missing_object_json);
 
 		debug_text_y = scr_draw_highlighted_text(32, debug_text_y,
-							"object_placement_path", level_loading_debug.object_placement_path,
-							"Object JSON Path", c_white, c_red, missing_object_json);
+							"background_path + background_path_exists", background_summary,
+							"Background", c_white, c_red, missing_background_directory);
 
 		debug_text_y = scr_draw_highlighted_text(32, debug_text_y,
-							"object_placement_exists", string(level_loading_debug.object_placement_exists),
-							"Object JSON Exists", c_white, c_red, missing_object_json);
+							"load_snapshot_status + load_snapshot_reason", snapshot_summary,
+							"Load Snapshot", c_white, c_red, level_loading_debug.load_snapshot_status != "OK");
 
 		debug_text_y = scr_draw_highlighted_text(32, debug_text_y,
-							"background_path", level_loading_debug.background_path,
-							"Background Path", c_white, c_red, missing_background_directory);
+							"load_snapshot_json_entry_count", string(level_loading_debug.load_snapshot_json_entry_count),
+							"JSON Entries", c_white, c_red, false);
+
+		if (show_path_to_use)
+		{
+			debug_text_y = scr_draw_highlighted_text(32, debug_text_y,
+								"global.path_to_use", scr_censor_game_save_id_for_display(level_loading_debug.path_to_use),
+								"Path To Use", c_white, c_red, false);
+		}
 
 		debug_text_y = scr_draw_highlighted_text(32, debug_text_y,
-							"background_path_exists", string(level_loading_debug.background_path_exists),
-							"Background Path Exists", c_white, c_red, missing_background_directory);
+							"loaded/current obj_level_player1_start count", scr_debug_format_loaded_live_summary(level_loading_debug.loaded_player1_start_count, level_loading_debug.current_live_player1_start_count),
+							"P1 Start Count", c_white, c_red, level_loading_debug.expect_level_files && level_loading_debug.loaded_player1_start_count <= 0);
 
 		debug_text_y = scr_draw_highlighted_text(32, debug_text_y,
-							"global.path_to_use", level_loading_debug.path_to_use,
-							"Path To Use", c_white, c_red, false);
+							"loaded/current obj_level_end count", scr_debug_format_loaded_live_summary(level_loading_debug.loaded_level_end_count, level_loading_debug.current_live_level_end_count),
+							"Level End Count", c_white, c_red, level_loading_debug.expect_level_files && level_loading_debug.loaded_level_end_count <= 0);
 
 		debug_text_y = scr_draw_highlighted_text(32, debug_text_y,
-							"obj_level_player1_start count", string(level_loading_debug.player1_start_count),
-							"P1 Start Count", c_white, c_red, level_loading_debug.expect_level_files && level_loading_debug.player1_start_count <= 0);
+							"loaded/current obj_leveleditor_placed_object count", scr_debug_format_loaded_live_summary(level_loading_debug.loaded_placed_object_count, level_loading_debug.current_live_placed_object_count),
+							"Placed Object Count", c_white, c_red, failed_loaded_object_snapshot);
 
 		debug_text_y = scr_draw_highlighted_text(32, debug_text_y,
-							"obj_level_end count", string(level_loading_debug.level_end_count),
-							"Level End Count", c_white, c_red, level_loading_debug.expect_level_files && level_loading_debug.level_end_count <= 0);
-
-		debug_text_y = scr_draw_highlighted_text(32, debug_text_y,
-							"obj_leveleditor_placed_object count", string(level_loading_debug.placed_object_count),
-							"Placed Object Count", c_white, c_red, level_loading_debug.expect_level_files && level_loading_debug.placed_object_count <= 0);
-
-		debug_text_y = scr_draw_highlighted_text(32, debug_text_y,
-							"after_goal_go_to_this_level", level_loading_debug.after_goal_go_to_this_level,
+							"display_after_goal_go_to_this_level", after_goal_display,
 							"After Goal Level", c_white, c_red, false);
 	}
 	#endregion /* Section 2: Level Loading END */

@@ -32,3 +32,5 @@ if (scr_is_loading_official_level())
 
 	ini_close(); /* Don't commit the save data on Switch, this is only temporary! */
 }
+
+scr_debug_refresh_level_load_snapshot();

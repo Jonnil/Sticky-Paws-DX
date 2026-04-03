@@ -3,6 +3,7 @@ function scr_load_object_placement_json()
 {
 	/* For actual folder name, replace illegal characters with underscore only for naming folder */
 	var folder_name = scr_get_custom_level_folder_name();
+	scr_debug_reset_level_load_snapshot();
 	
 	/* Initialize flag for determining which level type to load */
 	var load_main_game_level = true;
@@ -77,6 +78,7 @@ function scr_load_object_placement_json()
 		file_text_close(file); /* Don't commit the save data on Switch, this is only temporary! */
 
 		var online_content_metadata = json_parse(json_string); /* Parse the JSON response containing metadata for each available online content */
+		var loaded_placed_object_count = 0;
 
 		/* Iterate over JSON data to create objects */
 		for (var i = 0; i < array_length(online_content_metadata); i++)
@@ -105,6 +107,7 @@ function scr_load_object_placement_json()
 						new_obj.second_x = variable_struct_exists(var_struct, "Q") ? var_struct.Q : 0;
 						new_obj.second_y = variable_struct_exists(var_struct, "W") ? var_struct.W : 0;
 						new_obj.item_inside = variable_struct_exists(var_struct, "I") ? var_struct.I : 0;
+						loaded_placed_object_count++;
 					}
 				}
 			}
@@ -126,6 +129,7 @@ function scr_load_object_placement_json()
 					new_obj.second_x = variable_struct_exists(var_struct, "Q") ? var_struct.Q : 0;
 					new_obj.second_y = variable_struct_exists(var_struct, "W") ? var_struct.W : 0;
 					new_obj.item_inside = variable_struct_exists(var_struct, "I") ? var_struct.I : 0;
+					loaded_placed_object_count++;
 				}
 			}
 
@@ -138,6 +142,8 @@ function scr_load_object_placement_json()
 			var_struct.I = 0;
 			var_struct.L = 0;
 		}
+
+		scr_debug_capture_level_load_snapshot("json_loaded", file_path, true, array_length(online_content_metadata), loaded_placed_object_count);
 
 		/* Save unlockable objects if the file exists */
 		#region /* Save unlockable objects */
@@ -169,6 +175,7 @@ function scr_load_object_placement_json()
 	else
 	if (load_main_game_level)
 	{
+		scr_debug_capture_level_load_snapshot("json_missing", file_path, false, 0, 0);
 		show_debug_message("[scr_load_object_placement_json] Missing official object_placement_all.json. select_level_index="
 			+ string(global.select_level_index)
 			+ ", global.level_name='"
@@ -176,6 +183,10 @@ function scr_load_object_placement_json()
 			+ "', resolved_path='"
 			+ string(file_path)
 			+ "'");
+	}
+	else
+	{
+		scr_debug_capture_level_load_snapshot("json_missing", file_path, false, 0, 0);
 	}
 }
 #endregion /* THIS IS LOADING JSON FILE END */
