@@ -1,5 +1,23 @@
 function scr_key_initialize(key, hold = 0, what_player = 1, this_player_key = action.jump)
 {
+	if (what_player == 1)
+	{
+		switch (this_player_key)
+		{
+			case action.up:
+			case action.down:
+			case action.left:
+			case action.right:
+			case action.accept:
+			case action.back:
+				if (scr_debug_should_capture_navigation_input())
+				{
+					return false;
+				}
+			break;
+		}
+	}
+
 	/* Unified input check for keyboard, mouse, gamepad buttons, and joystick axes */
 	var slot   = global.player_slot[what_player];
 	var key1   = global.player_[inp.key][what_player][1][this_player_key];

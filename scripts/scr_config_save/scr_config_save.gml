@@ -84,6 +84,8 @@ function scr_config_save()
 	ini_write_real("config", "interpolate", global.interpolate);
 	ini_write_real("config", "show_fps", global.show_fps);
 	ini_write_real("config", "show_instance_count", global.show_instance_count);
+	ini_write_real("config", "debug_detailed_mode", global.debug_detailed_mode);
+	ini_write_real("config", "debug_menu_auto_unlock_runner", global.debug_menu_auto_unlock_runner);
 	ini_write_real("config", "show_collision_mask", global.show_collision_mask);
 	ini_write_real("config", "volume_main", global.volume_main * 10000);
 	ini_write_real("config", "volume_music", global.volume_music * 10000);

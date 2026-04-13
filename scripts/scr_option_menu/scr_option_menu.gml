@@ -99,6 +99,32 @@ function scr_option_menu()
 	{
 		broadcast_settings_y = language_settings_y + 40;
 	}
+
+	var debug_settings_visible = global.debug_menu_unlocked || (GM_build_type == "run");
+	var debug_settings_y = -999;
+
+	if (debug_settings_visible)
+	{
+		if (global.enable_add_ons_settings)
+		{
+			debug_settings_y = 40 * 21;
+		}
+		else
+		if (global.enable_broadcast_settings)
+		{
+			debug_settings_y = broadcast_settings_y + 40;
+		}
+		else
+		{
+			debug_settings_y = language_settings_y + 40;
+		}
+	}
+
+	if (!debug_settings_visible)
+	&& (global.settings_sidebar_menu == "debug_settings")
+	{
+		global.settings_sidebar_menu = "settings_back";
+	}
 	#endregion /* Menu navigation tabs y positions END */
 
 	#region /* Tabs Graphics */
@@ -640,6 +666,40 @@ function scr_option_menu()
 		}
 		#endregion /* Add-Ons Settings END */
 
+		#region /* Debug Settings */
+		if (debug_settings_visible)
+		{
+			if (global.settings_sidebar_menu == "debug_settings")
+			{
+				if (point_in_rectangle(mouse_get_x, mouse_get_y, 0, debug_settings_y, 370, debug_settings_y + 40 - 1))
+				&& (global.controls_used_for_navigation == "mouse")
+				{
+					draw_sprite_ext(spr_menu_button, global.menu_button_subimg, left_sidebar_x, 20 + debug_settings_y, 1, 1, 0, c_green, 1);
+				}
+				else
+				{
+					draw_sprite_ext(spr_menu_button, global.menu_button_subimg, left_sidebar_x, 20 + debug_settings_y, 1, 1, 0, c_gray, 1);
+				}
+				draw_sprite_ext(spr_settings_icon, 2, left_sidebar_x + 20 + icon_x_offset, 20 + debug_settings_y, 1, 1, 0, c_white, 1);
+				scr_draw_text_outlined(left_sidebar_x + 40 + text_x_offset, 20 + debug_settings_y, l10n_text("Debug"), global.default_text_size * 1.05, c_black, c_white, 1);
+			}
+			else
+			{
+				if (point_in_rectangle(mouse_get_x, mouse_get_y, 0, debug_settings_y, 370, debug_settings_y + 40 - 1))
+				&& (global.controls_used_for_navigation == "mouse")
+				{
+					draw_sprite_ext(spr_menu_button, global.menu_button_subimg, left_sidebar_x, 20 + debug_settings_y, 1, 1, 0, c_lime, 1);
+				}
+				else
+				{
+					draw_sprite_ext(spr_menu_button, global.menu_button_subimg, left_sidebar_x, 20 + debug_settings_y, 1, 1, 0, c_white, 1);
+				}
+				draw_sprite_ext(spr_settings_icon, 2, left_sidebar_x + 20 + icon_x_offset, 20 + debug_settings_y, 0.9, 0.9, 0, c_white, 1);
+				scr_draw_text_outlined(left_sidebar_x + 40 + text_x_offset, 20 + debug_settings_y, l10n_text("Debug"), global.default_text_size, c_white, c_black, 1);
+			}
+		}
+		#endregion /* Debug Settings END */
+
 		#region /* The "Back" button should always appear at the top of the screen */
 		if (global.settings_sidebar_menu == "settings_back")
 		{
@@ -819,6 +879,11 @@ function scr_option_menu()
 			{
 				menu = "Language" + string(global.current_language_menu_position);
 				menu_cursor_y_position = global.current_language_menu_position * 50;
+			}
+			else
+			if (global.settings_sidebar_menu == "debug_settings")
+			{
+				menu = "debug_screen";
 			}
 		}
 		/* When you navigate the sidebar or not */
@@ -1368,6 +1433,38 @@ function scr_option_menu()
 				can_navigate_settings_sidebar = true;
 			}
 			#endregion /* How to Play END */
+
+		}
+
+		if (debug_settings_visible)
+		{
+
+			#region /* Click Debug */
+			if (point_in_rectangle(mouse_get_x, mouse_get_y, 0, debug_settings_y, 370, debug_settings_y + 40 - 1))
+			&& (global.controls_used_for_navigation == "mouse")
+			&& (global.settings_sidebar_menu == "debug_settings")
+			&& (mouse_check_button_released(mb_left))
+			&& (menu_delay == 0 && menu_joystick_delay == 0)
+			{
+				global.settings_sidebar_menu = "debug_settings";
+				menu_delay = 3;
+				input_key = false;
+				can_navigate_settings_sidebar = false;
+				menu = "debug_screen";
+			}
+			#endregion /* Click Debug END */
+
+			#region /* Debug */
+			if (point_in_rectangle(mouse_get_x, mouse_get_y, 0, debug_settings_y, 370, debug_settings_y + 40 - 1))
+			&& (global.controls_used_for_navigation == "mouse")
+			&& (mouse_check_button(mb_left))
+			&& (menu_delay == 0 && menu_joystick_delay == 0)
+			{
+				global.settings_sidebar_menu = "debug_settings";
+				input_key = false;
+				can_navigate_settings_sidebar = true;
+			}
+			#endregion /* Debug END */
 
 		}
 
@@ -1970,6 +2067,11 @@ function scr_option_menu()
 						global.settings_sidebar_menu = "resource_pack_settings";
 					}
 					else
+					if (debug_settings_visible)
+					{
+						global.settings_sidebar_menu = "debug_settings";
+					}
+					else
 					{
 						global.settings_sidebar_menu = "settings_back";
 					}
@@ -1995,7 +2097,19 @@ function scr_option_menu()
 					&& (can_navigate_settings_sidebar)
 					&& (menu_delay == 0 && menu_joystick_delay == 0)
 					{
-						global.settings_sidebar_menu = "how_to_play";
+						if (global.enable_add_ons_settings)
+						{
+							global.settings_sidebar_menu = "resource_pack_settings";
+						}
+						else
+						if (debug_settings_visible)
+						{
+							global.settings_sidebar_menu = "debug_settings";
+						}
+						else
+						{
+							global.settings_sidebar_menu = "settings_back";
+						}
 						menu_delay = 3;
 					}
 				}
@@ -2011,7 +2125,14 @@ function scr_option_menu()
 					&& (can_navigate_settings_sidebar)
 					&& (menu_delay == 0 && menu_joystick_delay == 0)
 					{
-						global.settings_sidebar_menu = "how_to_play";
+						if (global.enable_broadcast_settings)
+						{
+							global.settings_sidebar_menu = "broadcast_settings";
+						}
+						else
+						{
+							global.settings_sidebar_menu = "language_settings";
+						}
 						menu_delay = 3;
 					}
 					else
@@ -2038,12 +2159,55 @@ function scr_option_menu()
 					&& (can_navigate_settings_sidebar)
 					&& (menu_delay == 0 && menu_joystick_delay == 0)
 					{
-						global.settings_sidebar_menu = "settings_back";
+						if (debug_settings_visible)
+						{
+							global.settings_sidebar_menu = "debug_settings";
+						}
+						else
+						{
+							global.settings_sidebar_menu = "settings_back";
+						}
 						menu_delay = 3;
 					}
 				}
 			}
 			#endregion /* Add-Ons Settings END */
+
+			#region /* Debug Settings */
+			if (debug_settings_visible)
+			{
+				if (global.settings_sidebar_menu == "debug_settings")
+				{
+					if (key_up)
+					&& (can_navigate_settings_sidebar)
+					&& (menu_delay == 0 && menu_joystick_delay == 0)
+					{
+						if (global.enable_add_ons_settings)
+						{
+							global.settings_sidebar_menu = "behavior_packs_settings";
+						}
+						else
+						if (global.enable_broadcast_settings)
+						{
+							global.settings_sidebar_menu = "broadcast_settings";
+						}
+						else
+						{
+							global.settings_sidebar_menu = "language_settings";
+						}
+						menu_delay = 3;
+					}
+					else
+					if (key_down)
+					&& (can_navigate_settings_sidebar)
+					&& (menu_delay == 0 && menu_joystick_delay == 0)
+					{
+						global.settings_sidebar_menu = "settings_back";
+						menu_delay = 3;
+					}
+				}
+			}
+			#endregion /* Debug Settings END */
 
 			#region /* The "Back" button should always appear at the top of the screen */
 			if (global.settings_sidebar_menu == "settings_back")
@@ -2052,6 +2216,11 @@ function scr_option_menu()
 				&& (can_navigate_settings_sidebar)
 				&& (menu_delay == 0 && menu_joystick_delay == 0)
 				{
+					if (debug_settings_visible)
+					{
+						global.settings_sidebar_menu = "debug_settings";
+					}
+					else
 					if (global.enable_add_ons_settings)
 					{
 						global.settings_sidebar_menu = "behavior_packs_settings";
@@ -2204,6 +2373,40 @@ function scr_option_menu()
 			scr_set_default_dropdown_description("difficulty_settings", "Normal");
 		}
 		#endregion /* Game Settings END */
+
+		#region /* Debug Settings */
+		if (global.settings_sidebar_menu == "debug_settings")
+		{
+			var debug_screen_y = 64;
+			var debug_detailed_mode_y = 64 + 48;
+			var debug_unlock_level_editor_objects_y = 64 + (48 * 2);
+			var debug_auto_unlock_runner_y = 64 + (48 * 3);
+			var level_editor_unlock_before = global.debug_unlock_all_level_editor_objects;
+
+			draw_set_halign(fa_left);
+			draw_set_valign(fa_middle);
+
+			global.debug_screen = draw_menu_checkmark(380, debug_screen_y, l10n_text("Debug Screen"), "debug_screen", global.debug_screen, false,
+				l10n_text("Displays debug information for development and troubleshooting"));
+
+			global.debug_detailed_mode = draw_menu_checkmark(380, debug_detailed_mode_y, l10n_text("Debug Detailed Mode"), "debug_detailed_mode", global.debug_detailed_mode, false,
+				l10n_text("Uses developer-facing variable names in the debug overlay"));
+
+			var level_editor_unlock_after = draw_menu_checkmark(380, debug_unlock_level_editor_objects_y, l10n_text("Unlock All Level Editor Objects"), "debug_unlock_all_level_editor_objects", level_editor_unlock_before, false,
+				l10n_text("Makes every placeable level editor object available for the current session"));
+
+			if (level_editor_unlock_before != level_editor_unlock_after)
+			{
+				scr_debug_set_level_editor_objects_unlocked(level_editor_unlock_after);
+			}
+
+			if (GM_build_type == "run")
+			{
+				global.debug_menu_auto_unlock_runner = draw_menu_checkmark(380, debug_auto_unlock_runner_y, l10n_text("Auto-unlock Debug tab in GameMaker Runner"), "debug_menu_auto_unlock_runner", global.debug_menu_auto_unlock_runner, false,
+					l10n_text("Development convenience for IDE test runs only. Ignored in shipped builds."));
+			}
+		}
+		#endregion /* Debug Settings END */
 
 		#region /* Multiplayer Settings */
 		if (global.settings_sidebar_menu == "multiplayer_settings")
@@ -2864,19 +3067,52 @@ function scr_option_menu()
 			else
 			if (menu == "debug_screen")
 			{
+				if (global.settings_sidebar_menu == "game_settings")
+				{
+					if (key_up)
+					&& (!open_dropdown)
+					&& (menu_delay == 0 && menu_joystick_delay == 0)
+					{
+						menu_delay = 3;
+						if (can_select_font)
+						{
+							menu = "select_font";
+						}
+						else
+						{
+							menu = "hud_hide_time";
+						}
+					}
+					else
+					if (key_down)
+					&& (!open_dropdown)
+					&& (menu_delay == 0 && menu_joystick_delay == 0)
+					{
+						menu_delay = 3;
+						menu = "difficulty_settings";
+					}
+				}
+				else
+				if (global.settings_sidebar_menu == "debug_settings")
+				{
+					if (key_down)
+					&& (!open_dropdown)
+					&& (menu_delay == 0 && menu_joystick_delay == 0)
+					{
+						menu_delay = 3;
+						menu = "debug_detailed_mode";
+					}
+				}
+			}
+			else
+			if (menu == "debug_detailed_mode")
+			{
 				if (key_up)
 				&& (!open_dropdown)
 				&& (menu_delay == 0 && menu_joystick_delay == 0)
 				{
 					menu_delay = 3;
-					if (can_select_font)
-					{
-						menu = "select_font";
-					}
-					else
-					{
-						menu = "hud_hide_time";
-					}
+					menu = "debug_screen";
 				}
 				else
 				if (key_down)
@@ -2884,7 +3120,38 @@ function scr_option_menu()
 				&& (menu_delay == 0 && menu_joystick_delay == 0)
 				{
 					menu_delay = 3;
-					menu = "difficulty_settings";
+					menu = "debug_unlock_all_level_editor_objects";
+				}
+			}
+			else
+			if (menu == "debug_unlock_all_level_editor_objects")
+			{
+				if (key_up)
+				&& (!open_dropdown)
+				&& (menu_delay == 0 && menu_joystick_delay == 0)
+				{
+					menu_delay = 3;
+					menu = "debug_detailed_mode";
+				}
+				else
+				if (GM_build_type == "run"
+				&& key_down)
+				&& (!open_dropdown)
+				&& (menu_delay == 0 && menu_joystick_delay == 0)
+				{
+					menu_delay = 3;
+					menu = "debug_menu_auto_unlock_runner";
+				}
+			}
+			else
+			if (menu == "debug_menu_auto_unlock_runner")
+			{
+				if (key_up)
+				&& (!open_dropdown)
+				&& (menu_delay == 0 && menu_joystick_delay == 0)
+				{
+					menu_delay = 3;
+					menu = "debug_unlock_all_level_editor_objects";
 				}
 			}
 			#endregion /* Navigate Game Settings END */

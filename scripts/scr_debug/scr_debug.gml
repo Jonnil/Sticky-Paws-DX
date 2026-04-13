@@ -23,6 +23,178 @@ function scr_debug_toggle_screen()
 	//}
 }
 
+/// @function scr_debug_get_settings_overlay_target()
+/* Returns the active menu instance that owns the settings state for the debug overlay. */
+function scr_debug_get_settings_overlay_target()
+{
+	if (instance_exists(obj_pause))
+	{
+		var pause_instance = instance_find(obj_pause, 0);
+		if (variable_instance_exists(pause_instance, "in_settings")
+		&& pause_instance.in_settings)
+		{
+			return pause_instance;
+		}
+	}
+
+	if (instance_exists(obj_title))
+	{
+		var title_instance = instance_find(obj_title, 0);
+		if (variable_instance_exists(title_instance, "in_settings")
+		&& title_instance.in_settings)
+		{
+			return title_instance;
+		}
+	}
+
+	return noone;
+}
+
+/// @function scr_debug_should_use_compact_overlay()
+/* Returns true when the full debug overlay should collapse into a menu-safe panel. */
+function scr_debug_should_use_compact_overlay()
+{
+	return global.debug_screen
+		&& (scr_debug_get_settings_overlay_target() != noone);
+}
+
+/// @function scr_debug_format_compact_overlay_label(raw_text, trim_settings_suffix)
+/* Converts internal menu ids into shorter, more readable labels for the compact overlay. */
+function scr_debug_format_compact_overlay_label(raw_text, trim_settings_suffix = false)
+{
+	var formatted_text = string(raw_text);
+
+	if (formatted_text == "")
+	{
+		return "None";
+	}
+
+	if (formatted_text == "settings_back")
+	{
+		return "Back";
+	}
+
+	if (!global.debug_detailed_mode)
+	{
+		if (trim_settings_suffix
+		&& string_length(formatted_text) > 9)
+		{
+			var suffix_start = string_length(formatted_text) - 8;
+			if (string_copy(formatted_text, suffix_start, 9) == "_settings")
+			{
+				formatted_text = string_delete(formatted_text, suffix_start, 9);
+			}
+		}
+
+		formatted_text = string_replace_all(formatted_text, "_", " ");
+
+		if (string_length(formatted_text) > 0)
+		{
+			formatted_text = string_upper(string_copy(formatted_text, 1, 1))
+				+ string_delete(formatted_text, 1, 1);
+		}
+	}
+
+	return formatted_text;
+}
+
+/// @function scr_debug_ellipsize_compact_overlay_text(raw_text, max_width, text_scale)
+/* Trims long compact-overlay lines so the panel width stays stable. */
+function scr_debug_ellipsize_compact_overlay_text(raw_text, max_width, text_scale)
+{
+	var trimmed_text = string(raw_text);
+	var ellipsis = "...";
+
+	if ((max_width <= 0)
+	|| (string_width(trimmed_text) * text_scale <= max_width))
+	{
+		return trimmed_text;
+	}
+
+	while (string_length(trimmed_text) > 0
+	&& (string_width(trimmed_text + ellipsis) * text_scale > max_width))
+	{
+		trimmed_text = string_delete(trimmed_text, string_length(trimmed_text), 1);
+	}
+
+	if (trimmed_text == "")
+	{
+		return ellipsis;
+	}
+
+	return trimmed_text + ellipsis;
+}
+
+/// @function scr_debug_draw_compact_overlay()
+/* Draws a small debug panel that stays readable while the settings menu is open. */
+function scr_debug_draw_compact_overlay()
+{
+	var target = scr_debug_get_settings_overlay_target();
+	if (target == noone)
+	{
+		return;
+	}
+
+	var text_scale = global.default_text_size * 0.72;
+	var padding = 16;
+	var header_spacing = 28;
+	var line_spacing = 22;
+	var panel_width = min(clamp(display_get_gui_width() * 0.24, 288, 360), display_get_gui_width() - 40);
+	var panel_right = display_get_gui_width() - 20;
+	var panel_left = panel_right - panel_width;
+	var panel_top = 20;
+	var content_width = panel_width - (padding * 2);
+	var selected_menu = "None";
+
+	if (variable_instance_exists(target, "menu"))
+	{
+		selected_menu = scr_debug_format_compact_overlay_label(target.menu, true);
+	}
+
+	var lines = [];
+	lines[array_length(lines)] =
+	{
+		text: scr_debug_ellipsize_compact_overlay_text("Tab: " + scr_debug_format_compact_overlay_label(global.settings_sidebar_menu, true), content_width, text_scale),
+		color: c_white
+	};
+	lines[array_length(lines)] =
+	{
+		text: scr_debug_ellipsize_compact_overlay_text("Selected: " + selected_menu, content_width, text_scale),
+		color: c_lime
+	};
+	lines[array_length(lines)] =
+	{
+		text: scr_debug_ellipsize_compact_overlay_text("Room: " + string(room_get_name(room)), content_width, text_scale),
+		color: c_white
+	};
+	lines[array_length(lines)] =
+	{
+		text: scr_debug_ellipsize_compact_overlay_text("P1 Controller Slot: " + string(global.player_slot[1]), content_width, text_scale),
+		color: c_white
+	};
+
+	var panel_bottom = panel_top + padding + header_spacing + 6 + (array_length(lines) * line_spacing) + 10;
+
+	draw_set_alpha(0.82);
+	draw_roundrect_color_ext(panel_left, panel_top, panel_right, panel_bottom, 18, 18, c_black, c_black, false);
+	draw_set_alpha(1);
+
+	draw_line_width_color(panel_left + padding, panel_top + padding + 22, panel_right - padding, panel_top + padding + 22, 2, c_yellow, c_yellow);
+
+	draw_set_halign(fa_left);
+	draw_set_valign(fa_top);
+	scr_draw_text_outlined(panel_left + padding, panel_top + padding, "Debug Overlay", text_scale, c_black, c_yellow, 1);
+
+	for (var line_index = 0; line_index < array_length(lines); line_index++)
+	{
+		var line_y = panel_top + padding + header_spacing + (line_index * line_spacing);
+		scr_draw_text_outlined(panel_left + padding, line_y, lines[line_index].text, text_scale, c_black, lines[line_index].color, 1);
+	}
+
+	draw_set_halign(fa_left);
+	draw_set_valign(fa_middle);
+}
+
 ///////////////////////////////////////////////////////////////
 // FPS Display
 ///////////////////////////////////////////////////////////////
@@ -31,8 +203,9 @@ function scr_debug_toggle_screen()
 /* Draws the FPS and "real" FPS information on screen */
 function scr_debug_draw_fps()
 {
-	if (global.show_fps
+	if ((global.show_fps
 	|| global.debug_screen)
+	&& !scr_debug_should_use_compact_overlay())
 	{
 		var fps_y = 64;
 
@@ -70,8 +243,9 @@ function scr_debug_draw_fps()
 /* Draws a simple instance count on screen */
 function scr_debug_draw_instance_count()
 {
-	if (global.show_instance_count
+	if ((global.show_instance_count
 	|| global.debug_screen)
+	&& !scr_debug_should_use_compact_overlay())
 	{
 		var instance_count_y = 96;
 
@@ -91,7 +265,8 @@ function scr_debug_draw_instance_count()
 /* Draws detailed instance counts for each object type. Iterates through a fixed range */
 function scr_debug_draw_all_instance_count()
 {
-	if (global.show_all_instance_count)
+	if (global.show_all_instance_count
+	&& !scr_debug_should_use_compact_overlay())
 	{
 		var all_instance_count_y = 128;
 
@@ -339,6 +514,18 @@ function scr_debug_draw_debug_logic()
 			ini_close();
 		}
 
+		if (global.enable_option_for_pc
+		&& keyboard_check_pressed(vk_f6))
+		{
+			scr_debug_unlock_debug_menu();
+		}
+
+		if (scr_debug_should_use_compact_overlay())
+		{
+			scr_debug_draw_compact_overlay();
+			return;
+		}
+
 		var version_y = 32;
 		var display_y = 32;
 		var d3d11_y = 64;
@@ -385,6 +572,21 @@ function scr_debug_draw_debug_logic()
 					"Press the F4 key to toggle debug detailed mode",
 					instr_text_size, c_black, c_white, 1);
 				instructions_y += 25;
+
+				if (!global.debug_menu_unlocked)
+				{
+					scr_draw_text_outlined(display_get_gui_width() * 0.5, instructions_y,
+						"Press the F6 key to unlock the hidden Debug tab in Options",
+						instr_text_size, c_black, c_yellow, 1);
+					instructions_y += 25;
+				}
+				else
+				{
+					scr_draw_text_outlined(display_get_gui_width() * 0.5, instructions_y,
+						"Debug tab unlocked in Options for this session",
+						instr_text_size, c_black, c_lime, 1);
+					instructions_y += 25;
+				}
 
 				scr_draw_text_outlined(display_get_gui_width() * 0.5, instructions_y,
 					"Click on the debug headers to collapse sections",

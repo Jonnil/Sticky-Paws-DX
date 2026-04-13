@@ -22,6 +22,9 @@
 function scr_unlock_placable_level_objects(default_unlock = false)
 {
 	var always_unlock = true; /* Some objects should always be unlocked from the start */
+	var unlock_all_for_debug = default_unlock
+		|| (variable_global_exists("debug_unlock_all_level_editor_objects")
+		&& global.debug_unlock_all_level_editor_objects);
 
 	#region /* All the objects that should be always unlocked in Level Editor */
 	ini_open(game_save_id + "save_file/file" + string(global.file) + ".ini");
@@ -123,14 +126,15 @@ function scr_unlock_placable_level_objects(default_unlock = false)
 	#endregion /* Create a list of all items END */
 
 	#region /* Unlock placable level objects */
-	if (!if_daily_build)
+	if (!if_daily_build
+	|| unlock_all_for_debug)
 	{
 
 		/* Read all the objects that should be unlocked */
 		for (var i = 0; i < ds_list_size(all_items); i++)
 		{
 			var item_to_unlock = ds_list_find_value(all_items, i);
-			unlocked_object[item_to_unlock] = ini_read_real("Unlock Placable Objects", item_to_unlock, default_unlock);
+			unlocked_object[item_to_unlock] = ini_read_real("Unlock Placable Objects", item_to_unlock, unlock_all_for_debug);
 		}
 
 	}

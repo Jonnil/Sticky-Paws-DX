@@ -115,6 +115,12 @@ function scr_config_load()
 		global.upload_rules_do_not_show_level = ini_read_real("config", "upload_rules_do_not_show_level", false);
 		global.upload_rules_do_not_show_character = ini_read_real("config", "upload_rules_do_not_show_character", false);
 		if (ini_key_exists("config", "debug_detailed_mode")){global.debug_detailed_mode = ini_read_real("config", "debug_detailed_mode", false);}
+		if (ini_key_exists("config", "debug_menu_auto_unlock_runner")){global.debug_menu_auto_unlock_runner = ini_read_real("config", "debug_menu_auto_unlock_runner", false);}
+		if (GM_build_type == "run"
+		&& global.debug_menu_auto_unlock_runner)
+		{
+			global.debug_menu_unlocked = true;
+		}
 
 		#region /* Debug Collapsed Sections */
 		var section_list = [
