@@ -10,7 +10,10 @@ function scr_scroll_menu(offset_display_height = 300, clamp_menu_y_offset_real =
 	}
 
 	/* Only adjust scrolling when not using the mouse for navigation and not currently scrolling with the mouse wheel */
-	if (global.controls_used_for_navigation != "mouse"
+	var dropdown_requests_auto_scroll = variable_instance_exists(self, "open_dropdown") && open_dropdown;
+
+	if ((global.controls_used_for_navigation != "mouse"
+	|| dropdown_requests_auto_scroll)
 	&& !scrolling_menu_with_mousewheel)
 	{
 		/* Calculate the target position for the menu scroll */

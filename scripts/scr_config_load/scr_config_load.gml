@@ -241,6 +241,8 @@ function scr_config_load()
 		if (ini_key_exists("config", "interpolate")){global.interpolate = ini_read_real("config", "interpolate", 0);}
 		if (ini_key_exists("config", "show_fps")){global.show_fps = ini_read_real("config", "show_fps", 0);}
 		if (ini_key_exists("config", "show_instance_count")){global.show_instance_count = ini_read_real("config", "show_instance_count", 0);}
+		if (ini_key_exists("config", "font_add_enable_aa")){global.font_antialiasing = ini_read_real("config", "font_add_enable_aa", false);}
+		scr_debug_load_visibility_modes_from_ini();
 		if (ini_key_exists("config", "show_collision_mask")){global.show_collision_mask = ini_read_real("config", "show_collision_mask", 0);}
 		if (ini_key_exists("config", "volume_main")){global.volume_main = ini_read_real("config", "volume_main", 7000) * 0.0001;}
 		if (ini_key_exists("config", "volume_music")){global.volume_music = ini_read_real("config", "volume_music", 7000) * 0.0001;}
@@ -300,7 +302,8 @@ function scr_config_load()
 		}
 		if (ini_key_exists("language_updates", "current_language_menu_position")){global.current_language_menu_position = ini_read_real("language_updates", "current_language_menu_position", 1);} /* Load 'global.current_language_menu_position' before loading font, as the font is informed by the language selected */
 		if (ini_key_exists("language_updates", "language_last_update_string")){global.language_last_update_string = ini_read_string("language_updates", "language_last_update_string", "");}
-		if (ini_key_exists("config", "select_font")){global.selected_font = ini_read_real("config", "select_font", 0);scr_set_font();} /* Load font after loading language, as the font is informed by the language selected */
+		if (ini_key_exists("config", "select_font")){global.selected_font = ini_read_real("config", "select_font", 0);}
+		scr_set_font(); /* Load font after loading language, as the font is informed by the language selected */
 		if (ini_key_exists("config", "show_prompt_when_changing_to_gamepad")){global.show_prompt_when_changing_to_gamepad = ini_read_real("config", "show_prompt_when_changing_to_gamepad", 1);}
 		if (ini_key_exists("config", "show_prompt_when_changing_to_keyboard_and_mouse")){global.show_prompt_when_changing_to_keyboard_and_mouse = ini_read_real("config", "show_prompt_when_changing_to_keyboard_and_mouse", 1);}
 		if (ini_key_exists("config", "always_show_gamepad_buttons")){global.always_show_gamepad_buttons = ini_read_real("config", "always_show_gamepad_buttons", 0);}

@@ -1,6 +1,9 @@
 /// @description obj_debug_manager Step Event
 /* Main debug routine. Calls all sub-functions that handle different debug aspects */
 
+/* Reset queued dropdown popups so the active menu can request a fresh one during Draw GUI. */
+global.menu_dropdown_popup_request = undefined;
+
 /* Toggle the debug screen when the proper keys/buttons are pressed */
 scr_debug_toggle_screen();
 

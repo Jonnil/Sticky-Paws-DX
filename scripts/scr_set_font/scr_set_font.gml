@@ -21,7 +21,15 @@ function scr_set_font(selected_font_index = global.selected_font)
 	];
 
 	var font_sizes = [34, 24, 24];
-	var fonts = array_create(array_length(font_files), noone);
+
+	if (!variable_global_exists("runtime_fonts")
+	|| array_length(global.runtime_fonts) != array_length(font_files))
+	{
+		global.runtime_fonts = array_create(array_length(font_files), noone);
+	}
+
+	var fonts = global.runtime_fonts;
+	font_add_enable_aa(global.font_antialiasing);
 
 	if (file_exists(font_files[selected_font_index]))
 	{
@@ -30,6 +38,7 @@ function scr_set_font(selected_font_index = global.selected_font)
 			font_delete(fonts[selected_font_index]);
 		}
 		fonts[selected_font_index] = font_add(font_files[selected_font_index], font_sizes[selected_font_index], true, false, 32, 128);
+		global.runtime_fonts = fonts;
 		draw_set_font(fonts[selected_font_index]);
 	}
 }

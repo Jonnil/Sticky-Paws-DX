@@ -19,6 +19,7 @@ function scr_config_save()
 	ini_write_real("config", "show_new_items_notification", global.show_new_items_notification);
 	ini_write_real("config", "hud_hide_time", global.hud_hide_time);
 	ini_write_real("config", "select_font", global.selected_font);
+	ini_write_real("config", "font_add_enable_aa", global.font_antialiasing);
 	ini_write_real("config", "players_can_collide", global.players_can_collide);
 
 	#region /* Assist Settings */
@@ -80,12 +81,15 @@ function scr_config_save()
 	ini_write_real("config", "challenge_roguelike_mode", global.challenge_roguelike_mode);
 	#endregion /* Challenge Mode Settings END */
 
+	scr_debug_sync_legacy_public_toggles();
+
 	ini_write_real("config", "fullscreen_mode", window_get_fullscreen());
 	ini_write_real("config", "interpolate", global.interpolate);
 	ini_write_real("config", "show_fps", global.show_fps);
 	ini_write_real("config", "show_instance_count", global.show_instance_count);
 	ini_write_real("config", "debug_detailed_mode", global.debug_detailed_mode);
 	ini_write_real("config", "debug_menu_auto_unlock_runner", global.debug_menu_auto_unlock_runner);
+	scr_debug_write_visibility_modes_to_ini();
 	ini_write_real("config", "show_collision_mask", global.show_collision_mask);
 	ini_write_real("config", "volume_main", global.volume_main * 10000);
 	ini_write_real("config", "volume_music", global.volume_music * 10000);

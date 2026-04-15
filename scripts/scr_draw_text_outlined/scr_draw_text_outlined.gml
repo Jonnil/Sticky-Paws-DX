@@ -15,31 +15,31 @@ function scr_draw_text_outlined(x_position = x, y_position = y, string_text = ""
 	if (global.draw_text_outline
 	&& outline_color != noone)
 	{
-		/* Cache the text size multiplier to avoid recalculating it for each offset */
-		var ts = text_size;
+		/* Round outline offsets so small transformed text keeps a solid, readable edge */
+		var outline_offset = max(1, round(text_size));
 
 		/* Unrolled loop: Instead of iterating through an array, directly draw the outline */
 		/* in four directions (left, right, up, down). This is more efficient */
 		if (use_wrap)
 		{
-			draw_text_ext_transformed_color(x_position - ts, y_position, string_text, line_sep, max_width, text_size, text_size, 0,
+			draw_text_ext_transformed_color(x_position - outline_offset, y_position, string_text, line_sep, max_width, text_size, text_size, 0,
 				outline_color, outline_color, outline_color, outline_color, img_alpha);
-			draw_text_ext_transformed_color(x_position + ts, y_position, string_text, line_sep, max_width, text_size, text_size, 0,
+			draw_text_ext_transformed_color(x_position + outline_offset, y_position, string_text, line_sep, max_width, text_size, text_size, 0,
 				outline_color, outline_color, outline_color, outline_color, img_alpha);
-			draw_text_ext_transformed_color(x_position, y_position - ts, string_text, line_sep, max_width, text_size, text_size, 0,
+			draw_text_ext_transformed_color(x_position, y_position - outline_offset, string_text, line_sep, max_width, text_size, text_size, 0,
 				outline_color, outline_color, outline_color, outline_color, img_alpha);
-			draw_text_ext_transformed_color(x_position, y_position + ts, string_text, line_sep, max_width, text_size, text_size, 0,
+			draw_text_ext_transformed_color(x_position, y_position + outline_offset, string_text, line_sep, max_width, text_size, text_size, 0,
 				outline_color, outline_color, outline_color, outline_color, img_alpha);
 		}
 		else
 		{
-			draw_text_transformed_color(x_position - ts, y_position, string_text, text_size, text_size, 0,
+			draw_text_transformed_color(x_position - outline_offset, y_position, string_text, text_size, text_size, 0,
 				outline_color, outline_color, outline_color, outline_color, img_alpha);
-			draw_text_transformed_color(x_position + ts, y_position, string_text, text_size, text_size, 0,
+			draw_text_transformed_color(x_position + outline_offset, y_position, string_text, text_size, text_size, 0,
 				outline_color, outline_color, outline_color, outline_color, img_alpha);
-			draw_text_transformed_color(x_position, y_position - ts, string_text, text_size, text_size, 0,
+			draw_text_transformed_color(x_position, y_position - outline_offset, string_text, text_size, text_size, 0,
 				outline_color, outline_color, outline_color, outline_color, img_alpha);
-			draw_text_transformed_color(x_position, y_position + ts, string_text, text_size, text_size, 0,
+			draw_text_transformed_color(x_position, y_position + outline_offset, string_text, text_size, text_size, 0,
 				outline_color, outline_color, outline_color, outline_color, img_alpha);
 		}
 	}

@@ -774,6 +774,10 @@ function scr_option_menu()
 		}
 		#endregion /* Go back out of setting menu END */
 
+		var debug_text_submenu_active = (global.settings_sidebar_menu == "debug_settings")
+			&& (string_pos("debug_screen_text_", string(menu)) == 1)
+			&& (menu != "debug_screen_text_menu");
+
 		if (key_b_pressed)
 		&& (!can_navigate_settings_sidebar)
 		&& (menu_delay == 0 && menu_joystick_delay == 0)
@@ -783,6 +787,14 @@ function scr_option_menu()
 			if (open_dropdown)
 			{
 				open_dropdown = false;
+			}
+			else
+			if (debug_text_submenu_active)
+			{
+				menu = "debug_screen_text_menu";
+				menu_y_offset = 0;
+				menu_y_offset_real = 0;
+				menu_delay = 3;
 			}
 			else
 			{
@@ -2284,7 +2296,8 @@ function scr_option_menu()
 			var show_new_items_notification_y = 48 * 7;
 			var hud_hide_time_y = 48 * 8 + 16;
 			var selected_font_y = 48 * 9 + 32;
-			var debug_screen_y = 48 * 10 + 32;
+			var font_antialias_y = 48 * 10 + 32;
+			var debug_screen_y = 48 * 11 + 32;
 
 			if (global.enable_ranks)
 			{
@@ -2294,7 +2307,8 @@ function scr_option_menu()
 				show_new_items_notification_y = 48 * 8;
 				hud_hide_time_y = 48 * 9 + 16;
 				selected_font_y = 48 * 10 + 32;
-				debug_screen_y = 48 * 11 + 32;
+				font_antialias_y = 48 * 11 + 32;
+				debug_screen_y = 48 * 12 + 32;
 			}
 			
 			draw_set_halign(fa_left);
@@ -2327,13 +2341,6 @@ function scr_option_menu()
 			global.show_new_items_notification = draw_menu_checkmark(380, show_new_items_notification_y, l10n_text("Show New Items Notification"), "show_new_items_notification", global.show_new_items_notification, true,
 				l10n_text("Notifies you when new items become available in the level editor"));
 
-			if (global.enable_option_for_pc)
-			|| (GM_build_type == "run") /* Only enable debug features in test run, and not executable */
-			{
-				global.debug_screen = draw_menu_checkmark(380, debug_screen_y, l10n_text("Debug Screen"), "debug_screen", global.debug_screen, false,
-					l10n_text("Displays debug information for development and troubleshooting"));
-			}
-
 			if (global.hud_hide_time > 10)
 			{
 				global.hud_hide_time = 3;
@@ -2359,11 +2366,33 @@ function scr_option_menu()
 				/* Only include Game Font and Normal Font for Japanese language; Open Dyslexic isn't supported */
 				can_select_font = false;
 			}
-			else
+			var font_antialias_draw_y = selected_font_y;
+			var debug_screen_draw_y = font_antialias_y;
+
+			if (can_select_font)
 			{
 				draw_menu_dropdown(380, selected_font_y, l10n_text("Selected Font"), "select_font", global.selected_font,
 					l10n_text("Game Font"), l10n_text("Normal Font"), l10n_text("Open Dyslexic")); /* Includes Open Dyslexic */
 				scr_set_default_dropdown_description("select_font", "Game Font");
+				font_antialias_draw_y = font_antialias_y;
+				debug_screen_draw_y = debug_screen_y;
+			}
+
+			var previous_font_antialiasing = global.font_antialiasing;
+			global.font_antialiasing = draw_menu_checkmark(380, font_antialias_draw_y, l10n_text("Font Anti-Aliasing"), "font_add_enable_aa", global.font_antialiasing, false,
+				l10n_text("Smooths dynamically loaded font edges. OFF by default to keep the menu text crisp and avoid blur at small sizes"));
+
+			if (previous_font_antialiasing != global.font_antialiasing)
+			{
+				font_add_enable_aa(global.font_antialiasing);
+				scr_set_font();
+			}
+
+			if (global.enable_option_for_pc)
+			|| (GM_build_type == "run") /* Only enable debug features in test run, and not executable */
+			{
+				global.debug_screen = draw_menu_checkmark(380, debug_screen_draw_y, l10n_text("Debug Screen"), "debug_screen", global.debug_screen, false,
+					l10n_text("Displays debug information for development and troubleshooting"));
 			}
 
 			draw_menu_dropdown(380, hud_hide_time_y, l10n_text("HUD hide timer"), "hud_hide_time", global.hud_hide_time, l10n_text("Never Show"), l10n_text("After 1 Second"), l10n_text("After 2 Seconds"), l10n_text("After 3 Seconds"), l10n_text("After 4 Seconds"), l10n_text("After 5 Seconds"), l10n_text("After 6 Seconds"), l10n_text("After 7 Seconds"), l10n_text("After 8 Seconds"), l10n_text("After 9 Seconds"), l10n_text("Always Show"));
@@ -2377,33 +2406,306 @@ function scr_option_menu()
 		#region /* Debug Settings */
 		if (global.settings_sidebar_menu == "debug_settings")
 		{
-			var debug_screen_y = 64;
-			var debug_detailed_mode_y = 64 + 48;
-			var debug_unlock_level_editor_objects_y = 64 + (48 * 2);
-			var debug_auto_unlock_runner_y = 64 + (48 * 3);
-			var level_editor_unlock_before = global.debug_unlock_all_level_editor_objects;
+			scr_debug_initialize_visibility_registry();
+
+			if (!variable_instance_exists(self, "debug_screen_text_search_query"))
+			{
+				debug_screen_text_search_query = "";
+			}
+
+			if (!variable_instance_exists(self, "remember_keyboard_string"))
+			{
+				remember_keyboard_string = "";
+			}
+
+			var debug_text_menu_active = (string_pos("debug_screen_text_", string(menu)) == 1)
+				&& (menu != "debug_screen_text_menu");
 
 			draw_set_halign(fa_left);
 			draw_set_valign(fa_middle);
 
-			global.debug_screen = draw_menu_checkmark(380, debug_screen_y, l10n_text("Debug Screen"), "debug_screen", global.debug_screen, false,
-				l10n_text("Displays debug information for development and troubleshooting"));
-
-			global.debug_detailed_mode = draw_menu_checkmark(380, debug_detailed_mode_y, l10n_text("Debug Detailed Mode"), "debug_detailed_mode", global.debug_detailed_mode, false,
-				l10n_text("Uses developer-facing variable names in the debug overlay"));
-
-			var level_editor_unlock_after = draw_menu_checkmark(380, debug_unlock_level_editor_objects_y, l10n_text("Unlock All Level Editor Objects"), "debug_unlock_all_level_editor_objects", level_editor_unlock_before, false,
-				l10n_text("Makes every placeable level editor object available for the current session"));
-
-			if (level_editor_unlock_before != level_editor_unlock_after)
+			if (!debug_text_menu_active)
 			{
-				scr_debug_set_level_editor_objects_unlocked(level_editor_unlock_after);
+				var debug_screen_y = 64;
+				var debug_screen_text_menu_y = 64 + 48;
+				var debug_detailed_mode_y = 64 + (48 * 2);
+				var debug_unlock_level_editor_objects_y = 64 + (48 * 3);
+				var debug_auto_unlock_runner_y = 64 + (48 * 4);
+				var level_editor_unlock_before = global.debug_unlock_all_level_editor_objects;
+
+				global.debug_screen = draw_menu_checkmark(380, debug_screen_y, l10n_text("Debug Screen"), "debug_screen", global.debug_screen, false,
+					l10n_text("Displays debug information for development and troubleshooting"));
+
+				var open_debug_screen_text_menu = draw_menu_button(420, debug_screen_text_menu_y, l10n_text("Debug Screen Text"), "debug_screen_text_menu", "");
+
+				if (open_debug_screen_text_menu)
+				&& (menu_delay == 0 && menu_joystick_delay == 0)
+				{
+					menu = "debug_screen_text_back";
+					menu_y_offset = 0;
+					menu_y_offset_real = 0;
+					menu_delay = 3;
+				}
+
+				global.debug_detailed_mode = draw_menu_checkmark(380, debug_detailed_mode_y, l10n_text("Debug Detailed Mode"), "debug_detailed_mode", global.debug_detailed_mode, false,
+					l10n_text("Uses developer-facing variable names in the debug overlay"));
+
+				var level_editor_unlock_after = draw_menu_checkmark(380, debug_unlock_level_editor_objects_y, l10n_text("Unlock All Level Editor Objects"), "debug_unlock_all_level_editor_objects", level_editor_unlock_before, false,
+					l10n_text("Makes every placeable level editor object available for the current session"));
+
+				if (level_editor_unlock_before != level_editor_unlock_after)
+				{
+					scr_debug_set_level_editor_objects_unlocked(level_editor_unlock_after);
+				}
+
+				if (GM_build_type == "run")
+				{
+					global.debug_menu_auto_unlock_runner = draw_menu_checkmark(380, debug_auto_unlock_runner_y, l10n_text("Auto-unlock Debug tab in GameMaker Runner"), "debug_menu_auto_unlock_runner", global.debug_menu_auto_unlock_runner, false,
+						l10n_text("Development convenience for IDE test runs only. Ignored in shipped builds."));
+				}
 			}
-
-			if (GM_build_type == "run")
+			else
 			{
-				global.debug_menu_auto_unlock_runner = draw_menu_checkmark(380, debug_auto_unlock_runner_y, l10n_text("Auto-unlock Debug tab in GameMaker Runner"), "debug_menu_auto_unlock_runner", global.debug_menu_auto_unlock_runner, false,
-					l10n_text("Development convenience for IDE test runs only. Ignored in shipped builds."));
+				var debug_text_search_modal_active = (menu == "debug_screen_text_search_ok")
+					|| (menu == "debug_screen_text_search_cancel");
+				var debug_screen_text_title_y = 28;
+				var debug_screen_text_back_y = 84;
+				var debug_screen_text_search_y = debug_screen_text_back_y + 78;
+				var debug_screen_text_search_label_y = debug_screen_text_search_y - 10;
+				var debug_screen_text_warning_y = debug_screen_text_search_y + 66;
+				var debug_screen_text_row_y = debug_screen_text_warning_y + 96;
+				var debug_screen_text_row_spacing = 72;
+				var debug_text_title_x = 370 + ((get_window_width - 370) * 0.5);
+				var debug_text_warning_x = 410;
+				var filtered_debug_visibility_ids = scr_debug_get_filtered_visibility_ids(debug_screen_text_search_query);
+				var filtered_debug_visibility_count = array_length(filtered_debug_visibility_ids);
+				var search_field_x = 420;
+				var search_field_y = debug_screen_text_search_y + menu_y_offset;
+				var search_field_width = 370;
+				var search_field_height = 41;
+				var search_field_left = search_field_x;
+				var search_field_top = search_field_y;
+				var search_field_right = search_field_left + search_field_width;
+				var search_field_bottom = search_field_top + search_field_height;
+				var search_field_selected = (menu == "debug_screen_text_search");
+				var search_field_hovered = false;
+				var search_field_display_text = string(debug_screen_text_search_query);
+				var search_field_box_color = make_color_rgb(30, 170, 175);
+				var search_field_outline_color = search_field_selected ? c_white : c_ltgray;
+				var search_field_text_color = c_white;
+				var search_field_padding = 14;
+
+				var debug_text_previous_open_dropdown = open_dropdown;
+				if (debug_text_search_modal_active)
+				{
+					open_dropdown = true;
+				}
+
+				var close_debug_screen_text_menu = draw_menu_button(420, debug_screen_text_back_y + menu_y_offset, l10n_text("Back"), "debug_screen_text_back", "");
+
+				if (!debug_text_search_modal_active
+				&& close_debug_screen_text_menu)
+				&& (menu_delay == 0 && menu_joystick_delay == 0)
+				{
+					menu = "debug_screen_text_menu";
+					menu_y_offset = 0;
+					menu_y_offset_real = 0;
+					menu_delay = 3;
+				}
+
+				if (menu == "debug_screen_text_back")
+				{
+					global.option_default = -1;
+					global.option_description = l10n_text("Returns to the main Debug tab");
+					menu_cursor_y_position = debug_screen_text_back_y;
+				}
+
+				draw_set_halign(fa_center);
+				draw_set_valign(fa_middle);
+				scr_draw_text_outlined(debug_text_title_x, debug_screen_text_title_y, l10n_text("Debug Screen Text"), global.default_text_size * 1.1, c_menu_outline, c_menu_fill, 1);
+
+				draw_set_halign(fa_left);
+				draw_set_valign(fa_bottom);
+				scr_draw_text_outlined(search_field_left, debug_screen_text_search_label_y + menu_y_offset, l10n_text("Search Filter"), global.default_text_size * 0.85, c_menu_outline, c_menu_fill, 1);
+
+				if (!debug_text_search_modal_active)
+				{
+					search_field_hovered = point_in_rectangle(mouse_get_x, mouse_get_y, search_field_left, search_field_top, search_field_right, search_field_bottom)
+						&& (global.controls_used_for_navigation == "mouse")
+						&& !open_dropdown
+						&& !input_key;
+
+					if (search_field_hovered)
+					{
+						menu = "debug_screen_text_search";
+
+						if (variable_instance_exists(self, "can_navigate_settings_sidebar"))
+						{
+							can_navigate_settings_sidebar = false;
+						}
+					}
+				}
+
+				if (search_field_selected
+				|| search_field_hovered
+				|| debug_text_search_modal_active)
+				{
+					search_field_outline_color = c_white;
+				}
+
+				if (string_width(search_field_display_text + "...") > search_field_width - (search_field_padding * 2))
+				{
+					while (string_length(search_field_display_text) > 0)
+					&& (string_width(search_field_display_text + "...") > search_field_width - (search_field_padding * 2))
+					{
+						search_field_display_text = string_delete(search_field_display_text, string_length(search_field_display_text), 1);
+					}
+
+					search_field_display_text += "...";
+				}
+
+				if ((search_field_selected || debug_text_search_modal_active)
+				&& (scr_wave(0, 1, 1, 0) > 0.5))
+				{
+					search_field_display_text += "|";
+				}
+
+				draw_rectangle_color(search_field_left, search_field_top, search_field_right, search_field_bottom, search_field_box_color, search_field_box_color, search_field_box_color, search_field_box_color, false);
+				draw_set_alpha(0.6);
+				draw_rectangle_color(search_field_left, search_field_top, search_field_right, search_field_bottom, c_black, c_black, c_black, c_black, false);
+				draw_set_alpha(1);
+				draw_rectangle_color(search_field_left, search_field_top, search_field_right, search_field_bottom, search_field_outline_color, search_field_outline_color, search_field_outline_color, search_field_outline_color, true);
+
+				if (search_field_selected
+				|| debug_text_search_modal_active)
+				{
+					draw_sprite_ext(spr_menu_cursor, menu_cursor_index, search_field_left - 24, search_field_top + (search_field_height * 0.5), 1, 1, 0, c_white, 1);
+					draw_sprite_ext(spr_menu_cursor, menu_cursor_index, search_field_right + 24, search_field_top + (search_field_height * 0.5), 1, 1, 180, c_white, 1);
+				}
+
+				draw_set_halign(fa_left);
+				draw_set_valign(fa_middle);
+				scr_draw_text_outlined(search_field_left + search_field_padding, search_field_top + (search_field_height * 0.5), search_field_display_text, global.default_text_size * 0.9, c_black, search_field_text_color, 1);
+
+				if (!debug_text_search_modal_active)
+				&& ((search_field_hovered
+				&& mouse_check_button_released(mb_left))
+				|| (search_field_selected
+				&& key_a_pressed
+				&& menu_delay == 0
+				&& menu_joystick_delay == 0))
+				&& (menu_delay == 0 && menu_joystick_delay == 0)
+				{
+					input_key = true;
+					keyboard_string = string(debug_screen_text_search_query);
+					remember_keyboard_string = string(debug_screen_text_search_query);
+					menu = "debug_screen_text_search_ok";
+					menu_delay = 3;
+				}
+
+				if (menu == "debug_screen_text_search")
+				{
+					global.option_default = -1;
+					global.option_description = l10n_text("Filters debug screen text by user-facing label or internal id");
+					menu_cursor_y_position = debug_screen_text_search_y;
+				}
+
+				draw_set_halign(fa_left);
+				draw_set_valign(fa_top);
+				scr_draw_text_outlined(debug_text_warning_x, debug_screen_text_warning_y + menu_y_offset,
+					l10n_text("These options are for testing purposes only."),
+					global.default_text_size * 0.9, c_black, c_red, 1);
+				scr_draw_text_outlined(debug_text_warning_x, debug_screen_text_warning_y + 28 + menu_y_offset,
+					l10n_text("They may slow down your computer, or crash the game."),
+					global.default_text_size * 0.9, c_black, c_red, 1);
+
+				var debug_text_row_draw_y = debug_screen_text_row_y;
+				var debug_text_content_end_y = debug_screen_text_row_y;
+
+				for (var debug_text_item_index = 0; debug_text_item_index < filtered_debug_visibility_count; debug_text_item_index++)
+				{
+					var debug_text_item_id = filtered_debug_visibility_ids[debug_text_item_index];
+					var debug_text_definition = scr_debug_get_visibility_definition(debug_text_item_id);
+					var debug_text_label = global.debug_detailed_mode
+						? string(debug_text_definition.id)
+						: l10n_text(debug_text_definition.label);
+
+					draw_menu_debug_visibility_row(400, debug_text_row_draw_y + menu_y_offset, debug_text_label,
+						"debug_screen_text_" + debug_text_item_id, debug_text_item_id,
+						l10n_text(debug_text_definition.description));
+
+					debug_text_row_draw_y += debug_screen_text_row_spacing;
+					debug_text_content_end_y = debug_text_row_draw_y;
+				}
+
+				if (filtered_debug_visibility_count <= 0)
+				{
+					draw_set_halign(fa_left);
+					draw_set_valign(fa_middle);
+					scr_draw_text_outlined(410, debug_screen_text_row_y + menu_y_offset, l10n_text("No debug screen text matched this search."), global.default_text_size * 0.9, c_menu_outline, c_ltgray, 1);
+					debug_text_content_end_y = debug_screen_text_row_y + 48;
+				}
+
+				var debug_screen_text_default_profile_y = debug_text_content_end_y + 24;
+				var debug_screen_text_performance_profile_y = debug_screen_text_default_profile_y + 56;
+				var apply_default_profile = draw_menu_button(420, debug_screen_text_default_profile_y + menu_y_offset, l10n_text("Default Profile"), "debug_screen_text_default_profile", "");
+				var apply_performance_profile = draw_menu_button(420, debug_screen_text_performance_profile_y + menu_y_offset, l10n_text("Performance Profile"), "debug_screen_text_performance_profile", "");
+
+				if (menu == "debug_screen_text_default_profile")
+				{
+					global.option_default = -1;
+					global.option_description = l10n_text("Resets every debug screen text item to the default curated profile");
+					menu_cursor_y_position = debug_screen_text_default_profile_y;
+				}
+				else
+				if (menu == "debug_screen_text_performance_profile")
+				{
+					global.option_default = -1;
+					global.option_description = l10n_text("Applies the performance-focused debug screen text profile");
+					menu_cursor_y_position = debug_screen_text_performance_profile_y;
+				}
+
+				if (!debug_text_search_modal_active
+				&& apply_default_profile)
+				&& (menu_delay == 0 && menu_joystick_delay == 0)
+				{
+					scr_debug_apply_profile("default");
+					menu_delay = 3;
+				}
+
+				if (!debug_text_search_modal_active
+				&& apply_performance_profile)
+				&& (menu_delay == 0 && menu_joystick_delay == 0)
+				{
+					scr_debug_apply_profile("performance");
+					menu_delay = 3;
+				}
+
+				open_dropdown = debug_text_previous_open_dropdown;
+
+				if (debug_text_search_modal_active)
+				{
+					draw_set_halign(fa_center);
+					draw_set_valign(fa_middle);
+					scr_draw_text_outlined(get_window_width * 0.5, (get_window_height * 0.5) - 96, l10n_text("Search Debug Screen Text"), global.default_text_size * 1.4, c_black, c_white, 1);
+
+					debug_screen_text_search_query = scr_draw_name_input_screen(debug_screen_text_search_query, 48, c_black, 1, true,
+						get_window_width * 0.5, get_window_height * 0.5, "debug_screen_text_search_ok", "debug_screen_text_search_cancel", false, true, false);
+
+					if (global.clicking_ok_input_screen
+					|| global.clicking_cancel_input_screen)
+					&& (menu_delay == 0
+					&& menu_joystick_delay == 0)
+					{
+						input_key = false;
+						menu = "debug_screen_text_search";
+						menu_y_offset = 0;
+						menu_y_offset_real = 0;
+						menu_delay = 3;
+					}
+				}
+
+				menu_cursor_y_position_end = debug_screen_text_performance_profile_y + 64;
 			}
 		}
 		#endregion /* Debug Settings END */
@@ -2762,13 +3064,8 @@ function scr_option_menu()
 						menu = "debug_screen";
 					}
 					else
-					if (can_select_font)
 					{
-						menu = "select_font";
-					}
-					else
-					{
-						menu = "hud_hide_time";
+						menu = "font_add_enable_aa";
 					}
 				}
 				else
@@ -2983,14 +3280,8 @@ function scr_option_menu()
 						menu = "select_font";
 					}
 					else
-					if (global.enable_option_for_pc)
-					|| (GM_build_type == "run") /* Only enable debug features in test run, and not executable */
 					{
-						menu = "debug_screen";
-					}
-					else
-					{
-						menu = "difficulty_settings";
+						menu = "font_add_enable_aa";
 					}
 				}
 			}
@@ -3052,7 +3343,33 @@ function scr_option_menu()
 				&& (menu_delay == 0 && menu_joystick_delay == 0)
 				{
 					menu_delay = 3;
-					
+					menu = "font_add_enable_aa";
+				}
+			}
+			else
+			if (menu == "font_add_enable_aa")
+			{
+				if (key_up)
+				&& (!open_dropdown)
+				&& (menu_delay == 0 && menu_joystick_delay == 0)
+				{
+					menu_delay = 3;
+					if (can_select_font)
+					{
+						menu = "select_font";
+					}
+					else
+					{
+						menu = "hud_hide_time";
+					}
+				}
+				else
+				if (key_down)
+				&& (!open_dropdown)
+				&& (menu_delay == 0 && menu_joystick_delay == 0)
+				{
+					menu_delay = 3;
+
 					if (global.enable_option_for_pc)
 					|| (GM_build_type == "run") /* Only enable debug features in test run, and not executable */
 					{
@@ -3074,14 +3391,7 @@ function scr_option_menu()
 					&& (menu_delay == 0 && menu_joystick_delay == 0)
 					{
 						menu_delay = 3;
-						if (can_select_font)
-						{
-							menu = "select_font";
-						}
-						else
-						{
-							menu = "hud_hide_time";
-						}
+						menu = "font_add_enable_aa";
 					}
 					else
 					if (key_down)
@@ -3100,12 +3410,12 @@ function scr_option_menu()
 					&& (menu_delay == 0 && menu_joystick_delay == 0)
 					{
 						menu_delay = 3;
-						menu = "debug_detailed_mode";
+						menu = "debug_screen_text_menu";
 					}
 				}
 			}
 			else
-			if (menu == "debug_detailed_mode")
+			if (menu == "debug_screen_text_menu")
 			{
 				if (key_up)
 				&& (!open_dropdown)
@@ -3120,7 +3430,178 @@ function scr_option_menu()
 				&& (menu_delay == 0 && menu_joystick_delay == 0)
 				{
 					menu_delay = 3;
+					menu = "debug_detailed_mode";
+				}
+			}
+			else
+			if (menu == "debug_detailed_mode")
+			{
+				if (key_up)
+				&& (!open_dropdown)
+				&& (menu_delay == 0 && menu_joystick_delay == 0)
+				{
+					menu_delay = 3;
+					menu = "debug_screen_text_menu";
+				}
+				else
+				if (key_down)
+				&& (!open_dropdown)
+				&& (menu_delay == 0 && menu_joystick_delay == 0)
+				{
+					menu_delay = 3;
 					menu = "debug_unlock_all_level_editor_objects";
+				}
+			}
+			else
+			if (menu == "debug_screen_text_back")
+			{
+				scr_debug_initialize_visibility_registry();
+				var filtered_debug_visibility_ids = scr_debug_get_filtered_visibility_ids(debug_screen_text_search_query);
+
+				if (key_down)
+				&& (!open_dropdown)
+				&& (menu_delay == 0 && menu_joystick_delay == 0)
+				{
+					menu_delay = 3;
+					menu = "debug_screen_text_search";
+				}
+				else
+				if (key_up)
+				&& (!open_dropdown)
+				&& (menu_delay == 0 && menu_joystick_delay == 0)
+				{
+					menu_delay = 3;
+					menu = "debug_screen_text_performance_profile";
+				}
+			}
+			else
+			if (menu == "debug_screen_text_search")
+			{
+				var filtered_debug_visibility_ids = scr_debug_get_filtered_visibility_ids(debug_screen_text_search_query);
+
+				if (key_up)
+				&& (!open_dropdown)
+				&& (menu_delay == 0 && menu_joystick_delay == 0)
+				{
+					menu_delay = 3;
+					menu = "debug_screen_text_back";
+				}
+				else
+				if (key_down)
+				&& (!open_dropdown)
+				&& (menu_delay == 0 && menu_joystick_delay == 0)
+				{
+					menu_delay = 3;
+
+					if (array_length(filtered_debug_visibility_ids) > 0)
+					{
+						menu = "debug_screen_text_" + string(filtered_debug_visibility_ids[0]);
+					}
+					else
+					{
+						menu = "debug_screen_text_default_profile";
+					}
+				}
+			}
+			else
+			if (menu == "debug_screen_text_default_profile")
+			{
+				scr_debug_initialize_visibility_registry();
+				var filtered_debug_visibility_ids = scr_debug_get_filtered_visibility_ids(debug_screen_text_search_query);
+
+				if (key_up)
+				&& (!open_dropdown)
+				&& (menu_delay == 0 && menu_joystick_delay == 0)
+				{
+					menu_delay = 3;
+
+					if (array_length(filtered_debug_visibility_ids) > 0)
+					{
+						menu = "debug_screen_text_" + string(filtered_debug_visibility_ids[array_length(filtered_debug_visibility_ids) - 1]);
+					}
+					else
+					{
+						menu = "debug_screen_text_search";
+					}
+				}
+				else
+				if (key_down)
+				&& (!open_dropdown)
+				&& (menu_delay == 0 && menu_joystick_delay == 0)
+				{
+					menu_delay = 3;
+					menu = "debug_screen_text_performance_profile";
+				}
+			}
+			else
+			if (menu == "debug_screen_text_performance_profile")
+			{
+				if (key_up)
+				&& (!open_dropdown)
+				&& (menu_delay == 0 && menu_joystick_delay == 0)
+				{
+					menu_delay = 3;
+					menu = "debug_screen_text_default_profile";
+				}
+			}
+			else
+			if (string_pos("debug_screen_text_", string(menu)) == 1)
+			&& (menu != "debug_screen_text_menu")
+			&& (menu != "debug_screen_text_back")
+			&& (menu != "debug_screen_text_search")
+			&& (menu != "debug_screen_text_search_ok")
+			&& (menu != "debug_screen_text_search_cancel")
+			&& (menu != "debug_screen_text_default_profile")
+			&& (menu != "debug_screen_text_performance_profile")
+			{
+				scr_debug_initialize_visibility_registry();
+				var filtered_debug_visibility_ids = scr_debug_get_filtered_visibility_ids(debug_screen_text_search_query);
+
+				var current_debug_text_item_id = string_delete(string(menu), 1, 18);
+				var current_debug_text_index = -1;
+
+				for (var debug_text_nav_index = 0; debug_text_nav_index < array_length(filtered_debug_visibility_ids); debug_text_nav_index++)
+				{
+					if (string(filtered_debug_visibility_ids[debug_text_nav_index]) == current_debug_text_item_id)
+					{
+						current_debug_text_index = debug_text_nav_index;
+						break;
+					}
+				}
+
+				if (current_debug_text_index >= 0)
+				{
+					if (key_up)
+					&& (!open_dropdown)
+					&& (menu_delay == 0 && menu_joystick_delay == 0)
+					{
+						menu_delay = 3;
+
+						if (current_debug_text_index == 0)
+						{
+							menu = "debug_screen_text_search";
+						}
+						else
+						{
+							menu = "debug_screen_text_" + string(filtered_debug_visibility_ids[current_debug_text_index - 1]);
+						}
+					}
+					else
+					if (key_down)
+					&& (!open_dropdown)
+					&& (menu_delay == 0 && menu_joystick_delay == 0)
+					{
+						menu_delay = 3;
+
+						if (current_debug_text_index < array_length(filtered_debug_visibility_ids) - 1)
+						{
+							menu = "debug_screen_text_" + string(filtered_debug_visibility_ids[current_debug_text_index + 1]);
+						}
+						else
+						{
+							menu = "debug_screen_text_default_profile";
+						}
+					}
 				}
 			}
 			else

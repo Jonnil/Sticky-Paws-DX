@@ -2,6 +2,13 @@
 // Debug Toggle
 ///////////////////////////////////////////////////////////////
 
+enum DEBUG_VISIBILITY_MODE
+{
+	OFF = 0,
+	IN_OVERLAY = 1,
+	ALWAYS = 2
+}
+
 /// @function scr_debug_toggle_screen()
 /* Toggles the debug screen visibility based on keyboard/gamepad input */
 function scr_debug_toggle_screen()
@@ -21,6 +28,533 @@ function scr_debug_toggle_screen()
 	//{
 	//    global.intentionally_crash = intentionally_crash; /* Will intentionally crash the game */
 	//}
+}
+
+/// @function scr_debug_initialize_visibility_registry()
+/* Initializes the registry and persisted mode store for curated debug items. */
+function scr_debug_initialize_visibility_registry()
+{
+	if (!variable_global_exists("debug_visibility_config_section")
+	|| string(global.debug_visibility_config_section) == "")
+	{
+		global.debug_visibility_config_section = "debug_screen_text";
+	}
+
+	if (!variable_global_exists("debug_visibility_registry")
+	|| !is_struct(global.debug_visibility_registry))
+	{
+		global.debug_visibility_registry = {};
+	}
+
+	if (!variable_global_exists("debug_visibility_modes")
+	|| !is_struct(global.debug_visibility_modes))
+	{
+		global.debug_visibility_modes = {};
+	}
+
+	var registry_items = [
+		{
+			id: "fps",
+			label: "FPS",
+			description: "Displays the frame rate and real frame rate on screen",
+			default_mode: DEBUG_VISIBILITY_MODE.IN_OVERLAY,
+			performance_mode: DEBUG_VISIBILITY_MODE.ALWAYS,
+			allow_always: true,
+			legacy_public_toggle: "show_fps"
+		},
+		{
+			id: "instance_count",
+			label: "Instance Count",
+			description: "Displays the total number of live instances",
+			default_mode: DEBUG_VISIBILITY_MODE.OFF,
+			performance_mode: DEBUG_VISIBILITY_MODE.IN_OVERLAY,
+			allow_always: true,
+			legacy_public_toggle: "show_instance_count"
+		},
+		{
+			id: "room_info",
+			label: "Room Info",
+			description: "Displays the current room name and dimensions",
+			default_mode: DEBUG_VISIBILITY_MODE.IN_OVERLAY,
+			performance_mode: DEBUG_VISIBILITY_MODE.OFF,
+			allow_always: true,
+			legacy_public_toggle: ""
+		},
+		{
+			id: "current_menu",
+			label: "Current Menu",
+			description: "Displays the currently selected menu or submenu",
+			default_mode: DEBUG_VISIBILITY_MODE.IN_OVERLAY,
+			performance_mode: DEBUG_VISIBILITY_MODE.OFF,
+			allow_always: true,
+			legacy_public_toggle: ""
+		},
+		{
+			id: "player_position",
+			label: "Player Position",
+			description: "Displays the current player position coordinates",
+			default_mode: DEBUG_VISIBILITY_MODE.IN_OVERLAY,
+			performance_mode: DEBUG_VISIBILITY_MODE.OFF,
+			allow_always: true,
+			legacy_public_toggle: ""
+		},
+		{
+			id: "player_speed",
+			label: "Player Speed",
+			description: "Displays the current player movement speed",
+			default_mode: DEBUG_VISIBILITY_MODE.OFF,
+			performance_mode: DEBUG_VISIBILITY_MODE.OFF,
+			allow_always: true,
+			legacy_public_toggle: ""
+		},
+		{
+			id: "player_slots",
+			label: "Player Slots",
+			description: "Displays the current player slot assignments",
+			default_mode: DEBUG_VISIBILITY_MODE.OFF,
+			performance_mode: DEBUG_VISIBILITY_MODE.OFF,
+			allow_always: true,
+			legacy_public_toggle: ""
+		},
+		{
+			id: "controller_slot",
+			label: "Controller Slot",
+			description: "Displays the primary controller slot assignment",
+			default_mode: DEBUG_VISIBILITY_MODE.IN_OVERLAY,
+			performance_mode: DEBUG_VISIBILITY_MODE.OFF,
+			allow_always: true,
+			legacy_public_toggle: ""
+		},
+		{
+			id: "level_loading_summary",
+			label: "Level Loading Summary",
+			description: "Displays the level loading diagnostics section",
+			default_mode: DEBUG_VISIBILITY_MODE.IN_OVERLAY,
+			performance_mode: DEBUG_VISIBILITY_MODE.OFF,
+			allow_always: true,
+			legacy_public_toggle: ""
+		},
+		{
+			id: "switch_account_status",
+			label: "Switch Account Status",
+			description: "Displays Nintendo Switch account and login state information",
+			default_mode: DEBUG_VISIBILITY_MODE.OFF,
+			performance_mode: DEBUG_VISIBILITY_MODE.OFF,
+			allow_always: true,
+			legacy_public_toggle: ""
+		},
+		{
+			id: "online_token_status",
+			label: "Online Token Status",
+			description: "Displays online token validation and error state information",
+			default_mode: DEBUG_VISIBILITY_MODE.OFF,
+			performance_mode: DEBUG_VISIBILITY_MODE.OFF,
+			allow_always: true,
+			legacy_public_toggle: ""
+		}
+	];
+
+	global.debug_visibility_ids = [];
+
+	for (var i = 0; i < array_length(registry_items); i++)
+	{
+		var registry_item = registry_items[i];
+		array_push(global.debug_visibility_ids, registry_item.id);
+		variable_struct_set(global.debug_visibility_registry, registry_item.id, registry_item);
+
+		if (!variable_struct_exists(global.debug_visibility_modes, registry_item.id))
+		{
+			variable_struct_set(global.debug_visibility_modes, registry_item.id, registry_item.default_mode);
+		}
+	}
+}
+
+/// @function scr_debug_get_visibility_definition(item_id)
+/* Returns the registry definition for a debug item, if it exists. */
+function scr_debug_get_visibility_definition(item_id)
+{
+	scr_debug_initialize_visibility_registry();
+
+	if (variable_struct_exists(global.debug_visibility_registry, item_id))
+	{
+		return variable_struct_get(global.debug_visibility_registry, item_id);
+	}
+
+	return undefined;
+}
+
+/// @function scr_debug_sanitize_visibility_mode(item_id, visibility_mode)
+/* Ensures a visibility mode is valid for the given debug item. */
+function scr_debug_sanitize_visibility_mode(item_id, visibility_mode)
+{
+	var definition = scr_debug_get_visibility_definition(item_id);
+	if (definition == undefined)
+	{
+		return DEBUG_VISIBILITY_MODE.OFF;
+	}
+
+	var sanitized_mode = visibility_mode;
+	if (sanitized_mode != DEBUG_VISIBILITY_MODE.OFF
+	&& sanitized_mode != DEBUG_VISIBILITY_MODE.IN_OVERLAY
+	&& sanitized_mode != DEBUG_VISIBILITY_MODE.ALWAYS)
+	{
+		sanitized_mode = definition.default_mode;
+	}
+
+	if (!definition.allow_always
+	&& sanitized_mode == DEBUG_VISIBILITY_MODE.ALWAYS)
+	{
+		sanitized_mode = DEBUG_VISIBILITY_MODE.IN_OVERLAY;
+	}
+
+	return sanitized_mode;
+}
+
+/// @function scr_debug_get_item_mode(item_id)
+/* Returns the current visibility mode for a debug item. */
+function scr_debug_get_item_mode(item_id)
+{
+	scr_debug_initialize_visibility_registry();
+
+	if (!variable_struct_exists(global.debug_visibility_modes, item_id))
+	{
+		var definition = scr_debug_get_visibility_definition(item_id);
+		if (definition != undefined)
+		{
+			variable_struct_set(global.debug_visibility_modes, item_id, definition.default_mode);
+		}
+	}
+
+	if (variable_struct_exists(global.debug_visibility_modes, item_id))
+	{
+		return variable_struct_get(global.debug_visibility_modes, item_id);
+	}
+
+	return DEBUG_VISIBILITY_MODE.OFF;
+}
+
+/// @function scr_debug_sync_legacy_public_toggle(item_id)
+/* Keeps legacy player-facing booleans aligned with the registry-backed item mode. */
+function scr_debug_sync_legacy_public_toggle(item_id)
+{
+	var definition = scr_debug_get_visibility_definition(item_id);
+	if (definition == undefined)
+	{
+		return;
+	}
+
+	var legacy_toggle = string(definition.legacy_public_toggle);
+	if (legacy_toggle != "")
+	{
+		variable_global_set(legacy_toggle, scr_debug_get_item_mode(item_id) == DEBUG_VISIBILITY_MODE.ALWAYS);
+	}
+}
+
+/// @function scr_debug_sync_legacy_public_toggles()
+/* Synchronizes every migrated registry item back to its legacy public toggle, if any. */
+function scr_debug_sync_legacy_public_toggles()
+{
+	scr_debug_initialize_visibility_registry();
+
+	for (var i = 0; i < array_length(global.debug_visibility_ids); i++)
+	{
+		scr_debug_sync_legacy_public_toggle(global.debug_visibility_ids[i]);
+	}
+}
+
+/// @function scr_debug_write_visibility_modes_to_ini()
+/* Writes all curated debug item modes into the already-open config.ini handle. */
+function scr_debug_write_visibility_modes_to_ini()
+{
+	scr_debug_initialize_visibility_registry();
+
+	for (var i = 0; i < array_length(global.debug_visibility_ids); i++)
+	{
+		var item_id = global.debug_visibility_ids[i];
+		var definition = scr_debug_get_visibility_definition(item_id);
+		var visibility_mode = scr_debug_get_item_mode(item_id);
+
+		ini_write_real(global.debug_visibility_config_section, item_id, visibility_mode);
+
+		if (definition != undefined
+		&& string(definition.legacy_public_toggle) != "")
+		{
+			ini_write_real("config", definition.legacy_public_toggle, visibility_mode == DEBUG_VISIBILITY_MODE.ALWAYS);
+		}
+	}
+}
+
+/// @function scr_debug_load_visibility_modes_from_ini()
+/* Loads curated debug item modes from config.ini, falling back to legacy booleans when needed. */
+function scr_debug_load_visibility_modes_from_ini()
+{
+	scr_debug_initialize_visibility_registry();
+
+	for (var i = 0; i < array_length(global.debug_visibility_ids); i++)
+	{
+		var item_id = global.debug_visibility_ids[i];
+		var definition = scr_debug_get_visibility_definition(item_id);
+		var resolved_mode = definition.default_mode;
+		var legacy_toggle = string(definition.legacy_public_toggle);
+
+		if (ini_key_exists(global.debug_visibility_config_section, item_id))
+		{
+			resolved_mode = ini_read_real(global.debug_visibility_config_section, item_id, definition.default_mode);
+		}
+		else
+		if (legacy_toggle != ""
+		&& ini_key_exists("config", legacy_toggle))
+		{
+			resolved_mode = ini_read_real("config", legacy_toggle, false)
+				? DEBUG_VISIBILITY_MODE.ALWAYS
+				: DEBUG_VISIBILITY_MODE.OFF;
+		}
+
+		variable_struct_set(global.debug_visibility_modes, item_id,
+			scr_debug_sanitize_visibility_mode(item_id, resolved_mode));
+	}
+
+	scr_debug_sync_legacy_public_toggles();
+}
+
+/// @function scr_debug_set_item_mode(item_id, visibility_mode, save_to_config)
+/* Sets a curated debug item's visibility mode and optionally persists it immediately. */
+function scr_debug_set_item_mode(item_id, visibility_mode, save_to_config = true)
+{
+	var definition = scr_debug_get_visibility_definition(item_id);
+	if (definition == undefined)
+	{
+		return DEBUG_VISIBILITY_MODE.OFF;
+	}
+
+	var sanitized_mode = scr_debug_sanitize_visibility_mode(item_id, visibility_mode);
+	variable_struct_set(global.debug_visibility_modes, item_id, sanitized_mode);
+	scr_debug_sync_legacy_public_toggle(item_id);
+
+	if (save_to_config)
+	{
+		ini_open(game_save_id + "save_file/config.ini");
+		ini_write_real(global.debug_visibility_config_section, item_id, sanitized_mode);
+
+		if (string(definition.legacy_public_toggle) != "")
+		{
+			ini_write_real("config", definition.legacy_public_toggle, sanitized_mode == DEBUG_VISIBILITY_MODE.ALWAYS);
+		}
+
+		ini_close();
+	}
+
+	return sanitized_mode;
+}
+
+/// @function scr_debug_apply_profile(profile_name, save_to_config)
+/* Applies a built-in visibility preset across every registered debug item. */
+function scr_debug_apply_profile(profile_name, save_to_config = true)
+{
+	scr_debug_initialize_visibility_registry();
+
+	var use_performance_profile = string_lower(string(profile_name)) == "performance";
+
+	for (var i = 0; i < array_length(global.debug_visibility_ids); i++)
+	{
+		var item_id = global.debug_visibility_ids[i];
+		var definition = scr_debug_get_visibility_definition(item_id);
+		var target_mode = use_performance_profile
+			? definition.performance_mode
+			: definition.default_mode;
+
+		variable_struct_set(global.debug_visibility_modes, item_id,
+			scr_debug_sanitize_visibility_mode(item_id, target_mode));
+	}
+
+	scr_debug_sync_legacy_public_toggles();
+
+	if (save_to_config)
+	{
+		ini_open(game_save_id + "save_file/config.ini");
+		scr_debug_write_visibility_modes_to_ini();
+		ini_close();
+	}
+}
+
+/// @function scr_debug_item_is_visible_in_overlay(item_id)
+/* Returns true when the item should appear while the debug overlay is open. */
+function scr_debug_item_is_visible_in_overlay(item_id)
+{
+	return scr_debug_get_item_mode(item_id) != DEBUG_VISIBILITY_MODE.OFF;
+}
+
+/// @function scr_debug_item_is_visible_always(item_id)
+/* Returns true when the item should remain visible without the debug overlay. */
+function scr_debug_item_is_visible_always(item_id)
+{
+	return scr_debug_get_item_mode(item_id) == DEBUG_VISIBILITY_MODE.ALWAYS;
+}
+
+/// @function scr_debug_get_visibility_mode_label(visibility_mode, uppercase_off)
+/* Returns a localized label for a debug visibility mode. */
+function scr_debug_get_visibility_mode_label(visibility_mode, uppercase_off = false)
+{
+	if (visibility_mode == DEBUG_VISIBILITY_MODE.OFF)
+	{
+		return uppercase_off ? string_upper(l10n_text("Off")) : l10n_text("Off");
+	}
+
+	if (visibility_mode == DEBUG_VISIBILITY_MODE.IN_OVERLAY)
+	{
+		return l10n_text("In Overlay");
+	}
+
+	if (visibility_mode == DEBUG_VISIBILITY_MODE.ALWAYS)
+	{
+		return l10n_text("Always");
+	}
+
+	return l10n_text("Off");
+}
+
+/// @function scr_debug_is_visibility_mode_available_in_public_menu(item_id, visibility_mode)
+/* Returns whether a visibility mode should be exposed in public-facing menus. */
+function scr_debug_is_visibility_mode_available_in_public_menu(item_id, visibility_mode)
+{
+	var definition = scr_debug_get_visibility_definition(item_id);
+	if (definition == undefined)
+	{
+		return false;
+	}
+
+	if (!definition.allow_always
+	&& visibility_mode == DEBUG_VISIBILITY_MODE.ALWAYS)
+	{
+		return false;
+	}
+
+	if (visibility_mode == DEBUG_VISIBILITY_MODE.IN_OVERLAY
+	&& os_type == os_switch
+	&& !global.debug_menu_unlocked)
+	{
+		return false;
+	}
+
+	return visibility_mode == DEBUG_VISIBILITY_MODE.OFF
+		|| visibility_mode == DEBUG_VISIBILITY_MODE.IN_OVERLAY
+		|| visibility_mode == DEBUG_VISIBILITY_MODE.ALWAYS;
+}
+
+/// @function scr_debug_visibility_item_matches_search(item_id, search_query)
+/* Returns whether a curated debug item matches the provided search text. */
+function scr_debug_visibility_item_matches_search(item_id, search_query = "")
+{
+	var normalized_query = string_lower(string(search_query));
+	normalized_query = string_replace_all(normalized_query, "_", "");
+	normalized_query = string_replace_all(normalized_query, "-", "");
+	normalized_query = string_replace_all(normalized_query, " ", "");
+
+	if (normalized_query == "")
+	{
+		return true;
+	}
+
+	var definition = scr_debug_get_visibility_definition(item_id);
+	if (definition == undefined)
+	{
+		return false;
+	}
+
+	var item_id_text = string_lower(string(definition.id));
+	item_id_text = string_replace_all(item_id_text, "_", "");
+	item_id_text = string_replace_all(item_id_text, "-", "");
+	item_id_text = string_replace_all(item_id_text, " ", "");
+
+	var label_text = string_lower(string(l10n_text(definition.label)));
+	label_text = string_replace_all(label_text, "_", "");
+	label_text = string_replace_all(label_text, "-", "");
+	label_text = string_replace_all(label_text, " ", "");
+
+	return string_pos(normalized_query, item_id_text) > 0
+		|| string_pos(normalized_query, label_text) > 0;
+}
+
+/// @function scr_debug_get_filtered_visibility_ids(search_query)
+/* Returns the registry ids that match the provided search query. */
+function scr_debug_get_filtered_visibility_ids(search_query = "")
+{
+	scr_debug_initialize_visibility_registry();
+
+	var filtered_ids = [];
+
+	for (var i = 0; i < array_length(global.debug_visibility_ids); i++)
+	{
+		var item_id = global.debug_visibility_ids[i];
+
+		if (scr_debug_visibility_item_matches_search(item_id, search_query))
+		{
+			array_push(filtered_ids, item_id);
+		}
+	}
+
+	return filtered_ids;
+}
+
+/// @function scr_debug_find_next_public_visibility_mode(item_id, start_mode, direction)
+/* Finds the next available public-facing visibility mode in the given direction. */
+function scr_debug_find_next_public_visibility_mode(item_id, start_mode, direction)
+{
+	var all_modes = [
+		DEBUG_VISIBILITY_MODE.OFF,
+		DEBUG_VISIBILITY_MODE.IN_OVERLAY,
+		DEBUG_VISIBILITY_MODE.ALWAYS
+	];
+	var start_index = 0;
+
+	for (var i = 0; i < array_length(all_modes); i++)
+	{
+		if (all_modes[i] == start_mode)
+		{
+			start_index = i;
+			break;
+		}
+	}
+
+	for (var step = 1; step <= array_length(all_modes); step++)
+	{
+		var next_index = (start_index + (direction * step) + array_length(all_modes)) mod array_length(all_modes);
+		var next_mode = all_modes[next_index];
+
+		if (scr_debug_is_visibility_mode_available_in_public_menu(item_id, next_mode))
+		{
+			return next_mode;
+		}
+	}
+
+	return start_mode;
+}
+
+/// @function scr_debug_should_draw_registry_item(item_id)
+/* Returns true when the item should be drawn for the current frame. */
+function scr_debug_should_draw_registry_item(item_id)
+{
+	return scr_debug_item_is_visible_always(item_id)
+		|| (global.debug_screen && scr_debug_item_is_visible_in_overlay(item_id));
+}
+
+/// @function scr_debug_toggle_compact_item_lock(item_id)
+/* Toggles a compact registry item between overlay-only and always-visible modes. */
+function scr_debug_toggle_compact_item_lock(item_id)
+{
+	var current_mode = scr_debug_get_item_mode(item_id);
+
+	if (current_mode == DEBUG_VISIBILITY_MODE.ALWAYS)
+	{
+		return scr_debug_set_item_mode(item_id, DEBUG_VISIBILITY_MODE.IN_OVERLAY);
+	}
+
+	if (current_mode == DEBUG_VISIBILITY_MODE.IN_OVERLAY)
+	{
+		return scr_debug_set_item_mode(item_id, DEBUG_VISIBILITY_MODE.ALWAYS);
+	}
+
+	return current_mode;
 }
 
 /// @function scr_debug_get_settings_overlay_target()
@@ -50,12 +584,35 @@ function scr_debug_get_settings_overlay_target()
 	return noone;
 }
 
+/// @function scr_debug_get_menu_debug_target()
+/* Returns the active menu debug target when one is available. */
+function scr_debug_get_menu_debug_target()
+{
+	if (variable_instance_exists(self, "debug_target")
+	&& instance_exists(debug_target))
+	{
+		return debug_target;
+	}
+
+	return scr_debug_get_settings_overlay_target();
+}
+
 /// @function scr_debug_should_use_compact_overlay()
 /* Returns true when the full debug overlay should collapse into a menu-safe panel. */
 function scr_debug_should_use_compact_overlay()
 {
 	return global.debug_screen
 		&& (scr_debug_get_settings_overlay_target() != noone);
+}
+
+/// @function scr_debug_get_room_info_text()
+/* Returns the standard room information string used by the debug overlay. */
+function scr_debug_get_room_info_text()
+{
+	return "current room: '" + string(global.level_name) + "' "
+		+ string(global.select_level_index) + " "
+		+ string(room_get_name(room)) + " "
+		+ string(room_width) + "x" + string(room_height);
 }
 
 /// @function scr_debug_format_compact_overlay_label(raw_text, trim_settings_suffix)
@@ -157,21 +714,33 @@ function scr_debug_draw_compact_overlay()
 		text: scr_debug_ellipsize_compact_overlay_text("Tab: " + scr_debug_format_compact_overlay_label(global.settings_sidebar_menu, true), content_width, text_scale),
 		color: c_white
 	};
-	lines[array_length(lines)] =
+
+	if (scr_debug_item_is_visible_in_overlay("current_menu"))
 	{
-		text: scr_debug_ellipsize_compact_overlay_text("Selected: " + selected_menu, content_width, text_scale),
-		color: c_lime
-	};
-	lines[array_length(lines)] =
+		lines[array_length(lines)] =
+		{
+			text: scr_debug_ellipsize_compact_overlay_text("Selected: " + selected_menu, content_width, text_scale),
+			color: c_lime
+		};
+	}
+
+	if (scr_debug_item_is_visible_in_overlay("room_info"))
 	{
-		text: scr_debug_ellipsize_compact_overlay_text("Room: " + string(room_get_name(room)), content_width, text_scale),
-		color: c_white
-	};
-	lines[array_length(lines)] =
+		lines[array_length(lines)] =
+		{
+			text: scr_debug_ellipsize_compact_overlay_text("Room: " + string(room_get_name(room)), content_width, text_scale),
+			color: c_white
+		};
+	}
+
+	if (scr_debug_item_is_visible_in_overlay("controller_slot"))
 	{
-		text: scr_debug_ellipsize_compact_overlay_text("P1 Controller Slot: " + string(global.player_slot[1]), content_width, text_scale),
-		color: c_white
-	};
+		lines[array_length(lines)] =
+		{
+			text: scr_debug_ellipsize_compact_overlay_text("P1 Controller Slot: " + string(global.player_slot[1]), content_width, text_scale),
+			color: c_white
+		};
+	}
 
 	var panel_bottom = panel_top + padding + header_spacing + 6 + (array_length(lines) * line_spacing) + 10;
 
@@ -203,15 +772,13 @@ function scr_debug_draw_compact_overlay()
 /* Draws the FPS and "real" FPS information on screen */
 function scr_debug_draw_fps()
 {
-	if ((global.show_fps
-	|| global.debug_screen)
+	if (scr_debug_should_draw_registry_item("fps")
 	&& !scr_debug_should_use_compact_overlay())
 	{
 		var fps_y = 64;
 
-		/* If both options are active, show an icon next to the FPS display */
-		if (global.show_fps
-		&& global.debug_screen)
+		/* Show the lock icon only when the registry mode is explicitly "Always". */
+		if (scr_debug_item_is_visible_always("fps"))
 		{
 			draw_sprite_ext(spr_lock_icon, 0, 16, fps_y, 1, 1, 0, c_white, 1);
 		}
@@ -243,14 +810,12 @@ function scr_debug_draw_fps()
 /* Draws a simple instance count on screen */
 function scr_debug_draw_instance_count()
 {
-	if ((global.show_instance_count
-	|| global.debug_screen)
+	if (scr_debug_should_draw_registry_item("instance_count")
 	&& !scr_debug_should_use_compact_overlay())
 	{
 		var instance_count_y = 96;
 
-		if (global.show_instance_count
-		&& global.debug_screen)
+		if (scr_debug_item_is_visible_always("instance_count"))
 		{
 			draw_sprite_ext(spr_lock_icon, 0, 16, instance_count_y, 1, 1, 0, c_white, 1);
 		}
@@ -259,6 +824,173 @@ function scr_debug_draw_instance_count()
 		draw_set_valign(fa_middle);
 		scr_draw_text_outlined(32, instance_count_y, "Instance Count: " + string(instance_count), global.default_text_size, c_black, c_white, 1);
 	}
+}
+
+/// @function scr_debug_draw_always_registry_widgets()
+/* Draws additional ALWAYS-mode registry widgets when the main debug overlay is closed. */
+function scr_debug_draw_always_registry_widgets()
+{
+	if (global.debug_screen
+	|| scr_debug_should_use_compact_overlay())
+	{
+		return;
+	}
+
+	var widget_y = 64;
+	var menu_target = scr_debug_get_menu_debug_target();
+
+	if (scr_debug_item_is_visible_always("fps"))
+	{
+		widget_y += 32;
+	}
+
+	if (scr_debug_item_is_visible_always("instance_count"))
+	{
+		widget_y += 32;
+	}
+
+	draw_set_halign(fa_left);
+	draw_set_valign(fa_middle);
+
+	if (scr_debug_item_is_visible_always("current_menu")
+	&& menu_target != noone
+	&& variable_instance_exists(menu_target, "menu"))
+	{
+		scr_draw_text_outlined(32, widget_y, "Current Menu: " + string(menu_target.menu), global.default_text_size, c_black, c_white, 1);
+		widget_y += 32;
+	}
+
+	if (scr_debug_item_is_visible_always("controller_slot"))
+	{
+		scr_draw_text_outlined(32, widget_y, "Controller Slot: " + string(global.player_slot[1]), global.default_text_size, c_black, c_white, 1);
+		widget_y += 32;
+	}
+
+	if (scr_debug_item_is_visible_always("player_slots"))
+	{
+		scr_draw_text_outlined(32, widget_y, "Player Slots: " + string(global.player_slot), global.default_text_size, c_black, c_white, 1);
+		widget_y += 32;
+	}
+
+	var player_positions = scr_get_player_positions();
+
+	if (scr_debug_item_is_visible_always("player_position"))
+	{
+		for (var player_position_index = 0; player_position_index < array_length(player_positions); player_position_index++)
+		{
+			var position_info = player_positions[player_position_index];
+			scr_draw_text_outlined(32, widget_y,
+				"Player " + string(position_info.player_pos_id) + " Position: "
+				+ string(position_info.player_pos_x) + " / " + string(position_info.player_pos_y),
+				global.default_text_size, c_black, c_white, 1);
+			widget_y += 32;
+		}
+	}
+
+	if (scr_debug_item_is_visible_always("player_speed"))
+	{
+		for (var player_speed_index = 0; player_speed_index < array_length(player_positions); player_speed_index++)
+		{
+			var speed_info = player_positions[player_speed_index];
+			scr_draw_text_outlined(32, widget_y,
+				"Player " + string(speed_info.player_pos_id) + " Speed: " + string(speed_info.player_speed),
+				global.default_text_size, c_black, c_white, 1);
+			widget_y += 32;
+		}
+	}
+
+	if (os_type == os_switch
+	&& scr_debug_item_is_visible_always("switch_account_status"))
+	{
+		var switch_account_name = string(global.switch_account_name);
+		var switch_account_handle = string(global.switch_account_handle);
+		var switch_status_color = (!global.switch_logged_in
+			|| !global.switch_account_network_service_available)
+			? c_red
+			: c_white;
+
+		if (switch_account_name == "")
+		{
+			switch_account_name = "n/a";
+		}
+
+		if (switch_account_handle == "")
+		{
+			switch_account_handle = "n/a";
+		}
+
+		scr_draw_text_outlined(32, widget_y,
+			"Switch Account: " + switch_account_name + " / " + switch_account_handle,
+			global.default_text_size, c_black, c_white, 1);
+		widget_y += 32;
+
+		scr_draw_text_outlined(32, widget_y,
+			"Switch Login: " + string(global.switch_logged_in) + " | Network Service: " + string(global.switch_account_network_service_available),
+			global.default_text_size, c_black, switch_status_color, 1);
+		widget_y += 32;
+	}
+
+	if (scr_debug_item_is_visible_always("online_token_status"))
+	{
+		var token_color = global.online_token_validated ? c_lime : c_red;
+		scr_draw_text_outlined(32, widget_y,
+			"Online Token Validated: " + string(global.online_token_validated),
+			global.default_text_size, c_black, token_color, 1);
+		widget_y += 32;
+
+		if (string(global.online_token_error_message) != "")
+		{
+			scr_draw_text_outlined(32, widget_y,
+				"Online Token Error: " + string(global.online_token_error_message),
+				global.default_text_size, c_black, c_red, 1);
+			widget_y += 32;
+		}
+	}
+
+	if (scr_debug_item_is_visible_always("level_loading_summary"))
+	{
+		var level_loading_debug = scr_get_level_loading_debug_data();
+		var level_loading_folder = scr_debug_format_level_folder_display(scr_is_loading_official_level(), level_loading_debug.level_folder_name, level_loading_debug.custom_folder_name);
+		var level_loading_validation_failed = string_pos(level_loading_debug.validation_result, "FAILED") == 1;
+		var level_loading_validation_display = scr_debug_format_validation_summary(level_loading_debug.validation_result);
+		var level_info_summary = scr_debug_format_resolved_path_summary(level_loading_debug.level_information_path, level_loading_debug.level_information_exists);
+		var object_json_summary = scr_debug_format_resolved_path_summary(level_loading_debug.object_placement_path, level_loading_debug.object_placement_exists);
+
+		scr_draw_text_outlined(32, widget_y,
+			"Level Loading: " + string(level_loading_debug.load_mode),
+			global.default_text_size, c_black, c_white, 1);
+		widget_y += 32;
+
+		scr_draw_text_outlined(32, widget_y,
+			"Level Folder: " + level_loading_folder,
+			global.default_text_size, c_black, c_white, 1);
+		widget_y += 32;
+
+		scr_draw_text_outlined(32, widget_y,
+			"Automatic Load Check: " + level_loading_validation_display,
+			global.default_text_size, c_black, level_loading_validation_failed ? c_red : c_lime, 1);
+		widget_y += 32;
+
+		scr_draw_text_outlined(32, widget_y,
+			"Level Info: " + level_info_summary,
+			global.default_text_size, c_black, level_loading_debug.level_information_exists ? c_white : c_red, 1);
+		widget_y += 32;
+
+		scr_draw_text_outlined(32, widget_y,
+			"Object JSON: " + object_json_summary,
+			global.default_text_size, c_black, level_loading_debug.object_placement_exists ? c_white : c_red, 1);
+		widget_y += 32;
+	}
+
+	if (scr_debug_item_is_visible_always("room_info"))
+	{
+		draw_set_halign(fa_center);
+		scr_draw_text_outlined(display_get_gui_width() * 0.5, display_get_gui_height() - 32,
+			scr_debug_get_room_info_text(), global.default_text_size, c_black, c_white);
+	}
+
+	draw_set_halign(fa_left);
+	draw_set_valign(fa_middle);
 }
 
 /// @function scr_debug_draw_all_instance_count()
@@ -626,10 +1358,12 @@ function scr_debug_draw_debug_logic()
 			}
 
 		/* --- Current Room Info at Bottom --- */
-		draw_set_halign(fa_center);
-		scr_draw_text_outlined(display_get_gui_width() * 0.5, display_get_gui_height() - 32,
-			"current room: '" + string(global.level_name) + "' " + string(global.select_level_index) + " " + string(room_get_name(room)) + " " + string(room_width) + "x" + string(room_height),
-			global.default_text_size, c_black, c_white);
+		if (scr_debug_item_is_visible_in_overlay("room_info"))
+		{
+			draw_set_halign(fa_center);
+			scr_draw_text_outlined(display_get_gui_width() * 0.5, display_get_gui_height() - 32,
+				scr_debug_get_room_info_text(), global.default_text_size, c_black, c_white);
+		}
 
 		/* --- Optimized Debug Text Sections --- */
 		scr_debug_draw_optimized_text();
@@ -645,6 +1379,23 @@ function scr_debug_draw_debug_logic()
 /* Checks if the mouse is over a toggle area for FPS, Instance Count, etc. and toggles the option on click */
 function scr_debug_handle_mouse_toggle(header_y, config_name)
 {
+	var can_toggle_line = true;
+
+	if (config_name == "show_fps")
+	{
+		can_toggle_line = scr_debug_item_is_visible_in_overlay("fps");
+	}
+	else
+	if (config_name == "show_instance_count")
+	{
+		can_toggle_line = scr_debug_item_is_visible_in_overlay("instance_count");
+	}
+
+	if (!can_toggle_line)
+	{
+		return;
+	}
+
 	if (global.controls_used_for_navigation == "mouse"
 	&& point_in_rectangle(device_mouse_x_to_gui(0), device_mouse_y_to_gui(0), 0, header_y - 15, 370, header_y + 15))
 	{
@@ -654,21 +1405,15 @@ function scr_debug_handle_mouse_toggle(header_y, config_name)
 
 		if (mouse_check_button_released(mb_left))
 		{
-			/* Toggle the appropriate global variable and update the ini. Except for "show_all_instance_count" */
+			/* Toggle the appropriate registry item or legacy variable and update the ini. */
 			if (config_name == "show_fps")
 			{
-				global.show_fps = !global.show_fps;
-				ini_open(game_save_id + "save_file/config.ini");
-				ini_write_real("config", "show_fps", global.show_fps);
-				ini_close();
+				scr_debug_toggle_compact_item_lock("fps");
 			}
 			else
 			if (config_name == "show_instance_count")
 			{
-				global.show_instance_count = !global.show_instance_count;
-				ini_open(game_save_id + "save_file/config.ini");
-				ini_write_real("config", "show_instance_count", global.show_instance_count);
-				ini_close();
+				scr_debug_toggle_compact_item_lock("instance_count");
 			}
 			else
 			if (config_name == "show_all_instance_count")
@@ -1501,134 +2246,137 @@ function scr_debug_draw_optimized_text()
 	debug_text_y += section_spacing;
 
 	#region /* Section 2: Level Loading */
-	var level_loading_debug = scr_get_level_loading_debug_data();
-
-	debug_text_y = scr_draw_debug_header("Level Loading", 32, debug_text_y);
-
-	var _level_loading_collapsed = variable_struct_exists(global.debug_collapsed_sections, "Level Loading") ? variable_struct_get(global.debug_collapsed_sections, "Level Loading") : false;
-	if (!_level_loading_collapsed)
+	if (scr_debug_item_is_visible_in_overlay("level_loading_summary"))
 	{
-		var missing_level_info = level_loading_debug.expect_level_files
-			&& !level_loading_debug.level_information_exists;
-		var missing_object_json = level_loading_debug.expect_level_files
-			&& !level_loading_debug.object_placement_exists;
-		var missing_background_directory = level_loading_debug.expect_level_files
-			&& !level_loading_debug.background_path_exists;
-		var failed_loaded_object_snapshot = level_loading_debug.expect_level_files
-			&& level_loading_debug.object_placement_exists
-			&& level_loading_debug.loaded_placed_object_count <= 0;
-		var level_info_summary = scr_debug_format_resolved_path_summary(level_loading_debug.level_information_path, level_loading_debug.level_information_exists);
-		var object_json_summary = scr_debug_format_resolved_path_summary(level_loading_debug.object_placement_path, level_loading_debug.object_placement_exists);
-		var background_summary = scr_debug_format_resolved_path_summary(level_loading_debug.background_path, level_loading_debug.background_path_exists);
-		var snapshot_summary = scr_debug_format_snapshot_summary(level_loading_debug.load_snapshot_status, level_loading_debug.load_snapshot_reason);
-		var level_folder_display = scr_debug_format_level_folder_display(scr_is_loading_official_level(), level_loading_debug.level_folder_name, level_loading_debug.custom_folder_name);
-		var after_goal_display = scr_debug_format_after_goal_display(level_loading_debug.after_goal_go_to_this_level);
-		var validation_failed = string_pos(level_loading_debug.validation_result, "FAILED") == 1;
-		var validation_display = scr_debug_format_validation_summary(level_loading_debug.validation_result);
-		var show_custom_folder = level_loading_debug.load_mode == "custom";
-		var show_path_to_use = string(level_loading_debug.path_to_use) != ""
-			&& string(level_loading_debug.path_to_use) != string(level_loading_debug.background_path);
-		var placeholder_cleanup_note = level_loading_debug.monitor_active
-			? "expected: 'still present now 0' is normal after placeholder objects spawn gameplay objects"
-			: "edit mode keeps placeholder objects alive instead of deleting them after spawn";
+		var level_loading_debug = scr_get_level_loading_debug_data();
 
-		debug_text_y = scr_draw_highlighted_text(32, debug_text_y,
-							"load_mode", level_loading_debug.load_mode,
-							"Load Mode", c_white, c_red, missing_level_info || missing_object_json);
+		debug_text_y = scr_draw_debug_header("Level Loading", 32, debug_text_y);
 
-		debug_text_y = scr_draw_highlighted_text(32, debug_text_y,
-							"character_select_in_this_menu", level_loading_debug.character_select_menu,
-							"Character Menu", c_white, c_red, false);
-
-		debug_text_y = scr_draw_highlighted_text(32, debug_text_y,
-							"create_level_from_template", level_loading_debug.create_level_from_template,
-							"From Template", c_white, c_red, false);
-
-		debug_text_y = scr_draw_highlighted_text(32, debug_text_y,
-							"select_level_index", level_loading_debug.select_level_index,
-							"Level Index", c_white, c_red, false);
-
-		debug_text_y = scr_draw_highlighted_text(32, debug_text_y,
-							"global.level_name", level_loading_debug.level_name,
-							"Level Name", c_white, c_red, false);
-
-		debug_text_y = scr_draw_highlighted_text(32, debug_text_y,
-							"display_level_folder", level_folder_display,
-							"Level Folder", c_white, c_red, false);
-
-		debug_text_y = scr_draw_highlighted_text(32, debug_text_y,
-							"scr_get_selected_official_level_id()", level_loading_debug.selected_official_level_id,
-							"Selected Official ID", c_white, c_red, false);
-
-		debug_text_y = scr_draw_highlighted_text(32, debug_text_y,
-							"scr_get_active_official_level_id()", level_loading_debug.active_official_level_id,
-							"Active Official ID", c_white, c_red, false);
-
-		if (show_custom_folder)
+		var _level_loading_collapsed = variable_struct_exists(global.debug_collapsed_sections, "Level Loading") ? variable_struct_get(global.debug_collapsed_sections, "Level Loading") : false;
+		if (!_level_loading_collapsed)
 		{
+			var missing_level_info = level_loading_debug.expect_level_files
+				&& !level_loading_debug.level_information_exists;
+			var missing_object_json = level_loading_debug.expect_level_files
+				&& !level_loading_debug.object_placement_exists;
+			var missing_background_directory = level_loading_debug.expect_level_files
+				&& !level_loading_debug.background_path_exists;
+			var failed_loaded_object_snapshot = level_loading_debug.expect_level_files
+				&& level_loading_debug.object_placement_exists
+				&& level_loading_debug.loaded_placed_object_count <= 0;
+			var level_info_summary = scr_debug_format_resolved_path_summary(level_loading_debug.level_information_path, level_loading_debug.level_information_exists);
+			var object_json_summary = scr_debug_format_resolved_path_summary(level_loading_debug.object_placement_path, level_loading_debug.object_placement_exists);
+			var background_summary = scr_debug_format_resolved_path_summary(level_loading_debug.background_path, level_loading_debug.background_path_exists);
+			var snapshot_summary = scr_debug_format_snapshot_summary(level_loading_debug.load_snapshot_status, level_loading_debug.load_snapshot_reason);
+			var level_folder_display = scr_debug_format_level_folder_display(scr_is_loading_official_level(), level_loading_debug.level_folder_name, level_loading_debug.custom_folder_name);
+			var after_goal_display = scr_debug_format_after_goal_display(level_loading_debug.after_goal_go_to_this_level);
+			var validation_failed = string_pos(level_loading_debug.validation_result, "FAILED") == 1;
+			var validation_display = scr_debug_format_validation_summary(level_loading_debug.validation_result);
+			var show_custom_folder = level_loading_debug.load_mode == "custom";
+			var show_path_to_use = string(level_loading_debug.path_to_use) != ""
+				&& string(level_loading_debug.path_to_use) != string(level_loading_debug.background_path);
+			var placeholder_cleanup_note = level_loading_debug.monitor_active
+				? "expected: 'still present now 0' is normal after placeholder objects spawn gameplay objects"
+				: "edit mode keeps placeholder objects alive instead of deleting them after spawn";
+
 			debug_text_y = scr_draw_highlighted_text(32, debug_text_y,
-								"scr_get_custom_level_folder_name()", level_loading_debug.custom_folder_name,
-								"Custom Folder", c_white, c_red, false);
-		}
+								"load_mode", level_loading_debug.load_mode,
+								"Load Mode", c_white, c_red, missing_level_info || missing_object_json);
 
-		debug_text_y = scr_draw_highlighted_text(32, debug_text_y,
-							"level_information_path + level_information_exists", level_info_summary,
-							"Level Info", c_white, c_red, missing_level_info);
-
-		debug_text_y = scr_draw_highlighted_text(32, debug_text_y,
-							"object_placement_path + object_placement_exists", object_json_summary,
-							"Object JSON", c_white, c_red, missing_object_json);
-
-		debug_text_y = scr_draw_highlighted_text(32, debug_text_y,
-							"background_path + background_path_exists", background_summary,
-							"Background", c_white, c_red, missing_background_directory);
-
-		debug_text_y = scr_draw_highlighted_text(32, debug_text_y,
-							"load_snapshot_status + load_snapshot_reason", snapshot_summary,
-							"Load Snapshot", c_white, c_red, level_loading_debug.load_snapshot_status != "OK");
-
-		debug_text_y = scr_draw_highlighted_text(32, debug_text_y,
-							"load_snapshot_json_entry_count", string(level_loading_debug.load_snapshot_json_entry_count),
-							"JSON Entries", c_white, c_red, false);
-
-		debug_text_y = scr_draw_highlighted_text(32, debug_text_y,
-							"validation_result", validation_display,
-							"Automatic Load Check", c_white, c_red, validation_failed);
-
-		debug_text_y = scr_draw_highlighted_text(32, debug_text_y,
-							"placeholder_cleanup_note", placeholder_cleanup_note,
-							"Placeholder Object Rule", c_white, c_red, false);
-
-		if (show_path_to_use)
-		{
 			debug_text_y = scr_draw_highlighted_text(32, debug_text_y,
-								"global.path_to_use", scr_censor_game_save_id_for_display(level_loading_debug.path_to_use),
-								"Path To Use", c_white, c_red, false);
+								"character_select_in_this_menu", level_loading_debug.character_select_menu,
+								"Character Menu", c_white, c_red, false);
+
+			debug_text_y = scr_draw_highlighted_text(32, debug_text_y,
+								"create_level_from_template", level_loading_debug.create_level_from_template,
+								"From Template", c_white, c_red, false);
+
+			debug_text_y = scr_draw_highlighted_text(32, debug_text_y,
+								"select_level_index", level_loading_debug.select_level_index,
+								"Level Index", c_white, c_red, false);
+
+			debug_text_y = scr_draw_highlighted_text(32, debug_text_y,
+								"global.level_name", level_loading_debug.level_name,
+								"Level Name", c_white, c_red, false);
+
+			debug_text_y = scr_draw_highlighted_text(32, debug_text_y,
+								"display_level_folder", level_folder_display,
+								"Level Folder", c_white, c_red, false);
+
+			debug_text_y = scr_draw_highlighted_text(32, debug_text_y,
+								"scr_get_selected_official_level_id()", level_loading_debug.selected_official_level_id,
+								"Selected Official ID", c_white, c_red, false);
+
+			debug_text_y = scr_draw_highlighted_text(32, debug_text_y,
+								"scr_get_active_official_level_id()", level_loading_debug.active_official_level_id,
+								"Active Official ID", c_white, c_red, false);
+
+			if (show_custom_folder)
+			{
+				debug_text_y = scr_draw_highlighted_text(32, debug_text_y,
+									"scr_get_custom_level_folder_name()", level_loading_debug.custom_folder_name,
+									"Custom Folder", c_white, c_red, false);
+			}
+
+			debug_text_y = scr_draw_highlighted_text(32, debug_text_y,
+								"level_information_path + level_information_exists", level_info_summary,
+								"Level Info", c_white, c_red, missing_level_info);
+
+			debug_text_y = scr_draw_highlighted_text(32, debug_text_y,
+								"object_placement_path + object_placement_exists", object_json_summary,
+								"Object JSON", c_white, c_red, missing_object_json);
+
+			debug_text_y = scr_draw_highlighted_text(32, debug_text_y,
+								"background_path + background_path_exists", background_summary,
+								"Background", c_white, c_red, missing_background_directory);
+
+			debug_text_y = scr_draw_highlighted_text(32, debug_text_y,
+								"load_snapshot_status + load_snapshot_reason", snapshot_summary,
+								"Load Snapshot", c_white, c_red, level_loading_debug.load_snapshot_status != "OK");
+
+			debug_text_y = scr_draw_highlighted_text(32, debug_text_y,
+								"load_snapshot_json_entry_count", string(level_loading_debug.load_snapshot_json_entry_count),
+								"JSON Entries", c_white, c_red, false);
+
+			debug_text_y = scr_draw_highlighted_text(32, debug_text_y,
+								"validation_result", validation_display,
+								"Automatic Load Check", c_white, c_red, validation_failed);
+
+			debug_text_y = scr_draw_highlighted_text(32, debug_text_y,
+								"placeholder_cleanup_note", placeholder_cleanup_note,
+								"Placeholder Object Rule", c_white, c_red, false);
+
+			if (show_path_to_use)
+			{
+				debug_text_y = scr_draw_highlighted_text(32, debug_text_y,
+									"global.path_to_use", scr_censor_game_save_id_for_display(level_loading_debug.path_to_use),
+									"Path To Use", c_white, c_red, false);
+			}
+
+			debug_text_y = scr_draw_highlighted_text(32, debug_text_y,
+								"loaded/current obj_level_player1_start count", scr_debug_format_loaded_live_summary(level_loading_debug.loaded_player1_start_count, level_loading_debug.current_live_player1_start_count),
+								"P1 Start Placeholder", c_white, c_red, level_loading_debug.expect_level_files && level_loading_debug.loaded_player1_start_count <= 0);
+
+			debug_text_y = scr_draw_highlighted_text(32, debug_text_y,
+								"loaded/current obj_level_end count", scr_debug_format_loaded_live_summary(level_loading_debug.loaded_level_end_count, level_loading_debug.current_live_level_end_count),
+								"Level End Placeholder", c_white, c_red, level_loading_debug.expect_level_files && level_loading_debug.loaded_level_end_count <= 0);
+
+			debug_text_y = scr_draw_highlighted_text(32, debug_text_y,
+								"loaded/current obj_leveleditor_placed_object count", scr_debug_format_loaded_live_summary(level_loading_debug.loaded_placed_object_count, level_loading_debug.current_live_placed_object_count),
+								"Placed-Object Placeholder", c_white, c_red, failed_loaded_object_snapshot);
+
+			debug_text_y = scr_draw_highlighted_text(32, debug_text_y,
+								"runtime_spawn_calls", scr_debug_format_runtime_spawn_pass_summary(level_loading_debug.runtime_spawn_calls),
+								"Placed-Object Spawn Passes", c_white, c_red, validation_failed);
+
+			debug_text_y = scr_draw_highlighted_text(32, debug_text_y,
+								"runtime_instances_created_total", scr_debug_format_runtime_instances_created_summary(level_loading_debug.runtime_instances_created_total),
+								"Gameplay Instances Created", c_white, c_red, validation_failed);
+
+			debug_text_y = scr_draw_highlighted_text(32, debug_text_y,
+								"display_after_goal_go_to_this_level", after_goal_display,
+								"After Goal Level", c_white, c_red, false);
 		}
-
-		debug_text_y = scr_draw_highlighted_text(32, debug_text_y,
-							"loaded/current obj_level_player1_start count", scr_debug_format_loaded_live_summary(level_loading_debug.loaded_player1_start_count, level_loading_debug.current_live_player1_start_count),
-							"P1 Start Placeholder", c_white, c_red, level_loading_debug.expect_level_files && level_loading_debug.loaded_player1_start_count <= 0);
-
-		debug_text_y = scr_draw_highlighted_text(32, debug_text_y,
-							"loaded/current obj_level_end count", scr_debug_format_loaded_live_summary(level_loading_debug.loaded_level_end_count, level_loading_debug.current_live_level_end_count),
-							"Level End Placeholder", c_white, c_red, level_loading_debug.expect_level_files && level_loading_debug.loaded_level_end_count <= 0);
-
-		debug_text_y = scr_draw_highlighted_text(32, debug_text_y,
-							"loaded/current obj_leveleditor_placed_object count", scr_debug_format_loaded_live_summary(level_loading_debug.loaded_placed_object_count, level_loading_debug.current_live_placed_object_count),
-							"Placed-Object Placeholder", c_white, c_red, failed_loaded_object_snapshot);
-
-		debug_text_y = scr_draw_highlighted_text(32, debug_text_y,
-							"runtime_spawn_calls", scr_debug_format_runtime_spawn_pass_summary(level_loading_debug.runtime_spawn_calls),
-							"Placed-Object Spawn Passes", c_white, c_red, validation_failed);
-
-		debug_text_y = scr_draw_highlighted_text(32, debug_text_y,
-							"runtime_instances_created_total", scr_debug_format_runtime_instances_created_summary(level_loading_debug.runtime_instances_created_total),
-							"Gameplay Instances Created", c_white, c_red, validation_failed);
-
-		debug_text_y = scr_draw_highlighted_text(32, debug_text_y,
-							"display_after_goal_go_to_this_level", after_goal_display,
-							"After Goal Level", c_white, c_red, false);
 	}
 	#endregion /* Section 2: Level Loading END */
 
@@ -1649,11 +2397,11 @@ function scr_debug_draw_optimized_text()
 				var player_variable_name = "player " + string(player_info.player_pos_id);
 				var player_label_simplified = "Player " + string(player_info.player_pos_id);
 
-				debug_text_y = scr_draw_highlighted_text(32, debug_text_y, player_variable_name + " xy",
+				debug_text_y = scr_draw_registry_highlighted_text("player_position", 32, debug_text_y, player_variable_name + " xy",
 									string(player_info.player_pos_x) + " / " + string(player_info.player_pos_y),
 									player_label_simplified + " Position", c_white, c_red, false);
 
-				debug_text_y = scr_draw_highlighted_text(32, debug_text_y, player_variable_name + " speed",
+				debug_text_y = scr_draw_registry_highlighted_text("player_speed", 32, debug_text_y, player_variable_name + " speed",
 									string(player_info.player_speed),
 									player_label_simplified + " Speed", c_white, c_red, false);
 
@@ -1677,7 +2425,8 @@ function scr_debug_draw_optimized_text()
 				//}
 			}
 			debug_text_y = scr_draw_highlighted_text(32, debug_text_y, "player_can_play", string(global.player_can_play), "Player Can Play", c_white, c_red, false);
-			debug_text_y = scr_draw_highlighted_text(32, debug_text_y, "player_slot", string(global.player_slot), "Player Slots", c_white, c_red, false);
+			debug_text_y = scr_draw_registry_highlighted_text("player_slots", 32, debug_text_y, "player_slot", string(global.player_slot), "Player Slots", c_white, c_red, false);
+			debug_text_y = scr_draw_registry_highlighted_text("controller_slot", 32, debug_text_y, "controller_slot", string(global.player_slot[1]), "Controller Slot", c_white, c_red, false);
 		}
 	}
 	#endregion /* Section 3: Player Information END */
@@ -1700,7 +2449,7 @@ function scr_debug_draw_optimized_text()
 				/* 1. Overall Menu States */
 				if (variable_instance_exists(self, "menu"))
 				{
-					debug_text_y = scr_draw_highlighted_text(32, debug_text_y, "menu", string(menu), "Current Menu", c_white, c_red, menu == 0);
+					debug_text_y = scr_draw_registry_highlighted_text("current_menu", 32, debug_text_y, "menu", string(menu), "Current Menu", c_white, c_red, menu == 0);
 				}
 
 				if (variable_instance_exists(self, "level_editor_menu"))
@@ -1807,33 +2556,46 @@ function scr_debug_draw_optimized_text()
 	#region /* Section 6: Switch Information (only for Switch) */
 	if (os_type == os_switch)
 	{
-		debug_text_y = scr_draw_debug_header("Switch Information", 32, debug_text_y);
-
-		var _switch_collapsed = variable_struct_exists(global.debug_collapsed_sections, "Switch Information") ? variable_struct_get(global.debug_collapsed_sections, "Switch Information") : false;
-
-		if (!_switch_collapsed)
+		var show_switch_account_status = scr_debug_item_is_visible_in_overlay("switch_account_status");
+		var show_switch_token_status = scr_debug_item_is_visible_in_overlay("online_token_status");
+		if (show_switch_account_status
+		|| show_switch_token_status)
 		{
-			var _switch_probe_index = global.switch_accounts_probe_user_index;
-			var _switch_probe_valid = _switch_probe_index >= 0
-				&& _switch_probe_index < global.switch_accounts_get_accounts_result;
-			var _switch_is_user_open_label = _switch_probe_valid
-				? "switch_accounts_is_user_open(" + string(_switch_probe_index) + ")"
-				: "switch_accounts_is_user_open(accountId)";
-			var _switch_is_user_open_value = _switch_probe_valid
-				? (global.switch_accounts_is_user_open_result ? "open" : "closed")
-				: "n/a";
+			debug_text_y = scr_draw_debug_header("Switch Information", 32, debug_text_y);
 
-			debug_text_y = scr_draw_highlighted_text(32, debug_text_y, "switch_account_name", string(global.switch_account_name), "Switch Account Name", c_white, c_red, false);
-			debug_text_y = scr_draw_highlighted_text(32, debug_text_y, "switch_account_handle", string(global.switch_account_handle), "Switch Account Handle", c_white, c_red, false);
-			debug_text_y = scr_draw_highlighted_text(32, debug_text_y, "switch_accounts_get_accounts()", string(global.switch_accounts_get_accounts_result), "switch_accounts_get_accounts()", c_white, c_red, global.switch_accounts_get_accounts_result <= 0);
-			debug_text_y = scr_draw_highlighted_text(32, debug_text_y, "switch_accounts_open_preselected_user()", string(global.switch_accounts_open_preselected_user_result), "switch_accounts_open_preselected_user()", c_white, c_red, global.switch_accounts_open_preselected_user_result < 0);
-			debug_text_y = scr_draw_highlighted_text(32, debug_text_y, _switch_is_user_open_label, _switch_is_user_open_value, _switch_is_user_open_label, c_white, c_red, !_switch_probe_valid || !global.switch_accounts_is_user_open_result);
-			debug_text_y = scr_draw_highlighted_text(32, debug_text_y, "switch_accounts_open_states", string(global.switch_accounts_open_states), "Switch Account Open States", c_white, c_red, global.switch_accounts_open_states == "");
-			debug_text_y = scr_draw_highlighted_text(32, debug_text_y, "online_token_validated", string(global.online_token_validated), "Online Token Validated", c_white, c_red, false);
-			debug_text_y = scr_draw_highlighted_text(32, debug_text_y, "online_token_error_message", string(global.online_token_error_message), "Online Token Error Message", c_white, c_red, false);
-			debug_text_y = scr_draw_highlighted_text(32, debug_text_y, "switch_account_netid", string(global.switch_account_netid), "Switch Account NetID", c_white, c_red, false);
-			debug_text_y = scr_draw_highlighted_text(32, debug_text_y, "switch_account_network_service_available", string(global.switch_account_network_service_available), "Switch Network Service Available", c_white, c_red, !global.switch_account_network_service_available);
-			debug_text_y = scr_draw_highlighted_text(32, debug_text_y, "switch_logged_in", string(global.switch_logged_in), "Switch Logged In", c_white, c_red, !global.switch_logged_in);
+			var _switch_collapsed = variable_struct_exists(global.debug_collapsed_sections, "Switch Information") ? variable_struct_get(global.debug_collapsed_sections, "Switch Information") : false;
+
+			if (!_switch_collapsed)
+			{
+				var _switch_probe_index = global.switch_accounts_probe_user_index;
+				var _switch_probe_valid = _switch_probe_index >= 0
+					&& _switch_probe_index < global.switch_accounts_get_accounts_result;
+				var _switch_is_user_open_label = _switch_probe_valid
+					? "switch_accounts_is_user_open(" + string(_switch_probe_index) + ")"
+					: "switch_accounts_is_user_open(accountId)";
+				var _switch_is_user_open_value = _switch_probe_valid
+					? (global.switch_accounts_is_user_open_result ? "open" : "closed")
+					: "n/a";
+
+				if (show_switch_account_status)
+				{
+					debug_text_y = scr_draw_highlighted_text(32, debug_text_y, "switch_account_name", string(global.switch_account_name), "Switch Account Name", c_white, c_red, false);
+					debug_text_y = scr_draw_highlighted_text(32, debug_text_y, "switch_account_handle", string(global.switch_account_handle), "Switch Account Handle", c_white, c_red, false);
+					debug_text_y = scr_draw_highlighted_text(32, debug_text_y, "switch_accounts_get_accounts()", string(global.switch_accounts_get_accounts_result), "switch_accounts_get_accounts()", c_white, c_red, global.switch_accounts_get_accounts_result <= 0);
+					debug_text_y = scr_draw_highlighted_text(32, debug_text_y, "switch_accounts_open_preselected_user()", string(global.switch_accounts_open_preselected_user_result), "switch_accounts_open_preselected_user()", c_white, c_red, global.switch_accounts_open_preselected_user_result < 0);
+					debug_text_y = scr_draw_highlighted_text(32, debug_text_y, _switch_is_user_open_label, _switch_is_user_open_value, _switch_is_user_open_label, c_white, c_red, !_switch_probe_valid || !global.switch_accounts_is_user_open_result);
+					debug_text_y = scr_draw_highlighted_text(32, debug_text_y, "switch_accounts_open_states", string(global.switch_accounts_open_states), "Switch Account Open States", c_white, c_red, global.switch_accounts_open_states == "");
+					debug_text_y = scr_draw_highlighted_text(32, debug_text_y, "switch_account_netid", string(global.switch_account_netid), "Switch Account NetID", c_white, c_red, false);
+					debug_text_y = scr_draw_highlighted_text(32, debug_text_y, "switch_account_network_service_available", string(global.switch_account_network_service_available), "Switch Network Service Available", c_white, c_red, !global.switch_account_network_service_available);
+					debug_text_y = scr_draw_highlighted_text(32, debug_text_y, "switch_logged_in", string(global.switch_logged_in), "Switch Logged In", c_white, c_red, !global.switch_logged_in);
+				}
+
+				if (show_switch_token_status)
+				{
+					debug_text_y = scr_draw_highlighted_text(32, debug_text_y, "online_token_validated", string(global.online_token_validated), "Online Token Validated", c_white, c_red, false);
+					debug_text_y = scr_draw_highlighted_text(32, debug_text_y, "online_token_error_message", string(global.online_token_error_message), "Online Token Error Message", c_white, c_red, false);
+				}
+			}
 		}
 	}
 	#endregion /* Section 6: Switch Information (only for Switch) END */
@@ -1856,9 +2618,9 @@ function scr_debug_draw_optimized_text()
 				if (!_odl_collapsed)
 				{
 					/* Online System Status */
-					debug_text_y = scr_draw_highlighted_text(32, debug_text_y, "online_enabled", string(global.online_enabled), "Online Enabled", c_white, c_red, false);
-					debug_text_y = scr_draw_highlighted_text(32, debug_text_y, "online_token_validated", string(global.online_token_validated), "Online Token Validated", c_white, c_red, false);
-					debug_text_y = scr_draw_highlighted_text(32, debug_text_y, "online_token_error_message", string(global.online_token_error_message), "Online Token Error Message", c_white, c_red, false);
+					debug_text_y = scr_draw_registry_highlighted_text("online_token_status", 32, debug_text_y, "online_enabled", string(global.online_enabled), "Online Enabled", c_white, c_red, false);
+					debug_text_y = scr_draw_registry_highlighted_text("online_token_status", 32, debug_text_y, "online_token_validated", string(global.online_token_validated), "Online Token Validated", c_white, c_red, false);
+					debug_text_y = scr_draw_registry_highlighted_text("online_token_status", 32, debug_text_y, "online_token_error_message", string(global.online_token_error_message), "Online Token Error Message", c_white, c_red, false);
 					debug_text_y = scr_draw_highlighted_text(32, debug_text_y, "thumbnail_sprite", string(global.thumbnail_sprite), "Thumbnail Sprite", c_white, c_red, false);
 					
 					if (variable_instance_exists(self, "info_queue_index"))
@@ -1928,6 +2690,18 @@ function scr_draw_highlighted_text(xx, yy, variable_name, value, label_simplifie
 	var color = (alert_condition) ? color_alert : color_normal;
 	scr_draw_text_outlined(xx, yy, display_label + ": " + string(value), global.default_text_size, c_black, color);
 	return yy + line_spacing;
+}
+
+/// @function scr_draw_registry_highlighted_text(item_id, xx, yy, variable_name, value, label_simplified, color_normal, color_alert, alert_condition)
+/* Draws a curated debug line only when its registry item is visible in the overlay. */
+function scr_draw_registry_highlighted_text(item_id, xx, yy, variable_name, value, label_simplified, color_normal, color_alert, alert_condition)
+{
+	if (!scr_debug_item_is_visible_in_overlay(item_id))
+	{
+		return yy;
+	}
+
+	return scr_draw_highlighted_text(xx, yy, variable_name, value, label_simplified, color_normal, color_alert, alert_condition);
 }
 
 /// @function scr_get_player_positions()

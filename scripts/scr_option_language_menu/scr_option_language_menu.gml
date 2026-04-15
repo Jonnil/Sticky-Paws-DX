@@ -345,11 +345,13 @@ function scr_option_language_menu()
 				l10n_text("Monthly"),
 				l10n_text("Yearly")
 			);
+			scr_set_default_dropdown_description("language_auto_update", l10n_text("At Launch"));
 			if (menu == "language_auto_update")
 			{
-				/* Description for the "Automatic Translation Updates" dropdown */
-				global.option_description = l10n_text(
-					"Controls how often the game automatically updates translations. Default: At Launch. This ensures your game text is always as up-to-date as possible"
+				scr_set_default_option_description(
+					"language_auto_update",
+					l10n_text("At Launch"),
+					l10n_text("Controls how often the game automatically updates translations. This ensures your game text is always as up-to-date as possible")
 				);
 			}
 			#endregion /* Language Pack Update Options END */

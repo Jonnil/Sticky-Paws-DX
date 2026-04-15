@@ -192,6 +192,7 @@ global.enable_narrator = true;
 
 global.max_fps = 60; /* Targeted fps that you want the game to run in, you never want the default to be under 60 fps, default: 60 */
 global.default_text_size = 0.8 /* This is the default text size, but text size should be able to be changed by the player in settings. Default = 0.8 */
+global.font_antialiasing = false; /* OFF by default to preserve the crisp UI style, while still allowing smoother fonts as an accessibility option */
 
 global.number_of_chain_kills_for_1up = 8; /* How many chain reaction kills you need to get 1-ups. Default is 8 */
 
@@ -280,6 +281,9 @@ global.debug_screen = false; /* Toggles the visibility of the debug screen. When
 global.debug_mode_activated_once = false; /* If debug mode has been activated at any point during the level, don't save fastest time and score */
 global.debug_collapsed_sections = {}; /* Tracks which debug sections are collapsed. Using a struct instead of a ds_map follows modern GML best practices and benefits from automatic garbage collection. Keys are section names; values are booleans. */
 global.debug_detailed_mode = false; /* Determines whether the debug screen displays detailed variable names or simplified, user-friendly labels. Set to true for detailed mode, showing exact variable names, which is helpful for developers familiar with the codebase. */
+global.debug_visibility_config_section = "debug_screen_text"; /* Dedicated config.ini section for per-item debug screen visibility modes. */
+global.debug_visibility_registry = {}; /* Registry definitions for curated debug items such as FPS. */
+global.debug_visibility_modes = {}; /* Persisted OFF / IN_OVERLAY / ALWAYS state keyed by debug item id. */
 global.debug_menu_unlocked = false; /* Hidden debug options are session-only on release builds and are unlocked through a cheat code */
 global.debug_menu_auto_unlock_runner = false; /* Development convenience toggle for auto-unlocking the hidden Debug tab in GameMaker Runner only */
 global.debug_unlock_all_level_editor_objects = false; /* Session-only override for exposing every placeable level editor object through the hidden Debug tab */
@@ -528,7 +532,7 @@ global.world_editor = false; /* If you're editing world or not */
 global.go_to_menu_when_going_back_to_title = ""; /* Sometimes you want to go to another menu after loading custom levels, instead of the default */
 device_mouse_dbclick_enable(false); /* Game should be playable on mobile without right click. Makes it harder to press the buttons in quick succession when this is enabled */
 ds_list_add(global.all_loaded_custom_levels, "");
-font_add_enable_aa(false);
+font_add_enable_aa(global.font_antialiasing);
 gamepad_set_axis_deadzone(0, 0.5);
 gamepad_set_axis_deadzone(1, 0.5);
 gamepad_set_axis_deadzone(2, 0.5);

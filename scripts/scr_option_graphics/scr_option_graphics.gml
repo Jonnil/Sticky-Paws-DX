@@ -626,11 +626,12 @@ function scr_option_graphics()
 	&& (menu != "customize_button_design_transparency")
 	{
 		/* Advanced Video Options */
+		var debug_visibility_row_spacing = 68;
 		var advanced_video_option_back_y = 48;
 		var interpolate_y = advanced_video_option_back_y + 48;
 		var show_fps_y = interpolate_y + 48;
-		var show_instance_count_y = show_fps_y + 48;
-		var show_collision_mask_y = show_instance_count_y + 48;
+		var show_instance_count_y = show_fps_y + debug_visibility_row_spacing;
+		var show_collision_mask_y = show_instance_count_y + debug_visibility_row_spacing;
 		var enable_transitions_y = show_collision_mask_y + 48;
 		var enable_background_layer1_y = enable_transitions_y + 48;
 		var enable_background_layer2_y = enable_background_layer1_y + 48;
@@ -650,8 +651,20 @@ function scr_option_graphics()
 
 		draw_menu_button(420, advanced_video_option_back_y + menu_y_offset, l10n_text("Back"), "advanced_video_option_back", "advanced_video_options");
 		draw_menu_checkmark(386, interpolate_y + menu_y_offset, l10n_text("Interpolation"), "interpolate", global.interpolate, true);
-		draw_menu_checkmark(386, show_fps_y + menu_y_offset, l10n_text("Show FPS"), "show_fps", global.show_fps, false);
-		draw_menu_checkmark(386, show_instance_count_y + menu_y_offset, l10n_text("Show Instance Count"), "show_instance_count", global.show_instance_count, false);
+		var show_fps_description = l10n_text("Controls whether FPS is hidden, shown in the debug overlay, or always visible");
+		if (os_type == os_switch
+		&& !global.debug_menu_unlocked)
+		{
+			show_fps_description = l10n_text("Controls whether FPS is hidden or always visible. Unlock the Debug menu to access more visibility options");
+		}
+		draw_menu_debug_visibility_row(400, show_fps_y + menu_y_offset, l10n_text("Show FPS"), "show_fps", "fps", show_fps_description);
+		var show_instance_count_description = l10n_text("Controls whether instance count is hidden, shown in the debug overlay, or always visible");
+		if (os_type == os_switch
+		&& !global.debug_menu_unlocked)
+		{
+			show_instance_count_description = l10n_text("Controls whether instance count is hidden or always visible. Unlock the Debug menu to access more visibility options");
+		}
+		draw_menu_debug_visibility_row(400, show_instance_count_y + menu_y_offset, l10n_text("Show Instance Count"), "show_instance_count", "instance_count", show_instance_count_description);
 		draw_menu_checkmark(386, show_collision_mask_y + menu_y_offset, l10n_text("Show Collision Mask"), "show_collision_mask", global.show_collision_mask, false);
 		draw_menu_checkmark(386, enable_transitions_y + menu_y_offset, l10n_text("Enable Transitions"), "enable_transitions", global.enable_transitions, true);
 		draw_menu_checkmark(386, enable_background_layer1_y + menu_y_offset, l10n_text("Enable Background Layer 1"), "enable_background_layer1", global.enable_background_layer1, true);
@@ -1044,10 +1057,6 @@ function scr_option_graphics()
 			if (menu == "advanced_video_option_back"){menu = "advanced_video_options";menu_y_offset = 0;
 			}
 			if (menu == "interpolate"){global.interpolate = !global.interpolate;gpu_set_texfilter(global.interpolate);
-			}
-			if (menu == "show_fps"){global.show_fps = !global.show_fps;
-			}
-			if (menu == "show_instance_count"){global.show_instance_count = !global.show_instance_count;
 			}
 			if (menu == "show_collision_mask"){global.show_collision_mask = !global.show_collision_mask;
 			}

@@ -154,6 +154,7 @@ function scr_draw_upload_character_menu()
 		}
 
 		draw_menu_dropdown(get_window_width * 0.5 - 300, edit_visibility_y, l10n_text("Visibility"), "upload_character_edit_visibility", visibility_index, l10n_text("Public"), l10n_text("Unlisted"));
+		scr_set_default_dropdown_description("upload_character_edit_visibility", l10n_text("Public"));
 		if (visibility_index == 1)
 		{
 			draw_sprite_ext(spr_icon_unlisted, 0, get_window_width * 0.5 - 300 - 16, edit_visibility_y + 21, 1, 1, 0, c_white, 1);

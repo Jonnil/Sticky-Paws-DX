@@ -801,12 +801,14 @@ function scr_draw_upload_level_menu()
 		draw_sprite_ext(spr_icon_pen, 0, get_window_width * 0.5 - 185 + 16, edit_tags_y + 21, 1, 1, 0, c_white, 1);
 
 		draw_menu_dropdown(get_window_width * 0.5 - 300, edit_visibility_y, l10n_text("Visibility"), "upload_edit_visibility", visibility_index, l10n_text("Public"), l10n_text("Unlisted"));
+		scr_set_default_dropdown_description("upload_edit_visibility", l10n_text("Public"));
 		if (visibility_index == 1)
 		{
 			draw_sprite_ext(spr_icon_unlisted, 0, get_window_width * 0.5 - 300 - 16, edit_visibility_y + 21, 1, 1, 0, c_white, 1);
 		}
 
 		draw_menu_dropdown(get_window_width * 0.5 - 300, edit_development_stage_y, l10n_text("Development Stage"), "upload_edit_development_stage", development_stage_index, l10n_text("Early Access"), l10n_text("Complete/Stable"));
+		scr_set_default_dropdown_description("upload_edit_development_stage", l10n_text("Complete/Stable"));
 
 		draw_menu_button(get_window_width * 0.5 - 185, ok_y, l10n_text("Upload"), "edit_ok", "edit_ok");
 		draw_sprite_ext(spr_icon_upload, 0, get_window_width * 0.5 - 185 + 16, ok_y + 21, 1, 1, 0, c_white, 1);
