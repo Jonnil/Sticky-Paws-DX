@@ -426,6 +426,11 @@ function draw_menu_debug_visibility_row(x_position, y_position, string_text, men
 		debug_visibility_menu_focus = {};
 	}
 
+	if (!variable_instance_exists(self, "debug_visibility_shared_focus_mode"))
+	{
+		debug_visibility_shared_focus_mode = current_mode;
+	}
+
 	if (definition == undefined)
 	{
 		return current_mode;
@@ -463,13 +468,29 @@ function draw_menu_debug_visibility_row(x_position, y_position, string_text, men
 		default_focus_mode = scr_debug_find_next_public_visibility_mode(item_id, default_focus_mode, 1);
 	}
 
-	var focused_mode = variable_struct_exists(debug_visibility_menu_focus, menu_index)
+	var stored_focus_mode = variable_struct_exists(debug_visibility_menu_focus, menu_index)
 		? variable_struct_get(debug_visibility_menu_focus, menu_index)
 		: default_focus_mode;
 
+	if (!scr_debug_is_visibility_mode_available_in_public_menu(item_id, stored_focus_mode))
+	{
+		stored_focus_mode = scr_debug_find_next_public_visibility_mode(item_id, stored_focus_mode, 1);
+	}
+
+	var shared_focus_mode = debug_visibility_shared_focus_mode;
+
+	if (!scr_debug_is_visibility_mode_available_in_public_menu(item_id, shared_focus_mode))
+	{
+		shared_focus_mode = scr_debug_find_next_public_visibility_mode(item_id, shared_focus_mode, 1);
+	}
+
+	var focused_mode = (menu == menu_index)
+		? shared_focus_mode
+		: stored_focus_mode;
+
 	if (!scr_debug_is_visibility_mode_available_in_public_menu(item_id, focused_mode))
 	{
-		focused_mode = scr_debug_find_next_public_visibility_mode(item_id, focused_mode, 1);
+		focused_mode = default_focus_mode;
 	}
 
 	for (var hover_index = 0; hover_index < array_length(visible_modes); hover_index++)
@@ -492,6 +513,8 @@ function draw_menu_debug_visibility_row(x_position, y_position, string_text, men
 			}
 
 			focused_mode = hover_mode;
+			debug_visibility_shared_focus_mode = focused_mode;
+			variable_struct_set(debug_visibility_menu_focus, menu_index, focused_mode);
 
 			if (mouse_check_button_released(mb_left)
 			&& menu_delay == 0
@@ -506,6 +529,7 @@ function draw_menu_debug_visibility_row(x_position, y_position, string_text, men
 
 	if (menu == menu_index)
 	{
+		debug_visibility_shared_focus_mode = focused_mode;
 		variable_struct_set(debug_visibility_menu_focus, menu_index, focused_mode);
 
 		if (can_move_cursor_position
@@ -525,6 +549,7 @@ function draw_menu_debug_visibility_row(x_position, y_position, string_text, men
 			if (key_left)
 			{
 				focused_mode = scr_debug_find_next_public_visibility_mode(item_id, focused_mode, -1);
+				debug_visibility_shared_focus_mode = focused_mode;
 				variable_struct_set(debug_visibility_menu_focus, menu_index, focused_mode);
 				menu_delay = 3;
 			}
@@ -532,6 +557,7 @@ function draw_menu_debug_visibility_row(x_position, y_position, string_text, men
 			if (key_right)
 			{
 				focused_mode = scr_debug_find_next_public_visibility_mode(item_id, focused_mode, 1);
+				debug_visibility_shared_focus_mode = focused_mode;
 				variable_struct_set(debug_visibility_menu_focus, menu_index, focused_mode);
 				menu_delay = 3;
 			}

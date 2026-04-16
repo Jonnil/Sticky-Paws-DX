@@ -79,11 +79,13 @@ if (nearest_level != noone
 		var show_level_info_y = 232;
 		var show_big_collectibles_y = -160;
 		var total_defeats_y = global.show_defeats_counter && nearest_level.number_of_defeats > 0 ? -32 : -64;
+		var has_best_time = nearest_level.timeattack_realmillisecond < 999999999
+						&& nearest_level.timeattack_realmillisecond > 0;
 		
 		var show_info = global.show_defeats_counter && nearest_level.number_of_defeats > 0 ||
 						nearest_level.number_of_clears > 0 ||
 						nearest_level.level_score > 0 ||
-						(nearest_level.timeattack_realmillisecond < 999999999 && nearest_level.timeattack_realmillisecond > 0) ||
+						has_best_time ||
 						at_least_one_big_collectible;
 		
 		if (show_info)
@@ -103,21 +105,32 @@ if (nearest_level != noone
 				total_defeats_text = l10n_text("Total Defeats") + ": " + string(nearest_level.number_of_defeats);
 			}
 
-			scr_draw_text_outlined(show_level_info_x, show_level_info_y - 150,
-			best_time_text,
-			global.default_text_size, c_black, c_white, 1);
-
-			scr_draw_text_outlined(show_level_info_x, show_level_info_y - 150 + 32,
+			var stat_text_y = show_level_info_y - 150;
+			
+			if (has_best_time)
+			{
+				scr_draw_text_outlined(show_level_info_x, stat_text_y,
+				best_time_text,
+				global.default_text_size, c_black, c_white, 1);
+				stat_text_y += 32;
+			}
+			
+			scr_draw_text_outlined(show_level_info_x, stat_text_y,
 			l10n_text("Best Score") + ": " + string(nearest_level.level_score),
 			global.default_text_size, c_black, c_white, 1);
+			stat_text_y += 32;
 
-			scr_draw_text_outlined(show_level_info_x, show_level_info_y - 150 + (32 * 2),
+			scr_draw_text_outlined(show_level_info_x, stat_text_y,
 			l10n_text("Times Passed") + ": " + string(nearest_level.number_of_clears),
 			global.default_text_size, c_black, c_white, 1);
+			stat_text_y += 32;
 
-			scr_draw_text_outlined(show_level_info_x, show_level_info_y - 150 + (32 * 3),
-			total_defeats_text,
-			global.default_text_size, c_black, c_white, 1);
+			if (total_defeats_text != "")
+			{
+				scr_draw_text_outlined(show_level_info_x, stat_text_y,
+				total_defeats_text,
+				global.default_text_size, c_black, c_white, 1);
+			}
 
 			for (var i = 1; i <= global.max_big_collectible; i++)
 			{
