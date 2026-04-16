@@ -42,8 +42,24 @@ function scr_debug_get_menu_debug_target()
 /* Returns true when the full debug overlay should collapse into a menu-safe panel. */
 function scr_debug_should_use_compact_overlay()
 {
-	return global.debug_screen
-		&& (scr_debug_get_settings_overlay_target() != noone);
+	var target = scr_debug_get_settings_overlay_target();
+	if (target == noone)
+	{
+		return false;
+	}
+
+	if (global.debug_screen)
+	{
+		return true;
+	}
+
+	if (!variable_global_exists("debug_visibility_has_any_always"))
+	{
+		scr_debug_rebuild_visibility_runtime_cache();
+	}
+
+	return variable_global_exists("debug_visibility_has_any_always")
+		&& global.debug_visibility_has_any_always;
 }
 
 /// @function scr_debug_get_room_info_text()
@@ -590,21 +606,45 @@ function scr_debug_draw_registry_item_lines(item_key, xx, yy, text_halign = fa_l
 function scr_debug_get_compact_overlay_flattened_lines()
 {
 	var flattened_lines = [];
-	if (!variable_global_exists("debug_visibility_overlay_item_keys")
-	|| !is_array(global.debug_visibility_overlay_item_keys))
+	var item_keys = [];
+
+	if (global.debug_screen)
 	{
-		scr_debug_rebuild_visibility_runtime_cache();
+		if (!variable_global_exists("debug_visibility_overlay_item_keys")
+		|| !is_array(global.debug_visibility_overlay_item_keys))
+		{
+			scr_debug_rebuild_visibility_runtime_cache();
+		}
+
+		if (variable_global_exists("debug_visibility_overlay_item_keys")
+		&& is_array(global.debug_visibility_overlay_item_keys))
+		{
+			item_keys = global.debug_visibility_overlay_item_keys;
+		}
+	}
+	else
+	{
+		if (!variable_global_exists("debug_visibility_always_item_keys")
+		|| !is_array(global.debug_visibility_always_item_keys))
+		{
+			scr_debug_rebuild_visibility_runtime_cache();
+		}
+
+		if (variable_global_exists("debug_visibility_always_item_keys")
+		&& is_array(global.debug_visibility_always_item_keys))
+		{
+			item_keys = global.debug_visibility_always_item_keys;
+		}
 	}
 
-	if (!variable_global_exists("debug_visibility_overlay_item_keys")
-	|| !is_array(global.debug_visibility_overlay_item_keys))
+	if (!is_array(item_keys))
 	{
 		return flattened_lines;
 	}
 
-	for (var item_index = 0; item_index < array_length(global.debug_visibility_overlay_item_keys); item_index++)
+	for (var item_index = 0; item_index < array_length(item_keys); item_index++)
 	{
-		var item_key = global.debug_visibility_overlay_item_keys[item_index];
+		var item_key = item_keys[item_index];
 		var item_line_specs = scr_debug_get_registry_line_specs(item_key);
 		for (var line_index = 0; line_index < array_length(item_line_specs); line_index++)
 		{
@@ -617,6 +657,66 @@ function scr_debug_get_compact_overlay_flattened_lines()
 	}
 
 	return flattened_lines;
+}
+
+/// @function scr_debug_get_compact_overlay_title()
+/* Returns the title text for the menu-safe compact debug overlay panel. */
+function scr_debug_get_compact_overlay_title()
+{
+	return global.debug_screen
+		? "Debug Overlay"
+		: "Debug Overlay (Always)";
+}
+
+/// @function scr_debug_get_compact_overlay_footer_top(gui_width, gui_height)
+/* Estimates the top edge of the options footer box so the compact overlay can avoid it. */
+function scr_debug_get_compact_overlay_footer_top(gui_width, gui_height)
+{
+	var option_default = "";
+	if (global.option_default == 1)
+	{
+		option_default = l10n_text("On by default");
+	}
+	else
+	if (global.option_default == 0)
+	{
+		option_default = l10n_text("Off by default");
+	}
+
+	var option_description_text = "";
+	if (global.option_description != "" && global.option_default == -2)
+	{
+		option_description_text = l10n_text("Default") + ": " + string(global.option_description);
+	}
+	else
+	if (global.option_description != "" && option_default != "")
+	{
+		option_description_text = string(global.option_description) + " - " + string(option_default);
+	}
+	else
+	if (global.option_description != "")
+	{
+		option_description_text = string(global.option_description);
+	}
+	else
+	{
+		option_description_text = string(option_default);
+	}
+
+	if (option_description_text == "")
+	{
+		return gui_height - 20;
+	}
+
+	var max_text_width = gui_width * 0.98;
+	var padding = 20;
+	var scale = (global.default_text_size > 0) ? global.default_text_size * 0.9 : 1;
+	var line_sep = 32;
+	var text_height = scr_get_wrapped_text_height(option_description_text, max_text_width, line_sep, scale);
+	var rect_bottom = gui_height - 10;
+	var rect_top = rect_bottom - (max(32, text_height * 0.8)) - padding;
+
+	return rect_top - 20;
 }
 
 /// @function scr_debug_draw_compact_overlay()
@@ -641,18 +741,25 @@ function scr_debug_draw_compact_overlay()
 	var panel_left = gui_width - panel_width - panel_margin;
 	var panel_top = panel_margin;
 	var panel_right = panel_left + panel_width;
-	var panel_bottom = gui_height - panel_margin;
 	var panel_padding = 16;
 	var title_height = 30;
 	var panel_content_top = panel_top + panel_padding + title_height + 12;
-	var panel_content_bottom = panel_bottom - panel_padding;
-	var panel_content_height = max(60, panel_content_bottom - panel_content_top);
-	var panel_content_width = panel_width - (panel_padding * 2) - 12;
 	var line_spacing = 23;
 	var text_scale = global.default_text_size * 0.78;
-	var visible_line_count = max(1, floor(panel_content_height / line_spacing));
 	var flattened_lines = scr_debug_get_compact_overlay_flattened_lines();
 	var total_line_count = array_length(flattened_lines);
+	var panel_title = scr_debug_get_compact_overlay_title();
+	var footer_top = min(scr_debug_get_compact_overlay_footer_top(gui_width, gui_height), gui_height - 120);
+	var min_panel_height = panel_padding + title_height + 12 + 60 + panel_padding;
+	var max_panel_bottom = min(gui_height - panel_margin, footer_top);
+	var max_panel_height = max(min_panel_height, max_panel_bottom - panel_top);
+	var max_panel_content_height = max(60, max_panel_height - (panel_padding + title_height + 12 + panel_padding));
+	var max_visible_line_count = max(1, floor(max_panel_content_height / line_spacing));
+	var visible_line_count = max(1, min(max_visible_line_count, total_line_count));
+	var panel_content_height = max(60, visible_line_count * line_spacing);
+	var panel_content_bottom = panel_content_top + panel_content_height;
+	var panel_bottom = panel_content_bottom + panel_padding;
+	var panel_content_width = panel_width - (panel_padding * 2) - 12;
 	var max_scroll_index = max(0, total_line_count - visible_line_count);
 	var key_page_up = vk_pageup;
 	var key_page_down = vk_pagedown;
@@ -704,7 +811,7 @@ function scr_debug_draw_compact_overlay()
 
 	draw_set_halign(fa_left);
 	draw_set_valign(fa_top);
-	scr_draw_text_outlined(panel_left + panel_padding, panel_top + panel_padding, "Debug Overlay", global.default_text_size * 0.92, c_black, c_yellow, 1);
+	scr_draw_text_outlined(panel_left + panel_padding, panel_top + panel_padding, panel_title, global.default_text_size * 0.92, c_black, c_yellow, 1);
 
 	if (total_line_count <= 0)
 	{
