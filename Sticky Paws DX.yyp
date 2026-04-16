@@ -2059,7 +2059,7 @@
   "isEcma":false,
   "LibraryEmitters":[],
   "MetaData":{
-    "IDEVersion":"2024.1400.4.1030",
+    "IDEVersion":"2024.1400.5.1043",
   },
   "name":"Sticky Paws DX",
   "resources":[
@@ -2263,6 +2263,9 @@
     {"id":{"name":"scr_date_get_timezone_local_offset","path":"scripts/scr_date_get_timezone_local_offset/scr_date_get_timezone_local_offset.yy",},},
     {"id":{"name":"scr_deactivate_objects_outside_view","path":"scripts/scr_deactivate_objects_outside_view/scr_deactivate_objects_outside_view.yy",},},
     {"id":{"name":"scr_debug_message","path":"scripts/scr_debug_message/scr_debug_message.yy",},},
+    {"id":{"name":"scr_debug_visibility_layout","path":"scripts/scr_debug_visibility_layout/scr_debug_visibility_layout.yy",},},
+    {"id":{"name":"scr_debug_visibility_lines","path":"scripts/scr_debug_visibility_lines/scr_debug_visibility_lines.yy",},},
+    {"id":{"name":"scr_debug_visibility_registry","path":"scripts/scr_debug_visibility_registry/scr_debug_visibility_registry.yy",},},
     {"id":{"name":"scr_debug","path":"scripts/scr_debug/scr_debug.yy",},},
     {"id":{"name":"scr_delete_sprite_properly","path":"scripts/scr_delete_sprite_properly/scr_delete_sprite_properly.yy",},},
     {"id":{"name":"scr_different_items_inside","path":"scripts/scr_different_items_inside/scr_different_items_inside.yy",},},

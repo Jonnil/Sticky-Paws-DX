@@ -289,7 +289,6 @@ global.debug_menu_auto_unlock_runner = false; /* Development convenience toggle 
 global.debug_unlock_all_level_editor_objects = false; /* Session-only override for exposing every placeable level editor object through the hidden Debug tab */
 global.show_fps = false; /* Show fps for optimization debug */
 global.show_instance_count = false; /* Show instance count for optimization debug */
-global.show_all_instance_count = false; /* Show all the different instances within a room and how many there are for optimization debug */
 global.enable_transitions = true; /* During transitions when going from one room to another, the game could crash, and you can't see what's going on when the transition animation is playing and making the screen black, so turn off this for debug */
 global.enable_background_layer1 = true; /* Toggles the visibility of the first background layer. This layer is typically used for distant scenery or static visuals in the game. */
 global.enable_background_layer2 = true; /* Toggles the visibility of the second background layer. Often used for mid-range background elements, such as buildings or trees. */

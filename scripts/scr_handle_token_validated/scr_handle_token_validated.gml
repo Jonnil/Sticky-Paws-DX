@@ -100,7 +100,7 @@ function scr_handle_token_validated()
 				global.language_update_pending = false;
 				global.language_update_allow_without_online_enabled = false;
 				global.switch_startup_resume_language_update = false;
-				global.language_update_status_message = "Translation update could not continue because Nintendo Account validation failed.";
+				global.language_update_status_message = "Translation update could not continue because account validation failed.";
 				global.language_update_status_color = c_red;
 				global.online_token_error_message = validation_error_message != ""
 					? validation_error_message
@@ -116,7 +116,7 @@ function scr_handle_token_validated()
 			global.language_update_pending = false;
 			global.language_update_allow_without_online_enabled = false;
 			global.switch_startup_resume_language_update = false;
-			global.language_update_status_message = "Translation update could not continue because Nintendo Account validation failed.";
+			global.language_update_status_message = "Translation update could not continue because account validation failed.";
 			global.language_update_status_color = c_red;
 			global.online_token_error_message = response_str; /* Return the error code in string value only */
 			scr_log("ERROR", "HTTP.AUTH", "token_validation_failed",

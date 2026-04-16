@@ -106,7 +106,7 @@ function scr_switch_update_online_status(show_login_screen = true)
 			else
 			{
 				global.switch_account_network_service_available = false;
-				global.online_token_error_message = "Passive Switch online checks do not open Nintendo Account UI.";
+				global.online_token_error_message = "Passive online checks do not open the account sign-in UI.";
 				global.online_current_attempt_result = l10n_text("Token not validated");
 				show_debug_message("[scr_switch_update_online_status] Passive refresh for active account " + string(active_user_id) + " skipped login/token validation.");
 			}
@@ -152,8 +152,8 @@ function scr_switch_update_online_status(show_login_screen = true)
 		if (!global.switch_account_network_service_available)
 		{
 			global.online_token_validated = false;
-			global.online_token_error_message = "Nintendo Account not linked for active account " + string(active_user_id);
-			global.online_current_attempt_result = l10n_text("Nintendo Account not linked");
+			global.online_token_error_message = "Required account not linked for active account " + string(active_user_id);
+			global.online_current_attempt_result = l10n_text("Required account not linked");
 			show_debug_message("[scr_switch_update_online_status] Active account lacks network service: " + string(active_user_id));
 			return;
 		}
@@ -466,8 +466,8 @@ function scr_switch_try_startup_token_prefetch()
 		global.switch_startup_token_prefetch_active = false;
 		global.switch_startup_resume_language_update = false;
 		global.online_token_validated = false;
-		global.online_token_error_message = "Startup token prefetch skipped because the active account is not linked to a Nintendo Account.";
-		global.online_current_attempt_result = l10n_text("Nintendo Account not linked");
+		global.online_token_error_message = "Startup token prefetch skipped because the active account is not linked to the required account service.";
+		global.online_current_attempt_result = l10n_text("Required account not linked");
 		show_debug_message("[scr_switch_try_startup_token_prefetch] Active startup account " + string(active_user_id) + " is not linked. Skipping token retrieval.");
 		return false;
 	}

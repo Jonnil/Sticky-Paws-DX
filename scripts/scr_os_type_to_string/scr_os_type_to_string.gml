@@ -19,7 +19,7 @@ function scr_os_type_to_string(filename_friendly = false, include_os_type_info =
 		case os_ps5:            label = filename_friendly ? "ps5" : "PlayStation 5"; break;
 		case os_gdk:            label = filename_friendly ? "xbox_gdk" : "Xbox GDK"; break;
 		case os_xboxseriesxs:    label = filename_friendly ? "xbox_series_xs" : "Xbox Series X|S"; break;
-		case os_switch:            label = filename_friendly ? "switch" : "Nintendo Switch"; break;
+		case os_switch:            label = filename_friendly ? "switch" : "Switch"; break;
 		case os_unknown:        label = filename_friendly ? "unknown" : "Unknown"; break;
 		default:                label = filename_friendly ? "unrecognized_os" : "Unrecognized OS"; break;
 	}

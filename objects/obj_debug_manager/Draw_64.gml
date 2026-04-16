@@ -1,5 +1,7 @@
 /// @description obj_debug_manager Draw GUI Event
 
+scr_debug_reset_visibility_draw_cache();
+
 /* Draw FPS info if enabled */
 scr_debug_draw_fps();
 

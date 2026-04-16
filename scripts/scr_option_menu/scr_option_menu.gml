@@ -2606,7 +2606,7 @@ function scr_option_menu()
 				if (menu == "debug_screen_text_search")
 				{
 					global.option_default = -1;
-					global.option_description = l10n_text("Filters debug screen text by user-facing label or internal id");
+					global.option_description = l10n_text("Filters debug screen text by user-facing label or internal item key");
 					menu_cursor_y_position = debug_screen_text_search_y;
 				}
 
@@ -2616,23 +2616,33 @@ function scr_option_menu()
 					l10n_text("These options are for testing purposes only."),
 					global.default_text_size * 0.9, c_black, c_red, 1);
 				scr_draw_text_outlined(debug_text_warning_x, debug_screen_text_warning_y + 28 + menu_y_offset,
-					l10n_text("They may slow down your computer, or crash the game."),
+					l10n_text("They may slow down the game, or cause instability."),
 					global.default_text_size * 0.9, c_black, c_red, 1);
 
 				var debug_text_row_draw_y = debug_screen_text_row_y;
 				var debug_text_content_end_y = debug_screen_text_row_y;
+				var debug_text_view_top = -96;
+				var debug_text_view_bottom = get_window_height + 96;
 
 				for (var debug_text_item_index = 0; debug_text_item_index < filtered_debug_visibility_count; debug_text_item_index++)
 				{
 					var debug_text_item_id = filtered_debug_visibility_ids[debug_text_item_index];
 					var debug_text_definition = scr_debug_get_visibility_definition(debug_text_item_id);
 					var debug_text_label = global.debug_detailed_mode
-						? string(debug_text_definition.id)
+						? string(debug_text_definition.item_key)
 						: l10n_text(debug_text_definition.label);
+					var debug_text_row_menu_id = "debug_screen_text_" + debug_text_item_id;
+					var debug_text_row_screen_y = debug_text_row_draw_y + menu_y_offset;
+					var debug_text_row_visible = (debug_text_row_screen_y + debug_screen_text_row_spacing >= debug_text_view_top)
+						&& (debug_text_row_screen_y - 48 <= debug_text_view_bottom);
 
-					draw_menu_debug_visibility_row(400, debug_text_row_draw_y + menu_y_offset, debug_text_label,
-						"debug_screen_text_" + debug_text_item_id, debug_text_item_id,
-						l10n_text(debug_text_definition.description));
+					if (debug_text_row_visible
+					|| menu == debug_text_row_menu_id)
+					{
+						draw_menu_debug_visibility_row(400, debug_text_row_screen_y, debug_text_label,
+							debug_text_row_menu_id, debug_text_item_id,
+							l10n_text(debug_text_definition.description));
+					}
 
 					debug_text_row_draw_y += debug_screen_text_row_spacing;
 					debug_text_content_end_y = debug_text_row_draw_y;
@@ -2648,8 +2658,10 @@ function scr_option_menu()
 
 				var debug_screen_text_default_profile_y = debug_text_content_end_y + 24;
 				var debug_screen_text_performance_profile_y = debug_screen_text_default_profile_y + 56;
+				var debug_screen_text_level_loading_profile_y = debug_screen_text_performance_profile_y + 56;
 				var apply_default_profile = draw_menu_button(420, debug_screen_text_default_profile_y + menu_y_offset, l10n_text("Default Profile"), "debug_screen_text_default_profile", "");
 				var apply_performance_profile = draw_menu_button(420, debug_screen_text_performance_profile_y + menu_y_offset, l10n_text("Performance Profile"), "debug_screen_text_performance_profile", "");
+				var apply_level_loading_profile = draw_menu_button(420, debug_screen_text_level_loading_profile_y + menu_y_offset, l10n_text("Level Loading Profile"), "debug_screen_text_level_loading_profile", "");
 
 				if (menu == "debug_screen_text_default_profile")
 				{
@@ -2663,6 +2675,13 @@ function scr_option_menu()
 					global.option_default = -1;
 					global.option_description = l10n_text("Applies the performance-focused debug screen text profile");
 					menu_cursor_y_position = debug_screen_text_performance_profile_y;
+				}
+				else
+				if (menu == "debug_screen_text_level_loading_profile")
+				{
+					global.option_default = -1;
+					global.option_description = l10n_text("Applies a certification-friendly profile for catching level loading bugs and load validation errors");
+					menu_cursor_y_position = debug_screen_text_level_loading_profile_y;
 				}
 
 				if (!debug_text_search_modal_active
@@ -2678,6 +2697,14 @@ function scr_option_menu()
 				&& (menu_delay == 0 && menu_joystick_delay == 0)
 				{
 					scr_debug_apply_profile("performance");
+					menu_delay = 3;
+				}
+
+				if (!debug_text_search_modal_active
+				&& apply_level_loading_profile)
+				&& (menu_delay == 0 && menu_joystick_delay == 0)
+				{
+					scr_debug_apply_profile("level_loading");
 					menu_delay = 3;
 				}
 
@@ -2705,7 +2732,7 @@ function scr_option_menu()
 					}
 				}
 
-				menu_cursor_y_position_end = debug_screen_text_performance_profile_y + 64;
+				menu_cursor_y_position_end = debug_screen_text_level_loading_profile_y + 64;
 			}
 		}
 		#endregion /* Debug Settings END */
@@ -3471,7 +3498,7 @@ function scr_option_menu()
 				&& (menu_delay == 0 && menu_joystick_delay == 0)
 				{
 					menu_delay = 3;
-					menu = "debug_screen_text_performance_profile";
+					menu = "debug_screen_text_level_loading_profile";
 				}
 			}
 			else
@@ -3543,6 +3570,33 @@ function scr_option_menu()
 					menu_delay = 3;
 					menu = "debug_screen_text_default_profile";
 				}
+				else
+				if (key_down)
+				&& (!open_dropdown)
+				&& (menu_delay == 0 && menu_joystick_delay == 0)
+				{
+					menu_delay = 3;
+					menu = "debug_screen_text_level_loading_profile";
+				}
+			}
+			else
+			if (menu == "debug_screen_text_level_loading_profile")
+			{
+				if (key_up)
+				&& (!open_dropdown)
+				&& (menu_delay == 0 && menu_joystick_delay == 0)
+				{
+					menu_delay = 3;
+					menu = "debug_screen_text_performance_profile";
+				}
+				else
+				if (key_down)
+				&& (!open_dropdown)
+				&& (menu_delay == 0 && menu_joystick_delay == 0)
+				{
+					menu_delay = 3;
+					menu = "debug_screen_text_back";
+				}
 			}
 			else
 			if (string_pos("debug_screen_text_", string(menu)) == 1)
@@ -3553,6 +3607,7 @@ function scr_option_menu()
 			&& (menu != "debug_screen_text_search_cancel")
 			&& (menu != "debug_screen_text_default_profile")
 			&& (menu != "debug_screen_text_performance_profile")
+			&& (menu != "debug_screen_text_level_loading_profile")
 			{
 				scr_debug_initialize_visibility_registry();
 				var filtered_debug_visibility_ids = scr_debug_get_filtered_visibility_ids(debug_screen_text_search_query);

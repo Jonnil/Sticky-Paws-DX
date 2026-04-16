@@ -242,6 +242,7 @@ function scr_config_load()
 		if (ini_key_exists("config", "show_fps")){global.show_fps = ini_read_real("config", "show_fps", 0);}
 		if (ini_key_exists("config", "show_instance_count")){global.show_instance_count = ini_read_real("config", "show_instance_count", 0);}
 		if (ini_key_exists("config", "font_add_enable_aa")){global.font_antialiasing = ini_read_real("config", "font_add_enable_aa", false);}
+		scr_debug_initialize_visibility_registry();
 		scr_debug_load_visibility_modes_from_ini();
 		if (ini_key_exists("config", "show_collision_mask")){global.show_collision_mask = ini_read_real("config", "show_collision_mask", 0);}
 		if (ini_key_exists("config", "volume_main")){global.volume_main = ini_read_real("config", "volume_main", 7000) * 0.0001;}

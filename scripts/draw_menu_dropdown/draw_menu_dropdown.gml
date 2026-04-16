@@ -324,7 +324,6 @@ function scr_menu_dropdown_draw_deferred_popup()
 	{
 		with (popup_owner)
 		{
-			var popup_request = global.menu_dropdown_popup_request;
 			scr_menu_dropdown_draw_popup_shadow(popup_request.popup_left, popup_request.popup_top, popup_request.dropdown_layout, popup_request.dropdown_item_count);
 
 			for (var dropdown_index = 0; dropdown_index < array_length(popup_request.dropdown_items); dropdown_index++)

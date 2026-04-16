@@ -566,7 +566,7 @@ function scr_option_language_menu()
 						menu = "language_check_updates";
 						global.language_update_allow_without_online_enabled = true;
 						global.language_update_pending = true;
-						global.language_update_status_message = "Waiting for Nintendo Account validation before downloading translations.";
+						global.language_update_status_message = "Waiting for account validation before downloading translations.";
 						global.language_update_status_color = c_yellow;
 					}
 					else
