@@ -200,6 +200,7 @@ function scr_download_thumbnails(download_all, what_num_items = 0)
 
 					/* Save the decoded image buffer to a file. Otherwise the thumbnails will show up as blank */
 					buffer_save(buffer, downloaded_thumbnail_path);
+					buffer_delete(buffer);
 
 					/* Create a sprite from the saved thumbnail image file. */
 					global.spr_download_list_thumbnail[info_queue_index] = sprite_add(downloaded_thumbnail_path, 0, false, true, 0, 0);

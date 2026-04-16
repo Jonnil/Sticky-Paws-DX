@@ -4,12 +4,35 @@ function scr_player_move_save_whole_level_as_screenshot()
 	#region /* Save whole level as screenshot png file */
 	if (global.full_level_map_screenshot)
 	{
-		/* Check if the dimensions are valid (greater than 0 and less than 8192) In the case where dimensions are not valid, then don't resize the surface, otherwise game will crash */
-		var new_width = round(clamp(room_width, 1, 8192)); /* Clamp to a reasonable width and height, and also round the number so it's not a floating point */
-		var new_height = round(clamp(room_height, 1, 8192));
+		/* Capture the whole room, but cap the exported surface size so we don't allocate huge GPU targets. */
+		var capture_view_width = round(max(1, room_width));
+		var capture_view_height = round(max(1, room_height));
+		var max_export_dimension = 4096;
+		var max_export_pixels = max_export_dimension * max_export_dimension;
+		var export_scale = min(
+			1,
+			min(
+				max_export_dimension / capture_view_width,
+				min(
+					max_export_dimension / capture_view_height,
+					sqrt(max_export_pixels / (capture_view_width * capture_view_height))
+				)
+			)
+		);
+		var export_width = max(1, round(capture_view_width * export_scale));
+		var export_height = max(1, round(capture_view_height * export_scale));
 
 		if (full_level_map_screenshot_timer <= 0)
 		{
+			if (!surface_exists(application_surface))
+			{
+				show_debug_message("[scr_player_move_save_whole_level_as_screenshot] Cancelled because application_surface is unavailable.");
+				global.full_level_map_screenshot = false;
+				full_level_map_screenshot_timer = 0;
+				can_move = true;
+				return;
+			}
+
 			/* Disable the backgrounds when getting full level map */
 			layer_background_visible(layer_background_get_id("Background_1"), false);
 			layer_background_visible(layer_background_get_id("Background_2"), false);
@@ -30,12 +53,12 @@ function scr_player_move_save_whole_level_as_screenshot()
 			}
 			#endregion /* Delete some objects so it doesn't show up in the screenshot END */
 
-			camera_set_view_border(view_get_camera(view_current), new_width, new_height); /* View Border */
+			camera_set_view_border(view_get_camera(view_current), capture_view_width, capture_view_height); /* View Border */
 			camera_set_view_pos(view_get_camera(view_current), 0, 0); /* Set camera position in top left corner when taking full level map screenshots */
-			camera_set_view_size(view_get_camera(view_current), new_width, new_height);
-			display_set_gui_size(new_width, new_height);
+			camera_set_view_size(view_get_camera(view_current), capture_view_width, capture_view_height);
+			display_set_gui_size(export_width, export_height);
 
-			surface_resize(application_surface, new_width, new_height);
+			surface_resize(application_surface, export_width, export_height);
 			full_level_map_screenshot_timer = 1;
 		}
 		if (full_level_map_screenshot_timer >= 1)
@@ -49,7 +72,26 @@ function scr_player_move_save_whole_level_as_screenshot()
 		}
 		if (full_level_map_screenshot_timer == 15)
 		{
-			var flattened_surface = surface_create(new_width, new_height);
+			if (!surface_exists(application_surface))
+			{
+				full_level_map_screenshot_timer = 14;
+				return;
+			}
+
+			var flattened_surface = surface_create(export_width, export_height);
+
+			if (!surface_exists(flattened_surface))
+			{
+				show_debug_message("[scr_player_move_save_whole_level_as_screenshot] Failed to create flattened export surface.");
+				global.full_level_map_screenshot = false;
+				global.actually_play_edited_level = false;
+				global.play_edited_level = false;
+				full_level_map_screenshot_timer = 0;
+				can_move = true;
+				room_restart();
+				return;
+			}
+
 			surface_set_target(flattened_surface);
 			draw_clear_alpha(c_black, 1);
 			gpu_set_colorwriteenable(true, true, true, false);
@@ -57,15 +99,21 @@ function scr_player_move_save_whole_level_as_screenshot()
 			gpu_set_colorwriteenable(true, true, true, true);
 			surface_reset_target();
 			var custom_level_map_sprite;
-			custom_level_map_sprite = sprite_create_from_surface(flattened_surface, 0, 0, new_width, new_height, false, false, 0, 0);
+			custom_level_map_sprite = sprite_create_from_surface(flattened_surface, 0, 0, export_width, export_height, false, false, 0, 0);
 			if (global.select_level_index <= 0)
 			|| (global.create_level_from_template >= 2)
 			{
-				sprite_save(custom_level_map_sprite, 0, game_save_id + "custom_levels/" + scr_get_custom_level_folder_name() + "/full_level_map_" + string(global.level_name) + ".png");
+				if (sprite_exists(custom_level_map_sprite))
+				{
+					sprite_save(custom_level_map_sprite, 0, game_save_id + "custom_levels/" + scr_get_custom_level_folder_name() + "/full_level_map_" + string(global.level_name) + ".png");
+				}
 			}
 			else
 			{
-				sprite_save(custom_level_map_sprite, 0, game_save_id + "custom_levels/" + string(ds_list_find_value(global.all_loaded_custom_levels, global.select_level_index)) + "/full_level_map_" + string(global.level_name) + ".png");
+				if (sprite_exists(custom_level_map_sprite))
+				{
+					sprite_save(custom_level_map_sprite, 0, game_save_id + "custom_levels/" + string(ds_list_find_value(global.all_loaded_custom_levels, global.select_level_index)) + "/full_level_map_" + string(global.level_name) + ".png");
+				}
 			}
 			scr_delete_sprite_properly(custom_level_map_sprite);
 			surface_free(flattened_surface);
@@ -75,7 +123,10 @@ function scr_player_move_save_whole_level_as_screenshot()
 			camera_set_view_border(view_get_camera(view_current), 1920, 1080); /* View Border */
 			camera_set_view_pos(view_get_camera(view_current), x, y); /* Set camera position to object's x and y positions again */
 			camera_set_view_size(view_get_camera(view_current), 1920, 1080);
-			surface_resize(application_surface, 1920, 1080);
+			if (surface_exists(application_surface))
+			{
+				surface_resize(application_surface, 1920, 1080);
+			}
 			scr_set_screen_size();
 			global.full_level_map_screenshot = false;
 			global.actually_play_edited_level = false;

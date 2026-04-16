@@ -67,8 +67,9 @@ draw_xscale = lerp(draw_xscale, 1, 0.1);
 draw_yscale = lerp(draw_yscale, 1, 0.1);
 
 /* Pause */
+var pause_from_unfocus = global.automatically_pause_when_window_is_unfocused && !window_has_focus();
 var pause_condition_met = keyboard_check_pressed(vk_escape) ||
-(global.automatically_pause_when_window_is_unfocused && !window_has_focus()) ||
+pause_from_unfocus ||
 (global.controls_used_for_navigation == "mouse" && mouse_check_button_released(mb_left) && point_in_rectangle(mouse_get_x, mouse_get_y, display_get_gui_width() - 185, 0, display_get_gui_width(), 42));
 
 for (var i = 1; i <= global.max_players; i++)
@@ -84,7 +85,20 @@ for (var i = 1; i <= global.max_players; i++)
 if (pause_condition_met)
 {
 	global.pause = true;
-	global.pause_screenshot = sprite_create_from_surface(application_surface, 0, 0, surface_get_width(application_surface), surface_get_height(application_surface), 0, 0, 0, 0);
+	scr_delete_sprite_properly(global.pause_screenshot);
+	global.pause_screenshot = noone;
+
+	if (!pause_from_unfocus && surface_exists(application_surface))
+	{
+		var pause_width = surface_get_width(application_surface);
+		var pause_height = surface_get_height(application_surface);
+
+		if (pause_width > 0 && pause_height > 0)
+		{
+			global.pause_screenshot = sprite_create_from_surface(application_surface, 0, 0, pause_width, pause_height, 0, 0, 0, 0);
+		}
+	}
+
 	room_persistent = true;
 	global.pause_room = room;
 	audio_pause_all();

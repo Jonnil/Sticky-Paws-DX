@@ -1,8 +1,9 @@
 function scr_player_move_pause()
 {
+	var pause_from_unfocus = global.automatically_pause_when_window_is_unfocused && !window_has_focus();
 	var pause_condition =
 		(controller_connected && (!gamepad_is_connected(global.player_slot[player]) || gamepad_button_check_pressed(global.player_slot[player], gp_start))) ||
-		(global.automatically_pause_when_window_is_unfocused && !window_has_focus()) ||
+		pause_from_unfocus ||
 		(keyboard_check_pressed(vk_escape)) ||
 		(keyboard_check(vk_tab) && keyboard_check(vk_lshift)) ||
 		(global.controls_used_for_navigation == "mouse" && mouse_check_button_released(mb_left) && point_in_rectangle(device_mouse_x_to_gui(0), device_mouse_y_to_gui(0), display_get_gui_width() - 185, 0, display_get_gui_width(), 42)); /* Pause button appears in top right corner of screen when using mouse */
@@ -68,7 +69,20 @@ function scr_player_move_pause()
 			}
 			#endregion /* What player should control the pause menu END */
 
-			global.pause_screenshot = sprite_create_from_surface(application_surface, 0, 0, surface_get_width(application_surface), surface_get_height(application_surface), 0, 0, 0, 0);
+			scr_delete_sprite_properly(global.pause_screenshot);
+			global.pause_screenshot = noone;
+
+			if (!pause_from_unfocus && surface_exists(application_surface))
+			{
+				var pause_width = surface_get_width(application_surface);
+				var pause_height = surface_get_height(application_surface);
+
+				if (pause_width > 0 && pause_height > 0)
+				{
+					global.pause_screenshot = sprite_create_from_surface(application_surface, 0, 0, pause_width, pause_height, 0, 0, 0, 0);
+				}
+			}
+
 			room_persistent = true; /* Turn ON Room Persistency */
 			global.pause_room = room;
 			audio_pause_all();

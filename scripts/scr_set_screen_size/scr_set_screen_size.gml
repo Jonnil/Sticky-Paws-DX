@@ -3,6 +3,13 @@ function scr_set_screen_size()
 	var window_width = window_get_width();
 	var window_height = window_get_height();
 
+	/* When minimized, Windows can temporarily report invalid dimensions.
+	   Keep the last good camera/GUI state instead of pushing zero sizes through the renderer. */
+	if (window_width <= 0 || window_height <= 0)
+	{
+		return;
+	}
+
 	#region /* Set GUI size */
 	switch (global.gui_scale_modifier)
 	{
