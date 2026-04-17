@@ -717,6 +717,7 @@ function scr_character_manage_menu_step()
 				scr_open_folder(game_save_id + "\custom_characters\\" + string(ds_list_find_value(global.all_loaded_characters, global.character_index[fixed_player - 1])));
 			}
 		}
+		
 		if (keyboard_check_pressed(global.player_[inp.key][fixed_player][1][action.up]))
 		|| (keyboard_check_pressed(global.player_[inp.key][fixed_player][2][action.up]))
 		|| (gamepad_button_check_pressed(global.player_slot[fixed_player], gp_padu))
