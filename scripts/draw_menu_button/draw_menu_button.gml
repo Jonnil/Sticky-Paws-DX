@@ -79,3 +79,85 @@ function draw_menu_button(x_position, y_position, string_text, menu_index, menu_
 		return true;
 	}
 }
+
+function draw_menu_info_row(x_position, y_position, string_text, value_text, menu_index, option_description = "", row_width = -1, can_move_cursor_position = true)
+{
+	var mouse_get_x = device_mouse_x_to_gui(0);
+	var mouse_get_y = device_mouse_y_to_gui(0);
+	var row_height = 40;
+
+	if (row_width <= 0)
+	{
+		row_width = max(380, display_get_gui_width() - x_position - 64);
+	}
+
+	var row_left = x_position;
+	var row_top = y_position;
+	var row_right = row_left + row_width;
+	var row_bottom = row_top + row_height;
+	var using_mouse = (global.controls_used_for_navigation == "mouse");
+	var row_hovered = point_in_rectangle(mouse_get_x, mouse_get_y, row_left, row_top, row_right, row_bottom);
+	var row_selected = (menu == menu_index);
+	var row_focused = false;
+	var row_fill_color = make_color_rgb(20, 20, 20);
+	var row_outline_color = make_color_rgb(60, 60, 60);
+	var row_text_color = c_white;
+
+	if ((row_hovered
+	&& using_mouse
+	&& !open_dropdown)
+	|| (row_selected
+	&& !using_mouse
+	&& !open_dropdown))
+	{
+		if (menu_delay == 0 && menu_joystick_delay == 0)
+		{
+			menu = menu_index;
+		}
+
+		row_focused = true;
+		row_fill_color = make_color_rgb(24, 88, 94);
+		row_outline_color = c_white;
+		can_navigate_settings_sidebar = false;
+	}
+
+	if (row_focused)
+	{
+		draw_set_alpha(using_mouse ? 0.9 : scr_wave(0.15, 0.45, 1));
+		draw_roundrect_color_ext(row_left - 2, row_top - 2, row_right + 2, row_bottom + 2, 18, 18, c_white, c_white, false);
+		draw_set_alpha(1);
+	}
+
+	draw_roundrect_color_ext(row_left, row_top, row_right, row_bottom, 16, 16, row_fill_color, row_fill_color, false);
+
+	var display_text = string(string_text) + ": " + string(value_text);
+	var text_scale = global.default_text_size * 0.78;
+	var clipped_text = scr_debug_ellipsize_text(display_text, row_width - 32, text_scale);
+
+	draw_set_halign(fa_left);
+	draw_set_valign(fa_middle);
+	scr_draw_text_outlined(row_left + 14, row_top + (row_height * 0.5), clipped_text, text_scale, c_black, row_text_color, 1);
+
+	if (row_selected)
+	{
+		if (can_move_cursor_position)
+		&& (variable_instance_exists(self, "menu_cursor_y_position"))
+		&& (variable_instance_exists(self, "menu_y_offset"))
+		{
+			menu_cursor_y_position = y_position - menu_y_offset;
+		}
+
+		draw_sprite_ext(spr_menu_cursor, menu_cursor_index, row_left - 20, row_top + (row_height * 0.5), 1, 1, 0, c_white, 1);
+		draw_sprite_ext(spr_menu_cursor, menu_cursor_index, row_right + 20, row_top + (row_height * 0.5), 1, 1, 180, c_white, 1);
+		global.option_default = -1;
+
+		if (option_description != "")
+		{
+			global.option_description = option_description;
+		}
+		else
+		{
+			global.option_description = display_text;
+		}
+	}
+}

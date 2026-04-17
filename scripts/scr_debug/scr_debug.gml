@@ -272,20 +272,7 @@ function scr_debug_draw_debug_logic()
 		#region /* Save debug info when F2 is pressed */
 		if (keyboard_check_pressed(vk_f2))
 		{
-			var logs_folder = game_save_id + "debug_logs/";
-
-			if (!directory_exists(logs_folder))
-			{
-				directory_create(logs_folder);
-			}
-
-			var log_file_path = logs_folder + "debug_info-" + string(global.game_name) + "_v" + string(scr_get_build_date()) + "_" + scr_format_timestamp(date_current_datetime()) + "_" + string(scr_os_type_to_string(true, true)) + ".ini";
-
-			ini_open(log_file_path);
-			scr_write_debug_info();
-			ini_close();
-
-			show_debug_message("Debug information saved to: " + log_file_path);
+			scr_debug_save_manual_debug_info_dump();
 		}
 		#endregion /* Save debug info when F2 is pressed END */
 
@@ -532,6 +519,279 @@ function scr_debug_record_runtime_spawn_pass(created_instance_count)
 	return monitor;
 }
 
+/// @function scr_debug_get_level_identifier(level_loading_debug)
+/* Resolve the best available level identifier for debug output and log naming. */
+function scr_debug_get_level_identifier(level_loading_debug)
+{
+	var level_identifier = string(level_loading_debug.active_official_level_id);
+
+	if (level_identifier == "")
+	{
+		level_identifier = string(level_loading_debug.level_name);
+	}
+
+	if (level_identifier == "")
+	{
+		level_identifier = string(level_loading_debug.custom_folder_name);
+	}
+
+	if (level_identifier == "")
+	{
+		level_identifier = "unknown_level";
+	}
+
+	return level_identifier;
+}
+
+/// @function scr_debug_get_recent_level_load_history()
+/* Return the newest-first in-memory level-load validation history. */
+function scr_debug_get_recent_level_load_history()
+{
+	if (!variable_global_exists("debug_recent_level_load_history")
+	|| !is_array(global.debug_recent_level_load_history))
+	{
+		global.debug_recent_level_load_history = [];
+	}
+
+	return global.debug_recent_level_load_history;
+}
+
+/// @function scr_debug_record_level_load_history_entry(level_loading_debug, monitor)
+/* Record one finished validation result for later viewing in the debug menu. */
+function scr_debug_record_level_load_history_entry(level_loading_debug, monitor)
+{
+	var previous_history = scr_debug_get_recent_level_load_history();
+	var updated_history = [];
+	var history_limit = 5;
+
+	updated_history[0] =
+	{
+		timestamp: scr_format_timestamp(date_current_datetime()),
+		load_mode: string(level_loading_debug.load_mode),
+		level_identifier: scr_debug_get_level_identifier(level_loading_debug),
+		validation_result: string(monitor.validation_result),
+		validation_summary: scr_debug_format_validation_summary(monitor.validation_result),
+		auto_log_saved: monitor.auto_log_saved,
+		session_id: string(monitor.session_id)
+	};
+
+	var entries_to_copy = min(history_limit - 1, array_length(previous_history));
+
+	for (var history_index = 0; history_index < entries_to_copy; history_index++)
+	{
+		updated_history[history_index + 1] = previous_history[history_index];
+	}
+
+	global.debug_recent_level_load_history = updated_history;
+
+	return updated_history;
+}
+
+/// @function scr_debug_cache_latest_level_load_error_log(log_file_path, level_identifier, failure_reason, validation_result, session_id, timestamp)
+/* Cache the newest automatic level-load error log so the menu can display it without repeated folder scans. */
+function scr_debug_cache_latest_level_load_error_log(log_file_path, level_identifier = "", failure_reason = "", validation_result = "", session_id = "", timestamp = "")
+{
+	var cached_path = string(log_file_path);
+
+	if (cached_path == "")
+	{
+		global.debug_latest_level_load_error_log = undefined;
+		global.debug_level_load_error_log_scan_complete = true;
+		return undefined;
+	}
+
+	var cached_level_identifier = string(level_identifier);
+	if (cached_level_identifier == "")
+	{
+		cached_level_identifier = "unknown_level";
+	}
+
+	var cached_timestamp = string(timestamp);
+	if (cached_timestamp == "")
+	{
+		cached_timestamp = scr_format_timestamp(date_current_datetime());
+	}
+
+	global.debug_latest_level_load_error_log =
+	{
+		path: cached_path,
+		display_path: scr_censor_game_save_id_for_display(cached_path),
+		level_identifier: cached_level_identifier,
+		failure_reason: string(failure_reason),
+		validation_result: string(validation_result),
+		session_id: string(session_id),
+		saved_at: cached_timestamp
+	};
+
+	global.debug_level_load_error_log_scan_complete = true;
+
+	return global.debug_latest_level_load_error_log;
+}
+
+/// @function scr_debug_read_level_load_error_log_metadata(log_file_path)
+/* Read the minimum metadata needed to summarize a saved automatic level-load error log in the debug menu. */
+function scr_debug_read_level_load_error_log_metadata(log_file_path)
+{
+	var cached_path = string(log_file_path);
+
+	if (cached_path == ""
+	|| !file_exists(cached_path))
+	{
+		return undefined;
+	}
+
+	ini_open(cached_path);
+
+	var cached_timestamp = ini_read_string("Log Metadata", "Timestamp", "");
+	var level_identifier = ini_read_string("Level Loading", "active_official_level_id", "");
+	if (level_identifier == "")
+	{
+		level_identifier = ini_read_string("Level Loading", "global.level_name", "");
+	}
+	if (level_identifier == "")
+	{
+		level_identifier = ini_read_string("Level Loading", "custom_folder_name", "");
+	}
+	if (level_identifier == "")
+	{
+		level_identifier = "unknown_level";
+	}
+
+	var failure_reason = ini_read_string("Auto Level Load Error", "failure_reason", "");
+	var validation_result = ini_read_string("Auto Level Load Error", "validation_result", "");
+	if (validation_result == "")
+	{
+		validation_result = ini_read_string("Level Loading", "validation_result", "");
+	}
+
+	var session_id = ini_read_string("Auto Level Load Error", "session_id", "");
+	if (session_id == "")
+	{
+		session_id = ini_read_string("Level Loading", "monitor_session_id", "");
+	}
+
+	ini_close();
+
+	return scr_debug_cache_latest_level_load_error_log(cached_path, level_identifier, failure_reason, validation_result, session_id, cached_timestamp);
+}
+
+/// @function scr_debug_get_latest_level_load_error_log(force_refresh)
+/* Return cached automatic level-load error metadata, performing a single fallback folder scan when needed. */
+function scr_debug_get_latest_level_load_error_log(force_refresh = false)
+{
+	if (force_refresh)
+	{
+		global.debug_latest_level_load_error_log = undefined;
+		global.debug_level_load_error_log_scan_complete = false;
+	}
+
+	if (variable_global_exists("debug_latest_level_load_error_log")
+	&& is_struct(global.debug_latest_level_load_error_log)
+	&& string(global.debug_latest_level_load_error_log.path) != "")
+	{
+		return global.debug_latest_level_load_error_log;
+	}
+
+	if (variable_global_exists("debug_level_load_error_log_scan_complete")
+	&& global.debug_level_load_error_log_scan_complete)
+	{
+		return undefined;
+	}
+
+	global.debug_level_load_error_log_scan_complete = true;
+
+	var logs_folder = game_save_id + "debug_logs/level_load_error/";
+	if (!directory_exists(logs_folder))
+	{
+		return undefined;
+	}
+
+	var latest_log_name = "";
+	var latest_log_path = "";
+	var found_file = file_find_first(logs_folder + "*.ini", 0);
+
+	if (found_file != "")
+	{
+		while (found_file != "")
+		{
+			var candidate_name = string(found_file);
+			var candidate_path = logs_folder + candidate_name;
+
+			if (file_exists(candidate_path)
+			&& (latest_log_name == ""
+			|| candidate_name > latest_log_name))
+			{
+				latest_log_name = candidate_name;
+				latest_log_path = candidate_path;
+			}
+
+			found_file = file_find_next();
+		}
+
+		file_find_close();
+	}
+
+	if (latest_log_path == "")
+	{
+		return undefined;
+	}
+
+	return scr_debug_read_level_load_error_log_metadata(latest_log_path);
+}
+
+/// @function scr_debug_save_manual_debug_info_dump()
+/* Save a manual debug dump to the dedicated manual_debug_info folder. */
+function scr_debug_get_manual_debug_info_folder(create_if_missing = false)
+{
+	var logs_root = game_save_id + "debug_logs/";
+	var logs_folder = logs_root + "manual_debug_info/";
+
+	if (create_if_missing
+	&& !directory_exists(logs_root))
+	{
+		directory_create(logs_root);
+	}
+
+	if (create_if_missing
+	&& !directory_exists(logs_folder))
+	{
+		directory_create(logs_folder);
+	}
+
+	return logs_folder;
+}
+
+/// @function scr_debug_open_manual_debug_info_folder()
+/* Open the folder that stores manual debug dumps, creating it if needed first. */
+function scr_debug_open_manual_debug_info_folder()
+{
+	var logs_folder = scr_debug_get_manual_debug_info_folder(true);
+	scr_open_folder(logs_folder);
+
+	return logs_folder;
+}
+
+/// @function scr_debug_save_manual_debug_info_dump()
+/* Save a manual debug dump to the dedicated manual_debug_info folder. */
+function scr_debug_save_manual_debug_info_dump()
+{
+	var logs_folder = scr_debug_get_manual_debug_info_folder(true);
+	var log_timestamp = scr_format_timestamp(date_current_datetime());
+
+	var log_file_path = logs_folder + "debug_info-" + string(global.game_name) + "_v" + string(scr_get_build_date()) + "_" + log_timestamp + "_" + string(scr_os_type_to_string(true, true)) + ".ini";
+
+	ini_open(log_file_path);
+	scr_write_debug_info();
+	ini_close();
+
+	global.debug_latest_manual_debug_dump_path = log_file_path;
+	global.debug_latest_manual_debug_dump_saved_at = log_timestamp;
+
+	show_debug_message("Debug information saved to: " + scr_censor_game_save_id_for_display(log_file_path));
+
+	return log_file_path;
+}
+
 /// @function scr_debug_join_string_array(string_array)
 /* Join a flat array of strings with "; " for compact debug output. */
 function scr_debug_join_string_array(string_array)
@@ -555,17 +815,7 @@ function scr_debug_join_string_array(string_array)
 /* Build a stable signature so rapid retries suppress duplicate auto-log files. */
 function scr_debug_build_level_load_failure_signature(level_loading_debug, failure_reason)
 {
-	var level_identifier = string(level_loading_debug.active_official_level_id);
-
-	if (level_identifier == "")
-	{
-		level_identifier = string(level_loading_debug.level_name);
-	}
-
-	if (level_identifier == "")
-	{
-		level_identifier = string(level_loading_debug.custom_folder_name);
-	}
+	var level_identifier = scr_debug_get_level_identifier(level_loading_debug);
 
 	return string(level_loading_debug.load_mode)
 		+ "|"
@@ -586,7 +836,8 @@ function scr_debug_save_level_load_error_log(failure_reason, failure_signature)
 	var level_loading_debug = scr_get_level_loading_debug_data();
 	var logs_root = game_save_id + "debug_logs/";
 	var logs_folder = logs_root + "level_load_error/";
-	var level_identifier = string(level_loading_debug.active_official_level_id);
+	var level_identifier = scr_debug_get_level_identifier(level_loading_debug);
+	var log_timestamp = scr_format_timestamp(date_current_datetime());
 
 	if (!directory_exists(logs_root))
 	{
@@ -598,24 +849,9 @@ function scr_debug_save_level_load_error_log(failure_reason, failure_signature)
 		directory_create(logs_folder);
 	}
 
-	if (level_identifier == "")
-	{
-		level_identifier = string(level_loading_debug.level_name);
-	}
-
-	if (level_identifier == "")
-	{
-		level_identifier = string(level_loading_debug.custom_folder_name);
-	}
-
-	if (level_identifier == "")
-	{
-		level_identifier = "unknown_level";
-	}
-
 	var log_file_path = logs_folder
 		+ "level_load_error_"
-		+ scr_format_timestamp(date_current_datetime())
+		+ log_timestamp
 		+ "_"
 		+ scr_sanitize_filename(level_loading_debug.load_mode, 32)
 		+ "_"
@@ -634,6 +870,8 @@ function scr_debug_save_level_load_error_log(failure_reason, failure_signature)
 	ini_open(log_file_path);
 	scr_write_debug_info();
 	ini_close();
+
+	scr_debug_cache_latest_level_load_error_log(log_file_path, level_identifier, failure_reason, monitor.validation_result, monitor.session_id, log_timestamp);
 
 	global.debug_auto_level_load_log_context = undefined;
 
@@ -800,6 +1038,7 @@ function scr_debug_validate_level_load_after_stabilization(validation_delay_fram
 	}
 
 	global.debug_level_load_monitor = monitor;
+	scr_debug_record_level_load_history_entry(level_loading_debug, monitor);
 
 	return array_length(failure_messages) > 0;
 }
@@ -1078,6 +1317,40 @@ function scr_debug_format_runtime_spawn_pass_summary(spawn_pass_count)
 function scr_debug_format_runtime_instances_created_summary(created_count)
 {
 	return string(created_count) + " created from placed-object placeholders";
+}
+
+/// @function scr_debug_format_latest_level_load_error_summary(level_load_error_log)
+/* Build the one-line summary shown for the newest saved automatic level-load error log. */
+function scr_debug_format_latest_level_load_error_summary(level_load_error_log)
+{
+	if (!is_struct(level_load_error_log))
+	{
+		return "";
+	}
+
+	return string(level_load_error_log.saved_at)
+		+ " - "
+		+ string(level_load_error_log.level_identifier)
+		+ " - "
+		+ string(level_load_error_log.display_path);
+}
+
+/// @function scr_debug_format_recent_level_load_history_entry(history_entry)
+/* Build the one-line summary shown for each recent validation result in the debug menu. */
+function scr_debug_format_recent_level_load_history_entry(history_entry)
+{
+	if (!is_struct(history_entry))
+	{
+		return "";
+	}
+
+	return string(history_entry.timestamp)
+		+ " | "
+		+ string(history_entry.load_mode)
+		+ " | "
+		+ string(history_entry.level_identifier)
+		+ " | "
+		+ string(history_entry.validation_summary);
 }
 
 /// @function scr_debug_is_integer_string(value_to_check)

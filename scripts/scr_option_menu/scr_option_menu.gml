@@ -777,6 +777,11 @@ function scr_option_menu()
 		var debug_text_submenu_active = (global.settings_sidebar_menu == "debug_settings")
 			&& (string_pos("debug_screen_text_", string(menu)) == 1)
 			&& (menu != "debug_screen_text_menu");
+		var level_load_diagnostics_submenu_active = (global.settings_sidebar_menu == "debug_settings")
+			&& (string_pos("level_load_diagnostics_", string(menu)) == 1)
+			&& (menu != "level_load_diagnostics_menu");
+		var debug_submenu_active = debug_text_submenu_active
+			|| level_load_diagnostics_submenu_active;
 
 		if (key_b_pressed)
 		&& (!can_navigate_settings_sidebar)
@@ -789,9 +794,11 @@ function scr_option_menu()
 				open_dropdown = false;
 			}
 			else
-			if (debug_text_submenu_active)
+			if (debug_submenu_active)
 			{
-				menu = "debug_screen_text_menu";
+				menu = debug_text_submenu_active
+					? "debug_screen_text_menu"
+					: "level_load_diagnostics_menu";
 				menu_y_offset = 0;
 				menu_y_offset_real = 0;
 				menu_delay = 3;
@@ -2420,23 +2427,53 @@ function scr_option_menu()
 
 			var debug_text_menu_active = (string_pos("debug_screen_text_", string(menu)) == 1)
 				&& (menu != "debug_screen_text_menu");
+			var level_load_diagnostics_menu_active = (string_pos("level_load_diagnostics_", string(menu)) == 1)
+				&& (menu != "level_load_diagnostics_menu");
+	var debug_settings_submenu_active = debug_text_menu_active
+		|| level_load_diagnostics_menu_active;
 
 			draw_set_halign(fa_left);
 			draw_set_valign(fa_middle);
 
-			if (!debug_text_menu_active)
+	if (!debug_settings_submenu_active)
 			{
+				var level_loading_debug = scr_get_level_loading_debug_data();
+				var latest_level_load_error_log = scr_debug_get_latest_level_load_error_log();
+				var latest_level_load_error_visible = !is_undefined(latest_level_load_error_log)
+					&& is_struct(latest_level_load_error_log)
+					&& string(latest_level_load_error_log.path) != "";
+				var latest_load_check_summary = scr_debug_format_validation_summary(level_loading_debug.validation_result);
+				var latest_error_log_summary = latest_level_load_error_visible
+					? scr_debug_format_latest_level_load_error_summary(latest_level_load_error_log)
+					: "";
+				var open_debug_dump_folder_visible = global.enable_open_custom_folder;
 				var debug_screen_y = 64;
 				var debug_screen_text_menu_y = 64 + 48;
-				var debug_detailed_mode_y = 64 + (48 * 2);
-				var debug_unlock_level_editor_objects_y = 64 + (48 * 3);
-				var debug_auto_unlock_runner_y = 64 + (48 * 4);
+				var level_load_diagnostics_menu_y = 64 + (48 * 2);
+				var latest_load_check_y = 64 + (48 * 3);
+				var latest_error_log_y = 64 + (48 * 4);
+				var save_debug_dump_y = latest_level_load_error_visible
+					? 64 + (48 * 5)
+					: latest_error_log_y;
+				var open_debug_dump_folder_y = save_debug_dump_y + 48;
+				var debug_detailed_mode_y = open_debug_dump_folder_visible
+					? open_debug_dump_folder_y + 48
+					: save_debug_dump_y + 48;
+				var debug_unlock_level_editor_objects_y = debug_detailed_mode_y + 48;
+				var debug_auto_unlock_runner_y = debug_unlock_level_editor_objects_y + 48;
 				var level_editor_unlock_before = global.debug_unlock_all_level_editor_objects;
 
 				global.debug_screen = draw_menu_checkmark(380, debug_screen_y, l10n_text("Debug Screen"), "debug_screen", global.debug_screen, false,
 					l10n_text("Displays debug information for development and troubleshooting"));
 
 				var open_debug_screen_text_menu = draw_menu_button(420, debug_screen_text_menu_y, l10n_text("Debug Screen Text"), "debug_screen_text_menu", "");
+
+				if (menu == "debug_screen_text_menu")
+				{
+					global.option_default = -1;
+					global.option_description = l10n_text("Opens the Debug Screen Text menu to customize which debug text groups are visible");
+					menu_cursor_y_position = debug_screen_text_menu_y;
+				}
 
 				if (open_debug_screen_text_menu)
 				&& (menu_delay == 0 && menu_joystick_delay == 0)
@@ -2445,6 +2482,69 @@ function scr_option_menu()
 					menu_y_offset = 0;
 					menu_y_offset_real = 0;
 					menu_delay = 3;
+				}
+
+				var open_level_load_diagnostics_menu = draw_menu_button(420, level_load_diagnostics_menu_y, l10n_text("Level Load Diagnostics"), "level_load_diagnostics_menu", "");
+
+				if (menu == "level_load_diagnostics_menu")
+				{
+					global.option_default = -1;
+					global.option_description = l10n_text("Shows current level-load status, recent level-load sessions, and saved level-load error logs");
+					menu_cursor_y_position = level_load_diagnostics_menu_y;
+				}
+
+				if (open_level_load_diagnostics_menu)
+				&& (menu_delay == 0 && menu_joystick_delay == 0)
+				{
+					scr_debug_get_latest_level_load_error_log(true);
+					menu = "level_load_diagnostics_back";
+					menu_y_offset = 0;
+					menu_y_offset_real = 0;
+					menu_delay = 3;
+				}
+
+				draw_menu_info_row(410, latest_load_check_y, l10n_text("Latest Load Check"), latest_load_check_summary, "level_load_latest_check",
+					l10n_text("Shows the latest automatic level-load validation result"));
+
+				if (latest_level_load_error_visible)
+				{
+					draw_menu_info_row(410, latest_error_log_y, l10n_text("Latest Error Log"), latest_error_log_summary, "level_load_latest_error_log",
+						l10n_text("Shows the newest saved automatic level-load error log"));
+				}
+
+				var save_debug_dump_now = draw_menu_button(420, save_debug_dump_y, l10n_text("Save Debug Dump Now"), "level_load_save_debug_dump", "");
+
+				if (menu == "level_load_save_debug_dump")
+				{
+					global.option_default = -1;
+					global.option_description = l10n_text("Writes a full debug information file immediately without waiting for an automatic error");
+					menu_cursor_y_position = save_debug_dump_y;
+				}
+
+				if (save_debug_dump_now)
+				&& (menu_delay == 0 && menu_joystick_delay == 0)
+				{
+					scr_debug_save_manual_debug_info_dump();
+					scr_debug_show_toast("Debug dump saved");
+					menu_delay = 3;
+				}
+
+				if (open_debug_dump_folder_visible)
+				{
+					var open_debug_dump_folder = draw_menu_button(420, open_debug_dump_folder_y, l10n_text("Open Debug Dump Folder"), "level_load_open_debug_dump_folder", "");
+
+					if (menu == "level_load_open_debug_dump_folder")
+					{
+						global.option_default = -1;
+						global.option_description = l10n_text("Opens the folder where manual debug dumps are saved");
+						menu_cursor_y_position = open_debug_dump_folder_y;
+					}
+
+					if (open_debug_dump_folder)
+					&& (menu_delay == 0 && menu_joystick_delay == 0)
+					{
+						scr_debug_open_manual_debug_info_folder();
+					}
 				}
 
 				global.debug_detailed_mode = draw_menu_checkmark(380, debug_detailed_mode_y, l10n_text("Debug Detailed Mode"), "debug_detailed_mode", global.debug_detailed_mode, false,
@@ -2463,8 +2563,13 @@ function scr_option_menu()
 					global.debug_menu_auto_unlock_runner = draw_menu_checkmark(380, debug_auto_unlock_runner_y, l10n_text("Auto-unlock Debug tab in GameMaker Runner"), "debug_menu_auto_unlock_runner", global.debug_menu_auto_unlock_runner, false,
 						l10n_text("Development convenience for IDE test runs only. Ignored in shipped builds."));
 				}
+
+				menu_cursor_y_position_end = (GM_build_type == "run")
+					? debug_auto_unlock_runner_y + 64
+					: debug_unlock_level_editor_objects_y + 64;
 			}
 			else
+			if (debug_text_menu_active)
 			{
 				var debug_text_search_modal_active = (menu == "debug_screen_text_search_ok")
 					|| (menu == "debug_screen_text_search_cancel");
@@ -2733,6 +2838,250 @@ function scr_option_menu()
 				}
 
 				menu_cursor_y_position_end = debug_screen_text_level_loading_profile_y + 64;
+			}
+			else
+			if (level_load_diagnostics_menu_active)
+			{
+				var level_loading_debug = scr_get_level_loading_debug_data();
+				var latest_level_load_error_log = scr_debug_get_latest_level_load_error_log();
+				var latest_level_load_error_visible = !is_undefined(latest_level_load_error_log)
+					&& is_struct(latest_level_load_error_log)
+					&& string(latest_level_load_error_log.path) != "";
+				var recent_level_load_history = scr_debug_get_recent_level_load_history();
+				var diagnostics_title_y = 28;
+				var diagnostics_back_y = 84;
+				var diagnostics_save_dump_y = diagnostics_back_y + 78;
+				var diagnostics_row_y = diagnostics_save_dump_y + 78;
+				var diagnostics_row_spacing = 48;
+				var diagnostics_title_x = 370 + ((display_get_gui_width() - 370) * 0.5);
+				var diagnostics_row_width = max(520, display_get_gui_width() - 490);
+				var diagnostics_open_dump_folder_visible = global.enable_open_custom_folder;
+				var diagnostics_open_dump_folder_y = diagnostics_save_dump_y + 56;
+				var diagnostics_row_draw_y = diagnostics_row_y;
+				var current_level_identifier = scr_debug_get_level_identifier(level_loading_debug);
+				var load_mode_text = string(level_loading_debug.load_mode);
+				var selected_official_level_id_text = string(level_loading_debug.selected_official_level_id) != "" ? string(level_loading_debug.selected_official_level_id) : "n/a";
+				var active_official_level_id_text = string(level_loading_debug.active_official_level_id) != "" ? string(level_loading_debug.active_official_level_id) : "n/a";
+				var after_goal_level_text = string(level_loading_debug.after_goal_go_to_this_level);
+				var load_snapshot_summary = scr_debug_format_snapshot_summary(level_loading_debug.load_snapshot_status, level_loading_debug.load_snapshot_reason);
+				var level_info_summary = scr_debug_format_resolved_path_summary(level_loading_debug.level_information_path, level_loading_debug.level_information_exists);
+				var object_json_summary = scr_debug_format_resolved_path_summary(level_loading_debug.object_placement_path, level_loading_debug.object_placement_exists);
+				var background_summary = scr_debug_format_resolved_path_summary(level_loading_debug.background_path, level_loading_debug.background_path_exists);
+				var automatic_load_check_summary = scr_debug_format_validation_summary(level_loading_debug.validation_result);
+				var placed_object_placeholder_summary = scr_debug_format_loaded_live_summary(level_loading_debug.loaded_placed_object_count, level_loading_debug.current_live_placed_object_count);
+				var spawn_pass_summary = scr_debug_format_runtime_spawn_pass_summary(level_loading_debug.runtime_spawn_calls);
+				var instances_created_summary = scr_debug_format_runtime_instances_created_summary(level_loading_debug.runtime_instances_created_total);
+				var auto_log_saved_text = level_loading_debug.auto_log_saved ? l10n_text("Yes") : l10n_text("No");
+				var latest_error_validation_summary = latest_level_load_error_visible
+					? scr_debug_format_validation_summary(latest_level_load_error_log.validation_result)
+					: "";
+
+				var close_level_load_diagnostics_menu = draw_menu_button(420, diagnostics_back_y + menu_y_offset, l10n_text("Back"), "level_load_diagnostics_back", "");
+
+				if (close_level_load_diagnostics_menu)
+				&& (menu_delay == 0 && menu_joystick_delay == 0)
+				{
+					menu = "level_load_diagnostics_menu";
+					menu_y_offset = 0;
+					menu_y_offset_real = 0;
+					menu_delay = 3;
+				}
+
+				if (menu == "level_load_diagnostics_back")
+				{
+					global.option_default = -1;
+					global.option_description = l10n_text("Returns to the main Debug tab");
+					menu_cursor_y_position = diagnostics_back_y;
+				}
+
+				var save_level_load_debug_dump = draw_menu_button(420, diagnostics_save_dump_y + menu_y_offset, l10n_text("Save Debug Dump Now"), "level_load_diagnostics_save_debug_dump", "");
+
+				if (menu == "level_load_diagnostics_save_debug_dump")
+				{
+					global.option_default = -1;
+					global.option_description = l10n_text("Writes a full debug information file immediately without waiting for an automatic error");
+					menu_cursor_y_position = diagnostics_save_dump_y;
+				}
+
+				if (save_level_load_debug_dump)
+				&& (menu_delay == 0 && menu_joystick_delay == 0)
+				{
+					scr_debug_save_manual_debug_info_dump();
+					scr_debug_show_toast("Debug dump saved");
+					menu_delay = 3;
+				}
+
+				if (diagnostics_open_dump_folder_visible)
+				{
+					var open_level_load_debug_dump_folder = draw_menu_button(420, diagnostics_open_dump_folder_y + menu_y_offset, l10n_text("Open Debug Dump Folder"), "level_load_diagnostics_open_debug_dump_folder", "");
+
+					if (menu == "level_load_diagnostics_open_debug_dump_folder")
+					{
+						global.option_default = -1;
+						global.option_description = l10n_text("Opens the folder where manual debug dumps are saved");
+						menu_cursor_y_position = diagnostics_open_dump_folder_y;
+					}
+
+					if (open_level_load_debug_dump_folder)
+					&& (menu_delay == 0 && menu_joystick_delay == 0)
+					{
+						scr_debug_open_manual_debug_info_folder();
+					}
+				}
+
+				if (diagnostics_open_dump_folder_visible)
+				{
+					diagnostics_row_draw_y = diagnostics_open_dump_folder_y + 78;
+				}
+
+				draw_set_halign(fa_center);
+				draw_set_valign(fa_middle);
+				scr_draw_text_outlined(diagnostics_title_x, diagnostics_title_y, l10n_text("Level Load Diagnostics"), global.default_text_size * 1.1, c_menu_outline, c_menu_fill, 1);
+
+				draw_menu_info_row(410, diagnostics_row_draw_y + menu_y_offset, l10n_text("Automatic Load Check"), automatic_load_check_summary, "level_load_diagnostics_automatic_load_check",
+					l10n_text("Shows the current automatic level-load validation result"), diagnostics_row_width);
+				diagnostics_row_draw_y += diagnostics_row_spacing;
+
+				draw_menu_info_row(410, diagnostics_row_draw_y + menu_y_offset, l10n_text("Load Snapshot"), load_snapshot_summary, "level_load_diagnostics_load_snapshot",
+					l10n_text("Shows the current snapshot of load-time file resolution and object capture"), diagnostics_row_width);
+				diagnostics_row_draw_y += diagnostics_row_spacing;
+
+				draw_menu_info_row(410, diagnostics_row_draw_y + menu_y_offset, l10n_text("Current Level"), current_level_identifier, "level_load_diagnostics_current_level",
+					l10n_text("Shows which level identifier the monitor is currently tracking"), diagnostics_row_width);
+				diagnostics_row_draw_y += diagnostics_row_spacing;
+
+				draw_menu_info_row(410, diagnostics_row_draw_y + menu_y_offset, l10n_text("Load Mode"), load_mode_text, "level_load_diagnostics_load_mode",
+					l10n_text("Shows whether the current load is official, template_official, or custom"), diagnostics_row_width);
+				diagnostics_row_draw_y += diagnostics_row_spacing;
+
+				draw_menu_info_row(410, diagnostics_row_draw_y + menu_y_offset, l10n_text("Selected Official ID"), selected_official_level_id_text, "level_load_diagnostics_selected_official_id",
+					l10n_text("Shows the currently selected official level ID"), diagnostics_row_width);
+				diagnostics_row_draw_y += diagnostics_row_spacing;
+
+				draw_menu_info_row(410, diagnostics_row_draw_y + menu_y_offset, l10n_text("Active Official ID"), active_official_level_id_text, "level_load_diagnostics_active_official_id",
+					l10n_text("Shows the official level ID that actually finished loading"), diagnostics_row_width);
+				diagnostics_row_draw_y += diagnostics_row_spacing;
+
+				draw_menu_info_row(410, diagnostics_row_draw_y + menu_y_offset, l10n_text("After Goal Level"), after_goal_level_text, "level_load_diagnostics_after_goal_level",
+					l10n_text("Shows where the game plans to send the player after clearing the level"), diagnostics_row_width);
+				diagnostics_row_draw_y += diagnostics_row_spacing;
+
+				draw_menu_info_row(410, diagnostics_row_draw_y + menu_y_offset, l10n_text("Level Info"), level_info_summary, "level_load_diagnostics_level_info",
+					l10n_text("Shows whether level_information.ini was found at the resolved path"), diagnostics_row_width);
+				diagnostics_row_draw_y += diagnostics_row_spacing;
+
+				draw_menu_info_row(410, diagnostics_row_draw_y + menu_y_offset, l10n_text("Object JSON"), object_json_summary, "level_load_diagnostics_object_json",
+					l10n_text("Shows whether object_placement_all.json was found at the resolved path"), diagnostics_row_width);
+				diagnostics_row_draw_y += diagnostics_row_spacing;
+
+				draw_menu_info_row(410, diagnostics_row_draw_y + menu_y_offset, l10n_text("Background"), background_summary, "level_load_diagnostics_background",
+					l10n_text("Shows whether the resolved background directory exists"), diagnostics_row_width);
+				diagnostics_row_draw_y += diagnostics_row_spacing;
+
+				draw_menu_info_row(410, diagnostics_row_draw_y + menu_y_offset, l10n_text("JSON Entries"), string(level_loading_debug.load_snapshot_json_entry_count), "level_load_diagnostics_json_entries",
+					l10n_text("Shows how many entries were read from object_placement_all.json during the load snapshot"), diagnostics_row_width);
+				diagnostics_row_draw_y += diagnostics_row_spacing;
+
+				draw_menu_info_row(410, diagnostics_row_draw_y + menu_y_offset, l10n_text("Placed-Object Placeholder"), placed_object_placeholder_summary, "level_load_diagnostics_placeholder_summary",
+					l10n_text("Compares the load-time placed-object placeholder count with the live count now"), diagnostics_row_width);
+				diagnostics_row_draw_y += diagnostics_row_spacing;
+
+				draw_menu_info_row(410, diagnostics_row_draw_y + menu_y_offset, l10n_text("Placed-Object Spawn Passes"), spawn_pass_summary, "level_load_diagnostics_spawn_passes",
+					l10n_text("Shows how many placed-object placeholder spawn passes finished"), diagnostics_row_width);
+				diagnostics_row_draw_y += diagnostics_row_spacing;
+
+				draw_menu_info_row(410, diagnostics_row_draw_y + menu_y_offset, l10n_text("Gameplay Instances Created"), instances_created_summary, "level_load_diagnostics_instances_created",
+					l10n_text("Shows how many gameplay instances were created from placed-object placeholders"), diagnostics_row_width);
+				diagnostics_row_draw_y += diagnostics_row_spacing;
+
+				draw_menu_info_row(410, diagnostics_row_draw_y + menu_y_offset, l10n_text("Auto-Log Saved This Load"), auto_log_saved_text, "level_load_diagnostics_auto_log_saved",
+					l10n_text("Shows whether the current validation session already saved an automatic error log"), diagnostics_row_width);
+				diagnostics_row_draw_y += diagnostics_row_spacing;
+
+				draw_menu_info_row(410, diagnostics_row_draw_y + menu_y_offset, l10n_text("Monitor Session ID"), string(level_loading_debug.monitor_session_id), "level_load_diagnostics_monitor_session_id",
+					l10n_text("Shows the current level-load monitor session ID"), diagnostics_row_width);
+				diagnostics_row_draw_y += diagnostics_row_spacing;
+
+				if (latest_level_load_error_visible)
+				{
+					draw_menu_info_row(410, diagnostics_row_draw_y + menu_y_offset, l10n_text("Latest Error Log"), string(latest_level_load_error_log.display_path), "level_load_diagnostics_latest_error_log",
+						l10n_text("Shows the newest saved automatic level-load error log path"), diagnostics_row_width);
+					diagnostics_row_draw_y += diagnostics_row_spacing;
+
+					draw_menu_info_row(410, diagnostics_row_draw_y + menu_y_offset, l10n_text("Latest Error Reason"), string(latest_level_load_error_log.failure_reason), "level_load_diagnostics_latest_error_reason",
+						l10n_text("Shows why the newest saved automatic level-load error log was written"), diagnostics_row_width);
+					diagnostics_row_draw_y += diagnostics_row_spacing;
+
+					draw_menu_info_row(410, diagnostics_row_draw_y + menu_y_offset, l10n_text("Latest Error Validation"), latest_error_validation_summary, "level_load_diagnostics_latest_error_validation",
+						l10n_text("Shows the saved validation result for the newest automatic level-load error log"), diagnostics_row_width);
+					diagnostics_row_draw_y += diagnostics_row_spacing;
+
+					draw_menu_info_row(410, diagnostics_row_draw_y + menu_y_offset, l10n_text("Latest Error Saved At"), string(latest_level_load_error_log.saved_at), "level_load_diagnostics_latest_error_saved_at",
+						l10n_text("Shows when the newest automatic level-load error log was saved"), diagnostics_row_width);
+					diagnostics_row_draw_y += diagnostics_row_spacing;
+
+					draw_menu_info_row(410, diagnostics_row_draw_y + menu_y_offset, l10n_text("Latest Error Session ID"), string(latest_level_load_error_log.session_id), "level_load_diagnostics_latest_error_session_id",
+						l10n_text("Shows which monitor session created the newest automatic level-load error log"), diagnostics_row_width);
+					diagnostics_row_draw_y += diagnostics_row_spacing;
+				}
+
+				for (var recent_load_index = 0; recent_load_index < min(5, array_length(recent_level_load_history)); recent_load_index++)
+				{
+					draw_menu_info_row(410, diagnostics_row_draw_y + menu_y_offset, l10n_text("Recent Load") + " " + string(recent_load_index + 1),
+						scr_debug_format_recent_level_load_history_entry(recent_level_load_history[recent_load_index]),
+						"level_load_diagnostics_recent_load_" + string(recent_load_index + 1),
+						l10n_text("Shows a recently completed automatic level-load validation result"),
+						diagnostics_row_width);
+					diagnostics_row_draw_y += diagnostics_row_spacing;
+				}
+
+				var export_reminder_text_scale = global.default_text_size * 0.78;
+				var export_reminder_lines = [];
+				var export_reminder_single_line = l10n_text("If a level-loading bug happens, export all save data with Includes CacheStorage enabled.");
+
+				if ((string_width(export_reminder_single_line) * export_reminder_text_scale) <= diagnostics_row_width)
+				{
+					export_reminder_lines[0] = export_reminder_single_line;
+				}
+				else
+				{
+					var export_reminder_multiline_text = l10n_text("If a level-loading bug happens, export all save data{br}with Includes CacheStorage enabled.");
+					var export_reminder_newline_index = string_pos("\n", export_reminder_multiline_text);
+
+					if (export_reminder_newline_index > 0)
+					{
+						export_reminder_lines[0] = string_copy(export_reminder_multiline_text, 1, export_reminder_newline_index - 1);
+						export_reminder_lines[1] = string_delete(export_reminder_multiline_text, 1, export_reminder_newline_index);
+					}
+					else
+					{
+						export_reminder_lines[0] = export_reminder_multiline_text;
+					}
+				}
+
+				var export_reminder_outline_offset = max(1, round(export_reminder_text_scale));
+				var export_reminder_line_spacing = max(24, round(string_height("A") * export_reminder_text_scale) + 10);
+
+				draw_set_halign(fa_left);
+				draw_set_valign(fa_top);
+				for (var export_reminder_index = 0; export_reminder_index < array_length(export_reminder_lines); export_reminder_index++)
+				{
+					var export_reminder_line_text = string(export_reminder_lines[export_reminder_index]);
+					var export_reminder_line_y = diagnostics_row_draw_y + 18 + menu_y_offset + (export_reminder_index * export_reminder_line_spacing);
+
+					draw_text_transformed_color(410 - export_reminder_outline_offset, export_reminder_line_y, export_reminder_line_text, export_reminder_text_scale, export_reminder_text_scale, 0,
+						c_menu_outline, c_menu_outline, c_menu_outline, c_menu_outline, 1);
+					draw_text_transformed_color(410 + export_reminder_outline_offset, export_reminder_line_y, export_reminder_line_text, export_reminder_text_scale, export_reminder_text_scale, 0,
+						c_menu_outline, c_menu_outline, c_menu_outline, c_menu_outline, 1);
+					draw_text_transformed_color(410, export_reminder_line_y - export_reminder_outline_offset, export_reminder_line_text, export_reminder_text_scale, export_reminder_text_scale, 0,
+						c_menu_outline, c_menu_outline, c_menu_outline, c_menu_outline, 1);
+					draw_text_transformed_color(410, export_reminder_line_y + export_reminder_outline_offset, export_reminder_line_text, export_reminder_text_scale, export_reminder_text_scale, 0,
+						c_menu_outline, c_menu_outline, c_menu_outline, c_menu_outline, 1);
+					draw_text_transformed_color(410, export_reminder_line_y, export_reminder_line_text, export_reminder_text_scale, export_reminder_text_scale, 0,
+						c_ltgray, c_ltgray, c_ltgray, c_ltgray, 1);
+				}
+
+				menu_cursor_y_position_end = diagnostics_row_draw_y + 112 + (max(0, array_length(export_reminder_lines) - 1) * export_reminder_line_spacing);
 			}
 		}
 		#endregion /* Debug Settings END */
@@ -3457,11 +3806,11 @@ function scr_option_menu()
 				&& (menu_delay == 0 && menu_joystick_delay == 0)
 				{
 					menu_delay = 3;
-					menu = "debug_detailed_mode";
+					menu = "level_load_diagnostics_menu";
 				}
 			}
 			else
-			if (menu == "debug_detailed_mode")
+			if (menu == "level_load_diagnostics_menu")
 			{
 				if (key_up)
 				&& (!open_dropdown)
@@ -3476,7 +3825,219 @@ function scr_option_menu()
 				&& (menu_delay == 0 && menu_joystick_delay == 0)
 				{
 					menu_delay = 3;
+					menu = "level_load_latest_check";
+				}
+			}
+			else
+			if (menu == "level_load_latest_check")
+			{
+				var latest_level_load_error_log = scr_debug_get_latest_level_load_error_log();
+				var latest_level_load_error_visible = !is_undefined(latest_level_load_error_log)
+					&& is_struct(latest_level_load_error_log)
+					&& string(latest_level_load_error_log.path) != "";
+
+				if (key_up)
+				&& (!open_dropdown)
+				&& (menu_delay == 0 && menu_joystick_delay == 0)
+				{
+					menu_delay = 3;
+					menu = "level_load_diagnostics_menu";
+				}
+				else
+				if (key_down)
+				&& (!open_dropdown)
+				&& (menu_delay == 0 && menu_joystick_delay == 0)
+				{
+					menu_delay = 3;
+					menu = latest_level_load_error_visible
+						? "level_load_latest_error_log"
+						: "level_load_save_debug_dump";
+				}
+			}
+			else
+			if (menu == "level_load_latest_error_log")
+			{
+				if (key_up)
+				&& (!open_dropdown)
+				&& (menu_delay == 0 && menu_joystick_delay == 0)
+				{
+					menu_delay = 3;
+					menu = "level_load_latest_check";
+				}
+				else
+				if (key_down)
+				&& (!open_dropdown)
+				&& (menu_delay == 0 && menu_joystick_delay == 0)
+				{
+					menu_delay = 3;
+					menu = "level_load_save_debug_dump";
+				}
+			}
+			else
+			if (menu == "level_load_save_debug_dump")
+			{
+				var latest_level_load_error_log = scr_debug_get_latest_level_load_error_log();
+				var latest_level_load_error_visible = !is_undefined(latest_level_load_error_log)
+					&& is_struct(latest_level_load_error_log)
+					&& string(latest_level_load_error_log.path) != "";
+				var open_debug_dump_folder_visible = global.enable_open_custom_folder;
+
+				if (key_up)
+				&& (!open_dropdown)
+				&& (menu_delay == 0 && menu_joystick_delay == 0)
+				{
+					menu_delay = 3;
+					menu = latest_level_load_error_visible
+						? "level_load_latest_error_log"
+						: "level_load_latest_check";
+				}
+				else
+				if (key_down)
+				&& (!open_dropdown)
+				&& (menu_delay == 0 && menu_joystick_delay == 0)
+				{
+					menu_delay = 3;
+					menu = open_debug_dump_folder_visible
+						? "level_load_open_debug_dump_folder"
+						: "debug_detailed_mode";
+				}
+			}
+			else
+			if (menu == "level_load_open_debug_dump_folder")
+			{
+				if (key_up)
+				&& (!open_dropdown)
+				&& (menu_delay == 0 && menu_joystick_delay == 0)
+				{
+					menu_delay = 3;
+					menu = "level_load_save_debug_dump";
+				}
+				else
+				if (key_down)
+				&& (!open_dropdown)
+				&& (menu_delay == 0 && menu_joystick_delay == 0)
+				{
+					menu_delay = 3;
+					menu = "debug_detailed_mode";
+				}
+			}
+			else
+			if (menu == "debug_detailed_mode")
+			{
+				var open_debug_dump_folder_visible = global.enable_open_custom_folder;
+
+				if (key_up)
+				&& (!open_dropdown)
+				&& (menu_delay == 0 && menu_joystick_delay == 0)
+				{
+					menu_delay = 3;
+					menu = open_debug_dump_folder_visible
+						? "level_load_open_debug_dump_folder"
+						: "level_load_save_debug_dump";
+				}
+				else
+				if (key_down)
+				&& (!open_dropdown)
+				&& (menu_delay == 0 && menu_joystick_delay == 0)
+				{
+					menu_delay = 3;
 					menu = "debug_unlock_all_level_editor_objects";
+				}
+			}
+			else
+			if (string_pos("level_load_diagnostics_", string(menu)) == 1)
+			&& (menu != "level_load_diagnostics_menu")
+			{
+				var latest_level_load_error_log = scr_debug_get_latest_level_load_error_log();
+				var latest_level_load_error_visible = !is_undefined(latest_level_load_error_log)
+					&& is_struct(latest_level_load_error_log)
+					&& string(latest_level_load_error_log.path) != "";
+				var recent_level_load_history = scr_debug_get_recent_level_load_history();
+				var level_load_diagnostics_nav = [
+					"level_load_diagnostics_back",
+					"level_load_diagnostics_save_debug_dump"
+				];
+
+				if (global.enable_open_custom_folder)
+				{
+					level_load_diagnostics_nav[array_length(level_load_diagnostics_nav)] = "level_load_diagnostics_open_debug_dump_folder";
+				}
+
+				level_load_diagnostics_nav[array_length(level_load_diagnostics_nav)] = "level_load_diagnostics_automatic_load_check";
+				level_load_diagnostics_nav[array_length(level_load_diagnostics_nav)] = "level_load_diagnostics_load_snapshot";
+				level_load_diagnostics_nav[array_length(level_load_diagnostics_nav)] = "level_load_diagnostics_current_level";
+				level_load_diagnostics_nav[array_length(level_load_diagnostics_nav)] = "level_load_diagnostics_load_mode";
+				level_load_diagnostics_nav[array_length(level_load_diagnostics_nav)] = "level_load_diagnostics_selected_official_id";
+				level_load_diagnostics_nav[array_length(level_load_diagnostics_nav)] = "level_load_diagnostics_active_official_id";
+				level_load_diagnostics_nav[array_length(level_load_diagnostics_nav)] = "level_load_diagnostics_after_goal_level";
+				level_load_diagnostics_nav[array_length(level_load_diagnostics_nav)] = "level_load_diagnostics_level_info";
+				level_load_diagnostics_nav[array_length(level_load_diagnostics_nav)] = "level_load_diagnostics_object_json";
+				level_load_diagnostics_nav[array_length(level_load_diagnostics_nav)] = "level_load_diagnostics_background";
+				level_load_diagnostics_nav[array_length(level_load_diagnostics_nav)] = "level_load_diagnostics_json_entries";
+				level_load_diagnostics_nav[array_length(level_load_diagnostics_nav)] = "level_load_diagnostics_placeholder_summary";
+				level_load_diagnostics_nav[array_length(level_load_diagnostics_nav)] = "level_load_diagnostics_spawn_passes";
+				level_load_diagnostics_nav[array_length(level_load_diagnostics_nav)] = "level_load_diagnostics_instances_created";
+				level_load_diagnostics_nav[array_length(level_load_diagnostics_nav)] = "level_load_diagnostics_auto_log_saved";
+				level_load_diagnostics_nav[array_length(level_load_diagnostics_nav)] = "level_load_diagnostics_monitor_session_id";
+
+				if (latest_level_load_error_visible)
+				{
+					level_load_diagnostics_nav[array_length(level_load_diagnostics_nav)] = "level_load_diagnostics_latest_error_log";
+					level_load_diagnostics_nav[array_length(level_load_diagnostics_nav)] = "level_load_diagnostics_latest_error_reason";
+					level_load_diagnostics_nav[array_length(level_load_diagnostics_nav)] = "level_load_diagnostics_latest_error_validation";
+					level_load_diagnostics_nav[array_length(level_load_diagnostics_nav)] = "level_load_diagnostics_latest_error_saved_at";
+					level_load_diagnostics_nav[array_length(level_load_diagnostics_nav)] = "level_load_diagnostics_latest_error_session_id";
+				}
+
+				for (var recent_load_nav_index = 0; recent_load_nav_index < min(5, array_length(recent_level_load_history)); recent_load_nav_index++)
+				{
+					level_load_diagnostics_nav[array_length(level_load_diagnostics_nav)] = "level_load_diagnostics_recent_load_" + string(recent_load_nav_index + 1);
+				}
+
+				var current_level_load_nav_index = -1;
+
+				for (var level_load_nav_index = 0; level_load_nav_index < array_length(level_load_diagnostics_nav); level_load_nav_index++)
+				{
+					if (menu == level_load_diagnostics_nav[level_load_nav_index])
+					{
+						current_level_load_nav_index = level_load_nav_index;
+						break;
+					}
+				}
+
+				if (current_level_load_nav_index >= 0)
+				{
+					if (key_up)
+					&& (!open_dropdown)
+					&& (menu_delay == 0 && menu_joystick_delay == 0)
+					{
+						menu_delay = 3;
+
+						if (current_level_load_nav_index <= 0)
+						{
+							menu = level_load_diagnostics_nav[array_length(level_load_diagnostics_nav) - 1];
+						}
+						else
+						{
+							menu = level_load_diagnostics_nav[current_level_load_nav_index - 1];
+						}
+					}
+					else
+					if (key_down)
+					&& (!open_dropdown)
+					&& (menu_delay == 0 && menu_joystick_delay == 0)
+					{
+						menu_delay = 3;
+
+						if (current_level_load_nav_index >= array_length(level_load_diagnostics_nav) - 1)
+						{
+							menu = level_load_diagnostics_nav[0];
+						}
+						else
+						{
+							menu = level_load_diagnostics_nav[current_level_load_nav_index + 1];
+						}
+					}
 				}
 			}
 			else
