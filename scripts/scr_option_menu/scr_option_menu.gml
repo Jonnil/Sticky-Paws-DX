@@ -100,7 +100,7 @@ function scr_option_menu()
 		broadcast_settings_y = language_settings_y + 40;
 	}
 
-	var debug_settings_visible = global.debug_menu_unlocked || (GM_build_type == "run");
+	var debug_settings_visible = scr_debug_is_hidden_debug_tab_visible();
 	var debug_settings_y = -999;
 
 	if (debug_settings_visible)
@@ -2395,8 +2395,7 @@ function scr_option_menu()
 				scr_set_font();
 			}
 
-			if (global.enable_option_for_pc)
-			|| (GM_build_type == "run") /* Only enable debug features in test run, and not executable */
+			if (scr_debug_should_show_public_debug_controls())
 			{
 				global.debug_screen = draw_menu_checkmark(380, debug_screen_draw_y, l10n_text("Debug Screen"), "debug_screen", global.debug_screen, false,
 					l10n_text("Displays debug information for development and troubleshooting"));
@@ -3434,8 +3433,7 @@ function scr_option_menu()
 				{
 					menu_delay = 3;
 					
-					if (global.enable_option_for_pc)
-					|| (GM_build_type == "run") /* Only enable debug features in test run, and not executable */
+					if (scr_debug_should_show_public_debug_controls())
 					{
 						menu = "debug_screen";
 					}
@@ -3746,8 +3744,7 @@ function scr_option_menu()
 				{
 					menu_delay = 3;
 
-					if (global.enable_option_for_pc)
-					|| (GM_build_type == "run") /* Only enable debug features in test run, and not executable */
+					if (scr_debug_should_show_public_debug_controls())
 					{
 						menu = "debug_screen";
 					}

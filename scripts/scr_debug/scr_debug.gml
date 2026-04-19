@@ -9,6 +9,21 @@ enum DEBUG_VISIBILITY_MODE
 	ALWAYS = 2
 }
 
+/// @function scr_debug_should_show_public_debug_controls()
+/* Returns whether public debug controls should be visible in normal PC-facing menus. */
+function scr_debug_should_show_public_debug_controls()
+{
+	return global.enable_option_for_pc
+		|| (GM_build_type == "run");
+}
+
+/// @function scr_debug_is_hidden_debug_tab_visible()
+/* Returns whether the hidden Debug tab should be visible in Options for the current session. */
+function scr_debug_is_hidden_debug_tab_visible()
+{
+	return global.debug_menu_unlocked;
+}
+
 /// @function scr_debug_toggle_screen()
 /* Toggles the debug screen visibility based on keyboard/gamepad input */
 function scr_debug_toggle_screen()
