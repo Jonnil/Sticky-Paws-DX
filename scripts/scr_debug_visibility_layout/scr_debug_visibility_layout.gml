@@ -672,51 +672,14 @@ function scr_debug_get_compact_overlay_title()
 /* Estimates the top edge of the options footer box so the compact overlay can avoid it. */
 function scr_debug_get_compact_overlay_footer_top(gui_width, gui_height)
 {
-	var option_default = "";
-	if (global.option_default == 1)
-	{
-		option_default = l10n_text("On by default");
-	}
-	else
-	if (global.option_default == 0)
-	{
-		option_default = l10n_text("Off by default");
-	}
+	var description_layout = scr_get_option_description_layout(gui_width, gui_height);
 
-	var option_description_text = "";
-	if (global.option_description != "" && global.option_default == -2)
-	{
-		option_description_text = l10n_text("Default") + ": " + string(global.option_description);
-	}
-	else
-	if (global.option_description != "" && option_default != "")
-	{
-		option_description_text = string(global.option_description) + " - " + string(option_default);
-	}
-	else
-	if (global.option_description != "")
-	{
-		option_description_text = string(global.option_description);
-	}
-	else
-	{
-		option_description_text = string(option_default);
-	}
-
-	if (option_description_text == "")
+	if (!description_layout.visible)
 	{
 		return gui_height - 20;
 	}
 
-	var max_text_width = gui_width * 0.98;
-	var padding = 20;
-	var scale = (global.default_text_size > 0) ? global.default_text_size * 0.9 : 1;
-	var line_sep = 32;
-	var text_height = scr_get_wrapped_text_height(option_description_text, max_text_width, line_sep, scale);
-	var rect_bottom = gui_height - 10;
-	var rect_top = rect_bottom - (max(32, text_height * 0.8)) - padding;
-
-	return rect_top - 20;
+	return description_layout.rect_top - 20;
 }
 
 /// @function scr_debug_draw_compact_overlay()

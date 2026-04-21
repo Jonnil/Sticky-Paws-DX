@@ -1,6 +1,5 @@
-function scr_draw_option_description()
+function scr_get_option_description_payload()
 {
-	/* Description that shows up when changing certain options */
 	var text_fill = c_white;
 	var option_default = "";
 
@@ -36,86 +35,193 @@ function scr_draw_option_description()
 		option_description_text = string(option_default);
 	}
 
-	if (option_description_text != "")
+	return {
+		text : option_description_text,
+		text_fill : text_fill
+	};
+}
+
+function scr_get_wrapped_text_metrics(text, max_width, line_sep, scale = 1)
+{
+	var resolved_text = string(text);
+	var wrapped_lines = [];
+	var paragraph_list = string_split(resolved_text, "\n");
+
+	if (max_width <= 0)
 	{
-		draw_set_alpha(1);
+		max_width = 1;
+	}
 
-		/* Ensure the GUI width is valid; if not, use a default value */
-		var gui_width = display_get_gui_width();
+	for (var paragraph_index = 0; paragraph_index < array_length(paragraph_list); paragraph_index++)
+	{
+		var paragraph_text = string_trim(string(paragraph_list[paragraph_index]));
 
-		if (gui_width <= 0)
+		if (paragraph_text == "")
 		{
-			gui_width = 1280; /* Default width if GUI width is unavailable */
+			array_push(wrapped_lines, "");
+			continue;
 		}
 
-		/* Wrap text at 98% of the screen width */
-		var max_text_width = gui_width * 0.98;
-		var padding = 20; /* Extra padding around text */
+		var word_list = string_split(paragraph_text, " ");
+		var current_line = "";
 
-		/* Use a scale factor for text. If not set, default to 1 */
-		var scale = (global.default_text_size != undefined && global.default_text_size > 0) ? global.default_text_size * 0.9 : 1;
-		var line_sep = 32; /* Vertical separation between lines */
-
-		/* Get the wrapped text height using our helper function with scaling */
-		var text_height = scr_get_wrapped_text_height(option_description_text, max_text_width, line_sep, scale);
-
-		/* Compute natural (scaled) width of the text */
-		var natural_width = string_width(option_description_text) * scale;
-
-		if (natural_width <= 0)
+		for (var word_index = 0; word_index < array_length(word_list); word_index++)
 		{
-			if (global.debug_screen)
+			var next_word = string_trim(string(word_list[word_index]));
+
+			if (next_word == "")
 			{
-				show_debug_message("[scr_draw_option_description] WARNING: Computed natural width is 0. Using max_text_width as fallback.");
+				continue;
 			}
-			natural_width = max_text_width;
-		}
 
-		var text_width = (natural_width < max_text_width) ? natural_width : max_text_width;
+			var candidate_line = (current_line == "")
+				? next_word
+				: current_line + " " + next_word;
 
-		if (text_width <= 0)
-		{
-			if (global.debug_screen)
+			if (current_line != ""
+			&& (string_width(candidate_line) * scale > max_width))
 			{
-				show_debug_message("[scr_draw_option_description] ERROR: Final computed text width is 0. Aborting drawing of option description.");
+				array_push(wrapped_lines, current_line);
+				current_line = next_word;
 			}
-			return;
+			else
+			{
+				current_line = candidate_line;
+			}
 		}
 
-		/*
-		   Position the black box:
-		   - Fix the bottom of the box at (display_get_gui_height() - 10)
-		   - Draw the text so that its bottom is at (rect_bottom - padding)
-		   - Compute the top of the box as the bottom minus the text height and one padding value.
-		*/
-		var rect_bottom = display_get_gui_height() - 10;
-		var rect_top = rect_bottom - (max(32, text_height * 0.8)) - padding;
+		if (current_line != "")
+		{
+			array_push(wrapped_lines, current_line);
+		}
+	}
 
-		/* Draw a rounded rectangle that hugs the text */
-		draw_roundrect_color_ext(
-			(gui_width - text_width) * 0.5 - padding,
-			rect_top,
-			(gui_width + text_width) * 0.5 + padding,
-			rect_bottom,
-			50, 50, c_black, c_black, false
+	if (array_length(wrapped_lines) <= 0)
+	{
+		array_push(wrapped_lines, "");
+	}
+
+	var outline_offset = max(1, round(scale));
+	var line_height = max(1, string_height("W") * scale);
+	var line_gap = max(4, round(line_height * 0.2));
+	var line_box_height = line_height + (outline_offset * 2);
+	var widest_line_width = 1;
+
+	for (var line_index = 0; line_index < array_length(wrapped_lines); line_index++)
+	{
+		widest_line_width = max(widest_line_width, min(max_width, string_width(string(wrapped_lines[line_index])) * scale));
+	}
+
+	var text_height = (array_length(wrapped_lines) * line_box_height) + (max(0, array_length(wrapped_lines) - 1) * line_gap);
+
+	return {
+		lines : wrapped_lines,
+		line_count : array_length(wrapped_lines),
+		line_gap : line_gap,
+		line_box_height : line_box_height,
+		widest_line_width : widest_line_width,
+		text_height : text_height
+	};
+}
+
+function scr_get_option_description_layout(gui_width = display_get_gui_width(), gui_height = display_get_gui_height())
+{
+	if (gui_width <= 0)
+	{
+		gui_width = 1280;
+	}
+
+	if (gui_height <= 0)
+	{
+		gui_height = 720;
+	}
+
+	var description_payload = scr_get_option_description_payload();
+
+	if (description_payload.text == "")
+	{
+		return {
+			visible : false,
+			rect_top : gui_height - 20
+		};
+	}
+
+	var scale = (variable_global_exists("default_text_size") && global.default_text_size > 0)
+		? global.default_text_size * 0.9
+		: 1;
+	var line_sep = 0;
+	var padding_x = max(28, round(gui_width * 0.024));
+	var padding_y = max(10, round(9 * scale));
+	var panel_margin = max(42, round(gui_width * 0.05));
+	var panel_width = max(360, gui_width - (panel_margin * 2));
+	var inner_width = max(1, panel_width - (padding_x * 2));
+	var wrapped_metrics = scr_get_wrapped_text_metrics(description_payload.text, inner_width, line_sep, scale);
+	var rect_bottom = gui_height - max(14, round(gui_height * 0.02));
+	var rect_top = rect_bottom - wrapped_metrics.text_height - (padding_y * 2);
+	var rect_left = (gui_width - panel_width) * 0.5;
+	var rect_right = rect_left + panel_width;
+	var text_block_top = rect_bottom - padding_y - wrapped_metrics.text_height;
+
+	return {
+		visible : true,
+		text : description_payload.text,
+		text_fill : description_payload.text_fill,
+		lines : wrapped_metrics.lines,
+		line_count : wrapped_metrics.line_count,
+		line_gap : wrapped_metrics.line_gap,
+		line_box_height : wrapped_metrics.line_box_height,
+		scale : scale,
+		line_sep : line_sep,
+		padding_y : padding_y,
+		inner_width : inner_width,
+		rect_left : rect_left,
+		rect_top : rect_top,
+		rect_right : rect_right,
+		rect_bottom : rect_bottom,
+		text_block_top : text_block_top
+	};
+}
+
+function scr_draw_option_description()
+{
+	var description_layout = scr_get_option_description_layout();
+
+	if (description_layout.visible)
+	{
+		draw_roundrect_glossy_color_ext(
+			description_layout.rect_left,
+			description_layout.rect_top,
+			description_layout.rect_right,
+			description_layout.rect_bottom,
+			50, 50, c_black, c_black, false, 1
 		);
 
-		/* Set alignment so that the text is centered horizontally and bottom aligned */
 		draw_set_halign(fa_center);
-		draw_set_valign(fa_bottom);
+		draw_set_valign(fa_middle);
 
-		/* Draw the text using draw_text_ext_transformed:
-		   The bottom of the text is aligned at (rect_bottom - padding), hugging the bottom.
-		*/
-		draw_text_ext_transformed(
-			gui_width * 0.5,
-			rect_bottom - padding,
-			option_description_text,
-			line_sep,
-			max_text_width,
-			scale, scale,
-			0
-		);
+		for (var line_index = 0; line_index < description_layout.line_count; line_index++)
+		{
+			var display_line = string(description_layout.lines[line_index]);
+
+			if (string_trim(display_line) == "")
+			{
+				continue;
+			}
+
+			var line_center_y = description_layout.text_block_top
+				+ (description_layout.line_box_height * 0.5)
+				+ (line_index * (description_layout.line_box_height + description_layout.line_gap));
+
+			scr_draw_text_outlined(
+				(description_layout.rect_left + description_layout.rect_right) * 0.5,
+				line_center_y,
+				display_line,
+				description_layout.scale,
+				c_black,
+				description_layout.text_fill,
+				1
+			);
+		}
 	}
 
 	/* Reset so that the description disappears when not needed */

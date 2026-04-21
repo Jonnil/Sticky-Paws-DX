@@ -215,7 +215,7 @@ function scr_option_menu()
 			{
 				draw_sprite_ext(spr_menu_button, global.menu_button_subimg, left_sidebar_x, 20 + game_settings_y, 1, 1, 0, c_gray, 1);
 			}
-			draw_sprite_ext(spr_settings_icon, 2, left_sidebar_x + 20 + icon_x_offset, 20 + game_settings_y, 1, 1, 0, c_white, 1) /* Settings Icon */
+			draw_sprite_ext(spr_icon_cogwheel, 0, left_sidebar_x + 20 + icon_x_offset, 20 + game_settings_y, 1, 1, 0, c_white, 1) /* Settings Icon */
 			scr_draw_text_outlined(left_sidebar_x + 40 + text_x_offset, 20 + game_settings_y, l10n_text("Game"), global.default_text_size * 1.05, c_black, c_white, 1);
 		}
 		else
@@ -229,7 +229,7 @@ function scr_option_menu()
 			{
 				draw_sprite_ext(spr_menu_button, global.menu_button_subimg, left_sidebar_x, 20 + game_settings_y, 1, 1, 0, c_white, 1);
 			}
-			draw_sprite_ext(spr_settings_icon, 2, left_sidebar_x + 20 + icon_x_offset, 20 + game_settings_y, 0.9, 0.9, 0, c_white, 1)
+			draw_sprite_ext(spr_icon_cogwheel, 0, left_sidebar_x + 20 + icon_x_offset, 20 + game_settings_y, 0.9, 0.9, 0, c_white, 1)
 			scr_draw_text_outlined(left_sidebar_x + 40 + text_x_offset, 20 + game_settings_y, l10n_text("Game"), global.default_text_size, c_white, c_black, 1);
 		}
 		#endregion /* Game Settings END */
@@ -680,7 +680,7 @@ function scr_option_menu()
 				{
 					draw_sprite_ext(spr_menu_button, global.menu_button_subimg, left_sidebar_x, 20 + debug_settings_y, 1, 1, 0, c_gray, 1);
 				}
-				draw_sprite_ext(spr_settings_icon, 2, left_sidebar_x + 20 + icon_x_offset, 20 + debug_settings_y, 1, 1, 0, c_white, 1);
+				draw_sprite_ext(spr_icon_bug, 2, left_sidebar_x + 20 + icon_x_offset, 20 + debug_settings_y, 1, 1, 0, c_white, 1);
 				scr_draw_text_outlined(left_sidebar_x + 40 + text_x_offset, 20 + debug_settings_y, l10n_text("Debug"), global.default_text_size * 1.05, c_black, c_white, 1);
 			}
 			else
@@ -694,7 +694,7 @@ function scr_option_menu()
 				{
 					draw_sprite_ext(spr_menu_button, global.menu_button_subimg, left_sidebar_x, 20 + debug_settings_y, 1, 1, 0, c_white, 1);
 				}
-				draw_sprite_ext(spr_settings_icon, 2, left_sidebar_x + 20 + icon_x_offset, 20 + debug_settings_y, 0.9, 0.9, 0, c_white, 1);
+				draw_sprite_ext(spr_icon_bug, 2, left_sidebar_x + 20 + icon_x_offset, 20 + debug_settings_y, 0.9, 0.9, 0, c_white, 1);
 				scr_draw_text_outlined(left_sidebar_x + 40 + text_x_offset, 20 + debug_settings_y, l10n_text("Debug"), global.default_text_size, c_white, c_black, 1);
 			}
 		}
@@ -2572,7 +2572,7 @@ function scr_option_menu()
 			{
 				var debug_text_search_modal_active = (menu == "debug_screen_text_search_ok")
 					|| (menu == "debug_screen_text_search_cancel");
-				var debug_screen_text_title_y = 28;
+				var debug_screen_text_title_y = 42;
 				var debug_screen_text_back_y = 84;
 				var debug_screen_text_search_y = debug_screen_text_back_y + 78;
 				var debug_screen_text_search_label_y = debug_screen_text_search_y - 10;
@@ -2623,10 +2623,6 @@ function scr_option_menu()
 					global.option_description = l10n_text("Returns to the main Debug tab");
 					menu_cursor_y_position = debug_screen_text_back_y;
 				}
-
-				draw_set_halign(fa_center);
-				draw_set_valign(fa_middle);
-				scr_draw_text_outlined(debug_text_title_x, debug_screen_text_title_y, l10n_text("Debug Screen Text"), global.default_text_size * 1.1, c_menu_outline, c_menu_fill, 1);
 
 				draw_set_halign(fa_left);
 				draw_set_valign(fa_bottom);
@@ -2812,6 +2808,8 @@ function scr_option_menu()
 					menu_delay = 3;
 				}
 
+				scr_draw_settings_overlay_title(debug_text_title_x, debug_screen_text_title_y, l10n_text("Debug Screen Text"), min(get_window_width - 430, 560));
+
 				open_dropdown = debug_text_previous_open_dropdown;
 
 				if (debug_text_search_modal_active)
@@ -2847,7 +2845,7 @@ function scr_option_menu()
 					&& is_struct(latest_level_load_error_log)
 					&& string(latest_level_load_error_log.path) != "";
 				var recent_level_load_history = scr_debug_get_recent_level_load_history();
-				var diagnostics_title_y = 28;
+				var diagnostics_title_y = 42;
 				var diagnostics_back_y = 84;
 				var diagnostics_save_dump_y = diagnostics_back_y + 78;
 				var diagnostics_row_y = diagnostics_save_dump_y + 78;
@@ -2932,10 +2930,6 @@ function scr_option_menu()
 				{
 					diagnostics_row_draw_y = diagnostics_open_dump_folder_y + 78;
 				}
-
-				draw_set_halign(fa_center);
-				draw_set_valign(fa_middle);
-				scr_draw_text_outlined(diagnostics_title_x, diagnostics_title_y, l10n_text("Level Load Diagnostics"), global.default_text_size * 1.1, c_menu_outline, c_menu_fill, 1);
 
 				draw_menu_info_row(410, diagnostics_row_draw_y + menu_y_offset, l10n_text("Automatic Load Check"), automatic_load_check_summary, "level_load_diagnostics_automatic_load_check",
 					l10n_text("Shows the current automatic level-load validation result"), diagnostics_row_width);
@@ -3079,6 +3073,8 @@ function scr_option_menu()
 					draw_text_transformed_color(410, export_reminder_line_y, export_reminder_line_text, export_reminder_text_scale, export_reminder_text_scale, 0,
 						c_ltgray, c_ltgray, c_ltgray, c_ltgray, 1);
 				}
+
+				scr_draw_settings_overlay_title(diagnostics_title_x, diagnostics_title_y, l10n_text("Level Load Diagnostics"), min(get_window_width - 430, 620));
 
 				menu_cursor_y_position_end = diagnostics_row_draw_y + 112 + (max(0, array_length(export_reminder_lines) - 1) * export_reminder_line_spacing);
 			}

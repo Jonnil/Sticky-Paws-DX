@@ -600,6 +600,7 @@
     {"name":"spr_ice_block","order":11,"path":"sprites/spr_ice_block/spr_ice_block.yy",},
     {"name":"spr_icon_antenna","order":56,"path":"sprites/spr_icon_antenna/spr_icon_antenna.yy",},
     {"name":"spr_icon_back","order":16,"path":"sprites/spr_icon_back/spr_icon_back.yy",},
+    {"name":"spr_icon_bug","order":59,"path":"sprites/spr_icon_bug/spr_icon_bug.yy",},
     {"name":"spr_icon_challenge_mode","order":57,"path":"sprites/spr_icon_challenge_mode/spr_icon_challenge_mode.yy",},
     {"name":"spr_icon_change_character","order":41,"path":"sprites/spr_icon_change_character/spr_icon_change_character.yy",},
     {"name":"spr_icon_cogwheel","order":10,"path":"sprites/spr_icon_cogwheel/spr_icon_cogwheel.yy",},

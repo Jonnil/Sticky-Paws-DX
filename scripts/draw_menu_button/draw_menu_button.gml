@@ -161,3 +161,27 @@ function draw_menu_info_row(x_position, y_position, string_text, value_text, men
 		}
 	}
 }
+
+function scr_draw_settings_overlay_title(x_position, y_position, title_text, max_width = -1)
+{
+	var title_scale = global.default_text_size * 1.1;
+	var padding_x = 26;
+	var padding_y = 14;
+	var title_width = (string_width(string(title_text)) * title_scale) + (padding_x * 2);
+	var title_max_width = (max_width > 0)
+		? max_width
+		: min(display_get_gui_width() - 440, 620);
+	var panel_width = clamp(title_width, 320, max(320, title_max_width));
+	var text_height = max(18, string_height("W") * title_scale);
+	var panel_height = text_height + (padding_y * 2);
+	var panel_left = x_position - (panel_width * 0.5);
+	var panel_right = x_position + (panel_width * 0.5);
+	var panel_top = y_position - (panel_height * 0.5);
+	var panel_bottom = y_position + (panel_height * 0.5);
+
+	draw_roundrect_glossy_color_ext(panel_left, panel_top, panel_right, panel_bottom, 18, 18, c_black, c_black, false, 1);
+
+	draw_set_halign(fa_center);
+	draw_set_valign(fa_middle);
+	scr_draw_text_outlined(x_position, y_position, string(title_text), title_scale, c_menu_outline, c_menu_fill, 1);
+}
