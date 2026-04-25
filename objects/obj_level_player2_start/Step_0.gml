@@ -19,7 +19,7 @@ if (instance_exists(obj_leveleditor))
 	&& (!point_in_rectangle(mouse_get_x, mouse_get_y, 0, display_get_gui_height() - 64, display_get_gui_width(), room_height * 2))
 	{
 		if (mouse_check_button_pressed(mb_left))
-		|| (obj_leveleditor.key_a_pressed)
+		|| (obj_leveleditor.key_accept_pressed)
 		{
 			if (position_meeting(obj_leveleditor.x, obj_leveleditor.y, id))
 			{
@@ -43,7 +43,7 @@ if (instance_exists(obj_leveleditor))
 
 	#region /* Release the object */
 	if (mouse_check_button_released(mb_left))
-	|| (obj_leveleditor.key_a_released)
+	|| (obj_leveleditor.key_accept_released)
 	{
 		if (drag_object)
 		{

@@ -123,7 +123,7 @@ function scr_draw_online_download_menu_data()
 				draw_menu_button_sprite(spr_menu_button, x_prev, y_prev,,, 0.5, 1, 185, 42, l10n_text("Previous"), "download_online_page_prev", "download_online_page_prev");
 
 				if (menu == "download_online_page_prev"
-				&& (key_a_pressed
+				&& (key_accept_pressed
 				|| mouse_check_button_released(mb_left)
 				&& (point_in_rectangle(device_mouse_x_to_gui(0), device_mouse_y_to_gui(0), x_prev, y_prev, x_prev + 185, y_prev + 42)))
 				&& menu_delay == 0
@@ -151,7 +151,7 @@ function scr_draw_online_download_menu_data()
 				draw_menu_button_sprite(spr_menu_button, x_next, y_next,,, 0.5, 1, 185, 42, l10n_text("Next"), "download_online_page_next", "download_online_page_next");
 
 				if (menu == "download_online_page_next"
-				&& (key_a_pressed
+				&& (key_accept_pressed
 				|| mouse_check_button_released(mb_left)
 				&& (point_in_rectangle(device_mouse_x_to_gui(0), device_mouse_y_to_gui(0), x_next, y_next, x_next + 185, y_next + 42)))
 				&& menu_delay == 0

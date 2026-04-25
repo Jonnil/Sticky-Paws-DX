@@ -4944,7 +4944,7 @@ function scr_option_control_menu()
 		}
 
 		#region /* Accept */
-		if (key_a_pressed || mouse_check_button_released(mb_left) && mouse_get_x > 370)
+		if (key_accept_pressed || mouse_check_button_released(mb_left) && mouse_get_x > 370)
 		&& (menu_delay == 0 && menu_joystick_delay == 0)
 		{
 			menu_delay = 3;

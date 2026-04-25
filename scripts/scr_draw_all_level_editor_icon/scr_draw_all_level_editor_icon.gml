@@ -110,7 +110,7 @@ function scr_draw_all_level_editor_icon()
 	|| (level_editor_menu == "autoscroll")
 	&& (!pause)
 	|| (show_autoscroll_menu)
-	&& (key_b_pressed)
+	&& (key_back_pressed)
 	&& (!pause)
 	{
 		if (!show_autoscroll_menu)
@@ -125,9 +125,9 @@ function scr_draw_all_level_editor_icon()
 		show_tooltip += 2;
 		if (mouse_check_button_pressed(mb_left))
 		|| (level_editor_menu == "autoscroll")
-		&& (key_a_pressed)
+		&& (key_accept_pressed)
 		|| (show_autoscroll_menu)
-		&& (key_b_pressed)
+		&& (key_back_pressed)
 		{
 			if (if_clear_checked)
 			{
@@ -192,7 +192,7 @@ function scr_draw_all_level_editor_icon()
 	|| (level_editor_menu == "time")
 	&& (!pause)
 	|| (show_time_menu)
-	&& (key_b_pressed)
+	&& (key_back_pressed)
 	&& (!pause)
 	{
 		draw_sprite_ext(spr_menu_cursor, menu_cursor_index, icon_at_left_x + 80, time_icon_y, 1, 1, 180, c_white, 1);
@@ -203,10 +203,10 @@ function scr_draw_all_level_editor_icon()
 		show_tooltip += 2;
 		if (mouse_check_button_pressed(mb_left))
 		|| (level_editor_menu == "time")
-		&& (key_a_pressed)
+		&& (key_accept_pressed)
 		&& (menu != "in_editor_enable_time_countdown")
 		|| (show_time_menu)
-		&& (key_b_pressed)
+		&& (key_back_pressed)
 		{
 			if (if_clear_checked)
 			{
@@ -334,7 +334,7 @@ function scr_draw_all_level_editor_icon()
 		show_tooltip += 2;
 		if (mouse_check_button_pressed(mb_left))
 		|| (level_editor_menu == "pen")
-		&& (key_a_pressed)
+		&& (key_accept_pressed)
 		{
 			if (erase_mode || fill_mode)
 			{
@@ -410,7 +410,7 @@ function scr_draw_all_level_editor_icon()
 		show_tooltip += 2;
 		if (mouse_check_button_pressed(mb_left))
 		|| (level_editor_menu == "erase")
-		&& (key_a_pressed)
+		&& (key_accept_pressed)
 		{
 			if (!erase_mode)
 			{
@@ -502,7 +502,7 @@ function scr_draw_all_level_editor_icon()
 		show_tooltip += 2;
 		if (mouse_check_button_pressed(mb_left))
 		|| (level_editor_menu == "fill")
-		&& (key_a_pressed)
+		&& (key_accept_pressed)
 		{
 			if (!fill_mode)
 			{
@@ -581,7 +581,7 @@ function scr_draw_all_level_editor_icon()
 	&& (point_in_rectangle(cursor_x, cursor_y, always_show_level_editor_buttons_x - 32 + 1, display_get_gui_height() - 64, always_show_level_editor_buttons_x + 32, display_get_gui_height() + 64 - 1))
 	|| (keyboard_check_pressed(ord("T")))
 	|| (level_editor_menu == "hide")
-	&& (key_a_pressed)
+	&& (key_accept_pressed)
 	{
 		global.always_show_level_editor_buttons = not global.always_show_level_editor_buttons;
 		ini_open(game_save_id + "save_file/config.ini");

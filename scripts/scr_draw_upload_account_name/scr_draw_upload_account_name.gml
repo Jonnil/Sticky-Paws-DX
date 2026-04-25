@@ -73,7 +73,7 @@ function scr_draw_upload_account_name(what_kind_of_file = "level")
 		}
 
 		#region /* Press Account Options */
-		if (key_a_pressed)
+		if (key_accept_pressed)
 		&& (menu == "question_upload_" + string(what_kind_of_file) + "_edit_username_options")
 		|| (point_in_rectangle(device_mouse_x_to_gui(0), device_mouse_y_to_gui(0), change_username_x - 185, button_options_y, change_username_x - 185 + 370, button_options_y + 42))
 		&& (global.controls_used_for_navigation == "mouse")
@@ -106,7 +106,7 @@ function scr_draw_upload_account_name(what_kind_of_file = "level")
 		#endregion /* Press Account Options END */
 
 		#region /* Press OK */
-		if (key_a_pressed)
+		if (key_accept_pressed)
 		&& (menu == "question_upload_" + string(what_kind_of_file) + "_edit_username_ok")
 		|| (point_in_rectangle(device_mouse_x_to_gui(0), device_mouse_y_to_gui(0), change_username_x - 185, button_ok_y, change_username_x - 185 + 370, button_ok_y + 42))
 		&& (global.controls_used_for_navigation == "mouse")
@@ -121,9 +121,9 @@ function scr_draw_upload_account_name(what_kind_of_file = "level")
 		else
 
 		#region /* Press Cancel */
-		if (key_a_pressed)
+		if (key_accept_pressed)
 		&& (menu == "question_upload_" + string(what_kind_of_file) + "_edit_username_cancel")
-		|| (key_b_pressed)
+		|| (key_back_pressed)
 		|| (point_in_rectangle(device_mouse_x_to_gui(0), device_mouse_y_to_gui(0), change_username_x - 185, button_cancel_y, change_username_x - 185 + 370, button_cancel_y + 42))
 		&& (global.controls_used_for_navigation == "mouse")
 		&& (mouse_check_button_released(mb_left))

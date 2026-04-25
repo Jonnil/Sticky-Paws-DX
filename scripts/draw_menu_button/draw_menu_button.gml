@@ -68,13 +68,13 @@ function draw_menu_button(x_position, y_position, string_text, menu_index, menu_
 
 	var level_editor_activated = instance_exists(obj_leveleditor)
 		&& menu == menu_index
-		&& obj_leveleditor.key_a_pressed
+		&& obj_leveleditor.key_accept_pressed
 		&& menu_delay == 0
 		&& menu_joystick_delay == 0;
 
-	var key_activated = variable_instance_exists(self, "key_a_pressed")
+	var key_activated = variable_instance_exists(self, "key_accept_pressed")
 		&& menu == menu_index
-		&& key_a_pressed
+		&& key_accept_pressed
 		&& menu_delay == 0
 		&& menu_joystick_delay == 0;
 

@@ -749,13 +749,13 @@ function scr_option_menu()
 		scr_scroll_menu();
 
 		#region /* Go back out of setting menu */
-		if (key_a_pressed)
+		if (key_accept_pressed)
 		&& (menu_delay == 0 && menu_joystick_delay == 0)
 		&& (global.settings_sidebar_menu == "settings_back")
 		&& (can_navigate_settings_sidebar)
 		&& (!input_key)
 		&& (!input_gamepad_button)
-		|| (key_b_pressed)
+		|| (key_back_pressed)
 		&& (menu_delay == 0 && menu_joystick_delay == 0)
 		&& (can_navigate_settings_sidebar)
 		&& (!input_key)
@@ -783,7 +783,7 @@ function scr_option_menu()
 		var debug_submenu_active = debug_text_submenu_active
 			|| level_load_diagnostics_submenu_active;
 
-		if (key_b_pressed)
+		if (key_back_pressed)
 		&& (!can_navigate_settings_sidebar)
 		&& (menu_delay == 0 && menu_joystick_delay == 0)
 		&& (!input_key)
@@ -815,7 +815,7 @@ function scr_option_menu()
 		&& (global.settings_sidebar_menu != "settings_back")
 		&& (can_navigate_settings_sidebar)
 		&& (menu_delay == 0 && menu_joystick_delay == 0)
-		|| (key_a_pressed)
+		|| (key_accept_pressed)
 		&& (global.settings_sidebar_menu != "settings_back")
 		&& (can_navigate_settings_sidebar)
 		&& (menu_delay == 0 && menu_joystick_delay == 0)
@@ -2691,7 +2691,7 @@ function scr_option_menu()
 				&& ((search_field_hovered
 				&& mouse_check_button_released(mb_left))
 				|| (search_field_selected
-				&& key_a_pressed
+				&& key_accept_pressed
 				&& menu_delay == 0
 				&& menu_joystick_delay == 0))
 				&& (menu_delay == 0 && menu_joystick_delay == 0)
@@ -3347,7 +3347,7 @@ function scr_option_menu()
 
 			if (menu == "default_audio_settings")
 			{
-				if (key_a_pressed)
+				if (key_accept_pressed)
 				&& (menu_delay == 0 && menu_joystick_delay == 0)
 				|| (mouse_check_button_released(mb_left) && mouse_get_x > 370)
 				&& (point_in_rectangle(mouse_get_x, mouse_get_y, 430, default_audio_settings_y + 1, 430 + 370, default_audio_settings_y + 41))

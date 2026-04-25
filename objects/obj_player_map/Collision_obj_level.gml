@@ -21,7 +21,7 @@ if (can_enter_level_automatically)
 
 || (can_enter_level >= 30)
 && (speed == 0)
-&& (key_a_pressed || mouse_check_button_released(mb_left)
+&& (key_accept_pressed || mouse_check_button_released(mb_left)
 && (point_in_rectangle(mouse_get_x, mouse_get_y, 0, display_get_gui_height() - 42, 140, display_get_gui_height())
 || point_in_rectangle(mouse_x, mouse_y, bbox_left, bbox_top, bbox_right, bbox_bottom)))
 {
@@ -94,7 +94,7 @@ if (can_enter_level_automatically)
 #endregion /* Enter Level END */
 
 #region /* Clear Level in debug */
-if (key_b_pressed)
+if (key_back_pressed)
 || (global.controls_used_for_navigation == "mouse")
 && (mouse_check_button_released(mb_left))
 && (point_in_rectangle(mouse_get_x, mouse_get_y, 141, display_get_gui_height() - 42, 140 + 140, display_get_gui_height()))

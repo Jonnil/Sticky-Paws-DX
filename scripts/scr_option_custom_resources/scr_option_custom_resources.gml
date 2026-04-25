@@ -1206,7 +1206,7 @@ function scr_option_custom_resources()
 		&& (menu_delay == 0
 		&& menu_joystick_delay == 0)
 		|| (menu == "open_resource_pack_folder")
-		&& (key_a_pressed)
+		&& (key_accept_pressed)
 		&& (menu_delay == 0
 		&& menu_joystick_delay == 0)
 		{
@@ -1220,7 +1220,7 @@ function scr_option_custom_resources()
 		&& (menu_delay == 0
 		&& menu_joystick_delay == 0)
 		|| (menu == "open_title_background_folder")
-		&& (key_a_pressed)
+		&& (key_accept_pressed)
 		&& (menu_delay == 0
 		&& menu_joystick_delay == 0)
 		{
@@ -1234,7 +1234,7 @@ function scr_option_custom_resources()
 		&& (menu_delay == 0
 		&& menu_joystick_delay == 0)
 		|| (menu == "open_title_logo_folder")
-		&& (key_a_pressed)
+		&& (key_accept_pressed)
 		&& (menu_delay == 0
 		&& menu_joystick_delay == 0)
 		{
@@ -1250,7 +1250,7 @@ function scr_option_custom_resources()
 		&& (menu_delay == 0
 		&& menu_joystick_delay == 0)
 		|| (menu == "can_load_custom_level_assets")
-		&& (key_a_pressed)
+		&& (key_accept_pressed)
 		&& (menu_delay == 0
 		&& menu_joystick_delay == 0)
 		{

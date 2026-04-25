@@ -5,7 +5,7 @@ function scr_modify_objects_in_level_editor()
 
 	if (mouse_check_button_released(mb_left))
 	|| (instance_exists(obj_leveleditor))
-	&& (obj_leveleditor.key_a_released)
+	&& (obj_leveleditor.key_accept_released)
 	|| (instance_exists(obj_leveleditor))
 	&& (gamepad_button_check_released(global.player_slot[1], obj_leveleditor.button_draw))
 	{

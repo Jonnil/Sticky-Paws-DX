@@ -12,11 +12,11 @@ function scr_controls_for_level_editor()
 		key_left_pressed = false;
 		key_right_pressed = false;
 		key_down_pressed = false;
-		key_a_hold = false;
-		key_a_pressed = false;
-		key_a_released = false;
-		key_b_hold = false;
-		key_b_pressed = false;
+		key_accept_hold = false;
+		key_accept_pressed = false;
+		key_accept_released = false;
+		key_back_hold = false;
+		key_back_pressed = false;
 		key_move_faster = false;
 		return;
 	}
@@ -33,19 +33,19 @@ function scr_controls_for_level_editor()
 	
 	#region /* Player 1 Key Accept */
 	
-	/* Player 1 Key Accept Hold */ key_a_hold = (gamepad_button_check(global.player_slot[1], global.player_[inp.gp][1][1][action.accept]))
+	/* Player 1 Key Accept Hold */ key_accept_hold = (gamepad_button_check(global.player_slot[1], global.player_[inp.gp][1][1][action.accept]))
 	|| (gamepad_button_check(global.player_slot[1], global.player_[inp.gp][1][2][action.accept]))
 	|| (keyboard_check(global.player_[inp.key][1][1][action.accept]))
 	|| (keyboard_check(global.player_[inp.key][1][2][action.accept]))
 	|| (keyboard_check(vk_space));
 	
-	/* Player 1 Key Accept Pressed */ key_a_pressed = (gamepad_button_check_pressed(global.player_slot[1], global.player_[inp.gp][1][1][action.accept]))
+	/* Player 1 Key Accept Pressed */ key_accept_pressed = (gamepad_button_check_pressed(global.player_slot[1], global.player_[inp.gp][1][1][action.accept]))
 	|| (gamepad_button_check_pressed(global.player_slot[1], global.player_[inp.gp][1][2][action.accept]))
 	|| (keyboard_check_pressed(global.player_[inp.key][1][1][action.accept]))
 	|| (keyboard_check_pressed(global.player_[inp.key][1][2][action.accept]))
 	|| (keyboard_check_pressed(vk_space));
 	
-	/* Player 1 Key Accept Released */ key_a_released = (gamepad_button_check_released(global.player_slot[1], global.player_[inp.gp][1][1][action.accept]))
+	/* Player 1 Key Accept Released */ key_accept_released = (gamepad_button_check_released(global.player_slot[1], global.player_[inp.gp][1][1][action.accept]))
 	|| (gamepad_button_check_released(global.player_slot[1], global.player_[inp.gp][1][2][action.accept]))
 	|| (keyboard_check_released(global.player_[inp.key][1][1][action.accept]))
 	|| (keyboard_check_released(global.player_[inp.key][1][2][action.accept]))
@@ -55,13 +55,13 @@ function scr_controls_for_level_editor()
 	
 	#region /* Player 1 Key Back */
 	
-	/* Player 1 Key Back Hold */ key_b_hold = (gamepad_button_check(global.player_slot[1], global.player_[inp.gp][1][1][action.back]))
+	/* Player 1 Key Back Hold */ key_back_hold = (gamepad_button_check(global.player_slot[1], global.player_[inp.gp][1][1][action.back]))
 	|| (gamepad_button_check(global.player_slot[1], global.player_[inp.gp][1][2][action.back]))
 	|| (keyboard_check(global.player_[inp.key][1][1][action.back]))
 	|| (keyboard_check(global.player_[inp.key][1][2][action.back]))
 	|| (keyboard_check(vk_escape));
 	
-	/* Player 1 Key Back Pressed */ key_b_pressed = (gamepad_button_check_pressed(global.player_slot[1], global.player_[inp.gp][1][1][action.back]))
+	/* Player 1 Key Back Pressed */ key_back_pressed = (gamepad_button_check_pressed(global.player_slot[1], global.player_[inp.gp][1][1][action.back]))
 	|| (gamepad_button_check_pressed(global.player_slot[1], global.player_[inp.gp][1][2][action.back]))
 	|| (keyboard_check_pressed(global.player_[inp.key][1][1][action.back]))
 	|| (keyboard_check_pressed(global.player_[inp.key][1][2][action.back]))

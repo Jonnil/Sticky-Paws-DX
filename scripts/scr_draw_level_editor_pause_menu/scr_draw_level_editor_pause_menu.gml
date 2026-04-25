@@ -41,7 +41,7 @@ function scr_draw_level_editor_pause_menu()
 			|| (gamepad_button_check_pressed(global.player_slot[3], gp_start))
 			|| (gamepad_button_check_pressed(global.player_slot[4], gp_start))
 			|| (gamepad_button_check_pressed(4, gp_start))
-			|| (key_b_pressed)
+			|| (key_back_pressed)
 			{
 				if (!input_key)
 				&& (menu_delay == 0 && menu_joystick_delay == 0)
@@ -163,7 +163,7 @@ function scr_draw_level_editor_pause_menu()
 					menu_delay = 3;
 					menu = "options";
 				}
-				if (key_a_pressed)
+				if (key_accept_pressed)
 				|| (keyboard_check_pressed(vk_enter))
 				{
 					if (menu_delay == 0 && menu_joystick_delay == 0)
@@ -215,7 +215,7 @@ function scr_draw_level_editor_pause_menu()
 					menu_delay = 3;
 					menu = "level_editor_options";
 				}
-				if (key_a_pressed)
+				if (key_accept_pressed)
 				|| (keyboard_check_pressed(vk_enter))
 				{
 					if (menu_delay == 0 && menu_joystick_delay == 0)
@@ -233,7 +233,7 @@ function scr_draw_level_editor_pause_menu()
 						scr_load_storage_variables();
 					}
 				}
-				if (key_b_pressed)
+				if (key_back_pressed)
 				&& (menu_delay == 0 && menu_joystick_delay == 0)
 				{
 					menu_delay = 3;
@@ -254,7 +254,7 @@ function scr_draw_level_editor_pause_menu()
 			&& (menu_delay == 0 && menu_joystick_delay == 0)
 			|| (menu == "level_editor_options")
 			&& (!can_input_level_name)
-			&& (key_a_pressed)
+			&& (key_accept_pressed)
 			|| (menu == "level_editor_options")
 			&& (!can_input_level_name)
 			&& (keyboard_check_pressed(vk_enter))
@@ -301,7 +301,7 @@ function scr_draw_level_editor_pause_menu()
 						menu = "level_editor_upload";
 					}
 				}
-				if (key_b_pressed)
+				if (key_back_pressed)
 				&& (menu_delay == 0 && menu_joystick_delay == 0)
 				{
 					menu_delay = 3;
@@ -346,7 +346,7 @@ function scr_draw_level_editor_pause_menu()
 						menu_delay = 3;
 						menu = "open_custom_levels_folder";
 					}
-					if (key_a_pressed)
+					if (key_accept_pressed)
 					|| (keyboard_check_pressed(vk_enter))
 					{
 						if (menu_delay == 0 && menu_joystick_delay == 0)
@@ -358,7 +358,7 @@ function scr_draw_level_editor_pause_menu()
 							menu = "generate_level_map_yes";
 						}
 					}
-					if (key_b_pressed)
+					if (key_back_pressed)
 					&& (menu_delay == 0 && menu_joystick_delay == 0)
 					{
 						menu_delay = 3;
@@ -381,7 +381,7 @@ function scr_draw_level_editor_pause_menu()
 				&& (mouse_check_button_released(mb_left))
 				&& (menu_delay == 0 && menu_joystick_delay == 0)
 				|| (menu == "open_custom_levels_folder")
-				&& (key_a_pressed)
+				&& (key_accept_pressed)
 				&& (menu_delay == 0 && menu_joystick_delay == 0)
 				{
 					if (global.level_name != "")
@@ -436,7 +436,7 @@ function scr_draw_level_editor_pause_menu()
 					menu_delay = 3;
 					menu = "quit";
 				}
-				if (key_b_pressed)
+				if (key_back_pressed)
 				&& (menu_delay == 0 && menu_joystick_delay == 0)
 				{
 					menu_delay = 3;
@@ -454,7 +454,7 @@ function scr_draw_level_editor_pause_menu()
 			&& (global.controls_used_for_navigation == "mouse")
 			&& (mouse_check_button_released(mb_left))
 			&& (menu_delay == 0 && menu_joystick_delay == 0)
-			|| (key_a_pressed)
+			|| (key_accept_pressed)
 			&& (menu == "quit")
 			&& (!can_input_level_name)
 			&& (menu_delay == 0 && menu_joystick_delay == 0)
@@ -484,7 +484,7 @@ function scr_draw_level_editor_pause_menu()
 					menu_delay = 3;
 					menu = "continue";
 				}
-				if (key_b_pressed)
+				if (key_back_pressed)
 				&& (menu_delay == 0 && menu_joystick_delay == 0)
 				{
 					menu_delay = 3;
@@ -582,7 +582,7 @@ function scr_draw_level_editor_pause_menu()
 					menu_delay = 3;
 					menu = "generate_level_map_no";
 				}
-				if (key_a_pressed)
+				if (key_accept_pressed)
 				|| (keyboard_check_pressed(vk_enter))
 				{
 					if (menu_delay == 0 && menu_joystick_delay == 0)
@@ -594,7 +594,7 @@ function scr_draw_level_editor_pause_menu()
 						global.full_level_map_screenshot = true;
 					}
 				}
-				if (key_b_pressed)
+				if (key_back_pressed)
 				&& (menu_delay == 0 && menu_joystick_delay == 0)
 				{
 					menu_delay = 3;
@@ -637,7 +637,7 @@ function scr_draw_level_editor_pause_menu()
 					menu_delay = 3;
 					menu = "generate_level_map_yes";
 				}
-				if (key_a_pressed)
+				if (key_accept_pressed)
 				|| (keyboard_check_pressed(vk_enter))
 				{
 					if (menu_delay == 0 && menu_joystick_delay == 0)
@@ -649,7 +649,7 @@ function scr_draw_level_editor_pause_menu()
 						menu = "generate_level_map";
 					}
 				}
-				if (key_b_pressed)
+				if (key_back_pressed)
 				&& (menu_delay == 0 && menu_joystick_delay == 0)
 				{
 					menu_delay = 3;

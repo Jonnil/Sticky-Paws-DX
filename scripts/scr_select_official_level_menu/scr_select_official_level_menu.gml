@@ -161,7 +161,7 @@ function scr_select_official_level_menu()
 		#endregion /* Key Right END */
 		
 		#region /* Key A */
-		if (key_a_pressed)
+		if (key_accept_pressed)
 		|| (mouse_check_button_released(mb_left))
 		{
 			
@@ -502,10 +502,10 @@ function scr_select_official_level_menu()
 		draw_sprite_ext(spr_icon_back, 0, + 20, + 21, 1, 1, 0, c_white, 1);
 		
 		if (menu == "back_from_level_editor")
-		&& (key_a_pressed)
+		&& (key_accept_pressed)
 		&& (menu_delay == 0 && menu_joystick_delay == 0)
 		&& (!can_input_level_name)
-		|| (key_b_pressed)
+		|| (key_back_pressed)
 		&& (menu_delay == 0 && menu_joystick_delay == 0)
 		&& (!can_input_level_name)
 		|| (point_in_rectangle(mouse_get_x, mouse_get_y, 0, 0, 320, 42))

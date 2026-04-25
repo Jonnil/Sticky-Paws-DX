@@ -28,11 +28,11 @@ if (scr_block_menu_input_for_network_request())
 	key_left_pressed = false;
 	key_right_pressed = false;
 	key_down_pressed = false;
-	key_a_pressed = false;
-	key_a_hold = false;
-	key_a_released = false;
-	key_b_pressed = false;
-	key_b_hold = false;
+	key_accept_pressed = false;
+	key_accept_hold = false;
+	key_accept_released = false;
+	key_back_pressed = false;
+	key_back_hold = false;
 }
 
 #region /* Navigate the level editor icon with D-Pad */
@@ -142,7 +142,7 @@ if (menu_delay == 0 && menu_joystick_delay == 0)
 	/* Back */ if (level_editor_menu != "")
 	&& (level_editor_menu != "help_open")
 	{
-		if (key_b_pressed)
+		if (key_back_pressed)
 		|| (key_up)
 		|| (key_left)
 		|| (key_down)
@@ -583,7 +583,7 @@ if (!global.actually_play_edited_level)
 	&& (!show_autoscroll_menu && !show_time_menu)
 	&& (welcome_to_level_editor == 0)
 	|| (level_editor_menu == "play")
-	&& (key_a_pressed)
+	&& (key_accept_pressed)
 	&& (welcome_to_level_editor == 0)
 	|| (gamepad_button_check_pressed(global.player_slot[1], button_play))
 	&& (welcome_to_level_editor == 0)
@@ -601,7 +601,7 @@ if (!global.actually_play_edited_level)
 	&& (!show_autoscroll_menu && !show_time_menu)
 	&& (welcome_to_level_editor == 0)
 	|| (level_editor_menu == "play")
-	&& (key_a_hold)
+	&& (key_accept_hold)
 	&& (welcome_to_level_editor == 0)
 	|| (gamepad_button_check(global.player_slot[1], button_play))
 	&& (welcome_to_level_editor == 0)
@@ -612,7 +612,7 @@ if (!global.actually_play_edited_level)
 		if (!pause)
 		&& (!in_modify_object_menu)
 		&& (pressing_play_timer >= 1)
-		&& (!key_b_hold)
+		&& (!key_back_hold)
 		&& (menu_delay == 0)
 		{
 			if (!audio_is_playing(snd_charge_up))
@@ -622,7 +622,7 @@ if (!global.actually_play_edited_level)
 			pressing_play_timer++;
 		}
 	}
-	if (key_b_pressed)
+	if (key_back_pressed)
 	{
 		pressing_play_timer = 0;
 	}
@@ -647,7 +647,7 @@ if (!global.actually_play_edited_level)
 		if (keyboard_check_released(key_play))
 		&& (!show_autoscroll_menu && !show_time_menu)
 		|| (level_editor_menu == "play")
-		&& (key_a_released)
+		&& (key_accept_released)
 		|| (gamepad_button_check_released(global.player_slot[1], button_play))
 		|| (point_in_rectangle(mouse_get_x, mouse_get_y, play_level_icon_x - 32, display_get_gui_height() - 64, play_level_icon_x + 32, display_get_gui_height() + 64))
 		&& (mouse_check_button_released(mb_left))
@@ -1058,8 +1058,8 @@ if (!global.actually_play_edited_level)
 		#region /* Place Object */
 		if (can_make_place_size_bigger && mouse_check_button(mb_left))
 		|| (mouse_check_button_pressed(mb_left))
-		|| (can_make_place_size_bigger && key_a_hold)
-		|| (key_a_pressed)
+		|| (can_make_place_size_bigger && key_accept_hold)
+		|| (key_accept_pressed)
 		{
 			if (menu != "level_length_recommendation_ok")
 			&& (menu != "level_length_recommendation_back")
@@ -1185,8 +1185,8 @@ if (!global.actually_play_edited_level)
 			&& (mouse_check_button(mb_left))
 			|| (mouse_check_button(mb_right))
 			|| (erase_mode)
-			&& (key_a_hold)
-			|| (key_b_hold)
+			&& (key_accept_hold)
+			|| (key_back_hold)
 			|| (keyboard_check(key_erase_object))
 			{
 				instance_create_depth(x, y, 0, obj_erase_brush);
@@ -1211,8 +1211,8 @@ if (!global.actually_play_edited_level)
 		{
 			if (mouse_check_button(mb_right))
 			|| (mouse_check_button(mb_left))
-			|| (key_a_hold)
-			|| (key_b_hold)
+			|| (key_accept_hold)
+			|| (key_back_hold)
 			|| (keyboard_check(key_erase_object))
 			{
 				if (if_clear_checked)
@@ -1238,18 +1238,18 @@ if (!global.actually_play_edited_level)
 			&& (!obj_leveleditor.erase_mode)
 			&& (!obj_leveleditor.pause)
 
-			|| (!obj_leveleditor.key_b_hold)
+			|| (!obj_leveleditor.key_back_hold)
 			&& (!hovering_over_icon)
 			&& (!obj_leveleditor.drag_object)
 			&& (!obj_leveleditor.erase_mode)
-			&& (obj_leveleditor.key_a_hold)
+			&& (obj_leveleditor.key_accept_hold)
 			&& (!obj_leveleditor.pause)
 
 			|| (keyboard_check(obj_leveleditor.key_erase_object))
 			&& (!hovering_over_icon)
 			&& (!obj_leveleditor.drag_object)
 			&& (!obj_leveleditor.erase_mode)
-			&& (obj_leveleditor.key_a_hold)
+			&& (obj_leveleditor.key_accept_hold)
 			&& (!obj_leveleditor.pause)
 			{
 				instance_create_depth(x, y, 0, obj_erase_brush);
@@ -1267,12 +1267,12 @@ if (!global.actually_play_edited_level)
 			&& (mouse_check_button(mb_right))
 			&& (!obj_leveleditor.pause)
 
-			|| (!obj_leveleditor.key_a_hold)
+			|| (!obj_leveleditor.key_accept_hold)
 			&& (!hovering_over_icon)
-			&& (obj_leveleditor.key_b_hold)
+			&& (obj_leveleditor.key_back_hold)
 			&& (!obj_leveleditor.pause)
 
-			|| (!obj_leveleditor.key_a_hold)
+			|| (!obj_leveleditor.key_accept_hold)
 			&& (!hovering_over_icon)
 			&& (keyboard_check(obj_leveleditor.key_erase_object))
 			&& (!obj_leveleditor.pause)
@@ -1298,7 +1298,7 @@ if (!global.actually_play_edited_level)
 	#endregion /* If you haven't yet quit the level editor, then run this code END */
 
 	if (mouse_check_button_released(mb_left))
-	|| (key_a_released)
+	|| (key_accept_released)
 	|| (gamepad_button_check_released(global.player_slot[1], button_draw))
 	{
 		placing_object -= 0.2;
@@ -1576,8 +1576,8 @@ if (!global.actually_play_edited_level)
 	if (mouse_check_button_pressed(mb_any))
 	&& (!point_in_rectangle(mouse_get_x, mouse_get_y, 0, 0, display_get_gui_width(), 192)) /* Can't make menu fade away quicker when clicking the object category buttons or objects in toolbar */
 	|| (keyboard_check_pressed(vk_anykey))
-	|| (key_a_pressed)
-	|| (key_b_pressed)
+	|| (key_accept_pressed)
+	|| (key_back_pressed)
 	{
 		if (menu_delay == 0 && menu_joystick_delay == 0)
 		{
@@ -1758,7 +1758,7 @@ if (!global.actually_play_edited_level)
 		#region /* Scroll Objects Left */
 		if (mouse_wheel_up())
 		&& (!mouse_check_button(mb_middle))
-		&& (!key_a_pressed)
+		&& (!key_accept_pressed)
 		&& (!mouse_check_button(mb_left))
 		&& (!erase_mode)
 		|| (gamepad_button_check_pressed(global.player_slot[1], button_scroll_object_left))
@@ -1830,7 +1830,7 @@ if (!global.actually_play_edited_level)
 		#region /* Scroll Objects Right */
 		if (mouse_wheel_down())
 		&& (!mouse_check_button(mb_middle))
-		&& (!key_a_pressed)
+		&& (!key_accept_pressed)
 		&& (!mouse_check_button(mb_left))
 		&& (!erase_mode)
 		|| (gamepad_button_check_pressed(global.player_slot[1], button_scroll_object_right))
@@ -2464,7 +2464,7 @@ if (!global.actually_play_edited_level && quit_level_editor == 0)
 				show_tooltip += 2;
 				if (mouse_check_button_pressed(mb_left))
 				|| (level_editor_menu == "easy")
-				&& (key_a_pressed)
+				&& (key_accept_pressed)
 				{
 					difficulty_layer = 1;
 					fill_mode = false;
@@ -2491,7 +2491,7 @@ if (!global.actually_play_edited_level && quit_level_editor == 0)
 				show_tooltip += 2;
 				if (mouse_check_button_pressed(mb_left))
 				|| (level_editor_menu == "normal")
-				&& (key_a_pressed)
+				&& (key_accept_pressed)
 				{
 					difficulty_layer = 2;
 					fill_mode = false;
@@ -2518,7 +2518,7 @@ if (!global.actually_play_edited_level && quit_level_editor == 0)
 				show_tooltip += 2;
 				if (mouse_check_button_pressed(mb_left))
 				|| (level_editor_menu == "hard")
-				&& (key_a_pressed)
+				&& (key_accept_pressed)
 				{
 					difficulty_layer = 3;
 					fill_mode = false;
@@ -2544,7 +2544,7 @@ if (!global.actually_play_edited_level && quit_level_editor == 0)
 				show_tooltip += 2;
 				if (mouse_check_button_pressed(mb_left))
 				|| (level_editor_menu == "difficulty_toggle")
-				&& (key_a_pressed)
+				&& (key_accept_pressed)
 				{
 					fill_mode = false;
 					erase_mode = false;
@@ -2585,7 +2585,7 @@ if (!global.actually_play_edited_level && quit_level_editor == 0)
 			show_tooltip += 2;
 			if (mouse_check_button_pressed(mb_left))
 			|| (level_editor_menu == "wipe")
-			&& (key_a_pressed)
+			&& (key_accept_pressed)
 			{
 				menu_delay = 3;
 				level_editor_option_back_to_menu = "delete_all_objects_button";

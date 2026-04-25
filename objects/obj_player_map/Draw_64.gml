@@ -213,7 +213,7 @@ if (global.demo_enable
 		&& mouse_check_button_released(mb_left)
 		&& (menu_delay == 0 && menu_joystick_delay == 0))
 		|| (menu == "purchase_now"
-		&& key_a_pressed
+		&& key_accept_pressed
 		&& (menu_delay == 0 && menu_joystick_delay == 0));
 	
 	if (purchase_clicked)
@@ -232,7 +232,7 @@ if (global.demo_enable
 		&& mouse_check_button_released(mb_left)
 		&& (menu_delay == 0 && menu_joystick_delay == 0))
 		|| (menu == "continue_demo"
-		&& (key_a_pressed || key_b_pressed)
+		&& (key_accept_pressed || key_back_pressed)
 		&& (menu_delay == 0 && menu_joystick_delay == 0));
 	
 	if (continue_clicked)

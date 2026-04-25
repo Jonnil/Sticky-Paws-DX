@@ -241,8 +241,8 @@ if (!global.actually_play_edited_level)
 
 	object_text = "";
 
-	key_a_pressed = noone;
-	key_a_released = noone;
+	key_accept_pressed = noone;
+	key_accept_released = noone;
 
 	autosave_timer = (60 * 3) + 1; /* Default is (60 * 3) + 1. When debugging autosave, set this to 18000 - (60 * 10) */
 

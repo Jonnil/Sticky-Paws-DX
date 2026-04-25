@@ -75,9 +75,9 @@ function scr_process_online_download_menu_data()
 	#endregion /* Only run this code if we are still not in the network error menu END */
 
 	#region /* Handle Back Button Input */
-	if ((key_b_pressed)
+	if ((key_back_pressed)
 	|| ((menu == "download_online_back")
-	&& ((key_a_pressed)
+	&& ((key_accept_pressed)
 	|| (point_in_rectangle(device_mouse_x_to_gui(0), device_mouse_y_to_gui(0), 0, 0, 370, 42)
 	&& mouse_check_button_released(mb_left)))))
 	{
@@ -133,7 +133,7 @@ function scr_process_online_download_menu_data()
 
 	#region /* Handle Search ID Button Input */
 	if (((menu == "download_online_search_id")
-	&& key_a_pressed)
+	&& key_accept_pressed)
 	|| ((menu == "download_online_search_id")
 	&& (point_in_rectangle(device_mouse_x_to_gui(0), device_mouse_y_to_gui(0), 0, 42, 370, 84))
 	&& mouse_check_button_released(mb_left))
@@ -156,7 +156,7 @@ function scr_process_online_download_menu_data()
 	
 	#region /* Handle Force Refresh Button Input */
 	if (((menu == "download_online_force_refresh")
-	&& key_a_pressed)
+	&& key_accept_pressed)
 	|| ((menu == "download_online_force_refresh")
 	&& (point_in_rectangle(device_mouse_x_to_gui(0), device_mouse_y_to_gui(0), 0, 42 + 42, 370, 84 + 42))
 	&& mouse_check_button_released(mb_left)))

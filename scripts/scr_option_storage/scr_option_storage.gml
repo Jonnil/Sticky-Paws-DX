@@ -119,7 +119,7 @@ function scr_option_storage()
 			&& (mouse_check_button_released(mb_left))
 			&& (menu_delay == 0 && menu_joystick_delay == 0)
 			|| (menu == "open_save_file_folder")
-			&& (key_a_pressed)
+			&& (key_accept_pressed)
 			&& (menu_delay == 0 && menu_joystick_delay == 0)
 			{
 				scr_open_folder(game_save_id + "save_file");
@@ -196,7 +196,7 @@ function scr_option_storage()
 		}
 
 		if (menu == "file_delete")
-		&& (key_a_pressed)
+		&& (key_accept_pressed)
 		&& (menu_delay == 0 && menu_joystick_delay == 0)
 		{
 			can_navigate_settings_sidebar = false;
@@ -205,13 +205,13 @@ function scr_option_storage()
 		}
 
 		if (menu == "file_delete_no")
-		&& (key_a_pressed)
+		&& (key_accept_pressed)
 		&& (menu_delay == 0 && menu_joystick_delay == 0)
 		|| (menu == "file_delete_no")
-		&& (key_b_pressed)
+		&& (key_back_pressed)
 		&& (menu_delay == 0 && menu_joystick_delay == 0)
 		|| (menu == "file_delete_yes")
-		&& (key_b_pressed)
+		&& (key_back_pressed)
 		&& (menu_delay == 0 && menu_joystick_delay == 0)
 		{
 			can_navigate_settings_sidebar = false;
@@ -221,7 +221,7 @@ function scr_option_storage()
 		}
 
 		if (menu == "file_delete_yes")
-		&& (key_a_pressed)
+		&& (key_accept_pressed)
 		&& (menu_delay == 0 && menu_joystick_delay == 0)
 		|| (menu == "file_delete_yes")
 		&& (point_in_rectangle(mouse_get_x, mouse_get_y, get_window_width * 0.5 - 370 - 32, get_window_height * 0.5 - 21, get_window_width * 0.5 - 370 - 32 + 370, get_window_height * 0.5 + 42))

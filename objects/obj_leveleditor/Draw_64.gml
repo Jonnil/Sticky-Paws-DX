@@ -225,7 +225,7 @@ if (!global.actually_play_edited_level)
 				if (global.controls_used_for_navigation == "mouse")
 				&& (mouse_check_button_pressed(mb_left))
 				|| (level_editor_menu == "terrain")
-				&& (key_a_pressed)
+				&& (key_accept_pressed)
 				{
 					menu_delay = 3;
 					show_selected_menu = true;
@@ -245,7 +245,7 @@ if (!global.actually_play_edited_level)
 				if (global.controls_used_for_navigation == "mouse")
 				&& (mouse_check_button_pressed(mb_left))
 				|| (level_editor_menu == "decoration")
-				&& (key_a_pressed)
+				&& (key_accept_pressed)
 				{
 					menu_delay = 3;
 					show_selected_menu = true;
@@ -265,7 +265,7 @@ if (!global.actually_play_edited_level)
 				if (global.controls_used_for_navigation == "mouse")
 				&& (mouse_check_button_pressed(mb_left))
 				|| (level_editor_menu == "item")
-				&& (key_a_pressed)
+				&& (key_accept_pressed)
 				{
 					menu_delay = 3;
 					show_selected_menu = true;
@@ -285,7 +285,7 @@ if (!global.actually_play_edited_level)
 				if (global.controls_used_for_navigation == "mouse")
 				&& (mouse_check_button_pressed(mb_left))
 				|| (level_editor_menu == "enemy")
-				&& (key_a_pressed)
+				&& (key_accept_pressed)
 				{
 					menu_delay = 3;
 					show_selected_menu = true;
@@ -305,7 +305,7 @@ if (!global.actually_play_edited_level)
 				if (global.controls_used_for_navigation == "mouse")
 				&& (mouse_check_button_pressed(mb_left))
 				|| (level_editor_menu == "gizmo")
-				&& (key_a_pressed)
+				&& (key_accept_pressed)
 				{
 					menu_delay = 3;
 					show_selected_menu = true;
@@ -328,7 +328,7 @@ if (!global.actually_play_edited_level)
 				if (global.controls_used_for_navigation == "mouse")
 				&& (mouse_check_button_pressed(mb_left))
 				|| (level_editor_menu == "daily_build_standard")
-				&& (key_a_pressed)
+				&& (key_accept_pressed)
 				{
 					menu_delay = 3;
 					show_selected_menu = true;
@@ -348,7 +348,7 @@ if (!global.actually_play_edited_level)
 				if (global.controls_used_for_navigation == "mouse")
 				&& (mouse_check_button_pressed(mb_left))
 				|| (level_editor_menu == "daily_build_featured")
-				&& (key_a_pressed)
+				&& (key_accept_pressed)
 				{
 					menu_delay = 3;
 					show_selected_menu = true;
@@ -379,7 +379,7 @@ if (!global.actually_play_edited_level)
 
 			if (mouse_check_button_pressed(mb_left))
 			|| (level_editor_menu == "grid")
-			&& (key_a_pressed)
+			&& (key_accept_pressed)
 			{
 				show_grid = !show_grid;
 			}
@@ -440,7 +440,7 @@ if (!global.actually_play_edited_level)
 
 			if (mouse_check_button(mb_left))
 			|| (level_editor_menu == "zoom_out")
-			&& (key_a_hold)
+			&& (key_accept_hold)
 			{
 				zoom_out = true;
 			}
@@ -489,7 +489,7 @@ if (!global.actually_play_edited_level)
 			&& (!keyboard_check(189))
 			|| (mouse_check_button(mb_left))
 			|| (level_editor_menu == "zoom_reset")
-			&& (key_a_hold)
+			&& (key_accept_hold)
 			{
 				zoom_reset = true
 			}
@@ -558,7 +558,7 @@ if (!global.actually_play_edited_level)
 
 			if (mouse_check_button(mb_left))
 			|| (level_editor_menu == "zoom_in")
-			&& (key_a_hold)
+			&& (key_accept_hold)
 			{
 				zoom_in = true;
 			}
@@ -630,7 +630,7 @@ if (!global.actually_play_edited_level)
 			if (mouse_check_button_pressed(mb_left))
 			&& (menu_delay == 0 && menu_joystick_delay == 0)
 			|| (level_editor_menu == "help")
-			&& (key_a_pressed)
+			&& (key_accept_pressed)
 			&& (welcome_to_level_editor == 0)
 			&& (menu_delay == 0 && menu_joystick_delay == 0)
 			{

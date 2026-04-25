@@ -7,10 +7,10 @@ function scr_menu_navigation_initialization(key_direction_hold_press_release = 0
 	key_left = noone;
 	key_right = noone;
 	key_down = noone;
-	key_a_pressed = noone;
-	key_a_hold = noone;
-	key_a_released = noone;
-	key_b_pressed = noone;
+	key_accept_pressed = noone;
+	key_accept_hold = noone;
+	key_accept_released = noone;
+	key_back_pressed = noone;
 
 	if (scr_block_menu_input_for_network_request())
 	{
@@ -18,10 +18,10 @@ function scr_menu_navigation_initialization(key_direction_hold_press_release = 0
 		key_left = false;
 		key_right = false;
 		key_down = false;
-		key_a_pressed = false;
-		key_a_hold = false;
-		key_a_released = false;
-		key_b_pressed = false;
+		key_accept_pressed = false;
+		key_accept_hold = false;
+		key_accept_released = false;
+		key_back_pressed = false;
 		return;
 	}
 
@@ -43,10 +43,10 @@ function scr_menu_navigation_initialization(key_direction_hold_press_release = 0
 	key_left = scr_key_initialize(key_left, key_direction_hold_press_release, what_player, action.left);
 	key_right = scr_key_initialize(key_right, key_direction_hold_press_release, what_player, action.right);
 	key_down = scr_key_initialize(key_down, key_direction_hold_press_release, what_player, action.down);
-	/* Key Accept Pressed */ key_a_pressed = scr_key_initialize(key_a_pressed, 1, what_player, action.accept) || (keyboard_check_pressed(vk_space));
-	/* Key Accept Hold */ key_a_hold = scr_key_initialize(key_a_hold, 0, what_player, action.accept) || (keyboard_check(vk_space));
-	/* Key Accept Released */ key_a_released = scr_key_initialize(key_a_released, 2, what_player, action.accept) || (keyboard_check_released(vk_space));
-	/* Key Back Pressed */ key_b_pressed = scr_key_initialize(key_b_pressed, 1, what_player, action.back) || (keyboard_check_pressed(vk_escape));
+	/* Key Accept Pressed */ key_accept_pressed = scr_key_initialize(key_accept_pressed, 1, what_player, action.accept) || (keyboard_check_pressed(vk_space));
+	/* Key Accept Hold */ key_accept_hold = scr_key_initialize(key_accept_hold, 0, what_player, action.accept) || (keyboard_check(vk_space));
+	/* Key Accept Released */ key_accept_released = scr_key_initialize(key_accept_released, 2, what_player, action.accept) || (keyboard_check_released(vk_space));
+	/* Key Back Pressed */ key_back_pressed = scr_key_initialize(key_back_pressed, 1, what_player, action.back) || (keyboard_check_pressed(vk_escape));
 	#endregion /* Menu Navigation Controls END */
 
 }

@@ -243,7 +243,7 @@ function scr_draw_online_download_list_thumbnail(thumbnail_index, number_of_thum
 			selected_download_c_menu_fill = c_lime;
 			global.selected_online_download_index = thumbnail_index;
 
-			if (key_a_pressed
+			if (key_accept_pressed
 			|| (mouse_check_button_released(mb_left)
 				&& point_in_rectangle(device_mouse_x_to_gui(0), device_mouse_y_to_gui(0),
 					download_online_x + 100, download_online_y + offsetY,

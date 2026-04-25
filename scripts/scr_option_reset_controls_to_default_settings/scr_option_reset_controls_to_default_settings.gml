@@ -9,7 +9,7 @@ function scr_option_reset_controls_to_default_settings(xx, yy)
 	{
 		menu_cursor_y_position = yy;
 		
-		if (key_a_pressed)
+		if (key_accept_pressed)
 		&& (menu_delay == 0 && menu_joystick_delay == 0)
 		|| (mouse_check_button_released(mb_left) && mouse_get_x > 370)
 		&& (point_in_rectangle(mouse_get_x, mouse_get_y, xx, yy + menu_y_offset + 1, xx + 370, yy + menu_y_offset + 41))

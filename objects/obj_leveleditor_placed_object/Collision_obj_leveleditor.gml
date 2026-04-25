@@ -7,7 +7,7 @@ if (!other.set_difficulty_mode)
 {
 
 	#region /* Click on object to start drag */
-	if (mouse_check_button_pressed(mb_left) || other.key_a_pressed)
+	if (mouse_check_button_pressed(mb_left) || other.key_accept_pressed)
 	{
 		var can_drag_object = !keyboard_check(vk_space)
 		&& !keyboard_check(vk_enter)
@@ -47,7 +47,7 @@ if (!other.set_difficulty_mode)
 
 #region /* Release the object */
 if (mouse_check_button_released(mb_left))
-|| (other.key_a_released)
+|| (other.key_accept_released)
 {
 	if (drag_object)
 	{

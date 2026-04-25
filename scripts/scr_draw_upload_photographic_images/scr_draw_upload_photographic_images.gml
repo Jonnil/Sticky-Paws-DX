@@ -728,7 +728,7 @@ function scr_draw_upload_photographic_images()
 		else
 
 		#region /* Click Confirm */
-		if (key_a_pressed
+		if (key_accept_pressed
 		|| global.controls_used_for_navigation == "mouse"
 		&& mouse_check_button_released(mb_left)
 		&& point_in_rectangle(device_mouse_x_to_gui(0), device_mouse_y_to_gui(0), confirm_x, confirm_y, confirm_x + 370, confirm_y + 42))
@@ -776,7 +776,7 @@ function scr_draw_upload_photographic_images()
 		&& (mouse_check_button_released(mb_left))
 		&& (menu_delay == 0 && menu_joystick_delay == 0)
 		|| (menu == "level_uses_photographic_images_back")
-		&& (key_a_pressed)
+		&& (key_accept_pressed)
 		&& (menu_delay == 0 && menu_joystick_delay == 0)
 		{
 			menu = "edit_ok";

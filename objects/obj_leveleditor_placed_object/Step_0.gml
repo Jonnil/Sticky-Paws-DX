@@ -76,7 +76,7 @@ if (!global.actually_play_edited_level)
 				second_y = 0;
 				break;
 		}
-		if (mouse_check_button_released(mb_left) || instance_exists(obj_leveleditor) && obj_leveleditor.key_a_released)
+		if (mouse_check_button_released(mb_left) || instance_exists(obj_leveleditor) && obj_leveleditor.key_accept_released)
 		{
 			place_object_angle = false;
 		}

@@ -26,8 +26,6 @@ function scr_draw_network_error_menu()
 		var copy_clicked = false;
 		var mainmenu_clicked = false;
 		var passive_network_connected = scr_get_cached_passive_network_status(false);
-		var accept_pressed = key_a_pressed;
-		var back_pressed = key_b_pressed;
 
 		/* Calculate positions for the buttons */
 		var retry_button_y = center_y + 100 + 20;
@@ -69,12 +67,12 @@ function scr_draw_network_error_menu()
 			if (global.controls_used_for_navigation == "keyboard"
 			|| global.controls_used_for_navigation == "gamepad")
 			{
-				if (back_pressed)
+				if (key_back_pressed)
 				{
 					mainmenu_clicked = true;
 				}
 				else
-				if (accept_pressed)
+				if (key_accept_pressed)
 				&& (menu == "network_error_main_menu")
 				{
 					mainmenu_clicked = true;
@@ -198,7 +196,7 @@ function scr_draw_network_error_menu()
 				if (global.controls_used_for_navigation == "keyboard"
 				|| global.controls_used_for_navigation == "gamepad")
 				{
-					if (accept_pressed)
+					if (key_accept_pressed)
 					{
 						if (menu == "network_error")
 						{

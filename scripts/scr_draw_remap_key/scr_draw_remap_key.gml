@@ -353,7 +353,7 @@ function scr_draw_remap_key(menu_string, name_string, remapping_player_key, rema
 			}
 		}
 		else
-		if (key_a_pressed)
+		if (key_accept_pressed)
 		&& (menu_delay == 0 && menu_joystick_delay == 0)
 		{
 			menu_delay = 3;

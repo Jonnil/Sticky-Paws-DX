@@ -166,7 +166,7 @@ function scr_draw_upload_character_menu()
 		&& (mouse_check_button_released(mb_left))
 		&& (menu == "upload_clear_check_character_again")
 		&& (menu_delay == 0 && menu_joystick_delay == 0)
-		|| (key_a_pressed)
+		|| (key_accept_pressed)
 		&& (menu == "upload_clear_check_character_again")
 		&& (menu_delay == 0 && menu_joystick_delay == 0)
 		{
@@ -182,7 +182,7 @@ function scr_draw_upload_character_menu()
 		&& (menu == "upload_clear_check_character_open_character_folder")
 		&& (menu_delay == 0 && menu_joystick_delay == 0)
 		|| (global.enable_open_custom_folder)
-		&& (key_a_pressed)
+		&& (key_accept_pressed)
 		&& (menu == "upload_clear_check_character_open_character_folder")
 		&& (menu_delay == 0 && menu_joystick_delay == 0)
 		{
@@ -202,7 +202,7 @@ function scr_draw_upload_character_menu()
 		#endregion /* Click Character Clear Check Open Character Folder END */
 
 		#region /* Return to game */
-		if (key_b_pressed)
+		if (key_back_pressed)
 		&& (menu_delay == 0 && menu_joystick_delay == 0)
 		{
 
@@ -227,7 +227,7 @@ function scr_draw_upload_character_menu()
 			if (point_in_rectangle(mouse_get_x, mouse_get_y, get_window_width * 0.5 - 370, upload_character_no_y - 42, get_window_width * 0.5 + 370, upload_character_no_y + 42))
 			&& (mouse_check_button_released(mb_left))
 			&& (menu_delay == 0 && menu_joystick_delay == 0)
-			|| (key_a_pressed)
+			|| (key_accept_pressed)
 			&& (menu_delay == 0 && menu_joystick_delay == 0)
 			{
 
@@ -252,7 +252,7 @@ function scr_draw_upload_character_menu()
 			&& (mouse_check_button_released(mb_left))
 			&& (menu_delay == 0 && menu_joystick_delay == 0)
 			&& (file_exists(game_save_id + "custom_characters/" + string(character_name) + "/data/character_config.ini"))
-			|| (key_a_pressed)
+			|| (key_accept_pressed)
 			&& (menu_delay == 0 && menu_joystick_delay == 0)
 			&& (file_exists(game_save_id + "custom_characters/" + string(character_name) + "/data/character_config.ini"))
 			{
@@ -515,7 +515,7 @@ function scr_draw_upload_character_menu()
 			#endregion /* Clear Check Yes END */
 
 			#region /* Return to game */
-			if (key_b_pressed)
+			if (key_back_pressed)
 			&& (menu_delay == 0 && menu_joystick_delay == 0)
 			{
 				menu_delay = 3;
@@ -531,7 +531,7 @@ function scr_draw_upload_character_menu()
 			if (point_in_rectangle(mouse_get_x, mouse_get_y, get_window_width * 0.5 - 370, do_a_clear_check_character_no_y - 42, get_window_width * 0.5 + 370, do_a_clear_check_character_no_y + 42))
 			&& (mouse_check_button_released(mb_left))
 			&& (menu_delay == 0 && menu_joystick_delay == 0)
-			|| (key_a_pressed)
+			|| (key_accept_pressed)
 			&& (menu_delay == 0 && menu_joystick_delay == 0)
 			{
 				menu_delay = 3;
@@ -544,7 +544,7 @@ function scr_draw_upload_character_menu()
 			if (point_in_rectangle(mouse_get_x, mouse_get_y, get_window_width * 0.5 - 370, do_a_clear_check_character_yes_y + 84 - 42, get_window_width * 0.5 + 370, do_a_clear_check_character_yes_y + 84 + 42))
 			&& (mouse_check_button_released(mb_left))
 			&& (menu_delay == 0 && menu_joystick_delay == 0)
-			|| (key_a_pressed)
+			|| (key_accept_pressed)
 			&& (menu_delay == 0 && menu_joystick_delay == 0)
 			{
 				menu = "clear_check_character_confirmed";
@@ -896,9 +896,9 @@ function scr_draw_upload_character_menu()
 		if (point_in_rectangle(mouse_get_x, mouse_get_y, get_window_width * 0.5 - 370, ok_y - 42, get_window_width * 0.5 + 370, ok_y + 42))
 		&& (mouse_check_button_released(mb_left))
 		&& (menu_delay == 0 && menu_joystick_delay == 0)
-		|| (key_a_pressed)
+		|| (key_accept_pressed)
 		&& (menu_delay == 0 && menu_joystick_delay == 0)
-		|| (key_b_pressed)
+		|| (key_back_pressed)
 		&& (!level_editor_edit_name)
 		&& (menu_delay == 0 && menu_joystick_delay == 0)
 		{
@@ -968,9 +968,9 @@ function scr_draw_upload_character_menu()
 		&& (menu_delay == 0 && menu_joystick_delay == 0)
 		|| (mouse_check_button_released(mb_right))
 		&& (menu_delay == 0 && menu_joystick_delay == 0)
-		|| (key_a_pressed && menu == "character_uploaded")
+		|| (key_accept_pressed && menu == "character_uploaded")
 		&& (menu_delay == 0 && menu_joystick_delay == 0)
-		|| (key_b_pressed)
+		|| (key_back_pressed)
 		&& (menu_delay == 0 && menu_joystick_delay == 0)
 		{
 			search_for_id_still = false;
@@ -1005,7 +1005,7 @@ function scr_draw_upload_character_menu()
 			&& (mouse_check_button_released(mb_left))
 			&& (menu_delay == 0 && menu_joystick_delay == 0)
 			|| (menu == "character_uploaded_discord")
-			&& (key_a_pressed)
+			&& (key_accept_pressed)
 			&& (menu_delay == 0 && menu_joystick_delay == 0))
 			{
 				url_open(global.link_to_discord);

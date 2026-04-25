@@ -100,7 +100,7 @@ function scr_draw_upload_level_menu()
 		&& (point_in_rectangle(mouse_get_x, mouse_get_y, get_window_width * 0.5 - 185, get_window_height * 0.5 + 42 + 42, get_window_width * 0.5 + 185, get_window_height * 0.5 + 42 + 42 + 42))
 		&& (mouse_check_button_released(mb_left))
 		&& (global.controls_used_for_navigation == "mouse")
-		|| (key_a_pressed)
+		|| (key_accept_pressed)
 		{
 			/* If Global Level Name is set incorrectly for whatever reason, then set the level name to something that makes sense */
 			if ((global.level_name == "") /* Important that we only update the level name if it hasn't been already set */
@@ -530,7 +530,7 @@ function scr_draw_upload_level_menu()
 		#endregion /* Clear Check Yes END */
 
 		#region /* Return to game */
-		if (key_b_pressed
+		if (key_back_pressed
 		&& !level_editor_edit_name
 		&& menu_delay == 0
 		&& menu_joystick_delay == 0)
@@ -557,7 +557,7 @@ function scr_draw_upload_level_menu()
 			&& mouse_check_button_released(mb_left)
 			&& menu_delay == 0
 			&& menu_joystick_delay == 0)
-			|| (key_a_pressed
+			|| (key_accept_pressed
 			&& menu_delay == 0
 			&& menu_joystick_delay == 0)
 			{
@@ -583,7 +583,7 @@ function scr_draw_upload_level_menu()
 			&& mouse_check_button_released(mb_left)
 			&& menu_delay == 0
 			&& menu_joystick_delay == 0)
-			|| (key_a_pressed
+			|| (key_accept_pressed
 			&& menu_delay == 0
 			&& menu_joystick_delay == 0)
 			{
@@ -824,7 +824,7 @@ function scr_draw_upload_level_menu()
 			&& (mouse_check_button_released(mb_left))
 			&& (global.controls_used_for_navigation == "mouse")
 			&& (!level_editor_edit_name)
-			|| (key_a_pressed)
+			|| (key_accept_pressed)
 			&& (!level_editor_edit_name)
 			{
 				level_editor_edit_name = true;
@@ -889,7 +889,7 @@ function scr_draw_upload_level_menu()
 			&& (mouse_check_button_released(mb_left))
 			&& (global.controls_used_for_navigation == "mouse")
 			&& (!level_editor_edit_name)
-			|| (key_a_pressed)
+			|| (key_accept_pressed)
 			&& (!level_editor_edit_name)
 			{
 				level_editor_edit_name = true;
@@ -926,7 +926,7 @@ function scr_draw_upload_level_menu()
 			&& (mouse_check_button_released(mb_left))
 			&& (global.controls_used_for_navigation == "mouse")
 			&& (!level_editor_edit_name)
-			|| (key_a_pressed)
+			|| (key_accept_pressed)
 			&& (!level_editor_edit_name)
 			{
 				level_editor_edit_name = false;
@@ -1076,7 +1076,7 @@ function scr_draw_upload_level_menu()
 		if (menu == "edit_ok")
 		&& (menu_delay == 0
 		&& menu_joystick_delay == 0)
-		&& (key_a_pressed
+		&& (key_accept_pressed
 		|| point_in_rectangle(mouse_get_x, mouse_get_y, get_window_width * 0.5 - 185, ok_y, get_window_width * 0.5 + 185, ok_y + 42)
 		&& mouse_check_button_released(mb_left)
 		&& global.controls_used_for_navigation == "mouse")
@@ -1189,10 +1189,10 @@ function scr_draw_upload_level_menu()
 		&& (mouse_check_button_released(mb_left))
 		&& (global.controls_used_for_navigation == "mouse")
 		|| (menu == "edit_cancel")
-		&& (key_a_pressed)
+		&& (key_accept_pressed)
 		&& (menu_delay == 0
 		&& menu_joystick_delay == 0)
-		|| (key_b_pressed)
+		|| (key_back_pressed)
 		&& (menu_delay == 0
 		&& menu_joystick_delay == 0)
 		{
@@ -1556,9 +1556,9 @@ function scr_draw_upload_level_menu()
 		#region /* Save tags to level when going back to previous menu */
 		if (point_in_rectangle(mouse_get_x, mouse_get_y, 0, 0, 370, 42))
 		&& (mouse_check_button_released(mb_left))
-		|| (key_a_pressed)
+		|| (key_accept_pressed)
 		&& (menu == "upload_edit_tags_ok")
-		|| (key_b_pressed)
+		|| (key_back_pressed)
 		{
 			if (how_many_tags <= 3) /* Don't save and back out if there are more than 3 tags */
 			&& (menu_delay == 0
@@ -1853,7 +1853,7 @@ function scr_draw_upload_level_menu()
 		#endregion /* Indicate when there are missing files by displaying flashing red text END */
 
 		#region /* Return to game */
-		if (key_b_pressed)
+		if (key_back_pressed)
 		&& (!level_editor_edit_name)
 		&& (menu_delay == 0
 		&& menu_joystick_delay == 0)
@@ -1875,7 +1875,7 @@ function scr_draw_upload_level_menu()
 			&& (mouse_check_button_released(mb_left))
 			&& (menu_delay == 0
 			&& menu_joystick_delay == 0)
-			|| (key_a_pressed)
+			|| (key_accept_pressed)
 			&& (menu_delay == 0
 			&& menu_joystick_delay == 0)
 			{
@@ -1895,7 +1895,7 @@ function scr_draw_upload_level_menu()
 			&& (mouse_check_button_released(mb_left))
 			&& (menu_delay == 0
 			&& menu_joystick_delay == 0)
-			|| (key_a_pressed)
+			|| (key_accept_pressed)
 			&& (menu_delay == 0
 			&& menu_joystick_delay == 0)
 			{
@@ -1984,7 +1984,7 @@ function scr_draw_upload_level_menu()
 		draw_menu_button(get_window_width * 0.5 - 185, get_window_height - 42, l10n_text("Cancel"), "uploading_level", "edit_ok");
 		draw_sprite_ext(spr_icon_back, 0, get_window_width * 0.5 - 185 + 16, get_window_height - 42 + 21, 1, 1, 0, c_white, 1);
 
-		if (key_b_pressed)
+		if (key_back_pressed)
 		{
 			menu = "edit_ok";
 		}
@@ -2234,10 +2234,10 @@ function scr_draw_upload_level_menu()
 		&& (mouse_check_button_released(mb_left))
 		&& (menu_delay == 0
 		&& menu_joystick_delay == 0)
-		|| (key_a_pressed)
+		|| (key_accept_pressed)
 		&& (menu_delay == 0
 		&& menu_joystick_delay == 0)
-		|| (key_b_pressed)
+		|| (key_back_pressed)
 		&& (!level_editor_edit_name)
 		&& (menu_delay == 0
 		&& menu_joystick_delay == 0)
@@ -2328,11 +2328,11 @@ function scr_draw_upload_level_menu()
 		|| (mouse_check_button_released(mb_right))
 		&& (menu_delay == 0
 		&& menu_joystick_delay == 0)
-		|| (key_a_pressed
+		|| (key_accept_pressed
 		&& menu == "level_uploaded")
 		&& (menu_delay == 0
 		&& menu_joystick_delay == 0)
-		|| (key_b_pressed)
+		|| (key_back_pressed)
 		&& (menu_delay == 0
 		&& menu_joystick_delay == 0)
 		{
@@ -2377,7 +2377,7 @@ function scr_draw_upload_level_menu()
 			&& (menu_delay == 0
 			&& menu_joystick_delay == 0)
 			|| (menu == "level_uploaded_discord")
-			&& (key_a_pressed)
+			&& (key_accept_pressed)
 			&& (menu_delay == 0
 			&& menu_joystick_delay == 0))
 			{
@@ -2443,8 +2443,8 @@ function scr_draw_upload_level_menu()
 	&& menu_delay == 0
 	&& menu_joystick_delay == 0)
 	{
-		if (key_a_pressed
-		|| key_b_pressed)
+		if (key_accept_pressed
+		|| key_back_pressed)
 		{
 			menu_delay = 3;
 			open_dropdown = false;

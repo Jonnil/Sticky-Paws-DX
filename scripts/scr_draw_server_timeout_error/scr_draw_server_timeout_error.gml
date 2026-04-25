@@ -60,7 +60,7 @@ function scr_draw_server_timeout_error()
 	}
 
 	if (back_clicked)
-	|| (key_b_pressed)
+	|| (key_back_pressed)
 	&& (menu_delay == 0 && menu_joystick_delay == 0)
 	{
 		menu_delay = 3;

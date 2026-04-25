@@ -83,7 +83,7 @@ function scr_draw_welcome_to_level_editor_menu()
 		&& (global.controls_used_for_navigation != "gamepad")
 		&& (shortcuts_available)
 		{
-			if (key_a_pressed)
+			if (key_accept_pressed)
 			&& (menu_delay == 0 && menu_joystick_delay == 0)
 			|| (point_in_rectangle(cursor_x, cursor_y, welcome_screen_shortcuts_x, display_get_gui_height() * 0.5 + 126, welcome_screen_shortcuts_x + 185, display_get_gui_height() * 0.5 + 126 + 42))
 			&& (global.controls_used_for_navigation == "mouse")
@@ -103,7 +103,7 @@ function scr_draw_welcome_to_level_editor_menu()
 		else
 		if (menu == "welcome_screen_close")
 		{
-			if (key_a_pressed)
+			if (key_accept_pressed)
 			&& (menu_delay == 0 && menu_joystick_delay == 0)
 			|| (point_in_rectangle(cursor_x, cursor_y, welcome_screen_close_x, display_get_gui_height() * 0.5 + 126, welcome_screen_close_x + 185, display_get_gui_height() * 0.5 + 126 + 42))
 			&& (global.controls_used_for_navigation == "mouse")
@@ -172,7 +172,7 @@ function scr_draw_welcome_to_level_editor_menu()
 
 		if (menu == "welcome_screen_shortcuts")
 		{
-			if (key_a_pressed)
+			if (key_accept_pressed)
 			&& (menu_delay == 0 && menu_joystick_delay == 0)
 			|| (point_in_rectangle(cursor_x, cursor_y, welcome_screen_shortcuts_x, display_get_gui_height() * 0.5 + 126, welcome_screen_shortcuts_x + 185, display_get_gui_height() * 0.5 + 126 + 42))
 			&& (global.controls_used_for_navigation == "mouse")
@@ -192,7 +192,7 @@ function scr_draw_welcome_to_level_editor_menu()
 		else
 		if (menu == "welcome_screen_close")
 		{
-			if (key_a_pressed)
+			if (key_accept_pressed)
 			&& (menu_delay == 0 && menu_joystick_delay == 0)
 			|| (point_in_rectangle(cursor_x, cursor_y, welcome_screen_close_x, display_get_gui_height() * 0.5 + 126, welcome_screen_close_x + 185, display_get_gui_height() * 0.5 + 126 + 42))
 			&& (global.controls_used_for_navigation == "mouse")

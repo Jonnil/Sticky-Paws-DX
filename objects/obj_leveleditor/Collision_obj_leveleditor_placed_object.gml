@@ -62,7 +62,7 @@ if (!global.actually_play_edited_level)
 
 		if (mouse_check_button_released(mb_left))
 		|| (instance_exists(obj_leveleditor))
-		&& (obj_leveleditor.key_a_released)
+		&& (obj_leveleditor.key_accept_released)
 		{
 			placed_for_the_first_time = false;
 		}

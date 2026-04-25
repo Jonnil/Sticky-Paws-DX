@@ -24,7 +24,7 @@ if (instance_exists(obj_leveleditor))
 	&& (!mouse_check_button(mb_middle))
 	{
 		if (mouse_check_button_pressed(mb_left))
-		|| (obj_leveleditor.key_a_pressed)
+		|| (obj_leveleditor.key_accept_pressed)
 		{
 			if (place_meeting(x, y, obj_leveleditor))
 			{
@@ -48,7 +48,7 @@ if (instance_exists(obj_leveleditor))
 
 	#region /* Release the object */
 	if (mouse_check_button_released(mb_left))
-	|| (obj_leveleditor.key_a_released)
+	|| (obj_leveleditor.key_accept_released)
 	{
 		if (drag_object)
 		{

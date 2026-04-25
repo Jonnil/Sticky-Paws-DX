@@ -92,7 +92,7 @@ function scr_draw_level_length_recommendation()
 		}
 
 		if (menu == "level_length_recommendation_ok")
-		&& (key_a_pressed
+		&& (key_accept_pressed
 		|| mouse_check_button_released(mb_left)
 		&& point_in_rectangle(device_mouse_x_to_gui(0), device_mouse_y_to_gui(0), button_x, ok_y, button_x + 370, ok_y + 41))
 		&& (menu_delay == 0)
@@ -141,7 +141,7 @@ function scr_draw_level_length_recommendation()
 		}
 
 		if (menu == "level_length_recommendation_back")
-		&& (key_a_pressed
+		&& (key_accept_pressed
 		|| mouse_check_button_released(mb_left)
 		&& point_in_rectangle(device_mouse_x_to_gui(0), device_mouse_y_to_gui(0), button_x, back_y, button_x + 370, back_y + 41))
 		&& (menu_delay == 0)

@@ -69,8 +69,8 @@ function scr_option_graphics()
 		if (menu == "resolution_setting")
 		&& (!window_get_fullscreen())
 		{
-			if (key_a_pressed)
-			|| (key_b_pressed)
+			if (key_accept_pressed)
+			|| (key_back_pressed)
 			{
 				/* Resolution Current Display Size */ if (global.resolution_setting == 0){display_set_gui_size(display_get_width(), display_get_height());window_set_size(display_get_width(), display_get_height());}else
 				if (global.resolution_setting == 1){display_set_gui_size(1920, 1080);window_set_size(1920, 1080);}else
@@ -357,7 +357,7 @@ function scr_option_graphics()
 		#endregion /* Navigate END */
 
 		#region /* Accept */
-		if (key_a_pressed)
+		if (key_accept_pressed)
 		|| (mouse_check_button_released(mb_left) && mouse_get_x > 370)
 		{
 			if (menu == "gui_scale_modifier")
@@ -412,7 +412,7 @@ function scr_option_graphics()
 		draw_menu_dropdown(420, 68 * 2, l10n_text("Color"), "customize_button_design_color", global.button_design_color, l10n_text("Gray"), l10n_text("Black"), l10n_text("Pink"), l10n_text("Blue"));
 		scr_set_default_dropdown_description("customize_button_design_color", l10n_text("Pink"));
 
-		if (key_b_pressed)
+		if (key_back_pressed)
 		&& (!open_dropdown)
 		&& (menu_delay == 0 && menu_joystick_delay == 0)
 		{
@@ -421,7 +421,7 @@ function scr_option_graphics()
 			can_navigate_settings_sidebar = false;
 		}
 
-		if (key_a_pressed)
+		if (key_accept_pressed)
 		&& (!open_dropdown)
 		&& (menu_delay == 0 && menu_joystick_delay == 0)
 		{
@@ -1051,7 +1051,7 @@ function scr_option_graphics()
 		#endregion /* Navigate END */
 
 		#region /* Accept */
-		if (key_a_pressed || mouse_check_button_released(mb_left) && mouse_get_x > 370)
+		if (key_accept_pressed || mouse_check_button_released(mb_left) && mouse_get_x > 370)
 		&& (menu_delay == 0 && menu_joystick_delay == 0)
 		{
 			if (menu == "advanced_video_option_back"){menu = "advanced_video_options";menu_y_offset = 0;
@@ -1091,7 +1091,7 @@ function scr_option_graphics()
 		}
 		#endregion /* Accept END */
 
-		if (key_b_pressed)
+		if (key_back_pressed)
 		&& (!open_dropdown)
 		&& (menu_delay == 0 && menu_joystick_delay == 0)
 		{

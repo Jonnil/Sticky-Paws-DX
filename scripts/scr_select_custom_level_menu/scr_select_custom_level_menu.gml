@@ -299,7 +299,7 @@ function scr_select_custom_level_menu()
 		else
 
 		#region /* Key A pressed */
-		if (key_a_pressed)
+		if (key_accept_pressed)
 		|| (mouse_check_button_released(mb_left))
 		{
 			if (!can_input_level_name)
@@ -361,7 +361,7 @@ function scr_select_custom_level_menu()
 		else
 
 		#region /* Key B Pressed */
-		if (key_b_pressed)
+		if (key_back_pressed)
 		&& (!can_input_level_name)
 		&& (menu_delay == 0 && menu_joystick_delay == 0)
 		&& (show_level_editor_corner_menu)
@@ -439,7 +439,7 @@ function scr_select_custom_level_menu()
 				&& (mouse_check_button_released(mb_left))
 				&& (menu_delay == 0 && menu_joystick_delay == 0)
 				|| (menu == "open_custom_levels_folder")
-				&& (key_a_pressed)
+				&& (key_accept_pressed)
 				&& (menu_delay == 0 && menu_joystick_delay == 0)
 				{
 					scr_open_folder(game_save_id + "\custom_levels")
@@ -506,7 +506,7 @@ function scr_select_custom_level_menu()
 				&& (menu_delay == 0 && menu_joystick_delay == 0)
 				&& (point_in_rectangle(mouse_get_x, mouse_get_y, 0, draw_online_level_list_y + 2, 370, draw_online_level_list_y + 41))
 				|| (menu == "online_level_list")
-				&& (key_a_pressed)
+				&& (key_accept_pressed)
 				&& (menu_delay == 0 && menu_joystick_delay == 0)
 				{
 					caution_online_takes_you_to = "online_download_list_load";
@@ -610,12 +610,12 @@ function scr_select_custom_level_menu()
 			draw_menu_button(0, 0, l10n_text("Back"), "back_from_level_editor", "");
 			draw_sprite_ext(spr_icon_back, 0, + 20, + 21, 1, 1, 0, c_white, 1);
 			if (menu == "back_from_level_editor")
-			&& (key_a_pressed)
+			&& (key_accept_pressed)
 			&& (menu_delay == 0 && menu_joystick_delay == 0)
 			&& (!open_sub_menu)
 			&& (!open_upload_menu)
 			&& (!can_input_level_name)
-			|| (key_b_pressed)
+			|| (key_back_pressed)
 			&& (menu_delay == 0 && menu_joystick_delay == 0)
 			&& (!open_sub_menu)
 			&& (!open_upload_menu)

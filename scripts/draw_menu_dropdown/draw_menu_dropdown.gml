@@ -100,7 +100,7 @@ function draw_menu_dropdown(x_position, y_position, string_text, menu_index, var
 		&& (mouse_check_button_released(mb_left))
 		&& (menu_delay == 0 && menu_joystick_delay == 0)
 		&& (!open_dropdown)
-		|| (key_a_pressed)
+		|| (key_accept_pressed)
 		&& (menu == menu_index)
 		&& (!input_key)
 		&& (!open_dropdown)
@@ -115,12 +115,12 @@ function draw_menu_dropdown(x_position, y_position, string_text, menu_index, var
 			}
 		}
 		else
-		if (key_b_pressed)
+		if (key_back_pressed)
 		&& (menu == menu_index)
 		&& (!input_key)
 		&& (open_dropdown)
 		&& (menu_delay == 0 && menu_joystick_delay == 0)
-		|| (key_a_pressed)
+		|| (key_accept_pressed)
 		&& (menu == menu_index)
 		&& (!input_key)
 		&& (open_dropdown)
@@ -562,7 +562,7 @@ function draw_menu_debug_visibility_row(x_position, y_position, string_text, men
 				menu_delay = 3;
 			}
 			else
-			if (key_a_pressed
+			if (key_accept_pressed
 			&& scr_debug_is_visibility_mode_available_in_public_menu(item_id, focused_mode))
 			{
 				scr_debug_set_item_mode(item_id, focused_mode, false);

@@ -21,9 +21,9 @@ for(var p = 1; p <= global.max_players; p += 1)
 	player_display_x[p] = 0;
 	xx[p] = 0;
 	xx_delay[p] = 0;
-	/* Player Key Accept Pressed */ player_key_a_pressed[p] = noone;
-	/* Player Key Back Pressed */ player_key_b_pressed[p] = noone;
-	/* Player Key Accept Hold */ player_key_a_hold[p] = noone;
+	/* Player Key Accept Pressed */ player_key_accept_pressed[p] = noone;
+	/* Player Key Back Pressed */ player_key_back_pressed[p] = noone;
+	/* Player Key Accept Hold */ player_key_accept_hold[p] = noone;
 	character_portrait_for_player_dir_exists_1[p] = false;
 	character_portrait_for_player_dir_exists_2[p] = false;
 	character_portrait_for_player_dir_exists_3[p] = false;
@@ -74,8 +74,8 @@ information_menu_open = ""; /* If the information menu is opened or not */
 
 menu = "";
 
-key_a_pressed = noone;
-key_b_pressed = noone;
+key_accept_pressed = noone;
+key_back_pressed = noone;
 key_up = noone;
 key_down = noone;
 key_left = noone;

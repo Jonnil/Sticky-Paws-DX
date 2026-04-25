@@ -64,10 +64,10 @@ if (instance_exists(obj_leveleditor))
 && (!obj_leveleditor.pause)
 
 || (instance_exists(obj_leveleditor))
-&& (!obj_leveleditor.key_b_hold)
+&& (!obj_leveleditor.key_back_hold)
 && (!obj_leveleditor.drag_object)
 && (!obj_leveleditor.erase_mode)
-&& (obj_leveleditor.key_a_hold)
+&& (obj_leveleditor.key_accept_hold)
 && (!obj_leveleditor.pause)
 {
 	image_blend = c_lime;
@@ -118,8 +118,8 @@ if (!keyboard_check(vk_escape))
 	&& (!obj_leveleditor.pause)
 
 	|| (instance_exists(obj_leveleditor))
-	&& (!obj_leveleditor.key_a_hold)
-	&& (obj_leveleditor.key_b_hold)
+	&& (!obj_leveleditor.key_accept_hold)
+	&& (obj_leveleditor.key_back_hold)
 	&& (!obj_leveleditor.pause)
 	{
 		audio_sound_pitch(snd_leveleditor_erase_object, random_range(0.9, 1.1));

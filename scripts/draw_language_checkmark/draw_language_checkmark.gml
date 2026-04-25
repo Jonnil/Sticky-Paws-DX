@@ -110,7 +110,7 @@ function draw_language_checkmark(x_position, y_position, string_text, menu_index
 	&& (!open_dropdown)
 	&& (menu_delay == 0 && menu_joystick_delay == 0)
 	&& (!input_blocked)
-	|| (key_a_pressed)
+	|| (key_accept_pressed)
 	&& (menu == menu_index)
 	&& (!input_key)
 	&& (!open_dropdown)

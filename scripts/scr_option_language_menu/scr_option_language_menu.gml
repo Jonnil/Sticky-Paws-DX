@@ -483,7 +483,7 @@ function scr_option_language_menu()
 				}
 			}
 			else
-			if (key_a_pressed
+			if (key_accept_pressed
 			|| mouse_check_button_released(mb_left)
 			&& point_in_rectangle(device_mouse_x_to_gui(0), device_mouse_y_to_gui(0), language_buttons_x, match_system_language_y, language_buttons_x + 370, match_system_language_y + 42))
 			&& (!open_dropdown)
@@ -500,7 +500,7 @@ function scr_option_language_menu()
 				scr_set_font();
 			}
 			else
-			if (key_a_pressed
+			if (key_accept_pressed
 			|| mouse_check_button_released(mb_left)
 			&& (menu == "language_check_updates")
 			&& point_in_rectangle(device_mouse_x_to_gui(0), device_mouse_y_to_gui(0), language_buttons_x, check_updates_button_y, language_buttons_x + (check_updates_button_width), check_updates_button_y + 42))
@@ -551,19 +551,19 @@ function scr_option_language_menu()
 				}
 			}
 			else
-			if (key_a_pressed
+			if (key_accept_pressed
 			&& menu == "language_auto_update")
 			{
 				open_dropdown = !open_dropdown;
 			}
 			else
-			if (key_a_pressed
+			if (key_accept_pressed
 			&& menu == "advanced_language_options")
 			{
 				menu = "advanced_language_options_back";
 			}
 			else
-			if (key_a_pressed
+			if (key_accept_pressed
 			&& menu == "advanced_language_options_back")
 			{
 				menu = "advanced_language_options";

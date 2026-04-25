@@ -334,7 +334,7 @@ function scr_draw_level_editor_sub_menu(xx = 0)
 			&& (point_in_rectangle(mouse_get_x, mouse_get_y, xx + 8, 226 * (column - scroll) + 475 - 3, xx + 8 + 370, 226 * (column - scroll) + 475 - 3 + 42))
 			&& (mouse_check_button_released(mb_left))
 			&& (global.controls_used_for_navigation == "mouse")
-			|| (key_a_pressed)
+			|| (key_accept_pressed)
 			{
 				global.save_data_size_is_sufficient = true; /* Avoid Switch save-data API calls during Create menu transitions. */
 				if (global.save_data_size_is_sufficient)
@@ -365,7 +365,7 @@ function scr_draw_level_editor_sub_menu(xx = 0)
 			&& (point_in_rectangle(mouse_get_x, mouse_get_y, xx + 8, back_y, xx + 8 + 370, back_y + 42))
 			&& (mouse_check_button_released(mb_left))
 			&& (global.controls_used_for_navigation == "mouse")
-			|| (key_a_pressed)
+			|| (key_accept_pressed)
 			{
 				menu_delay = 3;
 				open_sub_menu = false;
@@ -386,7 +386,7 @@ function scr_draw_level_editor_sub_menu(xx = 0)
 			&& (point_in_rectangle(mouse_get_x, mouse_get_y, xx + 8, 226 * (column - scroll) + 475 + (back_y) - 3, xx + 8 + 370, 226 * (column - scroll) + 475 + (back_y) - 3 + 42))
 			&& (mouse_check_button_released(mb_left))
 			&& (global.controls_used_for_navigation == "mouse")
-			|| (key_a_pressed)
+			|| (key_accept_pressed)
 			{
 				file_load_timer = 0; /* Reset the "file load timer" to 0 just in case, otherwise you can't navigate the thumbnails with mouse */
 				menu_delay = 3;
@@ -452,7 +452,7 @@ function scr_draw_level_editor_sub_menu(xx = 0)
 			&& (point_in_rectangle(mouse_get_x, mouse_get_y, xx + 8, 226 * (column - scroll) + 475 + (play_y)- 3, xx + 8 + 370, 226 * (column - scroll) + 475 + (play_y)- 3 + 42))
 			&& (mouse_check_button_released(mb_left))
 			&& (global.controls_used_for_navigation == "mouse")
-			|| (key_a_pressed)
+			|| (key_accept_pressed)
 			{
 				global.doing_clear_check_level = false;
 				global.actually_play_edited_level = true; /* Even before going to the level, set this variable to true */
@@ -470,7 +470,7 @@ function scr_draw_level_editor_sub_menu(xx = 0)
 			&& (point_in_rectangle(mouse_get_x, mouse_get_y, xx + 8, 226 * (column - scroll) + 475 + (make_y) - 3, xx + 8 + 370, 226 * (column - scroll) + 475 + (make_y) - 3 + 42))
 			&& (mouse_check_button_released(mb_left))
 			&& (global.controls_used_for_navigation == "mouse")
-			|| (key_a_pressed)
+			|| (key_accept_pressed)
 			{
 				global.doing_clear_check_level = false;
 				global.actually_play_edited_level = false;
@@ -489,7 +489,7 @@ function scr_draw_level_editor_sub_menu(xx = 0)
 			&& (mouse_check_button_released(mb_left))
 			&& (global.controls_used_for_navigation == "mouse")
 			&& (!level_editor_edit_name)
-			|| (key_a_pressed)
+			|| (key_accept_pressed)
 			&& (!level_editor_edit_name)
 			{
 				level_editor_edit_name = true;
@@ -524,7 +524,7 @@ function scr_draw_level_editor_sub_menu(xx = 0)
 			&& (mouse_check_button_released(mb_left))
 			&& (global.controls_used_for_navigation == "mouse")
 			&& (!level_editor_edit_name)
-			|| (key_a_pressed)
+			|| (key_accept_pressed)
 			&& (!level_editor_edit_name)
 			{
 				level_editor_edit_name = true;
@@ -555,7 +555,7 @@ function scr_draw_level_editor_sub_menu(xx = 0)
 		#endregion /* Pressing the Edit Description button END */
 
 		#region /* Key A pressed */
-		if (key_a_pressed)
+		if (key_accept_pressed)
 		&& (!can_input_level_name)
 		&& (menu_delay == 0 && menu_joystick_delay == 0)
 		{
@@ -590,7 +590,7 @@ function scr_draw_level_editor_sub_menu(xx = 0)
 		#endregion /* Key A pressed END */
 
 		#region /* Pressing the Create from Template button */
-		if (key_a_pressed)
+		if (key_accept_pressed)
 		&& (!can_input_level_name)
 		&& (menu_delay == 0 && menu_joystick_delay == 0)
 		|| (!hovering_over_level_editor_corner_menu)
@@ -626,7 +626,7 @@ function scr_draw_level_editor_sub_menu(xx = 0)
 
 		#region /* Pressing the Create Daily Build button */
 		if (daily_build_enabled)
-		&& (key_a_pressed)
+		&& (key_accept_pressed)
 		&& (!can_input_level_name)
 		&& (menu_delay == 0 && menu_joystick_delay == 0)
 		|| (daily_build_enabled)
@@ -659,7 +659,7 @@ function scr_draw_level_editor_sub_menu(xx = 0)
 		#endregion /* Pressing the Create Daily Build button END */
 
 		#region /* Pressing the Yes Delete button */
-		if (key_a_pressed)
+		if (key_accept_pressed)
 		&& (!can_input_level_name)
 		&& (menu_delay == 0 && menu_joystick_delay == 0)
 		|| (!hovering_over_level_editor_corner_menu)

@@ -83,7 +83,7 @@ function scr_draw_links_menu()
 			)
 			|| (
 				(menu == link_menu_string)
-				&& (key_a_pressed)
+				&& (key_accept_pressed)
 				&& (menu_delay == 0 && menu_joystick_delay == 0)
 			)
 		)
