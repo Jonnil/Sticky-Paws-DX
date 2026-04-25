@@ -47,8 +47,6 @@ if (global.debug_screen)
 if (os_type == os_switch)
 && (room != rm_splash_screen)
 {
-	var passive_network_available = os_is_network_connected(network_connect_passive);
-
 	if (global.switch_startup_online_retry_timer > 0)
 	{
 		global.switch_startup_online_retry_timer--;
@@ -59,6 +57,8 @@ if (os_type == os_switch)
 	{
 		/* Continue the silent startup prefetch after leaving the splash screen so
 		flight mode boots can recover later without manual input. */
+		var passive_network_available = scr_get_cached_passive_network_status(false);
+
 		if (passive_network_available)
 		{
 			scr_switch_try_startup_token_prefetch();

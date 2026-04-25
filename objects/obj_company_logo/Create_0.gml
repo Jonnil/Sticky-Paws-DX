@@ -134,7 +134,8 @@ global.switch_accounts_last_snapshot = "";
 #region /* If you're playing on console, then some things should not show up that is for PC */
 if (os_type == os_switch)
 {
-	global.switch_startup_token_prefetch_active = true;
+	/* Manual online actions handle Switch account/token login. Startup must stay passive-only. */
+	global.switch_startup_token_prefetch_active = false;
 
 	#region /* Need to set these Switch specific functions */
 	var switch_controller_style = switch_controller_handheld | switch_controller_joycon_left | switch_controller_joycon_right | switch_controller_pro_controller | switch_controller_joycon_dual;

@@ -12,7 +12,7 @@ function scr_send_pending_crash_logs()
 		if (directory_exists(pending_logs_folder)
 		&& global.online_enabled
 		&& global.send_crash_logs
-		&& os_is_network_connected(network_connect_passive))
+		&& scr_get_cached_passive_network_status(false))
 		{
 			show_debug_message("[scr_send_pending_crash_logs] Checking for pending crash logs in folder: " + pending_logs_folder);
 			show_debug_message("[scr_send_pending_crash_logs] Conditions met for sending crash logs.");

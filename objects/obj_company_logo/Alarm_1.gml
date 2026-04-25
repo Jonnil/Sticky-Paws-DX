@@ -1,7 +1,7 @@
 /* During startup, try one silent token prefetch for the active Switch account so
 automatic language updates can begin without opening Nintendo UI. */
 var should_retry_startup_online_check = false;
-var passive_network_available = os_is_network_connected(network_connect_passive);
+var passive_network_available = scr_get_cached_passive_network_status(true);
 
 if (os_type == os_switch)
 {

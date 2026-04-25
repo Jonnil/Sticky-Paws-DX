@@ -51,6 +51,19 @@ function scr_handle_no_network_connection(what_script = "scr_handle_no_network_c
 	}
 
 	if (os_type == os_switch)
+	&& (scr_is_active_network_request_pending())
+	{
+		show_debug_message("[scr_handle_no_network_connection] Active Switch network request is still pending. Waiting for Nintendo network handling before showing the in-game network error menu.");
+
+		if (variable_instance_exists(self, "menu_delay"))
+		{
+			menu_delay = max(menu_delay, 3);
+		}
+
+		return;
+	}
+
+	if (os_type == os_switch)
 	&& (global.switch_login_cancelled)
 	{
 		show_debug_message("[scr_handle_no_network_connection] Switch account prompt was cancelled. Restoring previous menu silently.");

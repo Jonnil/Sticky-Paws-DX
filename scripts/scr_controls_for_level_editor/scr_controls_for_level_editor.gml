@@ -2,6 +2,25 @@ function scr_controls_for_level_editor()
 {
 	
 	#region /* Controls for level editor */
+	if (scr_block_menu_input_for_network_request())
+	{
+		key_up = false;
+		key_left = false;
+		key_right = false;
+		key_down = false;
+		key_up_pressed = false;
+		key_left_pressed = false;
+		key_right_pressed = false;
+		key_down_pressed = false;
+		key_a_hold = false;
+		key_a_pressed = false;
+		key_a_released = false;
+		key_b_hold = false;
+		key_b_pressed = false;
+		key_move_faster = false;
+		return;
+	}
+
 	key_up = scr_key_initialize(key_up, 0, 1, action.up) && (!gamepad_button_check(global.player_slot[1], gp_padu)) || (gamepad_axis_value(global.player_slot[1], gp_axislv) < -0.3) && (menu_joystick_delay == 0);
 	key_left = scr_key_initialize(key_left, 0, 1, action.left) && (!gamepad_button_check(global.player_slot[1], gp_padl)) || (gamepad_axis_value(global.player_slot[1], gp_axislh) < -0.3) && (menu_joystick_delay == 0);
 	key_right = scr_key_initialize(key_right, 0, 1, action.right) && (!gamepad_button_check(global.player_slot[1], gp_padr))|| (gamepad_axis_value(global.player_slot[1], gp_axislh) > +0.3) && (menu_joystick_delay == 0);

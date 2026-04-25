@@ -20,7 +20,7 @@ function scr_step_online_download_list()
 	if (menu == "online_download_list_load")
 	&& (global.online_token_validated)
 	{
-		if (scr_check_network_connection(network_connect_active))
+		if (scr_check_network_connection(network_connect_active, true))
 		{
 
 			#region /* Pagination-aware initial cursor/offset setup */

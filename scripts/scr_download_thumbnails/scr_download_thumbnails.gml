@@ -55,7 +55,7 @@ function scr_download_thumbnails(download_all, what_num_items = 0)
 		global.online_download_list_info = "";
 
 		/* Only send the HTTP request if the device is connected to the network. */
-		if (scr_check_network_connection(network_connect_active))
+		if (scr_check_network_connection(network_connect_passive))
 		{
 			scr_log("INFO", "THUMBNAILS", "http_request_start", "download_id=" + string_upper(all_download_id[info_queue_index]));
 

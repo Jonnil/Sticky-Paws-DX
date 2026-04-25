@@ -6,8 +6,9 @@ function draw_menu_button(x_position, y_position, string_text, menu_index, menu_
 
 	var point_in_button = point_in_rectangle(mouse_get_x, mouse_get_y, x_position, y_position + 1, x_position + 370, y_position + 41);
 	var using_mouse = (global.controls_used_for_navigation == "mouse");
-	var not_open_dropdown = !open_dropdown;
 	var is_same_menu = (menu == menu_index);
+	var input_blocked = scr_block_menu_input_for_network_request();
+	var not_open_dropdown = !open_dropdown && !input_blocked;
 
 	if ((point_in_button
 	&& using_mouse
@@ -59,22 +60,26 @@ function draw_menu_button(x_position, y_position, string_text, menu_index, menu_
 	draw_set_valign(fa_middle);
 	scr_draw_text_outlined(x_position + 185, y_position + 21, string(string_text), global.default_text_size * text_scale, outline_color, fill_color, alpha);
 
-	if (point_in_button
-	&& global.controls_used_for_navigation == "mouse"
-	&& mouse_check_button_released(mb_left)
-	&& menu_delay == 0 && menu_joystick_delay == 0)
+	var mouse_activated = point_in_button
+		&& global.controls_used_for_navigation == "mouse"
+		&& mouse_check_button_released(mb_left)
+		&& menu_delay == 0
+		&& menu_joystick_delay == 0;
 
-	|| (instance_exists(obj_leveleditor)
-	&& menu == menu_index
-	&& obj_leveleditor.key_a_pressed
-	&& menu_delay == 0
-	&& menu_joystick_delay == 0)
+	var level_editor_activated = instance_exists(obj_leveleditor)
+		&& menu == menu_index
+		&& obj_leveleditor.key_a_pressed
+		&& menu_delay == 0
+		&& menu_joystick_delay == 0;
 
-	|| (variable_instance_exists(self, "key_a_pressed")
-	&& menu == menu_index
-	&& key_a_pressed
-	&& menu_delay == 0
-	&& menu_joystick_delay == 0)
+	var key_activated = variable_instance_exists(self, "key_a_pressed")
+		&& menu == menu_index
+		&& key_a_pressed
+		&& menu_delay == 0
+		&& menu_joystick_delay == 0;
+
+	if (!input_blocked
+	&& (mouse_activated || level_editor_activated || key_activated))
 	{
 		return true;
 	}

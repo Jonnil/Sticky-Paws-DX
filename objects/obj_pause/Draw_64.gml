@@ -411,6 +411,7 @@ if (!hide_menu_for_clean_screenshots)
 		scr_draw_upload_rules();
 	}
 
+	scr_draw_network_request_modal();
 	scr_cant_use_controller_notification();
 
 	scr_quit_to_desktop_menu("quit_to_desktop");

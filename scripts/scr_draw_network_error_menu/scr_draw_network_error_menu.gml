@@ -5,6 +5,11 @@ function scr_draw_network_error_menu()
 	|| (menu == "network_error_copy_error_code")
 	|| (menu == "network_error_main_menu")
 	{
+		if (scr_draw_network_request_modal())
+		{
+			return;
+		}
+
 		/* Get common dimensions and mouse position */
 		var window_width    = display_get_gui_width();
 		var window_height    = display_get_gui_height();
@@ -20,7 +25,9 @@ function scr_draw_network_error_menu()
 		var retry_successful = false;
 		var copy_clicked = false;
 		var mainmenu_clicked = false;
-		static switch_update_online_status = false;
+		var passive_network_connected = scr_get_cached_passive_network_status(false);
+		var accept_pressed = key_a_pressed;
+		var back_pressed = key_b_pressed;
 
 		/* Calculate positions for the buttons */
 		var retry_button_y = center_y + 100 + 20;
@@ -33,7 +40,7 @@ function scr_draw_network_error_menu()
 		}
 
 		var retry_x    = center_x - 185; /* Top button: Retry */
-		var copy_error_code_x = center_x - 185; /* Middle button: Retry */
+		var copy_error_code_x = center_x - 185; /* Middle button: Copy Error Code */
 		var mainmenu_x = center_x - 185; /* Bottom button: Main Menu */
 
 		/* Add a semi-transparent dark overlay */
@@ -43,6 +50,7 @@ function scr_draw_network_error_menu()
 
 		/* Draw Main Menu Button (Offline Mode) */
 		draw_menu_button(mainmenu_x, mainmenu_button_y, l10n_text("Main Menu"), "network_error_main_menu", "network_error_main_menu");
+		draw_sprite_ext(spr_icon_back, 0, mainmenu_x + 16, mainmenu_button_y + 21, 1, 1, 0, c_white, 1);
 
 		/* Determine hover state for each button (assuming button size: width 360, height 84) */
 		var retry_hover    = point_in_rectangle(mouse_get_x, mouse_get_y, retry_x, retry_button_y, retry_x + 370, retry_button_y + 42);
@@ -60,46 +68,31 @@ function scr_draw_network_error_menu()
 			/* Keyboard/Gamepad activation using a selected button indicator */
 			if (global.controls_used_for_navigation == "keyboard"
 			|| global.controls_used_for_navigation == "gamepad")
-			&& (key_a_pressed
-			|| key_b_pressed)
 			{
-				if (menu == "network_error_main_menu")
+				if (back_pressed)
+				{
+					mainmenu_clicked = true;
+				}
+				else
+				if (accept_pressed)
+				&& (menu == "network_error_main_menu")
 				{
 					mainmenu_clicked = true;
 				}
 			}
 		}
 
-		if (!global.online_enabled)
-		&& (menu_delay == 0 && menu_joystick_delay == 0)
-		{
-			show_debug_message("[scr_draw_network_error_menu] menu = 'caution_online_proceed'\n");
-			menu = "caution_online_proceed";
-		}
-		else
-		if (!os_is_network_connected(network_connect_passive))
-		&& (menu_delay == 0 && menu_joystick_delay == 0)
-		{
-			scr_draw_loading(1,,,l10n_text("Looking for Network"));
-
-			menu = "network_error_main_menu";
-		}
-		else
-		if (!global.online_token_validated)
-		&& (menu_delay == 0 && menu_joystick_delay == 0)
+		if (global.online_token_request != -1)
+		&& (!global.online_token_validated)
 		{
 			scr_draw_loading(1,,,l10n_text("Looking for Token"));
 
 			menu = "network_error_main_menu";
-
-			if (!switch_update_online_status)
-			{
-				switch_update_online_status = true;
-				scr_switch_update_online_status(true);
-			}
 		}
 		else
-		if (scr_check_network_connection(network_connect_active)) /* Need to check if you are connected to the internet before proceeding to online content */
+		if (global.online_enabled)
+		&& (global.online_token_validated)
+		&& (passive_network_connected)
 		&& (caution_online_takes_you_to != "")
 		&& (menu_delay == 0 && menu_joystick_delay == 0)
 		{
@@ -205,8 +198,7 @@ function scr_draw_network_error_menu()
 				if (global.controls_used_for_navigation == "keyboard"
 				|| global.controls_used_for_navigation == "gamepad")
 				{
-					if (key_a_pressed
-					|| key_b_pressed)
+					if (accept_pressed)
 					{
 						if (menu == "network_error")
 						{
@@ -304,7 +296,7 @@ function scr_draw_network_error_menu()
 			/* Determine the error message based on connection status */
 			var error_text = "";
 
-			if (!os_is_network_connected(network_connect_passive))
+			if (!passive_network_connected)
 			{
 				error_text += l10n_text("No Internet Connection Detected") + "\n";
 			}
@@ -439,6 +431,14 @@ function scr_draw_network_error_menu()
 		if (retry_clicked)
 		{
 			menu_delay = 3;
+			global.online_enabled = true;
+
+			if (!variable_global_exists("online_retry_attempts"))
+			{
+				global.online_retry_attempts = 0;
+			}
+
+			global.online_retry_attempts++;
 
 			#region /* Recheck connection: if restored, proceed to online features; otherwise, remain on error screen */
 			if (global.online_enabled
@@ -449,8 +449,6 @@ function scr_draw_network_error_menu()
 			}
 			else
 			{
-				scr_switch_update_online_status();
-
 				if (scr_check_network_connection(network_connect_active, true))
 				{
 					retry_successful = true;
@@ -486,7 +484,6 @@ function scr_draw_network_error_menu()
 		if (mainmenu_clicked)
 		|| (global.switch_login_cancelled)
 		{
-			switch_update_online_status = false;
 			in_character_select_menu = false;
 			in_edit_character_menu = false;
 			in_online_download_list_menu = false; show_debug_message("[scr_draw_network_error_menu] 'In online download list menu' is set to false");
@@ -535,8 +532,6 @@ function scr_draw_network_error_menu()
 
 		if (retry_successful)
 		{
-			global.online_retry_attempts++;
-
 			menu_delay = 3;
 
 			if (caution_online_takes_you_back_to == "select_character")

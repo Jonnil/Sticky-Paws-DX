@@ -244,7 +244,7 @@ function scr_draw_menu_search_id(what_kind_of_id = "level")
 			#endregion /* Press Enter to search for the inputted ID END */
 			
 			if (!global.online_token_validated
-			|| !scr_check_network_connection(network_connect_active))
+			|| !scr_check_network_connection(network_connect_passive))
 			&& (menu_delay == 0 && menu_joystick_delay == 0)
 			{
 				global.download_request_timeout_end = undefined;
@@ -591,7 +591,7 @@ function scr_draw_menu_search_id(what_kind_of_id = "level")
 			#endregion /* You can always cancel searching if game can't find file on server END */
 			
 			if (!global.online_token_validated
-			|| !scr_check_network_connection(network_connect_active))
+			|| !scr_check_network_connection(network_connect_passive))
 			{
 				search_for_id_still = false;
 				global.download_request_timeout_end = undefined;

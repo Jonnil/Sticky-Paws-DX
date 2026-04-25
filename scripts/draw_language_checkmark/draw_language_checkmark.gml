@@ -37,6 +37,7 @@ function draw_language_checkmark(x_position, y_position, string_text, menu_index
 
 	var mouse_get_x = device_mouse_x_to_gui(0);
 	var mouse_get_y = device_mouse_y_to_gui(0);
+	var input_blocked = scr_block_menu_input_for_network_request();
 
 	#region /* Checkmark */
 
@@ -51,6 +52,7 @@ function draw_language_checkmark(x_position, y_position, string_text, menu_index
 		&& (point_in_rectangle(mouse_get_x, mouse_get_y, x_position, y_position - widen_button_offset, x_position + width_of_button, y_position + 32 + widen_button_offset))
 		&& (!input_key)
 		&& (!open_dropdown)
+		&& (!input_blocked)
 		{
 			draw_set_alpha(0.5);
 			draw_rectangle_color(x_position, y_position - widen_button_offset, x_position + width_of_button, y_position + 32 + widen_button_offset, c_white, c_white, c_white, c_white, false);
@@ -73,6 +75,7 @@ function draw_language_checkmark(x_position, y_position, string_text, menu_index
 		&& (point_in_rectangle(mouse_get_x, mouse_get_y, x_position, y_position - widen_button_offset, x_position + width_of_button, y_position + 32 + widen_button_offset))
 		&& (!input_key)
 		&& (!open_dropdown)
+		&& (!input_blocked)
 		{
 			draw_set_alpha(0.5);
 			draw_rectangle_color(x_position, y_position - widen_button_offset, x_position + width_of_button, y_position + 32 + widen_button_offset, c_white, c_white, c_white, c_white, false);
@@ -106,11 +109,13 @@ function draw_language_checkmark(x_position, y_position, string_text, menu_index
 	&& (!input_key)
 	&& (!open_dropdown)
 	&& (menu_delay == 0 && menu_joystick_delay == 0)
+	&& (!input_blocked)
 	|| (key_a_pressed)
 	&& (menu == menu_index)
 	&& (!input_key)
 	&& (!open_dropdown)
 	&& (menu_delay == 0 && menu_joystick_delay == 0)
+	&& (!input_blocked)
 	{
 		menu_delay = 3;
 		global.selected_language_id = max(valid_language_index, 2);

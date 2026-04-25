@@ -926,5 +926,6 @@ if (global.enable_transitions)
 
 scr_draw_network_error_menu();
 scr_draw_level_length_recommendation();
+scr_draw_network_request_modal();
 
 scr_cant_use_controller_notification();

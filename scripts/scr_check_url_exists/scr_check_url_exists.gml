@@ -16,12 +16,18 @@ function scr_check_url_exists(_url)
 		global.pending_url_checks = ds_list_create();
 	}
 
+	if (scr_url_checks_disabled_for_platform())
+	{
+		scr_set_url_check_result(_url, false, -1, -1, -1, true, true);
+		return;
+	}
+
 	var should_defer_request = false;
 
 	/* Website validation is not needed during the splash screen, and it should
 	wait until passive network is available instead of forcing startup traffic. */
 	if (room == rm_splash_screen)
-	|| (!os_is_network_connected(network_connect_passive))
+	|| (!scr_get_cached_passive_network_status(false))
 	{
 		should_defer_request = true;
 	}
@@ -37,7 +43,7 @@ function scr_check_url_exists(_url)
 			"[URL CHECK] Deferred: "
 			+ _url
 			+ " | room=" + string(room)
-			+ " | passive_network=" + string(os_is_network_connected(network_connect_passive))
+			+ " | passive_network=" + string(scr_get_cached_passive_network_status(false))
 		);
 		return;
 	}
@@ -58,23 +64,7 @@ function scr_check_url_exists(_url)
 			+ " | Transfer: " + string(-1)
 		);
 		
-		if (ds_map_exists(global.validated_urls, _url))
-		{
-			var old_entry = global.validated_urls[? _url];
-			
-			if (!is_undefined(old_entry))
-			{
-				ds_map_destroy(old_entry);
-			}
-		}
-		
-		var entry = ds_map_create();
-		entry[? "exists"] = false;
-		entry[? "status"] = -1;
-		entry[? "http_status"] = -1;
-		entry[? "transfer_status"] = -1;
-		
-		global.validated_urls[? _url] = entry;
+		scr_set_url_check_result(_url, false, -1, -1, -1, true, false);
 		return;
 	}
 	
@@ -87,6 +77,11 @@ function scr_check_url_exists(_url)
 
 function scr_process_pending_url_checks(max_requests_per_call = 2)
 {
+	if (scr_url_checks_disabled_for_platform())
+	{
+		return;
+	}
+
 	if (!variable_global_exists("pending_url_checks"))
 	{
 		return;
@@ -103,7 +98,7 @@ function scr_process_pending_url_checks(max_requests_per_call = 2)
 	}
 
 	if (room == rm_splash_screen)
-	|| (!os_is_network_connected(network_connect_passive))
+	|| (!scr_get_cached_passive_network_status(false))
 	{
 		return;
 	}
@@ -193,24 +188,7 @@ function scr_handle_url_check_http_event(_async_load)
 				global.validated_urls = ds_map_create();
 			}
 			
-			if (ds_map_exists(global.validated_urls, url))
-			{
-				var old_entry = global.validated_urls[? url];
-				
-				if (!is_undefined(old_entry))
-				{
-					ds_map_destroy(old_entry);
-				}
-			}
-			
-			var entry = ds_map_create();
-			entry[? "exists"] = exists;
-			entry[? "status"] = http_status;
-			entry[? "http_status"] = http_status;
-			entry[? "transfer_status"] = transfer_status;
-			entry[? "request_failed"] = request_failed;
-			
-			global.validated_urls[? url] = entry;
+			scr_set_url_check_result(url, exists, http_status, http_status, transfer_status, request_failed, false);
 			
 			ds_map_destroy(data);
 			ds_map_delete(global.url_check_requests, request_id);
@@ -223,6 +201,11 @@ Returns false if it was checked and is missing
 Returns undefined if it has not been checked yet */
 function scr_url_exists(_url)
 {
+	if (scr_url_checks_disabled_for_platform())
+	{
+		return false;
+	}
+
 	if (!variable_global_exists("validated_urls"))
 	{
 		return undefined;
@@ -236,4 +219,37 @@ function scr_url_exists(_url)
 	var data = global.validated_urls[? _url];
 	
 	return data[? "exists"];
+}
+
+function scr_url_checks_disabled_for_platform()
+{
+	return (os_type == os_switch);
+}
+
+function scr_set_url_check_result(_url, _exists, _status, _http_status, _transfer_status, _request_failed, _disabled_on_console)
+{
+	if (!variable_global_exists("validated_urls"))
+	{
+		global.validated_urls = ds_map_create();
+	}
+
+	if (ds_map_exists(global.validated_urls, _url))
+	{
+		var old_entry = global.validated_urls[? _url];
+
+		if (!is_undefined(old_entry))
+		{
+			ds_map_destroy(old_entry);
+		}
+	}
+
+	var entry = ds_map_create();
+	entry[? "exists"] = _exists;
+	entry[? "status"] = _status;
+	entry[? "http_status"] = _http_status;
+	entry[? "transfer_status"] = _transfer_status;
+	entry[? "request_failed"] = _request_failed;
+	entry[? "disabled_on_console"] = _disabled_on_console;
+
+	global.validated_urls[? _url] = entry;
 }

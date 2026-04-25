@@ -8,7 +8,7 @@ function scr_check_daily_translation_flush()
 	if (!sent_daily_translation_flush)
 	{
 		if (global.online_enabled
-		&& os_is_network_connected(network_connect_passive))
+		&& scr_get_cached_passive_network_status(false))
 		{
 			/* Check a flag to disable file logging (e.g., on Nintendo Switch) */
 			if (global.enable_translation_file_logging)

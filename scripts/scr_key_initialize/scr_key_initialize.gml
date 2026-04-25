@@ -1,5 +1,20 @@
 function scr_key_initialize(key, hold = 0, what_player = 1, this_player_key = action.jump)
 {
+	switch (this_player_key)
+	{
+		case action.up:
+		case action.down:
+		case action.left:
+		case action.right:
+		case action.accept:
+		case action.back:
+			if (scr_block_menu_input_for_network_request())
+			{
+				return false;
+			}
+		break;
+	}
+
 	if (what_player == 1)
 	{
 		switch (this_player_key)

@@ -26,7 +26,7 @@ function scr_switch_update_online_status(show_login_screen = true)
 		var has_active_user = scr_switch_has_account_id(active_user_id);
 		scr_switch_refresh_account_debug_info(raw_preselected_user_id, active_user_id);
 
-		if (!os_is_network_connected(network_connect_passive))
+		if (!scr_get_cached_passive_network_status(false))
 		{
 			global.switch_logged_in = false;
 			global.online_token_validated = false;
@@ -405,114 +405,11 @@ function scr_switch_try_startup_token_prefetch()
 		global.switch_startup_resume_language_update = false;
 	}
 
-	if (!global.switch_startup_token_prefetch_active)
-	{
-		return false;
-	}
-
-	if (global.language_auto_update_interval != 1)
-	{
-		global.switch_startup_resume_language_update = false;
-		global.switch_startup_token_prefetch_active = false;
-		return false;
-	}
-
-	if (!os_is_network_connected(network_connect_passive))
-	{
-		global.switch_startup_resume_language_update = false;
-		global.online_token_validated = false;
-		global.online_token_error_message = "Startup token prefetch deferred because the system is offline.";
-		global.online_current_attempt_result = l10n_text("No network connection");
-		show_debug_message("[scr_switch_try_startup_token_prefetch] Passive network unavailable. Deferring startup token prefetch until network returns.");
-		return false;
-	}
-
-	var raw_preselected_user_id = scr_switch_capture_preselected_user(false);
-	var active_user_id = global.switch_active_account_id;
-	scr_switch_refresh_account_debug_info(raw_preselected_user_id, active_user_id);
-
-	if (!scr_switch_has_account_id(active_user_id))
-	{
-		global.switch_startup_resume_language_update = false;
-		global.switch_startup_token_prefetch_active = false;
-		show_debug_message("[scr_switch_try_startup_token_prefetch] No active startup account found. Skipping startup token prefetch.");
-		return false;
-	}
-
-	if (global.online_token_validated)
-	&& (global.switch_online_token_account_id == active_user_id)
-	{
-		global.switch_startup_resume_language_update = false;
-		global.switch_startup_token_prefetch_active = false;
-		show_debug_message("[scr_switch_try_startup_token_prefetch] Startup account " + string(active_user_id) + " already has a validated token. Starting language update immediately.");
-		scr_language_pack_update(true);
-		return true;
-	}
-
-	if (global.online_token_request != -1)
-	&& (global.switch_online_token_account_id == active_user_id)
-	{
-		global.switch_startup_resume_language_update = true;
-		global.switch_startup_token_prefetch_active = false;
-		show_debug_message("[scr_switch_try_startup_token_prefetch] Token validation already pending for startup account " + string(active_user_id) + ".");
-		return false;
-	}
-
-	global.switch_logged_in = switch_accounts_is_user_open(active_user_id);
-	global.switch_account_network_service_available = switch_accounts_network_service_available(active_user_id);
-
-	if (!global.switch_account_network_service_available)
-	{
-		global.switch_startup_token_prefetch_active = false;
-		global.switch_startup_resume_language_update = false;
-		global.online_token_validated = false;
-		global.online_token_error_message = "Startup token prefetch skipped because the active account is not linked to the required account service.";
-		global.online_current_attempt_result = l10n_text("Required account not linked");
-		show_debug_message("[scr_switch_try_startup_token_prefetch] Active startup account " + string(active_user_id) + " is not linked. Skipping token retrieval.");
-		return false;
-	}
-
-	show_debug_message("[scr_switch_try_startup_token_prefetch] Active startup account " + string(active_user_id) + " is linked. Attempting silent Switch Online login.");
-	var startup_login_success = switch_accounts_login_user(active_user_id);
-
-	if (!startup_login_success)
-	{
-		global.switch_startup_token_prefetch_active = false;
-		global.switch_startup_resume_language_update = false;
-		global.switch_logged_in = false;
-		global.online_token_validated = false;
-		global.online_token_error_message = "Startup token prefetch could not log the active account into Switch Online.";
-		global.online_current_attempt_result = l10n_text("Token not validated");
-		show_debug_message("[scr_switch_try_startup_token_prefetch] Silent startup login failed for account " + string(active_user_id) + ".");
-		return false;
-	}
-
-	global.switch_logged_in = true;
-	global.switch_login_cancelled = false;
-	global.switch_login_cancelled_account_id = -1;
-	global.switch_account_network_service_available = switch_accounts_network_service_available(active_user_id);
-
-	var id_token = switch_accounts_get_online_token(active_user_id);
-	global.online_token_present = (id_token != ""
-								&& id_token != undefined
-								&& id_token != false);
-	global.online_token_expired = false;
-
-	if (!global.online_token_present)
-	{
-		global.switch_startup_token_prefetch_active = false;
-		global.switch_startup_resume_language_update = false;
-		global.online_token_validated = false;
-		global.online_token_error_message = "Startup token prefetch could not retrieve an ID token for the active account.";
-		global.online_current_attempt_result = l10n_text("Invalid ID Token");
-		show_debug_message("[scr_switch_try_startup_token_prefetch] Silent token retrieval failed for startup account " + string(active_user_id) + ".");
-		return false;
-	}
-
-	global.switch_startup_resume_language_update = true;
+	/* GameMaker does not expose a reliable flight-mode query here. Keep startup
+	passive-only and let manual online entry points perform active/NIFM recovery. */
+	global.switch_startup_resume_language_update = false;
 	global.switch_startup_token_prefetch_active = false;
-	show_debug_message("[scr_switch_try_startup_token_prefetch] Retrieved startup token for active account " + string(active_user_id) + ". Starting validation request.");
-	scr_switch_dispatch_token_validation_request(active_user_id, id_token, "startup active account");
+	show_debug_message("[scr_switch_try_startup_token_prefetch] Startup token prefetch is disabled on Switch so startup never opens Nintendo network/account UI.");
 	return false;
 }
 

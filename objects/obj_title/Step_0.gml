@@ -1,5 +1,18 @@
 scr_set_controls_used_to_navigate();
 scr_set_screen_size();
+
+if (scr_block_menu_input_for_network_request())
+{
+	key_up = false;
+	key_left = false;
+	key_right = false;
+	key_down = false;
+	key_a_pressed = false;
+	key_a_hold = false;
+	key_a_released = false;
+	key_b_pressed = false;
+}
+
 scr_character_select_menu_step();
 scr_set_menu_font_color();
 scr_toggle_fullscreen();

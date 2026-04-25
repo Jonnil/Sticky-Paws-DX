@@ -1,0 +1,1 @@
+scr_handle_networking_async_event(async_load);

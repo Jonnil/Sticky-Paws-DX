@@ -750,3 +750,5 @@ if (menu == "upload_rules_back")
 {
 	scr_draw_upload_rules();
 }
+
+scr_draw_network_request_modal();

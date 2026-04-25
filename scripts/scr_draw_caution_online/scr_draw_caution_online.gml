@@ -1,5 +1,10 @@
 function scr_draw_caution_online()
 {
+	if (scr_draw_network_request_modal())
+	{
+		return;
+	}
+
 	static online_enabled_auto = false;
 	var fixed_player = 1;
 	var mouse_get_x = device_mouse_x_to_gui(0);
@@ -56,29 +61,7 @@ function scr_draw_caution_online()
 				switch_save_data_commit(); /* Remember to commit the save data, so we never have to redo this step */
 			}
 
-			if (!os_is_network_connected(network_connect_passive))
-			{
-				scr_draw_loading(1,,,l10n_text("Looking for Network"));
-
-				menu = "network_error_main_menu";
-			}
-			else
-			if (!global.online_token_validated)
-			{
-				static switch_update_online_status = false;
-
-				scr_draw_loading(1,,,l10n_text("Looking for Token"));
-
-				menu = "network_error_main_menu";
-
-				if (!switch_update_online_status)
-				{
-					switch_update_online_status = true;
-					scr_switch_update_online_status(true);
-				}
-			}
-			else
-			if (scr_check_network_connection(network_connect_active)) /* Need to check if you are connected to the internet before proceeding to online content */
+			if (scr_check_network_connection(network_connect_active, true)) /* Need to check if you are connected to the internet before proceeding to online content */
 			{
 				if (global.switch_logged_in)
 				{
@@ -158,6 +141,14 @@ function scr_draw_caution_online()
 			}
 			else
 			{
+				if (global.online_token_request != -1)
+				{
+					scr_draw_loading(1,,,l10n_text("Looking for Token"));
+
+					menu = "network_error_main_menu";
+					return;
+				}
+
 				/* No Internet Connection */
 				in_online_download_list_menu = false; show_debug_message("[scr_draw_caution_online] 'In online download list menu' is set to false");
 

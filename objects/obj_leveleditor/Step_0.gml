@@ -18,6 +18,23 @@ else
 
 scr_set_controls_used_to_navigate();
 
+if (scr_block_menu_input_for_network_request())
+{
+	key_up = false;
+	key_left = false;
+	key_right = false;
+	key_down = false;
+	key_up_pressed = false;
+	key_left_pressed = false;
+	key_right_pressed = false;
+	key_down_pressed = false;
+	key_a_pressed = false;
+	key_a_hold = false;
+	key_a_released = false;
+	key_b_pressed = false;
+	key_b_hold = false;
+}
+
 #region /* Navigate the level editor icon with D-Pad */
 if (menu_delay == 0 && menu_joystick_delay == 0)
 && (!pause)
