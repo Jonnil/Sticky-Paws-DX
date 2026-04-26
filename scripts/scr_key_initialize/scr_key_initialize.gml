@@ -1,5 +1,12 @@
 function scr_key_initialize(key, hold = 0, what_player = 1, this_player_key = action.jump)
 {
+	/* Unified input check for keyboard, mouse, gamepad buttons, and joystick axes */
+	var slot   = global.player_slot[what_player];
+	var key1   = global.player_[inp.key][what_player][1][this_player_key];
+	var key2   = global.player_[inp.key][what_player][2][this_player_key];
+	var gp1    = global.player_[inp.gp][what_player][1][this_player_key];
+	var gp2    = global.player_[inp.gp][what_player][2][this_player_key];
+
 	switch (this_player_key)
 	{
 		case action.up:
@@ -10,6 +17,16 @@ function scr_key_initialize(key, hold = 0, what_player = 1, this_player_key = ac
 		case action.back:
 			if (scr_block_menu_input_for_network_request())
 			{
+				var blocked_mouse = _mouse_input(key1, 1) || _mouse_input(key2, 1);
+				var blocked_axis = _joystick_axis(gp1, slot) || _joystick_axis(gp2, slot);
+				var blocked_gpbtn = _gamepad_button(gp1, 1, slot) || _gamepad_button(gp2, 1, slot);
+				var blocked_kb = _keyboard_button(key1, 1) || _keyboard_button(key2, 1);
+
+				if (blocked_mouse || blocked_axis || blocked_gpbtn || blocked_kb)
+				{
+					scr_nifm_log_blocked_input_attempt(this_player_key, hold, what_player);
+				}
+
 				return false;
 			}
 		break;
@@ -32,13 +49,6 @@ function scr_key_initialize(key, hold = 0, what_player = 1, this_player_key = ac
 			break;
 		}
 	}
-
-	/* Unified input check for keyboard, mouse, gamepad buttons, and joystick axes */
-	var slot   = global.player_slot[what_player];
-	var key1   = global.player_[inp.key][what_player][1][this_player_key];
-	var key2   = global.player_[inp.key][what_player][2][this_player_key];
-	var gp1    = global.player_[inp.gp][what_player][1][this_player_key];
-	var gp2    = global.player_[inp.gp][what_player][2][this_player_key];
 
 	var mouse = _mouse_input(key1, hold) || _mouse_input(key2, hold);
 	var axis  = _joystick_axis(gp1, slot) || _joystick_axis(gp2, slot);

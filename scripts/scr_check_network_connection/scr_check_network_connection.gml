@@ -52,6 +52,14 @@ function scr_check_network_connection(connect_mode, allow_account_prompt = false
 	{
 		if (!scr_can_submit_active_network_request())
 		{
+			var reject_reason = "cooldown";
+
+			if (scr_get_active_network_request_pending_raw())
+			{
+				reject_reason = "pending";
+			}
+
+			scr_nifm_log_active_request_rejected(reject_reason);
 			global.online_token_validated = false;
 			global.switch_account_network_service_available = false;
 			global.online_token_error_message = "System is not connected to the network.";
@@ -60,8 +68,14 @@ function scr_check_network_connection(connect_mode, allow_account_prompt = false
 		}
 
 		scr_mark_active_network_request_pending();
+		scr_nifm_log_context("INFO", "active_request_submit_accepted",
+			"connect_mode=active allow_account_prompt=" + scr_nifm_bool_string(allow_account_prompt)
+			+ " passive_cached=" + scr_nifm_bool_string(passive_network_status));
 		actual_network_status = os_is_network_connected(connect_mode);
 		scr_set_cached_passive_network_status(actual_network_status);
+		scr_nifm_log_context("DEBUG", "active_request_submit_returned",
+			"actual_network_status=" + scr_nifm_bool_string(actual_network_status)
+			+ " wait_for_async=" + scr_nifm_bool_string(os_type == os_switch && !actual_network_status));
 
 		if (!actual_network_status)
 		{
@@ -72,16 +86,20 @@ function scr_check_network_connection(connect_mode, allow_account_prompt = false
 
 			if (os_type == os_switch)
 			{
-				show_debug_message("[scr_check_network_connection] Active Switch network request submitted. Waiting for Async Networking result before showing in-game network error.");
+				scr_nifm_log_context("INFO", "waiting_for_nintendo_nifm_result",
+					"in_game_network_error_visible=false");
 				return false;
 			}
 
 			scr_clear_active_network_request_pending();
 			scr_mark_active_network_request_submitted(2000000);
-			show_debug_message("[scr_check_network_connection] Active network request failed or was refused.");
+			scr_nifm_log_context("WARN", "active_request_failed_without_switch_async",
+				"in_game_network_error_visible=true");
 			return false;
 		}
 
+		scr_nifm_log_context("INFO", "active_request_succeeded_immediately",
+			"will_validate_online_token=" + scr_nifm_bool_string(!global.online_token_validated));
 		scr_clear_active_network_request_pending();
 		global.online_active_network_request_cooldown_until = 0;
 	}
@@ -112,6 +130,12 @@ function scr_check_network_connection(connect_mode, allow_account_prompt = false
 	if (global.online_token_validated
 	&& actual_network_status)
 	{
+		if (active_network_request)
+		|| (os_type == os_switch)
+		{
+			scr_nifm_log_online_check_succeeded(active_network_request);
+		}
+
 		/* Save last known online status, a timestamp that helps confirm whether the connection failed recently or has never worked */
 		/* We know we *are* online, so record the timestamp */
 		var ts = scr_format_timestamp(date_current_datetime());
@@ -185,6 +209,200 @@ function scr_set_cached_passive_network_status(network_connected)
 	global.online_cached_passive_network_initialized = true;
 }
 
+function scr_nifm_bool_string(_value)
+{
+	if (_value)
+	{
+		return "true";
+	}
+
+	return "false";
+}
+
+function scr_nifm_get_active_network_request_id()
+{
+	if (!variable_global_exists("online_active_network_request_current_id"))
+	{
+		global.online_active_network_request_current_id = 0;
+	}
+
+	return global.online_active_network_request_current_id;
+}
+
+function scr_nifm_get_request_details(_extra_details = "")
+{
+	var details = "request_id=" + string(scr_nifm_get_active_network_request_id());
+
+	if (variable_global_exists("online_active_network_request_started_from_menu"))
+	&& (global.online_active_network_request_started_from_menu != "")
+	{
+		details += " started_from_menu=" + string(global.online_active_network_request_started_from_menu);
+	}
+	else
+	if (variable_global_exists("online_active_network_request_last_started_from_menu"))
+	&& (global.online_active_network_request_last_started_from_menu != "")
+	{
+		details += " started_from_menu=" + string(global.online_active_network_request_last_started_from_menu);
+	}
+
+	if (variable_instance_exists(self, "menu"))
+	{
+		details += " current_menu=" + string(menu);
+	}
+
+	if (variable_instance_exists(self, "caution_online_takes_you_to"))
+	{
+		details += " target_menu=" + string(caution_online_takes_you_to);
+	}
+
+	if (variable_instance_exists(self, "caution_online_takes_you_back_to"))
+	{
+		details += " fallback_menu=" + string(caution_online_takes_you_back_to);
+	}
+
+	details += " pending=" + scr_nifm_bool_string(scr_get_active_network_request_pending_raw());
+
+	if (_extra_details != "")
+	{
+		details += " " + string(_extra_details);
+	}
+
+	return details;
+}
+
+function scr_nifm_log_context(_level, _message, _extra_details = "")
+{
+	scr_log(_level, "NIFM", _message, scr_nifm_get_request_details(_extra_details));
+}
+
+function scr_nifm_log_online_check_succeeded(_active_network_request)
+{
+	var request_id = scr_nifm_get_active_network_request_id();
+
+	if (!_active_network_request)
+	{
+		if (!variable_global_exists("online_passive_check_succeeded_logged_request_id"))
+		{
+			global.online_passive_check_succeeded_logged_request_id = -1;
+		}
+
+		if (global.online_passive_check_succeeded_logged_request_id == request_id)
+		{
+			return;
+		}
+
+		global.online_passive_check_succeeded_logged_request_id = request_id;
+	}
+	else
+	{
+		global.online_passive_check_succeeded_logged_request_id = request_id;
+	}
+
+	scr_nifm_log_context("INFO", "online_check_succeeded",
+		"active_request=" + scr_nifm_bool_string(_active_network_request)
+		+ " online_token_validated=" + scr_nifm_bool_string(global.online_token_validated));
+}
+
+function scr_nifm_log_active_request_rejected(_reason)
+{
+	var request_id = scr_nifm_get_active_network_request_id();
+
+	if (_reason == "pending")
+	{
+		if (!variable_global_exists("online_active_network_request_reject_logged_for_request"))
+		|| (global.online_active_network_request_reject_logged_for_request != request_id)
+		{
+			global.online_active_network_request_reject_logged_for_request = request_id;
+			scr_nifm_log_context("WARN", "active_request_submit_rejected",
+				"reason=pending duplicate_submit_prevented=true");
+		}
+
+		return;
+	}
+
+	static last_cooldown_reject_log_time = 0;
+
+	if ((get_timer() - last_cooldown_reject_log_time) > 1000000)
+	{
+		last_cooldown_reject_log_time = get_timer();
+		scr_nifm_log_context("WARN", "active_request_submit_rejected",
+			"reason=" + string(_reason) + " duplicate_submit_prevented=true");
+	}
+}
+
+function scr_nifm_network_event_type_name(_network_event_type)
+{
+	if (_network_event_type == network_type_up)
+	{
+		return "network_type_up";
+	}
+
+	if (_network_event_type == network_type_up_failed)
+	{
+		return "network_type_up_failed";
+	}
+
+	if (_network_event_type == network_type_down)
+	{
+		return "network_type_down";
+	}
+
+	return string(_network_event_type);
+}
+
+function scr_nifm_input_action_name(_action)
+{
+	if (_action == action.up)
+	{
+		return "up";
+	}
+
+	if (_action == action.down)
+	{
+		return "down";
+	}
+
+	if (_action == action.left)
+	{
+		return "left";
+	}
+
+	if (_action == action.right)
+	{
+		return "right";
+	}
+
+	if (_action == action.accept)
+	{
+		return "accept";
+	}
+
+	if (_action == action.back)
+	{
+		return "back";
+	}
+
+	return string(_action);
+}
+
+function scr_nifm_log_blocked_input_attempt(_action, _hold, _player)
+{
+	var action_name = scr_nifm_input_action_name(_action);
+	var request_id = scr_nifm_get_active_network_request_id();
+	var log_key = string(request_id) + ":" + string(action_name) + ":" + string(_hold);
+
+	if (!variable_global_exists("online_active_network_request_last_blocked_input_log_key"))
+	|| (global.online_active_network_request_last_blocked_input_log_key != log_key)
+	{
+		global.online_active_network_request_last_blocked_input_log_key = log_key;
+		scr_nifm_log_context("INFO", "modal_input_attempt_ignored",
+			"action=" + string(action_name)
+			+ " hold_mode=" + string(_hold)
+			+ " player=" + string(_player)
+			+ " input_locked=true");
+	}
+}
+
 function scr_can_submit_active_network_request()
 {
 	if (!variable_global_exists("online_active_network_request_cooldown_until"))
@@ -208,8 +426,18 @@ function scr_get_active_network_request_pending_raw()
 
 function scr_mark_active_network_request_pending()
 {
+	if (!variable_global_exists("online_active_network_request_sequence"))
+	{
+		global.online_active_network_request_sequence = 0;
+	}
+
+	global.online_active_network_request_sequence++;
+	global.online_active_network_request_current_id = global.online_active_network_request_sequence;
 	global.online_active_network_request_pending = true;
 	global.online_active_network_request_started_at = get_timer();
+	global.online_active_network_request_modal_logged_id = -1;
+	global.online_active_network_request_input_block_logged_id = -1;
+	global.online_active_network_request_reject_logged_for_request = -1;
 
 	if (variable_instance_exists(self, "menu"))
 	{
@@ -219,6 +447,11 @@ function scr_mark_active_network_request_pending()
 
 function scr_clear_active_network_request_pending()
 {
+	if (variable_global_exists("online_active_network_request_started_from_menu"))
+	{
+		global.online_active_network_request_last_started_from_menu = global.online_active_network_request_started_from_menu;
+	}
+
 	global.online_active_network_request_pending = false;
 	global.online_active_network_request_started_at = 0;
 	global.online_active_network_request_started_from_menu = "";
@@ -240,7 +473,8 @@ function scr_is_active_network_request_pending(timeout_microseconds = 120000000)
 
 	if ((get_timer() - global.online_active_network_request_started_at) > timeout_microseconds)
 	{
-		show_debug_message("[scr_is_active_network_request_pending] Active network request timed out while waiting for Async Networking result.");
+		scr_nifm_log_context("ERROR", "active_request_async_timeout",
+			"timeout_microseconds=" + string(timeout_microseconds) + " will_show_in_game_network_error=true");
 		global.online_token_validated = false;
 		global.switch_account_network_service_available = false;
 		global.online_token_error_message = "System is not connected to the network.";
@@ -283,6 +517,16 @@ function scr_block_menu_input_for_network_request()
 		return false;
 	}
 
+	var request_id = scr_nifm_get_active_network_request_id();
+
+	if (!variable_global_exists("online_active_network_request_input_block_logged_id"))
+	|| (global.online_active_network_request_input_block_logged_id != request_id)
+	{
+		global.online_active_network_request_input_block_logged_id = request_id;
+		scr_nifm_log_context("INFO", "menu_input_blocked_by_network_request",
+			"input_locked=true retry_back_navigation_disabled=true");
+	}
+
 	if (variable_instance_exists(self, "menu_delay"))
 	{
 		menu_delay = max(menu_delay, 3);
@@ -301,6 +545,16 @@ function scr_draw_network_request_modal()
 	if (!scr_is_network_request_modal_active())
 	{
 		return false;
+	}
+
+	var request_id = scr_nifm_get_active_network_request_id();
+
+	if (!variable_global_exists("online_active_network_request_modal_logged_id"))
+	|| (global.online_active_network_request_modal_logged_id != request_id)
+	{
+		global.online_active_network_request_modal_logged_id = request_id;
+		scr_nifm_log_context("INFO", "network_request_modal_drawn",
+			"in_game_network_error_visible=false input_locked=true");
 	}
 
 	static last_draw_time = -1;
@@ -333,13 +587,28 @@ function scr_handle_networking_async_event(_network_async_data)
 
 	var network_event_type = ds_map_find_value(_network_async_data, "type");
 	var active_network_request_was_pending = scr_get_active_network_request_pending_raw();
+	var network_event_type_name = scr_nifm_network_event_type_name(network_event_type);
+
+	scr_nifm_log_context("DEBUG", "async_network_event_received",
+		"event_type=" + string(network_event_type_name)
+		+ " active_request_was_pending=" + scr_nifm_bool_string(active_network_request_was_pending));
 
 	if (network_event_type == network_type_up)
 	{
+		var network_up_message = "network_available";
+
+		if (active_network_request_was_pending)
+		{
+			network_up_message = "active_request_async_success";
+		}
+
+		scr_nifm_log_context("INFO", network_up_message,
+			"event_type=" + string(network_event_type_name)
+			+ " active_request_was_pending=" + scr_nifm_bool_string(active_network_request_was_pending)
+			+ " will_validate_online_status=" + scr_nifm_bool_string(active_network_request_was_pending && global.online_enabled && !global.online_token_validated));
 		scr_set_cached_passive_network_status(true);
 		scr_clear_active_network_request_pending();
 		global.online_active_network_request_cooldown_until = 0;
-		show_debug_message("[scr_handle_networking_async_event] Network is available.");
 
 		if (active_network_request_was_pending)
 		&& (global.online_enabled)
@@ -357,6 +626,10 @@ function scr_handle_networking_async_event(_network_async_data)
 		return;
 	}
 
+	scr_nifm_log_context("WARN", "active_request_async_failed_or_refused",
+		"event_type=" + string(network_event_type_name)
+		+ " active_request_was_pending=" + scr_nifm_bool_string(active_network_request_was_pending)
+		+ " will_show_in_game_network_error=true");
 	global.online_token_validated = false;
 	global.switch_account_network_service_available = false;
 	global.online_token_error_message = "System is not connected to the network.";
@@ -371,7 +644,6 @@ function scr_handle_networking_async_event(_network_async_data)
 	}
 
 	global.online_last_network_async_failure_was_active_request = active_network_request_was_pending;
-	show_debug_message("[scr_handle_networking_async_event] Network request failed or went down. Routing active online flow to network error menu.");
 
 	if (variable_instance_exists(self, "debug_target"))
 	&& (instance_exists(debug_target))
@@ -391,6 +663,8 @@ function scr_route_network_async_failure_to_menu(force_online_flow = false)
 {
 	if (!variable_instance_exists(self, "menu"))
 	{
+		scr_nifm_log_context("DEBUG", "route_network_error_skipped",
+			"reason=no_menu_instance force_online_flow=" + scr_nifm_bool_string(force_online_flow));
 		return false;
 	}
 
@@ -415,6 +689,8 @@ function scr_route_network_async_failure_to_menu(force_online_flow = false)
 	if (!is_online_flow)
 	&& (!force_online_flow)
 	{
+		scr_nifm_log_context("DEBUG", "route_network_error_skipped",
+			"reason=not_online_flow force_online_flow=" + scr_nifm_bool_string(force_online_flow));
 		return false;
 	}
 
@@ -435,6 +711,10 @@ function scr_route_network_async_failure_to_menu(force_online_flow = false)
 
 	if (!already_in_network_error_menu)
 	{
+		scr_nifm_log_context("WARN", "show_in_game_network_error_after_nifm",
+			"from_menu=" + string(current_menu)
+			+ " to_menu=network_error force_online_flow=" + scr_nifm_bool_string(force_online_flow)
+			+ " can_navigate=true");
 		ini_open("save_file/config.ini");
 		global.online_last_successful_check = ini_read_string("config", "online_last_successful_check", "Never");
 		ini_close();
@@ -445,6 +725,18 @@ function scr_route_network_async_failure_to_menu(force_online_flow = false)
 		time_of_network_error = string(ts);
 
 		menu = "network_error";
+	}
+	else
+	{
+		var request_id = scr_nifm_get_active_network_request_id();
+
+		if (!variable_global_exists("online_network_error_route_logged_request_id"))
+		|| (global.online_network_error_route_logged_request_id != request_id)
+		{
+			global.online_network_error_route_logged_request_id = request_id;
+			scr_nifm_log_context("DEBUG", "network_error_route_already_visible",
+				"current_menu=" + string(current_menu) + " duplicate_route_prevented=true");
+		}
 	}
 
 	if (variable_instance_exists(self, "menu_delay"))

@@ -14,9 +14,23 @@ function scr_log(level, module, message, details = "")
 
 	if (is_string(details) && details != "")
 	{
-		out += " " + details;
+		out += " " + scr_log_redact_details(details);
 	}
 
 	show_debug_message(out);
+}
+
+function scr_log_redact_details(details)
+{
+	var safe_details = string(details);
+
+	if (variable_global_exists("api_key"))
+	&& (is_string(global.api_key))
+	&& (global.api_key != "")
+	{
+		safe_details = string_replace_all(safe_details, global.api_key, "[redacted_api_key]");
+	}
+
+	return safe_details;
 }
 

@@ -53,7 +53,10 @@ function scr_handle_no_network_connection(what_script = "scr_handle_no_network_c
 	if (os_type == os_switch)
 	&& (scr_is_active_network_request_pending())
 	{
-		show_debug_message("[scr_handle_no_network_connection] Active Switch network request is still pending. Waiting for Nintendo network handling before showing the in-game network error menu.");
+		scr_nifm_log_context("INFO", "nifm_result_pending_skip_in_game_error",
+			"caller=" + string(what_script)
+			+ " retry_menu=" + string(retry_this_menu)
+			+ " in_game_network_error_visible=false");
 
 		if (variable_instance_exists(self, "menu_delay"))
 		{
@@ -138,7 +141,10 @@ function scr_handle_no_network_connection(what_script = "scr_handle_no_network_c
 	}
 
 	/* No network: switch to the network error menu */
-	show_debug_message("[scr_handle_no_network_connection] No network available. Switching to 'network_error' menu.");
+	scr_nifm_log_context("WARN", "show_in_game_network_error_without_pending_request",
+		"caller=" + string(what_script)
+		+ " retry_menu=" + string(retry_this_menu)
+		+ " in_game_network_error_visible=true");
 	menu_delay = 3;
 
 	ini_open("save_file/config.ini");

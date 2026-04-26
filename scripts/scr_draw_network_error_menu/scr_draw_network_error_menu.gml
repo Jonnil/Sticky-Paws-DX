@@ -100,6 +100,9 @@ function scr_draw_network_error_menu()
 				{
 					if (scr_online_token_is_valid() == true)
 					{
+						scr_nifm_log_context("INFO", "network_error_recovered_resume_online_flow",
+							"resume_source=network_error_auto_check target_menu=" + string(caution_online_takes_you_to));
+
 						show_debug_message("[scr_draw_caution_online] Online token is valid. Token Validity: " + string(scr_online_token_is_valid()) + ", caution_online_takes_you_to: " + string(caution_online_takes_you_to) + ", current menu: " + string(menu));
 
 						if (caution_online_takes_you_to == "online_download_list_load")
@@ -437,12 +440,18 @@ function scr_draw_network_error_menu()
 			}
 
 			global.online_retry_attempts++;
+			scr_nifm_log_context("INFO", "retry_accepted",
+				"retry_attempts=" + string(global.online_retry_attempts)
+				+ " selected_menu=" + string(menu)
+				+ " action=submit_active_network_request_if_needed");
 
 			#region /* Recheck connection: if restored, proceed to online features; otherwise, remain on error screen */
 			if (global.online_enabled
 			&& global.online_token_validated
 			&& scr_check_network_connection(network_connect_passive))
 			{
+				scr_nifm_log_context("INFO", "retry_passive_check_succeeded",
+					"retry_attempts=" + string(global.online_retry_attempts));
 				retry_successful = true;
 			}
 			else
@@ -455,6 +464,18 @@ function scr_draw_network_error_menu()
 				{
 					retry_successful = false;
 					menu = "network_error";
+					if (scr_get_active_network_request_pending_raw())
+					{
+						scr_nifm_log_context("INFO", "retry_waiting_for_nintendo_nifm_result",
+							"retry_attempts=" + string(global.online_retry_attempts)
+							+ " in_game_network_error_visible=false");
+					}
+					else
+					{
+						scr_nifm_log_context("WARN", "retry_failed_without_pending_request",
+							"retry_attempts=" + string(global.online_retry_attempts)
+							+ " in_game_network_error_visible=true");
+					}
 					/* Optionally prompt for credentials or open network settings: */
 					/* scr_open_network_settings(); */
 					/* Stay on error screen until the connection is fixed */
@@ -482,6 +503,9 @@ function scr_draw_network_error_menu()
 		if (mainmenu_clicked)
 		|| (global.switch_login_cancelled)
 		{
+			scr_nifm_log_context("INFO", "network_error_back_to_offline_menu",
+				"mainmenu_clicked=" + scr_nifm_bool_string(mainmenu_clicked)
+				+ " switch_login_cancelled=" + scr_nifm_bool_string(global.switch_login_cancelled));
 			in_character_select_menu = false;
 			in_edit_character_menu = false;
 			in_online_download_list_menu = false; show_debug_message("[scr_draw_network_error_menu] 'In online download list menu' is set to false");
@@ -530,6 +554,9 @@ function scr_draw_network_error_menu()
 
 		if (retry_successful)
 		{
+			scr_nifm_log_context("INFO", "retry_successful_resume_online_flow",
+				"target_menu=" + string(caution_online_takes_you_back_to)
+				+ " retry_attempts=" + string(global.online_retry_attempts));
 			menu_delay = 3;
 
 			if (caution_online_takes_you_back_to == "select_character")
