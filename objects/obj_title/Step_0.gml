@@ -17,6 +17,7 @@ scr_character_select_menu_step();
 scr_set_menu_font_color();
 scr_toggle_fullscreen();
 scr_step_online_download_list();
+scr_process_pending_url_checks();
 
 var fixed_player = 1;
 

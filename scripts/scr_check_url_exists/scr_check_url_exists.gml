@@ -1,6 +1,16 @@
 /* @description Sends a HEAD request to a URL and stores the result globally */
 function scr_check_url_exists(_url)
 {
+	var url_string = is_undefined(_url) ? "" : string(_url);
+
+	if (url_string == ""
+	|| (string_pos("http://", url_string) != 1
+	&& string_pos("https://", url_string) != 1))
+	{
+		scr_set_url_check_result(url_string, false, -1, -1, -1, false, false);
+		return;
+	}
+
 	if (!variable_global_exists("validated_urls"))
 	{
 		global.validated_urls = ds_map_create();
@@ -18,7 +28,7 @@ function scr_check_url_exists(_url)
 
 	if (scr_url_checks_disabled_for_platform())
 	{
-		scr_set_url_check_result(_url, false, -1, -1, -1, true, true);
+		scr_set_url_check_result(url_string, false, -1, -1, -1, true, true);
 		return;
 	}
 
@@ -34,14 +44,14 @@ function scr_check_url_exists(_url)
 
 	if (should_defer_request)
 	{
-		if (ds_list_find_index(global.pending_url_checks, _url) == -1)
+		if (ds_list_find_index(global.pending_url_checks, url_string) == -1)
 		{
-			ds_list_add(global.pending_url_checks, _url);
+			ds_list_add(global.pending_url_checks, url_string);
 		}
 
 		show_debug_message(
 			"[URL CHECK] Deferred: "
-			+ _url
+			+ url_string
 			+ " | room=" + string(room)
 			+ " | passive_network=" + string(scr_get_cached_passive_network_status(false))
 		);
@@ -51,26 +61,26 @@ function scr_check_url_exists(_url)
 	var headers = ds_map_create();
 	
 	/* HEAD only asks for status, not the full page */
-	var request_id = http_request(_url, "HEAD", headers, "");
+	var request_id = http_request(url_string, "HEAD", headers, "");
 	ds_map_destroy(headers);
 	
 	if (request_id == -1)
 	{
 		show_debug_message(
 			"[URL CHECK] "
-			+ _url
+			+ url_string
 			+ " | Exists: " + string(false)
 			+ " | HTTP: " + string(-1)
 			+ " | Transfer: " + string(-1)
 		);
 		
-		scr_set_url_check_result(_url, false, -1, -1, -1, true, false);
+		scr_set_url_check_result(url_string, false, -1, -1, -1, true, false);
 		return;
 	}
 	
 	/* Store data so we know what this request was for */
 	var data = ds_map_create();
-	data[? "url"] = _url;
+	data[? "url"] = url_string;
 	
 	global.url_check_requests[? request_id] = data;
 }

@@ -284,11 +284,14 @@ else
 	var _is_lang_file         = (variable_global_exists("language_file_requests")
 		&& ds_exists(global.language_file_requests, ds_type_map)
 		&& ds_map_exists(global.language_file_requests, string(_rid)));
+	var _is_url_check         = (variable_global_exists("url_check_requests")
+		&& ds_exists(global.url_check_requests, ds_type_map)
+		&& ds_map_exists(global.url_check_requests, _rid));
 
 	var _is_crash             = (variable_global_exists("crash_requests") && ds_map_exists(global.crash_requests, string(_rid)));
 	var _has_context_entry    = (variable_global_exists("http_request_contexts") && global.http_request_contexts != noone && ds_map_exists(global.http_request_contexts, string(_rid)));
 
-	if (!(_is_language_manifest || _is_info || _is_content_today || _is_token || _is_lang_file || _is_crash || _has_context_entry))
+	if (!(_is_language_manifest || _is_info || _is_content_today || _is_token || _is_lang_file || _is_url_check || _is_crash || _has_context_entry))
 	{
 		scr_log("WARN", "HTTP.PRIMARY", "request_id_mismatch", "request_id=" + string(_rid) + ", expected=" + string(global.http_request_id));
 	}
@@ -336,3 +339,4 @@ if (async_load[? "id"] == global.http_request_info)
 scr_handle_content_added_today_http();
 scr_handle_token_validated();
 scr_handle_language_pack_http(async_load);
+scr_handle_url_check_http_event(async_load);

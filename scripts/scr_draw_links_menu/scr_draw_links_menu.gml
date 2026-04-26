@@ -33,6 +33,11 @@ function scr_draw_links_menu()
 		var button_info = buttons_all[i];
 		var should_include_button = true;
 
+		if (button_info.link == "")
+		{
+			should_include_button = false;
+		}
+		else
 		if (button_info.is_company_link)
 		{
 			var exists_value = scr_url_exists(button_info.link);

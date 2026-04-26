@@ -22,7 +22,7 @@ global.link_to_update_schedule = "https://www.jonnil.games/sticky-paws/update-sc
 global.link_to_website = "https://www.jonnil.games/";
 global.link_to_website_guide = "https://www.jonnil.games/sticky-paws/guide";
 global.link_to_website_guide_custom_character = "https://www.jonnil.games/sticky-paws/custom-character";
-global.link_to_wiki = "https://www.jonnil.wiki"; //TODO: buy domain name
+global.link_to_wiki = ""; //TODO: buy domain name
 global.link_to_privacy_policy = "https://www.jonnil.games/sticky-paws/privacy-policy";
 global.email_support = "contact@jonnil.games"; /* This is the email address for an email support, which is required by most game platforms. Will show up whenever you report content in the game */
 
