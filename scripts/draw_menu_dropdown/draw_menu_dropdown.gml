@@ -27,14 +27,6 @@ function draw_menu_dropdown(x_position, y_position, string_text, menu_index, var
 	var button_center_y = dropdown_y_position + dropdown_layout.button_center_y;
 	var popup_top = scr_menu_dropdown_get_popup_top(dropdown_y_position, dropdown_item_count, dropdown_layout);
 	var popup_bottom = popup_top + (dropdown_item_count * dropdown_layout.item_step);
-	var selected_text = "";
-
-	if (variable_to_change >= 0)
-	&& (variable_to_change < array_length(dropdown_items))
-	{
-		selected_text = string(dropdown_items[variable_to_change]);
-	}
-
 	if (variable_instance_exists(self, "menu")) /* Check if the object even have these variables before running this code */
 	&& (variable_instance_exists(self, "menu_delay"))
 	&& (variable_instance_exists(self, "open_dropdown"))
@@ -132,6 +124,42 @@ function draw_menu_dropdown(x_position, y_position, string_text, menu_index, var
 		}
 		#endregion /* Clicking the menu button END */
 
+		#region /* Open dropdown menu */
+		if (open_dropdown)
+		&& (menu == menu_index)
+		{
+			/* Handle selection before drawing text so mouse clicks show the new value this frame. */
+			variable_to_change = scr_menu_dropdown_handle_popup_mouse_input(button_left, popup_top, variable_to_change, menu_index, dropdown_items, dropdown_layout);
+
+			if (open_dropdown)
+			&& (menu == menu_index)
+			{
+				var popup_cursor_anchor = popup_top - menu_y_offset + (dropdown_item_count * dropdown_layout.item_step);
+
+				if (variable_instance_exists(self, "menu_cursor_y_position"))
+				&& (variable_instance_exists(self, "menu_y_offset"))
+				{
+					menu_cursor_y_position = popup_cursor_anchor;
+				}
+
+				if (variable_instance_exists(self, "menu_cursor_y_position_end"))
+				{
+					menu_cursor_y_position_end = max(menu_cursor_y_position_end, popup_cursor_anchor);
+				}
+
+				scr_menu_dropdown_queue_popup(id, button_left, popup_top, variable_to_change, menu_index, default_dropdown_text, dropdown_items, dropdown_layout, dropdown_item_count);
+			}
+		}
+		#endregion /* Open dropdown menu END */
+
+		var selected_text = "";
+
+		if (variable_to_change >= 0)
+		&& (variable_to_change < array_length(dropdown_items))
+		{
+			selected_text = string(dropdown_items[variable_to_change]);
+		}
+
 		#region /* Text above the menu button */
 		draw_set_halign(fa_center);
 		draw_set_valign(fa_middle);
@@ -144,35 +172,6 @@ function draw_menu_dropdown(x_position, y_position, string_text, menu_index, var
 			scr_draw_text_outlined(button_center_x, button_center_y, selected_text, global.default_text_size, c_white, c_black, 1);
 		}
 		#endregion /* Text inside the menu button END */
-
-		#region /* Open dropdown menu */
-		if (open_dropdown)
-		&& (menu == menu_index)
-		{
-			scr_menu_dropdown_handle_popup_mouse_input(button_left, popup_top, variable_to_change, menu_index, dropdown_items, dropdown_layout);
-
-			if (!(open_dropdown)
-			|| (menu != menu_index))
-			{
-				return(variable_to_change);
-			}
-
-			var popup_cursor_anchor = popup_top - menu_y_offset + (dropdown_item_count * dropdown_layout.item_step);
-
-			if (variable_instance_exists(self, "menu_cursor_y_position"))
-			&& (variable_instance_exists(self, "menu_y_offset"))
-			{
-				menu_cursor_y_position = popup_cursor_anchor;
-			}
-
-			if (variable_instance_exists(self, "menu_cursor_y_position_end"))
-			{
-				menu_cursor_y_position_end = max(menu_cursor_y_position_end, popup_cursor_anchor);
-			}
-
-			scr_menu_dropdown_queue_popup(id, button_left, popup_top, variable_to_change, menu_index, default_dropdown_text, dropdown_items, dropdown_layout, dropdown_item_count);
-		}
-		#endregion /* Open dropdown menu END */
 
 		#endregion /* Button END */
 
@@ -244,14 +243,14 @@ function scr_menu_dropdown_handle_popup_mouse_input(popup_left, popup_top, varia
 {
 	if (global.controls_used_for_navigation != "mouse")
 	{
-		return;
+		return variable_to_change;
 	}
 
 	if (!variable_instance_exists(self, "menu_delay")
 	|| !variable_instance_exists(self, "menu_joystick_delay")
 	|| !variable_instance_exists(self, "open_dropdown"))
 	{
-		return;
+		return variable_to_change;
 	}
 
 	var mouse_get_x = device_mouse_x_to_gui(0);
@@ -285,13 +284,16 @@ function scr_menu_dropdown_handle_popup_mouse_input(popup_left, popup_top, varia
 			&& menu_joystick_delay == 0)
 			{
 				menu_dropdown_variable_to_change(variable_to_change, dropdown_index);
+				variable_to_change = dropdown_index;
 				open_dropdown = false;
 				menu_delay = 3;
 			}
 
-			return;
+			return variable_to_change;
 		}
 	}
+
+	return variable_to_change;
 }
 
 function scr_menu_dropdown_queue_popup(owner_id, popup_left, popup_top, variable_to_change, menu_index, default_dropdown_text, dropdown_items, dropdown_layout, dropdown_item_count)
