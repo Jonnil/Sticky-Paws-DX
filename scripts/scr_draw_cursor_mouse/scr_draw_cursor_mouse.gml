@@ -5,6 +5,8 @@ function scr_draw_cursor_mouse()
 	&& os_type != os_android
 	&& os_type != os_ios)
 	{
+		var should_draw_cursor = false;
+
 		if (instance_exists(obj_debug_manager))
 		{
 			var target = obj_debug_manager.debug_target;
@@ -14,8 +16,23 @@ function scr_draw_cursor_mouse()
 			|| target.in_modify_object_menu)
 			|| (!instance_exists(obj_leveleditor))
 			{
-				draw_sprite_ext(spr_cursor, 0, device_mouse_x_to_gui(0), device_mouse_y_to_gui(0), 1, 1, 0, c_white, 1);
+				should_draw_cursor = true;
 			}
 		}
+		else
+		if (!instance_exists(obj_leveleditor))
+		|| (obj_leveleditor.pause)
+		|| (obj_leveleditor.in_modify_object_menu)
+		{
+			should_draw_cursor = true;
+		}
+
+		if (should_draw_cursor)
+		{
+			draw_sprite_ext(spr_cursor, 0, device_mouse_x_to_gui(0), device_mouse_y_to_gui(0), 1, 1, 0, c_white, 1);
+			return true;
+		}
 	}
+
+	return false;
 }

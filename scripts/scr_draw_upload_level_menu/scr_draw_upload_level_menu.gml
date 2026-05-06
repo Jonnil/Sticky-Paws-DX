@@ -218,8 +218,7 @@ function scr_draw_upload_level_menu()
 			&& (menu_delay == 0
 			&& menu_joystick_delay == 0)
 			{
-				if (global.online_enabled)
-				&& (scr_check_network_connection(network_connect_active, true))
+				if (scr_begin_user_online_flow("level_editor_upload_pressed", "level_editor_upload", "level", "scr_draw_upload_level_menu"))
 				{
 					if (global.switch_logged_in)
 					{
@@ -279,9 +278,6 @@ function scr_draw_upload_level_menu()
 					{
 						show_level_editor_corner_menu = false;
 					}
-					caution_online_takes_you_to = "level_editor_upload_pressed";
-					caution_online_takes_you_back_to = "level_editor_upload"; show_debug_message("4 [scr_draw_upload_level_menu] caution_online_takes_you_back_to = level_editor_upload");
-					scr_handle_no_network_connection("scr_draw_upload_level_menu", "level_editor_upload");
 					menu_delay = 3;
 				}
 			}
@@ -303,8 +299,7 @@ function scr_draw_upload_level_menu()
 		
 		if (global.free_communication_available)
 		{
-			if (global.online_enabled)
-			&& (scr_check_network_connection(network_connect_active, true)) /* Check if you're even connected to the internet */
+			if (scr_begin_user_online_flow("level_editor_upload_pressed", "level_editor_upload", "level", "scr_draw_upload_level_menu_pressed"))
 			{
 				if (global.switch_logged_in)
 				{
@@ -401,6 +396,10 @@ function scr_draw_upload_level_menu()
 			else
 			{
 				if (variable_instance_exists(self, "open_sub_menu"))
+				&& (menu != "caution_online_proceed")
+				&& (menu != "network_error")
+				&& (menu != "caution_online_network_error")
+				&& (!scr_get_active_network_request_pending_raw())
 				{
 					open_sub_menu = true; /* Open the sub menu when not in uploading level menu */
 				}
@@ -411,7 +410,6 @@ function scr_draw_upload_level_menu()
 				}
 				
 				menu_delay = 3;
-				scr_handle_no_network_connection("scr_draw_upload_level_menu", "level_editor_upload");
 			}
 		}
 	}
@@ -1905,7 +1903,7 @@ function scr_draw_upload_level_menu()
 				&& (file_exists(upload_level_path + "/thumbnail.png")
 				|| file_exists(upload_level_path + "/automatic_thumbnail.png"))
 				{
-					if (scr_check_network_connection(network_connect_active, true))
+					if (scr_begin_user_online_flow("upload_yes", "level_editor_upload", "level", "scr_draw_upload_level_menu_confirm"))
 					{
 						/* Essential files does exist, so upload now */
 						menu = "uploading_level"; /* Go to uploading level loading screen */
@@ -1916,7 +1914,6 @@ function scr_draw_upload_level_menu()
 					else
 					{
 						menu_delay = 3;
-						scr_handle_no_network_connection("scr_draw_upload_level_menu", "upload_yes");
 					}
 				}
 			}
@@ -2051,7 +2048,7 @@ function scr_draw_upload_level_menu()
 				scr_switch_expand_save_data(); /* Expand the save data before upload */
 				if (global.save_data_size_is_sufficient)
 				{
-					if (scr_check_network_connection(network_connect_active, true)) /* Need to check if OS is connected to network before getting online */
+					if (scr_begin_user_online_flow("uploading_level", "level_editor_upload", "level", "scr_draw_upload_level_menu_upload")) /* Need to check if OS is connected to network before getting online */
 					{
 						if (global.switch_logged_in)
 						{
@@ -2163,7 +2160,7 @@ function scr_draw_upload_level_menu()
 					}
 					else
 					{
-						scr_handle_no_network_connection("scr_draw_upload_level_menu", "level_editor_upload");
+						menu_delay = 3;
 					}
 				}
 			}

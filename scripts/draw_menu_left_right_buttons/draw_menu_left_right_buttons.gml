@@ -4,6 +4,18 @@ function draw_menu_left_right_buttons(lrb_x, lrb_y, lrb_right_arrow_x, lrb_text,
 	var size_of_button_offset = 29;
 	var mouse_get_x = device_mouse_x_to_gui(0);
 	var mouse_get_y = device_mouse_y_to_gui(0);
+	var lrb_menu_outline = c_black;
+	var lrb_menu_fill = c_white;
+
+	if (variable_instance_exists(self, "c_menu_outline"))
+	{
+		lrb_menu_outline = c_menu_outline;
+	}
+
+	if (variable_instance_exists(self, "c_menu_fill"))
+	{
+		lrb_menu_fill = c_menu_fill;
+	}
 
 	#region /* Left Right Buttons */
 
@@ -54,7 +66,7 @@ function draw_menu_left_right_buttons(lrb_x, lrb_y, lrb_right_arrow_x, lrb_text,
 	#region /* Draw Text */
 	draw_set_halign(fa_left);
 	draw_set_valign(fa_middle);
-	scr_draw_text_outlined(lrb_x, 20 + (lrb_y), string(lrb_text) + ": " + string(lrb_variable + variable_offset), global.default_text_size * 1.1, c_menu_outline, c_menu_fill, 1);
+	scr_draw_text_outlined(lrb_x, 20 + (lrb_y), string(lrb_text) + ": " + string(lrb_variable + variable_offset), global.default_text_size * 1.1, lrb_menu_outline, lrb_menu_fill, 1);
 	#endregion /* Draw Text END */
 
 	if (point_in_rectangle(mouse_get_x, mouse_get_y, lrb_x - 32 - 16, 20 + (lrb_y) - 16, lrb_x + lrb_right_arrow_x + 16, 20 + (lrb_y) + 16))

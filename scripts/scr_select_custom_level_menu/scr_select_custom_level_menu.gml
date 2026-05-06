@@ -509,11 +509,7 @@ function scr_select_custom_level_menu()
 				&& (key_accept_pressed)
 				&& (menu_delay == 0 && menu_joystick_delay == 0)
 				{
-					caution_online_takes_you_to = "online_download_list_load";
-					caution_online_takes_you_back_to = "online_level_list";
-
-					if (global.online_enabled)
-					&& (scr_check_network_connection(network_connect_active, true))
+					if (scr_begin_user_online_flow("online_download_list_load", "online_level_list", "level", "scr_select_custom_level_menu"))
 					{
 						if (global.switch_logged_in)
 						{
@@ -559,13 +555,6 @@ function scr_select_custom_level_menu()
 					}
 					else
 					{
-						if (content_type != "level")
-						{
-							global.force_online_list_refresh = true;
-							content_type = "level"; /* Need to set the "content type" to "level", so Async - HTTP Event is running correctly */
-						}
-						
-						scr_handle_no_network_connection("scr_select_custom_level_menu");
 						menu_delay = 3;
 					}
 				}

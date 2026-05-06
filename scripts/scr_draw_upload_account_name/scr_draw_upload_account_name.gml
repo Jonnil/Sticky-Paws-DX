@@ -180,7 +180,14 @@ function scr_draw_upload_account_name(what_kind_of_file = "level")
 			menu_delay = 3;
 			input_key = false;
 
-			if (scr_check_network_connection(network_connect_active, true))
+			var upload_username_target_menu = "upload_" + string(what_kind_of_file) + "_edit_username_ok";
+			var upload_username_fallback_menu = "level_editor_upload";
+			if (what_kind_of_file == "character")
+			{
+				upload_username_fallback_menu = "click_upload_character";
+			}
+
+			if (scr_begin_user_online_flow(upload_username_target_menu, upload_username_fallback_menu, what_kind_of_file, "scr_draw_upload_account_name"))
 			{
 				if (global.switch_logged_in)
 				{
@@ -234,7 +241,7 @@ function scr_draw_upload_account_name(what_kind_of_file = "level")
 			}
 			else
 			{
-				scr_handle_no_network_connection("scr_draw_upload_account_name");
+				menu_delay = 3;
 			}
 		}
 		#endregion /* Pressing Change Username OK END */

@@ -20,7 +20,7 @@ function scr_step_online_download_list()
 	if (menu == "online_download_list_load")
 	&& (global.online_token_validated)
 	{
-		if (scr_check_network_connection(network_connect_active, true))
+		if (scr_begin_user_online_flow("online_download_list_load", "online_download_list_load", content_type, "scr_step_online_download_list"))
 		{
 
 			#region /* Pagination-aware initial cursor/offset setup */
@@ -57,21 +57,7 @@ function scr_step_online_download_list()
 		}
 		else
 		{
-			in_online_download_list_menu = false; show_debug_message("[scr_step_online_download_list] 'In online download list menu' is set to false");
-
-			if (content_type == "character")
-			{
-				caution_online_takes_you_back_to = "download_online_search_id";
-			}
-			else
-			if (content_type == "level")
-			{
-				select_custom_level_menu_open = true;
-				show_level_editor_corner_menu = false;
-				caution_online_takes_you_back_to = "level_editor_upload"; show_debug_message("[scr_step_online_download_list] caution_online_takes_you_back_to = level_editor_upload");
-			}
-
-			scr_handle_no_network_connection("scr_step_online_download_list", "online_download_list_load");
+			menu_delay = 3;
 		}
 	}
 	else

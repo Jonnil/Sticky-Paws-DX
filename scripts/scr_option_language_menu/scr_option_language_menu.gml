@@ -510,13 +510,19 @@ function scr_option_language_menu()
 				show_debug_message("[scr_option_language_menu] Force to update language pack when you click the 'Update Translations Now' button");
 				menu_delay = 3;
 
-				if (scr_check_network_connection(network_connect_active, true)) /* Force to update language pack when you click this button. Ask the player to connect to the internet */
+				if (scr_begin_user_online_flow("language_check_updates", "language_check_updates", "", "scr_option_language_menu")) /* Force to update language pack when you click this button. Ask the player to connect to the internet */
 				{
 					show_debug_message("[scr_option_language_menu] Run scr_language_pack_update(true)");
 					scr_language_pack_update(true);
 				}
 				else
 				{
+					if (menu == "caution_online_proceed")
+					|| (scr_get_active_network_request_pending_raw())
+					{
+						/* The shared online flow is showing caution or waiting for Nintendo NIFM. */
+					}
+					else
 					if (os_type == os_switch)
 					&& (global.switch_login_cancelled)
 					{
@@ -542,6 +548,11 @@ function scr_option_language_menu()
 						global.language_update_pending = true;
 						global.language_update_status_message = "Waiting for account validation before downloading translations.";
 						global.language_update_status_color = c_yellow;
+					}
+					else
+					if (menu == "network_error")
+					{
+						/* The shared online flow already routed this failure. */
 					}
 					else
 					{

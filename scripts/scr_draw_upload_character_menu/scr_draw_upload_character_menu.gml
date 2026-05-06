@@ -264,7 +264,7 @@ function scr_draw_upload_character_menu()
 					{
 						if (global.username != "") /* Check if there is an username or not */
 						{
-							if (scr_check_network_connection(network_connect_active, true))
+							if (scr_begin_user_online_flow("upload_yes_character", "click_upload_character", "character", "scr_draw_upload_character_menu_confirm"))
 							{
 								ini_open(game_save_id + "custom_characters/" + string(character_name) + "/data/character_config.ini");
 								
@@ -308,7 +308,6 @@ function scr_draw_upload_character_menu()
 							else
 							{
 								menu_delay = 3;
-								scr_handle_no_network_connection("scr_draw_upload_character_menu", "download_online_search_id");
 							}
 						}
 						else
@@ -721,7 +720,7 @@ function scr_draw_upload_character_menu()
 				scr_switch_expand_save_data(); /* Expand the save data before upload */
 				if (global.save_data_size_is_sufficient)
 				{
-					if (scr_check_network_connection(network_connect_active, true)) /* Need to check if OS is connected to network before getting online */
+					if (scr_begin_user_online_flow("uploading_character", "click_upload_character", "character", "scr_draw_upload_character_menu_upload")) /* Need to check if OS is connected to network before getting online */
 					{
 						if (global.switch_logged_in)
 						{
@@ -826,7 +825,6 @@ function scr_draw_upload_character_menu()
 					else
 					{
 						menu_delay = 3;
-						scr_handle_no_network_connection("scr_draw_upload_character_menu", "download_online_search_id");
 					}
 				}
 			}

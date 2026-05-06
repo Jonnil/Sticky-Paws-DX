@@ -570,8 +570,7 @@ function scr_character_manage_menu_step()
 
 				menu_delay = 3;
 
-				if (global.online_enabled)
-				&& (scr_check_network_connection(network_connect_active, true))
+				if (scr_begin_user_online_flow("upload_yes_character", "click_upload_character", "character", "scr_character_manage_menu_step"))
 				{
 					if (global.switch_logged_in)
 					{
@@ -639,9 +638,7 @@ function scr_character_manage_menu_step()
 				}
 				else
 				{
-					caution_online_takes_you_to = "upload_yes_character";
-
-					scr_handle_no_network_connection("scr_character_manage_menu_step", "click_upload_character");
+					menu_delay = 3;
 				}
 			}
 		}

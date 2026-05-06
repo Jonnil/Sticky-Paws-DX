@@ -728,14 +728,10 @@ function scr_draw_information_menu()
 			&& (menu_delay == 0 && menu_joystick_delay == 0)
 			&& (!global.demo_enable)
 			{
-				caution_online_takes_you_to = "online_download_list_load";
-				caution_online_takes_you_back_to = "about_online_level_list";
-
 				menu_delay = 3;
 
-				if (global.online_enabled)
-				&& (global.free_communication_available)
-				&& (scr_check_network_connection(network_connect_active, true))
+				if (global.free_communication_available)
+				&& (scr_begin_user_online_flow("online_download_list_load", "about_online_level_list", "level", "scr_draw_information_menu"))
 				{
 					if (global.switch_logged_in)
 					{
@@ -791,14 +787,6 @@ function scr_draw_information_menu()
 				else
 				{
 					information_menu_open = ""; /* Disable information menu so you can't accidentally navigate information menu when navigating online caution menu */
-					
-					if (content_type != "level")
-					{
-						global.force_online_list_refresh = true;
-						content_type = "level"; /* Need to set the "content type" to "level", so Async - HTTP Event is running correctly */
-					}
-					
-					scr_handle_no_network_connection("scr_draw_information_menu");
 					menu_delay = 3;
 				}
 			}

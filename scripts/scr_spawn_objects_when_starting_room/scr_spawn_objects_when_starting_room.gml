@@ -605,14 +605,25 @@ function scr_spawn_objects_when_starting_room()
 				case LEVEL_OBJECT_ID.ID_ARROW_SIGN_SMALL: with(instance_create_depth(x, y, 0, obj_arrow_sign_small)){if (instance_exists(obj_leveleditor_placed_object)){second_x = instance_nearest(x, y, obj_leveleditor_placed_object).second_x;second_y = instance_nearest(x, y, obj_leveleditor_placed_object).second_y;}}break;
 				case LEVEL_OBJECT_ID.ID_CHECKPOINT:
 					/* Set the correct activation state if this checkpoint should only appear after certain amounts of defeats */
-					if (variable_instance_exists(self, "second_x") && second_x != "")
-					&& (real(second_x) > 0) /* If this variable is above 0, that is the only time it should check for "lives until assist" variable */
-					&& (global.lives_until_assist >= real(second_x)) /* If you have got defeated enough times to make the checkpoint appear */
+					var checkpoint_appear_after_defeats = 0;
+
+					if (variable_instance_exists(self, "second_x"))
+					{
+						var checkpoint_raw_value = string(second_x);
+						var checkpoint_digits = string_digits(checkpoint_raw_value);
+
+						if (checkpoint_raw_value != "")
+						&& (checkpoint_digits == checkpoint_raw_value)
+						{
+							checkpoint_appear_after_defeats = clamp(floor(real(checkpoint_digits)), 0, 99);
+						}
+
+						second_x = string(checkpoint_appear_after_defeats);
+					}
+
+					if (checkpoint_appear_after_defeats <= 0)
+					|| (global.lives_until_assist >= checkpoint_appear_after_defeats)
 					&& (!global.doing_clear_check_level) /* Checkpoints that appear after certain amounts of defeats should not appear when doing a clear check */
-					|| (variable_instance_exists(self, "second_x") && second_x != "")
-					&& (real(second_x) <= 0)
-					|| (variable_instance_exists(self, "second_x") && second_x == "")
-					|| (!variable_instance_exists(self, "second_x"))
 					{
 						obj = instance_create_depth(x, y, 0, obj_checkpoint);
 						with(obj_checkpoint) /* Update EVERY checkpoints that have been spawned */

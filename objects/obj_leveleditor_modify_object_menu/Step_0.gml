@@ -1,13 +1,27 @@
+if (can_only_input_numbers)
+{
+	if (numeric_modify_confirmed)
+	{
+		quit_modify_object_menu = true;
+		checkpoint_defeat_requirement = clamp(floor(checkpoint_defeat_requirement), 0, 99);
+		modify_object_text = string(checkpoint_defeat_requirement);
+		keyboard_string = modify_object_text;
+
+		if (instance_exists(instance_nearest(x, y, obj_leveleditor_placed_object)))
+		{
+			instance_nearest(x, y, obj_leveleditor_placed_object).second_x = modify_object_text;
+		}
+	}
+	else
+	if (numeric_modify_cancelled)
+	{
+		quit_modify_object_menu = true;
+	}
+}
+else
 if (global.clicking_ok_input_screen)
 {
 	quit_modify_object_menu = true;
-
-	if (can_only_input_numbers)
-	{
-		var modify_object_text_numbers = modify_object_text;
-		modify_object_text = string_digits(modify_object_text_numbers);
-		keyboard_string = string_digits(modify_object_text_numbers);
-	}
 
 	/* Lastly, set the closest object you're editing to the message you were writing */
 	if (instance_exists(instance_nearest(x, y, obj_leveleditor_placed_object)))
@@ -19,13 +33,6 @@ else
 if (global.clicking_cancel_input_screen)
 {
 	quit_modify_object_menu = true;
-
-	if (can_only_input_numbers)
-	{
-		var modify_object_text_numbers = modify_object_text;
-		modify_object_text = string_digits(modify_object_text_numbers);
-		keyboard_string = string_digits(modify_object_text_numbers);
-	}
 }
 
 if (quit_modify_object_menu)
@@ -48,7 +55,15 @@ if (quit_modify_object_menu)
 	instance_destroy();
 }
 
+menu_cursor_index += 0.3;
+if (menu_cursor_index > 4)
+{
+	menu_cursor_index = 0;
+}
+
 if (menu_delay > 0)
 {
 	menu_delay--;
 }
+
+scr_menu_navigation_with_joystick_delay();

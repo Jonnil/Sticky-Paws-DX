@@ -653,13 +653,16 @@ function scr_option_level_editor()
 			{
 				menu_cursor_y_position = delete_all_objects_y - menu_y_offset;
 			}
+			
 			draw_sprite_ext(spr_icon_delete, 0, level_editor_option_x + 16, delete_all_objects_y + 21, 1, 1, 0, c_white, 1);
 			draw_menu_dropdown(level_editor_option_x - 32, selected_level_editing_music_y, l10n_text("Level Editing Music"), "select_level_editing_music", global.selected_level_editing_music, l10n_text("None"), l10n_text("Random"), l10n_text("Music 1"), l10n_text("Music 2"), l10n_text("Music 3"), l10n_text("Music 4"));
 			scr_set_default_dropdown_description("select_level_editing_music", "Random");
+			
 			if (global.enable_time_countdown)
 			{
 				global.time_countdown = draw_menu_left_right_buttons(level_editor_option_x, time_countdown_y, option_level_editor_right_arrow_x, l10n_text("Time Countdown"), global.time_countdown, "time_countdown", 1, false);
 			}
+			
 			if (global.enable_level_length_target)
 			{
 				global.target_length_minutes_min = draw_menu_left_right_buttons(level_editor_option_x, target_length_minutes_y, option_level_editor_right_arrow_x, l10n_text("Target Length Minutes Minimum"), global.target_length_minutes_min, "target_length_minutes_min", 1, false, 0, 60);

@@ -275,6 +275,283 @@ function scr_nifm_log_context(_level, _message, _extra_details = "")
 	scr_log(_level, "NIFM", _message, scr_nifm_get_request_details(_extra_details));
 }
 
+function scr_prepare_user_online_flow(_target_menu, _fallback_menu, _content_type = "", _caller = "unknown")
+{
+	if (_target_menu != "")
+	{
+		caution_online_takes_you_to = string(_target_menu);
+	}
+
+	if (_fallback_menu != "")
+	{
+		caution_online_takes_you_back_to = string(_fallback_menu);
+	}
+
+	if (_content_type != "")
+	{
+		if (!variable_instance_exists(self, "content_type")
+		|| (content_type != string(_content_type)))
+		{
+			global.force_online_list_refresh = true;
+		}
+
+		content_type = string(_content_type);
+	}
+
+	scr_nifm_log_context("INFO", "online_flow_prepared",
+		"caller=" + string(_caller)
+		+ " target_menu=" + string(caution_online_takes_you_to)
+		+ " fallback_menu=" + string(caution_online_takes_you_back_to)
+		+ " content_type=" + string(_content_type));
+}
+
+function scr_begin_user_online_flow(_target_menu, _fallback_menu, _content_type = "", _caller = "unknown")
+{
+	scr_prepare_user_online_flow(_target_menu, _fallback_menu, _content_type, _caller);
+
+	if (variable_instance_exists(self, "menu_delay"))
+	{
+		menu_delay = max(menu_delay, 3);
+	}
+
+	if (!global.online_enabled)
+	{
+		scr_nifm_log_context("INFO", "online_flow_show_caution_before_network_request",
+			"caller=" + string(_caller)
+			+ " target_menu=" + string(caution_online_takes_you_to)
+			+ " in_game_network_error_visible=false");
+		menu = "caution_online_proceed";
+		return false;
+	}
+
+	if (scr_check_network_connection(network_connect_active, true))
+	{
+		return true;
+	}
+
+	if (scr_get_active_network_request_pending_raw())
+	{
+		scr_nifm_log_context("INFO", "online_flow_waiting_for_nintendo_nifm_result",
+			"caller=" + string(_caller)
+			+ " target_menu=" + string(caution_online_takes_you_to)
+			+ " in_game_network_error_visible=false");
+		return false;
+	}
+
+	if (global.online_token_request != -1)
+	&& (!global.online_token_validated)
+	{
+		scr_nifm_log_context("INFO", "online_flow_waiting_for_token_validation",
+			"caller=" + string(_caller)
+			+ " target_menu=" + string(caution_online_takes_you_to)
+			+ " in_game_network_error_visible=false");
+		return false;
+	}
+
+	scr_handle_no_network_connection(_caller, _fallback_menu);
+	return false;
+}
+
+function scr_finish_prepared_user_online_flow(_source = "online_flow")
+{
+	if (!global.switch_logged_in)
+	{
+		scr_nifm_log_context("INFO", "online_flow_wait_for_switch_login",
+			"source=" + string(_source)
+			+ " target_menu=" + string(caution_online_takes_you_to));
+		menu = "caution_online_proceed";
+		return false;
+	}
+
+	if (!global.switch_account_network_service_available)
+	{
+		scr_nifm_log_context("WARN", "online_flow_network_service_unavailable",
+			"source=" + string(_source)
+			+ " target_menu=" + string(caution_online_takes_you_to));
+		menu = "caution_online_network_error";
+		return false;
+	}
+
+	if (scr_online_token_is_valid() != true)
+	{
+		scr_nifm_log_context("WARN", "online_flow_token_invalid",
+			"source=" + string(_source)
+			+ " target_menu=" + string(caution_online_takes_you_to));
+		menu = "caution_online_network_error";
+		return false;
+	}
+
+	scr_nifm_log_context("INFO", "online_flow_resume_target",
+		"source=" + string(_source)
+		+ " target_menu=" + string(caution_online_takes_you_to));
+
+	if (caution_online_takes_you_to == "online_download_list_load")
+	{
+		if (variable_instance_exists(self, "select_custom_level_menu_open"))
+		{
+			select_custom_level_menu_open = false;
+		}
+
+		global.selected_online_download_index = 0;
+		global.download_current_page = 0;
+	}
+	else
+	if (caution_online_takes_you_to == "search_id_ok")
+	{
+		keyboard_string = "";
+		search_id = "";
+
+		if (variable_instance_exists(self, "select_custom_level_menu_open"))
+		{
+			select_custom_level_menu_open = false;
+		}
+	}
+
+	var no_players_can_play = true;
+
+	for(var i = 1; i <= global.max_players; i += 1)
+	{
+		if (global.player_can_play[i])
+		{
+			no_players_can_play = false;
+			break;
+		}
+	}
+
+	if (no_players_can_play)
+	|| (global.playergame <= 0)
+	{
+		global.player_can_play[1] = true;
+	}
+
+	if (variable_instance_exists(self, "information_menu_open"))
+	{
+		information_menu_open = "";
+	}
+
+	if (caution_online_takes_you_to == "language_check_updates")
+	{
+		if (variable_instance_exists(self, "in_settings"))
+		{
+			in_settings = true;
+		}
+
+		global.settings_sidebar_menu = "language_settings";
+		menu = "language_check_updates";
+		scr_language_pack_update(true);
+	}
+	else
+	if (caution_online_takes_you_to == "level_editor_upload_pressed")
+	&& (!global.upload_rules_do_not_show_level)
+	{
+		menu = "upload_rules";
+	}
+	else
+	if (caution_online_takes_you_to == "upload_yes_character")
+	&& (!global.upload_rules_do_not_show_character)
+	{
+		menu = "upload_rules";
+	}
+	else
+	{
+		menu = caution_online_takes_you_to;
+	}
+
+	return true;
+}
+
+function scr_clear_online_loading_state(_source = "unknown")
+{
+	if (variable_instance_exists(self, "search_for_id_still"))
+	{
+		search_for_id_still = false;
+	}
+
+	if (variable_instance_exists(self, "in_online_download_list_menu"))
+	{
+		in_online_download_list_menu = false;
+	}
+
+	if (variable_instance_exists(self, "in_online_download_list_load_menu"))
+	{
+		in_online_download_list_load_menu = false;
+	}
+
+	if (variable_instance_exists(self, "in_online_search_id"))
+	{
+		in_online_search_id = false;
+	}
+
+	if (variable_instance_exists(self, "automatically_search_for_id"))
+	{
+		automatically_search_for_id = false;
+	}
+
+	if (variable_instance_exists(self, "show_level_editor_corner_menu"))
+	{
+		show_level_editor_corner_menu = true;
+	}
+
+	global.language_update_allow_without_online_enabled = false;
+	global.language_update_pending = false;
+	global.automatically_play_downloaded_level = false;
+	global.go_to_menu_when_going_back_to_title = "";
+
+	scr_nifm_log_context("DEBUG", "online_loading_state_cleared",
+		"source=" + string(_source));
+}
+
+function scr_return_to_stable_offline_menu(_source = "unknown", _target_menu = "main_game")
+{
+	scr_clear_online_loading_state(_source);
+	scr_clear_active_network_request_pending();
+	global.online_active_network_request_cooldown_until = 0;
+	global.switch_login_cancelled = false;
+	global.switch_login_cancelled_account_id = -1;
+
+	if (variable_instance_exists(self, "in_character_select_menu"))
+	{
+		in_character_select_menu = false;
+	}
+
+	if (variable_instance_exists(self, "in_edit_character_menu"))
+	{
+		in_edit_character_menu = false;
+	}
+
+	if (variable_instance_exists(self, "select_custom_level_menu_open"))
+	{
+		select_custom_level_menu_open = false;
+	}
+
+	if (variable_instance_exists(self, "in_settings"))
+	{
+		in_settings = false;
+	}
+
+	if (variable_instance_exists(self, "information_menu_open"))
+	{
+		information_menu_open = "";
+	}
+
+	if (variable_instance_exists(self, "menu_delay"))
+	{
+		menu_delay = 3;
+	}
+
+	if (variable_global_exists("character_select_in_this_menu"))
+	{
+		global.character_select_in_this_menu = "main_game";
+	}
+
+	menu = string(_target_menu);
+
+	if (room != rm_title)
+	{
+		room_goto(rm_title);
+	}
+}
+
 function scr_nifm_log_online_check_succeeded(_active_network_request)
 {
 	var request_id = scr_nifm_get_active_network_request_id();
@@ -636,6 +913,7 @@ function scr_handle_networking_async_event(_network_async_data)
 	global.online_current_attempt_result = l10n_text("No network connection");
 	scr_set_cached_passive_network_status(false);
 	scr_clear_active_network_request_pending();
+	scr_clear_online_loading_state("async_network_failure");
 
 	if (active_network_request_was_pending)
 	|| (network_event_type == network_type_up_failed)
@@ -677,11 +955,19 @@ function scr_route_network_async_failure_to_menu(force_online_flow = false)
 		|| (current_menu == "network_error_copy_error_code")
 		|| (current_menu == "network_error_main_menu")
 		|| (current_menu == "online_download_list_load")
+		|| (current_menu == "search_id_ok")
 		|| (current_menu == "searching_for_id")
 		|| (current_menu == "report_send_to_server")
+		|| (current_menu == "report_send_confirm")
 		|| (current_menu == "level_editor_upload_pressed")
 		|| (current_menu == "upload_yes")
 		|| (current_menu == "upload_yes_character")
+		|| (current_menu == "uploading_level")
+		|| (current_menu == "uploading_character")
+		|| (current_menu == "upload_level_edit_username_ok")
+		|| (current_menu == "upload_character_edit_username_ok")
+		|| (current_menu == "question_upload_level_edit_username_ok")
+		|| (current_menu == "question_upload_character_edit_username_ok")
 		|| (current_menu == "click_upload_character")
 		|| (current_menu == "language_check_updates")
 		|| (string_copy(current_menu, 1, string_length("download_online")) == "download_online");
@@ -693,6 +979,8 @@ function scr_route_network_async_failure_to_menu(force_online_flow = false)
 			"reason=not_online_flow force_online_flow=" + scr_nifm_bool_string(force_online_flow));
 		return false;
 	}
+
+	scr_clear_online_loading_state("route_network_async_failure_to_menu");
 
 	if (variable_instance_exists(self, "search_for_id_still"))
 	{

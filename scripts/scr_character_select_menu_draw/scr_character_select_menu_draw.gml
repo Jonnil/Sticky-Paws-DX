@@ -211,11 +211,7 @@ function scr_character_select_menu_draw()
 				&& (menu_delay == 0 && menu_joystick_delay == 0)
 				&& (!max_custom_characters_reached)
 				{
-					caution_online_takes_you_to = "online_download_list_load";
-					caution_online_takes_you_back_to = "online_character_list";
-
-					if (global.online_enabled)
-					&& (scr_check_network_connection(network_connect_active, true))
+					if (scr_begin_user_online_flow("online_download_list_load", "online_character_list", "character", "scr_character_select_menu_draw"))
 					{
 						if (global.switch_logged_in)
 						{
@@ -256,13 +252,6 @@ function scr_character_select_menu_draw()
 					}
 					else
 					{
-						if (content_type != "character")
-						{
-							global.force_online_list_refresh = true;
-							content_type = "character"; /* Need to set the "content type" to "level", so Async - HTTP Event is running correctly */
-						}
-						
-						scr_handle_no_network_connection("scr_character_select_menu_draw", "online_character_list");
 						menu_delay = 3;
 					}
 				}
