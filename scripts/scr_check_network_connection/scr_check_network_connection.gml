@@ -34,6 +34,8 @@ function scr_check_network_connection(connect_mode, allow_account_prompt = false
 	#endregion /* Check if debug override is enabled to simulate network errors (Only in test run mode) END */
 
 	var active_network_request = (connect_mode != network_connect_passive);
+	var switch_active_network_request = (os_type == os_switch) && active_network_request;
+	var switch_active_login_attempted = false;
 	var passive_network_status = scr_get_cached_passive_network_status(false);
 	var actual_network_status = passive_network_status;
 
@@ -68,44 +70,71 @@ function scr_check_network_connection(connect_mode, allow_account_prompt = false
 		}
 
 		scr_mark_active_network_request_pending();
-		scr_nifm_log_context("INFO", "active_request_submit_accepted",
-			"connect_mode=active allow_account_prompt=" + scr_nifm_bool_string(allow_account_prompt)
-			+ " passive_cached=" + scr_nifm_bool_string(passive_network_status));
-		actual_network_status = os_is_network_connected(connect_mode);
-		scr_set_cached_passive_network_status(actual_network_status);
-		scr_nifm_log_context("DEBUG", "active_request_submit_returned",
-			"actual_network_status=" + scr_nifm_bool_string(actual_network_status)
-			+ " wait_for_async=" + scr_nifm_bool_string(os_type == os_switch && !actual_network_status));
 
-		if (!actual_network_status)
+		if (switch_active_network_request)
 		{
-			global.online_token_validated = false;
-			global.switch_account_network_service_available = false;
-			global.online_token_error_message = "System is not connected to the network.";
-			global.online_current_attempt_result = l10n_text("No network connection");
+			switch_active_login_attempted = true;
+			scr_nifm_log_context("INFO", "switch_login_request_submit_accepted",
+				"allow_account_prompt=" + scr_nifm_bool_string(allow_account_prompt)
+				+ " passive_cached=" + scr_nifm_bool_string(passive_network_status));
 
-			if (os_type == os_switch)
+			if (allow_account_prompt)
 			{
-				scr_nifm_log_context("INFO", "waiting_for_nintendo_nifm_result",
-					"in_game_network_error_visible=false");
+				scr_switch_capture_preselected_user(false);
+				scr_switch_clear_cancelled_for_active_account();
+				scr_switch_update_online_status(true);
+			}
+			else
+			{
+				scr_switch_update_online_status(false);
+			}
+
+			actual_network_status = scr_get_cached_passive_network_status(false);
+			scr_clear_active_network_request_pending();
+			global.online_active_network_request_cooldown_until = 0;
+
+			scr_nifm_log_context("DEBUG", "switch_login_request_returned",
+				"actual_network_status=" + scr_nifm_bool_string(actual_network_status)
+				+ " switch_logged_in=" + scr_nifm_bool_string(global.switch_logged_in)
+				+ " token_request_pending=" + scr_nifm_bool_string(global.online_token_request != -1)
+				+ " token_validated=" + scr_nifm_bool_string(global.online_token_validated)
+				+ " in_game_network_error_visible=false_until_login_returns");
+		}
+		else
+		{
+			scr_nifm_log_context("INFO", "active_request_submit_accepted",
+				"connect_mode=active allow_account_prompt=" + scr_nifm_bool_string(allow_account_prompt)
+				+ " passive_cached=" + scr_nifm_bool_string(passive_network_status));
+			actual_network_status = os_is_network_connected(connect_mode);
+			scr_set_cached_passive_network_status(actual_network_status);
+			scr_nifm_log_context("DEBUG", "active_request_submit_returned",
+				"actual_network_status=" + scr_nifm_bool_string(actual_network_status)
+				+ " wait_for_async=false");
+
+			if (!actual_network_status)
+			{
+				global.online_token_validated = false;
+				global.switch_account_network_service_available = false;
+				global.online_token_error_message = "System is not connected to the network.";
+				global.online_current_attempt_result = l10n_text("No network connection");
+
+				scr_clear_active_network_request_pending();
+				scr_mark_active_network_request_submitted(2000000);
+				scr_nifm_log_context("WARN", "active_request_failed_without_switch_async",
+					"in_game_network_error_visible=true");
 				return false;
 			}
 
+			scr_nifm_log_context("INFO", "active_request_succeeded_immediately",
+				"will_validate_online_token=" + scr_nifm_bool_string(!global.online_token_validated));
 			scr_clear_active_network_request_pending();
-			scr_mark_active_network_request_submitted(2000000);
-			scr_nifm_log_context("WARN", "active_request_failed_without_switch_async",
-				"in_game_network_error_visible=true");
-			return false;
+			global.online_active_network_request_cooldown_until = 0;
 		}
-
-		scr_nifm_log_context("INFO", "active_request_succeeded_immediately",
-			"will_validate_online_token=" + scr_nifm_bool_string(!global.online_token_validated));
-		scr_clear_active_network_request_pending();
-		global.online_active_network_request_cooldown_until = 0;
 	}
 
 	#region /* If online token has not been validated, update online status */
 	if (!global.online_token_validated)
+	&& (!switch_active_login_attempted)
 	{
 		show_debug_message("[scr_check_network_connection] Online token not validated. Calling 'scr_switch_update_online_status(" + string(allow_account_prompt) + ")'...");
 
@@ -189,17 +218,36 @@ function scr_get_cached_passive_network_status(force_refresh = false)
 		if (force_refresh)
 		|| (os_type != os_switch)
 		{
-			scr_set_cached_passive_network_status(os_is_network_connected(network_connect_passive));
+			scr_set_cached_passive_network_status(scr_read_passive_network_status());
 		}
 		return global.online_cached_passive_network_connected;
 	}
 
 	if (force_refresh)
 	{
-		scr_set_cached_passive_network_status(os_is_network_connected(network_connect_passive));
+		scr_set_cached_passive_network_status(scr_read_passive_network_status());
 	}
 
 	return global.online_cached_passive_network_connected;
+}
+
+function scr_read_passive_network_status()
+{
+	if (os_type == os_switch)
+	{
+		var active_user_id = variable_global_exists("switch_active_account_id")
+			? global.switch_active_account_id
+			: -1;
+
+		if (!scr_switch_has_account_id(active_user_id))
+		{
+			return false;
+		}
+
+		return switch_accounts_is_user_online(active_user_id);
+	}
+
+	return os_is_network_connected(network_connect_passive);
 }
 
 function scr_set_cached_passive_network_status(network_connected)
@@ -345,6 +393,17 @@ function scr_begin_user_online_flow(_target_menu, _fallback_menu, _content_type 
 			"caller=" + string(_caller)
 			+ " target_menu=" + string(caution_online_takes_you_to)
 			+ " in_game_network_error_visible=false");
+		return false;
+	}
+
+	if (os_type == os_switch)
+	&& (global.switch_logged_in)
+	&& (!global.switch_account_network_service_available)
+	{
+		scr_nifm_log_context("WARN", "online_flow_network_service_unavailable",
+			"caller=" + string(_caller)
+			+ " target_menu=" + string(caution_online_takes_you_to));
+		menu = "caution_online_network_error";
 		return false;
 	}
 
@@ -501,6 +560,54 @@ function scr_clear_online_loading_state(_source = "unknown")
 		"source=" + string(_source));
 }
 
+function scr_invalidate_online_session(_reason = "unknown", _caller = "unknown")
+{
+	var active_primary_request = variable_global_exists("online_primary_request_active")
+		? global.online_primary_request_active
+		: noone;
+
+	global.online_token_validated = false;
+	global.online_token_request = -1;
+	global.online_token_present = false;
+	global.online_token_expired = false;
+	global.online_token_error_message = "System is not connected to the network.";
+	global.online_current_attempt_result = l10n_text("No network connection");
+	global.switch_account_network_service_available = false;
+	global.online_primary_request_active = noone;
+	global.http_request_id = noone;
+	global.http_request_info = noone;
+	global.language_http_request_id = -1;
+	global.server_timeout_end = undefined;
+	global.download_request_timeout_end = undefined;
+	global.download_failure_reason = string(_reason);
+
+	if (os_type == os_switch)
+	{
+		global.switch_logged_in = false;
+		global.switch_online_token_account_id = -1;
+		global.switch_login_cancelled = false;
+		global.switch_login_cancelled_account_id = -1;
+	}
+
+	if (variable_global_exists("http_request_contexts")
+	&& is_real(global.http_request_contexts)
+	&& ds_exists(global.http_request_contexts, ds_type_map)
+	&& active_primary_request != noone
+	&& ds_map_exists(global.http_request_contexts, string(active_primary_request)))
+	{
+		ds_map_delete(global.http_request_contexts, string(active_primary_request));
+	}
+
+	scr_set_cached_passive_network_status(false);
+	scr_clear_active_network_request_pending();
+	global.online_active_network_request_cooldown_until = 0;
+	scr_clear_online_loading_state(_caller);
+
+	scr_nifm_log_context("WARN", "online_session_invalidated",
+		"reason=" + string(_reason)
+		+ " caller=" + string(_caller));
+}
+
 function scr_return_to_stable_offline_menu(_source = "unknown", _target_menu = "main_game")
 {
 	scr_clear_online_loading_state(_source);
@@ -508,6 +615,11 @@ function scr_return_to_stable_offline_menu(_source = "unknown", _target_menu = "
 	global.online_active_network_request_cooldown_until = 0;
 	global.switch_login_cancelled = false;
 	global.switch_login_cancelled_account_id = -1;
+	global.online_token_request = -1;
+	global.online_primary_request_active = noone;
+	global.language_http_request_id = -1;
+	global.download_request_timeout_end = undefined;
+	global.server_timeout_end = undefined;
 
 	if (variable_instance_exists(self, "in_character_select_menu"))
 	{
@@ -907,13 +1019,7 @@ function scr_handle_networking_async_event(_network_async_data)
 		"event_type=" + string(network_event_type_name)
 		+ " active_request_was_pending=" + scr_nifm_bool_string(active_network_request_was_pending)
 		+ " will_show_in_game_network_error=true");
-	global.online_token_validated = false;
-	global.switch_account_network_service_available = false;
-	global.online_token_error_message = "System is not connected to the network.";
-	global.online_current_attempt_result = l10n_text("No network connection");
-	scr_set_cached_passive_network_status(false);
-	scr_clear_active_network_request_pending();
-	scr_clear_online_loading_state("async_network_failure");
+	scr_invalidate_online_session("network_async_" + string(network_event_type_name), "scr_handle_networking_async_event");
 
 	if (active_network_request_was_pending)
 	|| (network_event_type == network_type_up_failed)

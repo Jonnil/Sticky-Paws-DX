@@ -128,6 +128,8 @@ function scr_handle_no_network_connection(what_script = "scr_handle_no_network_c
 			information_menu_open = "about";
 		}
 
+		global.switch_login_cancelled = false;
+		global.switch_login_cancelled_account_id = -1;
 		menu = fallback_menu;
 		return;
 	}

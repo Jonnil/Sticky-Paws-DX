@@ -26,7 +26,8 @@ function scr_switch_update_online_status(show_login_screen = true)
 		var has_active_user = scr_switch_has_account_id(active_user_id);
 		scr_switch_refresh_account_debug_info(raw_preselected_user_id, active_user_id);
 
-		if (!scr_get_cached_passive_network_status(false))
+		if (!show_login_screen)
+		&& (!scr_get_cached_passive_network_status(false))
 		{
 			global.switch_logged_in = false;
 			global.online_token_validated = false;
@@ -57,6 +58,7 @@ function scr_switch_update_online_status(show_login_screen = true)
 			if (!scr_switch_has_account_id(selected_user_id))
 			{
 				scr_switch_mark_login_cancelled(global.switch_active_account_id);
+				global.switch_login_cancelled = true;
 				global.switch_logged_in = false;
 				global.online_token_validated = false;
 				global.switch_account_network_service_available = false;
@@ -115,8 +117,6 @@ function scr_switch_update_online_status(show_login_screen = true)
 			return;
 		}
 
-		global.switch_account_network_service_available = switch_accounts_network_service_available(active_user_id);
-
 		var login_success = switch_accounts_login_user(active_user_id);
 
 		if (!login_success)
@@ -125,13 +125,15 @@ function scr_switch_update_online_status(show_login_screen = true)
 			global.online_token_validated = false;
 			global.switch_account_network_service_available = false;
 			global.online_token_request = -1;
+			scr_set_cached_passive_network_status(false);
 
 			if (show_login_screen)
 			{
-				scr_log("WARN", "SWITCH.ACCOUNTS", "login_failed", "account_id=" + string(active_user_id));
-				scr_switch_mark_login_cancelled(active_user_id);
-				global.online_token_error_message = "Login cancelled for active account " + string(active_user_id);
-				global.online_current_attempt_result = l10n_text("Login cancelled");
+				scr_log("WARN", "SWITCH.ACCOUNTS", "login_failed_after_system_ui", "account_id=" + string(active_user_id));
+				global.switch_login_cancelled = false;
+				global.switch_login_cancelled_account_id = -1;
+				global.online_token_error_message = "System is not connected to the network.";
+				global.online_current_attempt_result = l10n_text("No network connection");
 			}
 			else
 			{
@@ -145,6 +147,7 @@ function scr_switch_update_online_status(show_login_screen = true)
 
 		global.switch_logged_in = true;
 		global.switch_account_network_service_available = switch_accounts_network_service_available(active_user_id);
+		scr_set_cached_passive_network_status(true);
 		global.switch_login_cancelled = false;
 		global.switch_login_cancelled_account_id = -1;
 		scr_switch_refresh_account_debug_info(raw_preselected_user_id, active_user_id);
@@ -152,6 +155,8 @@ function scr_switch_update_online_status(show_login_screen = true)
 		if (!global.switch_account_network_service_available)
 		{
 			global.online_token_validated = false;
+			global.online_token_request = -1;
+			global.switch_online_token_account_id = -1;
 			global.online_token_error_message = "Required account not linked for active account " + string(active_user_id);
 			global.online_current_attempt_result = l10n_text("Required account not linked");
 			show_debug_message("[scr_switch_update_online_status] Active account lacks network service: " + string(active_user_id));
@@ -379,6 +384,13 @@ function scr_switch_clear_cancelled_for_active_account()
 	var active_account_id = variable_global_exists("switch_active_account_id")
 		? global.switch_active_account_id
 		: -1;
+
+	if (!scr_switch_has_account_id(active_account_id))
+	{
+		global.switch_login_cancelled = false;
+		global.switch_login_cancelled_account_id = -1;
+		return;
+	}
 
 	if (scr_switch_has_account_id(active_account_id))
 	&& (global.switch_login_cancelled_account_id == active_account_id)

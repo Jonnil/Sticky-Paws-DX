@@ -101,6 +101,13 @@ function scr_draw_report()
 						ds_map_destroy(report_upload_headers);
 						#endregion /* Actually upload the level to the server END */
 
+						if (global.http_request_id == -1)
+						{
+							scr_invalidate_online_session("report_http_request_failed", "scr_draw_report");
+							scr_route_network_async_failure_to_menu(true);
+							return;
+						}
+
 						search_for_id_still = false;
 						if (content_type == "level")
 						&& (file_exists(game_save_id + "custom_levels/" + scr_get_custom_level_folder_name() + "/data/level_information.ini"))

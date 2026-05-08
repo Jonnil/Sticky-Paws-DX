@@ -321,6 +321,12 @@ function scr_initialize_online_download_menu()
 		global.language_update_blocked = true;
 		global.language_update_pending = true;
 	}
+	else
+	{
+		scr_invalidate_online_session("online_list_http_request_failed", "scr_initialize_online_download_menu");
+		scr_route_network_async_failure_to_menu(true);
+		return;
+	}
 	
 	/* Flag that content is now "loaded" once the JSON arrives and is parsed in your response handler, after parsing JSON:
 		global.online_list_loaded = true; */

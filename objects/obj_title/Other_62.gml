@@ -239,6 +239,12 @@ if (_is_primary_request)
 	{
 		scr_log("ERROR", "HTTP.PRIMARY", "non_200", "http_status=" + string(status_code));
 
+		if (status_code == 0)
+		{
+			scr_invalidate_online_session("primary_http_status_0", "obj_title_http_primary");
+			scr_route_network_async_failure_to_menu(true);
+		}
+		else
 		if (_search_download_active)
 		{
 			search_for_id_still = false;

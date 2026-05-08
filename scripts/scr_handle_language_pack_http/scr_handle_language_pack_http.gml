@@ -89,6 +89,21 @@ function scr_handle_language_pack_http(_async_map, var_handle_redirects = true)
 				}
 			}
 
+			if (http_status == 0)
+			&& (string_length(result) == 0)
+			&& (allow_without_online_enabled)
+			{
+				scr_log("ERROR", "HTTP.LANG", "manifest_network_failed", "http_status=0");
+				scr_invalidate_online_session("language_manifest_http_status_0", "scr_handle_language_pack_http");
+
+				if (variable_instance_exists(self, "menu"))
+				{
+					scr_route_network_async_failure_to_menu(true);
+				}
+
+				return;
+			}
+
 			if (!(http_status == 0
 			|| http_status == 200))
 			{
@@ -156,6 +171,21 @@ function scr_handle_language_pack_http(_async_map, var_handle_redirects = true)
 				global.language_update_status_message = "Error: Failed to download language file";
 				global.language_update_status_color = c_red;
 				global.language_update_allow_without_online_enabled = false;
+				return;
+			}
+
+			if (http_status == 0)
+			&& (string_length(result) == 0)
+			&& (allow_without_online_enabled)
+			{
+				scr_log("ERROR", "HTTP.LANG", "language_file_network_failed", "lang=" + lang_name + ", http_status=0");
+				scr_invalidate_online_session("language_file_http_status_0", "scr_handle_language_pack_http");
+
+				if (variable_instance_exists(self, "menu"))
+				{
+					scr_route_network_async_failure_to_menu(true);
+				}
+
 				return;
 			}
 			

@@ -112,6 +112,20 @@ function scr_handle_token_validated()
 		}
 		else
 		{
+			if (status_code == 0)
+			{
+				scr_log("ERROR", "HTTP.AUTH", "token_validation_network_failed",
+					"validated=false, account_id=" + string(request_account_id));
+				scr_invalidate_online_session("token_validation_http_status_0", "scr_handle_token_validated");
+
+				if (variable_instance_exists(self, "menu"))
+				{
+					scr_route_network_async_failure_to_menu(true);
+				}
+
+				return;
+			}
+
 			global.online_token_validated = false; /* Set it to false, can only be a boolean value */
 			global.language_update_pending = false;
 			global.language_update_allow_without_online_enabled = false;

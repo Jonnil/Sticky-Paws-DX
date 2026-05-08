@@ -202,13 +202,8 @@ function scr_draw_menu_search_id(what_kind_of_id = "level")
 							}
 							else
 							{
-								search_for_id_still = false;
-								global.download_request_timeout_end = undefined;
-								global.download_failure_reason = "http_request_failed";
-								global.expected_download_zip_path = "";
-								in_online_download_list_menu = false; show_debug_message("[scr_draw_menu_search_id] 'In online download list menu' is set to false");
-								menu = "searched_file_downloaded_failed";
-								menu_delay = 3;
+								scr_invalidate_online_session("search_id_http_request_failed", "scr_draw_menu_search_id");
+								scr_route_network_async_failure_to_menu(true);
 							}
 							ds_map_destroy(id_search_request_headers);
 							
@@ -219,6 +214,9 @@ function scr_draw_menu_search_id(what_kind_of_id = "level")
 							//online_content_data = undefined; show_debug_message("[scr_draw_menu_search_id] 'online content data' is set to undefined"); /* Reset "online content data" so you can reload online level list next time you go to this menu */
 							//info_data = undefined; /* Don't forget to reset info data too */
 							if (menu != "searched_file_downloaded_failed")
+							&& (menu != "network_error")
+							&& (menu != "network_error_copy_error_code")
+							&& (menu != "network_error_main_menu")
 							{
 								menu = "searching_for_id";
 								menu_delay = 3;
@@ -281,25 +279,9 @@ function scr_draw_menu_search_id(what_kind_of_id = "level")
 			if (global.download_request_timeout_end != undefined)
 			&& (current_time >= global.download_request_timeout_end)
 			{
-				search_for_id_still = false;
-				global.download_request_timeout_end = undefined;
-				global.download_failure_reason = "timeout";
-				global.expected_download_zip_path = "";
 				scr_log("WARN", "LANG.UPDATE", "release_block_on_search_timeout", "request_id=" + string(global.online_primary_request_active));
-
-				if (is_real(global.http_request_contexts)
-				&& ds_exists(global.http_request_contexts, ds_type_map)
-				&& global.online_primary_request_active != noone
-				&& ds_map_exists(global.http_request_contexts, string(global.online_primary_request_active)))
-				{
-					ds_map_delete(global.http_request_contexts, string(global.online_primary_request_active));
-				}
-
-				global.online_primary_request_active = noone;
-				global.language_update_blocked = false;
-				in_online_download_list_menu = false; show_debug_message("[scr_draw_menu_search_id] 'In online download list menu' is set to false");
-				menu = "searched_file_downloaded_failed";
-				menu_delay = 3;
+				scr_invalidate_online_session("search_id_timeout", "scr_draw_menu_search_id");
+				scr_route_network_async_failure_to_menu(true);
 			}
 			
 			#region /* Download file */

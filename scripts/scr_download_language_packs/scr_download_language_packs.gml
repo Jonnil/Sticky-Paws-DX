@@ -82,9 +82,21 @@ function scr_download_language_packs()
 	if (global.language_http_request_id == -1)
 	{
 		scr_log("ERROR", "HTTP.LANG", "http_request_failed");
-		global.language_update_allow_without_online_enabled = false;
-		global.language_update_status_message = "HTTP error: Unable to start language pack update.";
-		global.language_update_status_color = c_red;
+		if (allow_without_online_enabled)
+		{
+			scr_invalidate_online_session("language_http_request_failed", "scr_download_language_packs");
+
+			if (variable_instance_exists(self, "menu"))
+			{
+				scr_route_network_async_failure_to_menu(true);
+			}
+		}
+		else
+		{
+			global.language_update_allow_without_online_enabled = false;
+			global.language_update_status_message = "HTTP error: Unable to start language pack update.";
+			global.language_update_status_color = c_red;
+		}
 		return;
 	}
 	scr_log("INFO", "HTTP.LANG", "http_request_started", "request_id=" + string(global.language_http_request_id));

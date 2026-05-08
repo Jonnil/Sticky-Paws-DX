@@ -364,42 +364,62 @@ function scr_draw_network_error_menu()
 			scr_nifm_log_context("INFO", "retry_accepted",
 				"retry_attempts=" + string(global.online_retry_attempts)
 				+ " selected_menu=" + string(menu)
-				+ " action=submit_active_network_request_if_needed");
+				+ " action=begin_shared_online_flow");
 
 			#region /* Recheck connection: if restored, proceed to online features; otherwise, remain on error screen */
-			if (global.online_enabled
-			&& global.online_token_validated
-			&& scr_check_network_connection(network_connect_passive))
+			if (caution_online_takes_you_to == "")
 			{
-				scr_nifm_log_context("INFO", "retry_passive_check_succeeded",
-					"retry_attempts=" + string(global.online_retry_attempts));
+				caution_online_takes_you_to = caution_online_takes_you_back_to;
+			}
+
+			var retry_fallback_menu = caution_online_takes_you_back_to;
+
+			if (retry_fallback_menu == "")
+			{
+				retry_fallback_menu = caution_online_takes_you_to;
+			}
+
+			var retry_content_type = variable_instance_exists(self, "content_type")
+				? content_type
+				: "";
+
+			if (caution_online_takes_you_to == "")
+			{
+				retry_successful = false;
+				menu = "network_error";
+				scr_nifm_log_context("WARN", "retry_missing_online_target",
+					"retry_attempts=" + string(global.online_retry_attempts)
+					+ " in_game_network_error_visible=true");
+			}
+			else
+			if (scr_begin_user_online_flow(caution_online_takes_you_to, retry_fallback_menu, retry_content_type, "scr_draw_network_error_menu_retry"))
+			{
 				retry_successful = true;
 			}
 			else
 			{
-				if (scr_check_network_connection(network_connect_active, true))
+				retry_successful = false;
+
+				if (scr_get_active_network_request_pending_raw())
 				{
-					retry_successful = true;
+					scr_nifm_log_context("INFO", "retry_waiting_for_network_request_result",
+						"retry_attempts=" + string(global.online_retry_attempts)
+						+ " in_game_network_error_visible=false");
+				}
+				else
+				if (global.online_token_request != -1)
+				&& (!global.online_token_validated)
+				{
+					scr_nifm_log_context("INFO", "retry_waiting_for_token_validation",
+						"retry_attempts=" + string(global.online_retry_attempts)
+						+ " in_game_network_error_visible=false");
 				}
 				else
 				{
-					retry_successful = false;
 					menu = "network_error";
-					if (scr_get_active_network_request_pending_raw())
-					{
-						scr_nifm_log_context("INFO", "retry_waiting_for_nintendo_nifm_result",
-							"retry_attempts=" + string(global.online_retry_attempts)
-							+ " in_game_network_error_visible=false");
-					}
-					else
-					{
-						scr_nifm_log_context("WARN", "retry_failed_without_pending_request",
-							"retry_attempts=" + string(global.online_retry_attempts)
-							+ " in_game_network_error_visible=true");
-					}
-					/* Optionally prompt for credentials or open network settings: */
-					/* scr_open_network_settings(); */
-					/* Stay on error screen until the connection is fixed */
+					scr_nifm_log_context("WARN", "retry_failed_after_shared_online_flow",
+						"retry_attempts=" + string(global.online_retry_attempts)
+						+ " in_game_network_error_visible=true");
 				}
 			}
 			#endregion /* Recheck connection: if restored, proceed to online features; otherwise, remain on error screen END */

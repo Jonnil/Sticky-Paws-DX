@@ -2109,6 +2109,13 @@ function scr_draw_upload_level_menu()
 									buffer_delete(send_buffer);
 									ds_map_destroy(level_upload_headers);
 									
+									if (global.http_request_id == -1)
+									{
+										scr_invalidate_online_session("level_upload_http_request_failed", "scr_draw_upload_level_menu");
+										scr_route_network_async_failure_to_menu(true);
+										return;
+									}
+
 									/* Delete some leftover files and folders */
 									if (destroy_zip_after_uploading)
 									|| (GM_build_type == "exe")
