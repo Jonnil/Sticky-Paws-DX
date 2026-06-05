@@ -2059,7 +2059,7 @@
   "isEcma":false,
   "LibraryEmitters":[],
   "MetaData":{
-    "IDEVersion":"2024.1400.5.1055",
+    "IDEVersion":"2024.1400.5.1065",
   },
   "name":"Sticky Paws DX",
   "resources":[
@@ -2442,6 +2442,7 @@
     {"id":{"name":"scr_save_level","path":"scripts/scr_save_level/scr_save_level.yy",},},
     {"id":{"name":"scr_save_player_control_profile","path":"scripts/scr_save_player_control_profile/scr_save_player_control_profile.yy",},},
     {"id":{"name":"scr_scale_background","path":"scripts/scr_scale_background/scr_scale_background.yy",},},
+    {"id":{"name":"scr_screenshot","path":"scripts/scr_screenshot/scr_screenshot.yy",},},
     {"id":{"name":"scr_scroll_menu","path":"scripts/scr_scroll_menu/scr_scroll_menu.yy",},},
     {"id":{"name":"scr_select_custom_level_menu","path":"scripts/scr_select_custom_level_menu/scr_select_custom_level_menu.yy",},},
     {"id":{"name":"scr_select_first_valid_sprite","path":"scripts/scr_select_first_valid_sprite/scr_select_first_valid_sprite.yy",},},

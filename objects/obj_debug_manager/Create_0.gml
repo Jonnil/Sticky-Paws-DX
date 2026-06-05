@@ -20,3 +20,5 @@ simulated_fps = 60;
 scr_debug_reset_visibility_draw_cache();
 
 scr_debug_init_cheat_codes();
+
+scr_screenshot_init();

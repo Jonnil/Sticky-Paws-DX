@@ -394,6 +394,7 @@
     {"name":"scr_save_level","order":28,"path":"scripts/scr_save_level/scr_save_level.yy",},
     {"name":"scr_save_player_control_profile","order":87,"path":"scripts/scr_save_player_control_profile/scr_save_player_control_profile.yy",},
     {"name":"scr_scale_background","order":55,"path":"scripts/scr_scale_background/scr_scale_background.yy",},
+    {"name":"scr_screenshot","order":17,"path":"scripts/scr_screenshot/scr_screenshot.yy",},
     {"name":"scr_scroll_menu","order":60,"path":"scripts/scr_scroll_menu/scr_scroll_menu.yy",},
     {"name":"scr_select_custom_level_menu","order":1,"path":"scripts/scr_select_custom_level_menu/scr_select_custom_level_menu.yy",},
     {"name":"scr_select_first_valid_sprite","order":101,"path":"scripts/scr_select_first_valid_sprite/scr_select_first_valid_sprite.yy",},

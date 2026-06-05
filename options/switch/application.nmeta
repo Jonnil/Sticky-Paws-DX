@@ -29,7 +29,7 @@
       <IconPath>Japanese.bmp</IconPath>
     </Icon>
     <ReleaseVersion>0</ReleaseVersion>
-    <DisplayVersion>2026.4.29</DisplayVersion>
+    <DisplayVersion>2026.5.11</DisplayVersion>
     <StartupUserAccount>Required</StartupUserAccount>
     <UserAccountSwitchLock>Disable</UserAccountSwitchLock>
     <ParentalControl>FreeCommunication</ParentalControl>

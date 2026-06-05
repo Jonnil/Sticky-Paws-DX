@@ -16,6 +16,8 @@ scr_debug_handle_controller_ports();
 /* Detect when controllers are connected/disconnected */
 scr_debug_detect_controller_disconnections();
 
+scr_screenshot_step();
+
 /* Loop through the list to find the first available instance */
 for (var i = 0; i < array_length(debug_target_list); i++)
 {

@@ -22,7 +22,8 @@ function scr_create_game_directories()
 		"custom_resource_pack",
 		"custom_title_background",
 		"custom_title_logo",
-		"save_file"
+		"save_file",
+		"screenshots"
 	];
 
 	if (os_type != os_switch)
