@@ -25,8 +25,7 @@ function scr_menu_navigation_initialization(key_direction_hold_press_release = 0
 		return;
 	}
 
-	var what_player = -1;
-	var player_slot = -1;
+	var what_player = 1;
 	
 	for(var i = 1; i <= global.max_players; i += 1)
 	{
@@ -34,7 +33,6 @@ function scr_menu_navigation_initialization(key_direction_hold_press_release = 0
 		|| i == 1 && only_player_one_can_navigate)
 		{
 			what_player = i;
-			player_slot = global.player_slot[i];
 			break; /* exit the loop if conditions are met */
 		}
 	}
