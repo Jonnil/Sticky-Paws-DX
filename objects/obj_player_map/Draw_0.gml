@@ -7,7 +7,10 @@ if (have_heart_balloon) {
 	draw_sprite_ext(spr_heart, 0, xx_heart, yy_heart, 1, 1, point_direction(xx_heart, yy_heart, xx, yy) + 90, c_white, 1);
 }
 
-scr_draw_show_controls_map();
+if (!scr_capture_mode_is_active())
+{
+	scr_draw_show_controls_map();
+}
 
 if (sprite_exists(sprite_index)) {
 	draw_sprite_ext(sprite_index, image_index, xx, yy, draw_xscale * default_xscale, draw_yscale * default_yscale, 0, image_blend, 1);

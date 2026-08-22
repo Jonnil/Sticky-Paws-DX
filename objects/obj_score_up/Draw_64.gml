@@ -1,4 +1,6 @@
-if (!show_remaining_jumps && above_gui)
+if (!show_remaining_jumps
+&& above_gui
+&& !scr_capture_mode_is_active())
 {
 	var display_text = l10n_text(string(score_up));
 	var display_text_width = string_width(display_text);

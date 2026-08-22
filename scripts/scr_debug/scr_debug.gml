@@ -9,6 +9,13 @@ enum DEBUG_VISIBILITY_MODE
 	ALWAYS = 2
 }
 
+enum CAPTURE_MODE_PRESET
+{
+	OFF = 0,
+	PC = 1,
+	SWITCH_HANDHELD = 2
+}
+
 /// @function scr_debug_should_show_public_debug_controls()
 /* Returns whether public debug controls should be visible in normal PC-facing menus. */
 function scr_debug_should_show_public_debug_controls()
@@ -24,10 +31,508 @@ function scr_debug_is_hidden_debug_tab_visible()
 	return global.debug_menu_unlocked;
 }
 
+///////////////////////////////////////////////////////////////
+// Capture Mode
+///////////////////////////////////////////////////////////////
+
+/// @function scr_capture_mode_initialize()
+/* Ensures session-only Capture Mode state exists before any menu, draw, or config helper uses it. */
+function scr_capture_mode_initialize()
+{
+	if (!variable_global_exists("capture_mode"))
+	{
+		global.capture_mode = CAPTURE_MODE_PRESET.OFF;
+	}
+
+	if (!variable_global_exists("capture_mode_snapshot"))
+	{
+		global.capture_mode_snapshot = undefined;
+	}
+
+	if (!variable_global_exists("capture_mode_audio_refresh_pending"))
+	{
+		global.capture_mode_audio_refresh_pending = false;
+	}
+
+	if (!variable_global_exists("capture_mode_audio_resume_pending"))
+	{
+		global.capture_mode_audio_resume_pending = false;
+	}
+}
+
+/// @function scr_capture_mode_is_active()
+/* Returns true while either Capture Mode preset is applying temporary overrides. */
+function scr_capture_mode_is_active()
+{
+	scr_capture_mode_initialize();
+	return global.capture_mode != CAPTURE_MODE_PRESET.OFF
+		&& is_struct(global.capture_mode_snapshot);
+}
+
+/// @function scr_capture_mode_get_name(capture_mode)
+/* Returns the user-facing name of a Capture Mode preset. */
+function scr_capture_mode_get_name(capture_mode = -1)
+{
+	scr_capture_mode_initialize();
+
+	if (capture_mode < 0)
+	{
+		capture_mode = global.capture_mode;
+	}
+
+	switch (capture_mode)
+	{
+		case CAPTURE_MODE_PRESET.PC:
+			return l10n_text("PC (1080p)");
+
+		case CAPTURE_MODE_PRESET.SWITCH_HANDHELD:
+			return l10n_text("Switch Handheld (720p)");
+	}
+
+	return l10n_text("Off");
+}
+
+/// @function scr_capture_mode_take_snapshot()
+/* Captures every setting that Capture Mode changes, plus the exact desktop window state. */
+function scr_capture_mode_take_snapshot()
+{
+	var chosen_controller_snapshot = array_create(global.max_players + 1, 0);
+
+	for (var i = 1; i <= global.max_players; i++)
+	{
+		chosen_controller_snapshot[i] = global.chosen_controller_used[i];
+	}
+
+	var fullscreen_snapshot = window_get_fullscreen();
+	var window_width_snapshot = window_get_width();
+	var window_height_snapshot = window_get_height();
+	var window_x_snapshot = global.enable_option_for_pc ? window_get_x() : 0;
+	var window_y_snapshot = global.enable_option_for_pc ? window_get_y() : 0;
+
+	/* Reveal and remember the user's real windowed rectangle before Capture Mode replaces it. */
+	if (global.enable_option_for_pc
+	&& fullscreen_snapshot)
+	{
+		window_set_fullscreen(false);
+		window_width_snapshot = window_get_width();
+		window_height_snapshot = window_get_height();
+		window_x_snapshot = window_get_x();
+		window_y_snapshot = window_get_y();
+	}
+
+	global.capture_mode_snapshot =
+	{
+		automatically_pause_when_window_is_unfocused: global.automatically_pause_when_window_is_unfocused,
+		show_timer: global.show_timer,
+		show_defeats_counter: global.show_defeats_counter,
+		show_tutorial_signs: global.show_tutorial_signs,
+		show_new_items_notification: global.show_new_items_notification,
+		hud_hide_time: global.hud_hide_time,
+		assist_guiding_arrows: global.assist_guiding_arrows,
+		assist_normal_arrows: global.assist_normal_arrows,
+		debug_screen: global.debug_screen,
+		show_collision_mask: global.show_collision_mask,
+		volume_music: global.volume_music,
+		volume_melody: global.volume_melody,
+		resolution_setting: global.resolution_setting,
+		gui_scale_modifier: global.gui_scale_modifier,
+		show_prompt_when_changing_to_gamepad: global.show_prompt_when_changing_to_gamepad,
+		show_prompt_when_changing_to_keyboard_and_mouse: global.show_prompt_when_changing_to_keyboard_and_mouse,
+		always_show_gamepad_buttons: global.always_show_gamepad_buttons,
+		chosen_controller_used: chosen_controller_snapshot,
+		fullscreen_mode: fullscreen_snapshot,
+		window_width: window_width_snapshot,
+		window_height: window_height_snapshot,
+		window_x: window_x_snapshot,
+		window_y: window_y_snapshot
+	};
+}
+
+/// @function scr_capture_mode_refresh_music_gain()
+/* Mutes every known music/melody source or restores the one canonical active mix. */
+function scr_capture_mode_refresh_music_gain()
+{
+	var capture_muted = scr_capture_mode_is_active();
+	if (room == rm_pause)
+	{
+		/* Persistent gameplay instances cannot be reached until the pause room closes. */
+		global.capture_mode_audio_refresh_pending = true;
+	}
+
+	var music_gain = capture_muted ? 0 : global.volume_music * global.volume_main;
+	var melody_gain = capture_muted ? 0 : global.volume_melody * global.volume_main;
+	var invincible_music_active = false;
+
+	for (var player_index = 0; player_index < instance_number(obj_player); player_index++)
+	{
+		var player_instance = instance_find(obj_player, player_index);
+		var player_invincible = !capture_muted
+			&& player_instance.invincible_timer >= 2
+			&& player_instance.music_invincible != noone;
+
+		if (player_instance.music_invincible != noone)
+		{
+			audio_sound_gain(player_instance.music_invincible, player_invincible ? music_gain : 0, 0);
+		}
+
+		if (variable_instance_exists(player_instance, "player_lose_melody")
+		&& player_instance.player_lose_melody != noone)
+		{
+			audio_sound_gain(player_instance.player_lose_melody, melody_gain, 0);
+		}
+
+		invincible_music_active = invincible_music_active || player_invincible;
+	}
+
+	var boss_music_active = !capture_muted
+		&& variable_global_exists("music_boss")
+		&& global.music_boss != noone;
+	var underwater_music_active = !capture_muted
+		&& !boss_music_active
+		&& !invincible_music_active
+		&& variable_global_exists("underwater_music_active")
+		&& global.underwater_music_active
+		&& variable_global_exists("music_underwater")
+		&& global.music_underwater != noone;
+	var normal_music_gain = (!capture_muted && !boss_music_active && !underwater_music_active && !invincible_music_active) ? music_gain : 0;
+
+	if (variable_global_exists("music")
+	&& global.music != noone)
+	{
+		audio_sound_gain(global.music, normal_music_gain, 0);
+	}
+
+	if (variable_global_exists("music_underwater")
+	&& global.music_underwater != noone)
+	{
+		audio_sound_gain(global.music_underwater, underwater_music_active ? music_gain : 0, 0);
+	}
+
+	if (variable_global_exists("music_boss")
+	&& global.music_boss != noone)
+	{
+		audio_sound_gain(global.music_boss, (boss_music_active && !invincible_music_active) ? music_gain : 0, 0);
+	}
+
+	if (variable_global_exists("loading_music")
+	&& global.loading_music != noone)
+	{
+		audio_sound_gain(global.loading_music, music_gain, 0);
+	}
+
+	if (variable_global_exists("level_clear_melody")
+	&& global.level_clear_melody != noone)
+	{
+		audio_sound_gain(global.level_clear_melody, melody_gain, 0);
+	}
+
+	var title_instance = instance_find(obj_title, 0);
+	if (title_instance != noone)
+	{
+		if (variable_instance_exists(title_instance, "title_music")
+		&& title_instance.title_music != noone)
+		{
+			audio_sound_gain(title_instance.title_music, music_gain, 0);
+		}
+
+		if (variable_instance_exists(title_instance, "trailer_sound")
+		&& title_instance.trailer_sound != noone)
+		{
+			audio_sound_gain(title_instance.trailer_sound, music_gain, 0);
+		}
+	}
+
+	var level_editor_instance = instance_find(obj_leveleditor, 0);
+	if (level_editor_instance != noone
+	&& variable_instance_exists(level_editor_instance, "level_editing_music")
+	&& level_editor_instance.level_editing_music != noone)
+	{
+		audio_sound_gain(level_editor_instance.level_editing_music, music_gain, 0);
+	}
+
+	for (var lose_index = 0; lose_index < instance_number(obj_player_lose); lose_index++)
+	{
+		var lose_instance = instance_find(obj_player_lose, lose_index);
+		if (variable_instance_exists(lose_instance, "player_lose_melody")
+		&& lose_instance.player_lose_melody != noone)
+		{
+			audio_sound_gain(lose_instance.player_lose_melody, melody_gain, 0);
+		}
+	}
+}
+
+/// @function scr_capture_mode_set_output(resolution_setting, output_width, output_height)
+/* Applies an exact desktop capture surface. Switch hardware already controls its native output size. */
+function scr_capture_mode_set_output(resolution_setting, output_width, output_height)
+{
+	global.resolution_setting = resolution_setting;
+
+	if (global.enable_option_for_pc)
+	{
+		window_set_fullscreen(false);
+		window_set_size(output_width, output_height);
+		window_center();
+		display_set_gui_size(output_width, output_height);
+	}
+}
+
+/// @function scr_capture_mode_apply_overrides(capture_mode)
+/* Reapplies temporary values without replacing the original snapshot or saving the overrides. */
+function scr_capture_mode_apply_overrides(capture_mode)
+{
+	if (capture_mode != CAPTURE_MODE_PRESET.PC
+	&& capture_mode != CAPTURE_MODE_PRESET.SWITCH_HANDHELD)
+	|| (capture_mode == CAPTURE_MODE_PRESET.PC
+	&& !global.enable_option_for_pc)
+	{
+		return false;
+	}
+
+	global.capture_mode = capture_mode;
+	global.automatically_pause_when_window_is_unfocused = false;
+	global.show_timer = false;
+	global.show_defeats_counter = false;
+	global.show_tutorial_signs = false;
+	global.show_new_items_notification = false;
+	global.hud_hide_time = 0;
+	global.assist_guiding_arrows = false;
+	global.assist_normal_arrows = false;
+	global.debug_screen = false;
+	global.show_collision_mask = false;
+	global.volume_music = 0;
+	global.volume_melody = 0;
+	global.gui_scale_modifier = 0;
+	global.show_prompt_when_changing_to_gamepad = false;
+	global.show_prompt_when_changing_to_keyboard_and_mouse = false;
+
+	var use_switch_prompts = capture_mode == CAPTURE_MODE_PRESET.SWITCH_HANDHELD;
+	global.always_show_gamepad_buttons = use_switch_prompts;
+
+	for (var i = 1; i <= global.max_players; i++)
+	{
+		global.chosen_controller_used[i] = use_switch_prompts ? 3 : 0;
+	}
+
+	set_controller_sprites_to_use();
+
+	if (capture_mode == CAPTURE_MODE_PRESET.SWITCH_HANDHELD)
+	{
+		scr_capture_mode_set_output(3, 1280, 720);
+	}
+	else
+	{
+		scr_capture_mode_set_output(1, 1920, 1080);
+	}
+
+	scr_capture_mode_refresh_music_gain();
+	return true;
+}
+
+/// @function scr_capture_mode_apply(capture_mode)
+/* Snapshots once, protects that snapshot on disk, and applies or switches the temporary preset. */
+function scr_capture_mode_apply(capture_mode)
+{
+	scr_capture_mode_initialize();
+
+	if (capture_mode != CAPTURE_MODE_PRESET.PC
+	&& capture_mode != CAPTURE_MODE_PRESET.SWITCH_HANDHELD)
+	|| (capture_mode == CAPTURE_MODE_PRESET.PC
+	&& !global.enable_option_for_pc)
+	{
+		return false;
+	}
+
+	if (!scr_capture_mode_is_active())
+	{
+		scr_capture_mode_take_snapshot();
+		global.capture_mode = capture_mode;
+		/* Persist unsaved pre-capture option changes so a crash or restart still returns to them. */
+		scr_config_save();
+	}
+
+	return scr_capture_mode_apply_overrides(capture_mode);
+}
+
+/// @function scr_capture_mode_maintain()
+/* Repairs accidental changes to settings owned by the active preset without doing expensive work every frame. */
+function scr_capture_mode_maintain()
+{
+	scr_capture_mode_initialize();
+
+	/* The paused gameplay room is persistent but inaccessible until it becomes current again. */
+	if (global.capture_mode_audio_refresh_pending
+	&& room != rm_pause)
+	{
+		var resume_audio_after_refresh = global.capture_mode_audio_resume_pending;
+		global.capture_mode_audio_refresh_pending = false;
+		scr_capture_mode_refresh_music_gain();
+
+		if (resume_audio_after_refresh)
+		{
+			audio_resume_all();
+			global.capture_mode_audio_resume_pending = false;
+		}
+	}
+
+	if (!scr_capture_mode_is_active())
+	{
+		return false;
+	}
+
+	/* Do not fight the operating system while the desktop window is minimized. */
+	if (global.enable_option_for_pc
+	&& (window_get_width() <= 0 || window_get_height() <= 0))
+	{
+		return false;
+	}
+
+	var use_switch_prompts = global.capture_mode == CAPTURE_MODE_PRESET.SWITCH_HANDHELD;
+	var target_resolution = use_switch_prompts ? 3 : 1;
+	var target_width = use_switch_prompts ? 1280 : 1920;
+	var target_height = use_switch_prompts ? 720 : 1080;
+	var preset_changed = global.automatically_pause_when_window_is_unfocused
+		|| global.show_timer
+		|| global.show_defeats_counter
+		|| global.show_tutorial_signs
+		|| global.show_new_items_notification
+		|| global.hud_hide_time != 0
+		|| global.assist_guiding_arrows
+		|| global.assist_normal_arrows
+		|| global.debug_screen
+		|| global.show_collision_mask
+		|| global.volume_music != 0
+		|| global.volume_melody != 0
+		|| global.gui_scale_modifier != 0
+		|| global.resolution_setting != target_resolution
+		|| global.show_prompt_when_changing_to_gamepad
+		|| global.show_prompt_when_changing_to_keyboard_and_mouse
+		|| global.always_show_gamepad_buttons != use_switch_prompts;
+
+	if (!preset_changed)
+	{
+		for (var i = 1; i <= global.max_players; i++)
+		{
+			if (global.chosen_controller_used[i] != (use_switch_prompts ? 3 : 0))
+			{
+				preset_changed = true;
+				break;
+			}
+		}
+	}
+
+	if (!preset_changed && global.enable_option_for_pc)
+	{
+		preset_changed = window_get_fullscreen()
+			|| window_get_width() != target_width
+			|| window_get_height() != target_height;
+	}
+
+	if (preset_changed)
+	{
+		return scr_capture_mode_apply_overrides(global.capture_mode);
+	}
+
+	return false;
+}
+
+/// @function scr_capture_mode_reapply()
+/* Keeps Capture Mode active when normal room startup code reloads config.ini. */
+function scr_capture_mode_reapply()
+{
+	scr_capture_mode_initialize();
+
+	if (scr_capture_mode_is_active())
+	{
+		return scr_capture_mode_apply_overrides(global.capture_mode);
+	}
+
+	return false;
+}
+
+/// @function scr_capture_mode_restore()
+/* Restores the exact pre-capture snapshot and ends the temporary mode. */
+function scr_capture_mode_restore()
+{
+	scr_capture_mode_initialize();
+
+	if (!scr_capture_mode_is_active())
+	{
+		global.capture_mode = CAPTURE_MODE_PRESET.OFF;
+		global.capture_mode_snapshot = undefined;
+		return false;
+	}
+
+	var snapshot = global.capture_mode_snapshot;
+	global.capture_mode = CAPTURE_MODE_PRESET.OFF;
+
+	global.automatically_pause_when_window_is_unfocused = snapshot.automatically_pause_when_window_is_unfocused;
+	global.show_timer = snapshot.show_timer;
+	global.show_defeats_counter = snapshot.show_defeats_counter;
+	global.show_tutorial_signs = snapshot.show_tutorial_signs;
+	global.show_new_items_notification = snapshot.show_new_items_notification;
+	global.hud_hide_time = snapshot.hud_hide_time;
+	global.assist_guiding_arrows = snapshot.assist_guiding_arrows;
+	global.assist_normal_arrows = snapshot.assist_normal_arrows;
+	global.debug_screen = snapshot.debug_screen;
+	global.show_collision_mask = snapshot.show_collision_mask;
+	global.volume_music = snapshot.volume_music;
+	global.volume_melody = snapshot.volume_melody;
+	global.resolution_setting = snapshot.resolution_setting;
+	global.gui_scale_modifier = snapshot.gui_scale_modifier;
+	global.show_prompt_when_changing_to_gamepad = snapshot.show_prompt_when_changing_to_gamepad;
+	global.show_prompt_when_changing_to_keyboard_and_mouse = snapshot.show_prompt_when_changing_to_keyboard_and_mouse;
+	global.always_show_gamepad_buttons = snapshot.always_show_gamepad_buttons;
+
+	for (var i = 1; i <= global.max_players; i++)
+	{
+		if (i < array_length(snapshot.chosen_controller_used))
+		{
+			global.chosen_controller_used[i] = snapshot.chosen_controller_used[i];
+		}
+	}
+
+	set_controller_sprites_to_use();
+
+	if (global.enable_option_for_pc)
+	{
+		window_set_fullscreen(false);
+		window_set_size(snapshot.window_width, snapshot.window_height);
+		window_set_position(snapshot.window_x, snapshot.window_y);
+		window_set_fullscreen(snapshot.fullscreen_mode);
+	}
+
+	scr_capture_mode_refresh_music_gain();
+	global.capture_mode_snapshot = undefined;
+	/* The restored values are the user's real configuration again. */
+	scr_config_save();
+	return true;
+}
+
+/// @function scr_capture_mode_get_persistent_value(setting_name, runtime_value)
+/* Prevents temporary capture overrides from leaking into config.ini. */
+function scr_capture_mode_get_persistent_value(setting_name, runtime_value)
+{
+	scr_capture_mode_initialize();
+
+	if (scr_capture_mode_is_active()
+	&& variable_struct_exists(global.capture_mode_snapshot, setting_name))
+	{
+		return variable_struct_get(global.capture_mode_snapshot, setting_name);
+	}
+
+	return runtime_value;
+}
+
 /// @function scr_debug_toggle_screen()
 /* Toggles the debug screen visibility based on keyboard/gamepad input */
 function scr_debug_toggle_screen()
 {
+	if (scr_capture_mode_is_active())
+	{
+		global.debug_screen = false;
+		return;
+	}
+
 	/* Use parentheses to group conditions for clarity */
 	if (keyboard_check_pressed(vk_f3))
 	|| (GM_build_type == "run"

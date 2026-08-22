@@ -1,4 +1,5 @@
-if (!above_gui)
+if (!above_gui
+&& !scr_capture_mode_is_active())
 {
 	draw_set_halign(fa_center);
 	if (!show_remaining_jumps)

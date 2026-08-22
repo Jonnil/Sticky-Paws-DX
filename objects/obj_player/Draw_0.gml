@@ -10,6 +10,7 @@ var view_height = camera_get_view_height(view_get_camera(view_current));
 var view_bottom_y = view_y + view_height;
 var draw_arrow_outside_view_y = view_y + 32;
 var heart_alpha = image_alpha * 0.3;
+var capture_mode_hides_ui = scr_capture_mode_is_active();
 
 #region /* Draw things underneath the player */
 
@@ -52,7 +53,8 @@ else
 }
 
 #region /* Draw arrow when player is outside top view */
-if (draw_arrow_outside_view_alpha > 0.01)
+if (!capture_mode_hides_ui
+&& draw_arrow_outside_view_alpha > 0.01)
 && (y < view_y + (view_height * 0.5))
 {
 	draw_arrow_outside_view_y = view_y + 32;
@@ -68,7 +70,8 @@ if (draw_arrow_outside_view_alpha > 0.01)
 #endregion /* Draw arrow when player is outside top view END */
 
 #region /* Draw arrow when player is outside bottom view */
-if (draw_arrow_outside_view_alpha > 0.01)
+if (!capture_mode_hides_ui
+&& draw_arrow_outside_view_alpha > 0.01)
 && (y > view_y + (view_height * 0.5))
 {
 	draw_arrow_outside_view_y = view_bottom_y - 32;
@@ -222,7 +225,8 @@ if (invincible_timer >= 1)
 
 if (sprite_exists(sprite_index))
 {
-	if (draw_arrow_outside_view_alpha > 0)
+	if (!capture_mode_hides_ui
+	&& draw_arrow_outside_view_alpha > 0)
 	{
 		draw_sprite_ext(sprite_index, image_index, x, draw_arrow_outside_view_y, draw_xscale * default_xscale * 0.5 * sign(image_xscale), draw_yscale * default_yscale * 0.5, angle, draw_blend, draw_arrow_outside_view_alpha);
 	}
@@ -234,7 +238,8 @@ if (sprite_exists(sprite_index))
 #region /* Draw things on top of the player */
 
 #region /* Draw Collision Mask */
-if (global.show_collision_mask)
+if (global.show_collision_mask
+&& !capture_mode_hides_ui)
 {
 	if (crouch && sprite_mask_crouch > 0)
 	{
@@ -321,7 +326,10 @@ if (allow_homing_attack)
 	&& (!instance_nearest(x, y, obj_enemy).die)
 	{
 		aim_index++;
-		draw_sprite_ext(spr_aim, aim_index, instance_nearest(x, y, obj_enemy).x, instance_nearest(x, y, obj_enemy).y, 1, 1, 0, c_white, 1);
+		if (!capture_mode_hides_ui)
+		{
+			draw_sprite_ext(spr_aim, aim_index, instance_nearest(x, y, obj_enemy).x, instance_nearest(x, y, obj_enemy).y, 1, 1, 0, c_white, 1);
+		}
 	}
 	#endregion /* Homing Enemy END */
 
@@ -339,7 +347,10 @@ if (allow_homing_attack)
 	&& (instance_nearest(x, y, obj_spring).bbox_bottom > y)
 	{
 		aim_index++;
-		draw_sprite_ext(spr_aim, aim_index, instance_nearest(x, y, obj_spring).x, instance_nearest(x, y, obj_spring).y, 1, 1, 0, c_white, 1);
+		if (!capture_mode_hides_ui)
+		{
+			draw_sprite_ext(spr_aim, aim_index, instance_nearest(x, y, obj_spring).x, instance_nearest(x, y, obj_spring).y, 1, 1, 0, c_white, 1);
+		}
 	}
 	#endregion /* Homing Spring END */
 
@@ -351,7 +362,8 @@ if (allow_homing_attack)
 #endregion /* Homing Attack END */
 
 #region /* Display Player Number and Name */
-if (global.playergame >= 2)
+if (global.playergame >= 2
+&& !capture_mode_hides_ui)
 {
 	draw_set_halign(fa_center);
 	draw_set_valign(fa_middle);
@@ -368,7 +380,8 @@ if (global.playergame >= 2)
 #endregion /* Display Player Number and Name END */
 
 #region /* If player has more hp, show that */
-if (global.assist_enable)
+if (global.assist_enable
+&& !capture_mode_hides_ui)
 && (hp > 0
 && !global.assist_above_1_hp
 || hp > 0)
@@ -385,7 +398,8 @@ if (global.assist_enable)
 #endregion /* If player has more hp, show that END */
 
 #region /* If player enters goal, and have managed to not get defeated once, show achievement above players head so that it's noticable */
-if (global.player_has_entered_goal
+if (!capture_mode_hides_ui
+&& global.player_has_entered_goal
 && global.lives_until_assist == 0)
 {
 	var zero_defeats_sprite = spr_icon_zero_defeats;

@@ -1,6 +1,7 @@
 function scr_toggle_fullscreen()
 {
-	if (keyboard_check_pressed(global.fullscreen_key)) /* First check if fullscreen button is pressed before doing any other code. Default fullscreen button is F11 */
+	if (keyboard_check_pressed(global.fullscreen_key)
+	&& !scr_capture_mode_is_active()) /* Capture presets own the temporary output size until they are turned off. */
 	{
 		if (window_get_fullscreen()) /* If fullscreen is on, then turn fullscreen off */
 		{

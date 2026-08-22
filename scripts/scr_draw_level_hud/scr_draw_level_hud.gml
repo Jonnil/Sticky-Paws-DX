@@ -1,5 +1,35 @@
-function scr_draw_level_hud()
+function scr_draw_level_hud(draw_hud = true)
 {
+	/* Capture Mode hides the graphics, but transient HUD animations must still expire normally. */
+	if (!draw_hud)
+	{
+		for (var i = 1; i <= global.max_big_collectible; i++)
+		{
+			if (hud_show_big_collectible_blink[i] >= 1)
+			{
+				hud_show_big_collectible_blink[i] -= 1;
+			}
+		}
+
+		for (var i = 1; i <= global.max_key_fragment; i++)
+		{
+			if (hud_show_key_fragment_blink[i] >= 1)
+			{
+				hud_show_key_fragment_blink[i] -= 1;
+			}
+		}
+
+		if (global.enable_time_countdown
+		&& !global.player_has_entered_goal
+		&& global.time_countdown <= 99
+		&& hurry_up_message_timer <= 300)
+		{
+			hurry_up_message_timer++;
+		}
+
+		return;
+	}
+
 	if (global.hud_hide_time != 0)
 	{
 		var window_width = display_get_gui_width();

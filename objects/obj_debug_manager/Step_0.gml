@@ -4,6 +4,9 @@
 /* Reset queued dropdown popups so the active menu can request a fresh one during Draw GUI. */
 global.menu_dropdown_popup_request = undefined;
 
+/* Keep the active capture preset stable if another settings screen changes one of its owned values. */
+scr_capture_mode_maintain();
+
 /* Toggle the debug screen when the proper keys/buttons are pressed */
 scr_debug_toggle_screen();
 

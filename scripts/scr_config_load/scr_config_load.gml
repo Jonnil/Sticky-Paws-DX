@@ -237,7 +237,11 @@ function scr_config_load()
 		if (ini_key_exists("config", "username")){global.username = ini_read_string("config", "username", "");}
 		#endregion /* Account Settings END */
 
-		if (ini_key_exists("config", "fullscreen_mode")){window_set_fullscreen(ini_read_real("config", "fullscreen_mode", 0));}
+		if (ini_key_exists("config", "fullscreen_mode")
+		&& !scr_capture_mode_is_active())
+		{
+			window_set_fullscreen(ini_read_real("config", "fullscreen_mode", 0));
+		}
 		if (ini_key_exists("config", "interpolate")){global.interpolate = ini_read_real("config", "interpolate", 0);}
 		if (ini_key_exists("config", "show_fps")){global.show_fps = ini_read_real("config", "show_fps", 0);}
 		if (ini_key_exists("config", "show_instance_count")){global.show_instance_count = ini_read_real("config", "show_instance_count", 0);}
@@ -311,4 +315,7 @@ function scr_config_load()
 
 		ini_close(); /* Don't commit the save data on Switch, this is only temporary! */
 	}
+
+	/* Room startup may reload the real config; keep session-only Capture Mode effective. */
+	scr_capture_mode_reapply();
 }

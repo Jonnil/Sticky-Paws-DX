@@ -6,6 +6,8 @@ var clear_prompt_x = 164;
 /* Common conditions for multiple sections */
 var common_conditions_met = (nearest_level != noone && stop_at_level && can_move && can_enter_level >= 30 && distance_to_level < 4 && speed == 0);
 
+if (!scr_capture_mode_is_active())
+{
 /* Show Enter Level Key */
 if (common_conditions_met
 && nearest_level.clear_rate != "closed")
@@ -156,6 +158,7 @@ if (nearest_level != noone
 	}
 }
 #endregion /* Show Level Info END */
+}
 
 /* Draw GUI when conditions are met */
 if (iris_yscale <= 0.002 || (brand_new_file && can_enter_level_automatically) || black_screen_at_start_delay < 1)

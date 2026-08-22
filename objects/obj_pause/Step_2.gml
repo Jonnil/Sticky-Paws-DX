@@ -5,7 +5,15 @@ if (!global.pause) /* If you are no longer pausing */
 	show_debug_message("Unpause the game");
 	
 	scr_config_save(); /* Save Config */
-	audio_resume_all();
+	if (global.capture_mode_audio_refresh_pending)
+	{
+		/* Resume after the persistent gameplay room is current so local music can be reconciled first. */
+		global.capture_mode_audio_resume_pending = true;
+	}
+	else
+	{
+		audio_resume_all();
+	}
 	
 	if (global.music != noone)
 	{
@@ -26,7 +34,7 @@ if (!global.pause) /* If you are no longer pausing */
 	{
 		audio_sound_gain(global.ambience_underwater, 0, 0);
 	}
-	
+
 	scr_delete_sprite_properly(global.pause_screenshot);
 	room_goto(global.pause_room); /* Go back to room where you paused. You want to use "room goto", not room = global.pause_room, as that makes it go to incorrect rooms */
 }

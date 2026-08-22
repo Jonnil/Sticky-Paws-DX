@@ -36,7 +36,8 @@ if (sprite_exists(sprite_index))
 }
 
 #region /* Display Player Number and Name */
-if (global.playergame >= 2)
+if (global.playergame >= 2
+&& !scr_capture_mode_is_active())
 && (y < room_height)
 && (y < camera_get_view_y(view_get_camera(view_current)) + camera_get_view_height(view_get_camera(view_current)))
 {

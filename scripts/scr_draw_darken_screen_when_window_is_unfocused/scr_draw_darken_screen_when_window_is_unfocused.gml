@@ -2,7 +2,8 @@ function scr_draw_darken_screen_when_window_is_unfocused()
 {
 
 	#region /* If Window is unfocused, make the screen darker */
-	if (!window_has_focus())
+	if (!window_has_focus()
+	&& !scr_capture_mode_is_active())
 	{
 		if (debug_target == obj_pause
 		&& !hide_menu_for_clean_screenshots)

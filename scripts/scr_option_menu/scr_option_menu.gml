@@ -780,8 +780,13 @@ function scr_option_menu()
 		var level_load_diagnostics_submenu_active = (global.settings_sidebar_menu == "debug_settings")
 			&& (string_pos("level_load_diagnostics_", string(menu)) == 1)
 			&& (menu != "level_load_diagnostics_menu");
+		var capture_mode_submenu_active = (global.settings_sidebar_menu == "debug_settings")
+			&& (string_pos("capture_mode_", string(menu)) == 1)
+			&& (menu != "capture_mode_menu");
+		var capture_mode_confirmation_active = string_pos("capture_mode_confirm_", string(menu)) == 1;
 		var debug_submenu_active = debug_text_submenu_active
-			|| level_load_diagnostics_submenu_active;
+			|| level_load_diagnostics_submenu_active
+			|| capture_mode_submenu_active;
 
 		if (key_back_pressed)
 		&& (!can_navigate_settings_sidebar)
@@ -796,9 +801,21 @@ function scr_option_menu()
 			else
 			if (debug_submenu_active)
 			{
-				menu = debug_text_submenu_active
-					? "debug_screen_text_menu"
-					: "level_load_diagnostics_menu";
+				if (debug_text_submenu_active)
+				{
+					menu = "debug_screen_text_menu";
+				}
+				else
+				if (level_load_diagnostics_submenu_active)
+				{
+					menu = "level_load_diagnostics_menu";
+				}
+				else
+				{
+					menu = capture_mode_confirmation_active
+						? "capture_mode_back"
+						: "capture_mode_menu";
+				}
 				menu_y_offset = 0;
 				menu_y_offset_real = 0;
 				menu_delay = 3;
@@ -2428,13 +2445,17 @@ function scr_option_menu()
 				&& (menu != "debug_screen_text_menu");
 			var level_load_diagnostics_menu_active = (string_pos("level_load_diagnostics_", string(menu)) == 1)
 				&& (menu != "level_load_diagnostics_menu");
-	var debug_settings_submenu_active = debug_text_menu_active
-		|| level_load_diagnostics_menu_active;
+			var capture_mode_menu_active = (string_pos("capture_mode_", string(menu)) == 1)
+				&& (menu != "capture_mode_menu");
+			var capture_mode_confirmation_menu_active = string_pos("capture_mode_confirm_", string(menu)) == 1;
+			var debug_settings_submenu_active = debug_text_menu_active
+				|| level_load_diagnostics_menu_active
+				|| capture_mode_menu_active;
 
 			draw_set_halign(fa_left);
 			draw_set_valign(fa_middle);
 
-	if (!debug_settings_submenu_active)
+			if (!debug_settings_submenu_active)
 			{
 				var level_loading_debug = scr_get_level_loading_debug_data();
 				var latest_level_load_error_log = scr_debug_get_latest_level_load_error_log();
@@ -2448,11 +2469,12 @@ function scr_option_menu()
 				var open_debug_dump_folder_visible = global.enable_open_custom_folder;
 				var debug_screen_y = 64;
 				var debug_screen_text_menu_y = 64 + 48;
-				var level_load_diagnostics_menu_y = 64 + (48 * 2);
-				var latest_load_check_y = 64 + (48 * 3);
-				var latest_error_log_y = 64 + (48 * 4);
+				var capture_mode_menu_y = 64 + (48 * 2);
+				var level_load_diagnostics_menu_y = 64 + (48 * 3);
+				var latest_load_check_y = 64 + (48 * 4);
+				var latest_error_log_y = 64 + (48 * 5);
 				var save_debug_dump_y = latest_level_load_error_visible
-					? 64 + (48 * 5)
+					? 64 + (48 * 6)
 					: latest_error_log_y;
 				var open_debug_dump_folder_y = save_debug_dump_y + 48;
 				var debug_detailed_mode_y = open_debug_dump_folder_visible
@@ -2478,6 +2500,25 @@ function scr_option_menu()
 				&& (menu_delay == 0 && menu_joystick_delay == 0)
 				{
 					menu = "debug_screen_text_back";
+					menu_y_offset = 0;
+					menu_y_offset_real = 0;
+					menu_delay = 3;
+				}
+
+				var capture_mode_label = l10n_text("Capture Mode") + ": " + scr_capture_mode_get_name();
+				var open_capture_mode_menu = draw_menu_button(420, capture_mode_menu_y, capture_mode_label, "capture_mode_menu", "");
+
+				if (menu == "capture_mode_menu")
+				{
+					global.option_default = -1;
+					global.option_description = l10n_text("Temporarily prepares the game for clean trailer footage and restores your settings when turned off");
+					menu_cursor_y_position = capture_mode_menu_y;
+				}
+
+				if (open_capture_mode_menu)
+				&& (menu_delay == 0 && menu_joystick_delay == 0)
+				{
+					menu = "capture_mode_back";
 					menu_y_offset = 0;
 					menu_y_offset_real = 0;
 					menu_delay = 3;
@@ -2566,6 +2607,241 @@ function scr_option_menu()
 				menu_cursor_y_position_end = (GM_build_type == "run")
 					? debug_auto_unlock_runner_y + 64
 					: debug_unlock_level_editor_objects_y + 64;
+			}
+			else
+			if (capture_mode_menu_active)
+			{
+				var capture_title_x = 370 + ((get_window_width - 370) * 0.5);
+				var capture_button_x = capture_title_x - 185;
+				var capture_back_y = 84;
+				var capture_pc_y = 320;
+				var capture_pc_available = global.enable_option_for_pc;
+				var capture_switch_y = capture_pc_available ? 376 : 320;
+				var capture_restore_y = capture_switch_y + 56;
+
+				if (!capture_mode_confirmation_menu_active)
+				{
+					scr_draw_settings_overlay_title(capture_title_x, 42, l10n_text("Capture Mode"), min(get_window_width - 430, 620));
+
+					var close_capture_mode_menu = draw_menu_button(capture_button_x, capture_back_y, l10n_text("Back"), "capture_mode_back", "");
+					if (close_capture_mode_menu)
+					&& (menu_delay == 0 && menu_joystick_delay == 0)
+					{
+						menu = "capture_mode_menu";
+						menu_y_offset = 0;
+						menu_y_offset_real = 0;
+						menu_delay = 3;
+					}
+
+					draw_set_halign(fa_center);
+					draw_set_valign(fa_middle);
+					var capture_status_color = scr_capture_mode_is_active() ? c_lime : c_ltgray;
+					scr_draw_text_outlined(capture_title_x, 162, l10n_text("Current Mode") + ": " + scr_capture_mode_get_name(), global.default_text_size, c_black, capture_status_color, 1);
+					var capture_intro_scale = global.default_text_size * clamp((get_window_width - 430) / 750, 0.45, 0.78);
+					scr_draw_text_outlined(capture_title_x, 208, l10n_text("Temporarily prepares the game for clean screenshots and trailer footage."), capture_intro_scale, c_black, c_white, 1);
+					scr_draw_text_outlined(capture_title_x, 238, l10n_text("Select a preset to review every change before it is applied."), capture_intro_scale, c_black, c_white, 1);
+					scr_draw_text_outlined(capture_title_x, 268, l10n_text("Your original settings return when Capture Mode is turned off."), capture_intro_scale, c_black, c_white, 1);
+
+					var review_pc_capture_mode = false;
+					if (capture_pc_available)
+					{
+						review_pc_capture_mode = draw_menu_button(capture_button_x, capture_pc_y, l10n_text("PC Capture (1080p)"), "capture_mode_pc", "", c_aqua);
+					}
+					var review_switch_capture_mode = draw_menu_button(capture_button_x, capture_switch_y, l10n_text("Switch Handheld Capture (720p)"), "capture_mode_switch", "", c_red);
+
+					if (review_pc_capture_mode)
+					&& (menu_delay == 0 && menu_joystick_delay == 0)
+					{
+						menu = "capture_mode_confirm_pc_cancel";
+						menu_delay = 3;
+					}
+
+					if (review_switch_capture_mode)
+					&& (menu_delay == 0 && menu_joystick_delay == 0)
+					{
+						menu = "capture_mode_confirm_switch_cancel";
+						menu_delay = 3;
+					}
+
+					if (scr_capture_mode_is_active())
+					{
+						var review_capture_restore = draw_menu_button(capture_button_x, capture_restore_y, l10n_text("Turn Off and Restore Settings"), "capture_mode_restore", "", c_yellow);
+
+						if (review_capture_restore)
+						&& (menu_delay == 0 && menu_joystick_delay == 0)
+						{
+							menu = "capture_mode_confirm_restore_cancel";
+							menu_delay = 3;
+						}
+					}
+
+					draw_set_halign(fa_center);
+					draw_set_valign(fa_middle);
+					if (global.enable_option_for_pc)
+					{
+						scr_draw_text_outlined(capture_title_x, scr_capture_mode_is_active() ? capture_restore_y + 78 : capture_switch_y + 82, l10n_text("F2 saves a clean screenshot without menus."), global.default_text_size * 0.72, c_black, c_ltgray, 1);
+						scr_draw_text_outlined(capture_title_x, scr_capture_mode_is_active() ? capture_restore_y + 106 : capture_switch_y + 110, l10n_text("Shift + F2 saves the complete window, including menus."), global.default_text_size * 0.72, c_black, c_ltgray, 1);
+					}
+
+					if (menu == "capture_mode_back")
+					{
+						global.option_description = l10n_text("Returns to the main Debug tab");
+						menu_cursor_y_position = capture_back_y;
+					}
+					else
+					if (menu == "capture_mode_pc")
+					{
+						global.option_description = l10n_text("Reviews the clean 1920 x 1080 PC trailer preset before applying it");
+						menu_cursor_y_position = capture_pc_y;
+					}
+					else
+					if (menu == "capture_mode_switch")
+					{
+						global.option_description = global.enable_option_for_pc
+							? l10n_text("Reviews the 1280 x 720 handheld Switch trailer preset before applying it")
+							: l10n_text("Reviews the handheld Switch trailer preset before applying it");
+						menu_cursor_y_position = capture_switch_y;
+					}
+					else
+					if (menu == "capture_mode_restore")
+					{
+						global.option_description = l10n_text("Reviews the original settings that will be restored");
+						menu_cursor_y_position = capture_restore_y;
+					}
+
+					menu_cursor_y_position_end = scr_capture_mode_is_active()
+						? capture_restore_y + 64
+						: capture_switch_y + 64;
+				}
+				else
+				{
+					var confirm_pc_capture = string_pos("capture_mode_confirm_pc_", string(menu)) == 1;
+					var confirm_switch_capture = string_pos("capture_mode_confirm_switch_", string(menu)) == 1;
+					var confirm_restore_capture = string_pos("capture_mode_confirm_restore_", string(menu)) == 1;
+					var capture_confirm_apply_id = confirm_pc_capture
+						? "capture_mode_confirm_pc_apply"
+						: (confirm_switch_capture ? "capture_mode_confirm_switch_apply" : "capture_mode_confirm_restore_apply");
+					var capture_confirm_cancel_id = confirm_pc_capture
+						? "capture_mode_confirm_pc_cancel"
+						: (confirm_switch_capture ? "capture_mode_confirm_switch_cancel" : "capture_mode_confirm_restore_cancel");
+					var capture_confirm_title = confirm_pc_capture
+						? l10n_text("Enable PC Capture Mode?")
+						: (confirm_switch_capture ? l10n_text("Enable Switch Handheld Capture Mode?") : l10n_text("Turn Off Capture Mode?"));
+					var capture_confirm_color = confirm_pc_capture ? c_aqua : (confirm_switch_capture ? c_red : c_yellow);
+					var capture_confirm_lines = [];
+
+					if (confirm_pc_capture)
+					{
+						capture_confirm_lines = [
+							l10n_text("Output: 1920 x 1080 windowed for standard PC trailer capture."),
+							l10n_text("GUI Scale uses Auto so the captured application surface stays exact."),
+							l10n_text("HUD, guides, prompts, aiming cursor, and debug visuals are hidden."),
+							l10n_text("Music and Melody are muted; sound effects and ambience stay unchanged."),
+							l10n_text("Controller glyphs use Auto Detect; gamepad buttons are not forced."),
+							l10n_text("The game keeps running and stays visually clean when unfocused.")
+						];
+					}
+					else
+					if (confirm_switch_capture)
+					{
+						capture_confirm_lines = [
+							global.enable_option_for_pc
+								? l10n_text("Output: 1280 x 720 windowed, matching Nintendo Switch handheld.")
+								: l10n_text("On Nintendo Switch, output follows the hardware mode and is 720p while handheld."),
+							l10n_text("GUI Scale uses Auto so the captured application surface stays exact."),
+							l10n_text("HUD, guides, prompts, aiming cursor, and debug visuals are hidden."),
+							l10n_text("Music and Melody are muted; sound effects and ambience stay unchanged."),
+							l10n_text("Nintendo Switch glyphs are forced for every player."),
+							l10n_text("Always Show Gamepad Buttons prevents keyboard prompt art."),
+							l10n_text("The game keeps running and stays visually clean when unfocused.")
+						];
+					}
+					else
+					{
+						capture_confirm_lines = [
+							l10n_text("Restores the exact settings captured before Capture Mode was enabled."),
+							l10n_text("Window mode and size, HUD, prompts, controller glyphs, audio,"),
+							l10n_text("focus behavior, arrows, collision masks, and debug visuals return."),
+							l10n_text("Capture-only cursor and overlay suppression is removed.")
+						];
+					}
+
+					var capture_confirm_compact = get_window_height < 640;
+					var capture_confirm_title_y = capture_confirm_compact ? 42 : 68;
+					var capture_confirm_text_y = capture_confirm_compact ? 80 : 150;
+					var capture_confirm_line_spacing = capture_confirm_compact
+						? clamp((get_window_height - 200) / max(1, array_length(capture_confirm_lines)), 18, 28)
+						: 34;
+					var capture_confirm_text_scale = global.default_text_size * clamp((get_window_width - 430) / 850, 0.35, capture_confirm_compact ? 0.58 : 0.72);
+					var show_capture_snapshot_note = !confirm_restore_capture
+						&& (!capture_confirm_compact || get_window_height >= 520);
+
+					draw_set_alpha(0.88);
+					draw_rectangle_color(370, 0, get_window_width, get_window_height, c_black, c_black, c_black, c_black, false);
+					draw_set_alpha(1);
+					scr_draw_settings_overlay_title(capture_title_x, capture_confirm_title_y, capture_confirm_title, min(get_window_width - 430, 760));
+
+					draw_set_halign(fa_left);
+					draw_set_valign(fa_middle);
+					var capture_confirm_text_x = max(402, capture_title_x - 410);
+					for (var capture_line_index = 0; capture_line_index < array_length(capture_confirm_lines); capture_line_index++)
+					{
+						scr_draw_text_outlined(capture_confirm_text_x, capture_confirm_text_y + (capture_line_index * capture_confirm_line_spacing), capture_confirm_lines[capture_line_index], capture_confirm_text_scale, c_black, c_white, 1);
+					}
+
+					var capture_snapshot_note_y = capture_confirm_text_y + (array_length(capture_confirm_lines) * capture_confirm_line_spacing) + (capture_confirm_compact ? 10 : 22);
+					if (show_capture_snapshot_note)
+					{
+						scr_draw_text_outlined(capture_confirm_text_x, capture_snapshot_note_y, l10n_text("Your current settings are snapshotted before the first preset is applied."), capture_confirm_text_scale, c_black, c_lime, 1);
+						scr_draw_text_outlined(capture_confirm_text_x, capture_snapshot_note_y + (capture_confirm_compact ? 26 : 32), l10n_text("Changing presets keeps that original snapshot; temporary values are not saved."), capture_confirm_text_scale, c_black, c_lime, 1);
+					}
+
+					var capture_confirm_apply_y = get_window_height - (capture_confirm_compact ? 100 : 158);
+					var capture_confirm_cancel_y = get_window_height - (capture_confirm_compact ? 52 : 104);
+					var capture_apply_label = confirm_restore_capture ? l10n_text("Restore Settings") : l10n_text("Enable Preset");
+					var apply_capture_confirmation = draw_menu_button(capture_button_x, capture_confirm_apply_y, capture_apply_label, capture_confirm_apply_id, "", capture_confirm_color);
+					var cancel_capture_confirmation = draw_menu_button(capture_button_x, capture_confirm_cancel_y, l10n_text("Cancel"), capture_confirm_cancel_id, "");
+
+					if (apply_capture_confirmation)
+					&& (menu_delay == 0 && menu_joystick_delay == 0)
+					{
+						if (confirm_pc_capture)
+						{
+							scr_capture_mode_apply(CAPTURE_MODE_PRESET.PC);
+						}
+						else
+						if (confirm_switch_capture)
+						{
+							scr_capture_mode_apply(CAPTURE_MODE_PRESET.SWITCH_HANDHELD);
+						}
+						else
+						{
+							scr_capture_mode_restore();
+						}
+
+						menu = "capture_mode_back";
+						menu_y_offset = 0;
+						menu_y_offset_real = 0;
+						menu_delay = 3;
+					}
+
+					if (cancel_capture_confirmation)
+					&& (menu_delay == 0 && menu_joystick_delay == 0)
+					{
+						menu = confirm_pc_capture
+							? "capture_mode_pc"
+							: (confirm_switch_capture ? "capture_mode_switch" : "capture_mode_restore");
+						menu_delay = 3;
+					}
+
+					global.option_description = confirm_restore_capture
+						? l10n_text("Confirm whether to restore the original pre-capture settings")
+						: l10n_text("Confirm whether to apply this temporary Capture Mode preset");
+					menu_cursor_y_position = (menu == capture_confirm_apply_id)
+						? capture_confirm_apply_y
+						: capture_confirm_cancel_y;
+					menu_cursor_y_position_end = capture_confirm_cancel_y + 64;
+				}
 			}
 			else
 			if (debug_text_menu_active)
@@ -3799,6 +4075,25 @@ function scr_option_menu()
 				&& (menu_delay == 0 && menu_joystick_delay == 0)
 				{
 					menu_delay = 3;
+					menu = "capture_mode_menu";
+				}
+			}
+			else
+			if (menu == "capture_mode_menu")
+			{
+				if (key_up)
+				&& (!open_dropdown)
+				&& (menu_delay == 0 && menu_joystick_delay == 0)
+				{
+					menu_delay = 3;
+					menu = "debug_screen_text_menu";
+				}
+				else
+				if (key_down)
+				&& (!open_dropdown)
+				&& (menu_delay == 0 && menu_joystick_delay == 0)
+				{
+					menu_delay = 3;
 					menu = "level_load_diagnostics_menu";
 				}
 			}
@@ -3810,7 +4105,7 @@ function scr_option_menu()
 				&& (menu_delay == 0 && menu_joystick_delay == 0)
 				{
 					menu_delay = 3;
-					menu = "debug_screen_text_menu";
+					menu = "capture_mode_menu";
 				}
 				else
 				if (key_down)
@@ -4150,6 +4445,64 @@ function scr_option_menu()
 				{
 					menu_delay = 3;
 					menu = "debug_screen_text_back";
+				}
+			}
+			else
+			if (string_pos("capture_mode_confirm_", string(menu)) == 1)
+			{
+				if ((key_up || key_down || key_left || key_right)
+				&& (!open_dropdown)
+				&& (menu_delay == 0 && menu_joystick_delay == 0))
+				{
+					menu_delay = 3;
+
+					if (string_pos("_apply", string(menu)) > 0)
+					{
+						menu = string_replace(string(menu), "_apply", "_cancel");
+					}
+					else
+					{
+						menu = string_replace(string(menu), "_cancel", "_apply");
+					}
+				}
+			}
+			else
+			if (string_pos("capture_mode_", string(menu)) == 1)
+			&& (menu != "capture_mode_menu")
+			{
+				var capture_mode_navigation = ["capture_mode_back"];
+
+				if (global.enable_option_for_pc)
+				{
+					array_push(capture_mode_navigation, "capture_mode_pc");
+				}
+
+				array_push(capture_mode_navigation, "capture_mode_switch");
+
+				if (scr_capture_mode_is_active())
+				{
+					array_push(capture_mode_navigation, "capture_mode_restore");
+				}
+
+				var capture_mode_navigation_index = -1;
+				for (var capture_nav_index = 0; capture_nav_index < array_length(capture_mode_navigation); capture_nav_index++)
+				{
+					if (menu == capture_mode_navigation[capture_nav_index])
+					{
+						capture_mode_navigation_index = capture_nav_index;
+						break;
+					}
+				}
+
+				if (capture_mode_navigation_index >= 0
+				&& (key_up || key_down)
+				&& (!open_dropdown)
+				&& (menu_delay == 0 && menu_joystick_delay == 0))
+				{
+					var capture_navigation_direction = key_up ? -1 : 1;
+					var capture_next_navigation_index = (capture_mode_navigation_index + capture_navigation_direction + array_length(capture_mode_navigation)) mod array_length(capture_mode_navigation);
+					menu = capture_mode_navigation[capture_next_navigation_index];
+					menu_delay = 3;
 				}
 			}
 			else
@@ -4920,5 +5273,11 @@ function scr_option_menu()
 	#endregion /* Darken sidebar when it's not the focus END */
 
 	scr_menu_navigation_with_joystick_delay();
-	scr_draw_option_description();
+	var capture_mode_custom_page_active = (global.settings_sidebar_menu == "debug_settings")
+		&& (string_pos("capture_mode_", string(menu)) == 1)
+		&& (menu != "capture_mode_menu");
+	if (!capture_mode_custom_page_active)
+	{
+		scr_draw_option_description();
+	}
 }

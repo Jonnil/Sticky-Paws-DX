@@ -1,5 +1,23 @@
 function scr_draw_cursor_mouse()
 {
+	var artwork_menu_active = false;
+	for (var artwork_index = 0; artwork_index < instance_number(obj_artwork_collection); artwork_index++)
+	{
+		var artwork_instance = instance_find(obj_artwork_collection, artwork_index);
+		artwork_menu_active = artwork_menu_active || artwork_instance.can_navigate;
+	}
+
+	/* Keep menu navigation visible, but remove the custom cursor from live captured gameplay. */
+	if (scr_capture_mode_is_active()
+	&& (instance_exists(obj_player)
+	|| instance_exists(obj_player_map))
+	&& !global.pause
+	&& !artwork_menu_active
+	&& !global.demo_over_popup)
+	{
+		return false;
+	}
+
 	if (global.controls_used_for_navigation == "mouse"
 	&& !global.full_level_map_screenshot
 	&& os_type != os_android

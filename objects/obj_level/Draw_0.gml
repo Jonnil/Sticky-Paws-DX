@@ -25,7 +25,8 @@ if (checkpoint_x != 0
 	draw_sprite_ext(spr_checkpoint, 1, draw_x + 32, draw_y, 0.5, 0.5, 0, c_white, 1);
 }
 
-if (cleared_with_debug)
+if (cleared_with_debug
+&& !scr_capture_mode_is_active())
 {
 	draw_set_halign(fa_center);
 	draw_set_valign(fa_middle);

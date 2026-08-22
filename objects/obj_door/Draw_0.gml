@@ -12,7 +12,8 @@ else
 }
 
 #region /* Show Player Up Key */
-if (need_to_press_up_to_enter)
+if (!scr_capture_mode_is_active()
+&& need_to_press_up_to_enter)
 && (!locked_door)
 {
 	if (instance_exists(obj_player))

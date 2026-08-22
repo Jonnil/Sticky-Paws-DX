@@ -9,15 +9,15 @@ function scr_config_save()
 		global.enable_difficutly_layers_in_level_editor = true;
 		ini_write_real("config", "enable_difficutly_layers_in_level_editor", true);
 	}
-	ini_write_real("config", "automatically_pause_when_window_is_unfocused", global.automatically_pause_when_window_is_unfocused);
-	ini_write_real("config", "show_timer", global.show_timer);
-	ini_write_real("config", "show_defeats_counter", global.show_defeats_counter);
+	ini_write_real("config", "automatically_pause_when_window_is_unfocused", scr_capture_mode_get_persistent_value("automatically_pause_when_window_is_unfocused", global.automatically_pause_when_window_is_unfocused));
+	ini_write_real("config", "show_timer", scr_capture_mode_get_persistent_value("show_timer", global.show_timer));
+	ini_write_real("config", "show_defeats_counter", scr_capture_mode_get_persistent_value("show_defeats_counter", global.show_defeats_counter));
 	ini_write_real("config", "show_ranks", global.show_ranks);
 	ini_write_real("config", "narrator", global.narrator);
 	ini_write_real("config", "narrator_selection", global.narrator_selection);
-	ini_write_real("config", "show_tutorial_signs", global.show_tutorial_signs);
-	ini_write_real("config", "show_new_items_notification", global.show_new_items_notification);
-	ini_write_real("config", "hud_hide_time", global.hud_hide_time);
+	ini_write_real("config", "show_tutorial_signs", scr_capture_mode_get_persistent_value("show_tutorial_signs", global.show_tutorial_signs));
+	ini_write_real("config", "show_new_items_notification", scr_capture_mode_get_persistent_value("show_new_items_notification", global.show_new_items_notification));
+	ini_write_real("config", "hud_hide_time", scr_capture_mode_get_persistent_value("hud_hide_time", global.hud_hide_time));
 	ini_write_real("config", "select_font", global.selected_font);
 	ini_write_real("config", "font_add_enable_aa", global.font_antialiasing);
 	ini_write_real("config", "players_can_collide", global.players_can_collide);
@@ -32,8 +32,8 @@ function scr_config_save()
 	ini_write_real("config", "assist_hover_when_holding_jump", global.assist_hover_when_holding_jump);
 	ini_write_real("config", "assist_floor_over_bottomless_pit", global.assist_floor_over_bottomless_pit);
 	ini_write_real("config", "assist_breathe_underwater", global.assist_breathe_underwater);
-	ini_write_real("config", "assist_guiding_arrows", global.assist_guiding_arrows);
-	ini_write_real("config", "assist_normal_arrows", global.assist_normal_arrows);
+	ini_write_real("config", "assist_guiding_arrows", scr_capture_mode_get_persistent_value("assist_guiding_arrows", global.assist_guiding_arrows));
+	ini_write_real("config", "assist_normal_arrows", scr_capture_mode_get_persistent_value("assist_normal_arrows", global.assist_normal_arrows));
 	ini_write_real("config", "assist_enable_enemies", global.assist_enable_enemies);
 	ini_write_real("config", "assist_enable_spikes", global.assist_enable_spikes);
 	#endregion /* Assist Settings END */
@@ -83,17 +83,17 @@ function scr_config_save()
 
 	scr_debug_sync_legacy_public_toggles();
 
-	ini_write_real("config", "fullscreen_mode", window_get_fullscreen());
+	ini_write_real("config", "fullscreen_mode", scr_capture_mode_get_persistent_value("fullscreen_mode", window_get_fullscreen()));
 	ini_write_real("config", "interpolate", global.interpolate);
 	ini_write_real("config", "show_fps", global.show_fps);
 	ini_write_real("config", "show_instance_count", global.show_instance_count);
 	ini_write_real("config", "debug_detailed_mode", global.debug_detailed_mode);
 	ini_write_real("config", "debug_menu_auto_unlock_runner", global.debug_menu_auto_unlock_runner);
 	scr_debug_write_visibility_modes_to_ini();
-	ini_write_real("config", "show_collision_mask", global.show_collision_mask);
+	ini_write_real("config", "show_collision_mask", scr_capture_mode_get_persistent_value("show_collision_mask", global.show_collision_mask));
 	ini_write_real("config", "volume_main", global.volume_main * 10000);
-	ini_write_real("config", "volume_music", global.volume_music * 10000);
-	ini_write_real("config", "volume_melody", global.volume_melody * 10000);
+	ini_write_real("config", "volume_music", scr_capture_mode_get_persistent_value("volume_music", global.volume_music) * 10000);
+	ini_write_real("config", "volume_melody", scr_capture_mode_get_persistent_value("volume_melody", global.volume_melody) * 10000);
 	ini_write_real("config", "volume_sound", global.volume_sound * 10000);
 	ini_write_real("config", "volume_ambient", global.volume_ambient * 10000);
 	ini_write_real("config", "volume_footstep", global.volume_footstep * 10000);
@@ -149,11 +149,11 @@ function scr_config_save()
 	ini_write_real("config", "reset_level_zoom_on_return", global.reset_level_zoom_on_return);
 	ini_write_real("config", "reset_world_zoom_on_return", global.reset_world_zoom_on_return);
 	ini_write_real("config", "draw_text_outline", global.draw_text_outline);
-	ini_write_real("config", "resolution_setting", global.resolution_setting);
-	ini_write_real("config", "gui_scale_modifier", global.gui_scale_modifier);
-	ini_write_real("config", "show_prompt_when_changing_to_gamepad", global.show_prompt_when_changing_to_gamepad);
-	ini_write_real("config", "show_prompt_when_changing_to_keyboard_and_mouse", global.show_prompt_when_changing_to_keyboard_and_mouse);
-	ini_write_real("config", "always_show_gamepad_buttons", global.always_show_gamepad_buttons);
+	ini_write_real("config", "resolution_setting", scr_capture_mode_get_persistent_value("resolution_setting", global.resolution_setting));
+	ini_write_real("config", "gui_scale_modifier", scr_capture_mode_get_persistent_value("gui_scale_modifier", global.gui_scale_modifier));
+	ini_write_real("config", "show_prompt_when_changing_to_gamepad", scr_capture_mode_get_persistent_value("show_prompt_when_changing_to_gamepad", global.show_prompt_when_changing_to_gamepad));
+	ini_write_real("config", "show_prompt_when_changing_to_keyboard_and_mouse", scr_capture_mode_get_persistent_value("show_prompt_when_changing_to_keyboard_and_mouse", global.show_prompt_when_changing_to_keyboard_and_mouse));
+	ini_write_real("config", "always_show_gamepad_buttons", scr_capture_mode_get_persistent_value("always_show_gamepad_buttons", global.always_show_gamepad_buttons));
 	ini_write_real("language_updates", "language_auto_update_interval", global.language_auto_update_interval);
 
 	for(var i = 1; i <= global.max_players; i += 1)

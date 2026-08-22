@@ -40,21 +40,25 @@ for(var i = 1; i <= global.max_players; i += 1)
 			show_run_toggle_for_player[j] = (i == j) ? show_run_toggle_for_player[j] - 1 : 0;
 		}
 
-		var player_text = l10n_text("Player " + string(i) + " always runs");
-		if (instance_number(obj_player) == 1)
+		if (!scr_capture_mode_is_active())
 		{
-			player_text = l10n_text("Always run");
-		}
+			var player_text = l10n_text("Player " + string(i) + " always runs");
+			if (instance_number(obj_player) == 1)
+			{
+				player_text = l10n_text("Always run");
+			}
 
-		scr_draw_text_outlined(camera_get_view_x(view_get_camera(view_current)) + 200, camera_get_view_y(view_get_camera(view_current)) + 32, player_text, global.default_text_size, c_white, c_black, 1);
-		draw_sprite_ext(spr_checkbox, global.player_run_toggle[i], camera_get_view_x(view_get_camera(view_current)) + 180, camera_get_view_y(view_get_camera(view_current)) + 32, 0.5, 0.5, 0, c_white, 1);
+			scr_draw_text_outlined(camera_get_view_x(view_get_camera(view_current)) + 200, camera_get_view_y(view_get_camera(view_current)) + 32, player_text, global.default_text_size, c_white, c_black, 1);
+			draw_sprite_ext(spr_checkbox, global.player_run_toggle[i], camera_get_view_x(view_get_camera(view_current)) + 180, camera_get_view_y(view_get_camera(view_current)) + 32, 0.5, 0.5, 0, c_white, 1);
+		}
 	}
 }
 #endregion /* Run Toggling END */
 
 #region /* Show Drowning For Player */
-if (instance_exists(obj_water))
-|| (instance_exists(obj_water_level))
+if (!scr_capture_mode_is_active()
+&& (instance_exists(obj_water)
+|| instance_exists(obj_water_level)))
 {
 	for(var i = 1; i <= global.max_players; i += 1)
 	{
@@ -71,4 +75,7 @@ if (instance_exists(obj_water))
 }
 #endregion /* Show Drowning For Player END */
 
-scr_draw_cursor_tongue(mouse_x, mouse_y, obj_camera.player[fixed_player]);
+if (!scr_capture_mode_is_active())
+{
+	scr_draw_cursor_tongue(mouse_x, mouse_y, obj_camera.player[fixed_player]);
+}
