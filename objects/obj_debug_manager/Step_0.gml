@@ -4,6 +4,9 @@
 /* Reset queued dropdown popups so the active menu can request a fresh one during Draw GUI. */
 global.menu_dropdown_popup_request = undefined;
 
+/* Advance a bounded Capture Mode window transition at most once per Step. */
+scr_capture_mode_update_window_transition();
+
 /* Keep the active capture preset stable if another settings screen changes one of its owned values. */
 scr_capture_mode_maintain();
 

@@ -16,6 +16,12 @@ enum CAPTURE_MODE_PRESET
 	SWITCH_HANDHELD = 2
 }
 
+enum CAPTURE_MODE_WINDOW_STAGE
+{
+	RESIZE = 0,
+	POSITION = 1
+}
+
 /// @function scr_debug_should_show_public_debug_controls()
 /* Returns whether public debug controls should be visible in normal PC-facing menus. */
 function scr_debug_should_show_public_debug_controls()
@@ -58,6 +64,11 @@ function scr_capture_mode_initialize()
 	{
 		global.capture_mode_audio_resume_pending = false;
 	}
+
+	if (!variable_global_exists("capture_mode_window_transition"))
+	{
+		global.capture_mode_window_transition = undefined;
+	}
 }
 
 /// @function scr_capture_mode_is_active()
@@ -67,6 +78,15 @@ function scr_capture_mode_is_active()
 	scr_capture_mode_initialize();
 	return global.capture_mode != CAPTURE_MODE_PRESET.OFF
 		&& is_struct(global.capture_mode_snapshot);
+}
+
+/// @function scr_capture_mode_owns_window()
+/* Keeps competing resolution/fullscreen controls locked through asynchronous restore. */
+function scr_capture_mode_owns_window()
+{
+	scr_capture_mode_initialize();
+	return scr_capture_mode_is_active()
+		|| is_struct(global.capture_mode_window_transition);
 }
 
 /// @function scr_capture_mode_get_name(capture_mode)
@@ -109,17 +129,6 @@ function scr_capture_mode_take_snapshot()
 	var window_x_snapshot = global.enable_option_for_pc ? window_get_x() : 0;
 	var window_y_snapshot = global.enable_option_for_pc ? window_get_y() : 0;
 
-	/* Reveal and remember the user's real windowed rectangle before Capture Mode replaces it. */
-	if (global.enable_option_for_pc
-	&& fullscreen_snapshot)
-	{
-		window_set_fullscreen(false);
-		window_width_snapshot = window_get_width();
-		window_height_snapshot = window_get_height();
-		window_x_snapshot = window_get_x();
-		window_y_snapshot = window_get_y();
-	}
-
 	global.capture_mode_snapshot =
 	{
 		automatically_pause_when_window_is_unfocused: global.automatically_pause_when_window_is_unfocused,
@@ -144,7 +153,10 @@ function scr_capture_mode_take_snapshot()
 		window_width: window_width_snapshot,
 		window_height: window_height_snapshot,
 		window_x: window_x_snapshot,
-		window_y: window_y_snapshot
+		window_y: window_y_snapshot,
+		/* Fullscreen hides the user's windowed rectangle. Capture it after the
+		   documented fullscreen-to-windowed settling period, before resizing. */
+		window_rectangle_pending: global.enable_option_for_pc && fullscreen_snapshot
 	};
 }
 
@@ -261,24 +273,176 @@ function scr_capture_mode_refresh_music_gain()
 	}
 }
 
-/// @function scr_capture_mode_set_output(resolution_setting, output_width, output_height)
-/* Applies an exact desktop capture surface. Switch hardware already controls its native output size. */
-function scr_capture_mode_set_output(resolution_setting, output_width, output_height)
+/// @function scr_capture_mode_queue_window_transition(output_width, output_height, center_after_resize, output_x, output_y, fullscreen_after, requires_capture_mode)
+/* Queues one bounded desktop resize. GameMaker requires ten Steps between
+   fullscreen changes, resizing, and positioning/centering the window. */
+function scr_capture_mode_queue_window_transition(output_width, output_height, center_after_resize, output_x = 0, output_y = 0, fullscreen_after = false, requires_capture_mode = true)
+{
+	scr_capture_mode_initialize();
+
+	if (!global.enable_option_for_pc)
+	{
+		return false;
+	}
+
+	/* A rapid preset switch must not discard time still owed to an earlier
+	   fullscreen exit or resize operation. The newest target replaces the old one. */
+	var resize_wait_steps = 0;
+	var fullscreen_exit_requested = false;
+	if (is_struct(global.capture_mode_window_transition))
+	{
+		resize_wait_steps = global.capture_mode_window_transition.steps_remaining;
+		fullscreen_exit_requested = global.capture_mode_window_transition.fullscreen_exit_requested;
+	}
+
+	if (window_get_fullscreen()
+	&& !fullscreen_exit_requested)
+	{
+		window_set_fullscreen(false);
+		fullscreen_exit_requested = true;
+		resize_wait_steps = max(resize_wait_steps, 10);
+	}
+
+	/* Replacing this struct also cancels any resize/center left by a superseded preset. */
+	global.capture_mode_window_transition =
+	{
+		stage: CAPTURE_MODE_WINDOW_STAGE.RESIZE,
+		steps_remaining: resize_wait_steps,
+		width: output_width,
+		height: output_height,
+		center_after_resize: center_after_resize,
+		x: output_x,
+		y: output_y,
+		fullscreen_after: fullscreen_after,
+		fullscreen_exit_requested: fullscreen_exit_requested,
+		resize_window: true,
+		requires_capture_mode: requires_capture_mode
+	};
+
+	return true;
+}
+
+/// @function scr_capture_mode_update_window_transition()
+/* Advances at most one stage per Step and never retries a rejected or clamped size. */
+function scr_capture_mode_update_window_transition()
+{
+	scr_capture_mode_initialize();
+
+	if (!is_struct(global.capture_mode_window_transition))
+	{
+		return false;
+	}
+
+	var transition = global.capture_mode_window_transition;
+	if (transition.requires_capture_mode
+	&& !scr_capture_mode_is_active())
+	{
+		global.capture_mode_window_transition = undefined;
+		return false;
+	}
+
+	/* Wait until a minimized desktop window has valid dimensions again. */
+	if (window_get_width() <= 0 || window_get_height() <= 0)
+	{
+		return false;
+	}
+
+	if (transition.steps_remaining > 0)
+	{
+		transition.steps_remaining--;
+		return false;
+	}
+
+	if (transition.stage == CAPTURE_MODE_WINDOW_STAGE.RESIZE)
+	{
+		/* If fullscreen changed outside Capture Mode while this job was waiting,
+		   restart the documented fullscreen-to-windowed settling period once. */
+		if (window_get_fullscreen())
+		{
+			if (!transition.fullscreen_exit_requested)
+			{
+				window_set_fullscreen(false);
+				transition.fullscreen_exit_requested = true;
+				transition.steps_remaining = 10;
+				return true;
+			}
+
+			/* The one requested fullscreen exit did not settle. Abandon this
+			   transition instead of creating another retry loop. */
+			global.capture_mode_window_transition = undefined;
+			return false;
+		}
+
+		/* A fullscreen window only exposes its prior windowed rectangle after the
+		   fullscreen transition has settled. Save it before the preset replaces it. */
+		if (scr_capture_mode_is_active()
+		&& variable_struct_exists(global.capture_mode_snapshot, "window_rectangle_pending")
+		&& global.capture_mode_snapshot.window_rectangle_pending)
+		{
+			global.capture_mode_snapshot.window_width = window_get_width();
+			global.capture_mode_snapshot.window_height = window_get_height();
+			global.capture_mode_snapshot.window_x = window_get_x();
+			global.capture_mode_snapshot.window_y = window_get_y();
+			global.capture_mode_snapshot.window_rectangle_pending = false;
+		}
+
+		if (!transition.resize_window)
+		{
+			if (transition.fullscreen_after)
+			{
+				window_set_fullscreen(true);
+			}
+
+			global.capture_mode_window_transition = undefined;
+			return true;
+		}
+
+		window_set_size(transition.width, transition.height);
+		transition.stage = CAPTURE_MODE_WINDOW_STAGE.POSITION;
+		transition.steps_remaining = 10;
+		transition.fullscreen_exit_requested = false;
+		return true;
+	}
+
+	if (transition.center_after_resize)
+	{
+		window_center();
+	}
+	else
+	{
+		window_set_position(transition.x, transition.y);
+	}
+
+	if (transition.fullscreen_after)
+	{
+		window_set_fullscreen(true);
+	}
+
+	global.capture_mode_window_transition = undefined;
+	return true;
+}
+
+/// @function scr_capture_mode_set_output(resolution_setting, output_width, output_height, resize_output_window)
+/* Applies Capture Mode's logical output settings. Only an explicit preset action
+   may queue a window resize; recurring maintenance must never resize the window. */
+function scr_capture_mode_set_output(resolution_setting, output_width, output_height, resize_output_window = false)
 {
 	global.resolution_setting = resolution_setting;
 
 	if (global.enable_option_for_pc)
 	{
-		window_set_fullscreen(false);
-		window_set_size(output_width, output_height);
-		window_center();
+		if (resize_output_window)
+		{
+			scr_capture_mode_queue_window_transition(output_width, output_height, true);
+		}
+
 		display_set_gui_size(output_width, output_height);
 	}
 }
 
-/// @function scr_capture_mode_apply_overrides(capture_mode)
+/// @function scr_capture_mode_apply_overrides(capture_mode, resize_output_window)
 /* Reapplies temporary values without replacing the original snapshot or saving the overrides. */
-function scr_capture_mode_apply_overrides(capture_mode)
+function scr_capture_mode_apply_overrides(capture_mode, resize_output_window = false)
 {
 	if (capture_mode != CAPTURE_MODE_PRESET.PC
 	&& capture_mode != CAPTURE_MODE_PRESET.SWITCH_HANDHELD)
@@ -317,11 +481,11 @@ function scr_capture_mode_apply_overrides(capture_mode)
 
 	if (capture_mode == CAPTURE_MODE_PRESET.SWITCH_HANDHELD)
 	{
-		scr_capture_mode_set_output(3, 1280, 720);
+		scr_capture_mode_set_output(3, 1280, 720, resize_output_window);
 	}
 	else
 	{
-		scr_capture_mode_set_output(1, 1920, 1080);
+		scr_capture_mode_set_output(1, 1920, 1080, resize_output_window);
 	}
 
 	scr_capture_mode_refresh_music_gain();
@@ -333,6 +497,13 @@ function scr_capture_mode_apply_overrides(capture_mode)
 function scr_capture_mode_apply(capture_mode)
 {
 	scr_capture_mode_initialize();
+
+	/* Keep the original window snapshot atomic until a queued restore finishes. */
+	if (!scr_capture_mode_is_active()
+	&& is_struct(global.capture_mode_window_transition))
+	{
+		return false;
+	}
 
 	if (capture_mode != CAPTURE_MODE_PRESET.PC
 	&& capture_mode != CAPTURE_MODE_PRESET.SWITCH_HANDHELD)
@@ -350,7 +521,7 @@ function scr_capture_mode_apply(capture_mode)
 		scr_config_save();
 	}
 
-	return scr_capture_mode_apply_overrides(capture_mode);
+	return scr_capture_mode_apply_overrides(capture_mode, true);
 }
 
 /// @function scr_capture_mode_maintain()
@@ -388,8 +559,6 @@ function scr_capture_mode_maintain()
 
 	var use_switch_prompts = global.capture_mode == CAPTURE_MODE_PRESET.SWITCH_HANDHELD;
 	var target_resolution = use_switch_prompts ? 3 : 1;
-	var target_width = use_switch_prompts ? 1280 : 1920;
-	var target_height = use_switch_prompts ? 720 : 1080;
 	var preset_changed = global.automatically_pause_when_window_is_unfocused
 		|| global.show_timer
 		|| global.show_defeats_counter
@@ -420,16 +589,11 @@ function scr_capture_mode_maintain()
 		}
 	}
 
-	if (!preset_changed && global.enable_option_for_pc)
-	{
-		preset_changed = window_get_fullscreen()
-			|| window_get_width() != target_width
-			|| window_get_height() != target_height;
-	}
-
 	if (preset_changed)
 	{
-		return scr_capture_mode_apply_overrides(global.capture_mode);
+		/* Repair logical values only. Window output is a bounded, explicit action;
+		   comparing an OS-clamped size here would recreate the per-Step resize loop. */
+		return scr_capture_mode_apply_overrides(global.capture_mode, false);
 	}
 
 	return false;
@@ -443,7 +607,7 @@ function scr_capture_mode_reapply()
 
 	if (scr_capture_mode_is_active())
 	{
-		return scr_capture_mode_apply_overrides(global.capture_mode);
+		return scr_capture_mode_apply_overrides(global.capture_mode, false);
 	}
 
 	return false;
@@ -463,7 +627,8 @@ function scr_capture_mode_restore()
 	}
 
 	var snapshot = global.capture_mode_snapshot;
-	global.capture_mode = CAPTURE_MODE_PRESET.OFF;
+	var window_rectangle_pending = variable_struct_exists(snapshot, "window_rectangle_pending")
+		&& snapshot.window_rectangle_pending;
 
 	global.automatically_pause_when_window_is_unfocused = snapshot.automatically_pause_when_window_is_unfocused;
 	global.show_timer = snapshot.show_timer;
@@ -495,16 +660,54 @@ function scr_capture_mode_restore()
 
 	if (global.enable_option_for_pc)
 	{
-		window_set_fullscreen(false);
-		window_set_size(snapshot.window_width, snapshot.window_height);
-		window_set_position(snapshot.window_x, snapshot.window_y);
-		window_set_fullscreen(snapshot.fullscreen_mode);
+		if (window_rectangle_pending)
+		{
+			/* Capture Mode was turned off before the original fullscreen exit had
+			   settled. Cancel the preset resize and return to fullscreen after the
+			   remaining wait; the untouched windowed rectangle stays preserved. */
+			var restore_wait_steps = 10;
+			if (is_struct(global.capture_mode_window_transition)
+			&& global.capture_mode_window_transition.stage == CAPTURE_MODE_WINDOW_STAGE.RESIZE)
+			{
+				restore_wait_steps = max(0, global.capture_mode_window_transition.steps_remaining);
+			}
+
+			global.capture_mode_window_transition =
+			{
+				stage: CAPTURE_MODE_WINDOW_STAGE.RESIZE,
+				steps_remaining: restore_wait_steps,
+				width: 0,
+				height: 0,
+				center_after_resize: false,
+				x: 0,
+				y: 0,
+				fullscreen_after: snapshot.fullscreen_mode,
+				fullscreen_exit_requested: true,
+				resize_window: false,
+				requires_capture_mode: false
+			};
+		}
+		else
+		{
+			/* Restore size once, then restore position/fullscreen ten Steps later. */
+			scr_capture_mode_queue_window_transition(
+				snapshot.window_width,
+				snapshot.window_height,
+				false,
+				snapshot.window_x,
+				snapshot.window_y,
+				snapshot.fullscreen_mode,
+				false
+			);
+		}
 	}
 
+	/* Save while the snapshot is still active so an asynchronous fullscreen
+	   restore writes the original mode rather than the temporary windowed mode. */
+	scr_config_save();
+	global.capture_mode = CAPTURE_MODE_PRESET.OFF;
 	scr_capture_mode_refresh_music_gain();
 	global.capture_mode_snapshot = undefined;
-	/* The restored values are the user's real configuration again. */
-	scr_config_save();
 	return true;
 }
 

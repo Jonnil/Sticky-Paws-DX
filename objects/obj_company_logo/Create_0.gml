@@ -292,6 +292,7 @@ global.capture_mode = CAPTURE_MODE_PRESET.OFF; /* Session-only trailer/screensho
 global.capture_mode_snapshot = undefined; /* Exact pre-capture settings restored when Capture Mode is turned off */
 global.capture_mode_audio_refresh_pending = false; /* Reconcile persistent gameplay audio after returning from the pause room */
 global.capture_mode_audio_resume_pending = false; /* Avoid one frame of stale audio gain when Capture Mode changes while paused */
+global.capture_mode_window_transition = undefined; /* One-shot staged fullscreen/resize/position work */
 global.show_fps = false; /* Show fps for optimization debug */
 global.show_instance_count = false; /* Show instance count for optimization debug */
 global.enable_transitions = true; /* During transitions when going from one room to another, the game could crash, and you can't see what's going on when the transition animation is playing and making the screen black, so turn off this for debug */

@@ -68,6 +68,7 @@ function scr_option_graphics()
 
 		if (menu == "resolution_setting")
 		&& (!window_get_fullscreen())
+		&& !scr_capture_mode_owns_window()
 		{
 			if (key_accept_pressed)
 			|| (key_back_pressed)
@@ -81,7 +82,10 @@ function scr_option_graphics()
 				if (global.resolution_setting == 6){display_set_gui_size(480, 270);window_set_size(480, 270);}
 			}
 		}
-		if (!open_dropdown)
+		/* Capture Mode owns its logical resolution while active. Do not derive a
+		   different value from a window size the operating system may have clamped. */
+		if (!open_dropdown
+		&& !scr_capture_mode_owns_window())
 		{
 			if (window_get_width() == 1920 && window_get_height() == 1080){global.resolution_setting = 1;}else
 			if (window_get_width() == 1600 && window_get_height() == 900){global.resolution_setting = 2;}else
@@ -133,6 +137,7 @@ function scr_option_graphics()
 			if (key_up)
 			&& (menu_delay == 0 && menu_joystick_delay == 0)
 			&& (open_dropdown)
+			&& !scr_capture_mode_owns_window()
 			&& (global.resolution_setting > 0)
 			{
 				global.resolution_setting--;
@@ -142,6 +147,7 @@ function scr_option_graphics()
 			if (key_down)
 			&& (menu_delay == 0 && menu_joystick_delay == 0)
 			&& (open_dropdown)
+			&& !scr_capture_mode_owns_window()
 			&& (global.resolution_setting < 6)
 			{
 				global.resolution_setting++;
@@ -367,7 +373,7 @@ function scr_option_graphics()
 				open_dropdown = true;
 				menu_delay = 3;
 			}
-			if (menu == "fullscreen_mode") && (menu_delay == 0 && menu_joystick_delay == 0){if (window_get_fullscreen()){window_set_fullscreen(false);}else{window_set_fullscreen(true);}
+			if (menu == "fullscreen_mode") && (menu_delay == 0 && menu_joystick_delay == 0) && !scr_capture_mode_owns_window(){if (window_get_fullscreen()){window_set_fullscreen(false);}else{window_set_fullscreen(true);}
 			menu_delay = 3;
 			}
 			if (menu == "advanced_video_options") && (menu_delay == 0 && menu_joystick_delay == 0){menu = "advanced_video_option_back";

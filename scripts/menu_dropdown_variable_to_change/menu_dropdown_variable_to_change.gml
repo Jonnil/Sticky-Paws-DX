@@ -112,6 +112,7 @@ function menu_dropdown_variable_to_change(variable_to_change, change_to_value)
 	else
 	if (menu == "resolution_setting")
 	&& (variable_to_change == global.resolution_setting)
+	&& !scr_capture_mode_owns_window()
 	{
 		global.resolution_setting = change_to_value;
 

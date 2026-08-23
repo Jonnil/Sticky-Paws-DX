@@ -96,6 +96,7 @@ if (can_toggle_fullscreen)
 	&& (mouse_check_button_released(mb_left))
 	&& (point_in_rectangle(mouse_get_x, mouse_get_y, 0, display_get_gui_height() - 65 + version_y_pos - 6, -74 + string_width(fullscreen_text) + 100, display_get_gui_height() - 65 + version_y_pos + 32 + 6))
 	&& (menu == "fullscreen_mode_title")
+	&& !scr_capture_mode_owns_window()
 	{
 		if (window_get_fullscreen())
 		{

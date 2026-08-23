@@ -238,7 +238,7 @@ function scr_config_load()
 		#endregion /* Account Settings END */
 
 		if (ini_key_exists("config", "fullscreen_mode")
-		&& !scr_capture_mode_is_active())
+		&& !scr_capture_mode_owns_window())
 		{
 			window_set_fullscreen(ini_read_real("config", "fullscreen_mode", 0));
 		}
