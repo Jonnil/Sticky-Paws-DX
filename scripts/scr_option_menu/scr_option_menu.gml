@@ -2733,12 +2733,15 @@ function scr_option_menu()
 					if (confirm_pc_capture)
 					{
 						capture_confirm_lines = [
-							l10n_text("Output: 1920 x 1080 windowed for standard PC trailer capture."),
-							l10n_text("GUI Scale uses Auto so the captured application surface stays exact."),
-							l10n_text("HUD, guides, prompts, aiming cursor, and debug visuals are hidden."),
-							l10n_text("Music and Melody are muted; sound effects and ambience stay unchanged."),
-							l10n_text("Controller glyphs use Auto Detect; gamepad buttons are not forced."),
-							l10n_text("The game keeps running and stays visually clean when unfocused.")
+							l10n_text("The game changes to a 1920 x 1080 window for recording PC footage."),
+							l10n_text("Menus and on-screen text are automatically sized for this resolution."),
+							l10n_text("Timers, counters, player labels, new item messages, and other gameplay displays are hidden."),
+							l10n_text("Tutorial signs and button instructions are hidden."),
+							l10n_text("Arrows showing routes, objectives, exits, or off-screen players are hidden."),
+							l10n_text("The Debug Screen, collision outlines, and other visuals used for testing are hidden."),
+							l10n_text("Music and short musical jingles are muted. Every other sound keeps its current volume."),
+							l10n_text("Button icons automatically match the controls each player uses."),
+							l10n_text("On PC, the game keeps running and the screen does not darken when another window is selected.")
 						];
 					}
 					else
@@ -2746,35 +2749,120 @@ function scr_option_menu()
 					{
 						capture_confirm_lines = [
 							global.enable_option_for_pc
-								? l10n_text("Output: 1280 x 720 windowed, matching Nintendo Switch handheld.")
-								: l10n_text("On Nintendo Switch, output follows the hardware mode and is 720p while handheld."),
-							l10n_text("GUI Scale uses Auto so the captured application surface stays exact."),
-							l10n_text("HUD, guides, prompts, aiming cursor, and debug visuals are hidden."),
-							l10n_text("Music and Melody are muted; sound effects and ambience stay unchanged."),
-							l10n_text("Nintendo Switch glyphs are forced for every player."),
-							l10n_text("Always Show Gamepad Buttons prevents keyboard prompt art."),
-							l10n_text("The game keeps running and stays visually clean when unfocused.")
+								? l10n_text("The game changes to a 1280 x 720 window to match Nintendo Switch handheld mode.")
+								: l10n_text("The game follows the Nintendo Switch display mode. Handheld mode uses 1280 x 720."),
+							l10n_text("Menus and on-screen text are automatically sized for this resolution."),
+							l10n_text("Timers, counters, player labels, new item messages, and other gameplay displays are hidden."),
+							l10n_text("Tutorial signs and button instructions are hidden."),
+							l10n_text("Arrows showing routes, objectives, exits, or off-screen players are hidden."),
+							l10n_text("The Debug Screen, collision outlines, and other visuals used for testing are hidden."),
+							l10n_text("Music and short musical jingles are muted. Every other sound keeps its current volume."),
+							l10n_text("Nintendo Switch button icons are shown for every player, no matter which controls they use.")
 						];
+
+						if (global.enable_option_for_pc)
+						{
+							array_push(capture_confirm_lines, l10n_text("On PC, the game keeps running and the screen does not darken when another window is selected."));
+						}
 					}
 					else
 					{
 						capture_confirm_lines = [
-							l10n_text("Restores the exact settings captured before Capture Mode was enabled."),
-							l10n_text("Window mode and size, HUD, prompts, controller glyphs, audio,"),
-							l10n_text("focus behavior, arrows, collision masks, and debug visuals return."),
-							l10n_text("Capture-only cursor and overlay suppression is removed.")
+							l10n_text("Your settings return to the values they had before Capture Mode was enabled."),
+							l10n_text("This includes the window, gameplay displays, tutorial signs, arrows, button instructions, button icons, and audio."),
+							l10n_text("Settings for the Debug Screen, collision outlines, and window focus also return.")
 						];
 					}
 
-					var capture_confirm_compact = get_window_height < 640;
+					/* The more detailed enable explanations need the compact layout at lower resolutions. */
+					var capture_confirm_compact = get_window_height < 640
+						|| (!confirm_restore_capture && get_window_height < 720);
 					var capture_confirm_title_y = capture_confirm_compact ? 42 : 68;
-					var capture_confirm_text_y = capture_confirm_compact ? 80 : 150;
-					var capture_confirm_line_spacing = capture_confirm_compact
-						? clamp((get_window_height - 200) / max(1, array_length(capture_confirm_lines)), 18, 28)
-						: 34;
+					var capture_confirm_text_top = capture_confirm_compact ? 78 : 132;
+					var capture_confirm_apply_y = get_window_height - (capture_confirm_compact ? 100 : 158);
+					var capture_confirm_cancel_y = get_window_height - (capture_confirm_compact ? 52 : 104);
+					var capture_confirm_text_x = 402;
+					var capture_confirm_text_right = max(capture_confirm_text_x + 1, get_window_width - 32);
+					var capture_confirm_wrap_width = max(1, capture_confirm_text_right - capture_confirm_text_x);
 					var capture_confirm_text_scale = global.default_text_size * clamp((get_window_width - 430) / 850, 0.35, capture_confirm_compact ? 0.58 : 0.72);
+					var capture_confirm_min_text_scale = global.default_text_size * 0.28;
 					var show_capture_snapshot_note = !confirm_restore_capture
 						&& (!capture_confirm_compact || get_window_height >= 520);
+					var capture_confirm_body_text = "";
+
+					for (var capture_paragraph_index = 0; capture_paragraph_index < array_length(capture_confirm_lines); capture_paragraph_index++)
+					{
+						if (capture_paragraph_index > 0)
+						{
+							capture_confirm_body_text += "\n";
+						}
+
+						capture_confirm_body_text += string(capture_confirm_lines[capture_paragraph_index]);
+					}
+
+					var capture_snapshot_text = l10n_text("Before Capture Mode turns on, your current settings are remembered.")
+						+ "\n"
+						+ l10n_text("These changes are temporary. Turning Capture Mode off restores your settings.");
+					var capture_confirm_body_metrics = undefined;
+					var capture_snapshot_metrics = undefined;
+					var capture_snapshot_gap = capture_confirm_compact ? 10 : 22;
+					var capture_confirm_content_bottom = capture_confirm_apply_y - (capture_confirm_compact ? 16 : 24);
+					var capture_confirm_available_height = max(1, capture_confirm_content_bottom - capture_confirm_text_top);
+
+					/* Wrap first, then reduce the shared scale only when the complete text block needs it. */
+					for (var capture_fit_attempt = 0; capture_fit_attempt < 20; capture_fit_attempt++)
+					{
+						capture_confirm_body_metrics = scr_get_wrapped_text_metrics(capture_confirm_body_text, capture_confirm_wrap_width, 0, capture_confirm_text_scale);
+						capture_snapshot_metrics = scr_get_wrapped_text_metrics(capture_snapshot_text, capture_confirm_wrap_width, 0, capture_confirm_text_scale);
+
+						var capture_confirm_total_height = capture_confirm_body_metrics.text_height;
+						if (show_capture_snapshot_note)
+						{
+							capture_confirm_total_height += capture_snapshot_gap + capture_snapshot_metrics.text_height;
+						}
+
+						var capture_confirm_widest_line = 1;
+						for (var capture_width_index = 0; capture_width_index < capture_confirm_body_metrics.line_count; capture_width_index++)
+						{
+							capture_confirm_widest_line = max(capture_confirm_widest_line, string_width(string(capture_confirm_body_metrics.lines[capture_width_index])) * capture_confirm_text_scale);
+						}
+						if (show_capture_snapshot_note)
+						{
+							for (var capture_note_width_index = 0; capture_note_width_index < capture_snapshot_metrics.line_count; capture_note_width_index++)
+							{
+								capture_confirm_widest_line = max(capture_confirm_widest_line, string_width(string(capture_snapshot_metrics.lines[capture_note_width_index])) * capture_confirm_text_scale);
+							}
+						}
+
+						var capture_confirm_fits_width = capture_confirm_widest_line <= capture_confirm_wrap_width;
+						var capture_confirm_fits_height = capture_confirm_total_height <= capture_confirm_available_height;
+						if (capture_confirm_fits_width && capture_confirm_fits_height)
+						{
+							break;
+						}
+						if (capture_confirm_text_scale <= capture_confirm_min_text_scale)
+						{
+							/* Keep the main explanation readable on unusually short windows. */
+							if (!capture_confirm_fits_height && show_capture_snapshot_note)
+							{
+								show_capture_snapshot_note = false;
+								continue;
+							}
+
+							break;
+						}
+
+						var capture_confirm_next_scale = capture_confirm_text_scale * 0.9;
+						if (!capture_confirm_fits_width)
+						{
+							capture_confirm_next_scale = min(capture_confirm_next_scale, capture_confirm_text_scale * capture_confirm_wrap_width / capture_confirm_widest_line * 0.98);
+						}
+						capture_confirm_text_scale = max(capture_confirm_min_text_scale, capture_confirm_next_scale);
+					}
+
+					/* Keep the measurements synchronized with the final scale selected above. */
+					capture_confirm_body_metrics = scr_get_wrapped_text_metrics(capture_confirm_body_text, capture_confirm_wrap_width, 0, capture_confirm_text_scale);
+					capture_snapshot_metrics = scr_get_wrapped_text_metrics(capture_snapshot_text, capture_confirm_wrap_width, 0, capture_confirm_text_scale);
 
 					draw_set_alpha(0.88);
 					draw_rectangle_color(370, 0, get_window_width, get_window_height, c_black, c_black, c_black, c_black, false);
@@ -2783,22 +2871,27 @@ function scr_option_menu()
 
 					draw_set_halign(fa_left);
 					draw_set_valign(fa_middle);
-					var capture_confirm_text_x = max(402, capture_title_x - 410);
-					for (var capture_line_index = 0; capture_line_index < array_length(capture_confirm_lines); capture_line_index++)
+					for (var capture_line_index = 0; capture_line_index < capture_confirm_body_metrics.line_count; capture_line_index++)
 					{
-						scr_draw_text_outlined(capture_confirm_text_x, capture_confirm_text_y + (capture_line_index * capture_confirm_line_spacing), capture_confirm_lines[capture_line_index], capture_confirm_text_scale, c_black, c_white, 1);
+						var capture_line_center_y = capture_confirm_text_top
+							+ (capture_confirm_body_metrics.line_box_height * 0.5)
+							+ (capture_line_index * (capture_confirm_body_metrics.line_box_height + capture_confirm_body_metrics.line_gap));
+						scr_draw_text_outlined(capture_confirm_text_x, capture_line_center_y, capture_confirm_body_metrics.lines[capture_line_index], capture_confirm_text_scale, c_black, c_white, 1);
 					}
 
-					var capture_snapshot_note_y = capture_confirm_text_y + (array_length(capture_confirm_lines) * capture_confirm_line_spacing) + (capture_confirm_compact ? 10 : 22);
 					if (show_capture_snapshot_note)
 					{
-						scr_draw_text_outlined(capture_confirm_text_x, capture_snapshot_note_y, l10n_text("Your current settings are snapshotted before the first preset is applied."), capture_confirm_text_scale, c_black, c_lime, 1);
-						scr_draw_text_outlined(capture_confirm_text_x, capture_snapshot_note_y + (capture_confirm_compact ? 26 : 32), l10n_text("Changing presets keeps that original snapshot; temporary values are not saved."), capture_confirm_text_scale, c_black, c_lime, 1);
+						var capture_snapshot_text_top = capture_confirm_text_top + capture_confirm_body_metrics.text_height + capture_snapshot_gap;
+						for (var capture_note_line_index = 0; capture_note_line_index < capture_snapshot_metrics.line_count; capture_note_line_index++)
+						{
+							var capture_note_line_center_y = capture_snapshot_text_top
+								+ (capture_snapshot_metrics.line_box_height * 0.5)
+								+ (capture_note_line_index * (capture_snapshot_metrics.line_box_height + capture_snapshot_metrics.line_gap));
+							scr_draw_text_outlined(capture_confirm_text_x, capture_note_line_center_y, capture_snapshot_metrics.lines[capture_note_line_index], capture_confirm_text_scale, c_black, c_lime, 1);
+						}
 					}
 
-					var capture_confirm_apply_y = get_window_height - (capture_confirm_compact ? 100 : 158);
-					var capture_confirm_cancel_y = get_window_height - (capture_confirm_compact ? 52 : 104);
-					var capture_apply_label = confirm_restore_capture ? l10n_text("Restore Settings") : l10n_text("Enable Preset");
+					var capture_apply_label = confirm_restore_capture ? l10n_text("Restore Settings") : l10n_text("Enable Capture Mode");
 					var apply_capture_confirmation = draw_menu_button(capture_button_x, capture_confirm_apply_y, capture_apply_label, capture_confirm_apply_id, "", capture_confirm_color);
 					var cancel_capture_confirmation = draw_menu_button(capture_button_x, capture_confirm_cancel_y, l10n_text("Cancel"), capture_confirm_cancel_id, "");
 
@@ -2836,7 +2929,7 @@ function scr_option_menu()
 
 					global.option_description = confirm_restore_capture
 						? l10n_text("Confirm whether to restore the original pre-capture settings")
-						: l10n_text("Confirm whether to apply this temporary Capture Mode preset");
+						: l10n_text("Choose whether to enable the selected Capture Mode");
 					menu_cursor_y_position = (menu == capture_confirm_apply_id)
 						? capture_confirm_apply_y
 						: capture_confirm_cancel_y;
