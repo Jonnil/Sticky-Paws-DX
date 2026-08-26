@@ -784,6 +784,7 @@ function scr_option_menu()
 			&& (string_pos("capture_mode_", string(menu)) == 1)
 			&& (menu != "capture_mode_menu");
 		var capture_mode_confirmation_active = string_pos("capture_mode_confirm_", string(menu)) == 1;
+		var capture_mode_tutorial_details_active = string_pos("capture_mode_tutorial_details_", string(menu)) == 1;
 		var debug_submenu_active = debug_text_submenu_active
 			|| level_load_diagnostics_submenu_active
 			|| capture_mode_submenu_active;
@@ -814,7 +815,7 @@ function scr_option_menu()
 				{
 					menu = capture_mode_confirmation_active
 						? "capture_mode_back"
-						: "capture_mode_menu";
+						: (capture_mode_tutorial_details_active ? "capture_mode_tutorial_signs" : "capture_mode_menu");
 				}
 				menu_y_offset = 0;
 				menu_y_offset_real = 0;
@@ -2356,8 +2357,15 @@ function scr_option_menu()
 					l10n_text("Displays rank information based on performance"));
 			}
 
-			global.show_tutorial_signs = draw_menu_checkmark(380, show_tutorial_signs_y, l10n_text("Show Tutorial Signs"), "show_tutorial_signs", global.show_tutorial_signs, true,
-				l10n_text("Shows tutorial signs with helpful gameplay tips"));
+			var capture_mode_controls_tutorial_signs = scr_capture_mode_is_active();
+			var tutorial_signs_option_label = capture_mode_controls_tutorial_signs
+				? l10n_text("Show Tutorial Signs (Capture Mode)")
+				: l10n_text("Show Tutorial Signs");
+			var tutorial_signs_option_description = capture_mode_controls_tutorial_signs
+				? l10n_text("Controlled by Capture Mode. Change this under Debug > Capture Mode.")
+				: l10n_text("Shows tutorial signs with helpful gameplay tips");
+			global.show_tutorial_signs = draw_menu_checkmark(380, show_tutorial_signs_y, tutorial_signs_option_label, "show_tutorial_signs", global.show_tutorial_signs, capture_mode_controls_tutorial_signs ? -1 : true,
+				tutorial_signs_option_description, true, capture_mode_controls_tutorial_signs);
 
 			global.players_can_collide = draw_menu_checkmark(380, players_can_collide_y, l10n_text("Players Can Collide"), "players_can_collide", global.players_can_collide, false,
 				l10n_text("Allows players to collide with each other in multiplayer mode"));
@@ -2448,6 +2456,7 @@ function scr_option_menu()
 			var capture_mode_menu_active = (string_pos("capture_mode_", string(menu)) == 1)
 				&& (menu != "capture_mode_menu");
 			var capture_mode_confirmation_menu_active = string_pos("capture_mode_confirm_", string(menu)) == 1;
+			var capture_mode_tutorial_details_menu_active = string_pos("capture_mode_tutorial_details_", string(menu)) == 1;
 			var debug_settings_submenu_active = debug_text_menu_active
 				|| level_load_diagnostics_menu_active
 				|| capture_mode_menu_active;
@@ -2613,12 +2622,98 @@ function scr_option_menu()
 			{
 				var capture_title_x = 370 + ((get_window_width - 370) * 0.5);
 				var capture_button_x = capture_title_x - 185;
-				var capture_back_y = 84;
-				var capture_pc_y = 320;
+				var capture_main_compact = get_window_height < 680;
+				var capture_back_y = capture_main_compact ? 68 : 84;
+				var capture_pc_y = capture_main_compact ? 272 : 344;
+				var capture_button_spacing = capture_main_compact ? 48 : 56;
 				var capture_pc_available = global.enable_option_for_pc;
-				var capture_switch_y = capture_pc_available ? 376 : 320;
-				var capture_restore_y = capture_switch_y + 56;
+				var capture_switch_y = capture_pc_available ? capture_pc_y + capture_button_spacing : capture_pc_y;
+				var capture_tutorial_signs_y = capture_switch_y + capture_button_spacing;
+				var capture_restore_y = capture_tutorial_signs_y + capture_button_spacing;
 
+				if (capture_mode_tutorial_details_menu_active)
+				{
+					var capture_details_title_y = capture_main_compact ? 34 : 42;
+					var capture_details_text_top = capture_main_compact ? 116 : 142;
+					var capture_details_toggle_y = min(get_window_height - (capture_main_compact ? 68 : 88), capture_main_compact ? 508 : 600);
+					var capture_details_text_x = 402;
+					var capture_details_text_right = max(capture_details_text_x + 1, get_window_width - 32);
+					var capture_details_wrap_width = max(1, capture_details_text_right - capture_details_text_x);
+					var capture_details_text_scale = global.default_text_size * clamp((get_window_width - 430) / 850, 0.38, capture_main_compact ? 0.62 : 0.76);
+					var capture_details_min_text_scale = global.default_text_size * 0.3;
+					var capture_details_body_text = l10n_text("By default, Capture Mode hides tutorial signs so the characters, scenery, and action are easier to see in trailer footage.")
+						+ "\n\n"
+						+ l10n_text("Some scenery overlaps the signs. In a few places, hiding a sign can make the scene look incomplete.")
+						+ "\n\n"
+						+ l10n_text("This is only visual and does not affect gameplay. Review those moments and leave them out when choosing clips.")
+						+ "\n\n"
+						+ l10n_text("If a shot looks better with its tutorial sign, choose Shown below. This choice is temporary.");
+					var capture_details_body_metrics = undefined;
+					var capture_details_available_height = max(1, capture_details_toggle_y - 34 - capture_details_text_top);
+
+					for (var capture_details_fit_attempt = 0; capture_details_fit_attempt < 20; capture_details_fit_attempt++)
+					{
+						capture_details_body_metrics = scr_get_wrapped_text_metrics(capture_details_body_text, capture_details_wrap_width, 0, capture_details_text_scale);
+						if (capture_details_body_metrics.text_height <= capture_details_available_height
+						|| capture_details_text_scale <= capture_details_min_text_scale)
+						{
+							break;
+						}
+
+						capture_details_text_scale = max(capture_details_min_text_scale, capture_details_text_scale * 0.9);
+					}
+
+					capture_details_body_metrics = scr_get_wrapped_text_metrics(capture_details_body_text, capture_details_wrap_width, 0, capture_details_text_scale);
+					scr_draw_settings_overlay_title(capture_title_x, capture_details_title_y, l10n_text("Tutorial Signs in Capture Mode"), min(get_window_width - 430, 760));
+
+					var close_capture_tutorial_details = draw_menu_button(capture_button_x, capture_back_y, l10n_text("Back to Capture Mode"), "capture_mode_tutorial_details_back", "");
+					if (close_capture_tutorial_details)
+					&& (menu_delay == 0 && menu_joystick_delay == 0)
+					{
+						menu = "capture_mode_tutorial_signs";
+						menu_y_offset = 0;
+						menu_y_offset_real = 0;
+						menu_delay = 3;
+					}
+
+					draw_set_halign(fa_left);
+					draw_set_valign(fa_middle);
+					for (var capture_details_line_index = 0; capture_details_line_index < capture_details_body_metrics.line_count; capture_details_line_index++)
+					{
+						var capture_details_line_y = capture_details_text_top
+							+ (capture_details_body_metrics.line_box_height * 0.5)
+							+ (capture_details_line_index * (capture_details_body_metrics.line_box_height + capture_details_body_metrics.line_gap));
+						scr_draw_text_outlined(capture_details_text_x, capture_details_line_y, capture_details_body_metrics.lines[capture_details_line_index], capture_details_text_scale, c_black, c_white, 1);
+					}
+
+					var capture_tutorial_signs_visible = scr_capture_mode_get_tutorial_signs_visible();
+					var capture_tutorial_toggle_label = capture_tutorial_signs_visible
+						? l10n_text("Tutorial Signs: Shown")
+						: l10n_text("Tutorial Signs: Hidden (Recommended)");
+					var toggle_capture_tutorial_signs = draw_menu_button(capture_button_x, capture_details_toggle_y, capture_tutorial_toggle_label, "capture_mode_tutorial_details_toggle", "", capture_tutorial_signs_visible ? c_yellow : c_lime);
+
+					if (toggle_capture_tutorial_signs)
+					&& (menu_delay == 0 && menu_joystick_delay == 0)
+					{
+						scr_capture_mode_set_tutorial_signs_visible(!capture_tutorial_signs_visible);
+						menu = "capture_mode_tutorial_details_toggle";
+						menu_delay = 3;
+					}
+
+					if (menu == "capture_mode_tutorial_details_back")
+					{
+						global.option_description = l10n_text("Returns to the Capture Mode menu");
+						menu_cursor_y_position = capture_back_y;
+					}
+					else
+					{
+						global.option_description = l10n_text("Changes whether tutorial signs are hidden or shown during Capture Mode");
+						menu_cursor_y_position = capture_details_toggle_y;
+					}
+
+					menu_cursor_y_position_end = capture_details_toggle_y + 64;
+				}
+				else
 				if (!capture_mode_confirmation_menu_active)
 				{
 					scr_draw_settings_overlay_title(capture_title_x, 42, l10n_text("Capture Mode"), min(get_window_width - 430, 620));
@@ -2636,11 +2731,26 @@ function scr_option_menu()
 					draw_set_halign(fa_center);
 					draw_set_valign(fa_middle);
 					var capture_status_color = scr_capture_mode_is_active() ? c_lime : c_ltgray;
-					scr_draw_text_outlined(capture_title_x, 162, l10n_text("Current Mode") + ": " + scr_capture_mode_get_name(), global.default_text_size, c_black, capture_status_color, 1);
+					var capture_status_y = capture_main_compact ? 126 : 154;
+					var capture_transition_active = variable_global_exists("capture_mode_window_transition")
+						&& is_struct(global.capture_mode_window_transition);
+					var capture_status_suffix = capture_transition_active
+						? (scr_capture_mode_is_active() ? l10n_text("Applying...") : l10n_text("Restoring..."))
+						: (scr_capture_mode_is_active() ? l10n_text("Ready") : "");
+					var capture_status_text = l10n_text("Current Mode") + ": " + scr_capture_mode_get_name();
+					if (capture_status_suffix != "")
+					{
+						capture_status_text += " (" + capture_status_suffix + ")";
+					}
+					var capture_status_scale = global.default_text_size * clamp((get_window_width - 430) / 680, 0.5, 1);
+					scr_draw_text_outlined(capture_title_x, capture_status_y, capture_status_text, capture_status_scale, c_black, capture_status_color, 1);
 					var capture_intro_scale = global.default_text_size * clamp((get_window_width - 430) / 750, 0.45, 0.78);
-					scr_draw_text_outlined(capture_title_x, 208, l10n_text("Temporarily prepares the game for clean screenshots and trailer footage."), capture_intro_scale, c_black, c_white, 1);
-					scr_draw_text_outlined(capture_title_x, 238, l10n_text("Select a preset to review every change before it is applied."), capture_intro_scale, c_black, c_white, 1);
-					scr_draw_text_outlined(capture_title_x, 268, l10n_text("Your original settings return when Capture Mode is turned off."), capture_intro_scale, c_black, c_white, 1);
+					var capture_intro_y = capture_main_compact ? 176 : 212;
+					var capture_intro_spacing = capture_main_compact ? 22 : 28;
+					scr_draw_text_outlined(capture_title_x, capture_intro_y, l10n_text("Temporarily prepares the game for clean screenshots and trailer footage."), capture_intro_scale, c_black, c_white, 1);
+					scr_draw_text_outlined(capture_title_x, capture_intro_y + capture_intro_spacing, l10n_text("Select a preset to review the main changes before it is applied."), capture_intro_scale, c_black, c_white, 1);
+					scr_draw_text_outlined(capture_title_x, capture_intro_y + (capture_intro_spacing * 2), l10n_text("Your original settings return when Capture Mode is turned off."), capture_intro_scale, c_black, c_white, 1);
+					scr_draw_text_outlined(capture_title_x, capture_intro_y + (capture_intro_spacing * 3), l10n_text("Capture Mode turns off when the game closes. Enable it again after restarting."), capture_intro_scale, c_black, c_white, 1);
 
 					var review_pc_capture_mode = false;
 					if (capture_pc_available)
@@ -2648,6 +2758,11 @@ function scr_option_menu()
 						review_pc_capture_mode = draw_menu_button(capture_button_x, capture_pc_y, l10n_text("PC Capture (1080p)"), "capture_mode_pc", "", c_aqua);
 					}
 					var review_switch_capture_mode = draw_menu_button(capture_button_x, capture_switch_y, l10n_text("Switch Handheld Capture (720p)"), "capture_mode_switch", "", c_red);
+					var capture_tutorial_signs_visible = scr_capture_mode_get_tutorial_signs_visible();
+					var capture_tutorial_signs_label = capture_tutorial_signs_visible
+						? l10n_text("Tutorial Signs: Shown")
+						: l10n_text("Tutorial Signs: Hidden for cleaner footage");
+					var review_capture_tutorial_signs = draw_menu_button(capture_button_x, capture_tutorial_signs_y, capture_tutorial_signs_label, "capture_mode_tutorial_signs", "", capture_tutorial_signs_visible ? c_yellow : c_lime);
 
 					if (review_pc_capture_mode)
 					&& (menu_delay == 0 && menu_joystick_delay == 0)
@@ -2660,6 +2775,13 @@ function scr_option_menu()
 					&& (menu_delay == 0 && menu_joystick_delay == 0)
 					{
 						menu = "capture_mode_confirm_switch_cancel";
+						menu_delay = 3;
+					}
+
+					if (review_capture_tutorial_signs)
+					&& (menu_delay == 0 && menu_joystick_delay == 0)
+					{
+						menu = "capture_mode_tutorial_details_back";
 						menu_delay = 3;
 					}
 
@@ -2677,10 +2799,10 @@ function scr_option_menu()
 
 					draw_set_halign(fa_center);
 					draw_set_valign(fa_middle);
-					if (global.enable_option_for_pc)
+					if (global.enable_option_for_pc && get_window_height >= 560)
 					{
-						scr_draw_text_outlined(capture_title_x, scr_capture_mode_is_active() ? capture_restore_y + 78 : capture_switch_y + 82, l10n_text("F2 saves a clean screenshot without menus."), global.default_text_size * 0.72, c_black, c_ltgray, 1);
-						scr_draw_text_outlined(capture_title_x, scr_capture_mode_is_active() ? capture_restore_y + 106 : capture_switch_y + 110, l10n_text("Shift + F2 saves the complete window, including menus."), global.default_text_size * 0.72, c_black, c_ltgray, 1);
+						scr_draw_text_outlined(capture_title_x, scr_capture_mode_is_active() ? capture_restore_y + 78 : capture_tutorial_signs_y + 82, l10n_text("F2 saves a clean screenshot without menus."), global.default_text_size * 0.72, c_black, c_ltgray, 1);
+						scr_draw_text_outlined(capture_title_x, scr_capture_mode_is_active() ? capture_restore_y + 106 : capture_tutorial_signs_y + 110, l10n_text("Shift + F2 saves the complete window, including menus."), global.default_text_size * 0.72, c_black, c_ltgray, 1);
 					}
 
 					if (menu == "capture_mode_back")
@@ -2703,6 +2825,12 @@ function scr_option_menu()
 						menu_cursor_y_position = capture_switch_y;
 					}
 					else
+					if (menu == "capture_mode_tutorial_signs")
+					{
+						global.option_description = l10n_text("Opens an explanation of tutorial signs and their Capture Mode setting");
+						menu_cursor_y_position = capture_tutorial_signs_y;
+					}
+					else
 					if (menu == "capture_mode_restore")
 					{
 						global.option_description = l10n_text("Reviews the original settings that will be restored");
@@ -2711,7 +2839,7 @@ function scr_option_menu()
 
 					menu_cursor_y_position_end = scr_capture_mode_is_active()
 						? capture_restore_y + 64
-						: capture_switch_y + 64;
+						: capture_tutorial_signs_y + 64;
 				}
 				else
 				{
@@ -2728,6 +2856,9 @@ function scr_option_menu()
 						? l10n_text("Enable PC Capture Mode?")
 						: (confirm_switch_capture ? l10n_text("Enable Switch Handheld Capture Mode?") : l10n_text("Turn Off Capture Mode?"));
 					var capture_confirm_color = confirm_pc_capture ? c_aqua : (confirm_switch_capture ? c_red : c_yellow);
+					var capture_tutorial_confirmation_line = scr_capture_mode_get_tutorial_signs_visible()
+						? l10n_text("Tutorial signs and their button instructions remain visible.")
+						: l10n_text("Tutorial signs and their button instructions are hidden for cleaner footage.");
 					var capture_confirm_lines = [];
 
 					if (confirm_pc_capture)
@@ -2736,7 +2867,7 @@ function scr_option_menu()
 							l10n_text("The game changes to a 1920 x 1080 window for recording PC footage."),
 							l10n_text("Menus and on-screen text are automatically sized for this resolution."),
 							l10n_text("Timers, counters, player labels, new item messages, and other gameplay displays are hidden."),
-							l10n_text("Tutorial signs and button instructions are hidden."),
+							capture_tutorial_confirmation_line,
 							l10n_text("Arrows showing routes, objectives, exits, or off-screen players are hidden."),
 							l10n_text("The Debug Screen, collision outlines, and other visuals used for testing are hidden."),
 							l10n_text("Music and short musical jingles are muted. Every other sound keeps its current volume."),
@@ -2753,7 +2884,7 @@ function scr_option_menu()
 								: l10n_text("The game follows the Nintendo Switch display mode. Handheld mode uses 1280 x 720."),
 							l10n_text("Menus and on-screen text are automatically sized for this resolution."),
 							l10n_text("Timers, counters, player labels, new item messages, and other gameplay displays are hidden."),
-							l10n_text("Tutorial signs and button instructions are hidden."),
+							capture_tutorial_confirmation_line,
 							l10n_text("Arrows showing routes, objectives, exits, or off-screen players are hidden."),
 							l10n_text("The Debug Screen, collision outlines, and other visuals used for testing are hidden."),
 							l10n_text("Music and short musical jingles are muted. Every other sound keeps its current volume."),
@@ -2898,23 +3029,31 @@ function scr_option_menu()
 					if (apply_capture_confirmation)
 					&& (menu_delay == 0 && menu_joystick_delay == 0)
 					{
+						var capture_mode_change_succeeded = false;
 						if (confirm_pc_capture)
 						{
-							scr_capture_mode_apply(CAPTURE_MODE_PRESET.PC);
+							capture_mode_change_succeeded = scr_capture_mode_apply(CAPTURE_MODE_PRESET.PC);
 						}
 						else
 						if (confirm_switch_capture)
 						{
-							scr_capture_mode_apply(CAPTURE_MODE_PRESET.SWITCH_HANDHELD);
+							capture_mode_change_succeeded = scr_capture_mode_apply(CAPTURE_MODE_PRESET.SWITCH_HANDHELD);
 						}
 						else
 						{
-							scr_capture_mode_restore();
+							capture_mode_change_succeeded = scr_capture_mode_restore();
 						}
 
-						menu = "capture_mode_back";
-						menu_y_offset = 0;
-						menu_y_offset_real = 0;
+						if (capture_mode_change_succeeded)
+						{
+							menu = "capture_mode_back";
+							menu_y_offset = 0;
+							menu_y_offset_real = 0;
+						}
+						else
+						{
+							scr_debug_show_toast("Please wait for the current window change to finish");
+						}
 						menu_delay = 3;
 					}
 
@@ -4560,6 +4699,19 @@ function scr_option_menu()
 				}
 			}
 			else
+			if (string_pos("capture_mode_tutorial_details_", string(menu)) == 1)
+			{
+				if ((key_up || key_down || key_left || key_right)
+				&& (!open_dropdown)
+				&& (menu_delay == 0 && menu_joystick_delay == 0))
+				{
+					menu_delay = 3;
+					menu = (menu == "capture_mode_tutorial_details_back")
+						? "capture_mode_tutorial_details_toggle"
+						: "capture_mode_tutorial_details_back";
+				}
+			}
+			else
 			if (string_pos("capture_mode_", string(menu)) == 1)
 			&& (menu != "capture_mode_menu")
 			{
@@ -4571,6 +4723,7 @@ function scr_option_menu()
 				}
 
 				array_push(capture_mode_navigation, "capture_mode_switch");
+				array_push(capture_mode_navigation, "capture_mode_tutorial_signs");
 
 				if (scr_capture_mode_is_active())
 				{

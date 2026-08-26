@@ -1,4 +1,4 @@
-function draw_menu_checkmark(x_position, y_position, string_text, menu_index, variable_to_check, option_default = -1, option_description = "", can_move_cursor_position = true)
+function draw_menu_checkmark(x_position, y_position, string_text, menu_index, variable_to_check, option_default = -1, option_description = "", can_move_cursor_position = true, option_locked = false)
 {
 	var mouse_get_x = device_mouse_x_to_gui(0);
 	var mouse_get_y = device_mouse_y_to_gui(0);
@@ -25,6 +25,9 @@ function draw_menu_checkmark(x_position, y_position, string_text, menu_index, va
 		draw_set_alpha(1);
 	}
 
+	var checkmark_color = option_locked ? c_gray : c_white;
+	var checkmark_hover_color = option_locked ? c_gray : c_lime;
+
 	if (!variable_to_check)
 	{
 		if (point_in_rectangle(mouse_get_x, mouse_get_y, x_position, y_position - widen_button_offset, x_position + width_of_button, y_position + 32 + widen_button_offset))
@@ -33,13 +36,13 @@ function draw_menu_checkmark(x_position, y_position, string_text, menu_index, va
 		&& (!open_dropdown)
 		&& (!input_blocked)
 		{
-			draw_sprite_ext(spr_menu_checkmark, 0, x_position + 42, y_position, 1, 1, 0, c_lime, 1);
+			draw_sprite_ext(spr_menu_checkmark, 0, x_position + 42, y_position, 1, 1, 0, checkmark_hover_color, 1);
 			menu = menu_index;
 			can_navigate_settings_sidebar = false;
 		}
 		else
 		{
-			draw_sprite_ext(spr_menu_checkmark, 0, x_position + 42, y_position, 1, 1, 0, c_white, 1);
+			draw_sprite_ext(spr_menu_checkmark, 0, x_position + 42, y_position, 1, 1, 0, checkmark_color, 1);
 		}
 	}
 	else
@@ -50,7 +53,7 @@ function draw_menu_checkmark(x_position, y_position, string_text, menu_index, va
 		&& (!open_dropdown)
 		&& (!input_blocked)
 		{
-			draw_sprite_ext(spr_menu_checkmark, 1, x_position + 42, y_position, 1, 1, 0, c_lime, 1);
+			draw_sprite_ext(spr_menu_checkmark, 1, x_position + 42, y_position, 1, 1, 0, checkmark_hover_color, 1);
 			if (!input_key)
 			&& (!open_dropdown)
 			{
@@ -60,7 +63,7 @@ function draw_menu_checkmark(x_position, y_position, string_text, menu_index, va
 		}
 		else
 		{
-			draw_sprite_ext(spr_menu_checkmark, 1, x_position + 42, y_position, 1, 1, 0, c_white, 1);
+			draw_sprite_ext(spr_menu_checkmark, 1, x_position + 42, y_position, 1, 1, 0, checkmark_color, 1);
 		}
 	}
 
@@ -87,19 +90,20 @@ function draw_menu_checkmark(x_position, y_position, string_text, menu_index, va
 	#endregion /* Show a menu cursor when the option is highlighted END */
 
 	#region /* Clicking the menu button */
-	if (point_in_rectangle(mouse_get_x, mouse_get_y, x_position, y_position - widen_button_offset, x_position + width_of_button, y_position + 32 + widen_button_offset))
+	if (!option_locked)
+	&& ((point_in_rectangle(mouse_get_x, mouse_get_y, x_position, y_position - widen_button_offset, x_position + width_of_button, y_position + 32 + widen_button_offset)
 	&& (mouse_check_button_released(mb_left))
 	&& (global.controls_used_for_navigation == "mouse")
 	&& (!input_key)
 	&& (!open_dropdown)
 	&& (menu_delay == 0 && menu_joystick_delay == 0)
-	&& (!input_blocked)
+	&& (!input_blocked))
 	|| (key_accept_pressed)
 	&& (menu == menu_index)
 	&& (!input_key)
 	&& (!open_dropdown)
 	&& (menu_delay == 0 && menu_joystick_delay == 0)
-	&& (!input_blocked)
+	&& (!input_blocked))
 	{
 		if (variable_to_check)
 		{
@@ -117,7 +121,7 @@ function draw_menu_checkmark(x_position, y_position, string_text, menu_index, va
 	#region /* Text inside the menu button */
 	draw_set_halign(fa_left);
 	draw_set_valign(fa_middle);
-	scr_draw_text_outlined(x_position + 82, y_position + 16, string(string_text), global.default_text_size, c_menu_outline, c_menu_fill, 1);
+	scr_draw_text_outlined(x_position + 82, y_position + 16, string(string_text), global.default_text_size, c_menu_outline, option_locked ? c_gray : c_menu_fill, 1);
 	#endregion /* Text inside the menu button END */
 
 	#endregion /* Checkmark END */

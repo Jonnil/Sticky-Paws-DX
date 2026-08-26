@@ -55,6 +55,13 @@ function scr_capture_mode_initialize()
 		global.capture_mode_snapshot = undefined;
 	}
 
+	if (!variable_global_exists("capture_mode_tutorial_signs_visible"))
+	{
+		/* Session-only pending/live preference. Each game session and each restored
+		   Capture Mode session starts with the recommended Hidden value. */
+		global.capture_mode_tutorial_signs_visible = false;
+	}
+
 	if (!variable_global_exists("capture_mode_audio_refresh_pending"))
 	{
 		global.capture_mode_audio_refresh_pending = false;
@@ -78,6 +85,30 @@ function scr_capture_mode_is_active()
 	scr_capture_mode_initialize();
 	return global.capture_mode != CAPTURE_MODE_PRESET.OFF
 		&& is_struct(global.capture_mode_snapshot);
+}
+
+/// @function scr_capture_mode_get_tutorial_signs_visible()
+/* Returns the pending preference while Capture Mode is off and its live override while active. */
+function scr_capture_mode_get_tutorial_signs_visible()
+{
+	scr_capture_mode_initialize();
+	return global.capture_mode_tutorial_signs_visible;
+}
+
+/// @function scr_capture_mode_set_tutorial_signs_visible(tutorial_signs_visible)
+/* Updates the session-only Capture preference. While inactive, this deliberately
+   leaves the player's normal tutorial-sign setting untouched. */
+function scr_capture_mode_set_tutorial_signs_visible(tutorial_signs_visible)
+{
+	scr_capture_mode_initialize();
+	global.capture_mode_tutorial_signs_visible = (tutorial_signs_visible != 0);
+
+	if (scr_capture_mode_is_active())
+	{
+		global.show_tutorial_signs = global.capture_mode_tutorial_signs_visible;
+	}
+
+	return global.capture_mode_tutorial_signs_visible;
 }
 
 /// @function scr_capture_mode_owns_window()
@@ -456,7 +487,7 @@ function scr_capture_mode_apply_overrides(capture_mode, resize_output_window = f
 	global.automatically_pause_when_window_is_unfocused = false;
 	global.show_timer = false;
 	global.show_defeats_counter = false;
-	global.show_tutorial_signs = false;
+	global.show_tutorial_signs = scr_capture_mode_get_tutorial_signs_visible();
 	global.show_new_items_notification = false;
 	global.hud_hide_time = 0;
 	global.assist_guiding_arrows = false;
@@ -559,10 +590,11 @@ function scr_capture_mode_maintain()
 
 	var use_switch_prompts = global.capture_mode == CAPTURE_MODE_PRESET.SWITCH_HANDHELD;
 	var target_resolution = use_switch_prompts ? 3 : 1;
+	var tutorial_signs_visible = scr_capture_mode_get_tutorial_signs_visible();
 	var preset_changed = global.automatically_pause_when_window_is_unfocused
 		|| global.show_timer
 		|| global.show_defeats_counter
-		|| global.show_tutorial_signs
+		|| global.show_tutorial_signs != tutorial_signs_visible
 		|| global.show_new_items_notification
 		|| global.hud_hide_time != 0
 		|| global.assist_guiding_arrows
@@ -623,6 +655,7 @@ function scr_capture_mode_restore()
 	{
 		global.capture_mode = CAPTURE_MODE_PRESET.OFF;
 		global.capture_mode_snapshot = undefined;
+		global.capture_mode_tutorial_signs_visible = false;
 		return false;
 	}
 
@@ -706,6 +739,7 @@ function scr_capture_mode_restore()
 	   restore writes the original mode rather than the temporary windowed mode. */
 	scr_config_save();
 	global.capture_mode = CAPTURE_MODE_PRESET.OFF;
+	global.capture_mode_tutorial_signs_visible = false;
 	scr_capture_mode_refresh_music_gain();
 	global.capture_mode_snapshot = undefined;
 	return true;

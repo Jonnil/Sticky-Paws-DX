@@ -286,10 +286,20 @@ global.debug_visibility_config_section = "debug_screen_text"; /* Dedicated confi
 global.debug_visibility_registry = {}; /* Registry definitions for curated debug items such as FPS. */
 global.debug_visibility_modes = {}; /* Persisted OFF / IN_OVERLAY / ALWAYS state keyed by debug item id. */
 global.debug_menu_unlocked = false; /* Hidden debug options are session-only on release builds and are unlocked through a cheat code */
+for (var launch_parameter_index = 1; launch_parameter_index <= parameter_count(); launch_parameter_index++)
+{
+	if (string_lower(parameter_string(launch_parameter_index)) == "--capture-tools")
+	{
+		global.debug_menu_unlocked = true;
+		show_debug_message("[Capture Mode] Capture tools unlocked for this session by launch parameter.");
+		break;
+	}
+}
 global.debug_menu_auto_unlock_runner = false; /* Development convenience toggle for auto-unlocking the hidden Debug tab in GameMaker Runner only */
 global.debug_unlock_all_level_editor_objects = false; /* Session-only override for exposing every placeable level editor object through the hidden Debug tab */
 global.capture_mode = CAPTURE_MODE_PRESET.OFF; /* Session-only trailer/screenshot preset; never persist temporary overrides */
 global.capture_mode_snapshot = undefined; /* Exact pre-capture settings restored when Capture Mode is turned off */
+global.capture_mode_tutorial_signs_visible = false; /* Pending/live Capture Mode preference; resets to recommended Hidden on restart */
 global.capture_mode_audio_refresh_pending = false; /* Reconcile persistent gameplay audio after returning from the pause room */
 global.capture_mode_audio_resume_pending = false; /* Avoid one frame of stale audio gain when Capture Mode changes while paused */
 global.capture_mode_window_transition = undefined; /* One-shot staged fullscreen/resize/position work */
