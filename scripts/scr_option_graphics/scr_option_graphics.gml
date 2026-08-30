@@ -1,6 +1,13 @@
 function scr_option_graphics()
 {
 	var mouse_get_x = device_mouse_x_to_gui(0);
+	/* Capture Mode is opened from Video in shipped builds, but its custom pages
+	   are drawn by scr_option_menu. Do not draw or process Video controls behind them. */
+	if (global.settings_sidebar_menu == "video_settings")
+	&& (string_pos("capture_mode_", string(menu)) == 1)
+	{
+		return;
+	}
 
 	if (global.settings_sidebar_menu == "video_settings")
 	&& (menu != "advanced_video_option_back")
@@ -33,11 +40,15 @@ function scr_option_graphics()
 		var background_brightness_menu_y = background_brightness_gameplay_y + 68;
 		var fullscreen_mode_y = -999;
 		var advanced_video_option_y = background_brightness_menu_y + 48;
+		var capture_mode_menu_y = advanced_video_option_y + 48;
+		var public_capture_mode_available = os_type != os_switch;
+		var capture_mode_button_width = clamp(get_window_width - 464, 370, 560);
 		
 		if (global.enable_option_for_pc)
 		{
 			fullscreen_mode_y = background_brightness_menu_y + 48;
 			advanced_video_option_y = fullscreen_mode_y + 48;
+			capture_mode_menu_y = advanced_video_option_y + 48;
 		}
 
 		#region /* Background Brightness Bars */
@@ -62,6 +73,32 @@ function scr_option_graphics()
 		#endregion /* Fullscreen toggle END */
 
 		draw_menu_button(420, advanced_video_option_y, l10n_text("Advanced Video Options"), "advanced_video_options", "advanced_video_option_back");
+		var open_capture_mode_menu = false;
+		if (public_capture_mode_available)
+		{
+			var capture_mode_label = l10n_text("Capture Mode") + ": " + scr_capture_mode_get_name();
+			open_capture_mode_menu = draw_menu_button(420, capture_mode_menu_y, capture_mode_label, "video_capture_mode_menu", "", c_lime, 1, capture_mode_button_width);
+
+			if (menu == "video_capture_mode_menu")
+			{
+				global.option_default = -1;
+				global.option_description = l10n_text("Opens options that prepare the game for recording gameplay footage");
+				menu_cursor_y_position = capture_mode_menu_y;
+			}
+		}
+
+		if (open_capture_mode_menu)
+		&& (menu_delay == 0 && menu_joystick_delay == 0)
+		{
+			menu = "capture_mode_back";
+			menu_y_offset = 0;
+			menu_y_offset_real = 0;
+			menu_delay = 3;
+		}
+
+		menu_cursor_y_position_end = public_capture_mode_available
+			? capture_mode_menu_y + 64
+			: advanced_video_option_y + 64;
 
 		draw_menu_dropdown(400, gui_scale_modifier_y, l10n_text("GUI Scale Modifier"), "gui_scale_modifier", global.gui_scale_modifier, l10n_text("Auto"), "5", "4", "3", "2", "1", "-1", "-2", "-3", "-4", "-5");
 		scr_set_default_dropdown_description("gui_scale_modifier", "Auto");
@@ -123,7 +160,9 @@ function scr_option_graphics()
 			&& (menu_delay == 0 && menu_joystick_delay == 0)
 			&& (!open_dropdown)
 			{
-				menu = "advanced_video_options";
+				menu = public_capture_mode_available
+					? "video_capture_mode_menu"
+					: "advanced_video_options";
 				menu_delay = 3;
 			}
 			else
@@ -171,7 +210,9 @@ function scr_option_graphics()
 				}
 				else
 				{
-					menu = "advanced_video_options";
+					menu = public_capture_mode_available
+						? "video_capture_mode_menu"
+						: "advanced_video_options";
 				}
 				menu_delay = 3;
 			}
@@ -347,18 +388,36 @@ function scr_option_graphics()
 			if (key_down)
 			&& (menu_delay == 0 && menu_joystick_delay == 0)
 			{
-				if (!window_get_fullscreen())
-				{
-					menu = "resolution_setting";
-				}
-				else
-				{
-					menu = "gui_scale_modifier";
-				}
+				menu = public_capture_mode_available
+					? "video_capture_mode_menu"
+					: (window_get_fullscreen() ? "gui_scale_modifier" : "resolution_setting");
 				menu_delay = 3;
 			}
 		}
 		#endregion /* Navigate Advanced Video Options END */
+
+		else
+
+		#region /* Navigate Capture Mode */
+		if (menu == "video_capture_mode_menu")
+		&& public_capture_mode_available
+		&& (!open_dropdown)
+		{
+			if (key_up)
+			&& (menu_delay == 0 && menu_joystick_delay == 0)
+			{
+				menu = "advanced_video_options";
+				menu_delay = 3;
+			}
+			else
+			if (key_down)
+			&& (menu_delay == 0 && menu_joystick_delay == 0)
+			{
+				menu = window_get_fullscreen() ? "gui_scale_modifier" : "resolution_setting";
+				menu_delay = 3;
+			}
+		}
+		#endregion /* Navigate Capture Mode END */
 
 		#endregion /* Navigate END */
 

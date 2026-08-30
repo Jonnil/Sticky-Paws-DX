@@ -97,7 +97,9 @@ function scr_capture_mode_get_tutorial_signs_visible()
 
 /// @function scr_capture_mode_set_tutorial_signs_visible(tutorial_signs_visible)
 /* Updates the session-only Capture preference. While inactive, this deliberately
-   leaves the player's normal tutorial-sign setting untouched. */
+   leaves the player's normal tutorial-sign setting untouched. The Capture page
+   and ordinary Game Options both use this setter while Capture Mode is active.
+   Future settings duplicated across those menus should follow the same pattern. */
 function scr_capture_mode_set_tutorial_signs_visible(tutorial_signs_visible)
 {
 	scr_capture_mode_initialize();
@@ -134,10 +136,10 @@ function scr_capture_mode_get_name(capture_mode = -1)
 	switch (capture_mode)
 	{
 		case CAPTURE_MODE_PRESET.PC:
-			return l10n_text("PC (1080p)");
+			return l10n_text("Desktop (1080p)");
 
 		case CAPTURE_MODE_PRESET.SWITCH_HANDHELD:
-			return l10n_text("Switch Handheld (720p)");
+			return l10n_text("Handheld (720p)");
 	}
 
 	return l10n_text("Off");

@@ -1,10 +1,11 @@
-function draw_menu_button(x_position, y_position, string_text, menu_index, menu_takes_you_to = "", highlight_color = c_lime, alpha = 1)
+function draw_menu_button(x_position, y_position, string_text, menu_index, menu_takes_you_to = "", highlight_color = c_lime, alpha = 1, button_width = 370)
 {
 	var mouse_get_x = device_mouse_x_to_gui(0);
 	var mouse_get_y = device_mouse_y_to_gui(0);
 	var actual_highlight_color, outline_color, fill_color;
+	button_width = max(64, button_width);
 
-	var point_in_button = point_in_rectangle(mouse_get_x, mouse_get_y, x_position, y_position + 1, x_position + 370, y_position + 41);
+	var point_in_button = point_in_rectangle(mouse_get_x, mouse_get_y, x_position, y_position + 1, x_position + button_width, y_position + 41);
 	var using_mouse = (global.controls_used_for_navigation == "mouse");
 	var is_same_menu = (menu == menu_index);
 	var input_blocked = scr_block_menu_input_for_network_request();
@@ -38,7 +39,7 @@ function draw_menu_button(x_position, y_position, string_text, menu_index, menu_
 		outline_color = c_black;
 		fill_color = c_white;
 		draw_sprite_ext(spr_menu_cursor, menu_cursor_index, x_position - 24, y_position + 20, 1, 1, 0, c_white, alpha);
-		draw_sprite_ext(spr_menu_cursor, menu_cursor_index, x_position + 394, y_position + 20, 1, 1, 180, c_white, alpha);
+		draw_sprite_ext(spr_menu_cursor, menu_cursor_index, x_position + button_width + 24, y_position + 20, 1, 1, 180, c_white, alpha);
 	}
 	else
 	{
@@ -47,18 +48,21 @@ function draw_menu_button(x_position, y_position, string_text, menu_index, menu_
 		fill_color = c_black;
 	}
 
-	var text_scale = (string_width(string_text) >= 360) ? 0.7 : 1;
+	var button_text_width = max(1, button_width - 24);
+	var unscaled_text_width = max(1, string_width(string(string_text)) * global.default_text_size);
+	var text_scale = min(1, button_text_width / unscaled_text_width);
+	var button_xscale = button_width / sprite_get_width(spr_menu_button);
 
-	draw_sprite_ext(spr_menu_button, global.menu_button_subimg, x_position, y_position + 21, 1, 1, 0, actual_highlight_color, alpha);
+	draw_sprite_ext(spr_menu_button, global.menu_button_subimg, x_position, y_position + 21, button_xscale, 1, 0, actual_highlight_color, alpha);
 	if (highlight_color != c_lime
 	&& actual_highlight_color == c_white)
 	{
-		draw_sprite_ext(spr_menu_button, global.menu_button_subimg, x_position, y_position + 21, 1, 1, 0, highlight_color, 0.1 * alpha);
+		draw_sprite_ext(spr_menu_button, global.menu_button_subimg, x_position, y_position + 21, button_xscale, 1, 0, highlight_color, 0.1 * alpha);
 	}
 
 	draw_set_halign(fa_center);
 	draw_set_valign(fa_middle);
-	scr_draw_text_outlined(x_position + 185, y_position + 21, string(string_text), global.default_text_size * text_scale, outline_color, fill_color, alpha);
+	scr_draw_text_outlined(x_position + (button_width * 0.5), y_position + 21, string(string_text), global.default_text_size * text_scale, outline_color, fill_color, alpha);
 
 	var mouse_activated = point_in_button
 		&& global.controls_used_for_navigation == "mouse"

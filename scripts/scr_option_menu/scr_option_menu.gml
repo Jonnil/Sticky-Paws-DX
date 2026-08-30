@@ -780,11 +780,13 @@ function scr_option_menu()
 		var level_load_diagnostics_submenu_active = (global.settings_sidebar_menu == "debug_settings")
 			&& (string_pos("level_load_diagnostics_", string(menu)) == 1)
 			&& (menu != "level_load_diagnostics_menu");
-		var capture_mode_submenu_active = (global.settings_sidebar_menu == "debug_settings")
+		var capture_mode_submenu_active = (global.settings_sidebar_menu == "debug_settings"
+			|| global.settings_sidebar_menu == "video_settings")
 			&& (string_pos("capture_mode_", string(menu)) == 1)
 			&& (menu != "capture_mode_menu");
 		var capture_mode_confirmation_active = string_pos("capture_mode_confirm_", string(menu)) == 1;
 		var capture_mode_tutorial_details_active = string_pos("capture_mode_tutorial_details_", string(menu)) == 1;
+		var capture_mode_recording_checklist_active = string_pos("capture_mode_recording_checklist_", string(menu)) == 1;
 		var debug_submenu_active = debug_text_submenu_active
 			|| level_load_diagnostics_submenu_active
 			|| capture_mode_submenu_active;
@@ -815,7 +817,11 @@ function scr_option_menu()
 				{
 					menu = capture_mode_confirmation_active
 						? "capture_mode_back"
-						: (capture_mode_tutorial_details_active ? "capture_mode_tutorial_signs" : "capture_mode_menu");
+						: (capture_mode_tutorial_details_active
+							? "capture_mode_tutorial_signs"
+							: (capture_mode_recording_checklist_active
+								? "capture_mode_recording_checklist"
+								: (global.settings_sidebar_menu == "video_settings" ? "video_capture_mode_menu" : "capture_mode_menu")));
 				}
 				menu_y_offset = 0;
 				menu_y_offset_real = 0;
@@ -2357,15 +2363,26 @@ function scr_option_menu()
 					l10n_text("Displays rank information based on performance"));
 			}
 
+			/* This is the same live setting shown inside Capture Mode. Either menu may
+			   change it, while the player's pre-capture preference remains protected. */
 			var capture_mode_controls_tutorial_signs = scr_capture_mode_is_active();
-			var tutorial_signs_option_label = capture_mode_controls_tutorial_signs
-				? l10n_text("Show Tutorial Signs (Capture Mode)")
-				: l10n_text("Show Tutorial Signs");
+			var tutorial_signs_visible = capture_mode_controls_tutorial_signs
+				? scr_capture_mode_get_tutorial_signs_visible()
+				: global.show_tutorial_signs;
 			var tutorial_signs_option_description = capture_mode_controls_tutorial_signs
-				? l10n_text("Controlled by Capture Mode. Change this under Debug > Capture Mode.")
+				? l10n_text("Changes tutorial signs for the current Capture Mode session. Your normal setting returns when Capture Mode is turned off.")
 				: l10n_text("Shows tutorial signs with helpful gameplay tips");
-			global.show_tutorial_signs = draw_menu_checkmark(380, show_tutorial_signs_y, tutorial_signs_option_label, "show_tutorial_signs", global.show_tutorial_signs, capture_mode_controls_tutorial_signs ? -1 : true,
-				tutorial_signs_option_description, true, capture_mode_controls_tutorial_signs);
+			var changed_tutorial_signs_visible = draw_menu_checkmark(380, show_tutorial_signs_y, l10n_text("Show Tutorial Signs"), "show_tutorial_signs", tutorial_signs_visible, true,
+				tutorial_signs_option_description);
+
+			if (capture_mode_controls_tutorial_signs)
+			{
+				scr_capture_mode_set_tutorial_signs_visible(changed_tutorial_signs_visible);
+			}
+			else
+			{
+				global.show_tutorial_signs = changed_tutorial_signs_visible;
+			}
 
 			global.players_can_collide = draw_menu_checkmark(380, players_can_collide_y, l10n_text("Players Can Collide"), "players_can_collide", global.players_can_collide, false,
 				l10n_text("Allows players to collide with each other in multiplayer mode"));
@@ -2435,7 +2452,13 @@ function scr_option_menu()
 		#endregion /* Game Settings END */
 
 		#region /* Debug Settings */
-		if (global.settings_sidebar_menu == "debug_settings")
+		/* Capture Mode is also a public Video page. The Debug tab remains an
+		   optional shortcut to the same menu when developer controls are unlocked. */
+		var public_capture_mode_page_active = (global.settings_sidebar_menu == "video_settings")
+			&& (string_pos("capture_mode_", string(menu)) == 1)
+			&& (menu != "capture_mode_menu");
+		if (global.settings_sidebar_menu == "debug_settings"
+		|| public_capture_mode_page_active)
 		{
 			scr_debug_initialize_visibility_registry();
 
@@ -2457,6 +2480,7 @@ function scr_option_menu()
 				&& (menu != "capture_mode_menu");
 			var capture_mode_confirmation_menu_active = string_pos("capture_mode_confirm_", string(menu)) == 1;
 			var capture_mode_tutorial_details_menu_active = string_pos("capture_mode_tutorial_details_", string(menu)) == 1;
+			var capture_mode_recording_checklist_menu_active = string_pos("capture_mode_recording_checklist_", string(menu)) == 1;
 			var debug_settings_submenu_active = debug_text_menu_active
 				|| level_load_diagnostics_menu_active
 				|| capture_mode_menu_active;
@@ -2520,7 +2544,7 @@ function scr_option_menu()
 				if (menu == "capture_mode_menu")
 				{
 					global.option_default = -1;
-					global.option_description = l10n_text("Temporarily prepares the game for clean trailer footage and restores your settings when turned off");
+				global.option_description = l10n_text("Temporarily prepares the game for clean recorded footage and restores your settings when turned off");
 					menu_cursor_y_position = capture_mode_menu_y;
 				}
 
@@ -2621,7 +2645,8 @@ function scr_option_menu()
 			if (capture_mode_menu_active)
 			{
 				var capture_title_x = 370 + ((get_window_width - 370) * 0.5);
-				var capture_button_x = capture_title_x - 185;
+				var capture_button_width = clamp(get_window_width - 464, 370, 560);
+				var capture_button_x = capture_title_x - (capture_button_width * 0.5);
 				var capture_main_compact = get_window_height < 680;
 				var capture_back_y = capture_main_compact ? 68 : 84;
 				var capture_pc_y = capture_main_compact ? 272 : 344;
@@ -2629,7 +2654,8 @@ function scr_option_menu()
 				var capture_pc_available = global.enable_option_for_pc;
 				var capture_switch_y = capture_pc_available ? capture_pc_y + capture_button_spacing : capture_pc_y;
 				var capture_tutorial_signs_y = capture_switch_y + capture_button_spacing;
-				var capture_restore_y = capture_tutorial_signs_y + capture_button_spacing;
+				var capture_recording_checklist_y = capture_tutorial_signs_y + capture_button_spacing;
+				var capture_restore_y = capture_recording_checklist_y + capture_button_spacing;
 
 				if (capture_mode_tutorial_details_menu_active)
 				{
@@ -2641,7 +2667,7 @@ function scr_option_menu()
 					var capture_details_wrap_width = max(1, capture_details_text_right - capture_details_text_x);
 					var capture_details_text_scale = global.default_text_size * clamp((get_window_width - 430) / 850, 0.38, capture_main_compact ? 0.62 : 0.76);
 					var capture_details_min_text_scale = global.default_text_size * 0.3;
-					var capture_details_body_text = l10n_text("By default, Capture Mode hides tutorial signs so the characters, scenery, and action are easier to see in trailer footage.")
+					var capture_details_body_text = l10n_text("By default, Capture Mode hides tutorial signs so the characters, scenery, and action are easier to see in recorded footage.")
 						+ "\n\n"
 						+ l10n_text("Some scenery overlaps the signs. In a few places, hiding a sign can make the scene look incomplete.")
 						+ "\n\n"
@@ -2666,7 +2692,7 @@ function scr_option_menu()
 					capture_details_body_metrics = scr_get_wrapped_text_metrics(capture_details_body_text, capture_details_wrap_width, 0, capture_details_text_scale);
 					scr_draw_settings_overlay_title(capture_title_x, capture_details_title_y, l10n_text("Tutorial Signs in Capture Mode"), min(get_window_width - 430, 760));
 
-					var close_capture_tutorial_details = draw_menu_button(capture_button_x, capture_back_y, l10n_text("Back to Capture Mode"), "capture_mode_tutorial_details_back", "");
+					var close_capture_tutorial_details = draw_menu_button(capture_button_x, capture_back_y, l10n_text("Back to Capture Mode"), "capture_mode_tutorial_details_back", "", c_lime, 1, capture_button_width);
 					if (close_capture_tutorial_details)
 					&& (menu_delay == 0 && menu_joystick_delay == 0)
 					{
@@ -2690,7 +2716,7 @@ function scr_option_menu()
 					var capture_tutorial_toggle_label = capture_tutorial_signs_visible
 						? l10n_text("Tutorial Signs: Shown")
 						: l10n_text("Tutorial Signs: Hidden (Recommended)");
-					var toggle_capture_tutorial_signs = draw_menu_button(capture_button_x, capture_details_toggle_y, capture_tutorial_toggle_label, "capture_mode_tutorial_details_toggle", "", capture_tutorial_signs_visible ? c_yellow : c_lime);
+					var toggle_capture_tutorial_signs = draw_menu_button(capture_button_x, capture_details_toggle_y, capture_tutorial_toggle_label, "capture_mode_tutorial_details_toggle", "", capture_tutorial_signs_visible ? c_yellow : c_lime, 1, capture_button_width);
 
 					if (toggle_capture_tutorial_signs)
 					&& (menu_delay == 0 && menu_joystick_delay == 0)
@@ -2714,15 +2740,94 @@ function scr_option_menu()
 					menu_cursor_y_position_end = capture_details_toggle_y + 64;
 				}
 				else
+				if (capture_mode_recording_checklist_menu_active)
+				{
+					var capture_checklist_title_y = capture_main_compact ? 34 : 42;
+					var capture_checklist_text_top = capture_main_compact ? 112 : 142;
+					var capture_checklist_text_x = 402;
+					var capture_checklist_text_right = max(capture_checklist_text_x + 1, get_window_width - 32);
+					var capture_checklist_wrap_width = max(1, capture_checklist_text_right - capture_checklist_text_x);
+					var capture_checklist_text_scale = global.default_text_size * clamp((get_window_width - 430) / 850, 0.36, capture_main_compact ? 0.6 : 0.72);
+					var capture_checklist_min_text_scale = global.default_text_size * 0.28;
+					var capture_checklist_body_text = l10n_text("Game setup")
+						+ "\n"
+						+ l10n_text("1. Choose Desktop Capture for 1920 x 1080 or Handheld Capture for 1280 x 720.")
+						+ "\n"
+						+ l10n_text("2. Wait until the preset says it is applied before recording.")
+						+ "\n"
+						+ l10n_text("Capture Mode turns off when the game closes. Enable it again after restarting.")
+						+ "\n\n"
+						+ l10n_text("Recorder checks")
+						+ "\n"
+						+ l10n_text("1. Set your recording software to the selected preset's resolution at 60 FPS.")
+						+ "\n"
+						+ l10n_text("2. Make sure the game fills the recording frame.")
+						+ "\n"
+						+ l10n_text("3. Record ten seconds of movement and sound, then play it back.")
+						+ "\n"
+						+ l10n_text("4. Check picture quality, smooth movement, sound, overlays, and cursor visibility.")
+						+ "\n"
+						+ l10n_text("5. Check areas with hidden tutorial signs for incomplete-looking scenery.")
+						+ "\n"
+						+ l10n_text("6. Record several takes with extra time before and after each action.")
+						+ "\n"
+						+ l10n_text("7. Note the level and useful moment from each take.")
+						+ "\n"
+						+ l10n_text("8. Turn Capture Mode off when finished to restore your settings.");
+					var capture_checklist_body_metrics = undefined;
+					var capture_checklist_available_height = max(1, get_window_height - 28 - capture_checklist_text_top);
+
+					for (var capture_checklist_fit_attempt = 0; capture_checklist_fit_attempt < 20; capture_checklist_fit_attempt++)
+					{
+						capture_checklist_body_metrics = scr_get_wrapped_text_metrics(capture_checklist_body_text, capture_checklist_wrap_width, 0, capture_checklist_text_scale);
+						if (capture_checklist_body_metrics.text_height <= capture_checklist_available_height
+						|| capture_checklist_text_scale <= capture_checklist_min_text_scale)
+						{
+							break;
+						}
+
+						capture_checklist_text_scale = max(capture_checklist_min_text_scale, capture_checklist_text_scale * 0.9);
+					}
+
+					capture_checklist_body_metrics = scr_get_wrapped_text_metrics(capture_checklist_body_text, capture_checklist_wrap_width, 0, capture_checklist_text_scale);
+					scr_draw_settings_overlay_title(capture_title_x, capture_checklist_title_y, l10n_text("Recording Checklist"), min(get_window_width - 430, 760));
+
+					var close_capture_recording_checklist = draw_menu_button(capture_button_x, capture_back_y, l10n_text("Back to Capture Mode"), "capture_mode_recording_checklist_back", "", c_lime, 1, capture_button_width);
+					if (close_capture_recording_checklist)
+					&& (menu_delay == 0 && menu_joystick_delay == 0)
+					{
+						menu = "capture_mode_recording_checklist";
+						menu_y_offset = 0;
+						menu_y_offset_real = 0;
+						menu_delay = 3;
+					}
+
+					draw_set_halign(fa_left);
+					draw_set_valign(fa_middle);
+					for (var capture_checklist_line_index = 0; capture_checklist_line_index < capture_checklist_body_metrics.line_count; capture_checklist_line_index++)
+					{
+						var capture_checklist_line_y = capture_checklist_text_top
+							+ (capture_checklist_body_metrics.line_box_height * 0.5)
+							+ (capture_checklist_line_index * (capture_checklist_body_metrics.line_box_height + capture_checklist_body_metrics.line_gap));
+						scr_draw_text_outlined(capture_checklist_text_x, capture_checklist_line_y, capture_checklist_body_metrics.lines[capture_checklist_line_index], capture_checklist_text_scale, c_black, c_white, 1);
+					}
+
+					global.option_description = l10n_text("Returns to the Capture Mode menu");
+					menu_cursor_y_position = capture_back_y;
+					menu_cursor_y_position_end = capture_back_y + 64;
+				}
+				else
 				if (!capture_mode_confirmation_menu_active)
 				{
 					scr_draw_settings_overlay_title(capture_title_x, 42, l10n_text("Capture Mode"), min(get_window_width - 430, 620));
 
-					var close_capture_mode_menu = draw_menu_button(capture_button_x, capture_back_y, l10n_text("Back"), "capture_mode_back", "");
+					var close_capture_mode_menu = draw_menu_button(capture_button_x, capture_back_y, l10n_text("Back"), "capture_mode_back", "", c_lime, 1, capture_button_width);
 					if (close_capture_mode_menu)
 					&& (menu_delay == 0 && menu_joystick_delay == 0)
 					{
-						menu = "capture_mode_menu";
+						menu = global.settings_sidebar_menu == "video_settings"
+							? "video_capture_mode_menu"
+							: "capture_mode_menu";
 						menu_y_offset = 0;
 						menu_y_offset_real = 0;
 						menu_delay = 3;
@@ -2735,8 +2840,8 @@ function scr_option_menu()
 					var capture_transition_active = variable_global_exists("capture_mode_window_transition")
 						&& is_struct(global.capture_mode_window_transition);
 					var capture_status_suffix = capture_transition_active
-						? (scr_capture_mode_is_active() ? l10n_text("Applying...") : l10n_text("Restoring..."))
-						: (scr_capture_mode_is_active() ? l10n_text("Ready") : "");
+						? (scr_capture_mode_is_active() ? l10n_text("Applying window changes...") : l10n_text("Restoring the original window..."))
+						: (scr_capture_mode_is_active() ? l10n_text("Preset applied") : "");
 					var capture_status_text = l10n_text("Current Mode") + ": " + scr_capture_mode_get_name();
 					if (capture_status_suffix != "")
 					{
@@ -2747,22 +2852,23 @@ function scr_option_menu()
 					var capture_intro_scale = global.default_text_size * clamp((get_window_width - 430) / 750, 0.45, 0.78);
 					var capture_intro_y = capture_main_compact ? 176 : 212;
 					var capture_intro_spacing = capture_main_compact ? 22 : 28;
-					scr_draw_text_outlined(capture_title_x, capture_intro_y, l10n_text("Temporarily prepares the game for clean screenshots and trailer footage."), capture_intro_scale, c_black, c_white, 1);
-					scr_draw_text_outlined(capture_title_x, capture_intro_y + capture_intro_spacing, l10n_text("Select a preset to review the main changes before it is applied."), capture_intro_scale, c_black, c_white, 1);
-					scr_draw_text_outlined(capture_title_x, capture_intro_y + (capture_intro_spacing * 2), l10n_text("Your original settings return when Capture Mode is turned off."), capture_intro_scale, c_black, c_white, 1);
-					scr_draw_text_outlined(capture_title_x, capture_intro_y + (capture_intro_spacing * 3), l10n_text("Capture Mode turns off when the game closes. Enable it again after restarting."), capture_intro_scale, c_black, c_white, 1);
+					scr_draw_text_outlined(capture_title_x, capture_intro_y, l10n_text("Capture Mode prepares the game for recording."), capture_intro_scale, c_black, c_white, 1);
+					scr_draw_text_outlined(capture_title_x, capture_intro_y + capture_intro_spacing, l10n_text("It does not start or configure your recording software."), capture_intro_scale, c_black, c_white, 1);
+					scr_draw_text_outlined(capture_title_x, capture_intro_y + (capture_intro_spacing * 2), l10n_text("Select a preset to review the main changes before they are applied."), capture_intro_scale, c_black, c_white, 1);
+					scr_draw_text_outlined(capture_title_x, capture_intro_y + (capture_intro_spacing * 3), l10n_text("Your original settings return when Capture Mode is turned off."), capture_intro_scale, c_black, c_white, 1);
 
 					var review_pc_capture_mode = false;
 					if (capture_pc_available)
 					{
-						review_pc_capture_mode = draw_menu_button(capture_button_x, capture_pc_y, l10n_text("PC Capture (1080p)"), "capture_mode_pc", "", c_aqua);
+						review_pc_capture_mode = draw_menu_button(capture_button_x, capture_pc_y, l10n_text("Desktop Capture (1080p)"), "capture_mode_pc", "", c_aqua, 1, capture_button_width);
 					}
-					var review_switch_capture_mode = draw_menu_button(capture_button_x, capture_switch_y, l10n_text("Switch Handheld Capture (720p)"), "capture_mode_switch", "", c_red);
+					var review_switch_capture_mode = draw_menu_button(capture_button_x, capture_switch_y, l10n_text("Handheld Capture (720p)"), "capture_mode_switch", "", c_red, 1, capture_button_width);
 					var capture_tutorial_signs_visible = scr_capture_mode_get_tutorial_signs_visible();
 					var capture_tutorial_signs_label = capture_tutorial_signs_visible
 						? l10n_text("Tutorial Signs: Shown")
 						: l10n_text("Tutorial Signs: Hidden for cleaner footage");
-					var review_capture_tutorial_signs = draw_menu_button(capture_button_x, capture_tutorial_signs_y, capture_tutorial_signs_label, "capture_mode_tutorial_signs", "", capture_tutorial_signs_visible ? c_yellow : c_lime);
+					var review_capture_tutorial_signs = draw_menu_button(capture_button_x, capture_tutorial_signs_y, capture_tutorial_signs_label, "capture_mode_tutorial_signs", "", capture_tutorial_signs_visible ? c_yellow : c_lime, 1, capture_button_width);
+					var review_capture_recording_checklist = draw_menu_button(capture_button_x, capture_recording_checklist_y, l10n_text("Recording Checklist"), "capture_mode_recording_checklist", "", c_aqua, 1, capture_button_width);
 
 					if (review_pc_capture_mode)
 					&& (menu_delay == 0 && menu_joystick_delay == 0)
@@ -2785,9 +2891,16 @@ function scr_option_menu()
 						menu_delay = 3;
 					}
 
+					if (review_capture_recording_checklist)
+					&& (menu_delay == 0 && menu_joystick_delay == 0)
+					{
+						menu = "capture_mode_recording_checklist_back";
+						menu_delay = 3;
+					}
+
 					if (scr_capture_mode_is_active())
 					{
-						var review_capture_restore = draw_menu_button(capture_button_x, capture_restore_y, l10n_text("Turn Off and Restore Settings"), "capture_mode_restore", "", c_yellow);
+						var review_capture_restore = draw_menu_button(capture_button_x, capture_restore_y, l10n_text("Turn Off and Restore Settings"), "capture_mode_restore", "", c_yellow, 1, capture_button_width);
 
 						if (review_capture_restore)
 						&& (menu_delay == 0 && menu_joystick_delay == 0)
@@ -2799,29 +2912,35 @@ function scr_option_menu()
 
 					draw_set_halign(fa_center);
 					draw_set_valign(fa_middle);
-					if (global.enable_option_for_pc && get_window_height >= 560)
+					var capture_screenshot_tip_anchor_y = scr_capture_mode_is_active()
+						? capture_restore_y
+						: capture_recording_checklist_y;
+					if (global.enable_option_for_pc
+					&& get_window_height >= capture_screenshot_tip_anchor_y + 124)
 					{
-						scr_draw_text_outlined(capture_title_x, scr_capture_mode_is_active() ? capture_restore_y + 78 : capture_tutorial_signs_y + 82, l10n_text("F2 saves a clean screenshot without menus."), global.default_text_size * 0.72, c_black, c_ltgray, 1);
-						scr_draw_text_outlined(capture_title_x, scr_capture_mode_is_active() ? capture_restore_y + 106 : capture_tutorial_signs_y + 110, l10n_text("Shift + F2 saves the complete window, including menus."), global.default_text_size * 0.72, c_black, c_ltgray, 1);
+						scr_draw_text_outlined(capture_title_x, capture_screenshot_tip_anchor_y + 78, l10n_text("F2 saves a clean screenshot without menus."), global.default_text_size * 0.72, c_black, c_ltgray, 1);
+						scr_draw_text_outlined(capture_title_x, capture_screenshot_tip_anchor_y + 106, l10n_text("Shift + F2 saves the complete window, including menus."), global.default_text_size * 0.72, c_black, c_ltgray, 1);
 					}
 
 					if (menu == "capture_mode_back")
 					{
-						global.option_description = l10n_text("Returns to the main Debug tab");
+						global.option_description = global.settings_sidebar_menu == "video_settings"
+							? l10n_text("Returns to Video settings")
+							: l10n_text("Returns to the main Debug tab");
 						menu_cursor_y_position = capture_back_y;
 					}
 					else
 					if (menu == "capture_mode_pc")
 					{
-						global.option_description = l10n_text("Reviews the clean 1920 x 1080 PC trailer preset before applying it");
+						global.option_description = l10n_text("Reviews the clean 1920 x 1080 desktop recording preset before applying it");
 						menu_cursor_y_position = capture_pc_y;
 					}
 					else
 					if (menu == "capture_mode_switch")
 					{
 						global.option_description = global.enable_option_for_pc
-							? l10n_text("Reviews the 1280 x 720 handheld Switch trailer preset before applying it")
-							: l10n_text("Reviews the handheld Switch trailer preset before applying it");
+							? l10n_text("Reviews the clean 1280 x 720 handheld recording preset before applying it")
+							: l10n_text("Reviews the handheld recording preset before applying it");
 						menu_cursor_y_position = capture_switch_y;
 					}
 					else
@@ -2829,6 +2948,12 @@ function scr_option_menu()
 					{
 						global.option_description = l10n_text("Opens an explanation of tutorial signs and their Capture Mode setting");
 						menu_cursor_y_position = capture_tutorial_signs_y;
+					}
+					else
+					if (menu == "capture_mode_recording_checklist")
+					{
+						global.option_description = l10n_text("Opens a checklist for recording gameplay with either Capture Mode preset");
+						menu_cursor_y_position = capture_recording_checklist_y;
 					}
 					else
 					if (menu == "capture_mode_restore")
@@ -2839,7 +2964,7 @@ function scr_option_menu()
 
 					menu_cursor_y_position_end = scr_capture_mode_is_active()
 						? capture_restore_y + 64
-						: capture_tutorial_signs_y + 64;
+						: capture_recording_checklist_y + 64;
 				}
 				else
 				{
@@ -2853,8 +2978,8 @@ function scr_option_menu()
 						? "capture_mode_confirm_pc_cancel"
 						: (confirm_switch_capture ? "capture_mode_confirm_switch_cancel" : "capture_mode_confirm_restore_cancel");
 					var capture_confirm_title = confirm_pc_capture
-						? l10n_text("Enable PC Capture Mode?")
-						: (confirm_switch_capture ? l10n_text("Enable Switch Handheld Capture Mode?") : l10n_text("Turn Off Capture Mode?"));
+						? l10n_text("Enable Desktop Capture Mode?")
+						: (confirm_switch_capture ? l10n_text("Enable Handheld Capture Mode?") : l10n_text("Turn Off Capture Mode?"));
 					var capture_confirm_color = confirm_pc_capture ? c_aqua : (confirm_switch_capture ? c_red : c_yellow);
 					var capture_tutorial_confirmation_line = scr_capture_mode_get_tutorial_signs_visible()
 						? l10n_text("Tutorial signs and their button instructions remain visible.")
@@ -2864,7 +2989,7 @@ function scr_option_menu()
 					if (confirm_pc_capture)
 					{
 						capture_confirm_lines = [
-							l10n_text("The game changes to a 1920 x 1080 window for recording PC footage."),
+							l10n_text("The game changes to a 1920 x 1080 window for recording desktop footage."),
 							l10n_text("Menus and on-screen text are automatically sized for this resolution."),
 							l10n_text("Timers, counters, player labels, new item messages, and other gameplay displays are hidden."),
 							capture_tutorial_confirmation_line,
@@ -2880,15 +3005,15 @@ function scr_option_menu()
 					{
 						capture_confirm_lines = [
 							global.enable_option_for_pc
-								? l10n_text("The game changes to a 1280 x 720 window to match Nintendo Switch handheld mode.")
-								: l10n_text("The game follows the Nintendo Switch display mode. Handheld mode uses 1280 x 720."),
+								? l10n_text("The game changes to a 1280 x 720 window for recording handheld-format footage.")
+								: l10n_text("The game uses a 1280 x 720 display for recording handheld-format footage."),
 							l10n_text("Menus and on-screen text are automatically sized for this resolution."),
 							l10n_text("Timers, counters, player labels, new item messages, and other gameplay displays are hidden."),
 							capture_tutorial_confirmation_line,
 							l10n_text("Arrows showing routes, objectives, exits, or off-screen players are hidden."),
 							l10n_text("The Debug Screen, collision outlines, and other visuals used for testing are hidden."),
 							l10n_text("Music and short musical jingles are muted. Every other sound keeps its current volume."),
-							l10n_text("Nintendo Switch button icons are shown for every player, no matter which controls they use.")
+							l10n_text("One consistent set of gamepad button icons is shown for every player.")
 						];
 
 						if (global.enable_option_for_pc)
@@ -3023,8 +3148,8 @@ function scr_option_menu()
 					}
 
 					var capture_apply_label = confirm_restore_capture ? l10n_text("Restore Settings") : l10n_text("Enable Capture Mode");
-					var apply_capture_confirmation = draw_menu_button(capture_button_x, capture_confirm_apply_y, capture_apply_label, capture_confirm_apply_id, "", capture_confirm_color);
-					var cancel_capture_confirmation = draw_menu_button(capture_button_x, capture_confirm_cancel_y, l10n_text("Cancel"), capture_confirm_cancel_id, "");
+					var apply_capture_confirmation = draw_menu_button(capture_button_x, capture_confirm_apply_y, capture_apply_label, capture_confirm_apply_id, "", capture_confirm_color, 1, capture_button_width);
+					var cancel_capture_confirmation = draw_menu_button(capture_button_x, capture_confirm_cancel_y, l10n_text("Cancel"), capture_confirm_cancel_id, "", c_lime, 1, capture_button_width);
 
 					if (apply_capture_confirmation)
 					&& (menu_delay == 0 && menu_joystick_delay == 0)
@@ -4724,6 +4849,7 @@ function scr_option_menu()
 
 				array_push(capture_mode_navigation, "capture_mode_switch");
 				array_push(capture_mode_navigation, "capture_mode_tutorial_signs");
+				array_push(capture_mode_navigation, "capture_mode_recording_checklist");
 
 				if (scr_capture_mode_is_active())
 				{
@@ -5519,7 +5645,8 @@ function scr_option_menu()
 	#endregion /* Darken sidebar when it's not the focus END */
 
 	scr_menu_navigation_with_joystick_delay();
-	var capture_mode_custom_page_active = (global.settings_sidebar_menu == "debug_settings")
+	var capture_mode_custom_page_active = (global.settings_sidebar_menu == "debug_settings"
+		|| global.settings_sidebar_menu == "video_settings")
 		&& (string_pos("capture_mode_", string(menu)) == 1)
 		&& (menu != "capture_mode_menu");
 	if (!capture_mode_custom_page_active)
