@@ -42,7 +42,7 @@ function scr_option_graphics()
 		var advanced_video_option_y = background_brightness_menu_y + 48;
 		var capture_mode_menu_y = advanced_video_option_y + 48;
 		var public_capture_mode_available = os_type != os_switch;
-		var capture_mode_button_width = clamp(get_window_width - 464, 370, 560);
+		var capture_mode_button_width = clamp(display_get_gui_width() - 464, 370, 560);
 		
 		if (global.enable_option_for_pc)
 		{
