@@ -74,6 +74,7 @@ function menu_dropdown_variable_to_change(variable_to_change, change_to_value)
 	else
 	if (menu == "gui_scale_modifier")
 	&& (variable_to_change == global.gui_scale_modifier)
+	&& !scr_capture_mode_is_active()
 	{
 		global.gui_scale_modifier = change_to_value;
 	}

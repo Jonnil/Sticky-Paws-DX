@@ -1,4 +1,4 @@
-function draw_menu_slider(x_position, y_position, string_text, menu_index, variable_to_change, bar_color = c_white)
+function draw_menu_slider(x_position, y_position, string_text, menu_index, variable_to_change, bar_color = c_white, is_locked = false)
 {
 	var length_variable = 320;
 	var mouse_get_x = device_mouse_x_to_gui(0);
@@ -8,6 +8,7 @@ function draw_menu_slider(x_position, y_position, string_text, menu_index, varia
 	&& (global.controls_used_for_navigation == "mouse")
 	&& (menu_delay == 0 && menu_joystick_delay == 0)
 	&& (!open_dropdown)
+	&& (!is_locked)
 	{
 		menu = menu_index;
 		can_navigate_settings_sidebar = false;
@@ -22,6 +23,7 @@ function draw_menu_slider(x_position, y_position, string_text, menu_index, varia
 		if (global.controls_used_for_navigation == "mouse")
 		&& (mouse_check_button(mb_left))
 		&& (!open_dropdown)
+		&& (!is_locked)
 		{
 			if (point_in_rectangle(mouse_get_x, mouse_get_y, x_position- 32, y_position- 32, x_position + 352, y_position + 32)) /* Within the length of the slider */
 			{
@@ -90,7 +92,8 @@ function draw_menu_slider(x_position, y_position, string_text, menu_index, varia
 	else
 	{
 		draw_rectangle_color(x_position, y_position- 16, x_position + 320, y_position + 16, c_dkgray, c_dkgray, c_dkgray, c_dkgray, false);
-		draw_rectangle_color(x_position, y_position- 16, x_position + variable_to_change * 320, y_position + 16, bar_color, bar_color, bar_color, bar_color, false);
+		var slider_fill_color = is_locked ? c_gray : bar_color;
+		draw_rectangle_color(x_position, y_position- 16, x_position + variable_to_change * 320, y_position + 16, slider_fill_color, slider_fill_color, slider_fill_color, slider_fill_color, false);
 	}
 	#endregion /* Draw Bar END */
 
@@ -111,12 +114,14 @@ function draw_menu_slider(x_position, y_position, string_text, menu_index, varia
 	&& (global.controls_used_for_navigation == "mouse")
 	&& (mouse_check_button_released(mb_left))
 	&& (!open_dropdown)
+	&& (!is_locked)
 	&& (menu != "assist_enable")
 	&& (menu_delay == 0 && menu_joystick_delay == 0)
 	|| (point_in_rectangle(mouse_get_x, mouse_get_y, x_position + 32, y_position + 2, x_position + 320, y_position + 41))
 	&& (global.controls_used_for_navigation == "mouse")
 	&& (mouse_check_button_released(mb_left))
 	&& (!open_dropdown)
+	&& (!is_locked)
 	&& (global.assist_enable)
 	&& (menu == "assist_enable")
 	&& (menu_delay == 0 && menu_joystick_delay == 0)
@@ -140,7 +145,12 @@ function draw_menu_slider(x_position, y_position, string_text, menu_index, varia
 
 	draw_set_halign(fa_left);
 	draw_set_valign(fa_middle);
-	scr_draw_text_outlined(x_position, y_position- 32, string(string_text) + ": " + string(display_number) + "%", global.default_text_size * 0.75, c_menu_outline, c_menu_fill, 1);
+	var slider_label = string(string_text) + ": " + string(display_number) + "%";
+	if (is_locked)
+	{
+		slider_label += " (" + l10n_text("Locked by Capture Mode") + ")";
+	}
+	scr_draw_text_outlined(x_position, y_position- 32, slider_label, global.default_text_size * 0.75, c_menu_outline, is_locked ? c_ltgray : c_menu_fill, 1);
 	#endregion /* Text above the menu button END */
 
 }

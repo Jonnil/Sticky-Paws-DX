@@ -91,13 +91,13 @@ function scr_config_save()
 	ini_write_real("config", "debug_menu_auto_unlock_runner", global.debug_menu_auto_unlock_runner);
 	scr_debug_write_visibility_modes_to_ini();
 	ini_write_real("config", "show_collision_mask", scr_capture_mode_get_persistent_value("show_collision_mask", global.show_collision_mask));
-	ini_write_real("config", "volume_main", global.volume_main * 10000);
+	ini_write_real("config", "volume_main", scr_capture_mode_get_persistent_value("volume_main", global.volume_main) * 10000);
 	ini_write_real("config", "volume_music", scr_capture_mode_get_persistent_value("volume_music", global.volume_music) * 10000);
 	ini_write_real("config", "volume_melody", scr_capture_mode_get_persistent_value("volume_melody", global.volume_melody) * 10000);
-	ini_write_real("config", "volume_sound", global.volume_sound * 10000);
-	ini_write_real("config", "volume_ambient", global.volume_ambient * 10000);
-	ini_write_real("config", "volume_footstep", global.volume_footstep * 10000);
-	ini_write_real("config", "volume_voices", global.volume_voice * 10000);
+	ini_write_real("config", "volume_sound", scr_capture_mode_get_persistent_value("volume_sound", global.volume_sound) * 10000);
+	ini_write_real("config", "volume_ambient", scr_capture_mode_get_persistent_value("volume_ambient", global.volume_ambient) * 10000);
+	ini_write_real("config", "volume_footstep", scr_capture_mode_get_persistent_value("volume_footstep", global.volume_footstep) * 10000);
+	ini_write_real("config", "volume_voices", scr_capture_mode_get_persistent_value("volume_voice", global.volume_voice) * 10000);
 	ini_write_real("config", "background_brightness_gameplay", global.background_brightness_gameplay * 10000);
 	ini_write_real("config", "background_brightness_menu", global.background_brightness_menu * 10000);
 	ini_write_real("config", "enable_background_layer1", global.enable_background_layer1);

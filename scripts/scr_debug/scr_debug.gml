@@ -145,6 +145,131 @@ function scr_capture_mode_get_name(capture_mode = -1)
 	return l10n_text("Off");
 }
 
+/// @function scr_capture_mode_draw_settings_info_panel(line_specs, preferred_left, panel_top, panel_bottom_limit)
+/* Draws a Capture Mode information panel entirely to the right of the normal
+   settings controls. Text wraps and scales down when the output is 1280 x 720. */
+function scr_capture_mode_draw_settings_info_panel(line_specs, preferred_left = 1020, panel_top = 32, panel_bottom_limit = -1)
+{
+	var gui_width = max(1, display_get_gui_width());
+	var gui_height = max(1, display_get_gui_height());
+	var panel_margin = 20;
+	var panel_padding = 18;
+	var minimum_panel_width = 220;
+	var panel_right = gui_width - panel_margin;
+	var panel_left = min(preferred_left, panel_right - minimum_panel_width);
+	panel_left = max(390, panel_left);
+
+	if (panel_left >= panel_right)
+	{
+		return undefined;
+	}
+
+	if (panel_bottom_limit < 0)
+	{
+		panel_bottom_limit = gui_height - panel_margin;
+	}
+	panel_bottom_limit = clamp(panel_bottom_limit, panel_top + 1, gui_height - panel_margin);
+
+	var inner_width = max(1, panel_right - panel_left - (panel_padding * 2));
+	var maximum_content_height = max(1, panel_bottom_limit - panel_top - (panel_padding * 2));
+	var base_text_scale = global.default_text_size * 0.62;
+	var minimum_text_scale = global.default_text_size * 0.38;
+	var measured_lines = [];
+	var measured_height = 0;
+
+	/* Re-measure at a slightly smaller size until every wrapped line fits vertically. */
+	for (var scale_attempt = 0; scale_attempt < 8; scale_attempt++)
+	{
+		measured_lines = [];
+		measured_height = 0;
+
+		for (var spec_index = 0; spec_index < array_length(line_specs); spec_index++)
+		{
+			var line_spec = line_specs[spec_index];
+			var line_scale = base_text_scale * line_spec.relative_scale;
+			var line_metrics = scr_get_wrapped_text_metrics(line_spec.text, inner_width, 0, line_scale);
+			array_push(measured_lines, line_metrics);
+			measured_height += line_metrics.text_height;
+
+			if (spec_index < array_length(line_specs) - 1)
+			{
+				measured_height += max(3, round(line_spec.gap_after * base_text_scale));
+			}
+		}
+
+		if (measured_height <= maximum_content_height
+		|| base_text_scale <= minimum_text_scale)
+		{
+			break;
+		}
+
+		base_text_scale = max(minimum_text_scale, base_text_scale * 0.88);
+	}
+
+	var panel_bottom = min(panel_bottom_limit, panel_top + (panel_padding * 2) + measured_height);
+	draw_set_alpha(0.72);
+	draw_roundrect_color_ext(panel_left, panel_top, panel_right, panel_bottom, 16, 16, c_black, c_black, false);
+	draw_set_alpha(1);
+	draw_set_halign(fa_left);
+	draw_set_valign(fa_top);
+
+	var text_x = panel_left + panel_padding;
+	var text_y = panel_top + panel_padding;
+
+	for (var draw_spec_index = 0; draw_spec_index < array_length(line_specs); draw_spec_index++)
+	{
+		var draw_spec = line_specs[draw_spec_index];
+		var draw_metrics = measured_lines[draw_spec_index];
+		var draw_scale = base_text_scale * draw_spec.relative_scale;
+
+		for (var wrapped_index = 0; wrapped_index < draw_metrics.line_count; wrapped_index++)
+		{
+			var wrapped_line = string(draw_metrics.lines[wrapped_index]);
+			if (wrapped_line != "")
+			{
+				scr_draw_text_outlined(
+					text_x,
+					text_y + (wrapped_index * (draw_metrics.line_box_height + draw_metrics.line_gap)),
+					wrapped_line,
+					draw_scale,
+					c_black,
+					draw_spec.color,
+					1
+				);
+			}
+		}
+
+		text_y += draw_metrics.text_height;
+		if (draw_spec_index < array_length(line_specs) - 1)
+		{
+			text_y += max(3, round(draw_spec.gap_after * base_text_scale));
+		}
+	}
+
+	return {
+		left: panel_left,
+		top: panel_top,
+		right: panel_right,
+		bottom: panel_bottom,
+		text_scale: base_text_scale
+	};
+}
+
+/// @function scr_capture_mode_apply_audio_overrides()
+/* Applies the one trailer-safe audio mix. Music and musical jingles are silent;
+   gameplay sound effects remain clearly audible at the game's safe default level. */
+function scr_capture_mode_apply_audio_overrides()
+{
+	var capture_gameplay_volume = 0.7;
+	global.volume_main = capture_gameplay_volume;
+	global.volume_music = 0;
+	global.volume_melody = 0;
+	global.volume_sound = capture_gameplay_volume;
+	global.volume_ambient = capture_gameplay_volume;
+	global.volume_footstep = capture_gameplay_volume;
+	global.volume_voice = capture_gameplay_volume;
+}
+
 /// @function scr_capture_mode_take_snapshot()
 /* Captures every setting that Capture Mode changes, plus the exact desktop window state. */
 function scr_capture_mode_take_snapshot()
@@ -174,8 +299,13 @@ function scr_capture_mode_take_snapshot()
 		assist_normal_arrows: global.assist_normal_arrows,
 		debug_screen: global.debug_screen,
 		show_collision_mask: global.show_collision_mask,
+		volume_main: global.volume_main,
 		volume_music: global.volume_music,
 		volume_melody: global.volume_melody,
+		volume_sound: global.volume_sound,
+		volume_ambient: global.volume_ambient,
+		volume_footstep: global.volume_footstep,
+		volume_voice: global.volume_voice,
 		resolution_setting: global.resolution_setting,
 		gui_scale_modifier: global.gui_scale_modifier,
 		show_prompt_when_changing_to_gamepad: global.show_prompt_when_changing_to_gamepad,
@@ -194,7 +324,7 @@ function scr_capture_mode_take_snapshot()
 }
 
 /// @function scr_capture_mode_refresh_music_gain()
-/* Mutes every known music/melody source or restores the one canonical active mix. */
+/* Refreshes known persistent music, melody, and ambience after applying or restoring the Capture Mode mix. */
 function scr_capture_mode_refresh_music_gain()
 {
 	var capture_muted = scr_capture_mode_is_active();
@@ -206,6 +336,7 @@ function scr_capture_mode_refresh_music_gain()
 
 	var music_gain = capture_muted ? 0 : global.volume_music * global.volume_main;
 	var melody_gain = capture_muted ? 0 : global.volume_melody * global.volume_main;
+	var ambience_gain = global.volume_ambient * global.volume_main;
 	var invincible_music_active = false;
 
 	for (var player_index = 0; player_index < instance_number(obj_player); player_index++)
@@ -269,6 +400,19 @@ function scr_capture_mode_refresh_music_gain()
 	&& global.level_clear_melody != noone)
 	{
 		audio_sound_gain(global.level_clear_melody, melody_gain, 0);
+	}
+
+	var underwater_ambience_active = variable_global_exists("underwater_music_active")
+		&& global.underwater_music_active;
+	if (variable_global_exists("ambience")
+	&& global.ambience != noone)
+	{
+		audio_sound_gain(global.ambience, underwater_ambience_active ? 0 : ambience_gain, 0);
+	}
+	if (variable_global_exists("ambience_underwater")
+	&& global.ambience_underwater != noone)
+	{
+		audio_sound_gain(global.ambience_underwater, underwater_ambience_active ? ambience_gain : 0, 0);
 	}
 
 	var title_instance = instance_find(obj_title, 0);
@@ -496,8 +640,7 @@ function scr_capture_mode_apply_overrides(capture_mode, resize_output_window = f
 	global.assist_normal_arrows = false;
 	global.debug_screen = false;
 	global.show_collision_mask = false;
-	global.volume_music = 0;
-	global.volume_melody = 0;
+	scr_capture_mode_apply_audio_overrides();
 	global.gui_scale_modifier = 0;
 	global.show_prompt_when_changing_to_gamepad = false;
 	global.show_prompt_when_changing_to_keyboard_and_mouse = false;
@@ -603,8 +746,13 @@ function scr_capture_mode_maintain()
 		|| global.assist_normal_arrows
 		|| global.debug_screen
 		|| global.show_collision_mask
+		|| global.volume_main != 0.7
 		|| global.volume_music != 0
 		|| global.volume_melody != 0
+		|| global.volume_sound != 0.7
+		|| global.volume_ambient != 0.7
+		|| global.volume_footstep != 0.7
+		|| global.volume_voice != 0.7
 		|| global.gui_scale_modifier != 0
 		|| global.resolution_setting != target_resolution
 		|| global.show_prompt_when_changing_to_gamepad
@@ -675,8 +823,13 @@ function scr_capture_mode_restore()
 	global.assist_normal_arrows = snapshot.assist_normal_arrows;
 	global.debug_screen = snapshot.debug_screen;
 	global.show_collision_mask = snapshot.show_collision_mask;
+	global.volume_main = snapshot.volume_main;
 	global.volume_music = snapshot.volume_music;
 	global.volume_melody = snapshot.volume_melody;
+	global.volume_sound = snapshot.volume_sound;
+	global.volume_ambient = snapshot.volume_ambient;
+	global.volume_footstep = snapshot.volume_footstep;
+	global.volume_voice = snapshot.volume_voice;
 	global.resolution_setting = snapshot.resolution_setting;
 	global.gui_scale_modifier = snapshot.gui_scale_modifier;
 	global.show_prompt_when_changing_to_gamepad = snapshot.show_prompt_when_changing_to_gamepad;

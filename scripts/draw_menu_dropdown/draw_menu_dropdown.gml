@@ -1,4 +1,4 @@
-function draw_menu_dropdown(x_position, y_position, string_text, menu_index, variable_to_change, string_text_item1 = "", string_text_item2 = "", string_text_item3 = "", string_text_item4 = "", string_text_item5 = "", string_text_item6 = "", string_text_item7 = "", string_text_item8 = "", string_text_item9 = "", string_text_item10 = "", string_text_item11 = "")
+function draw_menu_dropdown(x_position, y_position, string_text, menu_index, variable_to_change, string_text_item1 = "", string_text_item2 = "", string_text_item3 = "", string_text_item4 = "", string_text_item5 = "", string_text_item6 = "", string_text_item7 = "", string_text_item8 = "", string_text_item9 = "", string_text_item10 = "", string_text_item11 = "", is_locked = false)
 {
 	var mouse_get_x = device_mouse_x_to_gui(0);
 	var mouse_get_y = device_mouse_y_to_gui(0);
@@ -27,6 +27,48 @@ function draw_menu_dropdown(x_position, y_position, string_text, menu_index, var
 	var button_center_y = dropdown_y_position + dropdown_layout.button_center_y;
 	var popup_top = scr_menu_dropdown_get_popup_top(dropdown_y_position, dropdown_item_count, dropdown_layout);
 	var popup_bottom = popup_top + (dropdown_item_count * dropdown_layout.item_step);
+
+	if (is_locked)
+	{
+		if (variable_instance_exists(self, "menu")
+		&& variable_instance_exists(self, "open_dropdown")
+		&& menu == menu_index
+		&& open_dropdown)
+		{
+			open_dropdown = false;
+		}
+
+		draw_sprite_ext(spr_menu_button, global.menu_button_subimg, button_left, button_center_y, dropdown_layout.button_scale_x, 1, 0, c_gray, 1);
+		draw_sprite_ext(spr_icon_dropdown_menu, menu_cursor_index, button_left + 20, button_center_y, 1, 1, 0, c_gray, 1);
+		draw_sprite_ext(spr_icon_dropdown_menu, menu_cursor_index, button_right - 20, button_center_y, 1, 1, 0, c_gray, 1);
+
+		if (variable_instance_exists(self, "menu") && menu == menu_index)
+		{
+			if (variable_instance_exists(self, "menu_cursor_y_position")
+			&& variable_instance_exists(self, "menu_y_offset"))
+			{
+				menu_cursor_y_position = y_position - menu_y_offset;
+			}
+			draw_sprite_ext(spr_menu_cursor, menu_cursor_index, x_position + 16, y_position + 24, 1, 1, 0, c_white, 1);
+		}
+
+		var locked_selected_text = "";
+		if (variable_to_change >= 0 && variable_to_change < array_length(dropdown_items))
+		{
+			locked_selected_text = string(dropdown_items[variable_to_change]);
+		}
+
+		draw_set_halign(fa_center);
+		draw_set_valign(fa_middle);
+		scr_draw_text_outlined(button_center_x, button_center_y - 32, string(string_text) + " (" + l10n_text("Locked by Capture Mode") + ")", global.default_text_size * 0.75, c_menu_outline, c_ltgray, 1);
+		if (locked_selected_text != "")
+		{
+			scr_draw_text_outlined(button_center_x, button_center_y, locked_selected_text, global.default_text_size, c_black, c_ltgray, 1);
+		}
+
+		return variable_to_change;
+	}
+
 	if (variable_instance_exists(self, "menu")) /* Check if the object even have these variables before running this code */
 	&& (variable_instance_exists(self, "menu_delay"))
 	&& (variable_instance_exists(self, "open_dropdown"))

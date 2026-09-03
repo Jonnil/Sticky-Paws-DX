@@ -1,6 +1,7 @@
 function scr_option_graphics()
 {
 	var mouse_get_x = device_mouse_x_to_gui(0);
+	var capture_video_locked = scr_capture_mode_is_active();
 	/* Capture Mode is opened from Video in shipped builds, but its custom pages
 	   are drawn by scr_option_menu. Do not draw or process Video controls behind them. */
 	if (global.settings_sidebar_menu == "video_settings")
@@ -51,6 +52,45 @@ function scr_option_graphics()
 			capture_mode_menu_y = advanced_video_option_y + 48;
 		}
 
+		if (capture_video_locked)
+		{
+			var capture_video_dropdown_layout = scr_menu_dropdown_get_layout();
+			var capture_video_panel_left = 400
+				+ capture_video_dropdown_layout.button_x_offset
+				+ capture_video_dropdown_layout.dropdown_width
+				+ 40;
+			var capture_video_is_handheld = global.capture_mode == CAPTURE_MODE_PRESET.SWITCH_HANDHELD;
+			var capture_video_output = capture_video_is_handheld
+				? l10n_text("Required output: 1280 x 720 (720p) at 60 FPS")
+				: l10n_text("Required output: 1920 x 1080 (1080p) at 60 FPS");
+			var capture_video_exact_output_text = capture_video_is_handheld
+				? l10n_text("Do not record Handheld Capture at 1080p, 1440p, or 4K.")
+				: l10n_text("Set the recorder to the exact required output above.");
+			var capture_video_panel_lines = [
+				{text: l10n_text("CAPTURE MODE VIDEO IS LOCKED"), color: c_yellow, relative_scale: 1.08, gap_after: 12},
+				{text: capture_video_output, color: c_lime, relative_scale: 1, gap_after: 10}
+			];
+			if (capture_video_is_handheld)
+			{
+				array_push(capture_video_panel_lines, {
+					text: l10n_text("This is the required handheld capture resolution."),
+					color: c_white,
+					relative_scale: 1,
+					gap_after: 10
+				});
+			}
+			array_push(capture_video_panel_lines,
+				{text: capture_video_exact_output_text, color: c_white, relative_scale: 1, gap_after: 10},
+				{text: l10n_text("Turn off Capture Mode to edit resolution, GUI scale, or fullscreen."), color: c_ltgray, relative_scale: 0.94, gap_after: 0}
+			);
+			scr_capture_mode_draw_settings_info_panel(
+				capture_video_panel_lines,
+				capture_video_panel_left,
+				32,
+				display_get_gui_height() - 20
+			);
+		}
+
 		#region /* Background Brightness Bars */
 		draw_menu_slider(420, background_brightness_gameplay_y, l10n_text("Background Brightness in Gameplay"), "background_brightness_gameplay", global.background_brightness_gameplay, c_gray);
 		draw_menu_slider(420, background_brightness_menu_y, l10n_text("Background Brightness in Menus"), "background_brightness_menu", global.background_brightness_menu, c_gray);
@@ -68,7 +108,16 @@ function scr_option_graphics()
 		&& (os_type != os_android)
 		&& (global.enable_option_for_pc)
 		{
-			scr_draw_fullscreen_button(386, fullscreen_mode_y, "fullscreen_mode");
+			if (capture_video_locked)
+			{
+				draw_set_halign(fa_left);
+				draw_set_valign(fa_middle);
+				scr_draw_text_outlined(410, fullscreen_mode_y + 16, l10n_text("Fullscreen: Off (Locked by Capture Mode)"), global.default_text_size, c_menu_outline, c_ltgray, 1);
+			}
+			else
+			{
+				scr_draw_fullscreen_button(386, fullscreen_mode_y, "fullscreen_mode");
+			}
 		}
 		#endregion /* Fullscreen toggle END */
 
@@ -100,7 +149,7 @@ function scr_option_graphics()
 			? capture_mode_menu_y + 64
 			: advanced_video_option_y + 64;
 
-		draw_menu_dropdown(400, gui_scale_modifier_y, l10n_text("GUI Scale Modifier"), "gui_scale_modifier", global.gui_scale_modifier, l10n_text("Auto"), "5", "4", "3", "2", "1", "-1", "-2", "-3", "-4", "-5");
+		draw_menu_dropdown(400, gui_scale_modifier_y, l10n_text("GUI Scale Modifier"), "gui_scale_modifier", global.gui_scale_modifier, l10n_text("Auto"), "5", "4", "3", "2", "1", "-1", "-2", "-3", "-4", "-5", capture_video_locked);
 		scr_set_default_dropdown_description("gui_scale_modifier", "Auto");
 
 		if (menu == "resolution_setting")
@@ -135,13 +184,15 @@ function scr_option_graphics()
 		if (!window_get_fullscreen())
 		{
 			draw_menu_dropdown(400, resolution_setting_y, l10n_text("Resolution"), "resolution_setting", global.resolution_setting,
-			l10n_text("Current") + " " + string(window_get_width()) + " x " + string(window_get_height()),
-			"1920 x 1080",
-			"1600 x 900",
-			"1280 x 720",
-			"1024 x 576",
-			"960 x 540",
-			"480 x 270");
+				l10n_text("Current") + " " + string(window_get_width()) + " x " + string(window_get_height()),
+				"1920 x 1080",
+				"1600 x 900",
+				"1280 x 720",
+				"1024 x 576",
+				"960 x 540",
+				"480 x 270",
+				"", "", "", "",
+				capture_video_locked);
 			scr_set_default_dropdown_description("resolution_setting", l10n_text("Current") + " " + string(window_get_width()) + " x " + string(window_get_height()));
 		}
 		else
@@ -176,6 +227,7 @@ function scr_option_graphics()
 			if (key_up)
 			&& (menu_delay == 0 && menu_joystick_delay == 0)
 			&& (open_dropdown)
+			&& (!capture_video_locked)
 			&& !scr_capture_mode_owns_window()
 			&& (global.resolution_setting > 0)
 			{
@@ -186,6 +238,7 @@ function scr_option_graphics()
 			if (key_down)
 			&& (menu_delay == 0 && menu_joystick_delay == 0)
 			&& (open_dropdown)
+			&& (!capture_video_locked)
 			&& !scr_capture_mode_owns_window()
 			&& (global.resolution_setting < 6)
 			{
@@ -227,6 +280,7 @@ function scr_option_graphics()
 			if (key_up)
 			&& (menu_delay == 0 && menu_joystick_delay == 0)
 			&& (open_dropdown)
+			&& (!capture_video_locked)
 			&& (global.gui_scale_modifier > 0)
 			{
 				global.gui_scale_modifier--;
@@ -236,6 +290,7 @@ function scr_option_graphics()
 			if (key_down)
 			&& (menu_delay == 0 && menu_joystick_delay == 0)
 			&& (open_dropdown)
+			&& (!capture_video_locked)
 			&& (global.gui_scale_modifier < 10)
 			{
 				global.gui_scale_modifier++;
@@ -428,6 +483,7 @@ function scr_option_graphics()
 			if (menu == "gui_scale_modifier")
 			&& (menu_delay == 0 && menu_joystick_delay == 0)
 			&& (!open_dropdown)
+			&& (!capture_video_locked)
 			{
 				open_dropdown = true;
 				menu_delay = 3;

@@ -2391,6 +2391,7 @@
     {"id":{"name":"scr_option_menu","path":"scripts/scr_option_menu/scr_option_menu.yy",},},
     {"id":{"name":"scr_option_reset_controls_to_default_settings","path":"scripts/scr_option_reset_controls_to_default_settings/scr_option_reset_controls_to_default_settings.yy",},},
     {"id":{"name":"scr_option_storage","path":"scripts/scr_option_storage/scr_option_storage.yy",},},
+    {"id":{"name":"scr_options_audio","path":"scripts/scr_options_audio/scr_options_audio.yy",},},
     {"id":{"name":"scr_os_type_to_string","path":"scripts/scr_os_type_to_string/scr_os_type_to_string.yy",},},
     {"id":{"name":"scr_parallax_scrolling_background","path":"scripts/scr_parallax_scrolling_background/scr_parallax_scrolling_background.yy",},},
     {"id":{"name":"scr_player_check_spike_damage","path":"scripts/scr_player_check_spike_damage/scr_player_check_spike_damage.yy",},},
