@@ -3,7 +3,7 @@ function scr_option_graphics()
 	var mouse_get_x = device_mouse_x_to_gui(0);
 	var capture_video_locked = scr_capture_mode_is_active();
 	/* Capture Mode is opened from Video in shipped builds, but its custom pages
-	   are drawn by scr_option_menu. Do not draw or process Video controls behind them. */
+	   are drawn by scr_option_capture_mode. Do not draw or process Video controls behind them. */
 	if (global.settings_sidebar_menu == "video_settings")
 	&& (string_pos("capture_mode_", string(menu)) == 1)
 	{

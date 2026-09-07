@@ -1,0 +1,13 @@
+{
+  "$GMScript":"v1",
+  "%Name":"scr_option_capture_mode_obs_setup",
+  "isCompatibility":false,
+  "isDnD":false,
+  "name":"scr_option_capture_mode_obs_setup",
+  "parent":{
+    "name":"Menus",
+    "path":"folders/Scripts/Menus.yy",
+  },
+  "resourceType":"GMScript",
+  "resourceVersion":"2.0",
+}
