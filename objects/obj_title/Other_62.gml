@@ -238,6 +238,7 @@ if (_is_primary_request)
 	else
 	{
 		scr_log("ERROR", "HTTP.PRIMARY", "non_200", "http_status=" + string(status_code));
+		scr_record_online_failure("http_response", "primary_download_http", status_code);
 
 		if (status_code == 0)
 		{

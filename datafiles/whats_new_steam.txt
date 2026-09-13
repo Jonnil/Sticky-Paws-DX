@@ -1,8 +1,20 @@
-Hey! More polish, more stability, more quality-of-life improvements across the game!
+Hey! This update makes Capture Mode easier to use when recording gameplay, with a consistent audio mix and optional OBS setup files.
 
-I've cleaned up menus, improved background systems, and made sure things feel smoother and more reliable overall. Some changes are subtle, but they help make Sticky Paws a nicer experience to return to
+Capture Mode
 
-Thank you so much for playing Sticky Paws and supporting my work.
-It genuinely means the world to me
+- Find Capture Mode at Options > Video > Capture Mode.
+- Capture Mode now locks its recording audio mix. Music and musical jingles are set to 0%. Main, Sound, Ambient, Footsteps, and Voices are set to 70%.
+- Options > Audio clearly marks the locked volume sliders. Turn off Capture Mode before changing them.
+- Options > Video now locks resolution, GUI scale, and fullscreen while Capture Mode is active.
+- Desktop Capture requires 1920x1080 at 60 FPS. Handheld Capture requires 1280x720 at 60 FPS.
+- Your previous audio and video settings are remembered. Use Turn Off and Restore Settings to restore them.
+- The Recording Checklist now includes audio checks and clearer setup instructions.
 
--Jonnil
+OBS Recording Setup
+
+- On supported desktop systems, open Options > Video > Capture Mode > OBS Recording Setup.
+- You can save a ZIP for either the 1280x720 or 1920x1080 preset. Each ZIP includes an OBS Profile, setup instructions, and a Scene Collection where available.
+- Saving an OBS setup does not start OBS or enable Capture Mode. Import the files into OBS, enable the matching preset in the game, and test a short recording first.
+- Windows exports include a Game Capture scene configured for the game's picture and audio without desktop or microphone sources.
+- Linux exports require you to select the Sticky Paws window and add game-only audio manually. The Linux setup still needs testing.
+- After saving, use Open Saved OBS Setup Folder, extract the ZIP, and read READ ME FIRST.txt.

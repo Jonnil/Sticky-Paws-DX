@@ -258,6 +258,12 @@ function scr_draw_online_download_list_thumbnail(thumbnail_index, number_of_thum
 					keyboard_string = string_upper(draw_download_id);
 					search_id = string_upper(draw_download_id);
 					automatically_search_for_id = true;
+					online_retry_context = {
+						operation: "selected_download",
+						content_type: content_type,
+						level_id: search_id,
+						selected_index: thumbnail_index
+					};
 					in_online_download_list_menu = false; show_debug_message("[scr_draw_online_download_list_thumbnail] 'In online download list menu' is set to false");
 
 					#region /* Set Thumbnail for Download Menu */

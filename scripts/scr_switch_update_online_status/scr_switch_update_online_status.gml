@@ -121,6 +121,7 @@ function scr_switch_update_online_status(show_login_screen = true)
 
 		if (!login_success)
 		{
+			scr_record_online_failure("account", "switch_login_failed");
 			global.switch_logged_in = false;
 			global.online_token_validated = false;
 			global.switch_account_network_service_available = false;
@@ -132,13 +133,13 @@ function scr_switch_update_online_status(show_login_screen = true)
 				scr_log("WARN", "SWITCH.ACCOUNTS", "login_failed_after_system_ui", "account_id=" + string(active_user_id));
 				global.switch_login_cancelled = false;
 				global.switch_login_cancelled_account_id = -1;
-				global.online_token_error_message = "System is not connected to the network.";
-				global.online_current_attempt_result = l10n_text("No network connection");
+				global.online_token_error_message = "Switch account login failed after system UI.";
+				global.online_current_attempt_result = l10n_text("Account login failed");
 			}
 			else
 			{
 				global.online_token_error_message = "Silent login unavailable for active account " + string(active_user_id);
-				global.online_current_attempt_result = l10n_text("Token not validated");
+				global.online_current_attempt_result = l10n_text("Account login failed");
 			}
 
 			scr_switch_refresh_account_debug_info(raw_preselected_user_id, active_user_id);
@@ -154,6 +155,7 @@ function scr_switch_update_online_status(show_login_screen = true)
 
 		if (!global.switch_account_network_service_available)
 		{
+			scr_record_online_failure("account", "switch_network_service_unavailable");
 			global.online_token_validated = false;
 			global.online_token_request = -1;
 			global.switch_online_token_account_id = -1;
@@ -168,13 +170,15 @@ function scr_switch_update_online_status(show_login_screen = true)
 									&& id_token != undefined
 									&& id_token != false);
 		global.online_token_expired = false;
+		global.online_token_rejected = false;
 
 		if (!global.online_token_present)
 		{
+			scr_record_online_failure("account", "switch_token_retrieval_failed");
 			global.online_token_validated = false;
 			global.switch_online_token_account_id = -1;
 			global.online_token_error_message = "ID Token retrieval failed for active account " + string(active_user_id);
-			global.online_current_attempt_result = l10n_text("Invalid ID Token");
+			global.online_current_attempt_result = l10n_text("Could not obtain online token");
 			show_debug_message("[scr_switch_update_online_status] Invalid ID Token for active account " + string(active_user_id));
 			return;
 		}
@@ -258,6 +262,7 @@ function scr_switch_dispatch_token_validation_request(active_user_id, id_token, 
 
 	if (global.online_token_request == -1)
 	{
+		scr_record_online_failure("http_transport", "token_validation_request_failed");
 		global.switch_online_token_account_id = -1;
 		global.online_token_error_message = "Failed to start token validation for " + string(request_source) + " " + string(active_user_id);
 		global.online_current_attempt_result = l10n_text("Token validation request failed");

@@ -410,6 +410,7 @@ function scr_step_online_download_list()
 			automatically_search_for_id = false;
 			keyboard_string = "";
 			search_id = "";
+			online_retry_context = { operation: "manual_id", content_type: content_type, level_id: "", selected_index: global.selected_online_download_index };
 			caution_online_takes_you_to = "search_id_ok"
 			menu = "search_id_ok";
 			select_custom_level_menu_open = false;

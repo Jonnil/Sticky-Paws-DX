@@ -3,6 +3,40 @@ function scr_draw_information_menu()
 	var mouse_get_x = device_mouse_x_to_gui(0);
 	var mouse_get_y = device_mouse_y_to_gui(0);
 	var fixed_player = 1;
+	var whats_new_text_start_y = 32 * 5;
+	var whats_new_text_end_y = max(whats_new_text_start_y + 1, display_get_gui_height() - 58);
+	var whats_new_text_width = max(1, display_get_gui_width() - 64);
+	var whats_new_language_text_height = 0;
+	var whats_new_scroll_max = 0;
+	var whats_new_can_scroll = false;
+
+	if (information_menu_open == "whats_new")
+	{
+		if (global.language_local_data[# global.selected_language_id, 0] != string("English"))
+		{
+			whats_new_language_text_height = 96;
+		}
+
+		var whats_new_content_height = whats_new_language_text_height + (string_height_ext(string(global.whats_new), 30, whats_new_text_width) * global.default_text_size) + 4;
+		var whats_new_view_height = whats_new_text_end_y - whats_new_text_start_y;
+		whats_new_scroll_max = max(0, ceil(whats_new_content_height - whats_new_view_height));
+		whats_new_scroll_offset = clamp(whats_new_scroll_offset, 0, whats_new_scroll_max);
+		whats_new_can_scroll = (whats_new_scroll_max > 0);
+
+		if (!whats_new_can_scroll)
+		&& (menu == "whats_new_scroll_up"
+		|| menu == "whats_new_scroll_down"
+		|| menu == "whats_new_to_top")
+		{
+			menu = "information_back";
+		}
+		else
+		if (whats_new_scroll_offset <= 0)
+		&& (menu == "whats_new_to_top")
+		{
+			menu = "whats_new_scroll_down";
+		}
+	}
 	
 	#region /* Information menu */
 	if (information_menu_open != "")
@@ -49,6 +83,7 @@ function scr_draw_information_menu()
 			{
 				menu = "whats_new";
 				information_menu_open = "whats_new";
+				whats_new_scroll_offset = 0;
 			}
 			else
 			if (menu == "community")
@@ -62,6 +97,7 @@ function scr_draw_information_menu()
 				{
 					menu = "whats_new";
 					information_menu_open = "whats_new";
+					whats_new_scroll_offset = 0;
 				}
 			}
 			else
@@ -82,6 +118,7 @@ function scr_draw_information_menu()
 				{
 					menu = "whats_new";
 					information_menu_open = "whats_new";
+					whats_new_scroll_offset = 0;
 				}
 			}
 			else
@@ -89,6 +126,37 @@ function scr_draw_information_menu()
 			{
 				menu = "credits";
 				information_menu_open = "credits";
+			}
+			else
+			if (information_menu_open == "whats_new")
+			&& (whats_new_can_scroll)
+			{
+				if (menu == "whats_new_scroll_up")
+				{
+					menu = "information_back";
+				}
+				else
+				if (menu == "whats_new_scroll_down")
+				{
+					menu = "whats_new_scroll_up";
+				}
+				else
+				if (menu == "whats_new_to_top")
+				{
+					menu = "whats_new_scroll_down";
+				}
+				else
+				if (menu == "information_back")
+				{
+					if (whats_new_scroll_offset > 0)
+					{
+						menu = "whats_new_to_top";
+					}
+					else
+					{
+						menu = "whats_new_scroll_down";
+					}
+				}
 			}
 			menu_delay = 3;
 		}
@@ -100,6 +168,7 @@ function scr_draw_information_menu()
 			{
 				menu = "whats_new";
 				information_menu_open = "whats_new";
+				whats_new_scroll_offset = 0;
 			}
 			else
 			if (menu == "whats_new")
@@ -160,6 +229,37 @@ function scr_draw_information_menu()
 			{
 				menu = "about";
 				information_menu_open = "about";
+			}
+			else
+			if (information_menu_open == "whats_new")
+			&& (whats_new_can_scroll)
+			{
+				if (menu == "whats_new_scroll_up")
+				{
+					menu = "whats_new_scroll_down";
+				}
+				else
+				if (menu == "whats_new_scroll_down")
+				{
+					if (whats_new_scroll_offset > 0)
+					{
+						menu = "whats_new_to_top";
+					}
+					else
+					{
+						menu = "information_back";
+					}
+				}
+				else
+				if (menu == "whats_new_to_top")
+				{
+					menu = "information_back";
+				}
+				else
+				if (menu == "information_back")
+				{
+					menu = "whats_new_scroll_up";
+				}
 			}
 			menu_delay = 3;
 		}
@@ -286,7 +386,12 @@ function scr_draw_information_menu()
 			&& (information_menu_open == "whats_new")
 			{
 				menu_delay = 3;
-				
+
+				if (whats_new_can_scroll)
+				{
+					menu = "whats_new_scroll_down";
+				}
+				else
 				if (scr_url_exists(global.link_to_changelog_history))
 				&& (global.enable_option_for_pc)
 				{
@@ -302,6 +407,23 @@ function scr_draw_information_menu()
 			{
 				menu_delay = 3;
 				menu = "whats_new";
+			}
+			else
+			if (menu == "whats_new_scroll_up")
+			|| (menu == "whats_new_scroll_down")
+			|| (menu == "whats_new_to_top")
+			{
+				menu_delay = 3;
+
+				if (scr_url_exists(global.link_to_changelog_history))
+				&& (global.enable_option_for_pc)
+				{
+					menu = "changelog_history";
+				}
+				else
+				{
+					menu = "whats_new";
+				}
 			}
 			else
 			if (menu == "information_back")
@@ -483,12 +605,33 @@ function scr_draw_information_menu()
 					menu = "changelog_history";
 				}
 				else
+				if (whats_new_can_scroll)
+				{
+					menu = "whats_new_scroll_down";
+				}
+				else
 				{
 					menu = "information_back";
 				}
 			}
 			else
 			if (menu == "changelog_history")
+			{
+				menu_delay = 3;
+
+				if (whats_new_can_scroll)
+				{
+					menu = "whats_new_scroll_down";
+				}
+				else
+				{
+					menu = "information_back";
+				}
+			}
+			else
+			if (menu == "whats_new_scroll_up")
+			|| (menu == "whats_new_scroll_down")
+			|| (menu == "whats_new_to_top")
 			{
 				menu_delay = 3;
 				menu = "information_back";
@@ -540,141 +683,6 @@ function scr_draw_information_menu()
 				menu = "information_back";
 			}
 		}
-
-		#region /* About, What's New, Backups, Credits, and Back tabs */
-		if (information_menu_open != "about_privacy_policy")
-		{
-			var tab_button_x = 0;
-			
-			/* About tab button */
-			draw_menu_button_sprite(spr_menu_button, tab_button_x, 0, 0, 0, 0.5, 1, 185, 42, l10n_text("About"), "about", "about", false);
-
-			if (point_in_rectangle(mouse_get_x, mouse_get_y, tab_button_x, 0, tab_button_x + 185, 42))
-			&& (mouse_check_button_released(mb_left))
-			&& (menu_delay == 0 && menu_joystick_delay == 0)
-			|| (menu == "about")
-			&& (key_accept_pressed)
-			&& (menu_delay == 0 && menu_joystick_delay == 0)
-			{
-				information_menu_open = "about";
-				menu_delay = 3;
-			}
-
-			/* What's New tab button */
-			var whats_new_alpha = 1;
-			
-			if (!latest_whats_new_read)
-			{
-				whats_new_alpha = scr_wave(0, 1, 1);
-			}
-			
-			tab_button_x += 185;
-			draw_menu_button_sprite(spr_menu_button, tab_button_x, 0, 0, 0, 0.5, 1, 185, 42, l10n_text("What's New?"), "whats_new", "whats_new", false,, whats_new_alpha);
-			
-			if (point_in_rectangle(mouse_get_x, mouse_get_y, tab_button_x, 0, tab_button_x + 185, 42))
-			&& (mouse_check_button_released(mb_left))
-			&& (menu_delay == 0 && menu_joystick_delay == 0)
-			|| (menu == "whats_new")
-			&& (key_accept_pressed)
-			&& (menu_delay == 0 && menu_joystick_delay == 0)
-			{
-				information_menu_open = "whats_new";
-				menu_delay = 3;
-			}
-			
-			/* Backups tab button */
-			if (!global.demo_enable)
-			{
-				tab_button_x += 185;
-				draw_menu_button_sprite(spr_menu_button, tab_button_x, 0, 0, 0, 0.5, 1, 185, 42, l10n_text("Backups"), "backups", "backups", false);
-			}
-			
-			if (point_in_rectangle(mouse_get_x, mouse_get_y, tab_button_x, 0, tab_button_x + 185, 42))
-			&& (mouse_check_button_released(mb_left))
-			&& (menu_delay == 0 && menu_joystick_delay == 0)
-			&& (!global.demo_enable)
-			|| (menu == "backups")
-			&& (key_accept_pressed)
-			&& (menu_delay == 0 && menu_joystick_delay == 0)
-			&& (!global.demo_enable)
-			{
-				information_menu_open = "backups";
-				menu_delay = 3;
-			}
-			
-			/* Community tab button */
-			if (global.enable_option_for_pc)
-			{
-				tab_button_x += 185;
-				draw_menu_button_sprite(spr_menu_button, tab_button_x, 0, 0, 0, 0.5, 1, 185, 42, l10n_text("Community"), "community", "community", false);
-				
-				if (point_in_rectangle(mouse_get_x, mouse_get_y, tab_button_x, 0, tab_button_x + 185, 42))
-				&& (mouse_check_button_released(mb_left))
-				&& (menu_delay == 0 && menu_joystick_delay == 0)
-				|| (menu == "community")
-				&& (key_accept_pressed)
-				&& (menu_delay == 0 && menu_joystick_delay == 0)
-				{
-					information_menu_open = "community";
-					menu_delay = 3;
-				}
-			}
-			
-			/* Credits tab button */
-			tab_button_x += 185;
-			draw_menu_button_sprite(spr_menu_button, tab_button_x, 0, 0, 0, 0.5, 1, 185, 42, l10n_text("Credits"), "credits", "credits", false);
-
-			if (point_in_rectangle(mouse_get_x, mouse_get_y, tab_button_x, 0, tab_button_x + 185, 42))
-			&& (mouse_check_button_released(mb_left))
-			&& (menu_delay == 0 && menu_joystick_delay == 0)
-			|| (menu == "credits")
-			&& (key_accept_pressed)
-			&& (menu_delay == 0 && menu_joystick_delay == 0)
-			{
-				information_menu_open = "credits";
-				menu_delay = 3;
-			}
-
-			/* Links tab button */
-			if (global.enable_option_for_pc)
-			{
-				tab_button_x += 185;
-				draw_menu_button_sprite(spr_menu_button, tab_button_x, 0, 0, 0, 0.5, 1, 185, 42, l10n_text("Links"), "links", "links", false);
-				if (point_in_rectangle(mouse_get_x, mouse_get_y, tab_button_x, 0, tab_button_x + 185, 42))
-				&& (mouse_check_button_released(mb_left))
-				&& (menu_delay == 0 && menu_joystick_delay == 0)
-				|| (menu == "links")
-				&& (key_accept_pressed)
-				&& (menu_delay == 0 && menu_joystick_delay == 0)
-				{
-					information_menu_open = "links";
-					menu_delay = 3;
-				}
-			}
-
-			/* Back from Information Menu */
-			draw_menu_button(display_get_gui_width() - 370, display_get_gui_height() - 42, l10n_text("Back"), "information_back", "information_back");
-			draw_sprite_ext(spr_icon_back, 0, display_get_gui_width() - 354, display_get_gui_height() - 21, 1, 1, 0, c_white, 1);
-
-			if (point_in_rectangle(mouse_get_x, mouse_get_y, display_get_gui_width() - 370, display_get_gui_height() - 42, display_get_gui_width(), display_get_gui_height()))
-			&& (mouse_check_button_released(mb_left))
-			&& (menu_delay == 0 && menu_joystick_delay == 0)
-			|| (menu == "information_back")
-			&& (key_accept_pressed)
-			&& (menu_delay == 0 && menu_joystick_delay == 0)
-			|| (key_back_pressed)
-			&& (menu_delay == 0 && menu_joystick_delay == 0)
-			{
-				if (instance_exists(obj_credits))
-				{
-					instance_destroy(obj_credits);
-				}
-				information_menu_open = "";
-				menu = "information";
-				menu_delay = 3;
-			}
-		}
-		#endregion /* About, What's New, Backups, Credits, and Back tabs */
 
 		if (information_menu_open == "about") /* About tab */
 		{
@@ -1071,19 +1079,70 @@ function scr_draw_information_menu()
 			var build_version_y = 32 * 2;
 			var whats_new_date_y = 32 * 2;
 			var changelog_history_y = 32 * 3;
-			var whats_new_text_y = 32 * 5;
-
-			draw_set_halign(fa_left);
-			scr_draw_text_outlined(8, build_version_y, l10n_text("Build version") + ": v" + scr_get_build_date() + " " + l10n_text("is here!"), global.default_text_size, c_black, c_white, 1);
-
+			var whats_new_text_y = whats_new_text_start_y - whats_new_scroll_offset;
 			var day = date_get_day(GM_build_date);
 			var month = date_get_month(GM_build_date);
 			var year = date_get_year(GM_build_date);
 			var hour = date_get_hour(GM_build_date);
 			var minute = date_get_minute(GM_build_date);
 			var second = date_get_second(GM_build_date);
+			var build_version_text = l10n_text("Build version") + ": v" + scr_get_build_date() + " " + l10n_text("is here!");
+			var whats_new_date_text = l10n_text("Build date") + ": " + string(year) + "-" + string(month) + "-" + string(day) + " " + string(hour) + ":" + string(minute) + ":" + string(second);
+
+			#region /* The "What's New" text is only written in English, inform the user this whenever you have selected a language beside English */
+			if (global.language_local_data[# global.selected_language_id, 0] != string("English"))
+			{
+				draw_set_halign(fa_left);
+				draw_set_valign(fa_middle);
+				/* First, display the warning in the selected language */
+				scr_draw_text_outlined(32, whats_new_text_y, l10n_text("Text only available in English"), global.default_text_size, c_black, c_white, 1);
+				/* Second, also display the warning in English, so that this screen can pass lotcheck with an explanation why the text isn't translated, as the people doing the lotcheck can only understand English */
+				scr_draw_text_outlined(32, whats_new_text_y + 32, "Text only available in English", global.default_text_size, c_black, c_white, 1);
+				whats_new_text_y += 96;
+			}
+			#endregion /* The "What's New" text is only written in English, inform the user this whenever you have selected a language beside English END */
+
+			draw_set_halign(fa_left);
+			draw_set_valign(fa_top);
+			scr_draw_text_outlined(32, whats_new_text_y, global.whats_new, global.default_text_size, c_black, c_white, 1, 30, display_get_gui_width() - 64);
+			draw_set_valign(fa_middle);
+
+			#region /* Draw the fixed What's New header above the scrolling text */
+			var whats_new_header_padding_x = 8;
+			var whats_new_header_padding_y = 6;
+			var whats_new_header_text_height = max(string_height(build_version_text), string_height(whats_new_date_text)) * global.default_text_size;
+			var build_version_text_width = string_width(build_version_text) * global.default_text_size;
+			var whats_new_date_text_width = string_width(whats_new_date_text) * global.default_text_size;
+
+			draw_roundrect_glossy_color_ext(
+				max(0, 8 - whats_new_header_padding_x),
+				build_version_y - (whats_new_header_text_height * 0.5) - whats_new_header_padding_y,
+				min(display_get_gui_width(), 8 + build_version_text_width + whats_new_header_padding_x),
+				build_version_y + (whats_new_header_text_height * 0.5) + whats_new_header_padding_y,
+				12,
+				12,
+				c_black,
+				c_black,
+				false,
+				1
+			);
+			draw_roundrect_glossy_color_ext(
+				max(0, display_get_gui_width() - 8 - whats_new_date_text_width - whats_new_header_padding_x),
+				whats_new_date_y - (whats_new_header_text_height * 0.5) - whats_new_header_padding_y,
+				min(display_get_gui_width(), display_get_gui_width() - 8 + whats_new_header_padding_x),
+				whats_new_date_y + (whats_new_header_text_height * 0.5) + whats_new_header_padding_y,
+				12,
+				12,
+				c_black,
+				c_black,
+				false,
+				1
+			);
+
+			draw_set_halign(fa_left);
+			scr_draw_text_outlined(8, build_version_y, build_version_text, global.default_text_size, c_black, c_white, 1);
 			draw_set_halign(fa_right);
-			scr_draw_text_outlined(display_get_gui_width() - 8, whats_new_date_y, l10n_text("Build date") + ": " + string(year) + "-" + string(month) + "-" + string(day) + " " + string(hour) + ":" + string(minute) + ":" + string(second), global.default_text_size, c_black, c_white, 1);
+			scr_draw_text_outlined(display_get_gui_width() - 8, whats_new_date_y, whats_new_date_text, global.default_text_size, c_black, c_white, 1);
 
 			if (scr_url_exists(global.link_to_changelog_history))
 			&& (global.link_to_changelog_history != "")
@@ -1103,24 +1162,94 @@ function scr_draw_information_menu()
 					menu_delay = 3;
 				}
 			}
+			#endregion /* Draw the fixed What's New header above the scrolling text END */
 
-			#region /* The "What's New" text is only written in English, inform the user this whenever you have selected a language beside English */
-			if (global.language_local_data[# global.selected_language_id, 0] != string("English"))
+			#region /* Navigate the What's New text */
+			if (whats_new_can_scroll)
 			{
-				draw_set_halign(fa_left);
-				draw_set_valign(fa_middle);
-				/* First, display the warning in the selected language */
-				scr_draw_text_outlined(32, whats_new_text_y, l10n_text("Text only available in English"), global.default_text_size, c_black, c_white, 1);
-				/* Second, also display the warning in English, so that this screen can pass lotcheck with an explanation why the text isn't translated, as the people doing the lotcheck can only understand English */
-				scr_draw_text_outlined(32, whats_new_text_y + 32, "Text only available in English", global.default_text_size, c_black, c_white, 1);
-				whats_new_text_y += 96;
-			}
-			#endregion /* The "What's New" text is only written in English, inform the user this whenever you have selected a language beside English END */
+				var whats_new_scroll_button_y = display_get_gui_height() - 42;
+				var whats_new_scroll_up_x = 0;
+				var whats_new_scroll_down_x = 185;
+				var whats_new_to_top_x = 370;
+				var whats_new_scroll_distance = 10;
+				var whats_new_scroll_controls_right = whats_new_scroll_down_x + 185;
 
-			draw_set_halign(fa_left);
-			draw_set_valign(fa_top);
-			scr_draw_text_outlined(32, whats_new_text_y, global.whats_new, global.default_text_size, c_black, c_white, 1, 30, display_get_gui_width() - 64);
-			draw_set_valign(fa_middle);
+				if (whats_new_scroll_offset > 0)
+				{
+					whats_new_scroll_controls_right = whats_new_to_top_x + 185;
+				}
+
+				draw_roundrect_glossy_color_ext(
+					0,
+					whats_new_scroll_button_y - 6,
+					min(display_get_gui_width(), whats_new_scroll_controls_right + 6),
+					display_get_gui_height(),
+					12,
+					12,
+					c_black,
+					c_black,
+					false,
+					1
+				);
+
+				draw_menu_button_sprite(spr_menu_button, whats_new_scroll_up_x, whats_new_scroll_button_y, 0, 0, 0.5, 1, 185, 42, l10n_text("Up"), "whats_new_scroll_up", "whats_new_scroll_up", false);
+				draw_menu_button_sprite(spr_menu_button, whats_new_scroll_down_x, whats_new_scroll_button_y, 0, 0, 0.5, 1, 185, 42, l10n_text("Down"), "whats_new_scroll_down", "whats_new_scroll_down", false);
+
+				if (whats_new_scroll_offset > 0)
+				{
+					draw_menu_button_sprite(spr_menu_button, whats_new_to_top_x, whats_new_scroll_button_y, 0, 0, 0.5, 1, 185, 42, l10n_text("To Top"), "whats_new_to_top", "whats_new_to_top", false);
+				}
+
+				if (mouse_wheel_up())
+				{
+					whats_new_scroll_offset -= 20;
+				}
+				else
+				if (mouse_wheel_down())
+				{
+					whats_new_scroll_offset += 20;
+				}
+
+				var whats_new_scroll_up_mouse = point_in_rectangle(mouse_get_x, mouse_get_y, whats_new_scroll_up_x, whats_new_scroll_button_y, whats_new_scroll_up_x + 185, whats_new_scroll_button_y + 42)
+					&& (mouse_check_button(mb_left) || mouse_check_button_released(mb_left))
+					&& (menu_delay == 0 && menu_joystick_delay == 0);
+				var whats_new_scroll_up_accept = (menu == "whats_new_scroll_up")
+					&& (key_accept_hold || key_accept_pressed)
+					&& (menu_delay == 0 && menu_joystick_delay == 0);
+
+				if (whats_new_scroll_up_mouse || whats_new_scroll_up_accept)
+				{
+					whats_new_scroll_offset -= whats_new_scroll_distance;
+				}
+
+				var whats_new_scroll_down_mouse = point_in_rectangle(mouse_get_x, mouse_get_y, whats_new_scroll_down_x, whats_new_scroll_button_y, whats_new_scroll_down_x + 185, whats_new_scroll_button_y + 42)
+					&& (mouse_check_button(mb_left) || mouse_check_button_released(mb_left))
+					&& (menu_delay == 0 && menu_joystick_delay == 0);
+				var whats_new_scroll_down_accept = (menu == "whats_new_scroll_down")
+					&& (key_accept_hold || key_accept_pressed)
+					&& (menu_delay == 0 && menu_joystick_delay == 0);
+
+				if (whats_new_scroll_down_mouse || whats_new_scroll_down_accept)
+				{
+					whats_new_scroll_offset += whats_new_scroll_distance;
+				}
+
+				if (whats_new_scroll_offset > 0)
+				&& (point_in_rectangle(mouse_get_x, mouse_get_y, whats_new_to_top_x, whats_new_scroll_button_y, whats_new_to_top_x + 185, whats_new_scroll_button_y + 42))
+				&& (mouse_check_button_released(mb_left))
+				&& (menu_delay == 0 && menu_joystick_delay == 0)
+				|| (menu == "whats_new_to_top")
+				&& (key_accept_pressed)
+				&& (menu_delay == 0 && menu_joystick_delay == 0)
+				{
+					menu_delay = 3;
+					menu = "whats_new_scroll_down";
+					whats_new_scroll_offset = 0;
+				}
+
+				whats_new_scroll_offset = clamp(whats_new_scroll_offset, 0, whats_new_scroll_max);
+			}
+			#endregion /* Navigate the What's New text END */
 		}
 		else
 		if (information_menu_open == "backups") /* Backups tab */
@@ -1230,6 +1359,142 @@ function scr_draw_information_menu()
 		{
 			scr_draw_links_menu();
 		}
+
+		#region /* About, What's New, Backups, Credits, and Back tabs */
+		if (information_menu_open != "about_privacy_policy")
+		{
+			var tab_button_x = 0;
+
+			/* About tab button */
+			draw_menu_button_sprite(spr_menu_button, tab_button_x, 0, 0, 0, 0.5, 1, 185, 42, l10n_text("About"), "about", "about", false);
+
+			if (point_in_rectangle(mouse_get_x, mouse_get_y, tab_button_x, 0, tab_button_x + 185, 42))
+			&& (mouse_check_button_released(mb_left))
+			&& (menu_delay == 0 && menu_joystick_delay == 0)
+			|| (menu == "about")
+			&& (key_accept_pressed)
+			&& (menu_delay == 0 && menu_joystick_delay == 0)
+			{
+				information_menu_open = "about";
+				menu_delay = 3;
+			}
+
+			/* What's New tab button */
+			var whats_new_alpha = 1;
+
+			if (!latest_whats_new_read)
+			{
+				whats_new_alpha = scr_wave(0, 1, 1);
+			}
+
+			tab_button_x += 185;
+			draw_menu_button_sprite(spr_menu_button, tab_button_x, 0, 0, 0, 0.5, 1, 185, 42, l10n_text("What's New?"), "whats_new", "whats_new", false,, whats_new_alpha);
+
+			if (point_in_rectangle(mouse_get_x, mouse_get_y, tab_button_x, 0, tab_button_x + 185, 42))
+			&& (mouse_check_button_released(mb_left))
+			&& (menu_delay == 0 && menu_joystick_delay == 0)
+			|| (menu == "whats_new")
+			&& (key_accept_pressed)
+			&& (menu_delay == 0 && menu_joystick_delay == 0)
+			{
+				information_menu_open = "whats_new";
+				whats_new_scroll_offset = 0;
+				menu_delay = 3;
+			}
+
+			/* Backups tab button */
+			if (!global.demo_enable)
+			{
+				tab_button_x += 185;
+				draw_menu_button_sprite(spr_menu_button, tab_button_x, 0, 0, 0, 0.5, 1, 185, 42, l10n_text("Backups"), "backups", "backups", false);
+			}
+
+			if (point_in_rectangle(mouse_get_x, mouse_get_y, tab_button_x, 0, tab_button_x + 185, 42))
+			&& (mouse_check_button_released(mb_left))
+			&& (menu_delay == 0 && menu_joystick_delay == 0)
+			&& (!global.demo_enable)
+			|| (menu == "backups")
+			&& (key_accept_pressed)
+			&& (menu_delay == 0 && menu_joystick_delay == 0)
+			&& (!global.demo_enable)
+			{
+				information_menu_open = "backups";
+				menu_delay = 3;
+			}
+
+			/* Community tab button */
+			if (global.enable_option_for_pc)
+			{
+				tab_button_x += 185;
+				draw_menu_button_sprite(spr_menu_button, tab_button_x, 0, 0, 0, 0.5, 1, 185, 42, l10n_text("Community"), "community", "community", false);
+
+				if (point_in_rectangle(mouse_get_x, mouse_get_y, tab_button_x, 0, tab_button_x + 185, 42))
+				&& (mouse_check_button_released(mb_left))
+				&& (menu_delay == 0 && menu_joystick_delay == 0)
+				|| (menu == "community")
+				&& (key_accept_pressed)
+				&& (menu_delay == 0 && menu_joystick_delay == 0)
+				{
+					information_menu_open = "community";
+					menu_delay = 3;
+				}
+			}
+
+			/* Credits tab button */
+			tab_button_x += 185;
+			draw_menu_button_sprite(spr_menu_button, tab_button_x, 0, 0, 0, 0.5, 1, 185, 42, l10n_text("Credits"), "credits", "credits", false);
+
+			if (point_in_rectangle(mouse_get_x, mouse_get_y, tab_button_x, 0, tab_button_x + 185, 42))
+			&& (mouse_check_button_released(mb_left))
+			&& (menu_delay == 0 && menu_joystick_delay == 0)
+			|| (menu == "credits")
+			&& (key_accept_pressed)
+			&& (menu_delay == 0 && menu_joystick_delay == 0)
+			{
+				information_menu_open = "credits";
+				menu_delay = 3;
+			}
+
+			/* Links tab button */
+			if (global.enable_option_for_pc)
+			{
+				tab_button_x += 185;
+				draw_menu_button_sprite(spr_menu_button, tab_button_x, 0, 0, 0, 0.5, 1, 185, 42, l10n_text("Links"), "links", "links", false);
+				if (point_in_rectangle(mouse_get_x, mouse_get_y, tab_button_x, 0, tab_button_x + 185, 42))
+				&& (mouse_check_button_released(mb_left))
+				&& (menu_delay == 0 && menu_joystick_delay == 0)
+				|| (menu == "links")
+				&& (key_accept_pressed)
+				&& (menu_delay == 0 && menu_joystick_delay == 0)
+				{
+					information_menu_open = "links";
+					menu_delay = 3;
+				}
+			}
+
+			/* Back from Information Menu */
+			draw_menu_button(display_get_gui_width() - 370, display_get_gui_height() - 42, l10n_text("Back"), "information_back", "information_back");
+			draw_sprite_ext(spr_icon_back, 0, display_get_gui_width() - 354, display_get_gui_height() - 21, 1, 1, 0, c_white, 1);
+
+			if (point_in_rectangle(mouse_get_x, mouse_get_y, display_get_gui_width() - 370, display_get_gui_height() - 42, display_get_gui_width(), display_get_gui_height()))
+			&& (mouse_check_button_released(mb_left))
+			&& (menu_delay == 0 && menu_joystick_delay == 0)
+			|| (menu == "information_back")
+			&& (key_accept_pressed)
+			&& (menu_delay == 0 && menu_joystick_delay == 0)
+			|| (key_back_pressed)
+			&& (menu_delay == 0 && menu_joystick_delay == 0)
+			{
+				if (instance_exists(obj_credits))
+				{
+					instance_destroy(obj_credits);
+				}
+				information_menu_open = "";
+				menu = "information";
+				menu_delay = 3;
+			}
+		}
+		#endregion /* About, What's New, Backups, Credits, and Back tabs */
 	}
 	#endregion /* Information menu END */
 

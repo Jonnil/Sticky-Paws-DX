@@ -1,95 +1,54 @@
-/// @function scr_init_bool_globals
-/// @description  Automatically finds every Boolean in global and stores its name in a list
-function scr_init_bool_globals()
+/// @function scr_nwt_v2_flags()
+/// @description Fixed NWT v2 schema. Append no fields here without changing the version.
+function scr_nwt_v2_flags()
 {
-	/* Create (or clean up) the list */
-	if (variable_struct_exists(global, "bool_flag_list"))
+	var is_switch = (os_type == os_switch);
+	var retry_operation = "";
+
+	if (variable_instance_exists(self, "online_retry_context"))
+	&& is_struct(online_retry_context)
+	&& variable_instance_exists(self, "caution_online_takes_you_to")
+	&& (caution_online_takes_you_to == "search_id_ok")
 	{
-		ds_list_destroy(global.bool_flag_list);
-		global.bool_flag_list = undefined;
+		retry_operation = online_retry_context.operation;
 	}
 
-	global.bool_flag_list = ds_list_create();
-
-	/* Get every field name in the global struct */
-	var names = struct_get_names(global);
-	/* Ensure stable, alphabetical ordering so bit‐indices never shift (true = ascending) */
-	array_sort(names, true);
-	var cnt = array_length(names);
-
-	for (var i = 0; i < cnt; i++)
-	{
-		var fname = names[i];
-
-		/* Skip our own list, or any non-boolean
-		'struct get names(global)' returns *every* field on the global struct,
-		including our own bool_flag_list, so skip that one! */
-		if (fname == "bool_flag_list")
-		{
-			continue;
-		}
-
-		/* IMPORTANT: 'global' in GML is a struct, not a ds_map.
-		If you try 'global[? fname]', GameMaker under the hood treats
-		'global' like a map and crashes with "expecting a ds_map".
-		Instead, use variable_struct_get() to pull out a struct member by name */
-		var val = variable_struct_get(global, fname);
-
-		/* Only want pure Boolean fields here */
-		if ( is_bool(val) )
-		{
-			ds_list_add(global.bool_flag_list, fname);
-		}
-	}
+	return [
+		{ name: "switch_build", active: is_switch },
+		{ name: "online_enabled", active: global.online_enabled },
+		{ name: "passive_network_connected", active: variable_global_exists("online_cached_passive_network_connected") && global.online_cached_passive_network_connected },
+		{ name: "token_present", active: is_switch && global.online_token_present },
+		{ name: "token_validated", active: is_switch && global.online_token_validated },
+		{ name: "token_expired", active: is_switch && global.online_token_expired },
+		{ name: "switch_logged_in", active: is_switch && global.switch_logged_in },
+		{ name: "switch_network_service_available", active: is_switch && global.switch_account_network_service_available },
+		{ name: "active_network_request_pending", active: variable_global_exists("online_active_network_request_pending") && global.online_active_network_request_pending },
+		{ name: "selected_download_pending", active: retry_operation == "selected_download" },
+		{ name: "manual_id_pending", active: retry_operation == "manual_id" },
+		{ name: "failure_network", active: global.online_failure_kind == "network" },
+		{ name: "failure_http_transport", active: global.online_failure_kind == "http_transport" },
+		{ name: "failure_http_response", active: global.online_failure_kind == "http_response" },
+		{ name: "failure_timeout", active: global.online_failure_kind == "timeout" },
+		{ name: "failure_token_rejected", active: global.online_failure_kind == "token_rejected" },
+		{ name: "failure_account", active: global.online_failure_kind == "account" }
+	];
 }
 
-/// @function scr_export_bool_globals
-/// @description  Writes all Boolean globals out to an INI under your game’s save folder
-function scr_export_bool_globals()
-{
-	/* Build the full path in AppData (via GameMaker’s save‐ID) */
-	var ini_path = game_save_id + "debug_logs/BoolGlobals.ini";
-
-	/* Delete any old copy so we start fresh */
-	if (file_exists(ini_path))
-	{
-		file_delete(ini_path);
-	}
-
-	/* Open (or create) the INI file */
-	ini_open(ini_path);
-
-	/* Loop through each flagged name and write its 0/1 value */
-	var cnt = ds_list_size(global.bool_flag_list);
-
-	for (var i = 0; i < cnt; i++)
-	{
-		/* Pull the i-th entry out of the DS list (not an array!) */
-		var name = ds_list_find_value(global.bool_flag_list, i);
-		/* Read a struct member by name—global is a struct, not a ds_map */
-		var val  = variable_struct_get(global, name);
-		ini_write_real("BoolGlobals", name, real(val));
-	}
-
-	/* Close (and flush) the file */
-	ini_close();
-
-	show_debug_message("[scr_export_bool_globals] Bool‐global dump written to: " + string(ini_path) + "\n");
-}
-
-/// @function scr_generate_network_error_code
-/// @description Packs all false bools into a Base-64 string via scr_flags_to_base64
+/// @function scr_generate_network_error_code()
+/// @description Encode the fixed, versioned network warning trace without a matching INI file.
 function scr_generate_network_error_code()
 {
-	/* 1) Re‐discover your Boolean globals */
-	scr_init_bool_globals();
+	if (os_type != os_switch)
+	{
+		global.online_error_bool_snapshot = scr_debug_collect_bool_globals();
+	}
 
-	/* 2) Dump them for logging/debugging */
-	scr_export_bool_globals();
+	var http_status = "---";
+	if (global.online_failure_http_status >= 0)
+	&& (global.online_failure_http_status <= 999)
+	{
+		http_status = string_replace_all(string_format(global.online_failure_http_status, 3, 0), " ", "0");
+	}
 
-	/* 3) Encode every flag into Base-64 (6 flags per character) */
-	var code = scr_flags_to_base64();
-
-	/* 4) Prefix and return */
-	return "NWT-" + string(code);
+	return "NWT-v2-" + scr_flags_to_base64(scr_nwt_v2_flags()) + "-H" + http_status;
 }

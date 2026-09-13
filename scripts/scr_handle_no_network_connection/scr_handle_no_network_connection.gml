@@ -143,6 +143,15 @@ function scr_handle_no_network_connection(what_script = "scr_handle_no_network_c
 	}
 
 	/* No network: switch to the network error menu */
+	scr_capture_online_retry_context();
+	if (global.online_failure_kind == "")
+	{
+		scr_record_online_failure("network", string(what_script));
+	}
+	else
+	{
+		scr_record_online_failure(global.online_failure_kind, global.online_failure_origin, global.online_failure_http_status);
+	}
 	scr_nifm_log_context("WARN", "show_in_game_network_error_without_pending_request",
 		"caller=" + string(what_script)
 		+ " retry_menu=" + string(retry_this_menu)

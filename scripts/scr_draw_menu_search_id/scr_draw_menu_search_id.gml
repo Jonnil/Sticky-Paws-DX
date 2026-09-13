@@ -114,6 +114,7 @@ function scr_draw_menu_search_id(what_kind_of_id = "level")
 				global.download_failure_reason = "";
 				global.expected_download_zip_path = "";
 				search_id = "";
+				online_retry_context = undefined;
 				select_custom_level_menu_open = false;
 				menu_delay = 3;
 				menu = "online_download_list_load"; /* Go back to online level list */
@@ -288,6 +289,7 @@ function scr_draw_menu_search_id(what_kind_of_id = "level")
 			if (menu == "searching_for_id")
 			&& file_exists(normalize_path_seps(downloaded_zip_file_path)) /* Find if a new "zip" file has been downloaded */
 			{
+				online_retry_context = undefined;
 				if (what_kind_of_id == "level")
 				{
 					global.save_data_size_is_sufficient = true; /* Online levels are unpacked into temporary storage, so skip Switch save-data checks here. */

@@ -415,10 +415,14 @@ global.connected_server = global.base_url; /* Which server we're talking to */
 global.online_environment = "SD1/SP1"; /* Lotcheck slot */
 global.online_token_source = ""; /* e.g. "Switch Account Services" */
 global.online_token_present = false; /* Did we actually get back a token? */
-global.online_token_expired = false; /* Set true if you detect an expiry */
+global.online_token_expired = false; /* Set only when token validation explicitly reports expiry */
+global.online_token_rejected = false;
+global.online_failure_kind = "";
+global.online_failure_origin = "";
+global.online_failure_http_status = -1;
 global.online_retry_attempts = 0; /* Count of retry‐loops */
 global.online_current_attempt_result = ""; /* Last high-level failure reason */
-global.online_error_code = ""; /* Your NWT-### code */
+global.online_error_code = ""; /* Versioned Network Warning Trace code */
 scr_debug_reset_level_load_snapshot();
 
 global.report_reason = "";

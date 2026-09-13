@@ -43,6 +43,8 @@ function scr_handle_token_validated()
 			var payload_present = false;
 			var validation_failed = false;
 			var validation_error_message = "";
+			var malformed_response = (response_json == undefined)
+				|| !ds_exists(response_json, ds_type_map);
 
 			if (response_json != undefined)
 			&& ds_exists(response_json, ds_type_map)
@@ -81,8 +83,12 @@ function scr_handle_token_validated()
 			}
 
 			if (!validation_failed)
+			&& (!malformed_response)
 			{
 				global.online_token_validated = true;
+				global.online_token_rejected = false;
+				global.online_token_expired = false;
+				scr_clear_online_failure();
 				token_validation_succeeded = true;
 				global.switch_online_token_account_id = request_account_id;
 				global.online_token_error_message = "";
@@ -97,17 +103,36 @@ function scr_handle_token_validated()
 			else
 			{
 				global.online_token_validated = false;
+				global.online_token_rejected = !malformed_response;
+				global.online_token_expired = !malformed_response
+					&& scr_token_response_reports_expiry(response_json);
+				if (malformed_response)
+				{
+					scr_record_online_failure("http_response", "token_validation_invalid_json", status_code);
+				}
+				else
+				{
+					scr_record_online_failure("token_rejected", "token_validation_payload", status_code);
+				}
 				global.language_update_pending = false;
 				global.language_update_allow_without_online_enabled = false;
 				global.switch_startup_resume_language_update = false;
-				global.language_update_status_message = "Translation update could not continue because account validation failed.";
+				global.language_update_status_message = malformed_response
+					? "Translation update could not continue because token validation returned an invalid response."
+					: "Translation update could not continue because account validation failed.";
 				global.language_update_status_color = c_red;
-				global.online_token_error_message = validation_error_message != ""
-					? validation_error_message
-					: "Token validation failed.";
+				global.online_token_error_message = malformed_response
+					? "Token validation returned invalid JSON."
+					: (validation_error_message != "" ? validation_error_message : "Token validation failed.");
 				scr_log("ERROR", "HTTP.AUTH", "token_validation_failed_payload",
 					"http_status=200, account_id=" + string(request_account_id) +
 					", error=" + string(global.online_token_error_message));
+			}
+
+			if (response_json != undefined)
+			&& ds_exists(response_json, ds_type_map)
+			{
+				ds_map_destroy(response_json);
 			}
 		}
 		else
@@ -127,12 +152,31 @@ function scr_handle_token_validated()
 			}
 
 			global.online_token_validated = false; /* Set it to false, can only be a boolean value */
+			global.online_token_rejected = (status_code == 401) || (status_code == 403);
+			global.online_token_expired = false;
+			if (global.online_token_rejected)
+			{
+				var rejected_response = json_decode(response_str);
+				global.online_token_expired = scr_token_response_reports_expiry(rejected_response);
+				if (rejected_response != undefined)
+				&& ds_exists(rejected_response, ds_type_map)
+				{
+					ds_map_destroy(rejected_response);
+				}
+				scr_record_online_failure("token_rejected", "token_validation_http", status_code);
+			}
+			else
+			{
+				scr_record_online_failure("http_response", "token_validation_http", status_code);
+			}
 			global.language_update_pending = false;
 			global.language_update_allow_without_online_enabled = false;
 			global.switch_startup_resume_language_update = false;
-			global.language_update_status_message = "Translation update could not continue because account validation failed.";
+			global.language_update_status_message = global.online_token_rejected
+				? "Translation update could not continue because account validation failed."
+				: "Translation update could not continue because the server request failed.";
 			global.language_update_status_color = c_red;
-			global.online_token_error_message = response_str; /* Return the error code in string value only */
+			global.online_token_error_message = "Token validation returned HTTP " + string(status_code) + ".";
 			scr_log("ERROR", "HTTP.AUTH", "token_validation_failed",
 				"validated=" + string(global.online_token_validated) +
 				", account_id=" + string(request_account_id));
@@ -151,4 +195,37 @@ function scr_handle_token_validated()
 			scr_language_pack_update(true);
 		}
 	}
+}
+
+function scr_token_response_reports_expiry(_response)
+{
+	if (_response == undefined)
+	|| !ds_exists(_response, ds_type_map)
+	{
+		return false;
+	}
+
+	if (ds_map_exists(_response, "expired"))
+	&& (_response[? "expired"] == true)
+	{
+		return true;
+	}
+
+	var response_code = "";
+	if (ds_map_exists(_response, "error_code"))
+	{
+		response_code = string_lower(string(_response[? "error_code"]));
+	}
+	else
+	if (ds_map_exists(_response, "code"))
+	{
+		response_code = string_lower(string(_response[? "code"]));
+	}
+	else
+	if (ds_map_exists(_response, "error"))
+	{
+		response_code = string_lower(string(_response[? "error"]));
+	}
+
+	return response_code == "token_expired";
 }

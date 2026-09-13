@@ -110,11 +110,7 @@ function scr_crash_error_handling()
 		show_debug_message("");
 		show_debug_message(string(crash_details));
 		show_debug_message("--------------------------------------------------------------");
-		show_message(
-			"Sorry, the game has crashed. Please check the crash log for more details:\n" +
-			crash_log_display_path + "\n\n" +
-			string(crash_details)
-		);
+		show_message(scr_crash_dialog_message(crash_log_display_path, crash_details));
 		#endregion /* Output Crash Details and Notify User END */
 
 		scr_save_crash_log(crash_logs_folder, crash_log_filename, game_name, save_date); /* Send Crash Log to Server */
@@ -141,4 +137,32 @@ function scr_crash_error_handling()
 		#endregion /* Ask to Open URLs END */
 
 	});
+}
+
+/// @function scr_crash_dialog_message(crash_log_display_path, crash_details)
+function scr_crash_dialog_message(_crash_log_display_path, _crash_details)
+{
+	return "Sorry, the game has crashed. Please check the crash log for more details:\n" +
+		string(_crash_log_display_path) + "\n\n" +
+		string(_crash_details);
+}
+
+/// @function scr_debug_preview_crash_message()
+/// @description Shows the real crash dialog layout with sample content. No exception or log is created.
+function scr_debug_preview_crash_message()
+{
+	if (os_type == os_switch) return;
+
+	var preview_details =
+		"PREVIEW ONLY - no crash occurred and no crash log was written.\n\n" +
+		"Game: " + string_replace_all(global.game_name, " ", "_") + "\n" +
+		"Version: v" + scr_get_build_date() + "\n" +
+		"Timestamp: " + scr_format_timestamp(date_current_datetime()) + "\n\n" +
+		"Message: Example error message\n\n" +
+		"Long Message: Example error details\n" +
+		"Script: scr_debug_preview_crash_message\n" +
+		"Line: 0\n\n" +
+		"Stack Trace: Example stack trace\n\n";
+
+	show_message(scr_crash_dialog_message("[Preview only - no crash log file]", preview_details));
 }

@@ -71,6 +71,7 @@ development_stage_index = 1 /* What development stage custom content is being pu
 visibility_index = 0; /* If custom content should show up publicly in online list or not. 0 = Public. 1 = Unlisted */
 
 information_menu_open = ""; /* If the information menu is opened or not */
+whats_new_scroll_offset = 0;
 
 menu = "";
 

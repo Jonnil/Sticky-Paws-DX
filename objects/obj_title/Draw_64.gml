@@ -511,6 +511,7 @@ if (select_custom_level_menu_open)
 
 	if (menu != "network_error")
 	&& (menu != "network_error_copy_error_code")
+	&& (string_pos("network_error_details", string(menu)) != 1)
 	&& (menu != "network_error_main_menu")
 	{
 		scr_select_custom_level_menu();

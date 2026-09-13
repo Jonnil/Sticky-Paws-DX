@@ -318,6 +318,78 @@ function scr_nifm_get_request_details(_extra_details = "")
 	return details;
 }
 
+function scr_record_online_failure(_kind, _origin, _http_status = -1)
+{
+	global.online_failure_kind = string(_kind);
+	global.online_failure_origin = string(_origin);
+	global.online_failure_http_status = _http_status;
+
+	switch (_kind)
+	{
+		case "network":
+			global.online_current_attempt_result = l10n_text("No network connection");
+			break;
+		case "http_transport":
+			global.online_current_attempt_result = l10n_text("HTTP request exception");
+			break;
+		case "http_response":
+			global.online_current_attempt_result = (_http_status >= 100)
+				? "HTTP " + string(_http_status)
+				: l10n_text("Invalid server response");
+			break;
+		case "timeout":
+			global.online_current_attempt_result = l10n_text("Request timed out");
+			break;
+		case "token_rejected":
+			global.online_current_attempt_result = l10n_text("Invalid Online Token");
+			break;
+		case "account":
+			global.online_current_attempt_result = l10n_text("Account service unavailable");
+			break;
+		default:
+			global.online_current_attempt_result = l10n_text("Network Error Encountered");
+			break;
+	}
+}
+
+function scr_clear_online_failure()
+{
+	global.online_failure_kind = "";
+	global.online_failure_origin = "";
+	global.online_failure_http_status = -1;
+	global.online_token_rejected = false;
+	global.online_token_expired = false;
+	global.online_current_attempt_result = "";
+}
+
+function scr_capture_online_retry_context()
+{
+	if (!variable_instance_exists(self, "menu"))
+	|| ((menu != "search_id_ok") && (menu != "searching_for_id"))
+	|| (!variable_instance_exists(self, "content_type"))
+	|| (!variable_instance_exists(self, "search_id"))
+	{
+		return;
+	}
+
+	var current_id = string_upper(string(search_id));
+	var selected_context = variable_instance_exists(self, "online_retry_context")
+		&& is_struct(online_retry_context)
+		&& (online_retry_context.operation == "selected_download")
+		&& (online_retry_context.content_type == content_type)
+		&& (online_retry_context.level_id == current_id);
+
+	if (!selected_context)
+	{
+		online_retry_context = {
+			operation: "manual_id",
+			content_type: content_type,
+			level_id: current_id,
+			selected_index: global.selected_online_download_index
+		};
+	}
+}
+
 function scr_nifm_log_context(_level, _message, _extra_details = "")
 {
 	scr_log(_level, "NIFM", _message, scr_nifm_get_request_details(_extra_details));
@@ -374,6 +446,7 @@ function scr_begin_user_online_flow(_target_menu, _fallback_menu, _content_type 
 
 	if (scr_check_network_connection(network_connect_active, true))
 	{
+		scr_clear_online_failure();
 		return true;
 	}
 
@@ -400,6 +473,7 @@ function scr_begin_user_online_flow(_target_menu, _fallback_menu, _content_type 
 	&& (global.switch_logged_in)
 	&& (!global.switch_account_network_service_available)
 	{
+		scr_record_online_failure("account", _caller);
 		scr_nifm_log_context("WARN", "online_flow_network_service_unavailable",
 			"caller=" + string(_caller)
 			+ " target_menu=" + string(caution_online_takes_you_to));
@@ -457,8 +531,25 @@ function scr_finish_prepared_user_online_flow(_source = "online_flow")
 	else
 	if (caution_online_takes_you_to == "search_id_ok")
 	{
-		keyboard_string = "";
-		search_id = "";
+		var resume_id_after_error = (_source == "scr_draw_network_error_menu_retry")
+			|| (_source == "scr_draw_network_error_menu_auto");
+
+		if (resume_id_after_error)
+		&& variable_instance_exists(self, "online_retry_context")
+		&& is_struct(online_retry_context)
+		&& (online_retry_context.content_type == content_type)
+		{
+			search_id = online_retry_context.level_id;
+			keyboard_string = search_id;
+			automatically_search_for_id = (online_retry_context.operation == "selected_download")
+				&& (string_length(search_id) == 9);
+			global.selected_online_download_index = online_retry_context.selected_index;
+		}
+		else
+		{
+			keyboard_string = "";
+			search_id = "";
+		}
 
 		if (variable_instance_exists(self, "select_custom_level_menu_open"))
 		{
@@ -516,6 +607,8 @@ function scr_finish_prepared_user_online_flow(_source = "online_flow")
 		menu = caution_online_takes_you_to;
 	}
 
+	scr_clear_online_failure();
+
 	return true;
 }
 
@@ -562,6 +655,27 @@ function scr_clear_online_loading_state(_source = "unknown")
 
 function scr_invalidate_online_session(_reason = "unknown", _caller = "unknown")
 {
+	scr_capture_online_retry_context();
+
+	if (string_pos("timeout", _reason) > 0)
+	{
+		scr_record_online_failure("timeout", _reason);
+	}
+	else
+	if (string_pos("http_status_0", _reason) > 0)
+	{
+		scr_record_online_failure("http_transport", _reason, 0);
+	}
+	else
+	if (string_pos("http_request_failed", _reason) > 0)
+	{
+		scr_record_online_failure("http_transport", _reason);
+	}
+	else
+	{
+		scr_record_online_failure("network", _reason);
+	}
+
 	var active_primary_request = variable_global_exists("online_primary_request_active")
 		? global.online_primary_request_active
 		: noone;
@@ -570,8 +684,8 @@ function scr_invalidate_online_session(_reason = "unknown", _caller = "unknown")
 	global.online_token_request = -1;
 	global.online_token_present = false;
 	global.online_token_expired = false;
+	global.online_token_rejected = false;
 	global.online_token_error_message = "System is not connected to the network.";
-	global.online_current_attempt_result = l10n_text("No network connection");
 	global.switch_account_network_service_available = false;
 	global.online_primary_request_active = noone;
 	global.http_request_id = noone;
@@ -611,6 +725,11 @@ function scr_invalidate_online_session(_reason = "unknown", _caller = "unknown")
 function scr_return_to_stable_offline_menu(_source = "unknown", _target_menu = "main_game")
 {
 	scr_clear_online_loading_state(_source);
+	scr_clear_online_failure();
+	if (variable_instance_exists(self, "online_retry_context"))
+	{
+		online_retry_context = undefined;
+	}
 	scr_clear_active_network_request_pending();
 	global.online_active_network_request_cooldown_until = 0;
 	global.switch_login_cancelled = false;
@@ -862,12 +981,12 @@ function scr_is_active_network_request_pending(timeout_microseconds = 120000000)
 
 	if ((get_timer() - global.online_active_network_request_started_at) > timeout_microseconds)
 	{
+		scr_record_online_failure("timeout", "active_network_request_async_timeout");
 		scr_nifm_log_context("ERROR", "active_request_async_timeout",
 			"timeout_microseconds=" + string(timeout_microseconds) + " will_show_in_game_network_error=true");
 		global.online_token_validated = false;
 		global.switch_account_network_service_available = false;
 		global.online_token_error_message = "System is not connected to the network.";
-		global.online_current_attempt_result = l10n_text("No network connection");
 		global.online_last_network_async_failure_was_active_request = true;
 		scr_set_cached_passive_network_status(false);
 		scr_clear_active_network_request_pending();
@@ -1086,6 +1205,7 @@ function scr_route_network_async_failure_to_menu(force_online_flow = false)
 		return false;
 	}
 
+	scr_capture_online_retry_context();
 	scr_clear_online_loading_state("route_network_async_failure_to_menu");
 
 	if (variable_instance_exists(self, "search_for_id_still"))
