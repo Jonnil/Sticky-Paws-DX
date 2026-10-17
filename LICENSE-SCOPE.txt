@@ -1,0 +1,24 @@
+Sticky Paws DX
+Copyright 2022 Jonnil
+
+Apache License 2.0 applies to original source code and GameMaker resource
+configuration owned by the copyright owner named above at these
+repository-relative paths:
+
+- objects
+- rooms
+- scripts
+- shaders
+
+Folder paths apply recursively, including future original source code and
+resource configuration owned by the owner named above. Individual file paths
+apply only to those files.
+
+The full license is published as LICENSE. SPDX-License-Identifier: Apache-2.0
+
+Third-party code and assets keep their existing terms and notices, even
+inside the listed folders. Code with separate license notices or headers
+keeps those terms. Other files are outside this grant. Game content, including
+art, music, sound, fonts, characters, levels, logos, and trademarks, is outside
+this source-code grant. Included Files/Datafiles content is not covered by
+Apache License 2.0 unless a separate notice expressly grants it.

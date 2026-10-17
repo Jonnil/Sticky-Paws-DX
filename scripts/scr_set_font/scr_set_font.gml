@@ -15,9 +15,9 @@ function scr_set_font(selected_font_index = global.selected_font)
 	}
 
 	var font_files = [
-		"font_game.ttf",
-		"font_normal.ttc",
-		"font_open_dyslexic.otf"
+		"fonts/font_game.ttf",
+		"fonts/NotoSansCJKjp-Regular.otf",
+		"fonts/OpenDyslexic-Bold.otf"
 	];
 
 	var font_sizes = [34, 24, 24];
