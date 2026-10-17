@@ -18,14 +18,18 @@ The games created with this platformer framework will be sold for profit on plat
 
 [Buy Sticky Paws on Steam](https://store.steampowered.com/app/1129090/Sticky_Paws/)
 
+## Build requirements
+
+The Steamworks extension requires a Steamworks SDK that you are licensed to use. Its current settings expect the SDK at `../sdk`. The full SDK is not included in this repository.
+
 ## License
 
-This project is licensed under the [Apache 2.0](./LICENSE) License.
+Original source code and GameMaker resource configuration owned by Jonnil use the [Apache License 2.0](./LICENSE) only at the paths covered by [LICENSE-SCOPE.txt](./LICENSE-SCOPE.txt). Third-party code and assets keep their own terms and notices.
 
 ### Intellectual Property
 
-The intellectual property of Sticky Paws™ consists of the assets found in `Included Files/Datafiles`. This includes characters, levels, resource packs, title backgrounds, title logos, sprites, sounds, and even the behavior of characters and levels.
+Game content, including characters, levels, resource packs, backgrounds, logos, sprites, sounds, music, and fonts, is outside this source-code grant. Keep the existing credits and third-party notices when their terms require them.
 
 ### Important Note
 
-**Do not** profit from the assets in `Included Files/Datafiles`, as they are copyrighted by Jonnil. If you're using the framework to make your own commercial game, ensure all assets in `Included Files/Datafiles` are your own and that you own the rights to them.
+Use your own game content or obtain permission for the content you reuse. The source-code license does not grant rights to the game's content, logos, or trademarks.
