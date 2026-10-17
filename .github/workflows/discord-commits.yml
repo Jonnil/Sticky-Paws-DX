@@ -105,10 +105,21 @@ jobs:
           )
           try:
               with urllib.request.urlopen(request, timeout=20) as response:
-                  delivered = json.loads(response.read(64 * 1024))
-                  if response.status != 200 or not isinstance(delivered, dict) or not str(delivered.get("id", "")).isdigit():
+                  response_status = response.status
+                  response_body = response.read(64 * 1024)
+              if response_status == 204:
+                  print("Discord accepted the main branch GitHub notification (HTTP 204).")
+              elif response_status == 200:
+                  delivered = json.loads(response_body)
+                  if not isinstance(delivered, dict) or not str(delivered.get("id", "")).isdigit():
                       raise ValueError("unverified response")
+                  print("Posted the main branch GitHub notification.")
+              else:
+                  print("Commit notification returned unexpected HTTP status " + str(response_status) + ". No automatic retry was made.")
+                  sys.exit(1)
+          except urllib.error.HTTPError as error:
+              print("Commit notification was rejected with HTTP status " + str(error.code) + ". No automatic retry was made.")
+              sys.exit(1)
           except (OSError, ValueError):
               print("Commit notification delivery failed or was not verified. No automatic retry was made.")
               sys.exit(1)
-          print("Posted the main branch GitHub notification.")
