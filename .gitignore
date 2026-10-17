@@ -136,3 +136,13 @@ Tmp/
 ############################################
 sprites.import.json
 sprites.info.json
+# Signing material belongs outside the public repository.
+*.[kK][eE][yY][sS][tT][oO][rR][eE]
+*.[jJ][kK][sS]
+*.[pP]12
+*.[pP][fF][xX]
+*.[kK][eE][yY]
+*.[jJ][cC][eE][kK][sS]
+*.[pP][pP][kK]
+*.[kK][eE][yY][sS][tT][oO][rR][eE].*
+*.[jJ][kK][sS].*
