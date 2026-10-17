@@ -1,0 +1,135 @@
+name: Main branch commit updates
+
+on:
+  push:
+    branches: [main]
+
+permissions:
+  contents: read
+
+jobs:
+  notify:
+    if: github.repository == 'Jonnil/Sticky-Paws-DX' && github.ref == 'refs/heads/main' && github.event.deleted != true && github.run_attempt == '1'
+    runs-on: ubuntu-latest
+    timeout-minutes: 2
+    steps:
+      - name: Report main branch commits
+        env:
+          DISCORD_COMMITS_WEBHOOK: ${{ secrets.DISCORD_COMMITS_WEBHOOK }}
+        shell: python
+        run: |
+          import json
+          import os
+          import re
+          import sys
+          import unicodedata
+          import urllib.error
+          import urllib.parse
+          import urllib.request
+
+          webhook = os.environ.get("DISCORD_COMMITS_WEBHOOK", "").strip()
+          if not webhook:
+              print("Commit notifications are not configured. Skipping.")
+              sys.exit(0)
+          if os.environ.get("GITHUB_RUN_ATTEMPT", "1") != "1":
+              print("Commit notification reruns are skipped to avoid duplicate delivery.")
+              sys.exit(0)
+
+          try:
+              with open(os.environ["GITHUB_EVENT_PATH"], "rb") as stream:
+                  raw = stream.read(26 * 1024 * 1024)
+              if len(raw) > 25 * 1024 * 1024:
+                  raise ValueError("event size")
+              event = json.loads(raw)
+          except (OSError, KeyError, ValueError):
+              print("The push event could not be read.")
+              sys.exit(1)
+
+          repository = event.get("repository") if isinstance(event, dict) else None
+          if (not isinstance(repository, dict)
+              or repository.get("full_name") != "Jonnil/Sticky-Paws-DX"
+              or event.get("ref") != "refs/heads/main"
+              or event.get("deleted", False) is not False):
+              print("This event is outside the main branch notification scope. Skipping.")
+              sys.exit(0)
+
+          try:
+              target = urllib.parse.urlsplit(webhook)
+              endpoint = target.path.removesuffix("/github")
+              if (target.scheme != "https"
+                  or target.hostname not in {"discord.com", "discordapp.com"}
+                  or target.username or target.password or target.port not in {None, 443}
+                  or target.fragment
+                  or not re.fullmatch(r"/api(?:/v[0-9]+)?/webhooks/[0-9]+/[A-Za-z0-9_.-]+", endpoint)):
+                  raise ValueError("webhook destination")
+              query = urllib.parse.parse_qsl(target.query, keep_blank_values=True)
+              query = [(key, value) for key, value in query if key != "wait"]
+              query.append(("wait", "true"))
+              url = urllib.parse.urlunsplit(("https", target.netloc, endpoint, urllib.parse.urlencode(query), ""))
+          except ValueError:
+              print("The commit notification destination is invalid.")
+              sys.exit(1)
+
+          oid = re.compile(r"[0-9a-f]{40}(?:[0-9a-f]{24})?\Z")
+          after = event.get("after", "")
+          if not isinstance(after, str) or not oid.fullmatch(after) or set(after) == {"0"}:
+              print("The main push is missing its commit identity.")
+              sys.exit(1)
+          commits = event.get("commits", [])
+          if not isinstance(commits, list):
+              print("The main push contains invalid commit data.")
+              sys.exit(1)
+          if not commits and isinstance(event.get("head_commit"), dict):
+              commits = [event["head_commit"]]
+          if not commits:
+              print("The push contains no commit details. Skipping.")
+              sys.exit(0)
+
+          lines = []
+          for commit in commits[-8:]:
+              if not isinstance(commit, dict) or not isinstance(commit.get("id"), str) or not oid.fullmatch(commit["id"]):
+                  print("The main push contains invalid commit data.")
+                  sys.exit(1)
+              message = str(commit.get("message", "")).splitlines()
+              subject = message[0] if message else "Commit update"
+              subject = "".join(character for character in subject if not unicodedata.category(character).startswith("C"))[:140]
+              subject = re.sub(r"([\\`*_{}\[\]()<>#+.!|~-])", r"\\\1", subject)
+              commit_url = "https://github.com/Jonnil/Sticky-Paws-DX/commit/" + commit["id"]
+              lines.append("[" + commit["id"][:7] + "](" + commit_url + ") " + subject)
+          if len(commits) > 8:
+              lines.append("And " + str(len(commits) - 8) + " earlier commits in this push.")
+          description = "\n".join(lines)
+          if len(description) > 3800:
+              print("The commit summary exceeds the delivery limit.")
+              sys.exit(1)
+
+          before = event.get("before", "")
+          public_url = "https://github.com/Jonnil/Sticky-Paws-DX/commit/" + after
+          if isinstance(before, str) and oid.fullmatch(before) and set(before) != {"0"}:
+              public_url = "https://github.com/Jonnil/Sticky-Paws-DX/compare/" + before + "..." + after
+          count = len(commits)
+          payload = {
+              "allowed_mentions": {"parse": []},
+              "embeds": [{
+                  "title": "Sticky-Paws-DX:main - " + str(count) + (" new commit" if count == 1 else " new commits"),
+                  "url": public_url,
+                  "description": description,
+                  "color": 5793266,
+                  "footer": {"text": "main | " + after[:12]},
+              }],
+          }
+          request = urllib.request.Request(
+              url,
+              data=json.dumps(payload, ensure_ascii=False).encode("utf-8"),
+              headers={"Content-Type": "application/json", "User-Agent": "Jonnil-commit-updates"},
+              method="POST",
+          )
+          try:
+              with urllib.request.urlopen(request, timeout=20) as response:
+                  delivered = json.loads(response.read(64 * 1024))
+                  if response.status != 200 or not isinstance(delivered, dict) or not str(delivered.get("id", "")).isdigit():
+                      raise ValueError("unverified response")
+          except (OSError, ValueError):
+              print("Commit notification delivery failed or was not verified. No automatic retry was made.")
+              sys.exit(1)
+          print("Posted the main branch commit summary.")
