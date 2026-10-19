@@ -593,7 +593,7 @@ function scr_option_custom_resources()
 				}
 				else
 				{
-					global.selected_title_background[title_bg_layer]--;
+					global.selected_title_background[title_bg_layer] -= 1;
 				}
 				if (global.selected_title_background[title_bg_layer] <= -1)
 				{
@@ -663,7 +663,7 @@ function scr_option_custom_resources()
 					if (ds_list_find_value(global.all_loaded_title_backgrounds, global.selected_title_background[title_bg_layer]) = undefined)
 					&& (ds_list_find_value(global.all_loaded_title_backgrounds, global.selected_title_background[title_bg_layer]) = "")
 					{
-						global.selected_title_background[title_bg_layer]--;
+						global.selected_title_background[title_bg_layer] -= 1;
 					}
 				}
 				else
@@ -672,7 +672,7 @@ function scr_option_custom_resources()
 					if (ds_list_find_value(global.all_loaded_title_backgrounds, global.selected_title_background[title_bg_layer]) = undefined)
 					&& (ds_list_find_value(global.all_loaded_title_backgrounds, global.selected_title_background[title_bg_layer]) = "")
 					{
-						global.selected_title_background[title_bg_layer]--;
+						global.selected_title_background[title_bg_layer] -= 1;
 					}
 				}
 				ini_open(game_save_id + "save_file/config.ini");
