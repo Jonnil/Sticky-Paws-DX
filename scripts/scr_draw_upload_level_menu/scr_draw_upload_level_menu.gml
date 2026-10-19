@@ -1,5 +1,11 @@
 function scr_draw_upload_level_menu()
 {
+	if (menu == "level_upload_failed")
+	{
+		scr_draw_content_upload_error("level");
+		return;
+	}
+
 
 	#region /* Debug toggles */
 	var destroy_zip_after_uploading = true; /* Game should destroy the zip file once it's been uploaded to the server as a zip file. By default set this to true */
@@ -2005,6 +2011,16 @@ function scr_draw_upload_level_menu()
 			scr_draw_text_outlined(get_window_width * 0.5, uploading_level_message_y + 42, l10n_text("Send Zip File to the Server"), global.default_text_size, c_black, c_ltgray, 1);
 		}
 
+		if (menu != "uploading_level")
+		{
+			return;
+		}
+		if (scr_content_upload_pending())
+		{
+			scr_draw_text_outlined(get_window_width * 0.5, uploading_level_message_y + 126, l10n_text("Waiting for server confirmation..."), global.default_text_size, c_black, c_ltgray, 1);
+			return;
+		}
+
 		#region /* Generate Level ID */
 		if (menu_delay == 50)
 		{
@@ -2098,7 +2114,7 @@ function scr_draw_upload_level_menu()
 									
 									/* Add the Content-Length header to the map */
 									ds_map_add(level_upload_headers, "Content-Length", string(string_length(post_data)));
-									global.http_request_id = http_request(
+									var content_upload_request_id = http_request(
 										"https://" + global.base_url + "/upload",
 										"POST",
 										level_upload_headers,
@@ -2109,45 +2125,9 @@ function scr_draw_upload_level_menu()
 									buffer_delete(send_buffer);
 									ds_map_destroy(level_upload_headers);
 									
-									if (global.http_request_id == -1)
-									{
-										scr_invalidate_online_session("level_upload_http_request_failed", "scr_draw_upload_level_menu");
-										scr_route_network_async_failure_to_menu(true);
-										return;
-									}
-
-									/* Delete some leftover files and folders */
-									if (destroy_zip_after_uploading)
-									|| (GM_build_type == "exe")
-									{
-										file_delete(level_zip_path);
-									}
+									/* Keep the archive and uploading menu until the server confirms success */
+									scr_track_content_upload(content_upload_request_id, "level", level_id, level_zip_path, destroy_zip_after_uploading || GM_build_type == "exe");
 									#endregion /* Actually upload the level to the server END */
-									
-									/* Update a list of downloaded levels that you have finished. The level you are uploading have already been finished */
-									ini_open(game_save_id + "save_file/online_level_progress.ini");
-									if (ini_read_real("finished_downloaded_level", string(level_id), 0) < 2)
-									{
-										ini_write_real("finished_downloaded_level", string(level_id), 2); /* Played and finished when uploading own level */
-									}
-									ini_close(); /* Don't commit the save data on Switch, this is only temporary! */
-									
-									/* Force the online list to refresh so the new upload appears */
-									global.force_online_list_refresh = true;
-									global.online_list_loaded = false;
-									global.online_download_list = "";
-									global.online_download_list_info = "";
-									global.info_data = undefined;
-									global.http_request_info = -1;
-									info_queue_http_request = true;
-									info_queue_index = 0;
-									global.server_timeout_end = undefined;
-									variable_global_set("online_content_data_" + string(content_type), undefined);
-									
-									search_for_id_still = false;
-									
-									switch_save_data_commit(); /* Remember to commit the save data when uploading content to server */
-									menu = "level_uploaded";
 								}
 								else
 								{

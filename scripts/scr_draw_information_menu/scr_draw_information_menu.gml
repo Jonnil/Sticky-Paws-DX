@@ -1086,7 +1086,7 @@ function scr_draw_information_menu()
 			var hour = date_get_hour(GM_build_date);
 			var minute = date_get_minute(GM_build_date);
 			var second = date_get_second(GM_build_date);
-			var build_version_text = l10n_text("Build version") + ": v" + scr_get_build_date() + " " + l10n_text("is here!");
+			var build_version_text = l10n_text("Build version") + ": v" + scr_get_build_date(true, true) + " " + l10n_text("is here!");
 			var whats_new_date_text = l10n_text("Build date") + ": " + string(year) + "-" + string(month) + "-" + string(day) + " " + string(hour) + ":" + string(minute) + ":" + string(second);
 
 			#region /* The "What's New" text is only written in English, inform the user this whenever you have selected a language beside English */

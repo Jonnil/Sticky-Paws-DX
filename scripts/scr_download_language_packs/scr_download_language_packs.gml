@@ -63,7 +63,7 @@ function scr_download_language_packs()
 	var header_map = ds_map_create();
 	ds_map_add(header_map, "User-Agent", "gmdownloader");
 	ds_map_add(header_map, "Content-Type", "application/json");
-	ds_map_add(header_map, "X-API-Key", global.api_key);
+	/* A public Google Sheet doesn't need the game server's API header */
 
 	/* Build a string with all header key-value pairs */
 	var header_str = "";

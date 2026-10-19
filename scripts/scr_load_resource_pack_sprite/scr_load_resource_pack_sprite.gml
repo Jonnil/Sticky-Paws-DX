@@ -15,6 +15,12 @@ function scr_load_resource_pack_sprite()
 		if (global.resource_pack_sprite_logo_youtube > 0){global.resource_pack_sprite_logo_youtube = spr_noone;}
 		if (global.resource_pack_sprite_logo_discord > 0){global.resource_pack_sprite_logo_discord = spr_noone;}
 		if (global.resource_pack_sprite_logo_gamebanana > 0){global.resource_pack_sprite_logo_gamebanana = spr_noone;}
+		if (global.resource_pack_sprite_logo_github != spr_noone)
+		&& (sprite_exists(global.resource_pack_sprite_logo_github))
+		{
+			sprite_delete(global.resource_pack_sprite_logo_github);
+		}
+		global.resource_pack_sprite_logo_github = spr_noone;
 		if (global.resource_pack_sprite_logo_instagram > 0){global.resource_pack_sprite_logo_instagram = spr_noone;}
 		if (global.resource_pack_sprite_logo_reddit > 0){global.resource_pack_sprite_logo_reddit = spr_noone;}
 		if (global.resource_pack_sprite_logo_twitter > 0){global.resource_pack_sprite_logo_twitter = spr_noone;}
@@ -90,6 +96,21 @@ function scr_load_resource_pack_sprite()
 		global.resource_pack_sprite_logo_youtube = scr_initialize_resource_pack_sprite("logo_youtube", global.resource_pack_sprite_logo_youtube);
 		global.resource_pack_sprite_logo_discord = scr_initialize_resource_pack_sprite("logo_discord", global.resource_pack_sprite_logo_discord);
 		global.resource_pack_sprite_logo_gamebanana = scr_initialize_resource_pack_sprite("logo_gamebanana", global.resource_pack_sprite_logo_gamebanana);
+		global.resource_pack_sprite_logo_github = scr_initialize_resource_pack_sprite("logo_github", global.resource_pack_sprite_logo_github);
+		/* Keep the GitHub icon available in older packs that don't include it */
+		if (global.resource_pack_sprite_logo_github == spr_noone)
+		&& (file_exists("resource_pack/resource_pack0/sprites/logo_github.png"))
+		{
+			global.resource_pack_sprite_logo_github = sprite_add("resource_pack/resource_pack0/sprites/logo_github.png", 1, false, false, 0, 0);
+			if (sprite_exists(global.resource_pack_sprite_logo_github))
+			{
+				sprite_set_offset(global.resource_pack_sprite_logo_github, sprite_get_width(global.resource_pack_sprite_logo_github) * 0.5, sprite_get_height(global.resource_pack_sprite_logo_github) * 0.5);
+			}
+			else
+			{
+				global.resource_pack_sprite_logo_github = spr_noone;
+			}
+		}
 		global.resource_pack_sprite_logo_instagram = scr_initialize_resource_pack_sprite("logo_instagram", global.resource_pack_sprite_logo_instagram);
 		global.resource_pack_sprite_logo_reddit = scr_initialize_resource_pack_sprite("logo_reddit", global.resource_pack_sprite_logo_reddit);
 		global.resource_pack_sprite_logo_twitter = scr_initialize_resource_pack_sprite("logo_twitter", global.resource_pack_sprite_logo_twitter);

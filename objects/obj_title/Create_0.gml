@@ -72,6 +72,7 @@ visibility_index = 0; /* If custom content should show up publicly in online lis
 
 information_menu_open = ""; /* If the information menu is opened or not */
 whats_new_scroll_offset = 0;
+links_scroll_start = 0;
 
 menu = "";
 

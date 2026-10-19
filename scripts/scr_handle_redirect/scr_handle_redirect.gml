@@ -10,7 +10,7 @@ function scr_handle_redirect(html_result, async_map)
 
 	if (redirect_url != "")
 	{
-		scr_log("INFO", "HTTP.REDIRECT", "redirect_detected", redirect_url);
+		scr_log("INFO", "HTTP.REDIRECT", "redirect_detected");
 
 		/* Check for common URL issues */
 		if (string_pos("*", redirect_url) > 0)
@@ -19,10 +19,23 @@ function scr_handle_redirect(html_result, async_map)
 			return -1;
 		}
 
-		if (string_pos("http://", redirect_url) != 1
-		&& string_pos("https://", redirect_url) != 1)
+		/* Only the configured HTTPS origin may receive the game API header */
+		var trusted_prefix = "https://" + string_lower(string(global.base_url)) + "/";
+		var redirect_prefix = string_lower(string_copy(redirect_url, 1, string_length(trusted_prefix)));
+		var invalid_character = false;
+		for (var i = 1; i <= string_length(redirect_url); i++)
 		{
-			scr_log("WARN", "HTTP.REDIRECT", "url_missing_scheme");
+			var character_code = ord(string_char_at(redirect_url, i));
+			if (character_code <= 32 || character_code == 127
+			|| string_char_at(redirect_url, i) == chr(92))
+			{
+				invalid_character = true;
+				break;
+			}
+		}
+		if (redirect_prefix != trusted_prefix || invalid_character)
+		{
+			scr_log("WARN", "HTTP.REDIRECT", "untrusted_redirect_rejected");
 			return -1;
 		}
 
@@ -30,7 +43,6 @@ function scr_handle_redirect(html_result, async_map)
 		if (ds_map_exists(async_map, "headers"))
 		{
 			var orig_headers = ds_map_find_value(async_map, "headers");
-			scr_log("DEBUG", "HTTP.REDIRECT", "original_response_headers", string(orig_headers));
 
 			if (string_pos("User-Agent", string(orig_headers)) == 0)
 			{
@@ -49,16 +61,7 @@ function scr_handle_redirect(html_result, async_map)
 		ds_map_add(redirect_header_map, "Content-Type", "application/json");
 		ds_map_add(redirect_header_map, "X-API-Key", global.api_key);
 
-		/* Build a string to debug the headers */
-		var header_str = "";
-		var key = ds_map_find_first(redirect_header_map);
-
-		while (!is_undefined(key))
-		{
-			header_str += key + ": " + ds_map_find_value(redirect_header_map, key) + ", ";
-			key = ds_map_find_next(redirect_header_map, key);
-		}
-		scr_log("DEBUG", "HTTP.REDIRECT", "http_request_init", header_str);
+		scr_log("DEBUG", "HTTP.REDIRECT", "http_request_init", "origin=game_server");
 
 		/* Initiate the new HTTP GET request */
 		var new_request_id = http_request(redirect_url, "GET", redirect_header_map, "");

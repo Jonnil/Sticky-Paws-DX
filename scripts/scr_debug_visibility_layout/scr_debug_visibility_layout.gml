@@ -143,7 +143,7 @@ function scr_debug_get_registry_line_specs(item_key)
 	switch (string(item_key))
 	{
 		case "game_version":
-			array_push(line_specs, scr_debug_make_line_spec(item_key, "game_version", string(global.game_name) + " v" + scr_get_build_date(), "Game Version"));
+			array_push(line_specs, scr_debug_make_line_spec(item_key, "game_version", string(global.game_name) + " v" + scr_get_build_date(true, true), "Game Version"));
 			break;
 
 		case "fps":

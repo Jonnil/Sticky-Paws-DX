@@ -70,7 +70,7 @@ function scr_crash_error_handling()
 
 		#region /* [Crash] section */
 		ini_write_string("Crash", "Game", string(game_name));
-		ini_write_string("Crash", "Version", "v" + scr_get_build_date());
+		ini_write_string("Crash", "Version", "v" + scr_get_build_date(true, true));
 		ini_write_string("Crash", "Timestamp", save_date);
 		ini_write_string("Crash", "Message", ex.message);
 		ini_write_string("Crash", "LongMessage", ex.longMessage);
@@ -78,7 +78,7 @@ function scr_crash_error_handling()
 
 		var crash_details =
 			"Game: " + string(game_name) + "\n" +
-			"Version: " + "v" + scr_get_build_date() + "\n" +
+			"Version: " + "v" + scr_get_build_date(true, true) + "\n" +
 			"Timestamp: " + save_date + "\n\n" +
 			"Message: " + ex.message + "\n\n" +
 			"Long Message: " + ex.longMessage + "\n" +
@@ -156,7 +156,7 @@ function scr_debug_preview_crash_message()
 	var preview_details =
 		"PREVIEW ONLY - no crash occurred and no crash log was written.\n\n" +
 		"Game: " + string_replace_all(global.game_name, " ", "_") + "\n" +
-		"Version: v" + scr_get_build_date() + "\n" +
+		"Version: v" + scr_get_build_date(true, true) + "\n" +
 		"Timestamp: " + scr_format_timestamp(date_current_datetime()) + "\n\n" +
 		"Message: Example error message\n\n" +
 		"Long Message: Example error details\n" +

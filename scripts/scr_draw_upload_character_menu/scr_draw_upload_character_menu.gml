@@ -1,5 +1,11 @@
 function scr_draw_upload_character_menu()
 {
+	if (menu == "character_upload_failed")
+	{
+		scr_draw_content_upload_error("character");
+		return;
+	}
+
 	var fixed_player = 1;
 	var destroy_zip_after_uploading = true; /* Game should destroy the zip file once it's been uploaded to the server as a zip file. By default set this to true */
 	var message_x_offset = 400;
@@ -680,6 +686,23 @@ function scr_draw_upload_character_menu()
 			scr_draw_text_outlined(get_window_width * 0.5, uploading_character_message_y + 42, l10n_text("Send Zip File to the Server"), global.default_text_size, c_black, c_ltgray, 1);
 		}
 
+		draw_menu_button(get_window_width * 0.5 - 185, get_window_height - 42, l10n_text("Cancel"), "uploading_character", "click_upload_character");
+		if (key_back_pressed && menu_delay == 0 && menu_joystick_delay == 0)
+		{
+			menu = "click_upload_character";
+			menu_delay = 3;
+		}
+
+		if (menu != "uploading_character")
+		{
+			return;
+		}
+		if (scr_content_upload_pending())
+		{
+			scr_draw_text_outlined(get_window_width * 0.5, uploading_character_message_y + 126, l10n_text("Waiting for server confirmation..."), global.default_text_size, c_black, c_ltgray, 1);
+			return;
+		}
+
 		#region /* Generate Character ID */
 		if (menu_delay == 50)
 		{
@@ -770,7 +793,7 @@ function scr_draw_upload_character_menu()
 
 									/* Add the Content-Length header to the map */
 									ds_map_add(character_upload_headers, "Content-Length", string(string_length(post_data)));
-									global.http_request_id = http_request(
+									var content_upload_request_id = http_request(
 										"https://" + global.base_url + "/upload",
 										"POST",
 										character_upload_headers,
@@ -781,37 +804,9 @@ function scr_draw_upload_character_menu()
 									buffer_delete(send_buffer);
 									ds_map_destroy(character_upload_headers);
 
-									if (global.http_request_id == -1)
-									{
-										scr_invalidate_online_session("character_upload_http_request_failed", "scr_draw_upload_character_menu");
-										scr_route_network_async_failure_to_menu(true);
-										return;
-									}
-
-									if (destroy_zip_after_uploading) /* Delete some leftover files and folders */
-									|| (GM_build_type == "exe")
-									{
-										file_delete(character_zip_path);
-									}
+									/* Keep the archive and uploading menu until the server confirms success */
+									scr_track_content_upload(content_upload_request_id, "character", character_id, character_zip_path, destroy_zip_after_uploading || GM_build_type == "exe");
 									#endregion /* Actually upload the character to the server END */
-
-									/* Force the online list to refresh so the new upload appears */
-									global.force_online_list_refresh = true;
-									global.online_list_loaded = false;
-									global.online_download_list = "";
-									global.online_download_list_info = "";
-									global.info_data = undefined;
-									global.http_request_info = -1;
-									info_queue_http_request = true;
-									info_queue_index = 0;
-									global.server_timeout_end = undefined;
-									variable_global_set("online_content_data_" + string(content_type), undefined);
-
-									menu_delay = 3;
-									search_for_id_still = false;
-
-									switch_save_data_commit(); /* Remember to commit the save data when uploading content to server */
-									menu = "character_uploaded";
 								}
 								else
 								{

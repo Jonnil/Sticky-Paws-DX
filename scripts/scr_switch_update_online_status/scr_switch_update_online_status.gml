@@ -248,12 +248,14 @@ function scr_switch_dispatch_token_validation_request(active_user_id, id_token, 
 	ds_map_add(token_validation_headers, "Content-Type", "application/json");
 	ds_map_add(token_validation_headers, "User-Agent", "gmdownloader");
 	ds_map_add(token_validation_headers, "X-API-Key", global.api_key);
+	/* Keep bearer tokens out of request URLs and platform access logs */
+	ds_map_add(token_validation_headers, "Authorization", "Bearer " + string(id_token));
 
 	global.switch_online_token_account_id = active_user_id;
 	global.online_token_validated = false;
 	global.online_token_request = http_request(
-		"https://" + global.base_url + "/validate_token?id_token=" + string(id_token),
-		"GET",
+		"https://" + global.base_url + "/validate_token",
+		"POST",
 		token_validation_headers,
 		""
 	);

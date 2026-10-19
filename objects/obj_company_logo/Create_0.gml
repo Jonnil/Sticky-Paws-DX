@@ -38,6 +38,7 @@ scr_check_url_exists(global.link_to_privacy_policy);
 /* Other Links */
 global.link_to_discord = "https://discord.jonnil.games";
 global.link_to_gamebanana = "https://gamebanana.com/games/7722";
+global.link_to_github = "https://github.com/Jonnil-Games";
 global.link_to_instagram = "https://www.instagram.com/jonnilll";
 global.link_to_reddit = "https://www.reddit.com/r/Jonnil";
 global.link_to_steam_page = "https://store.steampowered.com/app/1129090/Sticky_Paws";
@@ -250,7 +251,7 @@ global.draw_download_name = "";
 
 
 #region /* Things you shouldn't change, warning, don't change any of these options or you might break the game! */
-window_set_caption(string(global.game_name) + " v" + scr_get_build_date()); /* Set the window caption to be the game name and version number, so it's always obvious what game and version you're playing */
+window_set_caption(string(global.game_name) + " v" + scr_get_build_date(true, true)); /* Set the window caption to be the game name and version number, so it's always obvious what game and version you're playing */
 global.os_info = os_get_info();
 audio_falloff_set_model(audio_falloff_linear_distance);
 
@@ -767,6 +768,7 @@ for(var i = 1; i <= global.max_players; i += 1)
 global.resource_pack_sprite_logo_youtube = spr_noone;
 global.resource_pack_sprite_logo_discord = spr_noone;
 global.resource_pack_sprite_logo_gamebanana = spr_noone;
+global.resource_pack_sprite_logo_github = spr_noone;
 global.resource_pack_sprite_logo_instagram = spr_noone;
 global.resource_pack_sprite_logo_reddit = spr_noone;
 global.resource_pack_sprite_logo_twitter = spr_noone;

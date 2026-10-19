@@ -1,4 +1,6 @@
 /// @description obj_debug_manager Step Event
+scr_update_content_upload_timeout();
+
 /* Main debug routine. Calls all sub-functions that handle different debug aspects */
 
 /* Reset queued dropdown popups so the active menu can request a fresh one during Draw GUI. */

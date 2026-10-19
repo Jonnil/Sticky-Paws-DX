@@ -32,7 +32,8 @@ function scr_write_debug_info()
 	/* [GameMaker Runtime Info] */
 	ini_write_string("GameMaker Runtime Info", "build_date", date_time_string(GM_build_date));
 	ini_write_string("GameMaker Runtime Info", "build_type", string(GM_build_type));
-	ini_write_string("GameMaker Runtime Info", "version", string(GM_version));
+	ini_write_string("GameMaker Runtime Info", "version", string(scr_get_build_date(true, true)));
+	ini_write_string("GameMaker Runtime Info", "platform_version", string(GM_version));
 	ini_write_string("GameMaker Runtime Info", "runtime_version", string(GM_runtime_version));
 	ini_write_string("GameMaker Runtime Info", "project_filename", string(GM_project_filename));
 	ini_write_real("GameMaker Runtime Info", "parameter_count", parameter_count());

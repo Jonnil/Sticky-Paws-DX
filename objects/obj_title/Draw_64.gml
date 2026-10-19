@@ -121,7 +121,7 @@ if (global.demo_enable)
 	demo_build_text = l10n_text("Demo");
 }
 
-scr_draw_text_outlined(0 + 16, display_get_gui_height() - 16 + version_y_pos, "v" + scr_get_build_date() + " " + string(demo_build_text), global.default_text_size, c_menu_outline, c_menu_fill, 1);
+scr_draw_text_outlined(0 + 16, display_get_gui_height() - 16 + version_y_pos, "v" + scr_get_build_date(true, true) + " " + string(demo_build_text), global.default_text_size, c_menu_outline, c_menu_fill, 1);
 draw_set_halign(fa_center);
 #endregion /* Build Date and Version END */
 

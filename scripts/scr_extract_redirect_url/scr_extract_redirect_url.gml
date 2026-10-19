@@ -4,7 +4,7 @@
 /// @returns {string} - The extracted redirect URL or an empty string if not found.
 function scr_extract_redirect_url(html_result)
 {
-	show_debug_message("[scr_extract_redirect_url] Received HTML response. html_result: " + string(html_result));
+	scr_log("DEBUG", "HTTP.REDIRECT", "parse_response");
 
 	var start_index = string_pos("HREF=\"", html_result);
 	show_debug_message("[scr_extract_redirect_url] 'HREF=\"' found at position: " + string(start_index));
@@ -19,7 +19,6 @@ function scr_extract_redirect_url(html_result)
 	show_debug_message("[scr_extract_redirect_url] Adjusted start index: " + string(start_index));
 
 	var remaining = string_copy(html_result, start_index, string_length(html_result) - start_index + 1);
-	show_debug_message("[scr_extract_redirect_url] Remaining string: " + remaining);
 
 	var end_index = string_pos("\"", remaining);
 	show_debug_message("[scr_extract_redirect_url] Ending quote found at position: " + string(end_index));
@@ -31,7 +30,7 @@ function scr_extract_redirect_url(html_result)
 	}
 
 	var url = string_copy(remaining, 1, end_index - 1);
-	show_debug_message("[scr_extract_redirect_url] Extracted URL: " + url);
+	scr_log("DEBUG", "HTTP.REDIRECT", "url_extracted");
 
 	/* Check for wildcard characters */
 	if (string_pos("*", url) > 0)
