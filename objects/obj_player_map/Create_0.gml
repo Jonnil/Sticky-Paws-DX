@@ -291,3 +291,10 @@ if (global.player_lives <= 0)
 		ini_close(); /* Don't commit the save data on Switch, this is only temporary! */
 	}
 }
+
+/* An explicit map destination keeps a new profile on the map instead of auto-entering intro */
+if (variable_global_exists("startup_world_map_requested") && global.startup_world_map_requested)
+{
+	can_enter_level_automatically = false;
+	global.startup_world_map_requested = false;
+}

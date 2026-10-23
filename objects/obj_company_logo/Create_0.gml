@@ -919,3 +919,6 @@ part_type_life(global.pt_flare_particles, 30, 30);
 part_type_speed(global.pt_flare_particles, 0, 0, 0, 0);
 part_type_direction(global.pt_flare_particles, 0, 360, 0, 0);
 part_type_gravity(global.pt_flare_particles, 0, 0);
+
+/* Read optional startup requests without skipping resource initialization */
+scr_startup_parameters_read();

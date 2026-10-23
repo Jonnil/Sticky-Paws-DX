@@ -860,3 +860,6 @@ ini_close();
 initialize_recent_object_selected = true;
 
 set_controller_sprites_to_use();
+
+/* Apply the requested grid after the editor has restored its ordinary state */
+scr_startup_editor_options();

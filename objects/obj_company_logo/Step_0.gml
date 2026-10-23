@@ -354,6 +354,10 @@ if (load_ok >= 4)
 	#endregion /* Set so custom assets can't go above what it finds END */
 
 	can_navigate = true;
+
+	/* Explicit startup destinations skip the logo only after every asset list is ready */
+	var startup_request = scr_startup_parameters_read();
+	if (startup_request.requested && !startup_request.applied) goto_title_screen = true;
 }
 
 #region /* Show easter egg on company logo screen when pressing specific button */

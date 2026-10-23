@@ -13,6 +13,9 @@ if (scr_block_menu_input_for_network_request())
 	key_back_pressed = false;
 }
 
+/* Route once after title initialization, using the same menu and level transitions */
+scr_startup_route(scr_startup_parameters_read());
+
 scr_character_select_menu_step();
 scr_set_menu_font_color();
 scr_toggle_fullscreen();
