@@ -1,0 +1,52 @@
+sticky-diagnostics-1
+fields:sticky-diagnostics-fields-1
+
+Sticky Paws diagnostic choices. Scope version 1, November 15, 2026.
+English bundled local copy.
+
+Automatic diagnostics start Off. Configure data alone does not start capture.
+Choose Keep crash files on this device to record minimized local crashes.
+Categories alone do not start capture. Off stops new automatic records,
+performance sampling, enrollment, uploads and retries. Existing local files
+keep their original expiry and deletion rules.
+
+Remote sending is unavailable in this development version: no verified
+receiver is configured. A saved choice or local file is not an upload receipt.
+Legacy unrestricted dumps never enter the new automatic queue.
+
+The basic record has a schema, crash kind, random per-report ID, authored build
+label, Windows platform, this notice version and a safe error code. A chosen
+outgoing report adds automatic/manual submission mode. There is no permanent
+player, device, client or session identifier. Device details, broad game context
+and performance require separate choices. Unsupported or declined fields stay
+absent. Included Data explains meaning, purpose, availability and controls.
+Optional code frames use a finite authored symbol registry, not raw stack text.
+Room labels are unavailable in this version.
+
+Automatic records exclude OS/device/creator names, platform IDs, local/project
+paths, secrets, custom-content text, arbitrary exception text, unrestricted
+stack traces, globals and INI dumps. No gameplay/editor usage analytics is part
+of this implementation.
+
+A manual report needs a deliberate action after an error or selection of a
+retained safe record. It stays in memory. Review the exact JSON and any summary
+you type; text you add may contain personal information. Optional fields can
+be removed. Export reviewed copy saves locally and sends nothing. Cancel,
+close or restart discards the draft. Review expires after 30 minutes or earlier
+on contents/destination/notice/relevant-choice changes. Send once, when
+available, applies only to reviewed frozen bytes and never enables future work.
+
+Local originals: 14 days, 20 records and 5 MiB maximum. Automatic pending bodies,
+when supported by a verified receiver integration: 7 days, 10 entries, 640 KiB.
+Local receipts/status: 30 days, 50 entries, 64 KiB. Cleanup runs while the game
+is running, not as a service while closed. Failures stay visible and never
+grant upload permission. Exported/synced copies are outside managed expiry.
+
+Legacy raw files have separate deliberate review/export/deletion controls.
+Discard pending, Delete local records and server removal are different.
+Off or local deletion cannot recall sent bytes. No remote removal process is
+available through this diagnostic implementation. Read Privacy Policy offline
+for the game-wide explanation. Reading it never contacts a policy/diagnostic
+server. Website access is deliberate. Ordinary play/policy access needs no
+telemetry permission or account. Player-requested online features and platform
+reporting are separate.

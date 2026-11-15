@@ -1687,21 +1687,11 @@ function scr_debug_open_manual_debug_info_folder()
 /* Save a manual debug dump to the dedicated manual_debug_info folder. */
 function scr_debug_save_manual_debug_info_dump()
 {
-	var logs_folder = scr_debug_get_manual_debug_info_folder(true);
-	var log_timestamp = scr_format_timestamp(date_current_datetime());
-
-	var log_file_path = logs_folder + "debug_info-" + string(global.game_name) + "_v" + string(scr_get_build_date()) + "_" + log_timestamp + "_" + string(scr_os_type_to_string(true, true)) + ".ini";
-
-	ini_open(log_file_path);
-	scr_write_debug_info();
-	ini_close();
-
-	global.debug_latest_manual_debug_dump_path = log_file_path;
-	global.debug_latest_manual_debug_dump_saved_at = log_timestamp;
-
-	show_debug_message("Debug information saved to: " + scr_censor_game_save_id_for_display(log_file_path));
-
-	return log_file_path;
+    // Unrestricted player dumps are retired. The telemetry page owns reviewed
+    // manual drafts; selecting this legacy debug action cannot create a dump.
+    global.debug_latest_manual_debug_dump_path = "";
+    global.debug_latest_manual_debug_dump_saved_at = "";
+    return "";
 }
 
 /// @function scr_debug_join_string_array(string_array)
@@ -1744,55 +1734,9 @@ function scr_debug_build_level_load_failure_signature(level_loading_debug, failu
 /* Save a one-shot automatic level-load error dump without affecting normal gameplay flow. */
 function scr_debug_save_level_load_error_log(failure_reason, failure_signature)
 {
-	var monitor = scr_debug_get_level_load_monitor();
-	var level_loading_debug = scr_get_level_loading_debug_data();
-	var logs_root = game_save_id + "debug_logs/";
-	var logs_folder = logs_root + "level_load_error/";
-	var level_identifier = scr_debug_get_level_identifier(level_loading_debug);
-	var log_timestamp = scr_format_timestamp(date_current_datetime());
-
-	if (!directory_exists(logs_root))
-	{
-		directory_create(logs_root);
-	}
-
-	if (!directory_exists(logs_folder))
-	{
-		directory_create(logs_folder);
-	}
-
-	var log_file_path = logs_folder
-		+ "level_load_error_"
-		+ log_timestamp
-		+ "_"
-		+ scr_sanitize_filename(level_loading_debug.load_mode, 32)
-		+ "_"
-		+ scr_sanitize_filename(level_identifier, 64)
-		+ ".ini";
-
-	global.debug_auto_level_load_log_context =
-	{
-		auto_generated: true,
-		session_id: monitor.session_id,
-		failure_reason: string(failure_reason),
-		failure_signature: string(failure_signature),
-		validation_delay_frames: monitor.validation_delay_frames
-	};
-
-	ini_open(log_file_path);
-	scr_write_debug_info();
-	ini_close();
-
-	scr_debug_cache_latest_level_load_error_log(log_file_path, level_identifier, failure_reason, monitor.validation_result, monitor.session_id, log_timestamp);
-
-	global.debug_auto_level_load_log_context = undefined;
-
-	scr_log("ERROR", "LEVEL.LOAD", "auto_log_saved",
-		"session_id=" + string(monitor.session_id)
-		+ ", path="
-		+ scr_censor_game_save_id_for_display(log_file_path));
-
-	return log_file_path;
+    // No failure signature, level title, creator, path or raw message is used.
+    tlm_capture_crash("level_load", scr_telemetry_game_context());
+    return "";
 }
 
 /// @function scr_debug_validate_level_load_after_stabilization(validation_delay_frames)

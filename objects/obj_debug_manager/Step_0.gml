@@ -15,8 +15,9 @@ scr_capture_mode_maintain();
 /* Toggle the debug screen when the proper keys/buttons are pressed */
 scr_debug_toggle_screen();
 
-/* Always run crash error handling. It registers our exception handler */
-scr_crash_error_handling();
+// Apply queued deliberate UI actions before the single serialized owner.
+scr_telemetry_ui_step();
+tlm_step();
 
 /* Handle controller port assignments based on the platform and input */
 scr_debug_handle_controller_ports();
@@ -40,7 +41,7 @@ for (var i = 0; i < array_length(debug_target_list); i++)
 
 scr_debug_process_cheat_inputs();
 
-scr_check_fps_bug_report();
+// Legacy performance producer retired; permitted bounded sampling is in tlm_step.
 
 if (global.debug_screen)
 && (keyboard_check(vk_control)
@@ -87,8 +88,7 @@ scr_language_pack_update(false);
 /* If there are missing translation keywords that have not yet been sent, do that now */
 scr_check_daily_translation_flush();
 
-/* Upload any pending crash logs to the server */
-scr_send_pending_crash_logs();
+// Legacy raw INI uploads are disabled; tlm_step owns eligible new reports.
 
 /* URL validation is deferred while offline or during the splash screen. */
 scr_process_pending_url_checks();

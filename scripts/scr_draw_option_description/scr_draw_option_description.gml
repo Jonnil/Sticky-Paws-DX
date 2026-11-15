@@ -1,5 +1,8 @@
 function scr_get_option_description_payload()
 {
+	var description = string_trim(string(global.option_description));
+	while (string_pos("\n\n\n", description) > 0)
+		description = string_replace_all(description, "\n\n\n", "\n\n");
 	var text_fill = c_white;
 	var option_default = "";
 
@@ -16,19 +19,19 @@ function scr_get_option_description_payload()
 
 	var option_description_text = "";
 
-	if (global.option_description != "" && global.option_default == -2)
+	if (description != "" && global.option_default == -2)
 	{
-		option_description_text = l10n_text("Default") + ": " + string(global.option_description);
+		option_description_text = l10n_text("Default") + ": " + description;
 	}
 	else
-	if (global.option_description != "" && option_default != "")
+	if (description != "" && option_default != "")
 	{
-		option_description_text = string(global.option_description) + " - " + string(option_default);
+		option_description_text = description + " - " + string(option_default);
 	}
 	else
-	if (global.option_description != "")
+	if (description != "")
 	{
-		option_description_text = string(global.option_description);
+		option_description_text = description;
 	}
 	else
 	{

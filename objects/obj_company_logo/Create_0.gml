@@ -1,3 +1,6 @@
+// A safe terminal handler is available even before settings bootstrap.
+scr_crash_error_handling();
+
 #region /* Things you could change */
 global.max_players = 4; /* How many players you want to be able to play */
 global.company_name = "Jonnil"; /* String of what the company is called */
@@ -33,7 +36,7 @@ scr_check_url_exists(global.link_to_website);
 scr_check_url_exists(global.link_to_website_guide);
 scr_check_url_exists(global.link_to_website_guide_custom_character);
 scr_check_url_exists(global.link_to_wiki);
-scr_check_url_exists(global.link_to_privacy_policy);
+// The bundled privacy reader is offline. Browser access is deliberate.
 
 /* Other Links */
 global.link_to_discord = "https://discord.jonnil.games";
@@ -181,7 +184,7 @@ else
 	global.enable_option_for_pc = true; /* Enable if options related to gamepad, but only intended for when playing with gamepad on PC should show up. Default is true */
 	global.enable_keyboard_and_mouse_settings = true; /* Enable Keyboard and Mouse settings */
 	global.always_show_gamepad_buttons = false; /* You can force to show gamepad buttons, even if playing with keyboard, mouse or touch controls. Default = false */
-	global.enable_translation_file_logging = true; /* Always log missing translation keywords on other platforms */
+	global.enable_translation_file_logging = false; /* Always log missing translation keywords on other platforms */
 }
 #endregion /* If you're playing on console, then some things should not show up that is for PC END */
 
@@ -406,8 +409,8 @@ global.menu_button_subimg = 16; /* In the menu button sprites are several sub-im
 global.menu_navigation_speed = 60; /* Make the menu navigation go faster the longer you hold down a direction */
 global.collectible_index = 0; /* Make all collectibles animate in sync */
 global.caution_online_do_not_show = false; /* When the game shows the online caution screen, you should be able to disable that screen from showing up again */
-global.send_crash_logs = true;
-global.crash_requests = ds_map_create();
+global.send_crash_logs = false; // Legacy flag is never telemetry authority.
+// Request correlation is owned by the versioned telemetry state.
 global.online_enabled = false; /* You need to accept the online caution screen before you can go online */
 
 /* Initialize our debug tracking variables */
@@ -892,6 +895,9 @@ scr_set_font();
 network_set_config(network_config_use_non_blocking_socket, 1);
 
 scr_config_load(); /* Load Config */
+
+// Resolve fail-closed permissions before any diagnostic producer or sender.
+tlm_init(game_save_id, "sp-telemetry-v1-dev");
 
 instance_create_depth(x, y, 0, obj_debug_manager);
 
