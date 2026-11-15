@@ -1,4 +1,4 @@
-function draw_menu_button(x_position, y_position, string_text, menu_index, menu_takes_you_to = "", highlight_color = c_lime, alpha = 1, button_width = 370)
+function draw_menu_button(x_position, y_position, string_text, menu_index, menu_takes_you_to = "", highlight_color = c_lime, alpha = 1, button_width = 370, icon_sprite = noone)
 {
 	var mouse_get_x = device_mouse_x_to_gui(0);
 	var mouse_get_y = device_mouse_y_to_gui(0);
@@ -48,7 +48,8 @@ function draw_menu_button(x_position, y_position, string_text, menu_index, menu_
 		fill_color = c_black;
 	}
 
-	var button_text_width = max(1, button_width - 24);
+	var icon_space = sprite_exists(icon_sprite) ? 44 : 0;
+	var button_text_width = max(1, button_width - 24 - icon_space);
 	var unscaled_text_width = max(1, string_width(string(string_text)) * global.default_text_size);
 	var text_scale = min(1, button_text_width / unscaled_text_width);
 	var button_xscale = button_width / sprite_get_width(spr_menu_button);
@@ -62,7 +63,17 @@ function draw_menu_button(x_position, y_position, string_text, menu_index, menu_
 
 	draw_set_halign(fa_center);
 	draw_set_valign(fa_middle);
-	scr_draw_text_outlined(x_position + (button_width * 0.5), y_position + 21, string(string_text), global.default_text_size * text_scale, outline_color, fill_color, alpha);
+	if (icon_space > 0)
+	{
+		var icon_scale = min(32 / max(1, sprite_get_width(icon_sprite)), 32 / max(1, sprite_get_height(icon_sprite)));
+		var icon_left = x_position + 12;
+		var icon_top = y_position + 5;
+		draw_sprite_ext(icon_sprite, 0,
+			icon_left + sprite_get_xoffset(icon_sprite) * icon_scale,
+			icon_top + sprite_get_yoffset(icon_sprite) * icon_scale,
+			icon_scale, icon_scale, 0, c_white, alpha);
+	}
+	scr_draw_text_outlined(x_position + icon_space + 12 + button_text_width * 0.5, y_position + 21, string(string_text), global.default_text_size * text_scale, outline_color, fill_color, alpha);
 
 	var mouse_activated = point_in_button
 		&& global.controls_used_for_navigation == "mouse"

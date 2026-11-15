@@ -1,5 +1,6 @@
 function scr_draw_information_menu()
 {
+	if (variable_global_exists("telemetry_ui") && global.telemetry_ui.policy_open) return;
 	var mouse_get_x = device_mouse_x_to_gui(0);
 	var mouse_get_y = device_mouse_y_to_gui(0);
 	var fixed_player = 1;
@@ -869,35 +870,8 @@ function scr_draw_information_menu()
 			&& (key_accept_pressed)
 			&& (menu_delay == 0 && menu_joystick_delay == 0)
 			{
+				scr_telemetry_ui_queue("policy");
 				menu_delay = 3;
-				menu = "about_privacy_policy_back";
-				information_menu_open = "about_privacy_policy";
-				privacy_policy_text_y = 100;
-
-				#region /* Retrieve Privacy Policy */
-				/* Check if the file exists */
-				if (file_exists("privacy_policy.txt"))
-				{
-					/* Open the file for reading */
-					var file = file_text_open_read("privacy_policy.txt");
-
-					/* Initialize an empty string to store the text */
-					privacy_policy_text_content = "";
-
-					/* Loop through each line until the end of the file */
-					while (!file_text_eof(file))
-					{
-						/* Read a line and append it to the "privacy policy text content" variable */
-						privacy_policy_text_content += file_text_read_string(file) + "\n";
-
-						/* Move to the next line */
-						file_text_readln(file);
-					}
-
-					/* Close the file */
-					file_text_close(file);
-				}
-				#endregion /* Retrieve Privacy Policy END */
 
 			}
 
@@ -907,159 +881,12 @@ function scr_draw_information_menu()
 			scr_draw_text_outlined(32, display_get_gui_height() - 32, l10n_text("Check out credits for more info"), global.default_text_size, c_black, c_white, 1);
 		}
 		else
-		if (information_menu_open == "about_privacy_policy") /* Privacy Policy */
+		if (information_menu_open == "about_privacy_policy")
 		{
-			var to_top_x = 370 * 0.5 + 1;
-			var link_to_privacy_policy_x = to_top_x + 186;
-
-			#region /* Privacy Policy Text */
-			draw_set_halign(fa_left);
-			draw_set_valign(fa_top);
-			draw_set_color(c_white);
-			draw_text_ext(32, privacy_policy_text_y, string(privacy_policy_text_content), 30, display_get_gui_width() - 64);
-			#endregion /* Privacy Policy Text END */
-
-			draw_set_halign(fa_left);
-			draw_set_valign(fa_middle);
-			draw_menu_button_sprite(spr_menu_button, 0, 0, 0, 0, 0.5, 1, 370 * 0.5, 42, l10n_text("Back"), "about_privacy_policy_back", "about_privacy_policy_back");
-			draw_menu_button_sprite(spr_menu_button, to_top_x, 0, 0, 0, 0.5, 1, 370 * 0.5, 42, l10n_text("To Top"), "about_privacy_policy_to_top", "about_privacy_policy_to_top");
-
-			#region /* Link to Privacy Policy Website */
-			if (scr_url_exists(global.link_to_privacy_policy))
-			&& (global.link_to_privacy_policy != "")
-			&& (global.enable_option_for_pc)
-			{
-				draw_menu_button_sprite(spr_menu_button, link_to_privacy_policy_x, 0, 0, 0, 2.1, 1, 370 * 2.1, 42, string(global.link_to_privacy_policy), "about_link_to_privacy_policy", "about_link_to_privacy_policy");
-				if (point_in_rectangle(mouse_get_x, mouse_get_y, link_to_privacy_policy_x, 0, link_to_privacy_policy_x + (370 * 2.1), 42))
-				&& (mouse_check_button_released(mb_left))
-				&& (menu_delay == 0 && menu_joystick_delay == 0)
-				|| (menu == "about_link_to_privacy_policy")
-				&& (key_accept_pressed)
-				&& (menu_delay == 0 && menu_joystick_delay == 0)
-				{
-					url_open(global.link_to_privacy_policy);
-					menu_delay = 3;
-				}
-			}
-			#endregion /* Link to Privacy Policy Website END */
-
-			#region /* The Privacy Policy is only written in English, inform the user this whenever you have selected a language beside English */
-			if (global.language_local_data[# global.selected_language_id, 0] != string("English"))
-			{
-				draw_roundrect_color_ext(display_get_gui_width() - 32 - max(string_width(l10n_text("Text only available in English")), string_width("Text only available in English")), display_get_gui_height() - 96, display_get_gui_width() + 32, display_get_gui_height() + 32, 50, 50, c_black, c_black, false);
-				draw_set_halign(fa_right);
-				/* First, display the warning in the selected language */
-				scr_draw_text_outlined(display_get_gui_width() - 32, display_get_gui_height() - 64, l10n_text("Text only available in English"), global.default_text_size, c_black, c_white, 1);
-				/* Second, also display the warning in English, so that this screen can pass lotcheck with an explanation why the text isn't translated, as the people doing the lotcheck can only understand English */
-				scr_draw_text_outlined(display_get_gui_width() - 32, display_get_gui_height() - 32, "Text only available in English", global.default_text_size, c_black, c_white, 1);
-				draw_set_halign(fa_center);
-			}
-			#endregion /* The Privacy Policy is only written in English, inform the user this whenever you have selected a language beside English END */
-
-			#region /* Navigate the Privacy Policy page */
-			if (key_up)
-			{
-				privacy_policy_text_y += 10;
-			}
-			else
-			if (key_down)
-			{
-				privacy_policy_text_y -= 10;
-			}
-			else
-			if (mouse_wheel_up())
-			{
-				privacy_policy_text_y += 20;
-			}
-			else
-			if (mouse_wheel_down())
-			{
-				privacy_policy_text_y -= 20;
-			}
-			if (privacy_policy_text_y > 100)
-			{
-				privacy_policy_text_y = 100;
-			}
-			if (key_left)
-			&& (menu_delay == 0 && menu_joystick_delay == 0)
-			{
-				menu_delay = 3;
-				if (menu == "about_privacy_policy_back")
-				{
-					if (scr_url_exists(global.link_to_privacy_policy))
-					&& (global.enable_option_for_pc)
-					{
-						menu = "about_link_to_privacy_policy";
-					}
-					else
-					{
-						menu = "about_privacy_policy_to_top";
-					}
-				}
-				else
-				if (menu == "about_privacy_policy_to_top")
-				{
-					menu = "about_privacy_policy_back";
-				}
-				else
-				if (menu == "about_link_to_privacy_policy")
-				{
-					menu = "about_privacy_policy_to_top";
-				}
-			}
-			if (key_right)
-			&& (menu_delay == 0 && menu_joystick_delay == 0)
-			{
-				menu_delay = 3;
-				if (menu == "about_privacy_policy_back")
-				{
-					menu = "about_privacy_policy_to_top";
-				}
-				else
-				if (menu == "about_privacy_policy_to_top")
-				{
-					if (scr_url_exists(global.link_to_privacy_policy))
-					&& (global.enable_option_for_pc)
-					{
-						menu = "about_link_to_privacy_policy";
-					}
-					else
-					{
-						menu = "about_privacy_policy_back";
-					}
-				}
-				else
-				if (menu == "about_link_to_privacy_policy")
-				{
-					menu = "about_privacy_policy_back";
-				}
-			}
-
-			if (point_in_rectangle(mouse_get_x, mouse_get_y, 0, 0, 185, 42))
-			&& (mouse_check_button_released(mb_left))
-			&& (menu_delay == 0 && menu_joystick_delay == 0)
-			|| (menu == "about_privacy_policy_back")
-			&& (key_accept_pressed)
-			&& (menu_delay == 0 && menu_joystick_delay == 0)
-			|| (key_back_pressed)
-			&& (menu_delay == 0 && menu_joystick_delay == 0)
-			{
-				menu_delay = 3;
-				menu = "about_privacy_policy";
-				information_menu_open = "about";
-			}
-			if (point_in_rectangle(mouse_get_x, mouse_get_y, to_top_x, 0, to_top_x + 185, 42))
-			&& (mouse_check_button_released(mb_left))
-			&& (menu_delay == 0 && menu_joystick_delay == 0)
-			|| (menu == "about_privacy_policy_to_top")
-			&& (key_accept_pressed)
-			&& (menu_delay == 0 && menu_joystick_delay == 0)
-			{
-				menu_delay = 3;
-				privacy_policy_text_y = 100;
-			}
-			#endregion /* Navigate the Privacy Policy page END */
-
+			/* Recover the historical page ID through the same offline reader. */
+			information_menu_open = "about";
+			menu = "about_privacy_policy";
+			scr_telemetry_ui_queue("policy");
 		}
 		else
 		if (information_menu_open == "whats_new") /* What's New tab */
@@ -1268,8 +1095,7 @@ function scr_draw_information_menu()
 				
 				#region /* Open Custom Levels Folder */
 				var draw_open_custom_levels_folder_y = 32 * 11;
-				draw_menu_button(32, draw_open_custom_levels_folder_y, l10n_text("Open Custom Levels Folder"), "backup_open_custom_levels_folder", "backup_open_custom_levels_folder");
-				draw_sprite_ext(spr_icon_folder, 0, 32 + 16, draw_open_custom_levels_folder_y + 21, 1, 1, 0, c_white, 1);
+				draw_menu_button(32, draw_open_custom_levels_folder_y, l10n_text("Open Custom Levels Folder"), "backup_open_custom_levels_folder", "backup_open_custom_levels_folder", c_lime, 1, 370, spr_icon_folder);
 				
 				if (point_in_rectangle(mouse_get_x, mouse_get_y, 32, draw_open_custom_levels_folder_y + 2, 32 + 370, draw_open_custom_levels_folder_y + 41))
 				&& (global.controls_used_for_navigation == "mouse")
@@ -1288,8 +1114,7 @@ function scr_draw_information_menu()
 				
 				#region /* Open Custom Levels Folder */
 				draw_open_custom_levels_folder_y = 32 * 14;
-				draw_menu_button(32, draw_open_custom_levels_folder_y, l10n_text("Open Custom Character Folder"), "backup_open_custom_character_folder", "backup_open_custom_character_folder");
-				draw_sprite_ext(spr_icon_folder, 0, 32 + 16, draw_open_custom_levels_folder_y + 21, 1, 1, 0, c_white, 1);
+				draw_menu_button(32, draw_open_custom_levels_folder_y, scr_telemetry_text("Open Custom Character Folder"), "backup_open_custom_character_folder", "backup_open_custom_character_folder", c_lime, 1, 370, spr_icon_folder);
 				
 				if (point_in_rectangle(mouse_get_x, mouse_get_y, 32, draw_open_custom_levels_folder_y + 2, 32 + 370, draw_open_custom_levels_folder_y + 41))
 				&& (global.controls_used_for_navigation == "mouse")

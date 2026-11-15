@@ -56,6 +56,11 @@
     {"link":"io.gamemaker.gm_effect_windblown_particles-1.0.0","name":"io.gamemaker.gm_effect_windblown_particles-1.0.0","path":"io.gamemaker.gm_effect_windblown_particles-1.0.0.yyp",},
   ],
   "IncludedFiles":[
+    {"$GMIncludedFile":"","%Name":"TelemetryCrypto-MinGW.txt","CopyToMask":-1,"filePath":"datafiles/licenses","name":"TelemetryCrypto-MinGW.txt","resourceType":"GMIncludedFile","resourceVersion":"2.0",},
+    {"$GMIncludedFile":"","%Name":"TelemetryCrypto-Zig.txt","CopyToMask":-1,"filePath":"datafiles/licenses","name":"TelemetryCrypto-Zig.txt","resourceType":"GMIncludedFile","resourceVersion":"2.0",},
+    {"$GMIncludedFile":"","%Name":"TelemetryCrypto-Public-Domain.txt","CopyToMask":-1,"filePath":"datafiles/licenses","name":"TelemetryCrypto-Public-Domain.txt","resourceType":"GMIncludedFile","resourceVersion":"2.0",},
+    {"$GMIncludedFile":"","%Name":"telemetry_frames.json","CopyToMask":-1,"filePath":"datafiles","name":"telemetry_frames.json","resourceType":"GMIncludedFile","resourceVersion":"2.0",},
+    {"$GMIncludedFile":"","%Name":"telemetry_notice.txt","CopyToMask":-1,"filePath":"datafiles","name":"telemetry_notice.txt","resourceType":"GMIncludedFile","resourceVersion":"2.0",},
     {"$GMIncludedFile":"","%Name":"font_game.ttf","CopyToMask":-1,"filePath":"datafiles/fonts","name":"font_game.ttf","resourceType":"GMIncludedFile","resourceVersion":"2.0",},
     {"$GMIncludedFile":"","%Name":"NotoSansCJK_LICENSE.txt","CopyToMask":-1,"filePath":"datafiles/fonts","name":"NotoSansCJK_LICENSE.txt","resourceType":"GMIncludedFile","resourceVersion":"2.0",},
     {"$GMIncludedFile":"","%Name":"NotoSansCJKjp-Regular.otf","CopyToMask":-1,"filePath":"datafiles/fonts","name":"NotoSansCJKjp-Regular.otf","resourceType":"GMIncludedFile","resourceVersion":"2.0",},
@@ -2071,6 +2076,11 @@
   },
   "name":"Sticky Paws DX",
   "resources":[
+    {"id":{"name":"scr_telemetry_frames","path":"scripts/scr_telemetry_frames/scr_telemetry_frames.yy",},},
+    {"id":{"name":"scr_telemetry_core","path":"scripts/scr_telemetry_core/scr_telemetry_core.yy",},},
+    {"id":{"name":"scr_option_telemetry","path":"scripts/scr_option_telemetry/scr_option_telemetry.yy",},},
+    {"id":{"name":"scr_telemetry_platform","path":"scripts/scr_telemetry_platform/scr_telemetry_platform.yy",},},
+    {"id":{"name":"TelemetryCrypto","path":"extensions/TelemetryCrypto/TelemetryCrypto.yy",},},
     {"id":{"name":"libxprocess","path":"extensions/libxprocess/libxprocess.yy",},},
     {"id":{"name":"Steamworks","path":"extensions/Steamworks/Steamworks.yy",},},
     {"id":{"name":"obj_air_bubbles_spawner","path":"objects/obj_air_bubbles_spawner/obj_air_bubbles_spawner.yy",},},

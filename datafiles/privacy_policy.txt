@@ -1,41 +1,88 @@
-Privacy Policy for Sticky Paws
-Last updated: December 23, 2024
+Sticky Paws Privacy Information
+Version: sticky-diagnostics-1
+Updated: November 15, 2026
+Language: English. Bundled local copy for this development version.
 
-This Privacy Policy explains how Sticky Paws ("we," "us," or "our") handles the data related to your use of the game. Sticky Paws is designed with a focus on creativity and fun while respecting your privacy.
+Your choices
 
-### Data Collection and Use
+You can play and read this information offline without an account or telemetry
+permission. Options > Telemetry Data explains fields and effective saved
+choices. Automatic diagnostic recording and sending start Off. Configure data
+alone, or categories alone, do not start capture. Device, broad game-context
+and performance choices are separate. No gameplay/editor usage analytics is
+part of this diagnostic implementation.
 
-Sticky Paws collects minimal data to support the functionality of the game, specifically features like level sharing and character customization. Here’s what we collect and how we use it:
+Diagnostic reports
 
-#### 1. Uploaded Content
-- **Custom Levels and Characters:** When you upload a level or character, the content itself (e.g., level design, custom sprites, and sound effects) is sent to our servers to make it available for others to download.
-- **Metadata:** We collect basic information like file size, upload timestamp, and technical data necessary to ensure uploads function correctly.
+Remote diagnostic sending is unavailable: this development version has no
+verified receiver configured. It never uses the former raw-INI upload route.
+A local record or completed network operation is not proof of server storage.
 
-#### 2. Server Interactions
-- **Download Requests:** When you download a level or character, your request is logged to ensure successful delivery.
-- **Debugging Logs:** Basic diagnostic information (e.g., error reports) may be collected to identify and fix server-related issues. This information does not include personally identifiable details.
+If you deliberately enable local crash recording, the minimized record uses
+a schema, crash kind, random per-report ID, authored build label, Windows
+platform, notice version and safe error code. There is no permanent player,
+device, client or session identifier. Included Data explains optional fields.
+Unavailable or declined values stay absent. Automatic records exclude OS,
+creator and device names, platform IDs, local/project paths, secrets, custom
+content, arbitrary exception text and unrestricted global/INI dumps.
+Optional code frames contain only mapped authored resources/events and valid lines.
+Allowed selected information can still describe an error and coarse context;
+we do not promise that every diagnostic value is anonymous or non-personal.
 
-### Third-Party Platforms
-Sticky Paws is available on platforms like Steam and Nintendo Switch. These platforms may handle user data, purchases, and account details according to their own privacy policies. We recommend reviewing their privacy policies for more information:
-- Steam: [Steam Privacy Policy](https://store.steampowered.com/privacy_agreement/)
-- Nintendo Switch: [Nintendo Privacy Policy](https://www.nintendo.com/privacy-policy/)
+Manual review and export
 
-### Data Retention
-We retain uploaded content and metadata for as long as necessary to provide the level-sharing functionality. Debugging logs are stored temporarily to resolve technical issues.
+After an error, or choosing a retained safe record, you may create a separate
+manual draft. Carefully review exact contents and any summary you type. Do not
+include passwords, tokens, personal details or private content. Optional data
+and summary can be removed. The draft is memory-only, discarded on Cancel,
+close or restart. Review expires after 30 minutes or earlier on relevant
+changes. It never enables future automatic collection.
 
-### Data Sharing
-Sticky Paws does not share your data with third parties beyond the scope of necessary server operations. Uploaded content is publicly accessible to other players who download levels or characters.
+Export reviewed copy saves an independent local copy and sends nothing.
+Sharing it later follows the chosen recipient's rules and visibility. Public
+bug attachments may be visible to others. Exported/synced copies are outside
+managed cleanup. A new manual report gets a fresh ID and could duplicate an
+earlier submission whose receipt was uncertain.
 
-### Security
-We use commercially reasonable measures to protect the data stored on our servers. However, no system is entirely secure, and we encourage users to avoid uploading sensitive or personal information in level or character files.
+Local storage and deletion
 
-### Children’s Privacy
-Sticky Paws does not knowingly collect personal information from anyone under the age of 13. If you are a parent or guardian and believe your child has provided data through Sticky Paws, please contact us so we can address the issue.
+Optional local originals: at most 14 days, 20 records and 5 MiB total.
+Local status/receipts: at most 30 days, 50 entries and 64 KiB total.
+Cleanup runs on startup/active cleanup while the game runs, not while closed.
+Failed cleanup is shown honestly. Viewing/restart never renews original age.
+View My Data works offline. Off stops new automatic records, sampling,
+enrollment, uploads and retries; existing files remain until expiry/deletion.
 
-### Changes to This Privacy Policy
-We may update this Privacy Policy from time to time to reflect changes in our practices or legal requirements. Updates will be posted on this page with the "Last updated" date.
+Discard pending and Delete local records have different scopes. Legacy raw
+debug/crash INIs remain separate, may include information excluded from new
+reports, and are never automatically uploaded or migrated into the new queue.
+Their deliberate review/export/deletion controls explain what is affected.
 
-### Contact Us
-If you have any questions about this Privacy Policy, you can contact us:
-- By email: contact@jonnil.games
+Local deletion does not remove server/hosting copies. Dispatched bytes may
+have arrived after timeout/cancellation. A verified remote removal process is
+not available through this implementation. Current access/retention for
+historical remote reports is unverified; no new remote-expiry promise is made.
 
+Online creations and platforms
+
+Deliberate online sharing/download features process uploaded levels,
+characters, creator attribution and metadata for that feature. Shared content
+may be available to other players. Creator name credits your uploads; it is
+separate from diagnostics. Avoid personal/private information in shared content.
+These features use server requests, authentication and request/security
+metadata independently of diagnostic JSON. Servers can process source IP and
+request time. The local diagnostic viewer does not contain every server,
+hosting or platform log.
+
+Steam, Nintendo and the operating system process information separately under
+their own policies. Off does not disable platform reporting or online actions
+you request. Steam: https://store.steampowered.com/privacy_agreement/
+Nintendo: https://www.nintendo.com/privacy-policy/
+
+Contact and the website copy
+
+For privacy questions, contact contact@jonnil.games. Avoid attaching unrestricted
+logs or sensitive content to public requests. Reading this local copy does not
+contact that address or open a browser. Read on website is a separate deliberate
+action; the web copy can change independently. A web update never silently
+expands a saved diagnostic choice or the scope described here.

@@ -1,168 +1,59 @@
-/// @function scr_crash_error_handling()
+/// Register once after bootstrap. Raw exception contents are never persisted,
+/// printed, attached, used in filenames or sent to documentation websites.
 function scr_crash_error_handling()
 {
-	if (os_type == os_switch) exit; /* Retrieve Crash Reports from CRPORTAL instead */
-
-	/* Crash Error Handling should run in every room of the game */
-	exception_unhandled_handler(function(ex)
-	{
-		var game_name = string_replace_all(global.game_name, " ", "_");
-
-		#region /* Define Crash Logs Folder and File */
-		var crash_logs_folder = game_save_id + "crash_logs/";
-
-		if (!directory_exists(crash_logs_folder))
-		{
-			directory_create(crash_logs_folder);
-		}
-
-		#region /* Save Date */
-		var current_dt = date_current_datetime();
-
-		var year_str  = string(date_get_year(current_dt));
-
-		var month_val = date_get_month(current_dt);
-		var month_str = (month_val < 10) ? "0" + string(month_val) : string(month_val);
-
-		var day_val   = date_get_day(current_dt);
-		var day_str   = (day_val < 10) ? "0" + string(day_val) : string(day_val);
-
-		var hour_val  = date_get_hour(current_dt);
-		var hour_str  = (hour_val < 10) ? "0" + string(hour_val) : string(hour_val);
-
-		var minute_val = date_get_minute(current_dt);
-		var minute_str = (minute_val < 10) ? "0" + string(minute_val) : string(minute_val);
-
-		var second_val = date_get_second(current_dt);
-		var second_str = (second_val < 10) ? "0" + string(second_val) : string(second_val);
-
-		var save_date = year_str + "-" + month_str + "-" + day_str + "_" + hour_str + "." + minute_str + "." + second_str;
-		#endregion /* Save Date END */
-
-		/* Filename format .ini */
-		var crash_log_filename = "crash-" + string(game_name) + "_v" + string(scr_get_build_date()) + "_" + save_date + "_" + string(scr_os_type_to_string(true, true)) + ".ini";
-		var crash_log_display_path = scr_censor_game_save_id_for_display(game_save_id + "crash_logs/" + string(crash_log_filename));
-		#endregion /* Define Crash Logs Folder and File END */
-
-		#region /* Extract Line Number from Error Message */
-		var line_number = -1;
-		var line_start = string_pos("(line ", ex.longMessage);
-		if (line_start > 0)
-		{
-			line_start += 6;
-			var remaining_message = string_copy(ex.longMessage, line_start, string_length(ex.longMessage) - line_start + 1);
-			var line_end = string_pos(")", remaining_message);
-			if (line_end > 0)
-			{
-				line_number = real(string_copy(remaining_message, 1, line_end - 1));
-			}
-		}
-		#endregion /* Extract Line Number from Error Message END */
-
-		#region /* Get Documentation Links and Advice */
-		var docs_and_urls = scr_get_relevant_docs(string(ex.stacktrace), ex.longMessage);
-		var doc_details = docs_and_urls[0];
-		var urls_to_open = docs_and_urls[1];
-		#endregion /* Get Documentation Links and Advice END */
-
-		#region /* Write Crash Details and Debug Info to INI File */
-		ini_open(crash_logs_folder + crash_log_filename);
-
-		#region /* [Crash] section */
-		ini_write_string("Crash", "Game", string(game_name));
-		ini_write_string("Crash", "Version", "v" + scr_get_build_date());
-		ini_write_string("Crash", "Timestamp", save_date);
-		ini_write_string("Crash", "Message", ex.message);
-		ini_write_string("Crash", "LongMessage", ex.longMessage);
-		ini_write_string("Crash", "Script", ex.script);
-
-		var crash_details =
-			"Game: " + string(game_name) + "\n" +
-			"Version: " + "v" + scr_get_build_date() + "\n" +
-			"Timestamp: " + save_date + "\n\n" +
-			"Message: " + ex.message + "\n\n" +
-			"Long Message: " + ex.longMessage + "\n" +
-			"Script: " + ex.script + "\n";
-
-		if (line_number != -1)
-		{
-			ini_write_real("Crash", "Line", line_number);
-			crash_details += "Line: " + string(line_number) + "\n\n";
-		}
-		ini_write_string("Crash", "StackTrace", string(ex.stacktrace));
-		ini_write_string("Crash", "Documentation", doc_details);
-		ini_write_string("Crash", "CrashLogFile", crash_log_display_path);
-
-		crash_details += "Stack Trace: " + string(ex.stacktrace) + "\n\n";
-		crash_details += doc_details + "\n";
-		#endregion /* [Crash] section END */
-
-		/* [Debug] and additional sections via 'scr write debug info' */
-		scr_write_debug_info();
-
-		ini_close();
-		switch_save_data_commit();
-		#endregion /* Write Crash Details and Debug Info to INI File END */
-
-		#region /* Output Crash Details and Notify User */
-		show_debug_message("--------------------------------------------------------------");
-		show_debug_message("Crash occurred! Details written to: " + crash_logs_folder + crash_log_filename);
-		show_debug_message("");
-		show_debug_message(string(crash_details));
-		show_debug_message("--------------------------------------------------------------");
-		show_message(scr_crash_dialog_message(crash_log_display_path, crash_details));
-		#endregion /* Output Crash Details and Notify User END */
-
-		scr_save_crash_log(crash_logs_folder, crash_log_filename, game_name, save_date); /* Send Crash Log to Server */
-
-		#region /* Ask to Open URLs */
-		if (array_length(urls_to_open) > 0)
-		{
-			if (global.auto_open_crash_docs)
-			{
-				for (var i = 0; i < array_length(urls_to_open); i++)
-				{
-					url_open(urls_to_open[i]);
-				}
-			}
-			else
-			if (show_question("Open relevant documentation links in your browser?"))
-			{
-				for (var i = 0; i < array_length(urls_to_open); i++)
-				{
-					url_open(urls_to_open[i]);
-				}
-			}
-		}
-		#endregion /* Ask to Open URLs END */
-
-	});
+    if (os_type == os_switch) return;
+    exception_unhandled_handler(function(_exception)
+    {
+        try
+        {
+            var _frames = undefined;
+            if (tlm_is_ready() && tlm_capture_allowed() && tlm_field_allowed("error.frames")
+                && is_struct(_exception) && variable_struct_exists(_exception, "stacktrace"))
+                _frames = scr_telemetry_safe_frames(_exception.stacktrace);
+            tlm_capture_crash("unclassified", scr_telemetry_game_context(), _frames);
+            tlm_shutdown();
+        }
+        catch (_reporter_failure)
+        {
+            // No recursive report or raw diagnostic fallback.
+        }
+        show_message("Sticky Paws encountered an error. Error code: unclassified. "
+            + "No unrestricted crash dump was created. Diagnostic choices apply. "
+            + "After restarting, open Options > Telemetry Data to inspect retained data "
+            + "or Information > About > Privacy Policy for the offline explanation.");
+        return 1; // Explicit terminal handler exit code; no later producer runs.
+    });
 }
 
-/// @function scr_crash_dialog_message(crash_log_display_path, crash_details)
+/// Explicit authored mapping, queried only for a permitted crash capture.
+/// Room names, arbitrary globals and custom-content labels are never serialized.
+function scr_telemetry_game_context()
+{
+    if (!tlm_is_ready() || !tlm_capture_allowed()) return undefined;
+    var _context = {};
+    if (tlm_field_allowed("context.mode"))
+    {
+        if (room == rm_leveleditor) _context.mode = "editor";
+        else if (room == rm_world) _context.mode = "play";
+        else if (room == rm_title || room == rm_pause || room == rm_splash_screen)
+            _context.mode = "menu";
+    }
+    if (tlm_field_allowed("context.content_origin")
+        && (room == rm_title || room == rm_splash_screen))
+        _context.content_origin = "none";
+    return _context;
+}
+
 function scr_crash_dialog_message(_crash_log_display_path, _crash_details)
 {
-	return "Sorry, the game has crashed. Please check the crash log for more details:\n" +
-		string(_crash_log_display_path) + "\n\n" +
-		string(_crash_details);
+    // Old arguments may contain private information; they are deliberately unused.
+    return "Sticky Paws encountered an error. Error code: unclassified. "
+        + "Open Options > Telemetry Data after restarting.";
 }
 
-/// @function scr_debug_preview_crash_message()
-/// @description Shows the real crash dialog layout with sample content. No exception or log is created.
 function scr_debug_preview_crash_message()
 {
-	if (os_type == os_switch) return;
-
-	var preview_details =
-		"PREVIEW ONLY - no crash occurred and no crash log was written.\n\n" +
-		"Game: " + string_replace_all(global.game_name, " ", "_") + "\n" +
-		"Version: v" + scr_get_build_date() + "\n" +
-		"Timestamp: " + scr_format_timestamp(date_current_datetime()) + "\n\n" +
-		"Message: Example error message\n\n" +
-		"Long Message: Example error details\n" +
-		"Script: scr_debug_preview_crash_message\n" +
-		"Line: 0\n\n" +
-		"Stack Trace: Example stack trace\n\n";
-
-	show_message(scr_crash_dialog_message("[Preview only - no crash log file]", preview_details));
+    show_message("PREVIEW ONLY. No crash occurred and no diagnostic file or request was created. "
+        + "Error code: unclassified. Open Options > Telemetry Data for diagnostic choices.");
 }

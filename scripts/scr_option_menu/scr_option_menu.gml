@@ -1,5 +1,10 @@
 function scr_option_menu()
 {
+	if (variable_global_exists("telemetry_ui") && global.telemetry_ui.policy_open)
+	{
+		scr_telemetry_policy_draw();
+		return;
+	}
 	var get_window_height = display_get_gui_height();
 	var get_window_width = display_get_gui_width();
 	var mouse_get_x = device_mouse_x_to_gui(0);
@@ -89,6 +94,8 @@ function scr_option_menu()
 		video_settings_y = account_settings_y + 40;
 	}
 	
+	var telemetry_settings_y = video_settings_y;
+	video_settings_y = telemetry_settings_y + 40;
 	var audio_settings_y = video_settings_y + 40;
 	var custom_resources_settings_y = audio_settings_y + 40;
 	var storage_settings_y = custom_resources_settings_y + 40;
@@ -413,6 +420,16 @@ function scr_option_menu()
 			}
 		}
 		#endregion /* Account Settings END */
+
+		/* Dedicated diagnostics destination, available without an account. */
+		var telemetry_selected = global.settings_sidebar_menu == "telemetry_settings";
+		var telemetry_hovered = global.controls_used_for_navigation == "mouse"
+			&& point_in_rectangle(mouse_get_x, mouse_get_y, 0, telemetry_settings_y, 370, telemetry_settings_y + 39);
+		draw_sprite_ext(spr_menu_button, global.menu_button_subimg, left_sidebar_x, 20 + telemetry_settings_y, 1, 1, 0,
+			telemetry_selected ? (telemetry_hovered ? c_green : c_gray) : (telemetry_hovered ? c_lime : c_white), 1);
+		draw_sprite_ext(spr_icon_exclamation, 0, left_sidebar_x + 20, 20 + telemetry_settings_y, 0.9, 0.9, 0, c_white, 1);
+		scr_draw_text_outlined(left_sidebar_x + 40, 20 + telemetry_settings_y, scr_telemetry_text("Telemetry Data"),
+			global.default_text_size, telemetry_selected ? c_black : c_white, telemetry_selected ? c_white : c_black, 1);
 
 		#region /* Video Settings */
 		if (global.settings_sidebar_menu == "video_settings")
@@ -746,7 +763,7 @@ function scr_option_menu()
 
 	if (in_settings)
 	{
-		scr_scroll_menu();
+		if (global.settings_sidebar_menu != "telemetry_settings") scr_scroll_menu();
 
 		#region /* Go back out of setting menu */
 		if (key_accept_pressed)
@@ -774,6 +791,7 @@ function scr_option_menu()
 		}
 		#endregion /* Go back out of setting menu END */
 
+		var telemetry_subpage_active = scr_option_telemetry_is_subpage();
 		var debug_text_submenu_active = (global.settings_sidebar_menu == "debug_settings")
 			&& (string_pos("debug_screen_text_", string(menu)) == 1)
 			&& (menu != "debug_screen_text_menu");
@@ -795,6 +813,12 @@ function scr_option_menu()
 		&& (!input_key)
 		&& (!input_gamepad_button)
 		{
+			if (telemetry_subpage_active)
+			{
+				scr_option_telemetry_back();
+				menu_delay = 3;
+			}
+			else
 			if (open_dropdown)
 			{
 				open_dropdown = false;
@@ -872,6 +896,11 @@ function scr_option_menu()
 					allow_player_dive[i] = scr_initialize_character_abilities(i - 1, "allow_dive", false);
 					ini_close(); /* Don't commit the save data on Switch, this is only temporary! */
 				}
+			}
+			else
+			if (global.settings_sidebar_menu == "telemetry_settings")
+			{
+				menu = "telemetry_row_0";
 			}
 			else
 			if (global.settings_sidebar_menu == "account_settings")
@@ -1249,6 +1278,26 @@ function scr_option_menu()
 			}
 			#endregion /* Profile END */
 
+		}
+
+		if (global.controls_used_for_navigation == "mouse"
+		&& point_in_rectangle(mouse_get_x, mouse_get_y, 0, telemetry_settings_y, 370, telemetry_settings_y + 39)
+		&& menu_delay == 0 && menu_joystick_delay == 0)
+		{
+			if (mouse_check_button(mb_left))
+			{
+				global.settings_sidebar_menu = "telemetry_settings";
+				can_navigate_settings_sidebar = true;
+				input_key = false;
+			}
+			if (mouse_check_button_released(mb_left))
+			{
+				global.settings_sidebar_menu = "telemetry_settings";
+				can_navigate_settings_sidebar = false;
+				input_key = false;
+				menu = "telemetry_row_0";
+				menu_delay = 3;
+			}
 		}
 
 		#region /* Click Video */
@@ -1676,7 +1725,7 @@ function scr_option_menu()
 					}
 					else
 					{
-						global.settings_sidebar_menu = "video_settings";
+						global.settings_sidebar_menu = "telemetry_settings";
 					}
 					menu_delay = 3;
 				}
@@ -1729,7 +1778,7 @@ function scr_option_menu()
 						}
 						else
 						{
-							global.settings_sidebar_menu = "video_settings";
+							global.settings_sidebar_menu = "telemetry_settings";
 						}
 						menu_delay = 3;
 					}
@@ -1783,7 +1832,7 @@ function scr_option_menu()
 					}
 					else
 					{
-						global.settings_sidebar_menu = "video_settings";
+						global.settings_sidebar_menu = "telemetry_settings";
 					}
 					menu_delay = 3;
 				}
@@ -1836,7 +1885,7 @@ function scr_option_menu()
 						}
 						else
 						{
-							global.settings_sidebar_menu = "video_settings";
+							global.settings_sidebar_menu = "telemetry_settings";
 						}
 						menu_delay = 3;
 					}
@@ -1882,7 +1931,7 @@ function scr_option_menu()
 						}
 						else
 						{
-							global.settings_sidebar_menu = "video_settings";
+							global.settings_sidebar_menu = "telemetry_settings";
 						}
 						menu_delay = 3;
 					}
@@ -1931,13 +1980,28 @@ function scr_option_menu()
 					&& (can_navigate_settings_sidebar)
 					&& (menu_delay == 0 && menu_joystick_delay == 0)
 					{
-						global.settings_sidebar_menu = "video_settings";
+						global.settings_sidebar_menu = "telemetry_settings";
 						menu_delay = 3;
 					}
 				}
 			}
 			#endregion /* Account Settings END */
 
+			if (global.settings_sidebar_menu == "telemetry_settings"
+			&& can_navigate_settings_sidebar && menu_delay == 0 && menu_joystick_delay == 0)
+			{
+				if (key_up)
+				{
+					global.settings_sidebar_menu = global.enable_account_settings ? "account_settings"
+						: (global.enable_touch_settings ? "touch_settings" : (global.enable_controller_settings ? "controller_settings" : "keyboard_and_mouse_settings"));
+					menu_delay = 3;
+				}
+				else if (key_down)
+				{
+					global.settings_sidebar_menu = "video_settings";
+					menu_delay = 3;
+				}
+			}
 			#region /* Video Settings */
 			if (global.settings_sidebar_menu == "video_settings")
 			{
@@ -1945,32 +2009,7 @@ function scr_option_menu()
 				&& (can_navigate_settings_sidebar)
 				&& (menu_delay == 0 && menu_joystick_delay == 0)
 				{
-					if (global.enable_account_settings)
-					{
-						global.settings_sidebar_menu = "account_settings";
-					}
-					else
-					if (global.enable_touch_settings)
-					{
-						global.settings_sidebar_menu = "touch_settings";
-					}
-					else
-					if (global.enable_controller_settings)
-					{
-						if (global.sprite_select_player[remapping_player + 1] == noone)
-						{
-							scr_change_character_portrait();
-						}
-						global.settings_sidebar_menu = "controller_settings";
-					}
-					else
-					{
-						if (global.sprite_select_player[remapping_player + 1] == noone)
-						{
-							scr_change_character_portrait();
-						}
-						global.settings_sidebar_menu = "keyboard_and_mouse_settings";
-					}
+					global.settings_sidebar_menu = "telemetry_settings";
 					menu_delay = 3;
 				}
 				else
@@ -2446,6 +2485,7 @@ function scr_option_menu()
 		#region /* General Settings */
 
 		scr_option_account();
+		scr_option_telemetry();
 
 		#region /* Graphics Settings */
 		scr_option_graphics();
@@ -3516,7 +3556,8 @@ function scr_option_menu()
 
 	scr_menu_navigation_with_joystick_delay();
 	var capture_mode_custom_page_active = scr_option_capture_mode_is_page();
-	if (!capture_mode_custom_page_active || scr_option_capture_mode_uses_option_description())
+	if (global.settings_sidebar_menu != "telemetry_settings"
+	&& (!capture_mode_custom_page_active || scr_option_capture_mode_uses_option_description()))
 	{
 		scr_draw_option_description();
 	}
