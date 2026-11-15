@@ -1,4 +1,4 @@
-function scr_scroll_menu(offset_display_height = 300, clamp_menu_y_offset_real = true)
+function scr_scroll_menu(offset_display_height = 300, clamp_menu_y_offset_real = true, allow_mouse_wheel = true)
 {
 	#region /* Scroll menu */
 	menu_y_offset = lerp(menu_y_offset, menu_y_offset_real, 0.25);
@@ -33,14 +33,14 @@ function scr_scroll_menu(offset_display_height = 300, clamp_menu_y_offset_real =
 	#endregion /* Scroll menu END */
 
 	#region /* Use Mousewheel to scroll menu */
-	if (mouse_wheel_up())
+	if (allow_mouse_wheel && mouse_wheel_up())
 	{
 		menu_cursor_y_position += 100;
 		menu_y_offset_real += 100; /* Snap directly to the new value */
 		scrolling_menu_with_mousewheel = true;
 	}
 	else
-	if (mouse_wheel_down())
+	if (allow_mouse_wheel && mouse_wheel_down())
 	{
 		menu_cursor_y_position -= 100;
 		menu_y_offset_real -= 100; /* Snap directly to the new value */

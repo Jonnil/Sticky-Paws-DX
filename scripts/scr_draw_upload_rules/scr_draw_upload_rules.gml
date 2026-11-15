@@ -129,7 +129,7 @@ function scr_draw_upload_rules()
 				ini_close(); /* Don't commit the save data on Switch, this is only temporary! */
 			}
 			
-			ini_open(game_save_id + "save_file/config.ini");
+			scr_save_ini_open(game_save_id + "save_file/config.ini");
 			ini_write_string("config", "upload_rules_do_not_show_level", global.upload_rules_do_not_show_level);
 			ini_write_string("config", "upload_rules_do_not_show_character", global.upload_rules_do_not_show_character);
 			ini_close(); /* Don't commit the save data on Switch, this is only temporary! */

@@ -7,6 +7,24 @@ scr_set_menu_font_color();
 scr_set_controls_used_to_navigate();
 scr_menu_navigation_initialization(0);
 
+/* The shared selector handles hover and input without changing the active run. */
+if (global.pause_room == rm_leveleditor && !in_settings && !in_character_select_menu
+&& !hide_menu_for_clean_screenshots && !show_loading_icon)
+{
+	var tier_bounds = big_collectible_pause_bounds();
+	var tier_model = big_collectible_pause_model();
+	var tier_choice = scr_big_collectible_selector_step(big_collectible_selector, tier_model,
+		tier_bounds.left, tier_bounds.top, tier_bounds.width, tier_bounds.height, global.pause_player + 1);
+	big_collectible_pause_scroll = big_collectible_selector.scroll;
+	if (tier_choice >= 0) scr_big_collectible_tier_request(tier_choice);
+}
+else
+{
+	big_collectible_selector.hover_tier = -1;
+	big_collectible_selector.hover_slot = -1;
+	big_collectible_selector.hover_cycle = false;
+}
+
 for(var p = 1; p <= global.max_players; p += 1)
 {
 	if (global.player_can_play[p])
@@ -150,6 +168,8 @@ if (show_loading_icon)
 
 		#region /* Restart Level from Start */
 
+		scr_big_collectible_tiers_reset_run();
+
 		/* Reset the "big collectible already collected" variables when restarting from start */
 		for(var i = 1; i <= global.max_big_collectible; i += 1)
 		{
@@ -168,18 +188,16 @@ if (show_loading_icon)
 		global.timeattack_minute = 0;
 		#endregion /* Reset timer back to zero END */
 
-		if (global.character_select_in_this_menu == "main_game")
+		if (!global.big_collectible_test_override
+		&& !global.doing_clear_check_level && !global.doing_clear_check_character)
 		{
-			ini_open(game_save_id + "save_file/file" + string(global.file) + ".ini");
+			scr_save_ini_open(scr_level_progress_path());
+			var checkpoint_section = scr_level_progress_section();
+			ini_key_delete(checkpoint_section, "checkpoint_x");
+			ini_key_delete(checkpoint_section, "checkpoint_y");
+			ini_key_delete(checkpoint_section, "checkpoint_direction");
+			ini_close(); /* Don't commit the save data on Switch, this is only temporary! */
 		}
-		else
-		{
-			ini_open(game_save_id + "save_file/custom_level_save.ini");
-		}
-		ini_key_delete(global.level_name, "checkpoint_x");
-		ini_key_delete(global.level_name, "checkpoint_y");
-		ini_key_delete(global.level_name, "checkpoint_direction");
-		ini_close(); /* Don't commit the save data on Switch, this is only temporary! */
 		global.checkpoint_x = 0;
 		global.checkpoint_y = 0;
 		global.lives_until_assist = 0; /* Reset the lives until assist counter if you manually restart a level. This is so you can do a zero defeats */

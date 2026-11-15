@@ -176,18 +176,22 @@ if (global.restart_level)
 	&& (gamepad_button_check(global.player_slot[player], gp_shoulderrb))
 	&& (gamepad_button_check_pressed(global.player_slot[player], gp_select))
 	{
-		if (global.character_select_in_this_menu == "main_game")
+		scr_big_collectible_tiers_reset_run();
+		if (!global.big_collectible_test_override && !global.doing_clear_check_level && !global.doing_clear_check_character)
 		{
-			ini_open(game_save_id + "save_file/file" + string(global.file) + ".ini");
+			if (global.character_select_in_this_menu == "main_game")
+			{
+				scr_save_ini_open(game_save_id + "save_file/file" + string(global.file) + ".ini");
+			}
+			else
+			{
+				scr_save_ini_open(scr_level_progress_path());
+			}
+			ini_key_delete(scr_level_progress_section(), "checkpoint_x");
+			ini_key_delete(scr_level_progress_section(), "checkpoint_y");
+			ini_key_delete(scr_level_progress_section(), "checkpoint_direction");
+			ini_close(); /* Don't commit the save data on Switch, this is only temporary! */
 		}
-		else
-		{
-			ini_open(game_save_id + "save_file/custom_level_save.ini");
-		}
-		ini_key_delete(global.level_name, "checkpoint_x");
-		ini_key_delete(global.level_name, "checkpoint_y");
-		ini_key_delete(global.level_name, "checkpoint_direction");
-		ini_close(); /* Don't commit the save data on Switch, this is only temporary! */
 		global.checkpoint_x = 0;
 		global.checkpoint_y = 0;
 	}

@@ -16,18 +16,17 @@ function scr_player_move_restart()
 	{
 		if (quick_restart)
 		{
-			var ini_path = game_save_id + "save_file/custom_level_save.ini";
+			scr_big_collectible_tiers_reset_run();
+			var ini_path = scr_level_progress_path();
 			
-			if (global.character_select_in_this_menu == "main_game")
+			if (!global.big_collectible_test_override && !global.doing_clear_check_level && !global.doing_clear_check_character)
 			{
-				ini_path = game_save_id + "save_file/file" + string(global.file) + ".ini";
+				scr_save_ini_open(ini_path);
+				ini_key_delete(scr_level_progress_section(), "checkpoint_x");
+				ini_key_delete(scr_level_progress_section(), "checkpoint_y");
+				ini_key_delete(scr_level_progress_section(), "checkpoint_direction");
+				ini_close(); /* Don't commit the save data on Switch, this is only temporary! */
 			}
-			
-			ini_open(ini_path);
-			ini_key_delete(global.level_name, "checkpoint_x");
-			ini_key_delete(global.level_name, "checkpoint_y");
-			ini_key_delete(global.level_name, "checkpoint_direction");
-			ini_close(); /* Don't commit the save data on Switch, this is only temporary! */
 			global.checkpoint_x = 0;
 			global.checkpoint_y = 0;
 		}

@@ -4,6 +4,9 @@ if (!global.actually_play_edited_level)
 	&& (!drag_object)
 	&& (!other.drag_object)
 	&& (other.object == object)
+	&& (other.big_collectible_tier == big_collectible_tier)
+	&& !(scr_big_collectible_is_source(object, item_inside) && big_collectible_id != ""
+		|| scr_big_collectible_is_source(other.object, other.item_inside) && other.big_collectible_id != "")
 	&& (other.x == x)
 	&& (other.y == y)
 	&& (position_meeting(x, y, other))
@@ -47,6 +50,16 @@ if (!global.actually_play_edited_level)
 			obj_leveleditor.menu_delay = 3;
 		}
 		item_inside = other.object;
+		if (scr_big_collectible_is_source(other.object, other.item_inside))
+		{
+			big_collectible_tier = other.big_collectible_tier;
+			big_collectible_id = other.big_collectible_id;
+		}
+		else
+		{
+			big_collectible_tier = 0;
+			big_collectible_id = "";
+		}
 		with(other)
 		{
 			instance_destroy();

@@ -15,42 +15,12 @@ if (speed > 0)
 	audio_listener_velocity(abs(hspeed), abs(vspeed), 0);
 }
 
-/* Check if "obj level" exists */
-if (stop_at_level)
-{
-	if (instance_exists(obj_level))
-	{
-		distance_to_level = distance_to_object(nearest_level);
-		at_least_one_big_collectible = false;
-		
-		for(var i = 1; i <= global.max_big_collectible; i += 1)
-		{
-			if (nearest_level.big_collectible[i])
-			{
-				at_least_one_big_collectible = true;
-				break; /* exit the loop if any big collectible is false */
-			}
-		}
-		
-		/* Best time text */
-		var time_minute = nearest_level.timeattack_minute;
-		var time_second = string_replace_all(string_format(nearest_level.timeattack_second, 2, 0), " ", "0");
-		var time_millisecond = string_replace_all(string_format(nearest_level.timeattack_millisecond, 2, 0), " ", "0");
-		best_time_text = l10n_text("Best Time") + ": " + string(time_minute) + ":" + time_second + "." + time_millisecond;
-
-	}
-	else
-	{
-		at_least_one_big_collectible = false;
-	}
-}
-
 /* Quit Game */
 if (global.quit_level)
 {
 	if (speed == 0)
 	{
-		ini_open(game_save_id + "save_file/file" + string(global.file) + ".ini");
+		scr_save_ini_open(game_save_id + "save_file/file" + string(global.file) + ".ini");
 		ini_write_real("Player", "player_x", x);
 		ini_write_real("Player", "player_y", y);
 		ini_close(); /* Don't commit the save data on Switch, this is only temporary! */
@@ -116,6 +86,106 @@ if (instance_exists(obj_level))
 {
 	nearest_level = instance_nearest(x, y, obj_level);
 }
+
+big_collectible_entry_visible = false;
+big_collectible_entry_pointer = false;
+big_collectible_entry_consumed = false;
+big_collectible_info_ready = false;
+big_collectible_info_target = noone;
+big_collectible_info_source_key = "";
+big_collectible_info_context_key = "";
+big_collectible_info_lines = [];
+big_collectible_info_badge = noone;
+if (instance_exists(nearest_level)) distance_to_level = point_distance(x, y, nearest_level.x, nearest_level.y);
+
+/* One current target supplies both the card and its collectible rows. */
+if (big_collectible_info_can_show(nearest_level))
+{
+	var tier_official_id = scr_normalize_official_level_id(string(ds_list_find_value(global.all_loaded_main_levels, nearest_level.level)));
+	scr_big_collectible_entry_cache_refresh(big_collectible_entry_cache,
+		scr_get_official_level_file_path(tier_official_id, "data", "level_information.ini"),
+		scr_get_official_level_file_path(tier_official_id, "data", "object_placement_all.json"), true, tier_official_id);
+	big_collectible_entry_visible = scr_big_collectible_entry_has_rows(big_collectible_entry_cache.model);
+	var tier_has_best_time = nearest_level.timeattack_realmillisecond < 999999999 && nearest_level.timeattack_realmillisecond > 0;
+	var tier_has_defeats = global.show_defeats_counter && nearest_level.number_of_defeats > 0;
+	if (nearest_level.zero_defeats != 0) big_collectible_info_badge = nearest_level.zero_defeats == 1 ? spr_icon_zero_defeats : spr_icon_zero_hits;
+	big_collectible_info_ready = big_collectible_entry_visible || tier_has_best_time || tier_has_defeats
+		|| nearest_level.level_score > 0 || nearest_level.number_of_clears > 0 || big_collectible_info_badge != noone;
+	if (big_collectible_info_ready)
+	{
+		big_collectible_info_target = nearest_level;
+		big_collectible_info_source_key = big_collectible_entry_cache.source_key;
+		big_collectible_info_context_key = game_save_id + "|" + string(global.file) + "|" + string(global.difficulty) + "|" + string(nearest_level.level);
+		if (tier_has_best_time)
+		{
+			var time_minute = nearest_level.timeattack_minute;
+			var time_second = string_replace_all(string_format(nearest_level.timeattack_second, 2, 0), " ", "0");
+			var time_millisecond = string_replace_all(string_format(nearest_level.timeattack_millisecond, 2, 0), " ", "0");
+			best_time_text = l10n_text("Best Time") + ": " + string(time_minute) + ":" + time_second + "." + time_millisecond;
+			array_push(big_collectible_info_lines, best_time_text);
+		}
+		array_push(big_collectible_info_lines, l10n_text("Best Score") + ": " + string(nearest_level.level_score));
+		array_push(big_collectible_info_lines, l10n_text("Times Passed") + ": " + string(nearest_level.number_of_clears));
+		if (tier_has_defeats) array_push(big_collectible_info_lines, l10n_text("Total Defeats") + ": " + string(nearest_level.number_of_defeats));
+		var tier_badge_width = big_collectible_info_badge != noone ? sprite_get_width(big_collectible_info_badge) + 8 : 0;
+		var tier_badge_height = big_collectible_info_badge != noone ? sprite_get_height(big_collectible_info_badge) : 0;
+		var tier_header_reserve = max(big_collectible_entry_visible ? 32 : 0, tier_badge_height);
+		var tier_header_gap = tier_header_reserve > 0 ? 8 : 0;
+		big_collectible_entry_top = 64;
+		big_collectible_info_line_height = min(32, max(12, floor((display_get_gui_height() - 56 - big_collectible_entry_top
+			- tier_header_reserve - tier_header_gap - 8) / max(1, array_length(big_collectible_info_lines)))));
+		big_collectible_info_text_scale = global.default_text_size;
+		var tier_stats_width = 0;
+		if (big_collectible_info_line_height < 32)
+		{
+			var tier_font_height = 1;
+			for (var line_index = 0; line_index < array_length(big_collectible_info_lines); line_index++)
+			{
+				tier_font_height = max(tier_font_height, string_height(big_collectible_info_lines[line_index]));
+			}
+			big_collectible_info_text_scale = min(global.default_text_size, max(1, big_collectible_info_line_height - 2) / tier_font_height);
+		}
+		for (var line_index = 0; line_index < array_length(big_collectible_info_lines); line_index++)
+		{
+			tier_stats_width = max(tier_stats_width, string_width(big_collectible_info_lines[line_index]) * big_collectible_info_text_scale + 4);
+		}
+		var tier_card_inner_width = max(64, display_get_gui_width() - 56);
+		big_collectible_entry_left = 28;
+		big_collectible_entry_width = max(24, min(304, tier_card_inner_width - tier_badge_width));
+		big_collectible_entry_height = max(24, display_get_gui_height() - 56 - big_collectible_entry_top
+			- array_length(big_collectible_info_lines) * big_collectible_info_line_height - 16);
+		var tier_rows_width = 0;
+		var tier_rows_bottom = big_collectible_entry_top;
+		if (big_collectible_entry_visible)
+		{
+			var tier_layout = scr_big_collectible_selector_layout(big_collectible_entry_cache.model,
+				big_collectible_entry_left, big_collectible_entry_top, big_collectible_entry_width, big_collectible_entry_height,
+				big_collectible_entry_cache.state.scroll, big_collectible_entry_scale);
+			tier_rows_width = tier_layout.width;
+			tier_rows_bottom = tier_layout.footer_bottom;
+		}
+		tier_card_inner_width = min(tier_card_inner_width, max(tier_stats_width, tier_rows_width + tier_badge_width));
+		big_collectible_info_right = 28 + tier_card_inner_width + 8;
+		big_collectible_info_center = 28 + tier_card_inner_width * 0.5;
+		big_collectible_info_stats_top = max(tier_rows_bottom, big_collectible_entry_top + tier_badge_height);
+		if (big_collectible_entry_visible || tier_badge_height > 0) big_collectible_info_stats_top += 8;
+		big_collectible_info_bottom = big_collectible_info_stats_top + array_length(big_collectible_info_lines) * big_collectible_info_line_height + 8;
+		if (big_collectible_entry_visible)
+		{
+			/* Center the fitted group in the space left by the badge. */
+			big_collectible_entry_left = 28 + max(0, (tier_card_inner_width - tier_badge_width - tier_rows_width) * 0.5);
+			var tier_choice = scr_big_collectible_selector_step(big_collectible_entry_cache.state, big_collectible_entry_cache.model,
+				big_collectible_entry_left, big_collectible_entry_top, big_collectible_entry_width, big_collectible_entry_height, player, true, big_collectible_entry_scale);
+			if (tier_choice >= 0 && scr_big_collectible_preview_choose(big_collectible_entry_cache.model, tier_choice))
+			{
+				menu_delay = 3;
+				big_collectible_entry_consumed = true;
+			}
+		}
+		big_collectible_entry_pointer = point_in_rectangle(mouse_get_x, mouse_get_y, 20, 56, big_collectible_info_right, big_collectible_info_bottom);
+	}
+}
+else big_collectible_entry_cache.source_key = "";
 
 /* Delay countup */
 if (!can_move)
@@ -278,7 +348,7 @@ if (can_move && !global.quit_level)
 	{
 		var mouse_dir = point_direction(x, y, mouse_x, mouse_y);
 		var mouse_dist = distance_to_point(mouse_x, mouse_y);
-		var mouse_not_on_pause_button = !point_in_rectangle(mouse_get_x, mouse_get_y, display_get_gui_width() - 185, 0, display_get_gui_width(), 42);
+		var mouse_not_on_pause_button = !big_collectible_entry_pointer && !point_in_rectangle(mouse_get_x, mouse_get_y, display_get_gui_width() - 185, 0, display_get_gui_width(), 42);
 
 		if (key_up || mouse_check_button_released(mb_left) && mouse_dir > 45 && mouse_dir < 135 && mouse_dist > 16 && mouse_dist < 100 && mouse_not_on_pause_button)
 		{

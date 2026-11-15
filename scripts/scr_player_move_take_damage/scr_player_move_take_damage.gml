@@ -16,9 +16,12 @@ function scr_player_move_take_damage()
 			if (have_heart_balloon)
 			{
 				have_heart_balloon = false;
-				ini_open(game_save_id + "save_file/file" + string(global.file) + ".ini");
-				ini_write_real("Player", "player" + string(player) + "_have_heart_balloon", false);
-				ini_close(); /* Temporary save; not committed on the Switch platform */
+				if (!global.big_collectible_test_override)
+				{
+					scr_save_ini_open(game_save_id + "save_file/file" + string(global.file) + ".ini");
+					ini_write_real("Player", "player" + string(player) + "_have_heart_balloon", false);
+					ini_close(); /* Temporary save; not committed on the Switch platform */
+				}
 			}
 			else
 			{

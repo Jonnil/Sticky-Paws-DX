@@ -1,6 +1,7 @@
 depth = -9999;
 count = 0;
 last_player = false;
+game_over_checkpoint_cleared = false;
 iris_xscale = 16;
 iris_yscale = 16;
 iris_zoom = 0;
@@ -35,20 +36,20 @@ default_xscale = 1;
 default_yscale = 1;
 
 #region /* Save how many times you have died */
-if (global.character_select_in_this_menu == "main_game")
+if (global.character_select_in_this_menu == "main_game" && !global.big_collectible_test_override && !global.doing_clear_check_level && !global.doing_clear_check_character)
 {
-	var level_name = scr_get_active_official_level_id();
+	var level_name = scr_level_progress_section();
 
-	ini_open(game_save_id + "save_file/file" + string(global.file) + ".ini");
+	scr_save_ini_open(game_save_id + "save_file/file" + string(global.file) + ".ini");
 	ini_write_real(level_name, "number_of_defeats", ini_read_real(level_name, "number_of_defeats", 0) + 1);
 	ini_close(); /* Don't commit the save data on Switch, this is only temporary! */
 }
 else
-if (global.character_select_in_this_menu == "level_editor")
+if (global.character_select_in_this_menu == "level_editor" && !global.big_collectible_test_override && !global.doing_clear_check_level && !global.doing_clear_check_character)
 {
-	var level_name = global.level_name;
+	var level_name = scr_level_progress_section();
 
-	ini_open(game_save_id + "save_file/custom_level_save.ini");
+	scr_save_ini_open(scr_level_progress_path());
 	ini_write_real(level_name, "number_of_defeats", ini_read_real(level_name, "number_of_defeats", 0) + 1);
 	ini_close(); /* Don't commit the save data on Switch, this is only temporary! */
 }
@@ -58,9 +59,9 @@ if (global.player_lives > 0)
 && (!global.doing_clear_check_level) /* If you are doing a clear check for uploading level or character, then don't lose lives, you should get infinite tries */
 && (!global.doing_clear_check_character)
 {
-	if (global.character_select_in_this_menu == "main_game")
+	if (global.character_select_in_this_menu == "main_game" && !global.big_collectible_test_override && !global.doing_clear_check_level && !global.doing_clear_check_character)
 	{
-		ini_open(game_save_id + "save_file/file" + string(global.file) + ".ini");
+		scr_save_ini_open(game_save_id + "save_file/file" + string(global.file) + ".ini");
 		ini_write_real("Player", "lives", global.player_lives - 1);
 		ini_close(); /* Don't commit the save data on Switch, this is only temporary! */
 	}

@@ -442,7 +442,7 @@ if (layer_background_get_sprite(layer_background_get_id(layer_get_id("Background
 if (global.reset_level_zoom_on_return)
 {
 	global.zoom_level = global.default_zoom_level;
-	ini_open("save_file/config.ini");
+	scr_save_ini_open("save_file/config.ini");
 	ini_write_real("config", "zoom_level", global.default_zoom_level);
 	ini_close(); /* Don't commit the save data on Switch, this is only temporary! */
 }
@@ -452,7 +452,7 @@ if (global.reset_level_zoom_on_return)
 if (global.reset_world_zoom_on_return)
 {
 	global.zoom_world = global.default_zoom_world;
-	ini_open("save_file/config.ini");
+	scr_save_ini_open("save_file/config.ini");
 	ini_write_real("config", "zoom_world", global.default_zoom_world);
 	ini_close(); /* Don't commit the save data on Switch, this is only temporary! */
 }
@@ -535,3 +535,5 @@ scr_audio_play(voice_game_title, volume_source.voice); /* Say the games title */
 set_controller_sprites_to_use();
 
 scr_get_todays_upload_count();
+/* Returning from an editor test must not carry its isolated tier override into normal play. */
+scr_big_collectible_tiers_initialize();

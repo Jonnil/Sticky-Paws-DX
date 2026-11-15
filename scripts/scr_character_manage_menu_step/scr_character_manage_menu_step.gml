@@ -562,7 +562,7 @@ function scr_character_manage_menu_step()
 			if (!selecting_official_character)
 			&& (global.free_communication_available)
 			{
-				ini_open("save_file/config.ini"); /* Save what character, skin, and name is being used for player 1, before trying to upload a character to the server */
+				scr_save_ini_open("save_file/config.ini"); /* Save what character, skin, and name is being used for player 1, before trying to upload a character to the server */
 				ini_write_real("config", "character_index_player1", global.character_index[0]);
 				ini_write_real("config", "skin_for_player1", global.skin_for_player[1]);
 				ini_write_string("config", "player1_name", global.player_name[1]);

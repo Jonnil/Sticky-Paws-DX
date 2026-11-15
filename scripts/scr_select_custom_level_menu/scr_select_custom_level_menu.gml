@@ -377,6 +377,8 @@ function scr_select_custom_level_menu()
 
 		#endregion /* Navigate Menu END */
 
+		column = floor(global.select_level_index / row);
+		scr_big_collectible_custom_panel_prepare(394 * (global.select_level_index - column * row) + 100 - 3 + thumbnail_x_offset);
 		scr_draw_level_editor_thumbnail(global.all_loaded_custom_levels, false);
 
 		column = floor(global.select_level_index / row); /* Do this code again here so the sub menu doesn't get misaligned */
@@ -432,8 +434,7 @@ function scr_select_custom_level_menu()
 			if (global.enable_open_custom_folder)
 			{
 				var draw_open_custom_levels_folder_y = 42;
-				draw_menu_button(0, draw_open_custom_levels_folder_y, l10n_text("Open Custom Levels Folder"), "open_custom_levels_folder", "");
-				draw_sprite_ext(spr_icon_folder, 0, 16, 42 + 21, 1, 1, 0, c_white, 1);
+				draw_menu_button(0, draw_open_custom_levels_folder_y, l10n_text("Open Custom Levels Folder"), "open_custom_levels_folder", "", c_lime, 1, 370, spr_icon_folder);
 				if (point_in_rectangle(mouse_get_x, mouse_get_y, 0, draw_open_custom_levels_folder_y + 2, 370, draw_open_custom_levels_folder_y + 41))
 				&& (global.controls_used_for_navigation == "mouse")
 				&& (mouse_check_button_released(mb_left))
@@ -786,6 +787,8 @@ function scr_select_custom_level_menu()
 								show_debug_message("[scr_select_custom_level_menu] Save level name to custom level as: " + string(global.level_name));
 								ini_write_string("info", "level_name", string(global.level_name));
 								ini_write_string("info", "level_description", ""); /* Save a blank level description */
+								ini_write_string("info", "big_collectible_level_id", scr_big_collectible_new_id());
+								ini_write_real("info", "progress_identity_fresh", true);
 
 								if (variable_instance_exists(self, "creating_daily_build")
 								&& creating_daily_build)

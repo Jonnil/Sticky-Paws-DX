@@ -1,15 +1,18 @@
 /* Save Level Information like if you have cleared the level or if you have a checkpoint */
 function scr_save_level()
 {
-	/* Use the real folder name to read level_id; display name can differ from folder name */
-	var level_name = global.level_name;
-	var level_folder = scr_get_custom_level_folder_name();
-	var level_info_path = global.use_temp_or_working + "custom_levels/" + string(level_folder) + "/data/level_information.ini";
+	if (global.big_collectible_test_override
+	|| (variable_global_exists("big_collectible_tier_format_unsupported") && global.big_collectible_tier_format_unsupported))
+	{
+		global.level_clear_rate = noone;
+		global.level_score = 0;
+		global.debug_mode_activated_once = false;
+		return;
+	}
+	var context = scr_level_progress_current();
+	var level_name = context.section;
+	var level_id = context.online_id;
 
-	ini_open(level_info_path);
-	var level_id = string_upper(ini_read_string("info", "level_id", ""));
-	ini_close();
-	
 	#region /* If doing a character clear check, and winning the level, then add in character config that you have done a clear check */
 	if (global.level_clear_rate == "clear"
 	&& global.doing_clear_check_character)
@@ -26,9 +29,10 @@ function scr_save_level()
 	#endregion /* If doing a character clear check, and winning the level, then add in character config that you have done a clear check END */
 
 	if (global.character_select_in_this_menu == "main_game"
-	&& global.actually_play_edited_level)
+	&& global.actually_play_edited_level
+	&& !global.doing_clear_check_level && !global.doing_clear_check_character)
 	{
-		ini_open(game_save_id + "save_file/file" + string(global.file) + ".ini");
+		scr_save_ini_open(game_save_id + "save_file/file" + string(global.file) + ".ini");
 
 		if (global.level_clear_rate == "clear"
 		&& !global.doing_clear_check_character)
@@ -78,6 +82,7 @@ function scr_save_level()
 		{
 			ini_write_real(level_name, "checkpoint_x", global.checkpoint_x);
 			ini_write_real(level_name, "checkpoint_y", global.checkpoint_y);
+			ini_write_real(level_name, "checkpoint_big_collectible_tier", global.big_collectible_active_tier);
 			ini_write_real(level_name, "checkpoint_millisecond", global.checkpoint_millisecond);
 			ini_write_real(level_name, "checkpoint_second", global.checkpoint_second);
 			ini_write_real(level_name, "checkpoint_minute", global.checkpoint_minute);
@@ -144,58 +149,34 @@ function scr_save_level()
 	}
 	else
 	if (global.character_select_in_this_menu == "level_editor"
-	&& global.actually_play_edited_level)
+	&& global.actually_play_edited_level
+	&& !global.doing_clear_check_level && !global.doing_clear_check_character)
 	{
 
 		#region /* Save to custom level save file */
 		/* Use a dedicated file for online progress (not mixed with local custom-level data) */
-		var online_progress_path = game_save_id + "save_file/online_level_progress.ini";
-		ini_open(online_progress_path);
+		var online_progress_path = context.path;
+		scr_save_ini_open(online_progress_path);
 
 		#region /* Downloaded Level Progression */
 		/* Update a list of downloaded levels that you have finished */
 		if (level_id != ""
 		&& !global.doing_clear_check_character)
 		{
-			var read_finished_downloaded_level = 0;
-			
-			if (ini_key_exists("finished_downloaded_level", string(level_id)))
+			var previous_status = max(ini_read_real("finished_downloaded_level", level_id, 0),
+				ini_read_real(level_name, "finished_status", 0));
+			var next_status = 1;
+			if (global.level_clear_rate == "clear" && !global.debug_mode_activated_once)
 			{
-				read_finished_downloaded_level = ini_read_real("finished_downloaded_level", string(level_id), 0);
+				var all_collected = global.big_collectible_active_tier == 0;
+				for (var i = 1; i <= global.max_big_collectible; i++)
+					if (!global.big_collectible_already_collected[i]) { all_collected = false; break; }
+				next_status = all_collected ? 3 : 2;
 			}
-
-			if (global.level_clear_rate == "clear")
-			&& (!global.debug_mode_activated_once)
-			{
-				var all_collected = true; /* Assume all collected */
-
-				for (var i = 1; i <= global.max_big_collectible; i += 1)
-				{
-					if (!global.big_collectible_already_collected[i])
-					{
-						all_collected = false; /* Found a big collectible not collected */
-						break; /* No need to check further, exit loop */
-					}
-				}
-
-				if (all_collected
-				|| global.max_big_collectible == 0 /* If the level have no big collectibles, then always set to "Completed" */)
-				&& (read_finished_downloaded_level < 3) /* If you have collected all big collectibles */
-				{
-					ini_write_real("finished_downloaded_level", string(level_id), 3); /* Finished and collected every big collectible */
-				}
-				else
-				if (read_finished_downloaded_level < 2)
-				{
-					ini_write_real("finished_downloaded_level", string(level_id), 2); /* Played and finished */
-				}
-			}
-			else
-			if (read_finished_downloaded_level < 1)
-			|| (global.debug_mode_activated_once)
-			{
-				ini_write_real("finished_downloaded_level", string(level_id), 1); /* Only played, but not finished */
-			}
+			next_status = max(previous_status, next_status);
+			ini_write_real(level_name, "finished_status", next_status);
+			/* Compatibility index mirrors the canonical ID-owned state. Debug never lowers it. */
+			ini_write_real("finished_downloaded_level", level_id, next_status);
 		}
 
 		if (!global.debug_mode_activated_once)
@@ -230,6 +211,7 @@ function scr_save_level()
 		{
 			ini_write_real(level_name, "checkpoint_x", global.checkpoint_x);
 			ini_write_real(level_name, "checkpoint_y", global.checkpoint_y);
+			ini_write_real(level_name, "checkpoint_big_collectible_tier", global.big_collectible_active_tier);
 			ini_write_real(level_name, "checkpoint_millisecond", global.checkpoint_millisecond);
 			ini_write_real(level_name, "checkpoint_second", global.checkpoint_second);
 			ini_write_real(level_name, "checkpoint_minute", global.checkpoint_minute);
@@ -351,11 +333,15 @@ function scr_save_level()
 		global.timeattack_second = 0;
 		global.timeattack_minute = 0;
 	}
+	if (global.level_clear_rate == "clear" || global.quit_level)
+	{
+		scr_big_collectible_tiers_reset_run();
+	}
 	global.level_clear_rate = noone;
 	global.debug_mode_activated_once = false;
 	global.level_score = 0;
 
-	ini_open(game_save_id + "save_file/config.ini")
+	scr_save_ini_open(game_save_id + "save_file/config.ini")
 	ini_write_real("config", "zoom_level", global.zoom_level);
 	ini_write_real("config", "zoom_world", global.zoom_world);
 	ini_close();

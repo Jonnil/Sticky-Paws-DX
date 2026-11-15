@@ -15,23 +15,14 @@ else
 }
 
 #region /* Load Level Editor Checkpoint */
-if (room == rm_leveleditor)
-&& (global.character_select_in_this_menu == "main_game")
-&& (global.actually_play_edited_level)
-{
-	var level_name = global.level_name;
-
-	ini_open(game_save_id + "save_file/file" + string(global.file) + ".ini");
-	checkpoint_what_player = ini_read_real(level_name, "checkpoint_what_player", 1);
-	ini_close(); /* Don't commit the save data on Switch, this is only temporary! */
-}
-else
+checkpoint_what_player = 1;
 if (room == rm_leveleditor)
 && (global.actually_play_edited_level)
+&& (!global.big_collectible_test_override && !global.doing_clear_check_level && !global.doing_clear_check_character)
 {
-	var level_name = global.level_name;
+	var level_name = scr_level_progress_section();
 
-	ini_open(game_save_id + "save_file/custom_level_save.ini");
+	ini_open(scr_level_progress_path());
 	checkpoint_what_player = ini_read_real(level_name, "checkpoint_what_player", 1);
 	ini_close(); /* Don't commit the save data on Switch, this is only temporary! */
 }

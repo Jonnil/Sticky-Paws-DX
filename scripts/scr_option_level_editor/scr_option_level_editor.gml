@@ -128,7 +128,7 @@ function scr_option_level_editor()
 				if (global.character_select_in_this_menu == "level_editor")
 				&& (file_exists(game_save_id + "save_file/config.ini"))
 				{
-					ini_open(game_save_id + "save_file/config.ini");
+					scr_save_ini_open(game_save_id + "save_file/config.ini");
 					ini_write_real("config", "show_new_items_notification_level_editor", global.show_new_items_notification);
 					ini_write_real("config", "enable_level_length_target", global.enable_level_length_target);
 					ini_write_real("config", "target_length_minutes_min", global.target_length_minutes_min);

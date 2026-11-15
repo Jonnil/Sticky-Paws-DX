@@ -11,7 +11,7 @@ function scr_save_player_control_profile(what_player = 1, key0_or_gamepad1 = 0)
 	
 	var section = "player" + string(what_player) + "_profile" + string(global.player_profile[what_player] + 1);
 	var key = "player" + string(what_player) + "_" + string(key_or_gamepad_string);
-	ini_open(game_save_id + "save_file/config.ini");
+	scr_save_ini_open(game_save_id + "save_file/config.ini");
 	ini_write_real(section, key + "_dive", global.player_[inp_what][what_player][1][action.dive]);
 	ini_write_real(section, key + "2_dive", global.player_[inp_what][what_player][2][action.dive]);
 	ini_write_real(section, key + "_jump", global.player_[inp_what][what_player][1][action.jump]);

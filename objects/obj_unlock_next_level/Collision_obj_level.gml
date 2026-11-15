@@ -6,7 +6,7 @@ if (distance_to_point(other.x, other.y) < 3)
 && (delay == 0)
 {
 	other.clear_rate = "enter";
-	ini_open(game_save_id + "save_file/file" + string(global.file) + ".ini");
+	scr_save_ini_open(game_save_id + "save_file/file" + string(global.file) + ".ini");
 	ini_write_string(level_name, "clear_rate", "enter");
 	ini_close(); /* Don't commit the save data on Switch, this is only temporary! */
 }

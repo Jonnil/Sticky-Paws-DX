@@ -16,6 +16,11 @@ function scr_draw_menu_search_id(what_kind_of_id = "level")
 		var fixed_player = 1;
 		var draw_name_input_screen_y = get_window_height * 0.5;
 		var thumbnail_scale = 1;
+		if (!variable_instance_exists(id, "big_collectible_online_entry_cache")) big_collectible_online_entry_cache = scr_big_collectible_entry_cache_create();
+		var tier_detail_menu = menu == "play_from_temp" || menu == "download_to_working" || menu == "searched_file_downloaded_play"
+			|| menu == "searched_file_downloaded_make" || menu == "open_downloaded_level_folder" || menu == "searched_file_downloaded_delete"
+			|| menu == "searched_file_downloaded_back_to_list" || menu == "searched_file_downloaded_report";
+		if (!tier_detail_menu || what_kind_of_id != "level" || inform_about_report_feature) big_collectible_online_entry_cache.source_key = "";
 		
 		var download_temp_path = temp_directory;
 		var downloaded_folder_path = normalize_path_seps(download_temp_path + "downloaded_" + string(what_kind_of_id));
@@ -635,6 +640,19 @@ function scr_draw_menu_search_id(what_kind_of_id = "level")
 				if (what_kind_of_id == "level")
 				{
 					/* Show level name, level thumbnail, and level description */
+					var tier_detail_visible = false;
+					var tier_detail_width = min(370, max(32, get_window_width * 0.3));
+					var tier_detail_height = max(24, get_window_height - 64 - 16);
+					if (!inform_about_report_feature && can_navigate)
+					{
+						var tier_folder = scr_get_custom_level_folder_name();
+						var tier_root = file_exists(normalize_path_seps(game_save_id + "custom_levels/" + tier_folder + "/data/level_information.ini"))
+							? game_save_id : normalize_path_seps(download_temp_path);
+						var tier_data_path = tier_root + "custom_levels/" + tier_folder + "/data/";
+						scr_big_collectible_entry_cache_refresh(big_collectible_online_entry_cache, tier_data_path + "level_information.ini",
+							tier_data_path + "object_placement_all.json", false, "", tier_folder, global.level_name);
+						tier_detail_visible = scr_big_collectible_entry_has_rows(big_collectible_online_entry_cache.model);
+					}
 					
 					#region /* Draw Level Thumbnail */
 					if (get_window_height <= 720)
@@ -645,13 +663,33 @@ function scr_draw_menu_search_id(what_kind_of_id = "level")
 					{
 						thumbnail_scale = 2;
 					}
+					thumbnail_scale = min(thumbnail_scale, max(64, get_window_width - 32) / 384);
+					var tier_thumbnail_left = (get_window_width - 384 * thumbnail_scale) * 0.5;
+					var tier_detail_left = 0;
+					if (tier_detail_visible)
+					{
+						/* Keep the thumbnail centered. The independent progress panel uses the right gutter. */
+						thumbnail_scale = min(thumbnail_scale, max(64, get_window_width - 2 * (min(220, get_window_width * 0.3) + 32)) / 384,
+							max(48, get_window_height - (global.enable_option_for_pc ? 9 : 8) * 42 - 80) / 216);
+						tier_thumbnail_left = (get_window_width - 384 * thumbnail_scale) * 0.5;
+						tier_detail_width = min(370, max(32, tier_thumbnail_left - 32));
+						var tier_fitted = scr_big_collectible_selector_layout(big_collectible_online_entry_cache.model,
+							0, 64, tier_detail_width, tier_detail_height, big_collectible_online_entry_cache.state.scroll);
+						tier_detail_left = get_window_width - 16 - tier_fitted.width;
+						if (menu_delay == 0 && menu_joystick_delay == 0)
+						{
+							var tier_choice = scr_big_collectible_selector_step(big_collectible_online_entry_cache.state, big_collectible_online_entry_cache.model,
+								tier_detail_left, 64, tier_detail_width, tier_detail_height, fixed_player);
+							if (tier_choice >= 0 && scr_big_collectible_preview_choose(big_collectible_online_entry_cache.model, tier_choice)) menu_delay = 3;
+						}
+					}
 					
 					if (sprite_exists(downloaded_thumbnail_sprite))
 					{
 						draw_sprite_ext(
 							downloaded_thumbnail_sprite,
 							0,
-							get_window_width * 0.5 - 350,
+							tier_thumbnail_left,
 							64,
 							(384 / sprite_get_width(downloaded_thumbnail_sprite)) * thumbnail_scale,
 							(216 / sprite_get_height(downloaded_thumbnail_sprite)) * thumbnail_scale,
@@ -662,8 +700,15 @@ function scr_draw_menu_search_id(what_kind_of_id = "level")
 					}
 					else
 					{
-						draw_sprite_ext(spr_thumbnail_missing, 0, get_window_width * 0.5 - 192, 64, 1, 1, 0, c_white, 1);
+						if (tier_detail_visible)
+						{
+							draw_sprite_ext(spr_thumbnail_missing, 0, tier_thumbnail_left, 64,
+								384 * thumbnail_scale / sprite_get_width(spr_thumbnail_missing), 216 * thumbnail_scale / sprite_get_height(spr_thumbnail_missing), 0, c_white, 1);
+						}
+						else draw_sprite_ext(spr_thumbnail_missing, 0, tier_thumbnail_left, 64,
+							384 * thumbnail_scale / sprite_get_width(spr_thumbnail_missing), 216 * thumbnail_scale / sprite_get_height(spr_thumbnail_missing), 0, c_white, 1);
 					}
+					if (tier_detail_visible) scr_big_collectible_entry_draw(big_collectible_online_entry_cache, tier_detail_left, 64, tier_detail_width, tier_detail_height, fixed_player);
 					#endregion /* Draw Level Thumbnail END */
 					
 				}
@@ -938,7 +983,7 @@ function scr_draw_menu_search_id(what_kind_of_id = "level")
 					{
 						menu_delay = 3;
 						
-						ini_open(normalize_path_seps(game_save_id + "save_file/config.ini"));
+						scr_save_ini_open(normalize_path_seps(game_save_id + "save_file/config.ini"));
 						ini_write_real("config", "inform_about_report_feature", false);
 						ini_close(); /* Don't commit the save data on Switch, this is only temporary! */
 						
@@ -1168,8 +1213,7 @@ function scr_draw_menu_search_id(what_kind_of_id = "level")
 				if (global.enable_option_for_pc)
 				&& (file_exists(normalize_path_seps(game_save_id + "custom_levels/" + scr_get_custom_level_folder_name() + "/data/level_information.ini")))
 				{
-					draw_menu_button(get_window_width * 0.5 - 185, searched_file_open_folder_y, l10n_text("Open Custom Level Folder"), "open_downloaded_level_folder", "open_downloaded_level_folder");
-					draw_sprite_ext(spr_icon_folder, 0, get_window_width * 0.5 - 185 + 16, searched_file_open_folder_y + 21, 1, 1, 0, c_white, 1);
+					draw_menu_button(get_window_width * 0.5 - 185, searched_file_open_folder_y, l10n_text("Open Custom Levels Folder"), "open_downloaded_level_folder", "open_downloaded_level_folder", c_lime, 1, 370, spr_icon_folder);
 					
 					if (point_in_rectangle(mouse_get_x, mouse_get_y, get_window_width * 0.5 - 185, searched_file_open_folder_y, get_window_width * 0.5 - 185 + 371, searched_file_open_folder_y + 41))
 					&& (global.controls_used_for_navigation == "mouse")
@@ -1206,9 +1250,7 @@ function scr_draw_menu_search_id(what_kind_of_id = "level")
 							directory_destroy(normalize_path_seps(game_save_id + "custom_levels/" + scr_get_custom_level_folder_name()));
 						}
 						
-						ini_open(normalize_path_seps(game_save_id + "save_file/custom_level_save.ini"));
-						ini_section_delete(scr_get_custom_level_folder_name());
-						ini_close(); /* Don't commit the save data on Switch, this is only temporary! */
+						/* Deleting authored files keeps canonical and unresolved player history. */
 						
 						global.select_level_index = 0;
 						global.level_name = "";

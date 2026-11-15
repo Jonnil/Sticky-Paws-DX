@@ -9,6 +9,10 @@ bounce_up = false; /* Some objects should bounce up when spawning */
 second_x = x;
 second_y = y;
 item_inside = 0;
+big_collectible_tier = 0;
+big_collectible_id = "";
+level_object_extra_data = {};
+level_object_extra_signature = "{}";
 
 if (!global.actually_play_edited_level)
 {

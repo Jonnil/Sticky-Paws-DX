@@ -1,5 +1,11 @@
 function scr_character_portrait_for_player_step(what_player = 1)
 {
+	/* The name dialog owns input for every player until it closes */
+	if (!no_players_are_inputting_names)
+	{
+		return;
+	}
+
 	var skin_y = 192;
 	var voicepack_y = 234;
 	var name_input_y = display_get_gui_height() * 0.5 + name_y;
@@ -91,7 +97,7 @@ function scr_character_portrait_for_player_step(what_player = 1)
 						#region /* Player character select portrait sprite */
 						global.skin_for_player[what_player]--;
 						global.actual_skin_for_player[what_player] = global.skin_for_player[what_player]; /* When changing skins, update "actual skin for player" to match "skin for player". Update "skin for player" first */
-						ini_open(game_save_id + "save_file/config.ini");
+						scr_save_ini_open(game_save_id + "save_file/config.ini");
 						ini_write_real("config", "skin_for_player" + string(what_player), global.actual_skin_for_player[what_player]);
 						ini_close(); /* Don't commit the save data on Switch, this is only temporary! */
 						menu_specific_joystick_delay[what_player] = 30;
@@ -122,7 +128,7 @@ function scr_character_portrait_for_player_step(what_player = 1)
 						#region /* Player character select portrait sprite */
 						global.skin_for_player[what_player]++;
 						global.actual_skin_for_player[what_player] = global.skin_for_player[what_player]; /* When changing skins, update "actual skin for player" to match "skin for player". Update "skin for player" first */
-						ini_open(game_save_id + "save_file/config.ini");
+						scr_save_ini_open(game_save_id + "save_file/config.ini");
 						ini_write_real("config", "skin_for_player" + string(what_player), global.actual_skin_for_player[what_player]);
 						ini_close(); /* Don't commit the save data on Switch, this is only temporary! */
 						menu_specific_joystick_delay[what_player] = 30;
@@ -194,7 +200,7 @@ function scr_character_portrait_for_player_step(what_player = 1)
 						scr_change_character_portrait();
 
 						/* Lastly, save the voicepack in config */
-						ini_open(game_save_id + "save_file/config.ini");
+						scr_save_ini_open(game_save_id + "save_file/config.ini");
 						ini_write_real("config", "voicepack_for_player" + string(what_player), global.voicepack_for_player[what_player]);
 						ini_close(); /* Don't commit the save data on Switch, this is only temporary! */
 					}
@@ -223,7 +229,7 @@ function scr_character_portrait_for_player_step(what_player = 1)
 							scr_change_character_portrait();
 
 							/* Lastly, save the voicepack in config */
-							ini_open(game_save_id + "save_file/config.ini");
+							scr_save_ini_open(game_save_id + "save_file/config.ini");
 							ini_write_real("config", "voicepack_for_player" + string(what_player), global.voicepack_for_player[what_player]);
 							ini_close(); /* Don't commit the save data on Switch, this is only temporary! */
 						}

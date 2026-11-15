@@ -173,7 +173,7 @@ function scr_draw_upload_account_name(what_kind_of_file = "level")
 		#region /* Pressing Change Username OK */
 		if (global.clicking_ok_input_screen && global.username != "")
 		{
-			ini_open(game_save_id + "save_file/config.ini");
+			scr_save_ini_open(game_save_id + "save_file/config.ini");
 			ini_write_string("config", "username", string(global.username)); /* Save username to config file */
 			ini_close(); /* Don't commit the save data on Switch, this is only temporary! */
 
@@ -251,7 +251,7 @@ function scr_draw_upload_account_name(what_kind_of_file = "level")
 		#region /* Pressing Change Username Cancel */
 		if (global.clicking_cancel_input_screen)
 		{
-			ini_open(game_save_id + "save_file/config.ini");
+			scr_save_ini_open(game_save_id + "save_file/config.ini");
 			ini_write_string("config", "username", ""); /* Save username as blank to config file, then go back */
 			ini_close(); /* Don't commit the save data on Switch, this is only temporary! */
 			global.username = "";

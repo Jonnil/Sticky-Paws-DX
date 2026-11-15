@@ -161,6 +161,7 @@ function scr_download_thumbnails(download_all, what_num_items = 0)
 				/* If no display name has been set for this download item, set it now. */
 				if (global.draw_download_name[info_queue_index] == "")
 				{
+					if (content_type == "level") scr_level_progress_note_catalogue(all_download_id[info_queue_index], string(item.name));
 					/* Check the item's name for profanity. */
 					if (switch_check_profanity(item.name))
 					{

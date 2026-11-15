@@ -552,6 +552,7 @@ function scr_draw_all_level_editor_icon()
 		/* There is no toggle buttons shortcut for gamepad */
 	}
 	else
+	if (!scr_big_collectible_editor_brush_selected())
 	{
 		draw_sprite_ext(spr_keyboard_keys, ord("T"), always_show_level_editor_buttons_x + 20, display_get_gui_height() - 32 + icon_at_bottom_y + 20, 0.4, 0.4, 0, c_white, 1);
 	}
@@ -579,12 +580,12 @@ function scr_draw_all_level_editor_icon()
 	if (global.controls_used_for_navigation == "mouse")
 	&& (mouse_check_button_pressed(mb_left))
 	&& (point_in_rectangle(cursor_x, cursor_y, always_show_level_editor_buttons_x - 32 + 1, display_get_gui_height() - 64, always_show_level_editor_buttons_x + 32, display_get_gui_height() + 64 - 1))
-	|| (keyboard_check_pressed(ord("T")))
+	|| (keyboard_check_pressed(ord("T")) && !scr_big_collectible_editor_brush_selected())
 	|| (level_editor_menu == "hide")
 	&& (key_accept_pressed)
 	{
 		global.always_show_level_editor_buttons = not global.always_show_level_editor_buttons;
-		ini_open(game_save_id + "save_file/config.ini");
+		scr_save_ini_open(game_save_id + "save_file/config.ini");
 		ini_write_real("config", "always_show_level_editor_buttons", global.always_show_level_editor_buttons);
 		ini_close(); /* Don't commit the save data on Switch, this is only temporary! */
 	}

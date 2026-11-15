@@ -226,9 +226,7 @@ function scr_draw_report()
 				&& (file_exists(game_save_id + "custom_levels/" + scr_get_custom_level_folder_name() + "/data/level_information.ini"))
 				{
 					directory_destroy(game_save_id + "custom_levels/" + scr_get_custom_level_folder_name());
-					ini_open(game_save_id + "save_file/custom_level_save.ini");
-					ini_section_delete(scr_get_custom_level_folder_name());
-					ini_close(); /* Don't commit the save data on Switch, this is only temporary! */
+					/* Deleting authored files keeps canonical and unresolved player history. */
 					global.select_level_index = 0;
 					global.level_name = "";
 					global.level_folder_name = "";

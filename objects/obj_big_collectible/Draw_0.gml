@@ -1,5 +1,5 @@
-draw_sprite_ext(global.resource_pack_sprite_big_collectible_outline, image_index, xstart, ystart, image_xscale, image_yscale, image_angle, image_blend, 1);
-draw_self();
+scr_draw_big_collectible_tier(global.resource_pack_sprite_big_collectible_outline, image_index, xstart, ystart, image_xscale, image_yscale, image_angle, big_collectible_tier, global.big_collectible[big_collectible], 1);
+scr_draw_big_collectible_tier(sprite_index, image_index, x, y, image_xscale, image_yscale, image_angle, big_collectible_tier, global.big_collectible[big_collectible], image_alpha);
 
 if (global.show_collision_mask)
 {

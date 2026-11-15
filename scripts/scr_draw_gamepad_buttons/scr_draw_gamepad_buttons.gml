@@ -35,3 +35,17 @@ function scr_draw_gamepad_buttons(what_button = gp_face1, xx, yy, overall_scale 
 		draw_sprite_ext(what_sprite_to_use, what_button_to_display, xx, yy, overall_scale * xscale, overall_scale * yscale, 0, color, alpha);
 	}
 }
+
+/* Follow the device used to navigate. Mouse users keep the keyboard shortcut. */
+function scr_draw_input_glyph(_key, _button, _px, _py, _scale = 0.5, _alpha = 1)
+{
+	if (global.controls_used_for_navigation == "gamepad")
+	{
+		var _player = variable_global_exists("navigation_gamepad_player") ? global.navigation_gamepad_player : 1;
+		scr_draw_gamepad_buttons(_button, _px, _py, _scale, c_white, _alpha, 1, 1, _player);
+	}
+	else
+	{
+		draw_sprite_ext(spr_keyboard_keys, _key, _px, _py, _scale, _scale, 0, c_white, _alpha);
+	}
+}

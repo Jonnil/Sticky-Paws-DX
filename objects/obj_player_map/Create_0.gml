@@ -6,7 +6,6 @@ global.max_big_collectible = 5; /* Main game only have 5 big collectibles in eac
 full_level_map_screenshot_timer = 0;
 can_show_arrows = 0;
 show_arrows_alpha = 0;
-at_least_one_big_collectible = false;
 
 game_set_speed(global.max_fps, gamespeed_fps);
 character_folder = "";
@@ -126,7 +125,7 @@ have_heart_balloon = false; /* If you have the heart balloon upgrade or not. You
 #region /* Load Game */
 if (file_exists(game_save_id + "save_file/file" + string(global.file) + ".ini"))
 {
-	ini_open(game_save_id + "save_file/file" + string(global.file) + ".ini");
+	scr_save_ini_open(game_save_id + "save_file/file" + string(global.file) + ".ini");
 
 	brand_new_file = ini_read_real("Player", "brand_new_file", true);
 	total_big_collectibles = clamp(ini_read_real("Player", "total_big_collectibles", 0), 0, global.max_total_big_collectibles);
@@ -168,7 +167,7 @@ if (file_exists(game_save_id + "save_file/file" + string(global.file) + ".ini"))
 }
 else
 {
-	ini_open(game_save_id + "save_file/file" + string(global.file) + ".ini");
+	scr_save_ini_open(game_save_id + "save_file/file" + string(global.file) + ".ini");
 	ini_write_real("Player", "brand_new_file", true);
 	ini_close(); /* Don't commit the save data on Switch, this is only temporary! */
 	brand_new_file = true;
@@ -184,7 +183,7 @@ scr_get_each_big_collectible_from_main_game();
 if (total_big_collectibles != total_big_collectibles_add)
 {
 	total_big_collectibles = clamp(total_big_collectibles_add, 0, global.max_total_big_collectibles);
-	ini_open(game_save_id + "save_file/file" + string(global.file) + ".ini");
+	scr_save_ini_open(game_save_id + "save_file/file" + string(global.file) + ".ini");
 	ini_write_real("Player", "total_big_collectibles", clamp(total_big_collectibles_add, 0, global.max_total_big_collectibles));
 	ini_close();
 	scr_set_stat_achievement("TOTAL_BIG_COLLECTIBLE", clamp(total_big_collectibles_add, 0, global.max_total_big_collectibles));
@@ -216,7 +215,7 @@ scr_config_load(); /* Load Config only once in create event, or it will mess up 
 scr_set_default_language(false);
 
 /* Make number of level cleared 1 because of the level intro */
-ini_open(game_save_id + "save_file/file" + string(global.file) + ".ini");
+scr_save_ini_open(game_save_id + "save_file/file" + string(global.file) + ".ini");
 if (ini_read_real("Player", "number_of_levels_cleared", 1) < 1)
 {
 	ini_write_real("Player", "number_of_levels_cleared", 1)
@@ -227,7 +226,7 @@ ini_close(); /* Don't commit the save data on Switch, this is only temporary! */
 if (global.reset_level_zoom_on_return)
 {
 	global.zoom_level = global.default_zoom_level;
-	ini_open("save_file/config.ini");
+	scr_save_ini_open("save_file/config.ini");
 	ini_write_real("config", "zoom_level", global.default_zoom_level);
 	ini_close(); /* Don't commit the save data on Switch, this is only temporary! */
 }
@@ -239,7 +238,7 @@ if (global.reset_world_zoom_on_return)
 	global.zoom_world = global.default_zoom_world;
 	zoom_lerp = global.default_zoom_world;
 	zoom_border_lerp = 0;
-	ini_open("save_file/config.ini");
+	scr_save_ini_open("save_file/config.ini");
 	ini_write_real("config", "zoom_world", global.default_zoom_world);
 	ini_close(); /* Don't commit the save data on Switch, this is only temporary! */
 }
@@ -266,6 +265,40 @@ scr_audio_play(global.music, volume_source.music); /* Play the map screen music 
 nearest_level = noone;
 distance_to_level = 0;
 best_time_text = "";
+big_collectible_entry_cache = scr_big_collectible_entry_cache_create();
+big_collectible_entry_visible = false;
+big_collectible_entry_pointer = false;
+big_collectible_entry_consumed = false;
+big_collectible_entry_left = 28;
+big_collectible_entry_top = 64;
+big_collectible_entry_width = 304;
+big_collectible_entry_height = 0;
+big_collectible_entry_scale = 0.3;
+big_collectible_info_ready = false;
+big_collectible_info_target = noone;
+big_collectible_info_source_key = "";
+big_collectible_info_context_key = "";
+big_collectible_info_lines = [];
+big_collectible_info_badge = noone;
+big_collectible_info_right = 340;
+big_collectible_info_bottom = 0;
+big_collectible_info_center = 180;
+big_collectible_info_stats_top = 82;
+big_collectible_info_line_height = 32;
+big_collectible_info_text_scale = global.default_text_size;
+/* Step and Draw share the same current-node and transition guards. */
+big_collectible_info_can_show = function(_target, _require_snapshot = false)
+{
+	if (!instance_exists(_target)) return false;
+	if (!stop_at_level || !can_move || can_enter_level < 30 || speed != 0
+	|| global.pause || global.demo_over_popup || iris_xscale <= 9 || move_delay <= 10
+	|| _target.level_number == 0 || point_distance(x, y, _target.x, _target.y) >= 4
+	|| (_target.clear_rate != "enter" && _target.clear_rate != "clear")) return false;
+	if (!_require_snapshot) return true;
+	return big_collectible_info_ready && _target == big_collectible_info_target
+		&& big_collectible_info_source_key == big_collectible_entry_cache.source_key
+		&& big_collectible_info_context_key == game_save_id + "|" + string(global.file) + "|" + string(global.difficulty) + "|" + string(_target.level);
+};
 
 /* Stop audio */
 audio_stop_sound(snd_skidding);
@@ -286,7 +319,7 @@ if (global.player_lives <= 0)
 	global.player_lives = 5 * global.playergame;
 	if (global.character_select_in_this_menu == "main_game")
 	{
-		ini_open(game_save_id + "save_file/file" + string(global.file) + ".ini");
+		scr_save_ini_open(game_save_id + "save_file/file" + string(global.file) + ".ini");
 		ini_write_real("Player", "lives", global.player_lives);
 		ini_close(); /* Don't commit the save data on Switch, this is only temporary! */
 	}

@@ -118,7 +118,7 @@ function scr_handle_language_pack_http(_async_map, var_handle_redirects = true)
 			
 			/* Process CSV manifest */
 			global.language_last_update_string = scr_format_timestamp(date_current_datetime());
-			ini_open(game_save_id + "save_file/config.ini");
+			scr_save_ini_open(game_save_id + "save_file/config.ini");
 			ini_write_real("language_updates", "language_last_update_real", date_current_datetime());
 			ini_write_string("language_updates", "language_last_update_string", global.language_last_update_string);
 			ini_close();
@@ -199,7 +199,7 @@ function scr_handle_language_pack_http(_async_map, var_handle_redirects = true)
 				global.language_file_requests = undefined;
 				
 				global.language_last_update_string = scr_format_timestamp(date_current_datetime());
-				ini_open(game_save_id + "save_file/config.ini");
+				scr_save_ini_open(game_save_id + "save_file/config.ini");
 				ini_write_real("language_updates", "language_last_update_real", date_current_datetime());
 				ini_write_string("language_updates", "language_last_update_string", global.language_last_update_string);
 				ini_close();

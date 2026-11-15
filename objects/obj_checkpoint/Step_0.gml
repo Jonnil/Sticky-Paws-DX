@@ -64,12 +64,14 @@ if (instance_exists(obj_player))
 						if (room == rm_leveleditor)
 						&& (global.character_select_in_this_menu == "main_game")
 						&& (global.actually_play_edited_level)
+						&& (!global.big_collectible_test_override && !global.doing_clear_check_level && !global.doing_clear_check_character)
 						{
-							var level_name = scr_get_active_official_level_id();
+							var level_name = scr_level_progress_section();
 
-							ini_open(game_save_id + "save_file/file" + string(global.file) + ".ini");
+							scr_save_ini_open(game_save_id + "save_file/file" + string(global.file) + ".ini");
 							ini_write_real(level_name, "checkpoint_x", x);
 							ini_write_real(level_name, "checkpoint_y", y);
+							ini_write_real(level_name, "checkpoint_big_collectible_tier", global.big_collectible_active_tier);
 							ini_write_real(level_name, "checkpoint_what_player", instance_nearest(x, y, obj_player).player);
 							if (instance_nearest(x, y, obj_player).hspeed < 0)
 							{
@@ -88,12 +90,14 @@ if (instance_exists(obj_player))
 						else
 						if (room == rm_leveleditor)
 						&& (global.actually_play_edited_level)
+						&& (!global.big_collectible_test_override && !global.doing_clear_check_level && !global.doing_clear_check_character)
 						{
-							var level_name = global.level_name;
+							var level_name = scr_level_progress_section();
 
-							ini_open(game_save_id + "save_file/custom_level_save.ini");
+							scr_save_ini_open(scr_level_progress_path());
 							ini_write_real(level_name, "checkpoint_x", x);
 							ini_write_real(level_name, "checkpoint_y", y);
+							ini_write_real(level_name, "checkpoint_big_collectible_tier", global.big_collectible_active_tier);
 							ini_write_real(level_name, "checkpoint_what_player", instance_nearest(x, y, obj_player).player);
 							if (instance_nearest(x, y, obj_player).hspeed < 0)
 							{

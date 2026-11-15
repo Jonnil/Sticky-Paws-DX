@@ -2,9 +2,26 @@ function scr_rename_custom_level_name()
 {
 
 	#region /* Save the newly entered name */
-	ini_open(game_save_id + "save_file/custom_level_save.ini");
-	ini_section_delete(string(ds_list_find_value(global.all_loaded_custom_levels, global.select_level_index)));
-	ini_close(); /* Don't commit the save data on Switch, this is only temporary! */
+	/* Preserve player history. Stable UID progress survives the authored folder rename. */
+	var previous_folder = string(ds_list_find_value(global.all_loaded_custom_levels, global.select_level_index));
+	var previous_info = game_save_id + "custom_levels/" + previous_folder + "/data/level_information.ini";
+	var previous_context = scr_level_progress_from_info(previous_info, previous_folder);
+	if (is_struct(previous_context))
+	{
+		if (previous_context.uid == "")
+		{
+			previous_context.uid = scr_big_collectible_new_id();
+			ini_open(previous_info);
+			ini_write_string("info", "big_collectible_level_id", previous_context.uid);
+			ini_close();
+		}
+		global.big_collectible_level_id = previous_context.uid;
+		previous_context = scr_level_progress_context(false, "", previous_context.online_id,
+			previous_context.uid, previous_folder, previous_context.legacy_name, previous_context.fresh_identity);
+		scr_level_progress_prepare(previous_context);
+		global.level_progress_context = previous_context;
+	}
+
 
 	/* For actual folder name, replace illegal characters with underscore only for naming folder */
 	var folder_name = scr_get_unique_folder_name(game_save_id + "custom_levels/", string(global.level_name));
@@ -132,6 +149,8 @@ function scr_rename_custom_level_name()
 
 	global.select_level_index = ds_list_find_index(global.all_loaded_custom_levels, folder_name); /* After renaming a level, make sure "select level index" is updated before updating the thumbnail */
 	global.level_folder_name = folder_name; /* Track the folder name separately so UI can keep the unsanitized display name */
+	if (is_struct(previous_context)) global.level_progress_context = scr_level_progress_context(false, "", previous_context.online_id,
+		previous_context.uid, folder_name, global.level_name, previous_context.fresh_identity);
 	#endregion /* Save the newly entered name END */
 
 	#region /* Properly reload all levels so the level with a new name can be initialized */

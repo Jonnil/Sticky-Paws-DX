@@ -121,7 +121,7 @@ function draw_language_checkmark(x_position, y_position, string_text, menu_index
 		global.selected_language_id = max(valid_language_index, 2);
 		global.current_language_menu_position = real(string_delete(menu_index, 1, 8));
 
-		ini_open(game_save_id + "save_file/config.ini");
+		scr_save_ini_open(game_save_id + "save_file/config.ini");
 		ini_write_real("language_updates", "selected_language_id", global.selected_language_id);
 		ini_write_real("language_updates", "current_language_menu_position", global.current_language_menu_position);
 		ini_close();

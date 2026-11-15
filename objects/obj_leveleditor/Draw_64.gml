@@ -79,6 +79,7 @@ if (!global.actually_play_edited_level)
 		scr_draw_level_editor_pause_menu(); /* Draw Level Editor Pause Menu */
 
 		scr_draw_all_level_editor_icon(); /* Draw All Level Editor Icons */
+		scr_big_collectible_editor_toolbar_draw();
 
 		#region /* Show Tooltip when hovering over icon, this code needs to be after the show icon code so it appears above the icon */
 		if (global.controls_used_for_navigation == "mouse")

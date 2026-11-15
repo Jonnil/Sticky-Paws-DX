@@ -1,6 +1,7 @@
 #region /* THIS IS LOADING JSON FILE */
 function scr_load_object_placement_json()
 {
+	global.big_collectible_tier_format_unsupported = false;
 	/* For actual folder name, replace illegal characters with underscore only for naming folder */
 	var folder_name = scr_get_custom_level_folder_name();
 	scr_debug_reset_level_load_snapshot();
@@ -77,6 +78,21 @@ function scr_load_object_placement_json()
 		var json_string = file_text_read_string(file);
 		file_text_close(file); /* Don't commit the save data on Switch, this is only temporary! */
 
+		var tier_information_path = string_replace(file_path, "object_placement_all.json", "level_information.ini");
+		global.big_collectible_tier_format_unsupported = false;
+		if (file_exists(tier_information_path))
+		{
+			ini_open(tier_information_path);
+			global.big_collectible_tier_format_unsupported = ini_read_real("info", "tier_format_version", 0) > 1;
+			ini_close();
+		}
+		if (global.big_collectible_tier_format_unsupported)
+		{
+			show_debug_message("[Collectible tiers] Unsupported tier format. Loading was stopped to protect this level.");
+			ds_list_destroy(placed_objects_list);
+			return;
+		}
+
 		var online_content_metadata = json_parse(json_string); /* Parse the JSON response containing metadata for each available online content */
 		var loaded_placed_object_count = 0;
 
@@ -100,13 +116,19 @@ function scr_load_object_placement_json()
 
 					if (new_obj)
 					{
-						new_obj.object = var_struct.O;
-						new_obj.easy = variable_struct_exists(var_struct, "E") ? var_struct.E : 1;
-						new_obj.normal = variable_struct_exists(var_struct, "N") ? var_struct.N : 1;
-						new_obj.hard = variable_struct_exists(var_struct, "H") ? var_struct.H : 1;
+						new_obj.object = real(var_struct.O);
+						new_obj.easy = variable_struct_exists(var_struct, "E") ? real(var_struct.E) : 1;
+						new_obj.normal = variable_struct_exists(var_struct, "N") ? real(var_struct.N) : 1;
+						new_obj.hard = variable_struct_exists(var_struct, "H") ? real(var_struct.H) : 1;
 						new_obj.second_x = variable_struct_exists(var_struct, "Q") ? var_struct.Q : 0;
 						new_obj.second_y = variable_struct_exists(var_struct, "W") ? var_struct.W : 0;
 						new_obj.item_inside = variable_struct_exists(var_struct, "I") ? var_struct.I : 0;
+						if (is_string(new_obj.item_inside) && new_obj.item_inside != "" && string_digits(new_obj.item_inside) == new_obj.item_inside) new_obj.item_inside = real(new_obj.item_inside);
+						new_obj.level_object_extra_data = var_struct;
+						new_obj.level_object_extra_signature = scr_big_collectible_editor_extra_signature(var_struct);
+						new_obj.big_collectible_tier = variable_struct_exists(var_struct, "T") ? clamp(floor(real(var_struct.T)), 0, 2) : 0;
+						new_obj.big_collectible_id = variable_struct_exists(var_struct, "C") ? string(var_struct.C) : "";
+						if (j > 0 && new_obj.big_collectible_id != "") new_obj.big_collectible_id = "repeat_" + new_obj.big_collectible_id + "_" + string(j);
 						loaded_placed_object_count++;
 					}
 				}
@@ -122,36 +144,34 @@ function scr_load_object_placement_json()
 
 				if (new_obj)
 				{
-					new_obj.object = var_struct.O;
-					new_obj.easy = variable_struct_exists(var_struct, "E") ? var_struct.E : 1;
-					new_obj.normal = variable_struct_exists(var_struct, "N") ? var_struct.N : 1;
-					new_obj.hard = variable_struct_exists(var_struct, "H") ? var_struct.H : 1;
+					new_obj.object = real(var_struct.O);
+					new_obj.easy = variable_struct_exists(var_struct, "E") ? real(var_struct.E) : 1;
+					new_obj.normal = variable_struct_exists(var_struct, "N") ? real(var_struct.N) : 1;
+					new_obj.hard = variable_struct_exists(var_struct, "H") ? real(var_struct.H) : 1;
 					new_obj.second_x = variable_struct_exists(var_struct, "Q") ? var_struct.Q : 0;
 					new_obj.second_y = variable_struct_exists(var_struct, "W") ? var_struct.W : 0;
 					new_obj.item_inside = variable_struct_exists(var_struct, "I") ? var_struct.I : 0;
+					if (is_string(new_obj.item_inside) && new_obj.item_inside != "" && string_digits(new_obj.item_inside) == new_obj.item_inside) new_obj.item_inside = real(new_obj.item_inside);
+					new_obj.level_object_extra_data = var_struct;
+					new_obj.level_object_extra_signature = scr_big_collectible_editor_extra_signature(var_struct);
+					new_obj.big_collectible_tier = variable_struct_exists(var_struct, "T") ? clamp(floor(real(var_struct.T)), 0, 2) : 0;
+					new_obj.big_collectible_id = variable_struct_exists(var_struct, "C") ? string(var_struct.C) : "";
 					loaded_placed_object_count++;
 				}
 			}
-
-			/* Reset the var struct variables after processing each object */
-			var_struct.E = 1;
-			var_struct.N = 1;
-			var_struct.H = 1;
-			var_struct.Q = 0;
-			var_struct.W = 0;
-			var_struct.I = 0;
-			var_struct.L = 0;
 		}
+
+		scr_big_collectible_tiers_begin();
 
 		scr_debug_capture_level_load_snapshot("json_loaded", file_path, true, array_length(online_content_metadata), loaded_placed_object_count);
 
 		/* Save unlockable objects if the file exists */
 		#region /* Save unlockable objects */
 		var save_path = game_save_id + "save_file/file" + string(global.file) + ".ini";
-		if (file_exists(save_path))
+		if (file_exists(save_path) && !global.big_collectible_test_override)
 		{
 			/* Open the INI file */
-			ini_open(save_path);
+			scr_save_ini_open(save_path);
 
 			/* Iterate over the ds_list and write each element to the INI file */
 			for (var i = 0; i < ds_list_size(placed_objects_list); i++)
@@ -194,6 +214,7 @@ function scr_load_object_placement_json()
 #region /* THIS IS SAVING .JSON FILE */
 function scr_save_custom_level_json()
 {
+	if (variable_global_exists("big_collectible_tier_format_unsupported") && global.big_collectible_tier_format_unsupported) return;
 	/* For actual folder name, replace illegal characters with underscore only for naming folder */
 	var folder_name = scr_get_custom_level_folder_name();
 	
@@ -244,12 +265,20 @@ function scr_save_custom_level_json()
 
 			if (repeat_length >= 0) /* Only save object if length variable is 0 or above */
 			{
-				var obj_data =
+				var obj_data = json_parse(json_stringify(level_object_extra_data));
+				var known_keys = ["E", "N", "H", "Q", "W", "I", "L", "T", "C"];
+				for (var key_index = 0; key_index < array_length(known_keys); key_index++)
 				{
-					X: string(x),
-					Y: string(y),
-					O: string(object),
-				};
+					if (variable_struct_exists(obj_data, known_keys[key_index])) variable_struct_remove(obj_data, known_keys[key_index]);
+				}
+				obj_data.X = string(x);
+				obj_data.Y = string(y);
+				obj_data.O = string(object);
+				if (scr_big_collectible_is_source(object, item_inside) && (big_collectible_tier > 0 || big_collectible_id != ""))
+				{
+					obj_data.T = string(big_collectible_tier);
+					obj_data.C = big_collectible_id;
+				}
 
 				if (!easy){obj_data.E = string(easy);} /* Only add the "E" variable if easy is not true */
 				if (!normal){obj_data.N = string(normal);} /* Only add the "N" variable if normal is not true */
@@ -326,6 +355,11 @@ function scr_save_custom_level_json()
 		#endregion /* Write all objects to file END */
 
 		var json_string = json_stringify(online_content_metadata);
+		var signature_start_x = instance_exists(obj_level_player1_start) ? obj_level_player1_start.x : 0;
+		var signature_start_y = instance_exists(obj_level_player1_start) ? obj_level_player1_start.y : 0;
+		global.big_collectible_authoring_signature = sha1_string_utf8(json_string + "|"
+			+ string(signature_start_x) + "," + string(signature_start_y) + "|"
+			+ string(obj_level_end.x) + "," + string(obj_level_end.y));
 		show_debug_message("SAVE OBJECT PLACEMENT");
 		file_text_write_string(file, json_string); /* Write string with wall information to file and start a new line */
 		file_text_close(file); /* Don't commit the save data on Switch, this is only temporary! The commit happens in "scr save level information" */
@@ -341,6 +375,7 @@ function scr_save_custom_level_json()
 #region /* THIS IS SAVING ADDITIONAL LEVEL INFORMATION IN A .INI FILE */
 function scr_save_level_information()
 {
+	if (variable_global_exists("big_collectible_tier_format_unsupported") && global.big_collectible_tier_format_unsupported) return;
 	/* For actual folder name, replace illegal characters with underscore only for naming folder */
 	var folder_name = scr_get_custom_level_folder_name();
 	
@@ -350,6 +385,30 @@ function scr_save_level_information()
 	{
 		show_debug_message("SAVE LEVEL INFORMATION");
 		ini_open(game_save_id + "custom_levels/" + string(folder_name) + "/data/level_information.ini");
+
+		/* Every authored local level can keep its player identity across a rename. */
+		var authored_uid = ini_read_string("info", "big_collectible_level_id", "");
+		if (authored_uid == "") authored_uid = global.big_collectible_level_id != "" ? global.big_collectible_level_id : scr_big_collectible_new_id();
+		global.big_collectible_level_id = authored_uid;
+		ini_write_string("info", "big_collectible_level_id", authored_uid);
+
+		if (global.big_collectible_tiers_enabled)
+		{
+			ini_write_real("info", "tier_format_version", 1);
+			ini_write_real("info", "big_collectible_tiers", true);
+			ini_write_string("info", "tier_minimum_client", "Big Collectible Tiers format 1");
+			ini_write_string("info", "big_collectible_level_id", global.big_collectible_level_id);
+			if (variable_global_exists("big_collectible_authoring_signature"))
+			{
+				var previous_signature = ini_read_string("info", "tier_authoring_signature", "");
+				if (previous_signature != global.big_collectible_authoring_signature)
+				{
+					ini_write_real("info", "clear_check", false);
+					if_clear_checked = false;
+				}
+				ini_write_string("info", "tier_authoring_signature", global.big_collectible_authoring_signature);
+			}
+		}
 
 		ini_write_real("info", "part_limit_entity", global.part_limit_entity); /* Save how many entity objects have been placed in the level, so you can't lag the game with too many objects with lots of code */
 
@@ -447,12 +506,15 @@ function scr_save_level_information()
 		ini_write_real("info", "autoscroll_speed_y", autoscroll_speed_y);
 
 		#region /* Reset Fastest Time and Score */
-		ini_key_delete("rank", "rank_timeattack_millisecond");
-		ini_key_delete("rank", "rank_timeattack_second");
-		ini_key_delete("rank", "rank_timeattack_minute");
-		ini_key_delete("rank", "rank_timeattack_realmillisecond");
-		ini_key_delete("rank", "rank_level_score");
-		ini_key_delete("rank", "rank_current_attempt_minute");
+		if (!global.big_collectible_test_override)
+		{
+			ini_key_delete("rank", "rank_timeattack_millisecond");
+			ini_key_delete("rank", "rank_timeattack_second");
+			ini_key_delete("rank", "rank_timeattack_minute");
+			ini_key_delete("rank", "rank_timeattack_realmillisecond");
+			ini_key_delete("rank", "rank_level_score");
+			ini_key_delete("rank", "rank_current_attempt_minute");
+		}
 		#endregion /* Reset Fastest Time and Score END */
 
 		#region /* Save Custom Background Settings */
@@ -570,33 +632,28 @@ function scr_save_level_information()
 
 		ini_close();
 
-		/* Update custom level save data */
-		ini_open(game_save_id + "save_file/custom_level_save.ini");
-		ini_key_delete(string(global.level_name), "checkpoint_x");
-		ini_key_delete(string(global.level_name), "checkpoint_y");
-		ini_key_delete(string(global.level_name), "checkpoint_millisecond");
-		ini_key_delete(string(global.level_name), "checkpoint_second");
-		ini_key_delete(string(global.level_name), "checkpoint_minute");
-		ini_key_delete(string(global.level_name), "checkpoint_realmillisecond");
-		ini_key_delete(string(global.level_name), "checkpoint_direction");
-		ini_close();
-
-		#region /* Unlocked objects should be set as not recently unlocked anymore */
-		ini_open(game_save_id + "save_file/file" + string(global.file) + ".ini"); /* Open the INI file */
-
-		/* Iterate over the ds_list and write each element to the INI file */
-		for(var i = 0; i < ds_list_size(placed_objects_list); i++)
+		if (!global.big_collectible_test_override)
 		{
-			var value = ds_list_find_value(placed_objects_list, i);
-			ini_write_real("Unlock Placable Objects", value, 2);
-			ini_write_real("Player", "placable_object_unlock_notify", false);
-		}
+			/* Update custom level save data */
+			/* Authored saves keep normal checkpoint history; a later normal start validates its identity/tier. */
 
-		/* Close the INI file */
-		ini_close();
-		ds_list_destroy(placed_objects_list);
-		placed_objects_list = ds_list_create(); /* Only create a DS list if the file exists */
-		#endregion /* Unlocked objects should be set as not recently unlocked anymore END */
+			#region /* Unlocked objects should be set as not recently unlocked anymore */
+			scr_save_ini_open(game_save_id + "save_file/file" + string(global.file) + ".ini"); /* Open the INI file */
+
+			/* Iterate over the ds_list and write each element to the INI file */
+			for(var i = 0; i < ds_list_size(placed_objects_list); i++)
+			{
+				var value = ds_list_find_value(placed_objects_list, i);
+				ini_write_real("Unlock Placable Objects", value, 2);
+				ini_write_real("Player", "placable_object_unlock_notify", false);
+			}
+
+			/* Close the INI file */
+			ini_close();
+			ds_list_destroy(placed_objects_list);
+			placed_objects_list = ds_list_create(); /* Only create a DS list if the file exists */
+			#endregion /* Unlocked objects should be set as not recently unlocked anymore END */
+		}
 
 		switch_save_data_commit(); /* Remember to commit the save data! */
 	}

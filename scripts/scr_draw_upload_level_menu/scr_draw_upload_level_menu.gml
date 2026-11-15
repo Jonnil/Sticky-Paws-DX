@@ -17,6 +17,30 @@ function scr_draw_upload_level_menu()
 	var mouse_get_x = device_mouse_x_to_gui(0);
 	var mouse_get_y = device_mouse_y_to_gui(0);
 	var upload_level_path = game_save_id + "custom_levels/" + scr_get_custom_level_folder_name(); /* Path will be used many times, and I don't want it to come up too many times in search, it will only check in working directory */
+	if (menu == "level_editor_upload_pressed" || menu == "upload_edit_name" || menu == "uploading_level")
+	{
+		var tier_upload_blocked = false;
+		if (file_exists(upload_level_path + "/data/level_information.ini"))
+		{
+			ini_open(upload_level_path + "/data/level_information.ini");
+			tier_upload_blocked = ini_read_real("info", "tier_format_version", 0) > 0;
+			ini_close();
+		}
+		if (tier_upload_blocked)
+		{
+			draw_set_halign(fa_center);
+			draw_set_valign(fa_middle);
+			scr_draw_text_outlined(get_window_width * 0.5, get_window_height * 0.5 - 64, "Tiered levels can be saved and tested locally.", global.default_text_size, c_black, c_white, 1);
+			scr_draw_text_outlined(get_window_width * 0.5, get_window_height * 0.5 - 22, "Publishing needs tier clear checks and compatible online clients.", global.default_text_size * 0.8, c_black, c_white, 1);
+			if (draw_menu_button(get_window_width * 0.5 - 185, get_window_height * 0.5 + 42, l10n_text("Back"), menu)
+			|| (key_back_pressed && menu_delay == 0 && menu_joystick_delay == 0))
+			{
+				menu = "level_editor_upload";
+				menu_delay = 3;
+			}
+			return;
+		}
+	}
 
 	if (menu == "level_editor_upload_pressed")
 	|| (menu == "clear_check_no")

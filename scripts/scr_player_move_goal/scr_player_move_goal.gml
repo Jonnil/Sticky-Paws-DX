@@ -38,7 +38,8 @@ function scr_player_move_goal()
 				/* Get clear level achievement */
 				if (global.character_select_in_this_menu == "main_game"
 				&& global.actually_play_edited_level
-				&& !global.doing_clear_check_character)
+				&& !global.doing_clear_check_character
+				&& !global.big_collectible_test_override && !global.doing_clear_check_level && !global.doing_clear_check_character)
 				{
 					scr_set_achievement("CLEAR_LEVEL_" + string_upper(global.level_name));
 				}
@@ -75,7 +76,8 @@ function scr_player_move_goal()
 
 				#region /* Save Checkpoint */
 				if (global.character_select_in_this_menu == "main_game"
-				&& room == rm_leveleditor)
+				&& room == rm_leveleditor
+				&& !global.big_collectible_test_override && !global.doing_clear_check_level && !global.doing_clear_check_character)
 				{
 					global.checkpoint_x = 0;
 					global.checkpoint_y = 0;
@@ -84,9 +86,9 @@ function scr_player_move_goal()
 					global.checkpoint_minute = 0;
 					global.checkpoint_realmillisecond = 0;
 
-					var level_name = global.level_name;
+					var level_name = scr_level_progress_section();
 
-					ini_open(game_save_id + "save_file/file" + string(global.file) + ".ini");
+					scr_save_ini_open(game_save_id + "save_file/file" + string(global.file) + ".ini");
 					ini_write_real(level_name, "checkpoint_millisecond", 0);
 					ini_write_real(level_name, "checkpoint_second", 0);
 					ini_write_real(level_name, "checkpoint_minute", 0);
@@ -98,7 +100,8 @@ function scr_player_move_goal()
 				}
 				else
 				if (global.character_select_in_this_menu == "level_editor"
-				&& room == rm_leveleditor)
+				&& room == rm_leveleditor
+				&& !global.big_collectible_test_override && !global.doing_clear_check_level && !global.doing_clear_check_character)
 				{
 					global.checkpoint_x = 0;
 					global.checkpoint_y = 0;
@@ -107,9 +110,9 @@ function scr_player_move_goal()
 					global.checkpoint_minute = 0;
 					global.checkpoint_realmillisecond = 0;
 
-					var level_name = global.level_name;
+					var level_name = scr_level_progress_section();
 
-					ini_open(game_save_id + "save_file/custom_level_save.ini");
+					scr_save_ini_open(scr_level_progress_path());
 					ini_write_real(level_name, "checkpoint_millisecond", 0);
 					ini_write_real(level_name, "checkpoint_second", 0);
 					ini_write_real(level_name, "checkpoint_minute", 0);
@@ -130,7 +133,7 @@ function scr_player_move_goal()
 				}
 				#endregion /* Level Clear Melody END */
 				
-				if (global.doing_clear_check_level)
+				if (global.doing_clear_check_level && !global.big_collectible_test_override && !global.doing_clear_check_level && !global.doing_clear_check_character)
 				{
 					ini_open(global.use_temp_or_working + "custom_levels/" + scr_get_custom_level_folder_name() + "/data/level_information.ini");
 					ini_write_real("info", "clear_check", true); /* If doing a level clear check, and winning the level, then add in level information that you have done a clear check */

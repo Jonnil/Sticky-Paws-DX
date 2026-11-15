@@ -110,8 +110,7 @@ function scr_option_storage()
 
 			if (global.enable_open_custom_folder)
 			{
-				draw_menu_button(file_select_x, open_save_file_folder_y, l10n_text("Open Save File Folder"), "open_save_file_folder", "open_save_file_folder");
-				draw_sprite_ext(spr_icon_folder, 0, file_select_x + 16, open_save_file_folder_y + 21, 1, 1, 0, c_white, 1);
+				draw_menu_button(file_select_x, open_save_file_folder_y, l10n_text("Open Save File Folder"), "open_save_file_folder", "open_save_file_folder", c_lime, 1, 370, spr_icon_folder);
 			}
 
 			if (point_in_rectangle(mouse_get_x, mouse_get_y, file_select_x, open_save_file_folder_y + 2, file_select_x + 371, open_save_file_folder_y + 41))

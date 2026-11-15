@@ -1,4 +1,4 @@
-function draw_menu_button(x_position, y_position, string_text, menu_index, menu_takes_you_to = "", highlight_color = c_lime, alpha = 1, button_width = 370)
+function draw_menu_button(x_position, y_position, string_text, menu_index, menu_takes_you_to = "", highlight_color = c_lime, alpha = 1, button_width = 370, icon_sprite = noone)
 {
 	var mouse_get_x = device_mouse_x_to_gui(0);
 	var mouse_get_y = device_mouse_y_to_gui(0);
@@ -48,7 +48,11 @@ function draw_menu_button(x_position, y_position, string_text, menu_index, menu_
 		fill_color = c_black;
 	}
 
-	var button_text_width = max(1, button_width - 24);
+	var has_icon = sprite_exists(icon_sprite);
+	var icon_slot_size = 32;
+	var button_text_left = x_position + 12 + (has_icon ? icon_slot_size + 8 : 0);
+	var button_text_right = x_position + button_width - 12;
+	var button_text_width = max(1, button_text_right - button_text_left);
 	var unscaled_text_width = max(1, string_width(string(string_text)) * global.default_text_size);
 	var text_scale = min(1, button_text_width / unscaled_text_width);
 	var button_xscale = button_width / sprite_get_width(spr_menu_button);
@@ -59,10 +63,19 @@ function draw_menu_button(x_position, y_position, string_text, menu_index, menu_
 	{
 		draw_sprite_ext(spr_menu_button, global.menu_button_subimg, x_position, y_position + 21, button_xscale, 1, 0, highlight_color, 0.1 * alpha);
 	}
+	if (has_icon)
+	{
+		var icon_width = sprite_get_width(icon_sprite);
+		var icon_height = sprite_get_height(icon_sprite);
+		var icon_scale = min(1, icon_slot_size / max(1, icon_width), icon_slot_size / max(1, icon_height));
+		var icon_x = x_position + 12 + icon_slot_size * 0.5 + (sprite_get_xoffset(icon_sprite) - icon_width * 0.5) * icon_scale;
+		var icon_y = y_position + 21 + (sprite_get_yoffset(icon_sprite) - icon_height * 0.5) * icon_scale;
+		draw_sprite_ext(icon_sprite, 0, icon_x, icon_y, icon_scale, icon_scale, 0, c_white, alpha);
+	}
 
 	draw_set_halign(fa_center);
 	draw_set_valign(fa_middle);
-	scr_draw_text_outlined(x_position + (button_width * 0.5), y_position + 21, string(string_text), global.default_text_size * text_scale, outline_color, fill_color, alpha);
+	scr_draw_text_outlined((button_text_left + button_text_right) * 0.5, y_position + 21, string(string_text), global.default_text_size * text_scale, outline_color, fill_color, alpha);
 
 	var mouse_activated = point_in_button
 		&& global.controls_used_for_navigation == "mouse"

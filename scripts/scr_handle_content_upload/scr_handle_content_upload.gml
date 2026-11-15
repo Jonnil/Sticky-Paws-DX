@@ -77,7 +77,7 @@ function scr_finish_content_upload(confirmed, http_status, failure_kind)
 		}
 		if (upload.upload_type == "level")
 		{
-			ini_open(upload.progress_path);
+			scr_save_ini_open(upload.progress_path);
 			if (ini_read_real("finished_downloaded_level", upload.upload_id, 0) < 2)
 			{
 				ini_write_real("finished_downloaded_level", upload.upload_id, 2);

@@ -75,6 +75,7 @@ function scr_character_select_menu_step()
 
 		#region /* When you are ready to start game, and you're using mouse, and you aren't hovering mouse over the other buttons, then take you to "select character" menu */
 		if (player_start_game)
+		&& (no_players_are_inputting_names)
 		&& (global.controls_used_for_navigation == "mouse")
 		&& (!point_in_rectangle(mouse_get_x, mouse_get_y, 0, 0, 370, 42 * 3))
 		&& (menu_delay == 0)
@@ -150,7 +151,7 @@ function scr_character_select_menu_step()
 				if (no_players_are_inputting_names)
 				&& (menu_delay == 0 && menu_joystick_delay == 0)
 				{
-					ini_open("save_file/config.ini"); /* Must save character_for_player in config.ini manually here, because scr_config_save doesn't run every frame in step event, only when you exit the options menu, to prevent config.ini to get deleted and replaced every frame */
+					scr_save_ini_open("save_file/config.ini"); /* Must save character_for_player in config.ini manually here, because scr_config_save doesn't run every frame in step event, only when you exit the options menu, to prevent config.ini to get deleted and replaced every frame */
 					for(var i = 1; i <= global.max_players; i += 1)
 					{
 						if (player_accept_selection[i] != 1)

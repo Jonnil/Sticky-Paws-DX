@@ -3,6 +3,7 @@
 /* So "steam update" is necessary to run both before all the steam achievement code and after all the steam achievement code to function properly */
 
 function scr_set_achievement(ach_name) {
+	if (variable_global_exists("big_collectible_test_override") && global.big_collectible_test_override) return;
 	steam_update(); /* "steam update" is necessary to run before "steam stats ready" can be enabled */
 	if (!steam_get_achievement(ach_name)) {
 		steam_set_achievement(ach_name);
@@ -15,6 +16,7 @@ function scr_set_achievement(ach_name) {
 }
 
 function scr_set_stat_achievement(stat_name, set_stat_to) {
+	if (variable_global_exists("big_collectible_test_override") && global.big_collectible_test_override) return;
 	steam_update(); /* "steam update" is necessary to run before "steam stats ready" can be enabled */
 	if (steam_get_stat_int(stat_name) < set_stat_to) {
 		steam_set_stat_int(stat_name, set_stat_to);

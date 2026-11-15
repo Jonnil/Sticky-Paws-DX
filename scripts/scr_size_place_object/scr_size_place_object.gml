@@ -6,7 +6,7 @@ function scr_size_place_object(xx, yy, place_size_number, can_place_object_angle
 		 || (!can_make_place_size_bigger && place_size_number == 1)
 	   )
 	{
-		if (!place_meeting(x + xx, y + yy, obj_leveleditor_placed_object) && (global.part_limit < 4000))
+		if (scr_big_collectible_editor_can_place(x + xx, y + yy, obj_leveleditor.place_object) && (global.part_limit < 4000))
 		{
 			// Check if the object to be placed is one that should count toward the entity limit
 			if (
@@ -40,6 +40,7 @@ function scr_size_place_object(xx, yy, place_size_number, can_place_object_angle
 			var inst = instance_create_depth(x + xx, y + yy, 0, obj_leveleditor_placed_object);
 			inst.place_object_angle = can_place_object_angle;
 			inst.object = obj_leveleditor.place_object;
+			scr_big_collectible_editor_initialize_placement(inst);
 			inst.placed_for_the_first_time = true;
 
 			scr_when_placing_on_difficulty_layer(inst);

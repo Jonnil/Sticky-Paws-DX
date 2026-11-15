@@ -109,6 +109,7 @@ function scr_draw_online_download_menu_data()
 				var actual = start_idx + slot;
 				scr_draw_online_download_list_thumbnail(actual, page_count);
 			}
+			if (content_type == "level") scr_draw_online_collectible_progress(start_idx, end_idx);
 
 			var x_prev = 0;
 			var y_prev = 240;
@@ -237,4 +238,81 @@ function scr_draw_online_download_menu_data()
 	}
 	#endregion /* Draw Load Custom Level Assets Option END */
 
+}
+
+/* Raw catalogue rows show saved facts only. Inspecting one never downloads a level. */
+function scr_draw_online_collectible_progress(start_index, end_index)
+{
+	var selected_index = -1;
+	for (var index = start_index; index <= end_index; index++)
+	{
+		if (menu == "download_online_" + string(index)) { selected_index = index; break; }
+	}
+	if (selected_index < 0 || !in_online_download_list_menu) return;
+	var data = global.online_content_data_level;
+	if (!is_array(data) || selected_index >= array_length(data)) return;
+	var level_id = string_upper(string_replace(string_replace(data[selected_index].name, "levels/", ""), ".zip", ""));
+	var cache_key = level_id + "|" + game_save_id + "|" + string(global.difficulty);
+	if (!variable_instance_exists(self, "big_collectible_online_list_cache"))
+	{
+		big_collectible_online_list_cache = {key:"", refreshed_at:0, model:undefined,
+			state:scr_big_collectible_selector_create()};
+	}
+	var cache = big_collectible_online_list_cache;
+	if (cache.key != cache_key || current_time - cache.refreshed_at >= 1000)
+	{
+		cache.model = scr_big_collectible_online_progress_load(level_id);
+		cache.key = cache_key;
+		cache.refreshed_at = current_time;
+	}
+	var bounds = scr_big_collectible_online_list_bounds(cache, selected_index, start_index);
+	if (!bounds.visible) return;
+	if (cache.model.ready && cache.model.counts[0] + cache.model.counts[1] + cache.model.counts[2] > 0)
+	{
+		scr_big_collectible_selector_step(cache.state, cache.model, bounds.left, bounds.top, bounds.width, bounds.height, 1, false);
+		scr_big_collectible_entry_draw(cache, bounds.left, bounds.top, bounds.width, bounds.height, 1);
+	}
+
+}
+
+/* Drawing and parent input ownership share fresh fitted bounds after a resize. */
+function scr_big_collectible_online_list_bounds(cache, selected_index, start_index, offset = menu_y_offset)
+{
+	var gui_width = display_get_gui_width();
+	var gui_height = display_get_gui_height();
+	var thumbnail_top = 80 + 300 * (selected_index - start_index) + offset;
+	var bounds = {visible:thumbnail_top <= gui_height && thumbnail_top + 300 >= 0,
+		left:gui_width - 16, top:clamp(thumbnail_top + 100, 96, max(96, gui_height - 144)),
+		width:max(32, min(560, gui_width * 0.5 - 240)), height:0, layout:undefined};
+	bounds.height = max(32, gui_height - bounds.top - 24);
+	if (is_struct(cache.model) && cache.model.ready)
+	{
+		bounds.layout = scr_big_collectible_selector_layout(cache.model, 0, bounds.top, bounds.width, bounds.height, cache.state.scroll);
+		bounds.left = gui_width - 16 - bounds.layout.width;
+	}
+	return bounds;
+}
+
+function scr_big_collectible_online_list_owns_mouse_wheel()
+{
+	if (content_type != "level" || !in_online_download_list_menu
+	|| !variable_instance_exists(self, "big_collectible_online_list_cache")) return false;
+	var cache = big_collectible_online_list_cache;
+	if (!is_struct(cache.model) || !cache.model.ready) return false;
+	var data = global.online_content_data_level;
+	if (!is_array(data)) return false;
+	var start_index = global.download_current_page * global.download_items_per_page;
+	var end_index = min(start_index + global.download_items_per_page - 1, array_length(data) - 1);
+	for (var index = start_index; index <= end_index; index++)
+	{
+		if (menu != "download_online_" + string(index)) continue;
+		var level_id = string_upper(string_replace(string_replace(data[index].name, "levels/", ""), ".zip", ""));
+		if (cache.key != level_id + "|" + game_save_id + "|" + string(global.difficulty)) return false;
+		/* scr_scroll_menu keeps its existing lerp before processing wheel input. */
+		var bounds = scr_big_collectible_online_list_bounds(cache, index, start_index, lerp(menu_y_offset, menu_y_offset_real, 0.25));
+		if (!bounds.visible || bounds.layout.max_scroll <= 0) return false;
+		return point_in_rectangle(device_mouse_x_to_gui(0), device_mouse_y_to_gui(0),
+			bounds.left, bounds.top, bounds.left + bounds.layout.width, bounds.layout.footer_bottom);
+	}
+	return false;
 }

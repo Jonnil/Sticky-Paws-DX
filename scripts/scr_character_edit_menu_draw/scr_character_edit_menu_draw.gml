@@ -25,7 +25,7 @@ function scr_character_edit_menu_draw()
 			can_input_sprite_name = false;
 			global.show_collision_mask = true;
 
-			ini_open("save_file/config.ini"); /* Must save character_for_player in config.ini manually here, because scr_config_save doesn't run every frame in step event, only when you exit the options menu, to prevent config.ini to get deleted and replaced every frame */
+			scr_save_ini_open("save_file/config.ini"); /* Must save character_for_player in config.ini manually here, because scr_config_save doesn't run every frame in step event, only when you exit the options menu, to prevent config.ini to get deleted and replaced every frame */
 			ini_write_real("config", "character_index_player1", global.character_index[0]);
 			ini_close();
 
@@ -107,8 +107,7 @@ function scr_character_edit_menu_draw()
 			#region /* Open Character Folder */
 			if (global.enable_open_custom_folder)
 			{
-				draw_menu_button(0, open_character_folder_y, l10n_text("Open Character Folder"), "open_folder_edit_character", "open_folder_edit_character");
-				draw_sprite_ext(spr_icon_folder, 0, 16, open_character_folder_y + 21, 1, 1, 0, c_white, 1);
+				draw_menu_button(0, open_character_folder_y, l10n_text("Open Character Folder"), "open_folder_edit_character", "open_folder_edit_character", c_lime, 1, 370, spr_icon_folder);
 			}
 			#endregion /* Open Character Folder END */
 
@@ -413,8 +412,7 @@ function scr_character_edit_menu_draw()
 				var sprite_not_exist_folder_x = display_get_gui_width() * 0.5 - 185;
 				var sprite_not_exist_folder_y = display_get_gui_height() * 0.5 - 64;
 				scr_draw_text_outlined(display_get_gui_width() * 0.5, sprite_not_exist_folder_y - 32, l10n_text("Open the Character Sprite folder to see what sprites exists"), global.default_text_size, c_black, c_white, 1);
-				draw_menu_button(sprite_not_exist_folder_x, sprite_not_exist_folder_y, l10n_text("Open Character Folder"), "sprite_not_exist_folder", "sprite_not_exist_folder");
-				draw_sprite_ext(spr_icon_folder, 0, sprite_not_exist_folder_x + 16, sprite_not_exist_folder_y + 21, 1, 1, 0, c_white, 1);
+				draw_menu_button(sprite_not_exist_folder_x, sprite_not_exist_folder_y, l10n_text("Open Character Folder"), "sprite_not_exist_folder", "sprite_not_exist_folder", c_lime, 1, 370, spr_icon_folder);
 
 				if (point_in_rectangle(device_mouse_x_to_gui(0), device_mouse_y_to_gui(0), sprite_not_exist_folder_x, sprite_not_exist_folder_y + 2, sprite_not_exist_folder_x + 371, sprite_not_exist_folder_y + 42))
 				&& (mouse_check_button_released(mb_left))

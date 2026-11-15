@@ -14,24 +14,28 @@ if (global.player_lives <= 0)
 	global.checkpoint_second = 0;
 	global.checkpoint_minute = 0;
 	global.checkpoint_realmillisecond = 0;
-	var level_name = global.level_name;
-	if (global.character_select_in_this_menu == "main_game")
+	if (!game_over_checkpoint_cleared && !global.big_collectible_test_override && !global.doing_clear_check_level && !global.doing_clear_check_character)
 	{
-		ini_open(game_save_id + "save_file/file" + string(global.file) + ".ini");
+		var level_name = scr_level_progress_section();
+		if (global.character_select_in_this_menu == "main_game")
+		{
+			scr_save_ini_open(game_save_id + "save_file/file" + string(global.file) + ".ini");
+		}
+		else
+		{
+			scr_save_ini_open(scr_level_progress_path());
+		}
+		ini_key_delete(level_name, "checkpoint_x");
+		ini_key_delete(level_name, "checkpoint_y");
+		ini_key_delete(level_name, "checkpoint_what_player");
+		ini_key_delete(level_name, "checkpoint_direction");
+		ini_key_delete(level_name, "checkpoint_millisecond");
+		ini_key_delete(level_name, "checkpoint_second");
+		ini_key_delete(level_name, "checkpoint_minute");
+		ini_key_delete(level_name, "checkpoint_realmillisecond");
+		ini_close(); /* Don't commit the save data on Switch, this is only temporary! */
+		game_over_checkpoint_cleared = true;
 	}
-	else
-	{
-		ini_open(game_save_id + "save_file/custom_level_save.ini");
-	}
-	ini_key_delete(level_name, "checkpoint_x");
-	ini_key_delete(level_name, "checkpoint_y");
-	ini_key_delete(level_name, "checkpoint_what_player");
-	ini_key_delete(level_name, "checkpoint_direction");
-	ini_key_delete(level_name, "checkpoint_millisecond");
-	ini_key_delete(level_name, "checkpoint_second");
-	ini_key_delete(level_name, "checkpoint_minute");
-	ini_key_delete(level_name, "checkpoint_realmillisecond");
-	ini_close(); /* Don't commit the save data on Switch, this is only temporary! */
 	#endregion /* When you get a game over, reset checkpoints END */
 
 	draw_set_halign(fa_center);
@@ -138,9 +142,9 @@ if (global.player_lives <= 0)
 
 			#region /* Click Menu */
 			global.player_lives = 5 * global.playergame; /* Add 5 lives times the amount of players playing. So 2 players = 10, 3 players = 15, 4 players = 20, and so on */
-			if (global.character_select_in_this_menu == "main_game")
+			if (global.character_select_in_this_menu == "main_game" && !global.big_collectible_test_override && !global.doing_clear_check_level && !global.doing_clear_check_character)
 			{
-				ini_open(game_save_id + "save_file/file" + string(global.file) + ".ini");
+				scr_save_ini_open(game_save_id + "save_file/file" + string(global.file) + ".ini");
 				ini_write_real("Player", "lives", global.player_lives);
 				ini_close(); /* Don't commit the save data on Switch, this is only temporary! */
 			}

@@ -83,12 +83,13 @@ can_click_on_pause_key = false;
 global.deactivate_timer = 999;
 global.appear_block_timer = 0;
 
-if (global.character_select_in_this_menu == "main_game")
-&& (file_exists(game_save_id + "save_file/file" + string(global.file) + ".ini"))
+if (global.actually_play_edited_level && !global.big_collectible_test_override
+&& !global.doing_clear_check_level && !global.doing_clear_check_character
+&& file_exists(scr_level_progress_path()))
 {
-	var level_name = scr_get_active_official_level_id();
+	var level_name = scr_level_progress_section();
 
-	ini_open(game_save_id + "save_file/file" + string(global.file) + ".ini");
+	ini_open(scr_level_progress_path());
 	timeattack_record_millisecond = ini_read_real(level_name, "timeattack_millisecond", 0);
 	timeattack_record_second = ini_read_real(level_name, "timeattack_second", 0);
 	timeattack_record_minute = ini_read_real(level_name, "timeattack_minute", 0);

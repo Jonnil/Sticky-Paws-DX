@@ -17,13 +17,14 @@ function scr_player_move_lose()
 		#region /* Update Level Editor Checkpoint Time */
 		if (room == rm_leveleditor)
 		&& (global.actually_play_edited_level)
+		&& (!global.big_collectible_test_override && !global.doing_clear_check_level && !global.doing_clear_check_character)
 		&& (global.character_select_in_this_menu == "level_editor")
 		{
-			ini_open(game_save_id + "save_file/custom_level_save.ini");
-			ini_write_real(string(ds_list_find_value(global.all_loaded_custom_levels, global.select_level_index)), "checkpoint_millisecond", global.timeattack_millisecond);
-			ini_write_real(string(ds_list_find_value(global.all_loaded_custom_levels, global.select_level_index)), "checkpoint_second", global.timeattack_second);
-			ini_write_real(string(ds_list_find_value(global.all_loaded_custom_levels, global.select_level_index)), "checkpoint_minute", global.timeattack_minute);
-			ini_write_real(string(ds_list_find_value(global.all_loaded_custom_levels, global.select_level_index)), "checkpoint_realmillisecond", global.timeattack_realmillisecond);
+			scr_save_ini_open(scr_level_progress_path());
+			ini_write_real(scr_level_progress_section(), "checkpoint_millisecond", global.timeattack_millisecond);
+			ini_write_real(scr_level_progress_section(), "checkpoint_second", global.timeattack_second);
+			ini_write_real(scr_level_progress_section(), "checkpoint_minute", global.timeattack_minute);
+			ini_write_real(scr_level_progress_section(), "checkpoint_realmillisecond", global.timeattack_realmillisecond);
 			ini_close(); /* Don't commit the save data on Switch, this is only temporary! */
 		}
 		#endregion /* Update Level Editor Checkpoint Time END */

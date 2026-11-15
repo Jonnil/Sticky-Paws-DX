@@ -10,9 +10,12 @@ if (!bounce_up)
 			hp = max_hp; /* Refill HP to max */
 
 			#region /* Save heart balloon to be true */
-			ini_open(game_save_id + "save_file/file" + string(global.file) + ".ini");
-			ini_write_real("Player", "player" + string(player) + "_have_heart_balloon", true);
-			ini_close(); /* Don't commit the save data on Switch, this is only temporary! */
+			if (!global.big_collectible_test_override)
+			{
+				scr_save_ini_open(game_save_id + "save_file/file" + string(global.file) + ".ini");
+				ini_write_real("Player", "player" + string(player) + "_have_heart_balloon", true);
+				ini_close(); /* Don't commit the save data on Switch, this is only temporary! */
+			}
 			#endregion /* Save heart balloon to be true END */
 
 		}

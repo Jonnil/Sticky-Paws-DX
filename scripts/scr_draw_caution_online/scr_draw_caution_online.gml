@@ -55,7 +55,7 @@ function scr_draw_caution_online()
 			/* If you have enabled "do not show", then save that regardless if you have a internet connection or not */
 			if (global.caution_online_do_not_show)
 			{
-				ini_open(game_save_id + "save_file/config.ini");
+				scr_save_ini_open(game_save_id + "save_file/config.ini");
 				ini_write_string("config", "caution_online_do_not_show", true);
 				ini_close();
 				switch_save_data_commit(); /* Remember to commit the save data, so we never have to redo this step */

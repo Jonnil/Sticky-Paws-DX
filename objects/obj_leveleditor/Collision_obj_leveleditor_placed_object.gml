@@ -1,5 +1,6 @@
 if (!global.actually_play_edited_level)
 {
+	if (!scr_big_collectible_editor_is_active(other)) exit;
 	with (other)
 	{
 		if (!obj_leveleditor.pause)
@@ -42,7 +43,7 @@ if (!global.actually_play_edited_level)
 				if (room == rm_leveleditor)
 				&& (global.character_select_in_this_menu == "level_editor")
 				{
-					ini_open(game_save_id + "save_file/custom_level_save.ini");
+					scr_save_ini_open(game_save_id + "save_file/custom_level_save.ini");
 					ini_key_delete(ds_list_find_value(global.all_loaded_custom_levels, global.select_level_index), "checkpoint_x");
 					ini_key_delete(ds_list_find_value(global.all_loaded_custom_levels, global.select_level_index), "checkpoint_y");
 					ini_key_delete(ds_list_find_value(global.all_loaded_custom_levels, global.select_level_index), "checkpoint_millisecond");

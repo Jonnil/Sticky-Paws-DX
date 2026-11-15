@@ -270,7 +270,14 @@ if (!global.actually_play_edited_level)
 			&& (sprite_index >= 0)
 			&& (sprite_index <= 339)
 			{
-				draw_sprite_ext(sprite_index, image_index, x, y, 1, 1, image_angle, c_white, 0.2);
+				if (place_object == LEVEL_OBJECT_ID.ID_BIG_COLLECTIBLE)
+				{
+					scr_draw_big_collectible_tier(sprite_index, image_index, x, y, 1, 1, image_angle, global.big_collectible_editor_tier, false, 0.2);
+				}
+				else
+				{
+					draw_sprite_ext(sprite_index, image_index, x, y, 1, 1, image_angle, c_white, 0.2);
+				}
 			}
 			draw_set_alpha(1);
 		}
@@ -332,7 +339,14 @@ if (!global.actually_play_edited_level)
 			&& (sprite_index >= 0)
 			&& (sprite_index <= 339)
 			{
-				draw_sprite_ext(sprite_index, image_index, x, y, 1, 1, image_angle, c_white, 0.2);
+				if (place_object == LEVEL_OBJECT_ID.ID_BIG_COLLECTIBLE)
+				{
+					scr_draw_big_collectible_tier(sprite_index, image_index, x, y, 1, 1, image_angle, global.big_collectible_editor_tier, false, 0.2);
+				}
+				else
+				{
+					draw_sprite_ext(sprite_index, image_index, x, y, 1, 1, image_angle, c_white, 0.2);
+				}
 			}
 
 			if (can_make_place_size_bigger)

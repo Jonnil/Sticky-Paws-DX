@@ -8,7 +8,7 @@ function scr_process_online_download_menu_data()
 	if (variable_global_get("online_content_data_" + string(content_type)) != undefined
 	&& (menu != "search_id_ok"))
 	{
-		scr_scroll_menu(300, false);
+		scr_scroll_menu(300, false, !scr_big_collectible_online_list_owns_mouse_wheel());
 
 		if (is_array(variable_global_get("online_content_data_" + string(content_type))))
 		{

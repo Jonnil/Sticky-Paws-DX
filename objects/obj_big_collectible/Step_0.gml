@@ -1,3 +1,9 @@
+if (big_collectible <= 0 && instance_exists(big_collectible_marker))
+{
+	big_collectible = big_collectible_marker.big_collectible;
+	big_collectible_legacy_slot = big_collectible_marker.big_collectible_legacy_slot;
+}
+
 /* Indicate when you have already collected this big collectible */
 if (global.big_collectible[big_collectible])
 {
@@ -82,7 +88,7 @@ if (effect_time > 60)
 #endregion /* Expanding Ring Effect END */
 
 #region /* Actually collect big collectible */
-if (collect_big_collectible)
+if (collect_big_collectible && big_collectible > 0 && big_collectible <= global.max_big_collectible)
 {
 
 	#region /* Show Big Collectible HUD */
@@ -103,53 +109,19 @@ if (collect_big_collectible)
 	#endregion /* 1000 Score END */
 
 	#region /* What Big Collectible is this? */
-	for(var i = 1; i <= global.max_big_collectible; i ++)
+	var slot = big_collectible;
+	global.big_collectible[slot] = true;
+	if (instance_exists(obj_camera))
 	{
-		if (big_collectible == i)
+		obj_camera.hud_show_big_collectible_blink[slot] = 120;
+		if (!global.big_collectible_already_collected[slot])
 		{
-			global.big_collectible[i] = true;
-
-			if (instance_exists(obj_camera))
-			{
-				obj_camera.hud_show_big_collectible_blink[i] = 120;
-				if (!global.big_collectible_already_collected[i])
-				{
-					global.how_many_big_collectible_collected++;
-					global.big_collectible_already_collected[i] = true;
-				}
-			}
-			
-			var save_path = game_save_id + "save_file/custom_level_save.ini";
-			
-			if (global.character_select_in_this_menu == "main_game")
-			{
-				save_path = game_save_id + "save_file/file" + string(global.file) + ".ini"
-			}
-			
-			ini_open(save_path);
-
-			/* Increase total big collectibe, so player can know how many big collectibles they have collected in total */
-			if (!ini_read_real(global.level_name, "big_collectible" + string(i), false)) /* If you have never collected this big collectible before, then increase total big collectibles */
-			{
-				ini_write_real("Player", "total_big_collectibles", ini_read_real("Player", "total_big_collectibles", 0) + 1);
-				if (global.character_select_in_this_menu == "main_game")
-				{
-					scr_set_stat_achievement("TOTAL_BIG_COLLECTIBLE", ini_read_real("Player", "total_big_collectibles", 0));
-				}
-			}
-
-			ini_write_real(global.level_name, "big_collectible" + string(i), true); /* After increasing total big collectibles, then set this big collectible to be collected */
-			ini_close(); /* Don't commit the save data on Switch, this is only temporary! */
-			break;
-		}
-		else
-		{
-			if (instance_exists(obj_camera))
-			{
-				obj_camera.hud_show_big_collectible_blink[i] = 0;
-			}
+			global.how_many_big_collectible_collected++;
+			global.big_collectible_already_collected[slot] = true;
 		}
 	}
+	scr_big_collectible_record_run_pickup(big_collectible_tier, big_collectible_id, big_collectible_legacy_slot);
+	scr_big_collectible_record_pickup(slot, big_collectible_tier, big_collectible_id, big_collectible_legacy_slot);
 	#endregion /* What Big Collectible is this? END */
 	
 	var big_collectible_sound_index = snd_big_collectible;
@@ -162,7 +134,9 @@ if (collect_big_collectible)
 	audio_sound_pitch(big_collectible_sound_index, 0.9 + (0.1 * global.how_many_big_collectible_collected));
 	scr_audio_play(big_collectible_sound_index, volume_source.sound);
 
-	instance_create_depth(xstart, ystart, 0, obj_big_collectible_outline);
+	var outline = instance_create_depth(xstart, ystart, 0, obj_big_collectible_outline);
+	outline.big_collectible_tier = big_collectible_tier;
+	outline.image_blend = image_blend;
 	instance_destroy();
 }
 #endregion /* Actually collect big collectible END */

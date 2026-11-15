@@ -1,5 +1,6 @@
 function scr_modify_objects_in_level_editor()
 {
+	if (!scr_big_collectible_editor_is_active(id)) return;
 
 	#region /* Modify Objects */
 
@@ -36,6 +37,7 @@ function scr_modify_objects_in_level_editor()
 		&& (obj_leveleditor.placing_object <= 0)
 		{
 			var other_instance = instance_place(x, y, obj_leveleditor_placed_object); /* Check if another obj_leveleditor_placed_object is at the same position (x, y) */
+			if (instance_exists(other_instance) && !scr_big_collectible_editor_is_active(other_instance)) other_instance = noone;
 
 			if (other_instance == noone || other_instance == id) /* Ensure that no other instance is found or that the only instance found is the current instance */
 			&& (position_meeting(obj_leveleditor.x, obj_leveleditor.y, id))
@@ -46,6 +48,18 @@ function scr_modify_objects_in_level_editor()
 				if (!global.world_editor)
 				{
 					modify_object_menu = true;
+					if (object == LEVEL_OBJECT_ID.ID_BIG_COLLECTIBLE)
+					{
+						var next_tier = (big_collectible_tier + 1) mod 3;
+						if (!scr_big_collectible_editor_slot_occupied(id, next_tier, x, y))
+						{
+							if (!global.big_collectible_tiers_enabled) scr_big_collectible_tiers_seed_legacy_ids();
+							big_collectible_tier = next_tier;
+							scr_big_collectible_editor_select_tier(big_collectible_tier);
+							if (big_collectible_id == "") big_collectible_id = scr_big_collectible_editor_new_id();
+						}
+					}
+					else
 
 					#region /* Change wall into it's different forms */
 					if (object == LEVEL_OBJECT_ID.ID_WALL_DIRT)

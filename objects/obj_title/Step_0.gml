@@ -207,7 +207,7 @@ if (iris_xscale <= 0.01)
 		|| (!global.create_level_from_template)
 		{
 			/* Save what characters are selected */
-			ini_open(game_save_id + "save_file/config.ini");
+			scr_save_ini_open(game_save_id + "save_file/config.ini");
 			for(var p = 1; p <= global.max_players; p += 1)
 			{
 				ini_write_real("config", "character_index_player" + string(p), global.character_index[p - 1]);
@@ -259,7 +259,7 @@ if (iris_xscale <= 0.01)
 	|| menu == "back_from_character_select")
 	{
 		/* Save what characters are selected */
-		ini_open(game_save_id + "save_file/config.ini");
+		scr_save_ini_open(game_save_id + "save_file/config.ini");
 		for(var p = 1; p <= global.max_players; p += 1)
 		{
 			ini_write_real("config", "character_index_player" + string(p), global.character_index[p - 1]);

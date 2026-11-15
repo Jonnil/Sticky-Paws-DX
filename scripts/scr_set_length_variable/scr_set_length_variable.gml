@@ -1,5 +1,8 @@
 function scr_set_length_variable()
 {
+	repeat_length = 0;
+	if (scr_big_collectible_is_source(object, item_inside)) return;
+
 	if (global.can_save_length_variable) /* This function saves object_placement_all.json size, but lags the game. Make this optional and false by default */
 	{
 
@@ -18,7 +21,11 @@ function scr_set_length_variable()
 			&& inst.normal == normal
 			&& inst.hard == hard
 			&& inst.second_x == second_x
-			&& inst.second_y == second_y)
+			&& inst.second_y == second_y
+			&& inst.item_inside == item_inside
+			&& inst.big_collectible_tier == big_collectible_tier
+			&& inst.big_collectible_id == big_collectible_id
+			&& inst.level_object_extra_signature == level_object_extra_signature)
 			{
 				repeat_length = -1;
 				can_set_length = false;
@@ -40,7 +47,11 @@ function scr_set_length_variable()
 					&& inst.normal == normal
 					&& inst.hard == hard
 					&& inst.second_x == second_x
-					&& inst.second_y == second_y)
+					&& inst.second_y == second_y
+					&& inst.item_inside == item_inside
+					&& inst.big_collectible_tier == big_collectible_tier
+					&& inst.big_collectible_id == big_collectible_id
+					&& inst.level_object_extra_signature == level_object_extra_signature)
 					{
 						repeat_length = i;
 					}
@@ -58,6 +69,10 @@ function scr_set_length_variable()
 							|| inst.hard != hard
 							|| inst.second_x != second_x
 							|| inst.second_y != second_y
+							|| inst.item_inside != item_inside
+							|| inst.big_collectible_tier != big_collectible_tier
+							|| inst.big_collectible_id != big_collectible_id
+							|| inst.level_object_extra_signature != level_object_extra_signature
 						)
 						{
 							repeat_length = i - 1;

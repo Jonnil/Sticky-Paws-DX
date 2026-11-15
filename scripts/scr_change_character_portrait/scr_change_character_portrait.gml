@@ -146,7 +146,7 @@ function scr_change_character_skin()
 			global.voicepack_for_player[i] -= 1;
 
 			/* Lastly, save the voicepack in config */
-			ini_open(game_save_id + "save_file/config.ini");
+			scr_save_ini_open(game_save_id + "save_file/config.ini");
 			ini_write_real("config", "voicepack_for_player" + string(i), global.voicepack_for_player[i]);
 			ini_close(); /* Don't commit the save data on Switch, this is only temporary! */
 		}

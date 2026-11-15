@@ -51,6 +51,46 @@ can_save_to_character_config = false;
 #endregion /* Set variables for character select in pause menu END */
 
 hud_show_big_collectibles_y = -32;
+big_collectible_pause_scroll = 0;
+big_collectible_selector = scr_big_collectible_selector_create();
+big_collectible_pause_model = function()
+{
+	var model = scr_big_collectible_runtime_model();
+	if (global.doing_clear_check_level || global.doing_clear_check_character)
+	{
+		model.unlocked = [false, false, false];
+		model.unlocked[model.active_tier] = model.counts[model.active_tier] > 0;
+	}
+	return model;
+};
+big_collectible_pause_bounds = function()
+{
+	return {left:16, top:136, width:max(32, min(400, display_get_gui_width() * 0.5 - 225)),
+		height:max(24, display_get_gui_height() - 136 - 180)};
+};
+/* Keep these wrappers for existing native inspection calls. */
+big_collectible_pause_layout = function()
+{
+	var bounds = big_collectible_pause_bounds();
+	big_collectible_selector.scroll = big_collectible_pause_scroll;
+	return scr_big_collectible_selector_layout(big_collectible_pause_model(), bounds.left, bounds.top,
+		bounds.width, bounds.height, big_collectible_selector.scroll);
+};
+big_collectible_pause_reveal_tier = function(tier)
+{
+	var layout = big_collectible_pause_layout();
+	for (var row_index = 0; row_index < array_length(layout.rows); row_index++)
+	{
+		var row = layout.rows[row_index];
+		if (row.tier != tier) continue;
+		if (row.content_y < big_collectible_pause_scroll || row.content_y + row.height > big_collectible_pause_scroll + layout.height)
+		{
+			big_collectible_pause_scroll = clamp(row.content_y, 0, layout.max_scroll);
+			big_collectible_selector.scroll = big_collectible_pause_scroll;
+		}
+		break;
+	}
+};
 content_type = "level";
 
 mouse_x_position = device_mouse_x_to_gui(0);
@@ -211,14 +251,16 @@ audio_pause_all(); /* Pause sound effects and music */
 
 #region /* Save Level Editor Checkpoint */
 if (room == rm_leveleditor)
+&& (!global.big_collectible_test_override && !global.doing_clear_check_level && !global.doing_clear_check_character)
 && (global.character_select_in_this_menu == "main_game")
 {
-	var level_name = global.level_name;
+	var level_name = scr_level_progress_section();
 
-	ini_open(game_save_id + "save_file/file" + string(global.file) + ".ini");
+	scr_save_ini_open(game_save_id + "save_file/file" + string(global.file) + ".ini");
 
 	ini_write_real(level_name, "checkpoint_x", global.checkpoint_x);
 	ini_write_real(level_name, "checkpoint_y", global.checkpoint_y);
+	ini_write_real(level_name, "checkpoint_big_collectible_tier", global.big_collectible_active_tier);
 	ini_write_real(level_name, "checkpoint_millisecond", global.timeattack_millisecond);
 	ini_write_real(level_name, "checkpoint_second", global.timeattack_second);
 	ini_write_real(level_name, "checkpoint_minute", global.timeattack_minute);
@@ -228,14 +270,16 @@ if (room == rm_leveleditor)
 }
 else
 if (room == rm_leveleditor)
+&& (!global.big_collectible_test_override && !global.doing_clear_check_level && !global.doing_clear_check_character)
 && (global.character_select_in_this_menu == "level_editor")
 {
-	var level_name = global.level_name;
+	var level_name = scr_level_progress_section();
 
-	ini_open(game_save_id + "save_file/custom_level_save.ini");
+	scr_save_ini_open(scr_level_progress_path());
 
 	ini_write_real(level_name, "checkpoint_x", global.checkpoint_x);
 	ini_write_real(level_name, "checkpoint_y", global.checkpoint_y);
+	ini_write_real(level_name, "checkpoint_big_collectible_tier", global.big_collectible_active_tier);
 	ini_write_real(level_name, "checkpoint_millisecond", global.timeattack_millisecond);
 	ini_write_real(level_name, "checkpoint_second", global.timeattack_second);
 	ini_write_real(level_name, "checkpoint_minute", global.timeattack_minute);

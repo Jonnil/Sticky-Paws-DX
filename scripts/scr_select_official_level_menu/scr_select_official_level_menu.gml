@@ -831,6 +831,11 @@ function scr_select_official_level_menu()
 					show_debug_message("[scr_select_official_level_menu] Save level name to custom level as: " + string(global.level_name));
 					ini_write_string("info", "level_name", string(global.level_name));
 					ini_write_string("info", "level_description", ""); /* Save a blank level description */
+					/* A template creates a new local challenge, independent of its source. */
+					ini_write_string("info", "big_collectible_level_id", scr_big_collectible_new_id());
+					ini_write_real("info", "progress_identity_fresh", true);
+					ini_write_string("info", "level_id", "");
+					ini_write_real("info", "clear_check", false);
 					show_debug_message("Set first_created_on_version to v" + scr_get_build_date());
 					
 					ini_close(); /* Don't commit the save data on Switch, this is only temporary! */

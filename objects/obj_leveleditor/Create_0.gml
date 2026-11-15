@@ -1,5 +1,12 @@
 #region /* Essential code that needs to be initialized */
 var level_information_path = "";
+var returning_from_tier_test = global.big_collectible_test_override;
+if (!variable_global_exists("big_collectible_editor_tier")) global.big_collectible_editor_tier = 0;
+if (!global.actually_play_edited_level && !global.play_edited_level) global.big_collectible_test_override = false;
+big_collectible_editor_validation_timer = 0;
+big_collectible_palette_indices = [-1, -1, -1];
+big_collectible_palette_category = "";
+big_collectible_editor_validation = {counts: [0, 0, 0], warning: "", tiered: false};
 
 if (global.character_select_in_this_menu == "main_game")
 {
@@ -108,6 +115,7 @@ instance_create_depth(0, obj_level_height.y + 32, 0, obj_water_level_height);
 doing_clear_check_timer_thumbnail = 0;
 doing_clear_check_timer = 0;
 scr_load_object_placement_json(); /* Load Level */
+if (!global.actually_play_edited_level) big_collectible_editor_validation = scr_big_collectible_editor_validate();
 
 #region /* If actually playing level, set play_edited_level to true and delete itself. Have this code after the "doing clear check = true" */
 if (global.actually_play_edited_level)
@@ -714,7 +722,8 @@ if (!global.actually_play_edited_level)
 
 	#region /* Toggle for menu warning whenever the player plays a level from beginning and finishes the level too fast */
 	if (global.playing_level_from_beginning
-	&& global.player_has_entered_goal)
+	&& global.player_has_entered_goal
+	&& !returning_from_tier_test)
 	{
 		ini_open(game_save_id + "custom_levels/" + scr_get_custom_level_folder_name() + "/data/level_information.ini");
 		ini_write_real("info", "clear_check", true); /* If doing a level clear check, and winning the level, then add in level information that you have done a clear check */

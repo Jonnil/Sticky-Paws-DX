@@ -1,6 +1,25 @@
 function scr_spawn_objects_when_starting_room()
 {
 	var instance_count_before_spawn_pass = instance_count;
+	if (is_string(object) && object != "" && string_digits(object) == object) object = real(object);
+	if (is_string(item_inside) && item_inside != "" && string_digits(item_inside) == item_inside) item_inside = real(item_inside);
+	/* A container still exists when its collectible belongs to another tier. */
+	if (scr_big_collectible_is_source(object, item_inside))
+	{
+		var source_tier = variable_instance_exists(self, "big_collectible_tier") ? big_collectible_tier : 0;
+		if (source_tier != global.big_collectible_active_tier)
+		{
+			if (object == LEVEL_OBJECT_ID.ID_BIG_COLLECTIBLE)
+			{
+				instance_destroy();
+				return;
+			}
+			if (object == LEVEL_OBJECT_ID.ID_BUMP_IN_GROUND_BIG_COLLECTIBLE) object = LEVEL_OBJECT_ID.ID_BUMP_IN_GROUND;
+			if (object == LEVEL_OBJECT_ID.ID_INVISIBLE_BUMP_IN_GROUND_BIG_COLLECTIBLE) object = LEVEL_OBJECT_ID.ID_INVISIBLE_BUMP_IN_GROUND;
+			if (object == LEVEL_OBJECT_ID.ID_BUCKET_BIG_COLLECTIBLE) object = LEVEL_OBJECT_ID.ID_BUCKET;
+			item_inside = "none";
+		}
+	}
 
 	#region /* Spawn objects when starting room */
 	if (!global.world_editor)
@@ -276,16 +295,14 @@ function scr_spawn_objects_when_starting_room()
 					with(instance_create_depth(x, y, 0, obj_bump_in_ground)) {item_inside = "3-up";}
 					break;
 				case LEVEL_OBJECT_ID.ID_BUMP_IN_GROUND_BIG_COLLECTIBLE:
-					with(instance_create_depth(x, y, 0, obj_bump_in_ground))
-					{
-						item_inside = "big_collectible";
-					}
-					instance_create_depth(x, y, 0, obj_big_collectible_number);
+					obj = instance_create_depth(x, y, 0, obj_bump_in_ground);
+					obj.item_inside = "big_collectible";
+					scr_big_collectible_create_marker(obj);
 					if (instance_exists(obj_big_collectible_number))
 					{
 						with(obj_big_collectible_number)
 						{
-							global.max_big_collectible = min(instance_number(obj_big_collectible_number), 99);
+							global.max_big_collectible = instance_number(obj_big_collectible_number);
 						}
 					}
 					break;
@@ -304,19 +321,17 @@ function scr_spawn_objects_when_starting_room()
 				case 321: with(instance_create_depth(x, y, 0, obj_bump_in_ground)){item_inside = "2-up";visible = false;}break;
 				case 331: with(instance_create_depth(x, y, 0, obj_bump_in_ground)){item_inside = "3-up";visible = false;}break;
 				case LEVEL_OBJECT_ID.ID_INVISIBLE_BUMP_IN_GROUND_BIG_COLLECTIBLE:
-					with(instance_create_depth(x, y, 0, obj_bump_in_ground))
-					{
-						item_inside = "big_collectible";
-						visible = false;
-					}
-					instance_create_depth(x, y, 0, obj_big_collectible_number);
+					obj = instance_create_depth(x, y, 0, obj_bump_in_ground);
+					obj.item_inside = "big_collectible";
+					obj.visible = false;
+					scr_big_collectible_create_marker(obj);
 
 					#region /* Tell the player how many big collectibles exist in the level */
 					if (instance_exists(obj_big_collectible_number))
 					{
 						with(obj_big_collectible_number)
 						{
-							global.max_big_collectible = min(instance_number(obj_big_collectible_number), 99);
+							global.max_big_collectible = instance_number(obj_big_collectible_number);
 						}
 					}
 					#endregion /* Tell the player how many big collectibles exist in the level END */
@@ -427,6 +442,7 @@ function scr_spawn_objects_when_starting_room()
 					break;
 				case LEVEL_OBJECT_ID.ID_BIG_COLLECTIBLE:
 					obj = instance_create_depth(x, y, 0, obj_big_collectible);
+					scr_big_collectible_copy_source(obj);
 					obj.bounce_up = bounce_up;
 					if (bounce_up)
 					{
@@ -436,10 +452,10 @@ function scr_spawn_objects_when_starting_room()
 					#region /* Tell the player how many big collectibles exist in the level */
 					if (!bounce_up) /* Only count new big collectibles at the very start when loading a level */
 					{
-						obj = instance_create_depth(x, y, 0, obj_big_collectible_number);
+						scr_big_collectible_create_marker(obj);
 						if (instance_exists(obj_big_collectible_number))
 						{
-							global.max_big_collectible = min(instance_number(obj_big_collectible_number), 99);
+							global.max_big_collectible = instance_number(obj_big_collectible_number);
 						}
 					}
 					#endregion /* Tell the player how many big collectibles exist in the level END */
@@ -686,18 +702,16 @@ function scr_spawn_objects_when_starting_room()
 				case LEVEL_OBJECT_ID.ID_BUCKET_TWO_UP: with(instance_create_depth(x, y, 0, obj_bucket)){item_inside = "2-up";}break;
 				case LEVEL_OBJECT_ID.ID_BUCKET_THREE_UP: with(instance_create_depth(x, y, 0, obj_bucket)){item_inside = "3-up";}break;
 				case LEVEL_OBJECT_ID.ID_BUCKET_BIG_COLLECTIBLE:
-					with(instance_create_depth(x, y, 0, obj_bucket))
-					{
-						item_inside = "big_collectible";
-					}
-					instance_create_depth(x, y, 0, obj_big_collectible_number);
+					obj = instance_create_depth(x, y, 0, obj_bucket);
+					obj.item_inside = "big_collectible";
+					scr_big_collectible_create_marker(obj);
 
 					#region /* Tell the player how many big collectibles exist in the level */
 					if (instance_exists(obj_big_collectible_number))
 					{
 						with(obj_big_collectible_number)
 						{
-							global.max_big_collectible = min(instance_number(obj_big_collectible_number), 99);
+							global.max_big_collectible = instance_number(obj_big_collectible_number);
 						}
 					}
 					#endregion /* Tell the player how many big collectibles exist in the level END */
@@ -894,14 +908,14 @@ function scr_spawn_objects_with_items_inside(what_object)
 		what_object.item_inside = item_inside;
 
 		#region /* If the item inside is a big collectible, then create the necessary objects to initialize that */
-		if (item_inside == LEVEL_OBJECT_ID.ID_BIG_COLLECTIBLE)
+		if (item_inside == LEVEL_OBJECT_ID.ID_BIG_COLLECTIBLE || item_inside == "big_collectible")
 		{
-			instance_create_depth(x, y, 0, obj_big_collectible_number);
+			scr_big_collectible_create_marker(what_object);
 			if (instance_exists(obj_big_collectible_number))
 			{
 				with(obj_big_collectible_number)
 				{
-					global.max_big_collectible = min(instance_number(obj_big_collectible_number), 99);
+					global.max_big_collectible = instance_number(obj_big_collectible_number);
 				}
 			}
 		}

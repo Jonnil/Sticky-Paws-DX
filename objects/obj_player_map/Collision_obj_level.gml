@@ -21,6 +21,8 @@ if (can_enter_level_automatically)
 
 || (can_enter_level >= 30)
 && (speed == 0)
+&& (!big_collectible_entry_consumed)
+&& (!big_collectible_entry_pointer || !mouse_check_button_released(mb_left))
 && (key_accept_pressed || mouse_check_button_released(mb_left)
 && (point_in_rectangle(mouse_get_x, mouse_get_y, 0, display_get_gui_height() - 42, 140, display_get_gui_height())
 || point_in_rectangle(mouse_x, mouse_y, bbox_left, bbox_top, bbox_right, bbox_bottom)))
@@ -56,7 +58,7 @@ if (can_enter_level_automatically)
 			#region /* Save Player Position */
 			x = other.x;
 			y = other.y;
-			ini_open(game_save_id + "save_file/file" + string(global.file) + ".ini");
+			scr_save_ini_open(game_save_id + "save_file/file" + string(global.file) + ".ini");
 			ini_write_real("Player", "player_x", x);
 			ini_write_real("Player", "player_y", y);
 			ini_write_real("Player", "brand_new_file", false);
@@ -118,7 +120,7 @@ if (key_back_pressed)
 		#region /* Save Player Position */
 		x = other.x;
 		y = other.y;
-		ini_open(game_save_id + "save_file/file" + string(global.file) + ".ini");
+		scr_save_ini_open(game_save_id + "save_file/file" + string(global.file) + ".ini");
 		ini_write_real("Player", "player_x", x);
 		ini_write_real("Player", "player_y", y);
 		ini_write_real("Player", "brand_new_file", false);
@@ -128,7 +130,7 @@ if (key_back_pressed)
 		if (global.character_select_in_this_menu == "main_game")
 		{
 			var level_name = scr_get_active_official_level_id();
-			ini_open(game_save_id + "save_file/file" + string(global.file) + ".ini");
+			scr_save_ini_open(game_save_id + "save_file/file" + string(global.file) + ".ini");
 			ini_write_string(level_name, "clear_rate", "clear"); /* Make the level clear after checking number of levels cleared */
 			ini_close(); /* Don't commit the save data on Switch, this is only temporary! */
 		}

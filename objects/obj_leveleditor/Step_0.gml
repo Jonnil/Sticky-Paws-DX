@@ -51,7 +51,8 @@ if (menu_delay == 0 && menu_joystick_delay == 0)
 		if (level_editor_menu == "autoscroll")&&(!show_autoscroll_menu){if (show_selected_menu){level_editor_menu = "select_object_menu";}else{if (!if_daily_build){level_editor_menu = "terrain";}else{level_editor_menu = "daily_build_standard";}}}else
 		if (level_editor_menu == "time"){level_editor_menu = "autoscroll";}else
 
-		if (level_editor_menu == "play"){level_editor_menu = "time";}else
+		if (level_editor_menu == "collectible_tier"){level_editor_menu = "time";}else
+		if (level_editor_menu == "play"){level_editor_menu = scr_big_collectible_editor_brush_selected() ? "collectible_tier" : "time";}else
 		if (level_editor_menu == "pen"){level_editor_menu = "time";}else
 		if (level_editor_menu == "erase"){level_editor_menu = "time";}else
 		if (level_editor_menu == "fill"){level_editor_menu = "time";}else
@@ -68,6 +69,7 @@ if (menu_delay == 0 && menu_joystick_delay == 0)
 	{
 		menu_delay = 3;
 		if (level_editor_menu == ""){level_editor_menu = "play";}else
+		if (level_editor_menu == "collectible_tier"){level_editor_menu = "time";}else
 		if (level_editor_menu == "terrain"){level_editor_menu = "play";}else
 		if (level_editor_menu == "decoration"){level_editor_menu = "terrain";}else
 		if (level_editor_menu == "item"){level_editor_menu = "decoration";}else
@@ -110,7 +112,8 @@ if (menu_delay == 0 && menu_joystick_delay == 0)
 		if (level_editor_menu == "select_object_menu"){level_editor_menu = "autoscroll";}else
 
 		if (level_editor_menu == "autoscroll")&&(!show_autoscroll_menu){level_editor_menu = "time";}else
-		if (level_editor_menu == "time")&&(!show_time_menu){level_editor_menu = "play";}
+		if (level_editor_menu == "collectible_tier"){level_editor_menu = "play";}else
+		if (level_editor_menu == "time")&&(!show_time_menu){level_editor_menu = scr_big_collectible_editor_brush_selected() ? "collectible_tier" : "play";}
 	}
 	/* Right */ if (keyboard_check_pressed(ord("L")))
 	|| (gamepad_button_check_pressed(global.player_slot[1], gp_padr))
@@ -129,6 +132,7 @@ if (menu_delay == 0 && menu_joystick_delay == 0)
 		if (level_editor_menu == "zoom_reset"){level_editor_menu = "zoom_in";}else
 		if (level_editor_menu == "zoom_in"){level_editor_menu = "help";}else
 		if (level_editor_menu == "help"){level_editor_menu = "help";}else
+		if (level_editor_menu == "collectible_tier"){level_editor_menu = "play";}else
 		if (level_editor_menu == "play"){level_editor_menu = "pen";}else
 		if (level_editor_menu == "pen"){level_editor_menu = "erase";}else
 		if (level_editor_menu == "erase"){level_editor_menu = "fill";}else
@@ -432,6 +436,8 @@ if (!global.actually_play_edited_level)
 	}
 	#endregion /* Need to set the controls early in the step event END */
 
+	scr_big_collectible_editor_toolbar_step();
+
 	#region /* Deactivate instances outside view. Run this code at start of Step Event */
 	global.deactivate_timer++;
 	if (global.deactivate_timer >= 5)
@@ -557,7 +563,7 @@ if (!global.actually_play_edited_level)
 		}
 		if (file_exists("save_file/config.ini"))
 		{
-			ini_open(game_save_id + "save_file/config.ini");
+			scr_save_ini_open(game_save_id + "save_file/config.ini");
 			ini_write_real("config", "select_level_editing_music", global.selected_level_editing_music);
 			ini_close(); /* Don't commit the save data on Switch, this is only temporary! */
 		}
@@ -698,7 +704,11 @@ if (!global.actually_play_edited_level)
 
 					if (!global.world_editor)
 					{
+						global.big_collectible_requested_tier = global.big_collectible_editor_tier;
+						global.big_collectible_test_override = !global.doing_clear_check_level;
 						scr_save_custom_level_json();
+						scr_big_collectible_tiers_reset_run();
+						scr_big_collectible_tiers_begin();
 
 						with(obj_leveleditor_placed_object)
 						{
@@ -784,14 +794,17 @@ if (!global.actually_play_edited_level)
 		global.checkpoint_minute = 0;
 		global.checkpoint_realmillisecond = 0;
 
-		ini_open(game_save_id + "save_file/custom_level_save.ini");
-		ini_write_real(global.level_name, "checkpoint_x", 0);
-		ini_write_real(global.level_name, "checkpoint_y", 0);
-		ini_write_real(global.level_name, "checkpoint_millisecond", 0);
-		ini_write_real(global.level_name, "checkpoint_second", 0);
-		ini_write_real(global.level_name, "checkpoint_minute", 0);
-		ini_write_real(global.level_name, "checkpoint_realmillisecond", 0);
-		ini_close(); /* Don't commit the save data on Switch, this is only temporary! */
+		if (!global.big_collectible_test_override && !global.doing_clear_check_level && !global.doing_clear_check_character)
+		{
+			scr_save_ini_open(scr_level_progress_path());
+			ini_write_real(scr_level_progress_section(), "checkpoint_x", 0);
+			ini_write_real(scr_level_progress_section(), "checkpoint_y", 0);
+			ini_write_real(scr_level_progress_section(), "checkpoint_millisecond", 0);
+			ini_write_real(scr_level_progress_section(), "checkpoint_second", 0);
+			ini_write_real(scr_level_progress_section(), "checkpoint_minute", 0);
+			ini_write_real(scr_level_progress_section(), "checkpoint_realmillisecond", 0);
+			ini_close(); /* Don't commit the save data on Switch, this is only temporary! */
+		}
 
 		menu_delay = 3; /* Disable all menu control */
 		global.player_lives = 5;
@@ -1288,7 +1301,7 @@ if (!global.actually_play_edited_level)
 		}
 
 		#region /* Nearest Placed Object Code */
-		with(instance_nearest(x, y, obj_leveleditor_placed_object))
+		with(scr_big_collectible_editor_nearest_active(x, y))
 		{
 			scr_modify_objects_in_level_editor(); /* Change object when you click on it */
 		}
@@ -1927,14 +1940,17 @@ if (!global.actually_play_edited_level)
 		#region /* Save Level */
 		if (quit_level_editor == 3)
 		{
-			ini_open(game_save_id + "save_file/custom_level_save.ini");
-			ini_write_real(global.level_name, "checkpoint_x", 0);
-			ini_write_real(global.level_name, "checkpoint_y", 0);
-			ini_write_real(global.level_name, "checkpoint_millisecond", 0);
-			ini_write_real(global.level_name, "checkpoint_second", 0);
-			ini_write_real(global.level_name, "checkpoint_minute", 0);
-			ini_write_real(global.level_name, "checkpoint_realmillisecond", 0);
-			ini_close(); /* Don't commit the save data on Switch, this is only temporary! */
+			if (!global.big_collectible_test_override && !global.doing_clear_check_level && !global.doing_clear_check_character)
+			{
+				scr_save_ini_open(scr_level_progress_path());
+				ini_write_real(scr_level_progress_section(), "checkpoint_x", 0);
+				ini_write_real(scr_level_progress_section(), "checkpoint_y", 0);
+				ini_write_real(scr_level_progress_section(), "checkpoint_millisecond", 0);
+				ini_write_real(scr_level_progress_section(), "checkpoint_second", 0);
+				ini_write_real(scr_level_progress_section(), "checkpoint_minute", 0);
+				ini_write_real(scr_level_progress_section(), "checkpoint_realmillisecond", 0);
+				ini_close(); /* Don't commit the save data on Switch, this is only temporary! */
+			}
 
 			global.checkpoint_x = 0;
 			global.checkpoint_y = 0;

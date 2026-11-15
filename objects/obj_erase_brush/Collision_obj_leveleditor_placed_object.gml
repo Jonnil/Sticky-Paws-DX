@@ -1,4 +1,5 @@
 #region /* Make object change difficulty layer depending on what difficulty layer is selected */
+if (!scr_big_collectible_editor_is_active(other)) exit;
 if (instance_exists(obj_leveleditor))
 && (obj_leveleditor.difficulty_layer > 0)
 && (!obj_leveleditor.drag_object)

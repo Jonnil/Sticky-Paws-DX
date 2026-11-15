@@ -1192,7 +1192,7 @@ function scr_debug_draw_debug_logic()
 		if (keyboard_check_pressed(vk_f4))
 		{
 			global.debug_detailed_mode = !global.debug_detailed_mode;
-			ini_open(game_save_id + "save_file/config.ini");
+			scr_save_ini_open(game_save_id + "save_file/config.ini");
 			ini_write_real("config", "debug_detailed_mode", global.debug_detailed_mode);
 			ini_close();
 		}
@@ -2513,7 +2513,7 @@ function scr_draw_debug_header(section_name, xx, yy)
 				var _cur = !_prev;
 				variable_struct_set(global.debug_collapsed_sections, section_name, _cur);
 
-				ini_open(game_save_id + "save_file/config.ini");
+				scr_save_ini_open(game_save_id + "save_file/config.ini");
 				ini_write_real("debug_collapsed_sections", string(section_name), _cur);
 				ini_close();
 			}

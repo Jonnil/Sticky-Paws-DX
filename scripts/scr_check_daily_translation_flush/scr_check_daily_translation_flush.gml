@@ -25,7 +25,7 @@ function scr_check_daily_translation_flush()
 					if (global.last_missing_flush_time == 0)
 					{
 						global.last_missing_flush_time = date_current_datetime();
-						ini_open(game_save_id + "save_file/config.ini");
+						scr_save_ini_open(game_save_id + "save_file/config.ini");
 						ini_write_real("translation_sync", "last_flush_time", global.last_missing_flush_time);
 						ini_close();
 					}
@@ -40,7 +40,7 @@ function scr_check_daily_translation_flush()
 				{
 					scr_flush_missing_translation_keywords();
 					global.last_missing_flush_time = date_current_datetime();
-					ini_open(game_save_id + "save_file/config.ini");
+					scr_save_ini_open(game_save_id + "save_file/config.ini");
 					ini_write_real("translation_sync", "last_flush_time", global.last_missing_flush_time);
 					ini_close();
 					show_debug_message("[scr_check_daily_translation_flush] Daily flush complete. New flush time: " + string(global.last_missing_flush_time));

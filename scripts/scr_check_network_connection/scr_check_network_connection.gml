@@ -170,7 +170,7 @@ function scr_check_network_connection(connect_mode, allow_account_prompt = false
 		var ts = scr_format_timestamp(date_current_datetime());
 		global.online_last_successful_check = string(ts);
 
-		ini_open("save_file/config.ini");
+		scr_save_ini_open("save_file/config.ini");
 		ini_write_string("config", "online_last_successful_check", string(ts));
 		ini_close(); /* Don't commit the save data on Switch, this is only temporary! Too many commited saves will go against guidelines */
 

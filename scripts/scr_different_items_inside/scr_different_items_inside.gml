@@ -268,7 +268,9 @@ function scr_different_items_inside(create_from_y = bbox_top)
 		#region /* Big Collectible */
 		if (item_inside = "big_collectible")
 		{
-			with(instance_create_depth(x, bbox_top, 0, obj_big_collectible))
+			var pickup = instance_create_depth(x, bbox_top, 0, obj_big_collectible);
+			scr_big_collectible_copy_source(pickup);
+			with(pickup)
 			{
 				image_speed = 1;
 				motion_set(90, 10);
@@ -287,6 +289,7 @@ function scr_different_items_inside(create_from_y = bbox_top)
 			{
 				var obj = instance_create_depth(x, create_from_y - 32, 0, obj_leveleditor_placed_object);
 				obj.object = item_inside;
+				scr_big_collectible_copy_source(obj);
 				obj.bounce_up = true;
 				obj.second_x = 0;
 				obj.second_y = 0;

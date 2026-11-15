@@ -41,26 +41,17 @@ draw_set_halign(fa_center);
 draw_set_valign(fa_middle);
 
 #region /* Big Collectibles */
-if (global.pause_room == rm_leveleditor)
-&& (!hide_menu_for_clean_screenshots)
+var level_information_y = 320;
+if (global.pause_room == rm_leveleditor && !hide_menu_for_clean_screenshots
+&& !in_settings && !in_character_select_menu && !show_loading_icon
+&& !scr_block_menu_input_for_network_request())
 {
-	for(var i = 1; i <= global.max_big_collectible; i += 1)
-	{
-		if (!global.big_collectible[i])
-		{
-			draw_sprite_ext(global.resource_pack_sprite_big_collectible_outline, 0, 32 * i, hud_show_big_collectibles_y, 0.5, 0.5, 0, c_white, 0.5 * fade_in_pause_alpha);
-		}
-		else
-		if (global.big_collectible[i])
-		&& (!global.big_collectible_already_collected[i])
-		{
-			draw_sprite_ext(global.resource_pack_sprite_big_collectible, 0, 32 * i, hud_show_big_collectibles_y, 0.5, 0.5, 0, c_white, 0.5 * fade_in_pause_alpha);
-		}
-		else
-		{
-			draw_sprite_ext(global.resource_pack_sprite_big_collectible, 0, 32 * i, hud_show_big_collectibles_y, 0.5, 0.5, 0, c_white, 1);
-		}
-	}
+	var tier_bounds = big_collectible_pause_bounds();
+	var tier_model = big_collectible_pause_model();
+	scr_big_collectible_selector_draw(big_collectible_selector, tier_model,
+		tier_bounds.left, tier_bounds.top, tier_bounds.width, tier_bounds.height, fade_in_pause_alpha, global.pause_player + 1);
+	var tier_layout = big_collectible_pause_layout();
+	level_information_y = max(level_information_y, tier_layout.footer_bottom + 16);
 }
 #endregion /* Big Collectibles */
 
@@ -127,17 +118,17 @@ if (!hide_menu_for_clean_screenshots)
 		if (global.pause_room == rm_leveleditor)
 		{
 			draw_set_halign(fa_left);
-			draw_set_valign(fa_middle);
-			scr_draw_text_outlined(32, 320,
+			draw_set_valign(fa_top);
+			scr_draw_text_outlined(32, level_information_y,
 			string(display_level_name) + "\n" +
 			string(display_level_author) + "\n" +
 			string(display_level_id) + "\n"
 			, global.default_text_size * 0.75, c_black, c_white, 1 * fade_in_pause_alpha);
-			scr_draw_level_tags(32, 420, false, fa_left, false, global.default_text_size * 0.75, 1 * fade_in_pause_alpha);
+			scr_draw_level_tags(32, level_information_y + 100, false, fa_left, false, global.default_text_size * 0.75, 1 * fade_in_pause_alpha);
 
 			if (display_level_author != "")
 			{
-				draw_sprite_ext(spr_icon_person, 0, 16, 320, 1, 1, 0, c_white, 1);
+				draw_sprite_ext(spr_icon_person, 0, 16, level_information_y + string_height("A") * global.default_text_size * 0.375, 1, 1, 0, c_white, fade_in_pause_alpha);
 			}
 
 			hud_show_big_collectibles_y = lerp(hud_show_big_collectibles_y, 160, 0.1);
@@ -189,6 +180,7 @@ if (!hide_menu_for_clean_screenshots)
 	#endregion /* Pause Text END */
 
 	/* PAUSE LEVEL SELECT / LEVEL EDITOR MENU */
+
 	if (!show_loading_icon)
 	&& (room == rm_world
 	|| room == rm_leveleditor

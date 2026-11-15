@@ -93,7 +93,9 @@ function scr_draw_list_of_placable_objects()
 				{ o_id: LEVEL_OBJECT_ID.ID_10_BULK_COLLECTIBLE, o_can_make_bigger: false, o_sprite: global.resource_pack_sprite_bulk_collectible, o_mask: spr_wall, o_scroll_x: +100, o_scale: 1, o_rotation: 0, o_color: c_white, o_scroll_y: 0, o_x_offset: 0, o_alpha: 1, o_add_order_index: 1, o_name: "10-Fish", o_description: "A large Fish worth 10 regular Fish", o_image_index: 0, o_category: "item", o_daily_build_category: "daily_build_featured", o_text: "10", o_video_tutorial: ""},
 				{ o_id: LEVEL_OBJECT_ID.ID_30_BULK_COLLECTIBLE, o_can_make_bigger: false, o_sprite: global.resource_pack_sprite_bulk_collectible, o_mask: spr_wall, o_scroll_x: +100, o_scale: 1, o_rotation: 0, o_color: c_white, o_scroll_y: 0, o_x_offset: 0, o_alpha: 1, o_add_order_index: 1, o_name: "30-Fish", o_description: "A large Fish worth 30 regular Fish", o_image_index: 0, o_category: "item", o_daily_build_category: "daily_build_featured", o_text: "30", o_video_tutorial: ""},
 				{ o_id: LEVEL_OBJECT_ID.ID_50_BULK_COLLECTIBLE, o_can_make_bigger: false, o_sprite: global.resource_pack_sprite_bulk_collectible, o_mask: spr_wall, o_scroll_x: +100, o_scale: 1, o_rotation: 0, o_color: c_white, o_scroll_y: 0, o_x_offset: 0, o_alpha: 1, o_add_order_index: 1, o_name: "50-Fish", o_description: "A large Fish worth 50 regular Fish", o_image_index: 0, o_category: "item", o_daily_build_category: "daily_build_featured", o_text: "50", o_video_tutorial: ""},
-				{ o_id: LEVEL_OBJECT_ID.ID_BIG_COLLECTIBLE, o_can_make_bigger: false, o_sprite: global.resource_pack_sprite_big_collectible, o_mask: spr_wall, o_scroll_x: +100, o_scale: 1, o_rotation: 0, o_color: c_white, o_scroll_y: 0, o_x_offset: 0, o_alpha: 1, o_add_order_index: 1, o_name: "Big Fish", o_description: "A collectible that can be a good way to make your level more fun", o_image_index: 0, o_category: "item", o_daily_build_category: "daily_build_standard", o_text: "", o_video_tutorial: ""},
+				{ o_id: LEVEL_OBJECT_ID.ID_BIG_COLLECTIBLE, o_can_make_bigger: false, o_sprite: global.resource_pack_sprite_big_collectible, o_mask: spr_wall, o_scroll_x: +100, o_scale: 1, o_rotation: 0, o_color: c_white, o_scroll_y: 0, o_x_offset: 0, o_alpha: 1, o_add_order_index: 1, o_tier: 0, o_name: "Big Fish", o_description: "Collect all Big Fish in this tier to unlock the next authored tier", o_image_index: 0, o_category: "item", o_daily_build_category: "daily_build_standard", o_text: "", o_video_tutorial: ""},
+				{ o_id: LEVEL_OBJECT_ID.ID_BIG_COLLECTIBLE, o_can_make_bigger: false, o_sprite: global.resource_pack_sprite_big_collectible, o_mask: spr_wall, o_scroll_x: +100, o_scale: 1, o_rotation: 0, o_color: c_white, o_scroll_y: 0, o_x_offset: 0, o_alpha: 1, o_add_order_index: 1, o_tier: 1, o_name: "Purple Big Fish", o_description: "Place Purple Big Fish separately from the other tiers", o_image_index: 0, o_category: "item", o_daily_build_category: "daily_build_standard", o_text: "", o_video_tutorial: ""},
+				{ o_id: LEVEL_OBJECT_ID.ID_BIG_COLLECTIBLE, o_can_make_bigger: false, o_sprite: global.resource_pack_sprite_big_collectible, o_mask: spr_wall, o_scroll_x: +100, o_scale: 1, o_rotation: 0, o_color: c_white, o_scroll_y: 0, o_x_offset: 0, o_alpha: 1, o_add_order_index: 1, o_tier: 2, o_name: "Black Big Fish", o_description: "Place Black Big Fish separately from the other tiers", o_image_index: 0, o_category: "item", o_daily_build_category: "daily_build_standard", o_text: "", o_video_tutorial: ""},
 				{ o_id: LEVEL_OBJECT_ID.ID_KEY_FRAGMENT, o_can_make_bigger: true, o_sprite: spr_key_fragment, o_mask: spr_wall, o_scroll_x: +100, o_scale: 1, o_rotation: 0, o_color: c_white, o_scroll_y: 0, o_x_offset: 0, o_alpha: 1, o_add_order_index: 1, o_name: "Key Fragment", o_description: "If all Key Fragments in the area are collected a key appears", o_image_index: 0, o_category: "item", o_daily_build_category: "daily_build_featured", o_text: "", o_video_tutorial: ""},
 				{ o_id: LEVEL_OBJECT_ID.ID_HEART, o_can_make_bigger: true, o_sprite: spr_heart, o_mask: spr_wall, o_scroll_x: +100, o_scale: 1, o_rotation: 0, o_color: c_white, o_scroll_y: 0, o_x_offset: 0, o_alpha: 1, o_add_order_index: 1, o_name: "Heart Balloon", o_description: "Gives you one extra hit", o_image_index: 0, o_category: "item", o_daily_build_category: "daily_build_featured", o_text: "", o_video_tutorial: ""},
 				{ o_id: LEVEL_OBJECT_ID.ID_INVINCIBILITY_POWERUP, o_can_make_bigger: true, o_sprite: global.resource_pack_sprite_invincibility_powerup, o_mask: spr_wall, o_scroll_x: +100, o_scale: 1, o_rotation: 0, o_color: c_white, o_scroll_y: 0, o_x_offset: 0, o_alpha: 1, o_add_order_index: 1, o_name: "Invincibility", o_description: "Temporarily turns you invincible. During the power-up's duration you become invulnerable to enemy attacks and will defeat almost any enemy you collide with!", o_image_index: 0, o_category: "item", o_daily_build_category: "daily_build_featured", o_text: "", o_video_tutorial: ""},
@@ -141,6 +143,10 @@ function scr_draw_list_of_placable_objects()
 			];
 			#endregion /* Object Array END */
 
+			scr_big_collectible_editor_restore_palette(objects);
+			big_collectible_palette_indices = [-1, -1, -1];
+			big_collectible_palette_category = current_object_category;
+
 			for (var i = 0; i < array_length(objects); i++)
 			{
 				var obj = objects[i];
@@ -151,7 +157,7 @@ function scr_draw_list_of_placable_objects()
 				{
 					object_text = obj.o_text;
 					object_video_tutorial = obj.o_video_tutorial;
-					scr_draw_level_editor_placable_object(order_index, obj.o_id, obj.o_can_make_bigger, obj.o_sprite, obj.o_mask, obj.o_scroll_x, obj.o_scale, obj.o_rotation, obj.o_color, obj.o_scroll_y, obj.o_x_offset, obj.o_alpha, obj.o_add_order_index, obj.o_name, obj.o_description, obj.o_image_index);
+					scr_draw_level_editor_placable_object(order_index, obj.o_id, obj.o_can_make_bigger, obj.o_sprite, obj.o_mask, obj.o_scroll_x, obj.o_scale, obj.o_rotation, obj.o_color, obj.o_scroll_y, obj.o_x_offset, obj.o_alpha, obj.o_add_order_index, obj.o_name, obj.o_description, obj.o_image_index, variable_struct_exists(obj, "o_tier") ? obj.o_tier : -1);
 				}
 			}
 

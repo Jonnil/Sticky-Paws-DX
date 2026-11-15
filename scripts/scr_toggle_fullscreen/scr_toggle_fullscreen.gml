@@ -11,7 +11,7 @@ function scr_toggle_fullscreen()
 		{
 			window_set_fullscreen(true);
 		}
-		ini_open("save_file/config.ini");
+		scr_save_ini_open("save_file/config.ini");
 		ini_write_real("config", "fullscreen_mode", window_get_fullscreen()); /* Save fullscreen settings to config.ini */
 		ini_close(); /* Don't commit the save data on Switch, this is only temporary! */
 	}

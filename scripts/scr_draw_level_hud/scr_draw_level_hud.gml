@@ -71,19 +71,44 @@ function scr_draw_level_hud(draw_hud = true)
 			draw_set_halign(fa_left);
 			draw_set_valign(fa_middle);
 			
-			for (var i = 1; i <= global.max_big_collectible; i++)
+			var show_tier_name = scr_big_collectible_runtime_has_tier_choice();
+			var icon_strip_fits = 32 * (global.max_big_collectible + 1) + (show_tier_name ? 150 : 0) <= window_width - 32;
+			if (!icon_strip_fits)
 			{
-				if (hud_show_big_collectible_blink[i] >= 1)
+				var hud_owned_count = 0;
+				for (var i = 1; i <= global.max_big_collectible; i++)
 				{
-					hud_show_big_collectible_blink[i] -= 1;
-					collectible_alpha = scr_wave(0, 1, 0.5);
+					if (hud_show_big_collectible_blink[i] >= 1) hud_show_big_collectible_blink[i]--;
+					if (global.big_collectible[i]) hud_owned_count++;
 				}
-				else
+				scr_draw_big_collectible_tier(collectible_sprite, 0, 32, hud_show_big_collectibles_y,
+					0.5, 0.5, 0, global.big_collectible_active_tier, false, 1);
+				var progress_text = (show_tier_name ? scr_big_collectible_tier_name(global.big_collectible_active_tier) + " " : "")
+					+ string(hud_owned_count) + "/" + string(global.max_big_collectible)
+					+ "  This run: " + string(global.how_many_big_collectible_collected);
+				var progress_scale = min(global.default_text_size * 0.65, max(1, window_width - 96) / max(1, string_width(progress_text)));
+				scr_draw_text_outlined(64, hud_show_big_collectibles_y, progress_text, progress_scale);
+			}
+			else
+			{
+				for (var i = 1; i <= global.max_big_collectible; i++)
 				{
-					collectible_alpha = (global.big_collectible[i] && !global.big_collectible_already_collected[i]) ? 0.5 : 1;
-				}
+					if (hud_show_big_collectible_blink[i] >= 1)
+					{
+						hud_show_big_collectible_blink[i] -= 1;
+						collectible_alpha = scr_wave(0, 1, 0.5);
+					}
+					else
+					{
+						collectible_alpha = (global.big_collectible[i] && !global.big_collectible_already_collected[i]) ? 0.5 : 1;
+					}
 
-				draw_sprite_ext((global.big_collectible[i] ? collectible_sprite : collectible_outline_sprite), 0, 32 * i, hud_show_big_collectibles_y, 0.5, 0.5, 0, c_white, collectible_alpha);
+					scr_draw_big_collectible_tier((global.big_collectible[i] ? collectible_sprite : collectible_outline_sprite), 0, 32 * i, hud_show_big_collectibles_y, 0.5, 0.5, 0, global.big_collectible_active_tier, false, collectible_alpha);
+				}
+				if (show_tier_name)
+				{
+					scr_draw_text_outlined(32 * (global.max_big_collectible + 1), hud_show_big_collectibles_y, scr_big_collectible_tier_name(global.big_collectible_active_tier), global.default_text_size * 0.65);
+				}
 			}
 		}
 		#endregion /* Big Collectibles END */

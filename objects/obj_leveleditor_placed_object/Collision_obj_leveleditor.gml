@@ -1,4 +1,5 @@
 #region /* Only run this code when placed object is colliding with the level editor cursor, so that there isn't that much code running in step event */
+if (!scr_big_collectible_editor_is_active(id)) exit;
 
 #region /* Drag Object */
 if (!other.set_difficulty_mode)
@@ -49,6 +50,17 @@ if (!other.set_difficulty_mode)
 if (mouse_check_button_released(mb_left))
 || (other.key_accept_released)
 {
+	if (drag_object && scr_big_collectible_editor_slot_occupied(id, big_collectible_tier, x, y))
+	{
+		x = drag_xstart;
+		y = drag_ystart;
+		drag_object = false;
+		drag_release_timer = 0;
+		dragged_from_original_place = false;
+		depth = (-bbox_bottom) * 0.04 -19;
+		other.drag_object = false;
+		other.menu_delay = 3;
+	}
 	if (drag_object)
 	{
 		hover_over_object_indicator = true;

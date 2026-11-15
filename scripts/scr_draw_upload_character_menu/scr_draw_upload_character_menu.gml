@@ -155,8 +155,7 @@ function scr_draw_upload_character_menu()
 
 		if (global.enable_open_custom_folder)
 		{
-			draw_menu_button(get_window_width * 0.5 - 185, upload_clear_check_character_open_character_folder_y, "Open Character Folder", "upload_clear_check_character_open_character_folder", "upload_clear_check_character_open_character_folder");
-			draw_sprite_ext(spr_icon_folder, 0, get_window_width * 0.5 - 185 + 16, upload_clear_check_character_open_character_folder_y + 21, 1, 1, 0, c_white, 1);
+			draw_menu_button(get_window_width * 0.5 - 185, upload_clear_check_character_open_character_folder_y, "Open Character Folder", "upload_clear_check_character_open_character_folder", "upload_clear_check_character_open_character_folder", c_lime, 1, 370, spr_icon_folder);
 		}
 
 		draw_menu_dropdown(get_window_width * 0.5 - 300, edit_visibility_y, l10n_text("Visibility"), "upload_character_edit_visibility", visibility_index, l10n_text("Public"), l10n_text("Unlisted"));

@@ -23,7 +23,7 @@ function scr_set_narrator(save = true)
 	if (save)
 	{
 		/* Commit narrator and narrator selection to memory */
-		ini_open(game_save_id + "save_file/config.ini");
+		scr_save_ini_open(game_save_id + "save_file/config.ini");
 		ini_write_real("config", "narrator", global.narrator);
 		ini_write_real("config", "narrator_selection", global.narrator_selection);
 		ini_close();

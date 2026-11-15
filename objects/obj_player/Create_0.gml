@@ -282,20 +282,20 @@ active_jump = false;
 
 #region /* Load Checkpoint Direction */
 spawned_from_checkpoint = false;
-if (global.character_select_in_this_menu == "main_game")
+if (global.actually_play_edited_level && !global.big_collectible_test_override
+&& !global.doing_clear_check_level && !global.doing_clear_check_character
+&& (global.checkpoint_x > 0 || global.checkpoint_y > 0))
 {
-	ini_open(game_save_id + "save_file/file" + string(global.file) + ".ini");
+	scr_open_level_checkpoint_save();
+	if (ini_key_exists(scr_level_progress_section(), "checkpoint_direction")
+	&& (!global.big_collectible_tiers_enabled
+		|| ini_read_real(scr_level_progress_section(), "checkpoint_big_collectible_tier", 0) == global.big_collectible_active_tier))
+	{
+		spawned_from_checkpoint = true;
+		image_xscale = ini_read_real(scr_level_progress_section(), "checkpoint_direction", +1);
+	}
+	ini_close(); /* Only reading the checkpoint that actually supplied this spawn. */
 }
-else
-{
-	ini_open(game_save_id + "save_file/custom_level_save.ini");
-}
-if (ini_key_exists(global.level_name, "checkpoint_direction"))
-{
-	spawned_from_checkpoint = true;
-	image_xscale = ini_read_real(global.level_name, "checkpoint_direction", +1);
-}
-ini_close(); /* Don't commit the save data on Switch, this is only temporary! */
 #endregion /* Load Checkpoint Direction END */
 
 #region /* Play Ambience */

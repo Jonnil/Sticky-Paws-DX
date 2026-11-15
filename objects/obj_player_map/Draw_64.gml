@@ -64,97 +64,30 @@ if (iris_xscale > 9)
 	scr_draw_text_outlined(64, 32, string(total_big_collectibles) + "/" + string(global.max_total_big_collectibles), global.default_text_size, c_black, c_white, 1);
 }
 
-/* Check if conditions are met to show level info */
-
-if (nearest_level != noone
-&& stop_at_level
-&& iris_xscale > 9
-&& move_delay > 10
-&& distance_to_level < 4
-&& nearest_level.level_number != 0
-&& speed == 0)
+/* A single fresh card covers authored rows and genuine statistics-only levels. */
+if (big_collectible_info_can_show(nearest_level, true))
 {
-	if (nearest_level.clear_rate == "enter"
-	|| nearest_level.clear_rate == "clear")
+	draw_set_halign(fa_center);
+	draw_set_valign(fa_top);
+	draw_set_alpha(0.75);
+	draw_roundrect_color_ext(20, 56, big_collectible_info_right, big_collectible_info_bottom, 16, 16, c_black, c_black, false);
+	draw_set_alpha(1);
+	if (big_collectible_entry_visible)
 	{
-		var show_level_info_x = 180;
-		var show_level_info_y = 232;
-		var show_big_collectibles_y = -160;
-		var total_defeats_y = global.show_defeats_counter && nearest_level.number_of_defeats > 0 ? -32 : -64;
-		var has_best_time = nearest_level.timeattack_realmillisecond < 999999999
-						&& nearest_level.timeattack_realmillisecond > 0;
-		
-		var show_info = global.show_defeats_counter && nearest_level.number_of_defeats > 0 ||
-						nearest_level.number_of_clears > 0 ||
-						nearest_level.level_score > 0 ||
-						has_best_time ||
-						at_least_one_big_collectible;
-		
-		if (show_info)
-		{
-			draw_set_halign(fa_center);
-			draw_set_valign(fa_top);
-			draw_set_alpha(0.75);
-			draw_roundrect_color_ext(show_level_info_x - 160, show_level_info_y - abs(show_big_collectibles_y) - 16, show_level_info_x + 160, show_level_info_y + total_defeats_y + 24, 50, 50, c_black, c_black, false);
-			draw_set_alpha(1);
-			
-			/* Draw level info */
-			var total_defeats_text = "";
-			
-			if (global.show_defeats_counter
-			&& nearest_level.number_of_defeats > 0)
-			{
-				total_defeats_text = l10n_text("Total Defeats") + ": " + string(nearest_level.number_of_defeats);
-			}
-
-			var stat_text_y = show_level_info_y - 150;
-			
-			if (has_best_time)
-			{
-				scr_draw_text_outlined(show_level_info_x, stat_text_y,
-				best_time_text,
-				global.default_text_size, c_black, c_white, 1);
-				stat_text_y += 32;
-			}
-			
-			scr_draw_text_outlined(show_level_info_x, stat_text_y,
-			l10n_text("Best Score") + ": " + string(nearest_level.level_score),
-			global.default_text_size, c_black, c_white, 1);
-			stat_text_y += 32;
-
-			scr_draw_text_outlined(show_level_info_x, stat_text_y,
-			l10n_text("Times Passed") + ": " + string(nearest_level.number_of_clears),
-			global.default_text_size, c_black, c_white, 1);
-			stat_text_y += 32;
-
-			if (total_defeats_text != "")
-			{
-				scr_draw_text_outlined(show_level_info_x, stat_text_y,
-				total_defeats_text,
-				global.default_text_size, c_black, c_white, 1);
-			}
-
-			for (var i = 1; i <= global.max_big_collectible; i++)
-			{
-				var sprite_to_draw = global.resource_pack_sprite_big_collectible_outline;
-				if (global.resource_pack_sprite_big_collectible > 0 && nearest_level.big_collectible[i])
-				{
-					sprite_to_draw = global.resource_pack_sprite_big_collectible;
-				}
-				draw_sprite_ext(sprite_to_draw, 0, show_level_info_x - 72 + (24 * i), show_level_info_y + show_big_collectibles_y, 0.3, 0.3, 0, c_white, 1);
-			}
-			if (nearest_level.zero_defeats != 0)
-			{
-				var sprite_zero_defeats = spr_icon_zero_hits;
-				
-				if (nearest_level.zero_defeats == 1)
-				{
-					sprite_zero_defeats = spr_icon_zero_defeats;
-				}
-				
-				draw_sprite_ext(sprite_zero_defeats, 0, show_level_info_x + 100, show_level_info_y + show_big_collectibles_y, 1, 1, 0, c_white, 1);
-			}
-		}
+		scr_big_collectible_selector_draw(big_collectible_entry_cache.state, big_collectible_entry_cache.model,
+			big_collectible_entry_left, big_collectible_entry_top, big_collectible_entry_width, big_collectible_entry_height,
+			1, player, big_collectible_info_right, big_collectible_entry_scale);
+	}
+	for (var line_index = 0; line_index < array_length(big_collectible_info_lines); line_index++)
+	{
+		scr_draw_text_outlined(big_collectible_info_center, big_collectible_info_stats_top + line_index * big_collectible_info_line_height,
+			big_collectible_info_lines[line_index], big_collectible_info_text_scale, c_black, c_white, 1);
+	}
+	if (big_collectible_info_badge != noone)
+	{
+		var badge_x = big_collectible_info_right - 8 - sprite_get_width(big_collectible_info_badge) * 0.5;
+		var badge_y = big_collectible_entry_top + sprite_get_height(big_collectible_info_badge) * 0.5;
+		draw_sprite_ext(big_collectible_info_badge, 0, badge_x, badge_y, 1, 1, 0, c_white, 1);
 	}
 }
 #endregion /* Show Level Info END */

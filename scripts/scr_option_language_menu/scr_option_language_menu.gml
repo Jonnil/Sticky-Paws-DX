@@ -492,7 +492,7 @@ function scr_option_language_menu()
 				menu_delay = 3;
 				scr_set_default_language(true);
 
-				ini_open(game_save_id + "save_file/config.ini");
+				scr_save_ini_open(game_save_id + "save_file/config.ini");
 				ini_write_real("language_updates", "selected_language_id", global.selected_language_id);
 				ini_write_real("language_updates", "current_language_menu_position", global.current_language_menu_position);
 				ini_close();

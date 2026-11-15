@@ -140,6 +140,12 @@ function scr_character_select_menu_draw()
 		}
 		#endregion /* Select your character text END */
 
+		/* Background buttons must not take focus from any player's name dialog */
+		if (!no_players_are_inputting_names)
+		{
+			return;
+		}
+
 		var back_y = 0;
 		var manage_characters_y = 42;
 		var draw_online_character_list_y = 42 * 2;

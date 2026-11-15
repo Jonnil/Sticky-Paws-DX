@@ -1069,7 +1069,7 @@ function scr_draw_information_menu()
 			if (menu_delay == 1)
 			{
 				latest_whats_new_read = true;
-				ini_open(game_save_id + "save_file/config.ini");
+				scr_save_ini_open(game_save_id + "save_file/config.ini");
 				ini_write_string("config", "latest_whats_new_version", "v" + scr_get_build_date());
 				ini_key_delete("config", "latest_whats_new_text"); /* Delete the ini key before writing new data to it */
 				ini_write_string("config", "latest_whats_new_text", string(global.whats_new));
@@ -1268,8 +1268,7 @@ function scr_draw_information_menu()
 				
 				#region /* Open Custom Levels Folder */
 				var draw_open_custom_levels_folder_y = 32 * 11;
-				draw_menu_button(32, draw_open_custom_levels_folder_y, l10n_text("Open Custom Levels Folder"), "backup_open_custom_levels_folder", "backup_open_custom_levels_folder");
-				draw_sprite_ext(spr_icon_folder, 0, 32 + 16, draw_open_custom_levels_folder_y + 21, 1, 1, 0, c_white, 1);
+				draw_menu_button(32, draw_open_custom_levels_folder_y, l10n_text("Open Custom Levels Folder"), "backup_open_custom_levels_folder", "backup_open_custom_levels_folder", c_lime, 1, 370, spr_icon_folder);
 				
 				if (point_in_rectangle(mouse_get_x, mouse_get_y, 32, draw_open_custom_levels_folder_y + 2, 32 + 370, draw_open_custom_levels_folder_y + 41))
 				&& (global.controls_used_for_navigation == "mouse")
@@ -1288,8 +1287,7 @@ function scr_draw_information_menu()
 				
 				#region /* Open Custom Levels Folder */
 				draw_open_custom_levels_folder_y = 32 * 14;
-				draw_menu_button(32, draw_open_custom_levels_folder_y, l10n_text("Open Custom Character Folder"), "backup_open_custom_character_folder", "backup_open_custom_character_folder");
-				draw_sprite_ext(spr_icon_folder, 0, 32 + 16, draw_open_custom_levels_folder_y + 21, 1, 1, 0, c_white, 1);
+				draw_menu_button(32, draw_open_custom_levels_folder_y, l10n_text("Open Custom Character Folder"), "backup_open_custom_character_folder", "backup_open_custom_character_folder", c_lime, 1, 370, spr_icon_folder);
 				
 				if (point_in_rectangle(mouse_get_x, mouse_get_y, 32, draw_open_custom_levels_folder_y + 2, 32 + 370, draw_open_custom_levels_folder_y + 41))
 				&& (global.controls_used_for_navigation == "mouse")

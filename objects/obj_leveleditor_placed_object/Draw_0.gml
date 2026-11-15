@@ -1,3 +1,6 @@
+var tier_source = scr_big_collectible_is_source(object, item_inside);
+var tier_alpha = tier_source && big_collectible_tier != global.big_collectible_editor_tier ? 0.2 : 1;
+
 if (draw_enemy_with_spring)
 {
 	draw_sprite_ext(global.resource_pack_sprite_coil_spring, 0, x, y + (sprite_height * 0.5), 1, 1, 0, image_blend, draw_alpha * image_alpha);
@@ -33,7 +36,18 @@ switch (object)
 
 if (sprite_exists(sprite_index))
 {
-	draw_sprite_ext(sprite_index, image_index, x, y, draw_xscale, draw_yscale, draw_angle, image_blend, draw_alpha * image_alpha);
+	if (object == LEVEL_OBJECT_ID.ID_BIG_COLLECTIBLE)
+	{
+		scr_draw_big_collectible_tier(sprite_index, image_index, x, y, draw_xscale, draw_yscale, draw_angle, big_collectible_tier, false, draw_alpha * image_alpha * tier_alpha);
+		if (instance_exists(obj_leveleditor) && obj_leveleditor.set_difficulty_mode)
+		{
+			draw_rectangle_color(x - 18, y - 18, x + 18, y + 18, image_blend, image_blend, image_blend, image_blend, true);
+		}
+	}
+	else
+	{
+		draw_sprite_ext(sprite_index, image_index, x, y, draw_xscale, draw_yscale, draw_angle, image_blend, draw_alpha * image_alpha);
+	}
 	if (hover_over_object_indicator)
 	{
 		draw_sprite_ext(sprite_index, image_index, x, y, draw_xscale, draw_yscale, draw_angle, c_blue, scr_wave(0.25, 0.75, 0.5));
@@ -50,10 +64,17 @@ if (draw_leveleditor_arrow)
 if (draw_item_on_top != noone)
 {
 	spring_scale = 0.5;
-	draw_sprite_ext(draw_item_on_top, 0, x, y, 0.5, 0.5, 0, draw_item_on_top_blend, draw_alpha * image_alpha);
+	if (tier_source)
+	{
+		scr_draw_big_collectible_tier(draw_item_on_top, 0, x, y, 0.5, 0.5, 0, big_collectible_tier, false, draw_alpha * image_alpha * tier_alpha);
+	}
+	else
+	{
+		draw_sprite_ext(draw_item_on_top, 0, x, y, 0.5, 0.5, 0, draw_item_on_top_blend, draw_alpha * image_alpha);
+	}
 	if (hover_over_object_indicator)
 	{
-		draw_sprite_ext(draw_item_on_top, 0, x, y, 0.5, 0.5, 0, c_blue, scr_wave(0.25, 0.75, 0.5));
+		draw_sprite_ext(draw_item_on_top, 0, x, y, 0.5, 0.5, 0, c_blue, scr_wave(0.25, 0.75, 0.5) * tier_alpha);
 	}
 }
 else
@@ -69,6 +90,12 @@ if (draw_item_with_spring)
 if (draw_text_over_placed_object != "")
 {
 	scr_draw_text_outlined(x, y, string(draw_text_over_placed_object), global.default_text_size, c_white, c_black, 1);
+}
+
+if (tier_source && hover_over_object_indicator)
+{
+	draw_set_halign(fa_center);
+	scr_draw_text_outlined(x, y - 28, scr_big_collectible_tier_name(big_collectible_tier), global.default_text_size * 0.6, c_black, c_white, 1);
 }
 
 #region /* Objects that need to display text when hovered over */

@@ -11,16 +11,7 @@ if (!have_set_numbers) /* Have to set numbers in step event like this for it to 
 	have_set_numbers = true;
 
 	#region /* Set big collectible numbers for every big collectible */
-	for(set_all_big_collectible = 0; set_all_big_collectible < instance_number(obj_big_collectible_number) + 1; set_all_big_collectible += 1)
-	{
-		if (instance_number(obj_big_collectible_number) >= set_all_big_collectible)
-		{
-			with (instance_nth_nearest(global.level_player_start_x[1], global.level_player_start_y[1], obj_big_collectible_number, set_all_big_collectible))
-			{
-				big_collectible = obj_camera.set_all_big_collectible;
-			}
-		}
-	}
+	scr_big_collectible_assign_numbers();
 	#endregion /* Set big collectible numbers for every big collectible END */
 
 	#region /* Set key fragment numbers for every key fragment */

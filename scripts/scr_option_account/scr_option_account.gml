@@ -57,7 +57,7 @@ function scr_option_account()
 				&& (key_accept_pressed)
 				&& (menu_delay == 0 && menu_joystick_delay == 0)
 				{
-					ini_open(game_save_id + "save_file/config.ini");
+					scr_save_ini_open(game_save_id + "save_file/config.ini");
 					ini_write_string("config", "caution_online_do_not_show", global.caution_online_do_not_show);
 					global.online_enabled = global.caution_online_do_not_show;
 					ini_close(); /* Don't commit the save data on Switch, this is only temporary! */
@@ -75,7 +75,7 @@ function scr_option_account()
 					{
 						menu_delay = 3;
 
-						ini_open(game_save_id + "save_file/config.ini");
+						scr_save_ini_open(game_save_id + "save_file/config.ini");
 						ini_write_string("config", "send_crash_logs", global.send_crash_logs);
 						ini_close(); /* Don't commit the save data on Switch, this is only temporary! */
 					}
@@ -185,7 +185,7 @@ function scr_option_account()
 					}
 
 					/* Save username to config file */
-					ini_open(game_save_id + "save_file/config.ini");
+					scr_save_ini_open(game_save_id + "save_file/config.ini");
 					ini_write_string("config", "username", string(global.username));
 					ini_close(); /* Don't commit the save data on Switch, this is only temporary! */
 
@@ -259,7 +259,7 @@ function scr_option_account()
 			&& menu_joystick_delay == 0)
 			{
 				/* Save username to config file */
-				ini_open(game_save_id + "save_file/config.ini");
+				scr_save_ini_open(game_save_id + "save_file/config.ini");
 				ini_write_string("config", "username", string(global.username));
 				ini_close(); /* Don't commit the save data on Switch, this is only temporary! */
 

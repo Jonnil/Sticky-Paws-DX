@@ -229,8 +229,7 @@ function scr_character_manage_menu_draw()
 				#region /* Open Character Folder */
 				if (global.enable_open_custom_folder)
 				{
-					draw_menu_button(get_window_width * 0.5 - 185, open_character_folder_y, l10n_text("Open Character Folder"), "open_folder_copy_character", "open_folder_copy_character");
-					draw_sprite_ext(spr_icon_folder, 0, get_window_width * 0.5 - 185 + 16, open_character_folder_y + 21, 1, 1, 0, c_white, 1);
+					draw_menu_button(get_window_width * 0.5 - 185, open_character_folder_y, l10n_text("Open Character Folder"), "open_folder_copy_character", "open_folder_copy_character", c_lime, 1, 370, spr_icon_folder);
 				}
 				#endregion /* Open Character Folder END */
 				

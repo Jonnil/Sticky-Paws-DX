@@ -758,7 +758,7 @@ function scr_debug_set_item_mode(item_key, visibility_mode, save_to_config = tru
 
 	if (save_to_config)
 	{
-		ini_open(game_save_id + "save_file/config.ini");
+		scr_save_ini_open(game_save_id + "save_file/config.ini");
 		ini_write_real(global.debug_visibility_config_section, item_key, sanitized_mode);
 
 		if (string(definition.legacy_public_toggle) != "")

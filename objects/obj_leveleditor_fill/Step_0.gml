@@ -126,6 +126,7 @@ else
 			if (instance_exists(obj_leveleditor))
 			{
 				object = obj_leveleditor.place_object;
+				scr_big_collectible_editor_initialize_placement(id);
 				placed_for_the_first_time = false;
 			}
 		}

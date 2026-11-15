@@ -1,4 +1,4 @@
-function scr_draw_level_editor_placable_object(v_selected_object, v_place_object_id, v_can_make_place_size_bigger, v_sprite_index, v_mask_index, v_scroll_x, v_scale, v_rotation, v_color, v_scroll_y = 0, v_x_offset = 0, alpha_offset = 1, add_order_index = 1, object_name = "", object_description = "", v_image_index = 0)
+function scr_draw_level_editor_placable_object(v_selected_object, v_place_object_id, v_can_make_place_size_bigger, v_sprite_index, v_mask_index, v_scroll_x, v_scale, v_rotation, v_color, v_scroll_y = 0, v_x_offset = 0, alpha_offset = 1, add_order_index = 1, object_name = "", object_description = "", v_image_index = 0, v_big_collectible_tier = -1)
 {
 	var half_gui_width = display_get_gui_width() * 0.5;
 	var menu_x_offset = select_object_menu_x + v_scroll_x * v_selected_object;
@@ -7,6 +7,7 @@ function scr_draw_level_editor_placable_object(v_selected_object, v_place_object
 
 	if (unlocked_object[v_place_object_id] >= true)
 	{
+		if (v_big_collectible_tier >= 0) big_collectible_palette_indices[v_big_collectible_tier] = v_selected_object;
 		if (draw_x > 0 && draw_x < display_get_gui_width() || (initialize_recent_object_selected)) /* Additional check to ensure that the graphics are within the display width */
 		{
 			var v_scale_modify = is_selected ? 1.25 : 1;
@@ -19,6 +20,7 @@ function scr_draw_level_editor_placable_object(v_selected_object, v_place_object
 				mask_index = v_mask_index;
 				image_angle = v_rotation;
 				place_object = v_place_object_id; /* Set the currently selected object ID */
+				if (v_big_collectible_tier >= 0) global.big_collectible_editor_tier = v_big_collectible_tier;
 				initialize_recent_object_selected = false;
 			}
 			var y_offset = 128;
@@ -38,7 +40,14 @@ function scr_draw_level_editor_placable_object(v_selected_object, v_place_object
 				}
 			}
 			draw_set_alpha(selected_menu_alpha * alpha_offset);
-			draw_sprite_ext(v_sprite_index, v_image_index, draw_x, y_offset + v_scroll_y, v_scale * v_scale_modify, v_scale * v_scale_modify, v_rotation, v_color, selected_menu_alpha * alpha_offset);
+			if (v_place_object_id == LEVEL_OBJECT_ID.ID_BIG_COLLECTIBLE)
+			{
+				scr_draw_big_collectible_tier(v_sprite_index, v_image_index, draw_x, y_offset + v_scroll_y, v_scale * v_scale_modify, v_scale * v_scale_modify, v_rotation, max(0, v_big_collectible_tier), false, selected_menu_alpha * alpha_offset, v_big_collectible_tier == 2);
+			}
+			else
+			{
+				draw_sprite_ext(v_sprite_index, v_image_index, draw_x, y_offset + v_scroll_y, v_scale * v_scale_modify, v_scale * v_scale_modify, v_rotation, v_color, selected_menu_alpha * alpha_offset);
+			}
 
 			if (object_text != "")
 			{
